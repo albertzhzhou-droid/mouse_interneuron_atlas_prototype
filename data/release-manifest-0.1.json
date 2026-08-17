@@ -1,0 +1,59 @@
+{
+  "releaseId": "ohri-mouse-interneuron-feasibility-0.1.0",
+  "releaseDate": "2026-08-17",
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "version": "0.1.0",
+    "runtime": "vinext 1.0.0-beta.6",
+    "react": "19.2.8",
+    "renderer": "three 0.185.1",
+    "nodeRequirement": ">=22.13.0"
+  },
+  "scope": {
+    "species": "Mus musculus",
+    "ncbiTaxon": "NCBITaxon:10090",
+    "lifeStage": "adult",
+    "entityCount": 7,
+    "populationEntityCount": 5,
+    "stateOverlayCount": 2,
+    "coordinateSpace": "prototype_schematic_v0",
+    "geometryStatus": "SYN",
+    "pathStatus": "SCH"
+  },
+  "bundledScientificAssets": {
+    "atlasVolumes": 0,
+    "observedCellCoordinates": 0,
+    "registeredMorphologies": 0,
+    "connectomeEdges": 0,
+    "externalAssetRequestsRequired": false
+  },
+  "futureAtlasTarget": {
+    "atlasApiReferenceVersion": "3.0.1",
+    "atlasName": "allen_cord_20um",
+    "publishedResolution": "20 x 10 x 10 um",
+    "runtimeAtlasVersion": null,
+    "runtimeOrientation": null,
+    "runtimeShape": null,
+    "missingReason": "The feasibility release does not download or bundle the BrainGlobe atlas. Runtime metadata must be captured when the first registered-data release is built."
+  },
+  "authoritativeInputs": [
+    {
+      "path": "data/atlas-release-0.1.json",
+      "sha256": "57cdc6284b09093fff9b4e274e165650b8e25060b3bb2da37c3b8917263f3a52"
+    },
+    {
+      "path": "data/benchmark-snapshot-2026-08-17.json",
+      "sha256": "d2c916072feeaa0555b0588f155a77f79219a2784ecf5cd5d02cfd98a830e13d"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "0f44b08b52382f01dc694212e21702e497965bbb2ea63e8d5d3c2efc5f74a86f"
+    }
+  ],
+  "scientificAuthority": {
+    "evidenceLedger": "../interneuron_sci_review/02_EVIDENCE/EVIDENCE_LEDGER.md",
+    "sourceManifest": "../interneuron_sci_review/01_LITERATURE/SOURCE_MANIFEST.tsv",
+    "redTeamValidator": "scripts/validate-release.mjs"
+  },
+  "disclaimer": "Research visualization only. Not a complete cell census, connectome, clinical model or treatment recommendation."
+}

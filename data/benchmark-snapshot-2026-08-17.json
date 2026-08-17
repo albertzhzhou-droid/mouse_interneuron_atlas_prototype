@@ -1,0 +1,62 @@
+{
+  "snapshotDate": "2026-08-17",
+  "purpose": "Current structural and parameter benchmarks for the adult mouse spinal interneuron feasibility prototype",
+  "resources": [
+    {
+      "name": "BrainGlobe allen_cord_20um",
+      "role": "Anatomical atlas benchmark",
+      "parameters": ["C1-S3", "20 x 10 x 10 um anisotropic resolution", "template", "annotation volume", "region hierarchy", "meshes"],
+      "reused": "Segment extent, anatomy-layer contract, future atlas import target",
+      "notReused": "The feasibility renderer does not ship the atlas volume or claim atlas registration",
+      "url": "https://brainglobe.info/documentation/brainglobe-atlasapi/usage/atlas-details.html"
+    },
+    {
+      "name": "SpinalJ / SpineRacks",
+      "role": "Whole-cord registration workflow benchmark",
+      "parameters": ["adult mouse C1-S3", "1302 registered sections", "25 um source sections", "Fiji/ImageJ workflow", "CSV coordinates and density maps"],
+      "reused": "Whole-cord segmentation model and future transform/QC workflow",
+      "notReused": "25 um sections are not presented as the BrainGlobe resampled resolution",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8605391/"
+    },
+    {
+      "name": "Neuroglancer",
+      "role": "Production viewer architecture benchmark",
+      "parameters": ["3 orthogonal slices plus independent 3D view", "meshes", "line skeletons", "annotations", "Zarr v2/v3", "OME-Zarr 0.4/0.5", "N5", "precomputed", "WebGL2", "WebWorker preprocessing"],
+      "reused": "Layered view model, shareable state, 3D plus slice interaction pattern",
+      "notReused": "The first feasibility slice uses a smaller native Three.js renderer without external volumes",
+      "url": "https://github.com/google/neuroglancer"
+    },
+    {
+      "name": "NeuroMorpho.Org",
+      "role": "Morphology acquisition benchmark",
+      "parameters": ["SWC morphology", "3D coordinates", "radius", "parent topology", "physical integrity metadata", "API query and pagination"],
+      "reused": "Future SWC asset schema and completeness flags",
+      "notReused": "No morphology is positioned in atlas space without a validated transform",
+      "url": "https://neuromorpho.org/apiReference.html"
+    },
+    {
+      "name": "Allen Mouse Spinal Cord Atlas",
+      "role": "Gene-expression evidence benchmark",
+      "parameters": ["P4 and P56 male C57BL/6J", "about 17000 genes", "20 um transverse sections", "about 2 mm adult gene sampling", "34 reference levels", "80 plus structures"],
+      "reused": "Marker evidence links and future section anchors",
+      "notReused": "Sparse 2D ISH is not represented as continuous single-cell 3D expression",
+      "url": "https://mousespinal.brain-map.org/spinal/common/content/Overview.pdf"
+    },
+    {
+      "name": "SPARC organ scaffolds",
+      "role": "Transform and provenance architecture benchmark",
+      "parameters": ["material coordinates", "fiducial mapping", "specimen-to-scaffold transform", "ontology annotations", "lightweight web surfaces"],
+      "reused": "Coordinate-space, transform and provenance records",
+      "notReused": "No generic SPARC mouse spinal-cord scaffold is treated as source anatomy",
+      "url": "https://docs.sparc.science/docs/organ-scaffolds"
+    },
+    {
+      "name": "Fish1",
+      "role": "Connectomics-scale technical benchmark only",
+      "parameters": ["single 7 dpf zebrafish", "4 x 4 x 30 nm raw EM", "187053 cell bodies", "about 30 million synapses", "versioned materialized tables", "on-demand skeletons"],
+      "reused": "Stable biological IDs, mutable segmentation IDs and versioned query concepts",
+      "notReused": "No zebrafish anatomy, taxonomy, counts or connectivity is transferred to adult mouse",
+      "url": "https://fish1-release.storage.googleapis.com/index.html"
+    }
+  ]
+}
