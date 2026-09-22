@@ -1,0 +1,426 @@
+{
+  "authorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+  "crossAssayCellIdentityVerified": false,
+  "denominators": {
+    "expectedGroupCount": 28,
+    "expectedRowCount": 92782,
+    "observedNonemptyGroupCount": 28,
+    "observedNonemptyNeuronTypeCount": 0,
+    "observedRowCount": 92782
+  },
+  "extractors": {
+    "baseRWorker": {
+      "fileName": "extract_cano_gomez_rds_metadata_stream.R",
+      "sha256": "10139ba024f11dc49ab1d62449428c4b55ac9c40ba615866ef30e4d9ea2f867e"
+    },
+    "transport": {
+      "fileName": "extract_cano_gomez_rds_metadata_stream.py",
+      "sha256": "9ca5e7469f7e4154079d907104e18f1a8a132b1859a04fc619d5b6f9ec9d17e1"
+    }
+  },
+  "formatVersion": "0.1.0",
+  "identityChecks": {
+    "activeIdentNamesExactOrder": "not_resolved_by_base_r_meta_data_row_only_stream",
+    "assayColnamesExactOrder": "not_resolved_by_base_r_meta_data_row_only_stream",
+    "authorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+    "crossAssayCellIdentityVerified": false,
+    "metadataRowNamesUniqueNonempty": true,
+    "objectCellsExactOrder": "not_resolved_by_base_r_meta_data_row_only_stream",
+    "orderedCompoundNucleusKeysSha256": "a3dfb3717903428bef3c22aa60b78060b9302eb26518a248b4a7e2450179a7e4",
+    "orderedMetadataRowNamesSha256": "8e9076441428d82aec74b5cb637786e4fc58098f748788f6ef913375e2ef1f22",
+    "sameCellClaimAuthorized": false,
+    "sameRowRawMetadataAssignmentVerified": true,
+    "stableCompoundKeyExpression": "GSE318731|exact source filename|row.name",
+    "stableIdSource": "meta.data row.names"
+  },
+  "memoryBoundary": {
+    "CHOLMemoryProbeRequiredBeforeLargerClasses": true,
+    "CHOLProbeDoesNotAuthorizeGabaOrGlutRun": true,
+    "cholProbeGate": {
+      "largerClassMemorySafetyEstablished": false,
+      "probeAuditSha256": "26ee50fa7308dad1775c4eb077e244b251da0e9e76052f2adb948a4495231ce0",
+      "probeBaseRWorkerSha256": "10139ba024f11dc49ab1d62449428c4b55ac9c40ba615866ef30e4d9ea2f867e",
+      "probeSourceSha256": "d4ad07a1e434f2ed4553738f3e1df1b395ce81b154f974c41f3ba6a9d674aed2",
+      "probeTransportExtractorSha256": "9ca5e7469f7e4154079d907104e18f1a8a132b1859a04fc619d5b6f9ec9d17e1",
+      "requiredForThisClass": true,
+      "scientificOrClassificationAuthorityAdded": false,
+      "verifiedBeforeSourceTransport": true
+    },
+    "compressedByteSizeIsNotAReliableMemoryPredictor": true,
+    "metadataRetainedThenCompleteObjectReleasedBeforeWriting": true,
+    "readRDSMaterializesCompleteObject": true
+  },
+  "metadataColumnInventory": [
+    {
+      "class": "character",
+      "column_name": "orig.ident",
+      "is_factor": "false",
+      "is_ordered_factor": "false",
+      "source_column_index": "1",
+      "storage_mode": "character",
+      "typeof": "character"
+    },
+    {
+      "class": "numeric",
+      "column_name": "nCount_RNA",
+      "is_factor": "false",
+      "is_ordered_factor": "false",
+      "source_column_index": "2",
+      "storage_mode": "double",
+      "typeof": "double"
+    },
+    {
+      "class": "integer",
+      "column_name": "nFeature_RNA",
+      "is_factor": "false",
+      "is_ordered_factor": "false",
+      "source_column_index": "3",
+      "storage_mode": "integer",
+      "typeof": "integer"
+    },
+    {
+      "class": "factor",
+      "column_name": "anatomy",
+      "is_factor": "true",
+      "is_ordered_factor": "false",
+      "source_column_index": "4",
+      "storage_mode": "integer",
+      "typeof": "integer"
+    },
+    {
+      "class": "factor",
+      "column_name": "groups",
+      "is_factor": "true",
+      "is_ordered_factor": "false",
+      "source_column_index": "5",
+      "storage_mode": "integer",
+      "typeof": "integer"
+    },
+    {
+      "class": "factor",
+      "column_name": "source",
+      "is_factor": "true",
+      "is_ordered_factor": "false",
+      "source_column_index": "6",
+      "storage_mode": "integer",
+      "typeof": "integer"
+    },
+    {
+      "class": "character",
+      "column_name": "Sex",
+      "is_factor": "false",
+      "is_ordered_factor": "false",
+      "source_column_index": "7",
+      "storage_mode": "character",
+      "typeof": "character"
+    }
+  ],
+  "metadataColumns": [
+    "orig.ident",
+    "nCount_RNA",
+    "nFeature_RNA",
+    "anatomy",
+    "groups",
+    "source",
+    "Sex"
+  ],
+  "metadataFieldContract": {
+    "absentOptionalContextEmissionMode": "SOURCE_COLUMN_ABSENT_EMITTED_AS_SOURCE_NA",
+    "absentOptionalContextFields": [],
+    "allContractFieldsHaveExplicitPresenceReceipts": true,
+    "optionalContextFields": [
+      "source",
+      "anatomy",
+      "Sex"
+    ],
+    "presentOptionalContextFields": [
+      "source",
+      "anatomy",
+      "Sex"
+    ],
+    "requiredAssignmentFields": [
+      "groups"
+    ],
+    "sourceAbsentAssignmentFields": [
+      "neuron_types"
+    ]
+  },
+  "metadataFields": {
+    "Sex": {
+      "class": "character",
+      "counts": {
+        "Female": 43915,
+        "Male": 44909,
+        "Unassigned": 3958
+      },
+      "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+      "factorLevels": [],
+      "isFactor": false,
+      "isOrderedFactor": false,
+      "missingCount": 0,
+      "observedNonemptyUniqueCount": 3,
+      "rowCount": 92782,
+      "sourceColumnAbsenceReason": null,
+      "sourceColumnIndex": 7,
+      "sourceColumnPresent": true,
+      "sourceEmptyStringCount": 0,
+      "sourceMissingCount": 0,
+      "sourceWhitespaceOnlyCount": 0,
+      "storageMode": "character",
+      "typeof": "character",
+      "zeroCountLevels": []
+    },
+    "anatomy": {
+      "class": "factor",
+      "counts": {
+        "Cervical": 26857,
+        "Lumbar": 22235,
+        "Sacral": 21685,
+        "Thoracic": 22005
+      },
+      "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+      "factorLevels": [
+        "Cervical",
+        "Thoracic",
+        "Lumbar",
+        "Sacral"
+      ],
+      "isFactor": true,
+      "isOrderedFactor": false,
+      "missingCount": 0,
+      "observedNonemptyUniqueCount": 4,
+      "rowCount": 92782,
+      "sourceColumnAbsenceReason": null,
+      "sourceColumnIndex": 4,
+      "sourceColumnPresent": true,
+      "sourceEmptyStringCount": 0,
+      "sourceMissingCount": 0,
+      "sourceWhitespaceOnlyCount": 0,
+      "storageMode": "integer",
+      "typeof": "integer",
+      "zeroCountLevels": []
+    },
+    "groups": {
+      "class": "factor",
+      "counts": {
+        "GLUT_Abcc9": 1442,
+        "GLUT_C1qtnf7": 1807,
+        "GLUT_Col14a1": 1943,
+        "GLUT_Col27a1": 7187,
+        "GLUT_Crhr2": 1894,
+        "GLUT_Eya4": 1327,
+        "GLUT_Folh1": 2077,
+        "GLUT_Grik3": 2239,
+        "GLUT_Grpr": 4237,
+        "GLUT_Mafa": 2826,
+        "GLUT_Mix1_Pde1a": 3823,
+        "GLUT_Mix2_Pde1a": 13249,
+        "GLUT_Mix3": 1820,
+        "GLUT_Mylk": 1740,
+        "GLUT_Nmur2": 4459,
+        "GLUT_Npff": 1559,
+        "GLUT_Nr2f1": 3501,
+        "GLUT_Nr4a2": 1110,
+        "GLUT_Nts": 3456,
+        "GLUT_Pde5a": 1319,
+        "GLUT_Pdyn": 2757,
+        "GLUT_Piezo2": 2747,
+        "GLUT_Qrfpr": 2554,
+        "GLUT_Skor2": 2913,
+        "GLUT_Smoc2": 4505,
+        "GLUT_Spp1": 4410,
+        "GLUT_Tac1": 6809,
+        "GLUT_Zic2": 3072
+      },
+      "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+      "factorLevels": [
+        "GLUT_Tac1",
+        "GLUT_Smoc2",
+        "GLUT_Nmur2",
+        "GLUT_Mix2_Pde1a",
+        "GLUT_Grpr",
+        "GLUT_Spp1",
+        "GLUT_Col27a1",
+        "GLUT_Crhr2",
+        "GLUT_Nts",
+        "GLUT_Zic2",
+        "GLUT_Piezo2",
+        "GLUT_Npff",
+        "GLUT_Qrfpr",
+        "GLUT_Pde5a",
+        "GLUT_Pdyn",
+        "GLUT_Nr2f1",
+        "GLUT_Col14a1",
+        "GLUT_Grik3",
+        "GLUT_Mylk",
+        "GLUT_C1qtnf7",
+        "GLUT_Skor2",
+        "GLUT_Mafa",
+        "GLUT_Eya4",
+        "GLUT_Folh1",
+        "GLUT_Mix1_Pde1a",
+        "GLUT_Abcc9",
+        "GLUT_Nr4a2",
+        "GLUT_Mix3"
+      ],
+      "isFactor": true,
+      "isOrderedFactor": false,
+      "missingCount": 0,
+      "observedNonemptyUniqueCount": 28,
+      "rowCount": 92782,
+      "sourceColumnAbsenceReason": null,
+      "sourceColumnIndex": 5,
+      "sourceColumnPresent": true,
+      "sourceEmptyStringCount": 0,
+      "sourceMissingCount": 0,
+      "sourceWhitespaceOnlyCount": 0,
+      "storageMode": "integer",
+      "typeof": "integer",
+      "zeroCountLevels": []
+    },
+    "neuron_types": {
+      "class": null,
+      "counts": {
+        "": 92782
+      },
+      "emissionMode": "SOURCE_COLUMN_ABSENT_EMITTED_AS_SOURCE_NA",
+      "factorLevels": [],
+      "isFactor": null,
+      "isOrderedFactor": null,
+      "missingCount": 92782,
+      "observedNonemptyUniqueCount": 0,
+      "rowCount": 92782,
+      "sourceColumnAbsenceReason": "source_meta_data_column_absent",
+      "sourceColumnIndex": null,
+      "sourceColumnPresent": false,
+      "sourceEmptyStringCount": 0,
+      "sourceMissingCount": 92782,
+      "sourceWhitespaceOnlyCount": 0,
+      "storageMode": null,
+      "typeof": null,
+      "zeroCountLevels": []
+    },
+    "source": {
+      "class": "factor",
+      "counts": {
+        "AC03": 9853,
+        "AC04": 10296,
+        "AC05": 6708,
+        "AL01": 3607,
+        "AL02": 9331,
+        "AL03": 9297,
+        "AS01": 5245,
+        "AS02": 6663,
+        "AS03": 9777,
+        "AT01": 9110,
+        "AT02": 5927,
+        "AT03": 6968
+      },
+      "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+      "factorLevels": [
+        "AC03",
+        "AC04",
+        "AC05",
+        "AL01",
+        "AL02",
+        "AL03",
+        "AS01",
+        "AS02",
+        "AS03",
+        "AT01",
+        "AT02",
+        "AT03"
+      ],
+      "isFactor": true,
+      "isOrderedFactor": false,
+      "missingCount": 0,
+      "observedNonemptyUniqueCount": 12,
+      "rowCount": 92782,
+      "sourceColumnAbsenceReason": null,
+      "sourceColumnIndex": 6,
+      "sourceColumnPresent": true,
+      "sourceEmptyStringCount": 0,
+      "sourceMissingCount": 0,
+      "sourceWhitespaceOnlyCount": 0,
+      "storageMode": "integer",
+      "typeof": "integer",
+      "zeroCountLevels": []
+    }
+  },
+  "output": {
+    "metadataCsvGzip": {
+      "columnCount": 7,
+      "compressedBytes": 740412,
+      "compressedSha256": "53bcada180ce5e6c5b7622bd67f6ad02a5abd6ecd6d2caadb8c44a0dfe947308",
+      "contentEncoding": "gzip",
+      "deterministicCompression": "Python gzip.GzipFile compresslevel=9 filename-empty mtime=0",
+      "fileName": "GSE318731_P56_glutamatergic_multiome_UPDATE.metadata.csv.gz",
+      "mediaType": "text/csv",
+      "nonmissingValueEncoding": "always quoted with doubled quotes",
+      "orderedColumnNames": [
+        "nucleus_id",
+        "transmitter_class",
+        "group",
+        "neuron_type",
+        "source",
+        "anatomy",
+        "sex"
+      ],
+      "rowCount": 92782,
+      "sourceNaEncoding": "unquoted NA",
+      "uncompressedBytes": 6749777,
+      "uncompressedSha256": "a3ab9da863ba4890b33a1bb497d9d1b5554bf0c21b0ff2428c5e4959baf069f4"
+    }
+  },
+  "receiptKind": "cano_gomez_base_r_stream_meta_data_row_only_audit",
+  "rowCount": 92782,
+  "runtime": {
+    "baseROnly": true,
+    "rPlatform": "aarch64-apple-darwin23",
+    "rVersion": "4.6.1",
+    "rWorkerMaxResidentSetBytesExcludedFromDeterministicAudit": true,
+    "seuratObjectNamespaceLoaded": false,
+    "transportPythonImplementation": "CPython",
+    "transportPythonVersion": "3.9.6"
+  },
+  "scopeBoundaries": {
+    "absentContextSourceColumnsEmittedOnlyAsSourceNa": true,
+    "atlasRegistrationClaimAuthorized": false,
+    "classificationInferenceApplied": false,
+    "crossAssayCellIdentityVerified": false,
+    "geometryClaimAuthorized": false,
+    "internalStructureClaimAuthorized": false,
+    "labelNormalizationApplied": false,
+    "optionalContextInferenceApplied": false,
+    "rawLabelsPreserved": true,
+    "reported516TypeDenominatorHardAssertionApplied": false,
+    "sameCellLinkageAuthorized": false,
+    "sameMetaDataRowAssignmentsOnly": true,
+    "sourceColumnAbsenceInterpretedAsBiologicalAbsence": false,
+    "sourceNaAndExactEmptyStringDistinguished": true
+  },
+  "sourceAccession": "GSE318731",
+  "sourceBytes": 1832005077,
+  "sourceBytesMatchesExpected": true,
+  "sourceExpectedBytes": 1832005077,
+  "sourceExpectedSha256": "ff3784791ccb5d23311b9d0a8e2a4bd09dd251f75d0a2fc4b30e762dcef29c92",
+  "sourceFile": "GSE318731_P56_glutamatergic_multiome_UPDATE.rds",
+  "sourcePublicUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_glutamatergic_multiome_UPDATE.rds",
+  "sourceSha256": "ff3784791ccb5d23311b9d0a8e2a4bd09dd251f75d0a2fc4b30e762dcef29c92",
+  "sourceSha256MatchesExpected": true,
+  "transmitterClass": "GLUT",
+  "transport": {
+    "boundedChunkTransport": true,
+    "finalUrl": "",
+    "httpReconnectCount": 0,
+    "httpStatus": 0,
+    "localSourceBasename": "GSE318731_P56_glutamatergic_multiome_UPDATE.rds",
+    "mode": "LOCAL_FILE_TO_R_STDIN",
+    "responseContentEncoding": "",
+    "responseContentLength": 1832005077,
+    "sameRawBytesCountedAndHashedBeforeRStdinWrite": true,
+    "sourceBytesStreamedDirectlyToRStdin": true,
+    "sourcePersistedToDisk": true
+  },
+  "uniqueRowNameCount": 92782
+}

@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neurolucida-native-contour-admission-catalog-0.3.schema.json",
+  "title": "Neurolucida native contour admission catalog 0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "releaseId", "releasedAt", "title", "purpose", "parentCatalog", "parserAudit", "mbfCellBodySemantics", "records", "summary", "relationshipBoundary"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "url": { "type": "string", "format": "uri" },
+    "nonNegativeInteger": { "type": "integer", "minimum": 0 },
+    "sourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "officialRecordUrl", "originalDatUrl", "sourcePaperDoi", "rights", "rightsUrl"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/data/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "officialRecordUrl": { "$ref": "#/$defs/url" },
+        "originalDatUrl": { "$ref": "#/$defs/url" },
+        "sourcePaperDoi": { "type": "string", "minLength": 1 },
+        "repositoryRrid": { "type": "string", "minLength": 1 },
+        "rights": { "type": "string", "minLength": 1 },
+        "rightsUrl": { "$ref": "#/$defs/url" }
+      }
+    },
+    "derivedObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "documentType", "authority"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/data/.+\\.json$" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "documentType": { "type": "string", "minLength": 1 },
+        "authority": { "enum": ["OBS_SOURCE_NATIVE_CONTOUR_TRACE", "OBS_SOURCE_NATIVE_CLOSED_CONTOUR_TRACE", "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP"] }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["propertyListCount", "thumbnailCount", "contourCount", "markerObjectCount", "treeCount", "branchCount", "markerCount", "spineCount", "textObjectCount"],
+      "properties": {
+        "propertyListCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "thumbnailCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "contourCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "markerObjectCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "treeCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "branchCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "markerCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "spineCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "textObjectCount": { "$ref": "#/$defs/nonNegativeInteger" }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exactSourceContourObjectCount", "somaNamedContourObjectCount", "somaNamedVertexCount", "somaNamedVertexCountsInSourceOrder", "somaNamedPointPayloadSha256", "sourceClosedSomaNamedContourCount", "sourceOpenSomaNamedContourCount", "auxiliaryTraceObjectCount", "auxiliaryTraceVertexCount", "independentPointArraysAgree"],
+      "properties": {
+        "exactSourceContourObjectCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "somaNamedContourObjectCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "somaNamedVertexCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "somaNamedVertexCountsInSourceOrder": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 1 } },
+        "somaNamedZInSourceOrderMicrometre": { "type": "array", "minItems": 1, "items": { "type": "number" } },
+        "somaNamedPointPayloadSha256": { "$ref": "#/$defs/sha256" },
+        "sourceClosedSomaNamedContourCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "sourceOpenSomaNamedContourCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "emptyValueCellBodyPresencePropertyCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "independentParserSomaContourCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "independentParserClassification": { "const": "somaContour" },
+        "auxiliaryTraceObjectCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "auxiliaryTraceVertexCount": { "$ref": "#/$defs/nonNegativeInteger" },
+        "fullObjectInventory": { "$ref": "#/$defs/inventory" },
+        "independentPointArraysAgree": { "const": true }
+      }
+    },
+    "admission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["admittedContourObjectCount", "admittedVertexCount", "renderedPrimitiveCount", "reason"],
+      "properties": {
+        "admittedContourObjectCount": { "type": "integer", "minimum": 1 },
+        "admittedVertexCount": { "type": "integer", "minimum": 1 },
+        "renderedPrimitiveCount": { "type": "integer", "minimum": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "viewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryLabel", "secondaryLabel", "primarySourceNames", "secondarySourceNames"],
+      "properties": {
+        "primaryLabel": { "type": "string", "minLength": 1 },
+        "secondaryLabel": { "type": ["string", "null"] },
+        "primarySourceNames": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "secondarySourceNames": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "sourceLinks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["officialRecord", "originalDat", "primaryPaper", "converterRepository", "morphologySpecification", "rights"],
+      "properties": {
+        "officialRecord": { "$ref": "#/$defs/url" },
+        "originalDat": { "$ref": "#/$defs/url" },
+        "primaryPaper": { "$ref": "#/$defs/url" },
+        "converterRepository": { "$ref": "#/$defs/url" },
+        "mbfCellBodySemantics": { "$ref": "#/$defs/url" },
+        "morphologySpecification": { "$ref": "#/$defs/url" },
+        "somaStandardization": { "$ref": "#/$defs/url" },
+        "rights": { "$ref": "#/$defs/url" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["neuronId", "assetId", "title", "admissionStatus", "source", "derivedObject", "audit", "admission", "viewer", "sourceLinks", "hardBoundaries"],
+      "properties": {
+        "neuronId": { "enum": [45718, 45674, 50424, 50394, 50408] },
+        "assetId": { "type": "string", "pattern": "^NeuroMorpho:[0-9]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "admissionStatus": { "enum": ["admitted_prior_exact_contract", "admitted_source_closed_subset", "admitted_mbf_cell_body_semantic_rule"] },
+        "source": { "$ref": "#/$defs/sourceReceipt" },
+        "derivedObject": { "$ref": "#/$defs/derivedObject" },
+        "audit": { "$ref": "#/$defs/audit" },
+        "admission": { "$ref": "#/$defs/admission" },
+        "viewer": { "$ref": "#/$defs/viewer" },
+        "sourceLinks": { "$ref": "#/$defs/sourceLinks" },
+        "hardBoundaries": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "neuronId": { "enum": [50424, 50394, 50408] } }, "required": ["neuronId"] },
+          "then": {
+            "properties": {
+              "admissionStatus": { "const": "admitted_mbf_cell_body_semantic_rule" },
+              "derivedObject": { "type": "object", "properties": { "documentType": { "const": "neurolucida_source_native_mbf_cell_body_line_loop_geometry" }, "authority": { "const": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP" } } },
+              "audit": {
+                "type": "object",
+                "required": ["somaNamedZInSourceOrderMicrometre", "emptyValueCellBodyPresencePropertyCount", "independentParserSomaContourCount", "independentParserClassification", "fullObjectInventory"],
+                "properties": {
+                  "somaNamedZInSourceOrderMicrometre": true,
+                  "emptyValueCellBodyPresencePropertyCount": true,
+                  "independentParserSomaContourCount": true,
+                  "independentParserClassification": { "const": "somaContour" },
+                  "fullObjectInventory": true,
+                  "sourceClosedSomaNamedContourCount": { "const": 0 },
+                  "auxiliaryTraceObjectCount": { "const": 4 }
+                }
+              },
+              "viewer": { "type": "object", "properties": { "primarySourceNames": { "const": ["Cell Body"] }, "secondaryLabel": { "const": null }, "secondarySourceNames": { "const": [] } } },
+              "sourceLinks": { "type": "object", "required": ["mbfCellBodySemantics"], "properties": { "mbfCellBodySemantics": { "const": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm" } } }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.3.0" },
+    "contractId": { "const": "neurolucida-native-contour-admission-catalog-0.3" },
+    "releaseId": { "const": "ohri-neurolucida-native-contour-admission-catalog-0.3.0" },
+    "releasedAt": { "const": "2026-09-02" },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "parentCatalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "releaseId"],
+      "properties": {
+        "path": { "const": "data/neurolucida-native-contour-admission-catalog-0.2.json" },
+        "bytes": { "const": 17392 },
+        "sha256": { "const": "fa27f8e6d4cfebadd2d0127c43b7aa2a5496066fd7dd5b613b3b9a8c68346d86" },
+        "releaseId": { "const": "ohri-neurolucida-native-contour-admission-catalog-0.2.0" }
+      }
+    },
+    "parserAudit": {
+      "type": "object",
+      "required": ["repository", "commit", "parserPath", "parserGitBlobSha1", "parserSha256", "typeLibraryPath", "typeLibraryGitBlobSha1", "typeLibrarySha256", "requiredClassification", "classificationBasis", "parserLicenseNotice", "diagnosticLog"],
+      "properties": {
+        "repository": { "const": "https://github.com/NeuroMorpho/xyz2swc" },
+        "commit": { "const": "e07fd2d53c03945f011c335c7b643765f2d85a09" },
+        "parserPath": { "type": "string", "minLength": 1 },
+        "parserGitBlobSha1": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "parserSha256": { "const": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2" },
+        "typeLibraryPath": { "type": "string", "minLength": 1 },
+        "typeLibraryGitBlobSha1": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "typeLibrarySha256": { "const": "8006588950ef0ee55da9a4bea46f93b9120a5dc6c29d6b5263050c7a6d168d89" },
+        "requiredClassification": { "const": "somaContour" },
+        "classificationBasis": { "type": "string", "minLength": 1 },
+        "parserLicenseNotice": { "type": "string", "minLength": 1 },
+        "diagnosticLog": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": false
+    },
+    "mbfCellBodySemantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["documentationUrl", "documentationTitle", "sourceStatement", "admissionScope"],
+      "properties": {
+        "documentationUrl": { "const": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm" },
+        "documentationTitle": { "type": "string", "minLength": 1 },
+        "sourceStatement": { "type": "string", "pattern": "closed shapes" },
+        "admissionScope": { "type": "string", "pattern": "exact-checksum DAT contour named Cell Body" }
+      }
+    },
+    "records": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/$defs/record" } },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["auditedDatFileCount", "admittedRecordCount", "heldRecordCount", "admittedContourObjectCount", "admittedVertexCount", "admittedRenderedPrimitiveCount", "toddAdmittedRecordCount", "toddAdmittedContourObjectCount", "toddAdmittedVertexCount", "excludedToddUserLineObjectCount", "admittedFilledPolygonCount", "admittedTriangleCount", "admittedLoftCount", "admittedSurfaceCount", "admittedMembraneCount", "admittedVolumeCount", "admittedInternalStructureObjectCount", "biologicalMeasurementCount", "standardizedSwcOverlayCount", "sameCellCrossModalJoinCount", "registrationCount"],
+      "properties": {
+        "auditedDatFileCount": { "const": 5 },
+        "admittedRecordCount": { "const": 5 },
+        "heldRecordCount": { "const": 0 },
+        "admittedContourObjectCount": { "const": 48 },
+        "admittedVertexCount": { "const": 2379 },
+        "admittedRenderedPrimitiveCount": { "const": 48 },
+        "toddAdmittedRecordCount": { "const": 3 },
+        "toddAdmittedContourObjectCount": { "const": 33 },
+        "toddAdmittedVertexCount": { "const": 1904 },
+        "excludedToddUserLineObjectCount": { "const": 12 },
+        "admittedFilledPolygonCount": { "const": 0 },
+        "admittedTriangleCount": { "const": 0 },
+        "admittedLoftCount": { "const": 0 },
+        "admittedSurfaceCount": { "const": 0 },
+        "admittedMembraneCount": { "const": 0 },
+        "admittedVolumeCount": { "const": 0 },
+        "admittedInternalStructureObjectCount": { "const": 0 },
+        "biologicalMeasurementCount": { "const": 0 },
+        "standardizedSwcOverlayCount": { "const": 0 },
+        "sameCellCrossModalJoinCount": { "const": 0 },
+        "registrationCount": { "const": 0 }
+      }
+    },
+    "relationshipBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceNativeFrameOnly", "coordinateTransformToStandardizedSwcStatus", "overlayWithStandardizedSwcAllowed", "sameCellMolecularProfileJoinCount", "sameSpecimenInternalStructureCount", "atlasRegistrationCount"],
+      "properties": {
+        "sourceNativeFrameOnly": { "const": true },
+        "coordinateTransformToStandardizedSwcStatus": { "const": "not_established" },
+        "overlayWithStandardizedSwcAllowed": { "const": false },
+        "sameCellMolecularProfileJoinCount": { "const": 0 },
+        "sameSpecimenInternalStructureCount": { "const": 0 },
+        "atlasRegistrationCount": { "const": 0 }
+      }
+    }
+  }
+}

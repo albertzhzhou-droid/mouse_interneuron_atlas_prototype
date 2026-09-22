@@ -1,0 +1,91 @@
+{
+  "documentType": "research_source_candidate_manifest",
+  "schemaVersion": "0.1.0",
+  "createdAtUtc": "2026-09-22T03:05:28.593004Z",
+  "status": "research_only_unadmitted",
+  "geometryAdmissionCount": 0,
+  "internalObjectAdmissionCount": 0,
+  "publicAssetChanges": false,
+  "deduplication": {
+    "scanScope": "all project files including hidden, ignored and generated files; .git excluded",
+    "scannedPaths": 23093,
+    "matchingSizeObjectsHashed": 7,
+    "matchingExistingObjects": [
+      "public/data/dorsal_horn_observed_morphology_route_pack_v1/api/nmo-249676.json"
+    ],
+    "newNativeDatBytes": 262353,
+    "newApiReceiptBytes": 1498,
+    "newSourceBytesTotal": 263851
+  },
+  "records": [
+    {
+      "neuronId": 108978,
+      "sourceName": "cell-4_16",
+      "status": "research_only_unadmitted_native_dat",
+      "nativeGeometryAdmitted": false,
+      "sourceDownloadedDateUtc": "2026-09-22",
+      "nativeDat": {
+        "path": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.original.dat",
+        "sourceUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat",
+        "bytes": 172603,
+        "sha256": "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+        "acquisitionMethod": "public direct HTTP; downloaded to temporary research path then byte-verified into canonical storage",
+        "initialTemporaryPath": "/tmp/nmo-108978-research-native.dat"
+      },
+      "apiReceipt": {
+        "path": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.api.json",
+        "sourceUrl": "https://neuromorpho.org/api/neuron/id/108978",
+        "bytes": 1498,
+        "sha256": "1b72bd7f16d0cc08cda0b74f47f9825688320eb34e9c4c73d1dd722af70bd5b6",
+        "storageAction": "new exact live receipt",
+        "liveVerifiedDateUtc": "2026-09-22"
+      },
+      "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000001406",
+      "rights": {
+        "license": "CC-BY-4.0",
+        "termsUrl": "https://neuromorpho.org/useterm.jsp",
+        "repository": "NeuroMorpho.Org",
+        "rrid": "RRID:SCR_002145",
+        "repositoryCitation": "https://doi.org/10.1096/fba.2024-00048"
+      }
+    },
+    {
+      "neuronId": 249676,
+      "sourceName": "061118B-S6-02_cell_2-RQ",
+      "status": "research_only_unadmitted_native_dat",
+      "nativeGeometryAdmitted": false,
+      "sourceDownloadedDateUtc": "2026-09-22",
+      "nativeDat": {
+        "path": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-249676.original.dat",
+        "sourceUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat",
+        "bytes": 89750,
+        "sha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+        "acquisitionMethod": "public direct HTTP; downloaded to temporary research path then byte-verified into canonical storage",
+        "initialTemporaryPath": "/tmp/nmo-249676-research-native.dat"
+      },
+      "apiReceipt": {
+        "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/api/nmo-249676.json",
+        "sourceUrl": "https://neuromorpho.org/api/neuron/id/249676",
+        "bytes": 1457,
+        "sha256": "1c3b72a58ae13e60732dcd3abd42ba0b138b0754ae4d3bc701b68779eafac6f1",
+        "storageAction": "reuse existing exact-byte project receipt",
+        "liveVerifiedDateUtc": "2026-09-22"
+      },
+      "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000002677",
+      "rights": {
+        "license": "CC-BY-4.0",
+        "termsUrl": "https://neuromorpho.org/useterm.jsp",
+        "repository": "NeuroMorpho.Org",
+        "rrid": "RRID:SCR_002145",
+        "repositoryCitation": "https://doi.org/10.1096/fba.2024-00048"
+      }
+    }
+  ],
+  "boundaries": [
+    "No application catalog, source registry or public asset admission occurs.",
+    "All preliminary source contour closure flags are false; file-specific semantic and independent-parser audits remain pending.",
+    "Native DAT and standardized CNG frames remain separate; no transform or overlay is admitted.",
+    "No soma surface, membrane, nucleus, organelle, synapse or type archetype is created."
+  ],
+  "researchNote": "docs/RESEARCH_WATCH_2026-09-22_MODEL_EXPANSION.md"
+}

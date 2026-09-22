@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "neurolucida-source-native-soma-contour-trace-0.1",
+  "releaseId": "ohri-neurolucida-source-native-soma-contour-trace-0.1.0",
+  "releasedAt": "2026-09-02",
+  "title": "NMO 45718 source-native Neurolucida soma contour trace",
+  "purpose": "Expose the eight exact source-native soma contour traces as separate 3D polylines while refusing unsupported surface, volume, membrane, internal-detail, SWC-overlay and registration claims.",
+  "sourceObject": {
+    "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/original/nmo-45718.dat",
+    "bytes": 343774,
+    "sha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+    "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/45718",
+    "originalDatUrl": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat",
+    "sourcePaperDoi": "10.1523/JNEUROSCI.0199-14.2014",
+    "repositoryRrid": "RRID:SCR_002145",
+    "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+    "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+  },
+  "derivedObject": {
+    "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+    "bytes": 45606,
+    "sha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8",
+    "documentType": "neurolucida_source_native_soma_contour_trace_geometry",
+    "authority": "OBS_SOURCE_NATIVE_CONTOUR_TRACE"
+  },
+  "independentAudit": {
+    "repository": "https://github.com/NeuroMorpho/xyz2swc",
+    "commit": "e07fd2d53c03945f011c335c7b643765f2d85a09",
+    "parserPath": "modules/hbp/node_modules/morphology_io/app/morphology_parser.js",
+    "parserGitBlobSha1": "0934ced806f0a4e4992fe2edae2e8e060a23f1a7",
+    "parserSha256": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2",
+    "typeLibraryGitBlobSha1": "31d223b111c2109e0c72149b367efd885f45e0ed",
+    "typeLibrarySha256": "8006588950ef0ee55da9a4bea46f93b9120a5dc6c29d6b5263050c7a6d168d89",
+    "parserLicenseNotice": "GPL-3.0-or-later parser used only for independent offline comparison; parser code is not bundled",
+    "diagnosticLog": [
+      "Neurolucida.DAT: ignoring thumbnail"
+    ],
+    "exactPointPayloadSha256": "a478e6263e7d00c1f17bc64143014a3519c39f771b6809a28b057db07c724ab4"
+  },
+  "summary": {
+    "sourceSomaContourObjectCount": 8,
+    "sourceFlagClosedObjectCount": 7,
+    "legacyCellBodyClosureExceptionCount": 1,
+    "vertexCount": 275,
+    "semanticClosedSegmentCount": 275,
+    "filledPolygonCount": 0,
+    "triangleCount": 0,
+    "surfaceCount": 0,
+    "volumeCount": 0,
+    "internalStructureObjectCount": 0,
+    "registrationCount": 0,
+    "crossSourceJoinCount": 0,
+    "pointPayloadSha256": "a478e6263e7d00c1f17bc64143014a3519c39f771b6809a28b057db07c724ab4"
+  },
+  "displayContract": {
+    "admittedPrimitive": "ordered closed polyline only",
+    "preserveSourceCoordinates": true,
+    "viewportTransform": "contour_bounds_centered_uniform_scale_only",
+    "closeLastToFirstBySemantics": true,
+    "keepCellBodySeparateFromSoma1Stack": true,
+    "traceRadiusRenderingUse": "forbidden",
+    "measurementUse": "source_coordinates_visible_but_biological_measurement_not_authorized",
+    "forbiddenInferences": [
+      "polygon fill",
+      "triangulation",
+      "lofted surface",
+      "membrane, nucleus or organelle model",
+      "volume estimate",
+      "shrinkage correction",
+      "standardized SWC overlay",
+      "atlas registration",
+      "representative type morphology"
+    ]
+  },
+  "relationshipBoundary": {
+    "sameSourceAsStandardizedSwc": true,
+    "coordinateTransformToStandardizedSwcStatus": "not_established",
+    "overlayWithStandardizedSwcAllowed": false,
+    "sameCellMolecularProfileJoinCount": 0,
+    "sameSpecimenInternalStructureCount": 0,
+    "atlasRegistrationCount": 0
+  },
+  "sourceLinks": {
+    "officialRecord": "https://neuromorpho.org/api/neuron/id/45718",
+    "originalDat": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat",
+    "primaryPaper": "https://doi.org/10.1523/JNEUROSCI.0199-14.2014",
+    "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+    "morphologySpecification": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html",
+    "somaStandardization": "https://neuromorpho.org/SomaFormat.html",
+    "rights": "https://neuromorpho.org/useterm.jsp"
+  }
+}

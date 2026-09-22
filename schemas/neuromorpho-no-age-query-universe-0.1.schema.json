@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/neuromorpho-no-age-query-universe-0.1.schema.json",
+  "title": "NeuroMorpho no-age query universe contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "documentType",
+    "schemaVersion",
+    "contractId",
+    "releaseId",
+    "dataset",
+    "summary",
+    "admission",
+    "scientificBoundary"
+  ],
+  "properties": {
+    "documentType": { "const": "neuromorpho_no_age_query_universe_contract" },
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "neuromorpho-no-age-query-universe-0.1" },
+    "releaseId": { "const": "research-iteration-2.34" },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "indexPath", "indexSha256", "indexBytes",
+        "assetManifestPath", "assetManifestSha256", "assetManifestBytes",
+        "quarantinePath", "quarantineSha256", "quarantineBytes",
+        "runtimeRosterPath", "runtimeRosterSha256", "runtimeRosterBytes"
+      ],
+      "properties": {
+        "indexPath": { "const": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json" },
+        "indexSha256": { "$ref": "#/$defs/sha256" },
+        "indexBytes": { "$ref": "#/$defs/positiveInteger" },
+        "assetManifestPath": { "const": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/asset-manifest.json" },
+        "assetManifestSha256": { "$ref": "#/$defs/sha256" },
+        "assetManifestBytes": { "$ref": "#/$defs/positiveInteger" },
+        "quarantinePath": { "const": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/quarantine-report.json" },
+        "quarantineSha256": { "$ref": "#/$defs/sha256" },
+        "quarantineBytes": { "$ref": "#/$defs/positiveInteger" },
+        "runtimeRosterPath": { "const": "data/neuromorpho-no-age-query-universe-roster-0.1.json" },
+        "runtimeRosterSha256": { "$ref": "#/$defs/sha256" },
+        "runtimeRosterBytes": { "$ref": "#/$defs/positiveInteger" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "queryRecordCount", "uniqueNeuronIdCount", "admittedSourceObjectCount",
+        "quarantinedSourceObjectCount", "frozenAdultSubsetCount", "namedRouteCount",
+        "existingGeometryReferenceCount", "deltaRawSwcCount", "geometryCopyCount",
+        "sourceLabelled3DCount", "sourceLabelled2DCount", "diameterAuthorizedCount",
+        "diameterUnavailableCount", "axonDomainCount", "completeAxonClaimCount",
+        "registrationCount", "sameSpecimenInternalStructureCount", "paperCount",
+        "archiveCount", "byLifeStage", "byArchive", "byAttributes", "byDomain",
+        "byPhysicalIntegrity", "bySourcePaper", "duplicateRawSwcGroups",
+        "duplicateCanonicalGeometryGroups", "quarantinedNeuronIds"
+      ],
+      "properties": {
+        "queryRecordCount": { "const": 1097 },
+        "uniqueNeuronIdCount": { "const": 1097 },
+        "admittedSourceObjectCount": { "const": 1097 },
+        "quarantinedSourceObjectCount": { "const": 0 },
+        "frozenAdultSubsetCount": { "const": 142 },
+        "namedRouteCount": { "const": 7 },
+        "existingGeometryReferenceCount": { "const": 149 },
+        "deltaRawSwcCount": { "const": 948 },
+        "geometryCopyCount": { "const": 0 },
+        "sourceLabelled3DCount": { "const": 1058 },
+        "sourceLabelled2DCount": { "const": 39 },
+        "diameterAuthorizedCount": { "const": 955 },
+        "diameterUnavailableCount": { "const": 142 },
+        "axonDomainCount": { "const": 253 },
+        "completeAxonClaimCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "sameSpecimenInternalStructureCount": { "const": 0 },
+        "paperCount": { "const": 12 },
+        "archiveCount": { "const": 5 },
+        "byLifeStage": { "$ref": "#/$defs/countMap" },
+        "byArchive": { "$ref": "#/$defs/countMap" },
+        "byAttributes": { "$ref": "#/$defs/countMap" },
+        "byDomain": { "$ref": "#/$defs/countMap" },
+        "byPhysicalIntegrity": { "$ref": "#/$defs/countMap" },
+        "bySourcePaper": { "type": "array", "minItems": 12, "maxItems": 12 },
+        "duplicateRawSwcGroups": { "type": "array", "maxItems": 0 },
+        "duplicateCanonicalGeometryGroups": { "type": "array", "maxItems": 0 },
+        "quarantinedNeuronIds": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "admission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "everyQueryRecordDisposed", "frozenAdultSubsetMutated",
+        "existingGeometryCopyCount", "deltaGeneratedGeometryCount",
+        "unknownFocusFailsClosed"
+      ],
+      "properties": {
+        "everyQueryRecordDisposed": { "const": true },
+        "frozenAdultSubsetMutated": { "const": false },
+        "existingGeometryCopyCount": { "const": 0 },
+        "deltaGeneratedGeometryCount": { "const": 0 },
+        "unknownFocusFailsClosed": { "const": true }
+      }
+    },
+    "scientificBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope", "geometry", "newGeometryTransport", "diameterPolicy",
+        "twoDimensionalPolicy", "typePolicy", "forbiddenClaims"
+      ],
+      "properties": {
+        "scope": { "const": "repository_query_universe_not_biological_type_or_animal_census" },
+        "geometry": { "const": "standardized_source_local_swc_only" },
+        "newGeometryTransport": { "const": "checksum_verified_raw_swc_parsed_lazily_without_generated_geometry_copy" },
+        "diameterPolicy": { "type": "string", "minLength": 20 },
+        "twoDimensionalPolicy": { "type": "string", "minLength": 20 },
+        "typePolicy": { "type": "string", "minLength": 20 },
+        "forbiddenClaims": { "type": "array", "minItems": 5, "uniqueItems": true, "items": { "type": "string", "minLength": 10 } }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "positiveInteger": { "type": "integer", "minimum": 1 },
+    "countMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    }
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-iteration-manifest-2.33.schema.json",
+  "title": "OHRI mouse interneuron research iteration manifest 2.33",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestSchemaVersion",
+    "releaseId",
+    "releaseDate",
+    "releaseStatus",
+    "application",
+    "baseResearchRelease",
+    "authoritativeInputs",
+    "inputRoots",
+    "integrity",
+    "registrations",
+    "exactReferences",
+    "registrySummary",
+    "scientificBoundaries",
+    "manifestContentSha256",
+    "parentIterationManifest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "authoritativeInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "path", "purpose", "bytes", "sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "scope": { "enum": ["project", "scientificAuthority"] },
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "micronsSourceNativeClipping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId", "releaseId", "upgradeId", "authority", "sourceCellRootId",
+        "sourceLinkedNucleusId", "nativeFrame", "nativeUnits", "region",
+        "regionRelationshipToProject", "axisCount", "defaultState", "cellVertexCount",
+        "cellTriangleCount", "nucleusVertexCount", "nucleusTriangleCount", "contractReceipt",
+        "schemaReceipt", "runtimeReceipt", "validatorReceipt", "testReceipt", "panelReceipt",
+        "sceneIntegrationReceipt", "atlasStateIntegrationReceipt", "importProvenanceReceipt",
+        "importProvenanceTestReceipt", "atlasTypesReceipt", "sourceBufferMutation",
+        "cellClippingPlaneCountWhenEnabled", "nucleusClippingPlaneCount", "capPrimitiveCount",
+        "repairCount", "resamplingCount", "generatedGeometryCount", "geometryMutationCount",
+        "joinCount", "registrationCount", "measurementClaim", "membraneClaim",
+        "spinalInternalStructureClaim"
+      ],
+      "properties": {
+        "contractId": { "const": "microns-source-native-clipping-0.1" },
+        "releaseId": { "const": "ohri-microns-source-native-clipping-0.1.0" },
+        "upgradeId": { "const": "UPG-166" },
+        "authority": { "const": "DER_DISPLAY_OPERATION_ON_OBS_EM_SEGMENTATION" },
+        "sourceCellRootId": { "const": "648518346349516051" },
+        "sourceLinkedNucleusId": { "const": "4309" },
+        "nativeFrame": { "const": "MICrONS_Phase1_aligned_EM_native" },
+        "nativeUnits": { "const": "nanometre" },
+        "region": { "const": "visual cortex layer 2/3" },
+        "regionRelationshipToProject": { "const": "cross_region_not_spinal_cord" },
+        "axisCount": { "const": 3 },
+        "defaultState": {
+          "const": { "enabled": false, "axis": "z", "positionNanometre": 80240, "keepSide": "positive" }
+        },
+        "cellVertexCount": { "const": 372382 },
+        "cellTriangleCount": { "const": 704444 },
+        "nucleusVertexCount": { "const": 12682 },
+        "nucleusTriangleCount": { "const": 23344 },
+        "contractReceipt": { "$ref": "#/$defs/receipt" },
+        "schemaReceipt": { "$ref": "#/$defs/receipt" },
+        "runtimeReceipt": { "$ref": "#/$defs/receipt" },
+        "validatorReceipt": { "$ref": "#/$defs/receipt" },
+        "testReceipt": { "$ref": "#/$defs/receipt" },
+        "panelReceipt": { "$ref": "#/$defs/receipt" },
+        "sceneIntegrationReceipt": { "$ref": "#/$defs/receipt" },
+        "atlasStateIntegrationReceipt": { "$ref": "#/$defs/receipt" },
+        "importProvenanceReceipt": { "$ref": "#/$defs/receipt" },
+        "importProvenanceTestReceipt": { "$ref": "#/$defs/receipt" },
+        "atlasTypesReceipt": { "$ref": "#/$defs/receipt" },
+        "sourceBufferMutation": { "const": false },
+        "cellClippingPlaneCountWhenEnabled": { "const": 1 },
+        "nucleusClippingPlaneCount": { "const": 0 },
+        "capPrimitiveCount": { "const": 0 },
+        "repairCount": { "const": 0 },
+        "resamplingCount": { "const": 0 },
+        "generatedGeometryCount": { "const": 0 },
+        "geometryMutationCount": { "const": 0 },
+        "joinCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "measurementClaim": { "const": false },
+        "membraneClaim": { "const": false },
+        "spinalInternalStructureClaim": { "const": false }
+      }
+    },
+    "sourceRecordDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId", "upgradeId", "mode", "authority", "relationshipStatus", "oldRecordId",
+        "currentRecordId", "uiWhitelistedRowCount", "uiWhitelistedRowIds",
+        "demonstrationWhitelistedRowCount", "demonstrationSharedRowCount", "demonstrationChangedRowCount",
+        "unlistedFieldCountInspected", "changedRowIds", "sharedRowIds", "runtimeReceipt",
+        "inspectorReceipt", "testReceipt", "typeAtlasIntegrationReceipt",
+        "crossSourceSameCellIdentityCount", "crossSourceSameTypeIdentityCount",
+        "admittedGeometryPrimitiveCount", "generatedBiologicalGeometryPrimitiveCount",
+        "joinCount", "registrationCount", "measurementUse"
+      ],
+      "properties": {
+        "contractId": { "const": "source-record-display-delta-0.1" },
+        "upgradeId": { "const": "UPG-167" },
+        "mode": { "const": "EXACT_WHITELISTED_DISPLAY_STRING_DELTA" },
+        "authority": { "const": "DISPLAY_ONLY" },
+        "relationshipStatus": { "const": "not_established" },
+        "oldRecordId": { "const": "alkaslasi-2021:GSE167597:I1" },
+        "currentRecordId": { "const": "alkaslasi-2021:GSE167597:I2" },
+        "uiWhitelistedRowCount": { "const": 24 },
+        "uiWhitelistedRowIds": {
+          "const": [
+            "parent-source", "namespace", "record-kind", "observation-unit",
+            "assignment-authority", "cell-roster", "source-label", "region",
+            "transmitter", "markers", "life-stage", "spinal-scope", "major-type",
+            "sampling-count", "putative-assignment", "morphology", "cell-coordinates",
+            "sci-context", "atlas-registration", "electrophysiology", "projection-target",
+            "synaptic-connectivity", "internal-structure", "same-cell-link"
+          ]
+        },
+        "demonstrationWhitelistedRowCount": { "const": 8 },
+        "demonstrationSharedRowCount": { "const": 5 },
+        "demonstrationChangedRowCount": { "const": 3 },
+        "unlistedFieldCountInspected": { "const": 0 },
+        "changedRowIds": {
+          "const": ["sampling-count", "markers", "region-membership"]
+        },
+        "sharedRowIds": {
+          "const": ["life-stage", "transmitter", "morphology", "internal-structure", "same-cell-link"]
+        },
+        "runtimeReceipt": { "$ref": "#/$defs/receipt" },
+        "inspectorReceipt": { "$ref": "#/$defs/receipt" },
+        "testReceipt": { "$ref": "#/$defs/receipt" },
+        "typeAtlasIntegrationReceipt": { "$ref": "#/$defs/receipt" },
+        "crossSourceSameCellIdentityCount": { "const": 0 },
+        "crossSourceSameTypeIdentityCount": { "const": 0 },
+        "admittedGeometryPrimitiveCount": { "const": 0 },
+        "generatedBiologicalGeometryPrimitiveCount": { "const": 0 },
+        "joinCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "measurementUse": { "const": "forbidden" }
+      }
+    },
+    "iterationIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractId", "micronsSourceNativeClipping", "sourceRecordDelta", "projectCopyCount", "packageCopyCount"],
+      "properties": {
+        "contractId": { "const": "ohri-microns-clipping-source-record-delta-integrity-2.33" },
+        "micronsSourceNativeClipping": { "$ref": "#/$defs/micronsSourceNativeClipping" },
+        "sourceRecordDelta": { "$ref": "#/$defs/sourceRecordDelta" },
+        "projectCopyCount": { "const": 0 },
+        "packageCopyCount": { "const": 0 }
+      }
+    }
+  },
+  "properties": {
+    "manifestSchemaVersion": { "const": "2.33.0" },
+    "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.33.0" },
+    "releaseDate": { "const": "2026-09-01" },
+    "releaseStatus": { "const": "localhost_research_iteration" },
+    "application": {
+      "const": { "name": "ohri-mouse-interneuron-atlas-prototype", "version": "2.33.0-research.1" }
+    },
+    "baseResearchRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["releaseId", "schemaVersion", "note"],
+      "properties": {
+        "releaseId": { "const": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0" },
+        "schemaVersion": { "const": "0.2.0" },
+        "note": { "type": "string", "minLength": 100 }
+      }
+    },
+    "parentIterationManifest": {
+      "const": {
+        "path": "data/research-iteration-manifest-2.32.json",
+        "releaseId": "ohri-mouse-interneuron-research-iteration-2.32.0",
+        "bytes": 98357,
+        "fileSha256": "eaacd5bb0acae3c704e24ac2c1ffa4ef508bc5491155898bec6f28a825ea5e77",
+        "contentSha256": "4b0ed4508655553736b656f7a72a6d2e869218e0a4eff886811c7f0f15e113a2"
+      }
+    },
+    "inputRoots": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["locator", "policy"],
+        "properties": {
+          "locator": { "type": "string", "minLength": 1 },
+          "policy": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "authoritativeInputs": {
+      "type": "array",
+      "minItems": 75,
+      "maxItems": 75,
+      "items": { "$ref": "#/$defs/authoritativeInput" }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalization", "inputCount"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "canonicalization": { "type": "string", "minLength": 1 },
+        "inputCount": { "const": 75 }
+      }
+    },
+    "registrations": { "const": { "count": 0, "records": [] } },
+    "exactReferences": {
+      "type": "object",
+      "minProperties": 14,
+      "required": ["researchExplorerVisualIntegrity", "uiKnowledgeAndTopologyIntegrity", "micronsClippingAndSourceRecordDeltaIntegrity"],
+      "properties": {
+        "researchExplorerVisualIntegrity": { "type": "object" },
+        "uiKnowledgeAndTopologyIntegrity": { "type": "object" },
+        "micronsClippingAndSourceRecordDeltaIntegrity": { "$ref": "#/$defs/iterationIntegrity" }
+      },
+      "additionalProperties": { "type": "object" }
+    },
+    "registrySummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalSourcePackageCount", "canonicalRecordSetCount", "bundledExactRosterCount", "researchUpgradeCount", "sourceRegistryReceipt", "upgradeRegistryReceipt", "crossSourceIdentityCount", "registrationCount", "renderedInternalPrimitiveCount"],
+      "properties": {
+        "canonicalSourcePackageCount": { "const": 24 },
+        "canonicalRecordSetCount": { "const": 28 },
+        "bundledExactRosterCount": { "const": 7 },
+        "researchUpgradeCount": { "type": "integer", "minimum": 149 },
+        "sourceRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" },
+        "upgradeRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" },
+        "crossSourceIdentityCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "renderedInternalPrimitiveCount": { "const": 0 }
+      }
+    },
+    "scientificBoundaries": {
+      "type": "object",
+      "minProperties": 17,
+      "required": ["researchExplorerVisualIntegrity", "uiKnowledgeAndTopologyIntegrity", "micronsClippingAndSourceRecordDeltaIntegrity"],
+      "properties": {
+        "researchExplorerVisualIntegrity": { "type": "string", "minLength": 50 },
+        "uiKnowledgeAndTopologyIntegrity": { "type": "string", "minLength": 200 },
+        "micronsClippingAndSourceRecordDeltaIntegrity": { "type": "string", "minLength": 300 }
+      },
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          { "type": "boolean" }
+        ]
+      }
+    },
+    "manifestContentSha256": { "$ref": "#/$defs/sha256" }
+  }
+}

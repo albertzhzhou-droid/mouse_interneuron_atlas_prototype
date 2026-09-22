@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/morphology-topology-detail-0.1.schema.json",
+  "title": "Evidence-bounded morphology topology detail contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "documentType",
+    "schemaVersion",
+    "contractId",
+    "releaseId",
+    "releasedAt",
+    "upgradeId",
+    "purpose",
+    "sourceInputs",
+    "runtimeAsset",
+    "analysisPolicy",
+    "sourceTypeSemantics",
+    "summary",
+    "scientificBoundary",
+    "contractContentSha256"
+  ],
+  "properties": {
+    "documentType": { "const": "morphology_topology_detail_contract" },
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "morphology-topology-detail-0.1" },
+    "releaseId": { "const": "ohri-morphology-topology-detail-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "upgradeId": { "const": "UPG-150" },
+    "purpose": { "type": "string", "minLength": 80 },
+    "sourceInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozenCensusIndex",
+        "frozenCensusAssetManifest",
+        "supplementaryAdapter",
+        "frozenAnalysisIndex",
+        "supplementaryAnalysisDelta",
+        "analysisAlgorithm",
+        "builder",
+        "schema"
+      ],
+      "properties": {
+        "frozenCensusIndex": { "$ref": "#/$defs/fileReceipt" },
+        "frozenCensusAssetManifest": { "$ref": "#/$defs/fileReceipt" },
+        "supplementaryAdapter": { "$ref": "#/$defs/fileReceipt" },
+        "frozenAnalysisIndex": { "$ref": "#/$defs/fileReceipt" },
+        "supplementaryAnalysisDelta": { "$ref": "#/$defs/fileReceipt" },
+        "analysisAlgorithm": { "$ref": "#/$defs/fileReceipt" },
+        "builder": { "$ref": "#/$defs/fileReceipt" },
+        "schema": { "$ref": "#/$defs/fileReceipt" }
+      }
+    },
+    "runtimeAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "fetchPath", "bytes", "sha256", "recordCount"],
+      "properties": {
+        "path": { "const": "public/data/morphology_topology_detail_v1/index.json" },
+        "fetchPath": { "const": "/data/morphology_topology_detail_v1/index.json" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "recordCount": { "const": 149 }
+      }
+    },
+    "analysisPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "topology",
+        "segmentDomain",
+        "terminal",
+        "bifurcation",
+        "branchOrder",
+        "sholl",
+        "sourceTypeAbsence",
+        "somaType1"
+      ],
+      "properties": {
+        "topology": { "type": "string", "minLength": 20 },
+        "segmentDomain": { "type": "string", "minLength": 20 },
+        "terminal": { "type": "string", "minLength": 20 },
+        "bifurcation": { "type": "string", "minLength": 20 },
+        "branchOrder": { "type": "string", "minLength": 20 },
+        "sholl": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "centre",
+            "radiusStepMicrometre",
+            "endpointInterval",
+            "tangentPolicy",
+            "zeroLengthSegmentPolicy",
+            "domainPolicy"
+          ],
+          "properties": {
+            "centre": { "const": "exact_root_node_coordinate_not_soma_centroid" },
+            "radiusStepMicrometre": { "const": 10 },
+            "endpointInterval": { "const": "half_open_t_in_(0,1]" },
+            "tangentPolicy": { "const": "repeated_quadratic_root_counts_once" },
+            "zeroLengthSegmentPolicy": { "const": "zero_crossings" },
+            "domainPolicy": { "type": "string", "minLength": 20 }
+          }
+        },
+        "sourceTypeAbsence": { "const": "UNAVAILABLE_not_biological_zero" },
+        "somaType1": { "const": "standardized_soma_samples_never_contour_surface_membrane_or_internal_structure" }
+      }
+    },
+    "sourceTypeSemantics": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sourceType", "interpretation", "semanticStatus"],
+        "properties": {
+          "sourceType": { "type": ["integer", "null"], "minimum": 1 },
+          "interpretation": { "type": "string", "minLength": 4 },
+          "semanticStatus": { "type": "string", "minLength": 8 }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozenCensusRecordCount",
+        "supplementaryRecordCount",
+        "viewableSourceObjectCount",
+        "combinedCensusClaim",
+        "verifiedGeometryCount",
+        "sourceType1RecordCount",
+        "sourceType2RecordCount",
+        "sourceType3RecordCount",
+        "sourceType4RecordCount",
+        "otherSourceTypeRecordCount",
+        "landmarkReceiptCount",
+        "totalNodeCount",
+        "totalSegmentCount",
+        "totalNeuriteSegmentCount",
+        "totalTerminalLandmarkCount",
+        "totalBifurcationLandmarkCount",
+        "shollStepMicrometre",
+        "registrationCount",
+        "membraneModelCount",
+        "internalStructureModelCount"
+      ],
+      "properties": {
+        "frozenCensusRecordCount": { "const": 142 },
+        "supplementaryRecordCount": { "const": 7 },
+        "viewableSourceObjectCount": { "const": 149 },
+        "combinedCensusClaim": { "const": false },
+        "verifiedGeometryCount": { "const": 149 },
+        "sourceType1RecordCount": { "const": 149 },
+        "sourceType2RecordCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "sourceType3RecordCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "sourceType4RecordCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "otherSourceTypeRecordCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "landmarkReceiptCount": { "const": 149 },
+        "totalNodeCount": { "type": "integer", "minimum": 149 },
+        "totalSegmentCount": { "type": "integer", "minimum": 1 },
+        "totalNeuriteSegmentCount": { "type": "integer", "minimum": 1 },
+        "totalTerminalLandmarkCount": { "type": "integer", "minimum": 1 },
+        "totalBifurcationLandmarkCount": { "type": "integer", "minimum": 0 },
+        "shollStepMicrometre": { "const": 10 },
+        "registrationCount": { "const": 0 },
+        "membraneModelCount": { "const": 0 },
+        "internalStructureModelCount": { "const": 0 }
+      }
+    },
+    "scientificBoundary": { "$ref": "#/$defs/scientificBoundary" },
+    "contractContentSha256": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "fileReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "scientificBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysisUnit",
+        "combinedCensusClaim",
+        "biologicalZeroInferredFromAbsentSourceType",
+        "somaContourClaimCount",
+        "membraneClaimCount",
+        "internalStructureClaimCount",
+        "atlasPlacementCount",
+        "atlasTransformCount",
+        "registrationCount",
+        "completeBiologicalAxonClaimCount",
+        "crossSourceIdentityCount",
+        "generatedBiologicalPrimitiveCount"
+      ],
+      "properties": {
+        "analysisUnit": { "const": "NeuroMorpho_record" },
+        "combinedCensusClaim": { "const": false },
+        "biologicalZeroInferredFromAbsentSourceType": { "const": false },
+        "somaContourClaimCount": { "const": 0 },
+        "membraneClaimCount": { "const": 0 },
+        "internalStructureClaimCount": { "const": 0 },
+        "atlasPlacementCount": { "const": 0 },
+        "atlasTransformCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "completeBiologicalAxonClaimCount": { "const": 0 },
+        "crossSourceIdentityCount": { "const": 0 },
+        "generatedBiologicalPrimitiveCount": { "const": 0 }
+      }
+    }
+  }
+}

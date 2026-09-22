@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/morphology-fidelity-contract-0.1.schema.json",
+  "title": "Morphology fidelity contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releaseId", "releasedAt", "title", "purpose", "sourceObjects", "defaultMode", "derivedSurfaceAlgorithm", "records", "hardBoundaries"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "pinnedObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/data/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "modeAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["available", "authority"],
+      "properties": {
+        "available": { "type": "boolean" },
+        "authority": { "enum": ["OBS_STANDARDIZED_SOURCE_LOCAL", "DERIVED_FROM_OBSERVED_RADIUS", "UNAVAILABLE"] },
+        "missingReason": { "type": ["string", "null"] }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["neuronId", "assetId", "geometry", "axon", "radiusEvidence", "modes"],
+      "properties": {
+        "neuronId": { "type": "integer", "minimum": 1 },
+        "assetId": { "type": "string", "pattern": "^NeuroMorpho:[0-9]+$" },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "bytes", "sha256", "rawSwcSha256", "geometryStatus", "sourceFrame", "dimensionality", "sourceDiameterAvailable", "nodeCount", "segmentCount"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-[0-9]+\\.json$" },
+            "bytes": { "type": "integer", "minimum": 1 },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "rawSwcSha256": { "$ref": "#/$defs/sha256" },
+            "geometryStatus": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+            "sourceFrame": { "const": "NeuroMorpho_CNG_standardized_local_frame" },
+            "dimensionality": { "const": "3D" },
+            "sourceDiameterAvailable": { "type": "boolean" },
+            "nodeCount": { "type": "integer", "minimum": 2 },
+            "segmentCount": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "axon": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceType2NodeCount", "sourceDomain", "completeAxon"],
+          "properties": {
+            "sourceType2NodeCount": { "type": "integer", "minimum": 0 },
+            "sourceDomain": { "type": "string", "minLength": 1 },
+            "completeAxon": { "const": false }
+          }
+        },
+        "radiusEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "minimumMicrometre", "maximumMicrometre", "meanMicrometre", "missingReason"],
+          "properties": {
+            "status": { "enum": ["OBSERVED_SOURCE_RADIUS", "UNAVAILABLE"] },
+            "minimumMicrometre": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+            "maximumMicrometre": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+            "meanMicrometre": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+            "missingReason": { "type": ["string", "null"] }
+          }
+        },
+        "modes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["observedSwc", "radiusSurface", "internalStructure"],
+          "properties": {
+            "observedSwc": {
+              "allOf": [
+                { "$ref": "#/$defs/modeAvailability" },
+                { "type": "object", "properties": { "available": { "const": true }, "authority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" } } }
+              ]
+            },
+            "radiusSurface": { "$ref": "#/$defs/modeAvailability" },
+            "internalStructure": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["available", "authority", "missingEvidence"],
+              "properties": {
+                "available": { "const": false },
+                "authority": { "const": "UNAVAILABLE" },
+                "missingEvidence": {
+                  "type": "array",
+                  "minItems": 6,
+                  "uniqueItems": true,
+                  "items": { "enum": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] }
+                }
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "type": "object", "properties": { "geometry": { "type": "object", "properties": { "sourceDiameterAvailable": { "const": true } } } } },
+          "then": {
+            "type": "object",
+            "properties": {
+              "radiusEvidence": { "type": "object", "properties": { "status": { "const": "OBSERVED_SOURCE_RADIUS" }, "missingReason": { "const": null } } },
+              "modes": { "type": "object", "properties": { "radiusSurface": { "type": "object", "properties": { "available": { "const": true }, "authority": { "const": "DERIVED_FROM_OBSERVED_RADIUS" }, "missingReason": { "const": null } } } } }
+            }
+          },
+          "else": {
+            "type": "object",
+            "properties": {
+              "radiusEvidence": { "type": "object", "properties": { "status": { "const": "UNAVAILABLE" }, "minimumMicrometre": { "const": null }, "maximumMicrometre": { "const": null }, "meanMicrometre": { "const": null }, "missingReason": { "const": "official_attributes_report_no_diameter" } } },
+              "modes": { "type": "object", "properties": { "radiusSurface": { "type": "object", "properties": { "available": { "const": false }, "authority": { "const": "UNAVAILABLE" }, "missingReason": { "const": "official_attributes_report_no_diameter" } } } } }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-morphology-fidelity-contract-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "sourceObjects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["censusIndex", "assetManifest", "repository", "repositoryRelease", "repositoryRrid", "license", "rightsUrl"],
+      "properties": {
+        "censusIndex": { "$ref": "#/$defs/pinnedObject" },
+        "assetManifest": { "$ref": "#/$defs/pinnedObject" },
+        "repository": { "const": "NeuroMorpho.Org" },
+        "repositoryRelease": { "const": "8.6.124" },
+        "repositoryRrid": { "const": "RRID:SCR_002145" },
+        "license": { "type": "string", "minLength": 1 },
+        "rightsUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "defaultMode": { "const": "radius_surface" },
+    "derivedSurfaceAlgorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithmId", "authority", "inputAuthority", "radialSegments", "endpointRadiusPolicy", "capPolicy", "branchJoinPolicy", "smoothingPolicy", "biologicalSurfaceClaim", "membraneClaim", "measurementUse"],
+      "properties": {
+        "algorithmId": { "const": "tapered_hexagonal_frustum_per_swc_edge_v1" },
+        "authority": { "const": "DERIVED_FROM_OBSERVED_RADIUS" },
+        "inputAuthority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "radialSegments": { "const": 6 },
+        "endpointRadiusPolicy": { "const": "exact_source_radius_after_uniform_viewer_scale" },
+        "capPolicy": { "const": "none" },
+        "branchJoinPolicy": { "const": "none_per_edge_overlap_only" },
+        "smoothingPolicy": { "const": "none" },
+        "biologicalSurfaceClaim": { "const": false },
+        "membraneClaim": { "const": false },
+        "measurementUse": { "const": "forbidden" }
+      }
+    },
+    "records": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/$defs/record" } },
+    "hardBoundaries": { "type": "array", "minItems": 7, "items": { "type": "string", "minLength": 1 } }
+  }
+}

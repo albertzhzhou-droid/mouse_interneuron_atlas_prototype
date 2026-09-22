@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.ca/schemas/microns-source-native-clipping-0.1.schema.json",
+  "title": "MICrONS source-native cell-shell clipping contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractId", "schemaVersion", "releaseId", "upgradeId", "modeId", "authority", "summary", "sourceReference", "clippingOperation", "unchangedGeometryReceipts", "claimPolicy", "hardBoundaries"],
+  "properties": {
+    "contractId": { "const": "microns-source-native-clipping-0.1" },
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-microns-source-native-clipping-0.1.0" },
+    "upgradeId": { "const": "UPG-166" },
+    "modeId": { "const": "microns_source_native_cell_shell_clipping" },
+    "authority": { "const": "DER_DISPLAY_OPERATION_ON_OBS_EM_SEGMENTATION" },
+    "summary": { "type": "string", "minLength": 80 },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractId", "releaseId", "cellRootId", "linkedNucleusId", "nativeFrame", "nativeUnits", "region", "regionRelationshipToProject", "assetManifest", "displayTransformCanonicalJsonSha256"],
+      "properties": {
+        "contractId": { "const": "microns-observed-cell-nucleus-reference-0.1" },
+        "releaseId": { "const": "ohri-microns-observed-cell-nucleus-reference-0.1.0" },
+        "cellRootId": { "const": "648518346349516051" },
+        "linkedNucleusId": { "const": "4309" },
+        "nativeFrame": { "const": "MICrONS_Phase1_aligned_EM_native" },
+        "nativeUnits": { "const": "nanometre" },
+        "region": { "const": "visual cortex layer 2/3" },
+        "regionRelationshipToProject": { "const": "cross_region_not_spinal_cord" },
+        "assetManifest": { "$ref": "#/$defs/fileReceipt" },
+        "displayTransformCanonicalJsonSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "clippingOperation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "coordinateInput", "renderTarget", "axisOrder", "boundsNanometre", "somaCentreNanometre", "defaultState", "sourceToWorldPolicy"],
+      "properties": {
+        "method": { "const": "threejs_material_local_clipping_plane" },
+        "coordinateInput": { "const": "source_native_nanometre" },
+        "renderTarget": { "const": "cell_segmentation_surface_only" },
+        "axisOrder": { "const": ["x", "y", "z"] },
+        "boundsNanometre": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "z"],
+          "properties": {
+            "x": { "$ref": "#/$defs/bounds" },
+            "y": { "$ref": "#/$defs/bounds" },
+            "z": { "$ref": "#/$defs/bounds" }
+          }
+        },
+        "somaCentreNanometre": {
+          "type": "array",
+          "prefixItems": [{ "type": "number" }, { "type": "number" }, { "type": "number" }],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "defaultState": { "$ref": "#/$defs/state" },
+        "sourceToWorldPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["formula", "planeSpace", "negativeSignedDistanceDiscarded", "displayTransformOnly", "sourceBufferMutation"],
+          "properties": {
+            "formula": { "type": "string", "minLength": 40 },
+            "planeSpace": { "const": "world" },
+            "negativeSignedDistanceDiscarded": { "const": true },
+            "displayTransformOnly": { "const": true },
+            "sourceBufferMutation": { "const": false }
+          }
+        }
+      }
+    },
+    "unchangedGeometryReceipts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cell", "nucleus"],
+      "properties": {
+        "cell": { "$ref": "#/$defs/componentReceipt" },
+        "nucleus": { "$ref": "#/$defs/componentReceipt" }
+      }
+    },
+    "claimPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cellClippingPlaneCountWhenEnabled", "nucleusClippingPlaneCount", "capPrimitiveCount", "repairCount", "resamplingCount", "generatedGeometryCount", "geometryMutationCount", "joinCount", "registrationCount", "measurementClaim", "membraneClaim", "spinalInternalStructureClaim"],
+      "properties": {
+        "cellClippingPlaneCountWhenEnabled": { "const": 1 },
+        "nucleusClippingPlaneCount": { "const": 0 },
+        "capPrimitiveCount": { "const": 0 },
+        "repairCount": { "const": 0 },
+        "resamplingCount": { "const": 0 },
+        "generatedGeometryCount": { "const": 0 },
+        "geometryMutationCount": { "const": 0 },
+        "joinCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "measurementClaim": { "const": false },
+        "membraneClaim": { "const": false },
+        "spinalInternalStructureClaim": { "const": false }
+      }
+    },
+    "hardBoundaries": { "type": "array", "minItems": 6, "items": { "type": "string", "minLength": 30 } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "fileReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/data/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum"],
+      "properties": { "minimum": { "type": "number" }, "maximum": { "type": "number" } }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "axis", "positionNanometre", "keepSide"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "axis": { "enum": ["x", "y", "z"] },
+        "positionNanometre": { "type": "number" },
+        "keepSide": { "enum": ["positive", "negative"] }
+      }
+    },
+    "componentReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objectId", "vertexCount", "triangleCount", "positions", "triangles"],
+      "properties": {
+        "objectId": { "type": "string", "minLength": 1 },
+        "vertexCount": { "type": "integer", "minimum": 1 },
+        "triangleCount": { "type": "integer", "minimum": 1 },
+        "positions": { "$ref": "#/$defs/fileReceipt" },
+        "triangles": { "$ref": "#/$defs/fileReceipt" }
+      }
+    }
+  }
+}

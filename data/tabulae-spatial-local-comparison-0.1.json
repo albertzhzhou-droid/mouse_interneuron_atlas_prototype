@@ -1,0 +1,32 @@
+{
+  "releaseId": "ohri-tabulae-paralytica-spatial-local-comparison-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "baseSessionReleaseId": "ohri-tabulae-paralytica-spatial-local-session-0.1.0",
+  "reviewDate": "2026-08-18",
+  "scientificInputPolicy": "public_sources_only",
+  "purpose": "Permit a researcher to hold up to four independently selected, declared Tabulae Visium local 2D sessions side by side for visual source inspection. Each section retains its native image, spot positions and scale factors; the board makes no cross-section alignment or quantitative comparison claim.",
+  "authority": "MULTI_SESSION_SOURCE_LOCAL_2D_ONLY",
+  "comparison": {
+    "maximumConcurrentSessions": 4,
+    "sectionSelection": "unique_declared_section_per_active_session",
+    "displayMode": "side_by_side_source_local_2d_only",
+    "crossSectionTransform": "none",
+    "sectionOrderAuthority": "not_established_from_section_labels",
+    "interSectionGeometry": "not_established",
+    "quantitativeComparison": "not_permitted"
+  },
+  "localRuntime": {
+    "automaticRemoteAcquisition": false,
+    "upload": false,
+    "persistence": "none",
+    "sourceFilesBundled": false,
+    "receiptMayContain": ["declared_section_identity", "file_names", "local_sha256", "parser_counts", "scale_factors"],
+    "receiptMustExclude": ["source_image", "source_coordinate_rows", "source_expression_data"]
+  },
+  "releaseDecision": {
+    "permitted": "Display up to four researcher-selected local sessions next to one another; filter each view to in-tissue spots; remove a session; and export a comparison receipt that retains per-session file names, local hashes, parser summaries and scale factors only.",
+    "forbidden": "Do not fetch, bundle, upload or persist source content; do not overlay, normalize, order, stack or register sections; do not infer an individual interneuron, gene expression, cell state, treatment effect, 3D coordinate, inter-section distance, source-to-project transform or REG.",
+    "nextGate": "A cross-section source-frame or 3D proposal remains subject to UPG-012: object-level checksums and rights, stable specimen and section identity, source-supported physical frame/order/scale/orientation, pinned transform provenance, disjoint held-out landmarks, physical-space error and curator review."
+  }
+}

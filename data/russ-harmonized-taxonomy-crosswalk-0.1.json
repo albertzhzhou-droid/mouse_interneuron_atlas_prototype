@@ -1,0 +1,1038 @@
+{
+  "releaseId": "ohri-russ-harmonized-taxonomy-crosswalk-0.1.0",
+  "schemaVersion": "0.1.0",
+  "releaseDate": "2026-08-18",
+  "sourceId": "PDS-RUSS-2021",
+  "coordinateAuthority": "TYPE_LEVEL",
+  "source": {
+    "publication": {
+      "citation": "Russ DE, Patterson-Cross RB, Li L, et al. A harmonized atlas of mouse spinal cord cell types and their spatial organization. Nature Communications 12, 5722 (2021).",
+      "doi": "10.1038/s41467-021-25125-1",
+      "articleUrl": "https://www.nature.com/articles/s41467-021-25125-1",
+      "license": "CC BY 4.0; attribution retained in this derived metadata release."
+    },
+    "processedCounts": {
+      "accession": "GEO GSE158380",
+      "recordUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158380",
+      "status": "Public processed count matrix and cell/feature metadata are available; they are not bundled in this release."
+    },
+    "markerTable": {
+      "title": "Supplementary Table 1: harmonized cell type markers",
+      "fileName": "41467_2021_25125_MOESM5_ESM.xlsx",
+      "sourceUrl": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-021-25125-1/MediaObjects/41467_2021_25125_MOESM5_ESM.xlsx",
+      "bytes": 1475885,
+      "sha256": "a45578c893998fae42acf781c4700d162249497476b0b81149302f49929fd2e0",
+      "retrievedOn": "2026-08-18",
+      "sourceFileBundled": false,
+      "derivedMetadataBundled": true,
+      "derivation": "This release retains the 69 published labels and the first three Wilcoxon-ranked markers per label, not the source XLSX or any cell-level count matrix."
+    }
+  },
+  "scope": {
+    "reportedNeuralPopulationCount": 69,
+    "displayedPopulationCount": 69,
+    "displayedInterneuronCandidateCount": 65,
+    "lifeStage": "Postnatal harmonized transcriptomic reference; the paper separately validates selected marker panels in adult lumbar tissue.",
+    "spatialBoundary": "TYPE_LEVEL only. A group label, marker, or adult validation context is not an individual-cell coordinate, atlas registration, or same-cell multimodal join.",
+    "knownSourceCaution": "The source reports that many mid and ventral clusters have lower robustness; its narrative and Supplementary Table 1 should be reviewed together before a narrow label transfer."
+  },
+  "groups": [
+    {
+      "id": "motoneuron_preganglionic",
+      "label": "Motoneuron and preganglionic",
+      "regionClass": "ventral",
+      "transmitterClass": "cholinergic",
+      "interneuronCandidate": false,
+      "populationLabels": [
+        "MN-alpha",
+        "MN-gamma",
+        "PGC"
+      ],
+      "sourceScope": "The source names these motor or preganglionic populations; this explorer does not count them as interneuron candidates."
+    },
+    {
+      "id": "csf_contacting",
+      "label": "CSF-contacting neuron",
+      "regionClass": "central",
+      "transmitterClass": "inhibitory_reported",
+      "interneuronCandidate": false,
+      "populationLabels": [
+        "CSF-cN"
+      ],
+      "sourceScope": "A distinct CSF-contacting population; not treated here as a project interneuron entity."
+    },
+    {
+      "id": "dorsal_excitatory",
+      "label": "Dorsal excitatory",
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "interneuronCandidate": true,
+      "populationLabels": [
+        "Excit-1",
+        "Excit-2",
+        "Excit-3",
+        "Excit-4",
+        "Excit-5",
+        "Excit-6",
+        "Excit-7",
+        "Excit-8",
+        "Excit-9",
+        "Excit-10",
+        "Excit-11",
+        "Excit-12",
+        "Excit-13",
+        "Excit-14",
+        "Excit-15",
+        "Excit-16",
+        "Excit-17",
+        "Excit-18",
+        "Excit-19",
+        "Excit-20"
+      ],
+      "sourceScope": "Twenty dorsal excitatory populations in the harmonized postnatal reference."
+    },
+    {
+      "id": "dorsal_inhibitory",
+      "label": "Dorsal inhibitory",
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "interneuronCandidate": true,
+      "populationLabels": [
+        "Inhib-1",
+        "Inhib-2",
+        "Inhib-3",
+        "Inhib-4",
+        "Inhib-5",
+        "Inhib-6",
+        "Inhib-7",
+        "Inhib-8",
+        "Inhib-9",
+        "Inhib-10",
+        "Inhib-11",
+        "Inhib-12",
+        "Inhib-13",
+        "Inhib-14"
+      ],
+      "sourceScope": "Fourteen dorsal inhibitory populations in the harmonized postnatal reference."
+    },
+    {
+      "id": "mid_excitatory",
+      "label": "Deep dorsal / mid excitatory",
+      "regionClass": "deep_dorsal_or_mid",
+      "transmitterClass": "excitatory",
+      "interneuronCandidate": true,
+      "populationLabels": [
+        "Excit-21",
+        "Excit-22",
+        "Excit-23",
+        "Excit-24",
+        "Excit-25",
+        "Excit-26",
+        "Excit-27",
+        "Excit-28",
+        "Excit-29",
+        "Excit-30"
+      ],
+      "sourceScope": "Ten deep-dorsal or mid excitatory populations; the source reports lower robustness for many mid/ventral labels."
+    },
+    {
+      "id": "mid_inhibitory",
+      "label": "Deep dorsal / mid inhibitory",
+      "regionClass": "deep_dorsal_or_mid",
+      "transmitterClass": "inhibitory",
+      "interneuronCandidate": true,
+      "populationLabels": [
+        "Inhib-15",
+        "Inhib-16",
+        "Inhib-17",
+        "Inhib-18",
+        "Inhib-19",
+        "Inhib-20",
+        "Inhib-21"
+      ],
+      "sourceScope": "Seven deep-dorsal or mid inhibitory populations; source-local taxonomy only."
+    },
+    {
+      "id": "ventral_excitatory",
+      "label": "Ventral excitatory",
+      "regionClass": "ventral",
+      "transmitterClass": "excitatory",
+      "interneuronCandidate": true,
+      "populationLabels": [
+        "Excit-31",
+        "Excit-32",
+        "Excit-33",
+        "Excit-34",
+        "Excit-35",
+        "Excit-36",
+        "Excit-37",
+        "Excit-38"
+      ],
+      "sourceScope": "Eight ventral excitatory populations; the source cautions that ventral labels are less robust than dorsal labels."
+    },
+    {
+      "id": "ventral_inhibitory",
+      "label": "Ventral inhibitory",
+      "regionClass": "ventral",
+      "transmitterClass": "inhibitory",
+      "interneuronCandidate": true,
+      "populationLabels": [
+        "Inhib-22",
+        "Inhib-23",
+        "Inhib-24",
+        "Inhib-25",
+        "Inhib-26",
+        "Inhib-27"
+      ],
+      "sourceScope": "Six ventral inhibitory populations; source-local taxonomy only."
+    }
+  ],
+  "populations": [
+    {
+      "id": "RUSS-MN-alpha",
+      "label": "MN-alpha",
+      "groupId": "motoneuron_preganglionic",
+      "primaryMarkers": [
+        "Slit3",
+        "Chat",
+        "Pappa"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-MN-gamma",
+      "label": "MN-gamma",
+      "groupId": "motoneuron_preganglionic",
+      "primaryMarkers": [
+        "Esrrb",
+        "Chat",
+        "Slc5a7"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-PGC",
+      "label": "PGC",
+      "groupId": "motoneuron_preganglionic",
+      "primaryMarkers": [
+        "Chat",
+        "Slc5a7",
+        "Slit3"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-CSF-cN",
+      "label": "CSF-cN",
+      "groupId": "csf_contacting",
+      "primaryMarkers": [
+        "Pkd1l2",
+        "Myo3b",
+        "Pkd2l1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-1",
+      "label": "Excit-1",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Cpne4",
+        "Bnc2",
+        "Dach2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-2",
+      "label": "Excit-2",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Cdh3",
+        "Cpne4",
+        "Otof"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-3",
+      "label": "Excit-3",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Pde11a",
+        "Ebf2",
+        "Cck"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-4",
+      "label": "Excit-4",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Nts",
+        "Ebf2",
+        "Cacna2d1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-5",
+      "label": "Excit-5",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Adarb2",
+        "Gm28928",
+        "Arpp21"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-6",
+      "label": "Excit-6",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Maf",
+        "Adarb2",
+        "Gm28928"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-7",
+      "label": "Excit-7",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Gm2694",
+        "Casz1",
+        "Ebf2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-8",
+      "label": "Excit-8",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Bnc2",
+        "Reln",
+        "Pde11a"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-9",
+      "label": "Excit-9",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Pde11a",
+        "Ebf2",
+        "Bnc2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-10",
+      "label": "Excit-10",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Pde11a",
+        "Cpne8",
+        "Prex2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-11",
+      "label": "Excit-11",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Pde11a",
+        "Tex15",
+        "Reln"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-12",
+      "label": "Excit-12",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Col11a1",
+        "Ntng1",
+        "Skor2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-13",
+      "label": "Excit-13",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Crh",
+        "Nmur2",
+        "Prrxl1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-14",
+      "label": "Excit-14",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Skor2",
+        "Grpr",
+        "Arhgap6"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-15",
+      "label": "Excit-15",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Myo5b",
+        "Qrfpr",
+        "Sphkap"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-16",
+      "label": "Excit-16",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Lmo3",
+        "Otof",
+        "Sox5"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-17",
+      "label": "Excit-17",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Sox5",
+        "Otof",
+        "Tll2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-18",
+      "label": "Excit-18",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Nmu",
+        "Tac2",
+        "Ebf2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-19",
+      "label": "Excit-19",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Tac2",
+        "Tshz3",
+        "Mylk"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-20",
+      "label": "Excit-20",
+      "groupId": "dorsal_excitatory",
+      "primaryMarkers": [
+        "Hs3st2",
+        "Meis2",
+        "Fam19a1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-1",
+      "label": "Inhib-1",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Sorcs3",
+        "Rorb",
+        "Arpp21"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-2",
+      "label": "Inhib-2",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Nxph1",
+        "Mpped2",
+        "Cadps2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-3",
+      "label": "Inhib-3",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Nwd2",
+        "Syt10",
+        "Stac"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-4",
+      "label": "Inhib-4",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Rxfp2",
+        "Syt10",
+        "Gad1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-5",
+      "label": "Inhib-5",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Krt17",
+        "Stac",
+        "Gbx1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-6",
+      "label": "Inhib-6",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Cdh3",
+        "Maf",
+        "Pax2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-7",
+      "label": "Inhib-7",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Pax2",
+        "Sema3e",
+        "Kcnip2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-8",
+      "label": "Inhib-8",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Gad2",
+        "Cacna2d3",
+        "Ccbe1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-9",
+      "label": "Inhib-9",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Gsap",
+        "Pax2",
+        "Zmat4"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-10",
+      "label": "Inhib-10",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Gal",
+        "Pdyn",
+        "Mlxipl"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-11",
+      "label": "Inhib-11",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Gal",
+        "Kcnt2",
+        "Cdh8"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-12",
+      "label": "Inhib-12",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Pax8",
+        "Ecel1",
+        "Pax2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-13",
+      "label": "Inhib-13",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Npy",
+        "Plch1",
+        "Qrfpr"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-14",
+      "label": "Inhib-14",
+      "groupId": "dorsal_inhibitory",
+      "primaryMarkers": [
+        "Nos1",
+        "Nxph2",
+        "Pax2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-21",
+      "label": "Excit-21",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Nms",
+        "Lncenc1",
+        "Lmx1b"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-22",
+      "label": "Excit-22",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Zfhx3",
+        "Lmx1b",
+        "Tcerg1l"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-23",
+      "label": "Excit-23",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Cdh23",
+        "Gm28905",
+        "Cep112"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-24",
+      "label": "Excit-24",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Cdh4",
+        "Sorcs3",
+        "Ebf3"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-25",
+      "label": "Excit-25",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Cdh23",
+        "Pou4f1",
+        "Lmx1b"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-26",
+      "label": "Excit-26",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Cntn5",
+        "Lrrtm4",
+        "Nrg3"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-27",
+      "label": "Excit-27",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Gm28905",
+        "Rmst",
+        "Cdh9"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-28",
+      "label": "Excit-28",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Pitx2",
+        "Chat",
+        "Slc5a7"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-29",
+      "label": "Excit-29",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Pmfbp1",
+        "Onecut3",
+        "Ndst4"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-30",
+      "label": "Excit-30",
+      "groupId": "mid_excitatory",
+      "primaryMarkers": [
+        "Chodl",
+        "Neurod2",
+        "Sp8"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-15",
+      "label": "Inhib-15",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Nrxn3",
+        "Prox1",
+        "Gabra1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-16",
+      "label": "Inhib-16",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Tfap2b",
+        "Grik2",
+        "Gm30382"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-17",
+      "label": "Inhib-17",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Slc6a5",
+        "Cdh7",
+        "Nrxn3"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-18",
+      "label": "Inhib-18",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Cacna2d3",
+        "Pax2",
+        "Nxph1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-19",
+      "label": "Inhib-19",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Tfap2b",
+        "Klhl14",
+        "Ccbe1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-20",
+      "label": "Inhib-20",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Tfap2b",
+        "Slc6a5",
+        "Col19a1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-21",
+      "label": "Inhib-21",
+      "groupId": "mid_inhibitory",
+      "primaryMarkers": [
+        "Nrxn3",
+        "Shisa9",
+        "Alk"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-31",
+      "label": "Excit-31",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Cdh18",
+        "Miat",
+        "Dab1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-32",
+      "label": "Excit-32",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Dab1",
+        "Pfkp",
+        "Elavl2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-33",
+      "label": "Excit-33",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Cntn5",
+        "Dab1",
+        "Unc5d"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-34",
+      "label": "Excit-34",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Pou6f2",
+        "Zfhx3",
+        "Fam19a1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-35",
+      "label": "Excit-35",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Gm9844",
+        "Tmsb10",
+        "Tubb2b"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-36",
+      "label": "Excit-36",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Vsx2",
+        "Sox14",
+        "Shox2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-37",
+      "label": "Excit-37",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Bhlhe22",
+        "Sox14",
+        "Hoxc11"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Excit-38",
+      "label": "Excit-38",
+      "groupId": "ventral_excitatory",
+      "primaryMarkers": [
+        "Sim1",
+        "Ctcflos",
+        "A230006K03Rik"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-22",
+      "label": "Inhib-22",
+      "groupId": "ventral_inhibitory",
+      "primaryMarkers": [
+        "Slc6a5",
+        "Syt2",
+        "Elavl4"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-23",
+      "label": "Inhib-23",
+      "groupId": "ventral_inhibitory",
+      "primaryMarkers": [
+        "Syt2",
+        "Esrrg",
+        "Epb41"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-24",
+      "label": "Inhib-24",
+      "groupId": "ventral_inhibitory",
+      "primaryMarkers": [
+        "Nr5a2",
+        "Meis2",
+        "Pou6f2"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-25",
+      "label": "Inhib-25",
+      "groupId": "ventral_inhibitory",
+      "primaryMarkers": [
+        "Foxp2",
+        "Cdh23",
+        "Epha6"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-26",
+      "label": "Inhib-26",
+      "groupId": "ventral_inhibitory",
+      "primaryMarkers": [
+        "Chrna2",
+        "Gm12082",
+        "Pmfbp1"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    },
+    {
+      "id": "RUSS-Inhib-27",
+      "label": "Inhib-27",
+      "groupId": "ventral_inhibitory",
+      "primaryMarkers": [
+        "Elavl2",
+        "Slc6a5",
+        "Nrxn3"
+      ],
+      "markerEvidence": "Top three published Wilcoxon-ranked marker rows from Supplementary Table 1; not a unique identity rule or a spatial coordinate."
+    }
+  ],
+  "prototypeCrosswalks": [
+    {
+      "entityId": "mouse.propriospinal.relay",
+      "mappingStatus": "no_unique_mapping",
+      "candidateGroupIds": [],
+      "candidatePopulationLabels": [],
+      "reason": "Propriospinal is defined by connection pattern. The Russ taxonomy does not supply a verified project-specific projection edge.",
+      "notEstablished": "A molecular label cannot establish a propriospinal connection or atlas location."
+    },
+    {
+      "entityId": "mouse.di3.isl1",
+      "mappingStatus": "broad_candidate_only",
+      "candidateGroupIds": [
+        "ventral_excitatory"
+      ],
+      "candidatePopulationLabels": [],
+      "reason": "The paper discusses possible dI1/dI2/dI3 relationships among a ventral excitatory subset, but does not provide a unique dI3 label for this project entity.",
+      "notEstablished": "No exact dI3 identity, connection, or coordinate is assigned."
+    },
+    {
+      "entityId": "mouse.sc.vsx2_hoxa10",
+      "mappingStatus": "marker_context_only",
+      "candidateGroupIds": [
+        "ventral_excitatory"
+      ],
+      "candidatePopulationLabels": [
+        "Excit-36"
+      ],
+      "reason": "Vsx2 appears in the retained Supplementary Table 1 marker ranking for Excit-36, but Hoxa10 is not retained as a matching marker and the source does not establish the project SC^Vsx2::Hoxa10 entity.",
+      "notEstablished": "Marker context is not a same-cell identity, caudal segment assignment, or registration."
+    },
+    {
+      "entityId": "mouse.v3.sim1",
+      "mappingStatus": "marker_context_only",
+      "candidateGroupIds": [
+        "ventral_excitatory"
+      ],
+      "candidatePopulationLabels": [
+        "Excit-38"
+      ],
+      "reason": "Sim1 appears in the retained Supplementary Table 1 marker ranking for Excit-38. The paper cautions that some ventral marker signals may persist from developmental samples and does not make this an exact project V3 mapping.",
+      "notEstablished": "No exact V3 identity, adult validation, connectivity claim, or coordinate follows."
+    },
+    {
+      "entityId": "mouse.v2a.cervical_ipsilateral",
+      "mappingStatus": "broad_candidate_only",
+      "candidateGroupIds": [
+        "ventral_excitatory"
+      ],
+      "candidatePopulationLabels": [],
+      "reason": "The source discusses V2a-related ventral populations but this crosswalk has no source-pinned cervical, ipsilateral, or project-entity match.",
+      "notEstablished": "A V2a-family relationship is not a cervical ipsilateral circuit assignment or registration."
+    },
+    {
+      "entityId": "mouse.overlay.vgat_kcc2",
+      "mappingStatus": "axis_only",
+      "candidateGroupIds": [
+        "dorsal_inhibitory",
+        "mid_inhibitory",
+        "ventral_inhibitory"
+      ],
+      "candidatePopulationLabels": [],
+      "reason": "The evidence entity is a transmitter-state overlay. It may be compared with inhibitory taxonomy groups but is not a single Russ population.",
+      "notEstablished": "No KCC2 state, injury effect, or causal intervention is inferred from the taxonomy."
+    },
+    {
+      "entityId": "mouse.overlay.vglut2_vgat_switch",
+      "mappingStatus": "axis_only",
+      "candidateGroupIds": [
+        "dorsal_excitatory",
+        "mid_excitatory",
+        "ventral_excitatory",
+        "dorsal_inhibitory",
+        "mid_inhibitory",
+        "ventral_inhibitory"
+      ],
+      "candidatePopulationLabels": [],
+      "reason": "The evidence entity describes a condition-dependent transmitter-state overlay, not a stable single-population label.",
+      "notEstablished": "Taxonomy does not prove switching, injury state, or cell-level longitudinal identity."
+    }
+  ],
+  "hardBoundaries": [
+    "All 69 records are type-level molecular metadata, not a census of every interneuron.",
+    "No population, marker, crosswalk, or adult-validation statement creates REG, an xyz coordinate, a morphology link, or a synaptic edge.",
+    "The crosswalk never upgrades a prototype entity to OBS; current entity glyphs remain SYN and paths remain SCH.",
+    "Ambiguous, broad, and marker-context relationships remain explicit; no entity receives an exact Russ mapping in this release."
+  ]
+}

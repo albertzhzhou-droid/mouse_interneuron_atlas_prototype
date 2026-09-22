@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-data-catalog-0.3.json",
+  "title": "OHRI Mouse Interneuron Atlas public-data catalog 0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogDate", "scientificInputPolicy", "institutionalExperimentalDataUsed", "networkAtReviewRuntime", "scope", "policySummary", "sources", "upgradeQueue"],
+  "properties": {
+    "releaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.3.0"},
+    "schemaVersion": {"const": "0.3.0"},
+    "catalogDate": {"type": "string", "format": "date"},
+    "scientificInputPolicy": {"const": "public_sources_only"},
+    "institutionalExperimentalDataUsed": {"const": false},
+    "networkAtReviewRuntime": {"const": false},
+    "scope": {"type": "string", "minLength": 1},
+    "policySummary": {"type": "string", "minLength": 1},
+    "sources": {"type": "array", "minItems": 6, "items": {"$ref": "#/$defs/source"}},
+    "upgradeQueue": {"type": "array", "minItems": 6, "items": {"$ref": "#/$defs/queueItem"}}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "role", "admissionStatus", "priority", "provenance", "rights", "content", "admissibleUse", "prohibitedClaims", "nextChecks"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^PDS-[A-Z0-9-]+$"},
+        "title": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1},
+        "admissionStatus": {"enum": ["bundled_local", "ready_for_metadata_audit", "ready_for_adapter"]},
+        "priority": {"enum": ["P0", "P1", "P2"]},
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["accession", "version", "sourceUrl", "primaryCitation", "accessVerifiedOn"],
+          "properties": {
+            "accession": {"type": "string", "minLength": 1},
+            "version": {"type": "string", "minLength": 1},
+            "sourceUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+            "primaryCitation": {"type": "string", "minLength": 1},
+            "accessVerifiedOn": {"type": "string", "format": "date"}
+          }
+        },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "note"],
+          "properties": {
+            "status": {"enum": ["recorded", "verify_per_file_before_bundle", "verify_per_asset_before_bundle", "accession_recorded"]},
+            "note": {"type": "string", "minLength": 1}
+          }
+        },
+        "content": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["modalities", "species", "lifeStage", "spinalCoverage", "coordinateAuthority"],
+          "properties": {
+            "modalities": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+            "species": {"const": "Mus musculus"},
+            "lifeStage": {"type": "string", "minLength": 1},
+            "spinalCoverage": {"type": "string", "minLength": 1},
+            "coordinateAuthority": {"enum": ["INF", "OBS_LOCAL", "SOURCE_LOCAL_OBS", "AUTHOR_SPACE_OBS", "TYPE_LEVEL", "AGGREGATED_OR_SPOT_LEVEL"]}
+          }
+        },
+        "admissibleUse": {"type": "string", "minLength": 1},
+        "prohibitedClaims": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "nextChecks": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "queueItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "priority", "status", "sourceIds", "deliverable", "acceptanceCriteria", "rejectIf", "scientificBoundary"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^UPG-[0-9]{3}$"},
+        "title": {"type": "string", "minLength": 1},
+        "priority": {"enum": ["P0", "P1", "P2"]},
+        "status": {"enum": ["ready", "queued", "research_watch"]},
+        "sourceIds": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^PDS-[A-Z0-9-]+$"}},
+        "deliverable": {"type": "string", "minLength": 1},
+        "acceptanceCriteria": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "rejectIf": {"type": "string", "minLength": 1},
+        "scientificBoundary": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

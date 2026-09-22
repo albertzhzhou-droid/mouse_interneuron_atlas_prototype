@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/tabulae-spatial-local-session-0.1.json",
+  "title": "Tabulae Paralytica source-local spatial session 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogReleaseId", "reviewDate", "scientificInputPolicy", "networkAtReviewRuntime", "purpose", "authority", "archive", "localImport", "samples", "memberNameRule", "releaseDecision"],
+  "properties": {
+    "releaseId": {"const": "ohri-tabulae-paralytica-spatial-local-session-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "reviewDate": {"type": "string", "format": "date"},
+    "scientificInputPolicy": {"const": "public_sources_only"},
+    "networkAtReviewRuntime": {"const": false},
+    "purpose": {"type": "string", "minLength": 1},
+    "authority": {"const": "SOURCE_LOCAL_2D_SESSION_ONLY"},
+    "archive": {"type": "object", "additionalProperties": false, "required": ["accession", "stableName", "sourceUrl", "publicFileListUrl", "bytes", "lastModified", "sourceChecksum", "assetRightsDecision", "archiveStatus"], "properties": {
+      "accession": {"const": "GSE234774"}, "stableName": {"const": "GSE234774_RAW.tar"},
+      "sourceUrl": {"type": "string", "format": "uri", "pattern": "^https://"}, "publicFileListUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+      "bytes": {"const": 135208960}, "lastModified": {"const": "2024-01-31T00:24:37Z"}, "sourceChecksum": {"type": "null"},
+      "assetRightsDecision": {"const": "unresolved_not_bundled"}, "archiveStatus": {"const": "publicly_listed_not_downloaded_not_bundled"}
+    }},
+    "localImport": {"type": "object", "additionalProperties": false, "required": ["mode", "automaticRemoteAcquisition", "upload", "persistence", "maximumInputBytesPerMember", "requiredMemberKinds", "acceptedCompression", "acceptedImageMediaType"], "properties": {
+      "mode": {"const": "researcher_selected_local_files_only"}, "automaticRemoteAcquisition": {"const": false}, "upload": {"const": false}, "persistence": {"const": "none"},
+      "maximumInputBytesPerMember": {"type": "integer", "minimum": 1}, "requiredMemberKinds": {"const": ["low_resolution_tissue_image", "spot_positions", "scale_factors"]},
+      "acceptedCompression": {"const": "gzip"}, "acceptedImageMediaType": {"const": "image/png"}
+    }},
+    "samples": {"type": "array", "minItems": 24, "maxItems": 24, "items": {"type": "object", "additionalProperties": false, "required": ["id", "geoSampleAccession", "sectionLabel"], "properties": {
+      "id": {"type": "string", "pattern": "^TSP-GSM[0-9]{7}$"}, "geoSampleAccession": {"type": "string", "pattern": "^GSM[0-9]{7}$"}, "sectionLabel": {"type": "string", "pattern": "^(075|077|078|103|105|106)_[A-D]$"}
+    }}},
+    "memberNameRule": {"type": "object", "additionalProperties": false, "required": ["prefix", "low_resolution_tissue_image", "spot_positions", "scale_factors"], "properties": {
+      "prefix": {"const": "{geoSampleAccession}_{sectionLabel}"}, "low_resolution_tissue_image": {"const": "{prefix}_tissue_lowres_image.png.gz"}, "spot_positions": {"const": "{prefix}_tissue_positions_list.csv.gz"}, "scale_factors": {"const": "{prefix}_scalefactors_json.json.gz"}
+    }},
+    "releaseDecision": {"type": "object", "additionalProperties": false, "required": ["permitted", "forbidden", "nextGate"], "properties": {"permitted": {"type": "string", "minLength": 1}, "forbidden": {"type": "string", "minLength": 1}, "nextGate": {"type": "string", "minLength": 1}}}
+  }
+}

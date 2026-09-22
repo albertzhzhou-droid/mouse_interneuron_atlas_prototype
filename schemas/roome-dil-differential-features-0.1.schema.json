@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/roome-dil-differential-features-0.1.schema.json",
+  "title": "Roome 2026 full deposited differential-feature row evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releaseId", "releaseDate", "title", "sourceTable", "sourceRowCount", "sourceClusterCount", "exactRefinedTypeCount", "excludedDevelopmentalLabels", "retainedTextGeneRowCount", "quarantinedGeneCellCount", "rows", "quarantinedGeneCells", "hardBoundaries"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-roome-dil-differential-features-0.1.0" },
+    "releaseDate": { "type": "string", "format": "date" },
+    "title": { "type": "string", "minLength": 40 },
+    "sourceTable": { "type": "object" },
+    "sourceRowCount": { "const": 15900 },
+    "sourceClusterCount": { "const": 159 },
+    "exactRefinedTypeCount": { "const": 157 },
+    "excludedDevelopmentalLabels": { "const": ["dILA-Immature", "dILB-Immature"] },
+    "retainedTextGeneRowCount": { "const": 15874 },
+    "quarantinedGeneCellCount": { "const": 26 },
+    "rows": { "type": "array", "minItems": 15900, "maxItems": 15900, "items": { "$ref": "#/$defs/row" } },
+    "quarantinedGeneCells": { "type": "array", "minItems": 26, "maxItems": 26, "items": { "type": "object" } },
+    "hardBoundaries": { "type": "array", "minItems": 4, "items": { "type": "string", "minLength": 50 } }
+  },
+  "$defs": {
+    "row": { "type": "object", "additionalProperties": false, "required": ["sourceRow", "sourceRange", "pValue", "avgLog2Fc", "pct1", "pct2", "adjustedPValue", "cluster", "gene", "geneCell"], "properties": { "sourceRow": { "type": "integer", "minimum": 2, "maximum": 15901 }, "sourceRange": { "type": "string" }, "pValue": { "type": "number", "minimum": 0 }, "avgLog2Fc": { "type": "number" }, "pct1": { "type": "number", "minimum": 0, "maximum": 1 }, "pct2": { "type": "number", "minimum": 0, "maximum": 1 }, "adjustedPValue": { "type": "number", "minimum": 0 }, "cluster": { "type": "string", "minLength": 1 }, "gene": { "type": ["string", "null"] }, "geneCell": { "type": "object", "required": ["sourceCell"], "properties": { "sourceCell": { "type": "string", "pattern": "^G[0-9]+$" }, "rawNumericValue": { "type": "string" }, "styleIndex": { "type": "integer" }, "spreadsheetDisplay": { "type": "string" }, "status": { "type": "string" } } } } }
+  }
+}

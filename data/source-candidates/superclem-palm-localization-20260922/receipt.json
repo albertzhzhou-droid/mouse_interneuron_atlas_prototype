@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "research_only_unadmitted",
+  "proposedUpgradeId": "UPG-214",
+  "verifiedAtUtc": "2026-09-22T03:39:00.158152+00:00",
+  "sourceCitation": "Maynard SA, Rostaing P, Schaefer N, et al. eLife 10:e74441 (2021).",
+  "doi": "10.7554/eLife.74441",
+  "articleUrl": "https://elifesciences.org/articles/74441",
+  "datasetDoi": "10.6084/m9.figshare.17816747.v1",
+  "rights": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "objects": [
+    {
+      "path": "data/source-candidates/superclem-palm-localization-20260922/32598743-README_full_info.pdf",
+      "bytes": 58501,
+      "sha256": "775f398348a69dced8b1a6984febf7397f4019b826ded9a60f198b71db81dc27",
+      "md5": "593763e07f83ce3c0a4874f8e4828556",
+      "projectByteIdenticalMatchesBeforeRetention": [],
+      "figshareFileId": 32598743,
+      "sourceName": "README_full info.pdf",
+      "sourceUrl": "https://ndownloader.figshare.com/files/32598743",
+      "repositoryMd5": "593763e07f83ce3c0a4874f8e4828556",
+      "repositoryMd5Matched": true
+    },
+    {
+      "path": "data/source-candidates/superclem-palm-localization-20260922/32526932-181130_EosRmov009_MTT_without_tracking_results.mat",
+      "bytes": 606421,
+      "sha256": "57999c43c3ce6d0406e3db35546ad6f3d8e153cefe04997ecb992b28df356272",
+      "md5": "87b8b214df94db8cab95da3299b1ddcc",
+      "projectByteIdenticalMatchesBeforeRetention": [],
+      "figshareFileId": 32526932,
+      "sourceName": "181130_EosRmov009_MTT_without_tracking_results.mat",
+      "sourceUrl": "https://ndownloader.figshare.com/files/32526932",
+      "repositoryMd5": "87b8b214df94db8cab95da3299b1ddcc",
+      "repositoryMd5Matched": true
+    },
+    {
+      "path": "data/source-candidates/superclem-palm-localization-20260922/32600930-181130-EosRmov009-roi1-counts.txt",
+      "bytes": 226,
+      "sha256": "bd495f6f8f917a3e751b909a8a4eb41c0cf71df74674b2952bb4282a8a2c97ed",
+      "md5": "727bf6e1468b0fb79b931b0403e521a3",
+      "projectByteIdenticalMatchesBeforeRetention": [],
+      "figshareFileId": 32600930,
+      "sourceName": "181130-EosRmov009-roi1-counts.txt",
+      "sourceUrl": "https://ndownloader.figshare.com/files/32600930",
+      "repositoryMd5": "727bf6e1468b0fb79b931b0403e521a3",
+      "repositoryMd5Matched": true
+    }
+  ],
+  "apiReceipt": {
+    "path": "data/source-candidates/superclem-palm-localization-20260922/figshare-17816747-v1.api.json",
+    "bytes": 261398,
+    "sha256": "0340bbbce93c0a4bbef423d78ebc0654fa06b4847b0f537f9201463f8ee0cb04",
+    "md5": "ab3e1766a93385c2265f9b098867743d",
+    "projectByteIdenticalMatchesBeforeRetention": [],
+    "sourceUrl": "https://api.figshare.com/v2/articles/17816747/versions/1"
+  },
+  "sourceREADMEAssertions": {
+    "pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "sourceImageId": "181130_EosRmov009",
+    "sourceAnimalId": "AQ848",
+    "sex": "female",
+    "ageSourceLabel": ">2 months WT",
+    "genotypeSourceLabel": "EosGlyRb KI/KI mRFP-GPHN KI/KI",
+    "region": "Dorsal",
+    "parentNeuronIdentity": "not_reported"
+  },
+  "observedMatStructure": {
+    "format": "MATLAB Level 5 little-endian compressed numeric double matrix",
+    "variableName": "matrice_results",
+    "rows": 5,
+    "columns": 18358,
+    "detectionCount": 18358,
+    "rowMeaningsFromREADME": [
+      "frame number",
+      "X position",
+      "Y position",
+      "alpha (intensity under the curve)",
+      "sigma (radius of Gaussian profile)"
+    ],
+    "statistics": {
+      "frameNumber": {
+        "min": 1.0,
+        "max": 24997.0,
+        "finiteCount": 18358
+      },
+      "xPosition": {
+        "min": 4.058500700524468,
+        "max": 245.9930122551605,
+        "finiteCount": 18358
+      },
+      "yPosition": {
+        "min": 4.04587230653999,
+        "max": 245.89798103040326,
+        "finiteCount": 18358
+      },
+      "alpha": {
+        "min": 1000.0223289904087,
+        "max": 99734.4813739926,
+        "finiteCount": 18358
+      },
+      "sigma": {
+        "min": 0.30253879044884924,
+        "max": 2.9782523730669612,
+        "finiteCount": 18358
+      }
+    },
+    "probeMethod": "Python standard-library struct plus zlib, checked matrix class, dimensions, name and numeric payload length; research inventory only, not an admitted/general MAT reader."
+  },
+  "observedCountTable": {
+    "rows": 2,
+    "columns": 7,
+    "clusterIds": [
+      1,
+      2
+    ],
+    "detectionCounts": [
+      3654,
+      2519
+    ],
+    "reportedAreaPixelCounts": [
+      2328,
+      998
+    ],
+    "notExhaustivePartitionOfAllMatDetections": true
+  },
+  "limits": [
+    "MAT has XY only, no Z or same-cell soma/nucleus/neurite/organelles.",
+    "Detection count is not receptor molecule count: fluorophore blinking and conversion matter.",
+    "Raw MAT XY units, drift correction state, coordinate origin and transform to count-table centroids are not established by the file alone.",
+    "Published camera sampling is 107 nm and render sampling 10 nm, but neither has been assigned to raw MAT coordinates without object-specific proof.",
+    "AQ848 is a different animal and acquisition from admitted EM synapse D2-GB-E9 (BP057); no overlay is permitted.",
+    "No presynaptic or postsynaptic parent neuron, named interneuron or NeuroMorpho match is established."
+  ],
+  "geometryAdmissionCount": 0,
+  "publicAssetAdmissionCount": 0,
+  "deduplication": {
+    "preRetentionAllFileSizeMatchedSha256ChecksAcrossFiveObjects": 6,
+    "byteIdenticalProjectMatches": 0
+  }
+}

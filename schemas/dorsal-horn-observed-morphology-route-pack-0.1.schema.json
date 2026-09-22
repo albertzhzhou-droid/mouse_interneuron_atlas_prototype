@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/dorsal-horn-observed-morphology-route-pack-0.1.schema.json",
+  "title": "Independent dorsal-horn observed-morphology route pack 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "releaseId", "releasedAt", "title", "purpose", "repository", "runtimeMergePolicy", "summary", "routes", "packBoundaries"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "role"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/data/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "role": { "type": "string", "minLength": 1 },
+        "canonicalGeometrySha256": { "$ref": "#/$defs/sha256" },
+        "topologySha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["routeId", "title", "authority", "sourceAuthority", "censusMembership", "sourceRecord", "sourceObjects", "observedCellFormRecord", "fidelityRecord", "geometryReceipt", "somaContourReceipt", "renderingContract", "identityBoundary", "sourceLinks", "hardBoundaries"],
+      "properties": {
+        "routeId": { "type": "string", "pattern": "^mouse\\.sc\\..*\\.observed\\.nmo_[0-9]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "authority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "sourceAuthority": { "enum": ["NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD", "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT"] },
+        "censusMembership": { "type": "boolean" },
+        "sourceRecord": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "repositoryRelease", "repositoryRrid", "neuronId", "assetId", "neuronName", "archive", "species", "lifeStage", "sex", "strain", "regionLabels", "cellTypeLabels", "condition", "protocol", "slicingDirection", "slicingThicknessMicrometre", "reconstructionSoftware", "stain", "domain", "physicalIntegrity", "sourceAttributes", "sourcePaperDoi", "sourcePaperPmid"],
+          "properties": {
+            "repository": { "const": "NeuroMorpho.Org" },
+            "repositoryRelease": { "const": "8.6.124" },
+            "repositoryRrid": { "const": "RRID:SCR_002145" },
+            "neuronId": { "enum": [249676, 108974, 170035, 104003] },
+            "assetId": { "type": "string", "pattern": "^NeuroMorpho:[0-9]+$" },
+            "neuronName": { "type": "string", "minLength": 1 },
+            "archive": { "type": "string", "minLength": 1 },
+            "species": { "const": "mouse" },
+            "lifeStage": { "type": "string", "minLength": 1 },
+            "sex": { "type": "string", "minLength": 1 },
+            "strain": { "type": "string", "minLength": 1 },
+            "regionLabels": { "type": "array", "minItems": 4, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "cellTypeLabels": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "condition": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+            "protocol": { "type": "string", "minLength": 1 },
+            "slicingDirection": { "type": "string", "minLength": 1 },
+            "slicingThicknessMicrometre": { "type": "number", "exclusiveMinimum": 0 },
+            "reconstructionSoftware": { "type": "string", "minLength": 1 },
+            "stain": { "type": "string", "minLength": 1 },
+            "domain": { "type": "string", "minLength": 1 },
+            "physicalIntegrity": { "type": "string", "minLength": 1 },
+            "sourceAttributes": { "type": "string", "minLength": 1 },
+            "sourcePaperDoi": { "type": "string", "minLength": 1 },
+            "sourcePaperPmid": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "sourceObjects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["metadata", "censusAssetManifest", "geometry", "swc"],
+          "properties": {
+            "metadata": { "$ref": "#/$defs/receipt" },
+            "censusAssetManifest": { "anyOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }] },
+            "geometry": { "$ref": "#/$defs/receipt" },
+            "swc": { "$ref": "#/$defs/receipt" }
+          }
+        },
+        "observedCellFormRecord": { "type": "object", "minProperties": 10 },
+        "fidelityRecord": { "type": "object", "minProperties": 6 },
+        "geometryReceipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["dimensionality", "sourceFrame", "registrationStatus", "nodeCount", "segmentCount", "nodeTypeCounts", "boundsMicrometre", "extentMicrometre", "canonicalGeometrySha256", "topologySha256", "sourceDiameterAvailable"],
+          "properties": {
+            "dimensionality": { "const": "3D" },
+            "sourceFrame": { "const": "NeuroMorpho_CNG_standardized_local_frame" },
+            "registrationStatus": { "const": "unregistered" },
+            "nodeCount": { "type": "integer", "minimum": 1 },
+            "segmentCount": { "type": "integer", "minimum": 0 },
+            "nodeTypeCounts": {
+              "type": "object",
+              "minProperties": 2,
+              "propertyNames": { "pattern": "^[0-9]+$" },
+              "additionalProperties": { "type": "integer", "minimum": 0 }
+            },
+            "boundsMicrometre": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["min", "max"],
+              "properties": { "min": { "$ref": "#/$defs/vec3" }, "max": { "$ref": "#/$defs/vec3" } }
+            },
+            "extentMicrometre": { "$ref": "#/$defs/vec3" },
+            "canonicalGeometrySha256": { "$ref": "#/$defs/sha256" },
+            "topologySha256": { "$ref": "#/$defs/sha256" },
+            "sourceDiameterAvailable": { "type": "boolean" }
+          }
+        },
+        "somaContourReceipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["evidenceSource", "originalContourCount", "standardizedSomaPointCount", "nativeContourVerticesAvailable", "membraneClaim"],
+          "properties": {
+            "evidenceSource": { "const": "standardized_swc_header" },
+            "originalContourCount": { "type": "integer", "minimum": 1 },
+            "standardizedSomaPointCount": { "type": "integer", "minimum": 1 },
+            "nativeContourVerticesAvailable": { "const": false },
+            "membraneClaim": { "const": false }
+          }
+        },
+        "renderingContract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["observedSwc", "radiusSurface", "sameSpecimenInternalStructure"],
+          "properties": {
+            "observedSwc": { "type": "object", "minProperties": 3 },
+            "radiusSurface": { "type": "object", "minProperties": 6 },
+            "sameSpecimenInternalStructure": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["available", "authority", "representationStateId", "renderedPrimitiveCount", "missingEvidence"],
+              "properties": {
+                "available": { "const": false },
+                "authority": { "const": "UNAVAILABLE" },
+                "representationStateId": { "const": "UNAVAILABLE" },
+                "renderedPrimitiveCount": { "const": 0 },
+                "missingEvidence": { "type": "array", "minItems": 6, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+              }
+            }
+          }
+        },
+        "identityBoundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["markerIdentityBasis", "individualMolecularAssayClaim", "selectedSciEntityRelationship", "molecularProfileRelationship", "otherMorphologyRelationship", "crossSourceIdentityCount", "projectRegistrationCount", "coDisplayCreatesRelationship"],
+          "properties": {
+            "markerIdentityBasis": { "type": "string", "minLength": 1 },
+            "individualMolecularAssayClaim": { "const": false },
+            "selectedSciEntityRelationship": { "const": "none" },
+            "molecularProfileRelationship": { "const": "none" },
+            "otherMorphologyRelationship": { "const": "independent_record" },
+            "crossSourceIdentityCount": { "const": 0 },
+            "projectRegistrationCount": { "const": 0 },
+            "coDisplayCreatesRelationship": { "const": false }
+          }
+        },
+        "sourceLinks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["officialRecord", "officialApi", "standardizedSwc", "primaryPaper", "rights"],
+          "properties": {
+            "officialRecord": { "type": "string", "format": "uri" },
+            "officialApi": { "type": "string", "format": "uri" },
+            "standardizedSwc": { "type": "string", "format": "uri" },
+            "primaryPaper": { "type": "string", "format": "uri" },
+            "rights": { "type": "string", "format": "uri" }
+          }
+        },
+        "hardBoundaries": { "type": "array", "minItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "dorsal-horn-observed-morphology-route-pack-0.1" },
+    "releaseId": { "const": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "release", "rrid", "rights", "rightsUrl"],
+      "properties": {
+        "name": { "const": "NeuroMorpho.Org" },
+        "release": { "const": "8.6.124" },
+        "rrid": { "const": "RRID:SCR_002145" },
+        "rights": { "type": "string", "minLength": 1 },
+        "rightsUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "runtimeMergePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frozenLegacyExemplarCount", "preExistingIndependentRouteCount", "preMergeUniqueMainSceneNeuronCount", "routePackRecordCount", "overlappingFrozenNeuronIds", "supplementaryNeuronIds", "deduplicateBy", "postMergeUniqueMainSceneNeuronCount", "postMergeNamedDorsalHornRouteCount", "frozenCensusRecordCount", "censusExpansionCount"],
+      "properties": {
+        "frozenLegacyExemplarCount": { "const": 5 },
+        "preExistingIndependentRouteCount": { "const": 1 },
+        "preMergeUniqueMainSceneNeuronCount": { "const": 6 },
+        "routePackRecordCount": { "const": 4 },
+        "overlappingFrozenNeuronIds": { "const": [104003, 108974] },
+        "supplementaryNeuronIds": { "const": [170035, 249676] },
+        "deduplicateBy": { "const": "neuronId" },
+        "postMergeUniqueMainSceneNeuronCount": { "const": 8 },
+        "postMergeNamedDorsalHornRouteCount": { "const": 5 },
+        "frozenCensusRecordCount": { "const": 142 },
+        "censusExpansionCount": { "const": 0 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["routeCount", "uniqueNeuronCount", "existingCensusRecordCount", "supplementaryRecordCount", "sourceDiameterAvailableCount", "sourceNoDiameterCount", "observedAxonRouteCount", "sourceCompleteAxonCount", "sameSpecimenInternalStructureCount", "renderedInternalPrimitiveCount", "exactCrossSourceIdentityCount", "projectRegistrationCount"],
+      "properties": {
+        "routeCount": { "const": 4 },
+        "uniqueNeuronCount": { "const": 4 },
+        "existingCensusRecordCount": { "const": 2 },
+        "supplementaryRecordCount": { "const": 2 },
+        "sourceDiameterAvailableCount": { "const": 2 },
+        "sourceNoDiameterCount": { "const": 2 },
+        "observedAxonRouteCount": { "const": 1 },
+        "sourceCompleteAxonCount": { "const": 0 },
+        "sameSpecimenInternalStructureCount": { "const": 0 },
+        "renderedInternalPrimitiveCount": { "const": 0 },
+        "exactCrossSourceIdentityCount": { "const": 0 },
+        "projectRegistrationCount": { "const": 0 }
+      }
+    },
+    "routes": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "$ref": "#/$defs/route" } },
+    "packBoundaries": { "type": "array", "minItems": 5, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+  }
+}

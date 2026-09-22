@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-super-clem-synapse-reference-0.1.0",
+  "releasedAt": "2026-08-30",
+  "queueItemId": "UPG-099",
+  "title": "Exact Super-CLEM spinal glycinergic-synapse EM reference slice",
+  "purpose": "Admit one checksum-pinned public two-dimensional EM source slice and its browser-format derivative without attaching the synapse to any NeuroMorpho cell, interneuron type or atlas entity.",
+  "sourceDataset": {
+    "articleId": 17816747,
+    "version": 1,
+    "title": "Identification of a stereotypic molecular arrangement of endogenous glycine receptors at spinal cord synapses",
+    "datasetUrl": "https://figshare.com/articles/dataset/Identification_of_a_stereotypic_molecular_arrangement_of_endogenous_glycine_receptors_at_spinal_cord_synapses/17816747/1",
+    "paperUrl": "https://elifesciences.org/articles/74441",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "sourceObject": {
+    "sourceObjectId": "FigshareFile:32606555",
+    "figshareFileId": 32606555,
+    "filename": "D2-GB-E9-synapse-1-dorsal-2-grille-IBIDI-B-E9-grille-élect-C1-synapses-Est-top+140-20142.tif",
+    "sourceUrl": "https://ndownloader.figshare.com/files/32606555",
+    "mediaType": "image/tiff",
+    "remoteReceipt": {
+      "bytes": 2405817,
+      "md5": "384e5d12c9d024feed140b0ab46bb688"
+    },
+    "image": {
+      "dimensionality": "2D",
+      "widthPixels": 1794,
+      "heightPixels": 1332,
+      "bitsPerSample": 8,
+      "samplesPerPixel": 1,
+      "photometricInterpretation": 3,
+      "storageEncoding": "indexed_rgb_palette",
+      "decodedColorFamily": "RGB"
+    },
+    "biologicalScope": {
+      "species": "Mus musculus",
+      "anatomicalContext": "spinal cord dorsal horn; source label Dorsal 2",
+      "modality": "serial-section electron microscopy",
+      "sectionThicknessNanometre": 70,
+      "objectRole": "two_dimensional_em_reference_slice",
+      "physicalObjectRelationship": "same_physical_synapse_slice",
+      "parentCellResolved": false,
+      "parentCellId": null
+    },
+    "localOriginal": {
+      "path": "/data/super_clem_glyr_v1/source/D2-GB-E9-synapse-1-dorsal-2-grille-IBIDI-B-E9-grille-elect-C1-synapses-Est-top-plus-140-20142.tif",
+      "receiptStatus": "verified_local_copy",
+      "bytes": 2405817,
+      "md5": "384e5d12c9d024feed140b0ab46bb688",
+      "sha256": "56d8bf7356e1f619ea175aa08a1021a27dbf4302caed835828ecf3ebdae95d5e"
+    }
+  },
+  "browserDerivative": {
+    "path": "/data/super_clem_glyr_v1/derived/super-clem-d2-gb-e9-synapse-1-top-plus-140.png",
+    "receiptStatus": "verified_format_derivative",
+    "mediaType": "image/png",
+    "bytes": 1884486,
+    "sha256": "3583cf15007c2c5e62196f2a2fcb8e7393433b6d094688cbc17112ae870e2c1c",
+    "widthPixels": 1794,
+    "heightPixels": 1332,
+    "bitDepth": 8,
+    "pngColorType": 3,
+    "storageEncoding": "indexed_rgb_palette",
+    "decodedColorFamily": "RGB",
+    "derivedFromPath": "/data/super_clem_glyr_v1/source/D2-GB-E9-synapse-1-dorsal-2-grille-IBIDI-B-E9-grille-elect-C1-synapses-Est-top-plus-140-20142.tif",
+    "derivation": "lossless_format_conversion_for_browser_display",
+    "conversionTool": {
+      "name": "Pillow",
+      "version": "12.3.0",
+      "operation": "direct_palette_mode_tiff_decode_and_png_save",
+      "optimize": false
+    },
+    "decodedRgbEquivalence": {
+      "status": "verified",
+      "method": "Pillow ImageChops.difference after RGB decode",
+      "differenceBoundingBox": null
+    },
+    "cropped": false,
+    "resampled": false,
+    "intensityTransformApplied": false,
+    "segmentationAdded": false,
+    "scientificAnnotationAdded": false
+  },
+  "relationshipPolicy": {
+    "parentCellResolved": false,
+    "namedInterneuronResolved": false,
+    "dendriteIdentityResolved": false,
+    "presynapticCellResolved": false,
+    "fileLevelPalmCrosswalkAvailable": false,
+    "crossLaneRelationships": [
+      {
+        "targetLane": "neuromorpho_morphology",
+        "relationship": "co_display_only",
+        "joinedEntityIds": [],
+        "joinCount": 0,
+        "registrationCount": 0
+      },
+      {
+        "targetLane": "interneuron_type",
+        "relationship": "co_display_only",
+        "joinedEntityIds": [],
+        "joinCount": 0,
+        "registrationCount": 0
+      },
+      {
+        "targetLane": "atlas_entity",
+        "relationship": "co_display_only",
+        "joinedEntityIds": [],
+        "joinCount": 0,
+        "registrationCount": 0
+      }
+    ]
+  },
+  "claimPermissions": {
+    "source2dSliceDisplay": true,
+    "browserPngDisplay": true,
+    "threeDimensionalReconstruction": false,
+    "segmentation": false,
+    "mesh": false,
+    "organelleAnnotation": false,
+    "receptorOverlay": false,
+    "namedInterneuronIdentity": false,
+    "dendriteIdentity": false,
+    "presynapticCellIdentity": false,
+    "fileLevelPalmCrosswalk": false,
+    "neuroMorphoJoin": false,
+    "interneuronTypeJoin": false,
+    "atlasJoin": false
+  },
+  "missingness": [
+    {
+      "field": "parent_cell_identity",
+      "status": "UNAVAILABLE",
+      "reason": "No persistent parent-cell identifier is supplied for this exact source file."
+    },
+    {
+      "field": "segmentation_or_mesh",
+      "status": "UNAVAILABLE",
+      "reason": "No admitted segmentation, contour set or mesh is bundled with this exact source file."
+    },
+    {
+      "field": "organelle_annotation",
+      "status": "UNAVAILABLE",
+      "reason": "Visible ultrastructure has no admitted file-level organelle labels."
+    },
+    {
+      "field": "receptor_overlay",
+      "status": "UNAVAILABLE",
+      "reason": "No exact file-level PALM-to-EM crosswalk is admitted for this slice."
+    },
+    {
+      "field": "atlas_placement",
+      "status": "UNAVAILABLE",
+      "reason": "No source-to-atlas transform or registered placement is admitted."
+    }
+  ],
+  "hardBoundaries": [
+    "This object is one two-dimensional EM source slice, not a three-dimensional reconstruction, segmentation or mesh.",
+    "The source TIFF and browser PNG are stored as 8-bit indexed-palette images; RGB describes decoded display values, not stored three-channel samples.",
+    "The slice belongs to the declared same physical synapse context, but the parent cell, named interneuron, dendrite identity and presynaptic cell are unresolved.",
+    "Visible ultrastructure does not authorize organelle annotation, receptor overlay or a file-level PALM crosswalk.",
+    "Every NeuroMorpho morphology, interneuron type and atlas entity remains co-display only with zero joins and zero registrations.",
+    "The browser PNG is a display-format derivative only; it adds no biological object, contour, annotation or identity.",
+    "Unavailable means no exact source object or crosswalk is admitted; it does not mean the structure is biologically absent."
+  ]
+}

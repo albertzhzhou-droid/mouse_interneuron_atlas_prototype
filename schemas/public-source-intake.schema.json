@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-source-intake-0.4.json",
+  "title": "OHRI public-source metadata intake 0.4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "intakeId", "catalogReleaseId", "sourceId", "auditDate", "auditScope", "publicSourceEvidence", "acquisition", "coordinates", "rights", "softwareProvenance", "admission", "requiredBeforeFileAdmission", "scientificBoundaries"],
+  "properties": {
+    "schemaVersion": {"const": "0.4.0"},
+    "intakeId": {"type": "string", "pattern": "^PSI-[A-Z0-9-]+-[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "sourceId": {"const": "PDS-SPINALJ-PROCESSED"},
+    "auditDate": {"type": "string", "format": "date"},
+    "auditScope": {"const": "public_landing_page_and_protocol_metadata_only"},
+    "publicSourceEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["records", "reportedFacts"],
+      "properties": {
+        "records": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "kind", "url", "accessVerifiedOn", "use"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^PSE-[A-Z0-9-]+$"},
+              "kind": {"enum": ["dataset_landing_page", "protocol", "software_repository_context"]},
+              "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+              "accessVerifiedOn": {"type": "string", "format": "date"},
+              "use": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "reportedFacts": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "evidenceRecordId", "evidenceClass", "statement"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^PSF-[0-9]{3}$"},
+              "evidenceRecordId": {"type": "string", "pattern": "^PSE-[A-Z0-9-]+$"},
+              "evidenceClass": {"enum": ["landing_page_metadata", "protocol_context", "unresolved"]},
+              "statement": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "remoteAcquisitionAttempted", "candidateFilesEnumerated", "fileHashes", "bundledAssetCount", "decision"],
+      "properties": {
+        "status": {"const": "not_downloaded"},
+        "remoteAcquisitionAttempted": {"const": false},
+        "candidateFilesEnumerated": {"const": false},
+        "fileHashes": {"type": "array", "maxItems": 0},
+        "bundledAssetCount": {"const": 0},
+        "decision": {"const": "hold_for_file_manifest"}
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceCoordinateAuthority", "nativeCoordinateMetadataStatus", "transformStatus", "projectRegistrationStatus", "projectRegistrationCount"],
+      "properties": {
+        "sourceCoordinateAuthority": {"const": "SOURCE_LOCAL_OBS"},
+        "nativeCoordinateMetadataStatus": {"const": "not_file_verified"},
+        "transformStatus": {"const": "not_file_verified"},
+        "projectRegistrationStatus": {"const": "not_proposed"},
+        "projectRegistrationCount": {"const": 0}
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["landingPageLicense", "fileLevelReuseDecision", "bundleAuthorized", "publicHostingAuthorized"],
+      "properties": {
+        "landingPageLicense": {"const": "CC BY 4.0"},
+        "fileLevelReuseDecision": {"const": "pending_file_level_manifest"},
+        "bundleAuthorized": {"const": false},
+        "publicHostingAuthorized": {"const": false}
+      }
+    },
+    "softwareProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["datasetDeclaredSoftwareVersion", "repositoryVersionDecision", "compatibilityDecision"],
+      "properties": {
+        "datasetDeclaredSoftwareVersion": {"const": "SpinalJ v1.13"},
+        "repositoryVersionDecision": {"const": "not_pinned_by_this_metadata_audit"},
+        "compatibilityDecision": {"const": "unresolved_do_not_substitute_a_repository_version"}
+      }
+    },
+    "admission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "outcome", "nextQueueItem"],
+      "properties": {
+        "status": {"const": "metadata_audited_not_admitted"},
+        "outcome": {"const": "public_metadata_is_recorded_but_no_candidate_file_or_transform_is_admitted"},
+        "nextQueueItem": {"const": "UPG-001"}
+      }
+    },
+    "requiredBeforeFileAdmission": {"type": "array", "minItems": 7, "items": {"type": "string", "minLength": 1}},
+    "scientificBoundaries": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 1}}
+  }
+}

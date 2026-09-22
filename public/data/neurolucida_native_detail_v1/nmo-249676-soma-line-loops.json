@@ -1,0 +1,1697 @@
+{
+  "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry",
+  "schemaVersion": "0.4.0",
+  "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.4.0",
+  "assetId": "NeuroMorpho:249676",
+  "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+  "units": "micrometre_interpreted_from_Neurolucida_semantics",
+  "registrationStatus": "unregistered",
+  "source": {
+    "projectPath": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-249676.original.dat",
+    "storage": "project_source_only",
+    "bytes": 89750,
+    "sha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+    "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/249676",
+    "originalDatUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat",
+    "sourcePaperDoi": "10.1097/j.pain.0000000000002677",
+    "rights": "CC BY 4.0; cite original paper, NeuroMorpho.Org RRID:SCR_002145 and Tecuatl et al. 2024 (10.1096/fba.2024-00048)",
+    "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+  },
+  "extraction": {
+    "builder": {
+      "path": "tools/build_neurolucida_native_contour_admission_catalog_0_4.mjs",
+      "bytes": 12298,
+      "sha256": "01efcb9c4d1ab48388e0088c50d54778cde73ccba51a159d6a2119648bf973d5"
+    },
+    "reader": {
+      "path": "tools/neurolucida-native-contour-reader.mjs",
+      "bytes": 7672,
+      "sha256": "4c1acfe50a307e61c45d35c432cdd34ac991ad48f43bb2296c190f9c149b2f64"
+    },
+    "independentAudit": {
+      "receipt": {
+        "path": "data/neurolucida-native-detail-independent-audit-0.4.json",
+        "bytes": 6636,
+        "sha256": "1c438aef6507d4f1dc38e7960373c53d446c21d82c9fac796a4d1b8e8efbd22e"
+      },
+      "parser": {
+        "repository": "https://github.com/NeuroMorpho/xyz2swc",
+        "commit": "e07fd2d53c03945f011c335c7b643765f2d85a09",
+        "parserPath": "modules/hbp/node_modules/morphology_io/app/morphology_parser.js",
+        "parserSha256": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2",
+        "typeLibraryPath": "modules/hbp/node_modules/morphology_io/app/swcPlus_typeLibrary.js",
+        "typeLibrarySha256": "8006588950ef0ee55da9a4bea46f93b9120a5dc6c29d6b5263050c7a6d168d89",
+        "classificationBasis": "matchPart recognizes the exact source contour name as soma; the parser maps border.soma to somaContour while retaining closed=false. The zero-value CellBody property is verified as a separate evidence gate.",
+        "parserCodeBundled": false
+      },
+      "exactSomaContourClassificationCount": 12,
+      "exactPointArraysAgree": true,
+      "exactPointPayloadSha256": "11c645c26e2e48ebfc4e3807d59ccbfb7bd182f61add8cfb58a46c92922f9dff"
+    }
+  },
+  "closureInterpretation": {
+    "exactSourceName": "CellBody",
+    "rawSourceClosedFlagPreserved": true,
+    "rawSourceClosedFlagValue": false,
+    "interpretedClosed": true,
+    "requiredPresenceProperty": {
+      "key": "CellBody",
+      "declaredValueCount": 0,
+      "rawValues": [],
+      "interpretedPresence": true
+    },
+    "independentParserClassification": "somaContour",
+    "mbfDocumentationUrl": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+    "scope": "File-specific soma cross-section line closure only; source name drives independent soma classification and the empty-value property is a separate evidence gate."
+  },
+  "summary": {
+    "vertexCount": 156,
+    "sourceSomaContourObjectCount": 12,
+    "admittedMbfCellBodyContourObjectCount": 12,
+    "rawSourceClosedTrueContourObjectCount": 0,
+    "rawSourceClosedFalseContourObjectCount": 12,
+    "semanticClosedSegmentCount": 156,
+    "pointPayloadSha256": "11c645c26e2e48ebfc4e3807d59ccbfb7bd182f61add8cfb58a46c92922f9dff",
+    "filledPolygonCount": 0,
+    "triangleCount": 0,
+    "loftCount": 0,
+    "surfaceCount": 0,
+    "membraneCount": 0,
+    "volumeCount": 0,
+    "internalStructureObjectCount": 0,
+    "biologicalMeasurementCount": 0,
+    "standardizedSwcOverlayCount": 0,
+    "sameCellJoinCount": 0,
+    "registrationCount": 0,
+    "crossSourceJoinCount": 0
+  },
+  "excludedSourceObjectInventory": {
+    "propertyListFromDAT": 259,
+    "thumbnailFromDAT": 1,
+    "readContourFromDAT": 12,
+    "readMarkerFromDAT": 1,
+    "readTreeFromDAT": 7,
+    "readBranchFromDAT": 58,
+    "readSpineFromDAT": 236,
+    "readTextFromDAT": 0
+  },
+  "displayContract": {
+    "admittedPrimitive": "source-native MBF cell-body ordered LineLoop only",
+    "preserveSourceCoordinates": true,
+    "preserveSourcePointOrder": true,
+    "preserveDuplicateZPlanesAsSeparateObjects": true,
+    "preserveRawSourceClosedFlag": true,
+    "closeLastToFirstByMbfCellBodySemantics": true,
+    "traceRadiusRenderingUse": "forbidden",
+    "nativeDrawingWidthAuthorizesSwcDiameter": false,
+    "biologicalMeasurementUse": "not_authorized",
+    "forbiddenInferences": [
+      "generic false-flag closure",
+      "polygon fill",
+      "triangulation",
+      "lofted surface",
+      "membrane, nucleus or organelle model",
+      "volume estimate",
+      "biological measurement",
+      "standardized SWC overlay",
+      "same-cell join",
+      "atlas registration",
+      "representative type morphology",
+      "native drawing width as SWC diameter"
+    ]
+  },
+  "contours": [
+    {
+      "id": "nmo-249676-native-contour-1",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ffffff",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 22,
+      "zValuesMicrometre": [
+        -36
+      ],
+      "boundsMicrometre": {
+        "min": [
+          265.50335693359375,
+          -36.78507995605469,
+          -36
+        ],
+        "max": [
+          283.5989074707031,
+          -26.799585342407227,
+          -36
+        ]
+      },
+      "sourceBlockOffsetByte": 21378,
+      "sourceBlockSizeByte": 602,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          265.70611572265625,
+          -31.614925384521484,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          266.8719482421875,
+          -30.955984115600586,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          268.5446472167969,
+          -30.14497947692871,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          270.21734619140625,
+          -29.080535888671875,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          271.1803894042969,
+          -28.01609230041504,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          272.5489807128906,
+          -27.509214401245117,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          274.0696105957031,
+          -27.10371208190918,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          276.198486328125,
+          -26.799585342407227,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          279.1890563964844,
+          -27.407838821411133,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          281.06451416015625,
+          -28.776409149169922,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          282.12896728515625,
+          -30.14497947692871,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          283.5989074707031,
+          -32.324554443359375,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          283.1427001953125,
+          -34.20000076293945,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          281.6727600097656,
+          -36.02476501464844,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          279.5945739746094,
+          -36.37957763671875,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          276.6546936035156,
+          -36.78507995605469,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          272.9544677734375,
+          -36.17682647705078,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          271.3831481933594,
+          -35.568572998046875,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          269.9638977050781,
+          -34.757568359375,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          267.7843322753906,
+          -33.794498443603516,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          265.8074951171875,
+          -33.23693084716797,
+          -36,
+          0.24983137845993042
+        ],
+        [
+          265.50335693359375,
+          -32.67936706542969,
+          -36,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 22
+    },
+    {
+      "id": "nmo-249676-native-contour-2",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ff00ff",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 20,
+      "zValuesMicrometre": [
+        -35
+      ],
+      "boundsMicrometre": {
+        "min": [
+          266.01025390625,
+          -36.73439025878906,
+          -35
+        ],
+        "max": [
+          282.8892822265625,
+          -27.35715103149414,
+          -35
+        ]
+      },
+      "sourceBlockOffsetByte": 21980,
+      "sourceBlockSizeByte": 554,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          266.669189453125,
+          -31.5135498046875,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          266.01025390625,
+          -32.22317886352539,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          266.11163330078125,
+          -33.43968200683594,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          269.5076904296875,
+          -34.706878662109375,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          271.7886657714844,
+          -35.72063446044922,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          275.0833740234375,
+          -36.73439025878906,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          278.580810546875,
+          -36.328887939453125,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          280.86175537109375,
+          -35.568572998046875,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          281.8755187988281,
+          -34.85894012451172,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          282.58514404296875,
+          -33.69312286376953,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          282.8892822265625,
+          -32.47661590576172,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          281.5714111328125,
+          -29.942228317260742,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          278.9356384277344,
+          -28.01609230041504,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          276.70538330078125,
+          -27.35715103149414,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          275.3367919921875,
+          -27.35715103149414,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          273.51202392578125,
+          -27.914716720581055,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          272.0420837402344,
+          -28.624345779418945,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          269.7611389160156,
+          -30.09429168701172,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          268.29119873046875,
+          -30.499794006347656,
+          -35,
+          0.24983137845993042
+        ],
+        [
+          267.4801940917969,
+          -31.108047485351562,
+          -35,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 20
+    },
+    {
+      "id": "nmo-249676-native-contour-3",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#00ff00",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 16,
+      "zValuesMicrometre": [
+        -34
+      ],
+      "boundsMicrometre": {
+        "min": [
+          268.0377502441406,
+          -36.430267333984375,
+          -34
+        ],
+        "max": [
+          281.8248291015625,
+          -27.6105899810791,
+          -34
+        ]
+      },
+      "sourceBlockOffsetByte": 22534,
+      "sourceBlockSizeByte": 458,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          268.49395751953125,
+          -31.209423065185547,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          268.0377502441406,
+          -32.8314323425293,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          270.26800537109375,
+          -34.757568359375,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          273.816162109375,
+          -36.430267333984375,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          278.327392578125,
+          -36.17682647705078,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          280.8110656738281,
+          -35.365821838378906,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          281.8248291015625,
+          -33.287620544433594,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          281.6727600097656,
+          -30.449106216430664,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          279.898681640625,
+          -28.9284725189209,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          278.327392578125,
+          -28.218843460083008,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          276.2491760253906,
+          -27.6105899810791,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          274.1709899902344,
+          -27.6105899810791,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          272.0420837402344,
+          -28.47228240966797,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          270.87628173828125,
+          -29.68878936767578,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          270.0652770996094,
+          -30.297042846679688,
+          -34,
+          0.24983137845993042
+        ],
+        [
+          269.3049621582031,
+          -30.80392074584961,
+          -34,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 16
+    },
+    {
+      "id": "nmo-249676-native-contour-4",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#00ffff",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 14,
+      "zValuesMicrometre": [
+        -33
+      ],
+      "boundsMicrometre": {
+        "min": [
+          270.21734619140625,
+          -36.227516174316406,
+          -33
+        ],
+        "max": [
+          280.2535095214844,
+          -27.762653350830078,
+          -33
+        ]
+      },
+      "sourceBlockOffsetByte": 22992,
+      "sourceBlockSizeByte": 410,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          272.2955322265625,
+          -29.68878936767578,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          270.77490234375,
+          -31.26011085510254,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          270.21734619140625,
+          -33.084869384765625,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          271.0283203125,
+          -34.909629821777344,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          273.0051574707031,
+          -35.97407531738281,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          274.7285461425781,
+          -36.227516174316406,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          278.68218994140625,
+          -36.126136779785156,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          280.2535095214844,
+          -33.946563720703125,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          280.1521301269531,
+          -31.462862014770508,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          278.8342590332031,
+          -29.080535888671875,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          277.4656982421875,
+          -28.320219039916992,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          275.7423095703125,
+          -27.762653350830078,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          273.816162109375,
+          -27.965404510498047,
+          -33,
+          0.24983137845993042
+        ],
+        [
+          272.85308837890625,
+          -28.675033569335938,
+          -33,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 14
+    },
+    {
+      "id": "nmo-249676-native-contour-5",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ffff00",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 10,
+      "zValuesMicrometre": [
+        -32
+      ],
+      "boundsMicrometre": {
+        "min": [
+          271.7886657714844,
+          -35.97407531738281,
+          -32
+        ],
+        "max": [
+          278.327392578125,
+          -29.790164947509766,
+          -32
+        ]
+      },
+      "sourceBlockOffsetByte": 23402,
+      "sourceBlockSizeByte": 314,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          274.6778564453125,
+          -29.790164947509766,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          272.85308837890625,
+          -30.8546085357666,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          271.7886657714844,
+          -32.62868118286133,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          272.3462219238281,
+          -34.40275192260742,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          273.6640930175781,
+          -35.669944763183594,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          276.1477966308594,
+          -35.97407531738281,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          277.921875,
+          -35.011009216308594,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          278.327392578125,
+          -32.42593002319336,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          277.8711853027344,
+          -31.006671905517578,
+          -32,
+          0.24983137845993042
+        ],
+        [
+          276.1477966308594,
+          -29.992916107177734,
+          -32,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 10
+    },
+    {
+      "id": "nmo-249676-native-contour-6",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ff8000",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 9,
+      "zValuesMicrometre": [
+        -31
+      ],
+      "boundsMicrometre": {
+        "min": [
+          273.6640930175781,
+          -35.06169128417969,
+          -31
+        ],
+        "max": [
+          277.8711853027344,
+          -31.665613174438477,
+          -31
+        ]
+      },
+      "sourceBlockOffsetByte": 23716,
+      "sourceBlockSizeByte": 290,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          274.8299255371094,
+          -31.868364334106445,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          273.6640930175781,
+          -32.57799530029297,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          273.816162109375,
+          -33.54106140136719,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          274.880615234375,
+          -35.06169128417969,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          277.3136291503906,
+          -34.45343780517578,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          277.8711853027344,
+          -33.287620544433594,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          277.7698059082031,
+          -32.27386474609375,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          276.8067321777344,
+          -31.71630096435547,
+          -31,
+          0.24983137845993042
+        ],
+        [
+          276.09710693359375,
+          -31.665613174438477,
+          -31,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 9
+    },
+    {
+      "id": "nmo-249676-native-contour-7",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ff00ff",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 15,
+      "zValuesMicrometre": [
+        -37.5
+      ],
+      "boundsMicrometre": {
+        "min": [
+          268.2405090332031,
+          -35.92338562011719,
+          -37.5
+        ],
+        "max": [
+          284.0550842285156,
+          -26.596834182739258,
+          -37.5
+        ]
+      },
+      "sourceBlockOffsetByte": 24006,
+      "sourceBlockSizeByte": 434,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          270.6228332519531,
+          -28.47228240966797,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          268.7980651855469,
+          -29.739477157592773,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          268.2405090332031,
+          -31.05735969543457,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          269.71044921875,
+          -33.0341796875,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          271.7886657714844,
+          -34.706878662109375,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          275.7423095703125,
+          -35.92338562011719,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          278.88494873046875,
+          -35.568572998046875,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          281.72344970703125,
+          -34.808258056640625,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          283.4975280761719,
+          -33.43968200683594,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          284.0550842285156,
+          -31.5135498046875,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          282.6358337402344,
+          -29.68878936767578,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          280.963134765625,
+          -28.01609230041504,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          278.68218994140625,
+          -27.255775451660156,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          275.7929992675781,
+          -26.596834182739258,
+          -37.5,
+          0.24983137845993042
+        ],
+        [
+          272.9037780761719,
+          -27.205087661743164,
+          -37.5,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 15
+    },
+    {
+      "id": "nmo-249676-native-contour-8",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#80ff00",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 13,
+      "zValuesMicrometre": [
+        -38.5
+      ],
+      "boundsMicrometre": {
+        "min": [
+          268.74737548828125,
+          -35.568572998046875,
+          -38.5
+        ],
+        "max": [
+          283.7509765625,
+          -26.546146392822266,
+          -38.5
+        ]
+      },
+      "sourceBlockOffsetByte": 24440,
+      "sourceBlockSizeByte": 386,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          272.5489807128906,
+          -28.01609230041504,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          269.45703125,
+          -29.486038208007812,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          268.74737548828125,
+          -30.60116958618164,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          269.9132080078125,
+          -32.73005676269531,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          272.39691162109375,
+          -34.65618896484375,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          275.3874816894531,
+          -35.568572998046875,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          278.0739440917969,
+          -35.16307067871094,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          281.9768981933594,
+          -34.85894012451172,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          283.3961486816406,
+          -33.33831024169922,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          283.7509765625,
+          -31.614925384521484,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          282.0782775878906,
+          -29.43535041809082,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          279.8480224609375,
+          -27.35715103149414,
+          -38.5,
+          0.24983137845993042
+        ],
+        [
+          276.95880126953125,
+          -26.546146392822266,
+          -38.5,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 13
+    },
+    {
+      "id": "nmo-249676-native-contour-9",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#00ffff",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 12,
+      "zValuesMicrometre": [
+        -39.5
+      ],
+      "boundsMicrometre": {
+        "min": [
+          271.1803894042969,
+          -35.51788330078125,
+          -39.5
+        ],
+        "max": [
+          282.6358337402344,
+          -26.799585342407227,
+          -39.5
+        ]
+      },
+      "sourceBlockOffsetByte": 24826,
+      "sourceBlockSizeByte": 362,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          273.5627136230469,
+          -27.762653350830078,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          271.73797607421875,
+          -29.18191146850586,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          271.1803894042969,
+          -31.31079864501953,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          271.6365966796875,
+          -33.59174728393555,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          275.0833740234375,
+          -35.51788330078125,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          278.1246337890625,
+          -35.16307067871094,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          280.86175537109375,
+          -33.794498443603516,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          282.1796569824219,
+          -32.47661590576172,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          282.6358337402344,
+          -30.8546085357666,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          282.12896728515625,
+          -29.587413787841797,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          279.0370178222656,
+          -27.35715103149414,
+          -39.5,
+          0.24983137845993042
+        ],
+        [
+          277.0601806640625,
+          -26.799585342407227,
+          -39.5,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 12
+    },
+    {
+      "id": "nmo-249676-native-contour-10",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ffffff",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 10,
+      "zValuesMicrometre": [
+        -40.5
+      ],
+      "boundsMicrometre": {
+        "min": [
+          271.83935546875,
+          -34.40275192260742,
+          -40.5
+        ],
+        "max": [
+          281.5714111328125,
+          -27.762653350830078,
+          -40.5
+        ]
+      },
+      "sourceBlockOffsetByte": 25188,
+      "sourceBlockSizeByte": 314,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          274.5257873535156,
+          -27.864028930664062,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          273.05584716796875,
+          -29.333974838256836,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          271.83935546875,
+          -31.76698875427246,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          274.1709899902344,
+          -34.149314880371094,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          277.4656982421875,
+          -34.40275192260742,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          280.20281982421875,
+          -33.18624496459961,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          281.5714111328125,
+          -31.412174224853516,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          281.36865234375,
+          -29.942228317260742,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          279.3918151855469,
+          -28.26953125,
+          -40.5,
+          0.24983137845993042
+        ],
+        [
+          278.0739440917969,
+          -27.762653350830078,
+          -40.5,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 10
+    },
+    {
+      "id": "nmo-249676-native-contour-11",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#ffff00",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 8,
+      "zValuesMicrometre": [
+        -41.5
+      ],
+      "boundsMicrometre": {
+        "min": [
+          273.5627136230469,
+          -33.38899612426758,
+          -41.5
+        ],
+        "max": [
+          279.8480224609375,
+          -28.47228240966797,
+          -41.5
+        ]
+      },
+      "sourceBlockOffsetByte": 25502,
+      "sourceBlockSizeByte": 266,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          275.7423095703125,
+          -28.47228240966797,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          274.12030029296875,
+          -29.587413787841797,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          273.5627136230469,
+          -30.702545166015625,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          274.77923583984375,
+          -32.42593002319336,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          277.36431884765625,
+          -33.38899612426758,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          279.4425048828125,
+          -32.121803283691406,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          279.8480224609375,
+          -30.34773063659668,
+          -41.5,
+          0.24983137845993042
+        ],
+        [
+          278.88494873046875,
+          -28.72572135925293,
+          -41.5,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 8
+    },
+    {
+      "id": "nmo-249676-native-contour-12",
+      "sourceName": "CellBody",
+      "sourceClosedFlag": false,
+      "sourceColor": "#00ff00",
+      "sourceProperties": {
+        "CellBody": true
+      },
+      "sourcePropertyReceipts": [
+        {
+          "key": "CellBody",
+          "declaredValueCount": 0,
+          "values": []
+        }
+      ],
+      "vertexCount": 7,
+      "zValuesMicrometre": [
+        -42.5
+      ],
+      "boundsMicrometre": {
+        "min": [
+          275.2861022949219,
+          -31.614925384521484,
+          -42.5
+        ],
+        "max": [
+          278.9356384277344,
+          -29.18191146850586,
+          -42.5
+        ]
+      },
+      "sourceBlockOffsetByte": 25768,
+      "sourceBlockSizeByte": 242,
+      "pointColumns": [
+        "x_micrometre",
+        "y_micrometre",
+        "z_micrometre",
+        "trace_radius_micrometre"
+      ],
+      "points": [
+        [
+          276.29986572265625,
+          -29.18191146850586,
+          -42.5,
+          0.24983137845993042
+        ],
+        [
+          275.2861022949219,
+          -30.297042846679688,
+          -42.5,
+          0.24983137845993042
+        ],
+        [
+          275.84368896484375,
+          -31.412174224853516,
+          -42.5,
+          0.24983137845993042
+        ],
+        [
+          278.1753234863281,
+          -31.614925384521484,
+          -42.5,
+          0.24983137845993042
+        ],
+        [
+          278.9356384277344,
+          -30.80392074584961,
+          -42.5,
+          0.24983137845993042
+        ],
+        [
+          278.327392578125,
+          -29.536725997924805,
+          -42.5,
+          0.24983137845993042
+        ],
+        [
+          277.82049560546875,
+          -29.384662628173828,
+          -42.5,
+          0.24983137845993042
+        ]
+      ],
+      "cellBodyPresenceProperty": {
+        "key": "CellBody",
+        "declaredValueCount": 0,
+        "rawValues": [],
+        "interpretedPresence": true
+      },
+      "independentParserClassification": "somaContour",
+      "semanticClass": "soma_contour_trace",
+      "interpretedClosed": true,
+      "closureBasis": "MBF cell-body semantics applied to exact source name + empty-value CellBody property + independent somaContour; raw sourceClosedFlag remains false",
+      "semanticSegmentCount": 7
+    }
+  ]
+}

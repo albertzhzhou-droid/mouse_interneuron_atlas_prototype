@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-model-upgrade-registry-0.1.schema.json",
+  "title": "OHRI research/model upgrade registry 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registryId",
+    "registryKind",
+    "sourceQueue",
+    "verificationPolicy",
+    "controlledVocabularies",
+    "summary",
+    "upgrades"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "registryId": { "const": "ohri-research-model-upgrade-registry-0.1.0" },
+    "registryKind": { "const": "research_model_only" },
+    "sourceQueue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "snapshotDate",
+        "firstIncludedId",
+        "lastIncludedId",
+        "governanceAdmissionQueueIncluded",
+        "excludedGovernanceAdmissionRange"
+      ],
+      "properties": {
+        "path": { "const": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md" },
+        "snapshotDate": { "type": "string", "format": "date" },
+        "firstIncludedId": { "const": "UPG-022" },
+        "lastIncludedId": { "$ref": "#/$defs/upgradeId" },
+        "governanceAdmissionQueueIncluded": { "const": false },
+        "excludedGovernanceAdmissionRange": { "const": "UPG-001-UPG-021" }
+      }
+    },
+    "verificationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lastVerificationMeaning", "acceptanceBoundaryMeaning"],
+      "properties": {
+        "lastVerificationMeaning": { "type": "string", "minLength": 1 },
+        "acceptanceBoundaryMeaning": { "type": "string", "minLength": 1 }
+      }
+    },
+    "controlledVocabularies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lanes", "blockerCodes"],
+      "properties": {
+        "lanes": {
+          "const": [
+            "reference_anatomy",
+            "molecular_taxonomy",
+            "spatial_context",
+            "morphology",
+            "connectivity",
+            "injury_state_context",
+            "electrophysiology",
+            "internal_microdetail",
+            "provenance_and_identity",
+            "research_experience",
+            "cross_cutting_research"
+          ]
+        },
+        "blockerCodes": {
+          "const": [
+            "none_for_declared_increment",
+            "implementation",
+            "remaining_validation",
+            "evidence_review",
+            "source_object",
+            "rights_or_permission",
+            "data_anomaly",
+            "admission_evidence",
+            "raw_data_unavailable"
+          ]
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["upgradeCount", "byPriority", "byStatus", "byLane"],
+      "properties": {
+        "upgradeCount": { "type": "integer", "minimum": 1 },
+        "byPriority": { "$ref": "#/$defs/countMap" },
+        "byStatus": { "$ref": "#/$defs/countMap" },
+        "byLane": { "$ref": "#/$defs/countMap" }
+      }
+    },
+    "upgrades": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/upgrade" }
+    }
+  },
+  "$defs": {
+    "upgradeId": {
+      "type": "string",
+      "pattern": "^UPG-(?:0(?:2[2-9]|[3-9][0-9])|[1-9][0-9]{2,})(?:[A-Z])?$"
+    },
+    "countMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "integer", "minimum": 1 }
+    },
+    "upgrade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "priority",
+        "status",
+        "lane",
+        "description",
+        "blocker",
+        "evidenceBasis",
+        "lastVerification",
+        "acceptanceBoundary"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/upgradeId" },
+        "priority": { "enum": ["P0", "P1", "P2"] },
+        "status": { "type": "string", "minLength": 1 },
+        "lane": {
+          "enum": [
+            "reference_anatomy",
+            "molecular_taxonomy",
+            "spatial_context",
+            "morphology",
+            "connectivity",
+            "injury_state_context",
+            "electrophysiology",
+            "internal_microdetail",
+            "provenance_and_identity",
+            "research_experience",
+            "cross_cutting_research"
+          ]
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "blocker": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "detail"],
+          "properties": {
+            "code": {
+              "enum": [
+                "none_for_declared_increment",
+                "implementation",
+                "remaining_validation",
+                "evidence_review",
+                "source_object",
+                "rights_or_permission",
+                "data_anomaly",
+                "admission_evidence",
+                "raw_data_unavailable"
+              ]
+            },
+            "detail": { "type": "string", "minLength": 1 }
+          }
+        },
+        "evidenceBasis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["markdown", "unlinkedText", "references"],
+          "properties": {
+            "markdown": { "type": "string", "minLength": 1 },
+            "unlinkedText": { "type": "string", "minLength": 1 },
+            "references": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "url"],
+                "properties": {
+                  "label": { "type": "string", "minLength": 1 },
+                  "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+                }
+              }
+            }
+          }
+        },
+        "lastVerification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["date", "scope", "sourcePath", "independentEvidenceRecheck"],
+          "properties": {
+            "date": { "type": "string", "format": "date" },
+            "scope": { "const": "queue_row_and_registry_derivation" },
+            "sourcePath": {
+              "type": "string",
+              "pattern": "^docs/RESEARCH_MODEL_UPGRADE_QUEUE\\.md#L[1-9][0-9]*$"
+            },
+            "independentEvidenceRecheck": { "const": false }
+          }
+        },
+        "acceptanceBoundary": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

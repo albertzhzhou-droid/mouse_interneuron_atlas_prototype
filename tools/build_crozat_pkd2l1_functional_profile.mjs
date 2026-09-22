@@ -1,0 +1,299 @@
+#!/usr/bin/env node
+
+import { writeFile } from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const OUTPUT_PATH = path.join(ROOT, "data/crozat-pkd2l1-functional-profile-0.1.json");
+
+const keyFiles = [
+  {
+    id: 56062529,
+    folder: "1_ProPass",
+    fileName: "Firing_pattern.xlsx",
+    bytes: 10218,
+    publisherMd5: "a279d90783b573dfc6957306e740a25f",
+    locallyVerifiedSha256: "e39885a173b34b083fd58c00617c3ea4190a9e3376964cce90ff5f3c64f42910",
+    worksheetDimensions: ["Sheet1!A1:C7"],
+    purpose: "segment-level tonic-versus-single-spike percentages",
+  },
+  {
+    id: 56062523,
+    folder: "1_ProPass",
+    fileName: "Firing_pattern-Details.xlsx",
+    bytes: 29101,
+    publisherMd5: "8c8a2211d143ce6d2b9d733428ceef5f",
+    locallyVerifiedSha256: "18d8e4c8f2075f82a9fc2d438e8cbf6b13107800e5d36847f0937b2a4e036427",
+    worksheetDimensions: ["Sheet1!A1:Q31"],
+    purpose: "segment-level animal and cell denominators plus exact firing counts",
+  },
+  {
+    id: 56062526,
+    folder: "1_ProPass",
+    fileName: "Firing_pattern_Loc.xlsx",
+    bytes: 9287,
+    publisherMd5: "e4f9358ef3fdd6154121f9292910fd9c",
+    locallyVerifiedSha256: "87798adbd9241f148ca5d9f1a902088fa39fee8906e9ded4f42000174074a9da",
+    worksheetDimensions: ["Sheet1!A1:D13"],
+    purpose: "incomplete cervical/thoracic quadrant-by-firing-pattern percentages without denominators; quarantined from localization inference",
+  },
+  {
+    id: 56062514,
+    folder: "1_ProPass",
+    fileName: "PropPass_Stats.xlsx",
+    bytes: 60261,
+    publisherMd5: "c63cb7267b91c63380453bd75b60749d",
+    locallyVerifiedSha256: "3f3d45f77527da42710e84394e8c4a9a4bedbdb016d94901d509348ca5b59465",
+    worksheetDimensions: ["Sheet1 meaningful cells A1:F655", "worksheet formatting extent reaches row 1048571"],
+    purpose: "passive-property observation table; 654 complete deposited rows versus article n=659 conflict",
+  },
+  {
+    id: 56062520,
+    folder: "1_ProPass",
+    fileName: "RMP.xlsx",
+    bytes: 13220,
+    publisherMd5: "eab5f32ecfc030bcf0731ca25dd69a26",
+    locallyVerifiedSha256: "4fb402abbe55d92485e4f7bcb6dc3c68ee94d861bc031699cbc855fb153aea54",
+    worksheetDimensions: ["Sheet1 meaningful cells A1:C126", "formatted dimension A1:C254"],
+    purpose: "resting-membrane-potential observations plus embedded analysis blocks",
+  },
+  {
+    id: 56064398,
+    folder: "6-Anatomie",
+    fileName: "Cell_distances.csv",
+    bytes: 32479,
+    publisherMd5: "07a695d21d5b8867680122167076ce5b",
+    locallyVerifiedSha256: "d94dbf2f04ad52f6362bc761303505afd0020d8eff9d4c0d1017c183208ca51b",
+    worksheetDimensions: [],
+    purpose: "source-local central-canal distance arrays without stable cell identifiers",
+  },
+  {
+    id: 56064401,
+    folder: "6-Anatomie",
+    fileName: "Data_Figures_1_2.xlsx",
+    bytes: 159782,
+    publisherMd5: "b96c64af0e6c2de540fe63f132551190",
+    locallyVerifiedSha256: "af8e6593d27ba7eeb6280b38b97876b65fb74560e6cb90680e2bc4d3b16f919a",
+    worksheetDimensions: ["Cell_densities_and_D_V_L_distri!A1:AC53", "Cell_distances!B1:G1015", "Data_Figures-1_2!B1:P1596"],
+    purpose: "anatomy, density and central-canal-distance source tables",
+  },
+];
+
+export function buildCrozatPkd2l1FunctionalProfile() {
+  return {
+    schemaVersion: "0.1.0",
+    releaseId: "ohri-crozat-pkd2l1-functional-profile-0.1.0",
+    releaseDate: "2026-09-01",
+    title: "Source-local PKD2L1 CSF-contacting-neuron anatomy and electrophysiology profile",
+    source: {
+      publication: {
+        citation: "Crozat et al. 2025, Communications Biology",
+        doi: "10.1038/s42003-025-08559-x",
+        articleUrl: "https://doi.org/10.1038/s42003-025-08559-x",
+        dataAvailabilityBoundary: "The Figshare deposit contains source data underlying graphs and charts. Raw acquisition traces, ABF files, source microscopy images and a stable cross-experiment cell roster are not deposited in this release.",
+      },
+      figshare: {
+        articleId: 29430869,
+        version: 2,
+        doi: "10.6084/m9.figshare.29430869.v2",
+        landingPageUrl: "https://figshare.com/articles/dataset/29430869",
+        apiUrl: "https://api.figshare.com/v2/articles/29430869",
+        versionApiUrl: "https://api.figshare.com/v2/articles/29430869/versions/2",
+        definedType: "dataset",
+        public: true,
+        downloadDisabled: false,
+        linkedFileCount: 0,
+        fileCount: 92,
+        totalBytes: 1848613,
+        license: {
+          id: "CC-BY-4.0",
+          name: "CC BY 4.0",
+          url: "https://creativecommons.org/licenses/by/4.0/",
+          appliesTo: "Figshare dataset version 2 and its downloadable files",
+        },
+        inventorySummary: [
+          { extension: "xlsx", fileCount: 74, bytes: 1242220 },
+          { extension: "csv", fileCount: 5, bytes: 324196 },
+          { extension: "Rmd", fileCount: 7, bytes: 243261 },
+          { extension: ".DS_Store", fileCount: 6, bytes: 38936 },
+        ],
+        keyFiles,
+        sourceFilesBundled: false,
+        derivedFactualMetadataBundled: true,
+        sourceFileBoundary: "The application bundles checksum-pinned factual derivatives and direct download links, not the 92 source files. Re-acquisition must verify the publisher MD5, byte count and project-recorded SHA-256 before parsing.",
+      },
+    },
+    scope: {
+      species: "Mus musculus",
+      taxonId: "NCBITaxon:10090",
+      lifeStage: "3–6 weeks",
+      sexContext: "both sexes used; sex is not retained per observation",
+      spinalRegion: "cervical, thoracic and lumbar spinal cord",
+      preparation: "acute 250 µm spinal slices for electrophysiology; source-local anatomy tables for central-canal-contacting cells",
+      markerContext: "Pkd2l1-Cre::tdTomato / PKD2L1-positive CSF-contacting neurons",
+      displayedProfileCount: 1,
+      exactCrossSourceIdentityCount: 0,
+      projectRegistrationCount: 0,
+      admittedGeometryCount: 0,
+    },
+    sourceLocators: [
+      { id: "figshare-v2-api", locator: "Figshare article 29430869 version 2 API and 92-file inventory", evidenceStatus: "checksum_pinned_remote_inventory" },
+      { id: "firing-percent-sheet", locator: "Firing_pattern.xlsx · file 56062529 · Sheet1!A1:C7", evidenceStatus: "checksum_pinned_source_cells" },
+      { id: "firing-count-sheet", locator: "Firing_pattern-Details.xlsx · file 56062523 · Sheet1!M25:Q31", evidenceStatus: "checksum_pinned_source_cells_with_quarantined_p_value_conflict" },
+      { id: "firing-location-sheet", locator: "Firing_pattern_Loc.xlsx · file 56062526 · Sheet1!A1:D13; cervical/thoracic only and no denominators", evidenceStatus: "quarantined_incomplete_exploratory_table" },
+      { id: "passive-properties-sheet", locator: "PropPass_Stats.xlsx · file 56062514 · meaningful cells Sheet1!A1:F655; 654 complete rows", evidenceStatus: "checksum_pinned_observation_table_with_denominator_conflict" },
+      { id: "rmp-sheet", locator: "RMP.xlsx · file 56062520 · meaningful cells Sheet1!A1:C126; 125 Cell/Level/RMP observations", evidenceStatus: "checksum_pinned_observation_table" },
+      { id: "anatomy-workbook", locator: "Data_Figures_1_2.xlsx · file 56064401 · three source worksheets", evidenceStatus: "checksum_pinned_source_tables" },
+      { id: "cell-distance-csv", locator: "Cell_distances.csv · file 56064398", evidenceStatus: "checksum_pinned_source_table" },
+      { id: "primary-article-methods", locator: "Crozat et al. 2025 · Methods and source-data availability", evidenceStatus: "primary_article" },
+      { id: "primary-article-results", locator: "Crozat et al. 2025 · segment-specific physiology, anatomy and pH-sensing results", evidenceStatus: "primary_article" },
+    ],
+    derivedEvidence: {
+      firingPatterns: [
+        { segment: "cervical", animalCount: 10, cellCount: 21, tonicCount: 14, tonicPercent: 67, singleSpikeCount: 7, singleSpikePercent: 33, sourceLocatorIds: ["firing-percent-sheet", "firing-count-sheet"] },
+        { segment: "thoracic", animalCount: 12, cellCount: 23, tonicCount: 9, tonicPercent: 39, singleSpikeCount: 14, singleSpikePercent: 61, sourceLocatorIds: ["firing-percent-sheet", "firing-count-sheet"] },
+        { segment: "lumbar", animalCount: 9, cellCount: 21, tonicCount: 15, tonicPercent: 71, singleSpikeCount: 6, singleSpikePercent: 29, sourceLocatorIds: ["firing-percent-sheet", "firing-count-sheet"] },
+      ],
+      firingPatternFrame: {
+        totalCellCount: 65,
+        tonicCount: 38,
+        singleSpikeCount: 27,
+        primaryArticleFisherExactP: 0.000003772,
+        embeddedWorkbookFisherP: 0.0616,
+        reconciliationStatus: "conflict_quarantined",
+        quadrantAssociationStatus: "not_established",
+        boundary: "The primary paper reports a strong regional firing-pattern difference, but the workbook's embedded p-value conflicts. The project retains exact counts and quarantines the conflicting inferential statistic. The paper reports no firing-pattern association with central-canal quadrant localization.",
+      },
+      passivePropertyFrame: {
+        animalCount: 191,
+        articleCellCount: 659,
+        depositedUsableRowCount: 654,
+        depositedRowsBySegment: { cervical: 227, thoracic: 239, lumbar: 188 },
+        denominatorStatus: "article_vs_deposit_conflict_retained",
+        fields: ["Cell", "Level", "Rs", "Rm", "Cm", "Tau"],
+        sourceLocatorIds: ["passive-properties-sheet", "primary-article-methods"],
+        boundary: "The paper reports n=659 cells, while the deposited table has 654 complete rows. Neither number is an animal count, and generic cell labels cannot be joined globally to firing, anatomy or other experiment families.",
+      },
+      restingMembranePotentialFrame: {
+        animalCount: 25,
+        observationCount: 125,
+        depositedRowsBySegment: { cervical: 20, thoracic: 41, lumbar: 64 },
+        sourceLocatorIds: ["rmp-sheet", "primary-article-methods"],
+        boundary: "Cell labels reset or are gapped by segment and are not globally stable identifiers.",
+      },
+      anatomyContext: {
+        findings: ["distributed throughout the spinal cord", "primarily ventral localization", "higher lumbar density"],
+        fieldOfViewAndCellTotals: [
+          { segment: "cervical", fieldOfViewCount: 50, cellCount: 1193, age3Weeks: { fieldOfViewCount: 30, cellCount: 697 }, age6Weeks: { fieldOfViewCount: 20, cellCount: 496 } },
+          { segment: "thoracic", fieldOfViewCount: 51, cellCount: 1167, age3Weeks: { fieldOfViewCount: 30, cellCount: 710 }, age6Weeks: { fieldOfViewCount: 21, cellCount: 457 } },
+          { segment: "lumbar", fieldOfViewCount: 51, cellCount: 1594, age3Weeks: { fieldOfViewCount: 30, cellCount: 1014 }, age6Weeks: { fieldOfViewCount: 21, cellCount: 580 } }
+        ],
+        distanceArrayCounts: { cervical3Weeks: 697, thoracic3Weeks: 710, lumbar3Weeks: 1014, cervical6Weeks: 496, thoracic6Weeks: 478, lumbar6Weeks: 580 },
+        denominatorConflict: "Thoracic 6-week distance array n=478 versus FOV-table cell total n=457; no stable join explains the extra 21 rows.",
+        duplicateObjectAlias: "Anatomy_Density.xlsx file 56064395 is byte-identical to Data_Figures_1_2.xlsx file 56064401 and is not double-counted.",
+        sourceLocatorIds: ["anatomy-workbook", "cell-distance-csv", "primary-article-results"],
+        boundary: "The deposit provides field-of-view, density and distance arrays, not atlas coordinates, image volumes, segmentations or stable per-cell objects.",
+      },
+      sensoryContext: {
+        finding: "The source reports extracellular-pH detection through PKD2L1 and acid-sensing ion channels.",
+        sourceLocatorIds: ["primary-article-results"],
+        boundary: "This is population- and experiment-family evidence; it is not a stable same-cell multimodal record or a circuit-level causal model.",
+      },
+    },
+    profile: {
+      id: "crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn",
+      namespace: "crozat-2025:figshare-29430869-v2",
+      parentSourceId: "SRC-CROZAT-2025",
+      recordKind: "marker_defined_functional_profile",
+      unitOfObservation: "source_population_with_experiment_family_observations",
+      assignmentAuthority: "primary_article_plus_checksum_pinned_figshare_tables",
+      cellRosterAvailability: "no_global_stable_cell_roster",
+      canonicalIdentityStatus: "not_established",
+      sourceLocalLabel: "PKD2L1+ CSF-contacting neurons",
+      rawLabels: ["CSF-cNs", "Pkd2l1-Cre::tdTomato cells"],
+      regionClass: "central_canal_contacting_predominantly_ventral",
+      transmitterClass: "inhibitory_gabaergic",
+      projectUseClass: "source_local_marker_defined_spinal_interneuron_population",
+      markerPanel: ["PKD2L1", "GABA"],
+      samplingCount: null,
+      samplingUnit: null,
+      samplingBoundary: "No single non-overlapping record denominator exists across anatomy and electrophysiology experiments. Each evidence row retains its own N/n and condition; denominators are never summed.",
+      putativeCellTypeLabel: "PKD2L1-positive cerebrospinal-fluid-contacting spinal interneuron population",
+      putativeAssignmentStatus: "marker_defined_population_not_canonical_single_type",
+      activityEvidence: [
+        {
+          context: "segment_specific_firing_pattern",
+          finding: "Cervical: N=10 animals, n=21 cells (14 tonic, 7 single-spike); thoracic: N=12 animals, n=23 cells (9 tonic, 14 single-spike); lumbar: N=9 animals, n=21 cells (15 tonic, 6 single-spike).",
+          sourceLocatorIds: ["firing-percent-sheet", "firing-count-sheet"],
+          interpretationBoundary: "Tonic and single-spike observations are firing patterns within the source population, not separate molecular types, morphologies or 3D cells.",
+        },
+        {
+          context: "passive_membrane_properties",
+          finding: "The paper reports 659 cells from 191 animals; the deposited passive-property table contains 654 complete rows (cervical 227, thoracic 239, lumbar 188).",
+          sourceLocatorIds: ["passive-properties-sheet", "primary-article-methods"],
+          interpretationBoundary: "The five-row article-versus-deposit discrepancy is retained. Observation rows are experiment-family records and do not create a whole-deposit per-cell join.",
+        },
+        {
+          context: "anatomy_distribution",
+          finding: "Population-level source data support central-canal contact, primarily ventral localization and higher lumbar density.",
+          sourceLocatorIds: ["anatomy-workbook", "cell-distance-csv", "primary-article-results"],
+          interpretationBoundary: "These are aggregate/source-array findings without atlas coordinates, raw images, voxel calibration, segmentation or a reusable cell object.",
+        },
+        {
+          context: "extracellular_ph_sensing",
+          finding: "The source reports responses to extracellular pH through PKD2L1 and acid-sensing ion channels.",
+          sourceLocatorIds: ["primary-article-results"],
+          interpretationBoundary: "This does not establish a stable same-cell link, circuit partner, behavioral effect or SCI mechanism.",
+        },
+      ],
+      locatorIds: ["figshare-v2-api", "firing-percent-sheet", "firing-count-sheet", "firing-location-sheet", "passive-properties-sheet", "rmp-sheet", "anatomy-workbook", "cell-distance-csv", "primary-article-methods", "primary-article-results"],
+      missingEvidence: {
+        morphology: "raw_images_and_reconstructable_single_cell_morphology_not_deposited",
+        cellCoordinates: "aggregate_distances_and_distributions_not_cell_coordinates",
+        sciContext: "not_measured_by_study",
+        atlasRegistration: "no_admitted_transform",
+        electrophysiology: "observed_at_cohort_and_experiment_family_level",
+        projectionTarget: "not_established",
+        synapticConnectivity: "receptor_responses_do_not_identify_circuit_partners",
+        crossSourceSameCellIdentityLink: "not_established",
+        internalStructure: "raw_volume_segmentation_and_internal_objects_not_deposited",
+      },
+    },
+    joinPolicy: {
+      globallyStableCellIdAvailable: false,
+      animalIdAvailablePerObservation: false,
+      sliceIdAvailable: false,
+      recordingFileIdAvailable: false,
+      crossExperimentJoinAllowed: false,
+      withinExperimentFamilyPairing: "Only Region + Cell + Condition rows within an explicitly declared experiment family may be paired; generic Cell integers are reused elsewhere.",
+      morphologyElectrophysiologyJoinCount: 0,
+      linkToPkd2l1SbfSemStudyCount: 0,
+    },
+    quarantinedConflicts: [
+      { id: "firing-inference-p-value", status: "quarantined", detail: "Firing_pattern-Details.xlsx embeds Fisher p=0.0616, whereas the primary paper reports p=3.772e-6 for the regional comparison. Counts are retained; inferential p-values are not reconciled." },
+      { id: "firing-location-coverage", status: "quarantined", detail: "Firing_pattern_Loc.xlsx has cervical and thoracic percentages only, lacks lumbar rows and supplies no denominators; it cannot support a localization-to-function inference." },
+      { id: "passive-property-denominator", status: "quarantined", detail: "The paper reports n=659 cells, but PropPass_Stats.xlsx contains 654 complete observation rows." },
+      { id: "thoracic-6-week-distance-denominator", status: "quarantined", detail: "The thoracic 6-week distance array has 478 values versus 457 cells in the FOV table; no stable source key resolves the extra 21." },
+    ],
+    hardBoundaries: [
+      "This contract creates exactly one source-local functional profile, not new tonic, single-spike, segment or quadrant cell types.",
+      "No source file supplies a stable global per-cell key across anatomy and electrophysiology experiments.",
+      "The Figshare tables create zero 3D geometry, morphology, atlas coordinates, transforms, registrations, raw traces, internal structures or same-cell cross-modal links.",
+      "The source-local PKD2L1 profile is not joined to the separate PKD2L1 SBF-SEM publication watch.",
+      "Counts are experiment-specific sampling denominators, never prevalence and never additive across tables.",
+      "Source conflicts and incomplete tables remain quarantined; the UI must not silently normalize them into complete or reconciled evidence.",
+    ],
+  };
+}
+
+export function serializeCrozatPkd2l1FunctionalProfile(value = buildCrozatPkd2l1FunctionalProfile()) {
+  return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  if (!process.argv.includes("--write")) throw new Error("Pass --write to update the Crozat PKD2L1 functional-profile contract");
+  await writeFile(OUTPUT_PATH, serializeCrozatPkd2l1FunctionalProfile());
+  process.stdout.write(`Wrote ${path.relative(ROOT, OUTPUT_PATH)}\n`);
+}

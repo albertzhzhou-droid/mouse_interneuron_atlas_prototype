@@ -1,0 +1,152 @@
+{
+  "manifestSchemaVersion": "2.21.0",
+  "releaseId": "ohri-mouse-interneuron-research-iteration-2.21.0",
+  "releaseDate": "2026-08-30",
+  "releaseStatus": "localhost_research_iteration",
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "version": "2.21.0-research.1"
+  },
+  "baseResearchRelease": {
+    "releaseId": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0",
+    "schemaVersion": "0.2.0",
+    "note": "The seven SCI evidence entities remain the frozen Research MVP 0.2 model. Iteration 2.21 adds independent source registries and an exact cross-region MICrONS reference without joining either to those entities."
+  },
+  "authoritativeInputs": [
+    {
+      "id": "researchRelease",
+      "scope": "project",
+      "path": "data/research-mvp-release-0.2.json",
+      "purpose": "Research MVP 0.2 evidence-entity payload",
+      "bytes": 30689,
+      "sha256": "bd63024da4467daf8e1a68110e883a8f917c4e36519bc2a47a0cc2e6ca245927"
+    },
+    {
+      "id": "researchReleaseSchema",
+      "scope": "project",
+      "path": "schemas/research-mvp-release.schema.json",
+      "purpose": "Research MVP 0.2 JSON Schema",
+      "bytes": 10197,
+      "sha256": "9c5ba4f56f4772734045394070790dc9ce8d1d3b87118914fd5f7a8229b47fff"
+    },
+    {
+      "id": "evidenceLedger",
+      "scope": "scientificAuthority",
+      "path": "02_EVIDENCE/EVIDENCE_LEDGER.md",
+      "purpose": "External authoritative evidence ledger",
+      "bytes": 27255,
+      "sha256": "afceda228b6d8644e47e4c44803cd49bf76045c59202e9d96777775e7c7e59cf"
+    },
+    {
+      "id": "sourceManifest",
+      "scope": "scientificAuthority",
+      "path": "01_LITERATURE/SOURCE_MANIFEST.tsv",
+      "purpose": "External authoritative source manifest",
+      "bytes": 5585,
+      "sha256": "994de35e45b481f1d218add4d73b4f0357e751c2474ee2ed03dc1821ee0833ab"
+    },
+    {
+      "id": "atlasAssetManifest",
+      "scope": "project",
+      "path": "public/data/allen_cord_20um_v3_0/asset-manifest.json",
+      "purpose": "Current bundled BrainGlobe atlas derivative manifest",
+      "bytes": 62846,
+      "sha256": "75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8"
+    },
+    {
+      "id": "morphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124/asset-manifest.json",
+      "purpose": "Bundled NeuroMorpho exemplar manifest",
+      "bytes": 11216,
+      "sha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647"
+    },
+    {
+      "id": "micronsObservedReferenceContract",
+      "scope": "project",
+      "path": "data/microns-observed-cell-nucleus-reference-0.1.json",
+      "purpose": "Exact MICrONS cell and source-linked nucleus component-limited admission contract",
+      "bytes": 9639,
+      "sha256": "9b5141072192b9d272c0babe097de380d2aebd98659c2c57745ee75d226b744c"
+    },
+    {
+      "id": "micronsObservedReferenceAssetManifest",
+      "scope": "project",
+      "path": "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "purpose": "Exact MICrONS source fragments and browser geometry asset receipts",
+      "bytes": 94901,
+      "sha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1"
+    },
+    {
+      "id": "rightsLedger",
+      "scope": "project",
+      "path": "docs/RIGHTS_LEDGER.csv",
+      "purpose": "Current asset and source rights decisions",
+      "bytes": 2759,
+      "sha256": "bd5d9761f73bd6c68de0e702c6c996ff4269d1ae540a18600a32f72d1bc6d3e1"
+    },
+    {
+      "id": "packageLock",
+      "scope": "project",
+      "path": "package-lock.json",
+      "purpose": "Exact JavaScript dependency graph",
+      "bytes": 300345,
+      "sha256": "3be0a4b4dc00a6a653f8210cc16d9f6320e0b39d56045437132ef0537c07389f"
+    }
+  ],
+  "inputRoots": {
+    "project": {
+      "locator": ".",
+      "policy": "Only exact allowlisted project-relative paths are admitted."
+    },
+    "scientificAuthority": {
+      "locator": "../interneuron_sci_review",
+      "policy": "Only the evidence ledger and source manifest are admitted from the external authority root."
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "UTF-8 compact JSON with recursively lexicographically sorted object keys; array order preserved; top-level manifestContentSha256 omitted.",
+    "inputCount": 10
+  },
+  "registrations": {
+    "count": 0,
+    "records": []
+  },
+  "exactReferences": {
+    "micronsObservedCellNucleus": {
+      "contractId": "microns-observed-cell-nucleus-reference-0.1",
+      "contractReleaseId": "ohri-microns-observed-cell-nucleus-reference-0.1.0",
+      "authority": "OBS_EM_SEGMENTATION",
+      "sourceRelease": "MICrONS Phase 1 v185.4",
+      "sourceRegion": "visual cortex layer 2/3",
+      "cellRootId": "648518346349516051",
+      "nucleusId": "4309",
+      "samePhysicalObject": true,
+      "admittedComponentCount": 2,
+      "sourceFragmentCount": 97,
+      "vertexCount": 385064,
+      "triangleCount": 727788,
+      "manifestBytes": 94901,
+      "manifestSha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1",
+      "membraneClaim": false,
+      "spinalInterneuronIdentity": false,
+      "crossRegionJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "mitochondria",
+        "synapses",
+        "other_internal_organelles",
+        "molecular_subtype",
+        "atlas_placement"
+      ]
+    }
+  },
+  "scientificBoundaries": {
+    "selectedSpinalCellInternalStructure": "unavailable",
+    "micronsObservedReference": "The exact cell and nucleus are a visual-cortex cross-region reference. The outer segmentation boundary is not a molecular membrane. No anatomy, type, morphology, organelle, synapse or registration relationship to any spinal record is admitted.",
+    "missingEvidence": "Missing or unavailable evidence generates zero primitives and is not biological absence.",
+    "measurementAllowed": false
+  },
+  "manifestContentSha256": "9a3b2b99f8eeccb9c6ea4dc1436abb69eeec3aec1e8850d8bbb951cbb5cb7134"
+}

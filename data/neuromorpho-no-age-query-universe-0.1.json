@@ -1,0 +1,146 @@
+{
+  "documentType": "neuromorpho_no_age_query_universe_contract",
+  "schemaVersion": "0.1.0",
+  "contractId": "neuromorpho-no-age-query-universe-0.1",
+  "releaseId": "research-iteration-2.34",
+  "dataset": {
+    "indexPath": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+    "indexSha256": "1ba52eb81aa141349f9e9a6916f8acf5a089ba079e9de34507e50f32bd6cfd68",
+    "indexBytes": 8025022,
+    "assetManifestPath": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/asset-manifest.json",
+    "assetManifestSha256": "fcc798ed00b81b64073daea24777773a7fc56617f21cbe71206b36e800e859d5",
+    "assetManifestBytes": 258944,
+    "quarantinePath": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/quarantine-report.json",
+    "quarantineSha256": "1d9cc65ec335335f3e5d6f6509d29bb742a34d1c21b23d1e5fb7b8d3008e5830",
+    "quarantineBytes": 216,
+    "runtimeRosterPath": "data/neuromorpho-no-age-query-universe-roster-0.1.json",
+    "runtimeRosterSha256": "9c8baa5301ca726a60b70b00a95cdb70a6c1e7a268a3ad8ba6673d29aedc8ec1",
+    "runtimeRosterBytes": 12747
+  },
+  "summary": {
+    "queryRecordCount": 1097,
+    "uniqueNeuronIdCount": 1097,
+    "admittedSourceObjectCount": 1097,
+    "quarantinedSourceObjectCount": 0,
+    "frozenAdultSubsetCount": 142,
+    "namedRouteCount": 7,
+    "existingGeometryReferenceCount": 149,
+    "deltaRawSwcCount": 948,
+    "geometryCopyCount": 0,
+    "sourceLabelled3DCount": 1058,
+    "sourceLabelled2DCount": 39,
+    "diameterAuthorizedCount": 955,
+    "diameterUnavailableCount": 142,
+    "axonDomainCount": 253,
+    "completeAxonClaimCount": 0,
+    "registrationCount": 0,
+    "sameSpecimenInternalStructureCount": 0,
+    "paperCount": 12,
+    "archiveCount": 5,
+    "byLifeStage": {
+      "adult": 142,
+      "young": 729,
+      "young adult": 226
+    },
+    "byArchive": {
+      "Bannatyne": 49,
+      "Chen_Dai": 2,
+      "Ginty": 650,
+      "Hughes": 87,
+      "Todd": 309
+    },
+    "byAttributes": {
+      "Diameter, 2D, Angles": 39,
+      "Diameter, 3D, Angles": 916,
+      "No Diameter, 3D, Angles": 142
+    },
+    "byDomain": {
+      "Dendrites, Soma, Axon": 253,
+      "Dendrites, Soma, No Axon": 842,
+      "Neurites, Soma": 2
+    },
+    "byPhysicalIntegrity": {
+      "Dendrites & Axon Moderate": 233,
+      "Dendrites Complete": 79,
+      "Dendrites Incomplete": 23,
+      "Dendrites Moderate": 740,
+      "Dendrites Moderate, Axon Incomplete": 20,
+      "Neurites Moderate": 2
+    },
+    "bySourcePaper": [
+      {
+        "doi": "10.1016/j.cell.2016.12.010",
+        "count": 650
+      },
+      {
+        "doi": "10.1523/JNEUROSCI.0406-15.2015",
+        "count": 81
+      },
+      {
+        "doi": "10.1097/j.pain.0000000000001406",
+        "count": 77
+      },
+      {
+        "doi": "10.1097/j.pain.0000000000002422",
+        "count": 64
+      },
+      {
+        "doi": "10.1097/j.pain.0000000000000407",
+        "count": 58
+      },
+      {
+        "doi": "10.1523/JNEUROSCI.0199-14.2014",
+        "count": 49
+      },
+      {
+        "doi": "10.1038/s41598-023-32720-3",
+        "count": 30
+      },
+      {
+        "doi": "10.1097/j.pain.0000000000002677",
+        "count": 30
+      },
+      {
+        "doi": "10.1016/j.celrep.2019.06.040",
+        "count": 23
+      },
+      {
+        "doi": "10.1016/j.neuroscience.2020.06.038",
+        "count": 18
+      },
+      {
+        "doi": "10.1038/s41593-018-0119-z",
+        "count": 15
+      },
+      {
+        "doi": "10.1113/JP283037",
+        "count": 2
+      }
+    ],
+    "duplicateRawSwcGroups": [],
+    "duplicateCanonicalGeometryGroups": [],
+    "quarantinedNeuronIds": []
+  },
+  "admission": {
+    "everyQueryRecordDisposed": true,
+    "frozenAdultSubsetMutated": false,
+    "existingGeometryCopyCount": 0,
+    "deltaGeneratedGeometryCount": 0,
+    "unknownFocusFailsClosed": true
+  },
+  "scientificBoundary": {
+    "scope": "repository_query_universe_not_biological_type_or_animal_census",
+    "geometry": "standardized_source_local_swc_only",
+    "newGeometryTransport": "checksum_verified_raw_swc_parsed_lazily_without_generated_geometry_copy",
+    "diameterPolicy": "No Diameter records expose centerlines only; syntax radii never authorize a surface",
+    "twoDimensionalPolicy": "2D records remain planar and are never extruded",
+    "typePolicy": "source node types are preserved; Neurites remain uninterpreted",
+    "forbiddenClaims": [
+      "atlas placement or cross-source registration",
+      "complete biological axon or connectivity",
+      "independent animal, specimen, type, or prevalence denominator",
+      "molecular or SCI identity transfer",
+      "membrane, nucleus, organelle, bouton, synapse, receptor, or ultrastructure"
+    ]
+  }
+}

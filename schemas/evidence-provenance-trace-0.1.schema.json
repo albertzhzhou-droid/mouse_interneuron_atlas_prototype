@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/evidence-provenance-trace-0.1.json",
+  "title": "OHRI two-lane evidence and public-source provenance trace 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "researchReleaseId", "catalogReleaseId", "plannerReleaseId", "title", "lanes", "crossLanePolicy", "localRuntime", "scientificBoundary", "nextQueueItems"],
+  "properties": {
+    "releaseId": {"const": "ohri-evidence-provenance-trace-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "researchReleaseId": {"const": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "plannerReleaseId": {"const": "ohri-evidence-feasibility-planner-0.1.0"},
+    "title": {"type": "string", "minLength": 1},
+    "lanes": {"type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true, "items": {"$ref": "#/$defs/lane"}},
+    "crossLanePolicy": {"type": "string", "minLength": 1},
+    "localRuntime": {"type": "object", "additionalProperties": false, "required": ["networkRequests", "sourceFileDownload", "sourceFileUpload", "persistentStorage", "output"], "properties": {"networkRequests": {"const": false}, "sourceFileDownload": {"const": false}, "sourceFileUpload": {"const": false}, "persistentStorage": {"const": "none"}, "output": {"const": "browser_download_of_provenance_trace_receipt_json"}}},
+    "scientificBoundary": {"type": "string", "minLength": 1},
+    "nextQueueItems": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^UPG-[0-9]{3}$"}}
+  },
+  "$defs": {
+    "lane": {"type": "object", "additionalProperties": false, "required": ["id", "label", "nodeKinds", "expectedCounts", "boundary"], "properties": {"id": {"enum": ["research_evidence", "public_source_routes"]}, "label": {"type": "string", "minLength": 1}, "nodeKinds": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z_]+$"}}, "expectedCounts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}, "boundary": {"type": "string", "minLength": 1}}}
+  }
+}

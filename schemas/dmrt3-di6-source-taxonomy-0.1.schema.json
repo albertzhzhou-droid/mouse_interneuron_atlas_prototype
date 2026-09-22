@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/dmrt3-di6-source-taxonomy-0.1.schema.json",
+  "title": "Pinned Dmrt3/dI6 M1–M6 source-local taxonomy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "releaseDate",
+    "title",
+    "source",
+    "scope",
+    "sourceLocators",
+    "analysisLineage",
+    "qualityControl",
+    "profiles",
+    "globalMissingEvidence",
+    "joinPolicy",
+    "quarantinedConflicts",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-dmrt3-di6-source-taxonomy-0.1.0" },
+    "releaseDate": { "type": "string", "format": "date" },
+    "title": { "type": "string", "minLength": 30 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication", "geo", "repository"],
+      "properties": {
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["citation", "doi", "articleUrl", "pmcUrl", "studyContext", "dataAvailabilityBoundary"],
+          "properties": {
+            "citation": { "type": "string", "minLength": 20 },
+            "doi": { "const": "10.3389/fncel.2021.781197" },
+            "articleUrl": { "type": "string", "format": "uri" },
+            "pmcUrl": { "type": "string", "format": "uri" },
+            "studyContext": { "type": "string", "minLength": 30 },
+            "dataAvailabilityBoundary": { "type": "string", "minLength": 100 }
+          }
+        },
+        "geo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["accession", "seriesUrl", "bioproject", "sraStudy", "processedObject"],
+          "properties": {
+            "accession": { "const": "GSE185731" },
+            "seriesUrl": { "type": "string", "format": "uri" },
+            "bioproject": { "const": "PRJNA770633" },
+            "sraStudy": { "const": "SRP341021" },
+            "processedObject": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fileName", "downloadUrl", "compressedBytes", "compressedMd5", "compressedSha256", "uncompressedFileName", "uncompressedBytes", "uncompressedMd5", "uncompressedSha256", "objectKind", "mGroupAssignmentsPresent", "pseudotimeScalarPresent", "sourceFileBundled", "accessMode"],
+              "properties": {
+                "fileName": { "const": "GSE185731_mmusculus.loom.gz" },
+                "downloadUrl": { "type": "string", "format": "uri" },
+                "compressedBytes": { "const": 47641669 },
+                "compressedMd5": { "$ref": "#/$defs/md5" },
+                "compressedSha256": { "$ref": "#/$defs/sha256" },
+                "uncompressedFileName": { "const": "GSE185731_mmusculus.loom" },
+                "uncompressedBytes": { "const": 56090164 },
+                "uncompressedMd5": { "$ref": "#/$defs/md5" },
+                "uncompressedSha256": { "$ref": "#/$defs/sha256" },
+                "objectKind": { "const": "HDF5 loom expression object" },
+                "mGroupAssignmentsPresent": { "const": false },
+                "pseudotimeScalarPresent": { "const": false },
+                "sourceFileBundled": { "const": false },
+                "accessMode": { "const": "link_only" }
+              }
+            }
+          }
+        },
+        "repository": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "pinnedCommit", "commitTree", "commitUrl", "license", "sourceFiles", "sourceFilesBundled", "derivedFactualContractBundled", "reuseBoundary"],
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "pinnedCommit": { "$ref": "#/$defs/gitSha1" },
+            "commitTree": { "$ref": "#/$defs/gitSha1" },
+            "commitUrl": { "type": "string", "format": "uri" },
+            "license": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["spdxId", "path", "bytes", "sha256", "gitBlobSha1"],
+              "properties": {
+                "spdxId": { "const": "MIT" },
+                "path": { "const": "LICENSE" },
+                "bytes": { "const": 1070 },
+                "sha256": { "$ref": "#/$defs/sha256" },
+                "gitBlobSha1": { "$ref": "#/$defs/gitSha1" }
+              }
+            },
+            "sourceFiles": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "$ref": "#/$defs/sourceFile" }
+            },
+            "sourceFilesBundled": { "const": false },
+            "derivedFactualContractBundled": { "const": true },
+            "reuseBoundary": { "type": "string", "minLength": 80 }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["species", "taxonId", "lifeStage", "sampledRegion", "sourceEmbryoCount", "poolCount", "independentLibraryCount", "animalResolvedReplicateCount", "preparation", "populationContext", "displayedProfileCount", "depositedMouseWellCount", "qcRetainedCellCount", "di6LineageRetainedCellCount", "groupSummaryDerivativeBundled", "perWellMGroupRosterBundled", "projectRegistrationCount", "admittedGeometryCount", "admittedInternalStructureCount", "exactCrossSourceIdentityCount"],
+      "properties": {
+        "species": { "const": "Mus musculus" },
+        "taxonId": { "const": "NCBITaxon:10090" },
+        "lifeStage": { "const": "embryonic day 14.5" },
+        "sampledRegion": { "const": "spinal cord" },
+        "sourceEmbryoCount": { "const": 3 },
+        "poolCount": { "const": 1 },
+        "independentLibraryCount": { "const": 1 },
+        "animalResolvedReplicateCount": { "const": 0 },
+        "preparation": { "type": "string", "minLength": 50 },
+        "populationContext": { "type": "string", "minLength": 50 },
+        "displayedProfileCount": { "const": 6 },
+        "depositedMouseWellCount": { "const": 384 },
+        "qcRetainedCellCount": { "const": 354 },
+        "di6LineageRetainedCellCount": { "const": 274 },
+        "groupSummaryDerivativeBundled": { "const": true },
+        "perWellMGroupRosterBundled": { "const": false },
+        "projectRegistrationCount": { "const": 0 },
+        "admittedGeometryCount": { "const": 0 },
+        "admittedInternalStructureCount": { "const": 0 },
+        "exactCrossSourceIdentityCount": { "const": 0 }
+      }
+    },
+    "sourceLocators": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": { "$ref": "#/$defs/sourceLocator" }
+    },
+    "analysisLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stageCounts", "transformationAuthority"],
+      "properties": {
+        "stageCounts": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/stageCount" }
+        },
+        "transformationAuthority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repositoryCommit", "notebookPath", "notebookGitBlobSha1", "executedNotebookIsDerivationAuthority", "sourceLoomContainsM1ToM6Assignments", "sourceLoomContainsPseudotimeScalar", "perWellM1ToM6RosterExported", "compactDerivativeContainsGroupSummariesOnly", "interpretationBoundary"],
+          "properties": {
+            "repositoryCommit": { "$ref": "#/$defs/gitSha1" },
+            "notebookPath": { "const": "Analysis_pipeline/210909_Final_run.ipynb" },
+            "notebookGitBlobSha1": { "$ref": "#/$defs/gitSha1" },
+            "executedNotebookIsDerivationAuthority": { "const": true },
+            "sourceLoomContainsM1ToM6Assignments": { "const": false },
+            "sourceLoomContainsPseudotimeScalar": { "const": false },
+            "perWellM1ToM6RosterExported": { "const": false },
+            "compactDerivativeContainsGroupSummariesOnly": { "const": true },
+            "interpretationBoundary": { "type": "string", "minLength": 120 }
+          }
+        }
+      }
+    },
+    "qualityControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["methodsDescription", "executedNotebook", "reconciliationStatus", "authorityBoundary"],
+      "properties": {
+        "methodsDescription": { "$ref": "#/$defs/qcDescription" },
+        "executedNotebook": {
+          "allOf": [
+            { "$ref": "#/$defs/qcDescription" },
+            {
+              "type": "object",
+              "required": ["authorityStatus"],
+              "properties": { "authorityStatus": { "const": "derivation_authority" } }
+            }
+          ]
+        },
+        "reconciliationStatus": { "const": "methods_vs_executed_notebook_conflict_quarantined" },
+        "authorityBoundary": { "type": "string", "minLength": 100 }
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/profile" }
+    },
+    "globalMissingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["perWellM1ToM6Roster", "pseudotimeScalar", "morphology", "cellCoordinates", "atlasRegistration", "electrophysiology", "projectionTarget", "synapticConnectivity", "internalStructure", "sciContext", "adultIdentity", "crossSourceSameCellIdentity"],
+      "properties": {
+        "perWellM1ToM6Roster": { "const": "not_exported_by_source" },
+        "pseudotimeScalar": { "const": "not_exported_by_source" },
+        "morphology": { "const": "not_measured_or_deposited" },
+        "cellCoordinates": { "const": "not_measured_or_deposited" },
+        "atlasRegistration": { "const": "no_admitted_transform" },
+        "electrophysiology": { "const": "not_measured_by_study" },
+        "projectionTarget": { "const": "not_measured_by_study" },
+        "synapticConnectivity": { "const": "not_measured_by_study" },
+        "internalStructure": { "const": "no_raw_volume_segmentation_mesh_or_internal_object" },
+        "sciContext": { "const": "not_measured_by_study" },
+        "adultIdentity": { "const": "not_established" },
+        "crossSourceSameCellIdentity": { "const": "not_established" }
+      }
+    },
+    "joinPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["globallyStableCellIdAvailable", "perWellM1ToM6RosterAvailable", "perWellM1ToM6RosterReconstructionAllowed", "crossSourceJoinAllowed", "morphologyTranscriptomicsJoinCount", "physiologyTranscriptomicsJoinCount", "internalStructureTranscriptomicsJoinCount", "exactCrossSourceIdentityCount", "boundary"],
+      "properties": {
+        "globallyStableCellIdAvailable": { "const": false },
+        "perWellM1ToM6RosterAvailable": { "const": false },
+        "perWellM1ToM6RosterReconstructionAllowed": { "const": false },
+        "crossSourceJoinAllowed": { "const": false },
+        "morphologyTranscriptomicsJoinCount": { "const": 0 },
+        "physiologyTranscriptomicsJoinCount": { "const": 0 },
+        "internalStructureTranscriptomicsJoinCount": { "const": 0 },
+        "exactCrossSourceIdentityCount": { "const": 0 },
+        "boundary": { "type": "string", "minLength": 100 }
+      }
+    },
+    "quarantinedConflicts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "methodsDescription", "executedNotebookDescription", "resolution", "interpretationBoundary"],
+        "properties": {
+          "id": { "const": "methods-vs-executed-notebook-qc-hvg" },
+          "status": { "const": "quarantined" },
+          "methodsDescription": { "type": "string", "minLength": 100 },
+          "executedNotebookDescription": { "type": "string", "minLength": 140 },
+          "resolution": { "const": "executed_notebook_is_derivation_authority_methods_discrepancy_remains_visible" },
+          "interpretationBoundary": { "type": "string", "minLength": 80 }
+        }
+      }
+    },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": { "type": "string", "minLength": 70 }
+    }
+  },
+  "$defs": {
+    "md5": { "type": "string", "pattern": "^[a-f0-9]{32}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "gitSha1": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "sourceFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "bytes", "md5", "sha256", "gitBlobSha1", "role", "bundled", "accessMode"],
+      "properties": {
+        "id": { "enum": ["authors-loom", "executed-notebook"] },
+        "path": { "type": "string", "minLength": 20 },
+        "bytes": { "type": "integer", "minimum": 1000000 },
+        "md5": { "$ref": "#/$defs/md5" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "gitBlobSha1": { "$ref": "#/$defs/gitSha1" },
+        "role": { "type": "string", "minLength": 30 },
+        "bundled": { "const": false },
+        "accessMode": { "const": "link_only" }
+      }
+    },
+    "sourceLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "locator", "authority", "supports"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "locator": { "type": "string", "minLength": 30 },
+        "authority": { "type": "string", "minLength": 10 },
+        "supports": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 5 } }
+      }
+    },
+    "stageCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "count", "unit", "locatorIds"],
+      "properties": {
+        "stage": { "type": "string", "minLength": 10 },
+        "count": { "type": "integer", "minimum": 1 },
+        "unit": { "enum": ["wells", "cells"] },
+        "locatorIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }
+      }
+    },
+    "qcDescription": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimumLog1pTotalCountsExclusive", "maximumPercentCountsInTop50GenesExclusive", "minimumDetectedGenesExclusive", "normalization", "highlyVariableGeneCount", "locatorIds"],
+      "properties": {
+        "minimumLog1pTotalCountsExclusive": { "type": "number" },
+        "maximumPercentCountsInTop50GenesExclusive": { "type": "number" },
+        "minimumDetectedGenesExclusive": { "type": "integer" },
+        "normalization": { "type": "string", "minLength": 10 },
+        "highlyVariableGeneCount": { "type": "integer" },
+        "locatorIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+        "authorityStatus": { "type": "string" }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "namespace", "parentSourceId", "recordKind", "unitOfObservation", "sourceLocalLabel", "samplingCount", "samplingUnit", "markerPanel", "articleTemporalPhase", "articleTemporalAnchorGenes", "temporalEvidenceStatus", "populationTransmitterContext", "putativeAssignmentStatus", "locatorIds"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^iglesias-gonzalez-2021:gse185731:mmusculus:m[1-6]$" },
+        "namespace": { "const": "iglesias-gonzalez-2021:gse185731:mmusculus" },
+        "parentSourceId": { "const": "SRC-IGLESIAS-GONZALEZ-2021" },
+        "recordKind": { "const": "source_local_embryonic_transcriptomic_group" },
+        "unitOfObservation": { "const": "retained_dI6_lineage_cells_in_one_pooled_library" },
+        "sourceLocalLabel": { "type": "string", "pattern": "^M[1-6]$" },
+        "samplingCount": { "type": "integer", "minimum": 1 },
+        "samplingUnit": { "const": "retained cells" },
+        "markerPanel": { "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": { "type": "string", "pattern": "^[A-Za-z0-9-]+$" } },
+        "articleTemporalPhase": { "enum": ["early", "middle", "late"] },
+        "articleTemporalAnchorGenes": { "type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true, "items": { "type": "string" } },
+        "temporalEvidenceStatus": { "const": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar" },
+        "populationTransmitterContext": { "const": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification" },
+        "putativeAssignmentStatus": { "const": "study_local_group_not_adult_canonical_type" },
+        "locatorIds": { "type": "array", "minItems": 7, "uniqueItems": true, "items": { "type": "string" } }
+      }
+    }
+  }
+}

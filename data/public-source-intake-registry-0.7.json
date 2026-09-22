@@ -1,0 +1,96 @@
+{
+  "releaseId": "ohri-mouse-interneuron-public-source-intake-registry-0.7.0",
+  "schemaVersion": "0.7.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "registryDate": "2026-08-18",
+  "scientificInputPolicy": "public_sources_only",
+  "networkAtReviewRuntime": false,
+  "records": [
+    {
+      "intakeId": "PSI-SPINALJ-PROCESSED-2026-08-18",
+      "sourceId": "PDS-SPINALJ-PROCESSED",
+      "auditDate": "2026-08-18",
+      "auditScope": "public_metadata_only_no_candidate_file_acquired",
+      "studyStatus": "published_resource",
+      "publicSourceEvidence": {
+        "records": [
+          {"id": "PSE-SPINALJ-LANDING", "kind": "dataset_landing_page", "url": "https://data.mendeley.com/datasets/mkc37w4rrv/1", "accessVerifiedOn": "2026-08-18", "use": "Dataset version, stated license and declared pipeline context."},
+          {"id": "PSE-SPINALJ-PROTOCOL", "kind": "protocol", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8605391/", "accessVerifiedOn": "2026-08-18", "use": "Method and example-output context only."}
+        ],
+        "reportedFacts": [
+          {"id": "PSF-SPINALJ-001", "evidenceRecordId": "PSE-SPINALJ-LANDING", "evidenceClass": "reported_metadata", "statement": "The public record identifies Mendeley Data version 1, DOI 10.17632/mkc37w4rrv.1, and a CC BY 4.0 landing-page license."},
+          {"id": "PSF-SPINALJ-002", "evidenceRecordId": "PSE-SPINALJ-LANDING", "evidenceClass": "reported_metadata", "statement": "The landing page describes processed outputs generated with SpinalJ v1.13."},
+          {"id": "PSF-SPINALJ-003", "evidenceRecordId": "PSE-SPINALJ-PROTOCOL", "evidenceClass": "source_context", "statement": "The protocol provides workflow context but is not a file-level manifest for candidate admission."}
+        ]
+      },
+      "objectInventory": {"status": "not_attempted", "objects": []},
+      "acquisition": {"status": "not_downloaded", "remoteAcquisitionAttempted": false, "candidateFilesEnumerated": false, "fileHashes": [], "bundledAssetCount": 0},
+      "coordinates": {"sourceCoordinateAuthority": "SOURCE_LOCAL_OBS", "nativeCoordinateMetadataStatus": "not_file_verified", "transformStatus": "not_file_verified", "projectRegistrationStatus": "not_proposed", "projectRegistrationCount": 0},
+      "rights": {"publicRecordLicense": "CC BY 4.0 landing-page metadata", "fileLevelReuseDecision": "pending_file_level_manifest", "bundleAuthorized": false, "publicHostingAuthorized": false},
+      "admission": {"status": "metadata_audited_not_admitted", "nextQueueItem": "UPG-001B"},
+      "requiredBeforeFileAdmission": ["File-level object inventory", "Source-provided SHA-1 or SHA-256 checksum", "Native dimensions and spacing", "Axes, origin and source/target transform declarations", "Disjoint landmark validation with physical-space error", "Asset-level reuse and curator approval"],
+      "scientificBoundaries": ["Zero candidate files are downloaded or bundled.", "No inspected transform exists in this registry record.", "No project registration is proposed or granted.", "A source-local transform cannot be transferred to the current SWCs or synthetic entities."]
+    },
+    {
+      "intakeId": "PSI-CANOGOMEZ-2026-08-18",
+      "sourceId": "PDS-CANOGOMEZ-2026",
+      "auditDate": "2026-08-18",
+      "auditScope": "public_metadata_only_no_candidate_file_acquired",
+      "studyStatus": "preprint_resource",
+      "publicSourceEvidence": {
+        "records": [
+          {"id": "PSE-CANO-PREPRINT", "kind": "preprint", "url": "https://www.biorxiv.org/content/10.64898/2026.06.11.731752v1", "accessVerifiedOn": "2026-08-18", "use": "Preprint status, stated data availability and preprint license context."},
+          {"id": "PSE-CANO-GEO", "kind": "repository_accession", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731", "accessVerifiedOn": "2026-08-18", "use": "Named public accession for raw and summary snMultiome data."},
+          {"id": "PSE-CANO-BIL", "kind": "imaging_repository", "url": "https://doi.brainimagelibrary.org/doi/10.35077/g.1196", "accessVerifiedOn": "2026-08-18", "use": "Named public location for Xenium spatial-transcriptomic data."},
+          {"id": "PSE-CANO-PMC", "kind": "preprint", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13308138/", "accessVerifiedOn": "2026-08-18", "use": "Preprint methods context for the study-specific spatial-registration report and its stated limits."}
+        ],
+        "reportedFacts": [
+          {"id": "PSF-CANO-001", "evidenceRecordId": "PSE-CANO-PREPRINT", "evidenceClass": "reported_metadata", "statement": "The study is a bioRxiv preprint, so preprint status must remain visible in downstream source metadata."},
+          {"id": "PSF-CANO-002", "evidenceRecordId": "PSE-CANO-GEO", "evidenceClass": "source_availability_statement", "statement": "The preprint identifies GSE318731 for raw and summary snMultiome data."},
+          {"id": "PSF-CANO-003", "evidenceRecordId": "PSE-CANO-BIL", "evidenceClass": "unresolved", "statement": "No uniquely attributable BIL metadata record or object manifest has yet been established for this project."},
+          {"id": "PSF-CANO-004", "evidenceRecordId": "PSE-CANO-PMC", "evidenceClass": "source_context", "statement": "The preprint methods describe 22 manually defined gray-matter-boundary anchors, thin-plate-spline mapping to C5, T12, L5, or S1 references, and aggregation across 20 sections; this is a study-specific method report, not a project registration."},
+          {"id": "PSF-CANO-005", "evidenceRecordId": "PSE-CANO-PMC", "evidenceClass": "unresolved", "statement": "The public method description does not supply a selected object manifest, a pinned transform artifact, an independent training-versus-held-out landmark split, a physical-space held-out error distribution, or a transform to the bundled BrainGlobe derivative."}
+        ]
+      },
+      "objectInventory": {"status": "not_attempted", "objects": []},
+      "acquisition": {"status": "not_downloaded", "remoteAcquisitionAttempted": false, "candidateFilesEnumerated": false, "fileHashes": [], "bundledAssetCount": 0},
+      "coordinates": {"sourceCoordinateAuthority": "AUTHOR_SPACE_OBS", "nativeCoordinateMetadataStatus": "not_file_verified", "transformStatus": "method_reported_transform_artifact_and_error_not_file_verified", "projectRegistrationStatus": "not_proposed", "projectRegistrationCount": 0},
+      "rights": {"publicRecordLicense": "CC BY-NC 4.0 preprint license; asset-level terms pending", "fileLevelReuseDecision": "pending_file_level_manifest", "bundleAuthorized": false, "publicHostingAuthorized": false},
+      "admission": {"status": "metadata_audited_not_admitted", "nextQueueItem": "UPG-002B"},
+      "requiredBeforeFileAdmission": ["Select an exact public processed object and retain its accession/version", "File-level object names, bytes, formats and source checksum", "Specimen and animal identifiers with sex, region and assay", "Native units, axes, orientation, origin and pixel or voxel scale", "Source transform artifact and a disjoint held-out landmark error report", "Asset-level reuse, derivative-distribution and curator approval"],
+      "scientificBoundaries": ["This is a preprint-resource metadata audit, not a peer-reviewed spatial registration.", "Zero candidate files are downloaded or bundled.", "Author-space observations are not a project atlas coordinate system.", "No source entity, SWC or synthetic evidence entity is registered by this record."]
+    },
+    {
+      "intakeId": "PSI-TABULAE-PARALYTICA-2026-08-18",
+      "sourceId": "PDS-TABULAE-PARALYTICA",
+      "auditDate": "2026-08-18",
+      "auditScope": "public_object_header_metadata_only_no_candidate_file_acquired",
+      "studyStatus": "published_resource",
+      "publicSourceEvidence": {
+        "records": [
+          {"id": "PSE-TABULAE-GEO", "kind": "repository_accession", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234774", "accessVerifiedOn": "2026-08-18", "use": "Public series record, processed supplementary-file listing, species, modality and condition context."},
+          {"id": "PSE-TABULAE-OBJECT", "kind": "repository_object_header", "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE234nnn/GSE234774/suppl/GSE234774_rnaseq_meta.txt.gz", "accessVerifiedOn": "2026-08-18", "use": "Read-only HTTPS object-header metadata for one exact processed supplementary object; no response body was acquired."},
+          {"id": "PSE-TABULAE-PAPER", "kind": "publication", "url": "https://www.nature.com/articles/s41586-024-07504-y", "accessVerifiedOn": "2026-08-18", "use": "Published study context; it is not a file-level rights or coordinate manifest."}
+        ],
+        "reportedFacts": [
+          {"id": "PSF-TABULAE-001", "evidenceRecordId": "PSE-TABULAE-GEO", "evidenceClass": "reported_metadata", "statement": "GSE234774 is a public Mus musculus spinal-cord injury series with single-nucleus transcriptomic and Visium spatial modalities across explicitly condition-bounded mid-thoracic contexts."},
+          {"id": "PSF-TABULAE-002", "evidenceRecordId": "PSE-TABULAE-GEO", "evidenceClass": "source_availability_statement", "statement": "The series lists GSE234774_rnaseq_meta.txt.gz as a processed supplementary TXT resource."},
+          {"id": "PSF-TABULAE-003", "evidenceRecordId": "PSE-TABULAE-OBJECT", "evidenceClass": "object_header_metadata", "statement": "A read-only HTTPS header response for the exact object reported Content-Length 10427632 bytes, Content-Type application/x-gzip, Last-Modified 2023-09-29T21:48:10Z, and byte-range support; no object body was downloaded."},
+          {"id": "PSF-TABULAE-004", "evidenceRecordId": "PSE-TABULAE-GEO", "evidenceClass": "unresolved", "statement": "The audited series record did not supply a source SHA-1 or SHA-256 for this object and did not provide an asset-level bundle or public-hosting authorization in this intake."}
+        ]
+      },
+      "objectInventory": {
+        "status": "one_public_object_header_observed_checksum_and_asset_rights_unresolved",
+        "objects": [
+          {"id": "GEO-GSE234774-RNASEQ-META", "stableName": "GSE234774_rnaseq_meta.txt.gz", "sourceUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE234nnn/GSE234774/suppl/GSE234774_rnaseq_meta.txt.gz", "bytes": 10427632, "contentType": "application/x-gzip", "lastModified": "2023-09-29T21:48:10Z", "sourceChecksum": null, "localSha256": null, "coordinateMetadata": "not_file_verified", "assetRightsDecision": "unresolved_not_admitted"}
+        ]
+      },
+      "acquisition": {"status": "not_downloaded", "remoteAcquisitionAttempted": false, "candidateFilesEnumerated": true, "fileHashes": [], "bundledAssetCount": 0},
+      "coordinates": {"sourceCoordinateAuthority": "AGGREGATED_OR_SPOT_LEVEL", "nativeCoordinateMetadataStatus": "not_file_verified", "transformStatus": "not_file_verified", "projectRegistrationStatus": "not_proposed", "projectRegistrationCount": 0},
+      "rights": {"publicRecordLicense": "No asset-level reuse or redistribution license recorded in this intake", "fileLevelReuseDecision": "pending_file_level_manifest", "bundleAuthorized": false, "publicHostingAuthorized": false},
+      "admission": {"status": "metadata_audited_not_admitted", "nextQueueItem": "UPG-008"},
+      "requiredBeforeFileAdmission": ["A source-provided SHA-1 or SHA-256 checksum, or a documented institutional checksum endpoint, for the selected exact object.", "An asset-level reuse, derivative-distribution and public-hosting decision.", "The file's data dictionary, schema version, specimen/sample keys, conditions and aggregation level.", "Native coordinate units, axis order, origin, image or spot linkage and explicit missingness.", "A condition-preserving adapter that does not turn a metadata row or Visium spot into an interneuron.", "A curator-reviewed source-local admission decision with zero project registration."],
+      "scientificBoundaries": ["The exact object is header-metadata observed only; its response body, contents, local SHA-256 and source checksum are not in this project.", "A metadata table does not provide cell morphology, a full spatial registration, or a synaptic edge list.", "This study is condition-bounded to its reported mid-thoracic injury contexts and cannot represent C1-S3.", "No project registration is proposed or granted; a future adapter remains aggregate or source-local until separate validation passes."]
+    }
+  ]
+}

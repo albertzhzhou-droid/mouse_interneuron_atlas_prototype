@@ -1,0 +1,238 @@
+{
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "runtime": {
+      "nodeRequirement": ">=22.13.0",
+      "packageLockVersion": 3,
+      "react": "19.2.8",
+      "reactDom": "19.2.8",
+      "three": "0.185.1",
+      "typescript": "5.9.3",
+      "vinext": "1.0.0-beta.6",
+      "vite": "8.2.1",
+      "wrangler": "4.123.0"
+    },
+    "version": "0.3.0"
+  },
+  "authoritativeInputs": [
+    {
+      "bytes": 30598,
+      "id": "researchRelease",
+      "path": "data/research-mvp-release-0.2.json",
+      "purpose": "Research MVP 0.2 release payload",
+      "scope": "project",
+      "sha256": "ad8f16b038b40ce6098f3b55272d9c70e0b68221ccb27da1ce598f5ed9c36453"
+    },
+    {
+      "bytes": 10197,
+      "id": "researchReleaseSchema",
+      "path": "schemas/research-mvp-release.schema.json",
+      "purpose": "Research MVP 0.2 JSON Schema",
+      "scope": "project",
+      "sha256": "9c5ba4f56f4772734045394070790dc9ce8d1d3b87118914fd5f7a8229b47fff"
+    },
+    {
+      "bytes": 14864,
+      "id": "publicDataCatalog",
+      "path": "data/public-data-catalog-0.3.json",
+      "purpose": "Public-data workbench source catalog and upgrade queue",
+      "scope": "project",
+      "sha256": "29b72c012248e0d19991cd1b31d146d01615593b07a608a936f46eb0d024912e"
+    },
+    {
+      "bytes": 4519,
+      "id": "publicDataCatalogSchema",
+      "path": "schemas/public-data-catalog.schema.json",
+      "purpose": "Public-data workbench JSON Schema",
+      "scope": "project",
+      "sha256": "1449d2b8deecb6ec89e36f6a64bd8791f0194b2013a1a8e55538b8015fe59c75"
+    },
+    {
+      "bytes": 27255,
+      "id": "evidenceLedger",
+      "path": "02_EVIDENCE/EVIDENCE_LEDGER.md",
+      "purpose": "External authoritative evidence ledger",
+      "scope": "scientificAuthority",
+      "sha256": "afceda228b6d8644e47e4c44803cd49bf76045c59202e9d96777775e7c7e59cf"
+    },
+    {
+      "bytes": 5585,
+      "id": "sourceManifest",
+      "path": "01_LITERATURE/SOURCE_MANIFEST.tsv",
+      "purpose": "External authoritative source manifest",
+      "scope": "scientificAuthority",
+      "sha256": "994de35e45b481f1d218add4d73b4f0357e751c2474ee2ed03dc1821ee0833ab"
+    },
+    {
+      "bytes": 6063,
+      "id": "atlasAssetManifest",
+      "path": "public/data/allen_cord_20um_v3_0/asset-manifest.json",
+      "purpose": "Bundled BrainGlobe atlas derivative manifest",
+      "scope": "project",
+      "sha256": "df41e08e3c3a802a7de96d68cd1cb5e150432ebde603599668f69b662ac78c14"
+    },
+    {
+      "bytes": 11216,
+      "id": "morphologyAssetManifest",
+      "path": "public/data/neuromorpho_release_8_6_124/asset-manifest.json",
+      "purpose": "Bundled NeuroMorpho exemplar manifest",
+      "scope": "project",
+      "sha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647"
+    },
+    {
+      "bytes": 1910,
+      "id": "rightsLedger",
+      "path": "docs/RIGHTS_LEDGER.csv",
+      "purpose": "Asset and source rights decisions",
+      "scope": "project",
+      "sha256": "8c1f03a985ddd3dfc537f256ca40711c625df8e38e8456baa4fee7b88628bb0e"
+    },
+    {
+      "bytes": 300294,
+      "id": "packageLock",
+      "path": "package-lock.json",
+      "purpose": "Exact JavaScript dependency graph",
+      "scope": "project",
+      "sha256": "c1ee921881a719238b43ad23b2f02a4c102d96f36d86bb8abbd4f474a666a4e8"
+    }
+  ],
+  "inputRoots": {
+    "project": {
+      "locator": ".",
+      "policy": "Only exact allowlisted relative paths contained by the real project root are readable."
+    },
+    "scientificAuthority": {
+      "locator": "../interneuron_sci_review",
+      "policy": "Only EVIDENCE_LEDGER.md and SOURCE_MANIFEST.tsv at their exact allowlisted paths are readable."
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "UTF-8 compact JSON with recursively lexicographically sorted object keys; array order preserved; top-level manifestContentSha256 omitted.",
+    "inputCount": 10
+  },
+  "manifestContentSha256": "755a36cd4fc60f3ed79f8557665ce81edaedd03a31046a76ccfa637e9c64c3b1",
+  "manifestSchemaVersion": "0.3.0",
+  "publicDataWorkbench": {
+    "adapterSourceCount": 2,
+    "bundledLocalSourceCount": 2,
+    "institutionalExperimentalDataUsed": false,
+    "metadataAuditSourceCount": 2,
+    "networkAtReviewRuntime": false,
+    "schemaVersion": "0.3.0",
+    "scientificInputPolicy": "public_sources_only",
+    "sourceCatalogInputId": "publicDataCatalog",
+    "sourceCatalogSchemaInputId": "publicDataCatalogSchema",
+    "sourceCount": 6,
+    "upgradeQueueCount": 6
+  },
+  "registrations": {
+    "count": 0,
+    "records": []
+  },
+  "releaseDate": "2026-08-18",
+  "releaseId": "ohri-mouse-interneuron-public-data-workbench-0.3.0",
+  "releaseStatus": "localhost_candidate",
+  "researchModel": {
+    "claimCount": 8,
+    "conditionCount": 13,
+    "entityCount": 7,
+    "evidenceContextsMayDifferFromModelGeometry": true,
+    "extent": "C1-S3",
+    "isCellCensus": false,
+    "isClinicalModel": false,
+    "isConnectome": false,
+    "lifeStage": "adult",
+    "populationEntityCount": 5,
+    "schemaVersion": "0.2.0",
+    "sourceCount": 7,
+    "spatialContract": {
+      "coordinateSpace": "prototype_schematic_v0",
+      "entityGeometryStatus": "SYN",
+      "entityPathStatus": "SCH",
+      "measurementAllowed": false,
+      "units": "schematic_unit"
+    },
+    "species": "Mus musculus",
+    "stateOverlayCount": 2,
+    "taxon": "NCBITaxon:10090"
+  },
+  "scientificBoundaries": {
+    "atlasGeometry": "Atlas planes and contours are inferred reference geometry (INF), not entity placements and not valid for measurement.",
+    "entityGeometry": "All seven evidence entities remain synthetic (SYN) and their paths schematic (SCH).",
+    "intendedUse": "Localhost public-data workbench candidate only; not a validated scientific atlas product.",
+    "measurementAllowed": false,
+    "morphologyGeometry": "Five phenotype-stratified NeuroMorpho exemplars are observed (OBS) only in their source-local frames; they are not representative and are not linked to the seven evidence entities.",
+    "registration": "There are 0 registrations; every exemplar is unregistered and has no atlas transform or registration error estimate.",
+    "scientificInputPolicy": "All scientific inputs are public digital sources only; no OHRI internal experimental data, physical specimens or unpublished institutional records are required.",
+    "scope": "This release is not a complete interneuron census, connectome, clinical model, treatment recommendation, or claim of human cell-type causality."
+  },
+  "spatialAssets": {
+    "atlas": {
+      "assetId": "allen_cord_20um:3.0:ohri-sampled-reference-v1",
+      "atlas": "allen_cord_20um",
+      "atlasApiVersion": "3.0.1",
+      "atlasVersion": "3.0",
+      "citation": "Fiederling et al. 2021; doi:10.1016/j.crmeth.2021.100074; dataset doi:10.17632/4rrggzv5d5.1; BrainGlobe Atlas API.",
+      "componentVersions": {
+        "annotation": "2021",
+        "coordinateSpace": "2021",
+        "template": "2021",
+        "terminology": "2021"
+      },
+      "coordinateSpaceId": "allen_spinal_cord-adult-mouse-space:2021",
+      "displayTransformUse": "visualization_only_not_cell_registration",
+      "geometryStatus": "INF",
+      "license": "CC BY 4.0 original dataset; BrainGlobe AWS distribution CC0",
+      "lifeStage": "adult",
+      "manifestInputId": "atlasAssetManifest",
+      "manifestSha256": "df41e08e3c3a802a7de96d68cd1cb5e150432ebde603599668f69b662ac78c14",
+      "orientation": "asr",
+      "registrationError": {
+        "missingReason": "not_applicable",
+        "value": null
+      },
+      "resolutionUmZyx": [
+        20,
+        10,
+        10
+      ],
+      "sampledPlaneCount": 15,
+      "shapeZyx": [
+        1567,
+        253,
+        322
+      ],
+      "species": "Mus musculus"
+    },
+    "morphology": {
+      "assetSetId": "neuromorpho:8.6.124:adult-mouse-spinal-interneuron-exemplars-v1",
+      "atlasTransformCount": 0,
+      "coordinateFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "exemplarCount": 5,
+      "exemplarNeuronIds": [
+        104003,
+        108974,
+        109005,
+        242822,
+        260150
+      ],
+      "geometryStatus": "OBS",
+      "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use",
+      "lifeStage": "adult",
+      "manifestInputId": "morphologyAssetManifest",
+      "manifestSha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647",
+      "queryTotalAtSnapshot": 142,
+      "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&fq=age_classification:adult&size=500&sort=neuron_id,asc",
+      "registrationStatus": "unregistered",
+      "repositoryRelease": "8.6.124",
+      "requiredCitation": [
+        "NeuroMorpho.Org, RRID:SCR_002145",
+        "Tecuatl et al. 2024, doi:10.1096/fba.2024-00048",
+        "Original paper recorded for each morphology"
+      ],
+      "selection": "Five phenotype-stratified examples selected from the official API query for adult mouse spinal-cord interneurons; not a representative sample.",
+      "species": "Mus musculus"
+    }
+  }
+}

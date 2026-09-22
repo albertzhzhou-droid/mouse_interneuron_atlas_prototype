@@ -1,0 +1,654 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/alkaslasi-cholinergic-source-taxonomy-0.1.schema.json",
+  "title": "Alkaslasi 2021 source-local adult mouse spinal cholinergic interneuron taxonomy 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "releaseId",
+    "schemaVersion",
+    "releaseDate",
+    "datasetId",
+    "coordinateAuthority",
+    "source",
+    "scope",
+    "articlePipelineStages",
+    "articleFigure5aMarkerContext",
+    "sourceObjectAudit",
+    "excludedSourceContext",
+    "sourceLocators",
+    "profiles",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "releaseId": {"const": "ohri-alkaslasi-cholinergic-source-taxonomy-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "releaseDate": {"type": "string", "format": "date"},
+    "datasetId": {"const": "GSE167597"},
+    "coordinateAuthority": {"const": "SOURCE_LOCAL_TYPE_ONLY"},
+    "source": {"$ref": "#/$defs/source"},
+    "scope": {"$ref": "#/$defs/scope"},
+    "articlePipelineStages": {"$ref": "#/$defs/articlePipelineStages"},
+    "articleFigure5aMarkerContext": {"$ref": "#/$defs/articleFigure5aMarkerContext"},
+    "sourceObjectAudit": {"$ref": "#/$defs/sourceObjectAudit"},
+    "excludedSourceContext": {"$ref": "#/$defs/excludedSourceContext"},
+    "sourceLocators": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/sourceLocator"}
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {"$ref": "#/$defs/profile"}
+    },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 50}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication", "geo"],
+      "properties": {
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "citation", "doi", "pmid", "articleUrl", "license"],
+          "properties": {
+            "id": {"const": "ALKASLASI-2021"},
+            "citation": {"type": "string", "minLength": 100},
+            "doi": {"const": "10.1038/s41467-021-22691-2"},
+            "pmid": {"const": "33931636"},
+            "articleUrl": {"const": "https://www.nature.com/articles/s41467-021-22691-2"},
+            "license": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "url", "appliesTo", "sourceLocatorIds", "rightsBoundary"],
+              "properties": {
+                "id": {"const": "CC-BY-4.0"},
+                "url": {"const": "https://creativecommons.org/licenses/by/4.0/"},
+                "appliesTo": {"const": "article_and_article_source_data_subject_to_third_party_exceptions"},
+                "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyStringArray"},
+                "rightsBoundary": {"type": "string", "minLength": 100}
+              }
+            }
+          }
+        },
+        "geo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "accession", "recordUrl", "sraStudyAccession", "bioProjectAccession", "displayedCitationPmid", "citationLinkBoundary", "sampleFrame", "annotationAsset"],
+          "properties": {
+            "id": {"const": "GSE167597"},
+            "accession": {"const": "GSE167597"},
+            "recordUrl": {"const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE167597"},
+            "sraStudyAccession": {"const": "SRP308350"},
+            "bioProjectAccession": {"const": "PRJNA705097"},
+            "displayedCitationPmid": {"const": "37559423"},
+            "citationLinkBoundary": {"type": "string", "minLength": 150},
+            "sampleFrame": {"$ref": "#/$defs/sampleFrame"},
+            "annotationAsset": {"$ref": "#/$defs/annotationAsset"}
+          }
+        }
+      }
+    },
+    "sampleFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "sourceAnimalCount",
+        "femaleAnimalCount",
+        "maleAnimalCount",
+        "ageWeeks",
+        "matchingRegionMousePoolSize",
+        "processingReplicateMouseCount",
+        "processingReplicateCount",
+        "replicateContexts",
+        "geoSampleCount",
+        "geoSampleAccessions",
+        "sampledRegionLabels",
+        "articleSexAnalysis",
+        "sourceLocatorIds",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "species": {"const": "Mus musculus"},
+        "sourceAnimalCount": {"const": 12},
+        "femaleAnimalCount": {"const": 6},
+        "maleAnimalCount": {"const": 6},
+        "ageWeeks": {"const": 8},
+        "matchingRegionMousePoolSize": {"const": 2},
+        "processingReplicateMouseCount": {"const": 4},
+        "processingReplicateCount": {"const": 3},
+        "replicateContexts": {
+          "const": ["mixed-sex", "male", "female"]
+        },
+        "geoSampleCount": {"const": 9},
+        "geoSampleAccessions": {
+          "const": ["GSM5111192", "GSM5111193", "GSM5111194", "GSM5111195", "GSM5111196", "GSM5111197", "GSM5111198", "GSM5111199", "GSM5111200"]
+        },
+        "sampledRegionLabels": {
+          "const": ["Cervical", "Thoracic", "Lumbar/Sacral article context"]
+        },
+        "articleSexAnalysis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["finding", "authority", "sourceLocatorIds", "boundary"],
+          "properties": {
+            "finding": {"const": "no_sex_specific_differences_observed_among_cholinergic_neurons"},
+            "authority": {"const": "article_reported_study_level_negative_finding"},
+            "sourceLocatorIds": {"const": ["paper-sex-analysis"]},
+            "boundary": {"type": "string", "minLength": 100}
+          }
+        },
+        "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "interpretationBoundary": {"type": "string", "minLength": 120}
+      }
+    },
+    "annotationAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fileName",
+        "downloadUrl",
+        "geoDisplayedSize",
+        "compressedBytes",
+        "compressedSha256",
+        "uncompressedBytes",
+        "uncompressedSha256",
+        "retrievedOn",
+        "sourceFileBundled",
+        "exactNucleusRosterBundled",
+        "derivedFactualMetadataBundled",
+        "reuseStatus",
+        "sourceLocatorIds",
+        "rightsBoundary"
+      ],
+      "properties": {
+        "id": {"const": "GSE167597_ANNOTATIONS"},
+        "fileName": {"const": "GSE167597_all_AlkaslasiPiccus_annotations.csv.gz"},
+        "downloadUrl": {"const": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE167nnn/GSE167597/suppl/GSE167597_all_AlkaslasiPiccus_annotations.csv.gz"},
+        "geoDisplayedSize": {"const": "325.8 Kb"},
+        "compressedBytes": {"const": 333655},
+        "compressedSha256": {"const": "6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091"},
+        "uncompressedBytes": {"const": 3372611},
+        "uncompressedSha256": {"const": "d8ca3a504cbbc3a96050e0c98ad7ac04d1a9a0b791b94acbee7ef158840febc2"},
+        "retrievedOn": {"type": "string", "format": "date"},
+        "sourceFileBundled": {"const": false},
+        "exactNucleusRosterBundled": {"const": false},
+        "derivedFactualMetadataBundled": {"const": true},
+        "reuseStatus": {"const": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED"},
+        "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "rightsBoundary": {"type": "string", "minLength": 150}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "speciesTaxonId",
+        "lifeStage",
+        "spinalRegion",
+        "modality",
+        "sourceTotalQcRetainedNucleusCount",
+        "sourceCholinergicNucleusCount",
+        "sourceInterneuronNucleusCount",
+        "displayedProfileCount",
+        "sourceLabelledCholinergicInterneuronProfileCount",
+        "articlePax2HighProfileCount",
+        "articleCautiousI8ProfileCount",
+        "articleFinerInterneuronSubclassCount",
+        "depositedFinerSubclassAssignmentsAvailable",
+        "samplingCountInterpretation",
+        "projectCanonicalTypeCount",
+        "exactCrossSourceIdentityCount",
+        "projectRegistrationCount",
+        "generatedGeometryCount"
+      ],
+      "properties": {
+        "species": {"const": "Mus musculus"},
+        "speciesTaxonId": {"const": 10090},
+        "lifeStage": {"const": "adult; 8 weeks"},
+        "spinalRegion": {"type": "string", "minLength": 60},
+        "modality": {"type": "string", "minLength": 80},
+        "sourceTotalQcRetainedNucleusCount": {"const": 34231},
+        "sourceCholinergicNucleusCount": {"const": 16042},
+        "sourceInterneuronNucleusCount": {"const": 5375},
+        "displayedProfileCount": {"const": 8},
+        "sourceLabelledCholinergicInterneuronProfileCount": {"const": 8},
+        "articlePax2HighProfileCount": {"const": 7},
+        "articleCautiousI8ProfileCount": {"const": 1},
+        "articleFinerInterneuronSubclassCount": {"const": 14},
+        "depositedFinerSubclassAssignmentsAvailable": {"const": false},
+        "samplingCountInterpretation": {"const": "SAMPLING_COUNT_ONLY_NOT_PREVALENCE"},
+        "projectCanonicalTypeCount": {"const": 0},
+        "exactCrossSourceIdentityCount": {"const": 0},
+        "projectRegistrationCount": {"const": 0},
+        "generatedGeometryCount": {"const": 0}
+      }
+    },
+    "articlePipelineStages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preliminaryQcClusterCount", "preliminaryNonCholinergicClusterCount", "finalCholinergicClassCount", "interpretationBoundary", "sourceLocatorIds"],
+      "properties": {
+        "preliminaryQcClusterCount": {"const": 38},
+        "preliminaryNonCholinergicClusterCount": {"const": 22},
+        "finalCholinergicClassCount": {"const": 21},
+        "interpretationBoundary": {"type": "string", "minLength": 100},
+        "sourceLocatorIds": {"const": ["paper-results-source-denominators"]}
+      }
+    },
+    "articleFigure5aMarkerContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority", "markerLabelUnion", "prominentLabelsByProfile", "sourceLocatorIds", "boundary"],
+      "properties": {
+        "authority": {"const": "article_figure_display_context"},
+        "markerLabelUnion": {
+          "const": ["Igsl3", "Prlr", "Cdh23", "Chst9", "Pde5a", "Lama2", "Sox6", "Col18a1", "9530026P05Rik", "Zfp536", "Pde11a", "Gm13912", "Ror2", "Gm12649", "Aldh1a1", "Gm21847", "Fer1l6", "Adamtsl1", "Cpne4", "Nr5a2", "CT010465.1", "Slc30a8"]
+        },
+        "prominentLabelsByProfile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8"],
+          "properties": {
+            "I1": {"const": ["Igsl3", "Prlr", "Cdh23"]},
+            "I2": {"const": ["Chst9", "Lama2", "Pde5a"]},
+            "I3": {"const": ["Sox6", "Col18a1", "9530026P05Rik"]},
+            "I4": {"const": ["Zfp536", "Col18a1", "Pde11a"]},
+            "I5": {"const": ["Gm13912", "Ror2", "Gm12649"]},
+            "I6": {"const": ["Aldh1a1", "Gm21847", "Fer1l6"]},
+            "I7": {"const": ["Pde5a", "Adamtsl1", "Cpne4"]},
+            "I8": {"const": ["Pde11a", "Nr5a2", "CT010465.1", "Slc30a8"]}
+          }
+        },
+        "sourceLocatorIds": {"const": ["paper-interneuron-section"]},
+        "boundary": {"type": "string", "minLength": 160}
+      }
+    },
+    "sourceObjectAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exactHeaders",
+        "sourceRowCount",
+        "uniqueBarcodeCount",
+        "contiguousSourceRowIndex",
+        "typeCounts",
+        "cholinergicTypeCounts",
+        "skeletalTypeCounts",
+        "allDepositedSexFieldCounts",
+        "interneuronSampleRegionCounts",
+        "interneuronDepositedSexFieldCounts",
+        "barcodeSampleSuffixCounts",
+        "skeletalLabelConflicts",
+        "allSourceRowsTupleReceipt",
+        "interneuronSubsetTupleReceipt",
+        "profileAggregateTupleReceipt",
+        "rawSourceAnomalies",
+        "sourceLocatorIds"
+      ],
+      "properties": {
+        "exactHeaders": {"const": ["", "barcodes", "sex", "expt", "types", "newnames", "cholinergictypes", "skeletaltypes"]},
+        "sourceRowCount": {"const": 34231},
+        "uniqueBarcodeCount": {"const": 34231},
+        "contiguousSourceRowIndex": {"const": true},
+        "typeCounts": {"$ref": "#/$defs/typeCounts"},
+        "cholinergicTypeCounts": {"$ref": "#/$defs/cholinergicTypeCounts"},
+        "skeletalTypeCounts": {"$ref": "#/$defs/skeletalTypeCounts"},
+        "allDepositedSexFieldCounts": {"$ref": "#/$defs/sexCounts"},
+        "interneuronSampleRegionCounts": {"$ref": "#/$defs/regionCounts"},
+        "interneuronDepositedSexFieldCounts": {"$ref": "#/$defs/sexCounts"},
+        "barcodeSampleSuffixCounts": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["suffix", "allRows", "interneuronRows"],
+            "properties": {
+              "suffix": {"$ref": "#/$defs/nonEmptyString"},
+              "allRows": {"type": "integer", "minimum": 0},
+              "interneuronRows": {"type": "integer", "minimum": 0}
+            }
+          }
+        },
+        "skeletalLabelConflicts": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {"$ref": "#/$defs/skeletalLabelConflict"}
+        },
+        "allSourceRowsTupleReceipt": {"$ref": "#/$defs/tupleReceipt"},
+        "interneuronSubsetTupleReceipt": {"$ref": "#/$defs/tupleReceipt"},
+        "profileAggregateTupleReceipt": {"$ref": "#/$defs/tupleReceipt"},
+        "rawSourceAnomalies": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {"$ref": "#/$defs/rawSourceAnomaly"}
+        },
+        "sourceLocatorIds": {"const": ["geo-annotation-object"]}
+      }
+    },
+    "typeCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Excitatory Neurons", "Inhibitory Neurons", "Cholinergic Neurons"],
+      "properties": {
+        "Excitatory Neurons": {"const": 13223},
+        "Inhibitory Neurons": {"const": 4966},
+        "Cholinergic Neurons": {"const": 16042}
+      }
+    },
+    "cholinergicTypeCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Cholinergic Interneurons", "Skeletal Motor Neurons", "Visceral Motor Neurons"],
+      "properties": {
+        "Cholinergic Interneurons": {"const": 5375},
+        "Skeletal Motor Neurons": {"const": 5054},
+        "Visceral Motor Neurons": {"const": 5613}
+      }
+    },
+    "skeletalTypeCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Alpha Motor Neurons", "Gamma Motor Neurons", "Type 3 Motor Neurons"],
+      "properties": {
+        "Alpha Motor Neurons": {"const": 1284},
+        "Gamma Motor Neurons": {"const": 2243},
+        "Type 3 Motor Neurons": {"const": 1527}
+      }
+    },
+    "regionCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Cervical", "Thoracic", "Lumbar"],
+      "properties": {
+        "Cervical": {"type": "integer", "minimum": 0},
+        "Thoracic": {"type": "integer", "minimum": 0},
+        "Lumbar": {"type": "integer", "minimum": 0}
+      }
+    },
+    "sexCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["M", "F", "NA"],
+      "properties": {
+        "M": {"type": "integer", "minimum": 0},
+        "F": {"type": "integer", "minimum": 0},
+        "NA": {"type": "integer", "minimum": 0}
+      }
+    },
+    "tupleReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalization", "sha256"],
+      "properties": {
+        "canonicalization": {"type": "string", "minLength": 70},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "rawSourceAnomaly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "rawValue", "kind", "allRowCount", "interneuronRowCount", "boundary"],
+      "properties": {
+        "field": {"const": "barcodes"},
+        "rawValue": {"const": "cervical-cervical_6"},
+        "kind": {"const": "DEPOSITED_DUPLICATED_REGION_TOKEN_IN_BARCODE_SUFFIX"},
+        "allRowCount": {"const": 4798},
+        "interneuronRowCount": {"const": 769},
+        "boundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "skeletalLabelConflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceRowIndex", "barcode", "newnames", "skeletaltypes", "conflictStatus", "boundary"],
+      "properties": {
+        "sourceRowIndex": {"type": "integer", "minimum": 1},
+        "barcode": {"type": "string", "minLength": 20},
+        "newnames": {"enum": ["S1", "S2"]},
+        "skeletaltypes": {"enum": ["Alpha Motor Neurons", "Gamma Motor Neurons", "Type 3 Motor Neurons"]},
+        "conflictStatus": {"const": "PRESERVED_NOT_REPAIRED"},
+        "boundary": {"type": "string", "minLength": 160}
+      }
+    },
+    "excludedSourceContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["displaySelectionRule", "displayedNucleusCount", "excludedNucleusCount", "excludedCholinergicContext", "excludedReporterHistoryContext", "boundary"],
+      "properties": {
+        "displaySelectionRule": {"const": "cholinergictypes == Cholinergic Interneurons and newnames matches I1-I8"},
+        "displayedNucleusCount": {"const": 5375},
+        "excludedNucleusCount": {"const": 28856},
+        "excludedCholinergicContext": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["skeletalMotorNeuronNuclei", "visceralMotorNeuronNuclei", "reason"],
+          "properties": {
+            "skeletalMotorNeuronNuclei": {"const": 5054},
+            "visceralMotorNeuronNuclei": {"const": 5613},
+            "reason": {"type": "string", "minLength": 100}
+          }
+        },
+        "excludedReporterHistoryContext": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["excitatoryNeuronNuclei", "inhibitoryNeuronNuclei", "reason"],
+          "properties": {
+            "excitatoryNeuronNuclei": {"const": 13223},
+            "inhibitoryNeuronNuclei": {"const": 4966},
+            "reason": {"type": "string", "minLength": 120}
+          }
+        },
+        "boundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "sourceLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceObjectId", "locator", "supportsFields", "evidenceStatus"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "sourceObjectId": {"enum": ["ALKASLASI-2021", "GSE167597", "GSE167597_ANNOTATIONS"]},
+        "locator": {"type": "string", "minLength": 80},
+        "supportsFields": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "evidenceStatus": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceLocalLabel",
+        "rawSourceLabels",
+        "regionClass",
+        "transmitterClass",
+        "projectUseClass",
+        "lifeStage",
+        "spinalScope",
+        "samplingCount",
+        "sampleRegionMembership",
+        "depositedSexFieldMembership",
+        "markerPanel",
+        "markerEvidence",
+        "articleSpatialContext",
+        "rostrocaudalContext",
+        "putativeCellTypeLabel",
+        "putativeAssignmentStatus",
+        "i8ArticleCaution",
+        "fieldLocators",
+        "missingEvidence"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^alkaslasi-2021:GSE167597:I[1-8]$"},
+        "sourceLocalLabel": {"type": "string", "pattern": "^I[1-8]$"},
+        "rawSourceLabels": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {"type": "string", "pattern": "^I[1-8]$"}
+        },
+        "regionClass": {"const": "not_established"},
+        "transmitterClass": {"const": "cholinergic"},
+        "projectUseClass": {"const": "source_local_cholinergic_interneuron_cluster"},
+        "lifeStage": {"const": "adult; source mice aged 8 weeks"},
+        "spinalScope": {"type": "string", "minLength": 100},
+        "samplingCount": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "unit", "interpretation"],
+          "properties": {
+            "value": {"type": "integer", "minimum": 1},
+            "unit": {"const": "nuclei"},
+            "interpretation": {"const": "CHECKSUM_PINNED_SOURCE_ASSIGNMENT_COUNT_NOT_PREVALENCE"}
+          }
+        },
+        "sampleRegionMembership": {"$ref": "#/$defs/sampleRegionMembership"},
+        "depositedSexFieldMembership": {"$ref": "#/$defs/depositedSexFieldMembership"},
+        "markerPanel": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "markerEvidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/markerEvidence"}
+        },
+        "articleSpatialContext": {"$ref": "#/$defs/articleSpatialContext"},
+        "rostrocaudalContext": {"const": "exact_sample_membership_counts_only_no_coordinate_or_prevalence_claim"},
+        "putativeCellTypeLabel": {"type": "string", "pattern": "^cholinergic interneuron cluster I[1-8]$"},
+        "putativeAssignmentStatus": {"$ref": "#/$defs/nonEmptyString"},
+        "i8ArticleCaution": {"type": ["string", "null"]},
+        "fieldLocators": {"$ref": "#/$defs/fieldLocators"},
+        "missingEvidence": {"$ref": "#/$defs/missingEvidence"}
+      }
+    },
+    "sampleRegionMembership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "authority", "counts", "depositedLabels", "boundary"],
+      "properties": {
+        "field": {"const": "expt"},
+        "authority": {"const": "checksum_pinned_annotation_field"},
+        "counts": {"$ref": "#/$defs/regionCounts"},
+        "depositedLabels": {"const": ["Cervical", "Thoracic", "Lumbar"]},
+        "boundary": {"type": "string", "minLength": 120}
+      }
+    },
+    "depositedSexFieldMembership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "authority", "counts", "depositedLabels", "naInterpretation", "boundary"],
+      "properties": {
+        "field": {"const": "sex"},
+        "authority": {"const": "checksum_pinned_annotation_field"},
+        "counts": {"$ref": "#/$defs/sexCounts"},
+        "depositedLabels": {"const": ["M", "F", "NA"]},
+        "naInterpretation": {"const": "PRESERVED_AS_DEPOSITED_NOT_IMPUTED"},
+        "boundary": {"type": "string", "minLength": 120}
+      }
+    },
+    "markerEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidenceStatus", "positiveMarkers", "negativeMarkers", "claim", "sourceLocatorIds", "boundary"],
+      "properties": {
+        "evidenceStatus": {"enum": ["article_reported_group_context", "article_reported_cluster_context", "article_profile_specific_ish_context"]},
+        "positiveMarkers": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "negativeMarkers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmptyString"}
+        },
+        "claim": {"type": "string", "minLength": 50},
+        "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "boundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "articleSpatialContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "authority", "sourceLocatorIds", "boundary"],
+      "properties": {
+        "value": {"type": "string", "minLength": 30},
+        "authority": {"enum": ["article_profile_specific_ish_context", "article_class_level_context"]},
+        "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "boundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "fieldLocators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceLocalLabel", "samplingCount", "sampleRegionMembership", "depositedSexFieldMembership", "markerPanel", "articleSpatialContext", "putativeAssignmentStatus", "missingEvidence"],
+      "properties": {
+        "sourceLocalLabel": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "samplingCount": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "sampleRegionMembership": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "depositedSexFieldMembership": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "markerPanel": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "articleSpatialContext": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "putativeAssignmentStatus": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "missingEvidence": {"$ref": "#/$defs/nonEmptyStringArray"}
+      }
+    },
+    "missingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "morphology",
+        "somaGeometry",
+        "nucleusGeometry",
+        "cellCoordinates",
+        "intracellularStructures",
+        "organelles",
+        "electrophysiology",
+        "projectionTarget",
+        "synapticConnectivity",
+        "sciContext",
+        "atlasRegistration",
+        "crossSourceSameCellIdentityLink",
+        "crossSourceSameTypeIdentityLink",
+        "biologicalPrevalence"
+      ],
+      "properties": {
+        "morphology": {"const": "not_measured"},
+        "somaGeometry": {"const": "not_measured"},
+        "nucleusGeometry": {"const": "not_measured"},
+        "cellCoordinates": {"const": "not_available"},
+        "intracellularStructures": {"const": "not_measured"},
+        "organelles": {"const": "not_measured"},
+        "electrophysiology": {"const": "not_linked_to_sequenced_nuclei"},
+        "projectionTarget": {"const": "not_linked_to_sequenced_nuclei"},
+        "synapticConnectivity": {"const": "not_linked_to_sequenced_nuclei"},
+        "sciContext": {"const": "not_measured"},
+        "atlasRegistration": {"const": "not_established"},
+        "crossSourceSameCellIdentityLink": {"const": "not_established"},
+        "crossSourceSameTypeIdentityLink": {"const": "not_established"},
+        "biologicalPrevalence": {"const": "not_estimable_from_enriched_sample"}
+      }
+    }
+  }
+}

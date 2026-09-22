@@ -31,10 +31,22 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Local OpenAI hosting project identifiers are workspace configuration.
+/.openai/hosting.json
+
 # vercel
 .vercel
 
 /dist/
 /.wrangler/
 /outputs/
+/output/
 /work/
+**/.playwright-cli/
+/release/
+__pycache__/
+*.py[cod]
+*.tsbuildinfo
+
+# Cano-Gomez source RDS objects remain link-only; only validated derivatives ship.
+**/GSE318731_*.rds

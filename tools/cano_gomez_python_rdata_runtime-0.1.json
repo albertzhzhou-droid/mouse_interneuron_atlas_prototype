@@ -1,0 +1,50 @@
+{
+  "contractVersion": "0.1.0",
+  "authorityMode": "PYTHON_RDATA_META_DATA_ROW_ONLY",
+  "purpose": "Checksum-pinned Python clean-room extraction of ordered Seurat meta.data row names and same-row raw metadata values from the three GSE318731 RDS objects.",
+  "verifiedRuntime": {
+    "pythonImplementation": "CPython",
+    "pythonVersion": "3.9.6",
+    "packages": {
+      "numpy": "2.0.2",
+      "packaging": "26.3",
+      "pandas": "2.3.3",
+      "python-dateutil": "2.9.0.post0",
+      "pytz": "2026.3.post1",
+      "rdata": "0.11.2",
+      "six": "1.17.0",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.3",
+      "xarray": "2024.7.0"
+    },
+    "coreVersionsEnforcedByExtractor": [
+      "numpy==2.0.2",
+      "pandas==2.3.3",
+      "rdata==0.11.2"
+    ]
+  },
+  "parserPatch": {
+    "artifact": "tools/patches/rdata-0.11.2-seurat-rds-parser.patch",
+    "artifactSha256": "3be9fc99c76e35c729f6d63905f67b0e920d39fd40d9cf91a6b9c9b03ed511f6",
+    "stockParserFileSha256": "fd420b1655113a7f48526f2e32c6e833f1fd3846c683e066bd565117c2292530",
+    "patchedParserFileSha256": "52aa37ef301136240931dd0970f9891da127aa222bd84541239b774b19337aa5",
+    "applyFromSitePackagesDirectory": "patch --batch --forward -p1 -d <site-packages> < tools/patches/rdata-0.11.2-seurat-rds-parser.patch",
+    "verifyCommand": "shasum -a 256 <site-packages>/rdata/parser/_parser.py"
+  },
+  "reproduction": {
+    "createIsolatedTarget": "mkdir -p <site-packages>",
+    "installExactPackages": "python3 -m pip install --target <site-packages> numpy==2.0.2 pandas==2.3.3 rdata==0.11.2 xarray==2024.7.0 packaging==26.3 python-dateutil==2.9.0.post0 pytz==2026.3.post1 six==1.17.0 typing_extensions==4.16.0 tzdata==2026.3",
+    "applyPatch": "patch --batch --forward -p1 -d <site-packages> < tools/patches/rdata-0.11.2-seurat-rds-parser.patch",
+    "invokeTemplate": "python3 tools/extract_cano_gomez_rds_metadata.py <exact-rds> --class-name <CHOL|GABA|GLUT> --expected-rows <count> --expected-groups <count> --expected-source-sha256 <pinned-sha256> --site-packages <site-packages> --output-directory <new-output-directory>"
+  },
+  "scopeBoundaries": {
+    "stableIdentityBasis": "GSE318731|exact source filename|meta.data row.name",
+    "sameRowRawMetadataAssignmentOnly": true,
+    "crossAssayCellIdentityVerified": false,
+    "sameCellClaimAuthorized": false,
+    "classificationInferenceApplied": false,
+    "geometryClaimAuthorized": false,
+    "internalStructureClaimAuthorized": false,
+    "atlasRegistrationClaimAuthorized": false
+  }
+}

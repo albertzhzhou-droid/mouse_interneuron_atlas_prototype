@@ -1,0 +1,5003 @@
+{
+  "releaseId": "ohri-matson-neuronal-sci-timecourse-0.2.0",
+  "schemaVersion": "0.2.0",
+  "releaseDate": "2026-08-27",
+  "source": {
+    "studyId": "matson-2022-gse172167",
+    "citation": "Matson KJE, Russ DE, Kathe C, et al. Single cell atlas of spinal cord injury in mice reveals a pro-regenerative signature in spinocerebellar neurons. Nature Communications 13, 5628 (2022).",
+    "doi": "10.1038/s41467-022-33184-1",
+    "pmid": "36163250",
+    "articleUrl": "https://www.nature.com/articles/s41467-022-33184-1",
+    "license": {
+      "id": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "appliesTo": "Article and included source-data material unless a separate credit line states otherwise",
+      "rightsBoundary": "The GEO processed files are publicly downloadable, but no accession-specific redistribution licence was located. Raw source files are not bundled; this release retains only factual identifiers and source-derived counts."
+    },
+    "repositories": {
+      "geo": {
+        "accession": "GSE172167",
+        "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172167"
+      },
+      "sra": {
+        "accession": "SRP315018",
+        "url": "https://www.ncbi.nlm.nih.gov/sra?term=SRP315018"
+      },
+      "bioProject": {
+        "accession": "PRJNA722283",
+        "url": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA722283"
+      }
+    },
+    "sourceFiles": [
+      {
+        "role": "metadata",
+        "fileName": "GSE172167_meta.txt.gz",
+        "bytes": 75000,
+        "sha256": "5aabb2cd5f43b3c7a7f872e170dda470afb84a0b1dbfd7da2a248ba52c608554",
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE172nnn/GSE172167/suppl/GSE172167_meta.txt.gz",
+        "bundled": false,
+        "derivedFactualCountsBundled": true,
+        "assetLevelReuseStatus": "not_assumed"
+      },
+      {
+        "role": "familySoft",
+        "fileName": "GSE172167_family.soft.gz",
+        "bytes": 3793,
+        "sha256": "81022a11cc604dec4f018d29d44925fd198b4b38e66ab5e5026923bd5266ca71",
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE172nnn/GSE172167/soft/GSE172167_family.soft.gz",
+        "bundled": false,
+        "derivedFactualCountsBundled": true,
+        "assetLevelReuseStatus": "not_assumed"
+      }
+    ],
+    "articleSupplementReferences": [
+      {
+        "role": "rankedMarkerWorkbook",
+        "fileName": "41467_2022_33184_MOESM4_ESM.xlsx",
+        "bytes": 16885,
+        "sha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-022-33184-1/MediaObjects/41467_2022_33184_MOESM4_ESM.xlsx",
+        "license": "CC-BY-4.0",
+        "bundled": false,
+        "derivedRankedMarkersBundled": true,
+        "scope": "Top 20 ranked genes for 39 source types; this release deterministically retains all ranks 1–20 for the 17 neuronal families and no absent score or p-value."
+      }
+    ]
+  },
+  "scope": {
+    "species": "Mus musculus",
+    "strain": "C57BL/6",
+    "sex": "female",
+    "ageWeeks": "12–30",
+    "spinalRegion": "L2–S1 lumbar spinal cord distal to a thoracic injury",
+    "spinalSegments": "L2–S1",
+    "rootsAttached": [
+      "proximal dorsal roots",
+      "proximal ventral roots"
+    ],
+    "modality": "single-nucleus RNA sequencing",
+    "injuryLevel": "T9 vertebral level",
+    "injuryModel": "90 kdyn severe contusion",
+    "conditionCount": 5,
+    "independentAnimalCount": 15,
+    "independentAnimalCountPerCondition": 3,
+    "capturedNucleiCount": 67903,
+    "capturedNeuronalNucleiCount": 23651,
+    "neuronalPopulationCount": 17,
+    "sourceLocalNonMotorPopulationCount": 16,
+    "motorContextPopulationCount": 1,
+    "exactCrossSourceIdentityCount": 0,
+    "projectRegistrationCount": 0
+  },
+  "experimentalDesign": {
+    "tissue": "L2–S1 lumbar spinal cord with proximal dorsal and ventral roots attached",
+    "injuryTissueRelation": "Sequenced lumbar tissue was below and distal to the T9 lesion site",
+    "sequencingPlatform": "10x Genomics Chromium Single Cell Kit v2; article reports Illumina HiSeq 3000 while GEO reports HiSeq 2500",
+    "referenceGenome": "mm10-1.2.0 (GRCm38.93)",
+    "analysis": "Cell Ranger 2.2.0, Velocyto and Seurat v3",
+    "selectionBoundary": "For snRNA-seq, three mice representative of each time point were selected from a larger kinematically assessed cohort; captured nuclei are not a tissue-prevalence census.",
+    "exclusionBoundary": "The paper reports excluding mice with visible hindlimb movement during contusion, bone-hit injuries, kinematic outliers, or behavioral-data loss. The 15 sequenced mice are a selected terminal cross-sectional sample, not repeated longitudinal measurements."
+  },
+  "rankedMarkerPanelProvenance": {
+    "sourceRole": "rankedMarkerWorkbook",
+    "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+    "worksheet": "Sheet1",
+    "sourceRange": "A1:Q21",
+    "sheetDimension": "A1:AM43",
+    "sourceTypeCountInWorkbook": 39,
+    "modeledPopulationCount": 17,
+    "ranksPerPopulation": 20,
+    "rankedGeneRecordCount": 340,
+    "derivedPanelSha256": "7b071d49c43816321fb24a3c31fb9282abf559d9b990a48549278410e85769a4",
+    "digestCanonicalization": "UTF-8 lines: <markerColumnAlias>\\t<rank>\\t<gene>\\t<sourceCell>, joined with LF and terminated by LF.",
+    "scoreAvailable": false,
+    "pValueAvailable": false,
+    "boundary": "The panel contains rank and gene symbol only. The workbook exposes no score, fold change, expression magnitude, specificity statistic or p-value for these columns."
+  },
+  "timepoints": [
+    {
+      "id": "uninjured",
+      "sourceLabel": "Uninjured",
+      "phase": "baseline",
+      "order": 0,
+      "independentAnimalCount": 3,
+      "totalCapturedNuclei": 10633,
+      "capturedNeuronalNuclei": 3129,
+      "sampleIds": [
+        "A-45",
+        "A-46",
+        "A-48"
+      ],
+      "geoAccessions": [
+        "GSM5243301",
+        "GSM5243302",
+        "GSM5243303"
+      ]
+    },
+    {
+      "id": "1dpi",
+      "sourceLabel": "1dpi",
+      "phase": "acute",
+      "order": 1,
+      "independentAnimalCount": 3,
+      "totalCapturedNuclei": 13638,
+      "capturedNeuronalNuclei": 4761,
+      "sampleIds": [
+        "B-49",
+        "B-50",
+        "B-51"
+      ],
+      "geoAccessions": [
+        "GSM5243304",
+        "GSM5243305",
+        "GSM5243306"
+      ]
+    },
+    {
+      "id": "1wpi",
+      "sourceLabel": "1wpi",
+      "phase": "subacute",
+      "order": 2,
+      "independentAnimalCount": 3,
+      "totalCapturedNuclei": 13840,
+      "capturedNeuronalNuclei": 4872,
+      "sampleIds": [
+        "C-41",
+        "C-42",
+        "C-44"
+      ],
+      "geoAccessions": [
+        "GSM5243307",
+        "GSM5243308",
+        "GSM5243309"
+      ]
+    },
+    {
+      "id": "3wpi",
+      "sourceLabel": "3wpi",
+      "phase": "intermediate",
+      "order": 3,
+      "independentAnimalCount": 3,
+      "totalCapturedNuclei": 18050,
+      "capturedNeuronalNuclei": 6735,
+      "sampleIds": [
+        "D-25",
+        "D-26",
+        "D-29"
+      ],
+      "geoAccessions": [
+        "GSM5243310",
+        "GSM5243311",
+        "GSM5243312"
+      ]
+    },
+    {
+      "id": "6wpi",
+      "sourceLabel": "6wpi",
+      "phase": "chronic",
+      "order": 4,
+      "independentAnimalCount": 3,
+      "totalCapturedNuclei": 11742,
+      "capturedNeuronalNuclei": 4154,
+      "sampleIds": [
+        "F-12",
+        "F-13",
+        "F-14"
+      ],
+      "geoAccessions": [
+        "GSM5243313",
+        "GSM5243314",
+        "GSM5243315"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "id": "A-45",
+      "geoAccession": "GSM5243301",
+      "geoTitle": "Uninjured_a",
+      "bioSample": "SAMN18750997",
+      "sraExperiment": "SRX10609375",
+      "timepointId": "uninjured",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3400,
+      "capturedNeuronalNuclei": 1090
+    },
+    {
+      "id": "A-46",
+      "geoAccession": "GSM5243302",
+      "geoTitle": "Uninjured_b",
+      "bioSample": "SAMN18750996",
+      "sraExperiment": "SRX10609376",
+      "timepointId": "uninjured",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3813,
+      "capturedNeuronalNuclei": 1138
+    },
+    {
+      "id": "A-48",
+      "geoAccession": "GSM5243303",
+      "geoTitle": "Uninjured_c",
+      "bioSample": "SAMN18750995",
+      "sraExperiment": "SRX10609377",
+      "timepointId": "uninjured",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3420,
+      "capturedNeuronalNuclei": 901
+    },
+    {
+      "id": "B-49",
+      "geoAccession": "GSM5243304",
+      "geoTitle": "1dpi_a",
+      "bioSample": "SAMN18750994",
+      "sraExperiment": "SRX10609378",
+      "timepointId": "1dpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 5363,
+      "capturedNeuronalNuclei": 1937
+    },
+    {
+      "id": "B-50",
+      "geoAccession": "GSM5243305",
+      "geoTitle": "1dpi_b",
+      "bioSample": "SAMN18750993",
+      "sraExperiment": "SRX10609379",
+      "timepointId": "1dpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 4857,
+      "capturedNeuronalNuclei": 1731
+    },
+    {
+      "id": "B-51",
+      "geoAccession": "GSM5243306",
+      "geoTitle": "1dpi_c",
+      "bioSample": "SAMN18750992",
+      "sraExperiment": "SRX10609380",
+      "timepointId": "1dpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3418,
+      "capturedNeuronalNuclei": 1093
+    },
+    {
+      "id": "C-41",
+      "geoAccession": "GSM5243307",
+      "geoTitle": "1wpi_a",
+      "bioSample": "SAMN18750991",
+      "sraExperiment": "SRX10609381",
+      "timepointId": "1wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 4342,
+      "capturedNeuronalNuclei": 1430
+    },
+    {
+      "id": "C-42",
+      "geoAccession": "GSM5243308",
+      "geoTitle": "1wpi_b",
+      "bioSample": "SAMN18750990",
+      "sraExperiment": "SRX10609382",
+      "timepointId": "1wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 6162,
+      "capturedNeuronalNuclei": 2219
+    },
+    {
+      "id": "C-44",
+      "geoAccession": "GSM5243309",
+      "geoTitle": "1wpi_c",
+      "bioSample": "SAMN18750989",
+      "sraExperiment": "SRX10609383",
+      "timepointId": "1wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3336,
+      "capturedNeuronalNuclei": 1223
+    },
+    {
+      "id": "D-25",
+      "geoAccession": "GSM5243310",
+      "geoTitle": "3wpi_a",
+      "bioSample": "SAMN18750988",
+      "sraExperiment": "SRX10609389",
+      "timepointId": "3wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 4299,
+      "capturedNeuronalNuclei": 1504
+    },
+    {
+      "id": "D-26",
+      "geoAccession": "GSM5243311",
+      "geoTitle": "3wpi_b",
+      "bioSample": "SAMN18750987",
+      "sraExperiment": "SRX10609384",
+      "timepointId": "3wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 9015,
+      "capturedNeuronalNuclei": 3295
+    },
+    {
+      "id": "D-29",
+      "geoAccession": "GSM5243312",
+      "geoTitle": "3wpi_c",
+      "bioSample": "SAMN18750986",
+      "sraExperiment": "SRX10609385",
+      "timepointId": "3wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 4736,
+      "capturedNeuronalNuclei": 1936
+    },
+    {
+      "id": "F-12",
+      "geoAccession": "GSM5243313",
+      "geoTitle": "6wpi_a",
+      "bioSample": "SAMN18750985",
+      "sraExperiment": "SRX10609386",
+      "timepointId": "6wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3963,
+      "capturedNeuronalNuclei": 1394
+    },
+    {
+      "id": "F-13",
+      "geoAccession": "GSM5243314",
+      "geoTitle": "6wpi_b",
+      "bioSample": "SAMN18750984",
+      "sraExperiment": "SRX10609387",
+      "timepointId": "6wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 3574,
+      "capturedNeuronalNuclei": 1208
+    },
+    {
+      "id": "F-14",
+      "geoAccession": "GSM5243315",
+      "geoTitle": "6wpi_c",
+      "bioSample": "SAMN18750983",
+      "sraExperiment": "SRX10609388",
+      "timepointId": "6wpi",
+      "independentAnimalCount": 1,
+      "totalCapturedNuclei": 4205,
+      "capturedNeuronalNuclei": 1552
+    }
+  ],
+  "populations": [
+    {
+      "id": "matson-2022:GSE172167:Cpne4_Neurons",
+      "order": 1,
+      "sourceLabel": "Cpne4 Neurons",
+      "shortLabel": "Cpne4",
+      "sourceSubclass": "DE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Cpne4",
+        "worksheet": "Sheet1",
+        "headerCell": "A1",
+        "rankCellRange": "A2:A21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Cck",
+            "sourceCell": "A2"
+          },
+          {
+            "rank": 2,
+            "gene": "Cpne4",
+            "sourceCell": "A3"
+          },
+          {
+            "rank": 3,
+            "gene": "Mgp",
+            "sourceCell": "A4"
+          },
+          {
+            "rank": 4,
+            "gene": "Bnc2",
+            "sourceCell": "A5"
+          },
+          {
+            "rank": 5,
+            "gene": "Erbb4",
+            "sourceCell": "A6"
+          },
+          {
+            "rank": 6,
+            "gene": "Gm28928",
+            "sourceCell": "A7"
+          },
+          {
+            "rank": 7,
+            "gene": "Ebf1",
+            "sourceCell": "A8"
+          },
+          {
+            "rank": 8,
+            "gene": "Chgb",
+            "sourceCell": "A9"
+          },
+          {
+            "rank": 9,
+            "gene": "Otof",
+            "sourceCell": "A10"
+          },
+          {
+            "rank": 10,
+            "gene": "Hdac9",
+            "sourceCell": "A11"
+          },
+          {
+            "rank": 11,
+            "gene": "Tgfbr2",
+            "sourceCell": "A12"
+          },
+          {
+            "rank": 12,
+            "gene": "Cbln2",
+            "sourceCell": "A13"
+          },
+          {
+            "rank": 13,
+            "gene": "Trpm3",
+            "sourceCell": "A14"
+          },
+          {
+            "rank": 14,
+            "gene": "Auts2",
+            "sourceCell": "A15"
+          },
+          {
+            "rank": 15,
+            "gene": "Dach2",
+            "sourceCell": "A16"
+          },
+          {
+            "rank": 16,
+            "gene": "Cbln1",
+            "sourceCell": "A17"
+          },
+          {
+            "rank": 17,
+            "gene": "Ucn3",
+            "sourceCell": "A18"
+          },
+          {
+            "rank": 18,
+            "gene": "Ebf2",
+            "sourceCell": "A19"
+          },
+          {
+            "rank": 19,
+            "gene": "Rbms3",
+            "sourceCell": "A20"
+          },
+          {
+            "rank": 20,
+            "gene": "Calcrl",
+            "sourceCell": "A21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!A1, A2:A21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 435,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 46,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.014701
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 86,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.018063
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 79,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.016215
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 133,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.019748
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 91,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.021907
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 17,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 13,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 16,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 30,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 34,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 22,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 22,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 22,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 35,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 29,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 64,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 40,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 34,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 21,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 36,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Maf_Neurons",
+      "order": 2,
+      "sourceLabel": "Maf Neurons",
+      "shortLabel": "Maf",
+      "sourceSubclass": "DE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Maf",
+        "worksheet": "Sheet1",
+        "headerCell": "B1",
+        "rankCellRange": "B2:B21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Gm28928",
+            "sourceCell": "B2"
+          },
+          {
+            "rank": 2,
+            "gene": "Adarb2",
+            "sourceCell": "B3"
+          },
+          {
+            "rank": 3,
+            "gene": "Maf",
+            "sourceCell": "B4"
+          },
+          {
+            "rank": 4,
+            "gene": "Cck",
+            "sourceCell": "B5"
+          },
+          {
+            "rank": 5,
+            "gene": "Arpp21",
+            "sourceCell": "B6"
+          },
+          {
+            "rank": 6,
+            "gene": "Spock1",
+            "sourceCell": "B7"
+          },
+          {
+            "rank": 7,
+            "gene": "Ptprd",
+            "sourceCell": "B8"
+          },
+          {
+            "rank": 8,
+            "gene": "Fam19a1",
+            "sourceCell": "B9"
+          },
+          {
+            "rank": 9,
+            "gene": "Pcdh7",
+            "sourceCell": "B10"
+          },
+          {
+            "rank": 10,
+            "gene": "Erbb4",
+            "sourceCell": "B11"
+          },
+          {
+            "rank": 11,
+            "gene": "Car10",
+            "sourceCell": "B12"
+          },
+          {
+            "rank": 12,
+            "gene": "Elmo1",
+            "sourceCell": "B13"
+          },
+          {
+            "rank": 13,
+            "gene": "Nrn1",
+            "sourceCell": "B14"
+          },
+          {
+            "rank": 14,
+            "gene": "C1ql3",
+            "sourceCell": "B15"
+          },
+          {
+            "rank": 15,
+            "gene": "Lrrc4c",
+            "sourceCell": "B16"
+          },
+          {
+            "rank": 16,
+            "gene": "Lrfn5",
+            "sourceCell": "B17"
+          },
+          {
+            "rank": 17,
+            "gene": "Ppp2r2b",
+            "sourceCell": "B18"
+          },
+          {
+            "rank": 18,
+            "gene": "Col27a1",
+            "sourceCell": "B19"
+          },
+          {
+            "rank": 19,
+            "gene": "Grin2a",
+            "sourceCell": "B20"
+          },
+          {
+            "rank": 20,
+            "gene": "Slc24a3",
+            "sourceCell": "B21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!B1, B2:B21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 1316,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 183,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.058485
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 254,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.05335
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 259,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.053161
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 395,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.058649
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 225,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.054165
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 79,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 59,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 45,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 100,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 92,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 62,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 79,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 109,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 71,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 83,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 184,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 128,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 77,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 62,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 86,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Reln_Neurons",
+      "order": 3,
+      "sourceLabel": "Reln Neurons",
+      "shortLabel": "Reln",
+      "sourceSubclass": "DE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Reln",
+        "worksheet": "Sheet1",
+        "headerCell": "C1",
+        "rankCellRange": "C2:C21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Nts",
+            "sourceCell": "C2"
+          },
+          {
+            "rank": 2,
+            "gene": "Cpne8",
+            "sourceCell": "C3"
+          },
+          {
+            "rank": 3,
+            "gene": "Pde11a",
+            "sourceCell": "C4"
+          },
+          {
+            "rank": 4,
+            "gene": "Ebf2",
+            "sourceCell": "C5"
+          },
+          {
+            "rank": 5,
+            "gene": "Prex2",
+            "sourceCell": "C6"
+          },
+          {
+            "rank": 6,
+            "gene": "Sst",
+            "sourceCell": "C7"
+          },
+          {
+            "rank": 7,
+            "gene": "Cntnap5c",
+            "sourceCell": "C8"
+          },
+          {
+            "rank": 8,
+            "gene": "Cacna2d1",
+            "sourceCell": "C9"
+          },
+          {
+            "rank": 9,
+            "gene": "Fbn2",
+            "sourceCell": "C10"
+          },
+          {
+            "rank": 10,
+            "gene": "Ebf1",
+            "sourceCell": "C11"
+          },
+          {
+            "rank": 11,
+            "gene": "Arhgap6",
+            "sourceCell": "C12"
+          },
+          {
+            "rank": 12,
+            "gene": "Grp",
+            "sourceCell": "C13"
+          },
+          {
+            "rank": 13,
+            "gene": "Reln",
+            "sourceCell": "C14"
+          },
+          {
+            "rank": 14,
+            "gene": "Rmst",
+            "sourceCell": "C15"
+          },
+          {
+            "rank": 15,
+            "gene": "9530026P05Rik",
+            "sourceCell": "C16"
+          },
+          {
+            "rank": 16,
+            "gene": "Bcl2",
+            "sourceCell": "C17"
+          },
+          {
+            "rank": 17,
+            "gene": "Syt16",
+            "sourceCell": "C18"
+          },
+          {
+            "rank": 18,
+            "gene": "Ldb2",
+            "sourceCell": "C19"
+          },
+          {
+            "rank": 19,
+            "gene": "Grin3a",
+            "sourceCell": "C20"
+          },
+          {
+            "rank": 20,
+            "gene": "Adcyap1",
+            "sourceCell": "C21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!C1, C2:C21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 2762,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 403,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.128795
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 509,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.10691
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 604,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.123974
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 719,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.106756
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 527,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.126866
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 115,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 157,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 131,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 192,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 194,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 123,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 176,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 277,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 151,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 172,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 327,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 220,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 158,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 168,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 201,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Rreb1_Neurons",
+      "order": 4,
+      "sourceLabel": "Rreb1 Neurons",
+      "shortLabel": "Rreb1",
+      "sourceSubclass": "DE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Rreb1",
+        "worksheet": "Sheet1",
+        "headerCell": "D1",
+        "rankCellRange": "D2:D21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Crh",
+            "sourceCell": "D2"
+          },
+          {
+            "rank": 2,
+            "gene": "Adcyap1",
+            "sourceCell": "D3"
+          },
+          {
+            "rank": 3,
+            "gene": "C1ql1",
+            "sourceCell": "D4"
+          },
+          {
+            "rank": 4,
+            "gene": "Man1a",
+            "sourceCell": "D5"
+          },
+          {
+            "rank": 5,
+            "gene": "Dlk1",
+            "sourceCell": "D6"
+          },
+          {
+            "rank": 6,
+            "gene": "Ghr",
+            "sourceCell": "D7"
+          },
+          {
+            "rank": 7,
+            "gene": "Rreb1",
+            "sourceCell": "D8"
+          },
+          {
+            "rank": 8,
+            "gene": "Mgat4c",
+            "sourceCell": "D9"
+          },
+          {
+            "rank": 9,
+            "gene": "Gpc6",
+            "sourceCell": "D10"
+          },
+          {
+            "rank": 10,
+            "gene": "Klhl1",
+            "sourceCell": "D11"
+          },
+          {
+            "rank": 11,
+            "gene": "Gpr149",
+            "sourceCell": "D12"
+          },
+          {
+            "rank": 12,
+            "gene": "March1",
+            "sourceCell": "D13"
+          },
+          {
+            "rank": 13,
+            "gene": "Atp2b1",
+            "sourceCell": "D14"
+          },
+          {
+            "rank": 14,
+            "gene": "Hs3st4",
+            "sourceCell": "D15"
+          },
+          {
+            "rank": 15,
+            "gene": "Usp29",
+            "sourceCell": "D16"
+          },
+          {
+            "rank": 16,
+            "gene": "Opcml",
+            "sourceCell": "D17"
+          },
+          {
+            "rank": 17,
+            "gene": "Inpp4b",
+            "sourceCell": "D18"
+          },
+          {
+            "rank": 18,
+            "gene": "Nlgn1",
+            "sourceCell": "D19"
+          },
+          {
+            "rank": 19,
+            "gene": "Zeb2",
+            "sourceCell": "D20"
+          },
+          {
+            "rank": 20,
+            "gene": "Ntng1",
+            "sourceCell": "D21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!D1, D2:D21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 644,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 75,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.023969
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 147,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.030876
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 115,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.023604
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 180,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.026726
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 127,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.030573
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 25,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 28,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 22,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 77,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 42,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 28,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 30,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 55,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 30,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 35,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 90,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 55,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 33,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 38,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 56,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Sox5_Neurons",
+      "order": 5,
+      "sourceLabel": "Sox5 Neurons",
+      "shortLabel": "Sox5",
+      "sourceSubclass": "DE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Sox5",
+        "worksheet": "Sheet1",
+        "headerCell": "E1",
+        "rankCellRange": "E2:E21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Sphkap",
+            "sourceCell": "E2"
+          },
+          {
+            "rank": 2,
+            "gene": "Arhgap6",
+            "sourceCell": "E3"
+          },
+          {
+            "rank": 3,
+            "gene": "Maml3",
+            "sourceCell": "E4"
+          },
+          {
+            "rank": 4,
+            "gene": "Kcnd3",
+            "sourceCell": "E5"
+          },
+          {
+            "rank": 5,
+            "gene": "Ppp3ca",
+            "sourceCell": "E6"
+          },
+          {
+            "rank": 6,
+            "gene": "Nmu",
+            "sourceCell": "E7"
+          },
+          {
+            "rank": 7,
+            "gene": "Tac1",
+            "sourceCell": "E8"
+          },
+          {
+            "rank": 8,
+            "gene": "Pde1c",
+            "sourceCell": "E9"
+          },
+          {
+            "rank": 9,
+            "gene": "Snca",
+            "sourceCell": "E10"
+          },
+          {
+            "rank": 10,
+            "gene": "Grid2",
+            "sourceCell": "E11"
+          },
+          {
+            "rank": 11,
+            "gene": "Fam19a1",
+            "sourceCell": "E12"
+          },
+          {
+            "rank": 12,
+            "gene": "Lmo3",
+            "sourceCell": "E13"
+          },
+          {
+            "rank": 13,
+            "gene": "Sox5",
+            "sourceCell": "E14"
+          },
+          {
+            "rank": 14,
+            "gene": "Sox5os4",
+            "sourceCell": "E15"
+          },
+          {
+            "rank": 15,
+            "gene": "Hs3st4",
+            "sourceCell": "E16"
+          },
+          {
+            "rank": 16,
+            "gene": "Pcdh15",
+            "sourceCell": "E17"
+          },
+          {
+            "rank": 17,
+            "gene": "Tac2",
+            "sourceCell": "E18"
+          },
+          {
+            "rank": 18,
+            "gene": "Unc5d",
+            "sourceCell": "E19"
+          },
+          {
+            "rank": 19,
+            "gene": "Ebf2",
+            "sourceCell": "E20"
+          },
+          {
+            "rank": 20,
+            "gene": "Ebf1",
+            "sourceCell": "E21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!E1, E2:E21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 2758,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 395,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.126238
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 463,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.097248
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 549,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.112685
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 837,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.124276
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 514,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.123736
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 122,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 164,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 109,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 159,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 190,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 114,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 170,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 250,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 129,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 256,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 369,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 212,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 175,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 177,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 162,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Megf11_Neurons",
+      "order": 6,
+      "sourceLabel": "Megf11 Neurons",
+      "shortLabel": "Megf11",
+      "sourceSubclass": "DE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Megf11",
+        "worksheet": "Sheet1",
+        "headerCell": "F1",
+        "rankCellRange": "F2:F21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Meis2",
+            "sourceCell": "F2"
+          },
+          {
+            "rank": 2,
+            "gene": "Cck",
+            "sourceCell": "F3"
+          },
+          {
+            "rank": 3,
+            "gene": "Pbx3",
+            "sourceCell": "F4"
+          },
+          {
+            "rank": 4,
+            "gene": "Tac1",
+            "sourceCell": "F5"
+          },
+          {
+            "rank": 5,
+            "gene": "Fam19a1",
+            "sourceCell": "F6"
+          },
+          {
+            "rank": 6,
+            "gene": "Pou4f1",
+            "sourceCell": "F7"
+          },
+          {
+            "rank": 7,
+            "gene": "Cntnap5b",
+            "sourceCell": "F8"
+          },
+          {
+            "rank": 8,
+            "gene": "Htr2c",
+            "sourceCell": "F9"
+          },
+          {
+            "rank": 9,
+            "gene": "Rora",
+            "sourceCell": "F10"
+          },
+          {
+            "rank": 10,
+            "gene": "Gm28928",
+            "sourceCell": "F11"
+          },
+          {
+            "rank": 11,
+            "gene": "Mdga1",
+            "sourceCell": "F12"
+          },
+          {
+            "rank": 12,
+            "gene": "Plch1",
+            "sourceCell": "F13"
+          },
+          {
+            "rank": 13,
+            "gene": "Vwc2",
+            "sourceCell": "F14"
+          },
+          {
+            "rank": 14,
+            "gene": "Opcml",
+            "sourceCell": "F15"
+          },
+          {
+            "rank": 15,
+            "gene": "Ntm",
+            "sourceCell": "F16"
+          },
+          {
+            "rank": 16,
+            "gene": "Zfp804b",
+            "sourceCell": "F17"
+          },
+          {
+            "rank": 17,
+            "gene": "Pdzrn4",
+            "sourceCell": "F18"
+          },
+          {
+            "rank": 18,
+            "gene": "A230006K03Rik",
+            "sourceCell": "F19"
+          },
+          {
+            "rank": 19,
+            "gene": "Cntn6",
+            "sourceCell": "F20"
+          },
+          {
+            "rank": 20,
+            "gene": "Il1rapl1",
+            "sourceCell": "F21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!F1, F2:F21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 1147,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 119,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.038031
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 282,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.059231
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 221,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.045361
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 321,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.047661
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 204,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.049109
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 46,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 42,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 31,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 113,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 101,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 68,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 68,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 106,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 47,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 72,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 162,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 87,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 75,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 44,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 85,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:ME_Neurons",
+      "order": 7,
+      "sourceLabel": "ME Neurons",
+      "shortLabel": "ME",
+      "sourceSubclass": "ME Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "ME",
+        "worksheet": "Sheet1",
+        "headerCell": "G1",
+        "rankCellRange": "G2:G21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Pou4f1",
+            "sourceCell": "G2"
+          },
+          {
+            "rank": 2,
+            "gene": "Tcf4",
+            "sourceCell": "G3"
+          },
+          {
+            "rank": 3,
+            "gene": "Fam19a1",
+            "sourceCell": "G4"
+          },
+          {
+            "rank": 4,
+            "gene": "Cdh18",
+            "sourceCell": "G5"
+          },
+          {
+            "rank": 5,
+            "gene": "Slc17a6",
+            "sourceCell": "G6"
+          },
+          {
+            "rank": 6,
+            "gene": "Glra2",
+            "sourceCell": "G7"
+          },
+          {
+            "rank": 7,
+            "gene": "Cntn5",
+            "sourceCell": "G8"
+          },
+          {
+            "rank": 8,
+            "gene": "Cdh23",
+            "sourceCell": "G9"
+          },
+          {
+            "rank": 9,
+            "gene": "Adcyap1",
+            "sourceCell": "G10"
+          },
+          {
+            "rank": 10,
+            "gene": "Tacr1",
+            "sourceCell": "G11"
+          },
+          {
+            "rank": 11,
+            "gene": "Tmem163",
+            "sourceCell": "G12"
+          },
+          {
+            "rank": 12,
+            "gene": "Scn7a",
+            "sourceCell": "G13"
+          },
+          {
+            "rank": 13,
+            "gene": "Nfib",
+            "sourceCell": "G14"
+          },
+          {
+            "rank": 14,
+            "gene": "Gm26688",
+            "sourceCell": "G15"
+          },
+          {
+            "rank": 15,
+            "gene": "Grm8",
+            "sourceCell": "G16"
+          },
+          {
+            "rank": 16,
+            "gene": "Fxyd6",
+            "sourceCell": "G17"
+          },
+          {
+            "rank": 17,
+            "gene": "Resp18",
+            "sourceCell": "G18"
+          },
+          {
+            "rank": 18,
+            "gene": "Gpx3",
+            "sourceCell": "G19"
+          },
+          {
+            "rank": 19,
+            "gene": "Pbx3",
+            "sourceCell": "G20"
+          },
+          {
+            "rank": 20,
+            "gene": "Synpr",
+            "sourceCell": "G21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!G1, G2:G21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 1505,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 221,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.07063
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 319,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.067003
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 320,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.065681
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 414,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.06147
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 231,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.055609
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 75,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 77,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 69,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 119,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 128,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 72,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 83,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 159,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 78,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 97,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 191,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 126,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 75,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 72,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 84,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:VE_Neurons",
+      "order": 8,
+      "sourceLabel": "VE Neurons",
+      "shortLabel": "VE",
+      "sourceSubclass": "VE Neurons",
+      "transmitterContext": "excitatory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "VE",
+        "worksheet": "Sheet1",
+        "headerCell": "H1",
+        "rankCellRange": "H2:H21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Zfhx3",
+            "sourceCell": "H2"
+          },
+          {
+            "rank": 2,
+            "gene": "Cdh18",
+            "sourceCell": "H3"
+          },
+          {
+            "rank": 3,
+            "gene": "Lrrtm4",
+            "sourceCell": "H4"
+          },
+          {
+            "rank": 4,
+            "gene": "Cntn5",
+            "sourceCell": "H5"
+          },
+          {
+            "rank": 5,
+            "gene": "A230006K03Rik",
+            "sourceCell": "H6"
+          },
+          {
+            "rank": 6,
+            "gene": "Dab1",
+            "sourceCell": "H7"
+          },
+          {
+            "rank": 7,
+            "gene": "Meis2",
+            "sourceCell": "H8"
+          },
+          {
+            "rank": 8,
+            "gene": "Ndst4",
+            "sourceCell": "H9"
+          },
+          {
+            "rank": 9,
+            "gene": "4930555F03Rik",
+            "sourceCell": "H10"
+          },
+          {
+            "rank": 10,
+            "gene": "Tmem163",
+            "sourceCell": "H11"
+          },
+          {
+            "rank": 11,
+            "gene": "Olfm3",
+            "sourceCell": "H12"
+          },
+          {
+            "rank": 12,
+            "gene": "Snrpn",
+            "sourceCell": "H13"
+          },
+          {
+            "rank": 13,
+            "gene": "Pou6f2",
+            "sourceCell": "H14"
+          },
+          {
+            "rank": 14,
+            "gene": "Robo1",
+            "sourceCell": "H15"
+          },
+          {
+            "rank": 15,
+            "gene": "Tnr",
+            "sourceCell": "H16"
+          },
+          {
+            "rank": 16,
+            "gene": "Pde4d",
+            "sourceCell": "H17"
+          },
+          {
+            "rank": 17,
+            "gene": "Sorcs3",
+            "sourceCell": "H18"
+          },
+          {
+            "rank": 18,
+            "gene": "Frmd4a",
+            "sourceCell": "H19"
+          },
+          {
+            "rank": 19,
+            "gene": "Slc17a6",
+            "sourceCell": "H20"
+          },
+          {
+            "rank": 20,
+            "gene": "Nrg3",
+            "sourceCell": "H21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!H1, H2:H21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 558,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 44,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.014062
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 93,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.019534
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 145,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.029762
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 185,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.027468
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 91,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.021907
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 23,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 13,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 8,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 34,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 35,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 24,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 35,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 62,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 48,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 36,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 92,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 57,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 27,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 30,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 34,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Adamts5_Neurons",
+      "order": 9,
+      "sourceLabel": "Adamts5 Neurons",
+      "shortLabel": "Adamts5",
+      "sourceSubclass": "DI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Adamts5",
+        "worksheet": "Sheet1",
+        "headerCell": "I1",
+        "rankCellRange": "I2:I21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Nxph1",
+            "sourceCell": "I2"
+          },
+          {
+            "rank": 2,
+            "gene": "Chrm3",
+            "sourceCell": "I3"
+          },
+          {
+            "rank": 3,
+            "gene": "Trps1",
+            "sourceCell": "I4"
+          },
+          {
+            "rank": 4,
+            "gene": "Grik2",
+            "sourceCell": "I5"
+          },
+          {
+            "rank": 5,
+            "gene": "Npy",
+            "sourceCell": "I6"
+          },
+          {
+            "rank": 6,
+            "gene": "Tenm2",
+            "sourceCell": "I7"
+          },
+          {
+            "rank": 7,
+            "gene": "Pdzd2",
+            "sourceCell": "I8"
+          },
+          {
+            "rank": 8,
+            "gene": "Mpped2",
+            "sourceCell": "I9"
+          },
+          {
+            "rank": 9,
+            "gene": "Zfp804b",
+            "sourceCell": "I10"
+          },
+          {
+            "rank": 10,
+            "gene": "Sgcd",
+            "sourceCell": "I11"
+          },
+          {
+            "rank": 11,
+            "gene": "Kcnmb2",
+            "sourceCell": "I12"
+          },
+          {
+            "rank": 12,
+            "gene": "Sntg1",
+            "sourceCell": "I13"
+          },
+          {
+            "rank": 13,
+            "gene": "Neto1",
+            "sourceCell": "I14"
+          },
+          {
+            "rank": 14,
+            "gene": "Kcnb2",
+            "sourceCell": "I15"
+          },
+          {
+            "rank": 15,
+            "gene": "Kcnd2",
+            "sourceCell": "I16"
+          },
+          {
+            "rank": 16,
+            "gene": "Actn2",
+            "sourceCell": "I17"
+          },
+          {
+            "rank": 17,
+            "gene": "Grm5",
+            "sourceCell": "I18"
+          },
+          {
+            "rank": 18,
+            "gene": "Npy2r",
+            "sourceCell": "I19"
+          },
+          {
+            "rank": 19,
+            "gene": "Plcb1",
+            "sourceCell": "I20"
+          },
+          {
+            "rank": 20,
+            "gene": "Tshz2",
+            "sourceCell": "I21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!I1, I2:I21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 879,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 102,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.032598
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 177,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.037177
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 187,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.038383
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 248,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.036823
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 165,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.039721
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 28,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 48,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 26,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 77,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 58,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 42,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 59,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 85,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 43,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 49,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 123,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 76,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 52,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 49,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 64,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Cdh3_Neurons",
+      "order": 10,
+      "sourceLabel": "Cdh3 Neurons",
+      "shortLabel": "Cdh3",
+      "sourceSubclass": "DI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Cdh3",
+        "worksheet": "Sheet1",
+        "headerCell": "J1",
+        "rankCellRange": "J2:J21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Nrxn3",
+            "sourceCell": "J2"
+          },
+          {
+            "rank": 2,
+            "gene": "Cdh3",
+            "sourceCell": "J3"
+          },
+          {
+            "rank": 3,
+            "gene": "Cacna2d3",
+            "sourceCell": "J4"
+          },
+          {
+            "rank": 4,
+            "gene": "Slc6a1",
+            "sourceCell": "J5"
+          },
+          {
+            "rank": 5,
+            "gene": "Tll1",
+            "sourceCell": "J6"
+          },
+          {
+            "rank": 6,
+            "gene": "Pax2",
+            "sourceCell": "J7"
+          },
+          {
+            "rank": 7,
+            "gene": "Zmat4",
+            "sourceCell": "J8"
+          },
+          {
+            "rank": 8,
+            "gene": "Gad1",
+            "sourceCell": "J9"
+          },
+          {
+            "rank": 9,
+            "gene": "Nfib",
+            "sourceCell": "J10"
+          },
+          {
+            "rank": 10,
+            "gene": "Zfp385b",
+            "sourceCell": "J11"
+          },
+          {
+            "rank": 11,
+            "gene": "Grm3",
+            "sourceCell": "J12"
+          },
+          {
+            "rank": 12,
+            "gene": "Sema3e",
+            "sourceCell": "J13"
+          },
+          {
+            "rank": 13,
+            "gene": "Tcf4",
+            "sourceCell": "J14"
+          },
+          {
+            "rank": 14,
+            "gene": "Lrrc4c",
+            "sourceCell": "J15"
+          },
+          {
+            "rank": 15,
+            "gene": "Sall3",
+            "sourceCell": "J16"
+          },
+          {
+            "rank": 16,
+            "gene": "Kcnmb2",
+            "sourceCell": "J17"
+          },
+          {
+            "rank": 17,
+            "gene": "Hcn1",
+            "sourceCell": "J18"
+          },
+          {
+            "rank": 18,
+            "gene": "Dpf3",
+            "sourceCell": "J19"
+          },
+          {
+            "rank": 19,
+            "gene": "Gm4128",
+            "sourceCell": "J20"
+          },
+          {
+            "rank": 20,
+            "gene": "Slc6a5",
+            "sourceCell": "J21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!J1, J2:J21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 1270,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 165,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.052733
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 236,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.049569
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 266,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.054598
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 400,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.059391
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 203,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.048869
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 62,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 52,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 51,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 105,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 77,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 54,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 63,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 117,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 86,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 82,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 191,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 127,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 75,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 50,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 78,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Pdyn_Neurons",
+      "order": 11,
+      "sourceLabel": "Pdyn Neurons",
+      "shortLabel": "Pdyn",
+      "sourceSubclass": "DI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Pdyn",
+        "worksheet": "Sheet1",
+        "headerCell": "K1",
+        "rankCellRange": "K2:K21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Gal",
+            "sourceCell": "K2"
+          },
+          {
+            "rank": 2,
+            "gene": "Pnoc",
+            "sourceCell": "K3"
+          },
+          {
+            "rank": 3,
+            "gene": "Ptprk",
+            "sourceCell": "K4"
+          },
+          {
+            "rank": 4,
+            "gene": "Zeb2",
+            "sourceCell": "K5"
+          },
+          {
+            "rank": 5,
+            "gene": "Pdyn",
+            "sourceCell": "K6"
+          },
+          {
+            "rank": 6,
+            "gene": "Hmga2",
+            "sourceCell": "K7"
+          },
+          {
+            "rank": 7,
+            "gene": "Gucy2d",
+            "sourceCell": "K8"
+          },
+          {
+            "rank": 8,
+            "gene": "Kcnt2",
+            "sourceCell": "K9"
+          },
+          {
+            "rank": 9,
+            "gene": "Nrxn3",
+            "sourceCell": "K10"
+          },
+          {
+            "rank": 10,
+            "gene": "Trpm3",
+            "sourceCell": "K11"
+          },
+          {
+            "rank": 11,
+            "gene": "Cartpt",
+            "sourceCell": "K12"
+          },
+          {
+            "rank": 12,
+            "gene": "Nkain2",
+            "sourceCell": "K13"
+          },
+          {
+            "rank": 13,
+            "gene": "Zmat4",
+            "sourceCell": "K14"
+          },
+          {
+            "rank": 14,
+            "gene": "Sgcz",
+            "sourceCell": "K15"
+          },
+          {
+            "rank": 15,
+            "gene": "4930590L20Rik",
+            "sourceCell": "K16"
+          },
+          {
+            "rank": 16,
+            "gene": "Fstl5",
+            "sourceCell": "K17"
+          },
+          {
+            "rank": 17,
+            "gene": "Parm1",
+            "sourceCell": "K18"
+          },
+          {
+            "rank": 18,
+            "gene": "Nfib",
+            "sourceCell": "K19"
+          },
+          {
+            "rank": 19,
+            "gene": "Mlxipl",
+            "sourceCell": "K20"
+          },
+          {
+            "rank": 20,
+            "gene": "Pax8",
+            "sourceCell": "K21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!K1, K2:K21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 1187,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 174,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.055609
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 230,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.048309
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 265,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.054392
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 328,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.048701
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 190,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.045739
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 63,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 70,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 41,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 93,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 85,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 52,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 78,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 109,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 78,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 67,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 157,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 104,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 56,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 57,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 77,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Npy_Neurons",
+      "order": 12,
+      "sourceLabel": "Npy Neurons",
+      "shortLabel": "Npy",
+      "sourceSubclass": "DI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Npy",
+        "worksheet": "Sheet1",
+        "headerCell": "L1",
+        "rankCellRange": "L2:L21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Npy",
+            "sourceCell": "L2"
+          },
+          {
+            "rank": 2,
+            "gene": "Ecel1",
+            "sourceCell": "L3"
+          },
+          {
+            "rank": 3,
+            "gene": "Plch1",
+            "sourceCell": "L4"
+          },
+          {
+            "rank": 4,
+            "gene": "Cd24a",
+            "sourceCell": "L5"
+          },
+          {
+            "rank": 5,
+            "gene": "Grik3",
+            "sourceCell": "L6"
+          },
+          {
+            "rank": 6,
+            "gene": "Pax8",
+            "sourceCell": "L7"
+          },
+          {
+            "rank": 7,
+            "gene": "Nrxn3",
+            "sourceCell": "L8"
+          },
+          {
+            "rank": 8,
+            "gene": "Hs6st3",
+            "sourceCell": "L9"
+          },
+          {
+            "rank": 9,
+            "gene": "Qrfpr",
+            "sourceCell": "L10"
+          },
+          {
+            "rank": 10,
+            "gene": "Pax2",
+            "sourceCell": "L11"
+          },
+          {
+            "rank": 11,
+            "gene": "Egfem1",
+            "sourceCell": "L12"
+          },
+          {
+            "rank": 12,
+            "gene": "Luzp2",
+            "sourceCell": "L13"
+          },
+          {
+            "rank": 13,
+            "gene": "Trhde",
+            "sourceCell": "L14"
+          },
+          {
+            "rank": 14,
+            "gene": "Gnas",
+            "sourceCell": "L15"
+          },
+          {
+            "rank": 15,
+            "gene": "Meg3",
+            "sourceCell": "L16"
+          },
+          {
+            "rank": 16,
+            "gene": "A230006K03Rik",
+            "sourceCell": "L17"
+          },
+          {
+            "rank": 17,
+            "gene": "Ptpro",
+            "sourceCell": "L18"
+          },
+          {
+            "rank": 18,
+            "gene": "Auts2",
+            "sourceCell": "L19"
+          },
+          {
+            "rank": 19,
+            "gene": "Trhr",
+            "sourceCell": "L20"
+          },
+          {
+            "rank": 20,
+            "gene": "Spon1",
+            "sourceCell": "L21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!L1, L2:L21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 987,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 127,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.040588
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 185,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.038857
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 192,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.039409
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 335,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.04974
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 148,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.035628
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 46,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 41,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 40,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 99,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 55,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 31,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 60,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 72,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 60,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 66,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 172,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 97,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 48,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 36,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 64,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Chat_Neurons",
+      "order": 13,
+      "sourceLabel": "Chat Neurons",
+      "shortLabel": "Chat",
+      "sourceSubclass": "DI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "Chat",
+        "worksheet": "Sheet1",
+        "headerCell": "M1",
+        "rankCellRange": "M2:M21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Gpc5",
+            "sourceCell": "M2"
+          },
+          {
+            "rank": 2,
+            "gene": "Rorb",
+            "sourceCell": "M3"
+          },
+          {
+            "rank": 3,
+            "gene": "Sall3",
+            "sourceCell": "M4"
+          },
+          {
+            "rank": 4,
+            "gene": "Npy",
+            "sourceCell": "M5"
+          },
+          {
+            "rank": 5,
+            "gene": "Shisa8",
+            "sourceCell": "M6"
+          },
+          {
+            "rank": 6,
+            "gene": "Grik2",
+            "sourceCell": "M7"
+          },
+          {
+            "rank": 7,
+            "gene": "Cacna2d3",
+            "sourceCell": "M8"
+          },
+          {
+            "rank": 8,
+            "gene": "Stac",
+            "sourceCell": "M9"
+          },
+          {
+            "rank": 9,
+            "gene": "Slc6a1",
+            "sourceCell": "M10"
+          },
+          {
+            "rank": 10,
+            "gene": "Slc32a1",
+            "sourceCell": "M11"
+          },
+          {
+            "rank": 11,
+            "gene": "Nxph1",
+            "sourceCell": "M12"
+          },
+          {
+            "rank": 12,
+            "gene": "Pdzd2",
+            "sourceCell": "M13"
+          },
+          {
+            "rank": 13,
+            "gene": "Mgat4c",
+            "sourceCell": "M14"
+          },
+          {
+            "rank": 14,
+            "gene": "Nxn",
+            "sourceCell": "M15"
+          },
+          {
+            "rank": 15,
+            "gene": "Dscaml1",
+            "sourceCell": "M16"
+          },
+          {
+            "rank": 16,
+            "gene": "Plcb1",
+            "sourceCell": "M17"
+          },
+          {
+            "rank": 17,
+            "gene": "Kcnb2",
+            "sourceCell": "M18"
+          },
+          {
+            "rank": 18,
+            "gene": "Syt1",
+            "sourceCell": "M19"
+          },
+          {
+            "rank": 19,
+            "gene": "C1qtnf4",
+            "sourceCell": "M20"
+          },
+          {
+            "rank": 20,
+            "gene": "Chrm3",
+            "sourceCell": "M21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!M1, M2:M21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 1930,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 291,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.093001
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 368,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.077295
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 385,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.079023
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 537,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.079733
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 349,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.084015
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 87,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 113,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 91,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 148,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 136,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 84,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 126,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 168,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 91,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 138,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 230,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 169,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 115,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 105,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 129,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:MI_Neurons",
+      "order": 14,
+      "sourceLabel": "MI Neurons",
+      "shortLabel": "MI",
+      "sourceSubclass": "MI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "MI",
+        "worksheet": "Sheet1",
+        "headerCell": "N1",
+        "rankCellRange": "N2:N21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Nrxn3",
+            "sourceCell": "N2"
+          },
+          {
+            "rank": 2,
+            "gene": "Htr2c",
+            "sourceCell": "N3"
+          },
+          {
+            "rank": 3,
+            "gene": "Slc6a5",
+            "sourceCell": "N4"
+          },
+          {
+            "rank": 4,
+            "gene": "Tenm2",
+            "sourceCell": "N5"
+          },
+          {
+            "rank": 5,
+            "gene": "Grik2",
+            "sourceCell": "N6"
+          },
+          {
+            "rank": 6,
+            "gene": "Pcdh9",
+            "sourceCell": "N7"
+          },
+          {
+            "rank": 7,
+            "gene": "Slit2",
+            "sourceCell": "N8"
+          },
+          {
+            "rank": 8,
+            "gene": "Slc32a1",
+            "sourceCell": "N9"
+          },
+          {
+            "rank": 9,
+            "gene": "Cntn6",
+            "sourceCell": "N10"
+          },
+          {
+            "rank": 10,
+            "gene": "Cntn5",
+            "sourceCell": "N11"
+          },
+          {
+            "rank": 11,
+            "gene": "Slc30a3",
+            "sourceCell": "N12"
+          },
+          {
+            "rank": 12,
+            "gene": "Cdh18",
+            "sourceCell": "N13"
+          },
+          {
+            "rank": 13,
+            "gene": "Snrpn",
+            "sourceCell": "N14"
+          },
+          {
+            "rank": 14,
+            "gene": "Galntl6",
+            "sourceCell": "N15"
+          },
+          {
+            "rank": 15,
+            "gene": "Tcf4",
+            "sourceCell": "N16"
+          },
+          {
+            "rank": 16,
+            "gene": "Lrrtm4",
+            "sourceCell": "N17"
+          },
+          {
+            "rank": 17,
+            "gene": "Il1rapl1",
+            "sourceCell": "N18"
+          },
+          {
+            "rank": 18,
+            "gene": "Esrrg",
+            "sourceCell": "N19"
+          },
+          {
+            "rank": 19,
+            "gene": "Pcdh11x",
+            "sourceCell": "N20"
+          },
+          {
+            "rank": 20,
+            "gene": "Gm26688",
+            "sourceCell": "N21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!N1, N2:N21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 2206,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 253,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.080857
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 454,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.095358
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 449,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.092159
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 677,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.10052
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 373,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.089793
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 84,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 87,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 82,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 210,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 131,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 113,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 111,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 234,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 104,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 115,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 377,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 185,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 126,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 103,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 144,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:VI_Neurons",
+      "order": 15,
+      "sourceLabel": "VI Neurons",
+      "shortLabel": "VI",
+      "sourceSubclass": "VI Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "VI",
+        "worksheet": "Sheet1",
+        "headerCell": "O1",
+        "rankCellRange": "O2:O21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Esrrg",
+            "sourceCell": "O2"
+          },
+          {
+            "rank": 2,
+            "gene": "Slit2",
+            "sourceCell": "O3"
+          },
+          {
+            "rank": 3,
+            "gene": "Cdh18",
+            "sourceCell": "O4"
+          },
+          {
+            "rank": 4,
+            "gene": "Etl4",
+            "sourceCell": "O5"
+          },
+          {
+            "rank": 5,
+            "gene": "Snrpn",
+            "sourceCell": "O6"
+          },
+          {
+            "rank": 6,
+            "gene": "Syt2",
+            "sourceCell": "O7"
+          },
+          {
+            "rank": 7,
+            "gene": "Kcnc3",
+            "sourceCell": "O8"
+          },
+          {
+            "rank": 8,
+            "gene": "Gm13629",
+            "sourceCell": "O9"
+          },
+          {
+            "rank": 9,
+            "gene": "9530059O14Rik",
+            "sourceCell": "O10"
+          },
+          {
+            "rank": 10,
+            "gene": "Kcna1",
+            "sourceCell": "O11"
+          },
+          {
+            "rank": 11,
+            "gene": "Coro6",
+            "sourceCell": "O12"
+          },
+          {
+            "rank": 12,
+            "gene": "Bcan",
+            "sourceCell": "O13"
+          },
+          {
+            "rank": 13,
+            "gene": "Rapgef4os1",
+            "sourceCell": "O14"
+          },
+          {
+            "rank": 14,
+            "gene": "Fam13a",
+            "sourceCell": "O15"
+          },
+          {
+            "rank": 15,
+            "gene": "A230006K03Rik",
+            "sourceCell": "O16"
+          },
+          {
+            "rank": 16,
+            "gene": "Sfxn5",
+            "sourceCell": "O17"
+          },
+          {
+            "rank": 17,
+            "gene": "Spp1",
+            "sourceCell": "O18"
+          },
+          {
+            "rank": 18,
+            "gene": "Slc6a5",
+            "sourceCell": "O19"
+          },
+          {
+            "rank": 19,
+            "gene": "Grip1",
+            "sourceCell": "O20"
+          },
+          {
+            "rank": 20,
+            "gene": "Adam23",
+            "sourceCell": "O21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!O1, O2:O21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 3730,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 478,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.152764
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 890,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.186936
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 769,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.157841
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 938,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.139272
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 655,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.157679
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 202,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 158,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 118,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 348,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 351,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 191,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 245,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 364,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 160,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 187,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 516,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 235,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 247,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 178,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 230,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:CSF-c_Neurons",
+      "order": 16,
+      "sourceLabel": "CSF-c Neurons",
+      "shortLabel": "CSF-c",
+      "sourceSubclass": "CSF-c Neurons",
+      "transmitterContext": "inhibitory",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "CSF-c",
+        "worksheet": "Sheet1",
+        "headerCell": "P1",
+        "rankCellRange": "P2:P21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Pkd1l2",
+            "sourceCell": "P2"
+          },
+          {
+            "rank": 2,
+            "gene": "Pkd2l1",
+            "sourceCell": "P3"
+          },
+          {
+            "rank": 3,
+            "gene": "Myo3b",
+            "sourceCell": "P4"
+          },
+          {
+            "rank": 4,
+            "gene": "Dcn",
+            "sourceCell": "P5"
+          },
+          {
+            "rank": 5,
+            "gene": "Slc26a4",
+            "sourceCell": "P6"
+          },
+          {
+            "rank": 6,
+            "gene": "Pdzk1ip1",
+            "sourceCell": "P7"
+          },
+          {
+            "rank": 7,
+            "gene": "Srd5a2",
+            "sourceCell": "P8"
+          },
+          {
+            "rank": 8,
+            "gene": "Espn",
+            "sourceCell": "P9"
+          },
+          {
+            "rank": 9,
+            "gene": "Slc38a5",
+            "sourceCell": "P10"
+          },
+          {
+            "rank": 10,
+            "gene": "Gata3",
+            "sourceCell": "P11"
+          },
+          {
+            "rank": 11,
+            "gene": "Rnf220",
+            "sourceCell": "P12"
+          },
+          {
+            "rank": 12,
+            "gene": "Tmem176b",
+            "sourceCell": "P13"
+          },
+          {
+            "rank": 13,
+            "gene": "Gm26911",
+            "sourceCell": "P14"
+          },
+          {
+            "rank": 14,
+            "gene": "G930045G22Rik",
+            "sourceCell": "P15"
+          },
+          {
+            "rank": 15,
+            "gene": "Gm38505",
+            "sourceCell": "P16"
+          },
+          {
+            "rank": 16,
+            "gene": "Meis2",
+            "sourceCell": "P17"
+          },
+          {
+            "rank": 17,
+            "gene": "Kcnq4",
+            "sourceCell": "P18"
+          },
+          {
+            "rank": 18,
+            "gene": "St6galnac5",
+            "sourceCell": "P19"
+          },
+          {
+            "rank": 19,
+            "gene": "Pard3b",
+            "sourceCell": "P20"
+          },
+          {
+            "rank": 20,
+            "gene": "SDR42E2",
+            "sourceCell": "P21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!P1, P2:P21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "source_local_spinal_neuron_population_local_vs_projection_unresolved",
+      "capturedNeuronalNuclei": 107,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 18,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.005753
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 14,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.002941
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 23,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.004721
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 23,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.003415
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 29,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.006981
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 4,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 4,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 10,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 7,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 6,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 1,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 8,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 10,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 5,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 5,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 13,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 5,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 7,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 11,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 11,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source-local label-transfer population is not a confirmed local interneuron type. The study contains both interneurons and ascending projection neurons, and this record has no same-cell tracing or morphology.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    },
+    {
+      "id": "matson-2022:GSE172167:Motoneurons",
+      "order": 17,
+      "sourceLabel": "Motoneurons",
+      "shortLabel": "Motoneurons",
+      "sourceSubclass": "Motoneurons",
+      "transmitterContext": "motor_context",
+      "sourceAnnotationMethod": "Seurat label transfer from the Russ et al. 2021 harmonized spinal-neuron atlas",
+      "rankedMarkerPanel": {
+        "markerColumnAlias": "MN",
+        "worksheet": "Sheet1",
+        "headerCell": "Q1",
+        "rankCellRange": "Q2:Q21",
+        "rankedGenes": [
+          {
+            "rank": 1,
+            "gene": "Slit3",
+            "sourceCell": "Q2"
+          },
+          {
+            "rank": 2,
+            "gene": "Slc5a7",
+            "sourceCell": "Q3"
+          },
+          {
+            "rank": 3,
+            "gene": "Prph",
+            "sourceCell": "Q4"
+          },
+          {
+            "rank": 4,
+            "gene": "Creb5",
+            "sourceCell": "Q5"
+          },
+          {
+            "rank": 5,
+            "gene": "Calcb",
+            "sourceCell": "Q6"
+          },
+          {
+            "rank": 6,
+            "gene": "Ahnak2",
+            "sourceCell": "Q7"
+          },
+          {
+            "rank": 7,
+            "gene": "Tns1",
+            "sourceCell": "Q8"
+          },
+          {
+            "rank": 8,
+            "gene": "Chat",
+            "sourceCell": "Q9"
+          },
+          {
+            "rank": 9,
+            "gene": "Slc10a4",
+            "sourceCell": "Q10"
+          },
+          {
+            "rank": 10,
+            "gene": "Aox1",
+            "sourceCell": "Q11"
+          },
+          {
+            "rank": 11,
+            "gene": "Anxa2",
+            "sourceCell": "Q12"
+          },
+          {
+            "rank": 12,
+            "gene": "Uts2",
+            "sourceCell": "Q13"
+          },
+          {
+            "rank": 13,
+            "gene": "Mcam",
+            "sourceCell": "Q14"
+          },
+          {
+            "rank": 14,
+            "gene": "Pdgfd",
+            "sourceCell": "Q15"
+          },
+          {
+            "rank": 15,
+            "gene": "Grin3b",
+            "sourceCell": "Q16"
+          },
+          {
+            "rank": 16,
+            "gene": "Pappa",
+            "sourceCell": "Q17"
+          },
+          {
+            "rank": 17,
+            "gene": "Pmp22",
+            "sourceCell": "Q18"
+          },
+          {
+            "rank": 18,
+            "gene": "Gem",
+            "sourceCell": "Q19"
+          },
+          {
+            "rank": 19,
+            "gene": "Isl1",
+            "sourceCell": "Q20"
+          },
+          {
+            "rank": 20,
+            "gene": "Arhgap36",
+            "sourceCell": "Q21"
+          }
+        ],
+        "sourceRankCount": 20,
+        "retainedRankCount": 20,
+        "scoreAvailable": false,
+        "pValueAvailable": false,
+        "sourceLocator": "Supplementary Dataset 2; Sheet1!Q1, Q2:Q21",
+        "sourceSha256": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74",
+        "boundary": "Ranks 1–20 are the complete source-native ranked marker panel for this workbook column. Marker rank is not an exact identity rule, expression magnitude, specificity score or p-value."
+      },
+      "projectUseClass": "motor_neuron_context_excluded_from_interneuron_count",
+      "capturedNeuronalNuclei": 230,
+      "timepointCounts": [
+        {
+          "timepointId": "uninjured",
+          "count": 35,
+          "capturedNeuronalNucleiDenominator": 3129,
+          "shareOfCapturedNeuronalNuclei": 0.011186
+        },
+        {
+          "timepointId": "1dpi",
+          "count": 54,
+          "capturedNeuronalNucleiDenominator": 4761,
+          "shareOfCapturedNeuronalNuclei": 0.011342
+        },
+        {
+          "timepointId": "1wpi",
+          "count": 44,
+          "capturedNeuronalNucleiDenominator": 4872,
+          "shareOfCapturedNeuronalNuclei": 0.009031
+        },
+        {
+          "timepointId": "3wpi",
+          "count": 65,
+          "capturedNeuronalNucleiDenominator": 6735,
+          "shareOfCapturedNeuronalNuclei": 0.009651
+        },
+        {
+          "timepointId": "6wpi",
+          "count": 32,
+          "capturedNeuronalNucleiDenominator": 4154,
+          "shareOfCapturedNeuronalNuclei": 0.007703
+        }
+      ],
+      "sampleCounts": [
+        {
+          "sampleId": "A-45",
+          "geoAccession": "GSM5243301",
+          "count": 12,
+          "capturedNeuronalNucleiDenominator": 1090
+        },
+        {
+          "sampleId": "A-46",
+          "geoAccession": "GSM5243302",
+          "count": 12,
+          "capturedNeuronalNucleiDenominator": 1138
+        },
+        {
+          "sampleId": "A-48",
+          "geoAccession": "GSM5243303",
+          "count": 11,
+          "capturedNeuronalNucleiDenominator": 901
+        },
+        {
+          "sampleId": "B-49",
+          "geoAccession": "GSM5243304",
+          "count": 26,
+          "capturedNeuronalNucleiDenominator": 1937
+        },
+        {
+          "sampleId": "B-50",
+          "geoAccession": "GSM5243305",
+          "count": 16,
+          "capturedNeuronalNucleiDenominator": 1731
+        },
+        {
+          "sampleId": "B-51",
+          "geoAccession": "GSM5243306",
+          "count": 12,
+          "capturedNeuronalNucleiDenominator": 1093
+        },
+        {
+          "sampleId": "C-41",
+          "geoAccession": "GSM5243307",
+          "count": 17,
+          "capturedNeuronalNucleiDenominator": 1430
+        },
+        {
+          "sampleId": "C-42",
+          "geoAccession": "GSM5243308",
+          "count": 20,
+          "capturedNeuronalNucleiDenominator": 2219
+        },
+        {
+          "sampleId": "C-44",
+          "geoAccession": "GSM5243309",
+          "count": 7,
+          "capturedNeuronalNucleiDenominator": 1223
+        },
+        {
+          "sampleId": "D-25",
+          "geoAccession": "GSM5243310",
+          "count": 15,
+          "capturedNeuronalNucleiDenominator": 1504
+        },
+        {
+          "sampleId": "D-26",
+          "geoAccession": "GSM5243311",
+          "count": 37,
+          "capturedNeuronalNucleiDenominator": 3295
+        },
+        {
+          "sampleId": "D-29",
+          "geoAccession": "GSM5243312",
+          "count": 13,
+          "capturedNeuronalNucleiDenominator": 1936
+        },
+        {
+          "sampleId": "F-12",
+          "geoAccession": "GSM5243313",
+          "count": 14,
+          "capturedNeuronalNucleiDenominator": 1394
+        },
+        {
+          "sampleId": "F-13",
+          "geoAccession": "GSM5243314",
+          "count": 7,
+          "capturedNeuronalNucleiDenominator": 1208
+        },
+        {
+          "sampleId": "F-14",
+          "geoAccession": "GSM5243315",
+          "count": 11,
+          "capturedNeuronalNucleiDenominator": 1552
+        }
+      ],
+      "evidenceBoundary": "This source label is retained as motor-neuron context and is excluded from the interneuron population count.",
+      "missingEvidence": {
+        "cellCoordinates": "not_available_in_processed_metadata",
+        "singleCellMorphology": "not_measured",
+        "completeAxon": "not_measured",
+        "sameCellProjectionStatus": "not_established",
+        "synapticConnectivity": "not_measured",
+        "atlasRegistration": "not_established",
+        "biologicalPrevalence": "not_established_from_captured_nucleus_counts"
+      }
+    }
+  ],
+  "rareStateEvidence": {
+    "id": "matson-2022:GSE172167:RAG_cluster_23",
+    "label": "RAG-expressing neuronal state · independent neuronal cluster 23",
+    "stateMarkers": [
+      "Atf3",
+      "Sprr1a",
+      "Tnfrsf12a",
+      "Sox11",
+      "Klf6",
+      "Bdnf",
+      "Adcyap1",
+      "Gap43"
+    ],
+    "projectionAssociatedMarkers": [
+      "Lypd1",
+      "Tacr1",
+      "Zfhx3",
+      "Pou6f2",
+      "Tac1"
+    ],
+    "established": [
+      "The independent neuronal clustering identified a rare RAG-expressing state after injury.",
+      "RNAscope detected Sprr1a and Atf3 from 1 week through 6 weeks post injury.",
+      "Most RAG-expressing neurons were excitatory; a small subset expressed Shox2, while co-expression with Chat or Vsx2 was not detected in the reported assay.",
+      "Separate tracing and viral-labeling experiments support a major spinocerebellar projection-neuron contribution and post-injury axon/collateral remodeling."
+    ],
+    "sourceLocators": [
+      "Results; Fig. 4b–q",
+      "Results; Supplementary Figs. 5, 11, 13 and 15",
+      "Results; Fig. 5"
+    ],
+    "boundary": "The RAG state is not one of the 17 label-transfer population records, and the sequencing, RNAscope and tracing observations are not same-cell joins. Spinocerebellar neurons are projection neurons, not local interneurons. Structural remodeling does not by itself establish behavioral recovery or synaptic connectivity."
+  },
+  "sourceLocators": [
+    {
+      "id": "MAT-GEO-DESIGN",
+      "locator": "GEO GSE172167 — Overall design and 15 GSM sample records",
+      "supports": [
+        "conditions",
+        "replicate counts",
+        "sample accessions",
+        "processed file inventory"
+      ]
+    },
+    {
+      "id": "MAT-FIG1",
+      "locator": "Article Results and Fig. 1a–e",
+      "supports": [
+        "67,903 nuclei",
+        "five timepoints",
+        "three animals per timepoint",
+        "lumbar sampling below thoracic injury"
+      ]
+    },
+    {
+      "id": "MAT-FIG2",
+      "locator": "Article Results and Fig. 2a, e–f; Supplementary Figs. 2 and 4",
+      "supports": [
+        "23,651 neurons",
+        "17 neuronal populations",
+        "8 excitatory",
+        "8 inhibitory",
+        "motoneuron context",
+        "label transfer"
+      ]
+    },
+    {
+      "id": "MAT-FIG4",
+      "locator": "Article Results and Fig. 4; Supplementary Figs. 5, 11, 13 and 15",
+      "supports": [
+        "RAG state",
+        "RAG markers",
+        "projection-associated markers",
+        "Shox2 subset",
+        "negative Chat and Vsx2 co-expression"
+      ]
+    },
+    {
+      "id": "MAT-METHODS",
+      "locator": "Article Methods — Mice, Surgical procedures, single-nucleus RNA sequencing and analysis",
+      "supports": [
+        "female C57BL/6",
+        "12–30 weeks",
+        "T9",
+        "90 kdyn",
+        "representative-animal selection",
+        "sequencing workflow"
+      ]
+    },
+    {
+      "id": "MAT-SUPP-D2",
+      "locator": "Supplementary Dataset 2 — top 20 marker genes for 39 source types",
+      "supports": [
+        "ranked marker genes",
+        "marker-column aliases",
+        "absence of marker scores and p-values"
+      ]
+    }
+  ],
+  "sourceConflicts": [
+    {
+      "id": "MAT-CONFLICT-001",
+      "topic": "sequencing platform and loading target",
+      "statements": [
+        "Article Methods: Illumina HiSeq 3000 and 8,000–9,000 nuclei loaded",
+        "GEO series/sample metadata: Illumina HiSeq 2500 and a target of 5,000 nuclei"
+      ],
+      "decision": "Retain both source statements; do not silently select one platform or loading target."
+    },
+    {
+      "id": "MAT-CONFLICT-002",
+      "topic": "discarded-nucleus arithmetic",
+      "statements": [
+        "Article Results: 22,435 nuclei discarded",
+        "Supplementary Dataset 7 arithmetic: 90,337 unfiltered minus 67,903 filtered equals 22,434"
+      ],
+      "decision": "Retain the one-nucleus discrepancy as unresolved provenance; final retained count remains 67,903."
+    },
+    {
+      "id": "MAT-CONFLICT-003",
+      "topic": "D-26 recovery range",
+      "statements": [
+        "Article Methods: approximately 3,000–7,000 nuclei recovered per sample",
+        "Supplementary Dataset 7 D-26: 13,335 unfiltered and 9,015 filtered nuclei"
+      ],
+      "decision": "Display exact per-sample counts and keep the paper-level range as a conflicting statement."
+    },
+    {
+      "id": "MAT-CONFLICT-004",
+      "topic": "tissue wording",
+      "statements": [
+        "GEO extraction-protocol text uses thoracic SCI-site wording",
+        "Paper and sample fields identify L2–S1 lumbar tissue below the T9 lesion"
+      ],
+      "decision": "Model tissue as L2–S1 lumbar because that is the directly described sampled region; retain the GEO wording conflict."
+    },
+    {
+      "id": "MAT-CONFLICT-005",
+      "topic": "Figure 4l denominator",
+      "statements": [
+        "Figure 4l caption reports N=6",
+        "The corresponding Source Data worksheet contains five numeric observations"
+      ],
+      "decision": "Do not calculate or display a repaired N; retain the discrepancy for any future cohort-evidence adapter."
+    },
+    {
+      "id": "MAT-CONFLICT-006",
+      "topic": "F-12 raw-run size anomaly",
+      "statements": [
+        "F-12/SRX10609386 totals about 0.011 GiB across eight paired runs",
+        "Other samples total roughly 16–51 GiB"
+      ],
+      "decision": "Raw-reprocessing completeness remains unresolved; no raw reconstruction is promised by this release."
+    }
+  ],
+  "globalMissingEvidence": [
+    {
+      "axis": "cellCoordinates",
+      "status": "not_available",
+      "reason": "The processed metadata contains no per-nucleus physical coordinate."
+    },
+    {
+      "axis": "singleCellMorphology",
+      "status": "not_measured",
+      "reason": "snRNA-seq labels and tissue images do not provide reconstructable single-neuron arbors."
+    },
+    {
+      "axis": "sameCellProjectionStatus",
+      "status": "not_established",
+      "reason": "Tracing and sequencing were not performed as a same-cell linkage."
+    },
+    {
+      "axis": "synapticConnectivity",
+      "status": "not_measured",
+      "reason": "Axon remodeling and proximity do not identify synaptic partners."
+    },
+    {
+      "axis": "atlasRegistration",
+      "status": "not_established",
+      "reason": "No transform registers source nuclei or histology to the project reference anatomy."
+    },
+    {
+      "axis": "biologicalPrevalence",
+      "status": "not_established",
+      "reason": "Captured nucleus counts have different library denominators and are not a tissue census."
+    },
+    {
+      "axis": "causalRecovery",
+      "status": "not_established",
+      "reason": "The time-course and remodeling observations do not establish that a population is necessary or sufficient for behavioral recovery."
+    }
+  ],
+  "hardBoundaries": [
+    "All 17 neuronal labels remain in the Matson/GSE172167 source namespace; exact identity to Russ, Sathyamurthy, morphology, anatomy or SCI evidence records is zero.",
+    "The 16 non-motor source populations are spinal-neuron populations, not 16 confirmed local interneuron types; local versus ascending projection status is unresolved at the record level.",
+    "Captured nucleus counts and shares describe this processed dataset only and must not be displayed as biological prevalence, cell loss or expansion without the source study's compositional analysis and validation.",
+    "The RAG state, molecular population labels, RNAscope cells, dextran-labelled neurons and virally labelled spinocerebellar neurons remain separate observations unless the paper directly links them.",
+    "No coordinate, morphology, complete axon, synapse, atlas placement or same-cell cross-modal join may be inferred from this release.",
+    "A missing measurement remains an explicit gap and is not evidence that the corresponding biological feature is absent."
+  ]
+}

@@ -1,0 +1,374 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/morphology-source-frame-disclosure-0.1.schema.json",
+  "title": "Morphology source-frame, scale, preparation and truncation disclosure contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "documentType",
+    "schemaVersion",
+    "contractId",
+    "releaseId",
+    "releasedAt",
+    "upgradeId",
+    "purpose",
+    "sourceInputs",
+    "displayScalePolicy",
+    "summary",
+    "scientificBoundary",
+    "records",
+    "contractContentSha256"
+  ],
+  "properties": {
+    "documentType": { "const": "morphology_source_frame_and_preparation_disclosure_contract" },
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "morphology-source-frame-disclosure-0.1" },
+    "releaseId": { "const": "ohri-morphology-source-frame-disclosure-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "upgradeId": { "const": "UPG-151" },
+    "purpose": { "type": "string", "minLength": 80 },
+    "sourceInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frozenCensus", "supplementaryAdapter", "builder"],
+      "properties": {
+        "frozenCensus": { "$ref": "#/$defs/fileReceipt" },
+        "supplementaryAdapter": { "$ref": "#/$defs/fileReceipt" },
+        "builder": { "$ref": "#/$defs/fileReceipt" }
+      }
+    },
+    "displayScalePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithmId",
+        "sourceCoordinateUnit",
+        "measurementPlane",
+        "targetPixelLength",
+        "preferredNiceSeries",
+        "updatesOn",
+        "sourceLocalOnly",
+        "sharedAcrossViewports",
+        "apparentObjectSizeComparable",
+        "restoresInVivoDimensions",
+        "infersMissingCoordinates",
+        "establishesAnatomicalOrientation",
+        "establishesAtlasRegistration"
+      ],
+      "properties": {
+        "algorithmId": { "const": "camera_target_plane_source_local_scale_v1" },
+        "sourceCoordinateUnit": { "const": "micrometre_reported_by_source" },
+        "measurementPlane": { "const": "camera_target_depth" },
+        "targetPixelLength": { "const": 92 },
+        "preferredNiceSeries": { "const": [1, 2, 5] },
+        "updatesOn": { "const": ["initial_fit", "orbit_zoom", "viewport_resize"] },
+        "sourceLocalOnly": { "const": true },
+        "sharedAcrossViewports": { "const": false },
+        "apparentObjectSizeComparable": { "const": false },
+        "restoresInVivoDimensions": { "const": false },
+        "infersMissingCoordinates": { "const": false },
+        "establishesAnatomicalOrientation": { "const": false },
+        "establishesAtlasRegistration": { "const": false }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozenCensusRecordCount",
+        "supplementaryRecordCount",
+        "viewableSourceObjectCount",
+        "geometry2DCount",
+        "geometry3DCount",
+        "slicingDirectionReportedCount",
+        "slicingThicknessReportedCount",
+        "numericAgeReportedCount",
+        "preparationContextConflictCount",
+        "sourceModerateOrIncompleteCount",
+        "scaleEligibleRecordCount",
+        "commonScaleAdmissionCount",
+        "inferredMissingCoordinateCount",
+        "repairedCutNeuriteCount",
+        "restoredInVivoDimensionCount",
+        "registrationCount"
+      ],
+      "properties": {
+        "frozenCensusRecordCount": { "const": 142 },
+        "supplementaryRecordCount": { "const": 7 },
+        "viewableSourceObjectCount": { "const": 149 },
+        "geometry2DCount": { "const": 2 },
+        "geometry3DCount": { "const": 147 },
+        "slicingDirectionReportedCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "slicingThicknessReportedCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "numericAgeReportedCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "preparationContextConflictCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "sourceModerateOrIncompleteCount": { "type": "integer", "minimum": 0, "maximum": 149 },
+        "scaleEligibleRecordCount": { "const": 149 },
+        "commonScaleAdmissionCount": { "const": 0 },
+        "inferredMissingCoordinateCount": { "const": 0 },
+        "repairedCutNeuriteCount": { "const": 0 },
+        "restoredInVivoDimensionCount": { "const": 0 },
+        "registrationCount": { "const": 0 }
+      }
+    },
+    "scientificBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "combinedCensusClaim",
+        "commonScaleClaim",
+        "commonOrientationClaim",
+        "sharedCoordinateFrameClaim",
+        "atlasPlacementCount",
+        "atlasTransformCount",
+        "completeBiologicalAxonClaimCount",
+        "cutNeuriteRepairCount",
+        "inferredMissingCoordinateCount",
+        "restoredInVivoDimensionCount",
+        "crossSourceIdentityCount",
+        "sameSpecimenInternalStructureCount",
+        "renderedInternalPrimitiveCount",
+        "registrationCount"
+      ],
+      "properties": {
+        "combinedCensusClaim": { "const": false },
+        "commonScaleClaim": { "const": false },
+        "commonOrientationClaim": { "const": false },
+        "sharedCoordinateFrameClaim": { "const": false },
+        "atlasPlacementCount": { "const": 0 },
+        "atlasTransformCount": { "const": 0 },
+        "completeBiologicalAxonClaimCount": { "const": 0 },
+        "cutNeuriteRepairCount": { "const": 0 },
+        "inferredMissingCoordinateCount": { "const": 0 },
+        "restoredInVivoDimensionCount": { "const": 0 },
+        "crossSourceIdentityCount": { "const": 0 },
+        "sameSpecimenInternalStructureCount": { "const": 0 },
+        "renderedInternalPrimitiveCount": { "const": 0 },
+        "registrationCount": { "const": 0 }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 149,
+      "maxItems": 149,
+      "items": { "$ref": "#/$defs/record" }
+    },
+    "contractContentSha256": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "nullableString": { "type": ["string", "null"] },
+    "nullableNumber": { "type": ["number", "null"] },
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "fileReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "membership": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["collection", "censusContribution", "supplementaryContribution"],
+          "properties": {
+            "collection": { "const": "census" },
+            "censusContribution": { "const": 1 },
+            "supplementaryContribution": { "const": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["collection", "censusContribution", "supplementaryContribution"],
+          "properties": {
+            "collection": { "const": "supplementary" },
+            "censusContribution": { "const": 0 },
+            "supplementaryContribution": { "const": 1 }
+          }
+        }
+      ]
+    },
+    "geometryReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "rawSwcSha256", "geometryStatus"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "rawSwcSha256": { "$ref": "#/$defs/sha256" },
+        "geometryStatus": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" }
+      }
+    },
+    "sourceCoordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "sourceFrame",
+        "boundsMicrometre",
+        "extentMicrometre",
+        "displayTransform",
+        "viewportScaleAuthority",
+        "sharedScaleAuthority",
+        "anatomicalOrientationAuthority",
+        "atlasRegistrationAuthority"
+      ],
+      "properties": {
+        "unit": { "const": "micrometre_reported_by_source" },
+        "sourceFrame": { "const": "NeuroMorpho_CNG_standardized_local_frame" },
+        "boundsMicrometre": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["min", "max"],
+          "properties": { "min": { "$ref": "#/$defs/vector3" }, "max": { "$ref": "#/$defs/vector3" } }
+        },
+        "extentMicrometre": { "$ref": "#/$defs/vector3" },
+        "displayTransform": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "originMicrometre", "scaleViewerUnitPerMicrometre", "use"],
+          "properties": {
+            "kind": { "const": "soma_centered_uniform_scale" },
+            "originMicrometre": { "$ref": "#/$defs/vector3" },
+            "scaleViewerUnitPerMicrometre": { "type": "number", "exclusiveMinimum": 0 },
+            "use": { "const": "viewer_only" }
+          }
+        },
+        "viewportScaleAuthority": { "const": "camera_target_plane_source_local_only" },
+        "sharedScaleAuthority": { "const": false },
+        "anatomicalOrientationAuthority": { "const": false },
+        "atlasRegistrationAuthority": { "const": false }
+      }
+    },
+    "numericAge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "minimum", "maximum", "scale"],
+      "properties": {
+        "status": { "enum": ["reported", "unavailable"] },
+        "minimum": { "$ref": "#/$defs/nullableNumber" },
+        "maximum": { "$ref": "#/$defs/nullableNumber" },
+        "scale": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "shrinkage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reportedRaw",
+        "correctedRaw",
+        "reportedValue",
+        "reportedXY",
+        "reportedZ",
+        "correctedValue",
+        "correctedXY",
+        "correctedZ",
+        "restoredInVivoDimensions"
+      ],
+      "properties": {
+        "status": { "enum": ["not_reported", "reported_not_corrected", "reported_correction_status_unresolved", "source_text_unresolved"] },
+        "reportedRaw": { "$ref": "#/$defs/nullableString" },
+        "correctedRaw": { "$ref": "#/$defs/nullableString" },
+        "reportedValue": { "$ref": "#/$defs/nullableNumber" },
+        "reportedXY": { "$ref": "#/$defs/nullableNumber" },
+        "reportedZ": { "$ref": "#/$defs/nullableNumber" },
+        "correctedValue": { "$ref": "#/$defs/nullableNumber" },
+        "correctedXY": { "$ref": "#/$defs/nullableNumber" },
+        "correctedZ": { "$ref": "#/$defs/nullableNumber" },
+        "restoredInVivoDimensions": { "const": false }
+      }
+    },
+    "preparation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "lifeStage",
+        "numericAge",
+        "regionLabels",
+        "dimensionality",
+        "protocol",
+        "slicingDirectionRaw",
+        "slicingThicknessMicrometre",
+        "sourceSectionWording",
+        "shrinkage",
+        "paperPreparationContext",
+        "preparationContextJoinStatus",
+        "unresolvedPreparationConflict"
+      ],
+      "properties": {
+        "species": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+          ]
+        },
+        "lifeStage": { "type": "string", "minLength": 1 },
+        "numericAge": { "$ref": "#/$defs/numericAge" },
+        "regionLabels": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "dimensionality": { "enum": ["2D", "3D"] },
+        "protocol": { "$ref": "#/$defs/nullableString" },
+        "slicingDirectionRaw": { "$ref": "#/$defs/nullableString" },
+        "slicingThicknessMicrometre": { "$ref": "#/$defs/nullableNumber" },
+        "sourceSectionWording": { "type": "string", "minLength": 1 },
+        "shrinkage": { "$ref": "#/$defs/shrinkage" },
+        "paperPreparationContext": { "$ref": "#/$defs/nullableString" },
+        "preparationContextJoinStatus": { "type": "string", "minLength": 1 },
+        "unresolvedPreparationConflict": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "truncation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceDomainVerbatim",
+        "sourcePhysicalIntegrityVerbatim",
+        "axonField",
+        "moderateOrIncompleteSourceLabel",
+        "completeNamedDomainSourceLabel",
+        "wholeBiologicalAxonClaim",
+        "cutNeuriteRepairApplied",
+        "missingCoordinateInferenceApplied",
+        "biologicalAbsenceInferredFromMissingReconstruction"
+      ],
+      "properties": {
+        "sourceDomainVerbatim": { "type": "string", "minLength": 1 },
+        "sourcePhysicalIntegrityVerbatim": { "type": "string", "minLength": 1 },
+        "axonField": { "enum": ["reconstructed_source_field", "not_reconstructed"] },
+        "moderateOrIncompleteSourceLabel": { "type": "boolean" },
+        "completeNamedDomainSourceLabel": { "type": "boolean" },
+        "wholeBiologicalAxonClaim": { "const": false },
+        "cutNeuriteRepairApplied": { "const": false },
+        "missingCoordinateInferenceApplied": { "const": false },
+        "biologicalAbsenceInferredFromMissingReconstruction": { "const": false }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["neuronId", "assetId", "membership", "geometryReceipt", "sourceCoordinates", "preparation", "truncation"],
+      "properties": {
+        "neuronId": { "type": "integer", "minimum": 1 },
+        "assetId": { "type": "string", "pattern": "^NeuroMorpho:[1-9][0-9]*$" },
+        "membership": { "$ref": "#/$defs/membership" },
+        "geometryReceipt": { "$ref": "#/$defs/geometryReceipt" },
+        "sourceCoordinates": { "$ref": "#/$defs/sourceCoordinates" },
+        "preparation": { "$ref": "#/$defs/preparation" },
+        "truncation": { "$ref": "#/$defs/truncation" }
+      }
+    }
+  }
+}

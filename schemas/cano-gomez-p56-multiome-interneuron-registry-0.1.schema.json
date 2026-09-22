@@ -1,0 +1,624 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/cano-gomez-p56-multiome-interneuron-registry-0.1.schema.json",
+  "title": "Cano-Gomez GSE318731 P56 multiome confirmed interneuron registry 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "releaseId",
+    "schemaVersion",
+    "releaseDate",
+    "datasetId",
+    "lifeStage",
+    "coordinateAuthority",
+    "compoundNucleusKeyExpression",
+    "identityAuthority",
+    "metadataFieldCoverage",
+    "sourceReferences",
+    "inputReceipts",
+    "decisionPolicy",
+    "denominatorReconciliation",
+    "sourceObjects",
+    "artifacts",
+    "profiles",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "releaseId": {
+      "const": "ohri-cano-gomez-p56-multiome-interneuron-registry-0.1.0"
+    },
+    "schemaVersion": {"const": "0.1.0"},
+    "releaseDate": {"type": "string", "format": "date"},
+    "datasetId": {"const": "GSE318731"},
+    "lifeStage": {"const": "P56"},
+    "coordinateAuthority": {"const": "SOURCE_LOCAL_ASSIGNMENT_ONLY"},
+    "compoundNucleusKeyExpression": {
+      "const": "GSE318731|exact source filename|row.name"
+    },
+    "identityAuthority": {"$ref": "#/$defs/identityAuthority"},
+    "metadataFieldCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "preservedContractedColumns", "boundary"],
+      "properties": {
+        "mode": {
+          "enum": [
+            "ALL_SUPPORTED_META_DATA_COLUMNS_FROM_STRICT_R_EXTRACTOR",
+            "CONTRACTED_ASSIGNMENT_CONTEXT_COLUMNS_ONLY"
+          ]
+        },
+        "preservedContractedColumns": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "boundary": {"type": "string", "minLength": 130}
+      }
+    },
+    "sourceReferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataRepository", "publication"],
+      "properties": {
+        "dataRepository": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["accession", "url"],
+          "properties": {
+            "accession": {"const": "GSE318731"},
+            "url": {
+              "const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731"
+            }
+          }
+        },
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["doi", "articleUrl", "articleLicense", "rightsBoundary"],
+          "properties": {
+            "doi": {"const": "10.64898/2026.06.11.731752"},
+            "articleUrl": {
+              "const": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13308138/"
+            },
+            "articleLicense": {"const": "CC-BY-NC-4.0"},
+            "rightsBoundary": {"type": "string", "minLength": 150}
+          }
+        }
+      }
+    },
+    "inputReceipts": {"$ref": "#/$defs/inputReceipts"},
+    "decisionPolicy": {"$ref": "#/$defs/decisionPolicy"},
+    "denominatorReconciliation": {"$ref": "#/$defs/denominators"},
+    "sourceObjects": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/sourceObject"}
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/profile"}
+    },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 80}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "nonNegativeInteger": {"type": "integer", "minimum": 0},
+    "identityAuthorityMode": {
+      "enum": [
+        "R_SEURAT_OBJECT_IDENTITY_VERIFIED",
+        "PYTHON_RDATA_META_DATA_ROW_ONLY",
+        "BASE_R_STREAM_META_DATA_ROW_ONLY"
+      ]
+    },
+    "identityAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "stableKeyBasis",
+        "metaDataRowNamesUniqueNonemptyVerified",
+        "crossAssayCellIdentityVerified",
+        "sameCellAssertionAdmitted",
+        "boundary"
+      ],
+      "properties": {
+        "mode": {"$ref": "#/$defs/identityAuthorityMode"},
+        "stableKeyBasis": {
+          "const": "exact_source_filename_plus_meta_data_row_name"
+        },
+        "metaDataRowNamesUniqueNonemptyVerified": {"const": true},
+        "crossAssayCellIdentityVerified": {"type": "boolean"},
+        "sameCellAssertionAdmitted": {"const": false},
+        "boundary": {"type": "string", "minLength": 130}
+      }
+    },
+    "decision": {
+      "enum": [
+        "CONFIRMED_INTERNEURON",
+        "EXCLUDED_MOTOR",
+        "EXCLUDED_SENSORY_SCOPE",
+        "EXCLUDED_PROJECTION_LOCAL_STATUS_UNRESOLVED",
+        "EXCLUDED_AMBIGUOUS_OR_PROJECTION_EXCEPTION_UNRESOLVED"
+      ]
+    },
+    "inputReceipts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityMode",
+        "combinedReceiptFileName",
+        "combinedReceiptSha256",
+        "sourceObjects"
+      ],
+      "properties": {
+        "authorityMode": {"$ref": "#/$defs/identityAuthorityMode"},
+        "combinedReceiptFileName": {
+          "type": ["string", "null"],
+          "enum": [
+            "GSE318731_multiome_metadata.combined.receipt.json",
+            null
+          ]
+        },
+        "combinedReceiptSha256": {
+          "oneOf": [
+            {"$ref": "#/$defs/sha256"},
+            {"type": "null"}
+          ]
+        },
+        "sourceObjects": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "objectId",
+              "receiptKind",
+              "receiptFileName",
+              "receiptSha256",
+              "rawMetadataFileName",
+              "rawMetadataCompressedSha256",
+              "rawMetadataUncompressedSha256",
+              "orderedSourceNucleusIdsSha256"
+            ],
+            "properties": {
+              "objectId": {
+                "enum": ["cholinergic", "gabaergic", "glutamatergic"]
+              },
+              "receiptKind": {
+                "enum": [
+                  "r_seurat_object_identity_receipt",
+                  "python_rdata_meta_data_row_only_receipt",
+                  "base_r_stream_meta_data_row_only_receipt"
+                ]
+              },
+              "receiptFileName": {"$ref": "#/$defs/nonEmptyString"},
+              "receiptSha256": {"$ref": "#/$defs/sha256"},
+              "rawMetadataFileName": {"$ref": "#/$defs/nonEmptyString"},
+              "rawMetadataCompressedSha256": {"$ref": "#/$defs/sha256"},
+              "rawMetadataUncompressedSha256": {"$ref": "#/$defs/sha256"},
+              "orderedSourceNucleusIdsSha256": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        }
+      }
+    },
+    "decisionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policyId",
+        "confirmedRule",
+        "motorExclusionRule",
+        "sensoryScopeExclusionRule",
+        "glutamatergicRule",
+        "remainingGabaergicRule",
+        "nonNeuronalRule"
+      ],
+      "properties": {
+        "policyId": {"const": "CANO_GOMEZ_GSE318731_CONFIRMED_ONLY_0.1"},
+        "confirmedRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceObjectId", "rawField", "exactValue", "authority"],
+          "properties": {
+            "sourceObjectId": {"const": "cholinergic"},
+            "rawField": {"const": "groups"},
+            "exactValue": {"const": "CHOL_IN"},
+            "authority": {"const": "source_explicit_group_label"}
+          }
+        },
+        "motorExclusionRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceObjectId", "rawField", "exactValues"],
+          "properties": {
+            "sourceObjectId": {"const": "cholinergic"},
+            "rawField": {"const": "groups"},
+            "exactValues": {
+              "const": [
+                "CHOL_aMN_Vipr2",
+                "CHOL_vMN_Vwa5b1",
+                "CHOL_gMN_Col27a1",
+                "CHOL_gsMN_Prkcd"
+              ]
+            }
+          }
+        },
+        "sensoryScopeExclusionRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceObjectId", "rawField", "exactValue"],
+          "properties": {
+            "sourceObjectId": {"const": "gabaergic"},
+            "rawField": {"const": "groups"},
+            "exactValue": {"const": "GABA_CSF-cN_Pkd2l1"}
+          }
+        },
+        "glutamatergicRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["decision", "boundary"],
+          "properties": {
+            "decision": {
+              "const": "EXCLUDED_PROJECTION_LOCAL_STATUS_UNRESOLVED"
+            },
+            "boundary": {"type": "string", "minLength": 100}
+          }
+        },
+        "remainingGabaergicRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision",
+            "sourceCategoricalInterneuronFlagUsed",
+            "gabaergicClassUsedAsInterneuronFlag",
+            "boundary"
+          ],
+          "properties": {
+            "decision": {
+              "const": "EXCLUDED_AMBIGUOUS_OR_PROJECTION_EXCEPTION_UNRESOLVED"
+            },
+            "sourceCategoricalInterneuronFlagUsed": {"const": false},
+            "gabaergicClassUsedAsInterneuronFlag": {"const": false},
+            "boundary": {"type": "string", "minLength": 100}
+          }
+        },
+        "nonNeuronalRule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceLevelPreprocessingReported",
+            "perNucleusFlagAvailable",
+            "perNucleusExcludedCount",
+            "boundary"
+          ],
+          "properties": {
+            "sourceLevelPreprocessingReported": {"const": true},
+            "perNucleusFlagAvailable": {"const": false},
+            "perNucleusExcludedCount": {"type": "null"},
+            "boundary": {"type": "string", "minLength": 100}
+          }
+        }
+      }
+    },
+    "denominators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceTotalNucleusCount",
+        "sourceObjectCount",
+        "sourceScopedGroupCount",
+        "paperReportedNeuronTypeCount",
+        "observedRawNonMissingNonEmptyTypeLabelUnionCount",
+        "paperReportedTypeCountMatchesObservedRawUnion",
+        "paperReportedTypeCountUsedAsInterneuronDenominator",
+        "confirmedInterneuronNucleusCount",
+        "confirmedInterneuronProfileCount",
+        "excludedMotorNucleusCount",
+        "excludedSensoryScopeNucleusCount",
+        "excludedProjectionLocalStatusUnresolvedNucleusCount",
+        "excludedAmbiguousOrProjectionExceptionUnresolvedNucleusCount",
+        "perNucleusNonNeuronalExcludedCount",
+        "generatedGeometryCount",
+        "internalStructureObjectCount",
+        "sameCellLinkCount",
+        "atlasRegistrationCount"
+      ],
+      "properties": {
+        "sourceTotalNucleusCount": {"const": 169345},
+        "sourceObjectCount": {"const": 3},
+        "sourceScopedGroupCount": {"const": 57},
+        "paperReportedNeuronTypeCount": {"const": 516},
+        "observedRawNonMissingNonEmptyTypeLabelUnionCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "paperReportedTypeCountMatchesObservedRawUnion": {"type": "boolean"},
+        "paperReportedTypeCountUsedAsInterneuronDenominator": {"const": false},
+        "confirmedInterneuronNucleusCount": {"type": "integer", "minimum": 1},
+        "confirmedInterneuronProfileCount": {"type": "integer", "minimum": 1},
+        "excludedMotorNucleusCount": {"type": "integer", "minimum": 1},
+        "excludedSensoryScopeNucleusCount": {"type": "integer", "minimum": 1},
+        "excludedProjectionLocalStatusUnresolvedNucleusCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "excludedAmbiguousOrProjectionExceptionUnresolvedNucleusCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "perNucleusNonNeuronalExcludedCount": {"type": "null"},
+        "generatedGeometryCount": {"const": 0},
+        "internalStructureObjectCount": {"const": 0},
+        "sameCellLinkCount": {"const": 0},
+        "atlasRegistrationCount": {"const": 0}
+      }
+    },
+    "decisionCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "count"],
+      "properties": {
+        "decision": {"$ref": "#/$defs/decision"},
+        "count": {"$ref": "#/$defs/nonNegativeInteger"}
+      }
+    },
+    "sourceObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objectId",
+        "sourceFileName",
+        "sourceRdsBytes",
+        "sourceRdsSha256",
+        "nucleusCount",
+        "sourceScopedGroupCount",
+        "rawNonMissingNonEmptyNeuronTypeLabelCount",
+        "identityAuthorityMode",
+        "crossAssayCellIdentityVerified",
+        "decisionCounts"
+      ],
+      "properties": {
+        "objectId": {
+          "enum": ["cholinergic", "gabaergic", "glutamatergic"]
+        },
+        "sourceFileName": {"$ref": "#/$defs/nonEmptyString"},
+        "sourceRdsBytes": {"type": "integer", "minimum": 1},
+        "sourceRdsSha256": {"$ref": "#/$defs/sha256"},
+        "nucleusCount": {"type": "integer", "minimum": 1},
+        "sourceScopedGroupCount": {"type": "integer", "minimum": 1},
+        "rawNonMissingNonEmptyNeuronTypeLabelCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "identityAuthorityMode": {"$ref": "#/$defs/identityAuthorityMode"},
+        "crossAssayCellIdentityVerified": {"type": "boolean"},
+        "metadataFieldAvailability": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {"$ref": "#/$defs/metadataFieldAvailability"}
+        },
+        "decisionCounts": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {"$ref": "#/$defs/decisionCount"}
+        }
+      }
+    },
+    "metadataFieldAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "requirement",
+        "sourceColumnPresent",
+        "sourceColumnIndex",
+        "emissionMode",
+        "sourceColumnAbsenceReason",
+        "rowCount",
+        "sourceMissingCount",
+        "sourceEmptyStringCount",
+        "sourceWhitespaceOnlyCount",
+        "observedNonemptyUniqueCount"
+      ],
+      "properties": {
+        "field": {
+          "enum": ["groups", "neuron_types", "source", "anatomy", "Sex"]
+        },
+        "requirement": {
+          "enum": ["REQUIRED_ASSIGNMENT", "OPTIONAL_CONTEXT", "SOURCE_ABSENT_ASSIGNMENT"]
+        },
+        "sourceColumnPresent": {"type": "boolean"},
+        "sourceColumnIndex": {
+          "oneOf": [
+            {"type": "integer", "minimum": 1},
+            {"type": "null"}
+          ]
+        },
+        "emissionMode": {
+          "enum": [
+            "PRESERVED_SOURCE_COLUMN_VALUES",
+            "SOURCE_COLUMN_ABSENT_EMITTED_AS_SOURCE_NA"
+          ]
+        },
+        "sourceColumnAbsenceReason": {
+          "enum": [null, "source_meta_data_column_absent"]
+        },
+        "rowCount": {"$ref": "#/$defs/nonNegativeInteger"},
+        "sourceMissingCount": {"$ref": "#/$defs/nonNegativeInteger"},
+        "sourceEmptyStringCount": {"$ref": "#/$defs/nonNegativeInteger"},
+        "sourceWhitespaceOnlyCount": {"$ref": "#/$defs/nonNegativeInteger"},
+        "observedNonemptyUniqueCount": {"$ref": "#/$defs/nonNegativeInteger"}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactKind",
+        "fileName",
+        "mediaType",
+        "contentEncoding",
+        "deterministicCompression",
+        "rowCount",
+        "columnCount",
+        "orderedColumnNames",
+        "uncompressedBytes",
+        "uncompressedSha256",
+        "compressedBytes",
+        "compressedSha256"
+      ],
+      "properties": {
+        "artifactKind": {
+          "enum": [
+            "all_nucleus_assignment_audit",
+            "confirmed_interneuron_nucleus_roster"
+          ]
+        },
+        "fileName": {"$ref": "#/$defs/nonEmptyString"},
+        "mediaType": {"const": "text/csv"},
+        "contentEncoding": {"const": "gzip"},
+        "deterministicCompression": {"const": "gzip_level_9_mtime_0"},
+        "rowCount": {"type": "integer", "minimum": 1},
+        "columnCount": {"type": "integer", "minimum": 14},
+        "orderedColumnNames": {
+          "type": "array",
+          "minItems": 14,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmptyString"}
+        },
+        "uncompressedBytes": {"type": "integer", "minimum": 1},
+        "uncompressedSha256": {"$ref": "#/$defs/sha256"},
+        "compressedBytes": {"type": "integer", "minimum": 1},
+        "compressedSha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "valueCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "count"],
+      "properties": {
+        "value": {"type": "string"},
+        "count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "contextFieldCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "status", "missingCount", "emptyCount", "counts"],
+      "properties": {
+        "field": {"enum": ["anatomy", "source", "Sex"]},
+        "status": {
+          "enum": ["SOURCE_FIELD_PRESENT", "SOURCE_FIELD_UNAVAILABLE"]
+        },
+        "missingCount": {"$ref": "#/$defs/nonNegativeInteger"},
+        "emptyCount": {"$ref": "#/$defs/nonNegativeInteger"},
+        "counts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/valueCount"}
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "recordKind",
+        "unitOfObservation",
+        "sourceObjectId",
+        "sourceFileName",
+        "sourceGroup",
+        "sourceLocalLabel",
+        "nucleusCount",
+        "assignmentAuthority",
+        "stableIdentityField",
+        "orderedCompoundNucleusKeysSha256",
+        "contextFieldCounts",
+        "markerEvidenceStatus",
+        "geometryAuthority",
+        "rosterLink"
+      ],
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "pattern": "^cano\\.gomez\\.p56\\.chol_in\\.sha256\\.[a-f0-9]{24}$"
+        },
+        "recordKind": {"const": "source_local_exact_nucleus_roster_profile"},
+        "unitOfObservation": {"const": "nucleus"},
+        "sourceObjectId": {"const": "cholinergic"},
+        "sourceFileName": {
+          "const": "GSE318731_P56_cholinergic_multiome.rds"
+        },
+        "sourceGroup": {"const": "CHOL_IN"},
+        "sourceLocalLabel": {"$ref": "#/$defs/nonEmptyString"},
+        "nucleusCount": {"type": "integer", "minimum": 1},
+        "assignmentAuthority": {"const": "source_explicit_groups_equals_CHOL_IN"},
+        "stableIdentityField": {"const": "compound_nucleus_key"},
+        "orderedCompoundNucleusKeysSha256": {"$ref": "#/$defs/sha256"},
+        "contextFieldCounts": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"$ref": "#/$defs/contextFieldCount"}
+        },
+        "markerEvidenceStatus": {"const": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE"},
+        "geometryAuthority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "geometryObjectCount",
+            "internalStructureObjectCount",
+            "sameCellLinkCount",
+            "atlasRegistrationCount"
+          ],
+          "properties": {
+            "geometryObjectCount": {"const": 0},
+            "internalStructureObjectCount": {"const": 0},
+            "sameCellLinkCount": {"const": 0},
+            "atlasRegistrationCount": {"const": 0}
+          }
+        },
+        "rosterLink": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "artifactFileName",
+            "idField",
+            "filterField",
+            "filterEquals"
+          ],
+          "properties": {
+            "artifactFileName": {
+              "const": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz"
+            },
+            "idField": {"const": "compound_nucleus_key"},
+            "filterField": {"const": "confirmed_interneuron_profile_id"},
+            "filterEquals": {
+              "type": "string",
+              "pattern": "^cano\\.gomez\\.p56\\.chol_in\\.sha256\\.[a-f0-9]{24}$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

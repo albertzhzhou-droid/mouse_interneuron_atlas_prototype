@@ -1,0 +1,60 @@
+diff --git a/rdata/parser/_parser.py b/rdata/parser/_parser.py
+index 5cb93ee..f6ad53f 100644
+--- a/rdata/parser/_parser.py
++++ b/rdata/parser/_parser.py
+@@ -186,7 +186,12 @@ class RObjectType(enum.IntEnum):
+     EMPTYENV = 242  # Empty environment
+     BCREPREF = 243  # Bytecode repetition reference
+     BCREPDEF = 244  # Bytecode repetition definition
++    PERSIST = 247  # Persistent reference restored by a hook
++    PACKAGE = 248  # Package environment serialized by name
++    NAMESPACE = 249  # Namespace environment serialized by name
++    BASENAMESPACE = 250  # Base namespace environment
+     MISSINGARG = 251  # Missinf argument
++    UNBOUNDVALUE = 252  # Unbound value marker
+     GLOBALENV = 253  # Global environment
+     NILVALUE = 254  # NIL value
+     REF = 255  # Reference
+@@ -887,7 +892,15 @@ class Parser(abc.ABC):
+             )
+ 
+             value = (protected, extptr_tag)
+ 
++        elif info.type == RObjectType.WEAKREF:
++            value = None
++            add_reference = True
++
++        elif info.type == RObjectType.RAW:
++            length = self.parse_int()
++            value = np.frombuffer(self.parse_string(length), dtype=np.uint8)
++
+         elif info.type == RObjectType.S4:
+             value = None
+ 
+@@ -917,6 +930,26 @@ class Parser(abc.ABC):
+         elif info.type == RObjectType.BASEENV:  # noqa: SIM114
+             value = None
+ 
++        elif info.type == RObjectType.BASENAMESPACE:  # noqa: SIM114
++            value = None
++
++        elif info.type == RObjectType.UNBOUNDVALUE:  # noqa: SIM114
++            value = None
++
++        elif info.type in {
++            RObjectType.PERSIST,
++            RObjectType.PACKAGE,
++            RObjectType.NAMESPACE,
++        }:
++            if self.parse_int() != 0:
++                raise NotImplementedError("Named persistent references are not supported")
++            length = self.parse_int()
++            value = [
++                self.parse_R_object(reference_list, bytecode_rep_list)
++                for _ in range(length)
++            ]
++            add_reference = True
++
+         elif info.type == RObjectType.EMPTYENV:
+             value = None
+ 

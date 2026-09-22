@@ -1,0 +1,342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-iteration-manifest-2.41.schema.json",
+  "title": "OHRI mouse interneuron research iteration manifest 2.41",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestSchemaVersion",
+    "releaseId",
+    "releaseDate",
+    "releaseStatus",
+    "application",
+    "baseResearchRelease",
+    "authoritativeInputs",
+    "inputRoots",
+    "integrity",
+    "registrations",
+    "exactReferences",
+    "registrySummary",
+    "scientificBoundaries",
+    "manifestContentSha256",
+    "parentIterationManifest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "authoritativeInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "path", "purpose", "bytes", "sha256"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "scope": {"enum": ["project", "scientificAuthority"]},
+        "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)"},
+        "purpose": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "iterationIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "completedUpgradeIds",
+        "researchUpgradeCount",
+        "lastResearchUpgradeId",
+        "sharedVerifiedActiveRecord",
+        "activeRecordLoaderInvocationCount",
+        "activeRecordConsumerRoleCount",
+        "independentConsumerLookupCount",
+        "monotonicRequestGeneration",
+        "staleSettlementRejected",
+        "selectionDeltaContractId",
+        "selectionDeltaPresentationAuditOnly",
+        "selectionDeltaBiologicalTransitionClaimCount",
+        "selectionDeltaRelationshipAdmissionCount",
+        "canonicalSourceCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "bundledExactObjectSetCount",
+        "staleDenominatorLiteralCount",
+        "explorerAssetSetId",
+        "explorerSourceFileCount",
+        "researchExplorerRecordCount",
+        "molecularProfileCount",
+        "sourceNamespaceCount",
+        "completenessSlotCount",
+        "catalogReleaseId",
+        "auditedDatFileCount",
+        "admittedRecordCount",
+        "heldRecordCount",
+        "admittedContourObjectCount",
+        "admittedVertexCount",
+        "toddAdmittedRecordCount",
+        "toddRawFalseClosureFlagContourCount",
+        "toddMbfCellBodyPresencePropertyCount",
+        "toddIndependentParserSomaContourCount",
+        "toddAdmittedContourObjectCount",
+        "toddAdmittedVertexCount",
+        "excludedToddUserLineObjectCount",
+        "sourceClosureFlagUsedAsSoleToddAuthority",
+        "admittedFilledPolygonCount",
+        "admittedTriangleCount",
+        "admittedSurfaceCount",
+        "admittedInternalStructureCount",
+        "standardizedSwcOverlayCount",
+        "sameCellCrossModalJoinCount",
+        "registrationCount",
+        "canoRegistryReleaseId",
+        "canoIdentityAuthorityMode",
+        "canoSourceObjectCount",
+        "canoSourceNucleusCount",
+        "canoSourceScopedGroupCount",
+        "canoConfirmedInterneuronNucleusCount",
+        "canoConfirmedInterneuronProfileCount",
+        "canoExcludedMotorNucleusCount",
+        "canoExcludedSensoryScopeNucleusCount",
+        "canoExcludedProjectionLocalStatusUnresolvedNucleusCount",
+        "canoExcludedAmbiguousOrProjectionExceptionUnresolvedNucleusCount",
+        "canoObservedRawTypeLabelUnionCount",
+        "canoPaperReportedNeuronTypeCount",
+        "canoPaperReportedTypeCountUsedAsInterneuronDenominator",
+        "canoPaperReportedTypeCountMatchesObservedRawUnion",
+        "canoPerNucleusNonNeuronalExcludedCount",
+        "canoCrossAssayCellIdentityVerified",
+        "canoSourceRdsBundleCount",
+        "canoGeneratedGeometryCount",
+        "canoInternalStructureObjectCount",
+        "canoSameCellLinkCount",
+        "canoAtlasRegistrationCount",
+        "crossSourceIdentityCount",
+        "renderedInternalPrimitiveCount",
+        "receipts"
+      ],
+      "properties": {
+        "contractId": {"const": "ohri-active-record-registry-selection-delta-todd-cano-integrity-2.41"},
+        "completedUpgradeIds": {"const": ["UPG-200", "UPG-201", "UPG-202", "UPG-203", "UPG-204"]},
+        "researchUpgradeCount": {"const": 186},
+        "lastResearchUpgradeId": {"const": "UPG-204"},
+        "sharedVerifiedActiveRecord": {"const": true},
+        "activeRecordLoaderInvocationCount": {"const": 1},
+        "activeRecordConsumerRoleCount": {"const": 3},
+        "independentConsumerLookupCount": {"const": 0},
+        "monotonicRequestGeneration": {"const": true},
+        "staleSettlementRejected": {"const": true},
+        "selectionDeltaContractId": {"const": "research-selection-delta-0.1"},
+        "selectionDeltaPresentationAuditOnly": {"const": true},
+        "selectionDeltaBiologicalTransitionClaimCount": {"const": 0},
+        "selectionDeltaRelationshipAdmissionCount": {"const": 0},
+        "canonicalSourceCount": {"const": 27},
+        "canonicalRecordSetCount": {"const": 34},
+        "bundledExactRosterCount": {"const": 10},
+        "bundledExactObjectSetCount": {"const": 1},
+        "staleDenominatorLiteralCount": {"const": 0},
+        "explorerAssetSetId": {"const": "ohri:research-explorer-index:1.13.0"},
+        "explorerSourceFileCount": {"const": 21},
+        "researchExplorerRecordCount": {"const": 641},
+        "molecularProfileCount": {"const": 387},
+        "sourceNamespaceCount": {"const": 10},
+        "completenessSlotCount": {"const": 8},
+        "catalogReleaseId": {"const": "ohri-neurolucida-native-contour-admission-catalog-0.3.0"},
+        "auditedDatFileCount": {"const": 5},
+        "admittedRecordCount": {"const": 5},
+        "heldRecordCount": {"const": 0},
+        "admittedContourObjectCount": {"const": 48},
+        "admittedVertexCount": {"const": 2379},
+        "toddAdmittedRecordCount": {"const": 3},
+        "toddRawFalseClosureFlagContourCount": {"const": 33},
+        "toddMbfCellBodyPresencePropertyCount": {"const": 33},
+        "toddIndependentParserSomaContourCount": {"const": 33},
+        "toddAdmittedContourObjectCount": {"const": 33},
+        "toddAdmittedVertexCount": {"const": 1904},
+        "excludedToddUserLineObjectCount": {"const": 12},
+        "sourceClosureFlagUsedAsSoleToddAuthority": {"const": false},
+        "admittedFilledPolygonCount": {"const": 0},
+        "admittedTriangleCount": {"const": 0},
+        "admittedSurfaceCount": {"const": 0},
+        "admittedInternalStructureCount": {"const": 0},
+        "standardizedSwcOverlayCount": {"const": 0},
+        "sameCellCrossModalJoinCount": {"const": 0},
+        "registrationCount": {"const": 0},
+        "canoRegistryReleaseId": {"const": "ohri-cano-gomez-p56-multiome-interneuron-registry-0.1.0"},
+        "canoIdentityAuthorityMode": {"type": "string", "minLength": 1},
+        "canoSourceObjectCount": {"const": 3},
+        "canoSourceNucleusCount": {"const": 169345},
+        "canoSourceScopedGroupCount": {"const": 57},
+        "canoConfirmedInterneuronNucleusCount": {"const": 923},
+        "canoConfirmedInterneuronProfileCount": {"const": 11},
+        "canoExcludedMotorNucleusCount": {"const": 2276},
+        "canoExcludedSensoryScopeNucleusCount": {"type": "integer", "minimum": 1},
+        "canoExcludedProjectionLocalStatusUnresolvedNucleusCount": {"type": "integer", "minimum": 1},
+        "canoExcludedAmbiguousOrProjectionExceptionUnresolvedNucleusCount": {"type": "integer", "minimum": 1},
+        "canoObservedRawTypeLabelUnionCount": {"type": "integer", "minimum": 1},
+        "canoPaperReportedNeuronTypeCount": {"const": 516},
+        "canoPaperReportedTypeCountUsedAsInterneuronDenominator": {"const": false},
+        "canoPaperReportedTypeCountMatchesObservedRawUnion": {"type": "boolean"},
+        "canoPerNucleusNonNeuronalExcludedCount": {"type": "null"},
+        "canoCrossAssayCellIdentityVerified": {"const": false},
+        "canoSourceRdsBundleCount": {"const": 0},
+        "canoGeneratedGeometryCount": {"const": 0},
+        "canoInternalStructureObjectCount": {"const": 0},
+        "canoSameCellLinkCount": {"const": 0},
+        "canoAtlasRegistrationCount": {"const": 0},
+        "crossSourceIdentityCount": {"const": 0},
+        "renderedInternalPrimitiveCount": {"const": 0},
+        "receipts": {
+          "type": "object",
+          "minProperties": 77,
+          "maxProperties": 77,
+          "propertyNames": {"pattern": "^[A-Za-z][A-Za-z0-9]+$"},
+          "additionalProperties": {"$ref": "#/$defs/receipt"}
+        }
+      }
+    }
+  },
+  "properties": {
+    "manifestSchemaVersion": {"const": "2.41.0"},
+    "releaseId": {"const": "ohri-mouse-interneuron-research-iteration-2.41.0"},
+    "releaseDate": {"const": "2026-09-02"},
+    "releaseStatus": {"const": "localhost_research_iteration"},
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"const": "ohri-mouse-interneuron-atlas-prototype"},
+        "version": {"const": "2.41.0-research.1"}
+      }
+    },
+    "baseResearchRelease": {"type": "object", "minProperties": 1},
+    "authoritativeInputs": {
+      "type": "array",
+      "minItems": 230,
+      "maxItems": 230,
+      "items": {"$ref": "#/$defs/authoritativeInput"}
+    },
+    "inputRoots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project", "scientificAuthority"],
+      "properties": {
+        "project": {
+          "type": "object",
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": {"const": "."},
+            "policy": {"type": "string", "minLength": 1}
+          }
+        },
+        "scientificAuthority": {
+          "type": "object",
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": {"const": "../interneuron_sci_review"},
+            "policy": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalization", "inputCount"],
+      "properties": {
+        "algorithm": {"const": "SHA-256"},
+        "canonicalization": {"type": "string", "minLength": 1},
+        "inputCount": {"const": 230}
+      }
+    },
+    "registrations": {"const": {"count": 0, "records": []}},
+    "exactReferences": {
+      "type": "object",
+      "required": [
+        "recordCompletenessAndNativeContourCatalogIntegrity",
+        "activeRecordRegistrySelectionDeltaToddAndCanoIntegrity"
+      ],
+      "properties": {
+        "recordCompletenessAndNativeContourCatalogIntegrity": {"type": "object"},
+        "activeRecordRegistrySelectionDeltaToddAndCanoIntegrity": {"$ref": "#/$defs/iterationIntegrity"}
+      },
+      "additionalProperties": true
+    },
+    "registrySummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalSourcePackageCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "bundledExactObjectSetCount",
+        "researchUpgradeCount",
+        "sourceProfileCount",
+        "sourceNamespaceCount",
+        "researchExplorerRecordCount",
+        "crossSourceIdentityCount",
+        "registrationCount",
+        "renderedInternalPrimitiveCount",
+        "sourceRegistryReceipt",
+        "upgradeRegistryReceipt"
+      ],
+      "properties": {
+        "canonicalSourcePackageCount": {"const": 27},
+        "canonicalRecordSetCount": {"const": 34},
+        "bundledExactRosterCount": {"const": 10},
+        "bundledExactObjectSetCount": {"const": 1},
+        "researchUpgradeCount": {"const": 186},
+        "sourceProfileCount": {"const": 387},
+        "sourceNamespaceCount": {"const": 10},
+        "researchExplorerRecordCount": {"const": 641},
+        "crossSourceIdentityCount": {"const": 0},
+        "registrationCount": {"const": 0},
+        "renderedInternalPrimitiveCount": {"const": 0},
+        "sourceRegistryReceipt": {"$ref": "#/$defs/authoritativeInput"},
+        "upgradeRegistryReceipt": {"$ref": "#/$defs/authoritativeInput"}
+      }
+    },
+    "scientificBoundaries": {
+      "type": "object",
+      "required": [
+        "recordCompletenessAndNativeContourCatalogIntegrity",
+        "activeRecordRegistrySelectionDeltaToddAndCanoIntegrity"
+      ],
+      "properties": {
+        "recordCompletenessAndNativeContourCatalogIntegrity": {
+          "type": "string",
+          "minLength": 1000
+        },
+        "activeRecordRegistrySelectionDeltaToddAndCanoIntegrity": {
+          "type": "string",
+          "minLength": 1800
+        }
+      },
+      "additionalProperties": true
+    },
+    "manifestContentSha256": {"$ref": "#/$defs/sha256"},
+    "parentIterationManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "releaseId", "bytes", "fileSha256", "contentSha256"],
+      "properties": {
+        "path": {"const": "data/research-iteration-manifest-2.40.json"},
+        "releaseId": {"const": "ohri-mouse-interneuron-research-iteration-2.40.0"},
+        "bytes": {"const": 206354},
+        "fileSha256": {"const": "5552cc8c46c35a26fbefed4090f4a2d0337eda2397639ea5eca807fdf4cf6d30"},
+        "contentSha256": {"const": "991885f465d6226ec9d23fe133238e62c32e253276b120ed54fd74a4a632b48f"}
+      }
+    }
+  }
+}

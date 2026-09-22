@@ -1,0 +1,287 @@
+{
+  "releaseId": "ohri-interneuron-knowledge-coverage-0.1.0",
+  "schemaVersion": "0.1.0",
+  "releaseDate": "2026-09-02",
+  "coordinateAuthority": "SOURCE_LOCAL_METADATA_ONLY",
+  "projectRegistrationCount": 0,
+  "statusSemantics": [
+    {
+      "id": "direct",
+      "label": "Direct source coverage",
+      "meaning": "The primary source directly measures or curates this axis within its own experimental and annotation frame."
+    },
+    {
+      "id": "contextual",
+      "label": "Context only",
+      "meaning": "The source informs this axis, but does not establish a project-ready value or a cross-study identity."
+    },
+    {
+      "id": "not_measured",
+      "label": "Not measured",
+      "meaning": "The cited study does not supply this evidence class; absence of a measurement is not biological absence."
+    },
+    {
+      "id": "not_ingested",
+      "label": "Not ingested",
+      "meaning": "Relevant source assets may exist, but this metadata-only release has not inspected or admitted them."
+    }
+  ],
+  "axes": [
+    {"id": "type_taxonomy", "label": "Type taxonomy", "precisionQuestion": "Which source-local molecular populations are distinguished?"},
+    {"id": "region_lamina_context", "label": "Region / lamina", "precisionQuestion": "What anatomical compartment constrains the label?"},
+    {"id": "life_stage", "label": "Life stage", "precisionQuestion": "At what developmental or adult stage was the observation made?"},
+    {"id": "injury_state", "label": "Injury state", "precisionQuestion": "Does the source directly compare uninjured and SCI contexts?"},
+    {"id": "spatial_measurement", "label": "Spatial measurement", "precisionQuestion": "Was spatial expression measured in the source frame?"},
+    {"id": "causal_mechanism", "label": "Causal mechanism", "precisionQuestion": "Does the lane establish a perturbation-to-outcome mechanism for a cell type?"},
+    {"id": "morphology", "label": "Morphology", "precisionQuestion": "Does the lane provide reconstructable single-neuron morphology?"}
+  ],
+  "lanes": [
+    {
+      "id": "russ-2021",
+      "shortLabel": "Russ 2021",
+      "role": "Postnatal harmonized taxonomy baseline",
+      "citation": "Russ DE, Patterson-Cross RB, Li L, et al. A harmonized atlas of mouse spinal cord cell types and their spatial organization. Nature Communications 12, 5722 (2021).",
+      "doi": "10.1038/s41467-021-25125-1",
+      "articleUrl": "https://www.nature.com/articles/s41467-021-25125-1",
+      "accessions": [
+        {"id": "GSE158380", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158380"}
+      ],
+      "sampleFrame": "Harmonized postnatal mouse spinal-cord single-cell and single-nucleus transcriptomic reference; selected marker panels were validated in adult spinal tissue.",
+      "sourceLocalLabelScope": "The 69 published neural-population labels are retained in the separate pinned Russ crosswalk.",
+      "sourceLocalLabels": ["Excit-1–Excit-38", "Inhib-1–Inhib-27", "MN-alpha", "MN-gamma", "PGC", "CSF-cN"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "The study reports a harmonized hierarchy and 69 neural populations.", "sourceLocator": "Results — Overview of harmonized neuronal cell types; Fig. 2; Supplementary Figs. 4–5; Supplementary Table 2", "displayBoundary": "A harmonized cluster label is not an individual-cell identity in this project."},
+        {"axisId": "region_lamina_context", "status": "direct", "evidence": "The source organizes neuronal diversity by dorsal, mid and ventral location and validates selected spatial distributions.", "sourceLocator": "Results — Overview and detailed cluster validation; Fig. 2e; Fig. 4d–f; Table 1; Supplementary Fig. 9", "displayBoundary": "Published spatial summaries do not supply project xyz coordinates."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "Postnatal datasets form the integrated reference; adult tissue supports selected marker validation.", "sourceLocator": "Results — merged postnatal datasets, Fig. 1a; adult L4 validation, Fig. 4d–f and Supplementary Fig. 9", "displayBoundary": "Postnatal harmonization does not erase age differences among contributing datasets."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "The reference is not an SCI condition series.", "sourceLocator": "Study design and Results — no SCI condition series", "displayBoundary": "It cannot establish injury-induced state change."},
+        {"axisId": "spatial_measurement", "status": "contextual", "evidence": "In situ marker validation maps population-level spatial distributions in adult cord.", "sourceLocator": "Abstract and Results — adult in situ mapping; Fig. 2e; Fig. 4d–f; Table 1; Supplementary Fig. 9", "displayBoundary": "No source cell or spot has been registered into the project scene."},
+        {"axisId": "causal_mechanism", "status": "not_measured", "evidence": "Taxonomy and marker validation are not a causal perturbation study.", "sourceLocator": "Study scope — taxonomy, marker validation and lineage integration; no cell-type perturbation-to-outcome experiment", "displayBoundary": "Molecular correspondence cannot be displayed as a mechanism."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "The release does not provide reconstructable single-neuron arbors.", "sourceLocator": "Study modalities and Data availability — transcriptomics/in situ validation; no reconstructable single-neuron arbor dataset", "displayBoundary": "No neurite geometry may be inferred from markers or laminar enrichment."}
+      ],
+      "canAnswer": ["Which harmonized source-local population labels and marker families provide a postnatal taxonomy baseline?", "Which broad dorsal-to-ventral compartment is associated with a source population?"],
+      "cannotAnswer": ["Which project entity is the same cell type across all studies?", "What exact xyz coordinate or single-neuron arbor should be rendered?", "How SCI causally changes a particular interneuron population?"]
+    },
+    {
+      "id": "haring-2018",
+      "shortLabel": "Häring 2018",
+      "role": "Adult dorsal-horn specialization",
+      "citation": "Häring M, Zeisel A, Hochgerner H, et al. Neuronal atlas of the dorsal horn defines its architecture and links sensory input to transcriptional cell types. Nature Neuroscience 21, 869–880 (2018).",
+      "doi": "10.1038/s41593-018-0141-1",
+      "articleUrl": "https://www.nature.com/articles/s41593-018-0141-1",
+      "accessions": [
+        {"id": "GSE103840", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103840"}
+      ],
+      "sampleFrame": "Mouse dorsal-horn cells aged 17–28 days (P17–P28; source text 3–4 week mice) profiled by single-cell RNA sequencing with source-study spatial and stimulus-response context. The source does not assert an adult, juvenile or young-adult category.",
+      "sourceLocalLabelScope": "Thirty source-local dorsal-horn molecular subtypes; labels remain in the Häring namespace.",
+      "sourceLocalLabels": ["Glut1–Glut15", "Gaba1–Gaba15"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "The source classifies 15 excitatory and 15 inhibitory dorsal-horn molecular subtypes.", "sourceLocator": "Abstract and Results — 15 excitatory and 15 inhibitory subtypes; Fig. 1", "displayBoundary": "Glut/Gaba labels must not be silently translated to Russ or project labels."},
+        {"axisId": "region_lamina_context", "status": "direct", "evidence": "Spatial transcriptomics and validation describe laminar enrichment within the dorsal horn.", "sourceLocator": "Abstract and Results — spatial transcriptomics and laminar enrichment; Figs. 2, 3 and 5", "displayBoundary": "Laminar enrichment is not an exact soma coordinate or complete arbor extent."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "The checksum-pinned source assignments span 17–28 days after birth (P17–P28); the deposited source text also describes 3–4 week mice.", "sourceLocator": "GSE103840 deposited cell-column age metadata and source Methods — 3–4 week mice", "displayBoundary": "The source does not assert an adult, juvenile or young-adult category, and it does not define embryonic lineage continuity."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "SCI is not the condition axis of this study.", "sourceLocator": "Study design — sensory stimulation experiments; no SCI condition series", "displayBoundary": "The lane cannot estimate post-injury abundance or state."},
+        {"axisId": "spatial_measurement", "status": "direct", "evidence": "The study links molecular types to dorsal-horn anatomy through spatial measurements and validation.", "sourceLocator": "Abstract and Results — spatial transcriptomics and in situ validation; Figs. 2, 3 and 5", "displayBoundary": "Project registration remains zero until admissible coordinate assets are transformed and reviewed."},
+        {"axisId": "causal_mechanism", "status": "contextual", "evidence": "Heat and cold stimulation are associated with activity in discrete subtype sets.", "sourceLocator": "Results — heat/cold stimulus-associated Arc activation; Fig. 6", "displayBoundary": "Activity association is not sufficient to claim that a subtype causally produces a behavioral outcome."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "No project-admitted single-neuron reconstruction is present in this lane.", "sourceLocator": "Study modalities and Supplementary Fig. 3 — literature-linked morphology context, not source single-neuron reconstructions", "displayBoundary": "Laminar placement must not be expanded into invented dendrites or axons."}
+      ],
+      "canAnswer": ["Which source-local excitatory and inhibitory subtypes specialize the adult dorsal horn?", "Which dorsal-horn laminar contexts are supported at population level?"],
+      "cannotAnswer": ["How these labels map one-to-one to another atlas?", "Whether activity-associated subtypes are necessary or sufficient for behavior?", "What complete three-dimensional morphology each subtype has?"]
+    },
+    {
+      "id": "sathyamurthy-2018",
+      "shortLabel": "Sathyamurthy 2018",
+      "role": "Adult lumbar nuclei and activity context",
+      "citation": "Sathyamurthy A, Johnson KR, Matson KJE, et al. Massively Parallel Single Nucleus Transcriptional Profiling Defines Spinal Cord Neurons and Their Activity during Behavior. Cell Reports 22, 2216–2225 (2018).",
+      "doi": "10.1016/j.celrep.2018.02.003",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5849084/",
+      "accessions": [
+        {"id": "GSE103892", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103892"}
+      ],
+      "sampleFrame": "Adult mouse lumbar spinal-cord nuclei, including control, formalin-exposed and rotarod-challenged samples for Activity-SEQ context.",
+      "sourceLocalLabelScope": "Forty-three source-local neuronal clusters grouped by dorsal, mid and ventral location and transmitter context.",
+      "sourceLocalLabels": ["DE-1–DE-16", "DI-1–DI-9", "ME-1", "MI-1–MI-4", "VE-1–VE-4", "VI-1–VI-5", "VM-1–VM-2", "VC-1–VC-2"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "The source reports 43 adult lumbar neuronal populations.", "sourceLocator": "Results — Census of Adult Spinal Cord Neuronal Populations; Figs. 2 and 4; Table S2", "displayBoundary": "Source cluster names remain source-local and are not exact Russ mappings."},
+        {"axisId": "region_lamina_context", "status": "direct", "evidence": "Labels encode dorsal, mid or ventral compartment and transmitter context.", "sourceLocator": "Results — dorsal, mid and ventral neuronal classes; Figs. 2–3", "displayBoundary": "Compartment classes do not determine exact laminae or xyz coordinates."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "The profiled tissue is adult mouse lumbar spinal cord.", "sourceLocator": "Methods — adult lumbar spinal-cord nuclei", "displayBoundary": "Adult expression does not prove continuity from an embryonic lineage label."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "Formalin and rotarod are behavioral activity contexts, not SCI models.", "sourceLocator": "Activity-SEQ study design — formalin and rotarod conditions; no SCI model", "displayBoundary": "They must not be displayed as injury-state evidence."},
+        {"axisId": "spatial_measurement", "status": "contextual", "evidence": "Dorsal-to-ventral assignments provide anatomical context.", "sourceLocator": "Results — source-local dorsal/mid/ventral assignments; no spatial-coordinate assay", "displayBoundary": "The nuclei dataset supplies no project-registered spatial coordinate."},
+        {"axisId": "causal_mechanism", "status": "contextual", "evidence": "Immediate-early transcriptional signatures associate populations with painful stimulus or locomotion.", "sourceLocator": "Results — snRNA-seq Following Behavior Identified Active Neurons; Fig. 5; Fig. S4", "displayBoundary": "Detection thresholds and association do not establish necessity, sufficiency or direct circuit mechanism."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "Single-nucleus transcriptomics does not reconstruct complete neurites.", "sourceLocator": "Study modality — single-nucleus RNA sequencing; no reconstructable single-neuron morphology", "displayBoundary": "A molecular cluster cannot authorize a synthetic arbor as observed morphology."}
+      ],
+      "canAnswer": ["Which adult lumbar source-local neuronal groups were transcriptomically distinguished?", "Which populations showed detectable transcriptional activity signatures in the tested contexts?"],
+      "cannotAnswer": ["Which cells were electrically active but below transcriptional detection?", "Whether an associated population is causally necessary or sufficient?", "How its full three-dimensional arbor is shaped?"]
+    },
+    {
+      "id": "hayashi-2018",
+      "shortLabel": "Hayashi 2018",
+      "role": "P0 V2a developmental subtype context",
+      "citation": "Hayashi M, Hinckley CA, Driscoll SP, et al. Graded Arrays of Spinal and Supraspinal V2a Interneuron Subtypes Underlie Forelimb and Hindlimb Motor Control. Neuron 97, 869–884.e5 (2018).",
+      "doi": "10.1016/j.neuron.2018.01.023",
+      "articleUrl": "https://doi.org/10.1016/j.neuron.2018.01.023",
+      "accessions": [
+        {"id": "GSE108788", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE108788"}
+      ],
+      "sampleFrame": "P0 mouse cervical and lumbar Chx10-lineage cells from two neonates pooled into one 10x library; 949 cells passed QC. The public count matrix does not retain cluster, Type I/II or spinal-region assignments per barcode.",
+      "sourceLocalLabelScope": "Eleven article-reported V2a clusters with Figure 6 counts; cluster-to-barcode membership is unavailable in the deposited matrix.",
+      "sourceLocalLabels": ["Cluster 1–Cluster 11", "Type I / Type II context", "cervical / lumbar article-level context"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "The primary article reports eleven P0 V2a transcriptomic clusters and exact Figure 6 cluster counts.", "sourceLocator": "Results and Fig. 6 — single-cell RNA sequencing identifies 11 V2a clusters", "displayBoundary": "Article-level cluster records must not be presented as deposited per-cell identities or canonical cross-study types."},
+        {"axisId": "region_lamina_context", "status": "contextual", "evidence": "Article-level cervical/lumbar and Type I/II summaries constrain rostrocaudal and projection context.", "sourceLocator": "Results and Fig. 6 — cervical versus lumbar V2a distributions and Type I/II context", "displayBoundary": "The public matrix does not retain these assignments per barcode and does not supply laminae or xyz coordinates."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "The transcriptomic sample is explicitly P0 neonatal mouse spinal cord.", "sourceLocator": "Methods — P0 cervical and lumbar spinal-cord cell isolation and single-cell sequencing", "displayBoundary": "P0 cluster evidence cannot be silently generalized to adult identity or persistence."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "The source studies developmental motor-control organization, not spinal cord injury.", "sourceLocator": "Study design and Results — developmental V2a organization; no SCI condition series", "displayBoundary": "The lane cannot establish an injury-induced state or recovery mechanism."},
+        {"axisId": "spatial_measurement", "status": "contextual", "evidence": "Cervical/lumbar enrichment and anatomical validation provide source-level positional context.", "sourceLocator": "Results and Figs. 1–6 — rostrocaudal V2a organization and validation", "displayBoundary": "No source cell is registered to a project coordinate and the deposited matrix has no per-barcode region column."},
+        {"axisId": "causal_mechanism", "status": "contextual", "evidence": "Genetic and functional experiments relate V2a subtype organization to forelimb and hindlimb motor control.", "sourceLocator": "Results and Figs. 3–5 — subtype organization and motor-control experiments", "displayBoundary": "Functional source context does not make any one transcriptomic barcode a causally identified cell or establish cross-study identity."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "The admitted transcriptomic contract contains no reconstructable same-cell neurite arbor.", "sourceLocator": "Study modalities and Data availability — transcriptomics and circuit assays; no linked reconstructable single-cell arbor", "displayBoundary": "V2a label, marker, projection context or position must not be expanded into invented neurite geometry."}
+      ],
+      "canAnswer": ["Which P0 V2a clusters and cluster-level counts are reported in the primary article?", "Which article-level cervical/lumbar and Type I/II contexts constrain interpretation?"],
+      "cannotAnswer": ["Which deposited barcode belongs to a reported cluster?", "Which P0 cluster is exactly identical to an adult molecular type?", "What complete three-dimensional morphology or atlas position belongs to a cluster?"]
+    },
+    {
+      "id": "delile-2019",
+      "shortLabel": "Delile 2019",
+      "role": "Embryonic developmental context",
+      "citation": "Delile J, Rayon T, Melchionda M, Edwards A, Briscoe J, Sagner A. Single cell transcriptomics reveals spatial and temporal dynamics of gene expression in the developing mouse spinal cord. Development 146, dev173807 (2019).",
+      "doi": "10.1242/dev.173807",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6602353/",
+      "accessions": [
+        {"id": "E-MTAB-7320", "url": "https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-7320"}
+      ],
+      "sampleFrame": "Mouse cervical and thoracic developing neural tube profiled from embryonic day 9.5 to 13.5.",
+      "sourceLocalLabelScope": "Developmental annotations distinguish progenitor domains and differentiating neuronal identities in the source developmental frame.",
+      "sourceLocalLabels": ["dP1–dP6 progenitor domains", "p0–p3 progenitor domains", "pMN progenitor domain", "source-assigned differentiating neuronal identities"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "The study assigns developmental cell identities and reports markers for progenitor and neuronal populations.", "sourceLocator": "Results — developmental cell-state annotation and marker analysis; Figs. 1–5", "displayBoundary": "Embryonic identities are not interchangeable with adult molecular clusters."},
+        {"axisId": "region_lamina_context", "status": "contextual", "evidence": "Cervical/thoracic sampling and dorsal-ventral developmental domains constrain anatomical context.", "sourceLocator": "Methods and Results — cervical/thoracic sampling and dorsal–ventral neural-tube domains", "displayBoundary": "Developmental domains are not adult Rexed laminae."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "Five embryonic stages from E9.5 through E13.5 are represented.", "sourceLocator": "Methods/Results — E9.5, E10.5, E11.5, E12.5 and E13.5 time series", "displayBoundary": "The series does not observe postnatal or adult persistence of a label."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "The study examines normal development rather than SCI.", "sourceLocator": "Study design — normal embryonic development; no SCI condition", "displayBoundary": "Developmental transitions cannot be displayed as injury responses."},
+        {"axisId": "spatial_measurement", "status": "contextual", "evidence": "Spatial identity is inferred and validated against established neural-tube patterning domains.", "sourceLocator": "Results — inferred spatial identity and validation against neural-tube patterning domains", "displayBoundary": "No source cell has an admitted project coordinate."},
+        {"axisId": "causal_mechanism", "status": "contextual", "evidence": "Temporal gene-expression sequences inform neuronal specification programs.", "sourceLocator": "Results — temporal gene-expression trajectories and specification programs; no perturbation-to-outcome circuit test", "displayBoundary": "This metadata lane does not encode a perturbation proving a causal adult circuit mechanism."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "The transcriptomic atlas does not provide complete single-neuron reconstructions.", "sourceLocator": "Study modality and Data availability — single-cell transcriptomics; no complete single-neuron reconstructions", "displayBoundary": "Developmental identity cannot fill missing adult arbor geometry."}
+      ],
+      "canAnswer": ["Which embryonic stages and source-local developmental identity domains constrain lineage hypotheses?", "Which developmental contexts should prevent an adult label from being treated as timeless?"],
+      "cannotAnswer": ["Which adult molecular type a single embryonic cell becomes?", "What adult lamina or complete morphology it occupies?", "How SCI modifies the developmental program?"]
+    },
+    {
+      "id": "tabulae-paralytica-2024",
+      "shortLabel": "Tabulae Paralytica 2024",
+      "role": "Multimodal SCI condition context",
+      "citation": "Skinnider MA, Gautier M, Teo AYY, et al. Single-cell and spatial atlases of spinal cord injury in the Tabulae Paralytica. Nature 631, 150–163 (2024).",
+      "doi": "10.1038/s41586-024-07504-y",
+      "articleUrl": "https://www.nature.com/articles/s41586-024-07504-y",
+      "accessions": [
+        {"id": "GSE234774", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234774"},
+        {"id": "GSE230765", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE230765"}
+      ],
+      "sampleFrame": "Mouse mid-thoracic spinal cord across injury severity, mechanism, time, age, sex and treatment contexts using single-nucleus, spatial and multiome assays.",
+      "sourceLocalLabelScope": "This metadata release retains source condition namespaces but does not import cell-level annotations or matrices.",
+      "sourceLocalLabels": ["mechanism_contusion", "mechanism_hemi", "severity_*", "time-after-SCI condition labels", "source-local cell annotations not ingested"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "not_ingested", "evidence": "The source contains cell-type annotations, but this release has admitted metadata only.", "sourceLocator": "Results — cell types and subtypes of uninjured and injured spinal cord; Fig. 2; annotations not ingested here", "displayBoundary": "No Tabulae label may be assigned to a project entity before source-object and mapping review."},
+        {"axisId": "region_lamina_context", "status": "contextual", "evidence": "The study is centered on mid-thoracic injured spinal cord across spatial and temporal dimensions.", "sourceLocator": "Abstract and Results — mid-thoracic SCI atlases across spatial and temporal dimensions", "displayBoundary": "Study region metadata does not establish an atlas registration."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "Age is an explicit condition dimension in the source atlases.", "sourceLocator": "Results — age-stratified SCI atlas and failure of the tripartite barrier in old mice; Fig. 4", "displayBoundary": "Age groups must remain condition-specific and cannot be pooled silently."},
+        {"axisId": "injury_state", "status": "direct", "evidence": "SCI severity, mechanism, time and treatment are explicit source condition dimensions.", "sourceLocator": "Abstract and Fig. 1 — injury severity, mechanism, time and treatment dimensions", "displayBoundary": "A condition association is not automatically a causal neuronal mechanism."},
+        {"axisId": "spatial_measurement", "status": "direct", "evidence": "The source includes two spatial transcriptomic atlases alongside single-nucleus and multiome data.", "sourceLocator": "Abstract and Results — two spatial transcriptomic atlases; Figs. 6–7", "displayBoundary": "No spots, sections or transforms are bundled; project registration count remains zero."},
+        {"axisId": "causal_mechanism", "status": "direct", "evidence": "In the source study, AAV-DTR was delivered two weeks before complete crush SCI and diphtheria toxin was administered at eight weeks to ablate thoracic Vsx2ON neurons; the ablation prevented natural walking recovery. The study also reports a separate rejuvenative gene-therapy experiment.", "sourceLocator": "Extended Data Fig. 3j–l — AAV-DTR two weeks before complete crush SCI; diphtheria toxin at eight weeks; thoracic Vsx2ON ablation and locomotor outcome. Supplementary Video 2 — ablation prevents natural recovery of walking. Separate rejuvenative gene-therapy experiment: Fig. 8; Extended Data Fig. 10; Supplementary Video 3", "displayBoundary": "This direct source experiment is specific to its Vsx2ON definition, injury model, vector and toxin timing, and outcome; it does not establish causality for every source label, a Russ population, or a project entity."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "The cited atlas modalities do not provide complete single-neuron arbor reconstructions for project rendering.", "sourceLocator": "Study modalities and Data availability — snRNA-seq, multiome and spatial transcriptomics; no complete single-neuron arbor reconstructions", "displayBoundary": "Spatial transcriptomic signal must not be converted into invented neurites."}
+      ],
+      "canAnswer": ["Which public source condition dimensions can support an SCI-aware information layer?", "Which modalities are available for future source-object admission and source-local spatial analysis?"],
+      "cannotAnswer": ["Which Tabulae cell is identical to a Russ, Häring, Sathyamurthy or project entity?", "Where a source cell belongs in the project coordinate frame?", "What complete single-neuron morphology should be rendered?"]
+    },
+    {
+      "id": "iglesias-gonzalez-2021",
+      "shortLabel": "Iglesias González 2021",
+      "role": "E14.5 Dmrt3/dI6 source-local group taxonomy",
+      "citation": "Iglesias González et al. Frontiers in Cellular Neuroscience 15, 781197 (2021).",
+      "doi": "10.3389/fncel.2021.781197",
+      "articleUrl": "https://doi.org/10.3389/fncel.2021.781197",
+      "accessions": [
+        {"id": "GSE185731", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185731"}
+      ],
+      "sampleFrame": "Three E14.5 mouse embryos pooled into one tube and one library; 384 deposited wells → 354 QC-retained cells → 274 retained dI6-lineage cells. The source exports no per-well M1–M6 roster or scalar pseudotime.",
+      "sourceLocalLabelScope": "Six notebook-derived, study-local Dmrt3/dI6 group summaries (M1–M6) with exact group counts, marker summaries and apparent early/middle/late birth-order context; no individual well is assigned to a group in the exported source objects.",
+      "sourceLocalLabels": ["M1", "M2", "M3", "M4", "M5", "M6"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "The pinned executed notebook resolves six source-local M1–M6 dI6 group summaries totaling 274 retained cells, with exact counts and marker panels.", "sourceLocator": "Results and pinned executed notebook — M1–M6 clustering, count vector and top-marker summaries; Analysis_pipeline/210909_Final_run.ipynb cells 74, 80, 83 and 84", "displayBoundary": "M1–M6 must remain group summaries and must not be presented as per-well assignments, adult canonical types or exact cross-study identities."},
+        {"axisId": "region_lamina_context", "status": "contextual", "evidence": "The sampled cells have source-local mouse spinal-cord and Dmrt3-lineage dI6 context.", "sourceLocator": "Primary article Methods and Results — E14.5 Dmrt3-lineage cells isolated from mouse spinal cord", "displayBoundary": "Spinal/dI6 context does not supply a lamina, cell coordinate, atlas transform or registered three-dimensional location."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "The three source embryos were sampled at embryonic day 14.5 and pooled before single-cell processing.", "sourceLocator": "Primary article Methods — E14.5 mouse Dmrt3-lineage sampling and three-embryo pooled preparation", "displayBoundary": "E14.5 group summaries do not establish postnatal persistence, adult identity or individual-embryo replication."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "The study characterizes embryonic Dmrt3-lineage interneurons and includes no spinal-cord-injury comparison.", "sourceLocator": "Study design and Results — embryonic Dmrt3-lineage characterization; no SCI condition series", "displayBoundary": "The lane cannot establish an injury-associated state, abundance change or recovery effect."},
+        {"axisId": "spatial_measurement", "status": "not_measured", "evidence": "The admitted source objects contain expression and notebook-derived groups but no cell-coordinate or spatial-assay measurement.", "sourceLocator": "Study modalities and Data availability — GEO loom and analysis notebook; no spatial-coordinate assay, section stack or atlas transform", "displayBoundary": "Source-local spinal context cannot be converted into xyz coordinates, laminar placement or project registration."},
+        {"axisId": "causal_mechanism", "status": "not_measured", "evidence": "The source-local grouping and apparent birth-order interpretation do not constitute a perturbation-to-outcome experiment.", "sourceLocator": "Study scope and Results — transcriptomic group characterization and apparent birth-order interpretation; no cell-group perturbation-to-outcome test", "displayBoundary": "Temporal association and marker enrichment cannot be displayed as necessity, sufficiency or a causal circuit mechanism."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "Neither the source loom nor the pinned notebook supplies reconstructable single-neuron morphology, geometry or internal structure.", "sourceLocator": "Study modalities and Data availability — single-cell expression object and notebook; no raw volume, segmentation, mesh or same-cell arbor reconstruction", "displayBoundary": "No soma, neurite, organelle or other internal geometry may be inferred from an M-group label or marker panel."}
+      ],
+      "canAnswer": ["Which six source-local embryonic Dmrt3/dI6 group summaries, exact counts and marker panels are supported?", "Which pooled E14.5 analysis denominators and apparent early/middle/late temporal contexts constrain interpretation?"],
+      "cannotAnswer": ["Which deposited well belongs to M1–M6 or what scalar pseudotime value it has?", "Which adult or other-study type is exactly identical to an M group?", "Where an M-group cell belongs in atlas coordinates or what its neurite geometry and internal structure look like?", "How an M group changes after SCI or causally produces an outcome?"]
+    },
+    {
+      "id": "roome-2026",
+      "shortLabel": "Roome 2026",
+      "role": "E14.5/E16.5 dorsal-horn refined dIL molecular taxonomy",
+      "citation": "Roome et al. Ontogeny of the spinal cord dorsal horn. Science (2026).",
+      "doi": "10.1126/science.adx5781",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12879194/",
+      "accessions": [
+        {"id": "GSE291462", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE291462"},
+        {"id": "GSE291459", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE291459"},
+        {"id": "GSE291460", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE291460"}
+      ],
+      "sampleFrame": "15 biological litter pools, each pooling 3–10 embryonic spinal cords, generated 30 Chromium reactions; reaction 16B was excluded, leaving 29 technical outputs. The exact Table S6 roster contains 157 refined dIL types and 61,444 captured dIL cells across E14.5/E16.5 cervical, thoracic and lumbosacral contexts.",
+      "sourceLocalLabelScope": "The exact roster remains the 157 Table S6 refined dIL labels nested in 12 dILA1–6/dILB1–6 source families. Table S7 contributes 100 differential rows per 159 labels; dILA-Immature and dILB-Immature remain developmental states outside the exact 157-type roster.",
+      "sourceLocalLabels": ["dILA1", "dILA2", "dILA3", "dILA4", "dILA5", "dILA6", "dILB1", "dILB2", "dILB3", "dILB4", "dILB5", "dILB6"],
+      "crossStudyMappingStatus": "not_established",
+      "coordinateAuthority": "SOURCE_LOCAL_ONLY",
+      "projectRegistrationCount": 0,
+      "assetAccess": {"publicMetadata": true, "sourceObjectsBundled": false, "assetLevelReuseStatus": "not_assumed"},
+      "coverage": [
+        {"axisId": "type_taxonomy", "status": "direct", "evidence": "PMC Table S6 directly supplies 157 unique refined dIL labels, exact captured-cell counts, percent composition and three cluster-QC metrics; Table S7 supplies 100 differential rows per source label.", "sourceLocator": "Results — refined dIL families and types; Supplementary Table S6 Sheet1 A1:F158; Supplementary Table S7 neuron_refined_markers A1:G15901", "displayBoundary": "The 157 labels remain source-local molecular types; counts are captured cells, and thresholded differential features are not canonical markers or cross-study identities."},
+        {"axisId": "region_lamina_context", "status": "contextual", "evidence": "The study directly samples embryonic dorsal-horn populations across cervical, thoracic and lumbosacral spinal-cord contexts.", "sourceLocator": "Primary article Methods and Results — E14.5/E16.5 cervical, thoracic and lumbosacral spinal-cord sampling", "displayBoundary": "Study-level dorsal-horn and region context does not assign an scRNA type aggregate to a same-cell coordinate, lamina, specimen or registered atlas position."},
+        {"axisId": "life_stage", "status": "direct", "evidence": "E14.5 and E16.5 are explicit source sampling stages, with 15 biological litter pools and 29 retained technical outputs.", "sourceLocator": "Primary article Methods — scRNA-seq sample design and embryonic time-point groups", "displayBoundary": "Embryonic type evidence does not establish postnatal or adult persistence, and 29 technical outputs must not be reported as 29 biological replicates."},
+        {"axisId": "injury_state", "status": "not_measured", "evidence": "The admitted source taxonomy describes uninjured embryonic dorsal-horn development and contains no spinal-cord-injury condition series.", "sourceLocator": "Primary article Study design and Results — developmental dorsal-horn ontogeny; no SCI comparison", "displayBoundary": "The lane cannot establish an injury-associated state, abundance change, treatment response or recovery effect."},
+        {"axisId": "spatial_measurement", "status": "not_ingested", "evidence": "The source deposits separate E16.5 Xenium-derived normalized two-dimensional cell coordinates with RCTD-predicted labels, but this iteration admits only the molecular taxonomy and source receipts.", "sourceLocator": "Primary article Methods and Results — Xenium spatial profiling and RCTD label transfer; GEO GSE291460 processed coordinate files", "displayBoundary": "scRNA and Xenium are different cells; predicted labels and normalized 2D positions cannot be shown as same-cell identity, pseudo-depth, comparable segment coordinates or 3D registration."},
+        {"axisId": "causal_mechanism", "status": "not_measured", "evidence": "The source-local clustering, developmental trajectories and spatial label transfer do not constitute a type-specific perturbation-to-outcome test.", "sourceLocator": "Primary article Results — molecular ontogeny, trajectories and spatial organization; no refined-type perturbation-to-outcome experiment", "displayBoundary": "Developmental association, expression difference and spatial enrichment cannot be displayed as necessity, sufficiency or a causal circuit mechanism."},
+        {"axisId": "morphology", "status": "not_measured", "evidence": "Tables S6/S7, scRNA objects and Xenium coordinates provide no same-cell whole-neuron arbor, membrane, organelle or internal-structure reconstruction.", "sourceLocator": "Primary article Study modalities and Data availability — scRNA-seq and Xenium; no same-cell SWC, full-cell mesh or intracellular segmentation", "displayBoundary": "No soma, neurite, organelle, internal primitive or type-specific 3D form may be inferred from a refined label, family, QC metric, differential feature or predicted spatial label."}
+      ],
+      "canAnswer": ["Which exact 157 source-local refined dIL labels, counts, composition values, cluster-QC metrics and positive differential features are supported?", "Which biological-pool, technical-output, developmental-stage and spinal-region denominators constrain interpretation?"],
+      "cannotAnswer": ["What whole-cell 3D morphology or internal structure belongs to a refined molecular type?", "Which Xenium cell is the same cell as an scRNA observation?", "Which adult or other-study label is exactly identical to a Roome type?", "Where a refined type belongs in project atlas coordinates or how it changes after SCI?"]
+    }
+  ],
+  "hardBoundaries": [
+    "All labels remain source-local; cross-study mapping status is not_established for every lane.",
+    "Public access to metadata or files does not establish asset-level reuse permission, license compatibility, or project admission.",
+    "No source cell, nucleus, spot, section, or morphology is registered to project coordinates; projectRegistrationCount is 0.",
+    "A blank or not_measured axis is a coverage gap, not evidence that the biological feature is absent.",
+    "Co-display across lanes does not establish same-cell identity, lineage continuity, anatomical correspondence, or causation.",
+    "No morphology may be synthesized as observed evidence from transcriptomic labels, marker expression, laminar enrichment, or spatial transcriptomic signal.",
+    "The Iglesias González lane admits only M1–M6 group summaries from one pooled preparation: three embryos → one tube → one library and 384 wells → 354 QC-retained cells → 274 dI6-lineage cells; no per-well group roster or scalar pseudotime is exported or reconstructed.",
+    "The Iglesias González lane admits no exact cross-study identity, cell geometry, internal structure or atlas registration.",
+    "The Roome lane admits an exact 157-label Table S6 molecular roster and Table S7 differential evidence, but no type-specific morphology, whole-cell geometry, internal structure, same-cell scRNA–Xenium join or atlas registration.",
+    "Twenty-six apparent Excel-date tokens in Roome Table S7 gene cells remain quarantined and are never auto-repaired into gene symbols."
+  ]
+}

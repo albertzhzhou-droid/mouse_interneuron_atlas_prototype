@@ -1,0 +1,3845 @@
+{
+  "releaseId": "ohri-sathyamurthy-source-taxonomy-0.1.0",
+  "schemaVersion": "0.1.0",
+  "releaseDate": "2026-08-26",
+  "datasetId": "GSE103892",
+  "coordinateAuthority": "SOURCE_LOCAL_TYPE_ONLY",
+  "source": {
+    "publication": {
+      "id": "SATHYAMURTHY-2018",
+      "citation": "Sathyamurthy A, Johnson KR, Matson KJE, et al. Massively Parallel Single Nucleus Transcriptional Profiling Defines Spinal Cord Neurons and Their Activity during Behavior. Cell Reports 22, 2216–2225 (2018).",
+      "doi": "10.1016/j.celrep.2018.02.003",
+      "pmcid": "PMC5849084",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5849084/",
+      "license": {
+        "id": "CC-BY-NC-ND-4.0",
+        "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "appliesTo": "article",
+        "sourceLocatorIds": [
+          "paper-license"
+        ],
+        "rightsBoundary": "The PMC article states CC BY-NC-ND 4.0. This contract transcribes factual metadata and does not redistribute or adapt the article figures; the article license is not assumed to grant redistribution rights for every GEO source asset."
+      }
+    },
+    "geo": {
+      "id": "GSE103892",
+      "accession": "GSE103892",
+      "recordUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103892",
+      "overallDesign": "The GEO series exposes 24 accession rows and describes 9 control, 10 formalin, and 5 rotarod accessions. These are not 24 independent biological samples: the paper reports 9 baseline, 5 formalin, and 5 rotarod independent Drop-Seq samples; each sample pooled lumbar cords from a pair of ICR mice, and GEO states that the 10 formalin accessions are two sequencing rounds for 5 biological replicates. Profile counts pool assigned nuclei across the processed metadata object.",
+      "sampleFrame": {
+        "strain": "ICR/CD-1",
+        "ageWeeks": "8-12",
+        "sex": "balanced male and female samples",
+        "conditionSexBreakdown": {
+          "baseline": {
+            "malePooledSamples": 4,
+            "femalePooledSamples": 5
+          },
+          "formalin": {
+            "malePooledSamples": 3,
+            "femalePooledSamples": 2
+          },
+          "rotarod": {
+            "malePooledSamples": 3,
+            "femalePooledSamples": 2
+          }
+        },
+        "geoAccessionCount": 24,
+        "independentDropSeqSampleCount": 19,
+        "baselineIndependentSampleCount": 9,
+        "formalinIndependentSampleCount": 5,
+        "rotarodIndependentSampleCount": 5,
+        "formalinSequencingReactionCount": 10,
+        "micePerPooledSample": 2,
+        "derivedMouseCountFromReportedPooling": 38,
+        "sourceLocatorIds": [
+          "geo-series-record",
+          "paper-methods-p34-p36",
+          "geo-sample-form1"
+        ],
+        "interpretationBoundary": "GEO accessions, sequencing reactions, pooled Drop-Seq samples, mice, and nuclei are different denominator levels. Neither 24 accessions nor 4,280 assigned nuclei may be presented as independent animals, and no profile-specific animal denominator can be recovered from the processed cluster-count object."
+      },
+      "clusterMetadataAsset": {
+        "id": "GSE103892_CLUSTER_METADATA",
+        "fileName": "GSE103892_Sample_Cell_Cluster_Information.txt.gz",
+        "downloadUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE103nnn/GSE103892/suppl/GSE103892_Sample_Cell_Cluster_Information.txt.gz",
+        "geoDisplayedSize": "111.9 KB",
+        "bytes": 114576,
+        "sha256": "2a22f9b19db27c43dc6632e15395d63a4eb8b0087d1ac5b491411c01d1e41d30",
+        "retrievedOn": "2026-08-26",
+        "rowsWithNeuronCluster": 5369,
+        "genericNeuronRows": 1089,
+        "assignedProfileRows": 4280,
+        "sourceFileBundled": false,
+        "derivedFactualMetadataBundled": true,
+        "reuseStatus": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED",
+        "sourceLocatorIds": [
+          "geo-series-rights-boundary"
+        ],
+        "rightsBoundary": "The processed GEO file is publicly downloadable, but this project does not infer a separate redistribution license from public access. The source file is not bundled; only factual cluster labels, row counts, and a checksum-derived provenance record are included."
+      }
+    }
+  },
+  "scope": {
+    "species": "Mus musculus",
+    "speciesTaxonId": 10090,
+    "lifeStage": "adult",
+    "spinalRegion": "lumbar spinal cord",
+    "modality": "single-nucleus RNA sequencing",
+    "reportedClusterCount": 43,
+    "displayedProfileCount": 43,
+    "reportedNeuronalNucleiCount": 4280,
+    "observedAssignedNeuronalNucleiCount": 4280,
+    "samplingCountInterpretation": "SAMPLING_COUNT_ONLY_NOT_PREVALENCE",
+    "displayedNonMotorNeuronUnresolvedCount": 42,
+    "displayedMotorNeuronContextCount": 1,
+    "exactCrossSourceIdentityCount": 0,
+    "projectRegistrationCount": 0
+  },
+  "sourceLocators": [
+    {
+      "id": "paper-methods-p34-p36",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Experimental Procedures paragraphs P34–P36: balanced male and female ICR/CD-1 mice aged 8–12 weeks; nine baseline, five formalin, and five rotarod independent Drop-Seq samples; each sample pooled lumbar cords from a pair of mice.",
+      "supportsFields": [
+        "sampleFrame"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "geo-sample-form1",
+      "sourceObjectId": "GSE103892",
+      "locator": "NCBI GEO sample GSM2785681 methods: each sample used lumbar cords from a pair of ICR mice, and a second sequencing round for every formalin sample produced ten sequencing reactions from five biological replicates.",
+      "supportsFields": [
+        "sampleFrame"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-summary-p2",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Summary paragraph P2: adult mouse lumbar spinal cord, with 43 molecularly characterized neuronal populations.",
+      "supportsFields": [
+        "adultMouseLumbarScope"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p11",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraph P11 and Figure 2A: 4,280 neuronal nuclei partitioned into 43 clusters; excitatory, inhibitory, mixed, and cholinergic context.",
+      "supportsFields": [
+        "transmitterClass"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p12",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraph P12 and Figure 2: D, M, and V encode dorsal, mid, and ventral location; E, I, M, and C encode transmitter context.",
+      "supportsFields": [
+        "regionClass",
+        "transmitterClass",
+        "sourceLocalLabel"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p15-p23",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraphs P15–P23: narrative characterization of the seven groups, selected marker genes, source putative assignments, and their stated limitations.",
+      "supportsFields": [
+        "putativeCellTypeLabel",
+        "figure4Markers"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "paper-figure-4",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Figure 4, Summary of 43 Spinal Cord Neuronal Populations: source-local cluster label, putative cell-type assignment, and three displayed marker genes.",
+      "supportsFields": [
+        "sourceLocalLabel",
+        "putativeCellTypeLabel",
+        "figure4Markers"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-figure-4-project-scope",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Figure 4 presents putative source-local assignments and identifies VC-2 as alpha motoneurons. The project uses that context only to retain VC-2 as motor context and to leave every other non-motor profile unresolved between local-interneuron and projection-neuron status.",
+      "supportsFields": [
+        "projectUseClass",
+        "putativeAssignmentStatus"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "paper-results-p19",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraph P19: VE-1–VE-3 V2a-marker enrichment and VI-4 V1-subtype and dI6-marker enrichment, followed by an explicit warning that embryonic-to-adult continuity is uncertain.",
+      "supportsFields": [
+        "lineageHint"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "paper-results-p21",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraph P21: VC-1 expresses the embryonic-lineage V0c marker Pitx2; VC-2 expresses spinal motoneuron markers.",
+      "supportsFields": [
+        "lineageHint",
+        "putativeCellTypeLabel"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "paper-figure-5",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Figure 5 caption: Fos RNA and cFOS context after rotarod locomotion or formalin hindpaw injection, including source validation assays.",
+      "supportsFields": [
+        "activityEvidence"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p26",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraph P26: cluster-specific Fos or cFOS associations after rotarod locomotion and the stated DE-4 and DI-9 non-detections.",
+      "supportsFields": [
+        "activityEvidence"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p27",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraph P27: cluster-specific Fos RNA or cFOS associations following formalin hindpaw injection.",
+      "supportsFields": [
+        "activityEvidence"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-study-design-p8-p10",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraphs P8–P10 and Figure 1: single-nucleus RNA-sequencing study design on adult mouse lumbar spinal-cord tissue.",
+      "supportsFields": [
+        "adultMouseLumbarScope"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-study-design-missing-axes",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 Results paragraphs P8–P10 and Experimental Procedures: the study measures single-nucleus expression from adult lumbar tissue and does not report profile-level neurite morphology, electrophysiology, projection targets, synapses, cross-source same-cell identity links to morphology or spatial objects, or atlas transforms.",
+      "supportsFields": [
+        "missingEvidence"
+      ],
+      "evidenceStatus": "not_measured"
+    },
+    {
+      "id": "geo-series-record",
+      "sourceObjectId": "GSE103892",
+      "locator": "NCBI GEO GSE103892 Series record: public expression-profiling study, 24 samples, source experimental-condition design, and two processed supplementary files.",
+      "supportsFields": [
+        "adultMouseLumbarScope",
+        "activityEvidence",
+        "sampleFrame"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "geo-series-missing-axes",
+      "sourceObjectId": "GSE103892",
+      "locator": "NCBI GEO GSE103892 Series record: expression-profiling data and processed count/cluster tables are exposed, but no profile-level neurite reconstruction, electrophysiology, projection target, synaptic edge, cross-source same-cell identity link to a morphology or spatial object, cell xyz, SCI identity, or atlas transform object is declared.",
+      "supportsFields": [
+        "missingEvidence"
+      ],
+      "evidenceStatus": "not_measured"
+    },
+    {
+      "id": "geo-series-rights-boundary",
+      "sourceObjectId": "GSE103892",
+      "locator": "NCBI GEO GSE103892 Series record exposes public processed and raw download routes but does not state one asset-level redistribution licence for the processed cluster metadata object used by this contract.",
+      "supportsFields": [
+        "rightsBoundary"
+      ],
+      "evidenceStatus": "rights_boundary"
+    },
+    {
+      "id": "geo-cluster-metadata",
+      "sourceObjectId": "GSE103892_CLUSTER_METADATA",
+      "locator": "GSE103892_Sample_Cell_Cluster_Information.txt.gz columns neuron.cluster and cell.type; exact row counts computed from the checksum-pinned gzip object.",
+      "supportsFields": [
+        "sourceLocalLabel",
+        "rawLabels",
+        "samplingCount"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-license",
+      "sourceObjectId": "SATHYAMURTHY-2018",
+      "locator": "PMC5849084 article permissions block: article distributed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International license.",
+      "supportsFields": [
+        "rightsBoundary"
+      ],
+      "evidenceStatus": "rights_boundary"
+    }
+  ],
+  "rawLabelAnomalies": [
+    {
+      "rawLabel": "DE12",
+      "displayLabel": "DE-12",
+      "rowCount": 74,
+      "kind": "SOURCE_PUNCTUATION_ANOMALY",
+      "sourceLocatorIds": [
+        "geo-cluster-metadata",
+        "paper-figure-4"
+      ],
+      "boundary": "The raw GEO value remains preserved verbatim; only the display/paper label inserts the hyphen, and no biological merge or identity inference is performed."
+    }
+  ],
+  "profiles": [
+    {
+      "id": "sathyamurthy-2018:DE-1",
+      "sourceLocalLabel": "DE-1",
+      "rawLabels": [
+        "DE-1"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 68,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Grp",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Grp",
+        "Tacr3",
+        "Reln"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-2",
+      "sourceLocalLabel": "DE-2",
+      "rawLabels": [
+        "DE-2"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 80,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Npy1r",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Npy1r",
+        "Nmur2",
+        "Car12"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-3",
+      "sourceLocalLabel": "DE-3",
+      "rawLabels": [
+        "DE-3"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 37,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Ntrk2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Ntrk2",
+        "Pde11a",
+        "Mybph"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-1",
+      "sourceLocalLabel": "DI-1",
+      "rawLabels": [
+        "DI-1"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 69,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Rorb/Sstr2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Sstr2",
+        "Calb2",
+        "Bcl11b"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-2",
+      "sourceLocalLabel": "DI-2",
+      "rawLabels": [
+        "DI-2"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 55,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Gal/Pdyn-I",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Gal",
+        "Prkca",
+        "Ankfn1"
+      ],
+      "activityEvidence": [
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-3",
+      "sourceLocalLabel": "DI-3",
+      "rawLabels": [
+        "DI-3"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 106,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Nos",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Nos1",
+        "Pnoc",
+        "Cdh8"
+      ],
+      "activityEvidence": [
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-4",
+      "sourceLocalLabel": "DE-4",
+      "rawLabels": [
+        "DE-4"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 64,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Prkcg",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Prkcg",
+        "Calb1",
+        "Ebf2"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "not_detected",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "This source-reported non-detection is assay- and condition-specific and is not evidence that the population was biologically inactive; the paper explicitly notes possible technical false negatives."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-5",
+      "sourceLocalLabel": "DE-5",
+      "rawLabels": [
+        "DE-5"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 125,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Tac2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Tac2",
+        "Necab1",
+        "Snca"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-6",
+      "sourceLocalLabel": "DE-6",
+      "rawLabels": [
+        "DE-6"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 71,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Nts",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Nts",
+        "Trpm3",
+        "Gsg1l"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-7",
+      "sourceLocalLabel": "DE-7",
+      "rawLabels": [
+        "DE-7"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 76,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Cck",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Cck",
+        "Erbb4",
+        "Ebf1"
+      ],
+      "activityEvidence": [
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-8",
+      "sourceLocalLabel": "DE-8",
+      "rawLabels": [
+        "DE-8"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 75,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Maf/Cbln2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Cbln2",
+        "Mgat5b",
+        "Tshz2"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-9",
+      "sourceLocalLabel": "DE-9",
+      "rawLabels": [
+        "DE-9"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 114,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Rora/Maf/Adarb2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Adarb2",
+        "Rasa4",
+        "Dhrs3"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-10",
+      "sourceLocalLabel": "DE-10",
+      "rawLabels": [
+        "DE-10"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 103,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Rora/Maf/VGlut3",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Maf",
+        "Slc17a8",
+        "Parp8"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VI-1",
+      "sourceLocalLabel": "VI-1",
+      "rawLabels": [
+        "VI-1"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 178,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1/V2b",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Cit",
+        "Epha10",
+        "Kif5a"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VI-2",
+      "sourceLocalLabel": "VI-2",
+      "rawLabels": [
+        "VI-2"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 219,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1/V2b",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Atrx",
+        "Phtf1",
+        "Kif21a"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VI-3",
+      "sourceLocalLabel": "VI-3",
+      "rawLabels": [
+        "VI-3"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 37,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Rsrp1",
+        "Stk39",
+        "Rab40c"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:MI-1",
+      "sourceLocalLabel": "MI-1",
+      "rawLabels": [
+        "MI-1"
+      ],
+      "regionClass": "mid",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 49,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Gad2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Gad2",
+        "Neto2",
+        "Htr2c"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VM-1",
+      "sourceLocalLabel": "VM-1",
+      "rawLabels": [
+        "VM-1"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "mixed_cluster",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 46,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1-V3",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Meis2",
+        "Sim1",
+        "Plaa"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VE-1",
+      "sourceLocalLabel": "VE-1",
+      "rawLabels": [
+        "VE-1"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 110,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V2a/V0",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Zfhx3",
+        "Ndst4",
+        "Grm8"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VE-2",
+      "sourceLocalLabel": "VE-2",
+      "rawLabels": [
+        "VE-2"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 48,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V2a",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Zfhx4",
+        "Onecut2",
+        "Vsx2"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VE-3",
+      "sourceLocalLabel": "VE-3",
+      "rawLabels": [
+        "VE-3"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 43,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V2a",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Etv4",
+        "Fryl",
+        "Abhd3"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VI-4",
+      "sourceLocalLabel": "VI-4",
+      "rawLabels": [
+        "VI-4"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 55,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1/dI6",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Esrrg",
+        "Esrrb",
+        "Htr1f"
+      ],
+      "activityEvidence": [
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:MI-2",
+      "sourceLocalLabel": "MI-2",
+      "rawLabels": [
+        "MI-2"
+      ],
+      "regionClass": "mid",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 47,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Tfap2b",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Tfap2b",
+        "Rab27b",
+        "Rarb"
+      ],
+      "activityEvidence": [
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VM-2",
+      "sourceLocalLabel": "VM-2",
+      "rawLabels": [
+        "VM-2"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "mixed_cluster",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 63,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1/V2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Ssb",
+        "Wdr47",
+        "Gls2"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VE-4",
+      "sourceLocalLabel": "VE-4",
+      "rawLabels": [
+        "VE-4"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 215,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V2a",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Hapln1",
+        "Fhod3",
+        "Dgkg"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VI-5",
+      "sourceLocalLabel": "VI-5",
+      "rawLabels": [
+        "VI-5"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 123,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V1/V2b",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Lgr5",
+        "Foxp2",
+        "Slit2"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-11",
+      "sourceLocalLabel": "DE-11",
+      "rawLabels": [
+        "DE-11"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 157,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Tac1",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Tac1",
+        "Sox5",
+        "Otof"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-12",
+      "sourceLocalLabel": "DE-12",
+      "rawLabels": [
+        "DE12"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 74,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Grpr",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Grpr",
+        "Col5a2",
+        "Atp2b4"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-4",
+      "sourceLocalLabel": "DI-4",
+      "rawLabels": [
+        "DI-4"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 95,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Npy",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Npy",
+        "Ecel1",
+        "Qrfpr"
+      ],
+      "activityEvidence": [
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-13",
+      "sourceLocalLabel": "DE-13",
+      "rawLabels": [
+        "DE-13"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 93,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Man1a",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Man1a",
+        "Iqgap2",
+        "Rreb1"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-14",
+      "sourceLocalLabel": "DE-14",
+      "rawLabels": [
+        "DE-14"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 143,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Rora/Mdga1",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Mdga1",
+        "Megf11",
+        "Plxdc2"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:MI-3",
+      "sourceLocalLabel": "MI-3",
+      "rawLabels": [
+        "MI-3"
+      ],
+      "regionClass": "mid",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 226,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Gabra1",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Gabra1",
+        "Gabrb2",
+        "Cdh7"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:ME-1",
+      "sourceLocalLabel": "ME-1",
+      "rawLabels": [
+        "ME-1"
+      ],
+      "regionClass": "mid",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 104,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Nf1b",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Nfib",
+        "Satb1",
+        "Rmst_1"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-15",
+      "sourceLocalLabel": "DE-15",
+      "rawLabels": [
+        "DE-15"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 86,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Lmx1b/Pdyn-E",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Lmx1b",
+        "Pdyn",
+        "Tcf4"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DE-16",
+      "sourceLocalLabel": "DE-16",
+      "rawLabels": [
+        "DE-16"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 66,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Col5a2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Col5a2",
+        "Qrfpr",
+        "Penk"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VC-1",
+      "sourceLocalLabel": "VC-1",
+      "rawLabels": [
+        "VC-1"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "cholinergic_predominantly_excitatory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 181,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "V0c",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Pitx2",
+        "Lyzl4",
+        "Chat"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        },
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:VC-2",
+      "sourceLocalLabel": "VC-2",
+      "rawLabels": [
+        "VC-2"
+      ],
+      "regionClass": "ventral",
+      "transmitterClass": "cholinergic_predominantly_excitatory",
+      "projectUseClass": "motor_neuron_context",
+      "samplingCount": {
+        "value": 126,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "MN",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Prph",
+        "Isl1",
+        "Slit3"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        },
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-5",
+      "sourceLocalLabel": "DI-5",
+      "rawLabels": [
+        "DI-5"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 54,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Gbx1",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Gbx1",
+        "Esr1",
+        "Mef2c"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:MI-4",
+      "sourceLocalLabel": "MI-4",
+      "rawLabels": [
+        "MI-4"
+      ],
+      "regionClass": "mid",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 65,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Phosphocan",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Ptprz1",
+        "Zeb2",
+        "Zmat4"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-6",
+      "sourceLocalLabel": "DI-6",
+      "rawLabels": [
+        "DI-6"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 139,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Cdh3/Kcnip2",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Cdh3",
+        "Kcnip2",
+        "Sema3e"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-7",
+      "sourceLocalLabel": "DI-7",
+      "rawLabels": [
+        "DI-7"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 105,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Lhx1",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Lhx1",
+        "Nxph1",
+        "Chrm3"
+      ],
+      "activityEvidence": [],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-8",
+      "sourceLocalLabel": "DI-8",
+      "rawLabels": [
+        "DI-8"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 174,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Nrgn/Rora-I",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Nrgn",
+        "Syt6",
+        "Fgf13"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "Fos or cFOS following the tested rotarod context is an association with activity-induced transcription; it does not establish electrical firing, necessity, sufficiency, or direct circuit connectivity."
+        },
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    },
+    {
+      "id": "sathyamurthy-2018:DI-9",
+      "sourceLocalLabel": "DI-9",
+      "rawLabels": [
+        "DI-9"
+      ],
+      "regionClass": "dorsal",
+      "transmitterClass": "inhibitory",
+      "projectUseClass": "source_local_non_motor_neuron_unresolved",
+      "samplingCount": {
+        "value": 116,
+        "unit": "nuclei",
+        "interpretation": "sampling_count_only"
+      },
+      "putativeCellTypeLabel": "Rorb-I",
+      "putativeAssignmentStatus": "source_putative_not_exact_identity",
+      "figure4Markers": [
+        "Rorb",
+        "Sorcs3",
+        "Col18a1"
+      ],
+      "activityEvidence": [
+        {
+          "context": "rotarod_locomotion",
+          "finding": "not_detected",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p26"
+          ],
+          "interpretationBoundary": "This source-reported non-detection is assay- and condition-specific and is not evidence that the population was biologically inactive; the paper explicitly notes possible technical false negatives."
+        },
+        {
+          "context": "formalin_hindpaw",
+          "finding": "activity_induced_transcription_associated",
+          "sourceLocatorIds": [
+            "paper-figure-5",
+            "paper-results-p27"
+          ],
+          "interpretationBoundary": "Fos or cFOS following formalin hindpaw injection is an association with activity-induced transcription in this pain assay; it does not establish necessity, sufficiency, or a direct pain circuit."
+        }
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured",
+        "cellCoordinates": "not_available",
+        "sciContext": "not_measured",
+        "atlasRegistration": "not_established",
+        "electrophysiology": "not_measured",
+        "projectionTarget": "not_measured",
+        "synapticConnectivity": "not_measured",
+        "crossSourceSameCellIdentityLink": "not_established"
+      },
+      "fieldLocators": {
+        "adultMouseLumbarScope": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10"
+        ],
+        "sourceLocalLabel": [
+          "paper-figure-4",
+          "geo-cluster-metadata"
+        ],
+        "rawLabels": [
+          "geo-cluster-metadata"
+        ],
+        "regionClass": [
+          "paper-results-p12"
+        ],
+        "transmitterClass": [
+          "paper-results-p11",
+          "paper-results-p12"
+        ],
+        "projectUseClass": [
+          "paper-figure-4-project-scope"
+        ],
+        "samplingCount": [
+          "geo-cluster-metadata"
+        ],
+        "putativeCellTypeLabel": [
+          "paper-figure-4"
+        ],
+        "putativeAssignmentStatus": [
+          "paper-figure-4-project-scope"
+        ],
+        "figure4Markers": [
+          "paper-figure-4",
+          "paper-results-p15-p23"
+        ],
+        "activityEvidence": [
+          "paper-figure-5",
+          "paper-results-p26",
+          "paper-results-p27"
+        ],
+        "missingEvidence": [
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ]
+      }
+    }
+  ],
+  "candidateLineageMappings": [
+    {
+      "id": "sathyamurthy-2018.mapping.ve-1.v2a",
+      "sourceProfileId": "sathyamurthy-2018:VE-1",
+      "candidateTargetNamespace": "embryonic_lineage_context",
+      "candidateTargetLabel": "V2a",
+      "mappingStatus": "not_established",
+      "basis": "marker_context_only",
+      "sourceLocatorIds": [
+        "paper-results-p19"
+      ],
+      "reason": "The paper reports V2a-marker enrichment across VE-1–VE-3, including Vsx2/Chx10, Shox2, Lhx3, and Lhx4 context.",
+      "notEstablished": "The same paragraph warns that several genes are lowly expressed and that continuity from embryonic lineage to the adult source cluster is uncertain; this is not exact identity."
+    },
+    {
+      "id": "sathyamurthy-2018.mapping.ve-2.v2a",
+      "sourceProfileId": "sathyamurthy-2018:VE-2",
+      "candidateTargetNamespace": "embryonic_lineage_context",
+      "candidateTargetLabel": "V2a",
+      "mappingStatus": "not_established",
+      "basis": "marker_context_only",
+      "sourceLocatorIds": [
+        "paper-results-p19"
+      ],
+      "reason": "The paper reports V2a-marker enrichment across VE-1–VE-3, and Figure 4 includes Vsx2 among the displayed VE-2 markers.",
+      "notEstablished": "Marker enrichment and a source putative label do not establish embryonic lineage continuity, a canonical cross-study type, or same-cell identity."
+    },
+    {
+      "id": "sathyamurthy-2018.mapping.ve-3.v2a",
+      "sourceProfileId": "sathyamurthy-2018:VE-3",
+      "candidateTargetNamespace": "embryonic_lineage_context",
+      "candidateTargetLabel": "V2a",
+      "mappingStatus": "not_established",
+      "basis": "marker_context_only",
+      "sourceLocatorIds": [
+        "paper-results-p19"
+      ],
+      "reason": "The paper reports V2a-marker enrichment across VE-1–VE-3 in its adult ventral-cluster discussion.",
+      "notEstablished": "The paper explicitly leaves embryonic-to-adult continuity uncertain, so VE-3 is not promoted to an exact V2a identity or cross-source equivalence."
+    },
+    {
+      "id": "sathyamurthy-2018.mapping.vi-4.v1",
+      "sourceProfileId": "sathyamurthy-2018:VI-4",
+      "candidateTargetNamespace": "embryonic_lineage_context",
+      "candidateTargetLabel": "V1",
+      "mappingStatus": "not_established",
+      "basis": "marker_context_only",
+      "sourceLocatorIds": [
+        "paper-results-p19"
+      ],
+      "reason": "The paper reports enrichment of V1-subtype marker context in VI-4, including Chrna2, Pvalb, and Esrrb.",
+      "notEstablished": "The evidence is adult marker context with uncertain developmental continuity, not an exact V1 lineage assignment, canonical type mapping, or same-cell link."
+    },
+    {
+      "id": "sathyamurthy-2018.mapping.vi-4.di6",
+      "sourceProfileId": "sathyamurthy-2018:VI-4",
+      "candidateTargetNamespace": "embryonic_lineage_context",
+      "candidateTargetLabel": "dI6",
+      "mappingStatus": "not_established",
+      "basis": "marker_context_only",
+      "sourceLocatorIds": [
+        "paper-results-p19"
+      ],
+      "reason": "The paper reports enrichment of dI6-marker context in VI-4, including Wt1 and Dmrt3.",
+      "notEstablished": "The evidence is marker context only and the source expressly questions embryonic-to-adult continuity; it cannot establish an exact dI6 identity."
+    },
+    {
+      "id": "sathyamurthy-2018.mapping.vc-1.v0c",
+      "sourceProfileId": "sathyamurthy-2018:VC-1",
+      "candidateTargetNamespace": "embryonic_lineage_context",
+      "candidateTargetLabel": "V0c",
+      "mappingStatus": "not_established",
+      "basis": "marker_context_only",
+      "sourceLocatorIds": [
+        "paper-results-p21"
+      ],
+      "reason": "The paper reports that VC-1 expressed Pitx2, described there as an embryonic-lineage V0c marker.",
+      "notEstablished": "Pitx2 marker context and the source putative label do not establish exact V0c lineage continuity, cross-study identity, atlas coordinates, or same-cell correspondence."
+    }
+  ],
+  "hardBoundaries": [
+    "Profile samplingCount values are counts of assigned nuclei in one processed GEO metadata file; they are not estimates of biological prevalence, abundance, or population frequency.",
+    "The source reports 43 neuronal populations; VC-2 remains explicit motor-neuron context, while the other 42 remain non-motor spinal-neuron records with local-interneuron versus projection-neuron status unresolved.",
+    "The 24 GEO accessions are not 24 independent animals or biological replicates: the source reports 19 independent pooled Drop-Seq samples, two mice per sample, and 10 formalin sequencing reactions derived from five biological replicates.",
+    "Source-local labels, putative Figure 4 assignments, and marker triples do not establish a canonical cross-study type or exact lineage identity.",
+    "The two mixed VM clusters contain separate excitatory- and inhibitory-marker populations according to the paper; mixed_cluster must not be interpreted as routine co-release by each nucleus.",
+    "No profile contains single-cell spatial coordinates, and dorsal, mid, or ventral region classes are not xyz positions or exact lamina assignments.",
+    "No profile contains observed dendritic, axonal, or soma morphology, and no synthetic arbor may be presented as source-observed evidence.",
+    "The source experimental contexts are control, formalin, and rotarod, not spinal cord injury; sciContext remains not_measured for every profile.",
+    "Project atlas registration count is zero; no source label, marker, count, or activity association authorizes a spatial transform.",
+    "Fos or cFOS association after a tested behavior is not evidence of electrical firing in every cell, causal necessity, causal sufficiency, or direct synaptic connectivity.",
+    "A missing activity entry or a source-reported non-detection is not evidence that the biological population is inactive or absent.",
+    "Every lineage edge is marker_context_only with mappingStatus not_established; exactCrossSourceIdentityCount must remain zero.",
+    "The article license applies to the article; public GEO access is not treated as asset-level redistribution permission, source objects are not bundled, and only derived factual metadata are included."
+  ]
+}

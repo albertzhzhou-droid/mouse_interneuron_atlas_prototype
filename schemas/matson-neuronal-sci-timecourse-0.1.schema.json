@@ -1,0 +1,352 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/matson-neuronal-sci-timecourse-0.1.json",
+  "title": "Matson GSE172167 source-local neuronal SCI time course 0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "releaseId",
+    "schemaVersion",
+    "releaseDate",
+    "source",
+    "scope",
+    "experimentalDesign",
+    "rankedMarkerPanelProvenance",
+    "timepoints",
+    "samples",
+    "populations",
+    "rareStateEvidence",
+    "sourceLocators",
+    "sourceConflicts",
+    "globalMissingEvidence",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "releaseId": {"const": "ohri-matson-neuronal-sci-timecourse-0.2.0"},
+    "schemaVersion": {"const": "0.2.0"},
+    "releaseDate": {"type": "string", "format": "date"},
+    "source": {"$ref": "#/$defs/source"},
+    "scope": {"$ref": "#/$defs/scope"},
+    "experimentalDesign": {"$ref": "#/$defs/experimentalDesign"},
+    "rankedMarkerPanelProvenance": {"$ref": "#/$defs/rankedMarkerPanelProvenance"},
+    "timepoints": {"type": "array", "minItems": 5, "maxItems": 5, "items": {"$ref": "#/$defs/timepoint"}},
+    "samples": {"type": "array", "minItems": 15, "maxItems": 15, "items": {"$ref": "#/$defs/sample"}},
+    "populations": {"type": "array", "minItems": 17, "maxItems": 17, "items": {"$ref": "#/$defs/population"}},
+    "rareStateEvidence": {"$ref": "#/$defs/rareStateEvidence"},
+    "sourceLocators": {"type": "array", "minItems": 5, "items": {"$ref": "#/$defs/sourceLocator"}},
+    "sourceConflicts": {"type": "array", "minItems": 6, "items": {"$ref": "#/$defs/sourceConflict"}},
+    "globalMissingEvidence": {"type": "array", "minItems": 7, "items": {"$ref": "#/$defs/globalGap"}},
+    "hardBoundaries": {"type": "array", "minItems": 6, "items": {"type": "string", "minLength": 30}}
+  },
+  "$defs": {
+    "httpsUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accession", "url"],
+      "properties": {
+        "accession": {"type": "string", "minLength": 5},
+        "url": {"$ref": "#/$defs/httpsUrl"}
+      }
+    },
+    "sourceFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "fileName", "bytes", "sha256", "url", "bundled", "derivedFactualCountsBundled", "assetLevelReuseStatus"],
+      "properties": {
+        "role": {"enum": ["metadata", "familySoft"]},
+        "fileName": {"type": "string", "minLength": 5},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "url": {"$ref": "#/$defs/httpsUrl"},
+        "bundled": {"const": false},
+        "derivedFactualCountsBundled": {"const": true},
+        "assetLevelReuseStatus": {"const": "not_assumed"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["studyId", "citation", "doi", "pmid", "articleUrl", "license", "repositories", "sourceFiles", "articleSupplementReferences"],
+      "properties": {
+        "studyId": {"const": "matson-2022-gse172167"},
+        "citation": {"type": "string", "minLength": 50},
+        "doi": {"const": "10.1038/s41467-022-33184-1"},
+        "pmid": {"const": "36163250"},
+        "articleUrl": {"$ref": "#/$defs/httpsUrl"},
+        "license": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "url", "appliesTo", "rightsBoundary"],
+          "properties": {
+            "id": {"const": "CC-BY-4.0"},
+            "url": {"$ref": "#/$defs/httpsUrl"},
+            "appliesTo": {"type": "string", "minLength": 20},
+            "rightsBoundary": {"type": "string", "minLength": 50}
+          }
+        },
+        "repositories": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["geo", "sra", "bioProject"],
+          "properties": {
+            "geo": {"$ref": "#/$defs/repository"},
+            "sra": {"$ref": "#/$defs/repository"},
+            "bioProject": {"$ref": "#/$defs/repository"}
+          }
+        },
+        "sourceFiles": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/sourceFile"}},
+        "articleSupplementReferences": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "fileName", "bytes", "sha256", "url", "license", "bundled", "derivedRankedMarkersBundled", "scope"],
+            "properties": {
+              "role": {"const": "rankedMarkerWorkbook"},
+              "fileName": {"const": "41467_2022_33184_MOESM4_ESM.xlsx"},
+              "bytes": {"const": 16885},
+              "sha256": {"const": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74"},
+              "url": {"$ref": "#/$defs/httpsUrl"},
+              "license": {"const": "CC-BY-4.0"},
+              "bundled": {"const": false},
+              "derivedRankedMarkersBundled": {"const": true},
+              "scope": {"type": "string", "minLength": 60}
+            }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["species", "strain", "sex", "ageWeeks", "spinalRegion", "spinalSegments", "rootsAttached", "modality", "injuryLevel", "injuryModel", "conditionCount", "independentAnimalCount", "independentAnimalCountPerCondition", "capturedNucleiCount", "capturedNeuronalNucleiCount", "neuronalPopulationCount", "sourceLocalNonMotorPopulationCount", "motorContextPopulationCount", "exactCrossSourceIdentityCount", "projectRegistrationCount"],
+      "properties": {
+        "species": {"const": "Mus musculus"},
+        "strain": {"const": "C57BL/6"},
+        "sex": {"const": "female"},
+        "ageWeeks": {"const": "12–30"},
+        "spinalRegion": {"type": "string", "minLength": 20},
+        "spinalSegments": {"const": "L2–S1"},
+        "rootsAttached": {"type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true, "items": {"enum": ["proximal dorsal roots", "proximal ventral roots"]}},
+        "modality": {"const": "single-nucleus RNA sequencing"},
+        "injuryLevel": {"const": "T9 vertebral level"},
+        "injuryModel": {"const": "90 kdyn severe contusion"},
+        "conditionCount": {"const": 5},
+        "independentAnimalCount": {"const": 15},
+        "independentAnimalCountPerCondition": {"const": 3},
+        "capturedNucleiCount": {"const": 67903},
+        "capturedNeuronalNucleiCount": {"const": 23651},
+        "neuronalPopulationCount": {"const": 17},
+        "sourceLocalNonMotorPopulationCount": {"const": 16},
+        "motorContextPopulationCount": {"const": 1},
+        "exactCrossSourceIdentityCount": {"const": 0},
+        "projectRegistrationCount": {"const": 0}
+      }
+    },
+    "experimentalDesign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tissue", "injuryTissueRelation", "sequencingPlatform", "referenceGenome", "analysis", "selectionBoundary", "exclusionBoundary"],
+      "properties": {
+        "tissue": {"const": "L2–S1 lumbar spinal cord with proximal dorsal and ventral roots attached"},
+        "injuryTissueRelation": {"type": "string", "minLength": 20},
+        "sequencingPlatform": {"type": "string", "minLength": 20},
+        "referenceGenome": {"type": "string", "minLength": 10},
+        "analysis": {"type": "string", "minLength": 10},
+        "selectionBoundary": {"type": "string", "minLength": 50},
+        "exclusionBoundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "timepoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceLabel", "phase", "order", "independentAnimalCount", "totalCapturedNuclei", "capturedNeuronalNuclei", "sampleIds", "geoAccessions"],
+      "properties": {
+        "id": {"enum": ["uninjured", "1dpi", "1wpi", "3wpi", "6wpi"]},
+        "sourceLabel": {"type": "string", "minLength": 4},
+        "phase": {"enum": ["baseline", "acute", "subacute", "intermediate", "chronic"]},
+        "order": {"type": "integer", "minimum": 0, "maximum": 4},
+        "independentAnimalCount": {"const": 3},
+        "totalCapturedNuclei": {"type": "integer", "minimum": 1},
+        "capturedNeuronalNuclei": {"type": "integer", "minimum": 1},
+        "sampleIds": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string", "pattern": "^[A-Z]-[0-9]+$"}},
+        "geoAccessions": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string", "pattern": "^GSM[0-9]+$"}}
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "geoAccession", "geoTitle", "bioSample", "sraExperiment", "timepointId", "independentAnimalCount", "totalCapturedNuclei", "capturedNeuronalNuclei"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Z]-[0-9]+$"},
+        "geoAccession": {"type": "string", "pattern": "^GSM[0-9]+$"},
+        "geoTitle": {"type": "string", "minLength": 3},
+        "bioSample": {"type": "string", "pattern": "^SAMN[0-9]+$"},
+        "sraExperiment": {"type": "string", "pattern": "^SRX[0-9]+$"},
+        "timepointId": {"enum": ["uninjured", "1dpi", "1wpi", "3wpi", "6wpi"]},
+        "independentAnimalCount": {"const": 1},
+        "totalCapturedNuclei": {"type": "integer", "minimum": 1},
+        "capturedNeuronalNuclei": {"type": "integer", "minimum": 1}
+      }
+    },
+    "timepointCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timepointId", "count", "capturedNeuronalNucleiDenominator", "shareOfCapturedNeuronalNuclei"],
+      "properties": {
+        "timepointId": {"enum": ["uninjured", "1dpi", "1wpi", "3wpi", "6wpi"]},
+        "count": {"type": "integer", "minimum": 0},
+        "capturedNeuronalNucleiDenominator": {"type": "integer", "minimum": 1},
+        "shareOfCapturedNeuronalNuclei": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "sampleCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sampleId", "geoAccession", "count", "capturedNeuronalNucleiDenominator"],
+      "properties": {
+        "sampleId": {"type": "string", "pattern": "^[A-Z]-[0-9]+$"},
+        "geoAccession": {"type": "string", "pattern": "^GSM[0-9]+$"},
+        "count": {"type": "integer", "minimum": 0},
+        "capturedNeuronalNucleiDenominator": {"type": "integer", "minimum": 1}
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "order", "sourceLabel", "shortLabel", "sourceSubclass", "transmitterContext", "sourceAnnotationMethod", "rankedMarkerPanel", "projectUseClass", "capturedNeuronalNuclei", "timepointCounts", "sampleCounts", "evidenceBoundary", "missingEvidence"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^matson-2022:"},
+        "order": {"type": "integer", "minimum": 1, "maximum": 17},
+        "sourceLabel": {"type": "string", "minLength": 3},
+        "shortLabel": {"type": "string", "minLength": 2},
+        "sourceSubclass": {"type": "string", "minLength": 3},
+        "transmitterContext": {"enum": ["excitatory", "inhibitory", "motor_context"]},
+        "sourceAnnotationMethod": {"type": "string", "minLength": 30},
+        "rankedMarkerPanel": {"$ref": "#/$defs/rankedMarkerPanel"},
+        "projectUseClass": {"enum": ["source_local_spinal_neuron_population_local_vs_projection_unresolved", "motor_neuron_context_excluded_from_interneuron_count"]},
+        "capturedNeuronalNuclei": {"type": "integer", "minimum": 1},
+        "timepointCounts": {"type": "array", "minItems": 5, "maxItems": 5, "items": {"$ref": "#/$defs/timepointCount"}},
+        "sampleCounts": {"type": "array", "minItems": 15, "maxItems": 15, "items": {"$ref": "#/$defs/sampleCount"}},
+        "evidenceBoundary": {"type": "string", "minLength": 40},
+        "missingEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["cellCoordinates", "singleCellMorphology", "completeAxon", "sameCellProjectionStatus", "synapticConnectivity", "atlasRegistration", "biologicalPrevalence"],
+          "properties": {
+            "cellCoordinates": {"const": "not_available_in_processed_metadata"},
+            "singleCellMorphology": {"const": "not_measured"},
+            "completeAxon": {"const": "not_measured"},
+            "sameCellProjectionStatus": {"const": "not_established"},
+            "synapticConnectivity": {"const": "not_measured"},
+            "atlasRegistration": {"const": "not_established"},
+            "biologicalPrevalence": {"const": "not_established_from_captured_nucleus_counts"}
+          }
+        }
+      }
+    },
+    "rareStateEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "stateMarkers", "projectionAssociatedMarkers", "established", "sourceLocators", "boundary"],
+      "properties": {
+        "id": {"const": "matson-2022:GSE172167:RAG_cluster_23"},
+        "label": {"type": "string", "minLength": 20},
+        "stateMarkers": {"type": "array", "minItems": 8, "items": {"type": "string", "minLength": 2}},
+        "projectionAssociatedMarkers": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 2}},
+        "established": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 30}},
+        "sourceLocators": {"type": "array", "minItems": 3, "items": {"type": "string", "minLength": 10}},
+        "boundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "sourceLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "locator", "supports"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^MAT-"},
+        "locator": {"type": "string", "minLength": 20},
+        "supports": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 2}}
+      }
+    },
+    "rankedMarkerPanelProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceRole", "sourceSha256", "worksheet", "sourceRange", "sheetDimension", "sourceTypeCountInWorkbook", "modeledPopulationCount", "ranksPerPopulation", "rankedGeneRecordCount", "derivedPanelSha256", "digestCanonicalization", "scoreAvailable", "pValueAvailable", "boundary"],
+      "properties": {
+        "sourceRole": {"const": "rankedMarkerWorkbook"},
+        "sourceSha256": {"const": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74"},
+        "worksheet": {"const": "Sheet1"},
+        "sourceRange": {"const": "A1:Q21"},
+        "sheetDimension": {"const": "A1:AM43"},
+        "sourceTypeCountInWorkbook": {"const": 39},
+        "modeledPopulationCount": {"const": 17},
+        "ranksPerPopulation": {"const": 20},
+        "rankedGeneRecordCount": {"const": 340},
+        "derivedPanelSha256": {"const": "7b071d49c43816321fb24a3c31fb9282abf559d9b990a48549278410e85769a4"},
+        "digestCanonicalization": {"type": "string", "minLength": 80},
+        "scoreAvailable": {"const": false},
+        "pValueAvailable": {"const": false},
+        "boundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "rankedMarkerPanel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["markerColumnAlias", "worksheet", "headerCell", "rankCellRange", "rankedGenes", "sourceRankCount", "retainedRankCount", "scoreAvailable", "pValueAvailable", "sourceLocator", "sourceSha256", "boundary"],
+      "properties": {
+        "markerColumnAlias": {"type": "string", "minLength": 2},
+        "worksheet": {"const": "Sheet1"},
+        "headerCell": {"type": "string", "pattern": "^[A-Q]1$"},
+        "rankCellRange": {"type": "string", "pattern": "^[A-Q]2:[A-Q]21$"},
+        "rankedGenes": {
+          "type": "array",
+          "minItems": 20,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["rank", "gene", "sourceCell"],
+            "properties": {
+              "rank": {"type": "integer", "minimum": 1, "maximum": 20},
+              "gene": {"type": "string", "pattern": "^[A-Za-z0-9.-]+$"},
+              "sourceCell": {"type": "string", "pattern": "^[A-Q](?:[2-9]|1[0-9]|2[01])$"}
+            }
+          }
+        },
+        "sourceRankCount": {"const": 20},
+        "retainedRankCount": {"const": 20},
+        "scoreAvailable": {"const": false},
+        "pValueAvailable": {"const": false},
+        "sourceLocator": {"type": "string", "minLength": 20},
+        "sourceSha256": {"const": "ce390abbaf5a6b4ca376e03112a34141f105774918339c59a3614c98d20b6c74"},
+        "boundary": {"type": "string", "minLength": 80}
+      }
+    },
+    "sourceConflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "topic", "statements", "decision"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^MAT-CONFLICT-[0-9]{3}$"},
+        "topic": {"type": "string", "minLength": 8},
+        "statements": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string", "minLength": 20}},
+        "decision": {"type": "string", "minLength": 50}
+      }
+    },
+    "globalGap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["axis", "status", "reason"],
+      "properties": {
+        "axis": {"type": "string", "minLength": 5},
+        "status": {"enum": ["not_available", "not_measured", "not_established"]},
+        "reason": {"type": "string", "minLength": 30}
+      }
+    }
+  }
+}

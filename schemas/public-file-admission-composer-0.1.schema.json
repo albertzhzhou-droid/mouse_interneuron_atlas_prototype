@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-file-admission-composer-0.1.json",
+  "title": "OHRI local public file-admission manifest composer 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogReleaseId", "publicSourceIds", "supportedManifestFormats", "localRuntime", "releaseDecision", "nextQueueItems", "scientificBoundary"],
+  "properties": {
+    "releaseId": {"const": "ohri-public-file-admission-composer-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "publicSourceIds": {"const": ["PDS-SPINALJ-PROCESSED", "PDS-CANOGOMEZ-2026"]},
+    "supportedManifestFormats": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/manifestFormat"}},
+    "localRuntime": {"type": "object", "additionalProperties": false, "required": ["automaticRemoteAcquisition", "sourceFileUpload", "credentialStorage", "persistentStorage", "localHashCalculation", "output"], "properties": {"automaticRemoteAcquisition": {"const": false}, "sourceFileUpload": {"const": false}, "credentialStorage": {"const": false}, "persistentStorage": {"const": "none"}, "localHashCalculation": {"const": false}, "output": {"const": "browser_download_of_metadata_only_json"}}},
+    "releaseDecision": {"type": "object", "additionalProperties": false, "required": ["permitted", "blockedUntilCuratorGate"], "properties": {"permitted": {"type": "string", "minLength": 1}, "blockedUntilCuratorGate": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 1}}}},
+    "nextQueueItems": {"type": "array", "minItems": 3, "items": {"enum": ["UPG-001", "UPG-002", "UPG-014"]}},
+    "scientificBoundary": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "manifestFormat": {"type": "object", "additionalProperties": false, "required": ["formatVersion", "sourceId", "schemaPath", "manifestIdPattern", "fixedAdmissionDecision", "fixedLocalSha256", "requiredPublisherMetadata"], "properties": {"formatVersion": {"enum": ["0.7.0", "0.8.0"]}, "sourceId": {"enum": ["PDS-SPINALJ-PROCESSED", "PDS-CANOGOMEZ-2026"]}, "schemaPath": {"enum": ["schemas/public-file-admission-manifest-0.7.schema.json", "schemas/public-file-admission-manifest-0.8.schema.json"]}, "manifestIdPattern": {"type": "string", "minLength": 1}, "fixedAdmissionDecision": {"const": "metadata_only_not_downloaded_not_registered"}, "fixedLocalSha256": {"const": null}, "fixedPreprintStatus": {"const": "preprint_resource"}, "requiredPublisherMetadata": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 1}}}}
+  }
+}

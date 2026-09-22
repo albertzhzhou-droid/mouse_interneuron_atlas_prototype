@@ -1,0 +1,218 @@
+{
+  "manifestSchemaVersion": "2.22.0",
+  "releaseId": "ohri-mouse-interneuron-research-iteration-2.22.0",
+  "releaseDate": "2026-08-30",
+  "releaseStatus": "localhost_research_iteration",
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "version": "2.22.0-research.1"
+  },
+  "baseResearchRelease": {
+    "releaseId": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0",
+    "schemaVersion": "0.2.0",
+    "note": "The seven SCI evidence entities remain the frozen Research MVP 0.2 model. Iteration 2.22 adds an independent early-postnatal source-local Ronzano coordinate-point lane without joining it to anatomy, molecular types, morphologies, MICrONS, SCI states, or those entities."
+  },
+  "authoritativeInputs": [
+    {
+      "id": "researchRelease",
+      "scope": "project",
+      "path": "data/research-mvp-release-0.2.json",
+      "purpose": "Research MVP 0.2 evidence-entity payload",
+      "bytes": 30689,
+      "sha256": "bd63024da4467daf8e1a68110e883a8f917c4e36519bc2a47a0cc2e6ca245927"
+    },
+    {
+      "id": "researchReleaseSchema",
+      "scope": "project",
+      "path": "schemas/research-mvp-release.schema.json",
+      "purpose": "Research MVP 0.2 JSON Schema",
+      "bytes": 10197,
+      "sha256": "9c5ba4f56f4772734045394070790dc9ce8d1d3b87118914fd5f7a8229b47fff"
+    },
+    {
+      "id": "evidenceLedger",
+      "scope": "scientificAuthority",
+      "path": "02_EVIDENCE/EVIDENCE_LEDGER.md",
+      "purpose": "External authoritative evidence ledger",
+      "bytes": 27255,
+      "sha256": "afceda228b6d8644e47e4c44803cd49bf76045c59202e9d96777775e7c7e59cf"
+    },
+    {
+      "id": "sourceManifest",
+      "scope": "scientificAuthority",
+      "path": "01_LITERATURE/SOURCE_MANIFEST.tsv",
+      "purpose": "External authoritative source manifest",
+      "bytes": 5585,
+      "sha256": "994de35e45b481f1d218add4d73b4f0357e751c2474ee2ed03dc1821ee0833ab"
+    },
+    {
+      "id": "atlasAssetManifest",
+      "scope": "project",
+      "path": "public/data/allen_cord_20um_v3_0/asset-manifest.json",
+      "purpose": "Current bundled BrainGlobe atlas derivative manifest",
+      "bytes": 62846,
+      "sha256": "75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8"
+    },
+    {
+      "id": "morphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124/asset-manifest.json",
+      "purpose": "Bundled NeuroMorpho exemplar manifest",
+      "bytes": 11216,
+      "sha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647"
+    },
+    {
+      "id": "micronsObservedReferenceContract",
+      "scope": "project",
+      "path": "data/microns-observed-cell-nucleus-reference-0.1.json",
+      "purpose": "Exact MICrONS cell and source-linked nucleus component-limited admission contract",
+      "bytes": 9639,
+      "sha256": "9b5141072192b9d272c0babe097de380d2aebd98659c2c57745ee75d226b744c"
+    },
+    {
+      "id": "micronsObservedReferenceAssetManifest",
+      "scope": "project",
+      "path": "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "purpose": "Exact MICrONS source fragments and browser geometry asset receipts",
+      "bytes": 94901,
+      "sha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1"
+    },
+    {
+      "id": "ronzanoPremotorPositionContract",
+      "scope": "project",
+      "path": "data/ronzano-premotor-position-reference-0.1.json",
+      "purpose": "Exact Ronzano neonatal premotor coordinate-row admission contract",
+      "bytes": 38612,
+      "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d"
+    },
+    {
+      "id": "ronzanoPremotorPositionPayload",
+      "scope": "project",
+      "path": "public/data/ronzano_premotor_positions_v1/positions.json",
+      "purpose": "Exact source-local Ronzano XYZ rows across independent raw and normalized representations",
+      "bytes": 1274690,
+      "sha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3"
+    },
+    {
+      "id": "researchSourceRegistry",
+      "scope": "project",
+      "path": "data/research-source-registry-0.1.json",
+      "purpose": "Canonical source and record-set registry",
+      "bytes": 77336,
+      "sha256": "46c9a7b303db5b50a2c615b6766e5b406536a891e702b4ead48224611930b33c"
+    },
+    {
+      "id": "researchModelUpgradeRegistry",
+      "scope": "project",
+      "path": "data/research-model-upgrade-registry-0.1.json",
+      "purpose": "Deterministic research/model upgrade registry",
+      "bytes": 171338,
+      "sha256": "ff86fdb41edb7cc11d2913dcac1fb61c4417e34736be6c5e738753789049ae1b"
+    },
+    {
+      "id": "rightsLedger",
+      "scope": "project",
+      "path": "docs/RIGHTS_LEDGER.csv",
+      "purpose": "Current asset and source rights decisions",
+      "bytes": 3103,
+      "sha256": "9aa3d14ad15f3a5d5ee4ad3adb236beefea827af8475585e932529e2bcba8ddd"
+    },
+    {
+      "id": "packageLock",
+      "scope": "project",
+      "path": "package-lock.json",
+      "purpose": "Exact JavaScript dependency graph",
+      "bytes": 300345,
+      "sha256": "586adc34e86e54bc8ea2ef617ebdb9b385db91dccf1f7145623126d16950f0b1"
+    }
+  ],
+  "inputRoots": {
+    "project": {
+      "locator": ".",
+      "policy": "Only exact allowlisted project-relative paths are admitted."
+    },
+    "scientificAuthority": {
+      "locator": "../interneuron_sci_review",
+      "policy": "Only the evidence ledger and source manifest are admitted from the external authority root."
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "UTF-8 compact JSON with recursively lexicographically sorted object keys; array order preserved; top-level manifestContentSha256 omitted.",
+    "inputCount": 14
+  },
+  "registrations": {
+    "count": 0,
+    "records": []
+  },
+  "exactReferences": {
+    "micronsObservedCellNucleus": {
+      "contractId": "microns-observed-cell-nucleus-reference-0.1",
+      "contractReleaseId": "ohri-microns-observed-cell-nucleus-reference-0.1.0",
+      "authority": "OBS_EM_SEGMENTATION",
+      "sourceRelease": "MICrONS Phase 1 v185.4",
+      "sourceRegion": "visual cortex layer 2/3",
+      "cellRootId": "648518346349516051",
+      "nucleusId": "4309",
+      "samePhysicalObject": true,
+      "admittedComponentCount": 2,
+      "sourceFragmentCount": 97,
+      "vertexCount": 385064,
+      "triangleCount": 727788,
+      "manifestBytes": 94901,
+      "manifestSha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1",
+      "membraneClaim": false,
+      "spinalInterneuronIdentity": false,
+      "crossRegionJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "mitochondria",
+        "synapses",
+        "other_internal_organelles",
+        "molecular_subtype",
+        "atlas_placement"
+      ]
+    },
+    "ronzanoPremotorPositions": {
+      "contractReleaseId": "ohri-ronzano-premotor-position-reference-0.1.0",
+      "authority": "OBS_SOURCE_COORDINATE_ROW",
+      "sourceDoi": "10.7554/eLife.81976",
+      "sourceLifeStage": "P1-P2 injection; analysis 8-9 days later",
+      "sourceFileCount": 22,
+      "rawCoordinateRowCount": 14484,
+      "normalizedCoordinateRowCount": 17394,
+      "coordinateRowsAcrossIndependentRepresentations": 31878,
+      "sourceBundleBytes": 1046636,
+      "sourceBundleSha256": "2b8b75cae1a7cd559dc4b213923538c5a08b66ecd7a8dfec4b72a355aa8e7481",
+      "payloadBytes": 1274690,
+      "payloadSha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3",
+      "crossFramePointIdentityCount": 0,
+      "generatedCellGeometryCount": 0,
+      "atlasJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "soma_geometry",
+        "neurite_morphology",
+        "molecular_identity",
+        "synapse_roster",
+        "internal_organelles",
+        "adult_persistence",
+        "atlas_placement"
+      ]
+    }
+  },
+  "registrySummary": {
+    "canonicalSourcePackageCount": 23,
+    "researchUpgradeCount": 99,
+    "crossSourceIdentityCount": 0,
+    "registrationCount": 0
+  },
+  "scientificBoundaries": {
+    "selectedSpinalCellInternalStructure": "unavailable",
+    "micronsObservedReference": "The exact cell and nucleus are a visual-cortex cross-region reference. The outer segmentation boundary is not a molecular membrane. No anatomy, type, morphology, organelle, synapse or registration relationship to any spinal record is admitted.",
+    "ronzanoPremotorPositions": "Every primitive is one exact early-postnatal source coordinate row with no biological radius. Raw and normalized representations remain unpaired, source-local, measurement-forbidden, and unregistered; no soma, morphology, type, synapse, internal structure, adult placement, prevalence or census claim is admitted.",
+    "missingEvidence": "Missing or unavailable evidence generates zero primitives and is not biological absence.",
+    "measurementAllowed": false
+  },
+  "manifestContentSha256": "cccf44464d7ac85c25768f5942e7a2c761529739d4d83d46fc2c20aaa58dfa75"
+}

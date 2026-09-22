@@ -1,0 +1,728 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/haring-dorsal-horn-source-taxonomy-0.1.json",
+  "title": "Häring 2018 postnatal P17-P28 mouse dorsal-horn source-local taxonomy 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "releaseId",
+    "schemaVersion",
+    "releaseDate",
+    "datasetId",
+    "coordinateAuthority",
+    "source",
+    "scope",
+    "curationFlow",
+    "sourceDiscrepancies",
+    "sourceLocators",
+    "identificationRules",
+    "spatialEvidence",
+    "profiles",
+    "globalMissingEvidence",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "releaseId": { "const": "ohri-haring-dorsal-horn-source-taxonomy-0.1.0" },
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseDate": { "type": "string", "format": "date" },
+    "datasetId": { "const": "GSE103840" },
+    "coordinateAuthority": { "const": "SOURCE_LOCAL_TYPE_ONLY" },
+    "source": { "$ref": "#/$defs/source" },
+    "scope": { "$ref": "#/$defs/scope" },
+    "curationFlow": { "$ref": "#/$defs/curationFlow" },
+    "sourceDiscrepancies": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/sourceDiscrepancy" }
+    },
+    "sourceLocators": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": { "$ref": "#/$defs/sourceLocator" }
+    },
+    "identificationRules": {
+      "type": "array",
+      "minItems": 31,
+      "maxItems": 31,
+      "items": { "$ref": "#/$defs/identificationRule" }
+    },
+    "spatialEvidence": { "$ref": "#/$defs/spatialEvidence" },
+    "profiles": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "items": { "$ref": "#/$defs/profile" }
+    },
+    "globalMissingEvidence": { "$ref": "#/$defs/missingEvidence" },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 10,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 80 }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication", "geo", "supplementaryObjects"],
+      "properties": {
+        "publication": { "$ref": "#/$defs/publication" },
+        "geo": { "$ref": "#/$defs/geo" },
+        "supplementaryObjects": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/sourceObject" }
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "citation", "doi", "pmid", "articleUrl", "reuseStatus", "rightsBoundary"],
+      "properties": {
+        "id": { "const": "HARING-2018" },
+        "citation": { "type": "string", "minLength": 150 },
+        "doi": { "const": "10.1038/s41593-018-0141-1" },
+        "pmid": { "const": "29686262" },
+        "articleUrl": { "const": "https://www.nature.com/articles/s41593-018-0141-1" },
+        "reuseStatus": { "const": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED" },
+        "rightsBoundary": { "type": "string", "minLength": 150 }
+      }
+    },
+    "geo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "accession",
+        "sraStudyAccession",
+        "bioProjectAccession",
+        "recordUrl",
+        "overallDesign",
+        "sampleFrame",
+        "countMatrixAsset"
+      ],
+      "properties": {
+        "id": { "const": "GSE103840" },
+        "accession": { "const": "GSE103840" },
+        "sraStudyAccession": { "const": "SRP117627" },
+        "bioProjectAccession": { "const": "PRJNA407224" },
+        "recordUrl": { "const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103840" },
+        "overallDesign": { "type": "string", "minLength": 130 },
+        "sampleFrame": { "$ref": "#/$defs/sampleFrame" },
+        "countMatrixAsset": { "$ref": "#/$defs/countMatrixAsset" }
+      }
+    },
+    "sampleFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "speciesTaxonId",
+        "lifeStage",
+        "sourceAgeText",
+        "lifeStageCategory",
+        "ageNormalization",
+        "spinalRegion",
+        "sourceAnimalCount",
+        "selectionCohorts",
+        "cellSamplingCount",
+        "geoCellAccessionCount",
+        "geoCellAccessionUnit",
+        "biologicalReplicateDenominatorUnit",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "species": { "const": "Mus musculus" },
+        "speciesTaxonId": { "const": 10090 },
+        "lifeStage": { "const": "postnatal P17-P28" },
+        "sourceAgeText": { "const": "3-4 week mice" },
+        "lifeStageCategory": { "type": "null" },
+        "ageNormalization": { "type": "string", "minLength": 140 },
+        "spinalRegion": { "const": "dorsal horn" },
+        "sourceAnimalCount": { "const": 28 },
+        "selectionCohorts": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "selection", "animalCount"],
+            "properties": {
+              "id": { "enum": ["vgat-tdtomato-facs", "vglut2-egfp-facs", "unbiased-dissociation"] },
+              "selection": { "type": "string", "minLength": 20 },
+              "animalCount": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        "cellSamplingCount": { "const": 1545 },
+        "geoCellAccessionCount": { "const": 1545 },
+        "geoCellAccessionUnit": { "const": "single_cell_accessions" },
+        "biologicalReplicateDenominatorUnit": { "const": "source_animals" },
+        "interpretationBoundary": { "type": "string", "minLength": 180 }
+      }
+    },
+    "countMatrixAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "fileName",
+        "downloadUrl",
+        "bytes",
+        "sha256",
+        "worksheetName",
+        "ooxmlDimension",
+        "worksheetRowCountIncludingHeader",
+        "sourceDataRowCount",
+        "metadataRowCount",
+        "geneRowCount",
+        "worksheetColumnCount",
+        "cellIdColumnCount",
+        "cellColumnCount",
+        "uniqueCellIdCount",
+        "metadataRows",
+        "ageDaysRange",
+        "sexCodeCellCounts",
+        "strainCellCounts",
+        "exactRawClusterCellAssignmentAvailable",
+        "exactStandardNameCellAssignmentAvailable",
+        "standardLabelCountReconcilesToTable4",
+        "sourceFileBundled",
+        "derivedFactualMetadataBundled",
+        "reuseStatus",
+        "rightsBoundary",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "id": { "const": "GSE103840_MOLECULE_COUNTS" },
+        "fileName": { "const": "GSE103840_molecule_counts.xlsx" },
+        "downloadUrl": { "const": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE103nnn/GSE103840/suppl/GSE103840_molecule_counts.xlsx" },
+        "bytes": { "const": 123463759 },
+        "sha256": { "const": "0b4bbd1bb5ef1e80cfdf286761cf697183a8e6f11ca25c901ff4841ddfaf63de" },
+        "worksheetName": { "const": "moldata_C1_data_DHneurons_no_an" },
+        "ooxmlDimension": { "const": "A1:BGL24385" },
+        "worksheetRowCountIncludingHeader": { "const": 24385 },
+        "sourceDataRowCount": { "const": 24384 },
+        "metadataRowCount": { "const": 6 },
+        "geneRowCount": { "const": 24378 },
+        "worksheetColumnCount": { "const": 1546 },
+        "cellIdColumnCount": { "const": 1 },
+        "cellColumnCount": { "const": 1545 },
+        "uniqueCellIdCount": { "const": 1545 },
+        "metadataRows": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ageDays", "sexFemaleCode", "totalMolecules", "rawClusterName", "standardName", "strain"],
+          "properties": {
+            "ageDays": { "const": 2 },
+            "sexFemaleCode": { "const": 3 },
+            "totalMolecules": { "const": 4 },
+            "rawClusterName": { "const": 5 },
+            "standardName": { "const": 6 },
+            "strain": { "const": 7 }
+          }
+        },
+        "ageDaysRange": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "maximum", "unit", "denominatorUnit"],
+          "properties": {
+            "minimum": { "const": 17 },
+            "maximum": { "const": 28 },
+            "unit": { "const": "days" },
+            "denominatorUnit": { "const": "cell_columns" }
+          }
+        },
+        "sexCodeCellCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code0", "code1", "codeMeaning", "denominatorUnit"],
+          "properties": {
+            "code0": { "const": 1490 },
+            "code1": { "const": 55 },
+            "codeMeaning": { "const": "female=1" },
+            "denominatorUnit": { "const": "cell_columns" }
+          }
+        },
+        "strainCellCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["C57bl6", "vGatCreTdTomato", "vGlut2EGfp", "denominatorUnit"],
+          "properties": {
+            "C57bl6": { "const": 637 },
+            "vGatCreTdTomato": { "const": 537 },
+            "vGlut2EGfp": { "const": 371 },
+            "denominatorUnit": { "const": "cell_columns" }
+          }
+        },
+        "exactRawClusterCellAssignmentAvailable": { "const": true },
+        "exactStandardNameCellAssignmentAvailable": { "const": true },
+        "standardLabelCountReconcilesToTable4": { "const": true },
+        "sourceFileBundled": { "const": false },
+        "derivedFactualMetadataBundled": { "const": true },
+        "reuseStatus": { "const": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED" },
+        "rightsBoundary": { "type": "string", "minLength": 160 },
+        "interpretationBoundary": { "type": "string", "minLength": 180 }
+      }
+    },
+    "sourceObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "tableNumber",
+        "fileName",
+        "downloadUrl",
+        "bytes",
+        "sha256",
+        "sourceFileBundled",
+        "derivedFactualMetadataBundled",
+        "reuseStatus",
+        "rightsBoundary"
+      ],
+      "properties": {
+        "id": { "enum": ["HARING-2018-MOESM6", "HARING-2018-MOESM7", "HARING-2018-MOESM10", "HARING-2018-MOESM1"] },
+        "tableNumber": { "type": ["integer", "null"] },
+        "fileName": { "type": "string", "minLength": 20 },
+        "downloadUrl": { "type": "string", "format": "uri" },
+        "bytes": { "type": "integer", "minimum": 9000 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "sourceFileBundled": { "const": false },
+        "derivedFactualMetadataBundled": { "const": true },
+        "reuseStatus": { "const": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED" },
+        "rightsBoundary": { "type": "string", "minLength": 150 }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "lifeStage",
+        "lifeStageCategory",
+        "condition",
+        "spinalRegion",
+        "modality",
+        "reportedClusterCount",
+        "displayedProfileCount",
+        "reportedExcitatoryClusterCount",
+        "reportedInhibitoryClusterCount",
+        "sourceReportedCellCount",
+        "profileSamplingCountSum",
+        "samplingCountInterpretation",
+        "exactClusterCellAssignmentAvailable",
+        "exactStandardNameCellAssignmentAvailable",
+        "exactCrossSourceIdentityCount",
+        "projectRegistrationCount",
+        "projectConfirmedLocalInterneuronProfileCount",
+        "sourceLocalDorsalNeuronContextCount"
+      ],
+      "properties": {
+        "species": { "const": "Mus musculus" },
+        "lifeStage": { "const": "postnatal P17-P28" },
+        "lifeStageCategory": { "type": "null" },
+        "condition": { "const": "uninjured" },
+        "spinalRegion": { "const": "dorsal horn" },
+        "modality": { "const": "single-cell RNA sequencing" },
+        "reportedClusterCount": { "const": 30 },
+        "displayedProfileCount": { "const": 30 },
+        "reportedExcitatoryClusterCount": { "const": 15 },
+        "reportedInhibitoryClusterCount": { "const": 15 },
+        "sourceReportedCellCount": { "const": 1545 },
+        "profileSamplingCountSum": { "const": 1545 },
+        "samplingCountInterpretation": { "const": "SAMPLING_COUNT_ONLY_NOT_PREVALENCE" },
+        "exactClusterCellAssignmentAvailable": { "const": true },
+        "exactStandardNameCellAssignmentAvailable": { "const": true },
+        "exactCrossSourceIdentityCount": { "const": 0 },
+        "projectRegistrationCount": { "const": 0 },
+        "projectConfirmedLocalInterneuronProfileCount": { "const": 0 },
+        "sourceLocalDorsalNeuronContextCount": { "const": 30 }
+      }
+    },
+    "curationFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initialPostQcNeuronCount",
+        "excludedCellCount",
+        "finalCellCount",
+        "initialBackspinClusterCount",
+        "finalTypeCount",
+        "finalGlutCellCount",
+        "finalGabaCellCount",
+        "sourceLocatorIds",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "initialPostQcNeuronCount": { "const": 1639 },
+        "excludedCellCount": { "const": 94 },
+        "finalCellCount": { "const": 1545 },
+        "initialBackspinClusterCount": { "const": 43 },
+        "finalTypeCount": { "const": 30 },
+        "finalGlutCellCount": { "const": 767 },
+        "finalGabaCellCount": { "const": 778 },
+        "sourceLocatorIds": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 8 }
+        },
+        "interpretationBoundary": { "type": "string", "minLength": 180 }
+      }
+    },
+    "sourceDiscrepancy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "axis", "status", "sourceValues", "projectDecision", "sourceLocatorIds"],
+      "properties": {
+        "id": {
+          "enum": [
+            "glut7-count-conflict",
+            "library-platform-conflict",
+            "sex-code-comment-conflict",
+            "sra-tissue-summary-conflict"
+          ]
+        },
+        "axis": { "type": "string", "minLength": 12 },
+        "status": {
+          "enum": [
+            "retained_unresolved_source_conflict",
+            "retained_resolved_for_deposited_matrix_only",
+            "retained_source_metadata_conflict"
+          ]
+        },
+        "sourceValues": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "string", "minLength": 35 }
+        },
+        "projectDecision": { "type": "string", "minLength": 100 },
+        "sourceLocatorIds": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 8 }
+        }
+      }
+    },
+    "sourceLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceObjectId", "locator", "supportsFields", "evidenceStatus"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "sourceObjectId": { "type": "string", "minLength": 8 },
+        "locator": { "type": "string", "minLength": 80 },
+        "supportsFields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "evidenceStatus": { "enum": ["direct", "contextual", "absence_audit", "rights_boundary", "direct_and_discrepancy_audit"] }
+      }
+    },
+    "cellLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceObjectId", "sourceLocatorId", "sheet", "cell"],
+      "properties": {
+        "sourceObjectId": { "enum": ["HARING-2018-MOESM6", "HARING-2018-MOESM7", "HARING-2018-MOESM10"] },
+        "sourceLocatorId": { "enum": ["supplement-table-4-cluster-counts", "supplement-table-5-identification-rules", "supplement-table-8-specific-markers"] },
+        "sheet": { "type": "string", "minLength": 10 },
+        "cell": { "type": "string", "pattern": "^[A-Z]+[1-9][0-9]*$" }
+      }
+    },
+    "locatedString": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "locator"],
+      "properties": {
+        "value": { "type": "string", "minLength": 2 },
+        "locator": { "$ref": "#/$defs/cellLocator" }
+      }
+    },
+    "identificationRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "staining",
+        "rawCombination",
+        "components",
+        "sourceClusterName",
+        "targetProfileIds",
+        "targetMappingStatus"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^haring-2018:table5-row-(?:[5-9]|[12][0-9]|3[0-5])$" },
+        "staining": { "$ref": "#/$defs/locatedString" },
+        "rawCombination": { "$ref": "#/$defs/locatedString" },
+        "components": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["polarity", "gene"],
+            "properties": {
+              "polarity": { "enum": ["positive", "negative"] },
+              "gene": { "type": "string", "pattern": "^[A-Za-z0-9]+$" }
+            }
+          }
+        },
+        "sourceClusterName": { "$ref": "#/$defs/locatedString" },
+        "targetProfileIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^haring-2018:GSE103840:(?:Glut|Gaba)(?:[1-9]|1[0-5])$" }
+        },
+        "targetMappingStatus": { "enum": ["source_table_direct_rule", "source_table_combined_rule", "source_table_alternative_rule"] }
+      }
+    },
+    "marker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw", "gene", "qualifier", "locator"],
+      "properties": {
+        "raw": { "type": "string", "minLength": 2 },
+        "gene": { "type": "string", "pattern": "^[A-Za-z0-9]+$" },
+        "qualifier": { "type": ["string", "null"], "enum": ["high", "low", null] },
+        "locator": { "$ref": "#/$defs/cellLocator" }
+      }
+    },
+    "specificMarkerSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceTableLabel", "mainMarker", "coMarker1", "coMarker2"],
+      "properties": {
+        "sourceTableLabel": { "$ref": "#/$defs/locatedString" },
+        "mainMarker": { "$ref": "#/$defs/marker" },
+        "coMarker1": { "anyOf": [{ "$ref": "#/$defs/marker" }, { "type": "null" }] },
+        "coMarker2": { "anyOf": [{ "$ref": "#/$defs/marker" }, { "type": "null" }] }
+      }
+    },
+    "samplingCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "interpretation", "sourceLabelLocator", "sourceCountLocator"],
+      "properties": {
+        "value": { "type": "integer", "minimum": 1 },
+        "unit": { "const": "cells" },
+        "interpretation": { "const": "sampling_count_only" },
+        "sourceLabelLocator": { "$ref": "#/$defs/cellLocator" },
+        "sourceCountLocator": { "$ref": "#/$defs/cellLocator" }
+      }
+    },
+    "profileSpatialContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "sampledRegion",
+        "sourceAnimalCount",
+        "sectionCount",
+        "exactCellCoordinatesAvailable",
+        "atlasRegistrationAvailable",
+        "sourceLocatorIds",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "status": { "const": "source_reported_population_level_only" },
+        "sampledRegion": { "const": "cervical spinal cord" },
+        "sourceAnimalCount": { "const": 2 },
+        "sectionCount": { "const": 6 },
+        "exactCellCoordinatesAvailable": { "const": false },
+        "atlasRegistrationAvailable": { "const": false },
+        "sourceLocatorIds": { "const": ["supplement-figure-s7-spatial-context"] },
+        "interpretationBoundary": { "type": "string", "minLength": 160 }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceLocalLabel",
+        "table8SourceLocalLabel",
+        "profileOrdinal",
+        "regionClass",
+        "transmitterClass",
+        "molecularClass",
+        "projectUseClass",
+        "interneuronIdentityStatus",
+        "samplingCount",
+        "barcodeMetadataSummary",
+        "identificationRuleIds",
+        "specificMarkerSummary",
+        "spatialContext",
+        "missingEvidence",
+        "fieldLocatorIds"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^haring-2018:GSE103840:(?:Glut|Gaba)(?:[1-9]|1[0-5])$" },
+        "sourceLocalLabel": { "type": "string", "pattern": "^(?:Glut|Gaba)(?:[1-9]|1[0-5])$" },
+        "table8SourceLocalLabel": { "type": "string", "pattern": "^(?:Glut|GABA)(?:[1-9]|1[0-5])$" },
+        "profileOrdinal": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "regionClass": { "const": "dorsal" },
+        "transmitterClass": { "enum": ["excitatory", "inhibitory"] },
+        "molecularClass": { "enum": ["glutamatergic", "GABAergic"] },
+        "projectUseClass": { "const": "source_local_dorsal_neuron_type_context" },
+        "interneuronIdentityStatus": { "const": "unresolved_between_local_interneuron_and_projection_neuron" },
+        "samplingCount": { "$ref": "#/$defs/samplingCount" },
+        "barcodeMetadataSummary": { "$ref": "#/$defs/barcodeMetadataSummary" },
+        "identificationRuleIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^haring-2018:table5-row-(?:[5-9]|[12][0-9]|3[0-5])$" }
+        },
+        "specificMarkerSummary": { "$ref": "#/$defs/specificMarkerSummary" },
+        "spatialContext": { "$ref": "#/$defs/profileSpatialContext" },
+        "missingEvidence": { "$ref": "#/$defs/missingEvidence" },
+        "fieldLocatorIds": {
+          "const": [
+            "supplement-table-4-cluster-counts",
+            "supplement-table-5-identification-rules",
+            "supplement-table-8-specific-markers",
+            "supplement-figure-s7-spatial-context",
+            "study-missing-evidence-axes"
+          ]
+        }
+      }
+    },
+    "barcodeMetadataSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "rawClusterName",
+        "rawClusterNameContext",
+        "standardName",
+        "cellCount",
+        "ageDays",
+        "sexCodeCounts",
+        "strainCellCounts",
+        "sourceLocatorIds"
+      ],
+      "properties": {
+        "authority": { "const": "checksum_pinned_matrix_cell_column_aggregate" },
+        "rawClusterName": { "type": "string", "pattern": "^[A-Za-z0-9_]+$" },
+        "rawClusterNameContext": { "type": "string", "minLength": 20 },
+        "standardName": { "type": "string", "pattern": "^(?:Glut|Gaba)(?:[1-9]|1[0-5])$" },
+        "cellCount": { "type": "integer", "minimum": 1 },
+        "ageDays": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "maximum", "countsByAge", "denominatorUnit"],
+          "properties": {
+            "minimum": { "type": "integer", "minimum": 17, "maximum": 28 },
+            "maximum": { "type": "integer", "minimum": 17, "maximum": 28 },
+            "countsByAge": {
+              "type": "array",
+              "minItems": 6,
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["ageDays", "count"],
+                "properties": {
+                  "ageDays": { "type": "integer", "minimum": 17, "maximum": 28 },
+                  "count": { "type": "integer", "minimum": 1 }
+                }
+              }
+            },
+            "denominatorUnit": { "const": "cell_columns" }
+          }
+        },
+        "sexCodeCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["0", "1", "depositedCodeHeader", "denominatorUnit", "interpretationBoundary"],
+          "properties": {
+            "0": { "type": "integer", "minimum": 0 },
+            "1": { "type": "integer", "minimum": 0 },
+            "depositedCodeHeader": { "const": "sex(female=1)" },
+            "denominatorUnit": { "const": "cell_columns" },
+            "interpretationBoundary": { "type": "string", "minLength": 90 }
+          }
+        },
+        "strainCellCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["C57bl6", "vGat-Cre-tdTomato", "vGlut2-eGFP", "denominatorUnit"],
+          "properties": {
+            "C57bl6": { "type": "integer", "minimum": 0 },
+            "vGat-Cre-tdTomato": { "type": "integer", "minimum": 0 },
+            "vGlut2-eGFP": { "type": "integer", "minimum": 0 },
+            "denominatorUnit": { "const": "cell_columns" }
+          }
+        },
+        "sourceLocatorIds": { "const": ["geo-processed-matrix"] }
+      }
+    },
+    "spatialEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "sampledRegion",
+        "sourceAnimalCount",
+        "sectionCount",
+        "exactCellCoordinatesAvailable",
+        "atlasRegistrationAvailable",
+        "sameCellTranscriptSpatialLinkAvailable",
+        "sourceLocatorIds",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "authority": { "const": "source_reported_population_level" },
+        "sampledRegion": { "const": "cervical spinal cord" },
+        "sourceAnimalCount": { "const": 2 },
+        "sectionCount": { "const": 6 },
+        "exactCellCoordinatesAvailable": { "const": false },
+        "atlasRegistrationAvailable": { "const": false },
+        "sameCellTranscriptSpatialLinkAvailable": { "const": false },
+        "sourceLocatorIds": { "const": ["supplement-figure-s7-spatial-context"] },
+        "interpretationBoundary": { "type": "string", "minLength": 200 }
+      }
+    },
+    "missingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cellCoordinates",
+        "morphology",
+        "axonTrajectory",
+        "electrophysiology",
+        "projectionTargets",
+        "synapticConnectivity",
+        "sciContext",
+        "sameCellCrossModalLinks",
+        "atlasTransform"
+      ],
+      "properties": {
+        "cellCoordinates": { "const": "not_available" },
+        "morphology": { "const": "not_measured" },
+        "axonTrajectory": { "const": "not_measured" },
+        "electrophysiology": { "const": "not_measured" },
+        "projectionTargets": { "const": "not_measured" },
+        "synapticConnectivity": { "const": "not_measured" },
+        "sciContext": { "const": "not_measured" },
+        "sameCellCrossModalLinks": { "const": "not_established" },
+        "atlasTransform": { "const": "not_established" }
+      }
+    }
+  }
+}

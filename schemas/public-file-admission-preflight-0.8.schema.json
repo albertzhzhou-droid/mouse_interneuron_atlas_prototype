@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-file-admission-preflight-0.8.json",
+  "title": "OHRI Cano-Gomez specimen-aware file-admission preflight 0.8",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formatVersion", "preflightId", "schemaPath", "status", "sourceId", "automaticDownload", "credentialStorage", "candidateFilesAccepted", "rejectionRules", "nextQueueItem"],
+  "properties": {
+    "formatVersion": {"const": "0.8.0"},
+    "preflightId": {"const": "PFP-CANOGOMEZ-2026-08-18"},
+    "schemaPath": {"const": "schemas/public-file-admission-manifest-0.8.schema.json"},
+    "status": {"const": "awaiting_specimen_aware_object_manifest"},
+    "sourceId": {"const": "PDS-CANOGOMEZ-2026"},
+    "automaticDownload": {"const": false},
+    "credentialStorage": {"const": false},
+    "candidateFilesAccepted": {"const": 0},
+    "rejectionRules": {"type": "array", "minItems": 6, "items": {"type": "string", "minLength": 1}},
+    "nextQueueItem": {"const": "UPG-002B"}
+  }
+}

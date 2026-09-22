@@ -1,0 +1,707 @@
+{
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "runtime": {
+      "nodeRequirement": ">=22.13.0",
+      "packageLockVersion": 3,
+      "react": "19.2.8",
+      "reactDom": "19.2.8",
+      "three": "0.185.1",
+      "typescript": "5.9.3",
+      "vinext": "1.0.0-beta.6",
+      "vite": "8.2.1",
+      "wrangler": "4.123.0"
+    },
+    "version": "2.1.0"
+  },
+  "authoritativeInputs": [
+    {
+      "bytes": 30598,
+      "id": "researchRelease",
+      "path": "data/research-mvp-release-0.2.json",
+      "purpose": "Research MVP 0.2 release payload",
+      "scope": "project",
+      "sha256": "ad8f16b038b40ce6098f3b55272d9c70e0b68221ccb27da1ce598f5ed9c36453"
+    },
+    {
+      "bytes": 10197,
+      "id": "researchReleaseSchema",
+      "path": "schemas/research-mvp-release.schema.json",
+      "purpose": "Research MVP 0.2 JSON Schema",
+      "scope": "project",
+      "sha256": "9c5ba4f56f4772734045394070790dc9ce8d1d3b87118914fd5f7a8229b47fff"
+    },
+    {
+      "bytes": 29288,
+      "id": "publicDataCatalog",
+      "path": "data/public-data-catalog-0.4.json",
+      "purpose": "Public-data workbench source catalog and upgrade queue",
+      "scope": "project",
+      "sha256": "0f9582567009be72b1f9327b38c1d0745974f7f284c27eb01a56f96de3f0f516"
+    },
+    {
+      "bytes": 4134,
+      "id": "publicDataCatalogSchema",
+      "path": "schemas/public-data-catalog-0.4.schema.json",
+      "purpose": "Public-data workbench JSON Schema",
+      "scope": "project",
+      "sha256": "ac6028540dcb635e8d14c998aa62c2bf99fdfc2567ce5a6ae8a160d1f1cd0fe3"
+    },
+    {
+      "bytes": 34465,
+      "id": "russTaxonomyCrosswalk",
+      "path": "data/russ-harmonized-taxonomy-crosswalk-0.1.json",
+      "purpose": "Russ 2021 derived 69-population type-level taxonomy crosswalk",
+      "scope": "project",
+      "sha256": "dfa02071a2dbc73cfadeb86c751742775b79767c7bf7426ce9f60340bb13475b"
+    },
+    {
+      "bytes": 5158,
+      "id": "russTaxonomyCrosswalkSchema",
+      "path": "schemas/russ-harmonized-taxonomy-crosswalk-0.1.schema.json",
+      "purpose": "Russ 2021 taxonomy crosswalk JSON Schema",
+      "scope": "project",
+      "sha256": "272f1605718a67289d2badb84bc563ab813047511e5046d49f058ebf95347612"
+    },
+    {
+      "bytes": 5250,
+      "id": "russReconciliationDossier",
+      "path": "data/russ-reconciliation-dossier-0.1.json",
+      "purpose": "Russ 2021 provenance reconciliation dossier",
+      "scope": "project",
+      "sha256": "d5f8f990745f27f032a78f2b61b98962e8294f7081fc1c6714086e87c19501d5"
+    },
+    {
+      "bytes": 3707,
+      "id": "russReconciliationDossierSchema",
+      "path": "schemas/russ-reconciliation-dossier-0.1.schema.json",
+      "purpose": "Russ 2021 provenance reconciliation dossier JSON Schema",
+      "scope": "project",
+      "sha256": "27994a5758086a9b9486ae98368c06c6b92b414d4e7cfae87c80386a2d7ef067"
+    },
+    {
+      "bytes": 12679,
+      "id": "tabulaeConditionCatalog",
+      "path": "data/tabulae-condition-catalog-0.1.json",
+      "purpose": "Tabulae Paralytica metadata-only condition index",
+      "scope": "project",
+      "sha256": "bd2c83f1c50be35e35d050de82d2f12f509e6ef5c107e7f8477c80b77b199f98"
+    },
+    {
+      "bytes": 4233,
+      "id": "tabulaeConditionCatalogSchema",
+      "path": "schemas/tabulae-condition-catalog-0.1.schema.json",
+      "purpose": "Tabulae Paralytica metadata-only condition index JSON Schema",
+      "scope": "project",
+      "sha256": "85e49479a295dd83d9c98077bff5d03ffe9960dac0acc9dea40b72c6551f5f9a"
+    },
+    {
+      "bytes": 4770,
+      "id": "tabulaeSpatialLocalSession",
+      "path": "data/tabulae-spatial-local-session-0.1.json",
+      "purpose": "Tabulae Paralytica browser-local source-image session contract",
+      "scope": "project",
+      "sha256": "35e3205728f721960c52da12d5a1ff0fd27d9abb5249d3a50a4eae3044868769"
+    },
+    {
+      "bytes": 3663,
+      "id": "tabulaeSpatialLocalSessionSchema",
+      "path": "schemas/tabulae-spatial-local-session-0.1.schema.json",
+      "purpose": "Tabulae Paralytica browser-local source-image session JSON Schema",
+      "scope": "project",
+      "sha256": "0446c2122411c8024e3649e83f0d58f1f9f4bc0071bec8d3fb4d11554f49dc40"
+    },
+    {
+      "bytes": 2374,
+      "id": "tabulaeSpatialLocalComparison",
+      "path": "data/tabulae-spatial-local-comparison-0.1.json",
+      "purpose": "Tabulae Paralytica browser-local multi-session source-image comparison contract",
+      "scope": "project",
+      "sha256": "0f63739590e740ae9d10b343c3200efbe4094993113d33a85cd56bd12e73690f"
+    },
+    {
+      "bytes": 2699,
+      "id": "tabulaeSpatialLocalComparisonSchema",
+      "path": "schemas/tabulae-spatial-local-comparison-0.1.schema.json",
+      "purpose": "Tabulae Paralytica browser-local multi-session comparison JSON Schema",
+      "scope": "project",
+      "sha256": "f30c11c75e8bd5fc7e9906d2b6fbb7bda9eeaf01e43b21d959c9e75e32edffbe"
+    },
+    {
+      "bytes": 5911,
+      "id": "spinaljMetadataIntake",
+      "path": "data/public-source-intakes/spinalj-processed-metadata-audit-0.4.json",
+      "purpose": "SpinalJ public metadata-only intake record",
+      "scope": "project",
+      "sha256": "2583e13c2487b78b29a9f86d366dd5048e6c79b119cccb97a2a7a0a12c88a32e"
+    },
+    {
+      "bytes": 5144,
+      "id": "publicSourceIntakeSchema",
+      "path": "schemas/public-source-intake.schema.json",
+      "purpose": "Public-source metadata intake JSON Schema",
+      "scope": "project",
+      "sha256": "4fc06cce011488d508011acfbf15e299ca222dc6b89f214e266a049ff610c365"
+    },
+    {
+      "bytes": 12466,
+      "id": "publicSourceIntakeRegistry",
+      "path": "data/public-source-intake-registry-0.7.json",
+      "purpose": "Multi-source public metadata intake registry",
+      "scope": "project",
+      "sha256": "3c5de05dd4c482cffc4cff55673a399fac8c2d72096b8b4cb6ddf51f9b516b3a"
+    },
+    {
+      "bytes": 6098,
+      "id": "publicSourceIntakeRegistrySchema",
+      "path": "schemas/public-source-intake-registry-0.7.schema.json",
+      "purpose": "Multi-source public metadata intake registry JSON Schema",
+      "scope": "project",
+      "sha256": "98a531bb0f2ef1d34487afd0827367622be10ba3e20961f652ec4768a564244b"
+    },
+    {
+      "bytes": 2964,
+      "id": "fileAdmissionManifestSchema",
+      "path": "schemas/public-file-admission-manifest-0.7.schema.json",
+      "purpose": "Object-level public file-admission manifest JSON Schema",
+      "scope": "project",
+      "sha256": "6e5b2b57177d8377ceed45f3bfca00a07cf8286ec7dbb27969ead8a2de8291ca"
+    },
+    {
+      "bytes": 993,
+      "id": "fileAdmissionPreflight",
+      "path": "data/file-admission-preflight-0.7.json",
+      "purpose": "Zero-file, no-download object-level public file-admission preflight",
+      "scope": "project",
+      "sha256": "fe4697676cc06c972e6e76145f29ed12ad8081e8848b599039f812d65daf4122"
+    },
+    {
+      "bytes": 1088,
+      "id": "fileAdmissionPreflightSchema",
+      "path": "schemas/public-file-admission-preflight-0.7.schema.json",
+      "purpose": "Object-level public file-admission preflight JSON Schema",
+      "scope": "project",
+      "sha256": "88484c4de91b3a97bd19e10a1dd8f67f0ca8398bd78b99f35da9a0221c2c1423"
+    },
+    {
+      "bytes": 3677,
+      "id": "canoFileAdmissionManifestSchema",
+      "path": "schemas/public-file-admission-manifest-0.8.schema.json",
+      "purpose": "Specimen-aware Cano-Gomez file-admission manifest JSON Schema",
+      "scope": "project",
+      "sha256": "973a73eed30c6e542cef708bb4762d2f9a37d2695ec08edefd7905980270cea8"
+    },
+    {
+      "bytes": 1097,
+      "id": "canoFileAdmissionPreflight",
+      "path": "data/file-admission-preflight-0.8.json",
+      "purpose": "Zero-file specimen-aware Cano-Gomez admission preflight",
+      "scope": "project",
+      "sha256": "37d7e81c2f1e6760d1709c9f0c1e01d483fc775e534f4181383de1a25b57e671"
+    },
+    {
+      "bytes": 1060,
+      "id": "canoFileAdmissionPreflightSchema",
+      "path": "schemas/public-file-admission-preflight-0.8.schema.json",
+      "purpose": "Specimen-aware Cano-Gomez preflight JSON Schema",
+      "scope": "project",
+      "sha256": "bcce1d4bf3d914b772e8e19dc307ae5907f83ee9418537a16a8047873d895897"
+    },
+    {
+      "bytes": 2745,
+      "id": "fileAdmissionComposer",
+      "path": "data/public-file-admission-composer-0.1.json",
+      "purpose": "Browser-local metadata-only public file-admission manifest composer contract",
+      "scope": "project",
+      "sha256": "0e7c4a9880c81f79e09e11d0cf3ebda375e6a5ef50ce705faf063025a8663141"
+    },
+    {
+      "bytes": 2717,
+      "id": "fileAdmissionComposerSchema",
+      "path": "schemas/public-file-admission-composer-0.1.schema.json",
+      "purpose": "Browser-local metadata-only public file-admission manifest composer JSON Schema",
+      "scope": "project",
+      "sha256": "09559be192f047ade240aaf4b82586dc99d63aba48773e6c274f4c78fa417c28"
+    },
+    {
+      "bytes": 1492,
+      "id": "publicProvenanceCrate",
+      "path": "data/public-provenance-crate-0.1.json",
+      "purpose": "Browser-local detached RO-Crate 1.3 public-source provenance exporter contract",
+      "scope": "project",
+      "sha256": "7d41b7bf9d8c31bd2f24fda5f3ff4228f0cf8dadace56a52851082a04fd23234"
+    },
+    {
+      "bytes": 2022,
+      "id": "publicProvenanceCrateSchema",
+      "path": "schemas/public-provenance-crate-0.1.schema.json",
+      "purpose": "Detached RO-Crate public-source provenance exporter JSON Schema",
+      "scope": "project",
+      "sha256": "6b883b7a8dab17e79fad61f96e69c54e1fead0a8c75539718510eb2cde169fa1"
+    },
+    {
+      "bytes": 7072,
+      "id": "evidenceFeasibilityPlanner",
+      "path": "data/evidence-feasibility-planner-0.1.json",
+      "purpose": "Browser-local public-source research-question feasibility planner contract",
+      "scope": "project",
+      "sha256": "807ac4d698e159a8a5d53ed817f1c2699d4d8d9ec9e048522bfd67e73457a34f"
+    },
+    {
+      "bytes": 3050,
+      "id": "evidenceFeasibilityPlannerSchema",
+      "path": "schemas/evidence-feasibility-planner-0.1.schema.json",
+      "purpose": "Public-source research-question feasibility planner JSON Schema",
+      "scope": "project",
+      "sha256": "d9a41edc7f15452f34893bbb6801cff5a36c702c640b2572a06e8b5344bc3f55"
+    },
+    {
+      "bytes": 744,
+      "id": "curatorFeedbackContract",
+      "path": "data/curator-feedback-contract-2.1.json",
+      "purpose": "Local-only curator feedback import and receipt contract",
+      "scope": "project",
+      "sha256": "366c7fae974010bf61b458d18e18221f394778de7b16b794a64da3400c04d226"
+    },
+    {
+      "bytes": 1077,
+      "id": "curatorFeedbackContractSchema",
+      "path": "schemas/curator-feedback-contract-2.1.schema.json",
+      "purpose": "Local-only curator feedback contract JSON Schema",
+      "scope": "project",
+      "sha256": "4432a21803ced975dedb4de1a31683c3c129e7c656087727a3b2e1b9576f2be4"
+    },
+    {
+      "bytes": 799,
+      "id": "curatorAdjudicationContract",
+      "path": "data/curator-adjudication-contract-2.1.json",
+      "purpose": "Local-only independent-curator adjudication packet contract",
+      "scope": "project",
+      "sha256": "3ed93139afd5318283eb6ea773eac1ee728b8c02a7c594192ce9c10b8cf2b953"
+    },
+    {
+      "bytes": 1069,
+      "id": "curatorAdjudicationContractSchema",
+      "path": "schemas/curator-adjudication-contract-2.1.schema.json",
+      "purpose": "Local-only curator adjudication packet contract JSON Schema",
+      "scope": "project",
+      "sha256": "b2443e2e2b68bade6b4f2a32baf96a68bbc09394e2eeddeb40c430654a2da646"
+    },
+    {
+      "bytes": 27255,
+      "id": "evidenceLedger",
+      "path": "02_EVIDENCE/EVIDENCE_LEDGER.md",
+      "purpose": "External authoritative evidence ledger",
+      "scope": "scientificAuthority",
+      "sha256": "afceda228b6d8644e47e4c44803cd49bf76045c59202e9d96777775e7c7e59cf"
+    },
+    {
+      "bytes": 5585,
+      "id": "sourceManifest",
+      "path": "01_LITERATURE/SOURCE_MANIFEST.tsv",
+      "purpose": "External authoritative source manifest",
+      "scope": "scientificAuthority",
+      "sha256": "994de35e45b481f1d218add4d73b4f0357e751c2474ee2ed03dc1821ee0833ab"
+    },
+    {
+      "bytes": 6063,
+      "id": "atlasAssetManifest",
+      "path": "public/data/allen_cord_20um_v3_0/asset-manifest.json",
+      "purpose": "Bundled BrainGlobe atlas derivative manifest",
+      "scope": "project",
+      "sha256": "df41e08e3c3a802a7de96d68cd1cb5e150432ebde603599668f69b662ac78c14"
+    },
+    {
+      "bytes": 11216,
+      "id": "morphologyAssetManifest",
+      "path": "public/data/neuromorpho_release_8_6_124/asset-manifest.json",
+      "purpose": "Bundled NeuroMorpho exemplar manifest",
+      "scope": "project",
+      "sha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647"
+    },
+    {
+      "bytes": 2466,
+      "id": "rightsLedger",
+      "path": "docs/RIGHTS_LEDGER.csv",
+      "purpose": "Asset and source rights decisions",
+      "scope": "project",
+      "sha256": "945192c7a5ad179f6755f8d08f97e23566089fa685759c6be1160abae544a642"
+    },
+    {
+      "bytes": 300294,
+      "id": "packageLock",
+      "path": "package-lock.json",
+      "purpose": "Exact JavaScript dependency graph",
+      "scope": "project",
+      "sha256": "b798b999ab26ac56a93344543272b61ebaba20f37a486e70fde26f43234d536a"
+    }
+  ],
+  "curatorAdjudication": {
+    "adjudicationSchemaVersion": "1.0.0",
+    "contractInputId": "curatorAdjudicationContract",
+    "contractSchemaInputId": "curatorAdjudicationContractSchema",
+    "contractSchemaVersion": "2.1.0",
+    "distributionVersion": "2.1.0-curator.1",
+    "feedbackSchemaVersion": "2.1.0",
+    "maximumPacketBytes": 2097152,
+    "minimumIndependentCurators": 2,
+    "permittedDispositions": [
+      "defer_pending_evidence",
+      "return_for_revision",
+      "recommend_next_private_review"
+    ],
+    "readOnlyPacketImport": true,
+    "runtimeBoundary": "An adjudication packet compares independent local feedback records. It cannot change evidence, acquire data, authorize public deployment, establish biological truth, align source-local sessions, create or alter an external provenance package, or create a registration. Packet import is read-only and does not certify the original ZIP digest."
+  },
+  "curatorFeedback": {
+    "contractInputId": "curatorFeedbackContract",
+    "contractSchemaInputId": "curatorFeedbackContractSchema",
+    "contractSchemaVersion": "2.1.0",
+    "distributionVersion": "2.1.0-curator.1",
+    "feedbackSchemaVersion": "2.1.0",
+    "maximumFeedbackRecords": 10,
+    "maximumFileBytes": 2097152,
+    "minimumIndependentCuratorsForComparison": 2,
+    "optionalResponseKeyCount": 9,
+    "privacy": "Created locally; not uploaded.",
+    "requiredResponseKeyCount": 17,
+    "requiresReportedZipSha256": true,
+    "runtimeBoundary": "Local import and local receipt export only; feedback cannot alter evidence, acquire data, authorize a public release, or create a registration."
+  },
+  "inputRoots": {
+    "project": {
+      "locator": ".",
+      "policy": "Only exact allowlisted relative paths contained by the real project root are readable."
+    },
+    "scientificAuthority": {
+      "locator": "../interneuron_sci_review",
+      "policy": "Only EVIDENCE_LEDGER.md and SOURCE_MANIFEST.tsv at their exact allowlisted paths are readable."
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "UTF-8 compact JSON with recursively lexicographically sorted object keys; array order preserved; top-level manifestContentSha256 omitted.",
+    "inputCount": 40
+  },
+  "manifestContentSha256": "6ccb1ef67bff9b292c0da75524333268837c4b9babfd1fae8a400cb936bc4515",
+  "manifestSchemaVersion": "1.0.0",
+  "publicDataWorkbench": {
+    "adapterSourceCount": 0,
+    "bundledLocalSourceCount": 2,
+    "canoSpecimenPreflight": {
+      "automaticDownload": false,
+      "candidateFilesAccepted": 0,
+      "credentialStorage": false,
+      "formatVersion": "0.8.0",
+      "manifestSchemaInputId": "canoFileAdmissionManifestSchema",
+      "preflightId": "PFP-CANOGOMEZ-2026-08-18",
+      "preflightInputId": "canoFileAdmissionPreflight",
+      "preflightSchemaInputId": "canoFileAdmissionPreflightSchema",
+      "sourceId": "PDS-CANOGOMEZ-2026",
+      "status": "awaiting_specimen_aware_object_manifest"
+    },
+    "detachedProvenanceCrate": {
+      "inputId": "publicProvenanceCrate",
+      "localHashCalculation": false,
+      "networkRequests": false,
+      "packagingMode": "detached_metadata_document",
+      "persistence": "none",
+      "releaseId": "ohri-public-provenance-crate-0.1.0",
+      "roCrateVersion": "1.3",
+      "schemaInputId": "publicProvenanceCrateSchema",
+      "schemaVersion": "0.1.0",
+      "sourceFileDownload": false,
+      "sourceFileUpload": false,
+      "sourceIds": [
+        "PDS-BRAINGLOBE-ATLAS",
+        "PDS-NEUROMORPHO-SWC",
+        "PDS-SPINALJ-PROCESSED",
+        "PDS-CANOGOMEZ-2026",
+        "PDS-RUSS-2021",
+        "PDS-STARMAP-PLUS-2023",
+        "PDS-TABULAE-PARALYTICA"
+      ]
+    },
+    "evidenceFeasibilityPlanner": {
+      "axisCount": 11,
+      "inputId": "evidenceFeasibilityPlanner",
+      "networkRequests": false,
+      "output": "browser_download_of_feasibility_receipt_json",
+      "persistence": "none",
+      "releaseId": "ohri-evidence-feasibility-planner-0.1.0",
+      "routeCount": 7,
+      "schemaInputId": "evidenceFeasibilityPlannerSchema",
+      "schemaVersion": "0.1.0",
+      "selectedAxisLimit": 4,
+      "sourceFileDownload": false,
+      "sourceFileUpload": false,
+      "sourceIds": [
+        "PDS-BRAINGLOBE-ATLAS",
+        "PDS-NEUROMORPHO-SWC",
+        "PDS-SPINALJ-PROCESSED",
+        "PDS-CANOGOMEZ-2026",
+        "PDS-RUSS-2021",
+        "PDS-STARMAP-PLUS-2023",
+        "PDS-TABULAE-PARALYTICA"
+      ],
+      "unqualifiedAxisIds": [
+        "same_cell_multimodal_join",
+        "synaptic_connectivity",
+        "project_atlas_registration"
+      ]
+    },
+    "fileAdmissionComposer": {
+      "automaticRemoteAcquisition": false,
+      "credentialStorage": false,
+      "fixedAdmissionDecision": "metadata_only_not_downloaded_not_registered",
+      "fixedLocalSha256": null,
+      "inputId": "fileAdmissionComposer",
+      "localHashCalculation": false,
+      "manifestSchemaPaths": [
+        "schemas/public-file-admission-manifest-0.7.schema.json",
+        "schemas/public-file-admission-manifest-0.8.schema.json"
+      ],
+      "nextQueueItems": [
+        "UPG-001",
+        "UPG-002",
+        "UPG-014"
+      ],
+      "output": "browser_download_of_metadata_only_json",
+      "persistence": "none",
+      "releaseId": "ohri-public-file-admission-composer-0.1.0",
+      "schemaInputId": "fileAdmissionComposerSchema",
+      "schemaVersion": "0.1.0",
+      "sourceFileUpload": false,
+      "sourceIds": [
+        "PDS-SPINALJ-PROCESSED",
+        "PDS-CANOGOMEZ-2026"
+      ],
+      "supportedFormatVersions": [
+        "0.7.0",
+        "0.8.0"
+      ]
+    },
+    "fileAdmissionPreflight": {
+      "automaticDownload": false,
+      "candidateFilesAccepted": 0,
+      "credentialStorage": false,
+      "formatVersion": "0.7.0",
+      "localSha256AtPreflight": null,
+      "manifestSchemaInputId": "fileAdmissionManifestSchema",
+      "preflightId": "PFP-SPINALJ-PROCESSED-2026-08-18",
+      "preflightInputId": "fileAdmissionPreflight",
+      "preflightSchemaInputId": "fileAdmissionPreflightSchema",
+      "sourceChecksumAlgorithms": [
+        "sha1",
+        "sha256"
+      ],
+      "sourceId": "PDS-SPINALJ-PROCESSED",
+      "status": "awaiting_object_level_public_manifest"
+    },
+    "institutionalExperimentalDataUsed": false,
+    "intakeRegistry": {
+      "downloadedCandidateFileCount": 0,
+      "inputId": "publicSourceIntakeRegistry",
+      "intakeCount": 3,
+      "objectHeaderInventoryCount": 1,
+      "releaseId": "ohri-mouse-interneuron-public-source-intake-registry-0.7.0",
+      "schemaInputId": "publicSourceIntakeRegistrySchema",
+      "schemaVersion": "0.7.0"
+    },
+    "metadataAuditSourceCount": 1,
+    "metadataAuditedSourceCount": 4,
+    "networkAtReviewRuntime": false,
+    "publicSourceIntakeInputId": "spinaljMetadataIntake",
+    "publicSourceIntakeSchemaInputId": "publicSourceIntakeSchema",
+    "russReconciliationDossier": {
+      "authority": "PROVENANCE_RECONCILIATION_ONLY",
+      "correctionCount": 2,
+      "currentStatus": "reconciled_provenance_no_narrow_transfer",
+      "inputId": "russReconciliationDossier",
+      "reconciliationItemCount": 3,
+      "releaseId": "ohri-russ-reconciliation-dossier-0.1.0",
+      "schemaInputId": "russReconciliationDossierSchema",
+      "schemaVersion": "0.1.0",
+      "sourceTableBundled": false,
+      "sourceTableContentChangeStatedByCorrections": false,
+      "sourceTableSha256": "a45578c893998fae42acf781c4700d162249497476b0b81149302f49929fd2e0"
+    },
+    "russTaxonomyCrosswalk": {
+      "coordinateAuthority": "TYPE_LEVEL",
+      "exactPrototypeMappingCount": 0,
+      "groupCount": 8,
+      "inputId": "russTaxonomyCrosswalk",
+      "interneuronCandidateCount": 65,
+      "populationCount": 69,
+      "prototypeMappingCount": 7,
+      "releaseId": "ohri-russ-harmonized-taxonomy-crosswalk-0.1.0",
+      "schemaInputId": "russTaxonomyCrosswalkSchema",
+      "schemaVersion": "0.1.0",
+      "sourceTableBundled": false,
+      "sourceTableSha256": "a45578c893998fae42acf781c4700d162249497476b0b81149302f49929fd2e0"
+    },
+    "schemaVersion": "0.4.0",
+    "scientificInputPolicy": "public_sources_only",
+    "sourceCatalogInputId": "publicDataCatalog",
+    "sourceCatalogSchemaInputId": "publicDataCatalogSchema",
+    "sourceCount": 7,
+    "spinaljDownloadedCandidateFileCount": 0,
+    "spinaljMetadataAdmission": "metadata_audited_not_admitted",
+    "tabulaeConditionCatalog": {
+      "admissionDecision": "metadata_only_not_downloaded_not_bundled_not_registered",
+      "authority": "SOURCE_METADATA_CONDITION_INDEX_ONLY",
+      "bundledProcessedMetadataCount": 0,
+      "bundledSourceBodyCount": 0,
+      "conditionCount": 8,
+      "distinctSourceLabelCount": 93,
+      "inputId": "tabulaeConditionCatalog",
+      "releaseId": "ohri-tabulae-paralytica-condition-catalog-0.1.0",
+      "schemaInputId": "tabulaeConditionCatalogSchema",
+      "schemaVersion": "0.1.0",
+      "sourceCount": 2
+    },
+    "tabulaeSpatialLocalComparison": {
+      "authority": "MULTI_SESSION_SOURCE_LOCAL_2D_ONLY",
+      "automaticRemoteAcquisition": false,
+      "baseSessionReleaseId": "ohri-tabulae-paralytica-spatial-local-session-0.1.0",
+      "crossSectionTransform": "none",
+      "displayMode": "side_by_side_source_local_2d_only",
+      "inputId": "tabulaeSpatialLocalComparison",
+      "interSectionGeometry": "not_established",
+      "maximumConcurrentSessions": 4,
+      "persistence": "none",
+      "quantitativeComparison": "not_permitted",
+      "releaseId": "ohri-tabulae-paralytica-spatial-local-comparison-0.1.0",
+      "schemaInputId": "tabulaeSpatialLocalComparisonSchema",
+      "schemaVersion": "0.1.0",
+      "sectionOrderAuthority": "not_established_from_section_labels",
+      "sourceFilesBundled": false,
+      "upload": false
+    },
+    "tabulaeSpatialLocalSession": {
+      "archiveBytes": 135208960,
+      "archiveStableName": "GSE234774_RAW.tar",
+      "assetRightsDecision": "unresolved_not_bundled",
+      "authority": "SOURCE_LOCAL_2D_SESSION_ONLY",
+      "automaticRemoteAcquisition": false,
+      "declaredSampleCount": 24,
+      "inputId": "tabulaeSpatialLocalSession",
+      "persistence": "none",
+      "releaseId": "ohri-tabulae-paralytica-spatial-local-session-0.1.0",
+      "schemaInputId": "tabulaeSpatialLocalSessionSchema",
+      "schemaVersion": "0.1.0",
+      "sourceChecksum": null,
+      "upload": false
+    },
+    "upgradeQueueCount": 15
+  },
+  "registrations": {
+    "count": 0,
+    "records": []
+  },
+  "releaseDate": "2026-08-18",
+  "releaseId": "ohri-mouse-interneuron-public-data-workbench-2.1.0",
+  "releaseStatus": "localhost_candidate",
+  "researchModel": {
+    "claimCount": 8,
+    "conditionCount": 13,
+    "entityCount": 7,
+    "evidenceContextsMayDifferFromModelGeometry": true,
+    "extent": "C1-S3",
+    "isCellCensus": false,
+    "isClinicalModel": false,
+    "isConnectome": false,
+    "lifeStage": "adult",
+    "populationEntityCount": 5,
+    "schemaVersion": "0.2.0",
+    "sourceCount": 7,
+    "spatialContract": {
+      "coordinateSpace": "prototype_schematic_v0",
+      "entityGeometryStatus": "SYN",
+      "entityPathStatus": "SCH",
+      "measurementAllowed": false,
+      "units": "schematic_unit"
+    },
+    "species": "Mus musculus",
+    "stateOverlayCount": 2,
+    "taxon": "NCBITaxon:10090"
+  },
+  "scientificBoundaries": {
+    "atlasGeometry": "Atlas planes and contours are inferred reference geometry (INF), not entity placements and not valid for measurement.",
+    "entityGeometry": "All seven evidence entities remain synthetic (SYN) and their paths schematic (SCH).",
+    "intendedUse": "Localhost public-data workbench candidate only; not a validated scientific atlas product.",
+    "measurementAllowed": false,
+    "morphologyGeometry": "Five phenotype-stratified NeuroMorpho exemplars are observed (OBS) only in their source-local frames; they are not representative and are not linked to the seven evidence entities.",
+    "registration": "There are 0 registrations; every exemplar is unregistered and has no atlas transform or registration error estimate.",
+    "scientificInputPolicy": "All scientific inputs are public digital sources only; no OHRI internal experimental data, physical specimens or unpublished institutional records are required.",
+    "scope": "This release is not a complete interneuron census, connectome, clinical model, treatment recommendation, or claim of human cell-type causality."
+  },
+  "spatialAssets": {
+    "atlas": {
+      "assetId": "allen_cord_20um:3.0:ohri-sampled-reference-v1",
+      "atlas": "allen_cord_20um",
+      "atlasApiVersion": "3.0.1",
+      "atlasVersion": "3.0",
+      "citation": "Fiederling et al. 2021; doi:10.1016/j.crmeth.2021.100074; dataset doi:10.17632/4rrggzv5d5.1; BrainGlobe Atlas API.",
+      "componentVersions": {
+        "annotation": "2021",
+        "coordinateSpace": "2021",
+        "template": "2021",
+        "terminology": "2021"
+      },
+      "coordinateSpaceId": "allen_spinal_cord-adult-mouse-space:2021",
+      "displayTransformUse": "visualization_only_not_cell_registration",
+      "geometryStatus": "INF",
+      "license": "CC BY 4.0 original dataset; BrainGlobe AWS distribution CC0",
+      "lifeStage": "adult",
+      "manifestInputId": "atlasAssetManifest",
+      "manifestSha256": "df41e08e3c3a802a7de96d68cd1cb5e150432ebde603599668f69b662ac78c14",
+      "orientation": "asr",
+      "registrationError": {
+        "missingReason": "not_applicable",
+        "value": null
+      },
+      "resolutionUmZyx": [
+        20,
+        10,
+        10
+      ],
+      "sampledPlaneCount": 15,
+      "shapeZyx": [
+        1567,
+        253,
+        322
+      ],
+      "species": "Mus musculus"
+    },
+    "morphology": {
+      "assetSetId": "neuromorpho:8.6.124:adult-mouse-spinal-interneuron-exemplars-v1",
+      "atlasTransformCount": 0,
+      "coordinateFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "exemplarCount": 5,
+      "exemplarNeuronIds": [
+        104003,
+        108974,
+        109005,
+        242822,
+        260150
+      ],
+      "geometryStatus": "OBS",
+      "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use",
+      "lifeStage": "adult",
+      "manifestInputId": "morphologyAssetManifest",
+      "manifestSha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647",
+      "queryTotalAtSnapshot": 142,
+      "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&fq=age_classification:adult&size=500&sort=neuron_id,asc",
+      "registrationStatus": "unregistered",
+      "repositoryRelease": "8.6.124",
+      "requiredCitation": [
+        "NeuroMorpho.Org, RRID:SCR_002145",
+        "Tecuatl et al. 2024, doi:10.1096/fba.2024-00048",
+        "Original paper recorded for each morphology"
+      ],
+      "selection": "Five phenotype-stratified examples selected from the official API query for adult mouse spinal-cord interneurons; not a representative sample.",
+      "species": "Mus musculus"
+    }
+  }
+}

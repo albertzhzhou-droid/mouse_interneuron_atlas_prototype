@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/tabulae-spatial-local-comparison-0.1.json",
+  "title": "Tabulae Paralytica multi-session source-local spatial comparison 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogReleaseId", "baseSessionReleaseId", "reviewDate", "scientificInputPolicy", "purpose", "authority", "comparison", "localRuntime", "releaseDecision"],
+  "properties": {
+    "releaseId": {"const": "ohri-tabulae-paralytica-spatial-local-comparison-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "baseSessionReleaseId": {"const": "ohri-tabulae-paralytica-spatial-local-session-0.1.0"},
+    "reviewDate": {"type": "string", "format": "date"},
+    "scientificInputPolicy": {"const": "public_sources_only"},
+    "purpose": {"type": "string", "minLength": 1},
+    "authority": {"const": "MULTI_SESSION_SOURCE_LOCAL_2D_ONLY"},
+    "comparison": {"type": "object", "additionalProperties": false, "required": ["maximumConcurrentSessions", "sectionSelection", "displayMode", "crossSectionTransform", "sectionOrderAuthority", "interSectionGeometry", "quantitativeComparison"], "properties": {
+      "maximumConcurrentSessions": {"const": 4},
+      "sectionSelection": {"const": "unique_declared_section_per_active_session"},
+      "displayMode": {"const": "side_by_side_source_local_2d_only"},
+      "crossSectionTransform": {"const": "none"},
+      "sectionOrderAuthority": {"const": "not_established_from_section_labels"},
+      "interSectionGeometry": {"const": "not_established"},
+      "quantitativeComparison": {"const": "not_permitted"}
+    }},
+    "localRuntime": {"type": "object", "additionalProperties": false, "required": ["automaticRemoteAcquisition", "upload", "persistence", "sourceFilesBundled", "receiptMayContain", "receiptMustExclude"], "properties": {
+      "automaticRemoteAcquisition": {"const": false}, "upload": {"const": false}, "persistence": {"const": "none"}, "sourceFilesBundled": {"const": false},
+      "receiptMayContain": {"const": ["declared_section_identity", "file_names", "local_sha256", "parser_counts", "scale_factors"]},
+      "receiptMustExclude": {"const": ["source_image", "source_coordinate_rows", "source_expression_data"]}
+    }},
+    "releaseDecision": {"type": "object", "additionalProperties": false, "required": ["permitted", "forbidden", "nextGate"], "properties": {
+      "permitted": {"type": "string", "minLength": 1}, "forbidden": {"type": "string", "minLength": 1}, "nextGate": {"type": "string", "minLength": 1}
+    }}
+  }
+}

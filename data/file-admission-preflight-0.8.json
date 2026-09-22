@@ -1,0 +1,19 @@
+{
+  "formatVersion": "0.8.0",
+  "preflightId": "PFP-CANOGOMEZ-2026-08-18",
+  "schemaPath": "schemas/public-file-admission-manifest-0.8.schema.json",
+  "status": "awaiting_specimen_aware_object_manifest",
+  "sourceId": "PDS-CANOGOMEZ-2026",
+  "automaticDownload": false,
+  "credentialStorage": false,
+  "candidateFilesAccepted": 0,
+  "rejectionRules": [
+    "Reject any object without a stable public URL, byte count, format, source checksum and recorded file-level rights decision.",
+    "Reject any object that references an undeclared specimen or lacks specimen ID, sex, spinal region, assay or source frame.",
+    "Reject coordinate unit, axis order, axis direction, origin or pixel-or-voxel scale only when an explicit missing reason is retained.",
+    "Reject any generic manifest that omits the preprint status or presents author-space coordinates as BrainGlobe space.",
+    "Reject any non-null local SHA-256 because this preflight does not acquire a file.",
+    "Reject any manifest that asserts downloaded, bundled, transformed or registered status."
+  ],
+  "nextQueueItem": "UPG-002B"
+}

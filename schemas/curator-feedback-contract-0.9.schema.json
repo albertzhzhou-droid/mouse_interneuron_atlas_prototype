@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/curator-feedback-contract-0.9.json",
+  "title": "OHRI curator feedback contract 0.9",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "feedbackSchemaVersion", "distributionVersion", "workbenchReleaseId", "maximumFileBytes", "maximumFeedbackRecords", "minimumIndependentCuratorsForComparison", "privacy", "requiredResponseKeys", "optionalResponseKeys"],
+  "properties": {
+    "schemaVersion": {"const": "0.9.0"},
+    "feedbackSchemaVersion": {"const": "1.0.0"},
+    "distributionVersion": {"const": "0.9.0-curator.1"},
+    "workbenchReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.9.0"},
+    "maximumFileBytes": {"const": 2097152},
+    "maximumFeedbackRecords": {"const": 10},
+    "minimumIndependentCuratorsForComparison": {"const": 2},
+    "privacy": {"const": "Created locally; not uploaded."},
+    "requiredResponseKeys": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "optionalResponseKeys": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/evidence-aware-3d-representation-contract-0.5.schema.json",
+  "title": "Evidence-aware 3D representation contract 0.5",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "releaseId", "releasedAt", "purpose", "buildInputs", "representationStates", "routes", "runtimeMetadataRequirements", "globalInvariants"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "projectReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/(project/data|data)/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["routeId", "label", "sourceReceipt", "sourceVersion", "sourceFrame", "stableIdAuthority", "representationStateIds", "renderedPrimitivePolicy", "cellMorphologyClaim", "missingLayerPolicy", "crossSourceIdentityCount", "projectRegistrationCount"],
+      "properties": {
+        "routeId": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "sourceReceipt": { "$ref": "#/$defs/projectReceipt" },
+        "sourceVersion": { "type": "string", "minLength": 1 },
+        "sourceFrame": { "type": "string", "minLength": 1 },
+        "stableIdAuthority": { "type": "string", "minLength": 1 },
+        "representationStateIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["OBS_RAW_TEXTURE", "OBS_SEGMENTED_SURFACE", "OBS_SKELETON", "OBS_POINT", "DER_RADIUS_SURFACE", "INF_REFERENCE_GEOMETRY", "SCH_PATH", "SYN_DATA_GLYPH", "UNAVAILABLE"] }
+        },
+        "renderedPrimitivePolicy": { "type": "string", "minLength": 1 },
+        "cellMorphologyClaim": { "type": "boolean" },
+        "missingLayerPolicy": { "const": "zero_primitives" },
+        "crossSourceIdentityCount": { "const": 0 },
+        "projectRegistrationCount": { "const": 0 }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.5.0" },
+    "contractId": { "const": "evidence-aware-3d-representation-contract-0.5" },
+    "releaseId": { "const": "ohri-evidence-aware-3d-representation-contract-0.5.0" },
+    "releasedAt": { "const": "2026-08-31" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "buildInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseContract", "premotorComparisonRoutePack"],
+      "properties": {
+        "baseContract": { "$ref": "#/$defs/projectReceipt" },
+        "premotorComparisonRoutePack": { "$ref": "#/$defs/projectReceipt" }
+      }
+    },
+    "representationStates": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": { "type": "object", "minProperties": 5 }
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": { "$ref": "#/$defs/route" }
+    },
+    "runtimeMetadataRequirements": { "type": "array", "minItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "globalInvariants": { "type": "array", "minItems": 20, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+  }
+}

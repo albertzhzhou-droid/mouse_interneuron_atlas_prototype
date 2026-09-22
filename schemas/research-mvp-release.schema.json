@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-mvp-release-0.2.schema.json",
+  "title": "OHRI mouse spinal interneuron Research MVP candidate release",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "releaseStatus",
+    "scope",
+    "controlledVocabularies",
+    "spatialContract",
+    "assets",
+    "registrations",
+    "sources",
+    "entities",
+    "claims",
+    "conditions",
+    "evidenceStatements"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "0.2.0"},
+    "releaseId": {"type": "string", "minLength": 1},
+    "releaseStatus": {"const": "localhost_candidate"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modelSpecies", "modelTaxon", "modelLifeStage", "modelExtent", "entityCount", "populationEntityCount", "stateOverlayCount", "evidenceContextsMayDifferFromModelGeometry", "isCellCensus", "isConnectome", "isClinicalModel"],
+      "properties": {
+        "modelSpecies": {"const": "Mus musculus"},
+        "modelTaxon": {"const": "NCBITaxon:10090"},
+        "modelLifeStage": {"const": "adult"},
+        "modelExtent": {"const": "C1-S3"},
+        "entityCount": {"const": 7},
+        "populationEntityCount": {"const": 5},
+        "stateOverlayCount": {"const": 2},
+        "evidenceContextsMayDifferFromModelGeometry": {"const": true},
+        "isCellCensus": {"const": false},
+        "isConnectome": {"const": false},
+        "isClinicalModel": {"const": false}
+      }
+    },
+    "controlledVocabularies": {
+      "type": "object",
+      "required": ["spatialStatus", "missingReason", "causalGrade"],
+      "properties": {
+        "spatialStatus": {"type": "array", "items": {"enum": ["OBS", "REG", "INF", "SCH", "SYN"]}, "uniqueItems": true},
+        "missingReason": {"type": "array", "items": {"$ref": "#/$defs/missingReason"}, "uniqueItems": true},
+        "causalGrade": {"type": "array", "items": {"enum": ["ASSOC", "NEC", "SUF", "DEP", "FEAS"]}, "uniqueItems": true}
+      }
+    },
+    "spatialContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entityGeometryStatus", "entityPathStatus", "coordinateSpace", "units", "measurementAllowed", "activeStatuses", "warning"],
+      "properties": {
+        "entityGeometryStatus": {"const": "SYN"},
+        "entityPathStatus": {"const": "SCH"},
+        "coordinateSpace": {"const": "prototype_schematic_v0"},
+        "units": {"const": "schematic_unit"},
+        "measurementAllowed": {"const": false},
+        "activeStatuses": {"type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{"const": "SYN"}, {"const": "SCH"}], "items": false},
+        "warning": {"type": "string", "minLength": 1}
+      }
+    },
+    "assets": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/asset"}},
+    "registrations": {"type": "array", "maxItems": 0},
+    "sources": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/source"}},
+    "entities": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/entity"}},
+    "claims": {"type": "array", "minItems": 8, "items": {"$ref": "#/$defs/claim"}},
+    "conditions": {"type": "array", "minItems": 13, "items": {"$ref": "#/$defs/condition"}},
+    "evidenceStatements": {"type": "array", "minItems": 31, "items": {"$ref": "#/$defs/evidenceStatement"}}
+  },
+  "$defs": {
+    "missingReason": {
+      "enum": ["not_reported", "not_measured", "asset_unavailable", "not_applicable", "out_of_scope", "pending_curation"]
+    },
+    "missingValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "missingReason"],
+      "properties": {
+        "value": {"type": "null"},
+        "missingReason": {"$ref": "#/$defs/missingReason"}
+      }
+    },
+    "knownOrMissingString": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {"$ref": "#/$defs/missingValue"}
+      ]
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "assetType", "candidateAccession", "importStatus", "bundled", "exactVersion", "checksum", "rightsDecision", "nativeCoordinateSpace", "spatialStatus", "note"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "assetType": {"enum": ["reference_atlas", "swc_morphology"]},
+        "candidateAccession": {"$ref": "#/$defs/knownOrMissingString"},
+        "importStatus": {"enum": ["not_imported", "imported_local"]},
+        "bundled": {"type": "boolean"},
+        "exactVersion": {"$ref": "#/$defs/knownOrMissingString"},
+        "checksum": {"$ref": "#/$defs/knownOrMissingString"},
+        "rightsDecision": {"$ref": "#/$defs/knownOrMissingString"},
+        "nativeCoordinateSpace": {"$ref": "#/$defs/knownOrMissingString"},
+        "spatialStatus": {
+          "oneOf": [
+            {"enum": ["OBS", "REG", "INF", "SCH", "SYN"]},
+            {"$ref": "#/$defs/missingValue"}
+          ]
+        },
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "ledgerId", "citation", "doi", "sourceUrl", "accessStatus"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^SRC-P[0-9]{2}$"},
+        "ledgerId": {"type": "string", "pattern": "^P[0-9]{2}$"},
+        "citation": {"type": "string", "minLength": 1},
+        "doi": {"type": "string", "pattern": "^10\\."},
+        "sourceUrl": {"type": "string", "format": "uri"},
+        "accessStatus": {"type": "string", "minLength": 1}
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "pathStatus", "schematicPosition", "measurementAllowed"],
+      "properties": {
+        "status": {"const": "SYN"},
+        "pathStatus": {"const": "SCH"},
+        "schematicPosition": {"type": "array", "minItems": 3, "maxItems": 3, "prefixItems": [{"type": "number"}, {"type": "number"}, {"type": "number"}], "items": false},
+        "measurementAllowed": {"const": false}
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "entityKind", "classificationAxes", "transmitter", "markers", "segmentGroup", "claimIds", "geometry"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "entityKind": {"type": "string", "minLength": 1},
+        "classificationAxes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "transmitter": {"enum": ["excitatory", "inhibitory", "mixed_or_unspecified", "state_dependent"]},
+        "markers": {"type": "array", "items": {"type": "string"}},
+        "segmentGroup": {"enum": ["cervical", "thoracic", "lumbar", "sacral"]},
+        "claimIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "geometry": {"$ref": "#/$defs/geometry"}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "entityIds", "sourceIds", "conditionIds", "causalGrades", "endpoint", "statement", "statementIds"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "entityIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "sourceIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "conditionIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "causalGrades": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["ASSOC", "NEC", "SUF", "DEP", "FEAS"]}},
+        "endpoint": {"enum": ["locomotion", "breathing", "spasm"]},
+        "statement": {"type": "string", "minLength": 1},
+        "humanCausalEvidence": {"type": "boolean"},
+        "statementIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceId", "species", "lifeStage", "strain", "sex", "injuryLevel", "injuryType", "completeness", "phase", "intervention", "comparator", "experimentalUnit", "sampleSize", "causalTest", "endpoint", "measurement", "resultSummary", "statementIds"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "sourceId": {"type": "string", "minLength": 1},
+        "species": {"type": "string", "minLength": 1},
+        "lifeStage": {"enum": ["adult", "neonatal"]},
+        "strain": {"$ref": "#/$defs/knownOrMissingString"},
+        "sex": {"$ref": "#/$defs/knownOrMissingString"},
+        "injuryLevel": {"$ref": "#/$defs/knownOrMissingString"},
+        "injuryType": {"$ref": "#/$defs/knownOrMissingString"},
+        "completeness": {"$ref": "#/$defs/knownOrMissingString"},
+        "phase": {"$ref": "#/$defs/knownOrMissingString"},
+        "intervention": {"$ref": "#/$defs/knownOrMissingString"},
+        "comparator": {"$ref": "#/$defs/knownOrMissingString"},
+        "experimentalUnit": {"$ref": "#/$defs/knownOrMissingString"},
+        "sampleSize": {"$ref": "#/$defs/knownOrMissingString"},
+        "causalTest": {"$ref": "#/$defs/knownOrMissingString"},
+        "endpoint": {"enum": ["locomotion", "breathing", "spasm"]},
+        "measurement": {"$ref": "#/$defs/knownOrMissingString"},
+        "resultSummary": {"type": "string", "minLength": 1},
+        "humanCausalEvidence": {"type": "boolean"},
+        "statementIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "evidenceStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceId", "kind", "text"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "sourceId": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["negative_finding", "null_result", "boundary", "counterfinding", "limitation"]},
+        "text": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

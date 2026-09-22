@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-iteration-manifest-2.37.schema.json",
+  "title": "OHRI mouse interneuron research iteration manifest 2.37",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestSchemaVersion",
+    "releaseId",
+    "releaseDate",
+    "releaseStatus",
+    "application",
+    "baseResearchRelease",
+    "authoritativeInputs",
+    "inputRoots",
+    "integrity",
+    "registrations",
+    "exactReferences",
+    "registrySummary",
+    "scientificBoundaries",
+    "manifestContentSha256",
+    "parentIterationManifest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "authoritativeInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "path", "purpose", "bytes", "sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "scope": { "enum": ["project", "scientificAuthority"] },
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "zero": { "const": 0 },
+    "true": { "const": true },
+    "roomeWorkspaceIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "sourceReleaseId",
+        "differentialFeatureReleaseId",
+        "sourceDoi",
+        "geoAccession",
+        "namespace",
+        "canonicalSourceCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "sourceProfileCount",
+        "sourceNamespaceCount",
+        "researchExplorerRecordCount",
+        "researchExplorerMolecularProfileCount",
+        "researchExplorerSourceLaneCount",
+        "knowledgeCoverageLaneCount",
+        "knowledgeCoverageAxisCount",
+        "knowledgeCoverageJudgmentCount",
+        "refinedTypeCount",
+        "familyCount",
+        "familyTypeCounts",
+        "refinedDilCellCount",
+        "biologicalLitterPoolCount",
+        "retainedTechnicalOutputCount",
+        "sourceFeatureRowCount",
+        "retainedTextGeneRowCount",
+        "quarantinedGeneCellCount",
+        "nonRosterDevelopmentalLabelCount",
+        "positiveDisplayFeaturesPerType",
+        "currentRecordPreviewRowCount",
+        "multiRecordNamespacePreviewCollisionCount",
+        "researchUpgradeCount",
+        "lastResearchUpgradeId",
+        "admittedGeometryCount",
+        "admittedInternalStructureCount",
+        "registrationCount",
+        "sameCellCrossModalJoinCount",
+        "projectCopyCount",
+        "packageCopyCount",
+        "completeContentFolderCopyCount",
+        "taxonomyContractReceipt",
+        "differentialFeaturesContractReceipt",
+        "workbookParserReceipt",
+        "taxonomyBuilderReceipt",
+        "taxonomySchemaReceipt",
+        "differentialFeaturesSchemaReceipt",
+        "validatorReceipt",
+        "testReceipt",
+        "focusWorkspaceStateReceipt",
+        "focusEvidencePanelReceipt",
+        "focusWorkspaceTestReceipt",
+        "explorerRuntimeReceipt",
+        "explorerTestReceipt",
+        "sourceRegistryReceipt",
+        "upgradeRegistryReceipt",
+        "knowledgeCoverageReceipt",
+        "timelineReceipt",
+        "exactTypeRosterAdmitted",
+        "allDifferentialRowsRetained",
+        "apparentDateGeneCellsQuarantined",
+        "differentialFeaturesAreNotCanonicalMarkers",
+        "biologicalAndTechnicalReplicatesSeparated",
+        "atomicFocusWorkspaceRouting",
+        "recordSpecificPreviewCollisionGate",
+        "sharedMissingnessConsolidated",
+        "verifiedExplorerIndexMemoized",
+        "molecularFocusClearsPriorGeometry",
+        "unsupportedGeometryFailsClosed",
+        "immutableParentSnapshotValidationSeparatedFromLiveInputs"
+      ],
+      "properties": {
+        "contractId": { "const": "ohri-roome-dil-and-record-workspace-integrity-2.37" },
+        "sourceReleaseId": { "const": "ohri-roome-dil-source-taxonomy-0.1.0" },
+        "differentialFeatureReleaseId": { "const": "ohri-roome-dil-differential-features-0.1.0" },
+        "sourceDoi": { "const": "10.1126/science.adx5781" },
+        "geoAccession": { "const": "GSE291462" },
+        "namespace": { "const": "roome-2026:GSE291462" },
+        "canonicalSourceCount": { "const": 27 },
+        "canonicalRecordSetCount": { "const": 31 },
+        "bundledExactRosterCount": { "const": 8 },
+        "sourceProfileCount": { "const": 325 },
+        "sourceNamespaceCount": { "const": 8 },
+        "researchExplorerRecordCount": { "const": 579 },
+        "researchExplorerMolecularProfileCount": { "const": 325 },
+        "researchExplorerSourceLaneCount": { "const": 8 },
+        "knowledgeCoverageLaneCount": { "const": 8 },
+        "knowledgeCoverageAxisCount": { "const": 7 },
+        "knowledgeCoverageJudgmentCount": { "const": 56 },
+        "refinedTypeCount": { "const": 157 },
+        "familyCount": { "const": 12 },
+        "familyTypeCounts": {
+          "const": {
+            "dILA1": 19,
+            "dILA2": 14,
+            "dILA3": 27,
+            "dILA4": 15,
+            "dILA5": 12,
+            "dILA6": 8,
+            "dILB1": 16,
+            "dILB2": 14,
+            "dILB3": 4,
+            "dILB4": 6,
+            "dILB5": 7,
+            "dILB6": 15
+          }
+        },
+        "refinedDilCellCount": { "const": 61444 },
+        "biologicalLitterPoolCount": { "const": 15 },
+        "retainedTechnicalOutputCount": { "const": 29 },
+        "sourceFeatureRowCount": { "const": 15900 },
+        "retainedTextGeneRowCount": { "const": 15874 },
+        "quarantinedGeneCellCount": { "const": 26 },
+        "nonRosterDevelopmentalLabelCount": { "const": 2 },
+        "positiveDisplayFeaturesPerType": { "const": 6 },
+        "currentRecordPreviewRowCount": { "const": 4 },
+        "multiRecordNamespacePreviewCollisionCount": { "$ref": "#/$defs/zero" },
+        "researchUpgradeCount": { "const": 164 },
+        "lastResearchUpgradeId": { "const": "UPG-182" },
+        "admittedGeometryCount": { "$ref": "#/$defs/zero" },
+        "admittedInternalStructureCount": { "$ref": "#/$defs/zero" },
+        "registrationCount": { "$ref": "#/$defs/zero" },
+        "sameCellCrossModalJoinCount": { "$ref": "#/$defs/zero" },
+        "projectCopyCount": { "$ref": "#/$defs/zero" },
+        "packageCopyCount": { "$ref": "#/$defs/zero" },
+        "completeContentFolderCopyCount": { "$ref": "#/$defs/zero" },
+        "taxonomyContractReceipt": { "$ref": "#/$defs/receipt" },
+        "differentialFeaturesContractReceipt": { "$ref": "#/$defs/receipt" },
+        "workbookParserReceipt": { "$ref": "#/$defs/receipt" },
+        "taxonomyBuilderReceipt": { "$ref": "#/$defs/receipt" },
+        "taxonomySchemaReceipt": { "$ref": "#/$defs/receipt" },
+        "differentialFeaturesSchemaReceipt": { "$ref": "#/$defs/receipt" },
+        "validatorReceipt": { "$ref": "#/$defs/receipt" },
+        "testReceipt": { "$ref": "#/$defs/receipt" },
+        "focusWorkspaceStateReceipt": { "$ref": "#/$defs/receipt" },
+        "focusEvidencePanelReceipt": { "$ref": "#/$defs/receipt" },
+        "focusWorkspaceTestReceipt": { "$ref": "#/$defs/receipt" },
+        "explorerRuntimeReceipt": { "$ref": "#/$defs/receipt" },
+        "explorerTestReceipt": { "$ref": "#/$defs/receipt" },
+        "sourceRegistryReceipt": { "$ref": "#/$defs/receipt" },
+        "upgradeRegistryReceipt": { "$ref": "#/$defs/receipt" },
+        "knowledgeCoverageReceipt": { "$ref": "#/$defs/receipt" },
+        "timelineReceipt": { "$ref": "#/$defs/receipt" },
+        "exactTypeRosterAdmitted": { "$ref": "#/$defs/true" },
+        "allDifferentialRowsRetained": { "$ref": "#/$defs/true" },
+        "apparentDateGeneCellsQuarantined": { "$ref": "#/$defs/true" },
+        "differentialFeaturesAreNotCanonicalMarkers": { "$ref": "#/$defs/true" },
+        "biologicalAndTechnicalReplicatesSeparated": { "$ref": "#/$defs/true" },
+        "atomicFocusWorkspaceRouting": { "$ref": "#/$defs/true" },
+        "recordSpecificPreviewCollisionGate": { "$ref": "#/$defs/true" },
+        "sharedMissingnessConsolidated": { "$ref": "#/$defs/true" },
+        "verifiedExplorerIndexMemoized": { "$ref": "#/$defs/true" },
+        "molecularFocusClearsPriorGeometry": { "$ref": "#/$defs/true" },
+        "unsupportedGeometryFailsClosed": { "$ref": "#/$defs/true" },
+        "immutableParentSnapshotValidationSeparatedFromLiveInputs": { "$ref": "#/$defs/true" }
+      }
+    }
+  },
+  "properties": {
+    "manifestSchemaVersion": { "const": "2.37.0" },
+    "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.37.0" },
+    "releaseDate": { "const": "2026-09-02" },
+    "releaseStatus": { "const": "localhost_research_iteration" },
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "ohri-mouse-interneuron-atlas-prototype" },
+        "version": { "const": "2.37.0-research.1" }
+      }
+    },
+    "baseResearchRelease": { "type": "object", "minProperties": 1 },
+    "authoritativeInputs": {
+      "type": "array",
+      "minItems": 146,
+      "maxItems": 146,
+      "items": { "$ref": "#/$defs/authoritativeInput" }
+    },
+    "inputRoots": {
+      "type": "object",
+      "required": ["project", "scientificAuthority"],
+      "properties": {
+        "project": {
+          "type": "object",
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": { "const": "." },
+            "policy": { "type": "string", "minLength": 1 }
+          }
+        },
+        "scientificAuthority": {
+          "type": "object",
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": { "const": "../interneuron_sci_review" },
+            "policy": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalization", "inputCount"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "canonicalization": { "type": "string", "minLength": 1 },
+        "inputCount": { "const": 146 }
+      }
+    },
+    "registrations": {
+      "const": { "count": 0, "records": [] }
+    },
+    "exactReferences": {
+      "type": "object",
+      "required": ["roomeDilAndRecordWorkspaceIntegrity"],
+      "properties": {
+        "roomeDilAndRecordWorkspaceIntegrity": { "$ref": "#/$defs/roomeWorkspaceIntegrity" }
+      }
+    },
+    "registrySummary": {
+      "type": "object",
+      "required": [
+        "canonicalSourcePackageCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "researchUpgradeCount",
+        "sourceProfileCount",
+        "sourceNamespaceCount",
+        "researchExplorerRecordCount",
+        "crossSourceIdentityCount",
+        "registrationCount",
+        "renderedInternalPrimitiveCount",
+        "sourceRegistryReceipt",
+        "upgradeRegistryReceipt"
+      ],
+      "properties": {
+        "canonicalSourcePackageCount": { "const": 27 },
+        "canonicalRecordSetCount": { "const": 31 },
+        "bundledExactRosterCount": { "const": 8 },
+        "researchUpgradeCount": { "const": 164 },
+        "sourceProfileCount": { "const": 325 },
+        "sourceNamespaceCount": { "const": 8 },
+        "researchExplorerRecordCount": { "const": 579 },
+        "crossSourceIdentityCount": { "$ref": "#/$defs/zero" },
+        "registrationCount": { "$ref": "#/$defs/zero" },
+        "renderedInternalPrimitiveCount": { "$ref": "#/$defs/zero" },
+        "sourceRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" },
+        "upgradeRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" }
+      }
+    },
+    "scientificBoundaries": {
+      "type": "object",
+      "required": ["roomeDilAndRecordWorkspaceIntegrity"],
+      "properties": {
+        "roomeDilAndRecordWorkspaceIntegrity": { "type": "string", "minLength": 400 }
+      }
+    },
+    "manifestContentSha256": { "$ref": "#/$defs/sha256" },
+    "parentIterationManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "releaseId", "bytes", "fileSha256", "contentSha256"],
+      "properties": {
+        "path": { "const": "data/research-iteration-manifest-2.36.json" },
+        "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.36.0" },
+        "bytes": { "const": 148126 },
+        "fileSha256": { "const": "93d8a624a5a132a91f3f423cb7b3bc966ef4082f71e18e0e82c0384267588e15" },
+        "contentSha256": { "const": "3021dd9d9ce1d515634f0d1ea575d624767972411edc923e9b75621979b0e344" }
+      }
+    }
+  }
+}

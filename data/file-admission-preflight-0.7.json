@@ -1,0 +1,19 @@
+{
+  "formatVersion": "0.7.0",
+  "preflightId": "PFP-SPINALJ-PROCESSED-2026-08-18",
+  "schemaPath": "schemas/public-file-admission-manifest-0.7.schema.json",
+  "status": "awaiting_object_level_public_manifest",
+  "sourceId": "PDS-SPINALJ-PROCESSED",
+  "automaticDownload": false,
+  "credentialStorage": false,
+  "candidateFilesAccepted": 0,
+  "rejectionRules": [
+    "Reject any file without a stable public source URL, byte count and format.",
+    "Reject any file without a source-metadata checksum with its declared algorithm; SHA-1 is source evidence, not a substitute for later local SHA-256.",
+    "Reject any non-null local SHA-256 because this preflight does not acquire a file.",
+    "Reject any file without a recorded file-level rights decision.",
+    "Reject a coordinate field only when it has an explicit missing reason; missingness never grants registration.",
+    "Reject any manifest that asserts downloaded, bundled or registered status."
+  ],
+  "nextQueueItem": "UPG-001B"
+}

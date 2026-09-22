@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-source-authorization-plan-0.1.json",
+  "title": "OHRI public-source authorization and local-verification plan composer 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogReleaseId", "admissionServiceReleaseId", "assertionProvenanceReleaseId", "queueItemId", "title", "supportedManifestFormats", "evidenceLocatorKinds", "intendedUseScopes", "requestedRightsDispositions", "nonPromotion", "localRuntime", "scientificBoundary", "nextQueueItems"],
+  "properties": {
+    "releaseId": {"const": "ohri-public-source-authorization-plan-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "admissionServiceReleaseId": {"const": "ohri-public-source-release-admission-service-0.1.0"},
+    "assertionProvenanceReleaseId": {"const": "ohri-public-source-assertion-provenance-0.1.0"},
+    "queueItemId": {"const": "UPG-019"},
+    "title": {"type": "string", "minLength": 1},
+    "supportedManifestFormats": {
+      "type": "array", "minItems": 2, "uniqueItems": true,
+      "items": {"type": "object", "additionalProperties": false, "required": ["formatVersion", "sourceId", "requiredPlanStepIds"], "properties": {"formatVersion": {"enum": ["0.7.0", "0.8.0"]}, "sourceId": {"enum": ["PDS-SPINALJ-PROCESSED", "PDS-CANOGOMEZ-2026"]}, "requiredPlanStepIds": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"enum": ["object_identity_confirmation", "object_specific_rights_review", "authorized_acquisition_record", "local_checksum_verification", "content_scope_validation"]}}}}
+    },
+    "evidenceLocatorKinds": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"enum": ["publisher_object_url", "dataset_landing_page", "rights_statement_url", "source_metadata_field", "curator_note"]}},
+    "intendedUseScopes": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"enum": ["private_curator_review_only", "future_analysis_pending_separate_authorization", "no_acquisition_requested"]}},
+    "requestedRightsDispositions": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"enum": ["unresolved", "request_independent_rights_review", "decline_acquisition"]}},
+    "nonPromotion": {"type": "object", "additionalProperties": false, "required": ["planStatus", "authorizationStatus", "verificationStatus", "blockedActions", "forbiddenActualStates"], "properties": {"planStatus": {"const": "authorization_and_verification_plan_only"}, "authorizationStatus": {"const": "not_authorized_by_this_plan"}, "verificationStatus": {"const": "not_locally_verified"}, "blockedActions": {"type": "array", "minItems": 9, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z_]+$"}}, "forbiddenActualStates": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"enum": ["authorized", "acquired", "locally_verified", "content_inspected", "registered"]}}}},
+    "localRuntime": {"type": "object", "additionalProperties": false, "required": ["networkRequests", "sourceFileDownload", "sourceFileUpload", "persistentStorage", "output"], "properties": {"networkRequests": {"const": false}, "sourceFileDownload": {"const": false}, "sourceFileUpload": {"const": false}, "persistentStorage": {"const": "none"}, "output": {"const": "browser_download_of_authorization_and_verification_plan_json"}}},
+    "scientificBoundary": {"type": "string", "minLength": 1},
+    "nextQueueItems": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^UPG-[0-9]{3}$"}}
+  }
+}

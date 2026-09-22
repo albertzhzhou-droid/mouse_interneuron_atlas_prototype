@@ -1,0 +1,61 @@
+{
+  "releaseId": "ohri-mouse-interneuron-public-source-intake-registry-0.5.0",
+  "schemaVersion": "0.5.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "registryDate": "2026-08-18",
+  "scientificInputPolicy": "public_sources_only",
+  "networkAtReviewRuntime": false,
+  "records": [
+    {
+      "intakeId": "PSI-SPINALJ-PROCESSED-2026-08-18",
+      "sourceId": "PDS-SPINALJ-PROCESSED",
+      "auditDate": "2026-08-18",
+      "auditScope": "public_metadata_only_no_candidate_file_acquired",
+      "studyStatus": "published_resource",
+      "publicSourceEvidence": {
+        "records": [
+          {"id": "PSE-SPINALJ-LANDING", "kind": "dataset_landing_page", "url": "https://data.mendeley.com/datasets/mkc37w4rrv/1", "accessVerifiedOn": "2026-08-18", "use": "Dataset version, stated license and declared pipeline context."},
+          {"id": "PSE-SPINALJ-PROTOCOL", "kind": "protocol", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8605391/", "accessVerifiedOn": "2026-08-18", "use": "Method and example-output context only."}
+        ],
+        "reportedFacts": [
+          {"id": "PSF-SPINALJ-001", "evidenceRecordId": "PSE-SPINALJ-LANDING", "evidenceClass": "reported_metadata", "statement": "The public record identifies Mendeley Data version 1, DOI 10.17632/mkc37w4rrv.1, and a CC BY 4.0 landing-page license."},
+          {"id": "PSF-SPINALJ-002", "evidenceRecordId": "PSE-SPINALJ-LANDING", "evidenceClass": "reported_metadata", "statement": "The landing page describes processed outputs generated with SpinalJ v1.13."},
+          {"id": "PSF-SPINALJ-003", "evidenceRecordId": "PSE-SPINALJ-PROTOCOL", "evidenceClass": "source_context", "statement": "The protocol provides workflow context but is not a file-level manifest for candidate admission."}
+        ]
+      },
+      "acquisition": {"status": "not_downloaded", "remoteAcquisitionAttempted": false, "candidateFilesEnumerated": false, "fileHashes": [], "bundledAssetCount": 0},
+      "coordinates": {"sourceCoordinateAuthority": "SOURCE_LOCAL_OBS", "nativeCoordinateMetadataStatus": "not_file_verified", "transformStatus": "not_file_verified", "projectRegistrationStatus": "not_proposed", "projectRegistrationCount": 0},
+      "rights": {"publicRecordLicense": "CC BY 4.0 landing-page metadata", "fileLevelReuseDecision": "pending_file_level_manifest", "bundleAuthorized": false, "publicHostingAuthorized": false},
+      "admission": {"status": "metadata_audited_not_admitted", "nextQueueItem": "UPG-001"},
+      "requiredBeforeFileAdmission": ["File-level object inventory", "SHA-256 checksums", "Native dimensions and spacing", "Axes, origin and source/target transform declarations", "Disjoint landmark validation with physical-space error", "Asset-level reuse and curator approval"],
+      "scientificBoundaries": ["Zero candidate files are downloaded or bundled.", "No inspected transform exists in this registry record.", "No project registration is proposed or granted.", "A source-local transform cannot be transferred to the current SWCs or synthetic entities."]
+    },
+    {
+      "intakeId": "PSI-CANOGOMEZ-2026-08-18",
+      "sourceId": "PDS-CANOGOMEZ-2026",
+      "auditDate": "2026-08-18",
+      "auditScope": "public_metadata_only_no_candidate_file_acquired",
+      "studyStatus": "preprint_resource",
+      "publicSourceEvidence": {
+        "records": [
+          {"id": "PSE-CANO-PREPRINT", "kind": "preprint", "url": "https://www.biorxiv.org/content/10.64898/2026.06.11.731752v1", "accessVerifiedOn": "2026-08-18", "use": "Preprint status, stated data availability and preprint license context."},
+          {"id": "PSE-CANO-GEO", "kind": "repository_accession", "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731", "accessVerifiedOn": "2026-08-18", "use": "Named public accession for raw and summary snMultiome data."},
+          {"id": "PSE-CANO-BIL", "kind": "imaging_repository", "url": "https://doi.brainimagelibrary.org/doi/10.35077/g.1196", "accessVerifiedOn": "2026-08-18", "use": "Named public location for Xenium spatial-transcriptomic data."},
+          {"id": "PSE-CANO-REG-CODE", "kind": "software_repository_context", "url": "https://github.com/isst001/spatial-image-registration", "accessVerifiedOn": "2026-08-18", "use": "Referenced spatial-registration code context only."}
+        ],
+        "reportedFacts": [
+          {"id": "PSF-CANO-001", "evidenceRecordId": "PSE-CANO-PREPRINT", "evidenceClass": "reported_metadata", "statement": "The study is a bioRxiv preprint, so preprint status must remain visible in downstream source metadata."},
+          {"id": "PSF-CANO-002", "evidenceRecordId": "PSE-CANO-GEO", "evidenceClass": "source_availability_statement", "statement": "The preprint identifies GSE318731 for raw and summary snMultiome data."},
+          {"id": "PSF-CANO-003", "evidenceRecordId": "PSE-CANO-BIL", "evidenceClass": "source_availability_statement", "statement": "The preprint identifies BIL DOI 10.35077/g.1196 for Xenium spatial-transcriptomic data."},
+          {"id": "PSF-CANO-004", "evidenceRecordId": "PSE-CANO-REG-CODE", "evidenceClass": "unresolved", "statement": "A referenced registration-code repository is not a pinned transform file, specimen mapping, or independently validated error record."}
+        ]
+      },
+      "acquisition": {"status": "not_downloaded", "remoteAcquisitionAttempted": false, "candidateFilesEnumerated": false, "fileHashes": [], "bundledAssetCount": 0},
+      "coordinates": {"sourceCoordinateAuthority": "AUTHOR_SPACE_OBS", "nativeCoordinateMetadataStatus": "not_file_verified", "transformStatus": "public_code_referenced_not_file_or_error_verified", "projectRegistrationStatus": "not_proposed", "projectRegistrationCount": 0},
+      "rights": {"publicRecordLicense": "CC BY-NC 4.0 preprint license; asset-level terms pending", "fileLevelReuseDecision": "pending_file_level_manifest", "bundleAuthorized": false, "publicHostingAuthorized": false},
+      "admission": {"status": "metadata_audited_not_admitted", "nextQueueItem": "UPG-002A"},
+      "requiredBeforeFileAdmission": ["Select an exact public processed object and retain its accession/version", "File-level object names, bytes, formats and SHA-256 checksums", "Specimen and animal identifiers with sex, region and assay", "Native units, axes, orientation, origin and pixel or voxel scale", "Source transform artifact and a disjoint held-out landmark error report", "Asset-level reuse, derivative-distribution and curator approval"],
+      "scientificBoundaries": ["This is a preprint-resource metadata audit, not a peer-reviewed spatial registration.", "Zero candidate files are downloaded or bundled.", "Author-space observations are not a project atlas coordinate system.", "No source entity, SWC or synthetic evidence entity is registered by this record."]
+    }
+  ]
+}

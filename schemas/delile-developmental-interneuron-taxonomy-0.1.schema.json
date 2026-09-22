@@ -1,0 +1,324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/delile-developmental-interneuron-taxonomy-0.1.schema.json",
+  "title": "Delile 2019 exact source-local developmental interneuron taxonomy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "releaseDate",
+    "title",
+    "source",
+    "scope",
+    "denominatorFlow",
+    "denominatorBoundary",
+    "sampleRecords",
+    "cardinalClassSummaries",
+    "cardinalOnlySummaries",
+    "profiles",
+    "globalMissingEvidence",
+    "joinPolicy",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-delile-developmental-interneuron-taxonomy-0.1.0" },
+    "releaseDate": { "type": "string", "format": "date" },
+    "title": { "type": "string", "minLength": 50 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication", "biostudies", "repository", "annotatedMetadataObject"],
+      "properties": {
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["citation", "doi", "pmcid", "articleUrl", "studyContext"],
+          "properties": {
+            "citation": { "type": "string", "minLength": 100 },
+            "doi": { "const": "10.1242/dev.173807" },
+            "pmcid": { "const": "PMC6602353" },
+            "articleUrl": { "type": "string", "format": "uri" },
+            "studyContext": { "type": "string", "minLength": 80 }
+          }
+        },
+        "biostudies": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["accession", "studyUrl", "relationshipToParsedObject"],
+          "properties": {
+            "accession": { "const": "E-MTAB-7320" },
+            "studyUrl": { "type": "string", "format": "uri" },
+            "relationshipToParsedObject": { "type": "string", "minLength": 100 }
+          }
+        },
+        "repository": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "pinnedCommit", "commitUrl", "rightsStatus", "license", "sourceFilesBundled", "derivedFactualContractBundled", "reuseBoundary"],
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "pinnedCommit": { "$ref": "#/$defs/gitSha1" },
+            "commitUrl": { "type": "string", "format": "uri" },
+            "rightsStatus": { "const": "public_repository_no_explicit_license" },
+            "license": { "const": "NOASSERTION" },
+            "sourceFilesBundled": { "const": false },
+            "derivedFactualContractBundled": { "const": true },
+            "reuseBoundary": { "type": "string", "minLength": 120 }
+          }
+        },
+        "annotatedMetadataObject": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fileName", "bytes", "md5", "sha256", "gitBlobSha1", "rowCount", "columnCount", "repositoryPath", "pinnedUrl", "delimiter", "columns", "sourceFileBundled", "accessMode", "rightsStatus", "license", "derivationAuthority"],
+          "properties": {
+            "fileName": { "const": "phenoData_annotated.csv" },
+            "bytes": { "const": 3036323 },
+            "md5": { "$ref": "#/$defs/md5" },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "gitBlobSha1": { "$ref": "#/$defs/gitSha1" },
+            "rowCount": { "const": 41025 },
+            "columnCount": { "const": 9 },
+            "repositoryPath": { "const": "output/phenoData_annotated.csv" },
+            "pinnedUrl": { "type": "string", "format": "uri" },
+            "delimiter": { "const": "tab" },
+            "columns": {
+              "const": ["", "timepoint", "replicate_id", "Type_step1", "Type_step2", "Type_step2_unique", "DV", "Neuron_subtypes", "Pseudotime"]
+            },
+            "sourceFileBundled": { "const": false },
+            "accessMode": { "const": "link_only" },
+            "rightsStatus": { "const": "public_repository_no_explicit_license" },
+            "license": { "const": "NOASSERTION" },
+            "derivationAuthority": { "const": "authors_exported_per_cell_annotation_table" }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "taxonId",
+        "lifeStages",
+        "sampledRegions",
+        "sourceStageReplicateLabelCount",
+        "biologicalAnimalCount",
+        "biologicalAnimalCountMissingReason",
+        "totalMetadataCellCount",
+        "sourceDefinedNeuronCellCount",
+        "sourceTypedNonmotorNeuronCellCount",
+        "fineSubtypeInterneuronCellCount",
+        "cardinalOnlyInterneuronCellCount",
+        "motorNeuronExcludedCellCount",
+        "nullNeuronExcludedCellCount",
+        "cardinalClassCount",
+        "fineSubtypeProfileCount",
+        "perCellRosterBundled",
+        "admittedGeometryCount",
+        "admittedInternalStructureCount",
+        "sameCellMorphologyTranscriptomicsJoinCount",
+        "sameCellPhysiologyTranscriptomicsJoinCount",
+        "sameCellInternalStructureTranscriptomicsJoinCount",
+        "projectRegistrationCount",
+        "exactCrossSourceIdentityCount"
+      ],
+      "properties": {
+        "species": { "const": "Mus musculus" },
+        "taxonId": { "const": "NCBITaxon:10090" },
+        "lifeStages": { "const": ["E9.5", "E10.5", "E11.5", "E12.5", "E13.5"] },
+        "sampledRegions": { "const": ["cervical spinal cord", "thoracic spinal cord"] },
+        "sourceStageReplicateLabelCount": { "const": 12 },
+        "biologicalAnimalCount": { "type": "null" },
+        "biologicalAnimalCountMissingReason": { "type": "string", "minLength": 100 },
+        "totalMetadataCellCount": { "const": 41025 },
+        "sourceDefinedNeuronCellCount": { "const": 18144 },
+        "sourceTypedNonmotorNeuronCellCount": { "const": 15394 },
+        "fineSubtypeInterneuronCellCount": { "const": 15217 },
+        "cardinalOnlyInterneuronCellCount": { "const": 177 },
+        "motorNeuronExcludedCellCount": { "const": 1056 },
+        "nullNeuronExcludedCellCount": { "const": 1694 },
+        "cardinalClassCount": { "const": 11 },
+        "fineSubtypeProfileCount": { "const": 51 },
+        "perCellRosterBundled": { "const": false },
+        "admittedGeometryCount": { "const": 0 },
+        "admittedInternalStructureCount": { "const": 0 },
+        "sameCellMorphologyTranscriptomicsJoinCount": { "const": 0 },
+        "sameCellPhysiologyTranscriptomicsJoinCount": { "const": 0 },
+        "sameCellInternalStructureTranscriptomicsJoinCount": { "const": 0 },
+        "projectRegistrationCount": { "const": 0 },
+        "exactCrossSourceIdentityCount": { "const": 0 }
+      }
+    },
+    "denominatorFlow": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": { "$ref": "#/$defs/denominatorStage" }
+    },
+    "denominatorBoundary": { "type": "string", "minLength": 200 },
+    "sampleRecords": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/sampleRecord" }
+    },
+    "cardinalClassSummaries": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": { "$ref": "#/$defs/cardinalSummary" }
+    },
+    "cardinalOnlySummaries": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "$ref": "#/$defs/cardinalOnlySummary" }
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 51,
+      "maxItems": 51,
+      "items": { "$ref": "#/$defs/profile" }
+    },
+    "globalMissingEvidence": { "$ref": "#/$defs/missingEvidence" },
+    "joinPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceCellBarcodesPresent", "perCellRosterBundled", "crossSourceJoinAllowed", "typeToMorphologyJoinAllowed", "typeToPhysiologyJoinAllowed", "typeToInternalStructureJoinAllowed", "sourcePseudotimeIsPhysicalCoordinate", "sourceDvClassIsAtlasRegistration", "projectAtlasTransform", "boundary"],
+      "properties": {
+        "sourceCellBarcodesPresent": { "const": true },
+        "perCellRosterBundled": { "const": false },
+        "crossSourceJoinAllowed": { "const": false },
+        "typeToMorphologyJoinAllowed": { "const": false },
+        "typeToPhysiologyJoinAllowed": { "const": false },
+        "typeToInternalStructureJoinAllowed": { "const": false },
+        "sourcePseudotimeIsPhysicalCoordinate": { "const": false },
+        "sourceDvClassIsAtlasRegistration": { "const": false },
+        "projectAtlasTransform": { "type": "null" },
+        "boundary": { "type": "string", "minLength": 140 }
+      }
+    },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": { "type": "string", "minLength": 80 }
+    }
+  },
+  "$defs": {
+    "md5": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "gitSha1": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "nonnegativeCount": { "type": "integer", "minimum": 0 },
+    "denominatorStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage", "count", "unit"],
+      "properties": {
+        "stage": { "type": "string", "minLength": 5 },
+        "count": { "type": "integer", "minimum": 1 },
+        "unit": { "const": "cells" }
+      }
+    },
+    "sampleRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceTimepoint", "lifeStage", "sourceReplicateId", "totalMetadataCellCount", "sourceDefinedNeuronCellCount", "sourceTypedNonmotorNeuronCellCount", "fineSubtypeInterneuronCellCount", "cardinalOnlyInterneuronCellCount", "motorNeuronExcludedCellCount", "nullNeuronExcludedCellCount"],
+      "properties": {
+        "sourceTimepoint": { "enum": [9.5, 10.5, 11.5, 12.5, 13.5] },
+        "lifeStage": { "enum": ["E9.5", "E10.5", "E11.5", "E12.5", "E13.5"] },
+        "sourceReplicateId": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "totalMetadataCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "sourceDefinedNeuronCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "sourceTypedNonmotorNeuronCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "fineSubtypeInterneuronCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "cardinalOnlyInterneuronCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "motorNeuronExcludedCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "nullNeuronExcludedCellCount": { "$ref": "#/$defs/nonnegativeCount" }
+      }
+    },
+    "timepointCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceTimepoint", "lifeStage", "cellCount"],
+      "properties": {
+        "sourceTimepoint": { "enum": [9.5, 10.5, 11.5, 12.5, 13.5] },
+        "lifeStage": { "enum": ["E9.5", "E10.5", "E11.5", "E12.5", "E13.5"] },
+        "cellCount": { "$ref": "#/$defs/nonnegativeCount" }
+      }
+    },
+    "timepointCounts": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/timepointCount" }
+    },
+    "cardinalSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceLocalLabel", "sourceTypedCellCount", "fineSubtypeCellCount", "cardinalOnlyCellCount"],
+      "properties": {
+        "sourceLocalLabel": { "pattern": "^(dl[1-6]|V0|V1|V2a|V2b|V3)$", "type": "string" },
+        "sourceTypedCellCount": { "type": "integer", "minimum": 1 },
+        "fineSubtypeCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "cardinalOnlyCellCount": { "$ref": "#/$defs/nonnegativeCount" }
+      }
+    },
+    "cardinalOnlySummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceLocalLabel", "cellCount", "timepointCellCounts"],
+      "properties": {
+        "sourceLocalLabel": { "enum": ["dl6", "V2a"] },
+        "cellCount": { "type": "integer", "minimum": 1 },
+        "timepointCellCounts": { "$ref": "#/$defs/timepointCounts" }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceLocalLabel", "cardinalClass", "cellCount", "percentOfFineSubtypeInterneuronCells", "timepointCellCounts", "dvObservedCellCount", "pseudotimeObservedCellCount", "assignmentAuthority", "sourceLocators", "missingEvidence"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^delile-2019:E-MTAB-7320:(dl[1-5]\\.[1-7]|V0\\.[1-3]|V1\\.[1-7]|V2a\\.[1-4]|V2b\\.[1-4]|V3\\.[1-4])$" },
+        "sourceLocalLabel": { "type": "string", "pattern": "^(dl[1-5]\\.[1-7]|V0\\.[1-3]|V1\\.[1-7]|V2a\\.[1-4]|V2b\\.[1-4]|V3\\.[1-4])$" },
+        "cardinalClass": { "pattern": "^(dl[1-5]|V0|V1|V2a|V2b|V3)$", "type": "string" },
+        "cellCount": { "type": "integer", "minimum": 1 },
+        "percentOfFineSubtypeInterneuronCells": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+        "timepointCellCounts": { "$ref": "#/$defs/timepointCounts" },
+        "dvObservedCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "pseudotimeObservedCellCount": { "$ref": "#/$defs/nonnegativeCount" },
+        "assignmentAuthority": { "const": "Neuron_subtypes column in the pinned authors' annotation table" },
+        "sourceLocators": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "string", "minLength": 40 }
+        },
+        "missingEvidence": { "$ref": "#/$defs/missingEvidence" }
+      }
+    },
+    "missingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["morphology", "wholeCellGeometry", "axonDendriteTopology", "electrophysiology", "projectionTarget", "synapticConnectivity", "internalStructure", "atlasRegistration", "sameCellMorphologyTranscriptomicsJoin", "sameCellPhysiologyTranscriptomicsJoin", "sameCellInternalStructureTranscriptomicsJoin", "crossSourceSameCellIdentity", "adultIdentity", "sciContext"],
+      "properties": {
+        "morphology": { "const": "not_measured_or_deposited" },
+        "wholeCellGeometry": { "const": "not_measured_or_deposited" },
+        "axonDendriteTopology": { "const": "not_measured_or_deposited" },
+        "electrophysiology": { "const": "not_measured_by_study" },
+        "projectionTarget": { "const": "not_measured_by_study" },
+        "synapticConnectivity": { "const": "not_measured_by_study" },
+        "internalStructure": { "const": "no_raw_volume_segmentation_mesh_or_internal_object" },
+        "atlasRegistration": { "const": "no_admitted_transform" },
+        "sameCellMorphologyTranscriptomicsJoin": { "const": "relationship_not_established" },
+        "sameCellPhysiologyTranscriptomicsJoin": { "const": "relationship_not_established" },
+        "sameCellInternalStructureTranscriptomicsJoin": { "const": "relationship_not_established" },
+        "crossSourceSameCellIdentity": { "const": "relationship_not_established" },
+        "adultIdentity": { "const": "not_established" },
+        "sciContext": { "const": "not_measured_by_study" }
+      }
+    }
+  }
+}

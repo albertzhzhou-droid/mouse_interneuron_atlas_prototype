@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/evidence-aware-3d-representation-contract-0.1.schema.json",
+  "title": "Evidence-aware 3D representation contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "releaseId", "releasedAt", "purpose", "representationStates", "routes", "runtimeMetadataRequirements", "globalInvariants"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/(?:data|project)/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "evidence-aware-3d-representation-contract-0.1" },
+    "releaseId": { "const": "ohri-evidence-aware-3d-representation-contract-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "representationStates": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "geometryAuthority", "meaning", "currentlyRendered", "visualRule", "forbiddenClaim"],
+        "properties": {
+          "id": { "enum": ["OBS_RAW_TEXTURE", "OBS_SEGMENTED_SURFACE", "OBS_SKELETON", "OBS_POINT", "DER_RADIUS_SURFACE", "INF_REFERENCE_GEOMETRY", "SCH_PATH", "SYN_DATA_GLYPH", "UNAVAILABLE"] },
+          "label": { "type": "string", "minLength": 1 },
+          "geometryAuthority": { "enum": ["OBS", "DER", "INF", "SCH", "SYN", "UNAVAILABLE"] },
+          "meaning": { "type": "string", "minLength": 1 },
+          "currentlyRendered": { "type": "boolean" },
+          "visualRule": { "type": "string", "minLength": 1 },
+          "forbiddenClaim": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["routeId", "label", "sourceReceipt", "sourceVersion", "sourceFrame", "stableIdAuthority", "representationStateIds", "renderedPrimitivePolicy", "cellMorphologyClaim", "missingLayerPolicy", "crossSourceIdentityCount", "projectRegistrationCount"],
+        "properties": {
+          "routeId": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "sourceReceipt": { "$ref": "#/$defs/sourceReceipt" },
+          "sourceVersion": { "type": "string", "minLength": 1 },
+          "sourceFrame": { "type": "string", "minLength": 1 },
+          "stableIdAuthority": { "type": "string", "minLength": 1 },
+          "representationStateIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "renderedPrimitivePolicy": { "type": "string", "minLength": 1 },
+          "cellMorphologyClaim": { "type": "boolean" },
+          "missingLayerPolicy": { "const": "zero_primitives" },
+          "crossSourceIdentityCount": { "const": 0 },
+          "projectRegistrationCount": { "const": 0 }
+        }
+      }
+    },
+    "runtimeMetadataRequirements": { "type": "array", "minItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "globalInvariants": { "type": "array", "minItems": 6, "items": { "type": "string", "minLength": 1 } }
+  }
+}

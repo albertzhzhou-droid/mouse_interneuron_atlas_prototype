@@ -1,0 +1,272 @@
+{
+  "releaseId": "ohri-mouse-interneuron-public-data-workbench-0.3.0",
+  "schemaVersion": "0.3.0",
+  "catalogDate": "2026-08-18",
+  "scientificInputPolicy": "public_sources_only",
+  "institutionalExperimentalDataUsed": false,
+  "networkAtReviewRuntime": false,
+  "scope": "Versioned public-source catalog and upgrade queue. This file does not bundle unreviewed candidate data or grant a spatial registration.",
+  "policySummary": "Only public digital sources with stable access records may enter the acquisition queue. Public availability is not permission to re-bundle or to call an author-space coordinate a project registration.",
+  "sources": [
+    {
+      "id": "PDS-BRAINGLOBE-ATLAS",
+      "title": "BrainGlobe allen_cord_20um 3.0",
+      "role": "reference anatomy",
+      "admissionStatus": "bundled_local",
+      "priority": "P0",
+      "provenance": {
+        "accession": "allen_cord_20um:3.0",
+        "version": "3.0 / atlasapi 3.0.1",
+        "sourceUrl": "https://brainglobe.info/documentation/brainglobe-atlasapi/usage/atlas-details.html",
+        "primaryCitation": "Fiederling et al. 2021; BrainGlobe Atlas API",
+        "accessVerifiedOn": "2026-08-17"
+      },
+      "rights": {
+        "status": "recorded",
+        "note": "BrainGlobe AWS source is CC0; the upstream SC_atlas_P56 record is CC BY 4.0. Keep both attribution records with every derivative."
+      },
+      "content": {
+        "modalities": ["Nissl reference volume", "annotation", "ontology"],
+        "species": "Mus musculus",
+        "lifeStage": "adult",
+        "spinalCoverage": "reference volume, not a cell census",
+        "coordinateAuthority": "INF"
+      },
+      "admissibleUse": "Pinned local reference anatomy and sampled display planes.",
+      "prohibitedClaims": [
+        "A sampled plane is not an observed specimen.",
+        "The reference alone does not register a cell, SWC, or evidence entity.",
+        "Atlas AP position is not a curated named spinal segment in this release."
+      ],
+      "nextChecks": ["Preserve the source and derivative manifests", "Keep display transforms separate from registration transforms"]
+    },
+    {
+      "id": "PDS-NEUROMORPHO-SWC",
+      "title": "NeuroMorpho.Org adult mouse spinal-interneuron exemplars",
+      "role": "morphology",
+      "admissionStatus": "bundled_local",
+      "priority": "P0",
+      "provenance": {
+        "accession": "NeuroMorpho.Org release 8.6.124",
+        "version": "8.6.124",
+        "sourceUrl": "https://neuromorpho.org/api.jsp",
+        "primaryCitation": "Tecuatl, Ljungquist and Ascoli 2024, DOI 10.1096/fba.2024-00048",
+        "accessVerifiedOn": "2026-08-17"
+      },
+      "rights": {
+        "status": "recorded",
+        "note": "CC BY 4.0 plus repository terms. Cite the original reconstruction paper, NeuroMorpho.Org RRID, and Tecuatl et al."
+      },
+      "content": {
+        "modalities": ["SWC morphology", "reconstruction metadata"],
+        "species": "Mus musculus",
+        "lifeStage": "adult",
+        "spinalCoverage": "five phenotype-stratified local-frame examples",
+        "coordinateAuthority": "OBS_LOCAL"
+      },
+      "admissibleUse": "Topology-QC-checked morphology examples in their reported local frames.",
+      "prohibitedClaims": [
+        "A local SWC frame is not an atlas coordinate frame.",
+        "Five examples are not representative of all interneurons.",
+        "Morphology does not establish a synaptic edge list."
+      ],
+      "nextChecks": ["Use the official API for metadata", "Require source-specific QC before adding each additional SWC"]
+    },
+    {
+      "id": "PDS-SPINALJ-PROCESSED",
+      "title": "SpinalJ processed example data",
+      "role": "registration benchmark",
+      "admissionStatus": "ready_for_metadata_audit",
+      "priority": "P0",
+      "provenance": {
+        "accession": "Mendeley Data mkc37w4rrv.1 / DOI 10.17632/mkc37w4rrv.1",
+        "version": "v1",
+        "sourceUrl": "https://data.mendeley.com/datasets/mkc37w4rrv/1",
+        "primaryCitation": "Fiederling et al. 2021, DOI 10.1016/j.crmeth.2021.100074",
+        "accessVerifiedOn": "2026-08-18"
+      },
+      "rights": {
+        "status": "verify_per_file_before_bundle",
+        "note": "The catalog permits metadata audit only until file-level reuse and derivative decisions are recorded."
+      },
+      "content": {
+        "modalities": ["processed section images", "registration outputs", "atlas mapping outputs"],
+        "species": "Mus musculus",
+        "lifeStage": "adult",
+        "spinalCoverage": "example dataset with source-specific section series",
+        "coordinateAuthority": "SOURCE_LOCAL_OBS"
+      },
+      "admissibleUse": "Reproducible registration-engineering benchmark using released processed outputs before any raw multi-gigabyte acquisition.",
+      "prohibitedClaims": [
+        "A benchmark transform does not register the current evidence entities.",
+        "A successful visual overlay is not validation.",
+        "Do not transfer the transform to NeuroMorpho SWCs."
+      ],
+      "nextChecks": ["Inventory files, dimensions, spacing, orientation, checksums and transform provenance", "Hold out landmarks before any REG proposal"]
+    },
+    {
+      "id": "PDS-CANOGOMEZ-2026",
+      "title": "Cano-Gomez et al. mouse spinal-cord spatial and multiomic resource",
+      "role": "spatial transcriptomics and multiomics",
+      "admissionStatus": "ready_for_metadata_audit",
+      "priority": "P1",
+      "provenance": {
+        "accession": "GEO GSE318731 / BIL DOI 10.35077/g.1196",
+        "version": "2026 preprint resource",
+        "sourceUrl": "https://www.biorxiv.org/content/10.64898/2026.06.11.731752v1",
+        "primaryCitation": "Cano-Gomez et al. 2026 preprint",
+        "accessVerifiedOn": "2026-08-18"
+      },
+      "rights": {
+        "status": "verify_per_asset_before_bundle",
+        "note": "Accession availability does not settle derivative distribution rights or identify a project-space transform."
+      },
+      "content": {
+        "modalities": ["snMultiome", "Xenium spatial transcriptomics", "projection-class annotations"],
+        "species": "Mus musculus",
+        "lifeStage": "adult",
+        "spinalCoverage": "cervical, thoracic, lumbar and sacral study-specific samples",
+        "coordinateAuthority": "AUTHOR_SPACE_OBS"
+      },
+      "admissibleUse": "Condition-bounded source-local observations after specimen, pixel-size, orientation and cross-modality-key audit.",
+      "prohibitedClaims": [
+        "This preprint is not a project registration by default.",
+        "Author-space coordinates are not the BrainGlobe coordinate space without a validated transform.",
+        "Do not call a cross-study label transfer a same-cell multimodal observation."
+      ],
+      "nextChecks": ["Audit stable specimen IDs and coordinate metadata", "Require independent held-out error before proposing REG"]
+    },
+    {
+      "id": "PDS-RUSS-2021",
+      "title": "Russ et al. harmonized mouse spinal-cord cell-type atlas",
+      "role": "molecular taxonomy",
+      "admissionStatus": "ready_for_adapter",
+      "priority": "P1",
+      "provenance": {
+        "accession": "GEO GSE158380 / CELLxGENE collection 554fe96e-832b-4651-ac1b-a2df9a6735c3",
+        "version": "2021 harmonized atlas",
+        "sourceUrl": "https://cellxgene.cziscience.com/collections/554fe96e-832b-4651-ac1b-a2df9a6735c3",
+        "primaryCitation": "Russ et al. 2021, DOI 10.1038/s41467-021-25125-1",
+        "accessVerifiedOn": "2026-08-18"
+      },
+      "rights": {
+        "status": "accession_recorded",
+        "note": "Record the exact processed object, license and download checksum before any derived marker table is bundled."
+      },
+      "content": {
+        "modalities": ["single-cell and single-nucleus transcriptomic taxonomy", "marker annotations"],
+        "species": "Mus musculus",
+        "lifeStage": "postnatal reference with adult spatial validation context",
+        "spinalCoverage": "type-level atlas; not per-cell spatial registration",
+        "coordinateAuthority": "TYPE_LEVEL"
+      },
+      "admissibleUse": "Marker and taxonomy crosswalks with developmental and adult evidence kept as separate conditions.",
+      "prohibitedClaims": [
+        "A molecular cluster is not an individual cell xyz position.",
+        "Postnatal taxonomy does not silently become adult geometry.",
+        "Marker overlap does not establish a unique circuit family."
+      ],
+      "nextChecks": ["Pin the selected processed release", "Document label-transfer confidence and unresolved mappings"]
+    },
+    {
+      "id": "PDS-TABULAE-PARALYTICA",
+      "title": "Tabulae Paralytica spinal-cord injury atlas",
+      "role": "injury-state evidence",
+      "admissionStatus": "ready_for_adapter",
+      "priority": "P1",
+      "provenance": {
+        "accession": "GEO GSE234774 / GSE230765",
+        "version": "2024 published atlas",
+        "sourceUrl": "https://www.nature.com/articles/s41586-024-07504-y",
+        "primaryCitation": "Skinnider et al. 2024, DOI 10.1038/s41586-024-07504-y",
+        "accessVerifiedOn": "2026-08-18"
+      },
+      "rights": {
+        "status": "accession_recorded",
+        "note": "Start with processed accession records. File-level rights, sample metadata and checksum are required before bundling."
+      },
+      "content": {
+        "modalities": ["snRNA-seq", "spatial transcriptomics", "multiome"],
+        "species": "Mus musculus",
+        "lifeStage": "adult injury models",
+        "spinalCoverage": "model- and condition-bounded, including mid-thoracic injury contexts",
+        "coordinateAuthority": "AGGREGATED_OR_SPOT_LEVEL"
+      },
+      "admissibleUse": "Explicit injury-, time-, severity-, sex-, drug- and model-bounded state evidence.",
+      "prohibitedClaims": [
+        "A Visium spot is not one interneuron.",
+        "Mid-thoracic injury data do not represent C1-S3.",
+        "Cross-condition averages must not erase injury-model differences."
+      ],
+      "nextChecks": ["Select a processed subset with full condition metadata", "Model a spot or aggregate separately from cell-level observations"]
+    }
+  ],
+  "upgradeQueue": [
+    {
+      "id": "UPG-001",
+      "title": "SpinalJ registration reproducibility benchmark",
+      "priority": "P0",
+      "status": "ready",
+      "sourceIds": ["PDS-SPINALJ-PROCESSED"],
+      "deliverable": "A source-local reproducibility report with native spacing, transforms, landmark split, held-out error and no transferred cell registration.",
+      "acceptanceCriteria": ["Processed inputs and checksums are pinned", "Training and held-out landmarks are disjoint", "Physical-space error is calculated and reported"],
+      "rejectIf": "The data lack a reproducible transform, landmarks, or file-level reuse basis.",
+      "scientificBoundary": "A successful benchmark does not convert current SYN entities or OBS-local SWCs into REG."
+    },
+    {
+      "id": "UPG-002",
+      "title": "Cano-Gomez source-local spatial adapter audit",
+      "priority": "P1",
+      "status": "ready",
+      "sourceIds": ["PDS-CANOGOMEZ-2026"],
+      "deliverable": "Specimen-aware source inventory recording pixel scale, orientation, coordinate origin, cell IDs, modality links, terms and missing transform information.",
+      "acceptanceCriteria": ["Every displayed object retains a specimen ID", "Coordinate units and orientation are explicit", "Preprint status remains visible"],
+      "rejectIf": "The release lacks stable cross-modality keys or reproducible coordinate provenance.",
+      "scientificBoundary": "Remain source-local OBS or author-space results until independent registration validation passes."
+    },
+    {
+      "id": "UPG-003",
+      "title": "Molecular taxonomy crosswalk",
+      "priority": "P1",
+      "status": "queued",
+      "sourceIds": ["PDS-RUSS-2021"],
+      "deliverable": "A version-pinned marker and label crosswalk that keeps lineage, transmitter, molecular identity and projection class as separate axes.",
+      "acceptanceCriteria": ["Input object and checksum are recorded", "Ambiguous mappings remain explicit", "Developmental context is not collapsed into adult geometry"],
+      "rejectIf": "A label transfer is presented as a unique identity or coordinate.",
+      "scientificBoundary": "This is type-level molecular evidence, not a spatial registration."
+    },
+    {
+      "id": "UPG-004",
+      "title": "Injury-state condition adapter",
+      "priority": "P1",
+      "status": "queued",
+      "sourceIds": ["PDS-TABULAE-PARALYTICA"],
+      "deliverable": "Condition-specific injury records with model, level, severity, time, sex, treatment, modality and aggregation level.",
+      "acceptanceCriteria": ["All conditions retain their original model metadata", "Spot-level and cell-level records have different schemas", "Null and boundary information are retained"],
+      "rejectIf": "The adapter pools incompatible injury models or labels a spot as an interneuron.",
+      "scientificBoundary": "No C1-S3 generalization or same-cell linkage follows from this adapter."
+    },
+    {
+      "id": "UPG-005",
+      "title": "NeuroMorpho phenotype-stratified expansion",
+      "priority": "P2",
+      "status": "queued",
+      "sourceIds": ["PDS-NEUROMORPHO-SWC"],
+      "deliverable": "A larger, source-stratified SWC set with topology QC, source-paper linkage, reconstruction completeness fields and local-frame disclosure.",
+      "acceptanceCriteria": ["Every SWC passes topology and checksum checks", "Original-study and repository citations are retained", "Missing axon and tissue-processing fields remain explicit"],
+      "rejectIf": "Source-local coordinates are visually placed into the atlas without a validated transform.",
+      "scientificBoundary": "Expansion improves morphology coverage only; it does not make a representative census or connectome."
+    },
+    {
+      "id": "UPG-006",
+      "title": "Public-source release-admission service",
+      "priority": "P2",
+      "status": "research_watch",
+      "sourceIds": ["PDS-BRAINGLOBE-ATLAS", "PDS-NEUROMORPHO-SWC", "PDS-SPINALJ-PROCESSED", "PDS-CANOGOMEZ-2026", "PDS-RUSS-2021", "PDS-TABULAE-PARALYTICA"],
+      "deliverable": "A deterministic intake manifest generator that records source URL, access date, license, object IDs, file hashes, coordinate space and release decision before source data enters a build.",
+      "acceptanceCriteria": ["No unpinned remote asset enters a package", "A failed rights or provenance check blocks bundling", "Generated audit output is exportable for curator review"],
+      "rejectIf": "The service silently downloads, transforms or republishes data without an explicit asset-level decision.",
+      "scientificBoundary": "Automation can document evidence; it cannot certify biological validity or curator approval."
+    }
+  ]
+}

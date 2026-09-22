@@ -1,0 +1,416 @@
+{
+  "documentType": "open_source_modeling_availability_audit",
+  "schemaVersion": "0.1.0",
+  "contractId": "ohri-open-source-modeling-availability-audit-0.1.0",
+  "releaseTarget": "2.39",
+  "auditedAt": "2026-09-02",
+  "auditMode": "availability_receipt_queue_only",
+  "scope": "Official-source and live-object availability audit for bounded internal-detail candidates. This document pins availability evidence and blockers; it does not admit source objects to the release, manifest, selected-cell model, scene or user interface.",
+  "releaseDisposition": {
+    "status": "queue_only",
+    "availabilityReceiptOnly": true,
+    "currentUiExposure": "none",
+    "candidateCount": 3,
+    "queueOnlyCandidateCount": 3,
+    "boundedPairAvailabilityReceiptCount": 1,
+    "sourceObjectBundleAdmissionCount": 0,
+    "selectedCellJoinCount": 0,
+    "sameCellInternalChainCount": 0,
+    "registrationCount": 0,
+    "atlasRegistrationCount": 0,
+    "admittedGeometryCount": 0,
+    "admittedInternalObjectCount": 0,
+    "renderedObjectCount": 0,
+    "currentUiSurfaceCount": 0
+  },
+  "candidates": [
+    {
+      "candidateId": "JANELIA_JRC_MUS_SC_ZP104A_BOUNDED_RAW_NUCLEUS",
+      "queueItemIds": ["UPG-179", "UPG-195", "UPG-196"],
+      "priorityDisposition": "release_2.39_availability_receipt_only",
+      "status": "queue_only",
+      "readiness": "bounded_receipt_verified_modeling_blocked",
+      "source": {
+        "datasetId": "jrc_mus-sc-zp104a",
+        "species": "Mus musculus",
+        "tissue": "dorsal corticospinal tract",
+        "specimen": "wild-type female mouse, 6 months old",
+        "rawDatasetTitle": "Isotropic 3D electron microscopy data of wild-type mouse dorsal corticospinal tract (jrc_mus-sc-zp104a)",
+        "rawDatasetDoi": "10.25378/janelia.20134574.v1",
+        "rawDatasetApiUrl": "https://api.figshare.com/v2/articles/20134574",
+        "manualNucleiTitle": "Manual nuclei segmentations in near-isotropic, reconstructed volume electron microscopy (FIB-SEM) of mouse Spinal Cord (jrc_mus-sc-zp104a)",
+        "manualNucleiDoi": "10.25378/janelia.26513224.v1",
+        "manualNucleiApiUrl": "https://api.figshare.com/v2/articles/26513224",
+        "cosemReleaseUrl": "https://www.janelia.org/project-team/cosem/data-and-software-release",
+        "openDataRegistryUrl": "https://registry.opendata.aws/janelia-cosem/"
+      },
+      "rights": {
+        "rawDatasetLicense": "CC-BY-4.0",
+        "manualNucleiLicense": "CC-BY-4.0",
+        "licenseEvidence": "official_figshare_record_and_cosem_open_data_registry",
+        "sourceLicensePermitsRedistributionWithConditions": true,
+        "requiredConditions": [
+          "attribute the source",
+          "link or reproduce the CC BY 4.0 licence notice",
+          "indicate derivative changes"
+        ],
+        "currentReleaseSourceObjectBundling": false,
+        "currentDisposition": "rights_verified_but_not_admitted"
+      },
+      "identity": {
+        "cellClass": "unknown",
+        "interneuronIdentityEstablished": false,
+        "neuronIdentityEstablished": false,
+        "residentSpinalCellIdentityEstablished": false,
+        "selectedCellIdentityEstablished": false,
+        "stableBiologicalCellIdAvailable": false,
+        "labelInstanceValue": 2,
+        "labelInstanceSemantic": "manual nucleus instance label only",
+        "labelInstanceIsStableBiologicalCellId": false,
+        "selectedCellJoinCount": 0,
+        "sameCellInternalChainCount": 0,
+        "relationshipToSelectedInterneuron": "none"
+      },
+      "coordinateAndCalibration": {
+        "axisOrder": ["z", "y", "x"],
+        "sourceRecordNominalFieldSizeMicrometreXYZ": [40, 30, 75],
+        "sourceRecordNominalFieldSizeMicrometreZYX": [75, 30, 40],
+        "rawS0": {
+          "dtype": "|u1",
+          "shapeZYX": [12698, 7000, 9000],
+          "chunkShapeZYX": [128, 128, 128],
+          "scaleNanometreZYX": [6, 6, 6],
+          "translationNanometreZYX": [0, 0, 0],
+          "voxelSupportExtentMicrometreZYX": [76.188, 42, 54],
+          "compressor": "zstd_level_6",
+          "dimensionSeparator": "/"
+        },
+        "manualNucleusS0": {
+          "dtype": "|u1",
+          "shapeZYX": [793, 437, 562],
+          "chunkShapeZYX": [64, 64, 64],
+          "scaleNanometreZYX": [96, 96, 96],
+          "translationNanometreZYX": [45, 45, 45],
+          "voxelSupportExtentMicrometreZYX": [76.128, 41.952, 53.952],
+          "compressor": "zstd_level_6",
+          "dimensionSeparator": "/"
+        },
+        "rawToNucleusTransformStatus": "reported_voxel_centres_align_for_the_bounded_pair",
+        "nominalDescriptionVersusLiveArrayStatus": "unresolved",
+        "discrepancy": "The Figshare description reports an approximately 40 x 30 x 75 micrometre field in x/y/z, while the live raw s0 array shape and 6 nm scale yield 54 x 42 x 76.188 micrometres in x/y/z. Rounding, padding, crop and frame causes have not been resolved.",
+        "arrayFrameCoordinatesExactForReceipt": true,
+        "biologicalMeasurementAuthorized": false,
+        "atlasTransformAvailable": false
+      },
+      "descriptorReceipts": [
+        {
+          "receiptId": "raw_group_zattrs",
+          "url": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/em/fibsem-uint8/.zattrs",
+          "sha256": "45afde34e3799ca539062bec353188d0ea8ffd86c49cb71b817410ee826d185c",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        },
+        {
+          "receiptId": "raw_s0_zarray",
+          "url": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/em/fibsem-uint8/s0/.zarray",
+          "sha256": "782a586f7cf910125d46407d58f534fcbc1d8adb883b5d3d235e581822c2d321",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        },
+        {
+          "receiptId": "manual_nucleus_group_zattrs",
+          "url": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/labels/inference/segmentations/nuc/.zattrs",
+          "sha256": "ae9fb70dff01cbd10cb2d3ef833551a55be6bf628ee3fe9bb00cc2cbb238980c",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        },
+        {
+          "receiptId": "manual_nucleus_s0_zarray",
+          "url": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/labels/inference/segmentations/nuc/s0/.zarray",
+          "sha256": "d40ada38e475c5d54e10154790bc95f3951522ac85c977737a0a6e2455f3d761",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        }
+      ],
+      "boundedPair": {
+        "pinStatus": "pin_ready_as_remote_availability_receipt_only",
+        "relationship": "same_source_volume_spatial_overlap_only",
+        "rawChunk": {
+          "url": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/em/fibsem-uint8/s0/82/22/17",
+          "chunkIndexZYX": [82, 22, 17],
+          "shapeZYX": [128, 128, 128],
+          "dtype": "|u1",
+          "storedBytes": 1376848,
+          "uncompressedBytes": 2097152,
+          "etag": "6d7fcf3f265d0aefe92c8c0d58d1a647",
+          "sha256": "efdbb0aeff783cc57ab0a94629d70644f99969fe48a901db79d3777b8282a23f",
+          "physicalBoundsMicrometreHalfOpenZYX": {
+            "minimum": [62.976, 16.896, 13.056],
+            "maximumExclusive": [63.744, 17.664, 13.824]
+          },
+          "remoteObjectBundled": false
+        },
+        "manualNucleusChunk": {
+          "url": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/labels/inference/segmentations/nuc/s0/10/2/2",
+          "chunkIndexZYX": [10, 2, 2],
+          "shapeZYX": [64, 64, 64],
+          "dtype": "|u1",
+          "storedBytes": 6699,
+          "uncompressedBytes": 262144,
+          "etag": "c427d1cdc5b7290859f75007543ac282",
+          "sha256": "0d833b9fff0223c7ba75a2c117c30988aec74bec2eff603d8ee06a426c06fbcf",
+          "instanceValue": 2,
+          "instanceVoxelCountInChunk": 69867,
+          "instanceLocalBoundsInclusiveZYX": {
+            "minimum": [0, 20, 0],
+            "maximum": [63, 63, 35]
+          },
+          "remoteObjectBundled": false
+        },
+        "verifiedOverlap": {
+          "labelTileIndexWithinChunkZYX": [2, 6, 1],
+          "labelLocalVoxelBoundsHalfOpenZYX": {
+            "minimum": [16, 48, 8],
+            "maximumExclusive": [24, 56, 16]
+          },
+          "labelVoxelCount": 512,
+          "uniformInstanceValue": 2,
+          "rawToLabelSpatialOverlapVerified": true
+        },
+        "completeNucleusEstablished": false,
+        "completeCellEstablished": false,
+        "cellMembraneEstablished": false,
+        "neuritesEstablished": false,
+        "organelleEstablished": false,
+        "synapseEstablished": false,
+        "interneuronIdentityEstablished": false,
+        "selectedCellJoinEstablished": false,
+        "atlasRegistrationEstablished": false
+      },
+      "annotationReadiness": {
+        "annotationClass": "nuc",
+        "annotationType": "instance_segmentation",
+        "method": "manual dense segmentation",
+        "software": "Amira 3D 2021.1",
+        "protocolDoi": "10.17504/protocols.io.bp2l61rb5vqe/v3",
+        "independentProofreadingReported": false,
+        "proofreadingCompletenessMetricReported": false,
+        "proofreadClaimAuthorized": false,
+        "wholeCellMappingAvailable": false
+      },
+      "ariadneAvailabilityCheck": {
+        "queueItemId": "UPG-196",
+        "wildTypeSegmentationDoi": "10.25378/janelia.22577524.v1",
+        "mutantSegmentationDoi": "10.25378/janelia.22577542.v1",
+        "advertisedClasses": ["endoplasmic reticulum", "plasma membrane", "mitochondria", "whole cell"],
+        "figshareFileMode": "link_only_zero_byte_records",
+        "wildTypePrefixListingUrl": "https://janelia-cosem-datasets.s3.amazonaws.com/?list-type=2&prefix=jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.n5/labels/ariadne/",
+        "wildTypePrefixListingKeyCount": 0,
+        "wildTypeAttributesUrl": "https://janelia-cosem-datasets.s3.amazonaws.com/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.n5/labels/ariadne/attributes.json",
+        "wildTypeAttributesHttpStatus": 404,
+        "checkedAt": "2026-09-02",
+        "status": "not_currently_pin_ready",
+        "admittedObjectCount": 0
+      },
+      "availability": {
+        "rawVolumeAvailable": true,
+        "manualNucleusLabelsAvailable": true,
+        "boundedRawNucleusPairPinReady": true,
+        "wholeCellSegmentationPinReady": false,
+        "organelleSegmentationPinReady": false,
+        "skeletonPinReady": false,
+        "eligibleForCurrentModelingObjectAdmission": false
+      },
+      "admission": {
+        "relationship": "co_display_only_if_separately_implemented_later",
+        "currentUiExposure": "none",
+        "sourceObjectBundled": false,
+        "selectedCellJoinCount": 0,
+        "sameCellInternalChainCount": 0,
+        "registrationCount": 0,
+        "atlasRegistrationCount": 0,
+        "admittedGeometryCount": 0,
+        "admittedInternalObjectCount": 0,
+        "renderedObjectCount": 0
+      },
+      "blockers": [
+        "Cell class is unknown; the source does not establish neuron or interneuron identity for label instance 2.",
+        "The raw/nucleus pair is a partial spatial ROI, not a complete nucleus, complete cell, membrane, neurite, organelle or synapse chain.",
+        "The nominal Figshare field description and live Zarr array extent remain unreconciled, so biological measurement is disabled.",
+        "Independent proofreading completeness is not reported for the manual nucleus segmentation.",
+        "Advertised Ariadne whole-cell and organelle paths are not currently pin-ready."
+      ]
+    },
+    {
+      "candidateId": "FISH1_LARVAL_ZEBRAFISH_INTERNAL_DETAIL",
+      "queueItemIds": ["UPG-177", "UPG-189"],
+      "priorityDisposition": "long_term_queue_only",
+      "status": "queue_only",
+      "readiness": "blocked",
+      "source": {
+        "species": "Danio rerio",
+        "lifeStage": "larval",
+        "releaseUrl": "https://fish1-release.storage.googleapis.com/index.html",
+        "programmaticGuideUrl": "https://fish1-release.storage.googleapis.com/programmatic.html",
+        "vastGuideUrl": "https://fish1-release.storage.googleapis.com/vast.html",
+        "dataPolicyUrl": "https://fish1-release.storage.googleapis.com/data_policy.html",
+        "primaryPreprintDoi": "10.1101/2025.06.10.658982",
+        "caveDatastack": "fish1_full",
+        "caveDataset": "fish1_v250915",
+        "staticBaseSegmentation": "seg_241003",
+        "staticAgglomeratedSegmentation": "seg_241003_agg241003"
+      },
+      "descriptorReceipts": [
+        {
+          "receiptId": "fish1_em_vast_descriptor",
+          "url": "https://storage.googleapis.com/fish1-release/paper_data/vast/Petkova_ZFish1_EM_Clahe23.vsvi",
+          "sha256": "0b5c974e3f3ce3de8fed3b278ab0bf4abedbe328fd94ff49b0e9b805c9a2648e",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        },
+        {
+          "receiptId": "fish1_base_segmentation_vast_descriptor",
+          "url": "https://storage.googleapis.com/fish1-release/paper_data/vast/Petkova_ZFish1_Base_Segmentation.vsvi",
+          "sha256": "80de38e12a9305d23db2f9ae1924807f69972390e5921f7360eb9ec76ca1894d",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        },
+        {
+          "receiptId": "fish1_agglomerated_segmentation_vast_descriptor",
+          "url": "https://storage.googleapis.com/fish1-release/paper_data/vast/Petkova_ZFish1_Agglo_Segmentation.vsvi",
+          "sha256": "fe0f7b6577ee373efdc56242f9c0c3dee25d80994a6abaa89ac70e611b448939",
+          "verifiedAt": "2026-09-02",
+          "remoteObjectBundled": false
+        }
+      ],
+      "coordinateAndCalibration": {
+        "reportedAcquisitionNanometreXYZ": [4, 4, 30],
+        "publicRawInfoNanometreXYZ": [8, 8, 30],
+        "publicStaticSegmentationInfoNanometreXYZ": [16, 16, 30],
+        "publicRawInfoUrl": "https://storage.googleapis.com/fish1-public/clahe_231218/info",
+        "publicStaticBaseInfoUrl": "https://storage.googleapis.com/fish1-public/seg_241003/info",
+        "publicStaticAgglomeratedInfoUrl": "https://storage.googleapis.com/fish1-public/seg_241003_agg241003/info",
+        "status": "unresolved",
+        "biologicalMeasurementAuthorized": false,
+        "atlasTransformAvailable": false
+      },
+      "identityAndJoin": {
+        "selectedLoreId": null,
+        "selectedRootId": null,
+        "independentlyAnnotatedSpinalInterneuronRosterAvailable": false,
+        "inhibitoryCellTypeValueAloneEstablishesSpinalInterneuron": false,
+        "staticSegmentationToCurrentCaveLoreRootMappingAvailable": false,
+        "rootLatestnessVerifiedForSelectedCell": false,
+        "sameCellSomaNucleusNeuriteOrganelleSynapseChainAvailable": false,
+        "selectedCellJoinCount": 0,
+        "sameCellInternalChainCount": 0
+      },
+      "proofreading": {
+        "reportedEditedRootCount": 42712,
+        "selectedRootProofreadingStatePinned": false,
+        "completeDatasetProofreadingClaimAuthorized": false,
+        "independentObjectReviewAvailable": false
+      },
+      "rights": {
+        "policyAllowsIndependentResearchAndPublication": true,
+        "explicitRawObjectRedistributionLicenseAvailable": false,
+        "explicitDerivedGeometryRedistributionLicenseAvailable": false,
+        "rightsStatus": "ambiguous_for_redistribution",
+        "deliveryDisposition": "link_only",
+        "sourceObjectBundled": false
+      },
+      "admission": {
+        "currentUiExposure": "none",
+        "sourceObjectBundled": false,
+        "selectedCellJoinCount": 0,
+        "sameCellInternalChainCount": 0,
+        "registrationCount": 0,
+        "atlasRegistrationCount": 0,
+        "admittedGeometryCount": 0,
+        "admittedInternalObjectCount": 0,
+        "renderedObjectCount": 0
+      },
+      "blockers": [
+        "No independently annotated spinal-interneuron lore_id and pinned latest root have been selected.",
+        "The static 241003 segment IDs have no verified mapping to current CAVE lore_id/root_id identities.",
+        "The 4 x 4 x 30 nm acquisition statement, 8 x 8 x 30 nm public raw coordinates and 16 x 16 x 30 nm static segmentation coordinates require an explicit transform and measurement audit.",
+        "A reported edited-root count is not proof that a selected cell or the full dataset is completely proofread.",
+        "The data policy is not an explicit raw-file or derived-geometry redistribution licence."
+      ]
+    },
+    {
+      "candidateId": "PKD2L1_MOUSE_CSF_CONTACTING_NEURON_RAW_SBFSEM_CHAIN",
+      "queueItemIds": ["UPG-188"],
+      "priorityDisposition": "long_term_queue_only",
+      "status": "queue_only",
+      "readiness": "blocked",
+      "source": {
+        "species": "Mus musculus",
+        "population": "Pkd2l1-Cre-targeted cerebrospinal fluid-contacting neurons",
+        "articleDoi": "10.7554/eLife.83108",
+        "articleUrl": "https://elifesciences.org/articles/83108",
+        "articleApiUrl": "https://api.elifesciences.org/articles/83108",
+        "articleApiReceiptBytes": 247909,
+        "articleApiReceiptSha256": "854963b39bbb091f4cf3a03c470e3a644a69444741b59aa6287b31ed10f97944",
+        "existingPublicationVideoReceipt": "data/pkd2l1-sbfsem-video-reference-0.1.json"
+      },
+      "rights": {
+        "articleLicense": "CC-BY-4.0",
+        "rawSbfsemObjectAvailable": false,
+        "rawSbfsemObjectSpecificReuseTermsAvailable": false,
+        "currentDisposition": "publication_video_reference_only",
+        "sourceObjectBundled": false
+      },
+      "availability": {
+        "publicationVideoAvailable": true,
+        "rawSerialEmStackAvailable": false,
+        "zCalibrationManifestAvailable": false,
+        "segmentationLabelsAvailable": false,
+        "mibOrAmiraSourceObjectAvailable": false,
+        "reconstructionMeshAvailable": false,
+        "skeletonAvailable": false,
+        "stableObjectIdsAvailable": false,
+        "objectChecksumsAvailable": false,
+        "eligibleForThreeDimensionalReconstruction": false
+      },
+      "experimentBoundary": {
+        "mitochondriaConstruct": "COX4-dAPEX2",
+        "vesicleConstruct": "SYP-HRP",
+        "constructsShareExactSample": false,
+        "crossSampleFusionAuthorized": false,
+        "sameCellMitochondriaVesicleChainAvailable": false
+      },
+      "relatedLightSheetEvidence": {
+        "articleDoi": "10.1038/s42003-025-08559-x",
+        "figshareDoi": "10.6084/m9.figshare.29430869",
+        "singleSomaIdentificationSupported": false,
+        "reason": "The publication reports small somata, clustering, shrinkage and optical-resolution limits that prevented reliable single-soma identification; this evidence cannot replace a raw same-cell EM object chain."
+      },
+      "admission": {
+        "currentUiExposure": "none",
+        "sourceObjectBundled": false,
+        "selectedCellJoinCount": 0,
+        "sameCellInternalChainCount": 0,
+        "registrationCount": 0,
+        "atlasRegistrationCount": 0,
+        "admittedGeometryCount": 0,
+        "admittedInternalObjectCount": 0,
+        "renderedObjectCount": 0
+      },
+      "blockers": [
+        "The official article and article API do not expose a reconstructable raw SBF-SEM stack or coordinate-bearing segmentation, mesh or skeleton.",
+        "The publication video is rendered imagery and cannot be converted into geometry, measurements or internal masks.",
+        "COX4-dAPEX2 mitochondria and SYP-HRP vesicle observations come from separate constructs and samples and cannot be fused into one exact cell.",
+        "No stable raw-object IDs, per-object checksums, same-sample chain or object-specific reuse terms are available."
+      ]
+    }
+  ],
+  "globalHardBoundaries": [
+    "A remote checksum proves byte identity for the audited object at the audit date; it does not prove cell class, biological completeness, proofreading completeness or same-cell identity.",
+    "The bounded Janelia raw/nucleus overlap may be pinned as an availability receipt without implying neuron or interneuron identity.",
+    "Queue status, spatial overlap, co-display, shared species, shared tissue wording or page proximity creates no selected-cell join, cross-source identity or atlas registration.",
+    "No audited candidate contributes a current UI surface, bundled source object, geometry, internal object, fallback primitive, measurement or registration.",
+    "Fish1 remains a comparative larval-zebrafish candidate and cannot supply a mouse-cell morphology, type mapping or missing-organelle prior.",
+    "PKD2L1 publication imagery and separate experiment constructs cannot be fused into a same-cell internal model."
+  ]
+}

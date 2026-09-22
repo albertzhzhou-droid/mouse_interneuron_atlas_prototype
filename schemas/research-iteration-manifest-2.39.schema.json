@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-iteration-manifest-2.39.schema.json",
+  "title": "OHRI mouse interneuron research iteration manifest 2.39",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestSchemaVersion",
+    "releaseId",
+    "releaseDate",
+    "releaseStatus",
+    "application",
+    "baseResearchRelease",
+    "authoritativeInputs",
+    "inputRoots",
+    "integrity",
+    "registrations",
+    "exactReferences",
+    "registrySummary",
+    "scientificBoundaries",
+    "manifestContentSha256",
+    "parentIterationManifest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "authoritativeInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "path", "purpose", "bytes", "sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "scope": { "enum": ["project", "scientificAuthority"] },
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "zero": { "const": 0 },
+    "true": { "const": true },
+    "iterationIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "nativeContourReleaseId",
+        "neuronId",
+        "sourceDatBytes",
+        "sourceDatSha256",
+        "independentParserCommit",
+        "independentParserSha256",
+        "nativeGeometryBytes",
+        "nativeGeometrySha256",
+        "pointPayloadSha256",
+        "sourceSomaContourObjectCount",
+        "sourceFlagClosedObjectCount",
+        "legacyCellBodyClosureExceptionCount",
+        "vertexCount",
+        "semanticClosedSegmentCount",
+        "canonicalSourceCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "bundledExactObjectSetCount",
+        "sourceProfileCount",
+        "sourceNamespaceCount",
+        "researchExplorerRecordCount",
+        "researchUpgradeCount",
+        "lastResearchUpgradeId",
+        "availabilityCandidateCount",
+        "queueOnlyCandidateCount",
+        "boundedPairAvailabilityReceiptCount",
+        "admittedSourceNativeContourObjectCount",
+        "admittedSurfaceCount",
+        "admittedInternalStructureCount",
+        "generatedFallbackPrimitiveCount",
+        "filledPolygonCount",
+        "triangleCount",
+        "volumeCount",
+        "registrationCount",
+        "atlasRegistrationCount",
+        "sameCellCrossModalJoinCount",
+        "standardizedSwcOverlayCount",
+        "availabilitySourceObjectBundleAdmissionCount",
+        "availabilitySelectedCellJoinCount",
+        "availabilitySameCellInternalChainCount",
+        "availabilityAdmittedGeometryObjectCount",
+        "availabilityAdmittedInternalObjectCount",
+        "availabilityRenderedObjectCount",
+        "availabilityCurrentUiSurfaceCount",
+        "nativeContourBuilderReceipt",
+        "nativeContourContractReceipt",
+        "nativeContourGeometryReceipt",
+        "nativeContourRuntimeReceipt",
+        "nativeContourViewerReceipt",
+        "nativeContourValidatorReceipt",
+        "nativeContourTestReceipt",
+        "sourceRegistryReceipt",
+        "sourceRegistryValidatorReceipt",
+        "sourceRegistryTestReceipt",
+        "upgradeQueueReceipt",
+        "upgradeRegistryReceipt",
+        "upgradeBuilderReceipt",
+        "upgradeValidatorReceipt",
+        "upgradeTestReceipt",
+        "parentSnapshotValidatorReceipt",
+        "parentSnapshotTestReceipt",
+        "availabilityAuditReceipt",
+        "availabilityValidatorReceipt",
+        "availabilityTestReceipt",
+        "timelineReceipt",
+        "lineLoopsOnly",
+        "sourceCoordinatesPreserved",
+        "viewerTransformReversible",
+        "legacyCellBodyKeptSeparate",
+        "traceRadiusRenderingForbidden",
+        "datToSwcOverlayForbidden",
+        "availabilityCandidatesQueueOnly",
+        "janeliaCellClassUnknown",
+        "noGenericGeometrySubstitution"
+      ],
+      "properties": {
+        "contractId": { "const": "ohri-source-native-soma-contours-and-availability-integrity-2.39" },
+        "nativeContourReleaseId": { "const": "ohri-neurolucida-source-native-soma-contour-trace-0.1.0" },
+        "neuronId": { "const": 45718 },
+        "sourceDatBytes": { "const": 343774 },
+        "sourceDatSha256": { "const": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415" },
+        "independentParserCommit": { "const": "e07fd2d53c03945f011c335c7b643765f2d85a09" },
+        "independentParserSha256": { "const": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2" },
+        "nativeGeometryBytes": { "const": 45606 },
+        "nativeGeometrySha256": { "const": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8" },
+        "pointPayloadSha256": { "const": "a478e6263e7d00c1f17bc64143014a3519c39f771b6809a28b057db07c724ab4" },
+        "sourceSomaContourObjectCount": { "const": 8 },
+        "sourceFlagClosedObjectCount": { "const": 7 },
+        "legacyCellBodyClosureExceptionCount": { "const": 1 },
+        "vertexCount": { "const": 275 },
+        "semanticClosedSegmentCount": { "const": 275 },
+        "canonicalSourceCount": { "const": 27 },
+        "canonicalRecordSetCount": { "const": 33 },
+        "bundledExactRosterCount": { "const": 9 },
+        "bundledExactObjectSetCount": { "const": 1 },
+        "sourceProfileCount": { "const": 376 },
+        "sourceNamespaceCount": { "const": 9 },
+        "researchExplorerRecordCount": { "const": 630 },
+        "researchUpgradeCount": { "const": 178 },
+        "lastResearchUpgradeId": { "const": "UPG-196" },
+        "availabilityCandidateCount": { "const": 3 },
+        "queueOnlyCandidateCount": { "const": 3 },
+        "boundedPairAvailabilityReceiptCount": { "const": 1 },
+        "admittedSourceNativeContourObjectCount": { "const": 8 },
+        "admittedSurfaceCount": { "$ref": "#/$defs/zero" },
+        "admittedInternalStructureCount": { "$ref": "#/$defs/zero" },
+        "generatedFallbackPrimitiveCount": { "$ref": "#/$defs/zero" },
+        "filledPolygonCount": { "$ref": "#/$defs/zero" },
+        "triangleCount": { "$ref": "#/$defs/zero" },
+        "volumeCount": { "$ref": "#/$defs/zero" },
+        "registrationCount": { "$ref": "#/$defs/zero" },
+        "atlasRegistrationCount": { "$ref": "#/$defs/zero" },
+        "sameCellCrossModalJoinCount": { "$ref": "#/$defs/zero" },
+        "standardizedSwcOverlayCount": { "$ref": "#/$defs/zero" },
+        "availabilitySourceObjectBundleAdmissionCount": { "$ref": "#/$defs/zero" },
+        "availabilitySelectedCellJoinCount": { "$ref": "#/$defs/zero" },
+        "availabilitySameCellInternalChainCount": { "$ref": "#/$defs/zero" },
+        "availabilityAdmittedGeometryObjectCount": { "$ref": "#/$defs/zero" },
+        "availabilityAdmittedInternalObjectCount": { "$ref": "#/$defs/zero" },
+        "availabilityRenderedObjectCount": { "$ref": "#/$defs/zero" },
+        "availabilityCurrentUiSurfaceCount": { "$ref": "#/$defs/zero" },
+        "nativeContourBuilderReceipt": { "$ref": "#/$defs/receipt" },
+        "nativeContourContractReceipt": { "$ref": "#/$defs/receipt" },
+        "nativeContourGeometryReceipt": { "$ref": "#/$defs/receipt" },
+        "nativeContourRuntimeReceipt": { "$ref": "#/$defs/receipt" },
+        "nativeContourViewerReceipt": { "$ref": "#/$defs/receipt" },
+        "nativeContourValidatorReceipt": { "$ref": "#/$defs/receipt" },
+        "nativeContourTestReceipt": { "$ref": "#/$defs/receipt" },
+        "sourceRegistryReceipt": { "$ref": "#/$defs/receipt" },
+        "sourceRegistryValidatorReceipt": { "$ref": "#/$defs/receipt" },
+        "sourceRegistryTestReceipt": { "$ref": "#/$defs/receipt" },
+        "upgradeQueueReceipt": { "$ref": "#/$defs/receipt" },
+        "upgradeRegistryReceipt": { "$ref": "#/$defs/receipt" },
+        "upgradeBuilderReceipt": { "$ref": "#/$defs/receipt" },
+        "upgradeValidatorReceipt": { "$ref": "#/$defs/receipt" },
+        "upgradeTestReceipt": { "$ref": "#/$defs/receipt" },
+        "parentSnapshotValidatorReceipt": { "$ref": "#/$defs/receipt" },
+        "parentSnapshotTestReceipt": { "$ref": "#/$defs/receipt" },
+        "availabilityAuditReceipt": { "$ref": "#/$defs/receipt" },
+        "availabilityValidatorReceipt": { "$ref": "#/$defs/receipt" },
+        "availabilityTestReceipt": { "$ref": "#/$defs/receipt" },
+        "timelineReceipt": { "$ref": "#/$defs/receipt" },
+        "lineLoopsOnly": { "$ref": "#/$defs/true" },
+        "sourceCoordinatesPreserved": { "$ref": "#/$defs/true" },
+        "viewerTransformReversible": { "$ref": "#/$defs/true" },
+        "legacyCellBodyKeptSeparate": { "$ref": "#/$defs/true" },
+        "traceRadiusRenderingForbidden": { "$ref": "#/$defs/true" },
+        "datToSwcOverlayForbidden": { "$ref": "#/$defs/true" },
+        "availabilityCandidatesQueueOnly": { "$ref": "#/$defs/true" },
+        "janeliaCellClassUnknown": { "$ref": "#/$defs/true" },
+        "noGenericGeometrySubstitution": { "$ref": "#/$defs/true" }
+      }
+    }
+  },
+  "properties": {
+    "manifestSchemaVersion": { "const": "2.39.0" },
+    "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.39.0" },
+    "releaseDate": { "const": "2026-09-02" },
+    "releaseStatus": { "const": "localhost_research_iteration" },
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "ohri-mouse-interneuron-atlas-prototype" },
+        "version": { "const": "2.39.0-research.1" }
+      }
+    },
+    "baseResearchRelease": { "type": "object", "minProperties": 1 },
+    "authoritativeInputs": {
+      "type": "array",
+      "minItems": 172,
+      "maxItems": 172,
+      "items": { "$ref": "#/$defs/authoritativeInput" }
+    },
+    "inputRoots": {
+      "type": "object",
+      "required": ["project", "scientificAuthority"],
+      "properties": {
+        "project": {
+          "type": "object",
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": { "const": "." },
+            "policy": { "type": "string", "minLength": 1 }
+          }
+        },
+        "scientificAuthority": {
+          "type": "object",
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": { "const": "../interneuron_sci_review" },
+            "policy": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalization", "inputCount"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "canonicalization": { "type": "string", "minLength": 1 },
+        "inputCount": { "const": 172 }
+      }
+    },
+    "registrations": { "const": { "count": 0, "records": [] } },
+    "exactReferences": {
+      "type": "object",
+      "required": ["delilePresentationAndPkd2l1Integrity", "sourceNativeSomaContoursAndAvailabilityIntegrity"],
+      "properties": {
+        "delilePresentationAndPkd2l1Integrity": { "type": "object" },
+        "sourceNativeSomaContoursAndAvailabilityIntegrity": { "$ref": "#/$defs/iterationIntegrity" }
+      }
+    },
+    "registrySummary": {
+      "type": "object",
+      "required": [
+        "canonicalSourcePackageCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "bundledExactObjectSetCount",
+        "researchUpgradeCount",
+        "sourceProfileCount",
+        "sourceNamespaceCount",
+        "researchExplorerRecordCount",
+        "crossSourceIdentityCount",
+        "registrationCount",
+        "renderedInternalPrimitiveCount",
+        "sourceRegistryReceipt",
+        "upgradeRegistryReceipt"
+      ],
+      "properties": {
+        "canonicalSourcePackageCount": { "const": 27 },
+        "canonicalRecordSetCount": { "const": 33 },
+        "bundledExactRosterCount": { "const": 9 },
+        "bundledExactObjectSetCount": { "const": 1 },
+        "researchUpgradeCount": { "const": 178 },
+        "sourceProfileCount": { "const": 376 },
+        "sourceNamespaceCount": { "const": 9 },
+        "researchExplorerRecordCount": { "const": 630 },
+        "crossSourceIdentityCount": { "$ref": "#/$defs/zero" },
+        "registrationCount": { "$ref": "#/$defs/zero" },
+        "renderedInternalPrimitiveCount": { "$ref": "#/$defs/zero" },
+        "sourceRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" },
+        "upgradeRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" }
+      }
+    },
+    "scientificBoundaries": {
+      "type": "object",
+      "required": ["sourceNativeSomaContoursAndAvailabilityIntegrity"],
+      "properties": {
+        "sourceNativeSomaContoursAndAvailabilityIntegrity": { "type": "string", "minLength": 1000 }
+      }
+    },
+    "manifestContentSha256": { "$ref": "#/$defs/sha256" },
+    "parentIterationManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "releaseId", "bytes", "fileSha256", "contentSha256"],
+      "properties": {
+        "path": { "const": "data/research-iteration-manifest-2.38.json" },
+        "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.38.0" },
+        "bytes": { "const": 173397 },
+        "fileSha256": { "const": "97ef72ab7e7c2da802af7c4cca6d5a280162e61a08b4a2258bb58f1ee0107595" },
+        "contentSha256": { "const": "8af86d1167213865712c5da915193c13b629d31a1e0452f08d2d4f4f9d9f3b19" }
+      }
+    }
+  }
+}

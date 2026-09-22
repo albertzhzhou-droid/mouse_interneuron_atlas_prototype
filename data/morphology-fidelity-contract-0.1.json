@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-morphology-fidelity-contract-0.1.0",
+  "releasedAt": "2026-08-27",
+  "title": "Evidence-gated source-local morphology fidelity modes",
+  "purpose": "Increase visible cell-form detail only where the pinned public source authorizes it, while preserving unsupported internal structures as explicit missingness.",
+  "sourceObjects": {
+    "censusIndex": {
+      "path": "/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+      "bytes": 968797,
+      "sha256": "1598b5119f5826719e390fe46615a291b51fa3cd7716e9a191ad645f73165364"
+    },
+    "assetManifest": {
+      "path": "/data/neuromorpho_release_8_6_124_census_v1/asset-manifest.json",
+      "bytes": 62165,
+      "sha256": "2c1153fe86e3bc2f08505cf2416ab25b2d8e9ca747b0bffcfad5aacc9286cf91"
+    },
+    "repository": "NeuroMorpho.Org",
+    "repositoryRelease": "8.6.124",
+    "repositoryRrid": "RRID:SCR_002145",
+    "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+    "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+  },
+  "defaultMode": "radius_surface",
+  "derivedSurfaceAlgorithm": {
+    "algorithmId": "tapered_hexagonal_frustum_per_swc_edge_v1",
+    "authority": "DERIVED_FROM_OBSERVED_RADIUS",
+    "inputAuthority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+    "radialSegments": 6,
+    "endpointRadiusPolicy": "exact_source_radius_after_uniform_viewer_scale",
+    "capPolicy": "none",
+    "branchJoinPolicy": "none_per_edge_overlap_only",
+    "smoothingPolicy": "none",
+    "biologicalSurfaceClaim": false,
+    "membraneClaim": false,
+    "measurementUse": "forbidden"
+  },
+  "records": [
+    {
+      "neuronId": 104003,
+      "assetId": "NeuroMorpho:104003",
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-104003.json",
+        "bytes": 13333,
+        "sha256": "adb728c4f54c5c28042882f1708769964312cdb3f2bf087406969a6b4f41e034",
+        "rawSwcSha256": "0f24943c43854cbe48f8bebfd4b45b905a5f897580d4dc25fd55c8ec9c4b8d8d",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": true,
+        "nodeCount": 109,
+        "segmentCount": 108
+      },
+      "axon": { "sourceType2NodeCount": 0, "sourceDomain": "Dendrites, Soma, No Axon", "completeAxon": false },
+      "radiusEvidence": { "status": "OBSERVED_SOURCE_RADIUS", "minimumMicrometre": 0.12, "maximumMicrometre": 5.391, "meanMicrometre": 0.531770642201834, "missingReason": null },
+      "modes": {
+        "observedSwc": { "available": true, "authority": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "radiusSurface": { "available": true, "authority": "DERIVED_FROM_OBSERVED_RADIUS", "missingReason": null },
+        "internalStructure": { "available": false, "authority": "UNAVAILABLE", "missingEvidence": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] }
+      }
+    },
+    {
+      "neuronId": 108974,
+      "assetId": "NeuroMorpho:108974",
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-108974.json",
+        "bytes": 184927,
+        "sha256": "e3c932a063b379c3e0606d0420ade0830210e7bb9c54e7b20830442e8334a25a",
+        "rawSwcSha256": "0fc8e7050e455ed1f79fa5a8e4da304c69054fb5ddd0167fcb3970c5d4c0982d",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": true,
+        "nodeCount": 1801,
+        "segmentCount": 1800
+      },
+      "axon": { "sourceType2NodeCount": 0, "sourceDomain": "Dendrites, Soma, No Axon", "completeAxon": false },
+      "radiusEvidence": { "status": "OBSERVED_SOURCE_RADIUS", "minimumMicrometre": 0.055, "maximumMicrometre": 4.74229, "meanMicrometre": 0.1680158745141575, "missingReason": null },
+      "modes": {
+        "observedSwc": { "available": true, "authority": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "radiusSurface": { "available": true, "authority": "DERIVED_FROM_OBSERVED_RADIUS", "missingReason": null },
+        "internalStructure": { "available": false, "authority": "UNAVAILABLE", "missingEvidence": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] }
+      }
+    },
+    {
+      "neuronId": 109005,
+      "assetId": "NeuroMorpho:109005",
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-109005.json",
+        "bytes": 1087773,
+        "sha256": "3e14915a3f89acf0b76cc5e3a1d1502e23b97b89fe26e537f1fa86da5bce97ac",
+        "rawSwcSha256": "3f74c3796e9992b63dabb4f9c8430695658f35bd03f824bb47a58ce1c625726e",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": true,
+        "nodeCount": 10314,
+        "segmentCount": 10313
+      },
+      "axon": { "sourceType2NodeCount": 3249, "sourceDomain": "Dendrites, Soma, Axon", "completeAxon": false },
+      "radiusEvidence": { "status": "OBSERVED_SOURCE_RADIUS", "minimumMicrometre": 0.075, "maximumMicrometre": 5.209, "meanMicrometre": 0.3271150475082447, "missingReason": null },
+      "modes": {
+        "observedSwc": { "available": true, "authority": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "radiusSurface": { "available": true, "authority": "DERIVED_FROM_OBSERVED_RADIUS", "missingReason": null },
+        "internalStructure": { "available": false, "authority": "UNAVAILABLE", "missingEvidence": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] }
+      }
+    },
+    {
+      "neuronId": 242822,
+      "assetId": "NeuroMorpho:242822",
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-242822.json",
+        "bytes": 474672,
+        "sha256": "125486dc4495aa1d6aef8572f6dfb5f8fc314481e5229ea528d4b52b0e675a5c",
+        "rawSwcSha256": "2bbb7f6abb138a5eaed2aa2300fb80ef12c1f73f77d5702dcd66032b9504a742",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": false,
+        "nodeCount": 4515,
+        "segmentCount": 4514
+      },
+      "axon": { "sourceType2NodeCount": 0, "sourceDomain": "Dendrites, Soma, No Axon", "completeAxon": false },
+      "radiusEvidence": { "status": "UNAVAILABLE", "minimumMicrometre": null, "maximumMicrometre": null, "meanMicrometre": null, "missingReason": "official_attributes_report_no_diameter" },
+      "modes": {
+        "observedSwc": { "available": true, "authority": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "radiusSurface": { "available": false, "authority": "UNAVAILABLE", "missingReason": "official_attributes_report_no_diameter" },
+        "internalStructure": { "available": false, "authority": "UNAVAILABLE", "missingEvidence": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] }
+      }
+    },
+    {
+      "neuronId": 260150,
+      "assetId": "NeuroMorpho:260150",
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-260150.json",
+        "bytes": 139348,
+        "sha256": "ec5fde464ecfc64f1fd821771d08aad0cf670c1d11bd01fe384502e5ab9e73b9",
+        "rawSwcSha256": "ac078ee88e43cc9831544be2242c24ac6212d26cf7c9a237a3597314a5e27f7f",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": false,
+        "nodeCount": 1297,
+        "segmentCount": 1296
+      },
+      "axon": { "sourceType2NodeCount": 0, "sourceDomain": "Dendrites, Soma, No Axon", "completeAxon": false },
+      "radiusEvidence": { "status": "UNAVAILABLE", "minimumMicrometre": null, "maximumMicrometre": null, "meanMicrometre": null, "missingReason": "official_attributes_report_no_diameter" },
+      "modes": {
+        "observedSwc": { "available": true, "authority": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "radiusSurface": { "available": false, "authority": "UNAVAILABLE", "missingReason": "official_attributes_report_no_diameter" },
+        "internalStructure": { "available": false, "authority": "UNAVAILABLE", "missingEvidence": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] }
+      }
+    }
+  ],
+  "hardBoundaries": [
+    "Observed SWC coordinates, topology, source types and source-authorized radii remain in the unregistered source-local frame.",
+    "The radius-derived branch surface is a deterministic display derivative, not an observed membrane, segmented biological surface or histological reconstruction.",
+    "No radius-derived surface is rendered when official source attributes report no diameter, even when the standardized SWC contains placeholder radius values.",
+    "No nucleus, organelle, bouton, receptor-distribution or ultrastructure model is available for these same cells.",
+    "An axon source type does not establish a complete axon, connectivity, projection target or pathway length.",
+    "No morphology is assigned to the selected SCI entity or to a Russ, Sathyamurthy, Hayashi, Häring or Matson molecular population.",
+    "Display scaling, selection and co-display create no atlas registration, same-cell identity or cross-source relationship."
+  ]
+}

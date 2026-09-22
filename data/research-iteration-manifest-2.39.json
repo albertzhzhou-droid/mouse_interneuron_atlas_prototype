@@ -1,0 +1,4107 @@
+{
+  "manifestSchemaVersion": "2.39.0",
+  "releaseId": "ohri-mouse-interneuron-research-iteration-2.39.0",
+  "releaseDate": "2026-09-02",
+  "releaseStatus": "localhost_research_iteration",
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "version": "2.39.0-research.1"
+  },
+  "baseResearchRelease": {
+    "releaseId": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0",
+    "schemaVersion": "0.2.0",
+    "note": "Iteration 2.39 admits eight exact NMO 45718 source-native Neurolucida soma contour traces with 275 ordered vertices as separately switchable LineLoop geometry. Seven source-closed Soma 1 planes remain separate from one legacy Cell Body closure exception. It adds no fill, triangle, lofted surface, volume, internal object, DAT-to-SWC overlay, same-cell cross-modal join or registration. The canonical source registry remains 27 sources while increasing to 33 record sets, with nine exact child-roster chains and one separate exact source-object-set chain. The contour objects are not a cell roster. A three-candidate open-source modeling availability audit remains queue-only: its one bounded raw/nucleus availability receipt is not a selected-interneuron or same-cell internal chain. The research queue contains 178 upgrades through UPG-196. No full-project copy or distributable package is created."
+  },
+  "authoritativeInputs": [
+    {
+      "id": "researchRelease",
+      "scope": "project",
+      "path": "data/research-mvp-release-0.2.json",
+      "purpose": "Research MVP 0.2 evidence-entity payload",
+      "bytes": 30689,
+      "sha256": "bd63024da4467daf8e1a68110e883a8f917c4e36519bc2a47a0cc2e6ca245927"
+    },
+    {
+      "id": "researchReleaseSchema",
+      "scope": "project",
+      "path": "schemas/research-mvp-release.schema.json",
+      "purpose": "Research MVP 0.2 JSON Schema",
+      "bytes": 10197,
+      "sha256": "9c5ba4f56f4772734045394070790dc9ce8d1d3b87118914fd5f7a8229b47fff"
+    },
+    {
+      "id": "evidenceLedger",
+      "scope": "scientificAuthority",
+      "path": "02_EVIDENCE/EVIDENCE_LEDGER.md",
+      "purpose": "External authoritative evidence ledger",
+      "bytes": 27255,
+      "sha256": "afceda228b6d8644e47e4c44803cd49bf76045c59202e9d96777775e7c7e59cf"
+    },
+    {
+      "id": "sourceManifest",
+      "scope": "scientificAuthority",
+      "path": "01_LITERATURE/SOURCE_MANIFEST.tsv",
+      "purpose": "External authoritative source manifest",
+      "bytes": 5585,
+      "sha256": "994de35e45b481f1d218add4d73b4f0357e751c2474ee2ed03dc1821ee0833ab"
+    },
+    {
+      "id": "atlasAssetManifest",
+      "scope": "project",
+      "path": "public/data/allen_cord_20um_v3_0/asset-manifest.json",
+      "purpose": "Current bundled BrainGlobe atlas derivative manifest",
+      "bytes": 62846,
+      "sha256": "75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8"
+    },
+    {
+      "id": "morphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124/asset-manifest.json",
+      "purpose": "Bundled NeuroMorpho exemplar manifest",
+      "bytes": 11216,
+      "sha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647"
+    },
+    {
+      "id": "micronsObservedReferenceContract",
+      "scope": "project",
+      "path": "data/microns-observed-cell-nucleus-reference-0.1.json",
+      "purpose": "Exact MICrONS cell and source-linked nucleus component-limited admission contract",
+      "bytes": 9639,
+      "sha256": "9b5141072192b9d272c0babe097de380d2aebd98659c2c57745ee75d226b744c"
+    },
+    {
+      "id": "micronsObservedReferenceAssetManifest",
+      "scope": "project",
+      "path": "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "purpose": "Exact MICrONS source fragments and browser geometry asset receipts",
+      "bytes": 94901,
+      "sha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1"
+    },
+    {
+      "id": "ronzanoPremotorPositionContract",
+      "scope": "project",
+      "path": "data/ronzano-premotor-position-reference-0.1.json",
+      "purpose": "Exact Ronzano neonatal premotor coordinate-row admission contract",
+      "bytes": 38612,
+      "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d"
+    },
+    {
+      "id": "ronzanoPremotorPositionPayload",
+      "scope": "project",
+      "path": "public/data/ronzano_premotor_positions_v1/positions.json",
+      "purpose": "Exact source-local Ronzano XYZ rows across independent raw and normalized representations",
+      "bytes": 1274690,
+      "sha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3"
+    },
+    {
+      "id": "researchSourceRegistry",
+      "scope": "project",
+      "path": "data/research-source-registry-0.1.json",
+      "purpose": "Canonical source and record-set registry",
+      "bytes": 118467,
+      "sha256": "ca9148e22396ed92cf3d15ab0be2e1488399e9d1a2deba4cf8d088eb2793f328"
+    },
+    {
+      "id": "researchModelUpgradeRegistry",
+      "scope": "project",
+      "path": "data/research-model-upgrade-registry-0.1.json",
+      "purpose": "Deterministic research/model upgrade registry",
+      "bytes": 441953,
+      "sha256": "3b1615e921d16382026341b6b6901335a8894ab0bcb98837d00a967ef4f5b837"
+    },
+    {
+      "id": "rightsLedger",
+      "scope": "project",
+      "path": "docs/RIGHTS_LEDGER.csv",
+      "purpose": "Current asset and source rights decisions",
+      "bytes": 10833,
+      "sha256": "a7e082b8face29de5218479033a9034f8589e22bff2cf54d47f9aecb0ba6213a"
+    },
+    {
+      "id": "packageLock",
+      "scope": "project",
+      "path": "package-lock.json",
+      "purpose": "Exact JavaScript dependency graph",
+      "bytes": 300345,
+      "sha256": "e646cd8e7c015a54cbcf9b9c119f46c068c697a1d294616086e0296fb1a96b1f"
+    },
+    {
+      "id": "alkaslasiCholinergicTaxonomyContract",
+      "scope": "project",
+      "path": "data/alkaslasi-cholinergic-source-taxonomy-0.1.json",
+      "purpose": "Exact Alkaslasi adult cholinergic I1-I8 source-local aggregate taxonomy contract",
+      "bytes": 65802,
+      "sha256": "e87729a1ef5f0d521fb583a2a34173e0f1b169799c60b6017a3a8cfeca1bec7e"
+    },
+    {
+      "id": "grpDorsalHornObservedMorphologyContract",
+      "scope": "project",
+      "path": "data/grp-dorsal-horn-observed-morphology-0.1.json",
+      "purpose": "Independent checksum-pinned NMO 109021 GRP dorsal-horn morphology route",
+      "bytes": 10016,
+      "sha256": "6212fd3b78ad3e7ef054b656ab9cf080f57360db710eedb767c55c493036563f"
+    },
+    {
+      "id": "neuromorphoCensusIndex",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+      "purpose": "Full 142-record NeuroMorpho census containing the already-admitted NMO 109021 child",
+      "bytes": 968797,
+      "sha256": "1598b5119f5826719e390fe46615a291b51fa3cd7716e9a191ad645f73165364"
+    },
+    {
+      "id": "neuromorphoCensusAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_census_v1/asset-manifest.json",
+      "purpose": "Full census SWC and lazy-geometry asset receipts",
+      "bytes": 62165,
+      "sha256": "2c1153fe86e3bc2f08505cf2416ab25b2d8e9ca747b0bffcfad5aacc9286cf91"
+    },
+    {
+      "id": "evidenceAware3dRepresentationContract",
+      "scope": "project",
+      "path": "data/evidence-aware-3d-representation-contract-0.1.json",
+      "purpose": "Nine-state, seven-route evidence-aware rendering authority contract",
+      "bytes": 11044,
+      "sha256": "9fdf8eaf3f37c50835e78af19d86c3e95269aeb67f43461a23f8298132eb9195"
+    },
+    {
+      "id": "zeroPrimitiveInternalReferenceContract",
+      "scope": "project",
+      "path": "data/cross-region-internal-reference-0.1.json",
+      "purpose": "Cross-region vocabulary audit whose missing object-level geometry produces zero primitives",
+      "bytes": 6945,
+      "sha256": "39eaf91cf6f02c45872287b2cb757e1ad43205c0d726ce1956f93bacbcfb6daa"
+    },
+    {
+      "id": "dorsalHornObservedMorphologyRoutePackContract",
+      "scope": "project",
+      "path": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+      "purpose": "Four checksum-pinned source-local dorsal-horn morphology route memberships with explicit overlap and supplementary boundaries",
+      "bytes": 42226,
+      "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+    },
+    {
+      "id": "dorsalHornObservedMorphologySupplementaryAssetManifest",
+      "scope": "project",
+      "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+      "purpose": "Exact metadata, standardized SWC and lazy-geometry receipts for the two supplementary route-pack objects",
+      "bytes": 1696,
+      "sha256": "4f64fb595a4362cf0403cb0d3abc3c6fdc14b7f74d473a82ccd67bed9b9dab87"
+    },
+    {
+      "id": "functionalClassObservedMorphologyRoutePackContract",
+      "scope": "project",
+      "path": "data/functional-class-observed-morphology-route-pack-0.1.json",
+      "purpose": "Two checksum-pinned source-local Renshaw and NPY-positive morphology routes with explicit preparation, metadata-conflict, DAT non-admission and exact-physiology non-join boundaries",
+      "bytes": 28937,
+      "sha256": "400b17afd707c3b53ee0cbb1d6402943535111c01402eb3903b256d12e176840"
+    },
+    {
+      "id": "functionalClassObservedMorphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/functional_class_observed_morphology_route_pack_v1/asset-manifest.json",
+      "purpose": "Delta-only official metadata, morphometry, standardized SWC, source-native DAT receipt and lazy-geometry asset inventory for NMO 45674 and NMO 50424",
+      "bytes": 2768,
+      "sha256": "a44d7b109357d086d0d7bc27481ee76bdcfe7382e804f74aeb08195b47878f5f"
+    },
+    {
+      "id": "evidenceAware3dRepresentationContract03",
+      "scope": "project",
+      "path": "data/evidence-aware-3d-representation-contract-0.3.json",
+      "purpose": "Nine-state, thirteen-route evidence-aware representation contract including the two functional-class exact morphology routes",
+      "bytes": 18496,
+      "sha256": "00c464afc793b8853d176366ece708f993c89920dba4027789bc7e84d9b03aa6"
+    },
+    {
+      "id": "researchIterationManifestSchema226",
+      "scope": "project",
+      "path": "schemas/research-iteration-manifest-2.26.schema.json",
+      "purpose": "JSON Schema for the research iteration 2.26 manifest",
+      "bytes": 19637,
+      "sha256": "109f6bb2522fd3aca696df2eda1e8d7ce41375ae5d30c7e656f98d3a1c9cd59f"
+    },
+    {
+      "id": "prpDorsalHornObservedMorphologyRoutePackContract",
+      "scope": "project",
+      "path": "data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
+      "purpose": "Two checksum-pinned PrP-promoter-reporter dorsal-horn morphology routes with positive-marker, preparation-stage, DAT, physiology, internal-detail, identity and registration boundaries",
+      "bytes": 31435,
+      "sha256": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709"
+    },
+    {
+      "id": "prpDorsalHornObservedMorphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+      "purpose": "Delta-only exact metadata, morphometry, SWC, receipt-only DAT and lazy-geometry inventory for NMO 50394 and NMO 50408",
+      "bytes": 2766,
+      "sha256": "2f17597f67532debfa79828a6313887fb362e9cdc4baba9d3015d94129c5ef8f"
+    },
+    {
+      "id": "evidenceAware3dRepresentationContract04",
+      "scope": "project",
+      "path": "data/evidence-aware-3d-representation-contract-0.4.json",
+      "purpose": "Nine-state, fifteen-route evidence-aware representation contract including the two exact PrP-reporter routes",
+      "bytes": 21341,
+      "sha256": "1dec67e67884199a481ce8127793523acf56d0d50df83cfe330e933c8260e392"
+    },
+    {
+      "id": "researchIterationManifestSchema227",
+      "scope": "project",
+      "path": "schemas/research-iteration-manifest-2.27.schema.json",
+      "purpose": "JSON Schema for the research iteration 2.27 manifest",
+      "bytes": 24804,
+      "sha256": "06e0160aeb21e8237f2b3b761e50102fa524b6adee39e5a4b6dfed2ab8be415b"
+    },
+    {
+      "id": "premotorComparisonObservedMorphologyRoutePackContract",
+      "scope": "project",
+      "path": "data/premotor-comparison-observed-morphology-route-pack-0.1.json",
+      "purpose": "Checksum-pinned NMO 45718 source-local ventral-horn comparison route with repository-label, preparation, shrinkage, soma-standardization, DAT, physiology, internal-detail, identity and registration boundaries",
+      "bytes": 19112,
+      "sha256": "39afe0acc449c367cd48776b150058982c8d57186ea9adbeb9314b08d62b2cb3"
+    },
+    {
+      "id": "premotorComparisonObservedMorphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/asset-manifest.json",
+      "purpose": "Delta-only exact metadata, morphometry, SWC, receipt-only DAT and lazy-geometry inventory for NMO 45718",
+      "bytes": 1647,
+      "sha256": "0220169ea294d8db086a228557b0b067fd057249e41f7187cf2a14ee924a33d8"
+    },
+    {
+      "id": "evidenceAware3dRepresentationContract05",
+      "scope": "project",
+      "path": "data/evidence-aware-3d-representation-contract-0.5.json",
+      "purpose": "Nine-state, sixteen-route evidence-aware representation contract including the exact NMO 45718 comparison route",
+      "bytes": 23381,
+      "sha256": "94085465117e4cbc70763ea78f931cfb17d3f99c5dc907a3fe4556ef1063dbed"
+    },
+    {
+      "id": "premotorComparisonObservedMorphologyRoutePackSchema",
+      "scope": "project",
+      "path": "schemas/premotor-comparison-observed-morphology-route-pack-0.1.schema.json",
+      "purpose": "JSON Schema for the NMO 45718 premotor-comparison observed-morphology route pack",
+      "bytes": 13685,
+      "sha256": "3922062699463bad90e41ec6d5a64d07f949b62a6fd77f03540130d8d2602b15"
+    },
+    {
+      "id": "supplementaryMorphologyComparisonAdapter",
+      "scope": "project",
+      "path": "data/supplementary-morphology-comparison-adapter-0.1.json",
+      "purpose": "Membership-aware adapter exposing seven exact route-local NeuroMorpho objects beside, but never inside, the immutable 142-record census",
+      "bytes": 42808,
+      "sha256": "f487034457ec2187996f0d3db8935545e64d1ce6783391b668c0747bdf2d5e05"
+    },
+    {
+      "id": "supplementaryMorphologyComparisonAnalysisDelta",
+      "scope": "project",
+      "path": "public/data/supplementary_morphology_comparison_v1/analysis-delta.json",
+      "purpose": "Seven-record source-local morphology-analysis delta for the supplementary comparison layer",
+      "bytes": 34013,
+      "sha256": "b2f90156d9e9eb86cc2dfc72f05a140c6942c802a492274472c86a0c7a29d0df"
+    },
+    {
+      "id": "supplementaryMorphologyComparisonAssetManifest",
+      "scope": "project",
+      "path": "public/data/supplementary_morphology_comparison_v1/asset-manifest.json",
+      "purpose": "Delta-only public inventory proving zero copied geometry or SWC payloads",
+      "bytes": 3619,
+      "sha256": "ab7b2a8fbc458e0871a39819e88007ffe3ad84f6378f87a2a24015484028db6f"
+    },
+    {
+      "id": "supplementaryMorphologyComparisonAdapterSchema",
+      "scope": "project",
+      "path": "schemas/supplementary-morphology-comparison-adapter-0.1.schema.json",
+      "purpose": "Combined JSON Schema for supplementary adapter membership, records, source receipts and missingness",
+      "bytes": 24130,
+      "sha256": "50b79761fb881468d077a4f18c215fe544601789195c7ffe22e4d74bfeeeace0"
+    },
+    {
+      "id": "morphologySourceFrameDisclosure",
+      "scope": "project",
+      "path": "data/morphology-source-frame-disclosure-0.1.json",
+      "purpose": "Exact 149-record source-local coordinate, preparation, truncation and scale-disclosure contract",
+      "bytes": 469544,
+      "sha256": "e76abace7e59995f4b1849ce87a7e10e0d066a80844959589d5f06fcba0c5230"
+    },
+    {
+      "id": "morphologySourceFrameDisclosureSchema",
+      "scope": "project",
+      "path": "schemas/morphology-source-frame-disclosure-0.1.schema.json",
+      "purpose": "Fail-closed JSON Schema for the source-frame disclosure contract",
+      "bytes": 14554,
+      "sha256": "382bc051000d96d7142b5176598dad969f36568579e70f563e83606ac6ca8e4b"
+    },
+    {
+      "id": "morphologySourceFrameDisclosureBuilder",
+      "scope": "project",
+      "path": "tools/build_morphology_source_frame_disclosure.mjs",
+      "purpose": "Deterministic source-frame disclosure materializer",
+      "bytes": 20391,
+      "sha256": "dae31dc3d47d203b3374c1cc902c09950e705147386e44a8fe96af8175c72633"
+    },
+    {
+      "id": "morphologyViewportScaleAlgorithm",
+      "scope": "project",
+      "path": "app/morphology-viewport-scale.js",
+      "purpose": "Pure camera-target-plane source-local micrometre scale-bar algorithm",
+      "bytes": 3658,
+      "sha256": "f51a96dd5fe21d36ca7455245145b002a232116115e5af992d0f6465542f1aac"
+    },
+    {
+      "id": "researchExplorerAssetManifest",
+      "scope": "project",
+      "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+      "purpose": "Research Explorer 1.12.0 20-source-file roster and exact 630-record search-index receipt",
+      "bytes": 5137,
+      "sha256": "6e6ae4216abdd449db2236b2146feee766b543709585af5daac84dec0ad9f716"
+    },
+    {
+      "id": "researchExplorerSearchIndex",
+      "scope": "project",
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "purpose": "Full 630-record Research Explorer 1.12.0 discovery index",
+      "bytes": 10456099,
+      "sha256": "527fc440e1699da86e2512b2b1043984ef2ce189013672e18476810481b32f8a"
+    },
+    {
+      "id": "researchVisualTargetResolver",
+      "scope": "project",
+      "path": "app/research-visual-target.js",
+      "purpose": "Fail-closed research-focus to exact visual-target resolver",
+      "bytes": 6147,
+      "sha256": "c7c7633b6fe42cd60c14c0b26a4234b17670af90f6d45b7b90f93d9e56dad7aa"
+    },
+    {
+      "id": "morphologyRecordDisclosureComponent",
+      "scope": "project",
+      "path": "app/MorphologyRecordDisclosure.tsx",
+      "purpose": "Record-specific source, preparation, integrity and geometry-receipt disclosure card",
+      "bytes": 4846,
+      "sha256": "87e0e8f1c041feb1ab77aa681e0428daa2c757ff7872c79ee576700540b5e789"
+    },
+    {
+      "id": "morphologyTopologyDetailContract",
+      "scope": "project",
+      "path": "data/morphology-topology-detail-0.1.json",
+      "purpose": "Root contract for exact source-type topology and landmark receipts",
+      "bytes": 5032,
+      "sha256": "85a4c8c379d8893a216de37c7f3d5e2010c72b2bdad1df491214bdbe29557541"
+    },
+    {
+      "id": "morphologyTopologyDetailRuntime",
+      "scope": "project",
+      "path": "public/data/morphology_topology_detail_v1/index.json",
+      "purpose": "Full 149-record source-type topology runtime index",
+      "bytes": 902933,
+      "sha256": "fdd6c1e4e6b5bf7032ec45719ec630245e078599c47915d46b72914d69e3d5b9"
+    },
+    {
+      "id": "morphologyTopologyDetailSchema",
+      "scope": "project",
+      "path": "schemas/morphology-topology-detail-0.1.schema.json",
+      "purpose": "Fail-closed topology-detail JSON schema",
+      "bytes": 8327,
+      "sha256": "f8298aea3ca7d18f10b1bd64f13159d5835725e8ea008c88197d633c2a2b98a5"
+    },
+    {
+      "id": "morphologyTopologyDetailBuilder",
+      "scope": "project",
+      "path": "tools/build_morphology_topology_detail.mjs",
+      "purpose": "Deterministic topology-detail builder",
+      "bytes": 38904,
+      "sha256": "b8d47d1320a78a934b0d0bcf9c970210c93dc147f49e62911aa26c37cf4c8d41"
+    },
+    {
+      "id": "morphologyTopologyDetailValidator",
+      "scope": "project",
+      "path": "scripts/validate-morphology-topology-detail-0.1.mjs",
+      "purpose": "Topology-detail receipt and scientific-boundary validator",
+      "bytes": 17984,
+      "sha256": "39cc3785160b6f2427bfc77dbe88dd28023b20054ad6ee856eb5de66740dbc0f"
+    },
+    {
+      "id": "sourceLocalTopologyRenderer",
+      "scope": "project",
+      "path": "app/source-local-morphology-geometry.js",
+      "purpose": "Exact parent-link landmark extraction and line-cross rendering",
+      "bytes": 17661,
+      "sha256": "18132bdba00acb8a79a5e5f5da05a5c5f33b3d2a8efb490c942753260bc0d0f9"
+    },
+    {
+      "id": "mainSceneTopologyIntegration",
+      "scope": "project",
+      "path": "app/SceneCanvas.tsx",
+      "purpose": "Main-scene exact morphology topology overlay",
+      "bytes": 90167,
+      "sha256": "18a0be5aef044a081b2c26784b2bf21d99323c0236a6e05dcf1f74ae7a805dd8"
+    },
+    {
+      "id": "sourceLocalTopologyViewport",
+      "scope": "project",
+      "path": "app/SourceLocalMorphologyViewport.tsx",
+      "purpose": "Source-local topology controls and exact landmark legend",
+      "bytes": 17390,
+      "sha256": "0503872b465305a2e92c72fa3da60ce3a3c1451538e1de2d4ce3d4903de7460a"
+    },
+    {
+      "id": "morphologyViewerTopologyIntegration",
+      "scope": "project",
+      "path": "app/MorphologyViewer.tsx",
+      "purpose": "Individual exact-morphology topology detail integration",
+      "bytes": 47536,
+      "sha256": "9e878b5b408bcea9cb63c4ebc4cc13ba92b984e0835baf6368b090d21841dbce"
+    },
+    {
+      "id": "morphologyCompareTopologyIntegration",
+      "scope": "project",
+      "path": "app/MorphologyComparePanel.tsx",
+      "purpose": "Comparison-card topology detail integration",
+      "bytes": 28258,
+      "sha256": "dad2bbd6c0823b0630d825dea19fa3e04b6f6c78504ab3411ab4df8a81956140"
+    },
+    {
+      "id": "morphologyTopologyDetailPanel",
+      "scope": "project",
+      "path": "app/MorphologyTopologyDetailPanel.tsx",
+      "purpose": "Checksum-gated source-type topology detail panel",
+      "bytes": 10531,
+      "sha256": "0e7288e18cd9378c28a21bc9da5ad4f3ef745d7e5d909e77c9e4cc1b554dd462"
+    },
+    {
+      "id": "morphologyTopologyDetailRuntimeGuard",
+      "scope": "project",
+      "path": "app/morphology-topology-detail-runtime.js",
+      "purpose": "Browser fail-closed guard for topology membership, source domains and unavailable types",
+      "bytes": 10233,
+      "sha256": "4e38bd5dffe7b4fdf6ef163453adaef7c83e345b226d119e7cec7c6384a4e88c"
+    },
+    {
+      "id": "researchEvidenceFingerprintComponent",
+      "scope": "project",
+      "path": "app/ResearchRecordEvidenceFingerprint.tsx",
+      "purpose": "Shared humanized source-record evidence fingerprint",
+      "bytes": 4823,
+      "sha256": "2dca978b85123b3003c7e480496e7c8506c4af59fc845f677dd49548a4c99ab4"
+    },
+    {
+      "id": "atlasFocusSynchronization",
+      "scope": "project",
+      "path": "app/AtlasPrototype.tsx",
+      "purpose": "SCI-only active entity binding and non-SCI stale-geometry clearing",
+      "bytes": 126326,
+      "sha256": "af39bf9c4c1b5b74b17122a9f37c60d7a72445ba0d6127c87676a94db3c9e014"
+    },
+    {
+      "id": "typeAtlasFingerprintIntegration",
+      "scope": "project",
+      "path": "app/InterneuronTypeAtlas.tsx",
+      "purpose": "Selected molecular-profile fingerprint integration",
+      "bytes": 124965,
+      "sha256": "a2eb238a0e9c960785723796884e14e64857b3c04f62cc34964d73359c8b74da"
+    },
+    {
+      "id": "researchExplorerFingerprintIntegration",
+      "scope": "project",
+      "path": "app/ResearchExplorer.tsx",
+      "purpose": "Research Explorer molecular fingerprint integration",
+      "bytes": 32745,
+      "sha256": "5ffd237ec0355e1dd2834828ae8278103bece91c7a2a7982ed27b68de8db6ccd"
+    },
+    {
+      "id": "researchExplorerIndexRuntime",
+      "scope": "project",
+      "path": "app/research-explorer-index.js",
+      "purpose": "Shared fail-closed record lookup and source-taxonomy life-stage resolver",
+      "bytes": 24696,
+      "sha256": "5bf3d4711d970c57b35f5ca302896cde7de5ca80512933f04d2f8528a39c62db"
+    },
+    {
+      "id": "micronsSourceNativeClippingContract",
+      "scope": "project",
+      "path": "data/microns-source-native-clipping-0.1.json",
+      "purpose": "Exact source-native MICrONS cell-shell clipping contract",
+      "bytes": 4828,
+      "sha256": "a136d4762de15703a04d96db41e1172731d6af4b5a3bf338e49142b263150ff6"
+    },
+    {
+      "id": "micronsSourceNativeClippingSchema",
+      "scope": "project",
+      "path": "schemas/microns-source-native-clipping-0.1.schema.json",
+      "purpose": "Fail-closed MICrONS clipping JSON schema",
+      "bytes": 6552,
+      "sha256": "58f1b83608f843c0098f1b301f3fdcec718404f224c7ec4832b0b8e009207a9d"
+    },
+    {
+      "id": "micronsSourceNativeClippingRuntime",
+      "scope": "project",
+      "path": "app/microns-source-native-clipping.js",
+      "purpose": "Source-native clipping state, coordinate and receipt runtime",
+      "bytes": 6826,
+      "sha256": "342845e3cc01331fd8002e5a3bd24d227fea37fca2ae4eb020e235e0577b8fb9"
+    },
+    {
+      "id": "micronsSourceNativeClippingValidator",
+      "scope": "project",
+      "path": "scripts/validate-microns-source-native-clipping-0.1.mjs",
+      "purpose": "Clipping receipt and scientific-boundary validator",
+      "bytes": 9041,
+      "sha256": "4d2d039ff1be16ce61cba2aecae0d95a612d506c19878acff145e74810085484"
+    },
+    {
+      "id": "micronsSourceNativeClippingTest",
+      "scope": "project",
+      "path": "tests/microns-source-native-clipping.test.mjs",
+      "purpose": "Exact clipping and zero-claim regression tests",
+      "bytes": 4982,
+      "sha256": "a090b9dacf1cc7429a0cdee8cb91e5fbf0a2121bae59db920cc550e48a897e0a"
+    },
+    {
+      "id": "internalStructureReferencePanel",
+      "scope": "project",
+      "path": "app/InternalStructureReferencePanel.tsx",
+      "purpose": "MICrONS source-native clipping controls and explicit cross-region limits",
+      "bytes": 15983,
+      "sha256": "dcf314485faf0b60d2d388d0b51b5e5b4e9b225138643d59ac1612b6627cdb46"
+    },
+    {
+      "id": "sourceRecordDeltaRuntime",
+      "scope": "project",
+      "path": "app/source-record-delta.js",
+      "purpose": "Whitelisted exact display-string source-record delta helper",
+      "bytes": 5303,
+      "sha256": "31464ff01ec47d100297c9100e917d7255f8ba6270fc0f1a74af1ab5e9260f86"
+    },
+    {
+      "id": "sourceRecordDeltaInspector",
+      "scope": "project",
+      "path": "app/SourceRecordDeltaInspector.tsx",
+      "purpose": "Old/current changed rows and once-only exact shared rows",
+      "bytes": 5324,
+      "sha256": "d2ef5993df20c1f9ce2a5ed77e3e7adee7a75636e5852de77e29ac3f76093011"
+    },
+    {
+      "id": "sourceRecordDeltaTest",
+      "scope": "project",
+      "path": "tests/source-record-delta.test.mjs",
+      "purpose": "Source-record delta identity and geometry zero-boundary tests",
+      "bytes": 8274,
+      "sha256": "c6fbaaded0a392c3405946a1d2201a864a1c497108acbc7a908e0ea099e4f901"
+    },
+    {
+      "id": "micronsImportProvenanceRuntime",
+      "scope": "project",
+      "path": "app/microns-import-provenance.js",
+      "purpose": "MICrONS clipping import/export provenance guard",
+      "bytes": 3857,
+      "sha256": "fad707fdf8e41033a4c1a50b9875cc43e008d34cfb5f2a3b097c308b4c7b0bfb"
+    },
+    {
+      "id": "micronsImportProvenanceTest",
+      "scope": "project",
+      "path": "tests/microns-import-provenance.test.mjs",
+      "purpose": "MICrONS provenance import/export regression tests",
+      "bytes": 5645,
+      "sha256": "1cc36eb0f1cb59f13998cbaf5c7d6c38395035f5267bc7c3b9dbf15012c2f414"
+    },
+    {
+      "id": "atlasTypeContracts",
+      "scope": "project",
+      "path": "app/atlas-types.ts",
+      "purpose": "Typed MICrONS clipping state and runtime receipt contracts",
+      "bytes": 24058,
+      "sha256": "30ccdf23fca1ff7ae66ee643e64c036efda5a14b107ee0ebea3d1103bf5773a5"
+    },
+    {
+      "id": "applicationPackage",
+      "scope": "project",
+      "path": "package.json",
+      "purpose": "Application version and deterministic validation routes",
+      "bytes": 15990,
+      "sha256": "e227bd84f1703cf2ac4a2a94abbb0046b99b0e22184082598d7a02dde6ceeafd"
+    },
+    {
+      "id": "projectReadme",
+      "scope": "project",
+      "path": "README.md",
+      "purpose": "Current research scope and exact-universe disclosure",
+      "bytes": 74506,
+      "sha256": "9639ffe090c575941a43eebf8effb88c8e4f3e0059a52bbab1fa415da7f48cbe"
+    },
+    {
+      "id": "researchUpgradeQueue",
+      "scope": "project",
+      "path": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+      "purpose": "Evidence-gated research/model queue through UPG-196",
+      "bytes": 199490,
+      "sha256": "440ef52e981208c15d78be09e788f91d8251745dd7cc18c13ae635114c93dc6a"
+    },
+    {
+      "id": "researchTimeline234",
+      "scope": "project",
+      "path": "docs/RESEARCH_TIMELINE_2026-09-01_ITERATION_2_34.md",
+      "purpose": "Unique in-place iteration 2.34 timeline and rollback scope",
+      "bytes": 11415,
+      "sha256": "c232b28d5ceae67e8c7d9ea9a245ab0e888777e5bdc9617541a92f1650d57e64"
+    },
+    {
+      "id": "researchDataLab",
+      "scope": "project",
+      "path": "app/ResearchDataLab.tsx",
+      "purpose": "1,097-object morphology entry point and denominator disclosure",
+      "bytes": 14064,
+      "sha256": "e86ad62d2494682d8b9d1ff6c4740702a09f1005f90bbae8c13013d357dd8863"
+    },
+    {
+      "id": "researchOverview",
+      "scope": "project",
+      "path": "app/ResearchOverview.tsx",
+      "purpose": "Exact-universe research overview and frozen-subset boundary",
+      "bytes": 10749,
+      "sha256": "41776206e957b4b20fcc5710447d7c50f24b0afeb5b10b0f8b94923585d29025"
+    },
+    {
+      "id": "neuromorphoUniversePanel",
+      "scope": "project",
+      "path": "app/NeuroMorphoUniversePanel.tsx",
+      "purpose": "Exact-object browser, viewer and record-specific evidence card",
+      "bytes": 29171,
+      "sha256": "ee161bd2d52cc2cc7db9baba512a5c5953dd8cf61b5c515429207c860209f71c"
+    },
+    {
+      "id": "atlasStylesheet",
+      "scope": "project",
+      "path": "app/globals.css",
+      "purpose": "Responsive exact-universe presentation styles",
+      "bytes": 285269,
+      "sha256": "a77bf83c4670b2fa5c6695153f3871a9c63b2f55ec02a240acd46f3d7208ead5"
+    },
+    {
+      "id": "morphologyMatrixStateRuntime",
+      "scope": "project",
+      "path": "app/morphology-matrix-state.js",
+      "purpose": "Five-view morphology state with exact universe default",
+      "bytes": 2559,
+      "sha256": "285b4a1f5547ff45f68bc3ecba56c5a47fa98f90334131cc09caa88a2bba0cf8"
+    },
+    {
+      "id": "neuromorphoUniverseBuilder",
+      "scope": "project",
+      "path": "tools/build_neuromorpho_no_age_universe.py",
+      "purpose": "Official-query snapshot and exact SWC acquisition/QC builder",
+      "bytes": 33544,
+      "sha256": "4aac0f47a7057f79ae5f840a7bb9dcc9016e480832a578cb20ab81d513409cde"
+    },
+    {
+      "id": "neuromorphoUniverseContract",
+      "scope": "project",
+      "path": "data/neuromorpho-no-age-query-universe-0.1.json",
+      "purpose": "No-age query universe scientific and integrity contract",
+      "bytes": 4688,
+      "sha256": "5641ceab6ac9d73c89fc3ec5843be08efc6d7ede50d1235fb9de16348b1728ba"
+    },
+    {
+      "id": "neuromorphoUniverseRoster",
+      "scope": "project",
+      "path": "data/neuromorpho-no-age-query-universe-roster-0.1.json",
+      "purpose": "Fail-closed 1,097-ID runtime membership roster",
+      "bytes": 12747,
+      "sha256": "9c8baa5301ca726a60b70b00a95cdb70a6c1e7a268a3ad8ba6673d29aedc8ec1"
+    },
+    {
+      "id": "neuromorphoUniverseSchema",
+      "scope": "project",
+      "path": "schemas/neuromorpho-no-age-query-universe-0.1.schema.json",
+      "purpose": "Exact-universe JSON schema",
+      "bytes": 6170,
+      "sha256": "de21da1388e561a21218073f0db0eb6a6cdbe1fdf59a724e6cc31d3c007ffaf9"
+    },
+    {
+      "id": "neuromorphoUniverseValidator",
+      "scope": "project",
+      "path": "scripts/validate-neuromorpho-no-age-query-universe-0.1.mjs",
+      "purpose": "Full metadata, SWC, hash, topology and no-copy validator",
+      "bytes": 18647,
+      "sha256": "1c246493244d75e294675eca383bf4e0bfb44a8f664e8160ed5449b6f8367bc8"
+    },
+    {
+      "id": "neuromorphoUniverseTest",
+      "scope": "project",
+      "path": "tests/neuromorpho-no-age-query-universe.test.mjs",
+      "purpose": "Universe denominator, independent-set and UI regression tests",
+      "bytes": 4920,
+      "sha256": "93b1f53e364e3bed4172dfda0ef7b5d19397393aa0933fb90f600c0925d0223f"
+    },
+    {
+      "id": "neuromorphoSwcRuntime",
+      "scope": "project",
+      "path": "app/neuromorpho-swc-runtime.js",
+      "purpose": "Strict lazy seven-column SWC parser and receipt gate",
+      "bytes": 15619,
+      "sha256": "323285854e2663a9b2e4f4fa0c6631d768d6e8ad33478c39d529744eb08e1a31"
+    },
+    {
+      "id": "neuromorphoSwcRuntimeTest",
+      "scope": "project",
+      "path": "tests/neuromorpho-swc-runtime.test.mjs",
+      "purpose": "Parser, parity and failure regression tests",
+      "bytes": 7240,
+      "sha256": "d39ed4e91a25a653f358b35cb232f49c5ad99ca581ad2c548ba6e5d715fbb4ba"
+    },
+    {
+      "id": "researchVisualTargetTest",
+      "scope": "project",
+      "path": "tests/research-visual-target.test.mjs",
+      "purpose": "Roster-aware exact-focus and stale-geometry regression tests",
+      "bytes": 14643,
+      "sha256": "3e2673347f6f89169085ed66b4c94abb523d329659c860e095d455da03859827"
+    },
+    {
+      "id": "morphologyMatrixStateTest",
+      "scope": "project",
+      "path": "tests/morphology-matrix-state.test.mjs",
+      "purpose": "Five-view/default-universe state regression tests",
+      "bytes": 3214,
+      "sha256": "355483f4a8e827effed39c1b8d3a007e48348b7de377ff2e102d97dccc6f15ad"
+    },
+    {
+      "id": "renderedHtmlTest",
+      "scope": "project",
+      "path": "tests/rendered-html.test.mjs",
+      "purpose": "Server-rendered application regression tests",
+      "bytes": 66552,
+      "sha256": "d8c1e153e06ae05e8fa7e36e1a83d5dcb57f607b8d75447e9a4e4032f966e436"
+    },
+    {
+      "id": "micronsObservedReferenceTest",
+      "scope": "project",
+      "path": "tests/microns-observed-cell-nucleus-reference.test.mjs",
+      "purpose": "Current-manifest cross-region reference regression test",
+      "bytes": 10574,
+      "sha256": "91996f4b4098428b3a36d2b25ad8a6c7adcfe70d7767c04a89f836dccc6399f8"
+    },
+    {
+      "id": "neuromorphoUniverseIndex",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+      "purpose": "Exact 1,097-record metadata, provenance and SWC receipt index",
+      "bytes": 8025022,
+      "sha256": "1ba52eb81aa141349f9e9a6916f8acf5a089ba079e9de34507e50f32bd6cfd68"
+    },
+    {
+      "id": "neuromorphoUniverseAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/asset-manifest.json",
+      "purpose": "Delta-file asset declarations and receipts",
+      "bytes": 258944,
+      "sha256": "fcc798ed00b81b64073daea24777773a7fc56617f21cbe71206b36e800e859d5"
+    },
+    {
+      "id": "neuromorphoUniverseQuarantine",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/quarantine-report.json",
+      "purpose": "Final zero-quarantine report",
+      "bytes": 216,
+      "sha256": "1d9cc65ec335335f3e5d6f6509d29bb742a34d1c21b23d1e5fb7b8d3008e5830"
+    },
+    {
+      "id": "neuromorphoUniverseApiPage0",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+      "purpose": "Official API snapshot page 0",
+      "bytes": 769605,
+      "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91"
+    },
+    {
+      "id": "neuromorphoUniverseApiPage1",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-1.json",
+      "purpose": "Official API snapshot page 1",
+      "bytes": 753972,
+      "sha256": "6b03f0627a6972c027c152458ac5c5d322b03a78a725beea16438424dc87d77c"
+    },
+    {
+      "id": "neuromorphoUniverseApiPage2",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-2.json",
+      "purpose": "Official API snapshot page 2",
+      "bytes": 146925,
+      "sha256": "43076e7f418c7284eeaa331e7573a66ff19a66fb190cbd7cf133ddfceaad60e4"
+    },
+    {
+      "id": "crozatPkd2l1Builder",
+      "scope": "project",
+      "path": "tools/build_crozat_pkd2l1_functional_profile.mjs",
+      "purpose": "Deterministic checksum-pinned PKD2L1 functional-profile builder",
+      "bytes": 18942,
+      "sha256": "f96fc05abd8229fe1455fee332cc702f1cfbbb4734fa2f83ce121622aaf10113"
+    },
+    {
+      "id": "crozatPkd2l1Contract",
+      "scope": "project",
+      "path": "data/crozat-pkd2l1-functional-profile-0.1.json",
+      "purpose": "One source-local PKD2L1 functional profile with experiment-family denominators and quarantines",
+      "bytes": 20460,
+      "sha256": "ca022532c23f5d9967fce7efcbd5bde57b1d4f59516cb10764dd1b422dd8ed64"
+    },
+    {
+      "id": "crozatPkd2l1Schema",
+      "scope": "project",
+      "path": "schemas/crozat-pkd2l1-functional-profile-0.1.schema.json",
+      "purpose": "PKD2L1 functional-profile JSON schema",
+      "bytes": 3427,
+      "sha256": "c591cf8ba664f25bd2cc0d4c565d840560eac58754319e19b948ef1ad29a1eff"
+    },
+    {
+      "id": "crozatPkd2l1Validator",
+      "scope": "project",
+      "path": "scripts/validate-crozat-pkd2l1-functional-profile-0.1.mjs",
+      "purpose": "PKD2L1 file receipts, denominators, joins and zero-geometry validator",
+      "bytes": 4666,
+      "sha256": "8a4e7c566abadbc6fd0d1de68e38e0189c577cae54245cc316ee9991f1d97fb9"
+    },
+    {
+      "id": "crozatPkd2l1Test",
+      "scope": "project",
+      "path": "tests/crozat-pkd2l1-functional-profile.test.mjs",
+      "purpose": "PKD2L1 deterministic-build and mutation regression tests",
+      "bytes": 1992,
+      "sha256": "16845a824ac0c4b12695b399c0303fee0bde8c1647b19462711b2d26b65f8f00"
+    },
+    {
+      "id": "researchSourceRegistryValidator",
+      "scope": "project",
+      "path": "scripts/validate-research-source-registry-0.1.mjs",
+      "purpose": "Twenty-seven-source, 33-record-set, nine-exact-roster, one-exact-source-object-set and 376-source-profile validator",
+      "bytes": 63100,
+      "sha256": "fbdafac902b2fb6618ac6f41a8bd3594ab4b0653e63d21228a019909e9d628b0"
+    },
+    {
+      "id": "researchSourceRegistryTest",
+      "scope": "project",
+      "path": "tests/research-source-registry.test.mjs",
+      "purpose": "Canonical source registry regression tests including the exact NMO 45718 native-contour source-object-set chain",
+      "bytes": 50436,
+      "sha256": "65d740b2471c4e0cd906ac308730e1e2301f4bf1cf78eea2445039bf6a736588"
+    },
+    {
+      "id": "researchExplorerBuilder",
+      "scope": "project",
+      "path": "tools/build_research_explorer_index.mjs",
+      "purpose": "Research Explorer 630-record deterministic index builder",
+      "bytes": 116843,
+      "sha256": "ec5c0d2210ff256854bb87a5b981d582417f36674f309f0fbd1f085d66b23966"
+    },
+    {
+      "id": "researchExplorerValidator",
+      "scope": "project",
+      "path": "scripts/validate-research-explorer-index.mjs",
+      "purpose": "Research Explorer count, receipt, evidence and zero-geometry validator",
+      "bytes": 43372,
+      "sha256": "f9af7fa1ef2ce08f8fb3dafd49c8ee02e52ed4001674aca4b762802dcc824b64"
+    },
+    {
+      "id": "researchExplorerTest",
+      "scope": "project",
+      "path": "tests/research-explorer-index.test.mjs",
+      "purpose": "Research Explorer Crozat record and count regression tests",
+      "bytes": 43503,
+      "sha256": "a564cd2c97f86d2496c771d52db0deffa2eeb4faaf58ee70a590e7042716714d"
+    },
+    {
+      "id": "researchTimeline235",
+      "scope": "project",
+      "path": "docs/RESEARCH_TIMELINE_2026-09-01_ITERATION_2_35.md",
+      "purpose": "Unique in-place iteration 2.35 timeline and rollback scope",
+      "bytes": 10472,
+      "sha256": "cfad094ce192fe72bfae9841b74c9fff53934d4570cb7806a594c158b15b916a"
+    },
+    {
+      "id": "dmrt3Di6Builder",
+      "scope": "project",
+      "path": "tools/build_dmrt3_di6_source_taxonomy.mjs",
+      "purpose": "Deterministic Dmrt3/dI6 M1-M6 source-summary builder",
+      "bytes": 9938,
+      "sha256": "260ad8daf187a6a06e583099143277d93faf8de298dfb7de506f00aed31f91e4"
+    },
+    {
+      "id": "dmrt3Di6Contract",
+      "scope": "project",
+      "path": "data/dmrt3-di6-source-taxonomy-0.1.json",
+      "purpose": "Checksum-pinned source-local Dmrt3/dI6 M1-M6 group-summary contract",
+      "bytes": 22490,
+      "sha256": "e5d7b26df781033a971282b697684cf6f71daa2fe711883475723186c2d92468"
+    },
+    {
+      "id": "dmrt3Di6Schema",
+      "scope": "project",
+      "path": "schemas/dmrt3-di6-source-taxonomy-0.1.schema.json",
+      "purpose": "Dmrt3/dI6 source-taxonomy JSON schema",
+      "bytes": 16760,
+      "sha256": "2b6778a83b280649c549de42f4a7a39971dd97b5249654538363963847470feb"
+    },
+    {
+      "id": "dmrt3Di6Validator",
+      "scope": "project",
+      "path": "scripts/validate-dmrt3-di6-source-taxonomy-0.1.mjs",
+      "purpose": "Dmrt3/dI6 receipts, denominators, quarantines and zero-geometry validator",
+      "bytes": 19766,
+      "sha256": "fefb5030204a179a082008e4207e8632ede8a69606ca983c2aeb39e493c3df5a"
+    },
+    {
+      "id": "dmrt3Di6Test",
+      "scope": "project",
+      "path": "tests/dmrt3-di6-source-taxonomy.test.mjs",
+      "purpose": "Dmrt3/dI6 deterministic-build and mutation regression tests",
+      "bytes": 12714,
+      "sha256": "75251918b01f467b6747901d872b5005f63a4b9516c6946c42ea9ef390bd2c69"
+    },
+    {
+      "id": "knowledgeCoverageContract",
+      "scope": "project",
+      "path": "data/interneuron-knowledge-coverage-0.1.json",
+      "purpose": "Eight-source by seven-axis evidence-coverage matrix",
+      "bytes": 42123,
+      "sha256": "93a3d73d3be45e078027c1497401a3abec200c52f03d8220f9f4ff4ac0af9166"
+    },
+    {
+      "id": "knowledgeCoverageSchema",
+      "scope": "project",
+      "path": "schemas/interneuron-knowledge-coverage-0.1.schema.json",
+      "purpose": "Knowledge-coverage matrix JSON schema",
+      "bytes": 4731,
+      "sha256": "126796e77ef5eb0225ce09fe48ef8e9b3d6495a107364ff69af158abf4b07954"
+    },
+    {
+      "id": "knowledgeCoverageValidator",
+      "scope": "project",
+      "path": "scripts/validate-interneuron-knowledge-coverage-0.1.mjs",
+      "purpose": "Knowledge-coverage lane, judgment and boundary validator",
+      "bytes": 13102,
+      "sha256": "eac5fb662dceeeb579d9b424f2fec1794522fc70e0bb22ce46298b9ca4e09a11"
+    },
+    {
+      "id": "knowledgeCoverageTest",
+      "scope": "project",
+      "path": "tests/interneuron-knowledge-coverage.test.mjs",
+      "purpose": "Seven-lane, 49-judgment and Dmrt3 boundary regression tests",
+      "bytes": 11197,
+      "sha256": "f44f46a90f8a3b0f2cc7d98546ba951638ec989c727157b7a19fc1d6eb7d9bda"
+    },
+    {
+      "id": "manifestHashRuntime",
+      "scope": "project",
+      "path": "scripts/build-release-manifest.mjs",
+      "purpose": "Canonical JSON and manifest-content SHA-256 implementation used by the 2.36 builder",
+      "bytes": 129138,
+      "sha256": "ecf3266afe0f998fcf2f3e423b0d4b1424ef43430d6a4bbbe35e345043b13be9"
+    },
+    {
+      "id": "researchIteration235SnapshotValidator",
+      "scope": "project",
+      "path": "scripts/validate-research-iteration-manifest-2.35-snapshot.mjs",
+      "purpose": "Immutable 2.35 snapshot validator independent of live-input drift",
+      "bytes": 7199,
+      "sha256": "3e67e837818927e576108d54ddc8a97dcb89810bbf8504d1d0d50902e844b6fa"
+    },
+    {
+      "id": "researchIteration235SnapshotTest",
+      "scope": "project",
+      "path": "tests/research-iteration-manifest-2.35-snapshot.test.mjs",
+      "purpose": "Immutable 2.35 snapshot receipt and mutation regression tests",
+      "bytes": 2534,
+      "sha256": "b0e043955cf690b4ae6aaf894f113ad4f753ecec140a143eb944c6bc9329ef32"
+    },
+    {
+      "id": "currentResearchTestRunner",
+      "scope": "project",
+      "path": "tools/run_current_research_tests.mjs",
+      "purpose": "Current-iteration test discovery runner excluding historical live-input validators",
+      "bytes": 3369,
+      "sha256": "418c4967f4e2aabd7863379b06d76c30c22ebf8ccad2e5fd8de783ca9b67eca4"
+    },
+    {
+      "id": "researchTimeline236",
+      "scope": "project",
+      "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_36.md",
+      "purpose": "Unique in-place iteration 2.36 timeline, QA record and file-specific rollback scope",
+      "bytes": 13601,
+      "sha256": "ec7c03afb2d92f18f71647fabdfe41960186bbe47d0471ae4ec7d665498a3a24"
+    },
+    {
+      "id": "roomeWorkbookParser",
+      "scope": "project",
+      "path": "tools/parse_roome_dil_workbooks.mjs",
+      "purpose": "Exact OOXML parser for Roome Tables S6 and S7",
+      "bytes": 13343,
+      "sha256": "5a66f00f9bf287d3cdff086ccd3907837ab819664b20f3a39e4d5d31bc455d53"
+    },
+    {
+      "id": "roomeTaxonomyBuilder",
+      "scope": "project",
+      "path": "tools/build_roome_dil_source_taxonomy.mjs",
+      "purpose": "Deterministic compact and full Roome dIL evidence builder",
+      "bytes": 13463,
+      "sha256": "926632d4256629a4ed03d39d7d5cbe8eb6d1c08770a7cd06cf99e1602ddf24ba"
+    },
+    {
+      "id": "roomeTaxonomyContract",
+      "scope": "project",
+      "path": "data/roome-dil-source-taxonomy-0.1.json",
+      "purpose": "Exact 157-profile Roome dIL source-local taxonomy",
+      "bytes": 631320,
+      "sha256": "dc25145e21a2f3be4faf0d65c2bd8418339a173c99ed1548564cc07c03c348e9"
+    },
+    {
+      "id": "roomeDifferentialFeaturesContract",
+      "scope": "project",
+      "path": "data/roome-dil-differential-features-0.1.json",
+      "purpose": "All 15,900 Roome Table S7 differential-feature rows",
+      "bytes": 5072736,
+      "sha256": "5cecf178f75aa00aff1b73ad43565fb9b85b3cfa75093c6cca2ea2ae4615b6c9"
+    },
+    {
+      "id": "roomeTaxonomySchema",
+      "scope": "project",
+      "path": "schemas/roome-dil-source-taxonomy-0.1.schema.json",
+      "purpose": "Roome compact taxonomy JSON schema",
+      "bytes": 11754,
+      "sha256": "4c31e05f18a81405c2d09baeff4e21755064321eaf2bdbe215348f890967face"
+    },
+    {
+      "id": "roomeDifferentialFeaturesSchema",
+      "scope": "project",
+      "path": "schemas/roome-dil-differential-features-0.1.schema.json",
+      "purpose": "Roome full feature-evidence JSON schema",
+      "bytes": 2471,
+      "sha256": "14a557d3e498eb841f381fd5b42bdaffad5289da90babcedf4bab57dbd33f185"
+    },
+    {
+      "id": "roomeTaxonomyValidator",
+      "scope": "project",
+      "path": "scripts/validate-roome-dil-source-taxonomy-0.1.mjs",
+      "purpose": "Roome denominator, quarantine and zero-geometry validator",
+      "bytes": 9524,
+      "sha256": "637ba178c0e8b89c97c3d6b7df39bd94a52898a8f2ae59feaad8245ff561ba1c"
+    },
+    {
+      "id": "roomeTaxonomyTest",
+      "scope": "project",
+      "path": "tests/roome-dil-source-taxonomy.test.mjs",
+      "purpose": "Roome deterministic and mutation regression tests",
+      "bytes": 4171,
+      "sha256": "1d792c0ca372c1c0e4b38070b660f78ed2fdd7377f523697b34b28881ae3350e"
+    },
+    {
+      "id": "researchFocusWorkspaceState",
+      "scope": "project",
+      "path": "app/research-focus-workspace-state.js",
+      "purpose": "Atomic focus-to-lab-and-evidence workspace resolver",
+      "bytes": 1476,
+      "sha256": "3cffeafc37d491fff9257f3880ce7dc163724c873d9170a929c0c2b064a83868"
+    },
+    {
+      "id": "researchFocusEvidencePanel",
+      "scope": "project",
+      "path": "app/ResearchFocusEvidencePanel.tsx",
+      "purpose": "Source-locked current-record evidence rail",
+      "bytes": 12323,
+      "sha256": "055cef2c1c42198a699a94c4ae25642f4d14f169b29657b736f5930f7fdc0ce1"
+    },
+    {
+      "id": "researchFocusWorkspaceTest",
+      "scope": "project",
+      "path": "tests/research-focus-workspace-state.test.mjs",
+      "purpose": "Atomic focus routing and fail-closed workspace tests",
+      "bytes": 2270,
+      "sha256": "432cf0c398fe8c108236cd461eb64e7153c4bb2d477eb3881f612db7ae661eaa"
+    },
+    {
+      "id": "researchIteration236SnapshotValidator",
+      "scope": "project",
+      "path": "scripts/validate-research-iteration-manifest-2.36-snapshot.mjs",
+      "purpose": "Immutable 2.36 parent snapshot validator",
+      "bytes": 7375,
+      "sha256": "cb9933dbe589ea15235bc116f4781395e0d4b520135667c1357b0de901bb254e"
+    },
+    {
+      "id": "researchIteration236SnapshotTest",
+      "scope": "project",
+      "path": "tests/research-iteration-manifest-2.36-snapshot.test.mjs",
+      "purpose": "Immutable 2.36 parent receipt and mutation tests",
+      "bytes": 2575,
+      "sha256": "4c86346c828016b0a2258d216e018fb073af417a312e2bc6902874cd8bde0159"
+    },
+    {
+      "id": "researchTimeline237",
+      "scope": "project",
+      "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_37.md",
+      "purpose": "Unique in-place 2.37 timeline and rollback record",
+      "bytes": 6524,
+      "sha256": "bb4ae10b3397e42432c267323b474ec9456da34bfb10337c2ec6c96c8d63befc"
+    },
+    {
+      "id": "researchUpgradeRegistryBuilder",
+      "scope": "project",
+      "path": "tools/build_research_upgrade_registry.mjs",
+      "purpose": "Deterministic UPG-022-through-UPG-196 registry builder",
+      "bytes": 14226,
+      "sha256": "f20689fe4fd2b4fd5850f2431c95ad5330c24ca45e20b9567920348aecd3fa3c"
+    },
+    {
+      "id": "researchUpgradeRegistryValidator",
+      "scope": "project",
+      "path": "scripts/validate-research-model-upgrade-registry-0.1.mjs",
+      "purpose": "178-row upgrade registry and UI reference validator",
+      "bytes": 9571,
+      "sha256": "b634215fdf621e3821ddde0eca8c24f321522401425bcdb3f75aaa5c41d36b6d"
+    },
+    {
+      "id": "researchUpgradeRegistryTest",
+      "scope": "project",
+      "path": "tests/research-model-upgrade-registry.test.mjs",
+      "purpose": "UPG-022-through-UPG-196 deterministic and mutation tests",
+      "bytes": 17783,
+      "sha256": "f89e898078965d320a6db43baeff9b904c1311c12e5fa01d081736ce266fd836"
+    },
+    {
+      "id": "applicationLayout",
+      "scope": "project",
+      "path": "app/layout.tsx",
+      "purpose": "Current English metadata and 2.39 application label",
+      "bytes": 824,
+      "sha256": "c080252077f31bd6b3fd7e01877e952a870d3fdd4054ad293b7febdc05470cca"
+    },
+    {
+      "id": "observedMorphologyRuntimeContractTest",
+      "scope": "project",
+      "path": "tests/observed-morphology-runtime-contract.test.mjs",
+      "purpose": "Current-manifest import and morphology isolation regression test",
+      "bytes": 14752,
+      "sha256": "b104410fd239ab57d0c15ee426b71d967493154989bd799be962ef592d6b3ba5"
+    },
+    {
+      "id": "delileTaxonomyBuilder",
+      "scope": "project",
+      "path": "tools/build_delile_developmental_interneuron_taxonomy.mjs",
+      "purpose": "Deterministic Delile source-annotation parser and compact taxonomy builder",
+      "bytes": 27145,
+      "sha256": "d68259e4192946d72c3ebf7a5e42346e12a2c88b8fbbc753c16951b71830587e"
+    },
+    {
+      "id": "delileTaxonomyContract",
+      "scope": "project",
+      "path": "data/delile-developmental-interneuron-taxonomy-0.1.json",
+      "purpose": "Exact 51-profile Delile developmental interneuron taxonomy",
+      "bytes": 122037,
+      "sha256": "7a77c8c10f15224188bb542fddf63bc97de57b06dd9289e324bc7b8612219597"
+    },
+    {
+      "id": "delileTaxonomySchema",
+      "scope": "project",
+      "path": "schemas/delile-developmental-interneuron-taxonomy-0.1.schema.json",
+      "purpose": "Delile compact taxonomy JSON schema",
+      "bytes": 15194,
+      "sha256": "6d11402dd00aa12647efa6892adcd211bd300882455e3695ec2f27cf4498e2c1"
+    },
+    {
+      "id": "delileTaxonomyValidator",
+      "scope": "project",
+      "path": "scripts/validate-delile-developmental-interneuron-taxonomy-0.1.mjs",
+      "purpose": "Delile receipt, denominator, spelling and zero-object validator",
+      "bytes": 18854,
+      "sha256": "bd82c05213b47b751ab8140af1f7e79f36006c526ecdbc3a2b0159ddc0cb7c1c"
+    },
+    {
+      "id": "delileTaxonomyTest",
+      "scope": "project",
+      "path": "tests/delile-developmental-interneuron-taxonomy.test.mjs",
+      "purpose": "Delile deterministic, denominator and mutation tests",
+      "bytes": 9731,
+      "sha256": "393c58ccbbbe1479deb3b8c648f3002a3311c8df96ef30b7837287682e1d9cf6"
+    },
+    {
+      "id": "pkd2l1SbfsemVideoContract",
+      "scope": "project",
+      "path": "data/pkd2l1-sbfsem-video-reference-0.1.json",
+      "purpose": "eLife 83108 Video 5 qualitative-only PKD2L1 SBF-SEM reference",
+      "bytes": 5718,
+      "sha256": "e944679cde9c5545021b690c50f80b782382ea4d84099140610175313198c2a5"
+    },
+    {
+      "id": "pkd2l1SbfsemVideoCaptions",
+      "scope": "project",
+      "path": "public/data/pkd2l1_sbfsem_video5_captions.vtt",
+      "purpose": "Local accessibility caption stating the publication-video evidence boundary",
+      "bytes": 318,
+      "sha256": "9d660f57da63b5c98dc8b32c3827b698fb47e3974c12bc4646d65c6c4326d583"
+    },
+    {
+      "id": "pkd2l1SbfsemVideoValidator",
+      "scope": "project",
+      "path": "scripts/validate-pkd2l1-sbfsem-video-reference-0.1.mjs",
+      "purpose": "PKD2L1 video receipt and zero-object readiness validator",
+      "bytes": 5434,
+      "sha256": "84089ad4b9889c5b6b9185b5dc339b4d1399ff54a194c1525fa4a87dba4b9081"
+    },
+    {
+      "id": "pkd2l1SbfsemVideoTest",
+      "scope": "project",
+      "path": "tests/pkd2l1-sbfsem-video-reference.test.mjs",
+      "purpose": "PKD2L1 publication-video rendering and non-reconstruction tests",
+      "bytes": 2646,
+      "sha256": "f1ceea0350279bee6bb95bcae361549a3464be2137c9bdc7278205383e1cfc92"
+    },
+    {
+      "id": "researchRecordPresentationRuntime",
+      "scope": "project",
+      "path": "app/research-record-presentation.js",
+      "purpose": "Record-driven evidence partition and five-axis modeling-readiness contract",
+      "bytes": 8338,
+      "sha256": "48d49ddfa9e15fd43c71b67457234ce7dd2623c4128f14263072488ad8f46290"
+    },
+    {
+      "id": "researchRecordModelReadout",
+      "scope": "project",
+      "path": "app/ResearchRecordModelReadout.tsx",
+      "purpose": "Selected source-record model readout that is explicitly not a cell shape",
+      "bytes": 7217,
+      "sha256": "c6dfcb2733d04679f6acae277ad3a4553c6b1247edf98b59d6adf76e940177d9"
+    },
+    {
+      "id": "researchRecordPresentationTest",
+      "scope": "project",
+      "path": "tests/research-record-presentation.test.mjs",
+      "purpose": "Cross-record switching, collapsed-context and zero-fallback tests",
+      "bytes": 5587,
+      "sha256": "bc19c79b1356564205151a218a7ccf58591c94eda56f106ad347b73538e4032d"
+    },
+    {
+      "id": "researchTimeline238",
+      "scope": "project",
+      "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_38.md",
+      "purpose": "Unique in-place 2.38 timeline, evidence limits and file-specific rollback record",
+      "bytes": 11356,
+      "sha256": "20b47f4be4a9e80ba432ab59f86c3e378510ab23828f6d251704d38c54d83a81"
+    },
+    {
+      "id": "nativeSomaContourBuilder",
+      "scope": "project",
+      "path": "tools/build_neurolucida_source_native_soma_contours.mjs",
+      "purpose": "Checksum-gated clean-room Neurolucida V3 DAT contour extractor and deterministic builder",
+      "bytes": 17712,
+      "sha256": "9c21a561be298ea4240bf7fb092b80da5d389f9444c4bad8a196d22b689d151e"
+    },
+    {
+      "id": "nativeSomaContourContract",
+      "scope": "project",
+      "path": "data/neurolucida-source-native-soma-contour-trace-0.1.json",
+      "purpose": "Exact NMO 45718 source-native contour-trace evidence and rendering contract",
+      "bytes": 4463,
+      "sha256": "d18e7444b1bc729a79c59a3f944f0b2028543199c44eaf9854bae04c3072d96d"
+    },
+    {
+      "id": "nativeSomaContourGeometry",
+      "scope": "project",
+      "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+      "purpose": "Exact eight-contour, 275-vertex source-native browser geometry",
+      "bytes": 45606,
+      "sha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8"
+    },
+    {
+      "id": "nativeSomaContourRuntime",
+      "scope": "project",
+      "path": "app/neurolucida-native-soma-contours.js",
+      "purpose": "Fail-closed native-contour payload validator and reversible display transform",
+      "bytes": 6013,
+      "sha256": "e3224b3a1bfd1fb4c6ddb223b6dc0d8f7ddcb4628048f44a6eb5ce499fec144e"
+    },
+    {
+      "id": "nativeSomaContourViewer",
+      "scope": "project",
+      "path": "app/NativeSomaContourViewer.tsx",
+      "purpose": "NMO 45718-only Three.js LineLoop viewer with source-boundary disclosure",
+      "bytes": 14424,
+      "sha256": "0d811af574a1bd774696cf8fe794c100c007fb3579bd19634da676cef3e35611"
+    },
+    {
+      "id": "nativeSomaContourValidator",
+      "scope": "project",
+      "path": "scripts/validate-neurolucida-source-native-soma-contour-trace-0.1.mjs",
+      "purpose": "Native DAT receipt, deterministic rebuild, identity and zero-surface validator",
+      "bytes": 4726,
+      "sha256": "bfb73f728efc1ea9a76416bf96970325163dbe1b9c392ef5349a893dc8855a13"
+    },
+    {
+      "id": "nativeSomaContourTest",
+      "scope": "project",
+      "path": "tests/neurolucida-source-native-soma-contour-trace.test.mjs",
+      "purpose": "Native-contour exact-denominator, transform and mutation tests",
+      "bytes": 4969,
+      "sha256": "b35ef04d00ff426d72b2446b5a6b0aa32195a829befa7db89600ab014129fc76"
+    },
+    {
+      "id": "researchIteration238SnapshotValidator",
+      "scope": "project",
+      "path": "scripts/validate-research-iteration-manifest-2.38-snapshot.mjs",
+      "purpose": "Immutable 2.38 parent snapshot validator independent of live 2.39 inputs",
+      "bytes": 8007,
+      "sha256": "b0f59c3c0d88b348d84e56bca5b11a3068432cc930133364b0123e778c887f4c"
+    },
+    {
+      "id": "researchIteration238SnapshotTest",
+      "scope": "project",
+      "path": "tests/research-iteration-manifest-2.38-snapshot.test.mjs",
+      "purpose": "Immutable 2.38 parent receipt and mutation tests",
+      "bytes": 2957,
+      "sha256": "e1c93a0708703b80f88e71c2142fbd120258d5cb5858734c1de7054cf7ce4876"
+    },
+    {
+      "id": "openSourceModelingAvailabilityAudit",
+      "scope": "project",
+      "path": "data/open-source-modeling-availability-audit-0.1.json",
+      "purpose": "Three-candidate open-source modeling availability audit with queue-only admission decisions",
+      "bytes": 20847,
+      "sha256": "993ddd7881f86acc6ea6f242ac9a43c69aa9da76db86f110f83c5462a5754d6b"
+    },
+    {
+      "id": "openSourceModelingAvailabilityValidator",
+      "scope": "project",
+      "path": "scripts/validate-open-source-modeling-availability-audit-0.1.mjs",
+      "purpose": "Availability receipt, identity, rights and zero-admission validator",
+      "bytes": 26012,
+      "sha256": "3ab90959848c1613787d9f2726fcf13de15758371349ca21cf6b027851643083"
+    },
+    {
+      "id": "openSourceModelingAvailabilityTest",
+      "scope": "project",
+      "path": "tests/open-source-modeling-availability-audit.test.mjs",
+      "purpose": "Availability-audit deterministic and fail-closed mutation tests",
+      "bytes": 7347,
+      "sha256": "f90288cdb89f9c31438e7f6a13e66e72a06f24945db68732fdaddb79926192e2"
+    },
+    {
+      "id": "researchTimeline239",
+      "scope": "project",
+      "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_39.md",
+      "purpose": "Unique in-place 2.39 timeline, exact contour scope, availability findings and rollback record",
+      "bytes": 8776,
+      "sha256": "cc3db5f3c0d615a7d132d1f31f435b282158c5c46acbf01e62f342c9de2b7885"
+    }
+  ],
+  "inputRoots": {
+    "project": {
+      "locator": ".",
+      "policy": "Only exact allowlisted project-relative paths are admitted."
+    },
+    "scientificAuthority": {
+      "locator": "../interneuron_sci_review",
+      "policy": "Only the evidence ledger and source manifest are admitted from the external authority root."
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "UTF-8 compact JSON with recursively lexicographically sorted object keys; array order preserved; top-level manifestContentSha256 omitted.",
+    "inputCount": 172
+  },
+  "registrations": {
+    "count": 0,
+    "records": []
+  },
+  "exactReferences": {
+    "micronsObservedCellNucleus": {
+      "contractId": "microns-observed-cell-nucleus-reference-0.1",
+      "contractReleaseId": "ohri-microns-observed-cell-nucleus-reference-0.1.0",
+      "authority": "OBS_EM_SEGMENTATION",
+      "sourceRelease": "MICrONS Phase 1 v185.4",
+      "sourceRegion": "visual cortex layer 2/3",
+      "cellRootId": "648518346349516051",
+      "nucleusId": "4309",
+      "samePhysicalObject": true,
+      "admittedComponentCount": 2,
+      "sourceFragmentCount": 97,
+      "vertexCount": 385064,
+      "triangleCount": 727788,
+      "manifestBytes": 94901,
+      "manifestSha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1",
+      "membraneClaim": false,
+      "spinalInterneuronIdentity": false,
+      "crossRegionJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "mitochondria",
+        "synapses",
+        "other_internal_organelles",
+        "molecular_subtype",
+        "atlas_placement"
+      ]
+    },
+    "ronzanoPremotorPositions": {
+      "contractReleaseId": "ohri-ronzano-premotor-position-reference-0.1.0",
+      "authority": "OBS_SOURCE_COORDINATE_ROW",
+      "sourceDoi": "10.7554/eLife.81976",
+      "sourceLifeStage": "P1-P2 injection; analysis 8-9 days later",
+      "sourceFileCount": 22,
+      "rawCoordinateRowCount": 14484,
+      "normalizedCoordinateRowCount": 17394,
+      "coordinateRowsAcrossIndependentRepresentations": 31878,
+      "sourceBundleBytes": 1046636,
+      "sourceBundleSha256": "2b8b75cae1a7cd559dc4b213923538c5a08b66ecd7a8dfec4b72a355aa8e7481",
+      "payloadBytes": 1274690,
+      "payloadSha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3",
+      "crossFramePointIdentityCount": 0,
+      "generatedCellGeometryCount": 0,
+      "atlasJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "soma_geometry",
+        "neurite_morphology",
+        "molecular_identity",
+        "synapse_roster",
+        "internal_organelles",
+        "adult_persistence",
+        "atlas_placement"
+      ]
+    },
+    "alkaslasiCholinergicTaxonomy": {
+      "contractReleaseId": "ohri-alkaslasi-cholinergic-source-taxonomy-0.1.0",
+      "authority": "SOURCE_LOCAL_TYPE_ONLY",
+      "sourceDoi": "10.1038/s41467-021-22691-2",
+      "sourceAccession": "GSE167597",
+      "sourceObjectFileName": "GSE167597_all_AlkaslasiPiccus_annotations.csv.gz",
+      "sourceObjectBytes": 333655,
+      "sourceObjectSha256": "6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091",
+      "sourceObjectBundled": false,
+      "exactNucleusRosterBundled": false,
+      "sourceAnimalCount": 12,
+      "processingReplicateCount": 3,
+      "geoSampleCount": 9,
+      "qcRetainedNucleusCount": 34231,
+      "cholinergicNucleusCount": 16042,
+      "interneuronNucleusCount": 5375,
+      "displayedProfileCount": 8,
+      "biologicalPrevalenceClaim": false,
+      "generatedCellGeometryCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "per_nucleus_roster_redistribution",
+        "biological_prevalence",
+        "cell_xyz",
+        "soma_or_neurite_geometry",
+        "membrane_or_internal_organelles",
+        "electrophysiology",
+        "projection_targets",
+        "synaptic_edges",
+        "sci_state",
+        "atlas_placement"
+      ]
+    },
+    "grpDorsalHornObservedMorphology": {
+      "contractId": "grp-dorsal-horn-observed-morphology-0.1",
+      "contractReleaseId": "ohri-grp-dorsal-horn-observed-morphology-0.1.0",
+      "routeId": "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+      "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "sourceRepository": "NeuroMorpho.Org",
+      "sourceRepositoryRelease": "8.6.124",
+      "neuronId": 109021,
+      "assetId": "NeuroMorpho:109021",
+      "species": "mouse",
+      "sourceLabels": [
+        "interneuron",
+        "Excitatory",
+        "Gastrin-releasing peptide-expressing"
+      ],
+      "physicalIntegrity": "Dendrites & Axon Moderate",
+      "slicingThicknessMicrometre": 300,
+      "nodeCount": 2790,
+      "segmentCount": 2789,
+      "axonNodeCount": 2202,
+      "swcBytes": 104228,
+      "swcSha256": "fd30c7fbafd6642a99265e0009ef0bc5b75709fc7a1fba3bcc80ad47d28bde02",
+      "geometryBytes": 289290,
+      "geometrySha256": "19cab96e659bf8add7c370afe6d684da62dc6af79c92067c2ecc2294124e9f39",
+      "legacyExemplarCount": 5,
+      "censusRecordCount": 142,
+      "censusManifestFileCount": 287,
+      "completeAxonClaim": false,
+      "membraneClaim": false,
+      "internalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    "evidenceAware3dRepresentation": {
+      "contractId": "evidence-aware-3d-representation-contract-0.5",
+      "contractReleaseId": "ohri-evidence-aware-3d-representation-contract-0.5.0",
+      "deterministicMaterializationReceipt": {
+        "path": "data/evidence-aware-3d-representation-contract-0.5.json",
+        "bytes": 23381,
+        "sha256": "94085465117e4cbc70763ea78f931cfb17d3f99c5dc907a3fe4556ef1063dbed",
+        "buildInputs": {
+          "baseContract": {
+            "path": "/project/data/evidence-aware-3d-representation-contract-0.4.json",
+            "bytes": 21341,
+            "sha256": "1dec67e67884199a481ce8127793523acf56d0d50df83cfe330e933c8260e392"
+          },
+          "premotorComparisonRoutePack": {
+            "path": "/project/data/premotor-comparison-observed-morphology-route-pack-0.1.json",
+            "bytes": 19112,
+            "sha256": "39afe0acc449c367cd48776b150058982c8d57186ea9adbeb9314b08d62b2cb3"
+          }
+        }
+      },
+      "representationStateCount": 9,
+      "representationStateIds": [
+        "OBS_RAW_TEXTURE",
+        "OBS_SEGMENTED_SURFACE",
+        "OBS_SKELETON",
+        "OBS_POINT",
+        "DER_RADIUS_SURFACE",
+        "INF_REFERENCE_GEOMETRY",
+        "SCH_PATH",
+        "SYN_DATA_GLYPH",
+        "UNAVAILABLE"
+      ],
+      "routeCount": 16,
+      "routeIds": [
+        "main.reference_anatomy",
+        "main.population_evidence",
+        "main.legacy_observed_cell_forms",
+        "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+        "microns_observed_reference",
+        "internal_reference",
+        "ronzano_premotor_positions",
+        "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003",
+        "mouse.sc.renshaw_l5_lamina_vii.observed.nmo_45674",
+        "mouse.sc.npy_l2i_dorsal_horn.observed.nmo_50424",
+        "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+        "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408",
+        "mouse.sc.repository_labeled_premotor_non_renshaw_l5_ventral_horn.observed.nmo_45718"
+      ],
+      "legacyDorsalHornPackRouteCount": 4,
+      "legacyDorsalHornPackRouteIds": [
+        "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003"
+      ],
+      "functionalClassRouteCount": 2,
+      "functionalClassRouteIds": [
+        "mouse.sc.renshaw_l5_lamina_vii.observed.nmo_45674",
+        "mouse.sc.npy_l2i_dorsal_horn.observed.nmo_50424"
+      ],
+      "prpDorsalHornRouteCount": 2,
+      "prpDorsalHornRouteIds": [
+        "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+        "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408"
+      ],
+      "premotorComparisonRouteCount": 1,
+      "premotorComparisonRouteIds": [
+        "mouse.sc.repository_labeled_premotor_non_renshaw_l5_ventral_horn.observed.nmo_45718"
+      ],
+      "namedDorsalHornRouteCount": 8,
+      "namedVentralHornRouteCount": 2,
+      "runtimeMetadataRequirements": [
+        "stableId",
+        "representationState",
+        "sourceFrame",
+        "sourceVersion",
+        "sourceReceiptSha256",
+        "cellMorphologyClaim",
+        "projectRegistrationCount",
+        "crossSourceIdentityCount"
+      ],
+      "internalReferenceStateIds": [
+        "UNAVAILABLE"
+      ],
+      "internalReferenceRenderedPrimitivePolicy": "zero_primitives",
+      "proceduralBiologicalProxyAllowed": false,
+      "missingLayerPrimitiveCount": 0,
+      "nativeDatSemanticAdmissionCount": 0,
+      "sameCellElectrophysiologyJoinCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    "dorsalHornObservedMorphologyRoutePack": {
+      "contractId": "dorsal-horn-observed-morphology-route-pack-0.1",
+      "contractReleaseId": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "repository": {
+        "name": "NeuroMorpho.Org",
+        "release": "8.6.124",
+        "rrid": "RRID:SCR_002145",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "contractReceipt": {
+        "path": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 42226,
+        "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+      },
+      "supplementaryAssetManifestReceipt": {
+        "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+        "assetSetId": "neuromorpho:8.6.124:dorsal-horn-observed-morphology-route-pack-v1",
+        "repositoryRelease": "8.6.124",
+        "bytes": 1696,
+        "sha256": "4f64fb595a4362cf0403cb0d3abc3c6fdc14b7f74d473a82ccd67bed9b9dab87",
+        "fileCount": 6,
+        "files": [
+          {
+            "path": "api/nmo-170035.json",
+            "kind": "official_api_snapshot",
+            "sha256": "c25b5869f0a6d1d4480cb29eeb4b9650f92b616881f2e1ec5d17aeafa5e9dae0",
+            "bytes": 1690,
+            "neuronId": 170035
+          },
+          {
+            "path": "api/nmo-249676.json",
+            "kind": "official_api_snapshot",
+            "sha256": "1c3b72a58ae13e60732dcd3abd42ba0b138b0754ae4d3bc701b68779eafac6f1",
+            "bytes": 1457,
+            "neuronId": 249676
+          },
+          {
+            "path": "geometry/nmo-170035.json",
+            "kind": "lazy_geometry",
+            "sha256": "bcaf0809846e3d93eed2b2ee153c2d679593ac5d77dea01a8d2ef86bd74a386c",
+            "bytes": 226483,
+            "neuronId": 170035
+          },
+          {
+            "path": "geometry/nmo-249676.json",
+            "kind": "lazy_geometry",
+            "sha256": "bece7d31c8bad28152278bbd0b0a36359c96cf2b03ff607f414bfe9716c31e67",
+            "bytes": 122358,
+            "neuronId": 249676
+          },
+          {
+            "path": "swc/nmo-170035.swc",
+            "kind": "standardized_swc",
+            "sha256": "73f85373bd426e8ef4dc0f95b73a61678ffb454d963ec292a403ad31a0f116a6",
+            "bytes": 76053,
+            "neuronId": 170035
+          },
+          {
+            "path": "swc/nmo-249676.swc",
+            "kind": "standardized_swc",
+            "sha256": "b5a96ebc6979f0022c70a26eaa6a5c060545a05d2164852a5a5dd8dc290f4f75",
+            "bytes": 41217,
+            "neuronId": 249676
+          }
+        ]
+      },
+      "frozenExemplarCount": 5,
+      "frozenCensusRecordCount": 142,
+      "routePackMembershipCount": 4,
+      "overlappingFrozenNeuronIds": [
+        104003,
+        108974
+      ],
+      "overlapCount": 2,
+      "supplementaryNeuronIds": [
+        170035,
+        249676
+      ],
+      "supplementaryRecordCount": 2,
+      "activeUniqueMorphologyCount": 8,
+      "namedDorsalHornRouteCount": 5,
+      "namedDorsalHornRouteIds": [
+        "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+        "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003"
+      ],
+      "censusExpansionCount": 0,
+      "routeMemberships": [
+        {
+          "routeId": "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+          "neuronId": 249676,
+          "assetId": "NeuroMorpho:249676",
+          "censusMembership": false,
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "geometryBytes": 122358,
+          "geometrySha256": "bece7d31c8bad28152278bbd0b0a36359c96cf2b03ff607f414bfe9716c31e67",
+          "swcBytes": 41217,
+          "swcSha256": "b5a96ebc6979f0022c70a26eaa6a5c060545a05d2164852a5a5dd8dc290f4f75",
+          "sourceDiameterAvailable": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+          "neuronId": 108974,
+          "assetId": "NeuroMorpho:108974",
+          "censusMembership": true,
+          "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+          "geometryBytes": 184927,
+          "geometrySha256": "e3c932a063b379c3e0606d0420ade0830210e7bb9c54e7b20830442e8334a25a",
+          "swcBytes": 62567,
+          "swcSha256": "0fc8e7050e455ed1f79fa5a8e4da304c69054fb5ddd0167fcb3970c5d4c0982d",
+          "sourceDiameterAvailable": true,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+          "neuronId": 170035,
+          "assetId": "NeuroMorpho:170035",
+          "censusMembership": false,
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "geometryBytes": 226483,
+          "geometrySha256": "bcaf0809846e3d93eed2b2ee153c2d679593ac5d77dea01a8d2ef86bd74a386c",
+          "swcBytes": 76053,
+          "swcSha256": "73f85373bd426e8ef4dc0f95b73a61678ffb454d963ec292a403ad31a0f116a6",
+          "sourceDiameterAvailable": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003",
+          "neuronId": 104003,
+          "assetId": "NeuroMorpho:104003",
+          "censusMembership": true,
+          "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+          "geometryBytes": 13333,
+          "geometrySha256": "adb728c4f54c5c28042882f1708769964312cdb3f2bf087406969a6b4f41e034",
+          "swcBytes": 4454,
+          "swcSha256": "0f24943c43854cbe48f8bebfd4b45b905a5f897580d4dc25fd55c8ec9c4b8d8d",
+          "sourceDiameterAvailable": true,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        }
+      ],
+      "sourceDiameterAvailableCount": 2,
+      "sourceCompleteAxonCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    "functionalClassObservedMorphologyRoutePack": {
+      "contractId": "functional-class-observed-morphology-route-pack-0.1",
+      "contractReleaseId": "ohri-functional-class-observed-morphology-route-pack-0.1.0",
+      "repository": {
+        "name": "NeuroMorpho.Org",
+        "release": "8.6.124",
+        "rrid": "RRID:SCR_002145",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "contractReceipt": {
+        "path": "data/functional-class-observed-morphology-route-pack-0.1.json",
+        "bytes": 28937,
+        "sha256": "400b17afd707c3b53ee0cbb1d6402943535111c01402eb3903b256d12e176840"
+      },
+      "assetManifestReceipt": {
+        "path": "public/data/functional_class_observed_morphology_route_pack_v1/asset-manifest.json",
+        "assetSetId": "neuromorpho:8.6.124:functional-class-observed-morphology-route-pack-v1",
+        "repositoryRelease": "8.6.124",
+        "bytes": 2768,
+        "sha256": "a44d7b109357d086d0d7bc27481ee76bdcfe7382e804f74aeb08195b47878f5f",
+        "fileCount": 10,
+        "files": [
+          {
+            "path": "api/nmo-45674.json",
+            "kind": "official_api_snapshot",
+            "sha256": "198e02202a92dd9e449afeb28fa61d2588e9cc1de242b127017091d075c8e1e3",
+            "bytes": 1528,
+            "neuronId": 45674
+          },
+          {
+            "path": "api/nmo-50424.json",
+            "kind": "official_api_snapshot",
+            "sha256": "366903a183c6dcc6279314af3674a3057034d5f18275df11dca31d0117c70997",
+            "bytes": 1490,
+            "neuronId": 50424
+          },
+          {
+            "path": "geometry/nmo-45674.json",
+            "kind": "lazy_geometry",
+            "sha256": "242f30ebc0195f4aa092532acf8534c308371ddffc09103d484578a9f941a6d5",
+            "bytes": 844047,
+            "neuronId": 45674
+          },
+          {
+            "path": "geometry/nmo-50424.json",
+            "kind": "lazy_geometry",
+            "sha256": "5f431d13fc9f857f9e179fb1061b4ae0bc1cc7504467c246ba7dd69d3cbb740f",
+            "bytes": 1058012,
+            "neuronId": 50424
+          },
+          {
+            "path": "morphometry/nmo-45674-morphometry.json",
+            "kind": "official_morphometry_snapshot",
+            "sha256": "c05be11c388849f5d5190b9062e5765e2a5a2c3f441964b0d3b0520a898ab707",
+            "bytes": 472,
+            "neuronId": 45674
+          },
+          {
+            "path": "morphometry/nmo-50424-morphometry.json",
+            "kind": "official_morphometry_snapshot",
+            "sha256": "4d69cb3ef59f104a399ad45b225211211d1ae2e7edcbc605f2aa7c51c0911e32",
+            "bytes": 474,
+            "neuronId": 50424
+          },
+          {
+            "path": "original/nmo-45674.dat",
+            "kind": "source_native_dat_receipt_only",
+            "sha256": "9d5a8670fdb97656c18eb8819b3c4723f438fb8929e66ea8dc6103c6bb547d87",
+            "bytes": 353251,
+            "neuronId": 45674
+          },
+          {
+            "path": "original/nmo-50424.dat",
+            "kind": "source_native_dat_receipt_only",
+            "sha256": "90662374ccfacc0404b1b8817161015fa52c6c384911700f428a4c5421cb79d9",
+            "bytes": 480757,
+            "neuronId": 50424
+          },
+          {
+            "path": "swc/nmo-45674.swc",
+            "kind": "standardized_swc",
+            "sha256": "95b2fc29900a994ef87d6f50c07481115f94207c5ebaeb9f436e7e494edac1fd",
+            "bytes": 294364,
+            "neuronId": 45674
+          },
+          {
+            "path": "swc/nmo-50424.swc",
+            "kind": "standardized_swc",
+            "sha256": "0cdb5c32555f94d2ffd1765d8c21f1f95703692c45917f2a2d2449ecc457138b",
+            "bytes": 381795,
+            "neuronId": 50424
+          }
+        ]
+      },
+      "routeCount": 2,
+      "uniqueNeuronCount": 2,
+      "neuronIds": [
+        45674,
+        50424
+      ],
+      "supplementaryNeuronIds": [
+        45674,
+        50424
+      ],
+      "preMergeUniqueMorphologyCount": 8,
+      "activeUniqueMorphologyCount": 10,
+      "preExistingNamedRouteCount": 5,
+      "namedRouteCount": 7,
+      "namedDorsalHornRouteCount": 6,
+      "namedVentralHornRouteCount": 1,
+      "frozenExemplarCount": 5,
+      "frozenCensusRecordCount": 142,
+      "censusExpansionCount": 0,
+      "sourceDiameterAvailableCount": 2,
+      "observedAxonRouteCount": 2,
+      "sourceCompleteAxonCount": 0,
+      "originalDatReceiptCount": 2,
+      "nativeDatSemanticAdmissionCount": 0,
+      "sameCellElectrophysiologyJoinCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "routeMemberships": [
+        {
+          "routeId": "mouse.sc.renshaw_l5_lamina_vii.observed.nmo_45674",
+          "neuronId": 45674,
+          "assetId": "NeuroMorpho:45674",
+          "title": "Calbindin-positive glycinergic Renshaw interneuron",
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "censusMembership": false,
+          "physicalIntegrity": "Dendrites & Axon Moderate",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "preparationJoinStatus": "context_only_not_exact_stage_equivalence",
+          "strainJoinStatus": "context_consistent_not_individual_genotype_validation",
+          "repositoryWeightValidForBiologicalInterpretation": false,
+          "nodeCount": 6973,
+          "segmentCount": 6972,
+          "metadataReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/api/nmo-45674.json",
+            "bytes": 1528,
+            "sha256": "198e02202a92dd9e449afeb28fa61d2588e9cc1de242b127017091d075c8e1e3",
+            "role": "official_api_snapshot"
+          },
+          "morphometryReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/morphometry/nmo-45674-morphometry.json",
+            "bytes": 472,
+            "sha256": "c05be11c388849f5d5190b9062e5765e2a5a2c3f441964b0d3b0520a898ab707",
+            "role": "official_morphometry_snapshot"
+          },
+          "geometryReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/geometry/nmo-45674.json",
+            "bytes": 844047,
+            "sha256": "242f30ebc0195f4aa092532acf8534c308371ddffc09103d484578a9f941a6d5",
+            "role": "source_local_lazy_geometry",
+            "canonicalGeometrySha256": "39c4d12f3cfcc0f5c3664e66c20136744814974d0baeebe998a047661a7c4f13",
+            "topologySha256": "34c5800e9250efa625e9b03c5be2fe102cfc64e064aa1f88f8c24a4c2e98b287"
+          },
+          "swcReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/swc/nmo-45674.swc",
+            "bytes": 294364,
+            "sha256": "95b2fc29900a994ef87d6f50c07481115f94207c5ebaeb9f436e7e494edac1fd",
+            "role": "standardized_source_local_swc"
+          },
+          "originalDatReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/original/nmo-45674.dat",
+            "bytes": 353251,
+            "sha256": "9d5a8670fdb97656c18eb8819b3c4723f438fb8929e66ea8dc6103c6bb547d87",
+            "role": "source_native_neurolucida_dat_receipt_only"
+          },
+          "sourceDiameterAvailable": true,
+          "observedAxonNodeCount": 6247,
+          "completeAxonClaim": false,
+          "nativeDatParsed": false,
+          "nativeDatRendered": false,
+          "nativeDatSemanticObjectCount": 0,
+          "sameCellElectrophysiologyJoinStatus": "not_established",
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.npy_l2i_dorsal_horn.observed.nmo_50424",
+          "neuronId": 50424,
+          "assetId": "NeuroMorpho:50424",
+          "title": "NPY-positive superficial lumbar dorsal-horn interneuron",
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "censusMembership": false,
+          "physicalIntegrity": "Dendrites & Axon Moderate",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "preparationJoinStatus": "context_only_not_exact_stage_equivalence",
+          "strainJoinStatus": "conflict_unresolved",
+          "repositoryWeightValidForBiologicalInterpretation": false,
+          "nodeCount": 9805,
+          "segmentCount": 9804,
+          "metadataReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/api/nmo-50424.json",
+            "bytes": 1490,
+            "sha256": "366903a183c6dcc6279314af3674a3057034d5f18275df11dca31d0117c70997",
+            "role": "official_api_snapshot"
+          },
+          "morphometryReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/morphometry/nmo-50424-morphometry.json",
+            "bytes": 474,
+            "sha256": "4d69cb3ef59f104a399ad45b225211211d1ae2e7edcbc605f2aa7c51c0911e32",
+            "role": "official_morphometry_snapshot"
+          },
+          "geometryReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/geometry/nmo-50424.json",
+            "bytes": 1058012,
+            "sha256": "5f431d13fc9f857f9e179fb1061b4ae0bc1cc7504467c246ba7dd69d3cbb740f",
+            "role": "source_local_lazy_geometry",
+            "canonicalGeometrySha256": "6e53724b3f7318aae6fd708a5701eb7e3f65cace2fc9dc3ce48bdb027c828776",
+            "topologySha256": "feb4adcae454ab852123f9b507ad273196aa97a8f53b593cd2986080f977ec77"
+          },
+          "swcReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/swc/nmo-50424.swc",
+            "bytes": 381795,
+            "sha256": "0cdb5c32555f94d2ffd1765d8c21f1f95703692c45917f2a2d2449ecc457138b",
+            "role": "standardized_source_local_swc"
+          },
+          "originalDatReceipt": {
+            "path": "/data/functional_class_observed_morphology_route_pack_v1/original/nmo-50424.dat",
+            "bytes": 480757,
+            "sha256": "90662374ccfacc0404b1b8817161015fa52c6c384911700f428a4c5421cb79d9",
+            "role": "source_native_neurolucida_dat_receipt_only"
+          },
+          "sourceDiameterAvailable": true,
+          "observedAxonNodeCount": 8718,
+          "completeAxonClaim": false,
+          "nativeDatParsed": false,
+          "nativeDatRendered": false,
+          "nativeDatSemanticObjectCount": 0,
+          "sameCellElectrophysiologyJoinStatus": "not_established",
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        }
+      ]
+    },
+    "prpDorsalHornObservedMorphologyRoutePack": {
+      "contractId": "prp-dorsal-horn-observed-morphology-route-pack-0.1",
+      "contractReleaseId": "ohri-prp-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "repository": {
+        "name": "NeuroMorpho.Org",
+        "release": "8.6.124",
+        "rrid": "RRID:SCR_002145",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "contractReceipt": {
+        "path": "data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 31435,
+        "sha256": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709"
+      },
+      "assetManifestReceipt": {
+        "path": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+        "assetSetId": "neuromorpho:8.6.124:prp-dorsal-horn-observed-morphology-route-pack-v1",
+        "repositoryRelease": "8.6.124",
+        "bytes": 2766,
+        "sha256": "2f17597f67532debfa79828a6313887fb362e9cdc4baba9d3015d94129c5ef8f",
+        "fileCount": 10,
+        "files": [
+          {
+            "path": "api/nmo-50394.json",
+            "kind": "official_api_snapshot",
+            "sha256": "d5954d795e3a2308ae3bb7077d546766641b2e169c4be73f2bfdaa0c663081d1",
+            "bytes": 1542,
+            "neuronId": 50394
+          },
+          {
+            "path": "api/nmo-50408.json",
+            "kind": "official_api_snapshot",
+            "sha256": "6d6be05370c9054aa0956ad3cdfb0ec94acfad560216b57da5d67fe5d32f2444",
+            "bytes": 1515,
+            "neuronId": 50408
+          },
+          {
+            "path": "geometry/nmo-50394.json",
+            "kind": "lazy_geometry",
+            "sha256": "cbc08ede052636e2f30249d1a633a5f1b88531d375f80f23751b062c48eeda47",
+            "bytes": 429479,
+            "neuronId": 50394
+          },
+          {
+            "path": "geometry/nmo-50408.json",
+            "kind": "lazy_geometry",
+            "sha256": "c545292d72010af04760fb0851fa479260c20865b4e678f596bbabf7f13f0123",
+            "bytes": 638051,
+            "neuronId": 50408
+          },
+          {
+            "path": "morphometry/nmo-50394-morphometry.json",
+            "kind": "official_morphometry_snapshot",
+            "sha256": "b2e1da4a3ae35e854969a16357c014851745b2c67020b372615a03de77ef9162",
+            "bytes": 469,
+            "neuronId": 50394
+          },
+          {
+            "path": "morphometry/nmo-50408-morphometry.json",
+            "kind": "official_morphometry_snapshot",
+            "sha256": "9c849e5a828b99f37e215dc1b09856617a70b2ef1c0505ff3b81a151d028606d",
+            "bytes": 470,
+            "neuronId": 50408
+          },
+          {
+            "path": "original/nmo-50394.dat",
+            "kind": "source_native_dat_receipt_only",
+            "sha256": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109",
+            "bytes": 191975,
+            "neuronId": 50394
+          },
+          {
+            "path": "original/nmo-50408.dat",
+            "kind": "source_native_dat_receipt_only",
+            "sha256": "78cfeae785b8ab4cf0792e7223cf310cd4aef1e3caa3447aa14ca61421ed9cb2",
+            "bytes": 300076,
+            "neuronId": 50408
+          },
+          {
+            "path": "swc/nmo-50394.swc",
+            "kind": "standardized_swc",
+            "sha256": "adeb2b0c6934ae07f32d54e8fcaebc8cee29429d884e44692756ee15da8a00d2",
+            "bytes": 151317,
+            "neuronId": 50394
+          },
+          {
+            "path": "swc/nmo-50408.swc",
+            "kind": "standardized_swc",
+            "sha256": "452c2b3d76d9680318470ba16b5c271a403018a1c6dcedaa94b68f1fdec6c470",
+            "bytes": 222351,
+            "neuronId": 50408
+          }
+        ]
+      },
+      "routeCount": 2,
+      "uniqueNeuronCount": 2,
+      "neuronIds": [
+        50394,
+        50408
+      ],
+      "supplementaryNeuronIds": [
+        50394,
+        50408
+      ],
+      "preMergeUniqueMorphologyCount": 10,
+      "activeUniqueMorphologyCount": 12,
+      "preExistingNamedRouteCount": 7,
+      "namedRouteCount": 9,
+      "namedDorsalHornRouteCount": 8,
+      "namedVentralHornRouteCount": 1,
+      "frozenExemplarCount": 5,
+      "frozenCensusRecordCount": 142,
+      "censusExpansionCount": 0,
+      "sourceDiameterAvailableCount": 2,
+      "observedAxonRouteCount": 2,
+      "sourceCompleteAxonCount": 0,
+      "originalDatReceiptCount": 2,
+      "nativeDatSemanticAdmissionCount": 0,
+      "sameCellElectrophysiologyJoinCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "markerExclusivityClaimCount": 0,
+      "endogenousPrpProteinAbundanceClaimCount": 0,
+      "exactCrossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "routeMemberships": [
+        {
+          "routeId": "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+          "neuronId": 50394,
+          "assetId": "NeuroMorpho:50394",
+          "title": "PrP-promoter reporter-positive nNOS-positive interneuron",
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "censusMembership": false,
+          "physicalIntegrity": "Dendrites & Axon Moderate",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "preparationJoinStatus": "context_consistent_not_exact_object_crosswalk",
+          "strainJoinStatus": "context_incomplete_not_individual_genotype_validation",
+          "repositoryStrainRaw": "Swiss-Webster ",
+          "repositoryWeightMinimumGrams": 27,
+          "repositoryWeightMaximumGrams": 15,
+          "repositoryWeightValidForBiologicalInterpretation": false,
+          "cellTypeLabels": [
+            "Neuronal Nitric Oxide Synthase (nNOS)-positive",
+            "prion protein (PrP) promoter-positive",
+            "interneuron"
+          ],
+          "markerExclusivityClaim": false,
+          "endogenousPrpProteinAbundanceClaim": false,
+          "nodeCount": 4012,
+          "segmentCount": 4011,
+          "metadataReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json",
+            "bytes": 1542,
+            "sha256": "d5954d795e3a2308ae3bb7077d546766641b2e169c4be73f2bfdaa0c663081d1",
+            "role": "official_api_snapshot"
+          },
+          "morphometryReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/morphometry/nmo-50394-morphometry.json",
+            "bytes": 469,
+            "sha256": "b2e1da4a3ae35e854969a16357c014851745b2c67020b372615a03de77ef9162",
+            "role": "official_morphometry_snapshot"
+          },
+          "geometryReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-50394.json",
+            "bytes": 429479,
+            "sha256": "cbc08ede052636e2f30249d1a633a5f1b88531d375f80f23751b062c48eeda47",
+            "role": "source_local_lazy_geometry",
+            "canonicalGeometrySha256": "8f50c34eedb33adc44402f60c5bd18e4e19f3b6dd65ea5890ce3cb93240734df",
+            "topologySha256": "102a85df24185bd34eeb4fabbd4abdf4924ef82e8d82140bc386651569843f87"
+          },
+          "swcReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/swc/nmo-50394.swc",
+            "bytes": 151317,
+            "sha256": "adeb2b0c6934ae07f32d54e8fcaebc8cee29429d884e44692756ee15da8a00d2",
+            "role": "standardized_source_local_swc"
+          },
+          "originalDatReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/original/nmo-50394.dat",
+            "bytes": 191975,
+            "sha256": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109",
+            "role": "source_native_neurolucida_dat_receipt_only"
+          },
+          "sourceDiameterAvailable": true,
+          "observedAxonNodeCount": 1520,
+          "completeAxonClaim": false,
+          "nativeDatParsed": false,
+          "nativeDatRendered": false,
+          "nativeDatSemanticObjectCount": 0,
+          "paperMentionsExactNeuronIdOrFilename": false,
+          "sameCellElectrophysiologyJoinStatus": "not_established",
+          "individualMolecularAssayClaim": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408",
+          "neuronId": 50408,
+          "assetId": "NeuroMorpho:50408",
+          "title": "PrP-promoter reporter-positive galanin-positive interneuron",
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "censusMembership": false,
+          "physicalIntegrity": "Dendrites & Axon Moderate",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "preparationJoinStatus": "context_consistent_not_exact_object_crosswalk",
+          "strainJoinStatus": "context_incomplete_not_individual_genotype_validation",
+          "repositoryStrainRaw": "Swiss-Webster ",
+          "repositoryWeightMinimumGrams": 27,
+          "repositoryWeightMaximumGrams": 15,
+          "repositoryWeightValidForBiologicalInterpretation": false,
+          "cellTypeLabels": [
+            "galanin-expressing",
+            "prion protein (PrP) promoter-positive",
+            "interneuron"
+          ],
+          "markerExclusivityClaim": false,
+          "endogenousPrpProteinAbundanceClaim": false,
+          "nodeCount": 6125,
+          "segmentCount": 6124,
+          "metadataReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50408.json",
+            "bytes": 1515,
+            "sha256": "6d6be05370c9054aa0956ad3cdfb0ec94acfad560216b57da5d67fe5d32f2444",
+            "role": "official_api_snapshot"
+          },
+          "morphometryReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/morphometry/nmo-50408-morphometry.json",
+            "bytes": 470,
+            "sha256": "9c849e5a828b99f37e215dc1b09856617a70b2ef1c0505ff3b81a151d028606d",
+            "role": "official_morphometry_snapshot"
+          },
+          "geometryReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-50408.json",
+            "bytes": 638051,
+            "sha256": "c545292d72010af04760fb0851fa479260c20865b4e678f596bbabf7f13f0123",
+            "role": "source_local_lazy_geometry",
+            "canonicalGeometrySha256": "c0c5d068c03437f2106892e8994f6b631243036af17e1bdf6bd0362c3c286271",
+            "topologySha256": "e14539c8e605dfa0fa492fa2176e0ba502e40ba369be689c691ba8de27f256cc"
+          },
+          "swcReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/swc/nmo-50408.swc",
+            "bytes": 222351,
+            "sha256": "452c2b3d76d9680318470ba16b5c271a403018a1c6dcedaa94b68f1fdec6c470",
+            "role": "standardized_source_local_swc"
+          },
+          "originalDatReceipt": {
+            "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/original/nmo-50408.dat",
+            "bytes": 300076,
+            "sha256": "78cfeae785b8ab4cf0792e7223cf310cd4aef1e3caa3447aa14ca61421ed9cb2",
+            "role": "source_native_neurolucida_dat_receipt_only"
+          },
+          "sourceDiameterAvailable": true,
+          "observedAxonNodeCount": 3244,
+          "completeAxonClaim": false,
+          "nativeDatParsed": false,
+          "nativeDatRendered": false,
+          "nativeDatSemanticObjectCount": 0,
+          "paperMentionsExactNeuronIdOrFilename": false,
+          "sameCellElectrophysiologyJoinStatus": "not_established",
+          "individualMolecularAssayClaim": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        }
+      ]
+    },
+    "premotorComparisonObservedMorphologyRoutePack": {
+      "contractId": "premotor-comparison-observed-morphology-route-pack-0.1",
+      "contractReleaseId": "ohri-premotor-comparison-observed-morphology-route-pack-0.1.0",
+      "repository": {
+        "name": "NeuroMorpho.Org",
+        "release": "8.6.124",
+        "rrid": "RRID:SCR_002145",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "contractReceipt": {
+        "path": "data/premotor-comparison-observed-morphology-route-pack-0.1.json",
+        "bytes": 19112,
+        "sha256": "39afe0acc449c367cd48776b150058982c8d57186ea9adbeb9314b08d62b2cb3"
+      },
+      "routeSchemaReceipt": {
+        "path": "schemas/premotor-comparison-observed-morphology-route-pack-0.1.schema.json",
+        "bytes": 13685,
+        "sha256": "3922062699463bad90e41ec6d5a64d07f949b62a6fd77f03540130d8d2602b15"
+      },
+      "assetManifestReceipt": {
+        "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/asset-manifest.json",
+        "assetSetId": "neuromorpho:8.6.124:premotor-comparison-observed-morphology-route-pack-v1",
+        "repositoryRelease": "8.6.124",
+        "bytes": 1647,
+        "sha256": "0220169ea294d8db086a228557b0b067fd057249e41f7187cf2a14ee924a33d8",
+        "fileCount": 5,
+        "files": [
+          {
+            "path": "api/nmo-45718.json",
+            "kind": "official_api_snapshot",
+            "sha256": "ac769a76e959d093a0468d345356256627b0ccd5536334f7b943734521b55407",
+            "bytes": 1513,
+            "neuronId": 45718
+          },
+          {
+            "path": "geometry/nmo-45718.json",
+            "kind": "lazy_geometry",
+            "sha256": "c5193dbca4f17bb945a034196dd7dee130096502c71e01b6e5aedacfcade8865",
+            "bytes": 615468,
+            "neuronId": 45718
+          },
+          {
+            "path": "morphometry/nmo-45718-morphometry.json",
+            "kind": "official_morphometry_snapshot",
+            "sha256": "d999e37d9b94650415fd50e795ff0b43af24045e95a87c43c1b5e2ee57dda38a",
+            "bytes": 473,
+            "neuronId": 45718
+          },
+          {
+            "path": "original/nmo-45718.dat",
+            "kind": "source_native_dat_receipt_only",
+            "sha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+            "bytes": 343774,
+            "neuronId": 45718
+          },
+          {
+            "path": "swc/nmo-45718.swc",
+            "kind": "standardized_swc",
+            "sha256": "c8926708a1350c58124c47ebee8167820b8e0bd568bcb676e90e34f3ca6dfaee",
+            "bytes": 214337,
+            "neuronId": 45718
+          }
+        ]
+      },
+      "routeCount": 1,
+      "uniqueNeuronCount": 1,
+      "neuronIds": [
+        45718
+      ],
+      "supplementaryNeuronIds": [
+        45718
+      ],
+      "preMergeUniqueMorphologyCount": 12,
+      "activeUniqueMorphologyCount": 13,
+      "preExistingNamedRouteCount": 9,
+      "namedRouteCount": 10,
+      "namedDorsalHornRouteCount": 8,
+      "namedVentralHornRouteCount": 2,
+      "frozenExemplarCount": 5,
+      "frozenCensusRecordCount": 142,
+      "censusExpansionCount": 0,
+      "sourceDiameterAvailableCount": 1,
+      "observedAxonRouteCount": 1,
+      "sourceCompleteAxonCount": 0,
+      "originalDatReceiptCount": 1,
+      "nativeDatSemanticAdmissionCount": 0,
+      "sameCellElectrophysiologyJoinCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "definitiveRenshawExclusionClaimCount": 0,
+      "paperKeyedPremotorIdentityClaimCount": 0,
+      "individualCalbindinAssayClaimCount": 0,
+      "shrinkageRestoredInVivoClaimCount": 0,
+      "exactCrossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "routeMemberships": [
+        {
+          "routeId": "mouse.sc.repository_labeled_premotor_non_renshaw_l5_ventral_horn.observed.nmo_45718",
+          "neuronId": 45718,
+          "assetId": "NeuroMorpho:45718",
+          "neuronName": "101026p1-A-In",
+          "title": "Repository-labelled calbindin-negative glycinergic premotor / non-Renshaw interneuron",
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "censusMembership": false,
+          "species": "mouse",
+          "ageDaysMinimum": 9,
+          "ageDaysMaximum": 9,
+          "repositorySexRaw": "Male/Female",
+          "individualSexClaim": false,
+          "repositoryStrainRaw": "GlyT2-EGFP",
+          "strainJoinStatus": "context_consistent_not_individual_genotype_validation",
+          "repositoryWeightMinimumGrams": null,
+          "repositoryWeightMaximumGrams": null,
+          "repositoryWeightValidForBiologicalInterpretation": false,
+          "regionLabels": [
+            "spinal cord",
+            "L5",
+            "ventral horn"
+          ],
+          "cellTypeLabels": [
+            "Calbindin (CB)-negative",
+            "glycinergic",
+            "pre-motor",
+            "non-renshaw",
+            "interneuron"
+          ],
+          "repositoryLabelOnly": true,
+          "definitiveRenshawExclusionClaim": false,
+          "paperKeyedPremotorIdentityClaim": false,
+          "individualCalbindinAssayClaim": false,
+          "protocol": "in vitro",
+          "repositorySlicingDirection": "horizontal",
+          "repositorySlicingThicknessMicrometre": 50,
+          "preparationJoinStatus": "context_only_not_exact_stage_equivalence",
+          "physicalIntegrity": "Dendrites & Axon Moderate",
+          "shrinkageReported": "Reported",
+          "shrinkageCorrected": "Not Corrected",
+          "shrinkageRestoredInVivoClaim": false,
+          "sourcePaperDoi": "10.1523/JNEUROSCI.0199-14.2014",
+          "sourcePaperPmid": "25232126",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "registrationStatus": "unregistered",
+          "nodeCount": 5636,
+          "segmentCount": 5635,
+          "nodeTypeCounts": {
+            "1": 8,
+            "2": 4237,
+            "3": 1391
+          },
+          "boundsMicrometre": {
+            "min": [
+              -436.01,
+              -264.19,
+              -200
+            ],
+            "max": [
+              251.84,
+              289.81,
+              28
+            ]
+          },
+          "extentMicrometre": [
+            687.85,
+            554,
+            228
+          ],
+          "repositoryMorphometry": {
+            "widthMicrometre": 583.793,
+            "heightMicrometre": 482.994,
+            "depthMicrometre": 212,
+            "lengthMicrometre": 8518.26,
+            "authority": "official_morphometry_endpoint",
+            "extentDefinition": "95_percent_principal_component_extents",
+            "equivalentToSwcBounds": false,
+            "atlasRegistrationClaim": false
+          },
+          "canonicalGeometrySha256": "08514c7c924c2b1ff444eb45f43e89ab1633bce64dc1618be148617e80de52a3",
+          "topologySha256": "7fb6e4ed99208c66fa323a297bd85c800f3cbbe340baafcf7f0312832dda5af9",
+          "metadataReceipt": {
+            "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/api/nmo-45718.json",
+            "bytes": 1513,
+            "sha256": "ac769a76e959d093a0468d345356256627b0ccd5536334f7b943734521b55407",
+            "role": "official_api_snapshot"
+          },
+          "morphometryReceipt": {
+            "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/morphometry/nmo-45718-morphometry.json",
+            "bytes": 473,
+            "sha256": "d999e37d9b94650415fd50e795ff0b43af24045e95a87c43c1b5e2ee57dda38a",
+            "role": "official_morphometry_snapshot"
+          },
+          "geometryReceipt": {
+            "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/geometry/nmo-45718.json",
+            "bytes": 615468,
+            "sha256": "c5193dbca4f17bb945a034196dd7dee130096502c71e01b6e5aedacfcade8865",
+            "role": "source_local_lazy_geometry",
+            "canonicalGeometrySha256": "08514c7c924c2b1ff444eb45f43e89ab1633bce64dc1618be148617e80de52a3",
+            "topologySha256": "7fb6e4ed99208c66fa323a297bd85c800f3cbbe340baafcf7f0312832dda5af9"
+          },
+          "swcReceipt": {
+            "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/swc/nmo-45718.swc",
+            "bytes": 214337,
+            "sha256": "c8926708a1350c58124c47ebee8167820b8e0bd568bcb676e90e34f3ca6dfaee",
+            "role": "standardized_source_local_swc"
+          },
+          "originalDatReceipt": {
+            "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/original/nmo-45718.dat",
+            "bytes": 343774,
+            "sha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+            "role": "source_native_neurolucida_dat_receipt_only"
+          },
+          "sourceDiameterAvailable": true,
+          "observedAxonNodeCount": 4237,
+          "completeAxonClaim": false,
+          "originalContourCount": 8,
+          "standardizedSomaPointCount": 8,
+          "nativeContourVerticesAdmitted": false,
+          "standardizedSomaMembraneClaim": false,
+          "nativeDatParsed": false,
+          "nativeDatRendered": false,
+          "nativeDatSemanticObjectCount": 0,
+          "paperMentionsExactNeuronIdOrFilename": false,
+          "sameCellElectrophysiologyJoinStatus": "not_established",
+          "individualMolecularAssayClaim": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        }
+      ]
+    },
+    "supplementaryMorphologyComparisonAdapter": {
+      "adapterId": "supplementary-morphology-comparison-adapter-0.1",
+      "adapterReleaseId": "ohri-supplementary-morphology-comparison-adapter-0.1.0",
+      "adapterReceipt": {
+        "path": "data/supplementary-morphology-comparison-adapter-0.1.json",
+        "bytes": 42808,
+        "sha256": "f487034457ec2187996f0d3db8935545e64d1ce6783391b668c0747bdf2d5e05"
+      },
+      "adapterSchemaReceipt": {
+        "path": "schemas/supplementary-morphology-comparison-adapter-0.1.schema.json",
+        "bytes": 24130,
+        "sha256": "50b79761fb881468d077a4f18c215fe544601789195c7ffe22e4d74bfeeeace0"
+      },
+      "analysisDeltaReceipt": {
+        "path": "public/data/supplementary_morphology_comparison_v1/analysis-delta.json",
+        "assetSetId": "ohri:supplementary-morphology-comparison-v1",
+        "bytes": 34013,
+        "sha256": "b2f90156d9e9eb86cc2dfc72f05a140c6942c802a492274472c86a0c7a29d0df",
+        "recordCount": 7,
+        "neuronIds": [
+          45674,
+          45718,
+          50394,
+          50408,
+          50424,
+          170035,
+          249676
+        ]
+      },
+      "assetManifestReceipt": {
+        "path": "public/data/supplementary_morphology_comparison_v1/asset-manifest.json",
+        "assetSetId": "ohri:supplementary-morphology-comparison-v1",
+        "bytes": 3619,
+        "sha256": "ab7b2a8fbc458e0871a39819e88007ffe3ad84f6378f87a2a24015484028db6f",
+        "declaredPayloadFileCount": 1,
+        "directoryFileCount": 2,
+        "files": [
+          {
+            "bytes": 34013,
+            "kind": "supplementary_morphology_analysis_delta",
+            "path": "analysis-delta.json",
+            "sha256": "b2f90156d9e9eb86cc2dfc72f05a140c6942c802a492274472c86a0c7a29d0df"
+          }
+        ]
+      },
+      "sourceCensus": {
+        "assetManifestBytes": 62165,
+        "assetManifestPath": "public/data/neuromorpho_release_8_6_124_census_v1/asset-manifest.json",
+        "assetManifestSha256": "2c1153fe86e3bc2f08505cf2416ab25b2d8e9ca747b0bffcfad5aacc9286cf91",
+        "assetSetId": "neuromorpho:8.6.124:adult-mouse-spinal-interneuron-census-v1",
+        "censusIndexBytes": 968797,
+        "censusIndexPath": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+        "censusIndexSha256": "1598b5119f5826719e390fe46615a291b51fa3cd7716e9a191ad645f73165364",
+        "immutable": true,
+        "recordCount": 142
+      },
+      "routeSourceCount": 4,
+      "routeSources": [
+        {
+          "assetManifestBytes": 2768,
+          "assetManifestPath": "public/data/functional_class_observed_morphology_route_pack_v1/asset-manifest.json",
+          "assetManifestSha256": "a44d7b109357d086d0d7bc27481ee76bdcfe7382e804f74aeb08195b47878f5f",
+          "contractBytes": 28937,
+          "contractId": "functional-class-observed-morphology-route-pack-0.1",
+          "contractPath": "data/functional-class-observed-morphology-route-pack-0.1.json",
+          "contractSha256": "400b17afd707c3b53ee0cbb1d6402943535111c01402eb3903b256d12e176840",
+          "supplementaryNeuronIds": [
+            45674,
+            50424
+          ]
+        },
+        {
+          "assetManifestBytes": 1647,
+          "assetManifestPath": "public/data/premotor_comparison_observed_morphology_route_pack_v1/asset-manifest.json",
+          "assetManifestSha256": "0220169ea294d8db086a228557b0b067fd057249e41f7187cf2a14ee924a33d8",
+          "contractBytes": 19112,
+          "contractId": "premotor-comparison-observed-morphology-route-pack-0.1",
+          "contractPath": "data/premotor-comparison-observed-morphology-route-pack-0.1.json",
+          "contractSha256": "39afe0acc449c367cd48776b150058982c8d57186ea9adbeb9314b08d62b2cb3",
+          "supplementaryNeuronIds": [
+            45718
+          ]
+        },
+        {
+          "assetManifestBytes": 2766,
+          "assetManifestPath": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+          "assetManifestSha256": "2f17597f67532debfa79828a6313887fb362e9cdc4baba9d3015d94129c5ef8f",
+          "contractBytes": 31435,
+          "contractId": "prp-dorsal-horn-observed-morphology-route-pack-0.1",
+          "contractPath": "data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
+          "contractSha256": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709",
+          "supplementaryNeuronIds": [
+            50394,
+            50408
+          ]
+        },
+        {
+          "assetManifestBytes": 1696,
+          "assetManifestPath": "public/data/dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+          "assetManifestSha256": "4f64fb595a4362cf0403cb0d3abc3c6fdc14b7f74d473a82ccd67bed9b9dab87",
+          "contractBytes": 42226,
+          "contractId": "dorsal-horn-observed-morphology-route-pack-0.1",
+          "contractPath": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+          "contractSha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593",
+          "supplementaryNeuronIds": [
+            170035,
+            249676
+          ]
+        }
+      ],
+      "supplementaryNeuronIds": [
+        45674,
+        45718,
+        50394,
+        50408,
+        50424,
+        170035,
+        249676
+      ],
+      "frozenCensusRecordCount": 142,
+      "supplementaryRecordCount": 7,
+      "viewableSourceObjectCount": 149,
+      "combinedCensusClaim": false,
+      "geometryReferenceCount": 7,
+      "geometryCopyCount": 0,
+      "swcCopyCount": 0,
+      "paddingRecordCount": 0,
+      "commonScaleAdmissionCount": 0,
+      "commonOrientationAdmissionCount": 0,
+      "atlasPlacementCount": 0,
+      "atlasTransformCount": 0,
+      "completeAxonClaimCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "registrationCount": 0
+    },
+    "sourceFrameDisclosure": {
+      "contractId": "morphology-source-frame-disclosure-0.1",
+      "contractReleaseId": "ohri-morphology-source-frame-disclosure-0.1.0",
+      "contractReceipt": {
+        "path": "data/morphology-source-frame-disclosure-0.1.json",
+        "bytes": 469544,
+        "sha256": "e76abace7e59995f4b1849ce87a7e10e0d066a80844959589d5f06fcba0c5230",
+        "contentSha256": "cd6b85eb5961e49667bdc126b0230fba35db534fdcc2c8008d5655893978a8ad"
+      },
+      "contractSchemaReceipt": {
+        "path": "schemas/morphology-source-frame-disclosure-0.1.schema.json",
+        "bytes": 14554,
+        "sha256": "382bc051000d96d7142b5176598dad969f36568579e70f563e83606ac6ca8e4b"
+      },
+      "builderReceipt": {
+        "path": "tools/build_morphology_source_frame_disclosure.mjs",
+        "bytes": 20391,
+        "sha256": "dae31dc3d47d203b3374c1cc902c09950e705147386e44a8fe96af8175c72633"
+      },
+      "scaleAlgorithmReceipt": {
+        "path": "app/morphology-viewport-scale.js",
+        "bytes": 3658,
+        "sha256": "f51a96dd5fe21d36ca7455245145b002a232116115e5af992d0f6465542f1aac",
+        "algorithmId": "camera_target_plane_source_local_scale_v1"
+      },
+      "frozenCensusRecordCount": 142,
+      "supplementaryRecordCount": 7,
+      "viewableSourceObjectCount": 149,
+      "geometry2DCount": 2,
+      "geometry3DCount": 147,
+      "preparationContextConflictCount": 5,
+      "sourceModerateOrIncompleteCount": 70,
+      "scaleEligibleRecordCount": 149,
+      "displayScalePolicy": {
+        "algorithmId": "camera_target_plane_source_local_scale_v1",
+        "sourceCoordinateUnit": "micrometre_reported_by_source",
+        "measurementPlane": "camera_target_depth",
+        "targetPixelLength": 92,
+        "preferredNiceSeries": [
+          1,
+          2,
+          5
+        ],
+        "updatesOn": [
+          "initial_fit",
+          "orbit_zoom",
+          "viewport_resize"
+        ],
+        "sourceLocalOnly": true,
+        "sharedAcrossViewports": false,
+        "apparentObjectSizeComparable": false,
+        "restoresInVivoDimensions": false,
+        "infersMissingCoordinates": false,
+        "establishesAnatomicalOrientation": false,
+        "establishesAtlasRegistration": false
+      },
+      "commonScaleAdmissionCount": 0,
+      "inferredMissingCoordinateCount": 0,
+      "repairedCutNeuriteCount": 0,
+      "restoredInVivoDimensionCount": 0,
+      "completeBiologicalAxonClaimCount": 0,
+      "sharedCoordinateFrameAdmissionCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "registrationCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0
+    },
+    "researchExplorerVisualIntegrity": {
+      "indexSchemaVersion": "1.8.0",
+      "assetSetId": "ohri:research-explorer-index:1.8.0",
+      "assetManifestReceipt": {
+        "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+        "bytes": 4290,
+        "sha256": "8753a0d579f0b3b0b47227d5d43bce230d5f1338f730a9204626ef77e33a8b33"
+      },
+      "searchIndexReceipt": {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "bytes": 5293046,
+        "sha256": "5954c2911a196fc14dc033142f3a028c3cc612f5dbce8514e2b8316f42510c54"
+      },
+      "visualTargetResolverReceipt": {
+        "path": "app/research-visual-target.js",
+        "bytes": 4588,
+        "sha256": "21d20d86a7c687098f8f909c8b4b9b7737267163a9e4e84aacf15b74b48930a3"
+      },
+      "morphologyRecordDisclosureReceipt": {
+        "path": "app/MorphologyRecordDisclosure.tsx",
+        "bytes": 4846,
+        "sha256": "87e0e8f1c041feb1ab77aa681e0428daa2c757ff7872c79ee576700540b5e789"
+      },
+      "sourceFileCount": 16,
+      "recordCount": 413,
+      "byFocusKind": {
+        "anatomy_label": 73,
+        "molecular_profile": 161,
+        "morphology_record": 149,
+        "sci_entity": 7,
+        "sci_population": 17,
+        "source_lane": 6
+      },
+      "frozenCensusRecordCount": 142,
+      "supplementaryRecordCount": 7,
+      "viewableMorphologyRecordCount": 149,
+      "combinedCensusClaim": false,
+      "admittedMainSceneNeuronIds": [
+        45674,
+        45718,
+        50394,
+        50408,
+        50424,
+        104003,
+        108974,
+        109005,
+        109021,
+        170035,
+        242822,
+        249676,
+        260150
+      ],
+      "admittedMainSceneExactTargetCount": 13,
+      "sourceSpecificViewerOnlyCount": 136,
+      "nonMorphologyClearCount": 264,
+      "gapCount": 3634,
+      "recordsWithGapCount": 413,
+      "requiredGapFields": [
+        "axisId",
+        "status",
+        "reasonCode",
+        "scope",
+        "authority",
+        "sourceLocator",
+        "rawValue",
+        "detail",
+        "inferenceAllowed"
+      ],
+      "missingnessReasonCodes": [
+        "source_not_reported",
+        "source_schema_no_field",
+        "repository_object_unavailable",
+        "not_measured_by_study",
+        "not_ingested",
+        "relationship_not_established",
+        "no_admitted_transform",
+        "qc_quarantined",
+        "rights_not_cleared",
+        "unresolved_source_conflict",
+        "not_applicable"
+      ],
+      "missingnessScopes": [
+        "record_specific",
+        "shared_dataset_limit",
+        "shared_project_limit"
+      ],
+      "gapInferenceAllowedCount": 0,
+      "invalidMissingnessCount": 0,
+      "fallbackGeometryCount": 0,
+      "substituteGeometryCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "atlasTransformCount": 0,
+      "registrationCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0
+    },
+    "uiKnowledgeAndTopologyIntegrity": {
+      "contractId": "ohri-ui-knowledge-topology-integrity-2.32",
+      "focusSynchronization": {
+        "activeSciEntityPolicy": "active_only_when_focusKind_is_sci_entity",
+        "dormantSciSelectionPersistence": true,
+        "keyboardRovingTabStopCountWhenNonSci": 1,
+        "nullSelectionRoundTripPreserved": true,
+        "sciFocusCanonicalizesPersistedSelection": true,
+        "nonSciActiveEntityCount": 0,
+        "molecularMainSceneGeometryCount": 0,
+        "fallbackGeometryCount": 0,
+        "substituteGeometryCount": 0,
+        "atlasPrototypeReceipt": {
+          "path": "app/AtlasPrototype.tsx",
+          "bytes": 118272,
+          "sha256": "73b86872c03d7bc67a2e8f6dfb69734f67a37c5072e03c61d15f8e58f5c4bb55"
+        }
+      },
+      "molecularEvidenceFingerprint": {
+        "indexedMolecularProfileCount": 161,
+        "exactDemonstrationRecords": {
+          "i1": {
+            "focusId": "alkaslasi-2021:GSE167597:I1",
+            "sampledNucleusCount": 1520,
+            "markers": [
+              "Pax2",
+              "Mpped2",
+              "Slc6a1",
+              "Piezo2"
+            ],
+            "sourceRegionMembership": {
+              "Cervical": 361,
+              "Thoracic": 404,
+              "Lumbar": 755
+            }
+          },
+          "i2": {
+            "focusId": "alkaslasi-2021:GSE167597:I2",
+            "sampledNucleusCount": 780,
+            "markers": [
+              "Pax2",
+              "Mpped2",
+              "Slc6a1"
+            ],
+            "sourceRegionMembership": {
+              "Cervical": 220,
+              "Thoracic": 208,
+              "Lumbar": 352
+            }
+          }
+        },
+        "lifeStageAuthority": {
+          "sathyamurthy": "adult",
+          "alkaslasi": "adult; source mice aged 8 weeks",
+          "unknownRecordPolicy": "not_retained_in_exact_record"
+        },
+        "fingerprintComponentReceipt": {
+          "path": "app/ResearchRecordEvidenceFingerprint.tsx",
+          "bytes": 3935,
+          "sha256": "be01d48ac8fbaed072f2b41d3d893636970cebf2832d69fbe3d43f591bd2e315"
+        },
+        "typeAtlasIntegrationReceipt": {
+          "path": "app/InterneuronTypeAtlas.tsx",
+          "bytes": 79588,
+          "sha256": "4d4e730fe276c3631d08df8e76542ecf86d4e48d3c5460778f2d1b9dc4458c84"
+        },
+        "researchExplorerIntegrationReceipt": {
+          "path": "app/ResearchExplorer.tsx",
+          "bytes": 27754,
+          "sha256": "e4a5f5df7c7aa36cd0824d091283d169a9d12b6621e58ed5c47197c753ad55ec"
+        },
+        "researchExplorerIndexReceipt": {
+          "path": "app/research-explorer-index.js",
+          "bytes": 15930,
+          "sha256": "6d659cbe15b96cbc8d59a67d31cbe1719b577ed4a6e5cdc53fd425a26310749a"
+        },
+        "admittedCellGeometryPrimitiveCount": 0,
+        "sharedLimitBlockCountPerFingerprint": 1,
+        "rawMachineTokenPrimaryLabelCount": 0
+      },
+      "morphologyTopologyDetail": {
+        "contractId": "morphology-topology-detail-0.1",
+        "releaseId": "ohri-morphology-topology-detail-0.1.0",
+        "contractReceipt": {
+          "path": "data/morphology-topology-detail-0.1.json",
+          "bytes": 5032,
+          "sha256": "85a4c8c379d8893a216de37c7f3d5e2010c72b2bdad1df491214bdbe29557541"
+        },
+        "runtimeReceipt": {
+          "path": "public/data/morphology_topology_detail_v1/index.json",
+          "bytes": 902933,
+          "sha256": "fdd6c1e4e6b5bf7032ec45719ec630245e078599c47915d46b72914d69e3d5b9"
+        },
+        "runtimeGuardReceipt": {
+          "path": "app/morphology-topology-detail-runtime.js",
+          "bytes": 10233,
+          "sha256": "4e38bd5dffe7b4fdf6ef163453adaef7c83e345b226d119e7cec7c6384a4e88c"
+        },
+        "frozenCensusRecordCount": 142,
+        "supplementaryRecordCount": 7,
+        "viewableSourceObjectCount": 149,
+        "verifiedGeometryCount": 149,
+        "sourceType1RecordCount": 149,
+        "sourceType2RecordCount": 51,
+        "sourceType3RecordCount": 147,
+        "sourceType4RecordCount": 0,
+        "otherSourceTypeRecordCount": 2,
+        "landmarkReceiptCount": 149,
+        "totalNodeCount": 566511,
+        "totalSegmentCount": 566362,
+        "totalNeuriteSegmentCount": 565423,
+        "totalTerminalLandmarkCount": 6957,
+        "totalBifurcationLandmarkCount": 6223,
+        "combinedCensusClaim": false,
+        "sourceTypeAbsenceMeansBiologicalZero": false,
+        "somaContourClaimCount": 0,
+        "membraneClaimCount": 0,
+        "internalStructureModelCount": 0,
+        "boutonClaimCount": 0,
+        "synapseClaimCount": 0,
+        "crossSourceIdentityCount": 0,
+        "registrationCount": 0,
+        "generatedBiologicalPrimitiveCount": 0
+      },
+      "projectCopyCount": 0,
+      "packageCopyCount": 0
+    },
+    "micronsClippingAndSourceRecordDeltaIntegrity": {
+      "contractId": "ohri-microns-clipping-source-record-delta-integrity-2.33",
+      "micronsSourceNativeClipping": {
+        "contractId": "microns-source-native-clipping-0.1",
+        "releaseId": "ohri-microns-source-native-clipping-0.1.0",
+        "upgradeId": "UPG-166",
+        "authority": "DER_DISPLAY_OPERATION_ON_OBS_EM_SEGMENTATION",
+        "sourceCellRootId": "648518346349516051",
+        "sourceLinkedNucleusId": "4309",
+        "nativeFrame": "MICrONS_Phase1_aligned_EM_native",
+        "nativeUnits": "nanometre",
+        "region": "visual cortex layer 2/3",
+        "regionRelationshipToProject": "cross_region_not_spinal_cord",
+        "axisCount": 3,
+        "defaultState": {
+          "enabled": false,
+          "axis": "z",
+          "positionNanometre": 80240,
+          "keepSide": "positive"
+        },
+        "cellVertexCount": 372382,
+        "cellTriangleCount": 704444,
+        "nucleusVertexCount": 12682,
+        "nucleusTriangleCount": 23344,
+        "contractReceipt": {
+          "path": "data/microns-source-native-clipping-0.1.json",
+          "bytes": 4828,
+          "sha256": "a136d4762de15703a04d96db41e1172731d6af4b5a3bf338e49142b263150ff6"
+        },
+        "schemaReceipt": {
+          "path": "schemas/microns-source-native-clipping-0.1.schema.json",
+          "bytes": 6552,
+          "sha256": "58f1b83608f843c0098f1b301f3fdcec718404f224c7ec4832b0b8e009207a9d"
+        },
+        "runtimeReceipt": {
+          "path": "app/microns-source-native-clipping.js",
+          "bytes": 6826,
+          "sha256": "342845e3cc01331fd8002e5a3bd24d227fea37fca2ae4eb020e235e0577b8fb9"
+        },
+        "validatorReceipt": {
+          "path": "scripts/validate-microns-source-native-clipping-0.1.mjs",
+          "bytes": 9041,
+          "sha256": "4d2d039ff1be16ce61cba2aecae0d95a612d506c19878acff145e74810085484"
+        },
+        "testReceipt": {
+          "path": "tests/microns-source-native-clipping.test.mjs",
+          "bytes": 4982,
+          "sha256": "a090b9dacf1cc7429a0cdee8cb91e5fbf0a2121bae59db920cc550e48a897e0a"
+        },
+        "panelReceipt": {
+          "path": "app/InternalStructureReferencePanel.tsx",
+          "bytes": 12232,
+          "sha256": "ae46fc336c847ce42a80094bbe3d87904524a988a0a62916920aa0497d2d8bca"
+        },
+        "sceneIntegrationReceipt": {
+          "path": "app/SceneCanvas.tsx",
+          "bytes": 90167,
+          "sha256": "18a0be5aef044a081b2c26784b2bf21d99323c0236a6e05dcf1f74ae7a805dd8"
+        },
+        "atlasStateIntegrationReceipt": {
+          "path": "app/AtlasPrototype.tsx",
+          "bytes": 122439,
+          "sha256": "9cef6d539e5a3175dc341f866c666518ef61636122c5cb9003dde01e6acd965a"
+        },
+        "importProvenanceReceipt": {
+          "path": "app/microns-import-provenance.js",
+          "bytes": 3857,
+          "sha256": "fad707fdf8e41033a4c1a50b9875cc43e008d34cfb5f2a3b097c308b4c7b0bfb"
+        },
+        "importProvenanceTestReceipt": {
+          "path": "tests/microns-import-provenance.test.mjs",
+          "bytes": 5645,
+          "sha256": "1cc36eb0f1cb59f13998cbaf5c7d6c38395035f5267bc7c3b9dbf15012c2f414"
+        },
+        "atlasTypesReceipt": {
+          "path": "app/atlas-types.ts",
+          "bytes": 21551,
+          "sha256": "444e31a9ca6fd4b5529b62c38017fcf97e8a1016f6fa01ab5684d384dc9a54e5"
+        },
+        "sourceBufferMutation": false,
+        "cellClippingPlaneCountWhenEnabled": 1,
+        "nucleusClippingPlaneCount": 0,
+        "capPrimitiveCount": 0,
+        "repairCount": 0,
+        "resamplingCount": 0,
+        "generatedGeometryCount": 0,
+        "geometryMutationCount": 0,
+        "joinCount": 0,
+        "registrationCount": 0,
+        "measurementClaim": false,
+        "membraneClaim": false,
+        "spinalInternalStructureClaim": false
+      },
+      "sourceRecordDelta": {
+        "contractId": "source-record-display-delta-0.1",
+        "upgradeId": "UPG-167",
+        "mode": "EXACT_WHITELISTED_DISPLAY_STRING_DELTA",
+        "authority": "DISPLAY_ONLY",
+        "relationshipStatus": "not_established",
+        "oldRecordId": "alkaslasi-2021:GSE167597:I1",
+        "currentRecordId": "alkaslasi-2021:GSE167597:I2",
+        "uiWhitelistedRowCount": 24,
+        "uiWhitelistedRowIds": [
+          "parent-source",
+          "namespace",
+          "record-kind",
+          "observation-unit",
+          "assignment-authority",
+          "cell-roster",
+          "source-label",
+          "region",
+          "transmitter",
+          "markers",
+          "life-stage",
+          "spinal-scope",
+          "major-type",
+          "sampling-count",
+          "putative-assignment",
+          "morphology",
+          "cell-coordinates",
+          "sci-context",
+          "atlas-registration",
+          "electrophysiology",
+          "projection-target",
+          "synaptic-connectivity",
+          "internal-structure",
+          "same-cell-link"
+        ],
+        "demonstrationWhitelistedRowCount": 8,
+        "demonstrationSharedRowCount": 5,
+        "demonstrationChangedRowCount": 3,
+        "unlistedFieldCountInspected": 0,
+        "changedRowIds": [
+          "sampling-count",
+          "markers",
+          "region-membership"
+        ],
+        "sharedRowIds": [
+          "life-stage",
+          "transmitter",
+          "morphology",
+          "internal-structure",
+          "same-cell-link"
+        ],
+        "runtimeReceipt": {
+          "path": "app/source-record-delta.js",
+          "bytes": 5303,
+          "sha256": "31464ff01ec47d100297c9100e917d7255f8ba6270fc0f1a74af1ab5e9260f86"
+        },
+        "inspectorReceipt": {
+          "path": "app/SourceRecordDeltaInspector.tsx",
+          "bytes": 5324,
+          "sha256": "d2ef5993df20c1f9ce2a5ed77e3e7adee7a75636e5852de77e29ac3f76093011"
+        },
+        "testReceipt": {
+          "path": "tests/source-record-delta.test.mjs",
+          "bytes": 8274,
+          "sha256": "c6fbaaded0a392c3405946a1d2201a864a1c497108acbc7a908e0ea099e4f901"
+        },
+        "typeAtlasIntegrationReceipt": {
+          "path": "app/InterneuronTypeAtlas.tsx",
+          "bytes": 85139,
+          "sha256": "5f512ca2d0fa7f6e93452b0630b1261e100c3d5a7a65277a0f0557c05cef0ae4"
+        },
+        "crossSourceSameCellIdentityCount": 0,
+        "crossSourceSameTypeIdentityCount": 0,
+        "admittedGeometryPrimitiveCount": 0,
+        "generatedBiologicalGeometryPrimitiveCount": 0,
+        "joinCount": 0,
+        "registrationCount": 0,
+        "measurementUse": "forbidden"
+      },
+      "projectCopyCount": 0,
+      "packageCopyCount": 0
+    },
+    "neuromorphoNoAgeQueryUniverseIntegrity": {
+      "contractId": "ohri-neuromorpho-no-age-query-universe-integrity-2.34",
+      "sourceRepository": "NeuroMorpho.Org",
+      "repositoryRelease": "8.6.124",
+      "query": {
+        "species": "mouse",
+        "brainRegion": "spinal cord",
+        "cellType": "interneuron",
+        "ageFilter": null,
+        "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc",
+        "pageSize": 500,
+        "pageCount": 3,
+        "pageReceipts": [
+          {
+            "page": 0,
+            "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+            "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+            "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+            "bytes": 769605,
+            "responseDate": "cached_snapshot",
+            "recordCount": 500
+          },
+          {
+            "page": 1,
+            "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=1",
+            "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-1.json",
+            "sha256": "6b03f0627a6972c027c152458ac5c5d322b03a78a725beea16438424dc87d77c",
+            "bytes": 753972,
+            "responseDate": "cached_snapshot",
+            "recordCount": 500
+          },
+          {
+            "page": 2,
+            "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=2",
+            "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-2.json",
+            "sha256": "43076e7f418c7284eeaa331e7573a66ff19a66fb190cbd7cf133ddfceaad60e4",
+            "bytes": 146925,
+            "responseDate": "cached_snapshot",
+            "recordCount": 97
+          }
+        ],
+        "rawServerOrderNeuronIdSha256": "a285255615ea67f098e740cbddc2947488068fbbb70dfb0ad0f758e8e2a13b8b",
+        "numericNeuronIdSha256": "fe2ee83caf63fbfa4e881c9ce7163b2d1612bb3d916a3eb159cc5757ad70a47e",
+        "rawPageSetSha256": "f262c1e92a3853f44e2fe135b0abda987ea4fe74f4697a45a168d7b33fe719fd"
+      },
+      "queryRecordCount": 1097,
+      "uniqueNeuronIdCount": 1097,
+      "admittedSourceObjectCount": 1097,
+      "quarantinedSourceObjectCount": 0,
+      "frozenAdultSubsetCount": 142,
+      "existingGeometryReferenceCount": 149,
+      "deltaRawSwcCount": 948,
+      "geometryCopyCount": 0,
+      "sourceLabelled3DCount": 1058,
+      "sourceLabelled2DCount": 39,
+      "diameterAuthorizedCount": 955,
+      "diameterUnavailableCount": 142,
+      "axonDomainCount": 253,
+      "completeAxonClaimCount": 0,
+      "registrationCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "paperCount": 12,
+      "archiveCount": 5,
+      "duplicateRawSwcGroupCount": 0,
+      "duplicateCanonicalGeometryGroupCount": 0,
+      "officialApiPageRecordCounts": [
+        500,
+        500,
+        97
+      ],
+      "assetManifestDeclaredFileCount": 953,
+      "runtimeRosterCount": 1097,
+      "contractReceipt": {
+        "path": "data/neuromorpho-no-age-query-universe-0.1.json",
+        "bytes": 4688,
+        "sha256": "5641ceab6ac9d73c89fc3ec5843be08efc6d7ede50d1235fb9de16348b1728ba"
+      },
+      "rosterReceipt": {
+        "path": "data/neuromorpho-no-age-query-universe-roster-0.1.json",
+        "bytes": 12747,
+        "sha256": "9c8baa5301ca726a60b70b00a95cdb70a6c1e7a268a3ad8ba6673d29aedc8ec1"
+      },
+      "indexReceipt": {
+        "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+        "bytes": 8025022,
+        "sha256": "1ba52eb81aa141349f9e9a6916f8acf5a089ba079e9de34507e50f32bd6cfd68"
+      },
+      "assetManifestReceipt": {
+        "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/asset-manifest.json",
+        "bytes": 258944,
+        "sha256": "fcc798ed00b81b64073daea24777773a7fc56617f21cbe71206b36e800e859d5"
+      },
+      "quarantineReceipt": {
+        "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/quarantine-report.json",
+        "bytes": 216,
+        "sha256": "1d9cc65ec335335f3e5d6f6509d29bb742a34d1c21b23d1e5fb7b8d3008e5830"
+      },
+      "builderReceipt": {
+        "path": "tools/build_neuromorpho_no_age_universe.py",
+        "bytes": 33544,
+        "sha256": "4aac0f47a7057f79ae5f840a7bb9dcc9016e480832a578cb20ab81d513409cde"
+      },
+      "schemaReceipt": {
+        "path": "schemas/neuromorpho-no-age-query-universe-0.1.schema.json",
+        "bytes": 6170,
+        "sha256": "de21da1388e561a21218073f0db0eb6a6cdbe1fdf59a724e6cc31d3c007ffaf9"
+      },
+      "validatorReceipt": {
+        "path": "scripts/validate-neuromorpho-no-age-query-universe-0.1.mjs",
+        "bytes": 18647,
+        "sha256": "1c246493244d75e294675eca383bf4e0bfb44a8f664e8160ed5449b6f8367bc8"
+      },
+      "runtimeReceipt": {
+        "path": "app/neuromorpho-swc-runtime.js",
+        "bytes": 15619,
+        "sha256": "323285854e2663a9b2e4f4fa0c6631d768d6e8ad33478c39d529744eb08e1a31"
+      },
+      "panelReceipt": {
+        "path": "app/NeuroMorphoUniversePanel.tsx",
+        "bytes": 29171,
+        "sha256": "ee161bd2d52cc2cc7db9baba512a5c5953dd8cf61b5c515429207c860209f71c"
+      },
+      "viewerReceipt": {
+        "path": "app/MorphologyViewer.tsx",
+        "bytes": 47536,
+        "sha256": "9e878b5b408bcea9cb63c4ebc4cc13ba92b984e0835baf6368b090d21841dbce"
+      },
+      "focusResolverReceipt": {
+        "path": "app/research-visual-target.js",
+        "bytes": 6079,
+        "sha256": "f55a576c2e8c0d94b97903dc300b9fc6e597273d5636a715fc9fa6dddd983342"
+      },
+      "atlasIntegrationReceipt": {
+        "path": "app/AtlasPrototype.tsx",
+        "bytes": 123037,
+        "sha256": "c48695ffb87c723de3042239c49f8009cf0ccae22388b24ff4466c8f10d1a956"
+      },
+      "adultAndNoDiameterSameCountButIndependentSets": true,
+      "oldGeometryClearedBeforeLoad": true,
+      "unknownFocusFailsClosed": true,
+      "sourceZPreservedWithoutInferredExtrusion": true,
+      "sourceDiameterGateRetained": true,
+      "atlasRegistrationCount": 0,
+      "crossSourceIdentityCount": 0,
+      "generatedGeometryCopyCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0
+    },
+    "crozatPkd2l1FunctionalProfileIntegrity": {
+      "contractId": "ohri-crozat-pkd2l1-functional-profile-integrity-2.35",
+      "profileId": "crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn",
+      "namespace": "crozat-2025:figshare-29430869-v2",
+      "parentSourceId": "SRC-CROZAT-2025",
+      "canonicalSourceCount": 25,
+      "canonicalRecordSetCount": 29,
+      "sourceProfileCount": 162,
+      "sourceNamespaceCount": 6,
+      "researchExplorerRecordCount": 414,
+      "researchExplorerMolecularProfileCount": 162,
+      "figshareArticleId": 29430869,
+      "figshareVersion": 2,
+      "figshareFileCount": 92,
+      "figshareTotalBytes": 1848613,
+      "figshareLicenseId": "CC-BY-4.0",
+      "keyFileReceiptCount": 7,
+      "quarantinedConflictCount": 4,
+      "quarantinedConflictIds": [
+        "firing-inference-p-value",
+        "firing-location-coverage",
+        "passive-property-denominator",
+        "thoracic-6-week-distance-denominator"
+      ],
+      "firingPatternCellCount": 65,
+      "tonicCount": 38,
+      "singleSpikeCount": 27,
+      "passiveArticleAnimalCount": 191,
+      "passiveArticleCellCount": 659,
+      "passiveDepositedRowCount": 654,
+      "rmpAnimalCount": 25,
+      "rmpObservationCount": 125,
+      "displayedProfileCount": 1,
+      "globalStableCellRosterCount": 0,
+      "rawElectrophysiologyTraceCount": 0,
+      "rawMicroscopyObjectCount": 0,
+      "admittedGeometryCount": 0,
+      "atlasTransformCount": 0,
+      "registrationCount": 0,
+      "sameCellCrossModalJoinCount": 0,
+      "linkToSeparatePkd2l1SbfSemStudyCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0,
+      "contractReceipt": {
+        "path": "data/crozat-pkd2l1-functional-profile-0.1.json",
+        "bytes": 20460,
+        "sha256": "ca022532c23f5d9967fce7efcbd5bde57b1d4f59516cb10764dd1b422dd8ed64"
+      },
+      "builderReceipt": {
+        "path": "tools/build_crozat_pkd2l1_functional_profile.mjs",
+        "bytes": 18942,
+        "sha256": "f96fc05abd8229fe1455fee332cc702f1cfbbb4734fa2f83ce121622aaf10113"
+      },
+      "schemaReceipt": {
+        "path": "schemas/crozat-pkd2l1-functional-profile-0.1.schema.json",
+        "bytes": 3427,
+        "sha256": "c591cf8ba664f25bd2cc0d4c565d840560eac58754319e19b948ef1ad29a1eff"
+      },
+      "validatorReceipt": {
+        "path": "scripts/validate-crozat-pkd2l1-functional-profile-0.1.mjs",
+        "bytes": 4666,
+        "sha256": "8a4e7c566abadbc6fd0d1de68e38e0189c577cae54245cc316ee9991f1d97fb9"
+      },
+      "testReceipt": {
+        "path": "tests/crozat-pkd2l1-functional-profile.test.mjs",
+        "bytes": 1992,
+        "sha256": "16845a824ac0c4b12695b399c0303fee0bde8c1647b19462711b2d26b65f8f00"
+      },
+      "rightsLedgerReceipt": {
+        "path": "docs/RIGHTS_LEDGER.csv",
+        "bytes": 8243,
+        "sha256": "8ca6693530ab7c2e1227867b7bfaf9a4a72650aa2fd9a3215c9ca4c5771588f4"
+      },
+      "sourceRegistryReceipt": {
+        "path": "data/research-source-registry-0.1.json",
+        "bytes": 97139,
+        "sha256": "f15ee7a7f040cb4bacd6fd42e56e9db41a6407ccee76a22ae38d4b8997a3b84f"
+      },
+      "explorerAssetManifestReceipt": {
+        "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+        "bytes": 4502,
+        "sha256": "a2beb4e6bbea7601a1baa6072c874112dd3072f54700f5c5b252425db99f0480"
+      },
+      "explorerSearchIndexReceipt": {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "bytes": 5441868,
+        "sha256": "d5c09f3abe2d059a065e193f26fed830bad3fca251d066c563376d6147bbd05d"
+      },
+      "focusResolverReceipt": {
+        "path": "app/research-visual-target.js",
+        "bytes": 6147,
+        "sha256": "c7c7633b6fe42cd60c14c0b26a4234b17670af90f6d45b7b90f93d9e56dad7aa"
+      },
+      "explorerRuntimeReceipt": {
+        "path": "app/research-explorer-index.js",
+        "bytes": 17452,
+        "sha256": "586d53190731eca2026fd19e1f757197c50e45bde7dc3216e3c2297630d48d26"
+      },
+      "typeAtlasReceipt": {
+        "path": "app/InterneuronTypeAtlas.tsx",
+        "bytes": 90418,
+        "sha256": "9f14687a96e900296cae7f0de5c747297cf486c38a4268a63b42c33059a1af74"
+      },
+      "evidenceFingerprintReceipt": {
+        "path": "app/ResearchRecordEvidenceFingerprint.tsx",
+        "bytes": 4040,
+        "sha256": "0c62629928d88de54dbff3b4509d51920a672a9ba0a1882efd82aebb15621111"
+      },
+      "observedElectrophysiologyAxis": true,
+      "sourceConflictQuarantineRequired": true,
+      "staleGeometryClearedForMissingRecordGeometry": true,
+      "specializedViewsExitOnNonMorphologyFocus": true,
+      "exactFocusZeroGeometryReadout": true,
+      "canonicalTransmitterProfileCount": 162,
+      "internalStructureGapProfileCount": 162,
+      "selectedGroupForcedVisible": true,
+      "sourceWideEvidenceCollapseDisplayOnly": true,
+      "expandedMissingnessFingerprintAxes": true
+    },
+    "dmrt3Di6AndRecordUiIntegrity": {
+      "contractId": "ohri-dmrt3-di6-and-record-ui-integrity-2.36",
+      "sourceReleaseId": "ohri-dmrt3-di6-source-taxonomy-0.1.0",
+      "sourceDoi": "10.3389/fncel.2021.781197",
+      "geoAccession": "GSE185731",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "canonicalSourceCount": 26,
+      "canonicalRecordSetCount": 30,
+      "sourceProfileCount": 168,
+      "sourceNamespaceCount": 7,
+      "researchExplorerRecordCount": 421,
+      "researchExplorerMolecularProfileCount": 168,
+      "researchExplorerSourceLaneCount": 7,
+      "knowledgeCoverageLaneCount": 7,
+      "knowledgeCoverageAxisCount": 7,
+      "knowledgeCoverageJudgmentCount": 49,
+      "displayedGroupCount": 6,
+      "groupLabels": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "groupCountVector": [
+        84,
+        34,
+        33,
+        45,
+        54,
+        24
+      ],
+      "retainedGroupCountSum": 274,
+      "sourceEmbryoCount": 3,
+      "poolCount": 1,
+      "tubeCount": 1,
+      "independentLibraryCount": 1,
+      "animalResolvedReplicateCount": 0,
+      "depositedMouseWellCount": 384,
+      "qcRetainedCellCount": 354,
+      "di6LineageRetainedCellCount": 274,
+      "perWellMGroupRosterCount": 0,
+      "quarantinedConflictCount": 1,
+      "quarantinedConflictIds": [
+        "methods-vs-executed-notebook-qc-hvg"
+      ],
+      "researchUpgradeCount": 162,
+      "lastResearchUpgradeId": "UPG-180",
+      "admittedGeometryCount": 0,
+      "admittedInternalStructureCount": 0,
+      "registrationCount": 0,
+      "sameCellCrossModalJoinCount": 0,
+      "sameRecordInternalPrimitiveCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0,
+      "completeContentFolderCopyCount": 0,
+      "contractReceipt": {
+        "path": "data/dmrt3-di6-source-taxonomy-0.1.json",
+        "bytes": 22490,
+        "sha256": "e5d7b26df781033a971282b697684cf6f71daa2fe711883475723186c2d92468"
+      },
+      "builderReceipt": {
+        "path": "tools/build_dmrt3_di6_source_taxonomy.mjs",
+        "bytes": 9938,
+        "sha256": "260ad8daf187a6a06e583099143277d93faf8de298dfb7de506f00aed31f91e4"
+      },
+      "schemaReceipt": {
+        "path": "schemas/dmrt3-di6-source-taxonomy-0.1.schema.json",
+        "bytes": 16760,
+        "sha256": "2b6778a83b280649c549de42f4a7a39971dd97b5249654538363963847470feb"
+      },
+      "validatorReceipt": {
+        "path": "scripts/validate-dmrt3-di6-source-taxonomy-0.1.mjs",
+        "bytes": 19766,
+        "sha256": "fefb5030204a179a082008e4207e8632ede8a69606ca983c2aeb39e493c3df5a"
+      },
+      "testReceipt": {
+        "path": "tests/dmrt3-di6-source-taxonomy.test.mjs",
+        "bytes": 12714,
+        "sha256": "75251918b01f467b6747901d872b5005f63a4b9516c6946c42ea9ef390bd2c69"
+      },
+      "knowledgeCoverageContractReceipt": {
+        "path": "data/interneuron-knowledge-coverage-0.1.json",
+        "bytes": 35520,
+        "sha256": "ed765b2c67a08428abab846c9997afea3c07060cef0b1538cf5904af4da15e24"
+      },
+      "knowledgeCoverageSchemaReceipt": {
+        "path": "schemas/interneuron-knowledge-coverage-0.1.schema.json",
+        "bytes": 4717,
+        "sha256": "8ffe2c60be1965ca488009616fe6a62082b34bd68f177bfe4973a8e72ace3e3d"
+      },
+      "knowledgeCoverageValidatorReceipt": {
+        "path": "scripts/validate-interneuron-knowledge-coverage-0.1.mjs",
+        "bytes": 11171,
+        "sha256": "7b970143947c08378b869ba5508eb6e24545c5dcb3a1b20285573eae86425a8d"
+      },
+      "knowledgeCoverageTestReceipt": {
+        "path": "tests/interneuron-knowledge-coverage.test.mjs",
+        "bytes": 9583,
+        "sha256": "61e26bf2c133a02b74719313079db2373e80131c8ad0577593c7b3113126c2be"
+      },
+      "manifestHashRuntimeReceipt": {
+        "path": "scripts/build-release-manifest.mjs",
+        "bytes": 129138,
+        "sha256": "ecf3266afe0f998fcf2f3e423b0d4b1424ef43430d6a4bbbe35e345043b13be9"
+      },
+      "researchIteration235SnapshotValidatorReceipt": {
+        "path": "scripts/validate-research-iteration-manifest-2.35-snapshot.mjs",
+        "bytes": 7199,
+        "sha256": "3e67e837818927e576108d54ddc8a97dcb89810bbf8504d1d0d50902e844b6fa"
+      },
+      "researchIteration235SnapshotTestReceipt": {
+        "path": "tests/research-iteration-manifest-2.35-snapshot.test.mjs",
+        "bytes": 2534,
+        "sha256": "b0e043955cf690b4ae6aaf894f113ad4f753ecec140a143eb944c6bc9329ef32"
+      },
+      "currentResearchTestRunnerReceipt": {
+        "path": "tools/run_current_research_tests.mjs",
+        "bytes": 2763,
+        "sha256": "47936ef73ffa652ac7d5e0cd613e4aeca3acc0548fe885febae759c913abaeaa"
+      },
+      "sourceRegistryReceipt": {
+        "path": "data/research-source-registry-0.1.json",
+        "bytes": 103164,
+        "sha256": "efd37d2a7a3d5a9c182fecc17a2415a2260c96e63ecb49458dfb29e819e6f707"
+      },
+      "upgradeRegistryReceipt": {
+        "path": "data/research-model-upgrade-registry-0.1.json",
+        "bytes": 394056,
+        "sha256": "63b6892d0ca63c9cc474bd8b44b1c967ac6202337da9e900f66bd4c72460287f"
+      },
+      "explorerAssetManifestReceipt": {
+        "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+        "bytes": 4705,
+        "sha256": "dcd447ae9805728416a873e5b3ab2af4959614fa03b4e915b61c696745d30a83"
+      },
+      "explorerSearchIndexReceipt": {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "bytes": 5538664,
+        "sha256": "2401e2e25b7b3d93b80bcda86a7072e816af95f2b5f349496d9105e3b46dc211"
+      },
+      "atlasFocusGateReceipt": {
+        "path": "app/AtlasPrototype.tsx",
+        "bytes": 124868,
+        "sha256": "624145a42a764820e5e640326466d215fc088d0b0f2b19c77a41cab2a4e641b9"
+      },
+      "internalReferencePanelReceipt": {
+        "path": "app/InternalStructureReferencePanel.tsx",
+        "bytes": 12506,
+        "sha256": "600ae4d6c7b5a4ed5ab79e84a057980e310a6bd0272d36cc3e9ba3658f9350e8"
+      },
+      "evidenceFingerprintReceipt": {
+        "path": "app/ResearchRecordEvidenceFingerprint.tsx",
+        "bytes": 4823,
+        "sha256": "2dca978b85123b3003c7e480496e7c8506c4af59fc845f677dd49548a4c99ab4"
+      },
+      "explorerUiReceipt": {
+        "path": "app/ResearchExplorer.tsx",
+        "bytes": 31655,
+        "sha256": "96886f0aee8a8c575741a29968c3e41705fa63335e8428389c17a94ac55091f2"
+      },
+      "typeAtlasReceipt": {
+        "path": "app/InterneuronTypeAtlas.tsx",
+        "bytes": 100555,
+        "sha256": "bc7d6e840971d5c2bcee774d0b54e035e714f853e9f7abe77d84146972c6772b"
+      },
+      "timelineReceipt": {
+        "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_36.md",
+        "bytes": 13601,
+        "sha256": "ec7c03afb2d92f18f71647fabdfe41960186bbe47d0471ae4ec7d665498a3a24"
+      },
+      "groupSummaryOnly": true,
+      "perWellMGroupRosterUnavailable": true,
+      "methodsNotebookConflictQuarantined": true,
+      "sciSyntheticAnchorExactFocusGate": true,
+      "nonSciFocusHidesSciSyntheticAnchors": true,
+      "exactCurrentRecordZeroInternalPrimitiveReadout": true,
+      "recordSwitchUpdatesEvidenceFingerprint": true,
+      "sameRecordInternalSceneRemainsEmptyWithoutObject": true,
+      "missingAxisDisclosureConsolidated": true,
+      "allMissingAxesRetainedInDisclosure": true,
+      "recordSpecificResultSnippets": true,
+      "immutableParentSnapshotValidationSeparatedFromLiveInputs": true
+    },
+    "roomeDilAndRecordWorkspaceIntegrity": {
+      "contractId": "ohri-roome-dil-and-record-workspace-integrity-2.37",
+      "sourceReleaseId": "ohri-roome-dil-source-taxonomy-0.1.0",
+      "differentialFeatureReleaseId": "ohri-roome-dil-differential-features-0.1.0",
+      "sourceDoi": "10.1126/science.adx5781",
+      "geoAccession": "GSE291462",
+      "namespace": "roome-2026:GSE291462",
+      "canonicalSourceCount": 27,
+      "canonicalRecordSetCount": 31,
+      "bundledExactRosterCount": 8,
+      "sourceProfileCount": 325,
+      "sourceNamespaceCount": 8,
+      "researchExplorerRecordCount": 579,
+      "researchExplorerMolecularProfileCount": 325,
+      "researchExplorerSourceLaneCount": 8,
+      "knowledgeCoverageLaneCount": 8,
+      "knowledgeCoverageAxisCount": 7,
+      "knowledgeCoverageJudgmentCount": 56,
+      "refinedTypeCount": 157,
+      "familyCount": 12,
+      "familyTypeCounts": {
+        "dILA1": 19,
+        "dILA2": 14,
+        "dILA3": 27,
+        "dILA4": 15,
+        "dILA5": 12,
+        "dILA6": 8,
+        "dILB1": 16,
+        "dILB2": 14,
+        "dILB3": 4,
+        "dILB4": 6,
+        "dILB5": 7,
+        "dILB6": 15
+      },
+      "refinedDilCellCount": 61444,
+      "biologicalLitterPoolCount": 15,
+      "retainedTechnicalOutputCount": 29,
+      "sourceFeatureRowCount": 15900,
+      "retainedTextGeneRowCount": 15874,
+      "quarantinedGeneCellCount": 26,
+      "nonRosterDevelopmentalLabelCount": 2,
+      "positiveDisplayFeaturesPerType": 6,
+      "currentRecordPreviewRowCount": 4,
+      "multiRecordNamespacePreviewCollisionCount": 0,
+      "researchUpgradeCount": 164,
+      "lastResearchUpgradeId": "UPG-182",
+      "admittedGeometryCount": 0,
+      "admittedInternalStructureCount": 0,
+      "registrationCount": 0,
+      "sameCellCrossModalJoinCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0,
+      "completeContentFolderCopyCount": 0,
+      "taxonomyContractReceipt": {
+        "path": "data/roome-dil-source-taxonomy-0.1.json",
+        "bytes": 631320,
+        "sha256": "dc25145e21a2f3be4faf0d65c2bd8418339a173c99ed1548564cc07c03c348e9"
+      },
+      "differentialFeaturesContractReceipt": {
+        "path": "data/roome-dil-differential-features-0.1.json",
+        "bytes": 5072736,
+        "sha256": "5cecf178f75aa00aff1b73ad43565fb9b85b3cfa75093c6cca2ea2ae4615b6c9"
+      },
+      "workbookParserReceipt": {
+        "path": "tools/parse_roome_dil_workbooks.mjs",
+        "bytes": 13343,
+        "sha256": "5a66f00f9bf287d3cdff086ccd3907837ab819664b20f3a39e4d5d31bc455d53"
+      },
+      "taxonomyBuilderReceipt": {
+        "path": "tools/build_roome_dil_source_taxonomy.mjs",
+        "bytes": 13463,
+        "sha256": "926632d4256629a4ed03d39d7d5cbe8eb6d1c08770a7cd06cf99e1602ddf24ba"
+      },
+      "taxonomySchemaReceipt": {
+        "path": "schemas/roome-dil-source-taxonomy-0.1.schema.json",
+        "bytes": 11754,
+        "sha256": "4c31e05f18a81405c2d09baeff4e21755064321eaf2bdbe215348f890967face"
+      },
+      "differentialFeaturesSchemaReceipt": {
+        "path": "schemas/roome-dil-differential-features-0.1.schema.json",
+        "bytes": 2471,
+        "sha256": "14a557d3e498eb841f381fd5b42bdaffad5289da90babcedf4bab57dbd33f185"
+      },
+      "validatorReceipt": {
+        "path": "scripts/validate-roome-dil-source-taxonomy-0.1.mjs",
+        "bytes": 9524,
+        "sha256": "637ba178c0e8b89c97c3d6b7df39bd94a52898a8f2ae59feaad8245ff561ba1c"
+      },
+      "testReceipt": {
+        "path": "tests/roome-dil-source-taxonomy.test.mjs",
+        "bytes": 4171,
+        "sha256": "1d792c0ca372c1c0e4b38070b660f78ed2fdd7377f523697b34b28881ae3350e"
+      },
+      "focusWorkspaceStateReceipt": {
+        "path": "app/research-focus-workspace-state.js",
+        "bytes": 1476,
+        "sha256": "3cffeafc37d491fff9257f3880ce7dc163724c873d9170a929c0c2b064a83868"
+      },
+      "focusEvidencePanelReceipt": {
+        "path": "app/ResearchFocusEvidencePanel.tsx",
+        "bytes": 9712,
+        "sha256": "59159c586e9a30354b08e861ecaa55648a363989b1faa12bb0eeb8a3b505bb2a"
+      },
+      "focusWorkspaceTestReceipt": {
+        "path": "tests/research-focus-workspace-state.test.mjs",
+        "bytes": 2270,
+        "sha256": "432cf0c398fe8c108236cd461eb64e7153c4bb2d477eb3881f612db7ae661eaa"
+      },
+      "explorerRuntimeReceipt": {
+        "path": "app/research-explorer-index.js",
+        "bytes": 23752,
+        "sha256": "c756b811a4e53c4651aee53dce0a5f6fb531aafdcd54990d0d1e9ce8822fddbf"
+      },
+      "explorerTestReceipt": {
+        "path": "tests/research-explorer-index.test.mjs",
+        "bytes": 40061,
+        "sha256": "21498a09d9e8ab146687c518a1067a6231c5d9971d890b94b4e68a43706be3dc"
+      },
+      "sourceRegistryReceipt": {
+        "path": "data/research-source-registry-0.1.json",
+        "bytes": 111910,
+        "sha256": "9ff018a9b532705f4d2a8d955ee0661936182d6bac256620332921161329ce9a"
+      },
+      "upgradeRegistryReceipt": {
+        "path": "data/research-model-upgrade-registry-0.1.json",
+        "bytes": 399236,
+        "sha256": "3feef69236d7eaf4902f86fcf761621a485a65c336e65a0e10fc7a2ec450830f"
+      },
+      "knowledgeCoverageReceipt": {
+        "path": "data/interneuron-knowledge-coverage-0.1.json",
+        "bytes": 42123,
+        "sha256": "93a3d73d3be45e078027c1497401a3abec200c52f03d8220f9f4ff4ac0af9166"
+      },
+      "timelineReceipt": {
+        "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_37.md",
+        "bytes": 6524,
+        "sha256": "bb4ae10b3397e42432c267323b474ec9456da34bfb10337c2ec6c96c8d63befc"
+      },
+      "exactTypeRosterAdmitted": true,
+      "allDifferentialRowsRetained": true,
+      "apparentDateGeneCellsQuarantined": true,
+      "differentialFeaturesAreNotCanonicalMarkers": true,
+      "biologicalAndTechnicalReplicatesSeparated": true,
+      "atomicFocusWorkspaceRouting": true,
+      "recordSpecificPreviewCollisionGate": true,
+      "sharedMissingnessConsolidated": true,
+      "verifiedExplorerIndexMemoized": true,
+      "molecularFocusClearsPriorGeometry": true,
+      "unsupportedGeometryFailsClosed": true,
+      "immutableParentSnapshotValidationSeparatedFromLiveInputs": true
+    },
+    "delilePresentationAndPkd2l1Integrity": {
+      "contractId": "ohri-delile-presentation-pkd2l1-integrity-2.38",
+      "delileReleaseId": "ohri-delile-developmental-interneuron-taxonomy-0.1.0",
+      "delileDoi": "10.1242/dev.173807",
+      "delileAccession": "E-MTAB-7320",
+      "delileNamespace": "delile-2019:E-MTAB-7320",
+      "pkd2l1VideoContractId": "ohri-pkd2l1-sbfsem-video-reference-0.1.0",
+      "pkd2l1VideoDoi": "10.7554/eLife.83108",
+      "canonicalSourceCount": 27,
+      "canonicalRecordSetCount": 32,
+      "bundledExactRosterCount": 9,
+      "sourceProfileCount": 376,
+      "sourceNamespaceCount": 9,
+      "researchExplorerRecordCount": 630,
+      "researchExplorerMolecularProfileCount": 376,
+      "researchExplorerSourceLaneCount": 8,
+      "researchExplorerSourceFileCount": 20,
+      "delileFineSubtypeCount": 51,
+      "delileFineSubtypeCellCount": 15217,
+      "delileTotalMetadataCellCount": 41025,
+      "delileSourceDefinedNeuronCellCount": 18144,
+      "delileTypedNonmotorNeuronCellCount": 15394,
+      "delileCardinalOnlyCellCount": 177,
+      "delileMotorNeuronExcludedCellCount": 1056,
+      "delileNullNeuronExcludedCellCount": 1694,
+      "delileLifeStageCount": 5,
+      "delileStageReplicateLabelCount": 12,
+      "pkd2l1ArticleApiVersion": 2,
+      "pkd2l1ArticleApiBytes": 247909,
+      "pkd2l1VideoWidth": 872,
+      "pkd2l1VideoHeight": 1080,
+      "pkd2l1Mp4Bytes": 46541650,
+      "pkd2l1PixelSizeNanometre": 5,
+      "pkd2l1SectionStepNanometre": 50,
+      "researchUpgradeCount": 171,
+      "lastResearchUpgradeId": "UPG-189",
+      "admittedGeometryCount": 0,
+      "admittedInternalStructureCount": 0,
+      "generatedFallbackPrimitiveCount": 0,
+      "registrationCount": 0,
+      "sameCellCrossModalJoinCount": 0,
+      "projectCopyCount": 0,
+      "packageCopyCount": 0,
+      "completeContentFolderCopyCount": 0,
+      "delileTaxonomyReceipt": {
+        "path": "data/delile-developmental-interneuron-taxonomy-0.1.json",
+        "bytes": 122037,
+        "sha256": "7a77c8c10f15224188bb542fddf63bc97de57b06dd9289e324bc7b8612219597"
+      },
+      "delileBuilderReceipt": {
+        "path": "tools/build_delile_developmental_interneuron_taxonomy.mjs",
+        "bytes": 27145,
+        "sha256": "d68259e4192946d72c3ebf7a5e42346e12a2c88b8fbbc753c16951b71830587e"
+      },
+      "delileSchemaReceipt": {
+        "path": "schemas/delile-developmental-interneuron-taxonomy-0.1.schema.json",
+        "bytes": 15194,
+        "sha256": "6d11402dd00aa12647efa6892adcd211bd300882455e3695ec2f27cf4498e2c1"
+      },
+      "delileValidatorReceipt": {
+        "path": "scripts/validate-delile-developmental-interneuron-taxonomy-0.1.mjs",
+        "bytes": 18854,
+        "sha256": "bd82c05213b47b751ab8140af1f7e79f36006c526ecdbc3a2b0159ddc0cb7c1c"
+      },
+      "delileTestReceipt": {
+        "path": "tests/delile-developmental-interneuron-taxonomy.test.mjs",
+        "bytes": 9731,
+        "sha256": "393c58ccbbbe1479deb3b8c648f3002a3311c8df96ef30b7837287682e1d9cf6"
+      },
+      "pkd2l1VideoReceipt": {
+        "path": "data/pkd2l1-sbfsem-video-reference-0.1.json",
+        "bytes": 5718,
+        "sha256": "e944679cde9c5545021b690c50f80b782382ea4d84099140610175313198c2a5"
+      },
+      "pkd2l1CaptionReceipt": {
+        "path": "public/data/pkd2l1_sbfsem_video5_captions.vtt",
+        "bytes": 318,
+        "sha256": "9d660f57da63b5c98dc8b32c3827b698fb47e3974c12bc4646d65c6c4326d583"
+      },
+      "pkd2l1ValidatorReceipt": {
+        "path": "scripts/validate-pkd2l1-sbfsem-video-reference-0.1.mjs",
+        "bytes": 5434,
+        "sha256": "84089ad4b9889c5b6b9185b5dc339b4d1399ff54a194c1525fa4a87dba4b9081"
+      },
+      "pkd2l1TestReceipt": {
+        "path": "tests/pkd2l1-sbfsem-video-reference.test.mjs",
+        "bytes": 2646,
+        "sha256": "f1ceea0350279bee6bb95bcae361549a3464be2137c9bdc7278205383e1cfc92"
+      },
+      "presentationRuntimeReceipt": {
+        "path": "app/research-record-presentation.js",
+        "bytes": 8338,
+        "sha256": "48d49ddfa9e15fd43c71b67457234ce7dd2623c4128f14263072488ad8f46290"
+      },
+      "modelReadoutReceipt": {
+        "path": "app/ResearchRecordModelReadout.tsx",
+        "bytes": 7217,
+        "sha256": "c6dfcb2733d04679f6acae277ad3a4553c6b1247edf98b59d6adf76e940177d9"
+      },
+      "presentationTestReceipt": {
+        "path": "tests/research-record-presentation.test.mjs",
+        "bytes": 5587,
+        "sha256": "bc19c79b1356564205151a218a7ccf58591c94eda56f106ad347b73538e4032d"
+      },
+      "explorerAssetManifestReceipt": {
+        "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+        "bytes": 5137,
+        "sha256": "6e6ae4216abdd449db2236b2146feee766b543709585af5daac84dec0ad9f716"
+      },
+      "explorerSearchIndexReceipt": {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "bytes": 10456099,
+        "sha256": "527fc440e1699da86e2512b2b1043984ef2ce189013672e18476810481b32f8a"
+      },
+      "sourceRegistryReceipt": {
+        "path": "data/research-source-registry-0.1.json",
+        "bytes": 116299,
+        "sha256": "a4fed56cf8e3a444e20f8078a66d64aae52b0991f35e1607429b751fa43cd6d8"
+      },
+      "upgradeRegistryReceipt": {
+        "path": "data/research-model-upgrade-registry-0.1.json",
+        "bytes": 418478,
+        "sha256": "eb3b39072653a71b92974ebefdd102843f18b8fbada1c9c6dc07a85b496ffa13"
+      },
+      "timelineReceipt": {
+        "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_38.md",
+        "bytes": 11356,
+        "sha256": "20b47f4be4a9e80ba432ab59f86c3e378510ab23828f6d251704d38c54d83a81"
+      },
+      "exactDelileFineSubtypeRosterAdmitted": true,
+      "sourceDlSpellingPreserved": true,
+      "stageReplicateLabelsNotPromotedToAnimals": true,
+      "delileSourceObjectLinkOnlyNoassertion": true,
+      "recordDrivenModelPresentation": true,
+      "recordSpecificEvidencePartitioned": true,
+      "exactSharedSourceContextCollapsed": true,
+      "sharedMissingnessCollapsed": true,
+      "fiveAxisModelingReadinessDisplayed": true,
+      "molecularSwitchClearsPriorGeometry": true,
+      "evidenceReadoutIsNotCellShape": true,
+      "pkd2l1VideoQualitativeOnly": true,
+      "pkd2l1AvailabilityFindingScopedToArticleAndApi": true,
+      "noGenericGeometrySubstitution": true
+    },
+    "sourceNativeSomaContoursAndAvailabilityIntegrity": {
+      "contractId": "ohri-source-native-soma-contours-and-availability-integrity-2.39",
+      "nativeContourReleaseId": "ohri-neurolucida-source-native-soma-contour-trace-0.1.0",
+      "neuronId": 45718,
+      "sourceDatBytes": 343774,
+      "sourceDatSha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+      "independentParserCommit": "e07fd2d53c03945f011c335c7b643765f2d85a09",
+      "independentParserSha256": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2",
+      "nativeGeometryBytes": 45606,
+      "nativeGeometrySha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8",
+      "pointPayloadSha256": "a478e6263e7d00c1f17bc64143014a3519c39f771b6809a28b057db07c724ab4",
+      "sourceSomaContourObjectCount": 8,
+      "sourceFlagClosedObjectCount": 7,
+      "legacyCellBodyClosureExceptionCount": 1,
+      "vertexCount": 275,
+      "semanticClosedSegmentCount": 275,
+      "canonicalSourceCount": 27,
+      "canonicalRecordSetCount": 33,
+      "bundledExactRosterCount": 9,
+      "bundledExactObjectSetCount": 1,
+      "sourceProfileCount": 376,
+      "sourceNamespaceCount": 9,
+      "researchExplorerRecordCount": 630,
+      "researchUpgradeCount": 178,
+      "lastResearchUpgradeId": "UPG-196",
+      "availabilityCandidateCount": 3,
+      "queueOnlyCandidateCount": 3,
+      "boundedPairAvailabilityReceiptCount": 1,
+      "admittedSourceNativeContourObjectCount": 8,
+      "admittedSurfaceCount": 0,
+      "admittedInternalStructureCount": 0,
+      "generatedFallbackPrimitiveCount": 0,
+      "filledPolygonCount": 0,
+      "triangleCount": 0,
+      "volumeCount": 0,
+      "registrationCount": 0,
+      "atlasRegistrationCount": 0,
+      "sameCellCrossModalJoinCount": 0,
+      "standardizedSwcOverlayCount": 0,
+      "availabilitySourceObjectBundleAdmissionCount": 0,
+      "availabilitySelectedCellJoinCount": 0,
+      "availabilitySameCellInternalChainCount": 0,
+      "availabilityAdmittedGeometryObjectCount": 0,
+      "availabilityAdmittedInternalObjectCount": 0,
+      "availabilityRenderedObjectCount": 0,
+      "availabilityCurrentUiSurfaceCount": 0,
+      "nativeContourBuilderReceipt": {
+        "path": "tools/build_neurolucida_source_native_soma_contours.mjs",
+        "bytes": 17712,
+        "sha256": "9c21a561be298ea4240bf7fb092b80da5d389f9444c4bad8a196d22b689d151e"
+      },
+      "nativeContourContractReceipt": {
+        "path": "data/neurolucida-source-native-soma-contour-trace-0.1.json",
+        "bytes": 4463,
+        "sha256": "d18e7444b1bc729a79c59a3f944f0b2028543199c44eaf9854bae04c3072d96d"
+      },
+      "nativeContourGeometryReceipt": {
+        "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+        "bytes": 45606,
+        "sha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8"
+      },
+      "nativeContourRuntimeReceipt": {
+        "path": "app/neurolucida-native-soma-contours.js",
+        "bytes": 6013,
+        "sha256": "e3224b3a1bfd1fb4c6ddb223b6dc0d8f7ddcb4628048f44a6eb5ce499fec144e"
+      },
+      "nativeContourViewerReceipt": {
+        "path": "app/NativeSomaContourViewer.tsx",
+        "bytes": 14424,
+        "sha256": "0d811af574a1bd774696cf8fe794c100c007fb3579bd19634da676cef3e35611"
+      },
+      "nativeContourValidatorReceipt": {
+        "path": "scripts/validate-neurolucida-source-native-soma-contour-trace-0.1.mjs",
+        "bytes": 4726,
+        "sha256": "bfb73f728efc1ea9a76416bf96970325163dbe1b9c392ef5349a893dc8855a13"
+      },
+      "nativeContourTestReceipt": {
+        "path": "tests/neurolucida-source-native-soma-contour-trace.test.mjs",
+        "bytes": 4969,
+        "sha256": "b35ef04d00ff426d72b2446b5a6b0aa32195a829befa7db89600ab014129fc76"
+      },
+      "sourceRegistryReceipt": {
+        "path": "data/research-source-registry-0.1.json",
+        "bytes": 118467,
+        "sha256": "ca9148e22396ed92cf3d15ab0be2e1488399e9d1a2deba4cf8d088eb2793f328"
+      },
+      "sourceRegistryValidatorReceipt": {
+        "path": "scripts/validate-research-source-registry-0.1.mjs",
+        "bytes": 63100,
+        "sha256": "fbdafac902b2fb6618ac6f41a8bd3594ab4b0653e63d21228a019909e9d628b0"
+      },
+      "sourceRegistryTestReceipt": {
+        "path": "tests/research-source-registry.test.mjs",
+        "bytes": 50436,
+        "sha256": "65d740b2471c4e0cd906ac308730e1e2301f4bf1cf78eea2445039bf6a736588"
+      },
+      "upgradeQueueReceipt": {
+        "path": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+        "bytes": 199490,
+        "sha256": "440ef52e981208c15d78be09e788f91d8251745dd7cc18c13ae635114c93dc6a"
+      },
+      "upgradeRegistryReceipt": {
+        "path": "data/research-model-upgrade-registry-0.1.json",
+        "bytes": 441953,
+        "sha256": "3b1615e921d16382026341b6b6901335a8894ab0bcb98837d00a967ef4f5b837"
+      },
+      "upgradeBuilderReceipt": {
+        "path": "tools/build_research_upgrade_registry.mjs",
+        "bytes": 14226,
+        "sha256": "f20689fe4fd2b4fd5850f2431c95ad5330c24ca45e20b9567920348aecd3fa3c"
+      },
+      "upgradeValidatorReceipt": {
+        "path": "scripts/validate-research-model-upgrade-registry-0.1.mjs",
+        "bytes": 9571,
+        "sha256": "b634215fdf621e3821ddde0eca8c24f321522401425bcdb3f75aaa5c41d36b6d"
+      },
+      "upgradeTestReceipt": {
+        "path": "tests/research-model-upgrade-registry.test.mjs",
+        "bytes": 17783,
+        "sha256": "f89e898078965d320a6db43baeff9b904c1311c12e5fa01d081736ce266fd836"
+      },
+      "parentSnapshotValidatorReceipt": {
+        "path": "scripts/validate-research-iteration-manifest-2.38-snapshot.mjs",
+        "bytes": 8007,
+        "sha256": "b0f59c3c0d88b348d84e56bca5b11a3068432cc930133364b0123e778c887f4c"
+      },
+      "parentSnapshotTestReceipt": {
+        "path": "tests/research-iteration-manifest-2.38-snapshot.test.mjs",
+        "bytes": 2957,
+        "sha256": "e1c93a0708703b80f88e71c2142fbd120258d5cb5858734c1de7054cf7ce4876"
+      },
+      "availabilityAuditReceipt": {
+        "path": "data/open-source-modeling-availability-audit-0.1.json",
+        "bytes": 20847,
+        "sha256": "993ddd7881f86acc6ea6f242ac9a43c69aa9da76db86f110f83c5462a5754d6b"
+      },
+      "availabilityValidatorReceipt": {
+        "path": "scripts/validate-open-source-modeling-availability-audit-0.1.mjs",
+        "bytes": 26012,
+        "sha256": "3ab90959848c1613787d9f2726fcf13de15758371349ca21cf6b027851643083"
+      },
+      "availabilityTestReceipt": {
+        "path": "tests/open-source-modeling-availability-audit.test.mjs",
+        "bytes": 7347,
+        "sha256": "f90288cdb89f9c31438e7f6a13e66e72a06f24945db68732fdaddb79926192e2"
+      },
+      "timelineReceipt": {
+        "path": "docs/RESEARCH_TIMELINE_2026-09-02_ITERATION_2_39.md",
+        "bytes": 8776,
+        "sha256": "cc3db5f3c0d615a7d132d1f31f435b282158c5c46acbf01e62f342c9de2b7885"
+      },
+      "lineLoopsOnly": true,
+      "sourceCoordinatesPreserved": true,
+      "viewerTransformReversible": true,
+      "legacyCellBodyKeptSeparate": true,
+      "traceRadiusRenderingForbidden": true,
+      "datToSwcOverlayForbidden": true,
+      "availabilityCandidatesQueueOnly": true,
+      "janeliaCellClassUnknown": true,
+      "noGenericGeometrySubstitution": true
+    }
+  },
+  "registrySummary": {
+    "canonicalSourcePackageCount": 27,
+    "canonicalRecordSetCount": 33,
+    "bundledExactRosterCount": 9,
+    "researchUpgradeCount": 178,
+    "sourceRegistryReceipt": {
+      "id": "researchSourceRegistry",
+      "scope": "project",
+      "path": "data/research-source-registry-0.1.json",
+      "purpose": "Canonical source and record-set registry",
+      "bytes": 118467,
+      "sha256": "ca9148e22396ed92cf3d15ab0be2e1488399e9d1a2deba4cf8d088eb2793f328"
+    },
+    "upgradeRegistryReceipt": {
+      "id": "researchModelUpgradeRegistry",
+      "scope": "project",
+      "path": "data/research-model-upgrade-registry-0.1.json",
+      "purpose": "Deterministic research/model upgrade registry",
+      "bytes": 441953,
+      "sha256": "3b1615e921d16382026341b6b6901335a8894ab0bcb98837d00a967ef4f5b837"
+    },
+    "crossSourceIdentityCount": 0,
+    "registrationCount": 0,
+    "renderedInternalPrimitiveCount": 0,
+    "sourceProfileCount": 376,
+    "sourceNamespaceCount": 9,
+    "researchExplorerRecordCount": 630,
+    "bundledExactObjectSetCount": 1
+  },
+  "scientificBoundaries": {
+    "selectedSpinalCellInternalStructure": "unavailable",
+    "micronsObservedReference": "The exact cell and nucleus are a visual-cortex cross-region reference. The outer segmentation boundary is not a molecular membrane. No anatomy, type, morphology, organelle, synapse or registration relationship to any spinal record is admitted.",
+    "ronzanoPremotorPositions": "Every primitive is one exact early-postnatal source coordinate row with no biological radius. Raw and normalized representations remain unpaired, source-local, measurement-forbidden, and unregistered; no soma, morphology, type, synapse, internal structure, adult placement, prevalence or census claim is admitted.",
+    "missingEvidence": "Missing or unavailable evidence generates zero primitives and is not biological absence.",
+    "measurementAllowed": false,
+    "alkaslasiCholinergicTaxonomy": "I1-I8 counts and Cervical, Thoracic, deposited Lumbar, M, F, and NA cross-tabs are exact source-row aggregates. Chat-Cre/Sun1 reporter history and FACS enrichment prohibit prevalence or unbiased-census claims. Sample-region values are not xyz coordinates. The source gzip and per-nucleus roster remain remote and unbundled; no morphology, internal structure, synapse, cross-source identity, or registration is admitted.",
+    "grpDorsalHornObservedMorphology": "NMO 109021 is an independent GRP::eGFP reporter-positive adult-mouse dorsal-horn source-local reconstruction. Moderate integrity and a 300 micrometre parasagittal slice cannot establish a complete arbor. Twelve original soma contours were averaged into twelve SWC points. The radius derivative is not membrane; no SCI entity, molecular profile, atlas placement, internal structure, synapse, cross-source identity or registration is admitted.",
+    "evidenceAware3dRepresentation": "Nine evidence states cover sixteen routes. Every route exposes representation authority and exact source receipts. Missing object geometry yields zero primitives; standardized soma points and radius derivatives are not membranes, nuclei or internal structures. Source-native DAT bytes remain non-semantic, paper-level physiology remains unjoined, and procedural biological proxies, cross-source identities and project registrations remain prohibited.",
+    "dorsalHornObservedMorphologyRoutePack": "The four route-pack records remain independent source-local reconstructions. NMO 104003 and 108974 reuse frozen census identities; NMO 170035 and 249676 are supplementary and do not expand the 142-record census. Co-display, shared markers or shared region labels create no same-cell, molecular-profile, SCI-entity, atlas or registration relationship. Missing diameters, axons, membranes, nuclei, organelles, synapses, receptors and ultrastructure remain explicitly unavailable and never authorize procedural biological geometry.",
+    "functionalClassObservedMorphologyRoutePack": "NMO 45674 and NMO 50424 remain two independent, source-local, moderate-integrity reconstructions. Their standardized SWC centerlines and recorded radii may support observed skeletons and labelled radius-derived surfaces, but not complete axons, membranes, nuclei, organelles, boutons, synapses or atlas placement. Repository morphometry uses 95-percent principal-component extents and is not equivalent to raw SWC bounds or anatomical axes. The source-native DAT files are unparsed provenance receipts with zero admitted semantic objects. Paper-level physiology has no exact object key. The Renshaw preparation stages and the NPY strain and inverted weight fields remain explicit unresolved context; co-display creates no identity or registration.",
+    "prpDorsalHornObservedMorphologyRoutePack": "NMO 50394 and NMO 50408 remain independent source-local, moderate-integrity reconstructions. The former is nNOS-positive and the latter galanin-positive; neither positive label establishes the other marker's absence. PrP-promoter reporter wording is not endogenous PrP protein abundance or individual genotype validation. The 300-micrometre source preparation and later 60-micrometre serial resection remain distinct stages without an exact filename crosswalk. Source radii authorize display derivatives, not membranes. Native DAT semantics, exact same-cell physiology, complete axons, same-specimen internal structures, synapses, cross-source identities and registrations remain zero.",
+    "premotorComparisonObservedMorphologyRoutePack": "NMO 45718 remains one independent source-local, moderate-integrity reconstruction carrying repository labels that are not independently verified as an individual calbindin assay, definitive premotor identity, Renshaw exclusion or same-cell physiology. The original route-pack contract admitted only standardized SWC geometry and treated the DAT as provenance. Iteration 2.39 separately admits exactly eight checksum-gated source-native soma contour objects containing 275 ordered vertices as line traces in an unregistered viewer. This new admission does not authorize DAT-to-SWC overlay, polygon fill, surface, membrane, nucleus, volume, other native annotations, complete axon, same-specimen internal structure, cross-source identity or registration. The repository slicing fields, paper preparation stages and reported-but-uncorrected shrinkage remain distinct and unresolved.",
+    "supplementaryMorphologyComparisonAdapter": "The comparison inventory is exactly 142 immutable census records plus seven supplementary route-local NeuroMorpho records, for 149 viewable source objects; it is not a 149-record census. Each supplementary record retains its own source frame and checksum-pinned route provenance. Seven references reuse existing geometry without copying geometry or SWC files. Independent auto-fit does not establish common scale, orientation, coordinate frame, atlas placement or registration. Repository physical-integrity labels do not establish a complete biological axon. Padding records, same-specimen internals, rendered internal primitives, cross-source identities and registrations remain zero.",
+    "sourceFrameDisclosure": "The 149 viewable source objects remain exactly 142 frozen census records plus seven supplementary records, never a combined 149-record census. Micrometre scale is computed independently at each viewport camera target from verified source-local coordinates and a viewer-only uniform transform; it does not establish common scale, apparent-size comparability, orientation, a shared coordinate frame, atlas placement or registration. Preparation, raw shrinkage wording and truncation disclosures remain source-grounded. Missing coordinates are not inferred, cut neurites are not repaired, and in-vivo dimensions are not restored. Complete biological axons, same-specimen internal structures, rendered internal primitives, cross-source identities, registrations, project copies and package copies remain zero.",
+    "researchExplorerVisualIntegrity": "Research Explorer 1.8.0 is a discovery index over 413 independently admitted source records, not a harmonized same-cell or same-type atlas. The 149 morphology records remain 142 frozen census records plus seven supplementary records, never a combined census. Only 13 exact focus identities may enter the main scene; the other 136 exact morphology records stay in the source-specific viewer, while all 264 non-morphology focuses clear stale morphology. Every gap retains a controlled reason code, scope, authority, source locator, raw value, detail and inferenceAllowed=false. Fallback geometry, substitute geometry, same-specimen internal structure, rendered internal primitives, cross-source identity, atlas transforms, registrations, project copies and package copies remain zero.",
+    "uiKnowledgeAndTopologyIntegrity": "Iteration 2.32 binds visible knowledge to the exact selected source record. A non-SCI focus has no active SCI entity and no borrowed morphology; molecular fingerprints change only source-local facts and expose zero admitted cell geometry. The 149 topology records remain 142 frozen census plus seven supplementary objects in independent source frames. Root, type-1, branchpoint and terminal crosses are deterministic data overlays; type 1 is not a soma contour, terminals are not boutons or synapses, and an absent SWC source type is unavailable rather than biological zero. The topology contract does not create membrane, organelle, internal structure, whole-cell completeness, connectivity, cross-source identity, atlas placement or registration. Project and package copies remain zero.",
+    "micronsClippingAndSourceRecordDeltaIntegrity": "Iteration 2.33 adds two display-only operations. The MICrONS plane discards cell-shell fragments only in the shader in the unchanged source-native visual-cortex frame; it never clips the linked nucleus, edits source buffers, generates a cap, repairs or resamples a mesh, or creates measurement, membrane, spinal internal-structure, join or registration claims. The Type Atlas compares exactly 24 explicit display rows with strict string equality; the eight-row I1/I2 receipt is a pinned demonstration subset, not the complete UI whitelist. Exact shared or changed text establishes neither same-cell nor same-type identity and admits no geometry. Project and package copies remain zero.",
+    "neuromorphoNoAgeQueryUniverseIntegrity": "Iteration 2.34 admits exact repository records and standardized source-local SWCs, not 1,097 biological types, animals, specimens, complete cells or prevalence observations. The frozen 142-record adult subset remains separate even though the full query also contains 142 no-diameter records; those sets overlap but are not identical. Source-labelled 2D coordinates retain source z values without inferred or extruded depth. No Diameter records authorize centerlines only. Missing soma contour, membrane, nucleus, organelles, boutons, synapses, receptors, complete axon, molecular/SCI identity and atlas registration remain unavailable rather than synthesized.",
+    "crozatPkd2l1FunctionalProfileIntegrity": "Iteration 2.35 creates one source-local PKD2L1-positive CSF-contacting-neuron functional profile, not tonic, single-spike, segment or quadrant cell types. Anatomy, firing-pattern, passive-property and RMP rows retain their own experiment-family denominators and are not summed or globally joined. Four source conflicts remain quarantined. The Figshare release supplies no stable global cell ID, raw ABF trace, raw microscopy, SWC, reconstructable morphology, atlas transform, segmentation, mesh or same-cell link to the separate PKD2L1 SBF-SEM publication. Missing cell geometry and internal detail remain unavailable rather than borrowed, averaged, procedurally generated or inferred from population evidence.",
+    "dmrt3Di6AndRecordUiIntegrity": "Iteration 2.36 admits six source-local M1-M6 group summaries from the E14.5 Dmrt3-lineage dI6 analysis, not six adult canonical types, per-animal replicates or single-cell identities. Three embryos were pooled into one tube and one library. The 384 deposited wells, 354 QC-retained cells and 274 retained dI6-lineage cells are successive denominators; M1-M6 counts 84, 34, 33, 45, 54 and 24 sum to 274. The source does not export a per-well M-group roster or scalar pseudotime, so neither is reconstructed. The primary-article Methods and pinned executed-notebook QC/HVG workflows remain visibly quarantined, with the executed notebook serving only as this derivative's authority. Switching records changes source-specific evidence and result snippets, but cannot create geometry. SCI synthetic anchors are hidden unless the exact selected focus is an SCI entity; the exact current record reports zero same-record internal primitives when no object is admitted. Missing axes remain available in one consolidated disclosure. No morphology, internal structure, atlas transform, registration, same-cell cross-modal join, project copy, package copy or complete-content folder copy is added.",
+    "roomeDilAndRecordWorkspaceIntegrity": "Iteration 2.37 admits 157 source-local embryonic refined dIL profiles and all 15,900 deposited differential-feature rows, not 157 canonical cross-study cell types or individual cells. Counts and percentages describe captured cells within this study and are not biological prevalence. Twenty-six non-text spreadsheet gene cells remain quarantined without gene-symbol repair. Six positive display features per type are navigation aids, not defining markers. Fifteen biological litter pools and 29 retained technical outputs are distinct denominators. scRNA-seq and Xenium observations are different cells; label transfer creates no same-cell identity. The source supplies no same-cell whole-cell morphology, dendrite, axon, synapse, electrophysiology, organelle, internal structure or deposited 3D transform. Molecular switching changes record-specific evidence while the 3D scene remains correctly empty. Shared gaps appear once, and zero geometry, internal objects, joins, registrations, project copies, package copies or complete-content folder copies are added.",
+    "delilePresentationAndPkd2l1Integrity": "Iteration 2.38 admits 51 source-local Delile embryonic fine-subtype aggregates covering 15,217 captured cells, not 51 adult canonical types or individual cells. The denominator chain preserves 41,025 metadata cells, 18,144 source-defined neurons, 15,394 typed non-motor neurons, 177 cardinal-only cells, 1,056 excluded MN cells and 1,694 excluded Null_Neuron cells. Five stages and 12 stage-replicate labels do not establish 12 animals; source spelling dl is preserved. The source annotation table remains link-only under NOASSERTION. The selected-record presentation separates identity and record-specific evidence from byte-identical shared source context, collapses shared gaps once, and exposes five readiness axes. A molecular evidence model is explicitly not a cell shape and clears prior geometry. eLife 83108 Video 5 remains remote qualitative publication imagery: the official article/API audit exposes no admitted raw coordinate-bearing stack, segmentation, mesh or skeleton, and this scoped finding is not a universal absence claim. The video cannot be traced, measured, reconstructed, registered or same-cell joined. Zero new cell geometry, fallback primitives, internal objects, same-cell joins, registrations, project copies, package copies or complete-content folder copies are added.",
+    "sourceNativeSomaContoursAndAvailabilityIntegrity": "Iteration 2.39 admits exactly eight source-native NMO 45718 Neurolucida soma contour objects containing 275 ordered vertices and 275 semantic last-to-first line-loop segments. Seven source-closed Soma 1 traces at z -29 through -41 micrometres remain separate from the 23-vertex legacy Cell Body trace at z 13/15 micrometres. The Cell Body source flag remains false and its interpreted closure is disclosed under the MBF legacy exception. The viewer may apply only a reversible recentering and uniform scale while retaining exact source coordinates. It admits no polygon fill, triangle, lofted surface, membrane, biological volume, nucleus, organelle, internal object or trace-radius thickness. The native DAT and standardized SWC share a NeuroMorpho record but have no established coordinate transform; vertex overlay remains forbidden. The registry has 27 canonical sources and 33 record sets. Its nine bundled exact child-roster chains enumerate cells or profiles, while the one separate bundled exact source-object-set chain enumerates contour objects; the eight NMO contours are not a cell roster. These counts do not change the 376 molecular profiles, nine profile namespaces, 630 Explorer records or frozen 142-record census. The three-candidate open-source availability audit is queue-only. Its bounded Janelia raw-EM/manual-nucleus pair has unknown cell class and an unresolved nominal-versus-Zarr calibration discrepancy; Fish1 and PKD2L1 remain blocked. Availability does not create a source-object bundle admission, selected-cell join, same-cell internal chain, geometry object, internal object, rendered object, current UI surface or registration. UPG-195 and UPG-196 remain future gates rather than implemented model detail."
+  },
+  "manifestContentSha256": "4fa9014be79e2d920f6859944da35a676bed2d7e17b3b83c4dcdb9fe419904cc",
+  "parentIterationManifest": {
+    "path": "data/research-iteration-manifest-2.38.json",
+    "releaseId": "ohri-mouse-interneuron-research-iteration-2.38.0",
+    "bytes": 173397,
+    "fileSha256": "97ef72ab7e7c2da802af7c4cca6d5a280162e61a08b4a2258bb58f1ee0107595",
+    "contentSha256": "8af86d1167213865712c5da915193c13b629d31a1e0452f08d2d4f4f9d9f3b19"
+  }
+}

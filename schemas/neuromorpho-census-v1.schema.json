@@ -1,0 +1,477 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-census-v1.json",
+  "title": "NeuroMorpho query-complete adult mouse spinal-interneuron census v1",
+  "oneOf": [
+    {"$ref": "#/$defs/censusIndex"},
+    {"$ref": "#/$defs/geometryAsset"}
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "nullableString": {"type": ["string", "null"]},
+    "nullableNumber": {"type": ["number", "null"]},
+    "explicitMissing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "missingReason"],
+      "properties": {
+        "value": {},
+        "missingReason": {"type": ["string", "null"]}
+      }
+    },
+    "measure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "missingReason"],
+      "properties": {
+        "value": {"$ref": "#/$defs/nullableNumber"},
+        "unit": {"enum": ["square_micrometre", "cubic_micrometre"]},
+        "missingReason": {"type": ["string", "null"]}
+      }
+    },
+    "sourceReported": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["somaSurface", "surface", "volume"],
+      "properties": {
+        "somaSurface": {"$ref": "#/$defs/measure"},
+        "surface": {"$ref": "#/$defs/measure"},
+        "volume": {"$ref": "#/$defs/measure"}
+      }
+    },
+    "bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+        "max": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}
+      }
+    },
+    "radiusDerived": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "missingReason"],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["minimumMicrometre", "maximumMicrometre", "meanMicrometre"],
+              "properties": {
+                "minimumMicrometre": {"type": "number", "exclusiveMinimum": 0},
+                "maximumMicrometre": {"type": "number", "exclusiveMinimum": 0},
+                "meanMicrometre": {"type": "number", "exclusiveMinimum": 0}
+              }
+            }
+          ]
+        },
+        "missingReason": {"type": ["string", "null"]}
+      }
+    },
+    "computed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodeCount", "segmentCount", "nodeTypeCounts", "boundsMicrometre", "extentMicrometre", "zeroLengthEdgeCount", "totalCableLengthMicrometre", "rawSwcSha256", "canonicalGeometrySha256", "topologySha256", "radiusDerived"],
+      "properties": {
+        "nodeCount": {"type": ["integer", "null"], "minimum": 1},
+        "segmentCount": {"type": ["integer", "null"], "minimum": 0},
+        "rootNodeId": {"type": ["integer", "null"], "minimum": 1},
+        "nodeTypeCounts": {
+          "type": "object",
+          "propertyNames": {"pattern": "^[0-9]+$"},
+          "additionalProperties": {"type": "integer", "minimum": 1}
+        },
+        "boundsMicrometre": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/bounds"}]},
+        "extentMicrometre": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number", "minimum": 0}}
+          ]
+        },
+        "zeroLengthEdgeCount": {"type": ["integer", "null"], "minimum": 0},
+        "totalCableLengthMicrometre": {"type": ["number", "null"], "minimum": 0},
+        "rawSwcSha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "canonicalGeometrySha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "topologySha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "radiusDerived": {"$ref": "#/$defs/radiusDerived"}
+      }
+    },
+    "qc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "sevenColumns", "finite", "uniquePositiveNodeIds", "singleRoot", "parentsPresent", "noSelfParent", "acyclic", "positiveRadius", "connected", "domainMatchesTypes", "type6PreservedUninterpreted", "errors"],
+      "properties": {
+        "status": {"enum": ["passed", "quarantined"]},
+        "sevenColumns": {"type": "boolean"},
+        "finite": {"type": "boolean"},
+        "uniquePositiveNodeIds": {"type": "boolean"},
+        "singleRoot": {"type": "boolean"},
+        "parentsPresent": {"type": "boolean"},
+        "noSelfParent": {"type": "boolean"},
+        "acyclic": {"type": "boolean"},
+        "positiveRadius": {"type": "boolean"},
+        "connected": {"type": "boolean"},
+        "domainMatchesTypes": {"type": "boolean"},
+        "type6PreservedUninterpreted": {"type": "boolean"},
+        "errors": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "officialMetadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["neuron_id", "neuron_name", "archive", "age_scale", "gender", "reference_pmid", "reference_doi", "note", "age_classification", "brain_region", "cell_type", "species", "strain", "scientific_name", "stain", "experiment_condition", "protocol", "slicing_direction", "reconstruction_software", "objective_type", "original_format", "domain", "attributes", "magnification", "upload_date", "deposition_date", "shrinkage_reported", "shrinkage_corrected", "reported_value", "reported_xy", "reported_z", "corrected_value", "corrected_xy", "corrected_z", "soma_surface", "surface", "volume", "slicing_thickness", "min_age", "max_age", "min_weight", "max_weight", "png_url", "physical_Integrity", "_links"],
+      "properties": {
+        "neuron_id": {"type": "integer", "minimum": 1},
+        "neuron_name": {"type": "string", "minLength": 1},
+        "archive": {"type": "string", "minLength": 1},
+        "age_scale": {"$ref": "#/$defs/nullableString"},
+        "gender": {"$ref": "#/$defs/nullableString"},
+        "reference_pmid": {"type": ["array", "null"], "items": {"type": "string", "pattern": "^[0-9]+$"}},
+        "reference_doi": {"type": ["array", "null"], "items": {"type": "string", "pattern": "^10\\."}},
+        "note": {"$ref": "#/$defs/nullableString"},
+        "age_classification": {"$ref": "#/$defs/nullableString"},
+        "brain_region": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "cell_type": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "species": {"type": "string"},
+        "strain": {"$ref": "#/$defs/nullableString"},
+        "scientific_name": {"$ref": "#/$defs/nullableString"},
+        "stain": {"$ref": "#/$defs/nullableString"},
+        "experiment_condition": {"type": "array", "items": {"type": "string"}},
+        "protocol": {"$ref": "#/$defs/nullableString"},
+        "slicing_direction": {"$ref": "#/$defs/nullableString"},
+        "reconstruction_software": {"$ref": "#/$defs/nullableString"},
+        "objective_type": {"$ref": "#/$defs/nullableString"},
+        "original_format": {"$ref": "#/$defs/nullableString"},
+        "domain": {"type": "string"},
+        "attributes": {"type": "string"},
+        "magnification": {"$ref": "#/$defs/nullableString"},
+        "upload_date": {"type": "string"},
+        "deposition_date": {"type": "string"},
+        "shrinkage_reported": {"$ref": "#/$defs/nullableString"},
+        "shrinkage_corrected": {"$ref": "#/$defs/nullableString"},
+        "reported_value": {},
+        "reported_xy": {},
+        "reported_z": {},
+        "corrected_value": {},
+        "corrected_xy": {},
+        "corrected_z": {},
+        "soma_surface": {},
+        "surface": {},
+        "volume": {},
+        "slicing_thickness": {},
+        "min_age": {},
+        "max_age": {},
+        "min_weight": {},
+        "max_weight": {},
+        "png_url": {"type": ["string", "null"]},
+        "physical_Integrity": {"type": "string"},
+        "_links": {"type": "object"}
+      }
+    },
+    "normalizedMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "archive", "species", "scientificName", "lifeStage", "brainRegion", "cellType", "strain", "gender", "experimentCondition", "domain", "physicalIntegrity", "attributes", "dimensionality", "sourceDiameterAvailable", "sourceFrame", "registrationStatus"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "archive": {"type": "string", "minLength": 1},
+        "species": {"const": "mouse"},
+        "scientificName": {"$ref": "#/$defs/nullableString"},
+        "lifeStage": {"const": "adult"},
+        "brainRegion": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "cellType": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "strain": {"$ref": "#/$defs/nullableString"},
+        "gender": {"$ref": "#/$defs/nullableString"},
+        "experimentCondition": {"type": "array", "items": {"type": "string"}},
+        "domain": {"type": "string"},
+        "physicalIntegrity": {"type": "string"},
+        "attributes": {"type": "string"},
+        "dimensionality": {"enum": ["2D", "3D", "not_reported"]},
+        "sourceDiameterAvailable": {"type": "boolean"},
+        "sourceFrame": {"const": "NeuroMorpho_CNG_standardized_local_frame"},
+        "registrationStatus": {"const": "unregistered"}
+      }
+    },
+    "missingness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numericAge", "donorId", "specimenId", "atlasTransform", "atlasPlacement", "originalMorphologyFile", "standardizationLog"],
+      "properties": {
+        "numericAge": {"$ref": "#/$defs/explicitMissing"},
+        "donorId": {"$ref": "#/$defs/explicitMissing"},
+        "specimenId": {"$ref": "#/$defs/explicitMissing"},
+        "atlasTransform": {"$ref": "#/$defs/explicitMissing"},
+        "atlasPlacement": {"$ref": "#/$defs/explicitMissing"},
+        "originalMorphologyFile": {"$ref": "#/$defs/explicitMissing"},
+        "standardizationLog": {"$ref": "#/$defs/explicitMissing"}
+      }
+    },
+    "geometryReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["available", "path", "sha256", "bytes", "rawSwcPath", "rawSwcSha256", "missingReason"],
+      "properties": {
+        "available": {"type": "boolean"},
+        "path": {"type": ["string", "null"], "pattern": "^geometry/nmo-[0-9]+\\.json$"},
+        "sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "bytes": {"type": ["integer", "null"], "minimum": 1},
+        "rawSwcPath": {"type": ["string", "null"], "pattern": "^swc/nmo-[0-9]+\\.swc$"},
+        "rawSwcSha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "missingReason": {"type": ["string", "null"]}
+      }
+    },
+    "censusRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "neuronId", "officialMetadata", "normalizedMetadata", "missingness", "sourcePaper", "geometry", "qc", "morphometrics"],
+      "properties": {
+        "assetId": {"type": "string", "pattern": "^NeuroMorpho:[0-9]+$"},
+        "neuronId": {"type": "integer", "minimum": 1},
+        "officialMetadata": {"$ref": "#/$defs/officialMetadata"},
+        "normalizedMetadata": {"$ref": "#/$defs/normalizedMetadata"},
+        "missingness": {"$ref": "#/$defs/missingness"},
+        "sourcePaper": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pmids", "dois"],
+          "properties": {
+            "pmids": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[0-9]+$"}},
+            "dois": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^10\\."}}
+          }
+        },
+        "geometry": {"$ref": "#/$defs/geometryReference"},
+        "qc": {"$ref": "#/$defs/qc"},
+        "morphometrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sourceReported", "computed"],
+          "properties": {
+            "sourceReported": {"$ref": "#/$defs/sourceReported"},
+            "computed": {"$ref": "#/$defs/computed"}
+          }
+        }
+      }
+    },
+    "distributionEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "count"],
+      "properties": {"value": {}, "count": {"type": "integer", "minimum": 1}}
+    },
+    "duplicateGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "neuronIds"],
+      "properties": {
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "neuronIds": {"type": "array", "minItems": 2, "items": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["queryRecordCount", "uniqueNeuronIdCount", "uniqueNeuronNameCount", "uniqueArchiveNameKeyCount", "admittedGeometryCount", "quarantinedGeometryCount", "geometry2DCount", "geometry3DCount", "sourceDiameterAvailableCount", "sourceDiameterUnavailableCount", "numericAgeReportedCount", "numericAgeMissingCount", "registrationCount", "type6GeometryCount", "byArchive", "bySecondaryType", "byTertiaryType", "byDomain", "byPhysicalIntegrity", "byAttributes", "bySourcePaper", "duplicateRawSwcGroups", "duplicateCanonicalGeometryGroups", "quarantinedNeuronIds"],
+      "properties": {
+        "queryRecordCount": {"const": 142},
+        "uniqueNeuronIdCount": {"const": 142},
+        "uniqueNeuronNameCount": {"const": 142},
+        "uniqueArchiveNameKeyCount": {"const": 142},
+        "admittedGeometryCount": {"type": "integer", "minimum": 0, "maximum": 142},
+        "quarantinedGeometryCount": {"type": "integer", "minimum": 0, "maximum": 142},
+        "geometry2DCount": {"type": "integer", "minimum": 0},
+        "geometry3DCount": {"type": "integer", "minimum": 0},
+        "sourceDiameterAvailableCount": {"type": "integer", "minimum": 0},
+        "sourceDiameterUnavailableCount": {"type": "integer", "minimum": 0},
+        "numericAgeReportedCount": {"type": "integer", "minimum": 0},
+        "numericAgeMissingCount": {"type": "integer", "minimum": 0},
+        "registrationCount": {"const": 0},
+        "type6GeometryCount": {"type": "integer", "minimum": 0},
+        "byArchive": {"type": "array", "items": {"$ref": "#/$defs/distributionEntry"}},
+        "bySecondaryType": {"type": "array", "items": {"$ref": "#/$defs/distributionEntry"}},
+        "byTertiaryType": {"type": "array", "items": {"$ref": "#/$defs/distributionEntry"}},
+        "byDomain": {"type": "array", "items": {"$ref": "#/$defs/distributionEntry"}},
+        "byPhysicalIntegrity": {"type": "array", "items": {"$ref": "#/$defs/distributionEntry"}},
+        "byAttributes": {"type": "array", "items": {"$ref": "#/$defs/distributionEntry"}},
+        "bySourcePaper": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["pmid", "doi", "count"],
+            "properties": {
+              "pmid": {"type": ["string", "null"]},
+              "doi": {"type": ["string", "null"]},
+              "count": {"type": "integer", "minimum": 1}
+            }
+          }
+        },
+        "duplicateRawSwcGroups": {"type": "array", "items": {"$ref": "#/$defs/duplicateGroup"}},
+        "duplicateCanonicalGeometryGroups": {"type": "array", "items": {"$ref": "#/$defs/duplicateGroup"}},
+        "quarantinedNeuronIds": {"type": "array", "items": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "censusIndex": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["documentType", "schemaVersion", "assetSetId", "release", "snapshot", "authority", "rights", "scientificBoundary", "summary", "records"],
+      "properties": {
+        "documentType": {"const": "neuromorpho_census_index"},
+        "schemaVersion": {"const": "1.0.0"},
+        "assetSetId": {"const": "neuromorpho:8.6.124:adult-mouse-spinal-interneuron-census-v1"},
+        "release": {"const": "8.6.124"},
+        "snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["queryUrl", "queryTotal", "path", "sha256", "bytes", "retrievalEvidence", "completeness"],
+          "properties": {
+            "queryUrl": {"type": "string", "format": "uri", "pattern": "neuromorpho\\.org/api/neuron/select"},
+            "queryTotal": {"const": 142},
+            "path": {"const": "official-query-snapshot.json"},
+            "sha256": {"$ref": "#/$defs/sha256"},
+            "bytes": {"type": "integer", "minimum": 1},
+            "retrievalEvidence": {"type": "string", "minLength": 3},
+            "completeness": {"const": "complete_single_page_sorted_official_api_query"}
+          }
+        },
+        "authority": {
+          "type": "object", "additionalProperties": false,
+          "required": ["apiReference", "faq", "standardization", "terms"],
+          "properties": {
+            "apiReference": {"type": "string", "format": "uri"},
+            "faq": {"type": "string", "format": "uri"},
+            "standardization": {"type": "string", "format": "uri"},
+            "terms": {"type": "string", "format": "uri"}
+          }
+        },
+        "rights": {
+          "type": "object", "additionalProperties": false,
+          "required": ["license", "requiredCitations", "programmaticAccess"],
+          "properties": {
+            "license": {"type": "string", "pattern": "CC BY 4\\.0"},
+            "requiredCitations": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+            "programmaticAccess": {"type": "string", "minLength": 20}
+          }
+        },
+        "scientificBoundary": {
+          "type": "object", "additionalProperties": false,
+          "required": ["scope", "geometry", "registrationCount", "type6Policy", "forbiddenClaims"],
+          "properties": {
+            "scope": {"const": "query_complete_for_pinned_release_not_biologically_complete_census"},
+            "geometry": {"const": "OBS_STANDARDIZED_SOURCE_LOCAL"},
+            "registrationCount": {"const": 0},
+            "type6Policy": {"const": "preserve_uninterpreted_never_infer_axon_or_dendrite"},
+            "forbiddenClaims": {"type": "array", "minItems": 5, "items": {"type": "string"}}
+          }
+        },
+        "summary": {"$ref": "#/$defs/summary"},
+        "records": {"type": "array", "minItems": 142, "maxItems": 142, "items": {"$ref": "#/$defs/censusRecord"}}
+      }
+    },
+    "geometryAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["documentType", "schemaVersion", "assetId", "neuronId", "name", "geometryStatus", "sourceFrame", "units", "registration", "scientificUse", "source", "swc", "qc", "morphometrics", "displayTransform", "nodeColumns", "nodes", "segmentColumns", "segmentEndpointMeaning", "segments"],
+      "properties": {
+        "documentType": {"const": "neuromorpho_geometry"},
+        "schemaVersion": {"const": "1.0.0"},
+        "assetId": {"type": "string", "pattern": "^NeuroMorpho:[0-9]+$"},
+        "neuronId": {"type": "integer", "minimum": 1},
+        "name": {"type": "string", "minLength": 1},
+        "geometryStatus": {"const": "OBS_STANDARDIZED_SOURCE_LOCAL"},
+        "sourceFrame": {"const": "NeuroMorpho_CNG_standardized_local_frame"},
+        "units": {"const": "micrometre_reported_by_source"},
+        "registration": {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "registrationCount", "atlasTransform", "atlasPlacement"],
+          "properties": {
+            "status": {"const": "unregistered"},
+            "registrationCount": {"const": 0},
+            "atlasTransform": {"$ref": "#/$defs/explicitMissing"},
+            "atlasPlacement": {"$ref": "#/$defs/explicitMissing"}
+          }
+        },
+        "scientificUse": {"const": "source_local_morphology_visualization_and_qc_only"},
+        "source": {
+          "type": "object", "additionalProperties": false,
+          "required": ["officialRecordUrl", "standardizedSwcUrl", "pmids", "dois", "license"],
+          "properties": {
+            "officialRecordUrl": {"type": "string", "format": "uri"},
+            "standardizedSwcUrl": {"type": "string", "format": "uri"},
+            "pmids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "dois": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "license": {"type": "string", "pattern": "CC BY 4\\.0"}
+          }
+        },
+        "swc": {
+          "type": "object", "additionalProperties": false,
+          "required": ["format", "path", "sha256", "bytes", "nodeCount", "rootNodeId", "nodeTypeCounts", "dimensionality", "sourceDiameterAvailable", "type6Policy", "originalMorphologyFile", "standardizationLog"],
+          "properties": {
+            "format": {"const": "NeuroMorpho_CNG_standardized_SWC"},
+            "path": {"type": "string", "pattern": "^swc/nmo-[0-9]+\\.swc$"},
+            "sha256": {"$ref": "#/$defs/sha256"},
+            "bytes": {"type": "integer", "minimum": 1},
+            "nodeCount": {"type": "integer", "minimum": 1},
+            "rootNodeId": {"type": "integer", "minimum": 1},
+            "nodeTypeCounts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}},
+            "dimensionality": {"enum": ["2D", "3D", "not_reported"]},
+            "sourceDiameterAvailable": {"type": "boolean"},
+            "type6Policy": {"const": "preserve_uninterpreted_never_infer_axon_or_dendrite"},
+            "originalMorphologyFile": {"$ref": "#/$defs/explicitMissing"},
+            "standardizationLog": {"$ref": "#/$defs/explicitMissing"}
+          }
+        },
+        "qc": {"$ref": "#/$defs/qc"},
+        "morphometrics": {
+          "type": "object", "additionalProperties": false,
+          "required": ["sourceReported", "computedFromStandardizedSwc"],
+          "properties": {
+            "sourceReported": {"$ref": "#/$defs/sourceReported"},
+            "computedFromStandardizedSwc": {"$ref": "#/$defs/computed"}
+          }
+        },
+        "displayTransform": {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "originMicrometre", "scaleViewerUnitPerMicrometre", "use"],
+          "properties": {
+            "kind": {"const": "soma_centered_uniform_scale"},
+            "originMicrometre": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+            "scaleViewerUnitPerMicrometre": {"type": "number", "exclusiveMinimum": 0},
+            "use": {"const": "viewer_only"}
+          }
+        },
+        "nodeColumns": {"const": ["id", "type", "x", "y", "z", "radius", "parent"]},
+        "nodes": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "array", "minItems": 7, "maxItems": 7, "items": false,
+            "prefixItems": [
+              {"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 0},
+              {"type": "number"}, {"type": "number"}, {"type": "number"},
+              {"type": "number", "exclusiveMinimum": 0}, {"type": "integer"}
+            ]
+          }
+        },
+        "segmentColumns": {"const": ["x1", "y1", "z1", "r1", "x2", "y2", "z2", "r2", "sourceType", "interpretation"]},
+        "segmentEndpointMeaning": {
+          "type": "object", "additionalProperties": false,
+          "required": ["endpoint1", "endpoint2"],
+          "properties": {"endpoint1": {"const": "parent"}, "endpoint2": {"const": "child"}}
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "array", "minItems": 10, "maxItems": 10, "items": false,
+            "prefixItems": [
+              {"type": "number"}, {"type": "number"}, {"type": "number"}, {"type": "number", "exclusiveMinimum": 0},
+              {"type": "number"}, {"type": "number"}, {"type": "number"}, {"type": "number", "exclusiveMinimum": 0},
+              {"type": "integer", "minimum": 0}, {"type": "string", "minLength": 3}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

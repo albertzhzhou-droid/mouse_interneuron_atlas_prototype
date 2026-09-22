@@ -1,0 +1,602 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-iteration-manifest-2.27.schema.json",
+  "title": "OHRI mouse interneuron research iteration manifest 2.27",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestSchemaVersion",
+    "releaseId",
+    "releaseDate",
+    "releaseStatus",
+    "application",
+    "baseResearchRelease",
+    "parentIterationManifest",
+    "inputRoots",
+    "authoritativeInputs",
+    "integrity",
+    "exactReferences",
+    "registrySummary",
+    "scientificBoundaries",
+    "registrations",
+    "manifestContentSha256"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "authoritativeInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "path", "purpose", "bytes", "sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "scope": { "enum": ["project", "scientificAuthority"] },
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "contractReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sourceObjectReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "role"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/data/prp_dorsal_horn_observed_morphology_route_pack_v1/"
+        },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "role": { "type": "string", "minLength": 1 },
+        "canonicalGeometrySha256": { "$ref": "#/$defs/sha256" },
+        "topologySha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "assetFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind", "sha256", "bytes", "neuronId"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "kind": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "neuronId": { "enum": [50394, 50408] }
+      }
+    },
+    "prpRouteMembership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "routeId",
+        "neuronId",
+        "assetId",
+        "title",
+        "sourceAuthority",
+        "censusMembership",
+        "physicalIntegrity",
+        "sourceFrame",
+        "preparationJoinStatus",
+        "strainJoinStatus",
+        "repositoryStrainRaw",
+        "repositoryWeightMinimumGrams",
+        "repositoryWeightMaximumGrams",
+        "repositoryWeightValidForBiologicalInterpretation",
+        "cellTypeLabels",
+        "markerExclusivityClaim",
+        "endogenousPrpProteinAbundanceClaim",
+        "nodeCount",
+        "segmentCount",
+        "metadataReceipt",
+        "morphometryReceipt",
+        "geometryReceipt",
+        "swcReceipt",
+        "originalDatReceipt",
+        "sourceDiameterAvailable",
+        "observedAxonNodeCount",
+        "completeAxonClaim",
+        "nativeDatParsed",
+        "nativeDatRendered",
+        "nativeDatSemanticObjectCount",
+        "paperMentionsExactNeuronIdOrFilename",
+        "sameCellElectrophysiologyJoinStatus",
+        "individualMolecularAssayClaim",
+        "internalPrimitiveCount",
+        "crossSourceIdentityCount",
+        "projectRegistrationCount"
+      ],
+      "properties": {
+        "routeId": {
+          "enum": [
+            "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+            "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408"
+          ]
+        },
+        "neuronId": { "enum": [50394, 50408] },
+        "assetId": { "type": "string", "pattern": "^NeuroMorpho:(50394|50408)$" },
+        "title": { "type": "string", "minLength": 1 },
+        "sourceAuthority": { "const": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT" },
+        "censusMembership": { "const": false },
+        "physicalIntegrity": { "const": "Dendrites & Axon Moderate" },
+        "sourceFrame": { "const": "NeuroMorpho_CNG_standardized_local_frame" },
+        "preparationJoinStatus": { "const": "context_consistent_not_exact_object_crosswalk" },
+        "strainJoinStatus": { "const": "context_incomplete_not_individual_genotype_validation" },
+        "repositoryStrainRaw": { "const": "Swiss-Webster " },
+        "repositoryWeightMinimumGrams": { "const": 27 },
+        "repositoryWeightMaximumGrams": { "const": 15 },
+        "repositoryWeightValidForBiologicalInterpretation": { "const": false },
+        "cellTypeLabels": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "markerExclusivityClaim": { "const": false },
+        "endogenousPrpProteinAbundanceClaim": { "const": false },
+        "nodeCount": { "type": "integer", "minimum": 1 },
+        "segmentCount": { "type": "integer", "minimum": 1 },
+        "metadataReceipt": { "$ref": "#/$defs/sourceObjectReceipt" },
+        "morphometryReceipt": { "$ref": "#/$defs/sourceObjectReceipt" },
+        "geometryReceipt": { "$ref": "#/$defs/sourceObjectReceipt" },
+        "swcReceipt": { "$ref": "#/$defs/sourceObjectReceipt" },
+        "originalDatReceipt": { "$ref": "#/$defs/sourceObjectReceipt" },
+        "sourceDiameterAvailable": { "const": true },
+        "observedAxonNodeCount": { "type": "integer", "minimum": 1 },
+        "completeAxonClaim": { "const": false },
+        "nativeDatParsed": { "const": false },
+        "nativeDatRendered": { "const": false },
+        "nativeDatSemanticObjectCount": { "const": 0 },
+        "paperMentionsExactNeuronIdOrFilename": { "const": false },
+        "sameCellElectrophysiologyJoinStatus": { "const": "not_established" },
+        "individualMolecularAssayClaim": { "const": false },
+        "internalPrimitiveCount": { "const": 0 },
+        "crossSourceIdentityCount": { "const": 0 },
+        "projectRegistrationCount": { "const": 0 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "neuronId": { "const": 50394 } }, "required": ["neuronId"] },
+          "then": {
+            "properties": {
+              "routeId": { "const": "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394" },
+              "assetId": { "const": "NeuroMorpho:50394" },
+              "nodeCount": { "const": 4012 },
+              "segmentCount": { "const": 4011 },
+              "observedAxonNodeCount": { "const": 1520 },
+              "cellTypeLabels": {
+                "const": [
+                  "Neuronal Nitric Oxide Synthase (nNOS)-positive",
+                  "prion protein (PrP) promoter-positive",
+                  "interneuron"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "neuronId": { "const": 50408 } }, "required": ["neuronId"] },
+          "then": {
+            "properties": {
+              "routeId": { "const": "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408" },
+              "assetId": { "const": "NeuroMorpho:50408" },
+              "nodeCount": { "const": 6125 },
+              "segmentCount": { "const": 6124 },
+              "observedAxonNodeCount": { "const": 3244 },
+              "cellTypeLabels": {
+                "const": [
+                  "galanin-expressing",
+                  "prion protein (PrP) promoter-positive",
+                  "interneuron"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "manifestSchemaVersion": { "const": "2.27.0" },
+    "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.27.0" },
+    "releaseDate": { "const": "2026-08-31" },
+    "releaseStatus": { "const": "localhost_research_iteration" },
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "ohri-mouse-interneuron-atlas-prototype" },
+        "version": { "const": "2.27.0-research.1" }
+      }
+    },
+    "baseResearchRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["releaseId", "schemaVersion", "note"],
+      "properties": {
+        "releaseId": { "const": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0" },
+        "schemaVersion": { "const": "0.2.0" },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "parentIterationManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "releaseId", "bytes", "fileSha256", "contentSha256"],
+      "properties": {
+        "path": { "const": "data/research-iteration-manifest-2.26.json" },
+        "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.26.0" },
+        "bytes": { "const": 40818 },
+        "fileSha256": { "const": "f65972360bfa8c376b9989a1e03a7a7e1e0029f5b76b2837742ebe52298a9196" },
+        "contentSha256": { "const": "fbf40be71ab73e4a550d7be3e2791ef184ef784a33b5e8c3ac78f4e3cb465ba0" }
+      }
+    },
+    "inputRoots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project", "scientificAuthority"],
+      "properties": {
+        "project": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": { "const": "." },
+            "policy": { "type": "string", "minLength": 1 }
+          }
+        },
+        "scientificAuthority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["locator", "policy"],
+          "properties": {
+            "locator": { "type": "string", "minLength": 1 },
+            "policy": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "authoritativeInputs": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/authoritativeInput" }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalization", "inputCount"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "canonicalization": { "type": "string", "minLength": 1 },
+        "inputCount": { "const": 30 }
+      }
+    },
+    "exactReferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "micronsObservedCellNucleus",
+        "ronzanoPremotorPositions",
+        "alkaslasiCholinergicTaxonomy",
+        "grpDorsalHornObservedMorphology",
+        "dorsalHornObservedMorphologyRoutePack",
+        "functionalClassObservedMorphologyRoutePack",
+        "evidenceAware3dRepresentation",
+        "prpDorsalHornObservedMorphologyRoutePack"
+      ],
+      "properties": {
+        "micronsObservedCellNucleus": { "type": "object", "minProperties": 1 },
+        "ronzanoPremotorPositions": { "type": "object", "minProperties": 1 },
+        "alkaslasiCholinergicTaxonomy": { "type": "object", "minProperties": 1 },
+        "grpDorsalHornObservedMorphology": { "type": "object", "minProperties": 1 },
+        "dorsalHornObservedMorphologyRoutePack": { "type": "object", "minProperties": 1 },
+        "functionalClassObservedMorphologyRoutePack": { "type": "object", "minProperties": 1 },
+        "evidenceAware3dRepresentation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "contractReleaseId",
+            "deterministicMaterializationReceipt",
+            "representationStateCount",
+            "representationStateIds",
+            "routeCount",
+            "routeIds",
+            "legacyDorsalHornPackRouteCount",
+            "legacyDorsalHornPackRouteIds",
+            "functionalClassRouteCount",
+            "functionalClassRouteIds",
+            "prpDorsalHornRouteCount",
+            "prpDorsalHornRouteIds",
+            "namedDorsalHornRouteCount",
+            "namedVentralHornRouteCount",
+            "runtimeMetadataRequirements",
+            "internalReferenceStateIds",
+            "internalReferenceRenderedPrimitivePolicy",
+            "proceduralBiologicalProxyAllowed",
+            "missingLayerPrimitiveCount",
+            "nativeDatSemanticAdmissionCount",
+            "sameCellElectrophysiologyJoinCount",
+            "sameSpecimenInternalStructureCount",
+            "renderedInternalPrimitiveCount",
+            "crossSourceIdentityCount",
+            "projectRegistrationCount"
+          ],
+          "properties": {
+            "contractId": { "const": "evidence-aware-3d-representation-contract-0.4" },
+            "contractReleaseId": { "const": "ohri-evidence-aware-3d-representation-contract-0.4.0" },
+            "deterministicMaterializationReceipt": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "bytes", "sha256", "buildInputs"],
+              "properties": {
+                "path": { "const": "data/evidence-aware-3d-representation-contract-0.4.json" },
+                "bytes": { "const": 21341 },
+                "sha256": { "const": "1dec67e67884199a481ce8127793523acf56d0d50df83cfe330e933c8260e392" },
+                "buildInputs": { "type": "object", "minProperties": 2 }
+              }
+            },
+            "representationStateCount": { "const": 9 },
+            "representationStateIds": {
+              "const": [
+                "OBS_RAW_TEXTURE",
+                "OBS_SEGMENTED_SURFACE",
+                "OBS_SKELETON",
+                "OBS_POINT",
+                "DER_RADIUS_SURFACE",
+                "INF_REFERENCE_GEOMETRY",
+                "SCH_PATH",
+                "SYN_DATA_GLYPH",
+                "UNAVAILABLE"
+              ]
+            },
+            "routeCount": { "const": 15 },
+            "routeIds": { "type": "array", "minItems": 15, "maxItems": 15, "uniqueItems": true },
+            "legacyDorsalHornPackRouteCount": { "const": 4 },
+            "legacyDorsalHornPackRouteIds": { "type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true },
+            "functionalClassRouteCount": { "const": 2 },
+            "functionalClassRouteIds": { "type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true },
+            "prpDorsalHornRouteCount": { "const": 2 },
+            "prpDorsalHornRouteIds": {
+              "const": [
+                "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+                "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408"
+              ]
+            },
+            "namedDorsalHornRouteCount": { "const": 8 },
+            "namedVentralHornRouteCount": { "const": 1 },
+            "runtimeMetadataRequirements": { "type": "array", "minItems": 1, "uniqueItems": true },
+            "internalReferenceStateIds": { "const": ["UNAVAILABLE"] },
+            "internalReferenceRenderedPrimitivePolicy": { "const": "zero_primitives" },
+            "proceduralBiologicalProxyAllowed": { "const": false },
+            "missingLayerPrimitiveCount": { "const": 0 },
+            "nativeDatSemanticAdmissionCount": { "const": 0 },
+            "sameCellElectrophysiologyJoinCount": { "const": 0 },
+            "sameSpecimenInternalStructureCount": { "const": 0 },
+            "renderedInternalPrimitiveCount": { "const": 0 },
+            "crossSourceIdentityCount": { "const": 0 },
+            "projectRegistrationCount": { "const": 0 }
+          }
+        },
+        "prpDorsalHornObservedMorphologyRoutePack": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "contractReleaseId",
+            "repository",
+            "contractReceipt",
+            "assetManifestReceipt",
+            "routeCount",
+            "uniqueNeuronCount",
+            "neuronIds",
+            "supplementaryNeuronIds",
+            "preMergeUniqueMorphologyCount",
+            "activeUniqueMorphologyCount",
+            "preExistingNamedRouteCount",
+            "namedRouteCount",
+            "namedDorsalHornRouteCount",
+            "namedVentralHornRouteCount",
+            "frozenExemplarCount",
+            "frozenCensusRecordCount",
+            "censusExpansionCount",
+            "sourceDiameterAvailableCount",
+            "observedAxonRouteCount",
+            "sourceCompleteAxonCount",
+            "originalDatReceiptCount",
+            "nativeDatSemanticAdmissionCount",
+            "sameCellElectrophysiologyJoinCount",
+            "sameSpecimenInternalStructureCount",
+            "renderedInternalPrimitiveCount",
+            "markerExclusivityClaimCount",
+            "endogenousPrpProteinAbundanceClaimCount",
+            "exactCrossSourceIdentityCount",
+            "projectRegistrationCount",
+            "routeMemberships"
+          ],
+          "properties": {
+            "contractId": { "const": "prp-dorsal-horn-observed-morphology-route-pack-0.1" },
+            "contractReleaseId": { "const": "ohri-prp-dorsal-horn-observed-morphology-route-pack-0.1.0" },
+            "repository": { "type": "object", "minProperties": 1 },
+            "contractReceipt": {
+              "allOf": [
+                { "$ref": "#/$defs/contractReceipt" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "path": { "const": "data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json" },
+                    "bytes": { "const": 31435 },
+                    "sha256": { "const": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709" }
+                  }
+                }
+              ]
+            },
+            "assetManifestReceipt": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "assetSetId", "repositoryRelease", "bytes", "sha256", "fileCount", "files"],
+              "properties": {
+                "path": { "const": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json" },
+                "assetSetId": { "const": "neuromorpho:8.6.124:prp-dorsal-horn-observed-morphology-route-pack-v1" },
+                "repositoryRelease": { "const": "8.6.124" },
+                "bytes": { "const": 2766 },
+                "sha256": { "const": "2f17597f67532debfa79828a6313887fb362e9cdc4baba9d3015d94129c5ef8f" },
+                "fileCount": { "const": 10 },
+                "files": {
+                  "type": "array",
+                  "minItems": 10,
+                  "maxItems": 10,
+                  "uniqueItems": true,
+                  "items": { "$ref": "#/$defs/assetFile" }
+                }
+              }
+            },
+            "routeCount": { "const": 2 },
+            "uniqueNeuronCount": { "const": 2 },
+            "neuronIds": { "const": [50394, 50408] },
+            "supplementaryNeuronIds": { "const": [50394, 50408] },
+            "preMergeUniqueMorphologyCount": { "const": 10 },
+            "activeUniqueMorphologyCount": { "const": 12 },
+            "preExistingNamedRouteCount": { "const": 7 },
+            "namedRouteCount": { "const": 9 },
+            "namedDorsalHornRouteCount": { "const": 8 },
+            "namedVentralHornRouteCount": { "const": 1 },
+            "frozenExemplarCount": { "const": 5 },
+            "frozenCensusRecordCount": { "const": 142 },
+            "censusExpansionCount": { "const": 0 },
+            "sourceDiameterAvailableCount": { "const": 2 },
+            "observedAxonRouteCount": { "const": 2 },
+            "sourceCompleteAxonCount": { "const": 0 },
+            "originalDatReceiptCount": { "const": 2 },
+            "nativeDatSemanticAdmissionCount": { "const": 0 },
+            "sameCellElectrophysiologyJoinCount": { "const": 0 },
+            "sameSpecimenInternalStructureCount": { "const": 0 },
+            "renderedInternalPrimitiveCount": { "const": 0 },
+            "markerExclusivityClaimCount": { "const": 0 },
+            "endogenousPrpProteinAbundanceClaimCount": { "const": 0 },
+            "exactCrossSourceIdentityCount": { "const": 0 },
+            "projectRegistrationCount": { "const": 0 },
+            "routeMemberships": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/prpRouteMembership" }
+            }
+          }
+        }
+      }
+    },
+    "registrySummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalSourcePackageCount",
+        "canonicalRecordSetCount",
+        "bundledExactRosterCount",
+        "researchUpgradeCount",
+        "sourceRegistryReceipt",
+        "upgradeRegistryReceipt",
+        "crossSourceIdentityCount",
+        "registrationCount",
+        "renderedInternalPrimitiveCount"
+      ],
+      "properties": {
+        "canonicalSourcePackageCount": { "const": 24 },
+        "canonicalRecordSetCount": { "const": 27 },
+        "bundledExactRosterCount": { "const": 6 },
+        "researchUpgradeCount": { "const": 130 },
+        "sourceRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" },
+        "upgradeRegistryReceipt": { "$ref": "#/$defs/authoritativeInput" },
+        "crossSourceIdentityCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "renderedInternalPrimitiveCount": { "const": 0 }
+      }
+    },
+    "scientificBoundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selectedSpinalCellInternalStructure",
+        "micronsObservedReference",
+        "ronzanoPremotorPositions",
+        "missingEvidence",
+        "measurementAllowed",
+        "alkaslasiCholinergicTaxonomy",
+        "grpDorsalHornObservedMorphology",
+        "dorsalHornObservedMorphologyRoutePack",
+        "functionalClassObservedMorphologyRoutePack",
+        "evidenceAware3dRepresentation",
+        "prpDorsalHornObservedMorphologyRoutePack"
+      ],
+      "properties": {
+        "selectedSpinalCellInternalStructure": { "type": "string", "minLength": 1 },
+        "micronsObservedReference": { "type": "string", "minLength": 1 },
+        "ronzanoPremotorPositions": { "type": "string", "minLength": 1 },
+        "missingEvidence": { "type": "string", "minLength": 1 },
+        "measurementAllowed": { "const": false },
+        "alkaslasiCholinergicTaxonomy": { "type": "string", "minLength": 1 },
+        "grpDorsalHornObservedMorphology": { "type": "string", "minLength": 1 },
+        "dorsalHornObservedMorphologyRoutePack": { "type": "string", "minLength": 1 },
+        "functionalClassObservedMorphologyRoutePack": { "type": "string", "minLength": 1 },
+        "evidenceAware3dRepresentation": {
+          "type": "string",
+          "allOf": [
+            { "pattern": "Nine evidence states cover fifteen routes" },
+            { "pattern": "zero primitives" },
+            { "pattern": "DAT" },
+            { "pattern": "physiology" },
+            { "pattern": "cross-source identities" },
+            { "pattern": "project registrations" }
+          ]
+        },
+        "prpDorsalHornObservedMorphologyRoutePack": {
+          "type": "string",
+          "allOf": [
+            { "pattern": "NMO 50394" },
+            { "pattern": "NMO 50408" },
+            { "pattern": "neither positive label establishes the other marker's absence" },
+            { "pattern": "PrP-promoter reporter wording is not endogenous PrP protein abundance" },
+            { "pattern": "300-micrometre" },
+            { "pattern": "60-micrometre" },
+            { "pattern": "DAT semantics" },
+            { "pattern": "same-cell physiology" },
+            { "pattern": "complete axons" },
+            { "pattern": "internal structures" },
+            { "pattern": "cross-source identities" },
+            { "pattern": "registrations remain zero" }
+          ]
+        }
+      }
+    },
+    "registrations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "records"],
+      "properties": {
+        "count": { "const": 0 },
+        "records": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "manifestContentSha256": { "$ref": "#/$defs/sha256" }
+  }
+}

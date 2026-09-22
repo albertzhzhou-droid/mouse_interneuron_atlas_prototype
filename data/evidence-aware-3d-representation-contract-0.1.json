@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "evidence-aware-3d-representation-contract-0.1",
+  "releaseId": "ohri-evidence-aware-3d-representation-contract-0.1.0",
+  "releasedAt": "2026-08-30",
+  "purpose": "Make every 3D or detail route machine-readable about what its geometry represents, which exact source authorizes it, and which missing layers must produce zero primitives.",
+  "representationStates": [
+    {
+      "id": "OBS_RAW_TEXTURE",
+      "label": "Observed raw texture",
+      "geometryAuthority": "OBS",
+      "meaning": "Checksum-verified source pixels or voxels in their declared source frame.",
+      "currentlyRendered": false,
+      "visualRule": "source texture only; no generated cell boundary",
+      "forbiddenClaim": "segmentation, cell identity or 3D surface unless separately admitted"
+    },
+    {
+      "id": "OBS_SEGMENTED_SURFACE",
+      "label": "Observed segmented surface",
+      "geometryAuthority": "OBS",
+      "meaning": "Exact source segmentation boundary represented by checksum-verified vertices and triangles.",
+      "currentlyRendered": true,
+      "visualRule": "source surface with object ID and frame receipt",
+      "forbiddenClaim": "molecular membrane composition or measurement surface"
+    },
+    {
+      "id": "OBS_SKELETON",
+      "label": "Observed skeleton",
+      "geometryAuthority": "OBS",
+      "meaning": "Source-local standardized SWC coordinates, topology and source types.",
+      "currentlyRendered": true,
+      "visualRule": "centerlines; constant stroke width is a viewer aid",
+      "forbiddenClaim": "membrane, complete arbor, atlas position or internal structure"
+    },
+    {
+      "id": "OBS_POINT",
+      "label": "Observed source point",
+      "geometryAuthority": "OBS",
+      "meaning": "One exact source coordinate row rendered without biological radius.",
+      "currentlyRendered": true,
+      "visualRule": "radius-free point glyph in its source representation",
+      "forbiddenClaim": "soma geometry, neurites, cross-frame identity or atlas registration"
+    },
+    {
+      "id": "DER_RADIUS_SURFACE",
+      "label": "Radius-derived display surface",
+      "geometryAuthority": "DER",
+      "meaning": "Deterministic open frusta derived from source-authorized SWC endpoint radii.",
+      "currentlyRendered": true,
+      "visualRule": "open six-sided per-edge frusta plus visible observed centerlines",
+      "forbiddenClaim": "observed membrane, watertight biological surface or measurement"
+    },
+    {
+      "id": "INF_REFERENCE_GEOMETRY",
+      "label": "Inferred reference geometry",
+      "geometryAuthority": "INF",
+      "meaning": "Reference-only loft or plane-local display geometry derived from pinned atlas annotations.",
+      "currentlyRendered": true,
+      "visualRule": "muted reference envelope or exact sampled-plane edges",
+      "forbiddenClaim": "registration of any cell, interpolation of missing labels or measurement"
+    },
+    {
+      "id": "SCH_PATH",
+      "label": "Schematic evidence path",
+      "geometryAuthority": "SCH",
+      "meaning": "A non-anatomical path used only to organize an evidence entity.",
+      "currentlyRendered": true,
+      "visualRule": "dashed path in the synthetic evidence lane",
+      "forbiddenClaim": "observed axon, projection, connection or anatomical trajectory"
+    },
+    {
+      "id": "SYN_DATA_GLYPH",
+      "label": "Synthetic data glyph",
+      "geometryAuthority": "SYN",
+      "meaning": "A non-cell UI object representing a literature evidence entity or injury-state record.",
+      "currentlyRendered": true,
+      "visualRule": "faceted data glyph or wire frame, explicitly outside anatomy",
+      "forbiddenClaim": "soma, cell cluster geometry, membrane, count, spatial density or morphology"
+    },
+    {
+      "id": "UNAVAILABLE",
+      "label": "Unavailable object geometry",
+      "geometryAuthority": "UNAVAILABLE",
+      "meaning": "No object-level source geometry has been admitted for the requested layer.",
+      "currentlyRendered": true,
+      "visualRule": "zero primitives plus explicit missingness text",
+      "forbiddenClaim": "procedural spheres, capsules, tubes, boxes or any other geometric substitute"
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "main.reference_anatomy",
+      "label": "Allen spinal reference anatomy",
+      "sourceReceipt": {
+        "path": "/data/allen_cord_20um_v3_0/asset-manifest.json",
+        "bytes": 62846,
+        "sha256": "75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8"
+      },
+      "sourceVersion": "allen_cord_20um_v3_0",
+      "sourceFrame": "allen_cord_20um_reference_plane_index",
+      "stableIdAuthority": "source atlas asset and source annotation identifier",
+      "representationStateIds": ["INF_REFERENCE_GEOMETRY"],
+      "renderedPrimitivePolicy": "only_pinned_annotation_derivatives",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "main.population_evidence",
+      "label": "SCI population evidence entities",
+      "sourceReceipt": {
+        "path": "/project/data/atlas-release-0.1.json",
+        "bytes": 12918,
+        "sha256": "b87e8d6cc6d4a42d517118d9cbbf997c1caa8189323e4ed2bc4480adfda18dc6"
+      },
+      "sourceVersion": "ohri-mouse-interneuron-atlas-0.1.0",
+      "sourceFrame": "synthetic_evidence_lane_not_anatomy",
+      "stableIdAuthority": "entity.id",
+      "representationStateIds": ["SYN_DATA_GLYPH", "SCH_PATH"],
+      "renderedPrimitivePolicy": "non_cell_data_glyph_and_schematic_path_only",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "main.legacy_observed_cell_forms",
+      "label": "Five frozen source-local NeuroMorpho exemplars",
+      "sourceReceipt": {
+        "path": "/project/data/morphology-fidelity-contract-0.1.json",
+        "bytes": 9666,
+        "sha256": "f8bb6079614e20e376a2e4ae51a6eb2f574e63e73d38dbebe98854ec84cdcecb"
+      },
+      "sourceVersion": "ohri-morphology-fidelity-contract-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho assetId and neuronId",
+      "representationStateIds": ["OBS_SKELETON", "DER_RADIUS_SURFACE", "UNAVAILABLE"],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+      "label": "Independent GRP dorsal-horn NMO 109021",
+      "sourceReceipt": {
+        "path": "/project/data/grp-dorsal-horn-observed-morphology-0.1.json",
+        "bytes": 10016,
+        "sha256": "6212fd3b78ad3e7ef054b656ab9cf080f57360db710eedb767c55c493036563f"
+      },
+      "sourceVersion": "ohri-grp-dorsal-horn-observed-morphology-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:109021",
+      "representationStateIds": ["OBS_SKELETON", "DER_RADIUS_SURFACE", "UNAVAILABLE"],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "microns_observed_reference",
+      "label": "MICrONS exact cell and linked nucleus",
+      "sourceReceipt": {
+        "path": "/project/data/microns-observed-cell-nucleus-reference-0.1.json",
+        "bytes": 9639,
+        "sha256": "9b5141072192b9d272c0babe097de380d2aebd98659c2c57745ee75d226b744c"
+      },
+      "sourceVersion": "MICrONS Phase 1 v185.4",
+      "sourceFrame": "MICrONS_Phase1_v185_4_native_nanometre",
+      "stableIdAuthority": "cell root ID plus source-linked nucleus ID",
+      "representationStateIds": ["OBS_SEGMENTED_SURFACE", "UNAVAILABLE"],
+      "renderedPrimitivePolicy": "checksum_verified_source_arrays_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "internal_reference",
+      "label": "Cross-region internal object-geometry audit",
+      "sourceReceipt": {
+        "path": "/project/data/cross-region-internal-reference-0.1.json",
+        "bytes": 6945,
+        "sha256": "39eaf91cf6f02c45872287b2cb757e1ad43205c0d726ce1956f93bacbcfb6daa"
+      },
+      "sourceVersion": "cross-region-internal-reference-0.1",
+      "sourceFrame": "none_no_object_geometry_admitted",
+      "stableIdAuthority": "vocabulary component ID only",
+      "representationStateIds": ["UNAVAILABLE"],
+      "renderedPrimitivePolicy": "zero_primitives",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "ronzano_premotor_positions",
+      "label": "Ronzano early-postnatal premotor source points",
+      "sourceReceipt": {
+        "path": "/project/data/ronzano-premotor-position-reference-0.1.json",
+        "bytes": 38612,
+        "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d"
+      },
+      "sourceVersion": "ohri-ronzano-premotor-position-reference-0.1.0",
+      "sourceFrame": "source_workbook_raw_or_source_normalized_representation_not_cross_frame_linked",
+      "stableIdAuthority": "source file plus source row index within one representation",
+      "representationStateIds": ["OBS_POINT", "UNAVAILABLE"],
+      "renderedPrimitivePolicy": "one_radius_free_point_per_exact_source_row",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    }
+  ],
+  "runtimeMetadataRequirements": [
+    "stableId",
+    "representationState",
+    "sourceFrame",
+    "sourceVersion",
+    "sourceReceiptSha256",
+    "cellMorphologyClaim",
+    "projectRegistrationCount",
+    "crossSourceIdentityCount"
+  ],
+  "globalInvariants": [
+    "Every rendered scientific object exposes a stable ID, representation state, source frame, source version and checksum receipt in machine-readable runtime metadata.",
+    "A SYN data glyph is never a soma, cell cluster, spatial density estimate or observed morphology.",
+    "A DER radius surface is never an observed membrane and is unavailable when the source does not authorize diameter.",
+    "An OBS segmented surface is a source segmentation boundary, not a molecular membrane measurement.",
+    "Unsupported or unadmitted object geometry always produces zero primitives; procedural biological proxies are prohibited.",
+    "Co-display, selection and camera switching create no cross-source identity, coordinate join or atlas registration."
+  ]
+}

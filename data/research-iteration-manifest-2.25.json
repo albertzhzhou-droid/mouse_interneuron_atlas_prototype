@@ -1,0 +1,602 @@
+{
+  "manifestSchemaVersion": "2.25.0",
+  "releaseId": "ohri-mouse-interneuron-research-iteration-2.25.0",
+  "releaseDate": "2026-08-31",
+  "releaseStatus": "localhost_research_iteration",
+  "application": {
+    "name": "ohri-mouse-interneuron-atlas-prototype",
+    "version": "2.25.0-research.1"
+  },
+  "baseResearchRelease": {
+    "releaseId": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0",
+    "schemaVersion": "0.2.0",
+    "note": "The seven SCI evidence entities and five frozen observed-cell exemplars remain unchanged. Iteration 2.25 adds four named dorsal-horn route memberships: two reuse frozen census objects and two are supplementary exact NeuroMorpho objects. Deduplication yields eight active unique morphologies and five named dorsal-horn routes without expanding the 142-record census. Nine representation states span eleven routes. Missing same-specimen internal geometry still renders zero primitives; no cross-source identity or project registration is created."
+  },
+  "authoritativeInputs": [
+    {
+      "id": "researchRelease",
+      "scope": "project",
+      "path": "data/research-mvp-release-0.2.json",
+      "purpose": "Research MVP 0.2 evidence-entity payload",
+      "bytes": 30689,
+      "sha256": "bd63024da4467daf8e1a68110e883a8f917c4e36519bc2a47a0cc2e6ca245927"
+    },
+    {
+      "id": "researchReleaseSchema",
+      "scope": "project",
+      "path": "schemas/research-mvp-release.schema.json",
+      "purpose": "Research MVP 0.2 JSON Schema",
+      "bytes": 10197,
+      "sha256": "9c5ba4f56f4772734045394070790dc9ce8d1d3b87118914fd5f7a8229b47fff"
+    },
+    {
+      "id": "evidenceLedger",
+      "scope": "scientificAuthority",
+      "path": "02_EVIDENCE/EVIDENCE_LEDGER.md",
+      "purpose": "External authoritative evidence ledger",
+      "bytes": 27255,
+      "sha256": "afceda228b6d8644e47e4c44803cd49bf76045c59202e9d96777775e7c7e59cf"
+    },
+    {
+      "id": "sourceManifest",
+      "scope": "scientificAuthority",
+      "path": "01_LITERATURE/SOURCE_MANIFEST.tsv",
+      "purpose": "External authoritative source manifest",
+      "bytes": 5585,
+      "sha256": "994de35e45b481f1d218add4d73b4f0357e751c2474ee2ed03dc1821ee0833ab"
+    },
+    {
+      "id": "atlasAssetManifest",
+      "scope": "project",
+      "path": "public/data/allen_cord_20um_v3_0/asset-manifest.json",
+      "purpose": "Current bundled BrainGlobe atlas derivative manifest",
+      "bytes": 62846,
+      "sha256": "75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8"
+    },
+    {
+      "id": "morphologyAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124/asset-manifest.json",
+      "purpose": "Bundled NeuroMorpho exemplar manifest",
+      "bytes": 11216,
+      "sha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647"
+    },
+    {
+      "id": "micronsObservedReferenceContract",
+      "scope": "project",
+      "path": "data/microns-observed-cell-nucleus-reference-0.1.json",
+      "purpose": "Exact MICrONS cell and source-linked nucleus component-limited admission contract",
+      "bytes": 9639,
+      "sha256": "9b5141072192b9d272c0babe097de380d2aebd98659c2c57745ee75d226b744c"
+    },
+    {
+      "id": "micronsObservedReferenceAssetManifest",
+      "scope": "project",
+      "path": "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "purpose": "Exact MICrONS source fragments and browser geometry asset receipts",
+      "bytes": 94901,
+      "sha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1"
+    },
+    {
+      "id": "ronzanoPremotorPositionContract",
+      "scope": "project",
+      "path": "data/ronzano-premotor-position-reference-0.1.json",
+      "purpose": "Exact Ronzano neonatal premotor coordinate-row admission contract",
+      "bytes": 38612,
+      "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d"
+    },
+    {
+      "id": "ronzanoPremotorPositionPayload",
+      "scope": "project",
+      "path": "public/data/ronzano_premotor_positions_v1/positions.json",
+      "purpose": "Exact source-local Ronzano XYZ rows across independent raw and normalized representations",
+      "bytes": 1274690,
+      "sha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3"
+    },
+    {
+      "id": "researchSourceRegistry",
+      "scope": "project",
+      "path": "data/research-source-registry-0.1.json",
+      "purpose": "Canonical source and record-set registry",
+      "bytes": 84564,
+      "sha256": "3535f2e9b501743a3c432821bb2f944abcf18c6b68b1f02a0cccd52af0d9157b"
+    },
+    {
+      "id": "researchModelUpgradeRegistry",
+      "scope": "project",
+      "path": "data/research-model-upgrade-registry-0.1.json",
+      "purpose": "Deterministic research/model upgrade registry",
+      "bytes": 224132,
+      "sha256": "5d39f33d892b70fafe5b0fc3f48bd9413f65cb5af96a1ebcc515cdcf279e0b04"
+    },
+    {
+      "id": "rightsLedger",
+      "scope": "project",
+      "path": "docs/RIGHTS_LEDGER.csv",
+      "purpose": "Current asset and source rights decisions",
+      "bytes": 4877,
+      "sha256": "b7b87ad7d3a5b40ce91e58fc59f3e4d600c473a241a19e2089951459cfd038b7"
+    },
+    {
+      "id": "packageLock",
+      "scope": "project",
+      "path": "package-lock.json",
+      "purpose": "Exact JavaScript dependency graph",
+      "bytes": 300345,
+      "sha256": "cc3f934b1ba6a52e5d8cb2c231d9692d0a5861b797829e7d859a2188a8652899"
+    },
+    {
+      "id": "alkaslasiCholinergicTaxonomyContract",
+      "scope": "project",
+      "path": "data/alkaslasi-cholinergic-source-taxonomy-0.1.json",
+      "purpose": "Exact Alkaslasi adult cholinergic I1-I8 source-local aggregate taxonomy contract",
+      "bytes": 65802,
+      "sha256": "e87729a1ef5f0d521fb583a2a34173e0f1b169799c60b6017a3a8cfeca1bec7e"
+    },
+    {
+      "id": "grpDorsalHornObservedMorphologyContract",
+      "scope": "project",
+      "path": "data/grp-dorsal-horn-observed-morphology-0.1.json",
+      "purpose": "Independent checksum-pinned NMO 109021 GRP dorsal-horn morphology route",
+      "bytes": 10016,
+      "sha256": "6212fd3b78ad3e7ef054b656ab9cf080f57360db710eedb767c55c493036563f"
+    },
+    {
+      "id": "neuromorphoCensusIndex",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+      "purpose": "Full 142-record NeuroMorpho census containing the already-admitted NMO 109021 child",
+      "bytes": 968797,
+      "sha256": "1598b5119f5826719e390fe46615a291b51fa3cd7716e9a191ad645f73165364"
+    },
+    {
+      "id": "neuromorphoCensusAssetManifest",
+      "scope": "project",
+      "path": "public/data/neuromorpho_release_8_6_124_census_v1/asset-manifest.json",
+      "purpose": "Full census SWC and lazy-geometry asset receipts",
+      "bytes": 62165,
+      "sha256": "2c1153fe86e3bc2f08505cf2416ab25b2d8e9ca747b0bffcfad5aacc9286cf91"
+    },
+    {
+      "id": "evidenceAware3dRepresentationContract",
+      "scope": "project",
+      "path": "data/evidence-aware-3d-representation-contract-0.1.json",
+      "purpose": "Nine-state, seven-route evidence-aware rendering authority contract",
+      "bytes": 11044,
+      "sha256": "9fdf8eaf3f37c50835e78af19d86c3e95269aeb67f43461a23f8298132eb9195"
+    },
+    {
+      "id": "zeroPrimitiveInternalReferenceContract",
+      "scope": "project",
+      "path": "data/cross-region-internal-reference-0.1.json",
+      "purpose": "Cross-region vocabulary audit whose missing object-level geometry produces zero primitives",
+      "bytes": 6945,
+      "sha256": "39eaf91cf6f02c45872287b2cb757e1ad43205c0d726ce1956f93bacbcfb6daa"
+    },
+    {
+      "id": "dorsalHornObservedMorphologyRoutePackContract",
+      "scope": "project",
+      "path": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+      "purpose": "Four checksum-pinned source-local dorsal-horn morphology route memberships with explicit overlap and supplementary boundaries",
+      "bytes": 42226,
+      "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+    },
+    {
+      "id": "dorsalHornObservedMorphologySupplementaryAssetManifest",
+      "scope": "project",
+      "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+      "purpose": "Exact metadata, standardized SWC and lazy-geometry receipts for the two supplementary route-pack objects",
+      "bytes": 1696,
+      "sha256": "4f64fb595a4362cf0403cb0d3abc3c6fdc14b7f74d473a82ccd67bed9b9dab87"
+    }
+  ],
+  "inputRoots": {
+    "project": {
+      "locator": ".",
+      "policy": "Only exact allowlisted project-relative paths are admitted."
+    },
+    "scientificAuthority": {
+      "locator": "../interneuron_sci_review",
+      "policy": "Only the evidence ledger and source manifest are admitted from the external authority root."
+    }
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "UTF-8 compact JSON with recursively lexicographically sorted object keys; array order preserved; top-level manifestContentSha256 omitted.",
+    "inputCount": 22
+  },
+  "registrations": {
+    "count": 0,
+    "records": []
+  },
+  "exactReferences": {
+    "micronsObservedCellNucleus": {
+      "contractId": "microns-observed-cell-nucleus-reference-0.1",
+      "contractReleaseId": "ohri-microns-observed-cell-nucleus-reference-0.1.0",
+      "authority": "OBS_EM_SEGMENTATION",
+      "sourceRelease": "MICrONS Phase 1 v185.4",
+      "sourceRegion": "visual cortex layer 2/3",
+      "cellRootId": "648518346349516051",
+      "nucleusId": "4309",
+      "samePhysicalObject": true,
+      "admittedComponentCount": 2,
+      "sourceFragmentCount": 97,
+      "vertexCount": 385064,
+      "triangleCount": 727788,
+      "manifestBytes": 94901,
+      "manifestSha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1",
+      "membraneClaim": false,
+      "spinalInterneuronIdentity": false,
+      "crossRegionJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "mitochondria",
+        "synapses",
+        "other_internal_organelles",
+        "molecular_subtype",
+        "atlas_placement"
+      ]
+    },
+    "ronzanoPremotorPositions": {
+      "contractReleaseId": "ohri-ronzano-premotor-position-reference-0.1.0",
+      "authority": "OBS_SOURCE_COORDINATE_ROW",
+      "sourceDoi": "10.7554/eLife.81976",
+      "sourceLifeStage": "P1-P2 injection; analysis 8-9 days later",
+      "sourceFileCount": 22,
+      "rawCoordinateRowCount": 14484,
+      "normalizedCoordinateRowCount": 17394,
+      "coordinateRowsAcrossIndependentRepresentations": 31878,
+      "sourceBundleBytes": 1046636,
+      "sourceBundleSha256": "2b8b75cae1a7cd559dc4b213923538c5a08b66ecd7a8dfec4b72a355aa8e7481",
+      "payloadBytes": 1274690,
+      "payloadSha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3",
+      "crossFramePointIdentityCount": 0,
+      "generatedCellGeometryCount": 0,
+      "atlasJoinCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "soma_geometry",
+        "neurite_morphology",
+        "molecular_identity",
+        "synapse_roster",
+        "internal_organelles",
+        "adult_persistence",
+        "atlas_placement"
+      ]
+    },
+    "alkaslasiCholinergicTaxonomy": {
+      "contractReleaseId": "ohri-alkaslasi-cholinergic-source-taxonomy-0.1.0",
+      "authority": "SOURCE_LOCAL_TYPE_ONLY",
+      "sourceDoi": "10.1038/s41467-021-22691-2",
+      "sourceAccession": "GSE167597",
+      "sourceObjectFileName": "GSE167597_all_AlkaslasiPiccus_annotations.csv.gz",
+      "sourceObjectBytes": 333655,
+      "sourceObjectSha256": "6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091",
+      "sourceObjectBundled": false,
+      "exactNucleusRosterBundled": false,
+      "sourceAnimalCount": 12,
+      "processingReplicateCount": 3,
+      "geoSampleCount": 9,
+      "qcRetainedNucleusCount": 34231,
+      "cholinergicNucleusCount": 16042,
+      "interneuronNucleusCount": 5375,
+      "displayedProfileCount": 8,
+      "biologicalPrevalenceClaim": false,
+      "generatedCellGeometryCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "notAdmitted": [
+        "per_nucleus_roster_redistribution",
+        "biological_prevalence",
+        "cell_xyz",
+        "soma_or_neurite_geometry",
+        "membrane_or_internal_organelles",
+        "electrophysiology",
+        "projection_targets",
+        "synaptic_edges",
+        "sci_state",
+        "atlas_placement"
+      ]
+    },
+    "grpDorsalHornObservedMorphology": {
+      "contractId": "grp-dorsal-horn-observed-morphology-0.1",
+      "contractReleaseId": "ohri-grp-dorsal-horn-observed-morphology-0.1.0",
+      "routeId": "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+      "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "sourceRepository": "NeuroMorpho.Org",
+      "sourceRepositoryRelease": "8.6.124",
+      "neuronId": 109021,
+      "assetId": "NeuroMorpho:109021",
+      "species": "mouse",
+      "sourceLabels": [
+        "interneuron",
+        "Excitatory",
+        "Gastrin-releasing peptide-expressing"
+      ],
+      "physicalIntegrity": "Dendrites & Axon Moderate",
+      "slicingThicknessMicrometre": 300,
+      "nodeCount": 2790,
+      "segmentCount": 2789,
+      "axonNodeCount": 2202,
+      "swcBytes": 104228,
+      "swcSha256": "fd30c7fbafd6642a99265e0009ef0bc5b75709fc7a1fba3bcc80ad47d28bde02",
+      "geometryBytes": 289290,
+      "geometrySha256": "19cab96e659bf8add7c370afe6d684da62dc6af79c92067c2ecc2294124e9f39",
+      "legacyExemplarCount": 5,
+      "censusRecordCount": 142,
+      "censusManifestFileCount": 287,
+      "completeAxonClaim": false,
+      "membraneClaim": false,
+      "internalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    "evidenceAware3dRepresentation": {
+      "contractId": "evidence-aware-3d-representation-contract-0.2",
+      "contractReleaseId": "ohri-evidence-aware-3d-representation-contract-0.2.0",
+      "deterministicMaterializationReceipt": {
+        "path": "data/evidence-aware-3d-representation-contract-0.2.json",
+        "bytes": 15818,
+        "sha256": "86568689f340d8f506590e16e28f3ffed25bc7e040b09f422126a53abcd87346",
+        "buildInputs": {
+          "baseContract": {
+            "path": "/project/data/evidence-aware-3d-representation-contract-0.1.json",
+            "bytes": 11044,
+            "sha256": "9fdf8eaf3f37c50835e78af19d86c3e95269aeb67f43461a23f8298132eb9195"
+          },
+          "dorsalHornRoutePack": {
+            "path": "/project/data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+            "bytes": 42226,
+            "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+          }
+        }
+      },
+      "representationStateCount": 9,
+      "representationStateIds": [
+        "OBS_RAW_TEXTURE",
+        "OBS_SEGMENTED_SURFACE",
+        "OBS_SKELETON",
+        "OBS_POINT",
+        "DER_RADIUS_SURFACE",
+        "INF_REFERENCE_GEOMETRY",
+        "SCH_PATH",
+        "SYN_DATA_GLYPH",
+        "UNAVAILABLE"
+      ],
+      "routeCount": 11,
+      "routeIds": [
+        "main.reference_anatomy",
+        "main.population_evidence",
+        "main.legacy_observed_cell_forms",
+        "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+        "microns_observed_reference",
+        "internal_reference",
+        "ronzano_premotor_positions",
+        "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003"
+      ],
+      "dorsalHornRouteCount": 4,
+      "dorsalHornRouteIds": [
+        "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003"
+      ],
+      "runtimeMetadataRequirements": [
+        "stableId",
+        "representationState",
+        "sourceFrame",
+        "sourceVersion",
+        "sourceReceiptSha256",
+        "cellMorphologyClaim",
+        "projectRegistrationCount",
+        "crossSourceIdentityCount"
+      ],
+      "internalReferenceStateIds": [
+        "UNAVAILABLE"
+      ],
+      "internalReferenceRenderedPrimitivePolicy": "zero_primitives",
+      "proceduralBiologicalProxyAllowed": false,
+      "missingLayerPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    "dorsalHornObservedMorphologyRoutePack": {
+      "contractId": "dorsal-horn-observed-morphology-route-pack-0.1",
+      "contractReleaseId": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "repository": {
+        "name": "NeuroMorpho.Org",
+        "release": "8.6.124",
+        "rrid": "RRID:SCR_002145",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "contractReceipt": {
+        "path": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 42226,
+        "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+      },
+      "supplementaryAssetManifestReceipt": {
+        "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/asset-manifest.json",
+        "assetSetId": "neuromorpho:8.6.124:dorsal-horn-observed-morphology-route-pack-v1",
+        "repositoryRelease": "8.6.124",
+        "bytes": 1696,
+        "sha256": "4f64fb595a4362cf0403cb0d3abc3c6fdc14b7f74d473a82ccd67bed9b9dab87",
+        "fileCount": 6,
+        "files": [
+          {
+            "path": "api/nmo-170035.json",
+            "kind": "official_api_snapshot",
+            "sha256": "c25b5869f0a6d1d4480cb29eeb4b9650f92b616881f2e1ec5d17aeafa5e9dae0",
+            "bytes": 1690,
+            "neuronId": 170035
+          },
+          {
+            "path": "api/nmo-249676.json",
+            "kind": "official_api_snapshot",
+            "sha256": "1c3b72a58ae13e60732dcd3abd42ba0b138b0754ae4d3bc701b68779eafac6f1",
+            "bytes": 1457,
+            "neuronId": 249676
+          },
+          {
+            "path": "geometry/nmo-170035.json",
+            "kind": "lazy_geometry",
+            "sha256": "bcaf0809846e3d93eed2b2ee153c2d679593ac5d77dea01a8d2ef86bd74a386c",
+            "bytes": 226483,
+            "neuronId": 170035
+          },
+          {
+            "path": "geometry/nmo-249676.json",
+            "kind": "lazy_geometry",
+            "sha256": "bece7d31c8bad28152278bbd0b0a36359c96cf2b03ff607f414bfe9716c31e67",
+            "bytes": 122358,
+            "neuronId": 249676
+          },
+          {
+            "path": "swc/nmo-170035.swc",
+            "kind": "standardized_swc",
+            "sha256": "73f85373bd426e8ef4dc0f95b73a61678ffb454d963ec292a403ad31a0f116a6",
+            "bytes": 76053,
+            "neuronId": 170035
+          },
+          {
+            "path": "swc/nmo-249676.swc",
+            "kind": "standardized_swc",
+            "sha256": "b5a96ebc6979f0022c70a26eaa6a5c060545a05d2164852a5a5dd8dc290f4f75",
+            "bytes": 41217,
+            "neuronId": 249676
+          }
+        ]
+      },
+      "frozenExemplarCount": 5,
+      "frozenCensusRecordCount": 142,
+      "routePackMembershipCount": 4,
+      "overlappingFrozenNeuronIds": [
+        104003,
+        108974
+      ],
+      "overlapCount": 2,
+      "supplementaryNeuronIds": [
+        170035,
+        249676
+      ],
+      "supplementaryRecordCount": 2,
+      "activeUniqueMorphologyCount": 8,
+      "namedDorsalHornRouteCount": 5,
+      "namedDorsalHornRouteIds": [
+        "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+        "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003"
+      ],
+      "censusExpansionCount": 0,
+      "routeMemberships": [
+        {
+          "routeId": "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+          "neuronId": 249676,
+          "assetId": "NeuroMorpho:249676",
+          "censusMembership": false,
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "geometryBytes": 122358,
+          "geometrySha256": "bece7d31c8bad28152278bbd0b0a36359c96cf2b03ff607f414bfe9716c31e67",
+          "swcBytes": 41217,
+          "swcSha256": "b5a96ebc6979f0022c70a26eaa6a5c060545a05d2164852a5a5dd8dc290f4f75",
+          "sourceDiameterAvailable": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+          "neuronId": 108974,
+          "assetId": "NeuroMorpho:108974",
+          "censusMembership": true,
+          "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+          "geometryBytes": 184927,
+          "geometrySha256": "e3c932a063b379c3e0606d0420ade0830210e7bb9c54e7b20830442e8334a25a",
+          "swcBytes": 62567,
+          "swcSha256": "0fc8e7050e455ed1f79fa5a8e4da304c69054fb5ddd0167fcb3970c5d4c0982d",
+          "sourceDiameterAvailable": true,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+          "neuronId": 170035,
+          "assetId": "NeuroMorpho:170035",
+          "censusMembership": false,
+          "sourceAuthority": "PINNED_NEUROMORPHO_RELEASE_8_6_124_SOURCE_OBJECT",
+          "geometryBytes": 226483,
+          "geometrySha256": "bcaf0809846e3d93eed2b2ee153c2d679593ac5d77dea01a8d2ef86bd74a386c",
+          "swcBytes": 76053,
+          "swcSha256": "73f85373bd426e8ef4dc0f95b73a61678ffb454d963ec292a403ad31a0f116a6",
+          "sourceDiameterAvailable": false,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        },
+        {
+          "routeId": "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003",
+          "neuronId": 104003,
+          "assetId": "NeuroMorpho:104003",
+          "censusMembership": true,
+          "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+          "geometryBytes": 13333,
+          "geometrySha256": "adb728c4f54c5c28042882f1708769964312cdb3f2bf087406969a6b4f41e034",
+          "swcBytes": 4454,
+          "swcSha256": "0f24943c43854cbe48f8bebfd4b45b905a5f897580d4dc25fd55c8ec9c4b8d8d",
+          "sourceDiameterAvailable": true,
+          "internalPrimitiveCount": 0,
+          "crossSourceIdentityCount": 0,
+          "projectRegistrationCount": 0
+        }
+      ],
+      "sourceDiameterAvailableCount": 2,
+      "sourceCompleteAxonCount": 0,
+      "sameSpecimenInternalStructureCount": 0,
+      "renderedInternalPrimitiveCount": 0,
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    }
+  },
+  "registrySummary": {
+    "canonicalSourcePackageCount": 24,
+    "canonicalRecordSetCount": 25,
+    "researchUpgradeCount": 118,
+    "sourceRegistryReceipt": {
+      "id": "researchSourceRegistry",
+      "scope": "project",
+      "path": "data/research-source-registry-0.1.json",
+      "purpose": "Canonical source and record-set registry",
+      "bytes": 84564,
+      "sha256": "3535f2e9b501743a3c432821bb2f944abcf18c6b68b1f02a0cccd52af0d9157b"
+    },
+    "upgradeRegistryReceipt": {
+      "id": "researchModelUpgradeRegistry",
+      "scope": "project",
+      "path": "data/research-model-upgrade-registry-0.1.json",
+      "purpose": "Deterministic research/model upgrade registry",
+      "bytes": 224132,
+      "sha256": "5d39f33d892b70fafe5b0fc3f48bd9413f65cb5af96a1ebcc515cdcf279e0b04"
+    },
+    "crossSourceIdentityCount": 0,
+    "registrationCount": 0,
+    "renderedInternalPrimitiveCount": 0
+  },
+  "scientificBoundaries": {
+    "selectedSpinalCellInternalStructure": "unavailable",
+    "micronsObservedReference": "The exact cell and nucleus are a visual-cortex cross-region reference. The outer segmentation boundary is not a molecular membrane. No anatomy, type, morphology, organelle, synapse or registration relationship to any spinal record is admitted.",
+    "ronzanoPremotorPositions": "Every primitive is one exact early-postnatal source coordinate row with no biological radius. Raw and normalized representations remain unpaired, source-local, measurement-forbidden, and unregistered; no soma, morphology, type, synapse, internal structure, adult placement, prevalence or census claim is admitted.",
+    "missingEvidence": "Missing or unavailable evidence generates zero primitives and is not biological absence.",
+    "measurementAllowed": false,
+    "alkaslasiCholinergicTaxonomy": "I1-I8 counts and Cervical, Thoracic, deposited Lumbar, M, F, and NA cross-tabs are exact source-row aggregates. Chat-Cre/Sun1 reporter history and FACS enrichment prohibit prevalence or unbiased-census claims. Sample-region values are not xyz coordinates. The source gzip and per-nucleus roster remain remote and unbundled; no morphology, internal structure, synapse, cross-source identity, or registration is admitted.",
+    "grpDorsalHornObservedMorphology": "NMO 109021 is an independent GRP::eGFP reporter-positive adult-mouse dorsal-horn source-local reconstruction. Moderate integrity and a 300 micrometre parasagittal slice cannot establish a complete arbor. Twelve original soma contours were averaged into twelve SWC points. The radius derivative is not membrane; no SCI entity, molecular profile, atlas placement, internal structure, synapse, cross-source identity or registration is admitted.",
+    "evidenceAware3dRepresentation": "Nine evidence states cover eleven routes. Every route exposes its representation authority and source receipt. Missing object geometry yields zero primitives; standardized soma points and radius derivatives are not membranes, nuclei or internal structures. Procedural biological proxies, cross-source identities and project registrations remain prohibited.",
+    "dorsalHornObservedMorphologyRoutePack": "The four route-pack records remain independent source-local reconstructions. NMO 104003 and 108974 reuse frozen census identities; NMO 170035 and 249676 are supplementary and do not expand the 142-record census. Co-display, shared markers or shared region labels create no same-cell, molecular-profile, SCI-entity, atlas or registration relationship. Missing diameters, axons, membranes, nuclei, organelles, synapses, receptors and ultrastructure remain explicitly unavailable and never authorize procedural biological geometry."
+  },
+  "manifestContentSha256": "f7bc56dfe6671b67f0fa8a5115faadf615e98e056d207894c75441fb3a5dc6e1"
+}

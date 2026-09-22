@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-source-release-admission-service-0.1.json",
+  "title": "OHRI public-source metadata release-admission review service 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogReleaseId", "manifestComposerReleaseId", "queueItemId", "title", "admissionDecision", "supportedManifestFormats", "reviewSemantics", "localRuntime", "scientificBoundary", "nextQueueItems"],
+  "properties": {
+    "releaseId": {"const": "ohri-public-source-release-admission-service-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "manifestComposerReleaseId": {"const": "ohri-public-file-admission-composer-0.1.0"},
+    "queueItemId": {"const": "UPG-006"},
+    "title": {"type": "string", "minLength": 1},
+    "admissionDecision": {"const": "not_admitted_pending_curator_object_and_rights_review"},
+    "supportedManifestFormats": {"type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true, "items": {"$ref": "#/$defs/manifestFormat"}},
+    "reviewSemantics": {"type": "object", "additionalProperties": false, "required": ["metadataCompleteStatus", "nonTerminalStatuses", "blockedActions"], "properties": {"metadataCompleteStatus": {"const": "metadata_complete_for_curator_review_only"}, "nonTerminalStatuses": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z_]+$"}}, "blockedActions": {"type": "array", "minItems": 7, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z_]+$"}}}},
+    "localRuntime": {"type": "object", "additionalProperties": false, "required": ["networkRequests", "sourceFileDownload", "sourceFileUpload", "metadataManifestImport", "persistentStorage", "output"], "properties": {"networkRequests": {"const": false}, "sourceFileDownload": {"const": false}, "sourceFileUpload": {"const": false}, "metadataManifestImport": {"const": true}, "persistentStorage": {"const": "none"}, "output": {"const": "browser_download_of_not_admitted_admission_review_receipt_json"}}},
+    "scientificBoundary": {"type": "string", "minLength": 1},
+    "nextQueueItems": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^UPG-[0-9]{3}$"}}
+  },
+  "$defs": {
+    "manifestFormat": {"type": "object", "additionalProperties": false, "required": ["formatVersion", "sourceId", "requiredChecks"], "properties": {"formatVersion": {"enum": ["0.7.0", "0.8.0"]}, "sourceId": {"enum": ["PDS-SPINALJ-PROCESSED", "PDS-CANOGOMEZ-2026"]}, "requiredChecks": {"type": "array", "minItems": 7, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z_]+$"}}}}
+  }
+}

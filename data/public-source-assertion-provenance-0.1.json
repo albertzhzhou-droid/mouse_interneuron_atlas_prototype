@@ -1,0 +1,27 @@
+{
+  "releaseId": "ohri-public-source-assertion-provenance-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "admissionServiceReleaseId": "ohri-public-source-release-admission-service-0.1.0",
+  "queueItemId": "UPG-018",
+  "title": "Public-source assertion provenance composer",
+  "assertionSourceStates": ["publisher_asserted", "curator_transcribed", "unresolved"],
+  "subjectKinds": ["declared_unacquired_source_object", "unknown_source_object"],
+  "evidenceLocatorKinds": ["publisher_object_url", "dataset_landing_page", "source_metadata_field", "curator_note"],
+  "claimScopes": ["manifest_identity", "object_locator", "declared_source_checksum", "coordinate_metadata", "specimen_metadata", "preprint_status", "asset_rights_metadata", "local_verification_missingness"],
+  "nonPromotion": {
+    "admissionDecision": "not_admitted_pending_curator_object_and_rights_review",
+    "verificationStatus": "not_locally_verified",
+    "blockedActions": ["source_object_acquisition", "source_object_bundling", "local_checksum_calculation", "reuse_authorization", "coordinate_transform", "registration", "automatic_public_release"],
+    "forbiddenAssertionStates": ["locally_verified", "asset_admitted", "reuse_authorized", "source_object_acquired", "registered"]
+  },
+  "localRuntime": {
+    "networkRequests": false,
+    "sourceFileDownload": false,
+    "sourceFileUpload": false,
+    "persistentStorage": "none",
+    "output": "browser_download_of_assertion_provenance_receipt_json"
+  },
+  "scientificBoundary": "This composer records a curator-supplied provenance statement about an imported metadata manifest. It does not authenticate a publisher assertion, inspect or acquire a source object, calculate a local checksum, grant rights, establish biological truth, create a cross-study relationship, transform coordinates, or create REG.",
+  "nextQueueItems": ["UPG-001", "UPG-002", "UPG-008", "UPG-010", "UPG-011", "UPG-019"]
+}

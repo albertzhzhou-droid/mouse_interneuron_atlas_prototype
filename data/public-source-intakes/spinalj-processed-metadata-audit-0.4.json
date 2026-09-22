@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "0.4.0",
+  "intakeId": "PSI-SPINALJ-PROCESSED-2026-08-18",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "sourceId": "PDS-SPINALJ-PROCESSED",
+  "auditDate": "2026-08-18",
+  "auditScope": "public_landing_page_and_protocol_metadata_only",
+  "publicSourceEvidence": {
+    "records": [
+      {
+        "id": "PSE-SPINALJ-LANDING",
+        "kind": "dataset_landing_page",
+        "url": "https://data.mendeley.com/datasets/mkc37w4rrv/1",
+        "accessVerifiedOn": "2026-08-18",
+        "use": "Primary public record for the processed example dataset, version, stated license and declared pipeline version."
+      },
+      {
+        "id": "PSE-SPINALJ-PROTOCOL",
+        "kind": "protocol",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8605391/",
+        "accessVerifiedOn": "2026-08-18",
+        "use": "Method context and reported example output-tree context; not a substitute for a file-level inventory."
+      },
+      {
+        "id": "PSE-SPINALJ-REPOSITORY",
+        "kind": "software_repository_context",
+        "url": "https://github.com/felixfiederling/SpinalJ",
+        "accessVerifiedOn": "2026-08-18",
+        "use": "Software provenance context only. This audit does not infer that the current repository state reproduces the processed dataset."
+      }
+    ],
+    "reportedFacts": [
+      {
+        "id": "PSF-001",
+        "evidenceRecordId": "PSE-SPINALJ-LANDING",
+        "evidenceClass": "landing_page_metadata",
+        "statement": "The public record identifies SpinalJ_example_data_processed as Mendeley Data version 1, DOI 10.17632/mkc37w4rrv.1, published 2021-07-19."
+      },
+      {
+        "id": "PSF-002",
+        "evidenceRecordId": "PSE-SPINALJ-LANDING",
+        "evidenceClass": "landing_page_metadata",
+        "statement": "The public landing page records a CC BY 4.0 license for the dataset record."
+      },
+      {
+        "id": "PSF-003",
+        "evidenceRecordId": "PSE-SPINALJ-LANDING",
+        "evidenceClass": "landing_page_metadata",
+        "statement": "The landing page describes preprocessed images, intermediate files, and outputs of registration, atlas mapping, and analysis derived from raw data."
+      },
+      {
+        "id": "PSF-004",
+        "evidenceRecordId": "PSE-SPINALJ-LANDING",
+        "evidenceClass": "landing_page_metadata",
+        "statement": "The landing page states that the processed outputs were generated with SpinalJ v1.13."
+      },
+      {
+        "id": "PSF-005",
+        "evidenceRecordId": "PSE-SPINALJ-PROTOCOL",
+        "evidenceClass": "protocol_context",
+        "statement": "The protocol reports distinct processed-section, enhancement, transform, and analysis output groups for its example workflow; these descriptions are context, not a verified manifest for this release."
+      },
+      {
+        "id": "PSF-006",
+        "evidenceRecordId": "PSE-SPINALJ-REPOSITORY",
+        "evidenceClass": "unresolved",
+        "statement": "No repository tag or commit is pinned by this metadata-only audit, so no current repository version may be silently substituted for the dataset-declared SpinalJ v1.13."
+      }
+    ]
+  },
+  "acquisition": {
+    "status": "not_downloaded",
+    "remoteAcquisitionAttempted": false,
+    "candidateFilesEnumerated": false,
+    "fileHashes": [],
+    "bundledAssetCount": 0,
+    "decision": "hold_for_file_manifest"
+  },
+  "coordinates": {
+    "sourceCoordinateAuthority": "SOURCE_LOCAL_OBS",
+    "nativeCoordinateMetadataStatus": "not_file_verified",
+    "transformStatus": "not_file_verified",
+    "projectRegistrationStatus": "not_proposed",
+    "projectRegistrationCount": 0
+  },
+  "rights": {
+    "landingPageLicense": "CC BY 4.0",
+    "fileLevelReuseDecision": "pending_file_level_manifest",
+    "bundleAuthorized": false,
+    "publicHostingAuthorized": false
+  },
+  "softwareProvenance": {
+    "datasetDeclaredSoftwareVersion": "SpinalJ v1.13",
+    "repositoryVersionDecision": "not_pinned_by_this_metadata_audit",
+    "compatibilityDecision": "unresolved_do_not_substitute_a_repository_version"
+  },
+  "admission": {
+    "status": "metadata_audited_not_admitted",
+    "outcome": "public_metadata_is_recorded_but_no_candidate_file_or_transform_is_admitted",
+    "nextQueueItem": "UPG-001"
+  },
+  "requiredBeforeFileAdmission": [
+    "A stable file-level inventory with exact object names, sizes, MIME or format, and a source URL for every candidate asset.",
+    "A SHA-256 or independently reproducible checksum record for every acquired candidate file.",
+    "Native image dimensions, physical spacing, axis orientation, coordinate origin, and channel semantics verified from the acquired files and source documentation.",
+    "Transform files and their source-to-target coordinate-space declarations, without inferring a transform from visual resemblance.",
+    "A documented training-landmark set and a disjoint held-out landmark set with physical-space error calculation.",
+    "An asset-level reuse, attribution, derivative-distribution, and public-hosting decision that does not rely solely on landing-page metadata.",
+    "A curator-reviewed decision that the acquired asset may enter a source-local benchmark build; this decision cannot register unrelated project entities or NeuroMorpho SWCs."
+  ],
+  "scientificBoundaries": [
+    "This record is metadata-only and includes zero downloaded candidate files, zero file hashes, and zero bundled assets.",
+    "SOURCE_LOCAL_OBS names the possible authority of future acquired source outputs; it is not a project atlas coordinate system or a REG grant.",
+    "No transform has been inspected or validated, so no source object, evidence entity, or NeuroMorpho SWC is registered by this intake.",
+    "The dataset-declared SpinalJ v1.13 is preserved as provenance; a repository version is not assumed compatible until a commit or tag is explicitly pinned and reproduced."
+  ]
+}

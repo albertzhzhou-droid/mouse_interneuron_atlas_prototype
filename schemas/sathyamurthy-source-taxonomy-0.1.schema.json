@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/sathyamurthy-source-taxonomy-0.1.schema.json",
+  "title": "Sathyamurthy 2018 source-local adult mouse lumbar spinal neuronal taxonomy 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "releaseId",
+    "schemaVersion",
+    "releaseDate",
+    "datasetId",
+    "coordinateAuthority",
+    "source",
+    "scope",
+    "sourceLocators",
+    "rawLabelAnomalies",
+    "profiles",
+    "candidateLineageMappings",
+    "hardBoundaries"
+  ],
+  "properties": {
+    "releaseId": {"const": "ohri-sathyamurthy-source-taxonomy-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "releaseDate": {"type": "string", "format": "date"},
+    "datasetId": {"const": "GSE103892"},
+    "coordinateAuthority": {"const": "SOURCE_LOCAL_TYPE_ONLY"},
+    "source": {"$ref": "#/$defs/source"},
+    "scope": {"$ref": "#/$defs/scope"},
+    "sourceLocators": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/sourceLocator"}
+    },
+    "rawLabelAnomalies": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {"$ref": "#/$defs/rawLabelAnomaly"}
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 43,
+      "maxItems": 43,
+      "items": {"$ref": "#/$defs/profile"}
+    },
+    "candidateLineageMappings": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/candidateLineageMapping"}
+    },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 10,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 20}
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication", "geo"],
+      "properties": {
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "citation", "doi", "pmcid", "articleUrl", "license"],
+          "properties": {
+            "id": {"const": "SATHYAMURTHY-2018"},
+            "citation": {"type": "string", "minLength": 80},
+            "doi": {"const": "10.1016/j.celrep.2018.02.003"},
+            "pmcid": {"const": "PMC5849084"},
+            "articleUrl": {"const": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5849084/"},
+            "license": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "url", "appliesTo", "sourceLocatorIds", "rightsBoundary"],
+              "properties": {
+                "id": {"const": "CC-BY-NC-ND-4.0"},
+                "url": {"const": "https://creativecommons.org/licenses/by-nc-nd/4.0/"},
+                "appliesTo": {"const": "article"},
+                "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+                "rightsBoundary": {"type": "string", "minLength": 80}
+              }
+            }
+          }
+        },
+        "geo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "accession", "recordUrl", "overallDesign", "sampleFrame", "clusterMetadataAsset"],
+          "properties": {
+            "id": {"const": "GSE103892"},
+            "accession": {"const": "GSE103892"},
+            "recordUrl": {"const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103892"},
+            "overallDesign": {"type": "string", "minLength": 80},
+            "sampleFrame": {"$ref": "#/$defs/sampleFrame"},
+            "clusterMetadataAsset": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "fileName",
+                "downloadUrl",
+                "geoDisplayedSize",
+                "bytes",
+                "sha256",
+                "retrievedOn",
+                "rowsWithNeuronCluster",
+                "genericNeuronRows",
+                "assignedProfileRows",
+                "sourceFileBundled",
+                "derivedFactualMetadataBundled",
+                "reuseStatus",
+                "sourceLocatorIds",
+                "rightsBoundary"
+              ],
+              "properties": {
+                "id": {"const": "GSE103892_CLUSTER_METADATA"},
+                "fileName": {"const": "GSE103892_Sample_Cell_Cluster_Information.txt.gz"},
+                "downloadUrl": {"const": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE103nnn/GSE103892/suppl/GSE103892_Sample_Cell_Cluster_Information.txt.gz"},
+                "geoDisplayedSize": {"const": "111.9 KB"},
+                "bytes": {"const": 114576},
+                "sha256": {"const": "2a22f9b19db27c43dc6632e15395d63a4eb8b0087d1ac5b491411c01d1e41d30"},
+                "retrievedOn": {"type": "string", "format": "date"},
+                "rowsWithNeuronCluster": {"const": 5369},
+                "genericNeuronRows": {"const": 1089},
+                "assignedProfileRows": {"const": 4280},
+                "sourceFileBundled": {"const": false},
+                "derivedFactualMetadataBundled": {"const": true},
+                "reuseStatus": {"const": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED"},
+                "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+                "rightsBoundary": {"type": "string", "minLength": 100}
+              }
+            }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "speciesTaxonId",
+        "lifeStage",
+        "spinalRegion",
+        "modality",
+        "reportedClusterCount",
+        "displayedProfileCount",
+        "reportedNeuronalNucleiCount",
+        "observedAssignedNeuronalNucleiCount",
+        "samplingCountInterpretation",
+        "displayedNonMotorNeuronUnresolvedCount",
+        "displayedMotorNeuronContextCount",
+        "exactCrossSourceIdentityCount",
+        "projectRegistrationCount"
+      ],
+      "properties": {
+        "species": {"const": "Mus musculus"},
+        "speciesTaxonId": {"const": 10090},
+        "lifeStage": {"const": "adult"},
+        "spinalRegion": {"const": "lumbar spinal cord"},
+        "modality": {"const": "single-nucleus RNA sequencing"},
+        "reportedClusterCount": {"const": 43},
+        "displayedProfileCount": {"const": 43},
+        "reportedNeuronalNucleiCount": {"const": 4280},
+        "observedAssignedNeuronalNucleiCount": {"const": 4280},
+        "samplingCountInterpretation": {"const": "SAMPLING_COUNT_ONLY_NOT_PREVALENCE"},
+        "displayedNonMotorNeuronUnresolvedCount": {"const": 42},
+        "displayedMotorNeuronContextCount": {"const": 1},
+        "exactCrossSourceIdentityCount": {"const": 0},
+        "projectRegistrationCount": {"const": 0}
+      }
+    },
+    "sourceLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceObjectId", "locator", "supportsFields", "evidenceStatus"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "sourceObjectId": {"enum": ["SATHYAMURTHY-2018", "GSE103892", "GSE103892_CLUSTER_METADATA"]},
+        "locator": {"type": "string", "minLength": 30},
+        "supportsFields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "adultMouseLumbarScope",
+              "sourceLocalLabel",
+              "rawLabels",
+              "regionClass",
+              "transmitterClass",
+              "projectUseClass",
+              "samplingCount",
+              "putativeCellTypeLabel",
+              "putativeAssignmentStatus",
+              "figure4Markers",
+              "activityEvidence",
+              "lineageHint",
+              "sampleFrame",
+              "missingEvidence",
+              "rightsBoundary"
+            ]
+          }
+        },
+        "evidenceStatus": {"enum": ["direct", "contextual", "not_measured", "rights_boundary"]}
+      }
+    },
+    "rawLabelAnomaly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawLabel", "displayLabel", "rowCount", "kind", "sourceLocatorIds", "boundary"],
+      "properties": {
+        "rawLabel": {"const": "DE12"},
+        "displayLabel": {"const": "DE-12"},
+        "rowCount": {"const": 74},
+        "kind": {"const": "SOURCE_PUNCTUATION_ANOMALY"},
+        "sourceLocatorIds": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+        },
+        "boundary": {"type": "string", "minLength": 60}
+      }
+    },
+    "samplingCount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "interpretation"],
+      "properties": {
+        "value": {"type": "integer", "minimum": 1},
+        "unit": {"const": "nuclei"},
+        "interpretation": {"const": "sampling_count_only"}
+      }
+    },
+    "sampleFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strain",
+        "ageWeeks",
+        "sex",
+        "conditionSexBreakdown",
+        "geoAccessionCount",
+        "independentDropSeqSampleCount",
+        "baselineIndependentSampleCount",
+        "formalinIndependentSampleCount",
+        "rotarodIndependentSampleCount",
+        "formalinSequencingReactionCount",
+        "micePerPooledSample",
+        "derivedMouseCountFromReportedPooling",
+        "sourceLocatorIds",
+        "interpretationBoundary"
+      ],
+      "properties": {
+        "strain": {"const": "ICR/CD-1"},
+        "ageWeeks": {"const": "8-12"},
+        "sex": {"const": "balanced male and female samples"},
+        "conditionSexBreakdown": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["baseline", "formalin", "rotarod"],
+          "properties": {
+            "baseline": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["malePooledSamples", "femalePooledSamples"],
+              "properties": {
+                "malePooledSamples": {"const": 4},
+                "femalePooledSamples": {"const": 5}
+              }
+            },
+            "formalin": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["malePooledSamples", "femalePooledSamples"],
+              "properties": {
+                "malePooledSamples": {"const": 3},
+                "femalePooledSamples": {"const": 2}
+              }
+            },
+            "rotarod": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["malePooledSamples", "femalePooledSamples"],
+              "properties": {
+                "malePooledSamples": {"const": 3},
+                "femalePooledSamples": {"const": 2}
+              }
+            }
+          }
+        },
+        "geoAccessionCount": {"const": 24},
+        "independentDropSeqSampleCount": {"const": 19},
+        "baselineIndependentSampleCount": {"const": 9},
+        "formalinIndependentSampleCount": {"const": 5},
+        "rotarodIndependentSampleCount": {"const": 5},
+        "formalinSequencingReactionCount": {"const": 10},
+        "micePerPooledSample": {"const": 2},
+        "derivedMouseCountFromReportedPooling": {"const": 38},
+        "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "interpretationBoundary": {"type": "string", "minLength": 160}
+      }
+    },
+    "activityEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context", "finding", "sourceLocatorIds", "interpretationBoundary"],
+      "properties": {
+        "context": {"enum": ["rotarod_locomotion", "formalin_hindpaw"]},
+        "finding": {"enum": ["activity_induced_transcription_associated", "not_detected"]},
+        "sourceLocatorIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+        },
+        "interpretationBoundary": {"type": "string", "minLength": 60}
+      }
+    },
+    "missingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["morphology", "cellCoordinates", "sciContext", "atlasRegistration", "electrophysiology", "projectionTarget", "synapticConnectivity", "crossSourceSameCellIdentityLink"],
+      "properties": {
+        "morphology": {"const": "not_measured"},
+        "cellCoordinates": {"const": "not_available"},
+        "sciContext": {"const": "not_measured"},
+        "atlasRegistration": {"const": "not_established"},
+        "electrophysiology": {"const": "not_measured"},
+        "projectionTarget": {"const": "not_measured"},
+        "synapticConnectivity": {"const": "not_measured"},
+        "crossSourceSameCellIdentityLink": {"const": "not_established"}
+      }
+    },
+    "fieldLocators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adultMouseLumbarScope",
+        "sourceLocalLabel",
+        "rawLabels",
+        "regionClass",
+        "transmitterClass",
+        "projectUseClass",
+        "samplingCount",
+        "putativeCellTypeLabel",
+        "putativeAssignmentStatus",
+        "figure4Markers",
+        "activityEvidence",
+        "missingEvidence"
+      ],
+      "properties": {
+        "adultMouseLumbarScope": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "sourceLocalLabel": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "rawLabels": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "regionClass": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "transmitterClass": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "projectUseClass": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "samplingCount": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "putativeCellTypeLabel": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "putativeAssignmentStatus": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "figure4Markers": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "activityEvidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+        },
+        "missingEvidence": {"$ref": "#/$defs/nonEmptyLocatorIds"}
+      }
+    },
+    "nonEmptyLocatorIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceLocalLabel",
+        "rawLabels",
+        "regionClass",
+        "transmitterClass",
+        "projectUseClass",
+        "samplingCount",
+        "putativeCellTypeLabel",
+        "putativeAssignmentStatus",
+        "figure4Markers",
+        "activityEvidence",
+        "missingEvidence",
+        "fieldLocators"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^sathyamurthy-2018:(DE|DI|ME|MI|VE|VI|VM|VC)-[0-9]+$"},
+        "sourceLocalLabel": {"type": "string", "pattern": "^(DE|DI|ME|MI|VE|VI|VM|VC)-[0-9]+$"},
+        "rawLabels": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {"type": "string", "pattern": "^(DE12|(DE|DI|ME|MI|VE|VI|VM|VC)-[0-9]+)$"}
+        },
+        "regionClass": {"enum": ["dorsal", "mid", "ventral"]},
+        "transmitterClass": {"enum": ["excitatory", "inhibitory", "mixed_cluster", "cholinergic_predominantly_excitatory"]},
+        "projectUseClass": {"enum": ["source_local_non_motor_neuron_unresolved", "motor_neuron_context"]},
+        "samplingCount": {"$ref": "#/$defs/samplingCount"},
+        "putativeCellTypeLabel": {"type": "string", "minLength": 1},
+        "putativeAssignmentStatus": {"const": "source_putative_not_exact_identity"},
+        "figure4Markers": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"}
+        },
+        "activityEvidence": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/activityEvidence"}
+        },
+        "missingEvidence": {"$ref": "#/$defs/missingEvidence"},
+        "fieldLocators": {"$ref": "#/$defs/fieldLocators"}
+      }
+    },
+    "candidateLineageMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceProfileId",
+        "candidateTargetNamespace",
+        "candidateTargetLabel",
+        "mappingStatus",
+        "basis",
+        "sourceLocatorIds",
+        "reason",
+        "notEstablished"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^sathyamurthy-2018\\.mapping\\.[a-z0-9-]+\\.[a-z0-9-]+$"},
+        "sourceProfileId": {"type": "string", "pattern": "^sathyamurthy-2018:(VE|VI|VC)-[0-9]+$"},
+        "candidateTargetNamespace": {"const": "embryonic_lineage_context"},
+        "candidateTargetLabel": {"enum": ["V2a", "V1", "dI6", "V0c"]},
+        "mappingStatus": {"const": "not_established"},
+        "basis": {"const": "marker_context_only"},
+        "sourceLocatorIds": {"$ref": "#/$defs/nonEmptyLocatorIds"},
+        "reason": {"type": "string", "minLength": 50},
+        "notEstablished": {"type": "string", "minLength": 70}
+      }
+    }
+  }
+}

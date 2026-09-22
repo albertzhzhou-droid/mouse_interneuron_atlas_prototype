@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/research-iteration-manifest-2.34.schema.json",
+  "title": "OHRI mouse interneuron research iteration manifest 2.34",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestSchemaVersion",
+    "releaseId",
+    "releaseDate",
+    "releaseStatus",
+    "application",
+    "baseResearchRelease",
+    "authoritativeInputs",
+    "inputRoots",
+    "integrity",
+    "registrations",
+    "exactReferences",
+    "registrySummary",
+    "scientificBoundaries",
+    "manifestContentSha256",
+    "parentIterationManifest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "authoritativeInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "path", "purpose", "bytes", "sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "scope": { "enum": ["project", "scientificAuthority"] },
+        "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)" },
+        "purpose": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "universeIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "sourceRepository",
+        "repositoryRelease",
+        "query",
+        "queryRecordCount",
+        "uniqueNeuronIdCount",
+        "admittedSourceObjectCount",
+        "quarantinedSourceObjectCount",
+        "frozenAdultSubsetCount",
+        "existingGeometryReferenceCount",
+        "deltaRawSwcCount",
+        "geometryCopyCount",
+        "sourceLabelled3DCount",
+        "sourceLabelled2DCount",
+        "diameterAuthorizedCount",
+        "diameterUnavailableCount",
+        "axonDomainCount",
+        "completeAxonClaimCount",
+        "registrationCount",
+        "sameSpecimenInternalStructureCount",
+        "paperCount",
+        "archiveCount",
+        "duplicateRawSwcGroupCount",
+        "duplicateCanonicalGeometryGroupCount",
+        "officialApiPageRecordCounts",
+        "assetManifestDeclaredFileCount",
+        "runtimeRosterCount",
+        "contractReceipt",
+        "rosterReceipt",
+        "indexReceipt",
+        "assetManifestReceipt",
+        "quarantineReceipt",
+        "builderReceipt",
+        "schemaReceipt",
+        "validatorReceipt",
+        "runtimeReceipt",
+        "panelReceipt",
+        "viewerReceipt",
+        "focusResolverReceipt",
+        "atlasIntegrationReceipt",
+        "adultAndNoDiameterSameCountButIndependentSets",
+        "oldGeometryClearedBeforeLoad",
+        "unknownFocusFailsClosed",
+        "sourceZPreservedWithoutInferredExtrusion",
+        "sourceDiameterGateRetained",
+        "atlasRegistrationCount",
+        "crossSourceIdentityCount",
+        "generatedGeometryCopyCount",
+        "projectCopyCount",
+        "packageCopyCount"
+      ],
+      "properties": {
+        "contractId": { "const": "ohri-neuromorpho-no-age-query-universe-integrity-2.34" },
+        "sourceRepository": { "const": "NeuroMorpho.Org" },
+        "repositoryRelease": { "const": "8.6.124" },
+        "query": { "type": "object" },
+        "queryRecordCount": { "const": 1097 },
+        "uniqueNeuronIdCount": { "const": 1097 },
+        "admittedSourceObjectCount": { "const": 1097 },
+        "quarantinedSourceObjectCount": { "const": 0 },
+        "frozenAdultSubsetCount": { "const": 142 },
+        "existingGeometryReferenceCount": { "const": 149 },
+        "deltaRawSwcCount": { "const": 948 },
+        "geometryCopyCount": { "const": 0 },
+        "sourceLabelled3DCount": { "const": 1058 },
+        "sourceLabelled2DCount": { "const": 39 },
+        "diameterAuthorizedCount": { "const": 955 },
+        "diameterUnavailableCount": { "const": 142 },
+        "axonDomainCount": { "const": 253 },
+        "completeAxonClaimCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "sameSpecimenInternalStructureCount": { "const": 0 },
+        "paperCount": { "const": 12 },
+        "archiveCount": { "const": 5 },
+        "duplicateRawSwcGroupCount": { "const": 0 },
+        "duplicateCanonicalGeometryGroupCount": { "const": 0 },
+        "officialApiPageRecordCounts": { "const": [500, 500, 97] },
+        "assetManifestDeclaredFileCount": { "const": 953 },
+        "runtimeRosterCount": { "const": 1097 },
+        "contractReceipt": { "$ref": "#/$defs/receipt" },
+        "rosterReceipt": { "$ref": "#/$defs/receipt" },
+        "indexReceipt": { "$ref": "#/$defs/receipt" },
+        "assetManifestReceipt": { "$ref": "#/$defs/receipt" },
+        "quarantineReceipt": { "$ref": "#/$defs/receipt" },
+        "builderReceipt": { "$ref": "#/$defs/receipt" },
+        "schemaReceipt": { "$ref": "#/$defs/receipt" },
+        "validatorReceipt": { "$ref": "#/$defs/receipt" },
+        "runtimeReceipt": { "$ref": "#/$defs/receipt" },
+        "panelReceipt": { "$ref": "#/$defs/receipt" },
+        "viewerReceipt": { "$ref": "#/$defs/receipt" },
+        "focusResolverReceipt": { "$ref": "#/$defs/receipt" },
+        "atlasIntegrationReceipt": { "$ref": "#/$defs/receipt" },
+        "adultAndNoDiameterSameCountButIndependentSets": { "const": true },
+        "oldGeometryClearedBeforeLoad": { "const": true },
+        "unknownFocusFailsClosed": { "const": true },
+        "sourceZPreservedWithoutInferredExtrusion": { "const": true },
+        "sourceDiameterGateRetained": { "const": true },
+        "atlasRegistrationCount": { "const": 0 },
+        "crossSourceIdentityCount": { "const": 0 },
+        "generatedGeometryCopyCount": { "const": 0 },
+        "projectCopyCount": { "const": 0 },
+        "packageCopyCount": { "const": 0 }
+      }
+    }
+  },
+  "properties": {
+    "manifestSchemaVersion": { "const": "2.34.0" },
+    "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.34.0" },
+    "releaseDate": { "const": "2026-09-01" },
+    "releaseStatus": { "type": "string", "minLength": 1 },
+    "application": {
+      "type": "object",
+      "required": ["version"],
+      "properties": { "version": { "const": "2.34.0-research.1" } }
+    },
+    "baseResearchRelease": { "type": "object" },
+    "authoritativeInputs": {
+      "type": "array",
+      "minItems": 102,
+      "maxItems": 102,
+      "items": { "$ref": "#/$defs/authoritativeInput" }
+    },
+    "inputRoots": { "type": "object" },
+    "integrity": {
+      "type": "object",
+      "required": ["inputCount"],
+      "properties": { "inputCount": { "const": 102 } }
+    },
+    "registrations": {
+      "const": { "count": 0, "records": [] }
+    },
+    "exactReferences": {
+      "type": "object",
+      "required": ["neuromorphoNoAgeQueryUniverseIntegrity"],
+      "properties": {
+        "neuromorphoNoAgeQueryUniverseIntegrity": { "$ref": "#/$defs/universeIntegrity" }
+      }
+    },
+    "registrySummary": {
+      "type": "object",
+      "required": ["researchUpgradeCount"],
+      "properties": { "researchUpgradeCount": { "const": 155 } }
+    },
+    "scientificBoundaries": {
+      "type": "object",
+      "required": ["neuromorphoNoAgeQueryUniverseIntegrity"],
+      "properties": {
+        "neuromorphoNoAgeQueryUniverseIntegrity": { "type": "string", "minLength": 200 }
+      }
+    },
+    "manifestContentSha256": { "$ref": "#/$defs/sha256" },
+    "parentIterationManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "releaseId", "bytes", "fileSha256", "contentSha256"],
+      "properties": {
+        "path": { "const": "data/research-iteration-manifest-2.33.json" },
+        "releaseId": { "const": "ohri-mouse-interneuron-research-iteration-2.33.0" },
+        "bytes": { "const": 109358 },
+        "fileSha256": { "const": "6b2c1571c8dccf5aeced3518435dfe4bf0bff4c605f9a9255524299d72dda081" },
+        "contentSha256": { "const": "1b4632ea19ea00b27422408bf96d4dabe39e7e23330d6511fe4b6ccdafa6752f" }
+      }
+    }
+  }
+}

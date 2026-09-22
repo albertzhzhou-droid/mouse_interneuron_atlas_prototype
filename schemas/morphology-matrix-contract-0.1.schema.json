@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/morphology-matrix-contract-0.1.schema.json",
+  "title": "Morphology matrix contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releaseId", "releasedAt", "upgradeId", "applicationRelease", "title", "purpose", "sourceObjects", "denominators", "matrix", "comparator", "radiusGate", "internalDetailGate", "microdetailCoverage", "hardBoundaries"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "pinnedObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^/data/" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-morphology-matrix-contract-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "upgradeId": { "const": "UPG-098" },
+    "applicationRelease": { "const": "2.19.0-research.1" },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "sourceObjects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["censusIndex", "analysisIndex", "repository", "repositoryRelease", "repositoryRrid", "license", "rightsUrl"],
+      "properties": {
+        "censusIndex": { "$ref": "#/$defs/pinnedObject" },
+        "analysisIndex": { "$ref": "#/$defs/pinnedObject" },
+        "repository": { "const": "NeuroMorpho.Org" },
+        "repositoryRelease": { "const": "8.6.124" },
+        "repositoryRrid": { "const": "RRID:SCR_002145" },
+        "license": { "type": "string", "minLength": 1 },
+        "rightsUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "denominators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["queryRecordCount", "admittedGeometryCount", "threeDimensionalCount", "twoDimensionalCount", "sourceDiameterAvailableCount", "sourceDiameterUnavailableCount", "axonFieldPresentCount", "sourceType2NodeCount", "completeAxonCount", "sameSpecimenInternalStructureCount", "registrationCount", "sourcePaperCount", "archiveCount", "analysisCohortCount"],
+      "properties": {
+        "queryRecordCount": { "const": 142 },
+        "admittedGeometryCount": { "const": 142 },
+        "threeDimensionalCount": { "const": 140 },
+        "twoDimensionalCount": { "const": 2 },
+        "sourceDiameterAvailableCount": { "const": 94 },
+        "sourceDiameterUnavailableCount": { "const": 48 },
+        "axonFieldPresentCount": { "const": 45 },
+        "sourceType2NodeCount": { "const": 269611 },
+        "completeAxonCount": { "const": 0 },
+        "sameSpecimenInternalStructureCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "sourcePaperCount": { "const": 5 },
+        "archiveCount": { "const": 2 },
+        "analysisCohortCount": { "const": 7 }
+      }
+    },
+    "matrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectionAlgorithmId", "projectionPlanes", "authority", "coordinatePolicy", "displayScalePolicy", "apparentSizeComparable", "centrelineOnly", "pageSize", "selectableRecordCount"],
+      "properties": {
+        "projectionAlgorithmId": { "const": "source_local_orthographic_segment_projection_v1" },
+        "projectionPlanes": { "type": "array", "minItems": 3, "maxItems": 3, "prefixItems": [{ "const": "xy" }, { "const": "xz" }, { "const": "yz" }], "items": false },
+        "authority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "coordinatePolicy": { "const": "exact_source_coordinates_no_rotation_no_smoothing_no_resampling" },
+        "displayScalePolicy": { "const": "fit_per_record" },
+        "apparentSizeComparable": { "const": false },
+        "centrelineOnly": { "const": true },
+        "pageSize": { "const": 12 },
+        "selectableRecordCount": { "const": 142 }
+      }
+    },
+    "comparator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimumSelections", "maximumSelections", "uniqueSelectionsRequired", "relationshipClass", "viewportPolicy", "cameraPolicy", "defaultMode", "metricCount", "shollShellStepMicrometre", "exports", "registrationCount"],
+      "properties": {
+        "minimumSelections": { "const": 2 },
+        "maximumSelections": { "const": 4 },
+        "uniqueSelectionsRequired": { "const": true },
+        "relationshipClass": { "const": "co_display_only" },
+        "viewportPolicy": { "const": "separate_independent_source_frames" },
+        "cameraPolicy": { "const": "independent_auto_fit" },
+        "defaultMode": { "const": "observed_swc_centerlines" },
+        "metricCount": { "const": 7 },
+        "shollShellStepMicrometre": { "const": 10 },
+        "exports": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "json_receipt" }, { "const": "csv_metrics" }], "items": false },
+        "registrationCount": { "const": 0 }
+      }
+    },
+    "radiusGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputAuthority", "outputAuthority", "algorithmId", "sourceDiameterRequired", "noDiameterFallback", "noDiameterSurfacePrimitiveCount", "membraneClaim"],
+      "properties": {
+        "inputAuthority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "outputAuthority": { "const": "DERIVED_FROM_OBSERVED_RADIUS" },
+        "algorithmId": { "const": "tapered_hexagonal_frustum_per_swc_edge_v1" },
+        "sourceDiameterRequired": { "const": true },
+        "noDiameterFallback": { "const": "observed_swc_centerlines" },
+        "noDiameterSurfacePrimitiveCount": { "const": 0 },
+        "membraneClaim": { "const": false }
+      }
+    },
+    "internalDetailGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sameSpecimenStatus", "renderedPrimitiveCount", "missingEvidence"],
+      "properties": {
+        "sameSpecimenStatus": { "const": "UNAVAILABLE" },
+        "renderedPrimitiveCount": { "const": 0 },
+        "missingEvidence": { "type": "array", "minItems": 6, "uniqueItems": true, "items": { "enum": ["membrane_segmentation", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "ultrastructure"] } }
+      }
+    },
+    "microdetailCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["upgradeId", "algorithmId", "recordCoverageCount", "axisOrder", "statusVocabulary", "sourceDerivedAxis", "sameSpecimenInternalAxes", "sameSpecimenInternalObservedCount", "sameSpecimenInternalDerivedCount", "registrationObservedCount", "missingEvidenceGeneratesZeroPrimitives", "relationshipClass", "conflictPolicy", "unavailableInterpretation"],
+      "properties": {
+        "upgradeId": { "const": "UPG-103" },
+        "algorithmId": { "const": "source_record_microdetail_coverage_v1" },
+        "recordCoverageCount": { "const": 142 },
+        "axisOrder": {
+          "type": "array",
+          "minItems": 13,
+          "maxItems": 13,
+          "prefixItems": [
+            { "const": "centerline_topology" },
+            { "const": "neurite_type_annotations" },
+            { "const": "axon_field" },
+            { "const": "diameter_input" },
+            { "const": "radius_derived_surface" },
+            { "const": "soma_contour" },
+            { "const": "plasma_membrane" },
+            { "const": "nucleus" },
+            { "const": "organelles" },
+            { "const": "synaptic_boutons" },
+            { "const": "receptor_distribution" },
+            { "const": "synaptic_partners" },
+            { "const": "atlas_placement" }
+          ],
+          "items": false
+        },
+        "statusVocabulary": { "type": "array", "minItems": 3, "maxItems": 3, "prefixItems": [{ "const": "OBS" }, { "const": "DERIVED" }, { "const": "UNAVAILABLE" }], "items": false },
+        "sourceDerivedAxis": { "const": "radius_derived_surface" },
+        "sameSpecimenInternalAxes": { "type": "array", "minItems": 7, "maxItems": 7, "uniqueItems": true, "items": { "enum": ["soma_contour", "plasma_membrane", "nucleus", "organelles", "synaptic_boutons", "receptor_distribution", "synaptic_partners"] } },
+        "sameSpecimenInternalObservedCount": { "const": 0 },
+        "sameSpecimenInternalDerivedCount": { "const": 0 },
+        "registrationObservedCount": { "const": 0 },
+        "missingEvidenceGeneratesZeroPrimitives": { "const": true },
+        "relationshipClass": { "const": "same_source_record_only" },
+        "conflictPolicy": { "const": "fail_closed_to_unavailable" },
+        "unavailableInterpretation": { "const": "no_same_specimen_source_object_admitted_not_biological_absence" }
+      }
+    },
+    "hardBoundaries": { "type": "array", "minItems": 8, "uniqueItems": true, "items": { "type": "string", "minLength": 24 } }
+  }
+}

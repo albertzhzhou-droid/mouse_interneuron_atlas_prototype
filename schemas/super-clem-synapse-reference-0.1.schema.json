@@ -1,0 +1,481 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/super-clem-synapse-reference-0.1.schema.json",
+  "title": "Exact Super-CLEM synapse reference contract 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "releasedAt",
+    "queueItemId",
+    "title",
+    "purpose",
+    "sourceDataset",
+    "sourceObject",
+    "browserDerivative",
+    "relationshipPolicy",
+    "claimPermissions",
+    "missingness",
+    "hardBoundaries"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^(?!0{64}$)[a-f0-9]{64}$"
+    },
+    "md5": {
+      "type": "string",
+      "pattern": "^(?!0{32}$)[a-f0-9]{32}$"
+    },
+    "crossLaneRelationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetLane", "relationship", "joinedEntityIds", "joinCount", "registrationCount"],
+      "properties": {
+        "targetLane": {
+          "enum": ["neuromorpho_morphology", "interneuron_type", "atlas_entity"]
+        },
+        "relationship": {
+          "const": "co_display_only"
+        },
+        "joinedEntityIds": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "joinCount": {
+          "const": 0
+        },
+        "registrationCount": {
+          "const": 0
+        }
+      }
+    },
+    "missingnessItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "status", "reason"],
+      "properties": {
+        "field": {
+          "enum": [
+            "parent_cell_identity",
+            "segmentation_or_mesh",
+            "organelle_annotation",
+            "receptor_overlay",
+            "atlas_placement"
+          ]
+        },
+        "status": {
+          "const": "UNAVAILABLE"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "releaseId": {
+      "const": "ohri-super-clem-synapse-reference-0.1.0"
+    },
+    "releasedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "queueItemId": {
+      "const": "UPG-099"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceDataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleId", "version", "title", "datasetUrl", "paperUrl", "license", "licenseUrl"],
+      "properties": {
+        "articleId": {
+          "const": 17816747
+        },
+        "version": {
+          "const": 1
+        },
+        "title": {
+          "const": "Identification of a stereotypic molecular arrangement of endogenous glycine receptors at spinal cord synapses"
+        },
+        "datasetUrl": {
+          "const": "https://figshare.com/articles/dataset/Identification_of_a_stereotypic_molecular_arrangement_of_endogenous_glycine_receptors_at_spinal_cord_synapses/17816747/1"
+        },
+        "paperUrl": {
+          "const": "https://elifesciences.org/articles/74441"
+        },
+        "license": {
+          "const": "CC BY 4.0"
+        },
+        "licenseUrl": {
+          "const": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      }
+    },
+    "sourceObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceObjectId", "figshareFileId", "filename", "sourceUrl", "mediaType", "remoteReceipt", "image", "biologicalScope", "localOriginal"],
+      "properties": {
+        "sourceObjectId": {
+          "const": "FigshareFile:32606555"
+        },
+        "figshareFileId": {
+          "const": 32606555
+        },
+        "filename": {
+          "const": "D2-GB-E9-synapse-1-dorsal-2-grille-IBIDI-B-E9-grille-élect-C1-synapses-Est-top+140-20142.tif"
+        },
+        "sourceUrl": {
+          "const": "https://ndownloader.figshare.com/files/32606555"
+        },
+        "mediaType": {
+          "const": "image/tiff"
+        },
+        "remoteReceipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bytes", "md5"],
+          "properties": {
+            "bytes": {
+              "const": 2405817
+            },
+            "md5": {
+              "const": "384e5d12c9d024feed140b0ab46bb688"
+            }
+          }
+        },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["dimensionality", "widthPixels", "heightPixels", "bitsPerSample", "samplesPerPixel", "photometricInterpretation", "storageEncoding", "decodedColorFamily"],
+          "properties": {
+            "dimensionality": {
+              "const": "2D"
+            },
+            "widthPixels": {
+              "const": 1794
+            },
+            "heightPixels": {
+              "const": 1332
+            },
+            "bitsPerSample": {
+              "const": 8
+            },
+            "samplesPerPixel": {
+              "const": 1
+            },
+            "photometricInterpretation": {
+              "const": 3
+            },
+            "storageEncoding": {
+              "const": "indexed_rgb_palette"
+            },
+            "decodedColorFamily": {
+              "const": "RGB"
+            }
+          }
+        },
+        "biologicalScope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["species", "anatomicalContext", "modality", "sectionThicknessNanometre", "objectRole", "physicalObjectRelationship", "parentCellResolved", "parentCellId"],
+          "properties": {
+            "species": {
+              "const": "Mus musculus"
+            },
+            "anatomicalContext": {
+              "type": "string",
+              "pattern": "spinal cord dorsal horn"
+            },
+            "modality": {
+              "const": "serial-section electron microscopy"
+            },
+            "sectionThicknessNanometre": {
+              "const": 70
+            },
+            "objectRole": {
+              "const": "two_dimensional_em_reference_slice"
+            },
+            "physicalObjectRelationship": {
+              "const": "same_physical_synapse_slice"
+            },
+            "parentCellResolved": {
+              "const": false
+            },
+            "parentCellId": {
+              "const": null
+            }
+          }
+        },
+        "localOriginal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "receiptStatus", "bytes", "md5", "sha256"],
+          "properties": {
+            "path": {
+              "const": "/data/super_clem_glyr_v1/source/D2-GB-E9-synapse-1-dorsal-2-grille-IBIDI-B-E9-grille-elect-C1-synapses-Est-top-plus-140-20142.tif"
+            },
+            "receiptStatus": {
+              "enum": ["not_acquired", "verified_local_copy"]
+            },
+            "bytes": {
+              "type": ["integer", "null"],
+              "minimum": 1
+            },
+            "md5": {
+              "anyOf": [
+                { "$ref": "#/$defs/md5" },
+                { "type": "null" }
+              ]
+            },
+            "sha256": {
+              "anyOf": [
+                { "$ref": "#/$defs/sha256" },
+                { "type": "null" }
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "receiptStatus": {
+                    "const": "verified_local_copy"
+                  }
+                },
+                "required": ["receiptStatus"]
+              },
+              "then": {
+                "properties": {
+                  "bytes": {
+                    "const": 2405817
+                  },
+                  "md5": {
+                    "const": "384e5d12c9d024feed140b0ab46bb688"
+                  },
+                  "sha256": {
+                    "$ref": "#/$defs/sha256"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "bytes": {
+                    "const": null
+                  },
+                  "md5": {
+                    "const": null
+                  },
+                  "sha256": {
+                    "const": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "browserDerivative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "receiptStatus", "mediaType", "bytes", "sha256", "widthPixels", "heightPixels", "bitDepth", "pngColorType", "storageEncoding", "decodedColorFamily", "derivedFromPath", "derivation", "conversionTool", "decodedRgbEquivalence", "cropped", "resampled", "intensityTransformApplied", "segmentationAdded", "scientificAnnotationAdded"],
+      "properties": {
+        "path": {
+          "const": "/data/super_clem_glyr_v1/derived/super-clem-d2-gb-e9-synapse-1-top-plus-140.png"
+        },
+        "receiptStatus": {
+          "enum": ["not_generated", "verified_format_derivative"]
+        },
+        "mediaType": {
+          "const": "image/png"
+        },
+        "bytes": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "sha256": {
+          "anyOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "widthPixels": {
+          "const": 1794
+        },
+        "heightPixels": {
+          "const": 1332
+        },
+        "bitDepth": {
+          "const": 8
+        },
+        "pngColorType": {
+          "const": 3
+        },
+        "storageEncoding": {
+          "const": "indexed_rgb_palette"
+        },
+        "decodedColorFamily": {
+          "const": "RGB"
+        },
+        "derivedFromPath": {
+          "const": "/data/super_clem_glyr_v1/source/D2-GB-E9-synapse-1-dorsal-2-grille-IBIDI-B-E9-grille-elect-C1-synapses-Est-top-plus-140-20142.tif"
+        },
+        "derivation": {
+          "const": "lossless_format_conversion_for_browser_display"
+        },
+        "conversionTool": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "version", "operation", "optimize"],
+          "properties": {
+            "name": { "const": "Pillow" },
+            "version": { "const": "12.3.0" },
+            "operation": { "const": "direct_palette_mode_tiff_decode_and_png_save" },
+            "optimize": { "const": false }
+          }
+        },
+        "decodedRgbEquivalence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "method", "differenceBoundingBox"],
+          "properties": {
+            "status": { "const": "verified" },
+            "method": { "const": "Pillow ImageChops.difference after RGB decode" },
+            "differenceBoundingBox": { "const": null }
+          }
+        },
+        "cropped": {
+          "const": false
+        },
+        "resampled": {
+          "const": false
+        },
+        "intensityTransformApplied": {
+          "const": false
+        },
+        "segmentationAdded": {
+          "const": false
+        },
+        "scientificAnnotationAdded": {
+          "const": false
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "receiptStatus": {
+                "const": "verified_format_derivative"
+              }
+            },
+            "required": ["receiptStatus"]
+          },
+          "then": {
+            "properties": {
+              "bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "bytes": {
+                "const": null
+              },
+              "sha256": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "relationshipPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parentCellResolved", "namedInterneuronResolved", "dendriteIdentityResolved", "presynapticCellResolved", "fileLevelPalmCrosswalkAvailable", "crossLaneRelationships"],
+      "properties": {
+        "parentCellResolved": {
+          "const": false
+        },
+        "namedInterneuronResolved": {
+          "const": false
+        },
+        "dendriteIdentityResolved": {
+          "const": false
+        },
+        "presynapticCellResolved": {
+          "const": false
+        },
+        "fileLevelPalmCrosswalkAvailable": {
+          "const": false
+        },
+        "crossLaneRelationships": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/crossLaneRelationship"
+          }
+        }
+      }
+    },
+    "claimPermissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source2dSliceDisplay", "browserPngDisplay", "threeDimensionalReconstruction", "segmentation", "mesh", "organelleAnnotation", "receptorOverlay", "namedInterneuronIdentity", "dendriteIdentity", "presynapticCellIdentity", "fileLevelPalmCrosswalk", "neuroMorphoJoin", "interneuronTypeJoin", "atlasJoin"],
+      "properties": {
+        "source2dSliceDisplay": { "const": true },
+        "browserPngDisplay": { "const": true },
+        "threeDimensionalReconstruction": { "const": false },
+        "segmentation": { "const": false },
+        "mesh": { "const": false },
+        "organelleAnnotation": { "const": false },
+        "receptorOverlay": { "const": false },
+        "namedInterneuronIdentity": { "const": false },
+        "dendriteIdentity": { "const": false },
+        "presynapticCellIdentity": { "const": false },
+        "fileLevelPalmCrosswalk": { "const": false },
+        "neuroMorphoJoin": { "const": false },
+        "interneuronTypeJoin": { "const": false },
+        "atlasJoin": { "const": false }
+      }
+    },
+    "missingness": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/missingnessItem"
+      }
+    },
+    "hardBoundaries": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

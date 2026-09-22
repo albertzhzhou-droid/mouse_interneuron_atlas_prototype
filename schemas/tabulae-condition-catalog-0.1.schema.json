@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/tabulae-condition-catalog-0.1.json",
+  "title": "Tabulae Paralytica metadata-only condition catalog 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogDate", "sourceId", "authority", "admissionDecision", "purpose", "sources", "conditions", "releaseDecision"],
+  "properties": {
+    "releaseId": {"const": "ohri-tabulae-paralytica-condition-catalog-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "catalogDate": {"type": "string", "format": "date"},
+    "sourceId": {"const": "PDS-TABULAE-PARALYTICA"},
+    "authority": {"const": "SOURCE_METADATA_CONDITION_INDEX_ONLY"},
+    "admissionDecision": {"const": "metadata_only_not_downloaded_not_bundled_not_registered"},
+    "purpose": {"type": "string", "minLength": 1},
+    "sources": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/source"}},
+    "conditions": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"$ref": "#/$defs/condition"}},
+    "releaseDecision": {"$ref": "#/$defs/releaseDecision"}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accession", "url", "method", "sourceScope", "bodyBundled", "processedMetadataBundled", "localFileHash"],
+      "properties": {
+        "accession": {"enum": ["GSE234774", "GSE230765"]},
+        "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "method": {"type": "string", "minLength": 1},
+        "sourceScope": {"type": "string", "minLength": 1},
+        "bodyBundled": {"const": false},
+        "processedMetadataBundled": {"const": false},
+        "localFileHash": {"const": null}
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "family", "title", "accession", "sourceModality", "sourceMaterial", "aggregationLevel", "sourceSampleLabels", "conditionAxes", "metadataAuthority", "established", "notEstablished", "nextGate"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^TPC-[0-9]{3}$"},
+        "family": {"enum": ["baseline", "injury_timecourse", "injury_mechanism", "injury_severity", "sex_label", "drug_label", "spatial_section", "multiome_timepoint"]},
+        "title": {"type": "string", "minLength": 1},
+        "accession": {"enum": ["GSE234774", "GSE230765"]},
+        "sourceModality": {"enum": ["single-nucleus RNA sequencing", "Visium spatial transcriptomics", "single-nucleus multiome"]},
+        "sourceMaterial": {"const": "mid thoracic spinal cord of mouse"},
+        "aggregationLevel": {"enum": ["source-series sample labels only", "spatial sections; not a cell-level record", "source-series RNA and ATAC sample labels only"]},
+        "sourceSampleLabels": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "conditionAxes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/axis"}},
+        "metadataAuthority": {"const": "GEO_SERIES_LABEL_AND_DESIGN_ONLY"},
+        "established": {"type": "string", "minLength": 1},
+        "notEstablished": {"type": "string", "minLength": 1},
+        "nextGate": {"type": "string", "minLength": 1}
+      }
+    },
+    "axis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "sourceValues", "interpretationBoundary"],
+      "properties": {
+        "name": {"enum": ["injury status", "time after SCI", "injury model", "severity source label", "sex source label", "drug source label", "spatial section label", "multiome condition source label"]},
+        "sourceValues": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "interpretationBoundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "releaseDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["permitted", "forbidden", "nextCuratorGate"],
+      "properties": {
+        "permitted": {"type": "string", "minLength": 1},
+        "forbidden": {"type": "string", "minLength": 1},
+        "nextCuratorGate": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

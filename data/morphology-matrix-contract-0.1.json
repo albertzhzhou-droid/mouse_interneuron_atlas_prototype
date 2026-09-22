@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-morphology-matrix-contract-0.1.0",
+  "releasedAt": "2026-08-30",
+  "upgradeId": "UPG-098",
+  "applicationRelease": "2.19.0-research.1",
+  "title": "Source-local morphology matrix and reconstruction comparison contract",
+  "purpose": "Expose every admitted real reconstruction for visual review and allow bounded multi-object comparison without inventing cross-source identity, atlas placement, complete axons, membranes, or intracellular structures.",
+  "sourceObjects": {
+    "censusIndex": {
+      "path": "/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+      "bytes": 968797,
+      "sha256": "1598b5119f5826719e390fe46615a291b51fa3cd7716e9a191ad645f73165364"
+    },
+    "analysisIndex": {
+      "path": "/data/neuromorpho_release_8_6_124_analysis_v1/analysis-index.json",
+      "bytes": 399770,
+      "sha256": "b1cf19da5406d1cbc95f2926fb4b721f690e91857f0ad1468fc8ec8517333905"
+    },
+    "repository": "NeuroMorpho.Org",
+    "repositoryRelease": "8.6.124",
+    "repositoryRrid": "RRID:SCR_002145",
+    "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+    "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+  },
+  "denominators": {
+    "queryRecordCount": 142,
+    "admittedGeometryCount": 142,
+    "threeDimensionalCount": 140,
+    "twoDimensionalCount": 2,
+    "sourceDiameterAvailableCount": 94,
+    "sourceDiameterUnavailableCount": 48,
+    "axonFieldPresentCount": 45,
+    "sourceType2NodeCount": 269611,
+    "completeAxonCount": 0,
+    "sameSpecimenInternalStructureCount": 0,
+    "registrationCount": 0,
+    "sourcePaperCount": 5,
+    "archiveCount": 2,
+    "analysisCohortCount": 7
+  },
+  "matrix": {
+    "projectionAlgorithmId": "source_local_orthographic_segment_projection_v1",
+    "projectionPlanes": ["xy", "xz", "yz"],
+    "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+    "coordinatePolicy": "exact_source_coordinates_no_rotation_no_smoothing_no_resampling",
+    "displayScalePolicy": "fit_per_record",
+    "apparentSizeComparable": false,
+    "centrelineOnly": true,
+    "pageSize": 12,
+    "selectableRecordCount": 142
+  },
+  "comparator": {
+    "minimumSelections": 2,
+    "maximumSelections": 4,
+    "uniqueSelectionsRequired": true,
+    "relationshipClass": "co_display_only",
+    "viewportPolicy": "separate_independent_source_frames",
+    "cameraPolicy": "independent_auto_fit",
+    "defaultMode": "observed_swc_centerlines",
+    "metricCount": 7,
+    "shollShellStepMicrometre": 10,
+    "exports": ["json_receipt", "csv_metrics"],
+    "registrationCount": 0
+  },
+  "radiusGate": {
+    "inputAuthority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+    "outputAuthority": "DERIVED_FROM_OBSERVED_RADIUS",
+    "algorithmId": "tapered_hexagonal_frustum_per_swc_edge_v1",
+    "sourceDiameterRequired": true,
+    "noDiameterFallback": "observed_swc_centerlines",
+    "noDiameterSurfacePrimitiveCount": 0,
+    "membraneClaim": false
+  },
+  "internalDetailGate": {
+    "sameSpecimenStatus": "UNAVAILABLE",
+    "renderedPrimitiveCount": 0,
+    "missingEvidence": [
+      "membrane_segmentation",
+      "nucleus",
+      "organelles",
+      "synaptic_boutons",
+      "receptor_distribution",
+      "ultrastructure"
+    ]
+  },
+  "microdetailCoverage": {
+    "upgradeId": "UPG-103",
+    "algorithmId": "source_record_microdetail_coverage_v1",
+    "recordCoverageCount": 142,
+    "axisOrder": [
+      "centerline_topology",
+      "neurite_type_annotations",
+      "axon_field",
+      "diameter_input",
+      "radius_derived_surface",
+      "soma_contour",
+      "plasma_membrane",
+      "nucleus",
+      "organelles",
+      "synaptic_boutons",
+      "receptor_distribution",
+      "synaptic_partners",
+      "atlas_placement"
+    ],
+    "statusVocabulary": ["OBS", "DERIVED", "UNAVAILABLE"],
+    "sourceDerivedAxis": "radius_derived_surface",
+    "sameSpecimenInternalAxes": [
+      "soma_contour",
+      "plasma_membrane",
+      "nucleus",
+      "organelles",
+      "synaptic_boutons",
+      "receptor_distribution",
+      "synaptic_partners"
+    ],
+    "sameSpecimenInternalObservedCount": 0,
+    "sameSpecimenInternalDerivedCount": 0,
+    "registrationObservedCount": 0,
+    "missingEvidenceGeneratesZeroPrimitives": true,
+    "relationshipClass": "same_source_record_only",
+    "conflictPolicy": "fail_closed_to_unavailable",
+    "unavailableInterpretation": "no_same_specimen_source_object_admitted_not_biological_absence"
+  },
+  "hardBoundaries": [
+    "Every matrix and comparison object remains in its independent NeuroMorpho source-local frame; card layout and viewport proximity create no registration or biological relationship.",
+    "Fit per record makes apparent thumbnail and viewport size non-comparable; exact micrometre metrics remain descriptive within each source object.",
+    "Cross-paper acquisition, shrinkage correction, orientation, and sampling are not harmonized; no cross-paper biological effect size is calculated.",
+    "The forty-five axon-containing records have moderate axon integrity and zero records establish a complete axon, synaptic partner, projection, or connectivity.",
+    "Radius-derived surfaces are deterministic display derivatives and never observed membranes; official No Diameter records render zero surface primitives.",
+    "No source object is assigned to a Russ, Sathyamurthy, Hayashi, Haring, Matson, SCI, molecular, or atlas entity without a separately admitted relationship.",
+    "No same-specimen membrane, nucleus, organelle, bouton, receptor map, synapse, or ultrastructure is available; generic internal anatomy is not substituted.",
+    "The 142 repository records are not a biological census, independent-animal denominator, prevalence estimate, canonical morphology set, or count of interneuron types."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/public-source-intake-registry-0.7.json",
+  "title": "OHRI public-source intake registry 0.7",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "catalogReleaseId", "registryDate", "scientificInputPolicy", "networkAtReviewRuntime", "records"],
+  "properties": {
+    "releaseId": {"const": "ohri-mouse-interneuron-public-source-intake-registry-0.7.0"},
+    "schemaVersion": {"const": "0.7.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "registryDate": {"type": "string", "format": "date"},
+    "scientificInputPolicy": {"const": "public_sources_only"},
+    "networkAtReviewRuntime": {"const": false},
+    "records": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/intake"}}
+  },
+  "$defs": {
+    "evidenceRecord": {"type": "object", "additionalProperties": false, "required": ["id", "kind", "url", "accessVerifiedOn", "use"], "properties": {"id": {"type": "string", "pattern": "^PSE-[A-Z0-9-]+$"}, "kind": {"enum": ["dataset_landing_page", "protocol", "preprint", "repository_accession", "imaging_repository", "repository_object_header", "publication"]}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}, "accessVerifiedOn": {"type": "string", "format": "date"}, "use": {"type": "string", "minLength": 1}}},
+    "fact": {"type": "object", "additionalProperties": false, "required": ["id", "evidenceRecordId", "evidenceClass", "statement"], "properties": {"id": {"type": "string", "pattern": "^PSF-[A-Z0-9-]+-[0-9]{3}$"}, "evidenceRecordId": {"type": "string", "pattern": "^PSE-[A-Z0-9-]+$"}, "evidenceClass": {"enum": ["reported_metadata", "source_availability_statement", "source_context", "object_header_metadata", "unresolved"]}, "statement": {"type": "string", "minLength": 1}}},
+    "object": {"type": "object", "additionalProperties": false, "required": ["id", "stableName", "sourceUrl", "bytes", "contentType", "lastModified", "sourceChecksum", "localSha256", "coordinateMetadata", "assetRightsDecision"], "properties": {"id": {"type": "string", "pattern": "^GEO-[A-Z0-9-]+$"}, "stableName": {"type": "string", "minLength": 1}, "sourceUrl": {"type": "string", "format": "uri", "pattern": "^https://"}, "bytes": {"type": "integer", "minimum": 1}, "contentType": {"type": "string", "minLength": 1}, "lastModified": {"type": "string", "format": "date-time"}, "sourceChecksum": {"const": null}, "localSha256": {"const": null}, "coordinateMetadata": {"const": "not_file_verified"}, "assetRightsDecision": {"const": "unresolved_not_admitted"}}},
+    "intake": {"type": "object", "additionalProperties": false, "required": ["intakeId", "sourceId", "auditDate", "auditScope", "studyStatus", "publicSourceEvidence", "objectInventory", "acquisition", "coordinates", "rights", "admission", "requiredBeforeFileAdmission", "scientificBoundaries"], "properties": {
+      "intakeId": {"type": "string", "pattern": "^PSI-[A-Z0-9-]+-[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+      "sourceId": {"enum": ["PDS-SPINALJ-PROCESSED", "PDS-CANOGOMEZ-2026", "PDS-TABULAE-PARALYTICA"]},
+      "auditDate": {"type": "string", "format": "date"},
+      "auditScope": {"enum": ["public_metadata_only_no_candidate_file_acquired", "public_object_header_metadata_only_no_candidate_file_acquired"]},
+      "studyStatus": {"enum": ["published_resource", "preprint_resource"]},
+      "publicSourceEvidence": {"type": "object", "additionalProperties": false, "required": ["records", "reportedFacts"], "properties": {"records": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/evidenceRecord"}}, "reportedFacts": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/fact"}}}},
+      "objectInventory": {"type": "object", "additionalProperties": false, "required": ["status", "objects"], "properties": {"status": {"enum": ["not_attempted", "one_public_object_header_observed_checksum_and_asset_rights_unresolved"]}, "objects": {"type": "array", "items": {"$ref": "#/$defs/object"}}}},
+      "acquisition": {"type": "object", "additionalProperties": false, "required": ["status", "remoteAcquisitionAttempted", "candidateFilesEnumerated", "fileHashes", "bundledAssetCount"], "properties": {"status": {"const": "not_downloaded"}, "remoteAcquisitionAttempted": {"const": false}, "candidateFilesEnumerated": {"type": "boolean"}, "fileHashes": {"type": "array", "maxItems": 0}, "bundledAssetCount": {"const": 0}}},
+      "coordinates": {"type": "object", "additionalProperties": false, "required": ["sourceCoordinateAuthority", "nativeCoordinateMetadataStatus", "transformStatus", "projectRegistrationStatus", "projectRegistrationCount"], "properties": {"sourceCoordinateAuthority": {"enum": ["SOURCE_LOCAL_OBS", "AUTHOR_SPACE_OBS", "AGGREGATED_OR_SPOT_LEVEL"]}, "nativeCoordinateMetadataStatus": {"const": "not_file_verified"}, "transformStatus": {"enum": ["not_file_verified", "public_code_referenced_not_file_or_error_verified", "method_reported_transform_artifact_and_error_not_file_verified"]}, "projectRegistrationStatus": {"const": "not_proposed"}, "projectRegistrationCount": {"const": 0}}},
+      "rights": {"type": "object", "additionalProperties": false, "required": ["publicRecordLicense", "fileLevelReuseDecision", "bundleAuthorized", "publicHostingAuthorized"], "properties": {"publicRecordLicense": {"type": "string", "minLength": 1}, "fileLevelReuseDecision": {"const": "pending_file_level_manifest"}, "bundleAuthorized": {"const": false}, "publicHostingAuthorized": {"const": false}}},
+      "admission": {"type": "object", "additionalProperties": false, "required": ["status", "nextQueueItem"], "properties": {"status": {"const": "metadata_audited_not_admitted"}, "nextQueueItem": {"enum": ["UPG-001B", "UPG-002B", "UPG-008"]}}},
+      "requiredBeforeFileAdmission": {"type": "array", "minItems": 6, "items": {"type": "string", "minLength": 1}},
+      "scientificBoundaries": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 1}}
+    }}
+  }
+}

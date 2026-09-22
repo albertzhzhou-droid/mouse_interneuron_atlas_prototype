@@ -1,0 +1,587 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/cano-gomez-glut-active-ident-labels-0.1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "adapterId",
+    "title",
+    "parentSourceId",
+    "source",
+    "identity",
+    "denominators",
+    "metadataNeuronTypes",
+    "contextCounts",
+    "groupCounts",
+    "labels",
+    "artifact",
+    "reproduction",
+    "boundaries"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "adapterId": {
+      "const": "cano-gomez-p56-glut-active-ident-0.1.0"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parentSourceId": {
+      "const": "SRC-CANOGOMEZ-2026"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accession",
+        "fileName",
+        "bytes",
+        "sha256",
+        "url",
+        "lifeStage",
+        "slot",
+        "metadataSlot"
+      ],
+      "properties": {
+        "accession": {
+          "const": "GSE318731"
+        },
+        "fileName": {
+          "const": "GSE318731_P56_glutamatergic_multiome_UPDATE.rds"
+        },
+        "bytes": {
+          "const": 1832005077
+        },
+        "sha256": {
+          "const": "ff3784791ccb5d23311b9d0a8e2a4bd09dd251f75d0a2fc4b30e762dcef29c92"
+        },
+        "url": {
+          "const": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_glutamatergic_multiome_UPDATE.rds"
+        },
+        "lifeStage": {
+          "const": "P56"
+        },
+        "slot": {
+          "const": "active.ident"
+        },
+        "metadataSlot": {
+          "const": "meta.data"
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "metadataNameOrderExactlyVerified",
+        "uniqueNonemptyNameCount",
+        "orderedSourceNucleusNamesSha256",
+        "orderedSourceActiveIdentLabelsSha256",
+        "stableKeyExpression"
+      ],
+      "properties": {
+        "authority": {
+          "const": "SOURCE_LOCAL_NAMED_SLOT_ASSIGNMENT"
+        },
+        "metadataNameOrderExactlyVerified": {
+          "const": true
+        },
+        "uniqueNonemptyNameCount": {
+          "const": 92782
+        },
+        "orderedSourceNucleusNamesSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "orderedSourceActiveIdentLabelsSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "stableKeyExpression": {
+          "const": "GSE318731|exact source filename|row.name"
+        }
+      }
+    },
+    "denominators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nucleusCount",
+        "sourceLabelCount",
+        "factorLevelCount",
+        "unusedFactorLevelCount",
+        "sourceGroupCount",
+        "confirmedInterneuronProfilesAdded"
+      ],
+      "properties": {
+        "nucleusCount": {
+          "const": 92782
+        },
+        "sourceLabelCount": {
+          "const": 277
+        },
+        "factorLevelCount": {
+          "const": 277
+        },
+        "unusedFactorLevelCount": {
+          "const": 0
+        },
+        "sourceGroupCount": {
+          "const": 28
+        },
+        "confirmedInterneuronProfilesAdded": {
+          "const": 0
+        }
+      }
+    },
+    "metadataNeuronTypes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceColumnPresent",
+        "status",
+        "missingCount",
+        "substitutionApplied"
+      ],
+      "properties": {
+        "sourceColumnPresent": {
+          "const": false
+        },
+        "status": {
+          "const": "SOURCE_COLUMN_ABSENT"
+        },
+        "missingCount": {
+          "const": 92782
+        },
+        "substitutionApplied": {
+          "const": false
+        }
+      }
+    },
+    "contextCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "anatomy",
+        "Sex"
+      ],
+      "properties": {
+        "source": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "count"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "anatomy": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "count"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "Sex": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "count"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "groupCounts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "count"
+        ],
+        "properties": {
+          "value": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "labels": {
+      "type": "array",
+      "minItems": 277,
+      "maxItems": 277,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rawLabel",
+          "nucleusCount",
+          "groupCounts",
+          "contextCounts",
+          "orderedCompoundNucleusKeysSha256",
+          "metadataNeuronTypesMissingCount"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^cano\\.glut\\.active-ident\\.sha256\\.[a-f0-9]{24}$"
+          },
+          "rawLabel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "nucleusCount": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "groupCounts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "count"
+              ],
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "contextCounts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "anatomy",
+              "Sex"
+            ],
+            "properties": {
+              "source": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "count"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              },
+              "anatomy": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "count"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              },
+              "Sex": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "count"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "orderedCompoundNucleusKeysSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "metadataNeuronTypesMissingCount": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "publicUrl",
+        "mediaType",
+        "contentEncoding",
+        "rowCount",
+        "compressedBytes",
+        "compressedSha256",
+        "uncompressedBytes",
+        "uncompressedSha256",
+        "rowOrder",
+        "labelFilterField"
+      ],
+      "properties": {
+        "path": {
+          "const": "public/data/cano_gomez_glut_active_ident_v1/GSE318731_P56_glutamatergic_active_ident_assignments.jsonl.gz"
+        },
+        "publicUrl": {
+          "const": "/data/cano_gomez_glut_active_ident_v1/GSE318731_P56_glutamatergic_active_ident_assignments.jsonl.gz"
+        },
+        "mediaType": {
+          "const": "application/x-ndjson"
+        },
+        "contentEncoding": {
+          "const": "gzip"
+        },
+        "rowCount": {
+          "const": 92782
+        },
+        "compressedBytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "compressedSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "uncompressedBytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uncompressedSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rowOrder": {
+          "const": "exact source active.ident names, identical to meta.data row.names"
+        },
+        "labelFilterField": {
+          "const": "source_label_id"
+        }
+      }
+    },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "builderPath",
+        "builderSha256",
+        "baseRProgramSha256",
+        "rVersion",
+        "completeRdsObjectMaterialized",
+        "inputs"
+      ],
+      "properties": {
+        "builderPath": {
+          "const": "tools/build_cano_gomez_glut_active_ident.py"
+        },
+        "builderSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "baseRProgramSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completeRdsObjectMaterialized": {
+          "const": true
+        },
+        "inputs": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "bytes",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "confirmedInterneuronAdmission",
+        "metadataNeuronTypesSubstitution",
+        "crossAssayCellIdentity",
+        "crossSourceIdentity",
+        "markerInferenceFromLabelTokens",
+        "geometry",
+        "internalStructures",
+        "atlasRegistration",
+        "displayScope",
+        "rights"
+      ],
+      "properties": {
+        "confirmedInterneuronAdmission": {
+          "const": false
+        },
+        "metadataNeuronTypesSubstitution": {
+          "const": false
+        },
+        "crossAssayCellIdentity": {
+          "const": false
+        },
+        "crossSourceIdentity": {
+          "const": false
+        },
+        "markerInferenceFromLabelTokens": {
+          "const": false
+        },
+        "geometry": {
+          "const": false
+        },
+        "internalStructures": {
+          "const": false
+        },
+        "atlasRegistration": {
+          "const": false
+        },
+        "displayScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rights": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

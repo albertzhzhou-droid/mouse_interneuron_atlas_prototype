@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/cross-lane-relationship-admission-0.1.json",
+  "title": "OHRI cross-lane relationship admission proposal gate 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "researchReleaseId", "catalogReleaseId", "provenanceTraceReleaseId", "queueItemId", "title", "admissionStatus", "commonRequiredEvidence", "relationshipKinds", "localRuntime", "nonPromotionPolicy", "scientificBoundary", "nextQueueItems"],
+  "properties": {
+    "releaseId": {"const": "ohri-cross-lane-relationship-admission-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "researchReleaseId": {"const": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0"},
+    "catalogReleaseId": {"const": "ohri-mouse-interneuron-public-data-workbench-0.4.0"},
+    "provenanceTraceReleaseId": {"const": "ohri-evidence-provenance-trace-0.1.0"},
+    "queueItemId": {"const": "UPG-017"},
+    "title": {"type": "string", "minLength": 1},
+    "admissionStatus": {"const": "proposal_only_not_admitted"},
+    "commonRequiredEvidence": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}},
+    "relationshipKinds": {"type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true, "items": {"$ref": "#/$defs/relationshipKind"}},
+    "localRuntime": {"type": "object", "additionalProperties": false, "required": ["networkRequests", "sourceObjectAcquisition", "sourceFileUpload", "persistentStorage", "output"], "properties": {"networkRequests": {"const": false}, "sourceObjectAcquisition": {"const": false}, "sourceFileUpload": {"const": false}, "persistentStorage": {"const": "none"}, "output": {"const": "browser_download_of_not_admitted_relationship_proposal_json"}}},
+    "nonPromotionPolicy": {"type": "string", "minLength": 1},
+    "scientificBoundary": {"type": "string", "minLength": 1},
+    "nextQueueItems": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^UPG-[0-9]{3}$"}}
+  },
+  "$defs": {
+    "relationshipKind": {"type": "object", "additionalProperties": false, "required": ["id", "label", "boundary", "requiredEvidence"], "properties": {"id": {"enum": ["molecular_label_correspondence", "source_object_derivation", "same_specimen_relation", "coordinate_transform", "same_cell_identity"]}, "label": {"type": "string", "minLength": 1}, "boundary": {"type": "string", "minLength": 1}, "requiredEvidence": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}}}}
+  }
+}

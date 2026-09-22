@@ -1,0 +1,28 @@
+.morphology-neurite-inspector { position: absolute; z-index: 4; top: 52px; left: 10px; max-width: min(310px, calc(100% - 20px)); color: #dcebe5; font: 11px/1.45 var(--font-geist-sans, sans-serif); }
+.morphology-three-stage .morphology-neurite-inspector { top: 10px; }
+.morphology-neurite-inspector button { min-height: 30px; padding: 5px 8px; border: 1px solid #55796c; border-radius: 5px; background: #12291f; color: #dcebe5; cursor: pointer; font: inherit; }
+.morphology-neurite-inspector button:hover, .morphology-neurite-inspector button:focus-visible { border-color: #8de6c9; background: #204437; }
+.morphology-neurite-inspector button:disabled { opacity: .45; cursor: default; }
+.morphology-neurite-inspector .neurite-inspector-toggle { background: #10211df2; color: #9ce7cf; font-weight: 700; }
+.neurite-inspector-body { display: grid; gap: 8px; max-height: 280px; overflow-y: auto; overscroll-behavior: contain; margin-top: 5px; padding: 11px; border: 1px solid #426b5c; border-radius: 7px; background: #0b1b17f5; box-shadow: 0 5px 20px #0006; }
+.morphology-three-stage .neurite-inspector-body { max-height: 440px; }
+.morphology-neurite-inspector p { position: static; margin: 0; padding: 0; color: #afc6bc; font-size: 11px; }
+.neurite-inspector-actions { display: flex; flex-wrap: wrap; gap: 5px; }
+.neurite-inspector-body form { display: flex; align-items: end; gap: 5px; }
+.neurite-inspector-body label { display: flex; align-items: center; gap: 6px; flex: 1; }
+.neurite-inspector-body input { width: 92px; min-width: 0; padding: 6px; border: 1px solid #55796c; border-radius: 4px; background: #091710; color: #e3f6ed; font: inherit; }
+.neurite-inspector-selection { display: grid; gap: 2px; padding-top: 6px; border-top: 1px solid #355347; }
+.neurite-inspector-selection strong { color: #fff0c2; font-size: 14px; }
+.neurite-inspector-selection span { color: #a9c3b7; }
+.neurite-inspector-colors { display: flex; gap: 12px; font-size: 10px; }
+.neurite-inspector-colors span:first-child { color: #ffd166; }
+.neurite-inspector-colors span:last-child { color: #6affda; }
+.neurite-inspector-body dl { display: grid; gap: 5px; margin: 0; }
+.neurite-inspector-body dl > div { display: grid; grid-template-columns: 1fr 1.1fr; gap: 8px; }
+.neurite-inspector-body dt { color: #8eafa0; }
+.neurite-inspector-body dd { margin: 0; color: #e0efe8; overflow-wrap: anywhere; }
+.neurite-inspector-body small { color: #8ea69b; font-size: 10px; }
+.neurite-diameter-profile { margin: 0; padding-top: 6px; border-top: 1px solid #355347; }
+.neurite-diameter-profile figcaption { color: #bad0c5; font-size: 10px; }
+.neurite-diameter-profile svg { width: 100%; height: auto; }
+.neurite-diameter-profile text { fill: #9ebdaf; font: 9px sans-serif; }

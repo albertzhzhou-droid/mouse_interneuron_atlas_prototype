@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/crozat-pkd2l1-functional-profile-0.1.schema.json",
+  "title": "Crozat PKD2L1 source-local functional profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releaseId", "releaseDate", "title", "source", "scope", "sourceLocators", "derivedEvidence", "profile", "joinPolicy", "quarantinedConflicts", "hardBoundaries"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "releaseId": {"const": "ohri-crozat-pkd2l1-functional-profile-0.1.0"},
+    "releaseDate": {"type": "string", "format": "date"},
+    "title": {"type": "string", "minLength": 20},
+    "source": {
+      "type": "object",
+      "required": ["publication", "figshare"],
+      "properties": {
+        "publication": {"type": "object", "required": ["citation", "doi", "articleUrl", "dataAvailabilityBoundary"]},
+        "figshare": {
+          "type": "object",
+          "required": ["articleId", "version", "doi", "license", "fileCount", "totalBytes", "keyFiles", "sourceFilesBundled", "derivedFactualMetadataBundled"],
+          "properties": {
+            "articleId": {"const": 29430869},
+            "version": {"const": 2},
+            "doi": {"const": "10.6084/m9.figshare.29430869.v2"},
+            "fileCount": {"const": 92},
+            "totalBytes": {"const": 1848613},
+            "keyFiles": {"type": "array", "minItems": 7, "items": {"type": "object", "required": ["id", "fileName", "bytes", "publisherMd5", "locallyVerifiedSha256", "purpose"]}},
+            "sourceFilesBundled": {"const": false},
+            "derivedFactualMetadataBundled": {"const": true}
+          }
+        }
+      }
+    },
+    "scope": {"type": "object", "required": ["species", "lifeStage", "spinalRegion", "displayedProfileCount", "exactCrossSourceIdentityCount", "projectRegistrationCount", "admittedGeometryCount"]},
+    "sourceLocators": {"type": "array", "minItems": 10, "items": {"type": "object", "required": ["id", "locator", "evidenceStatus"]}},
+    "derivedEvidence": {"type": "object", "required": ["firingPatterns", "firingPatternFrame", "passivePropertyFrame", "restingMembranePotentialFrame", "anatomyContext", "sensoryContext"]},
+    "profile": {
+      "type": "object",
+      "required": ["id", "namespace", "parentSourceId", "recordKind", "unitOfObservation", "sourceLocalLabel", "markerPanel", "samplingCount", "activityEvidence", "locatorIds", "missingEvidence"],
+      "properties": {
+        "id": {"const": "crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn"},
+        "namespace": {"const": "crozat-2025:figshare-29430869-v2"},
+        "parentSourceId": {"const": "SRC-CROZAT-2025"},
+        "recordKind": {"const": "marker_defined_functional_profile"},
+        "samplingCount": {"type": "null"},
+        "activityEvidence": {"type": "array", "minItems": 4},
+        "locatorIds": {"type": "array", "minItems": 10},
+        "missingEvidence": {"type": "object"}
+      }
+    },
+    "joinPolicy": {"type": "object", "required": ["globallyStableCellIdAvailable", "crossExperimentJoinAllowed", "morphologyElectrophysiologyJoinCount", "linkToPkd2l1SbfSemStudyCount"]},
+    "quarantinedConflicts": {"type": "array", "minItems": 4, "items": {"type": "object", "required": ["id", "status", "detail"]}},
+    "hardBoundaries": {"type": "array", "minItems": 6, "items": {"type": "string", "minLength": 20}}
+  }
+}

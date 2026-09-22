@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/interneuron-knowledge-coverage-0.1.json",
+  "title": "Source-bounded interneuron knowledge coverage 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "schemaVersion", "releaseDate", "coordinateAuthority", "projectRegistrationCount", "statusSemantics", "axes", "lanes", "hardBoundaries"],
+  "properties": {
+    "releaseId": {"const": "ohri-interneuron-knowledge-coverage-0.1.0"},
+    "schemaVersion": {"const": "0.1.0"},
+    "releaseDate": {"type": "string", "format": "date"},
+    "coordinateAuthority": {"const": "SOURCE_LOCAL_METADATA_ONLY"},
+    "projectRegistrationCount": {"const": 0},
+    "statusSemantics": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/statusSemantic"}},
+    "axes": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/axis"}},
+    "lanes": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"$ref": "#/$defs/lane"}},
+    "hardBoundaries": {"type": "array", "minItems": 6, "items": {"type": "string", "minLength": 20}}
+  },
+  "$defs": {
+    "statusId": {"enum": ["direct", "contextual", "not_measured", "not_ingested"]},
+    "statusSemantic": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label", "meaning"],
+      "properties": {"id": {"$ref": "#/$defs/statusId"}, "label": {"type": "string", "minLength": 1}, "meaning": {"type": "string", "minLength": 20}}
+    },
+    "axis": {
+      "type": "object", "additionalProperties": false, "required": ["id", "label", "precisionQuestion"],
+      "properties": {"id": {"enum": ["type_taxonomy", "region_lamina_context", "life_stage", "injury_state", "spatial_measurement", "causal_mechanism", "morphology"]}, "label": {"type": "string", "minLength": 1}, "precisionQuestion": {"type": "string", "minLength": 10}}
+    },
+    "accession": {
+      "type": "object", "additionalProperties": false, "required": ["id", "url"],
+      "properties": {"id": {"type": "string", "pattern": "^(GSE[0-9]+|E-MTAB-[0-9]+)$"}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}}
+    },
+    "assetAccess": {
+      "type": "object", "additionalProperties": false, "required": ["publicMetadata", "sourceObjectsBundled", "assetLevelReuseStatus"],
+      "properties": {"publicMetadata": {"const": true}, "sourceObjectsBundled": {"const": false}, "assetLevelReuseStatus": {"const": "not_assumed"}}
+    },
+    "coverage": {
+      "type": "object", "additionalProperties": false, "required": ["axisId", "status", "evidence", "sourceLocator", "displayBoundary"],
+      "properties": {"axisId": {"enum": ["type_taxonomy", "region_lamina_context", "life_stage", "injury_state", "spatial_measurement", "causal_mechanism", "morphology"]}, "status": {"$ref": "#/$defs/statusId"}, "evidence": {"type": "string", "minLength": 15}, "sourceLocator": {"type": "string", "minLength": 20}, "displayBoundary": {"type": "string", "minLength": 15}}
+    },
+    "lane": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "shortLabel", "role", "citation", "doi", "articleUrl", "accessions", "sampleFrame", "sourceLocalLabelScope", "sourceLocalLabels", "crossStudyMappingStatus", "coordinateAuthority", "projectRegistrationCount", "assetAccess", "coverage", "canAnswer", "cannotAnswer"],
+      "properties": {
+        "id": {"enum": ["russ-2021", "haring-2018", "sathyamurthy-2018", "hayashi-2018", "delile-2019", "tabulae-paralytica-2024", "iglesias-gonzalez-2021", "roome-2026"]},
+        "shortLabel": {"type": "string", "minLength": 1}, "role": {"type": "string", "minLength": 5}, "citation": {"type": "string", "minLength": 20},
+        "doi": {"type": "string", "pattern": "^10\\."}, "articleUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "accessions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/accession"}},
+        "sampleFrame": {"type": "string", "minLength": 20}, "sourceLocalLabelScope": {"type": "string", "minLength": 20},
+        "sourceLocalLabels": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 2}},
+        "crossStudyMappingStatus": {"const": "not_established"}, "coordinateAuthority": {"const": "SOURCE_LOCAL_ONLY"}, "projectRegistrationCount": {"const": 0},
+        "assetAccess": {"$ref": "#/$defs/assetAccess"}, "coverage": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/coverage"}},
+        "canAnswer": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 10}},
+        "cannotAnswer": {"type": "array", "minItems": 3, "items": {"type": "string", "minLength": 10}}
+      }
+    }
+  }
+}

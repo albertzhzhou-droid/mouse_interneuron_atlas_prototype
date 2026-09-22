@@ -1,0 +1,165 @@
+{
+  "purpose": "Reverse only changed existing text files to this turn starting bytes; leaves new source/data/QA artifacts in place. Starting unsealed2.41 did not build. Not a whole-project or full-data rollback.",
+  "files": [
+    {
+      "path": "README.md",
+      "currentSha256": "47e91183bffbe7bdecb8389414995ecdddc9c251606e0985b568ee13dfe48e95",
+      "startingSha256": "dd2fafb91d0a747c6083cada7a5cadac8e0c6b97ba192ead33d3a779462e8763"
+    },
+    {
+      "path": "app/AtlasPrototype.tsx",
+      "currentSha256": "00e57001e2f339cdcd875fda568c7c3a798294825b03a9fd2bd8a92ab1c5d051",
+      "startingSha256": "737b3120d2e1568a5f80056f0fd70088dd7a5b9eed530f0a677420994caf049f"
+    },
+    {
+      "path": "app/MorphologyViewer.tsx",
+      "currentSha256": "ee6fe3a6b15859efc89f1d570ec38c6f7a4d1537959640fa6a6ea1a8ce1ab595",
+      "startingSha256": "9e878b5b408bcea9cb63c4ebc4cc13ba92b984e0835baf6368b090d21841dbce"
+    },
+    {
+      "path": "app/NativeContourRecordViewer.tsx",
+      "currentSha256": "abe68177892de6bace3d1e33f799feb06a93d5479b36c6b3e1c3c482ae3e409e",
+      "startingSha256": "4c8d30f4ba3470ee1cd779befee4814d20bc11c684b97c2460ed46d17f1a35a7"
+    },
+    {
+      "path": "app/NeuroMorphoUniversePanel.tsx",
+      "currentSha256": "c0e3cf7fb1eda64193435769f87127c3b7f5e31b280eafe78668a8ca74db6cc3",
+      "startingSha256": "ee161bd2d52cc2cc7db9baba512a5c5953dd8cf61b5c515429207c860209f71c"
+    },
+    {
+      "path": "app/ObservedMorphologyRouteLibrary.tsx",
+      "currentSha256": "1daa03befc0a354ffadbcbf44421315c003cae75475854815c7d473dceb48694",
+      "startingSha256": "263e9f407eb32effa6dffdb2b01b386102eeceb862badad33c97c68d8a39e00a"
+    },
+    {
+      "path": "app/ResearchDataLab.tsx",
+      "currentSha256": "6ed218be4ecb22d860ff601ff38bbfcfd2cd9e80c36a53c69b8acbfab6f6b0c2",
+      "startingSha256": "4737bc47dd1f9e8470a50a3ef993e820cdf24ce16171060971f2b6925b190234"
+    },
+    {
+      "path": "app/ResearchOverview.tsx",
+      "currentSha256": "35628ab5c442d103bc3d17ce10d6080c1a0ba1666b8239b3083e7ccddba9a62f",
+      "startingSha256": "6f77d618ef076c757701149a030c4a697e3e0aae4f2cf477d16bc7bb42d15e94"
+    },
+    {
+      "path": "app/SourceLocalMorphologyViewport.tsx",
+      "currentSha256": "4f8f1aef2b122960553380d601aac508bdf278fe90ba4e5534100556ea66a5fd",
+      "startingSha256": "0503872b465305a2e92c72fa3da60ce3a3c1451538e1de2d4ce3d4903de7460a"
+    },
+    {
+      "path": "app/atlas-types.ts",
+      "currentSha256": "abd6731ef9991c5f3e36006558700aa9d9df3d3c052367ccf0190085fda6a75b",
+      "startingSha256": "228cf9886334ee0970d35f3c7559a5a51390fd6c2cf66c3d17bafb67a0f742f3"
+    },
+    {
+      "path": "app/layout.tsx",
+      "currentSha256": "5d5ed0d788497571831a6a6f6ffa6c92cdf3847d1e8b700912969b325080f9e5",
+      "startingSha256": "afd1ec537f9c0439e15273b4e6306d60dd0f0437e2ded72a9283f3754d8dc21b"
+    },
+    {
+      "path": "data/research-model-upgrade-registry-0.1.json",
+      "currentSha256": "29db684a6c5706e145857cd77e113ca77714576f8b9bf588baf63e255a399284",
+      "startingSha256": "dc6094b62fa90888a01a4deca205c7302991474642a3686f5d489e6e29921ca3"
+    },
+    {
+      "path": "data/research-source-registry-0.1.json",
+      "currentSha256": "5e9ee95159feddca2b1838486a2f6d63b35b5b914a6f359e38c87446313f6916",
+      "startingSha256": "120e91234e5ea3f07d4e0d1d6a47fb8484ae5c210fa52a0182cb01992f1e68b1"
+    },
+    {
+      "path": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+      "currentSha256": "e75ca4e340df5931c3343877743265ddde2e92c6ed20a94971a96a6573cbd418",
+      "startingSha256": "73fea6f77d772337009e01a9660cf7cd9d1740143fe233a70c60e3e1f6d76d87"
+    },
+    {
+      "path": "package-lock.json",
+      "currentSha256": "b2d03d8e7547576a675bc24ff14770813f8f451546b7a2d9d6e178e7a9542780",
+      "startingSha256": "8d5cb42144416b1b968b2e9f95df98172079bb03ae55d725ed7195408591c8d7"
+    },
+    {
+      "path": "package.json",
+      "currentSha256": "ebb5d5741f2877b29a70c1f1d5d46e69a87b9d5acc6c5af75b77ccf7a44c67b1",
+      "startingSha256": "71ff43e3b42a051c2796613f87ea77565c381e3d69054efc5c366df397be4f3a"
+    },
+    {
+      "path": "schemas/cano-gomez-p56-multiome-interneuron-registry-0.1.schema.json",
+      "currentSha256": "764a16690aa66d66d1f4c5195c015e5f590f1a0a94b37a7ddd151a16d469e56b",
+      "startingSha256": "5978c762d30495dbd596de971c2a2eb182c423ab607d0086aae60677af71e943"
+    },
+    {
+      "path": "scripts/validate-cano-gomez-p56-multiome-interneuron-registry-0.1.mjs",
+      "currentSha256": "068fde39b5a301434cb6a4cd1e14c3a1c1b607963a3f9e19afea6d5ae17862da",
+      "startingSha256": "6e35bc446c0b3afc51e8261da356f0e096010293d344404aeeaa03c55b8cdca8"
+    },
+    {
+      "path": "scripts/validate-prp-dorsal-horn-observed-morphology-route-pack-0.1.mjs",
+      "currentSha256": "7ed3c8879f0d1a5c84831afc7beb9d51c4777e0d7f47c5027b8603e7e3148a32",
+      "startingSha256": "02f193fb802cb395a720602cc4234761201aca65174683cbeadfa903ed8cb2ec"
+    },
+    {
+      "path": "scripts/validate-research-iteration-manifest-2.34-snapshot.mjs",
+      "currentSha256": "ed62ce8e62a50684d9b2b11a19bbd3e72623e1a88f6d7380f1eff16446e28b9c",
+      "startingSha256": "38f8d17486f39485bb2b024fd6e5eff44747964fb1b71121a54bca99c598111d"
+    },
+    {
+      "path": "scripts/validate-research-model-upgrade-registry-0.1.mjs",
+      "currentSha256": "780e480b5a42008c159239ae3bf6ad6a1aa11a6d909558718fbd700f21dafa53",
+      "startingSha256": "d87a11591f35bfbe05d10c3837b2911350189f2744450036d3a39ded9d77a424"
+    },
+    {
+      "path": "tests/microns-observed-cell-nucleus-reference.test.mjs",
+      "currentSha256": "28b2d8a25efee1a5f84836eea620d9cb34fe79471297d4b4988481c563f712ce",
+      "startingSha256": "2982d8891ba60a55792ab1d8868fdc25073960e572b520b0ae32fa0f1d444f7b"
+    },
+    {
+      "path": "tests/observed-morphology-runtime-contract.test.mjs",
+      "currentSha256": "0f31139f9b1d651c7aed4b74ecf0aa36f4da93a4df0d6d331ee8adfeb4d02da1",
+      "startingSha256": "06820e719cfce8d132cbfc506fab358833923ed3864ad477b0271443df5ed231"
+    },
+    {
+      "path": "tests/prp-dorsal-horn-observed-morphology-route-pack.test.mjs",
+      "currentSha256": "aa2ffd8fe518ca6ad2f646b525d6c8dfac56a2daee15d21950c3bc315ba1183a",
+      "startingSha256": "030ecfe1f4e5c156d47321f3bcc3404413b96704d4d0b9202adad92e8b32bfb5"
+    },
+    {
+      "path": "tests/rendered-html.test.mjs",
+      "currentSha256": "ba25b08d26ea84ee2886d5c5e3ab992bca0441848825683a24b177e6faeba939",
+      "startingSha256": "d47072f3b37b48866c385397f4643d2cc025c80a3a04867ee3f74a9ae637e5bd"
+    },
+    {
+      "path": "tests/research-model-upgrade-registry.test.mjs",
+      "currentSha256": "7fb5c8bcef18c804f7a6395214f1b67d36dc616215b9697fc07f9a08cebed359",
+      "startingSha256": "b0965fbd02cb354ecd09cdafb2a98c2acc972fcf98cfd53698509699ca2e6e71"
+    },
+    {
+      "path": "tools/build_cano_gomez_p56_multiome_interneuron_registry.mjs",
+      "currentSha256": "59dfe63f29ebeed970ca120e8f7ad756a7a7ed7a825d0524b9f2e8478e1a5454",
+      "startingSha256": "071e09ebc3fd16d7e066b32b4fb2f6ed535152939da8580e659d673ae7396132"
+    },
+    {
+      "path": "tools/build_research_iteration_manifest_2_41.mjs",
+      "currentSha256": "3087f48608a793e65a26508b8c182d0e85243d362e2a78aded518e04742e374f",
+      "startingSha256": "5dbdfe9b26a951d8e4f3773df5e6fe819e4adc6ddcfa486d47364af5a134e201"
+    },
+    {
+      "path": "tools/build_research_upgrade_registry.mjs",
+      "currentSha256": "ad88d1a0245ab4f903ae313092ad994948ffc976df00dba04482d202be77453d",
+      "startingSha256": "8e5cf5c00e50d4f09d93fbf189af38b07044502b77c5c1d4f185dc347bdf5cae"
+    },
+    {
+      "path": "tools/extract_cano_gomez_rds_metadata_stream.R",
+      "currentSha256": "10139ba024f11dc49ab1d62449428c4b55ac9c40ba615866ef30e4d9ea2f867e",
+      "startingSha256": "87c13661cec36c269511e2e5afd6835572de008fe0e472f4943712a432582484"
+    },
+    {
+      "path": "tools/extract_cano_gomez_rds_metadata_stream.py",
+      "currentSha256": "9ca5e7469f7e4154079d907104e18f1a8a132b1859a04fc619d5b6f9ec9d17e1",
+      "startingSha256": "0a9a865e72cbd43f119e22413b2d071b5b8c3d83d2d7a58166fed07a10e5500b"
+    },
+    {
+      "path": "tools/run_current_research_tests.mjs",
+      "currentSha256": "6fae31b4454e9cfd6040b58bc9a2d16a1ff2297c16ab36db1b7ae63fe7c5b6fe",
+      "startingSha256": "9f06c6ef1ca31fa430c5636dc3a6d12841a430f6c3e944fb5914a12891f14812"
+    }
+  ]
+}

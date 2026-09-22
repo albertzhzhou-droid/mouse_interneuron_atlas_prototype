@@ -1,0 +1,69 @@
+.research-compact-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.research-compact-metrics > span {
+  display: grid;
+  gap: 3px;
+  padding: 10px 14px;
+  border-left: 2px solid #568b79;
+  color: #bed0c8;
+  font-size: 12px;
+}
+.research-compact-metrics strong { color: #adedd9; font-size: 25px; letter-spacing: -.04em; }
+.research-scope-disclosure { margin-top: 14px; color: #c3d5ce; font-size: 12px; }
+.research-scope-disclosure summary,
+.research-lane-detail summary,
+.research-internal-detail-disclosure summary { cursor: pointer; padding: 8px 0; line-height: 1.5; }
+.research-scope-disclosure summary:focus-visible,
+.research-lane-detail summary:focus-visible,
+.research-internal-detail-disclosure summary:focus-visible { outline: 2px solid #34997b; outline-offset: 3px; }
+.research-start-routes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.research-start-routes button {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid #adc9bd;
+  border-radius: 12px;
+  background: #e5f2eb;
+  color: #1a4d3d;
+  cursor: pointer;
+}
+.research-start-routes button:first-child { background: #173e31; border-color: #173e31; color: #effff8; }
+.research-start-routes button:hover { border-color: #247a5f; box-shadow: 0 3px 12px #163f3017; }
+.research-start-routes button:focus-visible { outline: 3px solid #299e78; outline-offset: 3px; }
+.research-start-routes strong { font-size: 20px; line-height: 1.2; letter-spacing: -.025em; }
+.research-start-routes span { font-size: 12px; line-height: 1.5; }
+.research-start-routes span:first-child { font-size: 10px; font-weight: 750; letter-spacing: .09em; }
+.research-lane-detail { color: #385c4e; font-size: 12px; align-self: start; }
+.research-lane-detail dl { margin: 4px 0 8px; }
+.research-internal-detail-disclosure { padding: 8px 16px; border: 1px solid #c6d8d1; border-radius: 10px; background: #fff; color: #385c4e; font-size: 13px; }
+.research-internal-detail-disclosure .type-classification-boundary { margin: 8px 0; }
+@media (max-width: 760px) {
+  .research-compact-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .research-start-routes { grid-template-columns: 1fr; }
+}
+
+.type-collection-disclosure { border: 1px solid #bdd6cb; border-radius: 10px; padding: 10px 14px; background: #f6faf8; color: #3f6355; }
+.type-collection-disclosure > summary { cursor: pointer; padding: 3px 0; font-size: 13px; font-weight: 650; }
+.type-collection-disclosure > p { margin: 12px 0; font-size: 12px; line-height: 1.6; }
+.type-collection-disclosure .type-source-summary { margin-top: 12px; }
+.type-current-record-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px; border: 1px solid #a8caba; border-radius: 10px; background: #e5f3ed; }
+.type-current-record-bar > div:first-child { display: grid; gap: 5px; min-width: 0; }
+.type-current-record-bar span { font-size: 10px; letter-spacing: .07em; color: #426556; }
+.type-current-record-bar strong { font-size: 20px; color: #173d30; overflow-wrap: anywhere; }
+.type-current-record-bar small { font-size: 12px; color: #45695b; }
+.type-current-record-bar > div:last-child { display: flex; flex-wrap: wrap; gap: 8px; }
+.type-current-record-bar button { padding: 9px 12px; border: 1px solid #95b5a7; border-radius: 6px; background: white; color: #245440; cursor: pointer; font-size: 12px; }
+.type-current-record-bar button:hover { background: #f2fff8; border-color: #287c5a; }
+.type-current-record-bar button:focus-visible, .type-collection-disclosure > summary:focus-visible { outline: 3px solid #339876; outline-offset: 3px; }
+.type-dossier { scroll-margin-top: 22px; }
+
+.type-source-labels-disclosure { border: 1px solid #afc4d7; border-radius: 10px; background: #f4f8fc; padding: 12px 14px; }
+.type-source-labels-disclosure > summary { cursor: pointer; color: #24495e; font-size: 13px; font-weight: 650; line-height: 1.5; }
+.type-source-labels-disclosure > summary:focus-visible { outline: 3px solid #387695; outline-offset: 3px; }
+.type-source-labels-disclosure[open] > summary { margin-bottom: 14px; }

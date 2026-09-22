@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-observed-cell-form-lens-0.1.0",
+  "releasedAt": "2026-08-27",
+  "title": "Observed spinal-interneuron cell-form lens",
+  "purpose": "Replace cell-like sphere proxies with an explicit separation between synthetic population-evidence nodes and source-observed NeuroMorpho reconstructions.",
+  "sourceObject": {
+    "path": "/data/neuromorpho_release_8_6_124/morphology-lines.json",
+    "bytes": 984826,
+    "sha256": "6ba511fb2eb4dc23c20f4415c079cebe5bab565279f63fc72dc1c98ee6bd4330",
+    "assetManifestSha256": "4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647",
+    "repository": "NeuroMorpho.Org",
+    "repositoryRelease": "8.6.124",
+    "repositoryRrid": "RRID:SCR_002145",
+    "license": "CC BY 4.0 plus NeuroMorpho.Org use terms and original-paper attribution",
+    "rightsUrl": "https://neuromorpho.org/useterm.jsp",
+    "bundled": true
+  },
+  "defaultNeuronId": 109005,
+  "records": [
+    {
+      "neuronId": 104003,
+      "assetId": "NeuroMorpho:104003",
+      "phenotype": "Dynorphin-expressing inhibitory interneuron",
+      "transmitter": "inhibitory",
+      "domain": "Dendrites, Soma, No Axon",
+      "physicalIntegrity": "Dendrites Moderate",
+      "sourcePaperDoi": "10.1038/s41593-018-0119-z",
+      "segmentCount": 108,
+      "geometryStatus": "OBS",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered"
+    },
+    {
+      "neuronId": 108974,
+      "assetId": "NeuroMorpho:108974",
+      "phenotype": "Substance P-expressing excitatory interneuron",
+      "transmitter": "excitatory",
+      "domain": "Dendrites, Soma, No Axon",
+      "physicalIntegrity": "Dendrites Complete",
+      "sourcePaperDoi": "10.1097/j.pain.0000000000001406",
+      "segmentCount": 1800,
+      "geometryStatus": "OBS",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered"
+    },
+    {
+      "neuronId": 109005,
+      "assetId": "NeuroMorpho:109005",
+      "phenotype": "GRP-expressing excitatory interneuron",
+      "transmitter": "excitatory",
+      "domain": "Dendrites, Soma, Axon",
+      "physicalIntegrity": "Dendrites & Axon Moderate",
+      "sourcePaperDoi": "10.1097/j.pain.0000000000001406",
+      "segmentCount": 10313,
+      "geometryStatus": "OBS",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered"
+    },
+    {
+      "neuronId": 242822,
+      "assetId": "NeuroMorpho:242822",
+      "phenotype": "Substance P-expressing radial excitatory interneuron",
+      "transmitter": "excitatory",
+      "domain": "Dendrites, Soma, No Axon",
+      "physicalIntegrity": "Dendrites Complete",
+      "sourcePaperDoi": "10.1016/j.neuroscience.2020.06.038",
+      "segmentCount": 4514,
+      "geometryStatus": "OBS",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered"
+    },
+    {
+      "neuronId": 260150,
+      "assetId": "NeuroMorpho:260150",
+      "phenotype": "NPFF-positive vertical excitatory interneuron",
+      "transmitter": "excitatory",
+      "domain": "Dendrites, Soma, No Axon",
+      "physicalIntegrity": "Dendrites Complete",
+      "sourcePaperDoi": "10.1038/s41598-023-32720-3",
+      "segmentCount": 1296,
+      "geometryStatus": "OBS",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered"
+    }
+  ],
+  "renderingContract": {
+    "populationEvidenceLane": {
+      "geometryStatus": "SYN",
+      "representation": "non-cell evidence node",
+      "cellMorphologyClaim": false,
+      "purpose": "Select and inspect a literature evidence entity without depicting it as an observed cell."
+    },
+    "observedCellFormLane": {
+      "geometryStatus": "OBS",
+      "representation": "source segment geometry",
+      "displayTransform": "soma-centred uniform viewer scale retained from the validated derivative",
+      "measurementUse": "source-local descriptive inspection only",
+      "coordinateRelationshipToAtlas": "none",
+      "coordinateRelationshipToPopulationEvidence": "none",
+      "projectRegistrationCount": 0,
+      "exactCrossSourceIdentityCount": 0
+    },
+    "selectionDoesNotCreateRelationship": true,
+    "coDisplayDoesNotCreateRelationship": true
+  },
+  "hardBoundaries": [
+    "The selected observed reconstruction is not the morphology of the selected SCI evidence entity.",
+    "No observed reconstruction is assigned to a Russ, Sathyamurthy, Hayashi, Häring, or Matson molecular profile.",
+    "Soma-centred uniform viewer scaling is a display transform, not atlas registration or anatomical placement.",
+    "No source-local reconstruction in this lens reports a complete axon.",
+    "A source label or shared marker cannot create a same-cell or same-type link.",
+    "The five records are phenotype-stratified exemplars, not a representative morphology census."
+  ]
+}
