@@ -54,6 +54,8 @@ const SUPERSEDED_LIVE_INPUT_IDS = new Set([
   "researchVisualTargetResolver",
   "sourceLocalTopologyViewport",
   "morphologyViewerTopologyIntegration",
+  // Later iterations extend the comparison view with source-local evidence cards.
+  "morphologyCompareTopologyIntegration",
   "atlasFocusSynchronization",
   "atlasTypeContracts",
   "researchEvidenceFingerprintComponent",

@@ -2,9 +2,12 @@
 
 import {
   crossRegionInternalReference,
+  bancV888ComparativeInternalReference,
+  bancV888CandidateAudit,
   micronsObservedCellNucleusReference,
   micronsSourceNativeClipping,
   pkd2l1SbfsemVideoReference,
+  spinalInhibitoryInterneuronVolumeEmReference,
 } from "./atlas-types";
 import type { MicronsClippingState } from "./SceneCanvas";
 
@@ -63,6 +66,57 @@ export default function InternalStructureReferencePanel({
         <strong>Current knowledge record: {focusId ?? "none selected"}</strong>
         <p>{focusKind ? `${focusKind.replaceAll("_", " ")} · ` : ""}No admitted object links this exact record to boundary, nucleus, organelle, bouton, receptor, or synapse geometry. Switching records updates the evidence fingerprint, while this same-record internal scene correctly stays empty. Cross-region references remain separate scenes.</p>
       </div>
+
+      <details className="spinal-volume-em-reference-card">
+        <summary>
+          <div><span>UPG-216 · INDEPENDENT SPINAL EM REFERENCE</span><strong>A published internal-detail example · not the selected record</strong></div>
+          <em>LINK ONLY · 0 PROJECT OBJECTS</em>
+        </summary>
+        <p>Zhang et al. report a {spinalInhibitoryInterneuronVolumeEmReference.acquisition.reportedVolumeMicrometre.join(" × ")} μm dorsal-horn volume and publish a 3D reconstruction of a primary-afferent profile alongside two broadly labeled inhibitory-neuron profiles.</p>
+        <ul aria-label="Structures in the published reconstruction">
+          {spinalInhibitoryInterneuronVolumeEmReference.publishedReconstruction.reconstructedStructures.map((structure) => (
+            <li key={structure}>{structure}</li>
+          ))}
+        </ul>
+        <div className="spinal-volume-em-boundary" role="note">
+          <strong>Reference only—not the selected record</strong>
+          <p>The Slc32a1-based label is broad inhibitory-neuron context, not a named interneuron subtype. The paper&apos;s axon and dendrite are profiles, not a stable cell count. This app imports no trace, mesh, stack or segmentation, and makes no identity join or measurement.</p>
+          <span>Open the publication-hosted figure or supplement; the current project contains zero geometry from this source.</span>
+        </div>
+        <nav className="spinal-volume-em-links" aria-label="Published spinal volume reconstruction source links">
+          <a href={spinalInhibitoryInterneuronVolumeEmReference.source.articleUrl} target="_blank" rel="noreferrer">Primary article ↗</a>
+          <a href={spinalInhibitoryInterneuronVolumeEmReference.source.figureUrl} target="_blank" rel="noreferrer">Figure 4 ↗</a>
+          <a href={spinalInhibitoryInterneuronVolumeEmReference.source.fullTextAndSupplementUrl} target="_blank" rel="noreferrer">Full text + Supplementary Video 2 ↗</a>
+        </nav>
+      </details>
+
+      <details className="spinal-volume-em-reference-card banc-comparative-reference-card">
+        <summary>
+          <div><span>UPG-219 · COMPARATIVE FLY CONNECTOME</span><strong>Public VNC neurons with internal-detail data routes</strong></div>
+          <em>v888 · {bancV888ComparativeInternalReference.projectAdmission.sourceObjectsImported} LOCAL OBJECTS</em>
+        </summary>
+        <p>{bancV888ComparativeInternalReference.biologicalScope.species} · {bancV888ComparativeInternalReference.biologicalScope.lifeStage} {bancV888ComparativeInternalReference.biologicalScope.sex} · one specimen · whole VNC · CAVE {bancV888ComparativeInternalReference.snapshot.materializationId}. The pinned Dataverse v{bancV888CandidateAudit.source.dataverseVersion.versionNumber} metadata has {bancV888CandidateAudit.metadataSnapshot.file.rows.toLocaleString()} rows × {bancV888CandidateAudit.metadataSnapshot.file.columns} columns; its documentation says {bancV888CandidateAudit.metadataSnapshot.documentationDiscrepancy.documentedRows.toLocaleString()} × {bancV888CandidateAudit.metadataSnapshot.documentationDiscrepancy.documentedColumns}. Both are segment-level metadata counts, not an interneuron denominator.</p>
+        <ul aria-label="BANC v888 publicly documented data products">
+          <li>{bancV888ComparativeInternalReference.sourceProducts.neuronMeshes.format} per-neuron meshes · {bancV888ComparativeInternalReference.sourceProducts.neuronMeshes.availability.replaceAll("_", " ")}</li>
+          <li>{bancV888ComparativeInternalReference.sourceProducts.neuronSkeletons.format} skeletons · {bancV888ComparativeInternalReference.sourceProducts.neuronSkeletons.coordinateFrame}</li>
+          <li>Cell-type fields: {bancV888ComparativeInternalReference.sourceProducts.perNeuronMetadata.taxonomyFields.join(" → ")}</li>
+          <li>Nucleus ID ↔ root ID: one exact annotation-table row verified; no nucleus surface admitted</li>
+          <li>Mitochondria: v3 archive includes the per-mito table; this candidate has a count metric of {bancV888CandidateAudit.candidate.metadataMetrics.mitochondriaCount}, but its annotation rows and segmentation geometry remain unverified</li>
+          <li>Synapse tables: {bancV888ComparativeInternalReference.sourceProducts.synapseTables.versions.join(" / ")}; candidate-specific rows not extracted</li>
+        </ul>
+        <div className="spinal-volume-em-boundary" role="note">
+          <strong>One exact candidate is audited; its internal-detail chain is still incomplete</strong>
+          <p>Audit sentinel {bancV888CandidateAudit.candidate.rootId} · {bancV888CandidateAudit.candidate.cellType} · {bancV888CandidateAudit.candidate.cellSubClass} · proofread. Its root ID is stable across v626/v850/v888/v890; the linked nucleus row is verified. A pinned full-resolution SWC member has {bancV888CandidateAudit.objectReceipts.fullResolutionSkeletonMember.swcNodeCount.toLocaleString()} nodes (SHA-256 {bancV888CandidateAudit.objectReceipts.fullResolutionSkeletonMember.memberSha256.slice(0, 12)}…). The screen found {bancV888CandidateAudit.metadataSnapshot.screenCounts.strictlyProofreadWithNucleusPositionSubclassAndType.toLocaleString()} records meeting the stated metadata gates; this is a candidate filter, not a census. No BANC objects or geometries are imported, and this fly record is not linked to the selected mouse record.</p>
+          <span>The public neuron-mesh fragments matching this root are mutable GCS objects last updated {bancV888CandidateAudit.objectReceipts.neuronMeshCandidateObjects.objects[0].updated.slice(0, 10)}, before the paper&apos;s v888 date ({bancV888ComparativeInternalReference.snapshot.paperReleaseDate}); their v888 version and reuse terms are unverified. The per-mito table is listed in the DOI archive, while a separate detected-mitochondria entry remains {bancV888CandidateAudit.objectReceipts.mitochondria.separateDetectedMitochondriaMapEntry}; exact candidate mito rows and synapses remain pending.</span>
+        </div>
+        <nav className="spinal-volume-em-links" aria-label="BANC v888 comparative source links">
+          <a href={bancV888ComparativeInternalReference.source.portalUrl} target="_blank" rel="noreferrer">Official 3D viewer ↗</a>
+          <a href={bancV888ComparativeInternalReference.source.articleUrl} target="_blank" rel="noreferrer">Primary paper ↗</a>
+          <a href={bancV888ComparativeInternalReference.source.dataLocationsUrl} target="_blank" rel="noreferrer">Data-product map ↗</a>
+          <a href={`https://doi.org/${bancV888ComparativeInternalReference.source.dataverseDoi}`} target="_blank" rel="noreferrer">Dataverse v888 ↗</a>
+          <a href={`https://doi.org/${bancV888ComparativeInternalReference.source.bossDbDoi}`} target="_blank" rel="noreferrer">BossDB segmentations ↗</a>
+        </nav>
+      </details>
 
       <section className="pkd2l1-sbfsem-reference-card" aria-labelledby="pkd2l1-sbfsem-reference-title">
         <header>

@@ -16,7 +16,7 @@ const SCHEMATIC_CONTRACT_URL = new URL("../data/cross-region-internal-reference-
 const SCENE_URL = new URL("../app/SceneCanvas.tsx", import.meta.url);
 const PROTOTYPE_URL = new URL("../app/AtlasPrototype.tsx", import.meta.url);
 const PANEL_URL = new URL("../app/InternalStructureReferencePanel.tsx", import.meta.url);
-const RELEASE_MANIFEST_URL = new URL("../data/research-iteration-manifest-2.43.json", import.meta.url);
+const RELEASE_MANIFEST_URL = new URL("../data/research-iteration-manifest-2.50.json", import.meta.url);
 const [contract, assetManifest, schematicContract, scene, prototype, panel] = await Promise.all([
   readFile(CONTRACT_URL, "utf8").then(JSON.parse),
   readFile(ASSET_MANIFEST_URL, "utf8").then(JSON.parse),

@@ -12,6 +12,12 @@ const TEST_ROOT = path.join(PROJECT_ROOT, "tests");
 const HISTORICAL_REBUILD_TESTS = new Set([
   "research-iteration-manifest-2.41.test.mjs",
   "research-iteration-manifest-2.42.test.mjs",
+  "research-iteration-manifest-2.49.test.mjs",
+  "research-iteration-manifest-2.45.test.mjs",
+  "research-iteration-manifest-2.46.test.mjs",
+  "research-iteration-manifest-2.47.test.mjs",
+  "research-iteration-manifest-2.48.test.mjs",
+  "research-iteration-manifest-2.44.test.mjs",
   "research-iteration-manifest-2.28.test.mjs",
   "research-iteration-manifest-2.29.test.mjs",
   "research-iteration-manifest-2.30.test.mjs",
@@ -75,11 +81,32 @@ if (!files.includes("tests/research-iteration-manifest-2.42-snapshot.test.mjs"))
   throw new Error("Immutable 2.42 snapshot tests are missing");
 }
 if (!files.includes("tests/research-iteration-manifest-2.43.test.mjs")) {
-  throw new Error("Current 2.43 deterministic manifest tests are missing");
+  throw new Error("Immutable 2.43 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.44-snapshot.test.mjs")) {
+  throw new Error("Immutable 2.44 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.45-snapshot.test.mjs")) {
+  throw new Error("Immutable 2.45 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.46-snapshot.test.mjs")) {
+  throw new Error("Immutable 2.46 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.47-snapshot.test.mjs")) {
+  throw new Error("Immutable 2.47 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.48-snapshot.test.mjs")) {
+  throw new Error("Immutable 2.48 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.49-snapshot.test.mjs")) {
+  throw new Error("Immutable 2.49 snapshot tests are missing");
+}
+if (!files.includes("tests/research-iteration-manifest-2.50.test.mjs")) {
+  throw new Error("Current 2.50 release tests are missing");
 }
 
 process.stdout.write(
-  `Running ${files.length} current tests; immutable 2.28, 2.29, 2.30, 2.31, 2.32, 2.33, 2.34, 2.35, 2.36, 2.37, 2.38, 2.39 2.40 and 2.42 are checked by snapshot validators rather than rebuilt from newer live inputs.\n`,
+  `Running ${files.length} current tests; immutable release snapshots are checked by snapshot validators rather than rebuilt from newer live inputs.\n`,
 );
 const child = spawn(process.execPath, ["--test", ...files], {
   cwd: PROJECT_ROOT,

@@ -74,10 +74,11 @@ test("keeps UI source, metadata and representative SSR states English-only", asy
     assert.doesNotMatch(source, CJK_CHARACTER, `CJK UI text found in ${file.pathname}`);
   }
 
-  for (const path of ["/", "/?panel=compare", "/?panel=gaps", "/?panel=sources", "/?panel=review", "/?panel=benchmarks"]) {
+  for (const path of ["/", "/?lab=morphology&cellForm=249676&observedForm=1&morphologyView=compare", "/?panel=gaps", "/?panel=sources", "/?panel=review", "/?panel=benchmarks"]) {
     const response = await render(path);
     assert.equal(response.status, 200);
     const html = await response.text();
+    const normalized = html.replaceAll("<!-- -->", "");
     assert.match(html, /<html lang="en">/);
     assert.ok(html.includes(`Mouse Spinal Interneuron Atlas · Public-Data Research Iteration ${currentIteration}`));
     assert.match(html, /A localhost evidence-linked public-data workbench for mouse spinal interneuron and SCI research across source-declared life stages\./);
@@ -86,6 +87,14 @@ test("keeps UI source, metadata and representative SSR states English-only", asy
       assert.match(html, /Highest-impact cross-lane gaps/);
       assert.match(html, /No validated Russ ↔ Sathyamurthy ↔ canonical-family mapping/);
       assert.match(html, /Zero complete axons are reported; morphology cannot establish a connectome/);
+    }
+    if (path === "/?lab=morphology&cellForm=249676&observedForm=1&morphologyView=compare") {
+      assert.match(normalized, /UPG-213 · SOURCE-LOCAL MOUSE SPINAL MICRODETAIL/);
+      assert.match(normalized, /One recorded inhibitory interneuron, shown from morphology to ultrastructure/);
+      assert.match(normalized, /Source caption links panel d to panels e–g only/);
+      assert.match(normalized, /Figure 1 reproduced unchanged under CC BY 4\.0/);
+      assert.match(normalized, /0 segmentations · 0 meshes · 0 source z-coordinates · 0 active-record joins · 0 atlas registrations/);
+      assert.match(normalized, /Figure 1: panels a to d show black dendritic trees and red axonal arbors/);
     }
     if (path === "/?panel=sources") {
       assert.match(html, /Public-data-only policy/);
@@ -148,7 +157,8 @@ test("makes the research overview the first/default information experience", asy
   assert.match(normalized, /17 populations · 5 conditions · 15 cords/);
   assert.match(normalized, /<strong>1,097 exact SWCs · frozen adult subset 142<\/strong>/);
   assert.match(normalized, /checksum-gated browser over all 1,097 no-age-query source objects/);
-  assert.match(normalized, /Five exact records now expose 48 checksum-gated source-native soma-contour LineLoops \/ 2,379 vertices/);
+  assert.match(normalized, /Seven exact records now expose 72 checksum-gated source-native soma-contour LineLoops \/ 5,149 vertices/);
+  assert.match(normalized, /NMO_108978 \(12 loops \/ 2,614 vertices\) and NMO_249676 \(12 \/ 156\) in their independent source-native frames/);
   assert.match(normalized, /NMO_50424 = 8 \/ 427, NMO_50394 = 14 \/ 768 and NMO_50408 = 11 \/ 709/);
   assert.match(normalized, /raw sourceClosedFlag=false is preserved/);
   assert.match(normalized, /User Line 1–4 remain excluded/);
@@ -678,9 +688,12 @@ test("server-renders the 142-object matrix and bounded 3D comparison research vi
   assert.match(comparisonHtml, /7<\/b><span>declared supplementary routes/);
   assert.match(comparisonHtml, /never a 149-record census/);
   assert.match(comparisonHtml, /0 REGISTRATIONS · 0 SAME-CELL LINKS · 0 COMPLETE AXONS · 0 SAME-SPECIMEN INTERNAL MODELS/);
-  assert.match(comparisonHtml, /Synapse-scale reference — parent cell unresolved/);
-  assert.match(comparisonHtml, /This reference cannot fill the inside of the selected morphology/);
-  assert.match(comparisonHtml, /3583cf15007c2c5e62196f2a2fcb8e7393433b6d094688cbc17112ae870e2c1c/);
+  // The serial browser is an interactive client island; verify its controls and evidence text in its source contract.
+  assert.match(superClem, /Synapse-scale reference — parent cell unresolved/);
+  assert.match(superClem, /This serial image series cannot fill the inside of the selected morphology/);
+  assert.match(superClem, /aria-label="Select serial electron-microscopy section"/);
+  assert.match(superClem, /setSectionIndex/);
+  assert.match(superClemContract, /3583cf15007c2c5e62196f2a2fcb8e7393433b6d094688cbc17112ae870e2c1c/);
   assert.match(viewer, /Morphology matrix · 142 exact SWCs/);
   assert.match(viewer, /3D comparator · \{comparisonIds\.length\} selected \/ \{comparisonRecords\.length\} indexed/);
   assert.match(matrix, /PAGE_SIZE = 12/);

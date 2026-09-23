@@ -1,0 +1,125 @@
+{
+  "auditId": "adult-mouse-spinal-merfish-zenodo-version-audit-0.1.0",
+  "auditDate": "2026-09-22",
+  "scope": "publisher-facing record metadata only; source H5AD objects not downloaded or compared in this increment",
+  "studyTitle": "Spatial transcriptomics reveals organizational properties of mouse spinal cord and alterations in neuropathic pain",
+  "candidateLineage": {
+    "status": "unverified",
+    "reason": "The records share a title and creator, but the authoritative all-versions relationship and data-level equivalence have not been independently confirmed.",
+    "doNotMerge": true
+  },
+  "records": [
+    {
+      "recordId": "18039571",
+      "doi": "10.5281/zenodo.18039571",
+      "url": "https://zenodo.org/records/18039571",
+      "displayedVersion": null,
+      "lineageRole": "candidate_earlier_record_unverified",
+      "created": "2025-12-24",
+      "modified": "2026-05-02",
+      "files": [
+        {
+          "role": "healthy_adult_spinal_cord_merfish",
+          "fileName": "MERFISH_spinal_cord_resolved_0718.h5ad",
+          "displayedSize": "99.0 MB",
+          "exactBytes": null,
+          "publishedMd5": "ce06f62c0ec4973581dae17bb76f0cd9"
+        },
+        {
+          "role": "spared_nerve_injury_context",
+          "fileName": "SNI_merged_0917.h5ad",
+          "displayedSize": "115.9 MB",
+          "exactBytes": null,
+          "publishedMd5": "7e90a801ee57b8fec06cd03c8630f01b"
+        }
+      ],
+      "recordPageShowsOpenAccess": true,
+      "fileLevelReuseLicenseVisible": false
+    },
+    {
+      "recordId": "20533289",
+      "doi": "10.5281/zenodo.20533289",
+      "url": "https://zenodo.org/records/20533289",
+      "displayedVersion": "v2",
+      "lineageRole": "later_version_label_observed_lineage_still_unverified",
+      "published": "2026-06-03",
+      "files": [
+        {
+          "role": "healthy_adult_spinal_cord_merfish",
+          "fileName": "MERFISH_spinal_cord_0531.h5ad",
+          "displayedSize": "99.0 MB",
+          "exactBytes": 98970246,
+          "publishedMd5": "e7328d8bda2fb4b390cb107340ac4c83"
+        },
+        {
+          "role": "spared_nerve_injury_context",
+          "fileName": "SNI_merged_0531.h5ad",
+          "displayedSize": "115.9 MB",
+          "exactBytes": 115901575,
+          "publishedMd5": "6ee6195c7f958f07172172963fef8d20"
+        }
+      ],
+      "recordPageShowsOpenAccess": true,
+      "fileLevelReuseLicenseVisible": false
+    }
+  ],
+  "contextualEvidence": {
+    "earlierRecordSectionCount": {
+      "value": 18,
+      "unit": "mouse spinal-cord sections",
+      "source": "A later spatial-transcriptomics annotation benchmark cites record 18039571 as a dataset of 18 mouse spinal-cord sections.",
+      "locator": "Data availability section",
+      "notYetReconciledWith": "the 108 section IDs reported in the existing UPG-152 audit of the 20533289 H5AD"
+    },
+    "sourceStudy": {
+      "adultMouseLevels": ["cervical", "thoracic", "lumbar", "sacral"],
+      "targetedGenePanelSize": 500,
+      "reportedHighQualityCellCount": 146621,
+      "imagingZPlanesReportedInArticle": 7,
+      "boundary": "Article-level acquisition facts do not establish that either H5AD contains serial masks, z-resolved cell boundaries or reconstructable cell geometry."
+    }
+  },
+  "unresolvedGates": [
+    "Confirm the machine-readable Zenodo all-version relationship between records 18039571 and 20533289.",
+    "Download each exact H5AD independently and verify bytes, published MD5 and local SHA-256.",
+    "Compare H5AD schema, observation identifiers, sample and section keys, counts, labels and spatial fields without joining unmatched rows.",
+    "Determine file-level redistribution terms for each exact object; an open-access badge is not an asset licence.",
+    "Keep healthy baseline and spared-nerve-injury records distinct; SNI is not SCI."
+  ],
+  "admission": {
+    "sourceH5adsDownloaded": false,
+    "versionLineageConfirmed": false,
+    "dataDeltaCompared": false,
+    "fileRightsCleared": false,
+    "payloadsBundled": 0,
+    "crossVersionJoins": 0,
+    "interneuronDenominatorAsserted": false,
+    "zRegistration": 0,
+    "cellMorphology": 0,
+    "membranes": 0,
+    "internalObjects": 0,
+    "atlasRegistrations": 0
+  },
+  "references": [
+    {
+      "label": "Zenodo candidate earlier record 18039571",
+      "url": "https://zenodo.org/records/18039571"
+    },
+    {
+      "label": "Zenodo record 20533289, displayed as v2",
+      "url": "https://zenodo.org/records/20533289"
+    },
+    {
+      "label": "Spatial transcriptomics annotation benchmark citing the 18-section dataset",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13320944/"
+    },
+    {
+      "label": "Zenodo versioning policy",
+      "url": "https://zenodo.org/help/versioning"
+    },
+    {
+      "label": "Wang et al. adult spinal MERFISH preprint",
+      "url": "https://doi.org/10.64898/2026.01.10.698734"
+    }
+  ]
+}

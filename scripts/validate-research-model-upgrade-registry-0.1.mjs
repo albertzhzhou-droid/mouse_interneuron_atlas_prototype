@@ -20,9 +20,9 @@ const QUEUE_URL = new URL(`../${QUEUE_PATH}`, import.meta.url);
 const APP_ROOT = resolve(PROJECT_ROOT, "app");
 const APP_SOURCE_EXTENSION = /\.(?:js|jsx|ts|tsx)$/;
 const UPGRADE_ID_PATTERN = /UPG-\d{3}[A-Z]?/g;
-const EXPECTED_UPGRADE_COUNT = 197;
-const EXPECTED_COMPLETED_COUNT = 50;
-const EXPECTED_LAST_INCLUDED_ID = "UPG-215";
+const EXPECTED_UPGRADE_COUNT = 204;
+const EXPECTED_COMPLETED_COUNT = 57;
+const EXPECTED_LAST_INCLUDED_ID = "UPG-222";
 
 function check(condition, message) {
   if (!condition) throw new Error(message);
@@ -130,6 +130,11 @@ export function validateResearchUpgradeRegistry(registry, {
     check(upgrade?.status === "completed", `${id} must remain a completed 2.41 increment`);
     check(upgrade?.blocker?.code === "none_for_declared_increment", `${id} must retain the completed-increment blocker receipt`);
   }
+  for (const id of ["UPG-207", "UPG-208", "UPG-211", "UPG-212", "UPG-216"]) {
+    const upgrade = upgradeById.get(id);
+    check(upgrade?.status === "completed", `${id} must be a completed research increment`);
+    check(upgrade?.blocker?.code === "none_for_declared_increment", `${id} must retain the completed-increment blocker receipt`);
+  }
   check(/seven explicitly source-closed.*200 vertices/i.test(upgradeById.get("UPG-197")?.description ?? ""), "UPG-197 exact NMO 45674 admission drifted");
   check(/15 source-native line loops and 475 vertices/i.test(upgradeById.get("UPG-198")?.description ?? ""), "UPG-198 five-file DAT audit denominator drifted");
   check(/eight-slot completeness selector.*376 molecular profiles.*nine exact source namespaces/i.test(upgradeById.get("UPG-199")?.description ?? ""), "UPG-199 fixed-slot completeness scope drifted");
@@ -146,7 +151,8 @@ export function validateResearchUpgradeRegistry(registry, {
 
   const denominatorText = `${upgradeById.get("UPG-202")?.description ?? ""} ${upgradeById.get("UPG-202")?.acceptanceBoundary ?? ""}`;
   check(/derive every live research-facing[^.]*denominator from the checksum-verified canonical source registry/i.test(denominatorText), "UPG-202 dynamic registry-derivation boundary drifted");
-  check(/resolves automatically to 27, 34, 10 and 1/i.test(denominatorText), "UPG-202 dynamic 27/34/10+1 denominator receipt drifted");
+  check(/historical implementation baseline was 27 sources, 33 record sets, 9 exact cell\/profile rosters and 1 exact source-object set/i.test(denominatorText), "UPG-202 historical denominator baseline drifted");
+  check(/later validated source additions have changed the live totals; .*read current values dynamically from the canonical registry/i.test(denominatorText), "UPG-202 current denominator source drifted");
 
   const toddText = `${upgradeById.get("UPG-203")?.description ?? ""} ${upgradeById.get("UPG-203")?.acceptanceBoundary ?? ""}`;
   check(/33 retained objects and 1,904 vertices/i.test(toddText), "UPG-203 Todd 33/1,904 source-object receipt drifted");
@@ -166,6 +172,59 @@ export function validateResearchUpgradeRegistry(registry, {
   for (const [label, pattern] of [["geometry", "geometry"], ["internal-object", "internal objects?"], ["join", "(?:cross-source |same-cell )?joins?"], ["registration", "registrations?"]]) {
     check(new RegExp(`zero[^.]{0,160}\\b${pattern}\\b`, "i").test(canoText), `UPG-204 zero-${label} boundary drifted`);
   }
+  check(/12 source-open `Cell Body` line loops \/ 2,614 vertices/i.test(upgradeById.get("UPG-207")?.description ?? ""), "UPG-207 NMO 108978 receipt drifted");
+  check(/12 `CellBody` line loops \/ 156 vertices/i.test(upgradeById.get("UPG-208")?.description ?? ""), "UPG-208 NMO 249676 receipt drifted");
+  const glutText = `${upgradeById.get("UPG-211")?.description ?? ""} ${upgradeById.get("UPG-211")?.acceptanceBoundary ?? ""}`;
+  check(/92,782/.test(glutText) && /277/.test(glutText), "UPG-211 source-slot denominator drifted");
+  check(/`meta\.data\$neuron_types` remains absent/i.test(glutText), "UPG-211 absent metadata boundary drifted");
+  check(/not (?:confirmed )?interneuron identities/i.test(glutText), "UPG-211 label interpretation boundary drifted");
+  const informationText = `${upgradeById.get("UPG-212")?.description ?? ""} ${upgradeById.get("UPG-212")?.acceptanceBoundary ?? ""}`;
+  check(/277 unresolved labels outside the 387 confirmed-profile denominator/i.test(informationText), "UPG-212 277/387 denominator boundary drifted");
+  const publishedEmText = `${upgradeById.get("UPG-216")?.description ?? ""} ${upgradeById.get("UPG-216")?.acceptanceBoundary ?? ""}`;
+  check(/35 × 24 × 2 μm/.test(publishedEmText), "UPG-216 published volume size drifted");
+  check(/not the selected atlas cell or a named subtype/i.test(publishedEmText), "UPG-216 independent-reference boundary drifted");
+  check(/zero project geometry/i.test(publishedEmText), "UPG-216 zero-project-geometry boundary drifted");
+  const futureEmAudit = upgradeById.get("UPG-217");
+  check(futureEmAudit?.status === "completed", "UPG-217 listed-public-file availability audit should be closed");
+  check(/does not list a downloadable raw serial-image stack/i.test(futureEmAudit?.description ?? ""), "UPG-217 raw-stack availability finding drifted");
+  check(/does not claim that no copy exists in any external repository/i.test(futureEmAudit?.description ?? ""), "UPG-217 audit scope boundary drifted");
+  const davisFigure = upgradeById.get("UPG-213");
+  check(davisFigure?.status === "completed", "UPG-213 source-figure viewer should be complete");
+  check(/caption links panel d to EM panels e–g/i.test(davisFigure?.description ?? ""), "UPG-213 same-cell panel boundary drifted");
+  check(/no .*project geometry/i.test(davisFigure?.description ?? ""), "UPG-213 figure must remain non-geometric");
+  const micronsSynapse = upgradeById.get("UPG-218");
+  check(micronsSynapse?.status.startsWith("planned"), "UPG-218 synapse-point route must remain planned until audit");
+  check(/automated detections from proofread contacts/i.test(micronsSynapse?.description ?? ""), "UPG-218 synapse quality boundary drifted");
+  const banc = upgradeById.get("UPG-219");
+  check(banc?.status.startsWith("partially completed"), "UPG-219 release-level BANC audit should remain partial until exact-cell admission");
+  check(/distinct fly-comparison lane/i.test(banc?.description ?? ""), "UPG-219 cross-species boundary drifted");
+  check(/188,508 rows × 81 columns/i.test(banc?.description ?? "") && /documentation reports 188,162 × 79/i.test(banc?.description ?? ""), "UPG-219 archive/documentation metadata discrepancy drifted");
+  check(/neither count is an interneuron denominator/i.test(banc?.description ?? ""), "UPG-219 metadata counts must not become an interneuron denominator");
+  check(/banc_888_mitochondria_v1_human_readable\.csv\.gz/i.test(banc?.description ?? ""), "UPG-219 per-mitochondrion archive filename drifted");
+  check(/detected-mitochondria product `MISSING`/i.test(banc?.description ?? ""), "UPG-219 source-map discrepancy must remain visible");
+  const bancCell = upgradeById.get("UPG-221");
+  check(bancCell?.status.startsWith("partially completed"), "UPG-221 must record only its exact candidate/nucleus/SWC evidence increment");
+  check(bancCell?.lane === "internal_microdetail", "UPG-221 must remain in the internal-microdetail lane");
+  check(/source-classified VNC-local interneuron candidates/i.test(bancCell?.description ?? ""), "UPG-221 exact candidate gate drifted");
+  check(/720575941350424112/.test(bancCell?.description ?? "") && /12,571 candidate rows/i.test(bancCell?.description ?? ""), "UPG-221 candidate identity/filter receipt drifted");
+  check(/7,451-node full-resolution SWC member/i.test(bancCell?.description ?? ""), "UPG-221 exact skeleton-member receipt drifted");
+  check(/Keep all source geometry out of the app/i.test(bancCell?.description ?? ""), "UPG-221 no-geometry fail-closed boundary drifted");
+  const contourSurface = upgradeById.get("UPG-194");
+  check(contourSurface?.status.startsWith("completed"), "UPG-194 must record the NMO 50394 source-gated shell completion");
+  check(/NMO 50394 only/i.test(contourSurface?.status ?? ""), "UPG-194 must stay record-scoped");
+  check(/1,792 vertices \/ 3,328 triangles/i.test(contourSurface?.description ?? ""), "UPG-194 derived mesh denominator drifted");
+  check(/not an observed membrane/i.test(contourSurface?.description ?? ""), "UPG-194 open-shell evidence boundary drifted");
+  const contourAudit = upgradeById.get("UPG-220");
+  check(contourAudit?.status.startsWith("planned"), "UPG-220 remaining Todd contour audit must remain planned");
+  check(contourAudit?.lane === "morphology", "UPG-220 must remain in the morphology lane");
+  check(/two self-intersecting section loops/i.test(contourAudit?.description ?? ""), "UPG-220 NMO 50408 topology blocker drifted");
+  const merfishVersionAudit = upgradeById.get("UPG-222");
+  check(merfishVersionAudit?.status.startsWith("partially completed"), "UPG-222 must preserve the incomplete version-audit boundary");
+  check(merfishVersionAudit?.priority === "P0" && merfishVersionAudit?.lane === "provenance_and_identity", "UPG-222 priority or lane drifted");
+  check(/18039571/.test(merfishVersionAudit?.description ?? "") && /20533289/.test(merfishVersionAudit?.description ?? ""), "UPG-222 exact Zenodo record IDs drifted");
+  check(/ce06f62c0ec4973581dae17bb76f0cd9/.test(merfishVersionAudit?.description ?? "") && /e7328d8bda2fb4b390cb107340ac4c83/.test(merfishVersionAudit?.description ?? ""), "UPG-222 healthy H5AD checksum boundary drifted");
+  check(/H5AD schema, observation keys, sample and section IDs/i.test(merfishVersionAudit?.description ?? ""), "UPG-222 exact data-delta gate drifted");
+  check(/no H5AD payload or inferred cross-version join/i.test(merfishVersionAudit?.description ?? ""), "UPG-222 no-import and no-join boundary drifted");
   check(registry.sourceQueue.lastIncludedId === EXPECTED_LAST_INCLUDED_ID, `Registry must end at ${EXPECTED_LAST_INCLUDED_ID}`);
   check(registry.sourceQueue.lastIncludedId === registry.upgrades.at(-1).id, "lastIncludedId does not match the final registry row");
   check(registry.summary?.upgradeCount === registry.upgrades.length, "Registry summary upgradeCount drifted");

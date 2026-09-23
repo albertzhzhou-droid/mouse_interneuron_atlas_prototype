@@ -28,7 +28,7 @@ import delileDevelopmentalInterneuronTaxonomyJson from "../data/delile-developme
 import publicWorkbenchManifestJson from "../data/release-manifest-2.8.json";
 import curatorFeedbackContractJson from "../data/curator-feedback-contract-2.8.json";
 import curatorAdjudicationContractJson from "../data/curator-adjudication-contract-2.8.json";
-import researchManifestJson from "../data/research-iteration-manifest-2.43.json";
+import researchManifestJson from "../data/research-iteration-manifest-2.50.json";
 import researchMvpJson from "../data/research-mvp-release-0.2.json";
 import observedCellFormLensJson from "../data/observed-cell-form-lens-0.1.json";
 import morphologyFidelityContractJson from "../data/morphology-fidelity-contract-0.1.json";
@@ -45,6 +45,9 @@ import crossRegionInternalReferenceJson from "../data/cross-region-internal-refe
 import micronsObservedCellNucleusReferenceJson from "../data/microns-observed-cell-nucleus-reference-0.1.json";
 import micronsSourceNativeClippingJson from "../data/microns-source-native-clipping-0.1.json";
 import pkd2l1SbfsemVideoReferenceJson from "../data/pkd2l1-sbfsem-video-reference-0.1.json";
+import spinalInhibitoryInterneuronVolumeEmReferenceJson from "../data/spinal-inhibitory-interneuron-volume-em-reference-0.1.json";
+import bancV888ComparativeInternalReferenceJson from "../data/banc-v888-comparative-internal-reference-0.1.json";
+import bancV888CandidateAuditJson from "../data/banc-v888-candidate-audit-0.1.json";
 import canoGomezP56MultiomeInterneuronRegistryJson from "../data/cano-gomez-p56-multiome-interneuron-registry-0.1.json";
 import researchSourceRegistryJson from "../data/research-source-registry-0.1.json";
 import researchModelUpgradeRegistryJson from "../data/research-model-upgrade-registry-0.1.json";
@@ -144,6 +147,9 @@ export const neurolucidaNativeContourAdmissionCatalog = { ...nativeDeltaJson, ba
 export const evidenceAware3dRepresentationContract = evidenceAware3dRepresentationContractJson;
 export const micronsSourceNativeClipping = micronsSourceNativeClippingJson;
 export const pkd2l1SbfsemVideoReference = pkd2l1SbfsemVideoReferenceJson;
+export const spinalInhibitoryInterneuronVolumeEmReference = spinalInhibitoryInterneuronVolumeEmReferenceJson;
+export const bancV888ComparativeInternalReference = bancV888ComparativeInternalReferenceJson;
+export const bancV888CandidateAudit = bancV888CandidateAuditJson;
 export const canoGomezP56MultiomeInterneuronRegistry = canoGomezP56MultiomeInterneuronRegistryJson;
 
 for (const route of dorsalHornObservedMorphologyRoutePackJson.routes.filter((candidate) => candidate.censusMembership)) {

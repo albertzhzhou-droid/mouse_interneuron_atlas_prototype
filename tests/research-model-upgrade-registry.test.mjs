@@ -32,11 +32,22 @@ test("generated registry is byte-deterministic from every UPG-022-or-later queue
   assert.equal(stableJson(generated), stableJson(registry));
   const parsed = parseResearchUpgradeQueue(queueMarkdown);
   assert.equal(registry.upgrades.length, parsed.rows.length);
-  assert.equal(registry.upgrades.length, 197);
+  assert.equal(registry.upgrades.length, 204);
   assert.equal(registry.upgrades[0].id, "UPG-022");
   assert.equal(registry.upgrades.at(-1).id, parsed.rows.at(-1).id);
-  assert.equal(registry.upgrades.at(-1).id, "UPG-215");
-  assert.equal(registry.summary.byStatus.completed, 50);
+  assert.equal(registry.upgrades.at(-1).id, "UPG-222");
+  assert.equal(registry.summary.byStatus.completed, 57);
+  assert.equal(upgrade("UPG-217").status, "completed");
+  assert.match(upgrade("UPG-217").description, /does not claim that no copy exists in any external repository/);
+  assert.equal(upgrade("UPG-213").status, "completed");
+  assert.match(upgrade("UPG-218").status, /^planned/);
+  assert.match(upgrade("UPG-219").status, /^partially completed/);
+  assert.match(upgrade("UPG-220").status, /^planned/);
+  assert.match(upgrade("UPG-221").status, /^partially completed/);
+  assert.match(upgrade("UPG-222").status, /^partially completed/);
+  assert.equal(upgrade("UPG-222").priority, "P0");
+  assert.equal(upgrade("UPG-222").lane, "provenance_and_identity");
+  assert.match(upgrade("UPG-222").description, /published as Zenodo v2/i);
   assert.equal(registry.sourceQueue.governanceAdmissionQueueIncluded, false);
   assert.equal(registry.sourceQueue.excludedGovernanceAdmissionRange, "UPG-001-UPG-021");
   assert.ok(registry.upgrades.every((item) => Number(item.id.slice(4, 7)) >= 22));
@@ -160,8 +171,33 @@ test("UPG-190 through UPG-196 separate exact source acquisition, identity, coord
 
   const surface = upgrade("UPG-194");
   assert.equal(surface?.lane, "morphology");
-  assert.match(surface.description, /Any failed eligibility or QA check yields zero triangles/);
-  assert.match(surface.acceptanceBoundary, /must never be fused/);
+  assert.match(surface.status, /^completed/);
+  assert.match(surface.status, /NMO 50394 only/);
+  assert.match(surface.description, /1,792 vertices \/ 3,328 triangles/);
+  assert.match(surface.description, /not an observed membrane/);
+  assert.match(surface.description, /must never be fused/);
+
+  const pendingContourAudit = upgrade("UPG-220");
+  assert.equal(pendingContourAudit?.lane, "morphology");
+  assert.match(pendingContourAudit?.status ?? "", /^planned/);
+  assert.match(pendingContourAudit?.description ?? "", /two self-intersecting section loops/);
+
+  const bancSourceAudit = upgrade("UPG-219");
+  assert.equal(bancSourceAudit?.lane, "internal_microdetail");
+  assert.match(bancSourceAudit?.status ?? "", /^partially completed/);
+  assert.match(bancSourceAudit?.description ?? "", /mitochondria_v1_human_readable\.csv\.gz/);
+  assert.match(bancSourceAudit?.description ?? "", /detected-mitochondria product `MISSING`/);
+  assert.match(bancSourceAudit?.description ?? "", /banc_888_mitochondria_v1_human_readable\.csv\.gz/);
+
+  const bancExactCell = upgrade("UPG-221");
+  assert.equal(bancExactCell?.lane, "internal_microdetail");
+  assert.match(bancExactCell?.status ?? "", /^partially completed/);
+  assert.match(bancExactCell?.description ?? "", /source-classified VNC-local interneuron candidates/);
+  assert.match(bancExactCell?.description ?? "", /720575941350424112/);
+  assert.match(bancExactCell?.description ?? "", /7,451-node full-resolution SWC member/);
+  assert.match(bancExactCell?.description ?? "", /12,571 candidate rows/);
+  assert.match(bancExactCell?.description ?? "", /object-level reuse/);
+  assert.match(bancExactCell?.description ?? "", /Keep all source geometry out of the app/);
 
   const janelia = upgrade("UPG-195");
   assert.equal(janelia?.lane, "internal_microdetail");
@@ -232,7 +268,8 @@ test("UPG-197 through UPG-204 preserve the 2.40 inputs and completed 2.41 active
   assert.equal(denominators?.lane, "provenance_and_identity");
   assert.equal(denominators?.blocker.code, "none_for_declared_increment");
   assert.match(denominators.description, /derive every live research-facing source, record-set, exact cell\/profile-roster and exact source-object-set denominator from the checksum-verified canonical source registry/i);
-  assert.match(denominators.description, /resolves automatically to 27, 34, 10 and 1/);
+  assert.match(denominators.description, /historical implementation baseline was 27 sources, 33 record sets, 9 exact cell\/profile rosters and 1 exact source-object set/);
+  assert.match(denominators.description, /later validated source additions have changed the live totals; all eight .* read current values dynamically from the canonical registry/i);
   assert.match(denominators.acceptanceBoundary, /may not be summed across sources, record sets, cells, nuclei, morphologies or object assets into a biological census/);
 
   const todd = upgrade("UPG-203");

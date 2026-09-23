@@ -63,6 +63,8 @@ const SUPERSEDED_LIVE_INPUT_IDS = new Set([
   // Iteration 2.42 hashes these evolving viewers in its current manifest.
   "sourceLocalTopologyViewport",
   "morphologyViewerTopologyIntegration",
+  // Iteration 2.46 adds the source-local Davis figure reference to this evolving view.
+  "morphologyCompareTopologyIntegration",
   "neuromorphoUniversePanel",
   "researchSourceRegistry",
   "researchModelUpgradeRegistry",

@@ -93,5 +93,8 @@ test("native viewer exposes source cross-section inspection and resets per selec
   assert.match(viewer, /Isolate selected trace/);
   assert.match(viewer, /First five exact source coordinates/);
   assert.match(viewer, /raw false flags retained/);
-  assert.doesNotMatch(viewer, /ShapeGeometry|ExtrudeGeometry|TubeGeometry|new THREE\.Mesh\s*\(/);
+  assert.doesNotMatch(viewer, /SphereGeometry|ShapeGeometry|ExtrudeGeometry|TubeGeometry/);
+  assert.match(viewer, /neuronId !== derivedSurfaceReceipt\.neuronId/);
+  assert.match(viewer, /new THREE\.Mesh\s*\(/);
+  assert.match(viewer, /DER-source-contour-interpolated-open-shell-not-membrane/);
 });

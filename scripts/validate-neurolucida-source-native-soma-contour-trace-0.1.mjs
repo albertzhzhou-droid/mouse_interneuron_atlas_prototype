@@ -50,7 +50,9 @@ export async function validateNeurolucidaSourceNativeSomaContourTrace() {
   check(!toolNames.some((name) => /morphology_parser|swcPlus_typeLibrary/i.test(name)), "GPL independent parser code must not be bundled in project tools");
   check(/neurolucidaSourceNativeSomaContourTraceJson/.test(atlasTypesSource), "Native contour contract is not exposed to the app");
   check(/new THREE\.LineLoop/.test(viewerSource), "Native contour viewer must render line loops");
-  check(!/ShapeGeometry|ExtrudeGeometry|TubeGeometry|Mesh\s*\(/.test(viewerSource), "Native contour viewer contains an unauthorized surface primitive");
+  check(!/SphereGeometry|ShapeGeometry|ExtrudeGeometry|TubeGeometry|Mesh\s*\(/.test(viewerSource), "NMO 45718 line-only contour viewer contains an unauthorized surface primitive");
+  check(/neuronId !== derivedSurfaceReceipt\.neuronId/.test(recordViewerSource)
+    && /DER-source-contour-interpolated-open-shell-not-membrane/.test(recordViewerSource), "NMO 50394 open shell lacks its exact-record gate");
   check(/traceRadiusRenderingUse: "forbidden"/.test(viewerSource), "Native contour viewer does not disclose the trace-radius boundary");
   check(/state\.neuronId === neuronId/.test(recordViewerSource), "Current native contour viewer is not gated to the requested record identity");
   check(/<NativeContourRecordViewer[^>]*neuronId=\{observedCellForm\.neuronId\}/.test(atlasSource), "Current native contour viewer is not gated by the selected morphology identity");

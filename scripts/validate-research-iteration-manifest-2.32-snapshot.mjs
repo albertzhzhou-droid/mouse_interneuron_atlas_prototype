@@ -60,6 +60,7 @@ const SUPERSEDED_LIVE_INPUT_IDS = new Set([
   "researchVisualTargetResolver",
   "sourceLocalTopologyViewport",
   "morphologyViewerTopologyIntegration",
+  "morphologyCompareTopologyIntegration",
   "researchEvidenceFingerprintComponent",
   "atlasFocusSynchronization",
   "typeAtlasFingerprintIntegration",

@@ -30,6 +30,7 @@ import {
 import MorphologyRecordDisclosure from "./MorphologyRecordDisclosure";
 import MorphologyTopologyDetailPanel from "./MorphologyTopologyDetailPanel";
 import MorphologyMicrodetailCoverage from "./MorphologyMicrodetailCoverage";
+import DavisICRSameCellReference from "./DavisICRSameCellReference";
 import SuperClemSynapseReference from "./SuperClemSynapseReference";
 
 const SLOT_COLORS = ["#75cdb9", "#f3b33e", "#cc79a7", "#56b4e9"];
@@ -422,6 +423,7 @@ export default function MorphologyComparePanel({
       </div>
 
       <MorphologyMicrodetailCoverage records={selectedRecords} />
+      <DavisICRSameCellReference />
       <SuperClemSynapseReference />
 
       {selectedAnalysisComplete ? (

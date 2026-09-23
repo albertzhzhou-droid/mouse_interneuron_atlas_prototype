@@ -67,6 +67,8 @@ function verifiedIntegrity(bytes) {
 function relationshipFixture() {
   const auditBytes = Buffer.from("synthetic all-nucleus audit fixture");
   const rosterBytes = Buffer.from("synthetic confirmed-roster fixture");
+  const activeIdentSummaryBytes = Buffer.from("synthetic active.ident summary fixture");
+  const activeIdentRowsBytes = Buffer.from("synthetic active.ident row-map fixture");
   const identityMode = "BASE_R_STREAM_META_DATA_ROW_ONLY";
   const artifacts = [
     {
@@ -188,6 +190,22 @@ function relationshipFixture() {
         integrity: verifiedIntegrity(bytes),
       };
     }),
+    {
+      id: "ASSET-CANOGOMEZ-GLUT-ACTIVE-IDENT-SUMMARY",
+      kind: "checksum_pinned_project_derivative",
+      accession: "cano-gomez-p56-glut-active-ident-0.1.0",
+      url: null,
+      bundled: true,
+      integrity: verifiedIntegrity(activeIdentSummaryBytes),
+    },
+    {
+      id: "ASSET-CANOGOMEZ-GLUT-ACTIVE-IDENT-ROWS",
+      kind: "checksum_pinned_project_derivative",
+      accession: "cano-gomez-p56-glut-active-ident-0.1.0-rows",
+      url: null,
+      bundled: true,
+      integrity: verifiedIntegrity(activeIdentRowsBytes),
+    },
   ];
   const canoSource = {
     id: "SRC-CANOGOMEZ-2026",
@@ -227,7 +245,7 @@ function relationshipFixture() {
     assets,
     rights: {
       status: "article_CC-BY-NC-4.0_GEO_RDS_NOASSERTION",
-      note: "Article CC-BY-NC-4.0 is separate from GEO RDS reuse, which remains NOASSERTION; source RDS files are exact link-only and not bundled. The three project derivatives are bundled only in the private research repository pending separate public-release review.",
+      note: "Article CC-BY-NC-4.0 is separate from GEO RDS reuse, which remains NOASSERTION; source RDS files are exact link-only and not bundled. All five project-derived artifacts are bundled only in the private research repository pending separate public-release review.",
     },
     admission: {
       status: "confirmed_only_source_local_profiles_admitted",

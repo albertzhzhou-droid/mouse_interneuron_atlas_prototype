@@ -81,7 +81,9 @@ export async function validateNeurolucidaNativeContourAdmissionCatalog03() {
   check(catalog.records.reduce((sum, record) => sum + record.admission.admittedContourObjectCount, 0) === 48, "Five-record line-loop denominator changed");
   check(catalog.records.reduce((sum, record) => sum + record.admission.admittedVertexCount, 0) === 2379, "Five-record vertex denominator changed");
   check(/neurolucida-native-contour-admission-catalog-0\.3\.json/.test(atlasTypesSource) && !/import neurolucidaNativeContourAdmissionCatalogJson from "\.\.\/data\/neurolucida-native-contour-admission-catalog-0\.2\.json"/.test(atlasTypesSource), "Current app catalog import does not point to 0.3");
-  check(/new THREE\.LineLoop/.test(viewerSource) && !/ShapeGeometry|ExtrudeGeometry|TubeGeometry|new THREE\.Mesh\s*\(/.test(viewerSource), "Native contour viewer uses an unauthorized geometry primitive");
+  check(/new THREE\.LineLoop/.test(viewerSource) && !/SphereGeometry|ShapeGeometry|ExtrudeGeometry|TubeGeometry/.test(viewerSource)
+    && /neuronId !== derivedSurfaceReceipt\.neuronId/.test(viewerSource)
+    && /DER-source-contour-interpolated-open-shell-not-membrane/.test(viewerSource), "Native contour viewer lacks the exact-record-gated OBS + DER primitive boundary");
   check(/raw false flags/.test(viewerSource) && /MBF Cell Body semantics/.test(viewerSource), "Native contour viewer does not disclose the Todd closure interpretation");
   const nativeRecordSet = registry.sources.flatMap((source) => source.recordSets).find((recordSet) => recordSet.recordSetId === "RS-NEUROMORPHO-NATIVE-CONTOUR-ADMISSION-CATALOG");
   check(nativeRecordSet?.dataPath === "data/neurolucida-native-contour-admission-catalog-0.3.json" && nativeRecordSet?.sourceObjectSetRef?.path === nativeRecordSet.dataPath, "Research source registry does not point to the exact 0.3 source-object set");

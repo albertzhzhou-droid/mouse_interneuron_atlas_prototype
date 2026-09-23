@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "banc-v888-comparative-internal-reference-0.1.0",
+  "releaseDate": "2026-09-22",
+  "authority": "PUBLIC_DATASET_AVAILABILITY_AUDIT",
+  "relationshipToMouseAtlas": "comparative_reference_only",
+  "source": {
+    "title": "Distributed control circuits across a brain-and-cord connectome",
+    "citation": "Bates AS, Phelps JS, Kim M, Yang HH, et al. Nature. 2026.",
+    "doi": "10.1038/s41586-026-10735-w",
+    "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13518251/",
+    "repositoryUrl": "https://github.com/htem/BANC-project",
+    "dataLocationsUrl": "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md",
+    "dataverseDoi": "10.7910/DVN/7WTH1N",
+    "bossDbDoi": "10.60533/boss-2025-941r",
+    "portalUrl": "https://ng.banc.community/view",
+    "portalUrl": "https://ng.banc.community/view",
+    "dataLicense": "CC BY 4.0 for the official Harvard Dataverse deposit, as stated by the source repository",
+    "objectLevelBossDbReuseVerified": false
+  },
+  "biologicalScope": {
+    "species": "Drosophila melanogaster",
+    "sex": "female",
+    "lifeStage": "adult",
+    "specimenCount": 1,
+    "anatomicalCoverage": "brain, suboesophageal zone, cervical connective, and entire ventral nerve cord",
+    "relationshipToVertebrateSpinalCord": "distinct_invertebrate_comparative_system",
+    "homologyClaim": "none"
+  },
+  "snapshot": {
+    "materializationId": "v888",
+    "paperReleaseDate": "2026-04-17",
+    "metadataDocumentationDate": "2026-04-16",
+    "dateDiscrepancy": "The primary article dates final-print v888 to 17 April 2026; the per-file metadata documentation labels its v888 snapshot 16 April 2026. Preserve the discrepancy; v888 is the stable release key.",
+    "paperHeadlineNeuronCountApproximate": 188000,
+    "metadataRowCount": 188162,
+    "metadataRowUnit": "one row per segment; not an interneuron denominator",
+    "rawVoxelResolutionNanometres": [4, 4, 45]
+  },
+  "sourceProducts": {
+    "neuronMeshes": {
+      "availability": "listed_in_official_source_map",
+      "format": "OBJ",
+      "path": "gs://lee-lab_brain-and-nerve-cord-fly-connectome/imported_meshes/banc_meshes",
+      "objectCount": null,
+      "objectCountReason": "The source map identifies the product location but the exact candidate object and per-object receipt have not been inspected in this project."
+    },
+    "neuronSkeletons": {
+      "availability": "listed_in_official_source_map",
+      "format": "SWC",
+      "path": "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data/banc_888/banc_banc_space_swc",
+      "coordinateFrame": "BANC voxel space",
+      "objectCount": null
+    },
+    "perNeuronMetadata": {
+      "availability": "documented",
+      "path": "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data/banc_888/banc_888_meta.feather",
+      "rowCount": 188162,
+      "rowUnit": "one row per segment",
+      "taxonomyFields": ["super_class", "cell_class", "cell_sub_class", "cell_type"],
+      "candidateVncInterneuronRosterAudited": false
+    },
+    "nuclei": {
+      "availability": "paper_reports_flat_segmentation_on_bossdb",
+      "annotationProduct": "somas_v1.parquet",
+      "sameCellObjectAssociationVerified": false
+    },
+    "mitochondria": {
+      "availability": "source_documentation_conflict",
+      "listedAnnotationPath": "gs://lee-lab_brain-and-nerve-cord-fly-connectome/neuron_annotations/v888/mitochondria_v1_human_readable.csv.gz",
+      "listedAnnotationSemantics": "per-mitochondrion CAVE annotation table with v888 root IDs",
+      "separateDetectedMitochondriaEntry": "MISSING",
+      "paperReportsFlatSegmentationOnBossDb": true,
+      "sameCellObjectAssociationVerified": false
+    },
+    "synapseTables": {
+      "availability": "listed_in_official_source_map",
+      "versions": ["v2", "v3"],
+      "exactCandidateSynapseRowsAdmitted": 0,
+      "sourceMapUrl": "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md"
+    }
+  },
+  "projectAdmission": {
+    "selectedVncInterneuronRootId": null,
+    "selectedVncInterneuronType": null,
+    "sourceObjectsImported": 0,
+    "cellMeshesAdmitted": 0,
+    "nucleusObjectsAdmitted": 0,
+    "mitochondriaObjectsAdmitted": 0,
+    "synapseObjectsAdmitted": 0,
+    "sameCellJoinCount": 0,
+    "registrationCount": 0,
+    "renderedGeometryCount": 0,
+    "nextAdmissionGate": "Select one exact v888 VNC-local interneuron from pinned metadata, then verify its stable root/segment identity, per-object mesh and internal-segmentation keys, coordinate frame, proofreading state, bytes and hashes, and object-level reuse terms before importing geometry."
+  },
+  "hardBoundaries": [
+    "BANC is one adult female fly connectome and remains a comparative invertebrate lane; it does not supply mouse spinal-cord anatomy or a vertebrate homolog claim.",
+    "The 188,162 metadata rows are segment rows, not an interneuron roster or denominator.",
+    "Dataset-level availability of cell, nucleus and mitochondrion products does not establish an exact same-cell object chain for a selected VNC interneuron.",
+    "The official source map both lists a v888 per-mitochondrion annotation table and marks a separate detected-mitochondria product as MISSING; this conflict remains visible until the exact product is resolved.",
+    "The application currently admits zero BANC objects and renders zero BANC geometry; no independent cell products are fused into a synthetic cell.",
+    "The primary paper reports incomplete synaptic-link attachment: only 18% of detected synapses have identified cells on both sides; connectivity is not function or causal transmission.",
+    "No project re-hosting occurs under this contract. The Dataverse deposit is stated as CC BY 4.0 by the official repository; any BossDB segmentation object still requires its exact object, bytes, provenance and reuse terms to be verified."
+  ]
+}

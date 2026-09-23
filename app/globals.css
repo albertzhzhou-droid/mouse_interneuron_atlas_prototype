@@ -1055,6 +1055,21 @@ h1 {
 .microns-observed-reference-card, .schematic-reference-card, .pkd2l1-sbfsem-reference-card { display: grid; gap: 10px; padding: 10px; border-radius: 9px; }
 .microns-observed-reference-card { border: 1px solid #96c2ba; background: #f1f9f7; }
 .pkd2l1-sbfsem-reference-card { border: 1px solid #8cb4c5; background: #f1f7fa; }
+.spinal-volume-em-reference-card { display: grid; gap: 9px; padding: 9px 10px; border: 1px solid #a69ac0; border-radius: 9px; background: #f7f5fa; }
+.spinal-volume-em-reference-card > summary { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; cursor: pointer; list-style-position: inside; }
+.spinal-volume-em-reference-card > summary > div { display: inline-grid; gap: 4px; }
+.spinal-volume-em-reference-card > summary span { color: #735394; font: 800 7px var(--font-geist-mono); letter-spacing: .05em; }
+.spinal-volume-em-reference-card > summary strong { color: #45325c; font-size: 10px; line-height: 1.35; }
+.spinal-volume-em-reference-card > summary em { color: #705d80; font: 700 7px var(--font-geist-mono); font-style: normal; text-align: right; }
+.spinal-volume-em-reference-card > p { margin: 0; color: #62556f; font-size: 9px; line-height: 1.5; }
+.spinal-volume-em-reference-card > ul { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; padding: 0; list-style: none; }
+.spinal-volume-em-reference-card > ul li { padding: 5px 7px; border: 1px solid #d0c6dd; border-radius: 999px; background: #fff; color: #59456f; font-size: 8px; line-height: 1.25; }
+.spinal-volume-em-boundary { display: grid; gap: 4px; padding: 8px; border-left: 3px solid #b78234; background: #fff9ed; }
+.spinal-volume-em-boundary strong { color: #76531f; font: 750 8px var(--font-geist-mono); }
+.spinal-volume-em-boundary p { margin: 0; color: #6c604e; font-size: 8px; line-height: 1.5; }
+.spinal-volume-em-boundary span { color: #796a52; font-size: 7px; line-height: 1.4; }
+.spinal-volume-em-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.spinal-volume-em-links a { color: #624783; font-size: 8px; text-underline-offset: 2px; }
 .schematic-reference-card { border: 1px solid #d5c8df; background: #fcfafd; }
 .microns-observed-reference-card > header, .schematic-reference-card > header, .pkd2l1-sbfsem-reference-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .microns-observed-reference-card > header div, .pkd2l1-sbfsem-reference-card > header div { display: grid; gap: 3px; }
@@ -2885,6 +2900,30 @@ h1 {
 .microdetail-status.obs { color: #75cdb9; background: rgba(117,205,185,.08); }
 .microdetail-status.derived { color: #f3b33e; background: rgba(243,179,62,.08); }
 .microdetail-status.unavailable { color: #d8bd87; background: #282219; }
+.davis-icr-reference { display: grid; gap: 12px; padding: 14px; border: 1px solid #596c59; border-radius: 9px; background: #171d19; }
+.davis-icr-reference > summary { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; cursor: pointer; list-style-position: inside; }
+.davis-icr-reference > summary > div { display: grid; gap: 4px; }
+.davis-icr-reference > summary span { color: #d8bd87; font: 700 10px var(--font-geist-mono); }
+.davis-icr-reference > summary strong { color: #f1eee4; font-size: 14px; line-height: 1.35; }
+.davis-icr-reference > summary em { flex: 0 0 auto; padding: 6px 8px; border: 1px solid #806b42; border-radius: 999px; background: #282219; color: #efd8a9; font: 750 9px var(--font-geist-mono); font-style: normal; }
+.davis-icr-reference-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr); gap: 12px; align-items: start; }
+.davis-icr-reference-figure { min-width: 0; margin: 0; overflow: hidden; border: 1px solid #40584f; border-radius: 8px; background: #0e1715; }
+.davis-icr-reference-figure a { display: grid; place-items: center; overflow: hidden; background: #070908; }
+.davis-icr-reference-figure img { display: block; width: 100%; height: auto; max-height: 680px; object-fit: contain; }
+.davis-icr-reference-figure figcaption { padding: 8px 10px; color: #b9cbc4; font-size: 10px; line-height: 1.5; }
+.davis-icr-reference-evidence { display: grid; gap: 9px; min-width: 0; }
+.davis-icr-reference-boundary, .davis-icr-reference-not-admitted { display: grid; gap: 5px; padding: 9px; border: 1px solid #5f523b; border-radius: 7px; background: #201c15; }
+.davis-icr-reference-boundary strong, .davis-icr-reference-not-admitted strong { color: #efd8a9; font-size: 11px; }
+.davis-icr-reference-boundary p, .davis-icr-reference-not-admitted span { margin: 0; color: #c7c1b2; font-size: 10px; line-height: 1.5; }
+.davis-icr-reference-receipts { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0; }
+.davis-icr-reference-receipts > div { min-width: 0; padding: 7px; border: 1px solid #30473f; border-radius: 6px; background: #101a17; }
+.davis-icr-reference-receipts dt { color: #91aaa1; font: 700 9px var(--font-geist-mono); text-transform: uppercase; }
+.davis-icr-reference-receipts dd { margin: 3px 0 0; color: #d7e3df; font-size: 10px; line-height: 1.4; overflow-wrap: anywhere; }
+.davis-icr-reference-receipts code { color: #8fc8ba; font: inherit; }
+.davis-icr-reference-evidence nav { display: flex; flex-wrap: wrap; gap: 7px 12px; }
+.davis-icr-reference-evidence nav a { color: #8fc8ba; font-size: 11px; text-underline-offset: 3px; }
+.davis-icr-reference-evidence nav a:hover { color: #b4e0d4; }
+.davis-icr-reference-credit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; padding-top: 2px; color: #91aaa1; font: 650 9px var(--font-geist-mono); }
 .super-clem-reference { display: grid; gap: 12px; padding: 14px; border: 1px solid #6b5e43; border-radius: 9px; background: #171d19; }
 .super-clem-reference-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .super-clem-reference-heading p { margin: 0; color: #d8bd87; font: 700 11px var(--font-geist-mono); }
@@ -2897,6 +2936,13 @@ h1 {
 .super-clem-reference-image-badge, .super-clem-reference-scale-note { position: absolute; padding: 5px 7px; border: 1px solid rgba(207,223,217,.38); border-radius: 5px; background: rgba(8,11,10,.86); color: #dbe8e3; font: 700 9px var(--font-geist-mono); }
 .super-clem-reference-image-badge { top: 8px; left: 8px; }
 .super-clem-reference-scale-note { right: 8px; bottom: 8px; }
+.super-clem-section-controls { display: grid; gap: 7px; padding: 9px 10px; border-top: 1px solid #30473f; background: #111b17; }
+.super-clem-section-stepper { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+.super-clem-section-stepper button { min-height: 34px; padding: 5px 9px; border: 1px solid #506a60; border-radius: 5px; background: #17241f; color: #d7e3df; cursor: pointer; font-size: 10px; }
+.super-clem-section-stepper button:disabled { cursor: not-allowed; opacity: .48; }
+.super-clem-section-stepper output { color: #a9dfd1; font: 700 10px var(--font-geist-mono); text-align: center; }
+.super-clem-section-controls input { width: 100%; margin: 0; accent-color: #75cdb9; }
+.super-clem-section-controls p { margin: 0; color: #91aaa1; font-size: 10px; line-height: 1.45; }
 .super-clem-reference-figure figcaption { padding: 9px 10px; border-top: 1px solid #30473f; color: #9fb3ac; font-size: 11px; line-height: 1.5; }
 .super-clem-reference-evidence { display: grid; min-width: 0; gap: 9px; }
 .super-clem-reference-warning { padding: 11px; border: 1px solid #806b42; border-radius: 7px; background: #2b2519; }
@@ -3020,7 +3066,7 @@ h1 {
   .morphology-cohort-card dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .morphology-matrix-heading, .morphology-compare-heading { flex-direction: column; }
   .morphology-compare-heading > div:last-child { justify-content: flex-start; max-width: none; }
-  .super-clem-reference-layout { grid-template-columns: 1fr; }
+  .davis-icr-reference-layout, .super-clem-reference-layout { grid-template-columns: 1fr; }
   .fine-anatomy-grid { grid-template-columns: 1fr; }
   .research-explorer-layout { grid-template-columns: 1fr; }
   .research-result-groups { max-height: 460px; }
@@ -3181,7 +3227,7 @@ h1 {
   .morphology-comparison-denominators, .morphology-compare-filterbar { grid-template-columns: 1fr; }
   .morphology-comparison-denominators p, .morphology-compare-filterbar p { grid-column: auto; }
   .morphology-microdetail-receipts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .super-clem-reference-heading, .super-clem-reference-footer { align-items: flex-start; flex-direction: column; }
+  .davis-icr-reference > summary, .davis-icr-reference-credit, .super-clem-reference-heading, .super-clem-reference-footer { align-items: flex-start; flex-direction: column; }
   .super-clem-reference-heading > strong { white-space: normal; }
   .super-clem-reference-footer nav { justify-content: flex-start; }
   .morphology-matrix-controls label:first-child { grid-column: 1 / -1; }

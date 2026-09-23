@@ -6,7 +6,7 @@
     "path": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
     "snapshotDate": "2026-09-22",
     "firstIncludedId": "UPG-022",
-    "lastIncludedId": "UPG-215",
+    "lastIncludedId": "UPG-222",
     "governanceAdmissionQueueIncluded": false,
     "excludedGovernanceAdmissionRange": "UPG-001-UPG-021"
   },
@@ -41,10 +41,10 @@
     ]
   },
   "summary": {
-    "upgradeCount": 197,
+    "upgradeCount": 204,
     "byPriority": {
-      "P0": 77,
-      "P1": 85,
+      "P0": 79,
+      "P1": 90,
       "P2": 35
     },
     "byStatus": {
@@ -54,8 +54,9 @@
       "blocked — version-pinned export and rights compatibility pending": 1,
       "blocked pending UPG-120 and reviewed segmentation": 1,
       "comparative watch": 1,
-      "completed": 50,
+      "completed": 57,
       "completed — exact route-pack contract, runtime integration, SSR and negative-claim validation": 1,
+      "completed — NMO 50394 only; other contour series remain unmeshed": 1,
       "completed — source/SSR validation; formal visual comparison remains permission-gated": 1,
       "contextual watch": 4,
       "continuing research watch": 1,
@@ -63,16 +64,20 @@
       "cross-species rights-gated watch": 1,
       "exact-object pilot planned — rights and identity gated": 1,
       "exact-object research watch": 1,
-      "in progress": 10,
+      "in progress": 6,
       "metadata/link-only — RDS integrity, redistribution rights and paired-assay identity gated": 1,
       "no-go tombstone — raw-volume-only zebrafish spinal SBEM; named geometry unavailable": 1,
       "object-audit watch": 2,
       "partially completed": 3,
+      "partially completed — 11-image sequence browser complete; reconstruction pending": 1,
       "partially completed — exact aggregate-profile phase; per-nucleus roster rights-gated": 1,
       "partially completed — exact Dmrt3 group-summary contract; per-well roster unavailable": 1,
+      "partially completed — exact metadata candidate, nucleus-root row and SWC member verified; internal-object chain pending": 1,
       "partially completed — phase A admitted, phase B blocked": 1,
+      "partially completed — publisher-facing records and file checksums identified; version lineage, full H5AD delta and file-level rights pending": 1,
+      "partially completed — release products and archive/documentation discrepancies audited; exact cell chain pending": 1,
       "partially completed — segment-pooled exact-coordinate phase": 1,
-      "partially completed — single-slice phase": 1,
+      "partially completed — source sequence admitted; contour/alignment phase pending": 1,
       "partially completed — vocabulary-only phase": 1,
       "permission-gated watch": 1,
       "planned": 6,
@@ -80,7 +85,6 @@
       "planned — aggregate physiology taxonomy only": 1,
       "planned — bounded Janelia mouse-spinal raw/nucleus co-display only": 1,
       "planned — comparative zebrafish same-specimen candidate; exact-cell, resolution and licence gated": 1,
-      "planned — conditional `DER` contour-surface gate": 1,
       "planned — deferred exact-2D contract; source thickness/plane conflict locked": 1,
       "planned — exact 2D source-plane receipts pending": 1,
       "planned — exact BIL cell-identity bridge gated": 1,
@@ -104,9 +108,10 @@
       "planned — object-specific DAT-to-SWC coordinate crosswalk gated": 1,
       "planned — per-file native-DAT admission gated": 1,
       "planned — PKD2L1 experiment-family observation adapters": 1,
+      "planned — public exact-cell synapse table; source-version query and coordinate audit pending": 1,
       "planned — raw PKD2L1 SBF-SEM object chain unavailable": 1,
+      "planned — record-specific adjacent-contour topology gate": 1,
       "planned — redistribution rights gate": 1,
-      "planned — research source retained; 2D viewer planned": 1,
       "planned — rights/link-only and SWC semantic audit gated": 1,
       "planned — source-movie-only population reference": 1,
       "publication-video-only internal-detail reference watch": 1,
@@ -138,7 +143,6 @@
       "rights-gated link-only": 1,
       "rights-gated planned": 1,
       "rights-gated research watch": 2,
-      "source-object planned": 1,
       "source-object planned — raw-only phase": 1,
       "source-object research watch": 2
     },
@@ -146,10 +150,10 @@
       "connectivity": 11,
       "electrophysiology": 5,
       "injury_state_context": 14,
-      "internal_microdetail": 40,
+      "internal_microdetail": 45,
       "molecular_taxonomy": 40,
-      "morphology": 32,
-      "provenance_and_identity": 15,
+      "morphology": 33,
+      "provenance_and_identity": 16,
       "reference_anatomy": 6,
       "research_experience": 14,
       "spatial_context": 20
@@ -2611,16 +2615,16 @@
     {
       "id": "UPG-099",
       "priority": "P0",
-      "status": "partially completed — single-slice phase",
+      "status": "partially completed — 11-image sequence browser complete; reconstruction pending",
       "lane": "internal_microdetail",
-      "description": "Admit one declared Super-CLEM dorsal same-physical-synapse source slice as a separate 2D reference: Figshare file `32606555`, source TIFF 2,405,817 bytes with MD5 `384e5d12c9d024feed140b0ab46bb688` and SHA-256 `56d8bf7356e1f619ea175aa08a1021a27dbf4302caed835828ecf3ebdae95d5e`, plus a 1,884,486-byte pixel-preserving palette PNG with SHA-256 `3583cf15007c2c5e62196f2a2fcb8e7393433b6d094688cbc17112ae870e2c1c` and exact decoded-RGB equality. Preserve the 70 nm serial-section context and `parent_cell_unresolved`; create no segmentation, mesh, 3D reconstruction, receptor/PALM overlay, organelle identity or NeuroMorpho/type/atlas join. The earlier dorsal-plus-ventral pilot is not complete. Next phase: checksum-pin all 11 sections from this same synapse, then manually outline and align them with explicit derivative and uncertainty receipts before any bounded 3D reconstruction",
+      "description": "The declared Dorsal 2 grid B position E9 synapse-1 sequence now has 11 unique Figshare TIFFs, ordered by deposited labels `20140`–`20150`, each 2,405,817 bytes and MD5/SHA-256 pinned; total source bytes are 26,463,987. All 11 1,794 × 1,332 indexed-palette PNG display derivatives have per-image decoded-RGB SHA-256 parity receipts. The accessible browser exposes one source section at a time and reports file ID/checksum; the nominal 70 nm section thickness is not a calibrated z coordinate. No registration, segmentation, mesh, 3D reconstruction, receptor/PALM overlay, organelle identity or NeuroMorpho/type/atlas join is admitted; the parent cell remains unresolved. The earlier dorsal-plus-ventral pilot is not complete. Next phase: manually outline and align these sections with derivative, uncertainty and independent-review receipts before any bounded synapse reconstruction",
       "blocker": {
         "code": "remaining_validation",
-        "detail": "Next phase: checksum-pin all 11 sections from this same synapse, then manually outline and align them with explicit derivative and uncertainty receipts before any bounded 3D reconstruction"
+        "detail": "Next phase: manually outline and align these sections with derivative, uncertainty and independent-review receipts before any bounded synapse reconstruction"
       },
       "evidenceBasis": {
-        "markdown": "[Super-CLEM GlyR dataset v1](https://doi.org/10.6084/m9.figshare.17816747.v1); [eLife study](https://elifesciences.org/articles/74441); [official IBENS mirror](https://www.opendata.bio.ens.psl.eu/Super-CLEM-GlyR/)",
-        "unlinkedText": "Super-CLEM GlyR dataset v1; eLife study; official IBENS mirror",
+        "markdown": "[Super-CLEM GlyR dataset v1](https://doi.org/10.6084/m9.figshare.17816747.v1); [eLife study](https://doi.org/10.7554/eLife.74441); [official IBENS mirror](https://www.opendata.bio.ens.psl.eu/Super-CLEM-GlyR/); `data/super-clem-dorsal-synapse1-serial-stack-0.1.json`",
+        "unlinkedText": "Super-CLEM GlyR dataset v1; eLife study; official IBENS mirror; `data/super-clem-dorsal-synapse1-serial-stack-0.1.json`",
         "references": [
           {
             "label": "Super-CLEM GlyR dataset v1",
@@ -2628,7 +2632,7 @@
           },
           {
             "label": "eLife study",
-            "url": "https://elifesciences.org/articles/74441"
+            "url": "https://doi.org/10.7554/eLife.74441"
           },
           {
             "label": "official IBENS mirror",
@@ -2642,7 +2646,7 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L94",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "Admit one declared Super-CLEM dorsal same-physical-synapse source slice as a separate 2D reference: Figshare file `32606555`, source TIFF 2,405,817 bytes with MD5 `384e5d12c9d024feed140b0ab46bb688` and SHA-256 `56d8bf7356e1f619ea175aa08a1021a27dbf4302caed835828ecf3ebdae95d5e`, plus a 1,884,486-byte pixel-preserving palette PNG with SHA-256 `3583cf15007c2c5e62196f2a2fcb8e7393433b6d094688cbc17112ae870e2c1c` and exact decoded-RGB equality.; create no segmentation, mesh, 3D reconstruction, receptor/PALM overlay, organelle identity or NeuroMorpho/type/atlas join.; The earlier dorsal-plus-ventral pilot is not complete."
+      "acceptanceBoundary": "the nominal 70 nm section thickness is not a calibrated z coordinate.; No registration, segmentation, mesh, 3D reconstruction, receptor/PALM overlay, organelle identity or NeuroMorpho/type/atlas join is admitted; the parent cell remains unresolved.; The earlier dorsal-plus-ventral pilot is not complete."
     },
     {
       "id": "UPG-100",
@@ -2951,20 +2955,24 @@
     {
       "id": "UPG-112",
       "priority": "P1",
-      "status": "source-object planned",
+      "status": "partially completed — source sequence admitted; contour/alignment phase pending",
       "lane": "internal_microdetail",
-      "description": "Continue Super-CLEM beyond the current exact single-slice phase by pinning all eleven serial sections from the same declared synapse, retaining per-file checksums and 70 nm spacing, then producing manual outlines/alignment with derivative, uncertainty and reviewer receipts. A bounded synapse reconstruction still cannot identify or fill the parent neuron",
+      "description": "The source-object phase is complete: all eleven same-labelled synapse-1 sections are checksum pinned and browsable in the dedicated 2D viewer under `data/super-clem-dorsal-synapse1-serial-stack-0.1.json`. The next increment requires manually reviewed contours, documented section registration, derivative and uncertainty receipts, and an independent reviewer record before a bounded synapse-level reconstruction is considered. Source order and nominal 70 nm thickness alone do not establish registration or absolute z. Even a validated synapse reconstruction cannot identify or fill the parent neuron",
       "blocker": {
         "code": "source_object",
-        "detail": "Queue status is \"source-object planned\"; completion remains blocked at the evidence and implementation boundary stated in the queue row."
+        "detail": "The next increment requires manually reviewed contours, documented section registration, derivative and uncertainty receipts, and an independent reviewer record before a bounded synapse-level reconstruction is considered."
       },
       "evidenceBasis": {
-        "markdown": "[Super-CLEM GlyR dataset v1](https://doi.org/10.6084/m9.figshare.17816747.v1); current exact file-32606555 contract",
-        "unlinkedText": "Super-CLEM GlyR dataset v1; current exact file-32606555 contract",
+        "markdown": "[Super-CLEM GlyR dataset v1](https://doi.org/10.6084/m9.figshare.17816747.v1); [eLife methods](https://doi.org/10.7554/eLife.74441); current 11-section source contract",
+        "unlinkedText": "Super-CLEM GlyR dataset v1; eLife methods; current 11-section source contract",
         "references": [
           {
             "label": "Super-CLEM GlyR dataset v1",
             "url": "https://doi.org/10.6084/m9.figshare.17816747.v1"
+          },
+          {
+            "label": "eLife methods",
+            "url": "https://doi.org/10.7554/eLife.74441"
           }
         ]
       },
@@ -2974,7 +2982,7 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L107",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "A bounded synapse reconstruction still cannot identify or fill the parent neuron"
+      "acceptanceBoundary": "Source order and nominal 70 nm thickness alone do not establish registration or absolute z.; Even a validated synapse reconstruction cannot identify or fill the parent neuron"
     },
     {
       "id": "UPG-113",
@@ -4527,18 +4535,22 @@
       "priority": "P0",
       "status": "planned — exact-file and object-level rights gated",
       "lane": "internal_microdetail",
-      "description": "Add a source-local adult-mouse spinal MERFISH information adapter from Zenodo version `20533289` (concept `18039570`), pinning `MERFISH_spinal_cord_0531.h5ad` (98,970,246 bytes; MD5 `e7328d8bda2fb4b390cb107340ac4c83`) and keeping `SNI_merged_0531.h5ad` (115,901,575 bytes; MD5 `6ee6195c7f958f07172172963fef8d20`) in a separate peripheral-nerve-injury lane. The healthy object reports 146,621 cells × 500 genes, 10 mice, 108 section IDs and cervical/thoracic/lumbar/sacral counts 57,075/32,038/42,550/14,958. Retain source `center_x`, `center_y`, `obsm/spatial`, volume, region, lamina, transmitter, E/I, mouse, sex, section and 61 annotation categories, including literal `nan` categories and the zero-count duplicate-looking `M-in-Chat` category. Coordinates remain section-local: do not invent z, align sections, or render points/volumes as neurites, membranes, morphology, organelles or 3D cells. Spatial proximity and ligand-receptor predictions are not synapses; SNI is not SCI. Zenodo marks the record open access but exposes no file licence, and the CC BY-NC 4.0 preprint does not license the deposited objects, so admit metadata/link/checksum only until redistribution rights are affirmative",
+      "description": "Add a source-local adult-mouse spinal MERFISH information adapter from Zenodo record `20533289`, which is explicitly labelled v2, pinning `MERFISH_spinal_cord_0531.h5ad` (98,970,246 bytes; MD5 `e7328d8bda2fb4b390cb107340ac4c83`) and keeping `SNI_merged_0531.h5ad` (115,901,575 bytes; MD5 `6ee6195c7f958f07172172963fef8d20`) in a separate peripheral-nerve-injury lane. The healthy object reports 146,621 cells × 500 genes, 10 mice, 108 section IDs and cervical/thoracic/lumbar/sacral counts 57,075/32,038/42,550/14,958. Retain source `center_x`, `center_y`, `obsm/spatial`, volume, region, lamina, transmitter, E/I, mouse, sex, section and 61 annotation categories, including literal `nan` categories and the zero-count duplicate-looking `M-in-Chat` category. UPG-222 must reconcile the separately deposited same-titled record `18039571` before any cross-version reuse; matching titles or authors do not establish that the files, cell keys or section denominators are interchangeable. Coordinates remain section-local: do not invent z, align sections, or render points/volumes as neurites, membranes, morphology, organelles or 3D cells. Spatial proximity and ligand-receptor predictions are not synapses; SNI is not SCI. Zenodo marks the v2 record open, but no file-level licence was visible on the reviewed record page, and the CC BY-NC 4.0 preprint does not license the deposited objects; admit metadata/link/checksum only until redistribution rights are affirmative",
       "blocker": {
         "code": "rights_or_permission",
-        "detail": "Zenodo marks the record open access but exposes no file licence, and the CC BY-NC 4.0 preprint does not license the deposited objects, so admit metadata/link/checksum only until redistribution rights are affirmative"
+        "detail": "UPG-222 must reconcile the separately deposited same-titled record `18039571` before any cross-version reuse"
       },
       "evidenceBasis": {
-        "markdown": "[Zenodo 20533289](https://zenodo.org/records/20533289); [preprint](https://doi.org/10.64898/2026.01.10.698734)",
-        "unlinkedText": "Zenodo 20533289; preprint",
+        "markdown": "[Zenodo record 20533289](https://zenodo.org/records/20533289); [candidate earlier record 18039571](https://zenodo.org/records/18039571); [preprint](https://doi.org/10.64898/2026.01.10.698734)",
+        "unlinkedText": "Zenodo record 20533289; candidate earlier record 18039571; preprint",
         "references": [
           {
-            "label": "Zenodo 20533289",
+            "label": "Zenodo record 20533289",
             "url": "https://zenodo.org/records/20533289"
+          },
+          {
+            "label": "candidate earlier record 18039571",
+            "url": "https://zenodo.org/records/18039571"
           },
           {
             "label": "preprint",
@@ -4552,7 +4564,7 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L147",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "MD5 `6ee6195c7f958f07172172963fef8d20`) in a separate peripheral-nerve-injury lane.; Coordinates remain section-local: do not invent z, align sections, or render points/volumes as neurites, membranes, morphology, organelles or 3D cells.; Spatial proximity and ligand-receptor predictions are not synapses; SNI is not SCI.; Zenodo marks the record open access but exposes no file licence, and the CC BY-NC 4.0 preprint does not license the deposited objects, so admit metadata/link/checksum only until redistribution rights are affirmative"
+      "acceptanceBoundary": "MD5 `6ee6195c7f958f07172172963fef8d20`) in a separate peripheral-nerve-injury lane.; matching titles or authors do not establish that the files, cell keys or section denominators are interchangeable.; Coordinates remain section-local: do not invent z, align sections, or render points/volumes as neurites, membranes, morphology, organelles or 3D cells.; Spatial proximity and ligand-receptor predictions are not synapses; SNI is not SCI.; Zenodo marks the v2 record open, but no file-level licence was visible on the reviewed record page, and the CC BY-NC 4.0 preprint does not license the deposited objects; admit metadata/link/checksum only until redistribution rights are affirmative"
     },
     {
       "id": "UPG-153",
@@ -5992,20 +6004,20 @@
     {
       "id": "UPG-194",
       "priority": "P2",
-      "status": "planned — conditional `DER` contour-surface gate",
+      "status": "completed — NMO 50394 only; other contour series remain unmeshed",
       "lane": "morphology",
-      "description": "Permit a source-local derived soma surface only for a single per-file contour series that first passes UPG-193 and has source-authoritative same-object membership, ordered calibrated planes, compatible orientation and topology, closed non-self-intersecting loops, sufficient through-plane support and no unresolved duplicate, branch, hole or separate legacy trace. Pin the meshing algorithm, version, parameters, input contour hashes, output topology and deterministic QA; retain the exact `OBS` line loops alongside the result and label the mesh `DER`. A separate `Cell Body` trace must never be fused with the seven NMO 45718 `Soma 1` planes without source evidence, and UPG-192 overlay permission cannot substitute for surface eligibility. Any failed eligibility or QA check yields zero triangles. A passing mesh remains an interpolation display derivative, not an observed membrane, biological volume, nucleus, organelle, representative type morphology, atlas registration or licence to fill missing cell detail",
+      "description": "Admit a source-local `DER` open-shell display only for exact NMO 50394 after its 14 same-name `Cell Body` traces pass the checksum, empty-value `CellBody` presence-property, pinned-parser `somaContour`, and MBF closure-semantic gates. The 14 contours occupy unique contiguous 1 µm planes, have no self-intersections, and pass pinned adjacent-contour QA (maximum centroid shift 0.673 µm; maximum area ratio 1.457; aligned cyclic RMS 1.304 µm). Pin the equal-arclength 128-sample, minimum-RMS cyclic-phase, two-triangle quad-strip algorithm and exact source/point/output hashes. Keep all 14 exact `OBS` loops alongside the shell; leave both ends open. The result is one interpolation display derivative (1,792 vertices / 3,328 triangles), not an observed membrane, closed volume, nucleus, organelle, biological measurement, same-cell internal structure, representative type morphology, atlas registration or permission to fill missing detail. The separate NMO 45718 `Cell Body` trace must never be fused with its seven `Soma 1` planes without source evidence. NMO 50424 and 50408 remain line-only pending their separate contour-continuity/topology audit; any failed eligibility or QA check yields zero triangles",
       "blocker": {
         "code": "rights_or_permission",
-        "detail": "A separate `Cell Body` trace must never be fused with the seven NMO 45718 `Soma 1` planes without source evidence, and UPG-192 overlay permission cannot substitute for surface eligibility."
+        "detail": "The separate NMO 45718 `Cell Body` trace must never be fused with its seven `Soma 1` planes without source evidence."
       },
       "evidenceBasis": {
-        "markdown": "[Neuromorphological File Specification](https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html); [NeuroMorpho soma standardization](https://neuromorpho.org/SomaFormat.html); UPG-186 and UPG-193 evidence contracts",
-        "unlinkedText": "Neuromorphological File Specification; NeuroMorpho soma standardization; UPG-186 and UPG-193 evidence contracts",
+        "markdown": "[Neurolucida cell-body tracing semantics](https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm); [NeuroMorpho soma standardization](https://neuromorpho.org/SomaFormat.html); UPG-186 and UPG-193 evidence contracts; `data/native-contour-derived-soma-surface-0.1.json`",
+        "unlinkedText": "Neurolucida cell-body tracing semantics; NeuroMorpho soma standardization; UPG-186 and UPG-193 evidence contracts; `data/native-contour-derived-soma-surface-0.1.json`",
         "references": [
           {
-            "label": "Neuromorphological File Specification",
-            "url": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html"
+            "label": "Neurolucida cell-body tracing semantics",
+            "url": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm"
           },
           {
             "label": "NeuroMorpho soma standardization",
@@ -6019,7 +6031,7 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L189",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "Permit a source-local derived soma surface only for a single per-file contour series that first passes UPG-193 and has source-authoritative same-object membership, ordered calibrated planes, compatible orientation and topology, closed non-self-intersecting loops, sufficient through-plane support and no unresolved duplicate, branch, hole or separate legacy trace.; A separate `Cell Body` trace must never be fused with the seven NMO 45718 `Soma 1` planes without source evidence, and UPG-192 overlay permission cannot substitute for surface eligibility.; A passing mesh remains an interpolation display derivative, not an observed membrane, biological volume, nucleus, organelle, representative type morphology, atlas registration or licence to fill missing cell detail"
+      "acceptanceBoundary": "Admit a source-local `DER` open-shell display only for exact NMO 50394 after its 14 same-name `Cell Body` traces pass the checksum, empty-value `CellBody` presence-property, pinned-parser `somaContour`, and MBF closure-semantic gates.; The 14 contours occupy unique contiguous 1 µm planes, have no self-intersections, and pass pinned adjacent-contour QA (maximum centroid shift 0.673 µm; The result is one interpolation display derivative (1,792 vertices / 3,328 triangles), not an observed membrane, closed volume, nucleus, organelle, biological measurement, same-cell internal structure, representative type morphology, atlas registration or permission to fill missing detail.; The separate NMO 45718 `Cell Body` trace must never be fused with its seven `Soma 1` planes without source evidence.; NMO 50424 and 50408 remain line-only pending their separate contour-continuity/topology audit"
     },
     {
       "id": "UPG-195",
@@ -6239,7 +6251,7 @@
       "priority": "P0",
       "status": "completed",
       "lane": "provenance_and_identity",
-      "description": "Derive every live research-facing source, record-set, exact cell/profile-roster and exact source-object-set denominator from the checksum-verified canonical source registry. The implementation began at 27 sources, 33 record sets, 9 exact cell/profile rosters and 1 exact source-object set and now resolves automatically to 27, 34, 10 and 1 after the UPG-204 record-set admission. Eight explicitly inventoried UI and current-release metadata surfaces consume the shared summary, and a build-time stale-literal scan rejects compound and standalone canonical denominator literals, including mutation cases for source packages, record sets, rosters and source-object sets. Historical immutable iteration receipts are not rewritten. Units remain separate and may not be summed across sources, record sets, cells, nuclei, morphologies or object assets into a biological census",
+      "description": "Derive every live research-facing source, record-set, exact cell/profile-roster and exact source-object-set denominator from the checksum-verified canonical source registry. The historical implementation baseline was 27 sources, 33 record sets, 9 exact cell/profile rosters and 1 exact source-object set; the then-current snapshot moved to 27, 34, 10 and 1 after the UPG-204 record-set admission. Later validated source additions have changed the live totals; all eight explicitly inventoried UI and current-release metadata surfaces read current values dynamically from the canonical registry, and the build-time stale-literal scan rejects compound and standalone canonical denominator literals, including mutation cases for every denominator unit. Historical immutable iteration receipts are not rewritten. Units remain separate and may not be summed across sources, record sets, cells, nuclei, morphologies or object assets into a biological census",
       "blocker": {
         "code": "none_for_declared_increment",
         "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
@@ -6382,16 +6394,16 @@
     {
       "id": "UPG-207",
       "priority": "P0",
-      "status": "in progress",
+      "status": "completed",
       "lane": "morphology",
-      "description": "Add NMO 108978 native soma traces from the exact 172,603-byte DAT and its 12 source-open `Cell Body` objects / 2,614 vertices. Preserve duplicate planes and source order; apply closure only after an independent, file-specific semantic audit. Keep DAT and CNG frames separate; add no surface, organelle or type archetype.",
+      "description": "NMO 108978 native soma detail is admitted from the exact 172,603-byte DAT as 12 source-open `Cell Body` line loops / 2,614 vertices. Preserve duplicate planes, order, source frame and raw closure flags. No surface, membrane, organelle, type archetype or registration is created.",
       "blocker": {
-        "code": "remaining_validation",
-        "detail": "apply closure only after an independent, file-specific semantic audit."
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
       },
       "evidenceBasis": {
-        "markdown": "[NMO API](https://neuromorpho.org/api/neuron/id/108978); [original DAT](https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat)",
-        "unlinkedText": "NMO API; original DAT",
+        "markdown": "[NMO API](https://neuromorpho.org/api/neuron/id/108978); [original DAT](https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat); `data/neurolucida-native-contour-admission-catalog-0.4.json`",
+        "unlinkedText": "NMO API; original DAT; `data/neurolucida-native-contour-admission-catalog-0.4.json`",
         "references": [
           {
             "label": "NMO API",
@@ -6409,21 +6421,21 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L202",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "apply closure only after an independent, file-specific semantic audit.; Keep DAT and CNG frames separate; add no surface, organelle or type archetype."
+      "acceptanceBoundary": "No surface, membrane, organelle, type archetype or registration is created."
     },
     {
       "id": "UPG-208",
       "priority": "P0",
-      "status": "in progress",
+      "status": "completed",
       "lane": "morphology",
-      "description": "Extend the exact GRPR NMO 249676 route with the 89,750-byte native DAT's 12 source-open `CellBody` objects / 156 vertices after independent semantic verification. Preserve source ordering, source-native frame and `No Diameter` SWC authority; do not infer a membrane, neurite radius, atlas transform or internal structures.",
+      "description": "Exact GRPR NMO 249676 source-native DAT detail is admitted as 12 `CellBody` line loops / 156 vertices from the 89,750-byte DAT. Preserve source ordering, frame and `No Diameter` SWC authority; infer no membrane, radius, atlas transform or internal structures.",
       "blocker": {
-        "code": "remaining_validation",
-        "detail": "Queue status is \"in progress\"; completion remains blocked at the evidence and implementation boundary stated in the queue row."
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
       },
       "evidenceBasis": {
-        "markdown": "[NMO API](https://neuromorpho.org/api/neuron/id/249676); [original DAT](https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat)",
-        "unlinkedText": "NMO API; original DAT",
+        "markdown": "[NMO API](https://neuromorpho.org/api/neuron/id/249676); [original DAT](https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat); `data/neurolucida-native-contour-admission-catalog-0.4.json`",
+        "unlinkedText": "NMO API; original DAT; `data/neurolucida-native-contour-admission-catalog-0.4.json`",
         "references": [
           {
             "label": "NMO API",
@@ -6441,7 +6453,7 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L203",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "Preserve source ordering, source-native frame and `No Diameter` SWC authority; do not infer a membrane, neurite radius, atlas transform or internal structures."
+      "acceptanceBoundary": "Preserve source ordering, frame and `No Diameter` SWC authority; infer no membrane, radius, atlas transform or internal structures."
     },
     {
       "id": "UPG-209",
@@ -6514,16 +6526,16 @@
     {
       "id": "UPG-211",
       "priority": "P0",
-      "status": "in progress",
+      "status": "completed",
       "lane": "molecular_taxonomy",
-      "description": "Recover 277 source-scoped GLUT identity labels from the separate `active.ident` slot of the checksum-pinned 92,782-row GSE318731 glutamatergic UPDATE RDS. A separate source observation now verifies all 92,782 unique slot names exactly equal metadata row names in order and records 277 levels / 277 observed labels. The production adapter still must preserve per-value slot provenance, verify mapping on every build, and keep absent `meta.data.neuron_types` absent. Do not treat glutamatergic labels as confirmed interneuron identities or add cross-source, spatial, morphology or same-cell cross-modal joins.",
+      "description": "Recover 277 source-scoped GLUT identity labels from the separate `active.ident` slot of the checksum-pinned 92,782-row GSE318731 glutamatergic UPDATE RDS. All 92,782 unique slot names exactly equal metadata row names in order; the adapter preserves per-value slot provenance and revalidates the mapping. `meta.data$neuron_types` remains absent. The 277 labels are not confirmed interneuron identities and add no cross-source, spatial, morphology or same-cell join.",
       "blocker": {
-        "code": "remaining_validation",
-        "detail": "The production adapter still must preserve per-value slot provenance, verify mapping on every build, and keep absent `meta.data.neuron_types` absent."
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
       },
       "evidenceBasis": {
-        "markdown": "[GSE318731](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731); current checksum-pinned source-object recovery",
-        "unlinkedText": "GSE318731; current checksum-pinned source-object recovery",
+        "markdown": "[GSE318731](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731); `data/cano-gomez-glut-active-ident-0.1.json`; `app/CanoGomezGlutLabelBrowser.tsx`",
+        "unlinkedText": "GSE318731; `data/cano-gomez-glut-active-ident-0.1.json`; `app/CanoGomezGlutLabelBrowser.tsx`",
         "references": [
           {
             "label": "GSE318731",
@@ -6537,17 +6549,17 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L206",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "Recover 277 source-scoped GLUT identity labels from the separate `active.ident` slot of the checksum-pinned 92,782-row GSE318731 glutamatergic UPDATE RDS.; A separate source observation now verifies all 92,782 unique slot names exactly equal metadata row names in order and records 277 levels / 277 observed labels.; Do not treat glutamatergic labels as confirmed interneuron identities or add cross-source, spatial, morphology or same-cell cross-modal joins."
+      "acceptanceBoundary": "Recover 277 source-scoped GLUT identity labels from the separate `active.ident` slot of the checksum-pinned 92,782-row GSE318731 glutamatergic UPDATE RDS.; `meta.data$neuron_types` remains absent.; The 277 labels are not confirmed interneuron identities and add no cross-source, spatial, morphology or same-cell join."
     },
     {
       "id": "UPG-212",
       "priority": "P0",
-      "status": "in progress",
+      "status": "completed",
       "lane": "research_experience",
-      "description": "Bring selected molecular profiles, source filtering and evidence navigation above the expanded study denominator grid. Preserve all source counts in an accessible disclosure and provide a separate lazy GLUT source-label detail browser without adding its 277 unresolved labels to the 387 profile denominator.",
+      "description": "Selected molecular profiles, source filters and evidence navigation now sit above the expanded study-denominator grid. Full source counts remain accessible; the lazy GLUT label browser keeps 277 unresolved labels outside the 387 confirmed-profile denominator. Presentation changes add no biological records, geometry, identity or denominator harmonization.",
       "blocker": {
-        "code": "remaining_validation",
-        "detail": "Queue status is \"in progress\"; completion remains blocked at the evidence and implementation boundary stated in the queue row."
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
       },
       "evidenceBasis": {
         "markdown": "`app/InterneuronTypeAtlas.tsx`; `app/CanoGomezGlutLabelBrowser.tsx`; `app/research-information-layout.css`",
@@ -6560,21 +6572,21 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L207",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "Preserve all source counts in an accessible disclosure and provide a separate lazy GLUT source-label detail browser without adding its 277 unresolved labels to the 387 profile denominator."
+      "acceptanceBoundary": "Full source counts remain accessible; Presentation changes add no biological records, geometry, identity or denominator harmonization."
     },
     {
       "id": "UPG-213",
       "priority": "P1",
-      "status": "planned — research source retained; 2D viewer planned",
+      "status": "completed",
       "lane": "internal_microdetail",
-      "description": "Expose the preserved Davis Figure 1 in a source-local 2D comparison: morphology panel d and explicitly same-recorded-cell EM panels e–g, with intact whole-figure context, source scales and compromised-preservation limitation. Panels a–c remain different cells; no independent segmentation, 3D geometry, organelle/nucleus or NeuroMorpho join.",
+      "description": "Expose Davis Figure 1 in the morphology research view with the full figure at native resolution, source caption and scale bars, CC BY attribution, checksummed image receipt and the reported compromised-preservation limitation. The caption links panel d to EM panels e–g as the same recorded cell; panels a–c remain different cells. This is a publication-level assertion only: no raw stack, independent identity validation, project geometry, organelle/nucleus, active-record join or NeuroMorpho link is admitted.",
       "blocker": {
-        "code": "implementation",
-        "detail": "Queue status is \"planned — research source retained; 2D viewer planned\"; completion remains blocked at the evidence and implementation boundary stated in the queue row."
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
       },
       "evidenceBasis": {
-        "markdown": "[Davis Figure 1](https://www.nature.com/articles/s41598-023-38605-9/figures/1); local receipt",
-        "unlinkedText": "Davis Figure 1; local receipt",
+        "markdown": "[Davis Figure 1](https://www.nature.com/articles/s41598-023-38605-9/figures/1); `data/source-candidates/davis-icr-same-cell-20260922/receipt.json`; `app/DavisICRSameCellReference.tsx`",
+        "unlinkedText": "Davis Figure 1; `data/source-candidates/davis-icr-same-cell-20260922/receipt.json`; `app/DavisICRSameCellReference.tsx`",
         "references": [
           {
             "label": "Davis Figure 1",
@@ -6588,7 +6600,7 @@
         "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L208",
         "independentEvidenceRecheck": false
       },
-      "acceptanceBoundary": "Panels a–c remain different cells; no independent segmentation, 3D geometry, organelle/nucleus or NeuroMorpho join."
+      "acceptanceBoundary": "panels a–c remain different cells.; This is a publication-level assertion only: no raw stack, independent identity validation, project geometry, organelle/nucleus, active-record join or NeuroMorpho link is admitted."
     },
     {
       "id": "UPG-214",
@@ -6653,6 +6665,269 @@
         "independentEvidenceRecheck": false
       },
       "acceptanceBoundary": "no raw stack, 3D reconstruction, NMO249676 identity or cross-source synapse transfer."
+    },
+    {
+      "id": "UPG-216",
+      "priority": "P1",
+      "status": "completed",
+      "lane": "internal_microdetail",
+      "description": "Add a link-only, source-bounded card for Zhang et al.'s published spinal dorsal-horn volume reconstruction. Show the reported 35 × 24 × 2 μm acquisition and identify the reconstructed primary-afferent profile, two broad inhibitory-neuron profiles, mitochondria and synaptic profiles as publication context. It is not the selected atlas cell or a named subtype. No source media is rehosted; the card admits zero project geometry, measurement, stable-cell count, registration or identity join.",
+      "blocker": {
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
+      },
+      "evidenceBasis": {
+        "markdown": "[Primary article](https://doi.org/10.1038/s41593-019-0358-7); [Figure 4](https://www.nature.com/articles/s41593-019-0358-7/figures/4); [PMC full text and supplement](https://pmc.ncbi.nlm.nih.gov/articles/PMC6555422/); `data/spinal-inhibitory-interneuron-volume-em-reference-0.1.json`",
+        "unlinkedText": "Primary article; Figure 4; PMC full text and supplement; `data/spinal-inhibitory-interneuron-volume-em-reference-0.1.json`",
+        "references": [
+          {
+            "label": "Primary article",
+            "url": "https://doi.org/10.1038/s41593-019-0358-7"
+          },
+          {
+            "label": "Figure 4",
+            "url": "https://www.nature.com/articles/s41593-019-0358-7/figures/4"
+          },
+          {
+            "label": "PMC full text and supplement",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555422/"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L211",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "Add a link-only, source-bounded card for Zhang et al.'s published spinal dorsal-horn volume reconstruction.; It is not the selected atlas cell or a named subtype.; No source media is rehosted"
+    },
+    {
+      "id": "UPG-217",
+      "priority": "P0",
+      "status": "completed",
+      "lane": "internal_microdetail",
+      "description": "The audited Zhang et al. article/supplement inventory exposes the publication, supplementary document/PDF/table and reconstruction videos, but does not list a downloadable raw serial-image stack, editable TrakEM2 area lists, segmentation labels or mesh. The article describes serial-section acquisition and manual TrakEM2 reconstruction; those methods and rendered figures/videos are not substitutes for the unlisted source objects. No asset-specific reuse licence was verified for the videos, so this project keeps them link-only. This closes only the article-and-listed-supplement audit; it does not claim that no copy exists in any external repository or by author request. No figure tracing, geometry, profile-to-cell promotion or selected-interneuron join is authorized.",
+      "blocker": {
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
+      },
+      "evidenceBasis": {
+        "markdown": "[Primary article](https://doi.org/10.1038/s41593-019-0358-7); [PMC full text and supplement](https://pmc.ncbi.nlm.nih.gov/articles/PMC6555422/)",
+        "unlinkedText": "Primary article; PMC full text and supplement",
+        "references": [
+          {
+            "label": "Primary article",
+            "url": "https://doi.org/10.1038/s41593-019-0358-7"
+          },
+          {
+            "label": "PMC full text and supplement",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555422/"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L212",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "article/supplement inventory exposes the publication, supplementary document/PDF/table and reconstruction videos, but does not list a downloadable raw serial-image stack, editable TrakEM2 area lists, segmentation labels or mesh.; those methods and rendered figures/videos are not substitutes for the unlisted source objects.; No asset-specific reuse licence was verified for the videos, so this project keeps them link-only.; This closes only the article-and-listed-supplement audit; it does not claim that no copy exists in any external repository or by author request.; No figure tracing, geometry, profile-to-cell promotion or selected-interneuron join is authorized."
+    },
+    {
+      "id": "UPG-218",
+      "priority": "P1",
+      "status": "planned — public exact-cell synapse table; source-version query and coordinate audit pending",
+      "lane": "internal_microdetail",
+      "description": "Add a compact source-local synaptic-cleft point overlay to the existing MICrONS Phase 1 inhibitory/chandelier cell only after querying the deposited 3.2-million-row v185 synapse table for exact pre/post root IDs and verifying its coordinates against the v185.4 cell mesh. Retain synapse-row IDs, cleft coordinates, endpoints, table checksum and cell proofreading scope; distinguish automated detections from proofread contacts. A cleft marker is not an organelle, synapse-type label, membrane reconstruction or proof of functional transmission; no spinal-cell or molecular-subtype join.",
+      "blocker": {
+        "code": "implementation",
+        "detail": "Add a compact source-local synaptic-cleft point overlay to the existing MICrONS Phase 1 inhibitory/chandelier cell only after querying the deposited 3.2-million-row v185 synapse table for exact pre/post root IDs and verifying its coordinates against the v185.4 cell mesh."
+      },
+      "evidenceBasis": {
+        "markdown": "[MICrONS Phase 1 data](https://www.microns-explorer.org/phase1); [synapse table DOI](https://doi.org/10.5281/zenodo.7510511); [primary paper](https://doi.org/10.1016/j.cell.2022.01.023); [official CAVE synapse-query guide](https://tutorial.microns-explorer.org/quickstart_notebooks/04-cave-query-synapses.html)",
+        "unlinkedText": "MICrONS Phase 1 data; synapse table DOI; primary paper; official CAVE synapse-query guide",
+        "references": [
+          {
+            "label": "MICrONS Phase 1 data",
+            "url": "https://www.microns-explorer.org/phase1"
+          },
+          {
+            "label": "synapse table DOI",
+            "url": "https://doi.org/10.5281/zenodo.7510511"
+          },
+          {
+            "label": "primary paper",
+            "url": "https://doi.org/10.1016/j.cell.2022.01.023"
+          },
+          {
+            "label": "official CAVE synapse-query guide",
+            "url": "https://tutorial.microns-explorer.org/quickstart_notebooks/04-cave-query-synapses.html"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L213",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "Add a compact source-local synaptic-cleft point overlay to the existing MICrONS Phase 1 inhibitory/chandelier cell only after querying the deposited 3.2-million-row v185 synapse table for exact pre/post root IDs and verifying its coordinates against the v185.4 cell mesh.; A cleft marker is not an organelle, synapse-type label, membrane reconstruction or proof of functional transmission; no spinal-cell or molecular-subtype join."
+    },
+    {
+      "id": "UPG-219",
+      "priority": "P1",
+      "status": "partially completed — release products and archive/documentation discrepancies audited; exact cell chain pending",
+      "lane": "internal_microdetail",
+      "description": "The CAVE v888 release covers one adult female fly and the whole VNC. The project keeps it in a distinct fly-comparison lane. Pin the Dataverse v3 metadata file separately from the still-published schema documentation: the archived Feather is 188,508 rows × 81 columns (file ID 14033740; MD5 `6275eda42f98c49539d1ab513d979d09`), while the documentation reports 188,162 × 79 and a different MD5. Neither count is an interneuron denominator. The DOI file index includes `banc_888_mitochondria_v1_human_readable.csv.gz`, while the source map separately marks a detected-mitochondria product `MISSING`; exact cell-specific mitochondria rows and segmentation objects remain unverified. Per-neuron meshes, SWCs, taxonomy and synapse tables are dataset-level availability only. Preserve the fly-specific boundary, incomplete synaptic-link coverage, and prohibition on vertebrate spinal/homolog/causal-function claims",
+      "blocker": {
+        "code": "remaining_validation",
+        "detail": "Queue status is \"partially completed — release products and archive/documentation discrepancies audited; exact cell chain pending\"; completion remains blocked at the evidence and implementation boundary stated in the queue row."
+      },
+      "evidenceBasis": {
+        "markdown": "[BANC primary paper](https://doi.org/10.1038/s41586-026-10735-w); [official data-product map](https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md); [metadata schema](https://github.com/htem/BANC-project/blob/main/manuscript/print/dataverse/documentation/banc_888_meta.md); [Harvard Dataverse release](https://doi.org/10.7910/DVN/7WTH1N); [BossDB cell/nucleus/mitochondria volume](https://doi.org/10.60533/boss-2025-941r); `data/banc-v888-comparative-internal-reference-0.1.json`; `data/banc-v888-candidate-audit-0.1.json`",
+        "unlinkedText": "BANC primary paper; official data-product map; metadata schema; Harvard Dataverse release; BossDB cell/nucleus/mitochondria volume; `data/banc-v888-comparative-internal-reference-0.1.json`; `data/banc-v888-candidate-audit-0.1.json`",
+        "references": [
+          {
+            "label": "BANC primary paper",
+            "url": "https://doi.org/10.1038/s41586-026-10735-w"
+          },
+          {
+            "label": "official data-product map",
+            "url": "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md"
+          },
+          {
+            "label": "metadata schema",
+            "url": "https://github.com/htem/BANC-project/blob/main/manuscript/print/dataverse/documentation/banc_888_meta.md"
+          },
+          {
+            "label": "Harvard Dataverse release",
+            "url": "https://doi.org/10.7910/DVN/7WTH1N"
+          },
+          {
+            "label": "BossDB cell/nucleus/mitochondria volume",
+            "url": "https://doi.org/10.60533/boss-2025-941r"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L214",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "The project keeps it in a distinct fly-comparison lane.; exact cell-specific mitochondria rows and segmentation objects remain unverified.; Per-neuron meshes, SWCs, taxonomy and synapse tables are dataset-level availability only."
+    },
+    {
+      "id": "UPG-220",
+      "priority": "P1",
+      "status": "planned — record-specific adjacent-contour topology gate",
+      "lane": "morphology",
+      "description": "Complete source-local continuity and topology audits for Todd NMO 50424 (8 `Cell Body` loops / 427 vertices) and NMO 50408 (11 loops / 709 vertices) before considering any contour-derived shell. Preserve the 50424 sharp adjacent-section area/centroid transition for source review; NMO 50408 currently contains two self-intersecting section loops and fails the surface gate. Recheck exact DAT order, independent-parser points, section membership, calibration, adjacent-loop correspondence and any source repair history. Keep both records as exact OBS line loops only until every ambiguity is resolved; do not repair or smooth source points, bridge missing planes, or infer geometry from type labels. A passing shell would still be an interpolation display derivative only, not membrane, volume, internal structure, cross-source identity or registration",
+      "blocker": {
+        "code": "implementation",
+        "detail": "Keep both records as exact OBS line loops only until every ambiguity is resolved"
+      },
+      "evidenceBasis": {
+        "markdown": "NMO 50424 / 50394 / 50408 exact checksum-gated DAT contour audits; `data/neurolucida-native-contour-admission-catalog-0.4.json`; UPG-193 and UPG-194",
+        "unlinkedText": "NMO 50424 / 50394 / 50408 exact checksum-gated DAT contour audits; `data/neurolucida-native-contour-admission-catalog-0.4.json`; UPG-193 and UPG-194",
+        "references": []
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L215",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "Keep both records as exact OBS line loops only until every ambiguity is resolved; do not repair or smooth source points, bridge missing planes, or infer geometry from type labels.; A passing shell would still be an interpolation display derivative only, not membrane, volume, internal structure, cross-source identity or registration"
+    },
+    {
+      "id": "UPG-221",
+      "priority": "P1",
+      "status": "partially completed — exact metadata candidate, nucleus-root row and SWC member verified; internal-object chain pending",
+      "lane": "internal_microdetail",
+      "description": "From pinned Dataverse v3 metadata, screen source-classified VNC-local interneuron candidates by applying `region=ventral_nerve_cord`, `flow=intrinsic`, `super_class=ventral_nerve_cord_intrinsic`, `proofread=TRUE`, and non-null `nucleus_id`, `position`, `cell_sub_class` and `cell_type`. The strict query yields 12,571 candidate rows (a filter output, not an interneuron denominator); explicitly exclude projection/ascending, sensory, motor, glial, tracheal, unproofread, untyped and ambiguous records. Deterministic audit sentinel: root `720575941350424112`, type `IN14A018`, subclass `ventral_nerve_cord_contralateral_restricted`, strict proofread; root ID agrees across v626/v850/v888/v890. Verified the exact nucleus annotation row (`nucleus_id` `73044750394982464`, matching `pt_root_id`) and extracted the 7,451-node full-resolution SWC member from the DOI-pinned ZIP with bounded HTTP ranges (member SHA-256 `aff95c90a2ba5449f93573769f61aad6b02eb3db75108287d8cb6ee78f0d395e`). The DOI archive contains a 31-mitochondria metadata metric and a per-mito table, but candidate-specific annotation rows/segmentation geometry and synapse rows are not verified. Candidate mesh fragments exist in mutable GCS but are dated 2025-07-29, lack a v888 materialization pin, and have no object-level reuse decision. Keep all source geometry out of the app until exact mesh, nucleus surface, candidate mito/synapse rows, coordinate and reuse gates are complete; any eventual view stays a comparative fly VNC, never mouse spinal anatomy, homolog or causal model",
+      "blocker": {
+        "code": "remaining_validation",
+        "detail": "Keep all source geometry out of the app until exact mesh, nucleus surface, candidate mito/synapse rows, coordinate and reuse gates are complete"
+      },
+      "evidenceBasis": {
+        "markdown": "[BANC primary paper](https://doi.org/10.1038/s41586-026-10735-w); [official v888 data-product map](https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md); [metadata schema](https://github.com/htem/BANC-project/blob/main/manuscript/print/dataverse/documentation/banc_888_meta.md); [Dataverse v3 API](https://dataverse.harvard.edu/api/datasets/:persistentId/versions/3/files?persistentId=doi:10.7910/DVN/7WTH1N); [Dataverse release](https://doi.org/10.7910/DVN/7WTH1N); `data/banc-v888-candidate-audit-0.1.json`",
+        "unlinkedText": "BANC primary paper; official v888 data-product map; metadata schema; Dataverse v3 API; Dataverse release; `data/banc-v888-candidate-audit-0.1.json`",
+        "references": [
+          {
+            "label": "BANC primary paper",
+            "url": "https://doi.org/10.1038/s41586-026-10735-w"
+          },
+          {
+            "label": "official v888 data-product map",
+            "url": "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md"
+          },
+          {
+            "label": "metadata schema",
+            "url": "https://github.com/htem/BANC-project/blob/main/manuscript/print/dataverse/documentation/banc_888_meta.md"
+          },
+          {
+            "label": "Dataverse v3 API",
+            "url": "https://dataverse.harvard.edu/api/datasets/:persistentId/versions/3/files?persistentId=doi:10.7910/DVN/7WTH1N"
+          },
+          {
+            "label": "Dataverse release",
+            "url": "https://doi.org/10.7910/DVN/7WTH1N"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L216",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "The strict query yields 12,571 candidate rows (a filter output, not an interneuron denominator); explicitly exclude projection/ascending, sensory, motor, glial, tracheal, unproofread, untyped and ambiguous records.; The DOI archive contains a 31-mitochondria metadata metric and a per-mito table, but candidate-specific annotation rows/segmentation geometry and synapse rows are not verified.; Candidate mesh fragments exist in mutable GCS but are dated 2025-07-29, lack a v888 materialization pin, and have no object-level reuse decision.; any eventual view stays a comparative fly VNC, never mouse spinal anatomy, homolog or causal model"
+    },
+    {
+      "id": "UPG-222",
+      "priority": "P0",
+      "status": "partially completed — publisher-facing records and file checksums identified; version lineage, full H5AD delta and file-level rights pending",
+      "lane": "provenance_and_identity",
+      "description": "Reconcile the same-titled adult mouse spinal MERFISH records `18039571` and `20533289` before implementing or refreshing UPG-152. Record `18039571` lists `MERFISH_spinal_cord_resolved_0718.h5ad` (published MD5 `ce06f62c0ec4973581dae17bb76f0cd9`) and `SNI_merged_0917.h5ad` (MD5 `7e90a801ee57b8fec06cd03c8630f01b`); a later spatial-annotation benchmark cites that record as an 18-section mouse spinal dataset. Record `20533289` is explicitly published as Zenodo v2 and lists `MERFISH_spinal_cord_0531.h5ad` (98,970,246 bytes; MD5 `e7328d8bda2fb4b390cb107340ac4c83`) and `SNI_merged_0531.h5ad` (115,901,575 bytes; MD5 `6ee6195c7f958f07172172963fef8d20`). Same title/creator is not sufficient to establish version lineage or equivalence. Obtain authoritative all-version metadata; independently verify exact file bytes/MD5/SHA-256, H5AD schema, observation keys, sample and section IDs, row/label denominators and spatial fields for each immutable version; publish a version-delta receipt and keep versions separate. Preserve the reviewed status that both landing pages expose no explicit file-level reuse licence; an “open” badge means accessible, not cleared for redistribution. Until this gate passes, admit no H5AD payload or inferred cross-version join; the public metadata and article z-plane acquisition report do not establish any record-linked interneuron neurites, membrane, organelles, 3D cell boundaries or atlas registration, so admit none",
+      "blocker": {
+        "code": "rights_or_permission",
+        "detail": "Until this gate passes, admit no H5AD payload or inferred cross-version join"
+      },
+      "evidenceBasis": {
+        "markdown": "[Zenodo record 18039571](https://zenodo.org/records/18039571); [Zenodo v2 record 20533289](https://zenodo.org/records/20533289); [benchmark citing the 18-section dataset](https://pmc.ncbi.nlm.nih.gov/articles/PMC13320944/); [Zenodo versioning policy](https://zenodo.org/help/versioning); [Wang et al. preprint](https://doi.org/10.64898/2026.01.10.698734)",
+        "unlinkedText": "Zenodo record 18039571; Zenodo v2 record 20533289; benchmark citing the 18-section dataset; Zenodo versioning policy; Wang et al. preprint",
+        "references": [
+          {
+            "label": "Zenodo record 18039571",
+            "url": "https://zenodo.org/records/18039571"
+          },
+          {
+            "label": "Zenodo v2 record 20533289",
+            "url": "https://zenodo.org/records/20533289"
+          },
+          {
+            "label": "benchmark citing the 18-section dataset",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13320944/"
+          },
+          {
+            "label": "Zenodo versioning policy",
+            "url": "https://zenodo.org/help/versioning"
+          },
+          {
+            "label": "Wang et al. preprint",
+            "url": "https://doi.org/10.64898/2026.01.10.698734"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-22",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L217",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "Same title/creator is not sufficient to establish version lineage or equivalence.; publish a version-delta receipt and keep versions separate.; Preserve the reviewed status that both landing pages expose no explicit file-level reuse licence; an “open” badge means accessible, not cleared for redistribution.; Until this gate passes, admit no H5AD payload or inferred cross-version join; the public metadata and article z-plane acquisition report do not establish any record-linked interneuron neurites, membrane, organelles, 3D cell boundaries or atlas registration, so admit none"
     }
   ]
 }

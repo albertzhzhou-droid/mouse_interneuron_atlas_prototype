@@ -49,7 +49,9 @@ export async function validateNeurolucidaNativeContourAdmissionCatalog() {
   check(geometry.summary.pointPayloadSha256 === "b163a222ae560d3467a94f3438985c868548695205d56efaaeed454b67977208", "NMO 45674 admitted point-payload receipt drifted");
   check(geometry.contours.every((contour) => contour.sourceClosedFlag === true && contour.sourceName === "CellBody"), "NMO 45674 geometry contains a held or non-soma contour");
   check(/neurolucidaNativeContourAdmissionCatalogJson/.test(atlasTypesSource), "Native contour catalog is not exposed to the app");
-  check(/new THREE\.LineLoop/.test(viewerSource) && !/ShapeGeometry|ExtrudeGeometry|TubeGeometry|new THREE\.Mesh\s*\(/.test(viewerSource), "Native contour record viewer uses an unauthorized primitive");
+  check(/new THREE\.LineLoop/.test(viewerSource) && !/SphereGeometry|ShapeGeometry|ExtrudeGeometry|TubeGeometry/.test(viewerSource)
+    && /neuronId !== derivedSurfaceReceipt\.neuronId/.test(viewerSource)
+    && /DER-source-contour-interpolated-open-shell-not-membrane/.test(viewerSource), "Native contour viewer lacks the exact-record-gated OBS + DER primitive boundary");
   check(/state\.neuronId === neuronId/.test(viewerSource) && /key=\{observedCellForm\.neuronId\}/.test(atlasSource), "Native contour switching does not explicitly clear prior-record state");
   check(/<NativeContourRecordViewer[^>]*neuronId=\{observedCellForm\.neuronId\}/.test(atlasSource), "Native contour viewer is not gated by the current morphology record identity");
   check(!/<NativeSomaContourViewer/.test(atlasSource), "The old one-record native contour viewer remains mounted");

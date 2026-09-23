@@ -203,9 +203,9 @@ test("legacy morphology routes use a non-null fallback whose binding is defined"
   );
 });
 
-test("the application imports the current research iteration 2.43 manifest", () => {
-  assert.match(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.43\.json["']/);
-  assert.doesNotMatch(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.(?:24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40)\.json["']/);
+test("the application imports the current research iteration 2.50 manifest", () => {
+  assert.match(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.50\.json["']/);
+  assert.doesNotMatch(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.(?:24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49)\.json["']/);
 });
 
 test("exports gate both frozen morphology contracts by explicit record membership", () => {

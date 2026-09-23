@@ -1806,14 +1806,14 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     <ResearchActiveRecordProvider value={researchActiveRecord}>
     <main className="atlas-shell">
       <div className="research-only-banner" role="note">
-        <strong>LOCALHOST PUBLIC-DATA RESEARCH ITERATION 2.43</strong>
+        <strong>LOCALHOST PUBLIC-DATA RESEARCH ITERATION 2.50</strong>
         <span>Atlas INF · 1,097 exact NeuroMorpho query objects · frozen adult subset 142 · 149 exact assets reused + 948 delta raw SWCs · selected object checksum-gated and source-local · selected-spinal interior unavailable · 0 cross-lane REG</span>
         <span>For research visualization only; this is not a complete cell census, connectome, or treatment recommendation.</span>
       </div>
 
       <header className="atlas-header">
         <div>
-          <p className="eyebrow">OHRI · PUBLIC-DATA RESEARCH ITERATION 2.43 · LOCALHOST</p>
+          <p className="eyebrow">OHRI · PUBLIC-DATA RESEARCH ITERATION 2.50 · LOCALHOST</p>
           <h1>Mouse Spinal Interneuron Atlas</h1>
           <p className="header-subtitle">Evidence-linked 3D research with source-local spinal morphology, exact neonatal premotor coordinate points, an exact cross-region cell+nucleus segmentation reference, and explicit same-specimen missingness</p>
         </div>
@@ -2347,7 +2347,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
 
       <footer className="atlas-footer">
         <p aria-live="polite" aria-atomic="true"><span className="status-pulse" />{notice}</p>
-        <p><strong>Unpackaged research iteration 2.43</strong> · canonical registry {formatResearchSourceRegistrySummary(researchSourceRegistrySummary)} · source catalog {publicDataCatalog.schemaVersion} · {publicDataCatalog.sources.length} public sources · {publicDataCatalog.upgradeQueue.length} source-admission records · selected-record native contour routing admits {neurolucidaNativeContourAdmissionCatalog.summary.admittedContourObjectCount} exact LineLoops / {neurolucidaNativeContourAdmissionCatalog.summary.admittedVertexCount.toLocaleString("en-US")} vertices across {neurolucidaNativeContourAdmissionCatalog.summary.auditedDatFileCount} audited records; raw false flags remain visible and User Line 1–4 remain excluded; every record switch clears inapplicable detail; no fill, surface, internal object, overlay, join or registration is fabricated</p>
+        <p><strong>Unpackaged research iteration 2.50</strong> · canonical registry {formatResearchSourceRegistrySummary(researchSourceRegistrySummary)} · source catalog {publicDataCatalog.schemaVersion} · {publicDataCatalog.sources.length} public sources · {publicDataCatalog.upgradeQueue.length} source-admission records · selected-record native contour routing admits {neurolucidaNativeContourAdmissionCatalog.summary.admittedContourObjectCount} exact OBS LineLoops / {neurolucidaNativeContourAdmissionCatalog.summary.admittedVertexCount.toLocaleString("en-US")} vertices across {neurolucidaNativeContourAdmissionCatalog.summary.auditedDatFileCount} audited records; NMO 50394 alone has one separately receipted DER open interpolation shell; raw false flags and excluded User Line objects remain visible; every record switch clears inapplicable detail; 0 observed surfaces, volumes, internal objects and registrations</p>
         <p>BrainGlobe <code>allen_cord_20um:3.0</code> INF · 1,097 exact NeuroMorpho no-age-query objects = 149 reused exact assets + 948 delta raw SWCs · frozen adult subset remains 142 · 39 source-labelled 2D · 0 complete-axon claims · 0 REG</p>
       </footer>
       <p className="fixed-disclaimer">{atlasRelease.fixedDisclaimer}</p>

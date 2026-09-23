@@ -6,7 +6,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mouse Spinal Interneuron Atlas · Public-Data Research Iteration 2.43",
+  title: "Mouse Spinal Interneuron Atlas · Public-Data Research Iteration 2.50",
   description: "A localhost evidence-linked public-data workbench for mouse spinal interneuron and SCI research across source-declared life stages.",
   icons: { icon: "/icon.svg" },
 };

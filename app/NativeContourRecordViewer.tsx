@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { neurolucidaNativeContourAdmissionCatalog } from "./atlas-types";
+import nativeContourDerivedSomaSurfaceReceiptJson from "../data/native-contour-derived-soma-surface-0.1.json";
 import {
   nativeContourAdmissionRecord,
   nativeContourDisplayTransform,
@@ -11,6 +12,7 @@ import {
   validateNativeContourAdmissionCatalog,
   validateNativeContourGeometry,
 } from "./neurolucida-native-contour-admission.js";
+import { validateNativeContourDerivedSomaSurface } from "./native-contour-derived-soma-surface.js";
 import { sha256Hex } from "./source-local-morphology-geometry.js";
 import "./native-contour-detail.css";
 
@@ -72,6 +74,27 @@ type LoadState =
   | { neuronId: number; status: "verified"; payload: NativeContourPayload; message: string }
   | { neuronId: number; status: "held" | "unavailable"; payload: null; message: string };
 
+type DerivedSurfacePayload = {
+  assetId: string;
+  authority: string;
+  sourceFrame: string;
+  geometry: { rings: { contourId: string; zMicrometre: number; pointsMicrometre: [number, number, number][] }[]; triangleIndices: number[] };
+  method: { algorithmId: string; version: string };
+  qualityAssurance: { vertexCount: number; triangleCount: number; derivedDisplayOpenShellCount: number; observedSurfaceCount: number };
+};
+type DerivedSurfaceState =
+  | { neuronId: number; status: "not_applicable"; payload: null; message: string }
+  | { neuronId: number; status: "loading"; payload: null; message: string }
+  | { neuronId: number; status: "verified"; payload: DerivedSurfacePayload; message: string }
+  | { neuronId: number; status: "unavailable"; payload: null; message: string };
+
+const derivedSurfaceReceipt = nativeContourDerivedSomaSurfaceReceiptJson as {
+  neuronId: number;
+  artifact: { publicPath: string; bytes: number; sha256: string };
+  sourceOriginalDat: { bytes: number; sha256: string };
+  sourceNativeContourGeometry: { path: string; bytes: number; sha256: string };
+};
+
 function disposeObject(root: THREE.Object3D) {
   root.traverse((object) => {
     const drawable = object as THREE.Line | THREE.LineLoop | THREE.AxesHelper;
@@ -120,10 +143,12 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const visibilityRef = useRef<{ primary: THREE.Group; secondary: THREE.Group } | null>(null);
   const contourLinesRef = useRef<THREE.LineLoop[]>([]);
+  const derivedSurfaceRef = useRef<THREE.Mesh | null>(null);
   const [selectedContourId, setSelectedContourId] = useState("");
   const [isolateContour, setIsolateContour] = useState(false);
   const [showPrimary, setShowPrimary] = useState(true);
   const [showSecondary, setShowSecondary] = useState(true);
+  const [showDerivedSurface, setShowDerivedSurface] = useState(() => neuronId === 50394);
   const [webGLAvailable, setWebGLAvailable] = useState(true);
   const [state, setState] = useState<LoadState>(() => ({
     neuronId,
@@ -131,6 +156,9 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
     payload: null,
     message: isRenderable(admission) ? "Verifying exact source-native contour bytes…" : admission?.admission.reason ?? "No audited native DAT record is available.",
   }));
+  const [derivedSurfaceState, setDerivedSurfaceState] = useState<DerivedSurfaceState>(() => neuronId === 50394
+    ? { neuronId, status: "loading", payload: null, message: "Waiting for the exact OBS contour receipt before loading DER geometry…" }
+    : { neuronId, status: "not_applicable", payload: null, message: "No contour-derived shell is admitted for this record." });
 
   useEffect(() => {
     if (!isRenderable(admission)) return undefined;
@@ -155,10 +183,48 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
   const activeState = useMemo<LoadState>(() => state.neuronId === neuronId
     ? state
     : { neuronId, status: isRenderable(admission) ? "loading" : "held", payload: null, message: "Clearing the prior record before loading this selection…" }, [admission, neuronId, state]);
+  const activeDerivedSurfaceState = useMemo<DerivedSurfaceState>(() => {
+    if (neuronId !== derivedSurfaceReceipt.neuronId) {
+      return { neuronId, status: "not_applicable", payload: null, message: "No contour-derived shell is admitted for this record." };
+    }
+    if (activeState.status === "unavailable" || activeState.status === "held") {
+      return { neuronId, status: "unavailable", payload: null, message: "The exact OBS source contours were not verified; DER geometry is withheld." };
+    }
+    if (activeState.status !== "verified") {
+      return { neuronId, status: "loading", payload: null, message: "Waiting for the exact OBS contour receipt before loading DER geometry…" };
+    }
+    return derivedSurfaceState.neuronId === neuronId
+      ? derivedSurfaceState
+      : { neuronId, status: "loading", payload: null, message: "Verifying the separate source-contour-derived shell…" };
+  }, [activeState, derivedSurfaceState, neuronId]);
   const transform = useMemo(
     () => activeState.status === "verified" ? nativeContourDisplayTransform(activeState.payload.contours) : null,
     [activeState],
   );
+
+  useEffect(() => {
+    if (neuronId !== derivedSurfaceReceipt.neuronId || activeState.status !== "verified") return undefined;
+    const controller = new AbortController();
+    void fetch(derivedSurfaceReceipt.artifact.publicPath, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Derived shell request failed (${response.status})`);
+        const bytes = await response.arrayBuffer();
+        if (bytes.byteLength !== derivedSurfaceReceipt.artifact.bytes || await sha256Hex(bytes) !== derivedSurfaceReceipt.artifact.sha256) {
+          throw new Error("Derived shell byte receipt mismatch");
+        }
+        const payload = JSON.parse(new TextDecoder().decode(bytes)) as DerivedSurfacePayload;
+        validateNativeContourDerivedSomaSurface(payload, activeState.payload, {
+          originalDat: derivedSurfaceReceipt.sourceOriginalDat,
+          nativeContourGeometry: derivedSurfaceReceipt.sourceNativeContourGeometry,
+        });
+        return payload;
+      })
+      .then((payload) => setDerivedSurfaceState({ neuronId, status: "verified", payload, message: "Separate DER interpolation shell verified; OBS source traces remain unchanged." }))
+      .catch((error: Error) => {
+        if (error.name !== "AbortError") setDerivedSurfaceState({ neuronId, status: "unavailable", payload: null, message: error.message });
+      });
+    return () => controller.abort();
+  }, [activeState, neuronId]);
 
   useEffect(() => {
     const container = viewportRef.current;
@@ -180,11 +246,14 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
     renderer.domElement.tabIndex = 0;
     renderer.domElement.dataset.assetId = activeState.payload.assetId;
     renderer.domElement.dataset.geometryAuthority = admission.derivedObject.authority;
-    renderer.domElement.dataset.primitiveKind = "line-loop-only";
+    renderer.domElement.dataset.primitiveKind = activeDerivedSurfaceState.status === "verified" ? "source-line-loops-plus-derived-open-shell" : "line-loop-only";
     renderer.domElement.dataset.filledPolygonCount = "0";
     renderer.domElement.dataset.triangleCount = "0";
+    renderer.domElement.dataset.derivedTriangleCount = activeDerivedSurfaceState.status === "verified" ? String(activeDerivedSurfaceState.payload.qualityAssurance.triangleCount) : "0";
     renderer.domElement.dataset.loftCount = "0";
     renderer.domElement.dataset.surfaceCount = "0";
+    renderer.domElement.dataset.observedSurfaceCount = "0";
+    renderer.domElement.dataset.derivedDisplaySurfaceCount = activeDerivedSurfaceState.status === "verified" ? "1" : "0";
     renderer.domElement.dataset.membraneCount = "0";
     renderer.domElement.dataset.volumeCount = "0";
     renderer.domElement.dataset.internalStructureObjectCount = "0";
@@ -192,7 +261,7 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
     renderer.domElement.dataset.standardizedSwcOverlayCount = "0";
     renderer.domElement.dataset.sameCellJoinCount = "0";
     renderer.domElement.dataset.registrationCount = "0";
-    renderer.domElement.setAttribute("aria-label", `Interactive 3D view of ${activeState.payload.contours.length} source-native NMO ${neuronId} Neurolucida soma contour traces. Ordered LineLoops only; no fill, surface, volume, membrane, internal structure, SWC overlay or atlas registration is shown.`);
+    renderer.domElement.setAttribute("aria-label", `Interactive 3D view of ${activeState.payload.contours.length} source-native NMO ${neuronId} Neurolucida soma contour traces${activeDerivedSurfaceState.status === "verified" ? " and one separately verified interpolated DER open shell" : ""}. No observed membrane or volume, internal structure, SWC overlay or atlas registration is shown.`);
     container.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
@@ -204,7 +273,7 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
 
     const root = new THREE.Group();
     root.name = `nmo-${neuronId}-source-native-contour-traces`;
-    root.userData = { assetId: activeState.payload.assetId, authority: admission.derivedObject.authority, sourceFrame: activeState.payload.sourceFrame, allowedPrimitive: "ordered_line_loop", filledPolygonCount: 0, triangleCount: 0, loftCount: 0, surfaceCount: 0, membraneCount: 0, volumeCount: 0, internalStructureObjectCount: 0, biologicalMeasurementCount: 0, standardizedSwcOverlayCount: 0, sameCellJoinCount: 0, registrationCount: 0 };
+    root.userData = { assetId: activeState.payload.assetId, authority: admission.derivedObject.authority, sourceFrame: activeState.payload.sourceFrame, allowedPrimitives: activeDerivedSurfaceState.status === "verified" ? ["OBS_source_native_ordered_line_loop", "DER_interpolated_open_shell"] : ["OBS_source_native_ordered_line_loop"], filledPolygonCount: 0, observedSurfaceCount: 0, derivedDisplaySurfaceCount: activeDerivedSurfaceState.status === "verified" ? 1 : 0, triangleCount: 0, derivedTriangleCount: activeDerivedSurfaceState.status === "verified" ? activeDerivedSurfaceState.payload.qualityAssurance.triangleCount : 0, loftCount: 0, membraneCount: 0, volumeCount: 0, internalStructureObjectCount: 0, biologicalMeasurementCount: 0, standardizedSwcOverlayCount: 0, sameCellJoinCount: 0, registrationCount: 0 };
     const primary = new THREE.Group();
     primary.name = "primary-source-native-contour-group";
     const secondary = new THREE.Group();
@@ -217,11 +286,38 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
       const material = new THREE.LineBasicMaterial({ color: new THREE.Color(contour.sourceColor), transparent: true, opacity: secondaryNames.has(contour.sourceName) ? 0.95 : 0.82 });
       const line = new THREE.LineLoop(geometry, material);
       line.name = contour.id;
+      line.renderOrder = 4;
       line.userData = { sourceName: contour.sourceName, sourceColor: contour.sourceColor, sourceClosedFlag: contour.sourceClosedFlag, interpretedClosed: contour.interpretedClosed, closureBasis: contour.closureBasis, vertexCount: contour.vertexCount, zValuesMicrometre: contour.zValuesMicrometre, traceRadiusRenderingUse: "forbidden" };
       contourLines.push(line);
       (secondaryNames.has(contour.sourceName) ? secondary : primary).add(line);
     }
-    root.add(primary, secondary);
+    let derivedSurfaceMesh: THREE.Mesh | null = null;
+    if (activeDerivedSurfaceState.status === "verified") {
+      const surface = activeDerivedSurfaceState.payload;
+      const position = new Float32Array(surface.qualityAssurance.vertexCount * 3);
+      let offset = 0;
+      for (const ring of surface.geometry.rings) {
+        for (const point of ring.pointsMicrometre) {
+          const displayed = transformNativeContourPoint(point, transform) as [number, number, number];
+          position[offset++] = displayed[0];
+          position[offset++] = displayed[1];
+          position[offset++] = displayed[2];
+        }
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(position, 3));
+      geometry.setIndex(surface.geometry.triangleIndices);
+      geometry.computeVertexNormals();
+      const material = new THREE.MeshBasicMaterial({ color: 0x55c6a8, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false });
+      derivedSurfaceMesh = new THREE.Mesh(geometry, material);
+      derivedSurfaceMesh.name = "DER-source-contour-interpolated-open-shell-not-membrane";
+      derivedSurfaceMesh.renderOrder = 2;
+      derivedSurfaceMesh.userData = { authority: surface.authority, algorithmId: surface.method.algorithmId, sourceFrame: surface.sourceFrame, ringCount: surface.geometry.rings.length, vertexCount: surface.qualityAssurance.vertexCount, triangleCount: surface.qualityAssurance.triangleCount, capCount: 0, observedSurfaceCount: 0, volumeCount: 0, internalStructureObjectCount: 0, biologicalMeasurementCount: 0, sameCellJoinCount: 0, registrationCount: 0, membraneClaim: false };
+      derivedSurfaceRef.current = derivedSurfaceMesh;
+    }
+    root.add(primary);
+    if (derivedSurfaceMesh) root.add(derivedSurfaceMesh);
+    root.add(secondary);
     scene.add(root);
     visibilityRef.current = { primary, secondary };
     contourLinesRef.current = contourLines;
@@ -281,8 +377,9 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
       renderer.domElement.remove();
       visibilityRef.current = null;
       contourLinesRef.current = [];
+      derivedSurfaceRef.current = null;
     };
-  }, [activeState, admission, neuronId, transform]);
+  }, [activeDerivedSurfaceState, activeState, admission, neuronId, transform]);
 
   useEffect(() => {
     if (!visibilityRef.current) return;
@@ -291,10 +388,17 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
   }, [showPrimary, showSecondary, activeState]);
 
   useEffect(() => {
+    if (!derivedSurfaceRef.current) return;
+    derivedSurfaceRef.current.visible = showDerivedSurface && !(isolateContour && Boolean(selectedContourId));
+  }, [activeDerivedSurfaceState, isolateContour, selectedContourId, showDerivedSurface]);
+
+  useEffect(() => {
     for (const line of contourLinesRef.current) {
       const selected = line.name === selectedContourId;
       const material = line.material as THREE.LineBasicMaterial;
       material.color.set(selected ? "#ffdb76" : line.userData.sourceColor as string);
+      // Synchronize a renderer-owned Three.js object; this effect does not mutate React state.
+      // eslint-disable-next-line react-hooks/immutability
       material.opacity = selectedContourId && !selected ? 0.23 : 0.95;
       line.visible = !isolateContour || !selectedContourId || selected;
     }
@@ -308,13 +412,14 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
   const mbfEvidenceUrl = "mbfCellBodySemantics" in admission.sourceLinks ? admission.sourceLinks.mbfCellBodySemantics : null;
   const selectedContour = activeState.status === "verified" ? activeState.payload.contours.find((contour) => contour.id === selectedContourId) ?? null : null;
 
+  const derivedSurfaceCount = activeDerivedSurfaceState.status === "verified" ? 1 : 0;
   return (
-    <section className={`native-soma-contour-viewer native-contour-record-viewer ${isRenderable(admission) ? "admitted" : "held"}`} aria-labelledby={`native-contour-title-${neuronId}`} data-asset-id={`NeuroMorpho:${neuronId}`} data-admission-status={admission.admissionStatus} data-admitted-contour-count={admitted} data-admitted-vertex-count={vertices} data-filled-polygon-count="0" data-triangle-count="0" data-loft-count="0" data-surface-count="0" data-membrane-count="0" data-volume-count="0" data-internal-structure-object-count="0" data-biological-measurement-count="0" data-standardized-swc-overlay-count="0" data-same-cell-join-count="0" data-registration-count="0">
+    <section className={`native-soma-contour-viewer native-contour-record-viewer ${isRenderable(admission) ? "admitted" : "held"}`} aria-labelledby={`native-contour-title-${neuronId}`} data-asset-id={`NeuroMorpho:${neuronId}`} data-admission-status={admission.admissionStatus} data-admitted-contour-count={admitted} data-admitted-vertex-count={vertices} data-filled-polygon-count="0" data-triangle-count="0" data-derived-triangle-count={activeDerivedSurfaceState.status === "verified" ? activeDerivedSurfaceState.payload.qualityAssurance.triangleCount : "0"} data-loft-count="0" data-surface-count="0" data-observed-surface-count="0" data-derived-display-surface-count={derivedSurfaceCount} data-membrane-count="0" data-volume-count="0" data-internal-structure-object-count="0" data-biological-measurement-count="0" data-standardized-swc-overlay-count="0" data-same-cell-join-count="0" data-registration-count="0">
       <header>
         <div>
-          <p className="panel-kicker">PER-RECORD SOURCE-NATIVE DAT AUDIT · OBS</p>
+          <p className="panel-kicker">PER-RECORD MORPHOLOGY DETAIL · OBS + DER</p>
           <h3 id={`native-contour-title-${neuronId}`}>NMO {neuronId} native contour detail</h3>
-          <p>{admission.title}. The audit and display are identity-gated to this exact record; prior-record native geometry is cleared on switch.</p>
+          <p>{admission.title}. OBS traces and any separately admitted DER display geometry are identity-gated to this exact record; prior-record geometry is cleared on switch.</p>
         </div>
         <strong>{statusLabel}</strong>
       </header>
@@ -324,8 +429,8 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
         <span><strong>{admitted}</strong> admitted line loops</span>
         <span><strong>{vertices}</strong> admitted vertices</span>
         <span><strong>{admission.audit.sourceOpenSomaNamedContourCount}</strong> raw false flags</span>
-        <span><strong>0</strong> surfaces / volumes</span>
-        <span><strong>0</strong> internal objects / REG</span>
+        <span><strong>0</strong> observed surfaces / volumes</span>
+        <span><strong>{derivedSurfaceCount}</strong> DER open shell · <strong>0</strong> internal objects / REG</span>
       </div>
 
       {isRenderable(admission) ? (
@@ -334,6 +439,8 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
             <div className="native-soma-contour-controls" aria-label="Native contour trace visibility">
               <button type="button" className={showPrimary ? "active" : ""} aria-pressed={showPrimary} onClick={() => setShowPrimary((value) => !value)}>{admission.viewer?.primaryLabel ?? "Admitted source-closed traces"}</button>
               {admission.viewer?.secondaryLabel && <button type="button" className={showSecondary ? "active legacy" : ""} aria-pressed={showSecondary} onClick={() => setShowSecondary((value) => !value)}>{admission.viewer.secondaryLabel}</button>}
+              {neuronId === 50394 && <button type="button" className={showDerivedSurface && derivedSurfaceCount ? "active derived" : ""} aria-pressed={showDerivedSurface && derivedSurfaceCount > 0} disabled={derivedSurfaceCount === 0} onClick={() => setShowDerivedSurface((value) => !value)}>Interpolated soma shell · DER</button>}
+              {neuronId === 50394 && activeDerivedSurfaceState.status !== "verified" && <span className="native-derived-surface-status" role={activeDerivedSurfaceState.status === "unavailable" ? "alert" : "status"}>{activeDerivedSurfaceState.message}</span>}
             </div>
             {activeState.status === "verified" && <div className="native-contour-inspection-controls">
               <label htmlFor={`native-contour-select-${neuronId}`}>Inspect a source cross-section</label>
@@ -362,7 +469,7 @@ function NativeContourRecordContent({ neuronId }: { neuronId: number }) {
               <div><dt>Trace radius</dt><dd>retained in source points · not used as anatomical thickness</dd></div>
               <div><dt>Transform</dt><dd>viewer-only recentering and uniform scale · source coordinates preserved</dd></div>
             </dl>
-            <div className="native-soma-contour-boundary" role="note"><strong>LINE TRACES ONLY</strong><p>{admission.hardBoundaries.join(" ")}</p></div>
+            <div className="native-soma-contour-boundary" role="note"><strong>{derivedSurfaceCount ? "OBS TRACES + SEPARATE DER SHELL" : "OBS LINE TRACES"}</strong><p>{derivedSurfaceCount ? "The source-native catalog remains line-loop-only. This one record has a separate, checksum-verified open interpolation shell between contiguous source planes; it is not an observed membrane, volume, nucleus, organelle or internal segmentation. " : ""}{admission.hardBoundaries.join(" ")}</p></div>
             <nav aria-label={`Native contour sources for NMO ${neuronId}`}>
               <a href={admission.source.officialRecordUrl} target="_blank" rel="noreferrer">NeuroMorpho record ↗</a>
               <a href={admission.source.originalDatUrl} target="_blank" rel="noreferrer">Original DAT ↗</a>

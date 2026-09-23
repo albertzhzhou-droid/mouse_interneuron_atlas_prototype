@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "banc-v888-candidate-audit-0.1.0",
+  "auditDate": "2026-09-22",
+  "authority": "SOURCE_PINNED_CANDIDATE_AUDIT",
+  "relationshipToMouseAtlas": "comparative_reference_only",
+  "source": {
+    "articleDoi": "10.1038/s41586-026-10735-w",
+    "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13518251/",
+    "dataMapUrl": "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md",
+    "metadataSchemaUrl": "https://github.com/htem/BANC-project/blob/main/manuscript/print/dataverse/documentation/banc_888_meta.md",
+    "dataverseDoi": "10.7910/DVN/7WTH1N",
+    "dataverseDatasetApiUrl": "https://dataverse.harvard.edu/api/datasets/:persistentId?persistentId=doi:10.7910/DVN/7WTH1N",
+    "dataverseFilesApiUrl": "https://dataverse.harvard.edu/api/datasets/:persistentId/versions/3/files?persistentId=doi:10.7910/DVN/7WTH1N",
+    "gcsBucket": "gs://lee-lab_brain-and-nerve-cord-fly-connectome",
+    "dataverseLicense": "CC BY 4.0",
+    "dataverseVersion": {
+      "versionNumber": 3,
+      "internalVersionNumber": 37,
+      "state": "RELEASED",
+      "productionDate": "2026-04-17",
+      "publicationDate": "2026-05-27",
+      "lastUpdateTime": "2026-07-01T12:45:04Z"
+    }
+  },
+  "scope": {
+    "species": "Drosophila melanogaster",
+    "sex": "female",
+    "lifeStage": "adult",
+    "specimenCount": 1,
+    "materializationId": "v888",
+    "anatomicalScope": "brain, suboesophageal zone, cervical connective, and ventral nerve cord",
+    "notMouseSpinalCord": true,
+    "homologyClaim": "none"
+  },
+  "metadataSnapshot": {
+    "file": {
+      "fileId": 14033740,
+      "filename": "banc_888_meta.feather",
+      "bytes": 57550610,
+      "md5": "6275eda42f98c49539d1ab513d979d09",
+      "restricted": false,
+      "rows": 188508,
+      "columns": 81,
+      "uniqueRootIds": 188508
+    },
+    "documentationDiscrepancy": {
+      "documentedRows": 188162,
+      "documentedColumns": 79,
+      "documentedMd5": "8c8babff28b21c57ecc999e664560ef5",
+      "archivedFileRows": 188508,
+      "archivedFileColumns": 81,
+      "archivedFileMd5": "6275eda42f98c49539d1ab513d979d09",
+      "interpretation": "The current released Dataverse v3 file was downloaded and parsed; it differs from the still-published per-file documentation. Use the exact Dataverse v3 file receipt for this candidate audit, and retain the difference as a source-documentation discrepancy. Neither row count is an interneuron denominator."
+    },
+    "mutableGcsObservationNotUsedForSelection": {
+      "bytes": 57503026,
+      "md5": "8c2b93a608c7163ec9d94d68e0756ff4",
+      "interpretation": "A direct download from the public mutable GCS object at the documented metadata path differed in bytes and MD5 from the current DOI-archived Dataverse v3 file; it was not used to select or classify the candidate."
+    },
+    "screenCounts": {
+      "regionVentralNerveCordAndFlowIntrinsicRows": 19623,
+      "superClassCountsWithinThatCoarseFilter": {
+        "ventral_nerve_cord_intrinsic": 12866,
+        "ascending": 1849,
+        "glia": 4837,
+        "trachea": 70,
+        "optic_lobe_intrinsic": 1
+      },
+      "strictlyProofreadWithNucleusPositionSubclassAndType": 12571,
+      "screenRowsWithNonzeroMitochondriaMetric": 4326,
+      "isDatasetInterneuronDenominator": false
+    },
+    "selectionRule": "Filter the pinned Dataverse v3 metadata to region=ventral_nerve_cord, flow=intrinsic, super_class=ventral_nerve_cord_intrinsic, proofread=TRUE, and nonempty nucleus_id, position, cell_sub_class, and cell_type. Then, in ascending banc_888_id order, choose the first row whose cell_type starts with IN and whose mitochondria metric is nonzero. This is a reproducible audit sentinel, not a representative or ranked biological exemplar.",
+    "selectionExclusions": [
+      "sensory and sensory_ascending/sensory_descending records",
+      "motor/efferent records",
+      "ascending and descending projection records",
+      "glia, trachea, and not_a_neuron records",
+      "unproofread or fragment-only records failing proofread=TRUE",
+      "untyped or ambiguous records without a nonempty cell_type and cell_sub_class",
+      "records without an explicit source-linked nucleus_id and soma position"
+    ]
+  },
+  "candidate": {
+    "rootId": "720575941350424112",
+    "cellType": "IN14A018",
+    "cellClass": null,
+    "cellSubClass": "ventral_nerve_cord_contralateral_restricted",
+    "superClass": "ventral_nerve_cord_intrinsic",
+    "region": "ventral_nerve_cord",
+    "flow": "intrinsic",
+    "rootRegion": "COURT_vnc_MetaNM-T3",
+    "proofread": true,
+    "roughlyProofread": false,
+    "nucleusId": "73044750394982464",
+    "supervoxelId": "75653891421078502",
+    "rootIdCrosswalk": {
+      "root_626": "720575941350424112",
+      "root_850": "720575941350424112",
+      "root_888": "720575941350424112",
+      "root_890": "720575941350424112",
+      "allEqual": true
+    },
+    "metadataCoordinates": {
+      "somaPositionVoxels": [106200, 223512, 3944],
+      "rootPositionVoxels": [115456, 238736, 4187],
+      "voxelResolutionNanometres": [4, 4, 45]
+    },
+    "metadataMetrics": {
+      "l2CableLengthMicrometres": 1153.22,
+      "segmentationVolumeNanometresCubed": 10463441920,
+      "mitochondriaCount": 31,
+      "mitochondriaVolumeNanometresCubed": 144989,
+      "aggregateInputConnections": 509,
+      "aggregateOutputConnections": 2489
+    },
+    "cellClassMissingnessPreserved": true,
+    "mancCellType": "IN14A018"
+  },
+  "objectReceipts": {
+    "metadataRow": {
+      "sourceFileId": 14033740,
+      "sourceFileMd5": "6275eda42f98c49539d1ab513d979d09",
+      "candidateRowsByRootId": 1,
+      "rootIdFieldsAgreeAcross626850888890": true
+    },
+    "nucleusAnnotationRow": {
+      "sourceFileId": 13916460,
+      "filename": "somas_v1.parquet",
+      "bytes": 5350459,
+      "md5": "54a2b72cb72117fa6358962655625bb1",
+      "restricted": false,
+      "totalRows": 153892,
+      "matchedRowsByNucleusId": 1,
+      "nucleusId": "73044750394982464",
+      "ptRootId": "720575941350424112",
+      "valid": true,
+      "ptSupervoxelId": "76006216245133994",
+      "ptPositionVoxels": [115456, 238736, 4187],
+      "exactRootJoinVerified": true,
+      "surfaceOrVolumeGeometryAvailableInThisTable": false
+    },
+    "fullResolutionSkeletonMember": {
+      "sourceFileId": 13952186,
+      "filename": "banc_swc_skeletons.zip",
+      "archiveBytes": 16583469842,
+      "archiveMd5DataverseReported": "7e73e3ca52fdbd4c67d112fbc267948c",
+      "archiveRestricted": false,
+      "memberName": "720575941350424112_skeleton.swc",
+      "memberBytes": 489716,
+      "memberSha256": "aff95c90a2ba5449f93573769f61aad6b02eb3db75108287d8cb6ee78f0d395e",
+      "memberCrc32": 975420218,
+      "memberExtraction": "bounded HTTP byte-range reads; archive not downloaded in full",
+      "swcNodeCount": 7451,
+      "swcCoordinateSpace": "BANC native nanometres; no atlas registration",
+      "coordinateBoundsNanometres": {
+        "min": [375107, 847895, 167325],
+        "max": [472740.963399508, 957720, 232760]
+      },
+      "nucleusPointAfterVoxelToNanometreScale": [461824, 954944, 188415],
+      "nucleusPointWithinSwcBounds": true,
+      "geometryAdmittedToApplication": false
+    },
+    "neuronMeshCandidateObjects": {
+      "source": "public mutable GCS precomputed mesh prefix",
+      "objects": [
+        {
+          "name": "neuron_meshes/meshes/720575941350424112:0",
+          "bytes": 40,
+          "md5Base64": "5BG/O6nvKWU+G798EZibPg==",
+          "generation": "1753791584025225",
+          "updated": "2025-07-29T12:19:44.079Z"
+        },
+        {
+          "name": "neuron_meshes/meshes/720575941350424112:0:1",
+          "bytes": 984751,
+          "md5Base64": "xqMRn/srbt6nyAaBb7APBA==",
+          "generation": "1753791584024939",
+          "updated": "2025-07-29T12:19:44.076Z"
+        }
+      ],
+      "versionLinkedToDataverseV888": false,
+      "objectLevelReuseTermsVerified": false,
+      "admitted": false,
+      "reason": "The public object keys match the root ID, but the fragments are mutable GCS products last updated before the v888 final-paper snapshot; the object format and materialization binding have not been independently verified."
+    },
+    "mitochondria": {
+      "sourceFileId": 13917846,
+      "filename": "banc_888_mitochondria_v1_human_readable.csv.gz",
+      "bytes": 1107598431,
+      "md5": "2e3be9c0d063969ae019121117007e9a",
+      "restricted": false,
+      "sourceTableAvailable": true,
+      "candidateMetadataMetricCount": 31,
+      "candidateSpecificAnnotationRowsFiltered": false,
+      "segmentationGeometryAdmitted": false,
+      "separateDetectedMitochondriaMapEntry": "MISSING"
+    },
+    "synapses": {
+      "sourceFileId": 13916483,
+      "filename": "banc_888_synapses_v2_human_readable.csv.gz",
+      "bytes": 12257440602,
+      "md5": "e3679e7b9cec032ed1745c7a9dfd42d8",
+      "restricted": false,
+      "candidateMetadataAggregateInputs": 509,
+      "candidateMetadataAggregateOutputs": 2489,
+      "candidateSpecificRowsFiltered": false,
+      "geometryAdmitted": false
+    }
+  },
+  "admission": {
+    "candidateAuditCompleteForMetadataNucleusAndSkeletonReceipts": true,
+    "sameCellObjectChainComplete": false,
+    "sourceObjectsImported": 0,
+    "cellMeshesAdmitted": 0,
+    "nucleusSurfacesAdmitted": 0,
+    "mitochondriaObjectsAdmitted": 0,
+    "synapseObjectsAdmitted": 0,
+    "sameCellJoinCount": 0,
+    "registrationCount": 0,
+    "renderedGeometryCount": 0,
+    "nextGateUpgradeId": "UPG-221"
+  },
+  "hardBoundaries": [
+    "BANC is a one-specimen adult female Drosophila resource, not a source of mouse spinal-cord anatomy or vertebrate homolog claims.",
+    "The current Dataverse v3 metadata table has 188,508 rows and 81 columns, while the still-published schema documentation reports 188,162 rows and 79 columns; neither is an interneuron denominator.",
+    "The 12,571-record strict screen is a candidate filter output, not a census or prevalence estimate.",
+    "A verified nucleus-ID/root-ID row and a full-resolution SWC member do not create nucleus surface geometry, an exact v888 neuron mesh, mitochondria segmentation objects, or candidate-specific synapse rows.",
+    "The candidate-associated public mesh fragments have no verified v888 materialization link or exact reuse decision; do not render them.",
+    "The per-mitochondrion CSV exists in the Dataverse v3 file list, while a separate detected-mitochondria product remains marked MISSING in the source map; the candidate-specific rows and object geometry remain unverified.",
+    "Dataverse CC BY 4.0 applies to the released Dataverse dataset; it does not establish reuse terms for an unpinned mutable GCS mesh fragment.",
+    "No BANC source geometry, join, registration, or causal/function claim is admitted in the mouse atlas."
+  ]
+}
