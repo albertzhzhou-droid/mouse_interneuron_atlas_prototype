@@ -1,0 +1,300 @@
+{
+  "releaseId": "ohri-mouse-interneuron-feasibility-0.1.0",
+  "releasedAt": "2026-08-17",
+  "species": {
+    "commonName": "mouse",
+    "scientificName": "Mus musculus",
+    "ncbiTaxon": "NCBITaxon:10090",
+    "lifeStage": "adult"
+  },
+  "scope": {
+    "anatomy": "C1-S3 schematic whole-cord scaffold with evidence-linked entity regions",
+    "coordinateSpace": "prototype_schematic_v0",
+    "units": "schematic_unit",
+    "fixedSpecies": true,
+    "isCellCensus": false,
+    "isConnectome": false,
+    "isClinicalModel": false
+  },
+  "visualContract": {
+    "OBS": "Directly measured geometry in its stated source coordinate frame",
+    "REG": "Registered geometry with a recorded transform",
+    "INF": "Interpolated or probabilistic spatial representation",
+    "SCH": "Literature-supported pathway schematic",
+    "SYN": "Synthetic prototype geometry; not valid for measurement"
+  },
+  "scaffold": {
+    "id": "mouse.cord.scaffold.prototype",
+    "geometryStatus": "SYN",
+    "derivedFrom": "BrainGlobe allen_cord_20um and SpinalJ structural conventions",
+    "sourceResolution": "20 x 10 x 10 um",
+    "sourceExtent": "C1-S3",
+    "warning": "The rendered surface is procedural synthetic geometry, not the BrainGlobe volume or an individual mouse specimen.",
+    "sources": [
+      {
+        "title": "BrainGlobe atlas details",
+        "url": "https://brainglobe.info/documentation/brainglobe-atlasapi/usage/atlas-details.html"
+      },
+      {
+        "title": "SpineRacks and SpinalJ",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8605391/"
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "mouse.propriospinal.relay",
+      "order": 1,
+      "name": "Propriospinal relay neurons",
+      "shortLabel": "PS relay",
+      "entityKind": "functional_population",
+      "classificationAxes": ["projection_connectivity"],
+      "transmitter": "mixed_or_unspecified",
+      "markers": [],
+      "segmentGroup": "thoracic",
+      "segmentLabel": "T8-T10 relay zone",
+      "lamina": "region-level only",
+      "laterality": "crossing relay",
+      "endpoint": "locomotion",
+      "injuryType": "staggered_hemisection",
+      "injuryContext": "Spatially and temporally separated lateral hemisections",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [-0.5, 0.05, 3.0],
+        "seed": 201
+      },
+      "claimGrades": ["DEP"],
+      "endpointLevels": ["ANA", "EPHYS", "BEH"],
+      "allowedClaim": "Propriospinal relay connections can mediate supraspinal control of stepping in the staggered-hemisection mouse model.",
+      "notEstablished": "Recovery across one anatomically complete lesion or a single molecular interneuron type.",
+      "negativeFindings": [
+        "Retrograde brainstem labeling remained markedly reduced.",
+        "The model is not one anatomically complete lesion at a single level."
+      ],
+      "ledgerId": "P02",
+      "fullTextStatus": "archived_full_text",
+      "citation": "Courtine et al., 2008",
+      "doi": "10.1038/nm1682",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2916740/"
+    },
+    {
+      "id": "mouse.di3.isl1",
+      "order": 2,
+      "name": "dI3 glutamatergic interneurons",
+      "shortLabel": "dI3",
+      "entityKind": "developmental_lineage",
+      "classificationAxes": ["developmental_lineage", "neurotransmitter"],
+      "transmitter": "excitatory",
+      "markers": ["Isl1 lineage", "glutamatergic output"],
+      "segmentGroup": "lumbar",
+      "segmentLabel": "Lumbar sensorimotor circuits",
+      "lamina": "dorsal/intermediate region",
+      "laterality": "local_or_unspecified",
+      "endpoint": "locomotion",
+      "injuryType": "complete_transection",
+      "injuryContext": "Lower thoracic complete transection with treadmill training",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [0.55, 0.46, -10.0],
+        "seed": 202
+      },
+      "claimGrades": ["NEC"],
+      "endpointLevels": ["BEH"],
+      "allowedClaim": "dI3 glutamatergic output is necessary for stable locomotor recovery under the defined transection and training conditions.",
+      "notEstablished": "Activation of dI3 alone is sufficient, or an equivalent role in humans.",
+      "negativeFindings": [
+        "Pre-injury fundamental rhythm and interlimb coordination were largely intact after output removal.",
+        "The study does not establish sufficiency."
+      ],
+      "ledgerId": "P03",
+      "fullTextStatus": "archived_full_text",
+      "citation": "Bui et al., 2016",
+      "doi": "10.7554/eLife.21715",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5218533/"
+    },
+    {
+      "id": "mouse.sc.vsx2_hoxa10",
+      "order": 3,
+      "name": "SC^Vsx2::Hoxa10",
+      "shortLabel": "SC Vsx2/Hoxa10",
+      "entityKind": "molecular_spatial_population",
+      "classificationAxes": ["molecular_identity", "spatial_identity"],
+      "transmitter": "excitatory",
+      "markers": ["Vsx2", "Hoxa10"],
+      "segmentGroup": "lumbar",
+      "segmentLabel": "Lumbar enlargement",
+      "lamina": "lamina VII / intermediate zone",
+      "laterality": "local_or_unspecified",
+      "endpoint": "locomotion",
+      "injuryType": "lateral_hemisection",
+      "injuryContext": "Mouse SCI recovery and EES-assisted rehabilitation paradigms",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [-0.58, -0.12, -12.0],
+        "seed": 203
+      },
+      "claimGrades": ["NEC", "SUF"],
+      "endpointLevels": ["MOL", "ANA", "BEH"],
+      "allowedClaim": "Mouse experiments identified SC^Vsx2::Hoxa10 neurons as necessary and sufficient under defined recovery conditions.",
+      "notEstablished": "That the same population is the causal substrate of recovery in human EES participants.",
+      "negativeFindings": [
+        "The human cohort was not a randomized comparison.",
+        "Mouse cell-type causality and human treatment outcomes are separate evidence streams."
+      ],
+      "ledgerId": "P09",
+      "fullTextStatus": "archived_full_text",
+      "citation": "Kathe et al., 2022",
+      "doi": "10.1038/s41586-022-05385-7",
+      "sourceUrl": "https://www.nature.com/articles/s41586-022-05385-7",
+      "humanCausalEvidence": false
+    },
+    {
+      "id": "mouse.v3.sim1",
+      "order": 4,
+      "name": "V3 interneurons",
+      "shortLabel": "V3 / Sim1",
+      "entityKind": "developmental_lineage",
+      "classificationAxes": ["developmental_lineage"],
+      "transmitter": "excitatory",
+      "markers": ["Sim1", "glutamatergic"],
+      "segmentGroup": "sacral",
+      "segmentLabel": "Sacral S2 network",
+      "lamina": "ventromedial network",
+      "laterality": "commissural_and_local",
+      "endpoint": "spasm",
+      "injuryType": "complete_transection",
+      "injuryContext": "Chronic complete S2 transection",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [0.32, -0.66, -17.0],
+        "seed": 204
+      },
+      "claimGrades": ["NEC"],
+      "endpointLevels": ["EPHYS", "BEH"],
+      "allowedClaim": "V3 interneurons are a necessary component of the sensory-driven sacral network that generates spasms under the test conditions.",
+      "notEstablished": "That V3 neurons are the sole generator of spasticity or that activation supports useful locomotion.",
+      "negativeFindings": [
+        "This is a maladaptive spasm context, not a beneficial walking-recovery context."
+      ],
+      "ledgerId": "P14",
+      "fullTextStatus": "web_full_text",
+      "citation": "Lin et al., 2019",
+      "doi": "10.1152/jn.00776.2018",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6485742/"
+    },
+    {
+      "id": "mouse.v2a.cervical_ipsilateral",
+      "order": 5,
+      "name": "Ipsilateral cervical V2a neurons",
+      "shortLabel": "Cervical V2a",
+      "entityKind": "lineage_projection_population",
+      "classificationAxes": ["developmental_lineage", "projection"],
+      "transmitter": "excitatory",
+      "markers": ["Vsx2/Chx10", "glutamatergic"],
+      "segmentGroup": "cervical",
+      "segmentLabel": "C2-C5 cervical circuit",
+      "lamina": "ventral/intermediate region",
+      "laterality": "ipsilateral",
+      "endpoint": "breathing",
+      "injuryType": "lateral_hemisection",
+      "injuryContext": "C2 hemisection, acute to chronic",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [-0.62, -0.26, 15.0],
+        "seed": 205
+      },
+      "claimGrades": ["DEP"],
+      "endpointLevels": ["EPHYS", "BEH"],
+      "allowedClaim": "Spared ipsilateral cervical V2a neurons can support diaphragm recruitment and become necessary for selected injured-state respiratory output.",
+      "notEstablished": "Durable recovery without stimulation, lumbar locomotor recovery, or clinical efficacy.",
+      "negativeFindings": [
+        "This evidence concerns breathing, not walking."
+      ],
+      "ledgerId": "P16",
+      "fullTextStatus": "web_full_text",
+      "citation": "Jensen et al., 2024",
+      "doi": "10.1073/pnas.2313594121",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10945804/"
+    },
+    {
+      "id": "mouse.overlay.vgat_kcc2",
+      "order": 6,
+      "name": "Vgat+/KCC2-sensitive state",
+      "shortLabel": "Vgat / KCC2",
+      "entityKind": "injury_state_overlay",
+      "classificationAxes": ["neurotransmitter_state", "intervention_response"],
+      "transmitter": "inhibitory",
+      "markers": ["Vgat/Slc32a1", "KCC2/Slc12a5"],
+      "segmentGroup": "thoracic",
+      "segmentLabel": "Thoracic relay zone",
+      "lamina": "distributed inhibitory neurons",
+      "laterality": "distributed",
+      "endpoint": "locomotion",
+      "injuryType": "staggered_hemisection",
+      "injuryContext": "Simultaneous staggered T7/T10 lateral hemisections",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [0.55, -0.24, 2.0],
+        "seed": 206
+      },
+      "claimGrades": ["DEP"],
+      "endpointLevels": ["MOL", "EPHYS", "BEH"],
+      "allowedClaim": "KCC2 manipulation altered inhibitory-neuron excitability and enabled spared relay pathways in the defined mouse model.",
+      "notEstablished": "A general benefit of global disinhibition or efficacy after anatomically complete transection.",
+      "negativeFindings": [
+        "CLP290 failed after complete T8 transection.",
+        "The intervention did not increase descending or propriospinal axon growth.",
+        "Residual antagonist-muscle coactivation indicated suboptimal coordination."
+      ],
+      "ledgerId": "P05",
+      "fullTextStatus": "archived_full_text",
+      "citation": "Chen et al., 2018",
+      "doi": "10.1016/j.cell.2018.06.005",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6063786/"
+    },
+    {
+      "id": "mouse.overlay.vglut2_vgat_switch",
+      "order": 7,
+      "name": "vGlut2-lineage transmitter switching",
+      "shortLabel": "vGlut2→vGAT state",
+      "entityKind": "injury_state_overlay",
+      "classificationAxes": ["developmental_lineage", "neurotransmitter_state", "injury_age"],
+      "transmitter": "state_dependent",
+      "markers": ["vGlut2/Slc17a6 lineage", "vGAT/Slc32a1"],
+      "segmentGroup": "lumbar",
+      "segmentLabel": "Below T10 injury",
+      "lamina": "motor-circuit terminals",
+      "laterality": "distributed",
+      "endpoint": "locomotion",
+      "injuryType": "complete_transection",
+      "injuryContext": "Neonatal and adult complete thoracic transection shown as separate conditions",
+      "geometry": {
+        "status": "SYN",
+        "pathStatus": "SCH",
+        "schematicPosition": [0.28, -0.48, -8.0],
+        "seed": 207
+      },
+      "claimGrades": ["DEP"],
+      "endpointLevels": ["MOL", "ANA", "BEH"],
+      "allowedClaim": "Injury age and activity shape transmitter phenotype, and attenuating the adult inhibitory switch improved selected locomotor features.",
+      "notEstablished": "Complete recovery or a general benefit from suppressing inhibitory signaling.",
+      "negativeFindings": [
+        "Adult vGAT attenuation produced variable, partial, poorly coordinated stepping.",
+        "Training alone did not significantly improve locomotor ability.",
+        "Neonatal and adult conditions must not be pooled."
+      ],
+      "ledgerId": "P08",
+      "fullTextStatus": "archived_full_text",
+      "citation": "Bertels et al., 2022",
+      "doi": "10.1038/s41593-022-01067-9",
+      "sourceUrl": "https://www.nature.com/articles/s41593-022-01067-9"
+    }
+  ],
+  "fixedDisclaimer": "Research visualization only. Reference anatomy is an INF display derivative with measurement forbidden. Evidence entities and paths remain SYN/SCH and unregistered. This prototype is not a complete cell census, connectome, clinical model, or treatment recommendation."
+}

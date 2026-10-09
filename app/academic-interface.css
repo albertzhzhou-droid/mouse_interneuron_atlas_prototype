@@ -1,0 +1,176 @@
+/* Reading layout for the atlas shell. Scientific canvas rendering is unchanged. */
+.atlas-shell {
+  --ink: #20382f;
+  --muted: #586960;
+  --line: #d8dfd8;
+  --paper: #f7f7f2;
+  --green: #286651;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 36px 28px;
+  background: var(--paper);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.atlas-shell .research-only-banner {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0 -36px;
+  padding: 11px 36px;
+  min-height: 42px;
+  background: #21392f;
+  color: #e0e8df;
+  font: 500 11px/1.5 var(--font-geist-sans), sans-serif;
+  letter-spacing: .025em;
+  white-space: normal;
+}
+.atlas-shell .research-only-banner strong { padding: 0; border: 0; color: inherit; letter-spacing: .06em; }
+.atlas-shell .atlas-header { align-items: center; gap: 40px; margin: 0; padding: 44px 0 30px; }
+.atlas-header-intro { max-width: 780px; }
+.atlas-shell .eyebrow, .atlas-shell .panel-kicker { font-size: 11px; line-height: 1.5; letter-spacing: .09em; }
+.atlas-shell h1 { margin-top: 12px; font: 400 clamp(34px, 3.8vw, 56px)/1.08 Georgia, 'Times New Roman', serif; letter-spacing: -.035em; }
+.atlas-shell .header-subtitle { max-width: 60ch; margin-top: 18px; font-size: 15px; line-height: 1.7; color: var(--muted); }
+.atlas-scope-details { max-width: 75ch; margin-top: 12px; color: var(--muted); font-size: 13px; }
+.atlas-scope-details summary { width: fit-content; padding: 5px 0; color: var(--green); cursor: pointer; }
+.atlas-scope-details p { margin: 12px 0; line-height: 1.65; }
+.atlas-shell .scope-row { justify-content: flex-start; }
+.atlas-shell .scope-row span { border-radius: 4px; font: 500 11px/1.5 var(--font-geist-sans), sans-serif; }
+.atlas-shell .header-actions { flex: 0 0 270px; max-width: 380px; align-self: flex-start; padding-top: 26px; gap: 10px; font-size: 12px; }
+.workspace-tools-label { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .12em; }
+.atlas-shell .action-row { gap: 8px; }
+.atlas-shell .action-row button { min-height: 42px; padding: 10px 15px; border-radius: 5px; font-size: 13px; }
+.workspace-tools { width: 100%; text-align: right; }
+.workspace-tools summary { display: list-item; margin-left: auto; width: fit-content; padding: 5px 0; cursor: pointer; color: var(--muted); }
+.workspace-tools .action-row { padding-top: 12px; }
+.atlas-section-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.atlas-section-nav a { padding: 4px 0; color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 600; }
+.atlas-section-nav a:hover { color: var(--green); text-decoration: underline; text-underline-offset: 5px; }
+.atlas-section-nav a span { margin-right: 8px; color: #65776d; font: 500 11px var(--font-geist-mono), monospace; }
+.atlas-section-note { margin-left: auto; color: var(--muted); font-size: 12px; }
+.atlas-shell #research-content { scroll-margin-top: 24px; }
+.atlas-shell #sci-evidence-workspace { scroll-margin-top: 120px; }
+.atlas-shell .research-data-lab { margin: 30px 0 0; border: 1px solid var(--line); border-radius: 8px; box-shadow: none; background: #fff; color: var(--ink); }
+.atlas-shell .research-data-heading { padding: 28px 28px 0; gap: 24px; background: #fdfdfa; border-color: var(--line); }
+.atlas-shell .research-data-heading h2 { font: 400 30px/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.025em; }
+.atlas-shell .research-data-heading h2 + p { max-width: 84ch; margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.atlas-shell .research-compact-metrics { margin-top: 24px; gap: 16px; }
+.atlas-shell .research-compact-metrics > span { padding: 3px 16px; border-left: 1px solid #a9bcb0; color: var(--muted); font-size: 12px; }
+.atlas-shell .research-compact-metrics strong { color: var(--ink); font: 400 28px/1.25 Georgia, 'Times New Roman', serif; letter-spacing: -.02em; }
+.atlas-shell .research-scope-disclosure { color: var(--muted); font-size: 12px; }
+.atlas-shell .research-lab-scope span { background: #f1f5f0; border-color: var(--line); color: var(--muted); line-height: 1.65; }
+.atlas-shell .research-lab-scope strong { color: var(--green); }
+.atlas-shell .data-lab-tabs { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0; }
+.atlas-shell .data-lab-tabs button { display: flex; flex-direction: column; gap: 5px; min-width: 0; min-height: 74px; margin: 0; padding: 13px 10px; border: 0; border-bottom: 3px solid transparent; border-radius: 0; background: transparent; color: var(--muted); text-align: left; }
+.atlas-shell .data-lab-tabs button:hover { background: #f0f3ed; color: var(--ink); }
+.atlas-shell .data-lab-tabs button.active { background: #edf3ec; color: #225640; border-bottom-color: #356e54; }
+.data-lab-tab-title { font-size: 13px; font-weight: 650; }
+.data-lab-tab-caption { font-size: 11px; line-height: 1.4; font-weight: 400; overflow-wrap: anywhere; }
+.atlas-shell .research-overview { gap: 24px; padding: 28px; background: #f8f9f5; }
+.atlas-shell .research-start-routes { gap: 16px; }
+.atlas-shell .research-start-routes button { min-height: 180px; gap: 13px; padding: 24px; border: 1px solid #ccd7cc; border-top: 3px solid #7a9883; border-radius: 6px; background: #fff; color: var(--ink); box-shadow: none; }
+.atlas-shell .research-start-routes button:first-child { background: #eef3ec; border-color: #b7c8b6; border-top-color: #356b50; }
+.atlas-shell .research-start-routes button:hover { border-color: #658873; background: #f3f6ef; }
+.atlas-shell .research-start-routes strong { max-width: 22ch; font: 400 25px/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.015em; }
+.atlas-shell .research-start-routes span { font-size: 13px; line-height: 1.6; color: var(--muted); }
+.atlas-shell .research-start-routes span:first-child { color: var(--green); font-size: 10px; }
+.atlas-shell .research-explorer { padding: 22px; gap: 18px; border-color: var(--line); border-radius: 6px; background: #fff; box-shadow: none; }
+.atlas-shell .research-explorer-heading > div:first-child { border: 0; padding: 4px 0; }
+.atlas-shell .research-explorer-heading h3, .atlas-shell .research-overview-intro h3 { font: 400 27px/1.25 Georgia, 'Times New Roman', serif; }
+.atlas-shell .research-explorer-denominator { border-radius: 5px; background: #eef3ec; border-color: #cbd9cb; color: var(--ink); }
+.atlas-shell .research-explorer-denominator small { color: var(--muted); }
+.atlas-shell .research-release-watch { background: #f3f5ef; border-color: var(--line); border-radius: 6px; }
+.atlas-shell .research-release-watch p, .atlas-shell .research-release-watch details { font-size: 13px; line-height: 1.65; }
+.workspace-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 44px 0 20px; }
+.workspace-section-heading h2 { margin: 0; font: 400 32px/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.025em; }
+.workspace-section-heading > p { max-width: 56ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.atlas-shell .research-workspace { grid-template-columns: 240px minmax(0, 1fr) 320px; align-items: start; height: auto; min-height: 0; overflow: visible; border-radius: 8px; box-shadow: none; }
+.atlas-shell .control-rail, .atlas-shell .evidence-rail { position: sticky; top: 16px; max-height: calc(100dvh - 32px); overflow: auto; scrollbar-width: thin; overscroll-behavior: contain; }
+.atlas-shell .control-rail { padding: 22px 18px; border-radius: 8px 0 0 8px; }
+.atlas-shell .evidence-rail { padding: 0 18px 22px; border-radius: 0 8px 8px 0; }
+.atlas-shell .viewport-panel { display: flex; flex-direction: column; min-height: 0; overflow: visible; background: #f4f6f1; }
+.atlas-shell .model-stage { flex: none; height: clamp(460px, 62vh, 720px); min-height: 460px; }
+.atlas-shell .viewport-toolbar { padding: 12px 16px; gap: 10px; }
+.atlas-shell .viewport-toolbar strong { font-size: 10px; }
+.atlas-shell .viewport-toolbar small, .atlas-shell .performance-readout { font-size: 10px; }
+.atlas-shell .viewport-toolbar > div:first-child { flex-wrap: wrap; }
+.atlas-shell .view-actions { flex-wrap: wrap; }
+.atlas-shell .view-actions button { min-height: 36px; font-size: 11px; }
+.atlas-shell .panel-heading h2 { font-size: 20px; }
+.atlas-shell .panel-heading > p:last-child, .atlas-shell .search-field, .atlas-shell .filter-grid label, .atlas-shell .filter-grid select { font-size: 12px; line-height: 1.5; }
+.atlas-shell .filter-grid { grid-template-columns: 1fr; gap: 12px; }
+.atlas-shell .search-field input { font-size: 13px; }
+.atlas-shell .population-card { padding: 12px 8px; min-height: 60px; }
+.atlas-shell .population-card strong { font-size: 13px; }
+.atlas-shell .population-card small { font-size: 11px; line-height: 1.45; }
+.atlas-shell .layer-controls label, .atlas-shell .microns-layer-controls label, .atlas-shell .layer-boundary-note { font-size: 11px; line-height: 1.55; }
+.atlas-shell .observed-cell-disclosure { padding: 20px; gap: 16px; }
+.atlas-shell .observed-cell-heading h2 { font-size: 24px; }
+.atlas-shell .observed-cell-heading p, .atlas-shell .observed-cell-metrics dd, .atlas-shell .observed-cell-boundary, .atlas-shell .morphology-runtime-receipt { font-size: 12px; line-height: 1.65; }
+.atlas-shell .observed-cell-metrics dt { font-size: 10px; }
+.morphology-reading-details { grid-column: 1 / -1; border-top: 1px solid #cddbd1; color: #345644; font-size: 12px; line-height: 1.65; }
+.morphology-reading-details > summary { padding: 12px 0; cursor: pointer; font-weight: 600; }
+.morphology-reading-details ul { padding-left: 20px; }
+.morphology-reading-details li + li { margin-top: 8px; }
+.atlas-shell .fidelity-mode-matrix p { font-size: 12px; line-height: 1.6; }
+.atlas-shell .morphology-receipt, .atlas-shell .observed-cell-links, .atlas-shell .evidence-legend { font-size: 11px; line-height: 1.6; }
+.atlas-shell .atlas-footer { margin-top: 22px; gap: 16px; font-size: 11px; line-height: 1.6; }
+.atlas-shell .fixed-disclaimer { font-size: 11px; line-height: 1.6; }
+.atlas-shell .stage-readout { font-size: 10px; line-height: 1.5; flex-wrap: wrap; }
+.atlas-shell .stage-readout strong { font-size: 11px; }
+.atlas-shell .rail-tabs.seven button { font-size: 11px; min-height: 42px; flex: 1 0 72px; padding: 6px; }
+.atlas-shell .evidence-legend span { font-size: 11px; }
+/* Only interface transitions: the scientific view never moves automatically. */
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-shell button, .atlas-shell a, .atlas-shell summary { transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease; }
+  .atlas-shell .research-data-lab > [role="tabpanel"] { animation: atlas-panel-reveal 200ms ease-out; }
+  .atlas-shell .morphology-reading-details[open] > :not(summary), .atlas-shell .atlas-scope-details[open] > :not(summary) { animation: atlas-panel-reveal 160ms ease-out; }
+}
+@keyframes atlas-panel-reveal { from { opacity: .35; } to { opacity: 1; } }
+@media (min-width: 1800px) { .atlas-shell { border-inline: 1px solid var(--line); } }
+@media (max-width: 1280px) {
+  .atlas-shell { padding-inline: 24px; }
+  .atlas-shell .research-only-banner { margin-inline: -24px; padding-inline: 24px; }
+  .atlas-shell .research-workspace { grid-template-columns: 240px minmax(0, 1fr); }
+  .atlas-shell .evidence-rail { position: static; grid-column: 1 / -1; max-height: none; border-left: 0; border-top: 1px solid var(--line); padding: 0 24px 24px; }
+  .atlas-shell .data-lab-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .atlas-section-note { display: none; }
+}
+@media (max-width: 980px) {
+  .atlas-shell .observed-cell-disclosure { grid-template-columns: minmax(0, 1fr); }
+  .atlas-shell .observed-cell-disclosure > * { min-width: 0; }
+}
+@media (max-width: 760px) {
+  .atlas-shell { padding-inline: 16px; }
+  .atlas-shell .research-only-banner { margin-inline: -16px; padding: 10px 16px; font-size: 10px; }
+  .atlas-shell .atlas-header { flex-direction: column; align-items: stretch; padding: 30px 0 24px; gap: 20px; }
+  .atlas-shell .header-actions { flex: none; max-width: none; width: 100%; padding: 0; justify-items: start; }
+  .workspace-tools { text-align: left; }
+  .workspace-tools summary { margin-left: 0; }
+  .atlas-shell .action-row { justify-content: flex-start; }
+  .atlas-section-nav { gap: 12px 20px; }
+  .atlas-shell .research-data-heading { padding: 22px 18px 0; }
+  .atlas-shell .research-compact-metrics { grid-template-columns: 1fr 1fr; gap: 20px 12px; }
+  .atlas-shell .data-lab-tabs { display: flex; overflow-x: auto; padding: 3px 3px 0; scroll-snap-type: x proximity; }
+  .atlas-shell .data-lab-tabs button { flex: 0 0 148px; min-height: 78px; scroll-snap-align: start; }
+  .atlas-shell .research-overview { padding: 18px; gap: 18px; }
+  .atlas-shell .research-start-routes { grid-template-columns: 1fr; gap: 12px; }
+  .atlas-shell .research-start-routes button { min-height: 0; padding: 20px; gap: 10px; }
+  .atlas-shell .research-start-routes strong { max-width: none; font-size: 23px; }
+  .atlas-shell .research-explorer { padding: 16px; }
+  .atlas-shell .research-explorer-heading, .atlas-shell .research-explorer-controls, .atlas-shell .research-overview-intro { grid-template-columns: 1fr; }
+  .workspace-section-heading { flex-direction: column; align-items: start; gap: 12px; margin-top: 32px; }
+  .atlas-shell .research-workspace { display: flex; flex-direction: column; }
+  .atlas-shell .research-workspace > * { width: 100%; }
+  .atlas-shell .viewport-panel { order: 1; }
+  .atlas-shell .control-rail { order: 2; position: static; max-height: none; border-right: 0; border-top: 1px solid var(--line); }
+  .atlas-shell .evidence-rail { order: 3; }
+  .atlas-shell .model-stage { min-height: 480px; height: 65vh; max-height: 680px; }
+  .atlas-shell .filter-grid { grid-template-columns: 1fr 1fr; }
+  .atlas-shell .observed-cell-disclosure { padding: 16px; }
+  .atlas-shell .viewport-toolbar small { white-space: normal; }
+  .atlas-shell .view-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-shell *, .atlas-shell *::before, .atlas-shell *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

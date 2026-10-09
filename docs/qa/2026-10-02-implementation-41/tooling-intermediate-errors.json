@@ -1,0 +1,32 @@
+[
+  {
+    "stage": "initial lint",
+    "result": "failed",
+    "reason": "description-only track did not satisfy required caption track",
+    "resolution": "added actual source visual-description caption track"
+  },
+  {
+    "stage": "first local preview",
+    "result": "failed",
+    "reason": "sandbox denied local listening",
+    "resolution": "approved loopback-only preview"
+  },
+  {
+    "stage": "seal preparation",
+    "result": "failed",
+    "reason": "incorrect manifest field scope; actual field registrySummary",
+    "resolution": "read actual schema and corrected preparation"
+  },
+  {
+    "stage": "post event-guard rebuild",
+    "result": "failed",
+    "reason": "registry builder ran in verification directory before edited root queue was synced, leaving deterministic registry stale",
+    "resolution": "regenerated root registry, synced exact owned/new files, rebuilt manifest and reran complete research"
+  },
+  {
+    "stage": "final QA assembly",
+    "result": "failed",
+    "reason": "Python reserved pass keyword used in expected-count constructor",
+    "resolution": "replaced with literal dictionary; final QA assembly actual exit 0"
+  }
+]

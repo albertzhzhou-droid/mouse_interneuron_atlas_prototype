@@ -1,0 +1,145 @@
+import copy, csv, io, json, unittest
+from urllib.parse import urlencode
+import replay_i60_comparison_source as replay
+
+PLAN_KEYS = [
+    'molecular_profile:alkaslasi-2021:GSE167597:I1',
+    'molecular_profile:hayashi-2018:GSE108788:cluster-1',
+    'molecular_profile:cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617',
+    'molecular_profile:haring-2018:GSE103840:Gaba1',
+]
+
+def address(keys, anchor=None, **extra):
+    fields = {'compareVersion': '1', 'compareIndex': replay.INDEX_SHA, 'compareKeys': json.dumps(keys), 'compareAnchor': anchor or (keys[0] if keys else '')}
+    fields.update(extra)
+    return 'http://127.0.0.1:3005/explore/cell-types/compare?' + urlencode(fields)
+
+def csv_bytes(report):
+    stream = io.StringIO(newline=''); writer = csv.writer(stream, quoting=csv.QUOTE_ALL, lineterminator='\r\n')
+    writer.writerow(replay.CSV_HEADERS)
+    for row in replay.expected_csv_rows(report):
+        writer.writerow(row[:4] + [json.dumps(value, ensure_ascii=False, separators=(',', ':')) for value in row[4:9]] + [row[9]])
+    return stream.getvalue().encode()
+
+def synthetic_capture(authority, keys=PLAN_KEYS, opened=True):
+    url = address(keys); report = replay.expected_report(authority, keys, keys[0]) if len(keys) >= 2 else None
+    controls = [{'text': '', 'label': 'Source namespace', 'value': ''}, {'text': '', 'label': 'Search label, ID or source marker', 'value': ''}]
+    if keys: controls.append({'text': '', 'label': 'Anchor record', 'value': keys[0], 'options': [{'value': key} for key in keys]})
+    comparisons = []
+    if report:
+        controls += [{'text': name, 'label': '', 'disabled': False} for name in ['Export evidence JSON', 'Export comparison CSV']]
+        controls.append({'text': 'Link to this comparison', 'label': '', 'href': url})
+        by_key = {profile['key']: profile for profile in report['profiles']}
+        for pair in report['comparisons']:
+            a, b = by_key[pair['anchorKey']], by_key[pair['comparisonKey']]
+            marker_rows = [['Dimension', 'Anchor assertion', 'Comparison assertion', 'Assessment'],
+                ['Retained marker / feature strings', (' · '.join(a['markers']['exactStrings']) or 'Unknown') + (a['markers']['sourceRowLabel'] or '') + ' · ' + a['markers']['locator'],
+                 (' · '.join(b['markers']['exactStrings']) or 'Unknown') + (b['markers']['sourceRowLabel'] or '') + ' · ' + b['markers']['locator'], replay.comparison_label(pair['markers']['status'])]]
+            for slot in replay.DIMENSIONS:
+                field = pair['fields'][slot]
+                marker_rows.append([slot.replace('_', ' '), (field['anchorEvidence']['rawValue'] if field['anchorEvidence']['rawValue'] is not None else 'Unknown') + field['anchorEvidence']['locator'],
+                                    (field['comparisonEvidence']['rawValue'] if field['comparisonEvidence']['rawValue'] is not None else 'Unknown') + field['comparisonEvidence']['locator'], replay.comparison_label(field['status'])])
+            shared = 'not assessable' if pair['markers']['status'] == 'unknown' else ' · '.join(pair['markers']['sharedExactStrings']) or 'none in the retained display panels'
+            comparisons.append({'heading': a['title'] + ' → ' + b['title'], 'text': a['namespace'] + ' → ' + b['namespace'] + '\nShared exact strings: ' + shared,
+                                'table': marker_rows, 'receipts': [{'open': opened, 'summary': 'Source conflicts and complete evidence receipts (' + str(len(a['sourceConflicts']) + len(b['sourceConflicts'])) + ' retained conflicts / discrepancies)',
+                                   'json': json.dumps({'sourceConflicts': pair['sourceConflicts'], 'anchor': a, 'comparison': b}, ensure_ascii=False)}]})
+    return {'toolCaptureWindowUTC': {'startUTC': '2026-10-05T00:00:00Z', 'endUTC': '2026-10-05T00:00:01Z'}, 'url': url,
+            'controls': controls, 'comparisons': comparisons, 'pages': '387 matches · page 1 / 33',
+            'sectionText': '387 source profiles across 10 namespaces · zero deduplication', 'alerts': [], 'syntheticOnly': True}
+
+class GuardTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls): cls.authority = replay.Authority()
+
+    def test_current387_ten_namespaces_and_all_source_locators(self):
+        self.assertEqual(len(self.authority.records), 387)
+        self.assertEqual(len(self.authority.namespace_counts), 10)
+        for record in self.authority.records:
+            profile = replay.source_profile(record, self.authority.scopes)
+            self.assertEqual(profile['identity'], 'not_established')
+            self.assertTrue(profile['markers']['locator'])
+            self.assertTrue(all(field['locator'] for field in profile['fields'].values()))
+
+    def test_plannedfour_is_not_actual_native_evidence_and_has_cano_missingness(self):
+        report = replay.expected_report(self.authority, PLAN_KEYS, PLAN_KEYS[0])
+        self.assertEqual(report['sourceDenominator']['value'], 387)
+        self.assertEqual(len(report['comparisons']), 3)
+        self.assertEqual(report['profiles'][2]['markers']['status'], 'missing')
+        self.assertEqual(report['profiles'][2]['markers']['exactStrings'], [])
+        self.assertEqual(report['profiles'][3]['markers']['exactStrings'], ['Gal', 'Slc17a6'])
+        self.assertIn('37559423', report['profiles'][0]['sourceConflicts'][0]['rawValue'])
+        self.assertEqual(report['sameCellJoinCount'] + report['sameTypeJoinCount'] + report['generatedGeometryCount'], 0)
+
+    def test_exact_marker_case_qualifiers_and_table8_missingfields(self):
+        slot = {'status': 'available', 'rawValue': 'Pax2 · PAX2 · Slc17a6 (low) · Pax2', 'sourceRowLabel': 'Article marker context'}
+        self.assertEqual(replay.exact_marker_strings(slot), ['Pax2', 'PAX2', 'Slc17a6 (low)'])
+        slot.update(rawValue='main Gal; co-marker 1 Slc17a6; co-marker 2 not populated', sourceRowLabel='Table 8 marker summary')
+        self.assertEqual(replay.exact_marker_strings(slot), ['Gal', 'Slc17a6'])
+        slot['status'] = 'missing'; self.assertEqual(replay.exact_marker_strings(slot), [])
+
+    def test_scope_fallback_requires_both_exactnamespace_and_profilemembership(self):
+        record = self.authority.by_key['molecular_profile:sathyamurthy-2018:DE-1']
+        self.assertEqual(replay.source_profile(record, self.authority.scopes)['fields']['life_stage']['rawValue'], 'adult')
+        scopes = copy.deepcopy(self.authority.scopes); scopes[0]['profileIds'] = set()
+        self.assertEqual(replay.source_profile(record, scopes)['fields']['life_stage']['status'], 'missing')
+        scopes[0]['profileIds'].add(record['focusId']); scopes[0]['namespace'] = 'foreign'
+        self.assertEqual(replay.source_profile(record, scopes)['fields']['life_stage']['status'], 'missing')
+
+    def test_unknown_duplicate_or_partial_keys_never_generate_report(self):
+        for keys, anchor in [([PLAN_KEYS[0]], PLAN_KEYS[0]), ([PLAN_KEYS[0], PLAN_KEYS[0]], PLAN_KEYS[0]), ([PLAN_KEYS[0], 'molecular_profile:foreign'], PLAN_KEYS[0]), (PLAN_KEYS[:2], 'foreign')]:
+            with self.assertRaises(AssertionError): replay.expected_report(self.authority, keys, anchor)
+        for keys in ([], [PLAN_KEYS[0]]):
+            observed = replay.replay_capture(synthetic_capture(self.authority, keys), self.authority, 'ready')
+            self.assertEqual(observed['reportPairs'], 0); self.assertEqual(observed['exports'], 0)
+
+    def test_urlforeign_stale_duplicate_and_invalidfilteredpage_failclosed(self):
+        self.assertEqual(replay.address_view(address(PLAN_KEYS), self.authority)[0], 'ready')
+        for url in [address(PLAN_KEYS, compareIndex='0' * 64), address(PLAN_KEYS) + '&compareKeys=[]', address(PLAN_KEYS, compareNamespace='foreign'), address(PLAN_KEYS, comparePage='1', compareQuery='impossible-result'), address(PLAN_KEYS, comparePage='1.5')]:
+            status, view = replay.address_view(url, self.authority); self.assertEqual(status, 'invalid'); self.assertEqual(view['selectedKeys'], [])
+
+    def test_actual_ready_gate_is_explicit_not_elapsed_or_default(self):
+        for config in [{'increment': 'I60', 'actualReady': False}, {'increment': 'I60', 'actualReady': True, 'parentActualReadyNotice': 'pending'}]:
+            with self.assertRaises(AssertionError): replay.run_actual(config, self.authority)
+
+    def test_synthetic_rawcapture_replays_scoped_tables_receipts_and_anchor(self):
+        observed = replay.replay_capture(synthetic_capture(self.authority), self.authority, 'ready', True)
+        self.assertEqual(observed['reportPairs'], 3); self.assertEqual(observed['actualExpandedReceiptCount'], 3)
+        self.assertFalse(observed['sourceProofMinted'])
+
+    def test_closed_disclosure_payload_does_not_prove_actual_expansion(self):
+        capture = synthetic_capture(self.authority, opened=False)
+        self.assertEqual(replay.replay_capture(capture, self.authority, 'ready')['actualExpandedReceiptCount'], 0)
+        with self.assertRaises(AssertionError): replay.replay_capture(capture, self.authority, 'ready', True)
+
+    def test_mismatched_anchor_table_or_receipt_rejected(self):
+        changes = [lambda x: x['controls'][2]['options'].reverse(), lambda x: x['comparisons'][0]['table'][1].__setitem__(1, 'inferred marker'),
+                   lambda x: x['comparisons'][0]['receipts'][0].__setitem__('json', '{}')]
+        for change in changes:
+            capture = synthetic_capture(self.authority); change(capture)
+            with self.assertRaises(AssertionError): replay.replay_capture(capture, self.authority, 'ready', True)
+
+    def test_nativejson_denom_marker_qualifier_unknown_and_identity_promotion_rejected(self):
+        report = replay.expected_report(self.authority, PLAN_KEYS, PLAN_KEYS[0]); replay.assert_native_json(json.dumps(report), report)
+        changes = [lambda x: x['sourceDenominator'].__setitem__('value', 388), lambda x: x['profiles'][2]['markers'].__setitem__('status', 'available'),
+                   lambda x: x['profiles'][0]['markers']['exactStrings'].__setitem__(0, 'PAX2'), lambda x: x.__setitem__('sameCellJoinCount', 1), lambda x: x.__setitem__('similarityScore', 0.9)]
+        for change in changes:
+            actual = copy.deepcopy(report); change(actual)
+            with self.assertRaises(AssertionError): replay.assert_native_json(json.dumps(actual), report)
+        with self.assertRaises(ValueError): replay.strict_json('{"identity":"not_established","identity":"established"}')
+
+    def test_csv_exact_locators_rawvalues_conflicts_quote_newline_and_mutation(self):
+        report = replay.expected_report(self.authority, PLAN_KEYS, PLAN_KEYS[0]); body = csv_bytes(report)
+        self.assertEqual(replay.assert_native_csv(body, report)['dataRows'], 15)
+        changed = body.replace(b'article_group_or_ish_context_not_per_nucleus', b'inferred_marker_context', 1)
+        with self.assertRaises(AssertionError): replay.assert_native_csv(changed, report)
+        with self.assertRaises(AssertionError): replay.assert_native_csv(body.replace(b'not_established', b'established', 1), report)
+        quoted = copy.deepcopy(report); quoted['comparisons'][0]['fields']['region']['anchorEvidence']['rawValue'] = 'retained "quote"\nand newline'
+        replay.assert_native_csv(csv_bytes(quoted), quoted)
+
+    def test_unavailable_or_unbracketed_capture_rejects_old_report_export(self):
+        capture = synthetic_capture(self.authority)
+        with self.assertRaises(AssertionError): replay.replay_capture(capture, self.authority, 'source_unavailable')
+        del capture['toolCaptureWindowUTC']
+        with self.assertRaises(KeyError): replay.replay_capture(capture, self.authority, 'ready')
+
+if __name__ == '__main__': unittest.main(verbosity=2)

@@ -1,0 +1,134 @@
+{
+  "documentType": "cano_gaba_source_nucleus_assignment",
+  "schemaVersion": "0.1.0",
+  "source": {
+    "accession": "GSE318731",
+    "fileName": "GSE318731_P56_gabaergic_multiome.rds",
+    "bytes": 1646402816,
+    "sha256": "700361c804806b521bb01aa58c263cd01b189fe03d3299aeef5806839a4f5f31",
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_gabaergic_multiome.rds",
+    "lifeStage": "P56",
+    "lifeStageScope": "source_dataset_context_not_per_nucleus_measurement",
+    "slot": "meta.data",
+    "labelColumn": "neuron_types",
+    "groupColumn": "groups",
+    "authorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+    "originalRdsReacquiredThisIteration": false
+  },
+  "label": {
+    "id": "cano.gaba.metadata-label.sha256.32a5a55e2c72217e9c0092cf",
+    "rawLabel": "GABA_CSF-cN_Pkd2l1_Cartpt",
+    "nucleusCount": 331,
+    "groupCounts": [
+      {
+        "value": "GABA_CSF-cN_Pkd2l1",
+        "count": 331
+      }
+    ],
+    "contextCounts": {
+      "anatomy": [
+        {
+          "value": "Cervical",
+          "count": 54
+        },
+        {
+          "value": "Lumbar",
+          "count": 70
+        },
+        {
+          "value": "Sacral",
+          "count": 127
+        },
+        {
+          "value": "Thoracic",
+          "count": 80
+        }
+      ],
+      "source": [
+        {
+          "value": null,
+          "count": 331
+        }
+      ],
+      "sex": [
+        {
+          "value": null,
+          "count": 331
+        }
+      ]
+    },
+    "orderedCompoundNucleusKeysSha256": "b30386c906ed80f9426812a18d5a6e75e6382c4831c7e717c85623fb066cd56f"
+  },
+  "row": {
+    "sourceRow": 1704,
+    "key": "GSE318731|GSE318731_P56_gabaergic_multiome.rds|ACATCATCAATGCGCT-1_1",
+    "labelId": "cano.gaba.metadata-label.sha256.32a5a55e2c72217e9c0092cf",
+    "raw": {
+      "nucleus_id": "ACATCATCAATGCGCT-1_1",
+      "transmitter_class": "GABA",
+      "group": "GABA_CSF-cN_Pkd2l1",
+      "neuron_type": "GABA_CSF-cN_Pkd2l1_Cartpt",
+      "source": null,
+      "anatomy": "Cervical",
+      "sex": null
+    }
+  },
+  "identityAuthority": {
+    "stableKeyExpression": "GSE318731|exact source filename|meta.data row.name",
+    "uniqueNonemptyNameCount": 73364,
+    "orderedSourceNucleusNamesSha256": "6d6c266adb29d3020c7a609af4f79703d0546b11616d03ff01f3462cd9178ea4",
+    "crossAssayCellIdentityVerified": false
+  },
+  "sourceFields": {
+    "source": {
+      "sourceColumnPresent": false,
+      "missingCount": 73364,
+      "reason": "source_meta_data_column_absent"
+    },
+    "sex": {
+      "rawSourceColumn": "Sex",
+      "sourceColumnPresent": false,
+      "missingCount": 73364,
+      "reason": "source_meta_data_column_absent"
+    },
+    "anatomy": {
+      "sourceColumnPresent": true,
+      "missingCount": 0
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "url": "/data/cano_gomez_gaba_source_labels_v1/GSE318731_P56_gabaergic_metadata_assignments.jsonl.gzip",
+    "receivedBytes": 1945750,
+    "compressedSha256": "d483fdfeef5bc4bdffa02741f65cbab2a2b4fcd7225f984c0a08df4355dbc910",
+    "uncompressedSha256": "43a1a623be4f008f942f3d78f3e3bf5ecb3c1319f33497d2ae110ea0a47365f1",
+    "transport": "raw-gzip",
+    "compressedVerification": "runtime_sha256_verified",
+    "uncompressedVerification": "runtime_sha256_verified"
+  },
+  "claims": {
+    "confirmedInterneuronProfilesAdded": 0,
+    "donorIdentities": 0,
+    "sectionIdentities": 0,
+    "geometryObjects": 0,
+    "internalStructures": 0,
+    "markerAssertions": 0,
+    "crossAssayCellJoins": 0,
+    "crossSourceIdentities": 0,
+    "atlasRegistrations": 0
+  },
+  "sourceLocator": "GSE318731_P56_gabaergic_multiome.rds#meta.data[row.name=ACATCATCAATGCGCT-1_1]",
+  "boundaries": {
+    "confirmedInterneuronAdmission": false,
+    "markerInferenceFromLabelTokens": false,
+    "crossAssayCellIdentity": false,
+    "crossSourceIdentity": false,
+    "geometry": false,
+    "internalStructures": false,
+    "atlasRegistration": false,
+    "donorIdentity": false,
+    "sectionIdentity": false,
+    "displayScope": "204 raw neuron_types labels from 73,364 GABA metadata rows; source groups and anatomical regions remain unmodified. No source-local interneuron or projection classification is added.",
+    "rights": "Project-authored factual derivative for the local research application. Original GEO RDS remains unbundled and link-only; article license is not generalized to source RDS. Public redistribution requires separate review."
+  }
+}

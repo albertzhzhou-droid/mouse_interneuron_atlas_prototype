@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/kelly-zebrafish-spinal-interneuron-taxonomy-0.1.schema.json",
+  "title": "Kelly et al. larval-zebrafish spinal interneuron taxonomy 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "releaseId", "source", "samplingAndAssignment", "populations", "excludedSourceLabels", "unassignedOrAmbiguousEvidence", "modelingAuthority"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "kelly-zebrafish-spinal-interneuron-taxonomy-0.1" },
+    "releaseId": { "const": "ohri-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.0" },
+    "source": { "type": "object", "additionalProperties": true },
+    "samplingAndAssignment": { "type": "object", "additionalProperties": true },
+    "populations": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["id", "sourceLabel", "expandedLabel", "sourceRole", "transmitterLabel", "filterClass", "combinationCodeMarkers", "evidenceLocator", "subtypeEvidence"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "sourceLabel": { "type": "string", "minLength": 1 },
+          "expandedLabel": { "type": "string", "minLength": 1 },
+          "sourceRole": { "const": "interneuron" },
+          "transmitterLabel": { "type": "string", "minLength": 1 },
+          "filterClass": { "enum": ["inhibitory", "excitatory", "mixed"] },
+          "combinationCodeMarkers": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "evidenceLocator": { "type": "string", "minLength": 1 },
+          "subtypeEvidence": { "type": "array", "items": { "type": "object", "additionalProperties": true } }
+        }
+      }
+    },
+    "excludedSourceLabels": { "type": "array", "minItems": 3, "items": { "type": "object", "additionalProperties": true } },
+    "unassignedOrAmbiguousEvidence": { "type": "object", "additionalProperties": true },
+    "modelingAuthority": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,862 @@
+---
+title: "Synaptic receptors expressed in mice CSF-cNs  along the rostrol-caudal axis "
+author: "Nicolas Wanaverbecq - Elysa Crozat - Edith Blasco"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 5
+  html_notebook:
+    toc: yes
+    code_folding: hide
+    toc_depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# OPEN REQUIRED PACKAGES
+
+```{r}
+if(!require(psych)){install.packages("psych")}
+if(!require(FSA)){install.packages("FSA")}
+if(!require(car)){install.packages("car")}
+if(!require(multcompView)){install.packages("multcompView")}
+if(!require(PMCMRplus)){install.packages("PMCMRplus")}
+if(!require(emmeans)){install.packages("emmeans")}
+if(!require(lsmeans)){install.packages("lsmeans")}
+if(!require(nlme)){install.packages("nlme")}
+if(!require(Rmisc)){install.packages("Rmisc")}
+if(!require(rcompanion)){install.packages("rcompanion")}
+if(!require(pastecs)){install.packages("pastecs")}
+if(!require(dplyr)){install.packages("dplyr")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(lattice)){install.packages("lattice")}
+if(!require(BSDA)){install.packages("BSDA")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(rstatix)) install.packages("rstatix")
+if(!require(pak)) install.packages("pak")
+
+```
+
+# PKD2L1 pH modulation in CSF-cNs
+
+## **0 CSF-cNs discharge in pH in control**
+
+### **a1) Frequency in control**
+
+```{r}
+
+library(readxl)
+
+FCTR<- read_xlsx("FreqCTR.xlsx")
+ 
+#View(FCTR)
+names(FCTR)
+
+FCTR$Cell ->Cell
+FCTR$Region ->Region
+FCTR$Cond->Cond
+FCTR$Freq->Freq
+FCTR$Numb->Numb
+
+FCTR$Region <- factor(FCTR$Region, levels = c("Cerv", "Tho", "Lumb"))
+
+
+```
+
+### b1) SUMMARIZE data for discharge frequency in control
+
+```{r}
+library(FSA)
+
+Summarize(Freq, digits=1)
+
+Summarize(Freq~Region,
+          FCTR,
+          digits=1)
+
+```
+
+### c1) PLOT frequency against Regions Control
+
+#### =\> Dots and Mean
+
+```{r}
+
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+# Convert columns to factors to ensure proper ordering and grouping
+Region <- factor(Region, levels = c("Cerv", "Tho", "Lumb"))
+Cell <- factor(Cell)
+
+# Create the plot
+plot <- ggplot(FCTR, aes(x=Region,y = Freq, group = Cell)) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Region, scales = "free_x") +
+    labs(title = "Frequency by Condition and Level",
+         x = "Condition",
+         y = "Freq") +
+    theme_minimal()
+
+# Print the plot
+print(plot)
+ggsave('plotFCTR.eps', units="cm", width=10, height=6, dpi=300)
+
+summary_stats <- FCTR %>%
+    group_by(Region) %>%
+    summarise(mean_Freq = mean(Freq, na.rm = TRUE),
+        sd_Freq = sd(Freq, na.rm = TRUE),
+        sem_Freq = sd(Freq, na.rm = TRUE) / sqrt(n()),
+        .groups = 'drop'  # Avoid warning message about grouped data
+    )
+# Print summary statistics
+print(summary_stats)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM/SD
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(Freq ~ Region, FCTR, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Region <- factor(summary_stats$Region, levels = c("Cerv", "Tho", "Lumb"))
+
+## Create the plot with error bars (mean ± SEM)
+plotFqCSE <- ggplot(summary_stats, aes(x = Region, y = mean, color = Region, group = Region)) +
+  geom_line(aes(group = Region), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Region, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Region",
+       y = "Mean Freq") +
+  theme_minimal()
+
+print(plotFqCSE)
+
+## Create the plot with error bars (mean ± standard deviation)
+plotFqCSD<- ggplot(summary_stats, aes(x = Region, y = mean, color = Region, group = Region)) +
+  geom_line(aes(group = Region), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Region, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Region",
+       y = "Mean Freq") +
+  theme_minimal()
+
+print(plotFqCSD)
+
+# Print the plot
+
+ggsave('plotFqCSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+ggsave('plotFqCSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+```
+
+#### =\> Boxplot & whiskers
+
+```{r}
+p0 <- ggplot(FCTR, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lumb")), y=Freq, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-5, 15))
+
+ggsave('Bx_FCTR.eps', units="cm", width=10, height=6, dpi=300)
+
+p1 <- ggplot(FCTR, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lumb")), y=Freq, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-5, 15))
+
+ggsave('Pt_FCTR.eps', units="cm", width=10, height=6, dpi=300)
+```
+
+### d1) STATISTICAL analysis data for discharge frequency Control
+
+### =\> Kruskal wallis test
+
+```{r}
+
+print("Amplitude as a function of the Region")
+
+kruskal.test(Freq~Region, data = FCTR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Freq, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Freq ~ Region,
+                    data   = FCTR,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+
+```
+
+## **1 Discharge Modulation pH9**
+
+### **a1) Frequency modulation pH9**
+
+```{r}
+
+library(readxl)
+
+F9<- read_xlsx("FreqMod9_1.xlsx")
+ 
+#View(F9)
+names(F9)
+
+F9$Cell ->Cell
+F9$Region ->Region
+F9$Cond->Cond
+F9$Freq->Freq
+
+F9$Region <- factor(F9$Region, levels = c("Cerv", "Tho", "Lumb"))
+F9$Cond <- factor(F9$Cond, levels = c("CTR", "pH9", "Wash"))
+
+```
+
+### b1) SUMMARIZE data for Frequency pH9
+
+```{r}
+library(FSA)
+
+Summarize(Freq~Cond,
+          F9,
+          digits=1)
+
+Summarize(Freq~Region*Cond,
+          F9,
+          digits=1)
+
+```
+
+### c1) PLOT data for discharge frequency pH9
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+p0 <- ggplot(F9, aes(x=Region, y=Freq, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-5, 15))
+
+ggsave('Bx_F9.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(F9, aes(x=Region, y=Freq, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-5,15))
+
+ggsave('Pt_F9.eps', units="cm", width=10, height=6, dpi=300)
+
+
+# Convert columns to factors to ensure proper ordering and grouping
+Cond <- factor(Cond, levels = c("CTR", "pH9", "Wash"))
+Region <- factor(Region, levels = c("Cerv", "Tho", "Lum"))
+Cell <- factor(Cell)
+
+# Create the plot
+plot <- ggplot(F9, aes(x=Cond<- factor(Cond,levels = c("CTR","pH9","Wash")), y = Freq, group = Cell, color = Region)) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Region, scales = "free_x") +
+    labs(title = "Frequency by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(plot)
+ggsave('plot.eps', units="cm", width=10, height=6, dpi=300)
+
+summary_stats <- F9 %>%
+    group_by(Region, Cond) %>%
+    summarise(
+        mean_Freq = mean(Freq, na.rm = TRUE),
+        sd_Freq = sd(Freq, na.rm = TRUE),
+        sem_Freq = sd(Freq, na.rm = TRUE) / sqrt(n()),
+        .groups = 'drop'  # Avoid warning message about grouped data
+    )
+# Print summary statistics
+print(summary_stats)
+
+# Create the plot with error bars
+plotSE <- ggplot(summary_stats, aes(x=Cond<- factor(Cond,levels = c("CTR","pH9","Wash")), y = mean_Freq, color = Region)) +
+    geom_line() + 
+    geom_point(size = 3) + 
+    geom_errorbar(aes(ymin = mean_Freq - sem_Freq, ymax = mean_Freq + sem_Freq), width = 0.2) +
+    facet_wrap(~ Region) +
+    labs(title = "Mean amplitude by Condition and Level with Standard Error to the mean",
+         x = "Condition",
+         y = "Mean Freq") +
+    theme_minimal()
+
+# Print the plot
+print(plotSE)
+ggsave('plotSE9.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars
+plotSD <- ggplot(summary_stats, aes(x=Cond<- factor(Cond,levels = c("CTR","pH9","Wash")), y = mean_Freq, color = Region)) +
+    geom_point(size = 3) + 
+    geom_errorbar(aes(ymin = mean_Freq - sd_Freq, ymax = mean_Freq + sd_Freq), width = 0.2) +
+    facet_wrap(~ Region) +
+    labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+         x = "Condition",
+         y = "Mean Freq") +
+    theme_minimal()
+
+# Print the plot
+print(plotSD)
+ggsave('plotSD9.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### d1) STATISTICAL analysis data for discharge modulation by pH9
+
+### =\> Linear model 2 Factors
+
+##### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+print("Amplitude as a function of the condition")
+
+kruskal.test(Freq~Cond, data = F9)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Freq, Cond,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Freq ~ Cond,
+                    data   = F9,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+print("Amplitude as a function of the condition and region")
+
+modelF9 = lm(Freq ~ Region*Cond,
+           data = F9)
+# Summary overall p-value and r-square 
+summary(modelF9)
+
+
+```
+
+##### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelF9,type = "II")
+```
+
+##### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelF9,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelF9, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+```
+
+## **2 Discharge Modulation pH5**
+
+### **a1) Depolarization level modulation pH5**
+
+```{r}
+
+library(readxl)
+
+F5<- read_xlsx("FreqMod5.xlsx")
+ 
+#View(F5)
+names(F5)
+
+F5$Cell ->Cell
+F5$Region ->Region
+F5$Dep->Dep
+F5$Numb -> Numb
+```
+
+### b1) SUMMARIZE data for **Depolarization level** pH5
+
+```{r}
+library(FSA)
+
+Summarize(Dep,
+          digits=1)
+
+Summarize(Dep~Region,
+          F5,
+          digits=1)
+
+```
+
+### c1) PLOT data for **Depolarization level** pH5
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+p0 <- ggplot(F5, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lum")), y=Dep, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 70))
+
+ggsave('Bx_F5.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(F5, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lum")), y=Dep, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, ))
+
+ggsave('Pt_F5.eps', units="cm", width=10, height=6, dpi=300)
+
+
+# Convert columns to factors to ensure proper ordering and grouping
+Cond <- factor(Cond, levels = c("CTR", "pH5", "Wash"))
+Region <- factor(Region, levels = c("Cerv", "Tho", "Lum"))
+Cell <- factor(Cell)
+
+# Create the plot
+plot <- ggplot(F5, aes(x=Cond<- factor(Cond,levels = c("CTR","pH5","Wash")), y = Freq, group = Cell, color = Region)) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Region, scales = "free_x") +
+    labs(title = "Frequency by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(plot)
+ggsave('plot.eps', units="cm", width=10, height=6, dpi=300)
+
+summary_stats <- F5 %>%
+    group_by(Region, Cond) %>%
+    summarise(
+        mean_Freq = mean(Freq, na.rm = TRUE),
+        sd_Freq = sd(Freq, na.rm = TRUE),
+        sem_Freq = sd(Freq, na.rm = TRUE) / sqrt(n()),
+        .groups = 'drop'  # Avoid warning message about grouped data
+    )
+# Print summary statistics
+print(summary_stats)
+
+# Create the plot with error bars
+plotSE <- ggplot(summary_stats, aes(x=Cond<- factor(Cond,levels = c("CTR","pH5","Wash")), y = mean_Freq, color = Region)) +
+    geom_line() + 
+    geom_point(size = 3) + 
+    geom_errorbar(aes(ymin = mean_Freq - sem_Freq, ymax = mean_Freq + sem_), width = 0.2) +
+    facet_wrap(~ Region) +
+    labs(title = "Mean amplitude by Condition and Level with Standard Error to the mean",
+         x = "Condition",
+         y = "Mean Freq") +
+    theme_minimal()
+
+# Print the plot
+print(plotSE)
+ggsave('plotSE5.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars
+plotSD <- ggplot(summary_stats, aes(x=Cond<- factor(Cond,levels = c("CTR","pH5","Wash")), y = mean_Freq, color = Region)) +
+    geom_point(size = 3) + 
+    geom_errorbar(aes(ymin = mean_Freq - sd_Freq, ymax = mean_Freq + sd_Freq), width = 0.2) +
+    facet_wrap(~ Region) +
+    labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+         x = "Condition",
+         y = "Mean Freq") +
+    theme_minimal()
+
+# Print the plot
+print(plotSD)
+ggsave('plotSD5.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### d1) STATISTICAL analysis data for **Depolarization level** by pH5
+
+### =\> Kruskal Wallis
+
+```{r}
+
+print("Amplitude as a function of the condition")
+
+kruskal.test(Dep~Region, data = F5)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dep, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dep ~ Region,
+                    data   = F5,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+```
+
+### a2) SUMMARIZE data for **number of PA** pH5
+
+```{r}
+library(FSA)
+
+Summarize(Numb,
+          digits=1)
+
+Summarize(Numb~Region,
+          F5,
+          digits=1)
+
+```
+
+### c1) PLOT data for **Depolarization level** pH5
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+p0 <- ggplot(F5, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lum")), y=Numb, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-2.5, 12.5))
+
+ggsave('Bx_F5Nr.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(F5, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lum")), y=Numb, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-2.5,12.5))
+
+ggsave('Pt_F5Nr.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### d1) STATISTICAL analysis data for **Depolarization level** by pH5
+
+### =\> Kruskal Wallis
+
+```{r}
+
+print("Amplitude as a function of the condition")
+
+kruskal.test(Numb~Region, data = F5)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Numb, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Numb ~ Region,
+                    data   = F5,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+```
+
+# PKD2L1 pH modulation in CSF-cNs
+
+## **0 PKD2L1 amplitude and Np Open in control**
+
+### **a1) Amplitude**
+
+```{r}
+
+library(readxl)
+
+ACTR<- read_xlsx("AmpCTR.xlsx")
+ 
+#View(ACTR)
+names(ACTR)
+
+ACTR$Cell ->Cell
+ACTR$Region ->Region
+ACTR$Amp->Amp
+```
+
+### b1) SUMMARIZE data for PKD2L1 current amplitude
+
+```{r}
+library(FSA)
+
+Summarize(Amp, digits=1)
+
+Summarize(Amp~Region,
+          ACTR,
+          digits=1)
+
+```
+
+### c1) PLOT amplitude against Regions
+
+#### =\> Dots and Mean
+
+```{r}
+
+library(ggplot2) library(readxl) library(dplyr)
+
+```
+
+```{r}
+
+# Convert columns to factors to ensure proper ordering and grouping
+
+Region <- factor(Region, levels = c("Cerv", "Tho", "Lum")) Cell <- factor(Cell)
+```
+
+```{r}
+
+# Create the plot
+
+plot <- ggplot(ACTR, aes(x=Region<- factor(Region,levels = c("Cerv", "Tho", "Lum")), y = Amp, group = Cell)) + geom_line() + geom_point() + facet_wrap(~ Region, scales = "free_x") + labs(title = "Amplitude by Condition and Level", x = "Condition", y = "Dens") + theme_minimal()
+
+# Print the plot
+
+print(plot) ggsave('plotACTR.eps', units="cm", width=10, height=6, dpi=300)
+
+summary_stats <- ACTR %>% group_by(Region) %>% summarise( mean_Amp = mean(Amp, na.rm = TRUE), sd_Amp = sd(Amp, na.rm = TRUE), sem_Amp = sd(Amp, na.rm = TRUE) / sqrt(n()), .groups = 'drop' # Avoid warning message about grouped data ) # Print summary statistics print(summary_stats)
+
+# Create the plot with error bars
+
+plotSE <- ggplot(summary_stats, aes(x=Reion<- factor(Region,levels = c("Cerv", "Tho", "Lum")), y = mean_Amp, color = Region)) + geom_line() + geom_point(size = 3) + geom_errorbar(aes(ymin = mean_Amp - sem_Amp, ymax = mean_Amp + sem_Amp), width = 0.2) + facet_wrap(~ Region) + labs(title = "Mean amplitude by Condition and Level with Standard Error to the mean", x = "Condition", y = "Mean Amp") + theme_minimal()
+
+# Print the plot
+
+print(plotSE) ggsave('plotSEACTR.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars
+
+plotSD <- ggplot(summary_stats, aes(x=Reion<- factor(Region,levels = c("Cerv", "Tho", "Lum")), y = mean_Amp, color = Region)) + geom_point(size = 3) + geom_errorbar(aes(ymin = mean_Amp - sd_Amp, ymax = mean_Amp + sd_Amp), width = 0.2) + facet_wrap(~ Region) + labs(title = "Mean Densities by Condition and Level with Standard Deviation", x = "Condition", y = "Mean Amp") + theme_minimal()
+
+# Print the plot
+
+print(plotSD) ggsave('plotSDACTR.eps', units="cm", width=10, height=6, dpi=300)
+```
+
+### d1) STATISTICAL analysis data for PKD2L1 amplitude aagainst regions
+
+### =\> Kruskal wallis test
+
+##### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+print("Amplitude as a function of the Region")
+
+kruskal.test(Amp~Region, data = ACTR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Region,
+                    data   = ACTR,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+
+```
+
+### **a2) Np Open**
+
+```{r}
+
+library(readxl)
+
+pCTR<- read_xlsx("pOCTR.xlsx")
+ 
+#View(pCTR)
+names(pCTR)
+
+pCTR$Cell ->Cell
+pCTR$Region ->Region
+pCTR$pO->pO
+
+pCTR$Perc->Perc
+
+```
+
+### b2) SUMMARIZE data for PKD2L1 Np Open
+
+```{r}
+library(FSA)
+
+Summarize(pO, digits=3)
+
+Summarize(pO~Region,
+          ACTR,
+          digits=3)
+
+Summarize(Perc, digits=1)
+
+Summarize(Perc~Region,
+          ACTR,
+          digits=1)
+
+```
+
+### c1) PLOT Np Open against Regions
+
+#### =\> Dots and Mean
+
+```{r}
+
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+# Convert columns to factors to ensure proper ordering and grouping
+Region <- factor(Region, levels = c("Cerv", "Tho", "Lum"))
+Cell <- factor(Cell)
+
+# Create the plot
+plot <- ggplot(pCTR, aes(x=Region<- factor(Region,levels = c("Cerv", "Tho", "Lum")), y = pO, group = Cell)) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Region, scales = "free_x") +
+    labs(title = "Amplitude by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(plot)
+ggsave('plotpCTR.eps', units="cm", width=10, height=6, dpi=300)
+
+summary_stats <- pCTR %>%
+    group_by(Region) %>%
+    summarise(
+        mean_Amp = mean(pO, na.rm = TRUE),
+        sd_Amp = sd(pO, na.rm = TRUE),
+        sem_Amp = sd(pO, na.rm = TRUE) / sqrt(n()),
+        .groups = 'drop'  # Avoid warning message about grouped data
+    )
+# Print summary statistics
+print(summary_stats)
+
+# Create the plot with error bars
+plotSE <- ggplot(summary_stats, aes(x=Reion<- factor(Region,levels = c("Cerv", "Tho", "Lum")), y = mean_Amp, color = Region)) +
+    geom_line() + 
+    geom_point(size = 3) + 
+    geom_errorbar(aes(ymin = mean_Amp - sem_Amp, ymax = mean_Amp + sem_Amp), width = 0.2) +
+    facet_wrap(~ Region) +
+    labs(title = "Mean amplitude by Condition and Level with Standard Error to the mean",
+         x = "Condition",
+         y = "Mean Amp") +
+    theme_minimal()
+
+# Print the plot
+print(plotSE)
+ggsave('plotSEACTR.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars
+plotSD <- ggplot(summary_stats, aes(x=Reion<- factor(Region,levels = c("Cerv", "Tho", "Lum")), y = mean_Amp, color = Region)) +
+    geom_point(size = 3) + 
+    geom_errorbar(aes(ymin = mean_Amp - sd_Amp, ymax = mean_Amp + sd_Amp), width = 0.2) +
+    facet_wrap(~ Region) +
+    labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+         x = "Condition",
+         y = "Mean Amp") +
+    theme_minimal()
+
+# Print the plot
+print(plotSD)
+ggsave('plotSDACTR.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### =\> Boxplot & whiskers
+
+```{r}
+p0 <- ggplot(ACTR, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lum")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 
+
+ggsave('Bx_ACTR.eps', units="cm", width=10, height=6, dpi=300)
+
+p1 <- ggplot(ACTR, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lum")), y=Amp, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1
+
+ggsave('Pt_ACTR.eps', units="cm", width=10, height=6, dpi=300)
+```
+
+### d1) STATISTICAL analysis data for PKD2L1 Np Open against regions
+
+### =\> Kruskal wallis test
+
+##### \# Define Linear Model -) region
+
+```{r}
+
+kruskal.test(pO~Region, data = pCTR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(pO, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(pO ~ Region,
+                    data   = pCTR,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+kruskal.test(Perc~Region, data = pCTR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Perc, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Perc ~ Region,
+                    data   = pCTR,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+
+```
+
+##### 

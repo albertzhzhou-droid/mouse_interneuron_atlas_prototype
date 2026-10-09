@@ -1,0 +1,170 @@
+{
+  "status": "PASS_BOUNDED_REPAIRED_PROXY_CHECKPOINT_PENDING_FINAL_WIRE_DECISION",
+  "generatedAtUTC": "2026-10-05T07:30:29.221467+00:00",
+  "currentReviewedPins": [
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/proxy.mjs",
+      "bytes": 22921,
+      "sha256": "234c6b9b3be443c14712884288be04737c2e7fe05a7fd7b9d86c9cbf9ebba696"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/proxy.test.mjs",
+      "bytes": 29041,
+      "sha256": "b6e21cbe2eab63c5d2f28b3a31e6c160ce5d84edc6b994ef754cb50be7953f23"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/prepare-fixture.mjs",
+      "bytes": 2790,
+      "sha256": "a8ddff2310d86fcc58be7976d2e1328a3b9bd166a0cd53704ada836b14ed9bd5"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/set-mode.mjs",
+      "bytes": 1197,
+      "sha256": "29aea8aab0585e083e5d95196e9c7973597d6f8c50a6bc33c21dc6469875416e"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/README.md",
+      "bytes": 9996,
+      "sha256": "c0f76371e0a9c9e95cb309aa84937c50f7fb87c4695ef079734d433213cb2546"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/I60_PROXY_PREPARATION_CHECKPOINT.json",
+      "bytes": 4746,
+      "sha256": "a7c5e42e26397615dd23c8d171d1313476c4bf47c6df3a14de74b56ba0d758a9"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json.gz",
+      "bytes": 626119,
+      "sha256": "b69d9d989646c542c1efcf001201910ed9680db001d5e9a41092fe07b2cfb6a6"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json",
+      "bytes": 12327624,
+      "sha256": "d6e8b386b3c9ff8cd785174d419116a07b78779e2fd60abbaf5eb4760e581552"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/fixture-preparation-receipt.json",
+      "bytes": 2612,
+      "sha256": "35e20530a57f104c707b0bd36468a1847e937332928bfa68341f45e8cabb7cba"
+    }
+  ],
+  "independentOfflineTests": {
+    "actualExitCode": 0,
+    "path": "/private/tmp/ohri-i60-proxy-independent-peer/I60_OFFLINE_PROXY_GUARDS_REPAIRED.log",
+    "actual": {
+      "bytes": 3011,
+      "sha256": "3ec4ad906dc97e47924d9638d805f3ddf45ef2fe6ce484c1ce571c7459fe69e4"
+    },
+    "counts": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "fakeStreamsAndInjectedFetchOnly": true
+  },
+  "resolvedFindings": [
+    {
+      "priorIssue": "Append logger combined with per-handler IDs restarting at1 permits duplicate IDs on restart.",
+      "actualFix": "createPrivateLogger uses O_EXCL; existing log refused and bytes retained.",
+      "guard": "Existing same log restart throws EEXIST and original fake log unchanged."
+    },
+    {
+      "priorIssue": "prepare-fixture output writer omitted real-parent confinement and only guarded leaf.",
+      "actualFix": "All fixture/receipt output uses exported writePrivateFileAtomic real-parent guard plus exclusive temp/O_NOFOLLOW/fsync/rename.",
+      "guard": "Escaped real parent and leaf symlinks rejected; victim bytes preserved."
+    }
+  ],
+  "sourceAndInheritedHelperPinsRetained": {
+    "I59": [
+      {
+        "path": "/private/tmp/ohri-i59-native-proxy/proxy.mjs",
+        "actual": {
+          "bytes": 14202,
+          "sha256": "fe99148882c366ad8b39585dfed31a8a7fa5aecd8c2455b53f507cdadf57104d"
+        },
+        "exact": true
+      },
+      {
+        "path": "/private/tmp/ohri-i59-native-proxy/proxy.test.mjs",
+        "actual": {
+          "bytes": 13034,
+          "sha256": "81ae52368bedbfb34e2b05e041b43a05c060542c284368881bd4a0cfc7f102ae"
+        },
+        "exact": true
+      }
+    ],
+    "currentSource": [
+      {
+        "path": "public/data/research_explorer_index_v1/search-index.json.gz",
+        "actual": {
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        },
+        "exact": true
+      },
+      {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "actual": {
+          "bytes": 12327624,
+          "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+        },
+        "exact": true
+      },
+      {
+        "path": "app/api/source-records/search-index.json/route.ts",
+        "actual": {
+          "bytes": 578,
+          "sha256": "45317632af32f818f27cb94a8942af6712c495bed811f7fb8aea1b893b7d0a97"
+        },
+        "exact": true
+      },
+      {
+        "path": "app/research-explorer-index.js",
+        "actual": {
+          "bytes": 28427,
+          "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+        },
+        "exact": true
+      },
+      {
+        "path": "data/research-explorer-transport-0.1.json",
+        "actual": {
+          "bytes": 661,
+          "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+        },
+        "exact": true
+      },
+      {
+        "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+        "actual": {
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        "exact": true
+      }
+    ]
+  },
+  "otherReviewedGuards": [
+    "Exactly two independent GET scopes; query/nearby/HEAD/POST/directgzip/manifest/RNA receive pass-through.",
+    "API gzip fault requires full200 + exactly-one expectedgzip/type/Content-Length/noTransferEncoding + complete original628095/715236 SHA; then validates one LF\u2192space and identical JSON/decoded12327624.",
+    "Canonical plain fault requires full200/plain exact content headers + original decoded12327624/c1fb SHA; does not mislabel gzip/304 rejection as decoded-checksum test.",
+    "RequestOwner is current route classification only; native initiator, browser consumption and decoded application state must have separately bounded native evidence.",
+    "Config normalization snapshot per request; explicit set-mode initializes other route pass; bounded12sdelay and latecallback/buffer-stage cancellation gates.",
+    "Production loader fake-fetch failure occurs at decoded SHA gate and fresh pass receipt verifies independent canonical/compressed transports."
+  ],
+  "pendingWireAndNativeLimits": [
+    "Parent canonical gzip choice remains pending; current canonical fault is strictplain only, while pass/delay preserves actual upstream bytes.",
+    "Original ETag/cache headers remain; no-cache can revalidate304/cached controlled response. Parent must use actual fresh/hard/no-store evidence and full200 original-byte recovery, not infer pass recovery from mode change.",
+    "Initial preparation checkpoint describes prior26-test code; current repaired helper pins are separately bound here and are not a final/native seal.",
+    "No server/browser/network/live transport or actual failure/recovery replay executed by this peer."
+  ],
+  "actionableFindingsRemainingInCurrentDeclaredScope": [],
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "candidateWrites": 0,
+  "serverStarted": false,
+  "networkRequests": 0,
+  "requestsLogExistsAtCheckpoint": false
+}

@@ -1,0 +1,297 @@
+- link "Skip to research content":
+  - /url: "#research-content"
+- complementary "Atlas navigation":
+  - link "Interneuron Atlas overview":
+    - /url: /
+    - text: Interneuron
+    - text: Atlas
+    - generic: Mouse spinal cord
+  - navigation "Atlas pages":
+    - region "Start":
+      - heading "Start" [level=2]
+      - list:
+        - link "Overview":
+          - /url: /
+          - generic: Overview
+        - link "3D workspace":
+          - /url: /workspace
+          - generic: 3D workspace
+    - region "Explore":
+      - heading "Explore" [level=2]
+      - list:
+        - link "Morphology":
+          - /url: /explore/morphology
+          - generic: Morphology
+        - link "Cell types":
+          - /url: /explore/cell-types
+          - generic: Cell types
+        - link "Anatomy":
+          - /url: /explore/anatomy
+          - generic: Anatomy
+        - link "Positions":
+          - /url: /explore/positions
+          - generic: Positions
+    - region "Research":
+      - heading "Research" [level=2]
+      - list:
+        - link "Research explorer":
+          - /url: /research/explorer
+          - generic: Research explorer
+        - link "Evidence map":
+          - /url: /research/overview
+          - generic: Evidence map
+        - link "SCI conditions":
+          - /url: /research/sci
+          - generic: SCI conditions
+        - link "Evidence coverage":
+          - /url: /research/coverage
+          - generic: Evidence coverage
+    - region "Sources":
+      - heading "Sources" [level=2]
+      - list:
+        - link "Source registry":
+          - /url: /sources
+          - generic: Source registry
+        - link "Source objects":
+          - /url: /objects
+          - generic: Source objects
+        - link "Source audits":
+          - /url: /source-audits
+          - generic: Source audits
+        - link "Svara catalogue":
+          - /url: /catalogues/svara
+          - generic: Svara catalogue
+        - link "Svara connectivity":
+          - /url: /connectivity/svara
+          - generic: Svara connectivity
+  - paragraph:
+    - text: Public-data research
+    - text: Source identities remain distinct.
+- navigation "Breadcrumb":
+  - list:
+    - link "Overview":
+      - /url: /
+    - text: /
+    - generic: Explore
+    - text: /
+    - generic: Positions
+- main:
+  - paragraph: Explore · Positions
+  - heading "Premotor positions" [level=1]
+  - paragraph: Inspect exact early-postnatal source coordinates in their original or source-normalized frames.
+  - status: Ronzano exact source bytes verified · 14,484 raw / 17,394 normalized coordinate rows · 0 REG
+  - region "Lumbar premotor position atlas":
+    - paragraph: UPG-114 · PHASE A · EXACT SOURCE COORDINATE ROWS · EARLY POSTNATAL · SOURCE-LOCAL · 0 REG
+    - heading "Lumbar premotor position atlas" [level=3]
+    - paragraph: Every visible mark is one exact numeric XYZ row from a checksum-pinned Ronzano et al. eLife source workbook. It has no biological radius and is not a soma, neurite, cell reconstruction, molecular type, synapse or atlas placement.
+    - generic: POINT POSITION ONLY · NO CELL GEOMETRY
+    - generic "Exact position source summary":
+      - article:
+        - strong: 22 / 22
+        - generic: source workbooks checksum pinned
+      - article:
+        - strong: 14,484
+        - generic: raw coordinate rows
+      - article:
+        - strong: 17,394
+        - generic: normalized coordinate rows
+      - article:
+        - strong: "0"
+        - generic: point identities across frames · atlas joins · registrations
+    - generic "Premotor position filters":
+      - text: Source representation
+      - combobox "Source representation":
+        - option "Raw before x/y normalization · 14,484" [selected]
+        - option "Source normalized · 17,394"
+      - text: Tracing group
+      - combobox "Tracing group":
+        - option "LG + TA · co-display only" [selected]
+        - option "LG · ankle extensor group"
+        - option "TA · ankle flexor group"
+      - text: Lumbar source segment
+      - combobox "Lumbar source segment":
+        - option "L1-L6 · source availability" [selected]
+        - option "L1"
+        - option "L2"
+        - option "L3"
+        - option "L4"
+        - option "L5"
+        - option "L6"
+      - text: Point display size · 3px
+      - slider "Point display size · 3px": "3"
+    - generic "Position camera presets":
+      - button "Three Quarter" [pressed]
+      - button "Transverse"
+      - button "Frontal"
+      - button "Lateral"
+      - button "Capture actual view"
+      - button "Export actual view receipt" [disabled]
+      - button "Fit visible source rows"
+      - checkbox "Display axes" [checked]
+      - text: Display axes
+    - article:
+      - generic: RAW SOURCE FRAME
+      - strong: 14,484 exact source rows drawn
+      - emphasis: Drag to orbit · wheel to zoom · click, or use [ / ] to browse exact source rows
+      - generic "Interactive source-local raw coordinate-point viewer. [ and ] browse exact file/row identities; Escape clears selection."
+      - text: SOURCE-LOCAL · DISPLAY ONLY · 0 REG
+      - generic "Premotor point legend":
+        - generic: LG · lateral gastrocnemius · ankle extensor tracing group
+        - generic: TA · tibialis anterior · ankle flexor tracing group
+        - generic: X
+        - text: mediolateral
+        - generic: "Y"
+        - text: dorsoventral
+        - generic: Z
+        - text: rostrocaudal · negative rostral
+      - paragraph: Raw x/y values are shown before normalization; z retains the source L4/L5 zero. Only uniform viewport fitting is applied; raw and normalized rows are never paired.
+    - complementary:
+      - paragraph: SELECTED SOURCE ROW
+      - generic "Exact source row navigation":
+        - button "First row"
+        - button "Previous row"
+        - button "Next row"
+        - button "Last row"
+        - button "Clear row" [disabled]
+      - heading "No coordinate row selected" [level=4]
+      - paragraph: Click a point or use the row controls to expose its one-based Excel row, exact XYZ values and source-file hash. Clearing selection changes no source data.
+      - paragraph: RUNTIME AND REPRESENTATION RECEIPT
+      - term: Runtime status
+      - definition: SHA-256 verified before parsing
+      - term: Asset SHA-256
+      - definition:
+        - code: abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3
+      - term: Frame denominator
+      - definition: 14,484 coordinate rows in 11 workbooks
+      - term: Visible denominator
+      - definition: 14,484 coordinate rows after explicit filters
+      - term: Cross-frame identity
+      - definition: Not established · 5 LG segment pairs differ in row count
+      - term: Registration
+      - definition: Source-local · 0 atlas joins · 0 REG
+      - paragraph: MODEL COMPLETENESS FOR THESE POINTS
+      - generic: AVAILABLE
+      - text: exact XYZ row · muscle tracing group · lumbar segment · source file/row
+      - generic: UNAVAILABLE
+      - text: Soma Surface · Coordinate rows provide positions, not soma contours, radii, volumes, or membranes.
+      - generic: UNAVAILABLE
+      - text: Neurite Morphology · No dendrite or axon tracing is present in the admitted workbooks.
+      - generic: UNAVAILABLE
+      - text: Molecular Identity · The pooled LG and TA coordinate workbooks do not assign a molecular interneuron type to each row.
+      - generic: UNAVAILABLE
+      - text: Same Cell Nucleus Or Organelles · No nucleus, mitochondrion, ER, Golgi, vesicle, receptor, or other internal object is linked to a coordinate row.
+      - generic: UNAVAILABLE
+      - text: Synapse Roster · Tracing group context is not a complete source-object synapse or partner roster.
+      - generic: NOT_ESTABLISHED
+      - text: Adult Anatomy · The source explicitly limits the neonatal tracing result; adult output connectivity is not established.
+      - generic: UNAVAILABLE
+      - text: Atlas Registration · Neither raw nor normalized source coordinates are registered to the project's Allen-derived anatomy.
+    - status: Capture requires verified actual rendered source points.
+    - text: Captured actual source view
+    - textbox "Captured Ronzano actual source view JSON"
+    - text: Restore actual source view JSON
+    - textbox "Restore Ronzano actual source view JSON"
+    - button "Restore with fresh source verification" [disabled]
+    - button "Cancel restore" [disabled]
+    - note:
+      - strong: RAW ↔ NORMALIZED IDENTITY IS DELIBERATELY BLOCKED
+      - generic: TA has six matching row-count/z-order pairs, but no source-declared stable row ID. LG has five row-count mismatches. Therefore this viewer switches representations; it never morphs, links or tracks a point between them.
+    - table "Visible source groups and exact workbook denominators":
+      - caption: Visible source groups and exact workbook denominators
+      - rowgroup:
+        - row "Muscle Segment Rows Source file SHA-256 receipt":
+          - columnheader "Muscle"
+          - columnheader "Segment"
+          - columnheader "Rows"
+          - columnheader "Source file"
+          - columnheader "SHA-256 receipt"
+      - rowgroup:
+        - row "LG L2 867 elife-81976-fig3-figsupp2-data2-v3.xlsx 2a6a22807f185acf…cef0d0cdb1":
+          - cell "LG"
+          - cell "L2"
+          - cell "867"
+          - cell "elife-81976-fig3-figsupp2-data2-v3.xlsx"
+          - cell "2a6a22807f185acf…cef0d0cdb1":
+            - code: 2a6a22807f185acf…cef0d0cdb1
+        - row "LG L3 1,229 elife-81976-fig3-figsupp2-data3-v3.xlsx 24a515c12ad26187…5bc24caca5":
+          - cell "LG"
+          - cell "L3"
+          - cell "1,229"
+          - cell "elife-81976-fig3-figsupp2-data3-v3.xlsx"
+          - cell "24a515c12ad26187…5bc24caca5":
+            - code: 24a515c12ad26187…5bc24caca5
+        - row "LG L4 2,017 elife-81976-fig3-figsupp2-data4-v3.xlsx 8e26c080042880b0…3e33d9ae7d":
+          - cell "LG"
+          - cell "L4"
+          - cell "2,017"
+          - cell "elife-81976-fig3-figsupp2-data4-v3.xlsx"
+          - cell "8e26c080042880b0…3e33d9ae7d":
+            - code: 8e26c080042880b0…3e33d9ae7d
+        - row "LG L5 1,850 elife-81976-fig3-figsupp2-data5-v3.xlsx 56fa098c95f42deb…fc1798e9bc":
+          - cell "LG"
+          - cell "L5"
+          - cell "1,850"
+          - cell "elife-81976-fig3-figsupp2-data5-v3.xlsx"
+          - cell "56fa098c95f42deb…fc1798e9bc":
+            - code: 56fa098c95f42deb…fc1798e9bc
+        - row "LG L6 886 elife-81976-fig3-figsupp2-data6-v3.xlsx e308fbc0e4ed877b…2ca53dcf87":
+          - cell "LG"
+          - cell "L6"
+          - cell "886"
+          - cell "elife-81976-fig3-figsupp2-data6-v3.xlsx"
+          - cell "e308fbc0e4ed877b…2ca53dcf87":
+            - code: e308fbc0e4ed877b…2ca53dcf87
+        - row "TA L1 296 elife-81976-fig3-figsupp2-data7-v3.xlsx 34c0863e7686978d…e18926e1e1":
+          - cell "TA"
+          - cell "L1"
+          - cell "296"
+          - cell "elife-81976-fig3-figsupp2-data7-v3.xlsx"
+          - cell "34c0863e7686978d…e18926e1e1":
+            - code: 34c0863e7686978d…e18926e1e1
+        - row "TA L2 883 elife-81976-fig3-figsupp2-data8-v3.xlsx 4c8229e1447c1bed…7da17aef66":
+          - cell "TA"
+          - cell "L2"
+          - cell "883"
+          - cell "elife-81976-fig3-figsupp2-data8-v3.xlsx"
+          - cell "4c8229e1447c1bed…7da17aef66":
+            - code: 4c8229e1447c1bed…7da17aef66
+        - row "TA L3 1,519 elife-81976-fig3-figsupp2-data9-v3.xlsx e3016288fa54c15b…c90434d82a":
+          - cell "TA"
+          - cell "L3"
+          - cell "1,519"
+          - cell "elife-81976-fig3-figsupp2-data9-v3.xlsx"
+          - cell "e3016288fa54c15b…c90434d82a":
+            - code: e3016288fa54c15b…c90434d82a
+        - row "TA L4 1,923 elife-81976-fig3-figsupp2-data10-v3.xlsx 2ee6e529636e6e6e…db6c3f405f":
+          - cell "TA"
+          - cell "L4"
+          - cell "1,923"
+          - cell "elife-81976-fig3-figsupp2-data10-v3.xlsx"
+          - cell "2ee6e529636e6e6e…db6c3f405f":
+            - code: 2ee6e529636e6e6e…db6c3f405f
+        - row "TA L5 1,891 elife-81976-fig3-figsupp2-data11-v3.xlsx 7ab88071d8f3b678…716807a9eb":
+          - cell "TA"
+          - cell "L5"
+          - cell "1,891"
+          - cell "elife-81976-fig3-figsupp2-data11-v3.xlsx"
+          - cell "7ab88071d8f3b678…716807a9eb":
+            - code: 7ab88071d8f3b678…716807a9eb
+        - row "TA L6 1,123 elife-81976-fig3-figsupp2-data12-v3.xlsx 448d575329a12b2b…0ad875dc11":
+          - cell "TA"
+          - cell "L6"
+          - cell "1,123"
+          - cell "elife-81976-fig3-figsupp2-data12-v3.xlsx"
+          - cell "448d575329a12b2b…0ad875dc11":
+            - code: 448d575329a12b2b…0ad875dc11
+    - paragraph:
+      - strong: "Scope:"
+      - text: injections at P1-P2; analysis 8-9 days later. The source does not establish persistence of this output-connectivity organization into adulthood.
+    - paragraph:
+      - strong: "Relationship:"
+      - text: LG/TA is the source tracing group, not a complete synapse roster. Apparent point overlap is not a same-cell, same-type or shared-partner identity.
+    - link "Primary article ↗":
+      - /url: https://elifesciences.org/articles/81976
+    - link "Figures and source data ↗":
+      - /url: https://elifesciences.org/articles/81976/figures
+    - link "CC BY 4.0 ↗":
+      - /url: https://creativecommons.org/licenses/by/4.0/

@@ -1,0 +1,589 @@
+{
+  "sealedAtUTC": "2026-10-05T03:29:54.340554+00:00",
+  "status": "TEMP_ONLY_READY_FOR_PARENT_I56_INTEGRATION_AND_BROWSER_ACCEPTANCE",
+  "patches": [
+    {
+      "path": "UPG173_PARENT_ADDON_AFTER_I55.patch",
+      "bytes": 77329,
+      "sha256": "29405f48c0eaacd72ed72f92563af8b5ba2ff2f6acd2f39c2c314f67cb8ed3d0"
+    },
+    {
+      "path": "UPG173_PARENT_ADDON_CURRENT_ROOT.patch",
+      "bytes": 76403,
+      "sha256": "9b66ba7b731672645703b3b4fe86fa4aa73f193a4288d29c67e46a7cfcf77631"
+    },
+    {
+      "path": "UPG173_PARENT_ADDON_I55_TEST_COUNTS.patch",
+      "bytes": 926,
+      "sha256": "3f01af08bf404ee7407fa0fe4b1642ccc130cee74c0ddf7ee1646f00b0129571"
+    }
+  ],
+  "ownership": {
+    "scope": "I56 parent addon only; core seventeen files are separately sealed",
+    "ownedPaths": [
+      {
+        "path": "package.json",
+        "status": "existing",
+        "preimage": {
+          "bytes": 39999,
+          "sha256": "777e58a76f26002f9c6ba79ebc62d480e7af509ce628afd983937b7273f5afd0"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/package.json",
+        "proposal": {
+          "bytes": 40210,
+          "sha256": "8ab53acc6e3ac86015fb8aeb0bc1f9b93f4af49bd975fda5ec21d0b17511efde"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "data/research-source-registry-0.1.json",
+        "status": "existing",
+        "preimage": {
+          "bytes": 204790,
+          "sha256": "c425c1fd900774dfb94a1dd3f4bca6ce4495236d04b690dbcef640e06ff119cd"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/research-source-registry-0.1.json",
+        "proposal": {
+          "bytes": 222227,
+          "sha256": "6628241eda53f4c06b3d689f7b74d1f07c941e74933c87767ef5d1c61da72204"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+        "status": "existing",
+        "preimage": {
+          "bytes": 331100,
+          "sha256": "23ce2b27c8d93705f6789e1835d6417bbca9a479186298d4a1b2a3786e5c0976"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+        "proposal": {
+          "bytes": 332111,
+          "sha256": "63670f4814437c5173972d49cb854797fba4e09bbe55b08b95fc742f724fd9a1"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "data/research-model-upgrade-registry-0.1.json",
+        "status": "existing",
+        "preimage": {
+          "bytes": 716244,
+          "sha256": "dbb6690a1e4a4de712122e2f94edb6cc961ee26c11e00296fef7c5f5c014c725"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/research-model-upgrade-registry-0.1.json",
+        "proposal": {
+          "bytes": 718313,
+          "sha256": "e0435cef4fe2330c9f1048d4088be0157814b5369cc6457546b871b62f18db2b"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "scripts/validate-research-source-registry-0.1.mjs",
+        "status": "existing",
+        "preimage": {
+          "bytes": 99632,
+          "sha256": "620b4a38062ebaede660d9103fa72e6466658af67ef3f738b052a0e52c305a8f"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/scripts/validate-research-source-registry-0.1.mjs",
+        "proposal": {
+          "bytes": 99839,
+          "sha256": "2d3b0af1aa052fbdb47250e8cb1795e9278b27586ddc721f30a006caa510a701"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "scripts/validate-research-model-upgrade-registry-0.1.mjs",
+        "status": "existing",
+        "preimage": {
+          "bytes": 54493,
+          "sha256": "72e3cb709aa78bc6e8594a176ccc18e40b038c7828e2fc583d5ceac200248f91"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/scripts/validate-research-model-upgrade-registry-0.1.mjs",
+        "proposal": {
+          "bytes": 56318,
+          "sha256": "b318d467469127ee86214db304d476ccdaa675b43c521a71f0dbf0a5b7714050"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "tests/research-source-registry.test.mjs",
+        "status": "existing",
+        "preimage": {
+          "bytes": 57679,
+          "sha256": "f64e1a925ecfe1b50a17f435b90321524cd38615ba84f18618469d0fc878c3e7"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/research-source-registry.test.mjs",
+        "proposal": {
+          "bytes": 57679,
+          "sha256": "5d4d440ae97ff76a971cd9e036f1ac8c64166dfe7018e1b0b203a566aa1297f8"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "tests/research-source-registry-summary.test.mjs",
+        "status": "existing",
+        "preimage": {
+          "bytes": 4269,
+          "sha256": "0cbcc770858dc4f4c52f4c51ba251634651624e8482af2c7a774e812bb6d3161"
+        },
+        "preimageOrigin": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/research-source-registry-summary.test.mjs",
+        "proposal": {
+          "bytes": 4269,
+          "sha256": "83567c05dc8f999f5674d6cb13bbde5edbb09ab8966f350b94fc83849bf73cad"
+        },
+        "currentRootMatchesPreimage": true,
+        "currentRootAbsent": null
+      },
+      {
+        "path": "tests/research-source-drilldown.test.mjs",
+        "status": "future_I55_existing",
+        "preimage": {
+          "bytes": 15689,
+          "sha256": "020292b5ae83fdf382d7253bb65b9af88f6b8b4a2d575b000f7190b5fb67fb14"
+        },
+        "preimageOrigin": "/private/tmp/ohri-i55-rebased-current-i54-20261004/proposed/tests/research-source-drilldown.test.mjs",
+        "proposal": {
+          "bytes": 15689,
+          "sha256": "4608bac449f4fe9a4a9b8c8ac97b86a52b0dc55b133805833fdd9d9ef55ba953"
+        },
+        "currentRootMatchesPreimage": null,
+        "currentRootAbsent": true
+      },
+      {
+        "path": "scripts/validate-garcia-ramirez-source-registry-0.1.mjs",
+        "status": "new",
+        "preimage": null,
+        "preimageOrigin": null,
+        "proposal": {
+          "bytes": 8959,
+          "sha256": "594c2bbba377a8d56afb2d84ea4fe5d7011700fbb259fc8f3fbd953ddae82848"
+        },
+        "currentRootMatchesPreimage": null,
+        "currentRootAbsent": true
+      },
+      {
+        "path": "tests/garcia-ramirez-parent-integration.test.mjs",
+        "status": "new",
+        "preimage": null,
+        "preimageOrigin": null,
+        "proposal": {
+          "bytes": 7729,
+          "sha256": "cf0caa3d150e8cdf3b0d75080c28643bb5fcd112906a7fc9f18b49319194ef9a"
+        },
+        "currentRootMatchesPreimage": null,
+        "currentRootAbsent": true
+      }
+    ],
+    "excluded": [
+      "all QA materialized shadow copies",
+      "generator copies",
+      "current canonical/runtime manifests and builder",
+      "all app/UI files",
+      "frozen historical receipts"
+    ]
+  },
+  "preservation": {
+    "unchangedSources": 31,
+    "unchangedUpgradeRows": 242,
+    "queueChangesOnly": [
+      "UPG-173"
+    ],
+    "completedUpgradeCountUnchanged": 83,
+    "packageChangesOnly": [
+      "scripts.validate:garcia-ramirez-physiology",
+      "scripts.test:research"
+    ],
+    "futureI55ChangesOnly": [
+      "registry.sources.length 31 to 32",
+      "sets.length 41 to 42"
+    ],
+    "coreSeventeenTargetsUntouched": true,
+    "applyChecks": [
+      {
+        "argv": [
+          "git",
+          "apply",
+          "--check",
+          "--cached",
+          "/private/tmp/ohri-upg173-parent-integration-addon-20261004/UPG173_PARENT_ADDON_AFTER_I55.patch"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/patch-base",
+        "exitCode": 0,
+        "log": null,
+        "stdout": ""
+      },
+      {
+        "argv": [
+          "git",
+          "apply",
+          "--check",
+          "/private/tmp/ohri-upg173-parent-integration-addon-20261004/UPG173_PARENT_ADDON_CURRENT_ROOT.patch"
+        ],
+        "cwd": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype",
+        "exitCode": 0,
+        "log": null,
+        "stdout": ""
+      },
+      {
+        "argv": [
+          "git",
+          "apply",
+          "--check",
+          "/private/tmp/ohri-upg173-parent-integration-addon-20261004/UPG173_PARENT_ADDON_I55_TEST_COUNTS.patch"
+        ],
+        "cwd": "/private/tmp/ohri-i55-rebased-current-i54-20261004/proposed",
+        "exitCode": 0,
+        "log": null,
+        "stdout": ""
+      }
+    ]
+  },
+  "validation": {
+    "nodeExecutable": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "nodePin": {
+      "bytes": 121306800,
+      "sha256": "27db838bb204ef7c21df2931f5656e4c8fb32e6e947f363a402b49714d32b5b1"
+    },
+    "nodeVersion": "v24.19.0",
+    "commands": [
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "tests/garcia-ramirez-parent-integration.test.mjs",
+          "tests/garcia-ramirez-physiology.test.mjs",
+          "tests/research-source-registry.test.mjs",
+          "tests/research-source-registry-summary.test.mjs",
+          "tests/research-model-upgrade-registry.test.mjs",
+          "tests/research-source-drilldown.test.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-targeted-tests-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 7342,
+          "sha256": "05a23bc2e5ca3874a3514794b6bde0fcc35ec9fb65d8ca8e70a74091ff89e710"
+        },
+        "passedTests": 66
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "tests/research-source-registry-cano-relationship.test.mjs",
+          "tests/research-record-source-scope.test.mjs",
+          "tests/research-source-extensions-2.43.test.mjs",
+          "tests/russ-information-parent-integration.test.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-neighbor-tests-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 2536,
+          "sha256": "bb315e71b155a15a3dec9f49a13670b188ccd6056f856f8d0ad5a0a1de929d91"
+        },
+        "passedTests": 22
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-typecheck-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "node_modules/eslint/bin/eslint.js",
+          "--config",
+          "eslint-candidate.config.mjs",
+          "scripts/validate-research-source-registry-0.1.mjs",
+          "scripts/validate-research-model-upgrade-registry-0.1.mjs",
+          "tests/research-source-registry.test.mjs",
+          "tests/research-source-registry-summary.test.mjs",
+          "tests/research-source-drilldown.test.mjs",
+          "scripts/validate-garcia-ramirez-source-registry-0.1.mjs",
+          "tests/garcia-ramirez-parent-integration.test.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-eslint-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "scripts/validate-garcia-ramirez-source-registry-0.1.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-physical-source-validator-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 298,
+          "sha256": "efacea5278fc5809a4cc5d205e9d2c2e831f45cc5d81b0ae7f53c1a128813c6d"
+        }
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "scripts/validate-research-source-registry-0.1.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-canonical-source-validator-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 211,
+          "sha256": "cde3ab7077aeaf54d3447081c80772fa907fc9f7cefc8a3397df6a4e66c098c8"
+        }
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "scripts/validate-research-model-upgrade-registry-0.1.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/proposed",
+        "exitCode": 0,
+        "log": "qa/parent-upgrade-validator-sealed.log",
+        "stdout": null,
+        "logPin": {
+          "bytes": 202,
+          "sha256": "9117490aa15b271ee2afe6fd4b1dd7977920d524cc99ddd02e485bd6debde32b"
+        }
+      },
+      {
+        "argv": [
+          "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "qa/replay_parent_counters.mjs"
+        ],
+        "cwd": "/private/tmp/ohri-upg173-parent-integration-addon-20261004",
+        "exitCode": 0,
+        "log": "qa/parent-counter-replay-sealed.json",
+        "stdout": null,
+        "logPin": {
+          "bytes": 1590,
+          "sha256": "706ecaf6395402b5db7312f48c00e2d2d4751ced26d0be97a55499740c080335"
+        }
+      }
+    ]
+  },
+  "denominatorImpact": {
+    "scope": "current canonical registry counters only",
+    "verifiedCounterReplay": {
+      "before": {
+        "sourceCount": 31,
+        "recordSetCount": 41,
+        "bundledExactCellProfileRosterCount": 13,
+        "bundledExactSourceObjectSetCount": 4,
+        "aliasCount": 76
+      },
+      "after": {
+        "releaseId": "ohri-research-source-registry-0.1.0",
+        "sourceCount": 32,
+        "recordSetCount": 42,
+        "aliasCount": 79,
+        "typeRecordCount": 387,
+        "bundledExactRosterCount": 13,
+        "bundledExactSourceObjectSetCount": 4,
+        "openScopeContradictionCount": 0,
+        "registrationCount": 0
+      },
+      "outputs": [
+        {
+          "name": "search-index.json",
+          "bytes": 12327624,
+          "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+          "currentRootBytesEqual": true
+        },
+        {
+          "name": "asset-manifest.json",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888",
+          "currentRootBytesEqual": true
+        }
+      ],
+      "baseIndexRecords": 641,
+      "baseIndexSchema": "1.14.0",
+      "baseSourceFiles": 22,
+      "supplementalRecords": 32,
+      "runtimeRecords": 673,
+      "newAggregateEmittedInExplorer": false,
+      "denominators": {
+        "sourceCount": 32,
+        "recordSetCount": 42,
+        "bundledExactCellProfileRosterCount": 13,
+        "bundledExactSourceObjectSetCount": 4,
+        "compoundDisplay": "32 sources · 42 record sets · 13 exact cell/profile rosters + 4 exact source-object sets",
+        "tabDisplay": "Sources · 32 canonical packages",
+        "enumeratedDisplayCount": 8,
+        "units": [
+          "sources",
+          "record_sets",
+          "cell_profile_rosters",
+          "source_object_sets"
+        ],
+        "staleLiteralCount": 0
+      }
+    },
+    "delta": {
+      "canonicalSources": 1,
+      "declaredRecordSets": 1,
+      "sourceAliases": 3,
+      "exactCellProfileRosters": 0,
+      "exactSourceObjectSets": 0,
+      "molecularProfiles": 0,
+      "baseIndexRecords": 0,
+      "runtimeExplorerRecords": 0,
+      "registrations": 0,
+      "completedUpgrades": 0
+    },
+    "scientificUnit": "one nonbiological study_aggregate_information_adapter; four alternative partitions of one171-observation cohort",
+    "activeDependencies": {
+      "changedAddonPaths": [
+        "data/research-source-registry-0.1.json",
+        "scripts/validate-research-source-registry-0.1.mjs",
+        "tests/research-source-registry.test.mjs",
+        "tests/research-source-registry-summary.test.mjs",
+        "tests/research-source-drilldown.test.mjs"
+      ],
+      "derivedCurrentDisplays": [
+        "app/research-source-registry-summary.js",
+        "app/ResearchOverview.tsx",
+        "app/ResearchDataLab.tsx",
+        "app/ResearchSourceRegistry.tsx",
+        "app/AtlasPrototype.tsx",
+        "tools/build_research_iteration_manifest_2_41.mjs current registry-derived metadata"
+      ],
+      "parentOwnedRequiredGuard": {
+        "path": "tools/build_research_iteration_manifest_2_91.mjs",
+        "line": 325,
+        "before": "  if (summary.sourceCount !== 31 || summary.recordSetCount !== 41 || summary.bundledExactRosterCount !== 13 || summary.bundledExactSourceObjectSetCount !== 4 || summary.typeRecordCount !== 387 || upgrades.upgradeCount !== 243 || denominators.staleLiteralCount !== 0 || layout.fullProjectCopyCount !== 0) throw new Error(\"2.91 source-unit, canonical queue or in-place boundary changed\");",
+        "changeOnly": "sourceCount31→32 and recordSetCount41→42; preserve13/4/387/243 and other checks"
+      },
+      "parentOwnedRegeneration": [
+        "data/research-iteration-manifest-2.91.json",
+        "data/research-renderer-runtime-inputs-2.91.json"
+      ],
+      "rendererBuildImpact": "package.json is in40 actual Positions build inputs; old build-bound receipt invalid after package edit, original23 source inputs unchanged",
+      "unchangedIndexRecipe": "22 source files schema1.14.0; aggregate adapter excluded; exact rebuilt output equals active bytes",
+      "testDiscovery": "tools/run_current_research_tests.mjs discovers new.test.mjs automatically; no runner edit"
+    },
+    "intentionallyUnchangedScopes": [
+      "frozen2.41 snapshot and historical reconstruction guards27/34/10/1",
+      "historical canonical manifests and counters",
+      "other named public-data/condition/provenance registry denominators",
+      "frozen142 morphology census and30Todd+2PV runtime supplements",
+      "243 total and83 completed upgrade rows",
+      "all current app/UI wrapper and navigation code"
+    ],
+    "sourceAdmissionZeroCounts": [
+      "newPhysicalCellRosterRows",
+      "newMolecularProfiles",
+      "newSourceGeometryObjects",
+      "sameCellJoins",
+      "lineageAssignments",
+      "registrations",
+      "newM2Admissions",
+      "newM4Admissions"
+    ]
+  },
+  "artifactPins": [
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/UPG173_PARENT_ADDON_OWNERSHIP.json",
+      "bytes": 6320,
+      "sha256": "253422e69a461855f9ed5f0762db9c582af1d439b53bec9365a3c9d5cfce7dc8"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/UPG173_PARENT_ADDON_INTEGRATION_NOTES.md",
+      "bytes": 7540,
+      "sha256": "f6a806f69d658658a4e4bb69f95694cff128bd609ce1a9bf367eedf5ff04d3e3"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/UPG173_CURRENT_COUNTER_IMPACT_AND_DEPENDENCY_AUDIT.json",
+      "bytes": 4721,
+      "sha256": "888fb8deae34541f3f3e78ceb965303eb6d507ae679ff6efc5f3467ba3c62bcd"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/qa/parent-preservation-and-patch-checks.json",
+      "bytes": 1450,
+      "sha256": "16e3e0b3238e33f7f564ae049e33eea4a0ae50290f955565970de717c38aef0c"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/qa/parent-validation-command-receipt.json",
+      "bytes": 5396,
+      "sha256": "9ceb0df1d57a0a1a891cee0fe63d833bd3f5879b57650ebe56c63bbfcddc0ab6"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/qa/parent-counter-replay-sealed.json",
+      "bytes": 1590,
+      "sha256": "706ecaf6395402b5db7312f48c00e2d2d4751ced26d0be97a55499740c080335"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/qa/replay_parent_counters.mjs",
+      "bytes": 2496,
+      "sha256": "c916831317a8a8086f791e113aa81a4351f9c8ae9958059345a55c9716d2ae8d"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-parent-integration-addon-20261004/seal_parent_addon.py",
+      "bytes": 9010,
+      "sha256": "57d359528e6e4156ed453521eeb70258917697a825a4a7b6528d04329bae629b"
+    }
+  ],
+  "separateCore": {
+    "patch": {
+      "path": "/private/tmp/ohri-upg173-preparation-20261004/UPG173_AGGREGATE_PHYSIOLOGY_CANDIDATE.patch",
+      "bytes": 1225868,
+      "sha256": "68006805dbaaa1fb749d08b28cd76d7cc369bab7243aafa3fa838e963fc9fbdf"
+    },
+    "receipt": {
+      "path": "/private/tmp/ohri-upg173-preparation-20261004/qa/UPG173_CANDIDATE_SEAL_AND_VALIDATION_RECEIPT.json",
+      "bytes": 8272,
+      "sha256": "c1356e5bb4624ae2212a322ff9f6936fcc1021b65feb33860a71788679af26f7"
+    },
+    "peerReview": {
+      "path": "/private/tmp/ohri-upg173-peer-review-20261004/UPG173_SCIENTIFIC_SCOPE_AND_LAYOUT_PEER_REVIEW.json",
+      "bytes": 10351,
+      "sha256": "14cde3c974c55ae7d3a8531aaf294794a55a0096ad8831bb9c41e2005f15020e"
+    },
+    "coreFilesChangedByAddon": 0
+  },
+  "pending": [
+    "parent applies core17 and narrow addon11 afterI55",
+    "parent regenerates current canonical/runtime input recipe and package-bound Positions build identity",
+    "actual dedicated-route desktop/narrow/table/keyboard/download QA against integrated build",
+    "current full research suite and preservation checks"
+  ],
+  "claims": {
+    "rootWrites": false,
+    "newExactCellRoster": false,
+    "newMolecularProfiles": 0,
+    "newGeometryObjects": 0,
+    "newRegistrations": 0,
+    "newM2OrM4Admissions": 0,
+    "actualBrowserObserved": false,
+    "UPG173Completed": false,
+    "roadmapCompleted": false
+  }
+}

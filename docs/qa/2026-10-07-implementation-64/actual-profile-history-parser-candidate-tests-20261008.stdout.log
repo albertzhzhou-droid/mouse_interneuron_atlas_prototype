@@ -1,0 +1,23 @@
+✔ absent profile request preserves the explicit existing default (1.095ms)
+✔ unknown, empty, foreign, stale and modified literal profile IDs are unavailable (0.749542ms)
+✔ duplicate legacy requests never use the first occurrence (0.087417ms)
+✔ partial and foreign canonical requests own selection and refuse legacy substitution (0.096542ms)
+✔ duplicate canonical fields are unavailable even when the copies agree (0.130958ms)
+✔ a valid canonical request retains its exact ID and owns the legacy alias (0.124708ms)
+✔ partial, duplicate, unknown and over-limit comparisons fail closed as a whole (0.607417ms)
+✔ invalid or same-record baselines cannot produce a delta authority (0.09125ms)
+✔ all four filters restore complete literal values alongside selection and comparison (0.150166ms)
+✔ unknown, case-modified and duplicate filter values do not preserve evidence authority (0.166708ms)
+✔ query limits are validated rather than silently truncating source search (0.0675ms)
+✔ serialization round trips full source state and retains unrelated route fields (0.212375ms)
+✔ serialization removes default filter keys without changing exact selection (0.09325ms)
+✔ invalid or incomplete state cannot be published as a valid bookmark (0.21625ms)
+✔ a caller cannot invent the default outside current source membership (0.043416ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.344291

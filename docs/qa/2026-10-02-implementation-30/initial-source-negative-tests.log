@@ -1,0 +1,35 @@
+E...E.
+======================================================================
+ERROR: test_exact_native_subset_passes (__main__.PolygonSourceFailures.test_exact_native_subset_passes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/test_bil_xenium_polygon_source.py", line 31, in test_exact_native_subset_passes
+    result,_,_=self.compare();self.assertEqual(result['coordinateComparisons'][0]['differentRows'],0)
+               ^^^^^^^^^^^^^^
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/test_bil_xenium_polygon_source.py", line 29, in compare
+    return audit.compare_boundary(MetadataReader(),1,self.ids,self.attrs,None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/audit_bil_xenium_polygon_source.py", line 74, in compare_boundary
+    sample.append({'polygonIndexZeroBased':i,'perFileLabelId':i+1,'cellIndexZeroBased':int(parents[i]),'cellId':ids[int(parents[i])],'numVerticesIncludingClosure':int(counts[i]),'methodIndex':int(methods[i]),'methodNativeLabel':attrs['segmentation_methods'][int(methods[i])],'firstVertexNativeXY':points[i,0].astype(float).tolist(),'lastVertexNativeXY':points[i,int(counts[i])-1].astype(float).tolist()})
+                                                                                           ~~~~~~~^^^
+IndexError: index 1 is out of bounds for axis 0 with size 1
+
+======================================================================
+ERROR: test_valid_but_wrong_parent_is_not_joined_by_polygon_label (__main__.PolygonSourceFailures.test_valid_but_wrong_parent_is_not_joined_by_polygon_label)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/test_bil_xenium_polygon_source.py", line 39, in test_valid_but_wrong_parent_is_not_joined_by_polygon_label
+    with self.assertRaisesRegex(ValueError,'parent cell ID'):self.compare(arrays=arrays)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/test_bil_xenium_polygon_source.py", line 29, in compare
+    return audit.compare_boundary(MetadataReader(),1,self.ids,self.attrs,None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/audit_bil_xenium_polygon_source.py", line 62, in compare_boundary
+    parent_codes=np.array([dictionary_codes[ids[int(i)]] for i in parents],dtype=np.int32)
+                           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'aaaalnbo-1'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.858s
+
+FAILED (errors=2)

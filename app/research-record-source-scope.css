@@ -1,0 +1,23 @@
+.research-record-source-scope { min-width: 0; margin: 12px 0; padding: 12px; border: 1px solid #cad9d0; border-radius: 12px; background: #f4f8f5; color: #253c31; overflow-wrap: anywhere; }
+.research-record-source-scope p { margin: 6px 0; }
+.rrss-summary { display: flex; gap: 8px 14px; flex-wrap: wrap; font-size: 12px; }
+.rrss-boundary, .rrss-export-boundary { font-size: 11px; line-height: 1.55; }
+.research-record-source-scope details { margin-top: 8px; min-width: 0; }
+.research-record-source-scope summary { cursor: pointer; font-size: 12px; font-weight: 650; line-height: 1.5; }
+.research-record-source-scope dl { margin: 8px 0; }
+.research-record-source-scope dl > div { display: grid; grid-template-columns: minmax(90px, .32fr) minmax(0, 1fr); gap: 10px; border-top: 1px solid #dce5df; padding: 8px 0; }
+.research-record-source-scope dt { font-size: 11px; font-weight: 650; }
+.research-record-source-scope dd { margin: 0; min-width: 0; font-size: 12px; }
+.research-record-source-scope small, .research-record-source-scope code { display: block; font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; white-space: normal; }
+.rrss-conditions { display: grid; gap: 8px; }
+.rrss-conditions article { padding: 8px; border: 1px solid #dce5df; border-radius: 8px; font-size: 11px; }
+.rrss-locators ol { padding-left: 20px; max-height: 340px; overflow-y: auto; margin: 10px 0; }
+.rrss-locators li { padding: 6px 0; font-size: 11px; }
+.rrss-locators li > span { display: block; font-size: 10px; }
+.rrss-actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.rrss-actions button { border: 1px solid #b8c8bc; border-radius: 7px; padding: 7px 10px; background: #fff; color: inherit; cursor: pointer; font-size: 11px; }
+.rrss-actions button:disabled { opacity: .5; cursor: default; }
+.research-record-source-scope label { display: block; font-size: 11px; margin-bottom: 5px; }
+.research-record-source-scope textarea { display: block; width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box; resize: vertical; font: 10px/1.5 ui-monospace, monospace; border: 1px solid #b8c8bc; border-radius: 7px; padding: 8px; }
+.research-record-source-scope :focus-visible { outline: 2px solid #346d50; outline-offset: 3px; }
+@media (max-width: 480px) { .research-record-source-scope dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } .rrss-actions button { max-width: 100%; } }

@@ -1,0 +1,611 @@
+{
+  "releaseId": "ohri-hayashi-v2a-source-taxonomy-0.1.0",
+  "schemaVersion": "0.1.0",
+  "releaseDate": "2026-08-27",
+  "datasetId": "GSE108788",
+  "coordinateAuthority": "SOURCE_LOCAL_TYPE_ONLY",
+  "source": {
+    "publication": {
+      "id": "HAYASHI-2018",
+      "citation": "Hayashi M, Hinckley CA, Driscoll SP, Moore NJ, Levine AJ, Hilde KL, Sharma K, Pfaff SL. Graded Arrays of Spinal and Supraspinal V2a Interneuron Subtypes Underlie Forelimb and Hindlimb Motor Control. Neuron. 2018;97:869-884.e5.",
+      "doi": "10.1016/j.neuron.2018.01.023",
+      "pmid": "29398364",
+      "pmcid": "PMC8601153",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8601153/",
+      "reuseStatus": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED",
+      "rightsBoundary": "The article is publicly readable through PubMed Central, but this contract does not infer a separate asset-level redistribution license for article figures or supplementary images. No article image is bundled."
+    },
+    "geo": {
+      "id": "GSE108788",
+      "accession": "GSE108788",
+      "sampleAccession": "GSM2913270",
+      "superSeriesAccession": "GSE108790",
+      "sraStudyAccession": "SRP128071",
+      "bioProjectAccession": "PRJNA428534",
+      "recordUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE108788",
+      "overallDesign": "Single-cell RNA sequencing of cervical and lumbar spinal V2a interneurons isolated from two P0 neonates, FACS-sorted and pooled as one sample on a 10x Chromium Controller.",
+      "sampleFrame": {
+        "species": "Mus musculus",
+        "speciesTaxonId": 10090,
+        "geneticLabel": "Chx10:Cre; tdTomato",
+        "lifeStage": "P0 neonatal",
+        "sex": {
+          "value": null,
+          "missingReason": "not_reported"
+        },
+        "sampledSpinalRegions": [
+          "cervical",
+          "lumbar"
+        ],
+        "sourceAnimalCount": 2,
+        "prePoolingFACSCollectedCellCountByRegion": {
+          "cervical": 2800,
+          "lumbar": 2800
+        },
+        "pooledLibraryCount": 1,
+        "independentLibraryCount": 1,
+        "tenXChemistry": "Chromium Single Cell 3 prime v2",
+        "animalResolvedReplicateCount": 0,
+        "cellsProcessedApproximate": 3000,
+        "qcRetainedCellCount": 949,
+        "articleAssignedCervicalCellCount": 455,
+        "articleAssignedLumbarCellCount": 494,
+        "articleRegionAssignmentMethod": "Computational assignment from cervical-versus-lumbar bulk RNA-seq gene signatures after the tissue-derived cells had been pooled into one 10x library.",
+        "cellRegionAssignmentAvailableInGeoMatrix": false,
+        "interpretationBoundary": "Two source animals pooled into one 10x library are not two independently analyzable transcriptomic replicates. The 949 cells are sampling units, not specimens. The article's 455 cervical and 494 lumbar assignments are computational and are not deposited as columns in the public GEO count matrix."
+      },
+      "countMatrixAsset": {
+        "id": "GSM2913270_UMI_GENE_COUNTS",
+        "fileName": "GSM2913270_umiGeneCounts.csv.gz",
+        "archiveFileName": "GSE108788_RAW.tar",
+        "downloadUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE108nnn/GSE108788/suppl/GSE108788_RAW.tar",
+        "archiveBytes": 3604480,
+        "archiveSha256": "7bf234f91c12ff09b5d132cb84a91c7bdafd96158f93a5c7083b5062f5c8fd97",
+        "compressedBytes": 3597244,
+        "compressedSha256": "d6d55f8780c7102fd71fe66e037dac6f48638c97ce2124b331c498e3fb73f8de",
+        "uncompressedBytes": 24981295,
+        "uncompressedSha256": "a0d97a23ac28700e621ca90a6725b6bfb38f645094affa8289ed922ce33f9753",
+        "geneRowCount": 12986,
+        "cellBarcodeColumnCount": 949,
+        "geneInclusionRule": "GEO sample processing states that the matrix retains genes detected in at least two cells.",
+        "metadataColumns": [
+          "gene_name"
+        ],
+        "matrixReanalysis": {
+          "countingRule": "A barcode is positive when its raw UMI count is greater than zero for the named gene or any gene in the named marker panel.",
+          "v2aMarkerPanel": [
+            "Vsx2",
+            "Sox14",
+            "Shox2",
+            "Lhx3",
+            "Lhx4"
+          ],
+          "v2aMarkerPositiveBarcodeCount": 942,
+          "v2aMarkerPositivePercentage": 99.262,
+          "articleReportedV2aMarkerPositivePercentage": 99.5,
+          "slc17a6PositiveBarcodeCount": 862,
+          "slc17a6PositivePercentage": 90.832,
+          "articleReportedSlc17a6PositivePercentage": 92.7,
+          "reproducibilityStatus": "unresolved_difference_from_article_report",
+          "interpretationBoundary": "The exact public raw-count matrix does not reproduce the two article-reported positive-cell percentages under the declared raw-UMI-greater-than-zero rule. Both observations are retained without harmonization; the difference may reflect an unreported analysis object, threshold, or processing step."
+        },
+        "clusterAnnotationColumnAvailable": false,
+        "majorTypeAnnotationColumnAvailable": false,
+        "spinalRegionAnnotationColumnAvailable": false,
+        "sourceFileBundled": false,
+        "derivedFactualMetadataBundled": true,
+        "reuseStatus": "PUBLIC_ACCESS_REUSE_NOT_ASSUMED",
+        "rightsBoundary": "The processed object is publicly downloadable from GEO, but public access is not promoted to an assumed asset-level redistribution license. The source TAR and matrix gzip are not bundled; only checksum-pinned factual dimensions and article-transcribed cluster facts are included."
+      }
+    }
+  },
+  "scope": {
+    "species": "Mus musculus",
+    "speciesTaxonId": 10090,
+    "lifeStage": "P0 neonatal",
+    "condition": "developmental_uninjured",
+    "spinalRegion": "cervical and lumbar spinal cord",
+    "modality": "single-cell RNA sequencing",
+    "reportedClusterCount": 11,
+    "displayedProfileCount": 11,
+    "reportedQcRetainedCellCount": 949,
+    "figureClusterCellCountSum": 949,
+    "exactClusterBarcodeMappingAvailable": false,
+    "exactMajorTypeBarcodeMappingAvailable": false,
+    "exactCrossSourceIdentityCount": 0,
+    "projectRegistrationCount": 0,
+    "projectConfirmedLocalInterneuronProfileCount": 0,
+    "projectMixedLocalProjectionContextProfileCount": 11
+  },
+  "sourceReportedMajorTypes": [
+    {
+      "id": "hayashi-2018:type-i",
+      "label": "Type I",
+      "chx10Context": "high_or_maintained",
+      "networkContext": "dense_local_recurrent_spinal_network",
+      "projectionContext": "brainstem_projection_not_reported_for_type_i",
+      "projectUseClass": "local_interneuron_context",
+      "authority": "source_reported_population_level",
+      "exactBarcodeAssignmentAvailable": false,
+      "sameCellProjectionTraceAvailable": false,
+      "sourceLocatorIds": [
+        "paper-summary-p3-p9",
+        "paper-figure-7-p31"
+      ]
+    },
+    {
+      "id": "hayashi-2018:type-ii",
+      "label": "Type II",
+      "chx10Context": "downregulated_or_low",
+      "networkContext": "local_and_supraspinal_projection_context",
+      "projectionContext": "brainstem_projecting_population_context",
+      "projectUseClass": "projection_neuron_context_excluded_from_local_interneuron_count",
+      "authority": "source_reported_population_level",
+      "exactBarcodeAssignmentAvailable": false,
+      "sameCellProjectionTraceAvailable": false,
+      "sourceLocatorIds": [
+        "paper-summary-p3-p9",
+        "paper-results-p27-p28",
+        "paper-figure-7-p31"
+      ]
+    }
+  ],
+  "sourceLocators": [
+    {
+      "id": "geo-series-design",
+      "sourceObjectId": "GSE108788",
+      "locator": "NCBI GEO GSE108788 Overall design: cervical and lumbar V2a interneurons from two P0 neonates were FACS-sorted and pooled as a single 10x Chromium sample.",
+      "supportsFields": [
+        "sampleFrame",
+        "lifeStage",
+        "spinalScope"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "geo-matrix-object",
+      "sourceObjectId": "GSM2913270_UMI_GENE_COUNTS",
+      "locator": "Checksum-pinned GSM2913270_umiGeneCounts.csv.gz: one gene_name column, 949 unique cell-barcode columns, 12,986 unique gene rows, and no cluster, Type I/II, or cervical/lumbar annotation column.",
+      "supportsFields": [
+        "matrixReceipt",
+        "qcCellDenominator",
+        "missingBarcodeMappings"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "geo-sample-processing",
+      "sourceObjectId": "GSE108788",
+      "locator": "NCBI GEO GSM2913270 processing metadata: 2,800 cervical and 2,800 lumbar cells were collected before pooling; the pooled sample used Chromium Single Cell 3 prime v2, and genes detected in at least two cells were retained in the final UMI matrix.",
+      "supportsFields": [
+        "sampleFrame",
+        "matrixReceipt"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "matrix-reanalysis-marker-discrepancy",
+      "sourceObjectId": "GSM2913270_UMI_GENE_COUNTS",
+      "locator": "Deterministic raw-count reanalysis of the checksum-pinned matrix using UMI > 0: 942/949 barcodes express at least one of Vsx2, Sox14, Shox2, Lhx3 or Lhx4 and 862/949 express Slc17a6, versus article P29 values of 99.5% and 92.7% respectively.",
+      "supportsFields": [
+        "matrixReanalysis"
+      ],
+      "evidenceStatus": "derived"
+    },
+    {
+      "id": "paper-summary-p3-p9",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 abstract P3 and introduction P9: Type I V2a neurons maintain high Chx10 and form dense local recurrent networks; Type II neurons downregulate Chx10 and have local plus supraspinal projections, with opposing rostrocaudal gradients.",
+      "supportsFields": [
+        "majorType",
+        "networkContext",
+        "projectionContext"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p27-p28",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 Results P27-P28 and Figure 5: 83% +/- 5% of brainstem-projecting V2a neurons were Type II; 71% +/- 5% of forelimb premotor V2a neurons were Type II. These are population-level tracing contexts, not barcode-linked measurements.",
+      "supportsFields": [
+        "projectionContext",
+        "sameCellBoundary"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "paper-results-p29",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 Results P29: approximately 3,000 Tom-positive cells were processed and 949 neurons passed quality assessment; 99.5% expressed at least one retained V2a marker and 92.7% expressed Slc17a6.",
+      "supportsFields": [
+        "sampleFrame",
+        "qcCellDenominator",
+        "transmitterContext"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-figure-6",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 Figure 6A-C and caption P110-P112: two P0 neonates, 12,986 detected genes, 949 retained neurons, and 11 numbered clusters with displayed cell counts 144, 130, 121, 117, 112, 86, 59, 52, 51, 48, and 29.",
+      "supportsFields": [
+        "sourceLocalLabel",
+        "samplingCount",
+        "matrixReceipt"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p30",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 Results P30: clusters 3-5 were enriched for Nfib, Tcf4, NeuroD2, and Sp8 and mapped to medial V2a context; clusters 1, 2, 6-8, and 10 were enriched for Zfhx3, Zfhx4, Nefl, and Shox2 and mapped to lateral V2a context.",
+      "supportsFields": [
+        "markerPanel",
+        "spatialDomainContext"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-figure-7-p31",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 Figure 7A and Results P31: every numbered cluster contained both Chx10-high putative Type I and Chx10-low putative Type II cells; clusters 6-8 had the highest Chx10-low fractions.",
+      "supportsFields": [
+        "majorType",
+        "majorTypeMembership",
+        "missingBarcodeMappings"
+      ],
+      "evidenceStatus": "direct"
+    },
+    {
+      "id": "paper-results-p32",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 Results P32 and Figure S7A: bulk-signature analysis computationally assigned 455 cells as cervical and 494 as lumbar; clusters 6 and 8 were mostly cervical, clusters 1, 2, and 10 lumbar-enriched, and clusters 3-5 mixed.",
+      "supportsFields": [
+        "sampleFrame",
+        "rostrocaudalContext"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "paper-methods-p62-p67",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "PMC8601153 STAR Methods P62-P67: QC, clustering, differential-expression ranking, Chx10 high/low assignment, cervical/lumbar assignment, and expression-matrix plotting were analytical steps performed on the expression matrix.",
+      "supportsFields": [
+        "analysisAuthority",
+        "missingBarcodeMappings"
+      ],
+      "evidenceStatus": "contextual"
+    },
+    {
+      "id": "geo-rights-boundary",
+      "sourceObjectId": "GSE108788",
+      "locator": "NCBI GEO GSE108788 exposes public processed and raw download routes but does not state one asset-level redistribution license for the processed matrix used by this contract.",
+      "supportsFields": [
+        "rightsBoundary"
+      ],
+      "evidenceStatus": "rights_boundary"
+    },
+    {
+      "id": "study-missing-axes",
+      "sourceObjectId": "HAYASHI-2018",
+      "locator": "The admitted transcriptomic object and article-level subtype analysis do not provide barcode-linked single-cell morphology, cell xyz, atlas transforms, synaptic edge lists, adult or SCI identity, animal-resolved transcriptomic replication, or exact cross-source identities.",
+      "supportsFields": [
+        "missingEvidence"
+      ],
+      "evidenceStatus": "not_measured"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "hayashi-2018:GSE108788:cluster-1",
+      "sourceLocalLabel": "Cluster 1",
+      "samplingCount": {
+        "value": 144,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Zfhx3",
+        "Zfhx4",
+        "Nefl",
+        "Shox2"
+      ],
+      "spatialDomainContext": "lateral",
+      "rostrocaudalContext": "lumbar_enriched",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-2",
+      "sourceLocalLabel": "Cluster 2",
+      "samplingCount": {
+        "value": 130,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Zfhx3",
+        "Zfhx4",
+        "Nefl",
+        "Shox2"
+      ],
+      "spatialDomainContext": "lateral",
+      "rostrocaudalContext": "lumbar_enriched",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-3",
+      "sourceLocalLabel": "Cluster 3",
+      "samplingCount": {
+        "value": 121,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Nfib",
+        "Tcf4",
+        "NeuroD2",
+        "Sp8"
+      ],
+      "spatialDomainContext": "medial",
+      "rostrocaudalContext": "mixed_cervical_lumbar",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-4",
+      "sourceLocalLabel": "Cluster 4",
+      "samplingCount": {
+        "value": 117,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Nfib",
+        "Tcf4",
+        "NeuroD2",
+        "Sp8"
+      ],
+      "spatialDomainContext": "medial",
+      "rostrocaudalContext": "mixed_cervical_lumbar",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-5",
+      "sourceLocalLabel": "Cluster 5",
+      "samplingCount": {
+        "value": 112,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Nfib",
+        "Tcf4",
+        "NeuroD2",
+        "Sp8"
+      ],
+      "spatialDomainContext": "medial",
+      "rostrocaudalContext": "mixed_cervical_lumbar",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-6",
+      "sourceLocalLabel": "Cluster 6",
+      "samplingCount": {
+        "value": 86,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Zfhx3",
+        "Zfhx4",
+        "Nefl",
+        "Shox2"
+      ],
+      "spatialDomainContext": "lateral",
+      "rostrocaudalContext": "mostly_cervical",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "highest_fraction_group",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-7",
+      "sourceLocalLabel": "Cluster 7",
+      "samplingCount": {
+        "value": 59,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Zfhx3",
+        "Zfhx4",
+        "Nefl",
+        "Shox2"
+      ],
+      "spatialDomainContext": "lateral",
+      "rostrocaudalContext": "not_established",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "highest_fraction_group",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-8",
+      "sourceLocalLabel": "Cluster 8",
+      "samplingCount": {
+        "value": 52,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Zfhx3",
+        "Zfhx4",
+        "Nefl",
+        "Shox2"
+      ],
+      "spatialDomainContext": "lateral",
+      "rostrocaudalContext": "mostly_cervical",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "highest_fraction_group",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-9",
+      "sourceLocalLabel": "Cluster 9",
+      "samplingCount": {
+        "value": 51,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [],
+      "spatialDomainContext": "not_established",
+      "rostrocaudalContext": "not_established",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-figure-7-p31",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-10",
+      "sourceLocalLabel": "Cluster 10",
+      "samplingCount": {
+        "value": 48,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [
+        "Zfhx3",
+        "Zfhx4",
+        "Nefl",
+        "Shox2"
+      ],
+      "spatialDomainContext": "lateral",
+      "rostrocaudalContext": "lumbar_enriched",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-results-p30",
+        "paper-figure-7-p31",
+        "paper-results-p32",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "hayashi-2018:GSE108788:cluster-11",
+      "sourceLocalLabel": "Cluster 11",
+      "samplingCount": {
+        "value": 29,
+        "unit": "cells",
+        "interpretation": "article_figure_cluster_count"
+      },
+      "markerPanel": [],
+      "spatialDomainContext": "not_established",
+      "rostrocaudalContext": "not_established",
+      "majorTypeMembership": "mixed_type_i_and_type_ii",
+      "chx10LowContext": "mixture_not_quantified_in_contract",
+      "projectUseClass": "v2a_cluster_mixed_local_and_supraspinal_projection_context",
+      "fieldLocatorIds": [
+        "paper-figure-6",
+        "paper-figure-7-p31",
+        "study-missing-axes"
+      ]
+    }
+  ],
+  "globalMissingEvidence": {
+    "singleCellMorphology": "not_measured",
+    "cellCoordinates": "not_available",
+    "sameCellProjectionTracing": "not_available",
+    "barcodeLevelClusterAssignment": "not_available_in_public_geo_object",
+    "barcodeLevelMajorTypeAssignment": "not_available_in_public_geo_object",
+    "barcodeLevelSpinalRegionAssignment": "not_available_in_public_geo_object",
+    "synapticConnectivity": "not_available_as_edge_list",
+    "atlasRegistration": "not_established",
+    "adultIdentity": "not_established",
+    "sciContext": "not_measured",
+    "animalResolvedReplication": "not_available_after_pooling",
+    "exactCrossSourceIdentity": "not_established"
+  },
+  "hardBoundaries": [
+    "The eleven profiles are article-reported source-local clusters, not eleven canonical or adult spinal interneuron types.",
+    "The bare public GEO matrix does not contain cluster, Type I or Type II, cervical or lumbar annotation columns, so exact barcode mappings are unavailable.",
+    "Article Figure 6 cluster counts sum to 949, but the project cannot independently reproduce cluster membership from the count matrix without the source assignment map.",
+    "Every article-reported cluster contains both putative Type I and putative Type II cells; no cluster may be promoted to a pure major type.",
+    "Type II is a supraspinal projection-neuron context and is excluded from confirmed local-interneuron counts in this project.",
+    "Two neonates pooled into one 10x library do not provide animal-resolved transcriptomic replication, and cells must never be counted as specimens.",
+    "The 2,800 cervical plus 2,800 lumbar FACS-collected cells, approximately 3,000 cells processed through the single-cell pipeline, and 949 QC-retained neurons are distinct denominator stages and must not be silently equated.",
+    "The article's cervical and lumbar cell assignments were computed from bulk-signature genes and are not direct region labels in the public count matrix.",
+    "Raw-count reanalysis gives 942 of 949 V2a-marker-positive barcodes and 862 of 949 Slc17a6-positive barcodes, which does not reproduce the article's 99.5% and 92.7% values; both results remain visible and unresolved rather than harmonized.",
+    "P0 developmental identities cannot be promoted to adult or spinal-cord-injury identities.",
+    "Population-level tracing and immunostaining do not create same-cell links to the sequenced barcodes or numbered transcriptomic clusters.",
+    "No cell coordinates, neurite reconstructions, atlas transform, synaptic edge list, or exact cross-source identity are available for these profiles.",
+    "Public download access is not treated as an asset-level redistribution license; no GEO source file or article figure is bundled."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "iteration": "I60",
+  "status": "PASS_BOUNDED_FINAL_ADOPTION_HELPER_AND_ACTUAL_PARITY_METADATA_BINDING",
+  "generatedAtUtc": "2026-10-05T08:47:27.472753+00:00",
+  "helper": {
+    "path": "/private/tmp/ohri-i60-final-manifest-adopt-and-strict-stage-replay.py",
+    "bytes": 3718,
+    "sha256": "eb527e75640ecaa6d09a3e478e63d5944595f53ddbfa73d153dfb7c4d20f0a41"
+  },
+  "codeReview": {
+    "actualNReadPositionProgression": true,
+    "eofIoAndGeneralAssertionFailuresDoNotRetry": true,
+    "onlyExactSourceEpochAssertionPrefixRetried": true,
+    "maxAttemptsPerRead": 3,
+    "noIntegerNsRounding": true,
+    "everySuccessfulAttemptStrictFdEpochStable": true,
+    "allRootCurrentCanonicalExpectedBytePinsRequired": true,
+    "allStageTargetsRereadAndEqualRootBytes": true,
+    "rootAndStageEndEpochChecksRetained": true,
+    "stageTargetSymlinkAndContainmentChecksBeforeWrites": true,
+    "rootManifestCopiedFromGuardedExactStageBuilderOutput": true,
+    "runtimeRootStageBytesRequiredEqualBeforeAdoption": true,
+    "noFinalSourcePinException": true
+  },
+  "actualMetadataBinding": {
+    "rootManifestExactStageManifest": {
+      "bytes": 529935,
+      "sha256": "ce58c34041fd92d13b22d3674778b0aac626d7d0ae2b1d155b68643692a47117"
+    },
+    "canonicalInputs": 2585,
+    "canonicalNamesUnique": true,
+    "parentFullPhysicalParityReceipt": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-stage-root-parity-receipt.json",
+      "bytes": 828883,
+      "sha256": "c176fbdafb735412ae77c9af0ed5a07765e915446ac5f6ce2fb1816ebf5f81fe"
+    },
+    "stageReplayEntries": 2588,
+    "uniqueStagePhysicalPaths": 2587,
+    "duplicatedReplayPath": {
+      "path": "data/research-renderer-runtime-inputs-2.91.json",
+      "occurrences": 2,
+      "bothRowsIdentical": true
+    },
+    "allReportedRootStageByteAndShaPairsEqual": true,
+    "allCanonicalRowsEqualFinalManifestExpectedPins": true,
+    "threeDeclaredFinalDocEpochPinsNowExactFinalCanonicalPins": true,
+    "registrySummaryUnchanged": {
+      "canonicalSourceCount": 32,
+      "canonicalRecordSetCount": 42,
+      "bundledExactCellProfileRosterCount": 13,
+      "bundledExactSourceObjectSetCount": 4,
+      "sourceProfileCount": 387,
+      "researchUpgradeCount": 243,
+      "completedResearchUpgradeCount": 83,
+      "displayedResearchUpgradeCount": 51,
+      "staleCanonicalDenominatorLiteralCount": 0
+    }
+  },
+  "originalParentLogs": [
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-manifest-write.log",
+      "bytes": 95,
+      "sha256": "8d82e6b94ed45a7dcaee50d25e7cc9faf97e9d36fc2136d6a52c52047eb57a06",
+      "tail": "Wrote 2.91 manifest: 2585 current byte receipts; same-cell mouse spinal interior remains gated\n"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-current-manifest-validator.log",
+      "bytes": 1312,
+      "sha256": "1b9f3b62f9858e154c7b595869f3d568fa89d1d045851106bfc2d7ced48d105d",
+      "tail": "esearch-iteration-manifest-2.91.mjs\n\n{\"releaseId\":\"ohri-mouse-interneuron-research-iteration-2.91.0\",\"version\":\"2.91.0-research.1\",\"inputCount\":2585,\"parentReleaseId\":\"ohri-mouse-interneuron-research-iteration-2.90.0\",\"canonicalSourceCount\":32,\"canonicalRecordSetCount\":42,\"bundledExactCellProfileRosterCount\":13,\"bundledExactSourceObjectSetCount\":4,\"sourceProfileCount\":387,\"researchUpgradeCount\":243,\"completedResearchUpgradeCount\":83,\"displayedResearchUpgradeCount\":51,\"staleCanonicalDenominatorLiteralCount\":0,\"independentObjectCounts\":{\"native-contours\":7,\"microns-phase1\":2,\"banc-v888\":2,\"super-clem-palm\":18358,\"microstructformer\":540},\"objectCountUnit\":\"source-specific indexed entries; never a pooled cell census\",\"sourceProfileComparisonCount\":387,\"exactCrossSourceIdentityCount\":0,\"atlasRegistrationCount\":0,\"mouseSpinalInterneuronSameCellInternalObjectCount\":0,\"bilSectionLinkedCellNucleusGeometryCount\":0,\"microStructFormerGeometryCount\":0,\"fullProjectCopyCount\":0,\"fullGoalComplete\":false,\"historicalParent\":\"Frozen 2.90 receipt retains its original hashes; current 2.91 replays every current authoritative input byte. Scientific gates remain independent from engineering validation.\"}\n"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-stage-sync.log",
+      "bytes": 2403,
+      "sha256": "0b61a40530d5329435632f1ec89b4c02f801e0992f8e2ce003a4f9d65ba17dc4",
+      "tail": "l-compartments.json\nprogress 1400 of 2588 public/data/cano_chol_rna_counts_v1/counts-059.json.gzip\nprogress 1500 of 2588 public/data/dandi_spinalcordnet_full_recording_v1/channel-01-block-04.i16le.gzip\nprogress 1600 of 2588 public/data/dandi_spinalcordnet_full_recording_v1/channel-06-block-09.i16le.gzip\nprogress 1700 of 2588 public/data/dandi_spinalcordnet_full_recording_v1/channel-11-block-14.i16le.gzip\nprogress 1800 of 2588 public/data/dandi_spinalcordnet_full_recording_v1/channel-17-block-00.i16le.gzip\nprogress 1900 of 2588 public/data/dandi_spinalcordnet_full_recording_v1/channel-22-block-05.i16le.gzip\nprogress 2000 of 2588 public/data/dandi_spinalcordnet_full_recording_v1/channel-27-block-10.i16le.gzip\nprogress 2100 of 2588 public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.triangles.u32le.bin\nprogress 2200 of 2588 public/data/svara_catalogue_pages_v1/mmc6-page-037.png\nprogress 2300 of 2588 public/data/svara_catalogue_pages_v1/mmc6-page-137.png\nprogress 2400 of 2588 scripts/validate-bil-xenium-published-workflow-audit-0.1.mjs\nprogress 2500 of 2588 tests/research-record-presentation.test.mjs\nsynced 2588 changed 0 all source stats and manifest pins stable\n"
+    }
+  ],
+  "ownFirstGuardRefusal": {
+    "path": "/private/tmp/ohri-i60-final-preservation-20261005/bounded-adoption-peer-first-unique-stage-assumption.stderr.log",
+    "bytes": 89,
+    "sha256": "86206729f418acb8d5edc84a0878fbc0dbf6a00d2e4744952e10fdf28298730b",
+    "actualReason": "Reviewer incorrectly required every one of 2588 replay rows to have a unique physical path. Actual 2585 canonical unique + manifest + prior main capture is2587 unique paths; runtime is read twice.",
+    "notProductFailure": true,
+    "noSourcePinFailure": true,
+    "preservedUnchanged": true
+  },
+  "limitations": [
+    "This bounded peer consumes the parent actual parity receipt and binds its metadata; it does not rehash all root/stage sources.",
+    "The original independently sealed final preservation helper was separately executed after FINAL_READY.",
+    "Future generic reuse should guard exact intended unique membership before root adoption and compare fd/path metadata after reads against replacement races; actual current canonical membership is separately checked by the final helper."
+  ],
+  "scope": {
+    "rootWrites": 0,
+    "stageWrites": 0,
+    "allSourceHashReplayByBoundedPeer": false,
+    "browserActions": 0,
+    "networkCalls": 0
+  }
+}

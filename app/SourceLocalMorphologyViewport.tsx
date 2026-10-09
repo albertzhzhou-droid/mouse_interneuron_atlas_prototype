@@ -4,12 +4,19 @@ import { useEffect, useId, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import MorphologyNeuriteInspector, { type NeuriteInspectionController, type NeuriteInspectionSelection } from "./MorphologyNeuriteInspector";
+import MorphologySourceViewControls from "./MorphologySourceViewControls";
+import { appendMorphologyExportPng, assertMorphologyPngCurrent, morphologyPngCaptions } from "./morphology-png-export.js";
+import { encodeSourceViewPng } from "./source-view-png-raster.js";
+import { captureMorphologySourceView, validateMorphologySourceViewReplay, assertMorphologySourceViewSceneBounds, assertMorphologySourceViewAppliedPose, type MorphologySourceView, type MorphologySourceViewDocument } from "./morphology-source-view.js";
+import { readVerifiedUniverseGeometry, type UniverseRecord } from "./neuromorpho-universe-verification.js";
 import { attachSwcNeuriteInspection } from "./morphology-neurite-inspection.js";
 import {
   type MorphologyCensusRecord,
   type MorphologyGeometryPayload,
   MORPHOLOGY_TYPE_COLORS,
   morphologyHasDiameter,
+  loadVerifiedMorphologyGeometry,
+  type MorphologyComparisonRecord,
 } from "./morphology-census-data";
 import {
   computeMorphologyViewportScaleBar,
@@ -22,6 +29,7 @@ import {
   extractObservedTopologyLandmarks,
   createRadiusDerivedSurface,
 } from "./source-local-morphology-geometry.js";
+import { resolveMorphologyRenderMode } from "./morphology-render-mode.js";
 
 let viewportInstanceSequence = 0;
 
@@ -77,6 +85,10 @@ export default function SourceLocalMorphologyViewport({
   className = "",
   onScaleBarChange,
   onViewportBindingChange,
+  replayRecord,
+  onRestoreRequestedMode,
+  onFreshVerifiedGeometry,
+  onFreshVerificationStateChange,
 }: {
   record: MorphologyCensusRecord;
   geometry: MorphologyGeometryPayload;
@@ -84,6 +96,10 @@ export default function SourceLocalMorphologyViewport({
   className?: string;
   onScaleBarChange?: (receipt: MorphologyViewportScaleReceipt | null) => void;
   onViewportBindingChange?: (binding: MorphologyViewportRuntimeBinding | null) => void;
+  replayRecord?: MorphologyComparisonRecord | UniverseRecord;
+  onRestoreRequestedMode?: (mode: MorphologyRenderMode) => void;
+  onFreshVerifiedGeometry?: (geometry: MorphologyGeometryPayload) => void;
+  onFreshVerificationStateChange?: (state: "pending" | "verified" | "unavailable") => void;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const actionsRef = useRef<ViewportActions | null>(null);
@@ -98,10 +114,80 @@ export default function SourceLocalMorphologyViewport({
   const [webGLFailure, setWebGLFailure] = useState("");
   const [scaleBar, setScaleBar] = useState<MorphologyViewportScaleReceipt | null>(null);
   const [showTopologyLandmarks, setShowTopologyLandmarks] = useState(true);
-  const effectiveMode = mode === "radius" && morphologyHasDiameter(record) ? "radius" : "skeleton";
+  const sourceKey = `${record.neuronId}:${record.geometry.sha256}`;
+  const [freshGeometry, setFreshGeometry] = useState<{ sourceKey: string; geometry: MorphologyGeometryPayload } | null>(null);
+  const runtimeGeometry = freshGeometry?.sourceKey === sourceKey ? freshGeometry.geometry : geometry;
+  const [restoring, setRestoring] = useState(false);
+  const [restoreFailure, setRestoreFailure] = useState("");
+  const [viewSignature, setViewSignature] = useState("");
+  const viewMutationRevisionRef = useRef(0);
+  const captureRef = useRef<(() => MorphologySourceViewDocument) | null>(null);
+  const exportPngRef = useRef<((document: unknown) => Promise<{ blob: Blob; preview: string }>) | null>(null);
+  const refreshViewRef = useRef<(() => void) | null>(null);
+  const requestedModeRef = useRef(mode);
+  const restoreCallbacksRef = useRef({ onRestoreRequestedMode, onFreshVerifiedGeometry, onFreshVerificationStateChange });
+  const sourceKeyRef = useRef(sourceKey);
+  const restoreOperationRef = useRef(0);
+  const restoreAbortRef = useRef<AbortController | null>(null);
+  const pendingRestoreRef = useRef<{ operation: number; sourceKey: string; document: MorphologySourceViewDocument; resolve: () => void; reject: (reason: Error) => void } | null>(null);
+  const effectiveMode = resolveMorphologyRenderMode(record.normalizedMetadata, mode);
   const isTwoDimensional = record.normalizedMetadata.dimensionality === "2D";
   const sourceRadiusAvailable = morphologyHasDiameter(record);
-  const topologyLandmarks = extractObservedTopologyLandmarks(geometry);
+  const topologyLandmarks = extractObservedTopologyLandmarks(runtimeGeometry);
+
+  useEffect(() => {
+    requestedModeRef.current = mode;
+    refreshViewRef.current?.();
+  }, [mode]);
+  useEffect(() => { restoreCallbacksRef.current = { onRestoreRequestedMode, onFreshVerifiedGeometry, onFreshVerificationStateChange }; }, [onRestoreRequestedMode, onFreshVerifiedGeometry, onFreshVerificationStateChange]);
+  useEffect(() => {
+    sourceKeyRef.current = sourceKey;
+    return () => {
+      restoreOperationRef.current += 1;
+      restoreAbortRef.current?.abort();
+      pendingRestoreRef.current?.reject(new Error("The source changed or the viewport closed before restoration completed."));
+      pendingRestoreRef.current = null;
+    };
+  }, [sourceKey]);
+
+  const restoreSourceView = async (document: unknown) => {
+    if (!replayRecord) throw new Error("Source-view restoration is unavailable for this record.");
+    validateMorphologySourceViewReplay(replayRecord, runtimeGeometry, document, THREE.REVISION);
+    const saved = document as MorphologySourceViewDocument;
+    restoreAbortRef.current?.abort();
+    pendingRestoreRef.current?.reject(new Error("A newer source-view restoration replaced this request."));
+    pendingRestoreRef.current = null;
+    const operation = ++restoreOperationRef.current, abort = new AbortController();
+    restoreAbortRef.current = abort;
+    setRestoring(true); setRestoreFailure(""); setViewSignature("");
+    captureRef.current = null; exportPngRef.current = null;
+    scaleCallbackRef.current?.(null); bindingCallbackRef.current?.(null);
+    restoreCallbacksRef.current.onFreshVerificationStateChange?.("pending");
+    let bytesVerified = false;
+    try {
+      const fresh = "sourceObject" in replayRecord
+        ? await readVerifiedUniverseGeometry(replayRecord, { forceReload: true, signal: abort.signal })
+        : await loadVerifiedMorphologyGeometry(replayRecord, { forceReload: true, signal: abort.signal });
+      if (abort.signal.aborted || operation !== restoreOperationRef.current || sourceKey !== sourceKeyRef.current) throw new Error("The source changed before fresh verification completed.");
+      bytesVerified = true;
+      restoreCallbacksRef.current.onFreshVerificationStateChange?.("verified");
+      validateMorphologySourceViewReplay(replayRecord, fresh, saved, THREE.REVISION);
+      const applied = new Promise<void>((resolve, reject) => { pendingRestoreRef.current = { operation, sourceKey, document: saved, resolve, reject }; });
+      restoreCallbacksRef.current.onFreshVerifiedGeometry?.(fresh);
+      setFreshGeometry({ sourceKey, geometry: fresh });
+      setShowTopologyLandmarks(saved.view.layers.topologyLandmarksVisible);
+      restoreCallbacksRef.current.onRestoreRequestedMode?.(saved.view.requestedMode);
+      setRestoring(false);
+      await applied;
+    } catch (error) {
+      if (operation === restoreOperationRef.current && sourceKey === sourceKeyRef.current) {
+        pendingRestoreRef.current = null; setRestoring(false);
+        if (!bytesVerified) restoreCallbacksRef.current.onFreshVerificationStateChange?.("unavailable");
+        setRestoreFailure(error instanceof Error ? error.message : "The exact source could not be restored.");
+      }
+      throw error;
+    }
+  };
 
   useEffect(() => {
     scaleCallbackRef.current = onScaleBarChange;
@@ -114,6 +200,12 @@ export default function SourceLocalMorphologyViewport({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    if (restoring || restoreFailure) {
+      actionsRef.current = null; captureRef.current = null; exportPngRef.current = null; refreshViewRef.current = null;
+      scaleCallbackRef.current?.(null); bindingCallbackRef.current?.(null);
+      return;
+    }
+    const geometry = runtimeGeometry;
     let active = true;
     if (!viewportInstanceIdRef.current) {
       viewportInstanceIdRef.current = `source-local-runtime-${++viewportInstanceSequence}`;
@@ -128,6 +220,12 @@ export default function SourceLocalMorphologyViewport({
       viewportRevision,
     });
     const publishBinding = () => bindingCallbackRef.current?.(runtimeBinding());
+    const failScene = (message: string) => {
+      captureRef.current = null; exportPngRef.current = null; refreshViewRef.current = null; setViewSignature("");
+      bindingCallbackRef.current?.(null);
+      pendingRestoreRef.current?.reject(new Error(message)); pendingRestoreRef.current = null;
+      setWebGLFailure(message);
+    };
     const clearScale = () => {
       if (!active) return;
       setScaleBar((current) => current === null ? current : null);
@@ -138,7 +236,7 @@ export default function SourceLocalMorphologyViewport({
     if (!probe.getContext("webgl2")) {
       queueMicrotask(() => {
         clearScale();
-        setWebGLFailure("WebGL2 is unavailable; exact metadata and 2D source projections remain available.");
+        failScene("WebGL2 is unavailable; exact metadata and 2D source projections remain available.");
       });
       return () => { active = false; };
     }
@@ -148,7 +246,7 @@ export default function SourceLocalMorphologyViewport({
     } catch {
       queueMicrotask(() => {
         clearScale();
-        setWebGLFailure("The 3D renderer could not be initialized; no substitute geometry was rendered.");
+        failScene("The 3D renderer could not be initialized; no substitute geometry was rendered.");
       });
       return () => { active = false; };
     }
@@ -258,6 +356,7 @@ export default function SourceLocalMorphologyViewport({
         };
         setScaleBar((current) => sameScaleReceipt(current, next) ? current : next);
         scaleCallbackRef.current?.(next);
+        refreshViewRef.current?.();
       } catch {
         clearScale();
       }
@@ -312,10 +411,55 @@ export default function SourceLocalMorphologyViewport({
       onSelection: (selection: NeuriteInspectionSelection | null) => {
         inspectionSelectionRef.current = selection;
         setInspectionSelection(selection);
+        refreshViewRef.current?.();
       },
       onCameraChange: () => { userAdjustedCamera = true; updateScale(); },
     });
     inspectionRef.current = inspection;
+    const describeView = (): MorphologySourceView => {
+      const selection = inspectionSelectionRef.current;
+      const context = renderer.getContext().getContextAttributes();
+      const drawingBuffer = renderer.getDrawingBufferSize(new THREE.Vector2());
+      return {
+        status: "rendered",
+        runtimeBinding: { neuronId: record.neuronId, geometrySha256: record.geometry.sha256 ?? "", viewportInstanceId, viewportRevision },
+        requestedMode: requestedModeRef.current, actualMode: effectiveMode, sourcePlaneLocked: isTwoDimensional,
+        camera: { kind: "PerspectiveCamera", position: camera.position.toArray(), target: controls.target.toArray(), up: camera.up.toArray(), quaternion: camera.quaternion.toArray(),
+          fov: camera.fov, zoom: camera.zoom, aspect: camera.aspect, near: camera.near, far: camera.far, filmGauge: camera.filmGauge, filmOffset: camera.filmOffset },
+        viewport: { cssWidth: container.clientWidth, cssHeight: container.clientHeight, drawingBufferWidth: drawingBuffer.x, drawingBufferHeight: drawingBuffer.y, pixelRatio: renderer.getPixelRatio() },
+        renderer: { engine: "THREE", revision: THREE.REVISION, type: "WebGLRenderer", outputColorSpace: renderer.outputColorSpace, toneMapping: renderer.toneMapping, alpha: context?.alpha === true, antialias: context?.antialias === true },
+        clipping: { globalPlanes: renderer.clippingPlanes.map(plane => ({ normal: plane.normal.toArray(), constant: plane.constant })), localClippingEnabled: renderer.localClippingEnabled },
+        layers: { sourceGeometryVisible: root.visible, centerlinesVisible: root.visible, radiusSurfaceVisible: root.visible && effectiveMode === "radius", topologyLandmarksVisible: showTopologyLandmarks, sourceAxesVisible: axes.visible },
+        inspection: { selectedNodeId: selection?.geometryIdentity === geometry ? selection.nodeId : null, contextDimmed: selection?.geometryIdentity === geometry ? selection.dimmed : false, overlayAuthority: "exact_swc_parent_path_and_descendant_edges" },
+        sceneBounds: { center: boundsSphere.center.toArray(), radius }, displayTransform: geometry.displayTransform,
+      };
+    };
+    let lastViewValue = "";
+    refreshViewRef.current = () => {
+      if (!active || !replayRecord || lastWidth === 0 || lastHeight === 0) return;
+      const view = describeView();
+      const value = JSON.stringify(view);
+      if (value === lastViewValue) return;
+      lastViewValue = value;
+      setViewSignature(`${++viewMutationRevisionRef.current}:${value}`);
+    };
+    captureRef.current = replayRecord ? () => {
+      if (!active || renderer.getContext().isContextLost() || lastWidth === 0 || lastHeight === 0) throw new Error("The current source viewport is unavailable.");
+      updateClippingPlanes(); renderer.render(scene, camera);
+      return captureMorphologySourceView(replayRecord, geometry, describeView(), THREE.REVISION);
+    } : null;
+    const capturePngView = captureRef.current;
+    exportPngRef.current = capturePngView ? async document => {
+      const options = { profile: "source_local" as const, record: replayRecord!, geometry, rendererRevision: THREE.REVISION };
+      const saved = structuredClone(document);
+      const captions = morphologyPngCaptions(saved, options);
+      const assertCurrent = () => {
+        if (!active || captureRef.current !== capturePngView || renderer.getContext().isContextLost()) throw new Error("The source viewport changed before PNG export completed.");
+        assertMorphologyPngCurrent(saved, capturePngView());
+      };
+      return encodeSourceViewPng(renderer.domElement, captions, { pixelRatio: renderer.getPixelRatio(), assertCurrent,
+        appendReceipt: blob => appendMorphologyExportPng(blob, saved, options) });
+    } : null;
     // Retain a selection across display-mode changes, never across source geometry.
     const retainedInspection = inspectionSelectionRef.current;
     queueMicrotask(() => {
@@ -342,6 +486,34 @@ export default function SourceLocalMorphologyViewport({
         camera.updateProjectionMatrix();
         if (!userAdjustedCamera) fitCamera();
         else updateScale();
+        const pending = pendingRestoreRef.current;
+        if (pending && pending.sourceKey === sourceKey && pending.operation === restoreOperationRef.current && replayRecord) {
+          try {
+            const saved = validateMorphologySourceViewReplay(replayRecord, geometry, pending.document, THREE.REVISION);
+            assertMorphologySourceViewSceneBounds(pending.document, { center: boundsSphere.center.toArray(), radius });
+            const damping = controls.enableDamping; controls.enableDamping = false;
+            controls.update();
+            camera.position.fromArray(saved.camera.position); camera.up.fromArray(saved.camera.up);
+            controls.target.fromArray(saved.camera.target);
+            camera.fov = saved.camera.fov; camera.zoom = saved.camera.zoom;
+            camera.filmGauge = saved.camera.filmGauge; camera.filmOffset = saved.camera.filmOffset;
+            camera.aspect = width / height;
+            controls.update(); camera.lookAt(controls.target);
+            controls.enableDamping = damping;
+            camera.updateProjectionMatrix(); userAdjustedCamera = true;
+            if (saved.inspection.selectedNodeId === null) inspection.clear();
+            else inspection.restore({ geometryIdentity: geometry, nodeId: saved.inspection.selectedNodeId, dimmed: saved.inspection.contextDimmed });
+            updateScale(); renderer.render(scene, camera);
+            const applied = captureMorphologySourceView(replayRecord, geometry, describeView(), THREE.REVISION);
+            assertMorphologySourceViewAppliedPose(pending.document, applied.view);
+            pendingRestoreRef.current = null; pending.resolve();
+          } catch (error) {
+            pendingRestoreRef.current = null;
+            pending.reject(error instanceof Error ? error : new Error("The source view could not be applied to the rebuilt scene."));
+          }
+        }
+        renderer.render(scene, camera);
+        refreshViewRef.current?.();
       });
     };
     resize();
@@ -359,13 +531,15 @@ export default function SourceLocalMorphologyViewport({
     const onContextLost = (event: Event) => {
       event.preventDefault();
       clearScale();
-      setWebGLFailure("The WebGL context was lost; no substitute geometry was rendered.");
+      failScene("The WebGL context was lost; no substitute geometry was rendered.");
     };
     renderer.domElement.addEventListener("webglcontextlost", onContextLost);
 
     return () => {
       active = false;
       actionsRef.current = null;
+      captureRef.current = null; exportPngRef.current = null; refreshViewRef.current = null;
+      setViewSignature("");
       scaleCallbackRef.current?.(null);
       bindingCallbackRef.current?.(null);
       cancelAnimationFrame(animationFrame);
@@ -390,11 +564,11 @@ export default function SourceLocalMorphologyViewport({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [descriptionId, effectiveMode, geometry, isTwoDimensional, record.geometry.sha256, record.neuronId, record.normalizedMetadata.dimensionality, showTopologyLandmarks, sourceRadiusAvailable]);
+  }, [descriptionId, effectiveMode, runtimeGeometry, isTwoDimensional, record.geometry.sha256, record.neuronId, record.normalizedMetadata.dimensionality, showTopologyLandmarks, sourceRadiusAvailable, restoring, restoreFailure, replayRecord, sourceKey]);
 
   return (
-    <div className={`morphology-source-local-viewport ${className}`} ref={containerRef}>
-      {!webGLFailure && <MorphologyNeuriteInspector controllerRef={inspectionRef} selection={inspectionSelection} geometry={geometry}
+    <><div className={`morphology-source-local-viewport ${className}`} ref={containerRef}>
+      {!webGLFailure && !restoring && !restoreFailure && <MorphologyNeuriteInspector controllerRef={inspectionRef} selection={inspectionSelection} geometry={runtimeGeometry}
         branchpointCount={topologyLandmarks.branchpoints.length} terminalCount={topologyLandmarks.terminals.length} />}
       <div className="morphology-viewport-controls" aria-label={`View controls for NeuroMorpho ${record.neuronId}`}>
         <button type="button" onClick={() => actionsRef.current?.zoomIn()}>Zoom in</button>
@@ -410,7 +584,7 @@ export default function SourceLocalMorphologyViewport({
         <small>Exact SWC parent-link derivatives · root is not a soma contour · terminals are not boutons</small>
       </div>
       <p className="morphology-source-axes-label">SOURCE AXES · NOT ANATOMICAL AXES</p>
-      {scaleBar && !webGLFailure && (
+      {scaleBar && !webGLFailure && !restoring && !restoreFailure && (
         <div className="morphology-source-scale" role="note" aria-label={`${formatMorphologyScaleLength(scaleBar.lengthMicrometre)} in source coordinates at the camera target plane; not a shared scale`}>
           <b>{formatMorphologyScaleLength(scaleBar.lengthMicrometre)}</b>
           <i style={{ width: `${scaleBar.pixelLength}px` }} />
@@ -424,6 +598,12 @@ export default function SourceLocalMorphologyViewport({
         {" "}SWC local axes are not anatomical axes. This viewport has no shared scale or atlas registration.
       </p>
       {webGLFailure && <p className="morphology-viewport-failure" role="status">{webGLFailure}</p>}
+      {restoring && <p className="morphology-viewport-failure" role="status">Rechecking this exact source file…</p>}
+      {restoreFailure && <p className="morphology-viewport-failure" role="alert">{restoreFailure}</p>}
     </div>
+    {replayRecord && <MorphologySourceViewControls neuronId={record.neuronId} signature={viewSignature} available={Boolean(viewSignature) && !restoring && !restoreFailure && !webGLFailure} restoring={restoring}
+      capture={() => { if (!captureRef.current) throw new Error("The source view is not ready."); return captureRef.current(); }} restore={restoreSourceView}
+      pngFilename={`neuromorpho-${record.neuronId}-${"sourceObject" in replayRecord ? "universe" : "comparison"}-source-view.png`} exportPng={document => { if (!exportPngRef.current) throw new Error("The current source viewport is unavailable."); return exportPngRef.current(document); }} />}
+    </>
   );
 }

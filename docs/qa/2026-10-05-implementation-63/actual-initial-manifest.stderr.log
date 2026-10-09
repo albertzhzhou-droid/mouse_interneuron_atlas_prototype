@@ -1,0 +1,21 @@
+node:fs:732
+  return binding.read(fd, buffer, offset, length, position);
+                 ^
+
+Error: ETIMEDOUT: connection timed out, read
+    at Object.readSync (node:fs:732:18)
+    at tryReadSync (node:fs:412:20)
+    at readFileSync (node:fs:458:19)
+    at getSourceSync (node:internal/modules/esm/load:37:14)
+    at defaultLoadSync (node:internal/modules/esm/load:153:34)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:779:12)
+    at #loadSync (node:internal/modules/esm/loader:799:49)
+    at ModuleLoader.load (node:internal/modules/esm/loader:765:26)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:507:31)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:558:36) {
+  errno: -60,
+  code: 'ETIMEDOUT',
+  syscall: 'read'
+}
+
+Node.js v26.0.0

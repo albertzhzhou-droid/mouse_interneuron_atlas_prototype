@@ -1,0 +1,21 @@
+.dandi-trace-preview { color:#25333a; background:#fafbfc; border:1px solid #cbd4d9; border-radius:12px; padding:1rem; margin:1rem 0; min-width:0; }
+.dandi-trace-preview p,.dandi-trace-preview dd { overflow-wrap:anywhere; line-height:1.5; }
+.dandi-trace-context { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; }
+.dandi-trace-context div { padding:.5rem; border:1px solid #d7e0e4; border-radius:8px; }
+.dandi-trace-context dt { font-weight:700; }.dandi-trace-context dd { margin:.25rem 0 0; }
+.dandi-trace-calibration { border-left:3px solid #a57429; padding:.7rem; background:#fff3da; }
+.dandi-trace-controls { display:flex; flex-wrap:wrap; align-items:end; gap:.6rem; margin:.8rem 0; }
+.dandi-trace-preview label { display:block; min-width:0; max-width:100%; }
+.dandi-trace-preview select,.dandi-trace-preview button { min-height:44px; max-width:100%; padding:.55rem; color:inherit; border:1px solid #aebdc6; border-radius:6px; background:white; }
+.dandi-trace-preview input[type=range] { min-height:44px; width:100%; display:block; }
+.dandi-trace-preview input[type=number] { box-sizing:border-box; min-height:44px; padding:.55rem; max-width:100%; width:100%; border:1px solid #aebdc6; border-radius:6px; background:white; color:inherit; }
+.dandi-trace-controls a { display:inline-flex; align-items:center; min-height:44px; overflow-wrap:anywhere; }
+.dandi-trace-preview button:disabled { opacity:.5; }.dandi-trace-preview :focus-visible { outline:3px solid #337bb4; outline-offset:2px; }
+.dandi-trace-plot svg { display:block; width:100%; height:auto; }.dandi-trace-plot polyline { fill:none; stroke:#15775c; stroke-width:.8; }
+.dandi-trace-plot text { fill:#25333a; font-size:13px; }.dandi-trace-plot .trace-grid { stroke:#dce5e8; stroke-width:1; }.dandi-trace-plot .trace-cursor { stroke:#a65a24; stroke-width:1; }
+.dandi-trace-preview table { width:100%; border-collapse:collapse; font-size:.88rem; }.dandi-trace-preview th,.dandi-trace-preview td { padding:.4rem; text-align:left; border-bottom:1px solid #d8e0e4; }
+.dandi-trace-electrodes { overflow-x:auto; max-width:100%; }.dandi-trace-electrodes td { overflow-wrap:anywhere; }
+.dandi-trace-preview details { border:1px solid #d8e0e4; border-radius:8px; margin:.8rem 0; padding:.6rem; min-width:0; }
+.dandi-trace-preview summary { cursor:pointer; font-weight:700; min-height:44px; display:list-item; }
+.dandi-trace-preview textarea { box-sizing:border-box; display:block; width:100%; max-width:100%; margin:.4rem 0; font:12px/1.5 ui-monospace,monospace; overflow-wrap:anywhere; white-space:pre-wrap; }
+@media(max-width:600px) { .dandi-trace-context { grid-template-columns:minmax(0,1fr); }.dandi-trace-preview { padding:.7rem; }.dandi-trace-controls label { width:100%; }.dandi-trace-controls select { width:100%; } }

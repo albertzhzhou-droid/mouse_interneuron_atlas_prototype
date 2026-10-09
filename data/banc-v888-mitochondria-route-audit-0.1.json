@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "banc-v888-mitochondria-route-audit-0.1.0",
+  "auditDate": "2026-09-23",
+  "authority": "SOURCE_OBJECT_AND_ACCESS_ROUTE_AUDIT",
+  "relationshipToMouseAtlas": "comparative_reference_only",
+  "source": {
+    "articleDoi": "10.1038/s41586-026-10735-w",
+    "dataLocationsUrl": "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md",
+    "dataverseDoi": "10.7910/DVN/7WTH1N",
+    "dataverseVersion": 3,
+    "dataverseLicense": "CC BY 4.0",
+    "mitochondriaTable": {
+      "fileId": 13917846,
+      "filename": "banc_888_mitochondria_v1_human_readable.csv.gz",
+      "bytes": 1107598431,
+      "md5": "2e3be9c0d063969ae019121117007e9a",
+      "restricted": false,
+      "sourceMapSemantics": "per-mitochondrion CAVE annotation table with v888 root IDs",
+      "candidateRowsRetrieved": false,
+      "candidatePayloadRetained": false
+    },
+    "separateSegmentationProductStatus": "MISSING",
+    "separateSegmentationProductMeaning": "The source map's detected-mitochondria segmentation product is distinct from the listed per-mitochondrion annotation table."
+  },
+  "queryRoute": {
+    "packageName": "bancr",
+    "functionName": "banc_mitochondria",
+    "rootFilteredQuerySupported": true,
+    "rootFilterField": "pt_root_id",
+    "implementationUrl": "https://github.com/natverse/bancr/blob/main/R/cave-tables.R",
+    "clientSetupCheck": "fafbseg:::check_cave()",
+    "configuredCaveClientRequiredByDocumentedImplementation": true,
+    "credentialsInspectedOrUsed": false,
+    "queryExecuted": false,
+    "reasonNotExecuted": "No configured CAVE client was used. The alternative archive is a 1,107,598,431-byte compressed table, so a whole-table download is not a substitute for a bounded root-filtered request."
+  },
+  "candidate": {
+    "rootId": "720575941350424112",
+    "materializationId": "v888",
+    "cellType": "IN14A018",
+    "cellSubClass": "ventral_nerve_cord_contralateral_restricted",
+    "region": "ventral_nerve_cord",
+    "flow": "intrinsic",
+    "proofread": true,
+    "metadataRowCountByRootId": 1,
+    "rootIdStableAcrossMaterializations626850888890": true,
+    "species": "Drosophila melanogaster",
+    "mouseInterneuronJoin": false,
+    "mitochondriaCountMetric": {
+      "value": 31,
+      "source": "pinned Dataverse v3 per-neuron metadata row",
+      "interpretation": "source-reported count metric only",
+      "perMitochondrionAnnotationRowsRetrieved": false,
+      "positionsVerified": false
+    }
+  },
+  "representation": {
+    "eligibleForObjectLevelInternalRendering": false,
+    "perMitochondrionRowsAdmitted": 0,
+    "mitochondriaPointMarkersAdmitted": 0,
+    "mitochondriaSurfacesAdmitted": 0,
+    "cellSurfaceAdmitted": false,
+    "sameCellObjectJoinCount": 0,
+    "mouseCellJoinCount": 0,
+    "registrationCount": 0,
+    "displayBoundary": "The exact candidate has a source-reported count of 31 mitochondria. This is not 31 spatially located objects and must not be represented by placeholder points, surfaces, or geometry attached to a selected mouse cell."
+  },
+  "nextGates": [
+    "Use only a documented, authorized root-filtered v888 mitochondria_v1 query or an exact versioned public subset; do not retrieve the entire 1.1 GB compressed table as a convenience substitute.",
+    "Pin the returned table schema, row IDs, exact pt_root_id, materialization, bytes, checksum, coordinate field, units, and object-level reuse terms.",
+    "Validate every returned mitochondrion coordinate in BANC native space against the exact v888 candidate skeleton or a separately admitted v888 cell boundary; never use the mutable, pre-v888 mesh fragments as the spatial validator.",
+    "If only centroid coordinates are available, render explicitly labeled source points, not organelle surfaces; do not infer membranes or volume from points.",
+    "Keep all BANC geometry and metrics in a separate adult-fly comparison lane with no mouse homolog, selected-cell identity, or spinal registration."
+  ],
+  "hardBoundaries": [
+    "The 31-count metric is a candidate-specific metadata value, not an interneuron denominator, a count of independent cells, or an organelle mesh count verified against returned annotation rows.",
+    "A listed per-mitochondrion annotation table does not contradict the separate detected-mitochondria segmentation product marked MISSING.",
+    "No CAVE token or private user credential was read, requested, or used for this audit.",
+    "The adult Drosophila candidate is not mouse spinal anatomy and is not a vertebrate homolog claim."
+  ]
+}

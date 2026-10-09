@@ -1,0 +1,23 @@
+import {openSync,fstatSync,readSync,closeSync,readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';import{createRequire}from'node:module';import assert from'node:assert/strict';
+const root='/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype',temp='/private/tmp/ohri-i22-local-verification',qa=root+'/docs/qa/2026-10-02-implementation-39/';
+const metadataJitter=[];
+function read(path,recheck=true){const fd=openSync(path,'r');try{const first=fstatSync(fd,{bigint:true});assert.ok(first.isFile());assert.ok(first.size<=BigInt(Number.MAX_SAFE_INTEGER));const b=Buffer.alloc(Number(first.size));for(let at=0;at<b.length;){const n=readSync(fd,b,at,Math.min(4096,b.length-at),at);assert.ok(n,path);at+=n;}const last=fstatSync(fd,{bigint:true});assert.equal(last.size,first.size,path);assert.equal(last.ino,first.ino,path);assert.equal(last.dev,first.dev,path);if(recheck&&last.mtimeNs!==first.mtimeNs){const again=read(path,false);assert.deepEqual(b,again,path);metadataJitter.push({path,firstMtimeNs:String(first.mtimeNs),lastMtimeNs:String(last.mtimeNs),differenceNs:String(last.mtimeNs-first.mtimeNs),secondIndependentByteReadEqual:true});}return b;}finally{closeSync(fd);}}
+const sha=(b,a='sha256')=>createHash(a).update(b).digest('hex'),json=p=>JSON.parse(read(p));
+const bytes=read(root+'/data/research-iteration-manifest-2.91.json'),manifest=JSON.parse(bytes),before=json(qa+'before-authoritative-inputs.json'),owned=json(qa+'before-owned-inputs.json'),allow=new Set(owned.map(x=>x.path));
+const pins=new Map(manifest.authoritativeInputs.map(x=>[x.path,x]));let checked=0,preserved=0;
+for(const x of manifest.authoritativeInputs){
+ for(const dir of[root,temp]){const b=read(dir+'/'+x.path);assert.equal(b.length,x.bytes,x.path);assert.equal(sha(b),x.sha256,x.path);}
+ checked++;if(checked%100===0)console.log('Current input pairs checked:',checked);
+}
+for(const x of before){assert.ok(pins.has(x.path),x.path);if(!allow.has(x.path)){assert.equal(pins.get(x.path).sha256,x.sha256,x.path);assert.equal(pins.get(x.path).bytes,x.bytes,x.path);preserved++;}}
+const {unzipSync}=createRequire(temp+'/package.json')('fflate'),zip=unzipSync(read(qa+'owned-before.zip'));
+for(const x of owned){assert.equal(zip[x.path].length,x.bytes);assert.equal(sha(zip[x.path]),x.sha256);assert.equal(x.capturedBeforeEdit,true);}
+assert.deepEqual(bytes,read(temp+'/data/research-iteration-manifest-2.91.json'));
+const current=json(root+'/data/svara-synaptic-contacts-0.1.json');let originals=0;
+for(const g of current.groups)for(const x of[g.matrixSource,g.contactsSource])for(const dir of[root,temp]){const b=read(dir+'/data/source-candidates/svara-contacts-20261002/'+x.name);assert.equal(b.length,x.bytes);assert.equal(sha(b),x.sha256);assert.equal(sha(b,'md5'),x.md5);originals++;}
+const aggregate=json(root+'/data/source-candidates/freidok-145135-20261002/ScienceDirect_files_19May2021_13-55-38.781.zip.receipt.json');
+const wrapper=read(root+'/data/source-candidates/freidok-145135-20261002/ScienceDirect_files_19May2021_13-55-38.781.zip');assert.equal(wrapper.length,33959844);assert.equal(sha(wrapper),'23194b4d91a0a45757b3bc1c0bdd2c39b54a4f0d9356638d9f76d02ac5edf245');assert.equal(sha(wrapper,'md5'),'6120a2d0d7411aa08ea5f6434a5bb9e3');
+const prior=new Set(before.map(x=>x.path));const result={authoritativeInputs:checked,workspaceAndTempInputMismatches:0,priorUnownedInputsPreserved:preserved,priorUnownedDrift:0,ownedPreimagesVerified:owned.length,allPreimagesCapturedBeforeEdit:true,manifestSha256:sha(bytes),retainedOriginalWorkbookCopiesVerified:originals,aggregateBytes:wrapper.length,aggregateSha256:sha(wrapper),addedManifestPaths:[...pins.keys()].filter(x=>!prior.has(x)),removedManifestPaths:[],statTimestampVariationObservations:metadataJitter,statTimestampVariationByteMismatches:0,reader:'Synchronous exact-size 4096-byte explicit positional reads; BigInt fstat size/device/inode before/after. Every timestamp difference triggers a second independent byte read, both still checked against pinned bytes/SHA. Earlier mtimeMs/mtimeNs equality failures are retained and not counted as pass; timestamp preservation is not claimed.'};
+assert.equal(checked,2290);assert.equal(preserved,2274);assert.equal(originals,8);assert.equal(result.addedManifestPaths.length,10);assert.equal(owned.length,7);
+writeFileSync(qa+'final-input-replay.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

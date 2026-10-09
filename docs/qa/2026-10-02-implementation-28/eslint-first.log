@@ -1,0 +1,17 @@
+
+/private/tmp/ohri-i22-local-verification/app/ComparativeSwcReferenceWorkbench.tsx
+  98:17  error  Error: This value cannot be modified
+
+Modifying a value previously passed as an argument to a hook is not allowed. Consider moving the modification before calling the hook.
+
+/private/tmp/ohri-i22-local-verification/app/ComparativeSwcReferenceWorkbench.tsx:98:17
+   96 |   const reloadSource = (resume:boolean) => {
+   97 |     const nextRevision=revision+1, pending=resume?pendingRestore.current:null;
+>  98 |     if(pending){pending.revision=nextRevision;setRestorePlan({revision:nextRevision,view:pending.document.view});}else{pendingRestore.current=null;setRestorePlan(null);}
+      |                 ^^^^^^^ `pendingRestore` cannot be modified
+   99 |     loadedPayload.current=null;actual.current=null;invalidateCapture();setView(null);setRestoring(Boolean(pending));setRevision(nextRevision);setReceiptStatus("");
+  100 |   };
+  101 |   const exportPng = async () => {  react-hooks/immutability
+
+✖ 1 problem (1 error, 0 warnings)
+

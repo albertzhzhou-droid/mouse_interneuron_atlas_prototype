@@ -1,0 +1,172 @@
+{
+  "releaseId": "ohri-tabulae-paralytica-condition-catalog-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogDate": "2026-08-18",
+  "sourceId": "PDS-TABULAE-PARALYTICA",
+  "authority": "SOURCE_METADATA_CONDITION_INDEX_ONLY",
+  "admissionDecision": "metadata_only_not_downloaded_not_bundled_not_registered",
+  "purpose": "Expose the condition labels visible in the two public GEO series records without acquiring a source-file body, inferring an individual-cell state, or mixing sample, spot and cell levels.",
+  "sources": [
+    {
+      "accession": "GSE234774",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234774",
+      "method": "10x single-nucleus RNA sequencing and Visium spatial transcriptomics",
+      "sourceScope": "77 mid-thoracic mouse spinal-cord samples across series-record condition labels.",
+      "bodyBundled": false,
+      "processedMetadataBundled": false,
+      "localFileHash": null
+    },
+    {
+      "accession": "GSE230765",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE230765",
+      "method": "10x single-nucleus Multiome ATAC plus Gene Expression",
+      "sourceScope": "16 mid-thoracic mouse spinal-cord RNA and ATAC series-record samples at uninjured, D7 and 2M labels.",
+      "bodyBundled": false,
+      "processedMetadataBundled": false,
+      "localFileHash": null
+    }
+  ],
+  "conditions": [
+    {
+      "id": "TPC-001",
+      "family": "baseline",
+      "title": "Uninjured source-label group",
+      "accession": "GSE234774",
+      "sourceModality": "single-nucleus RNA sequencing",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series sample labels only",
+      "sourceSampleLabels": ["uninjured_2", "uninjured_3", "uninjured_10"],
+      "conditionAxes": [
+        {"name": "injury status", "sourceValues": ["uninjured"], "interpretationBoundary": "A source sample group is not an individual cell population or a whole-spinal-cord baseline."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists three single-nucleus RNA-sequencing samples labelled uninjured from mid-thoracic mouse spinal cord.",
+      "notEstablished": "No cell identity, sex, exact age, lesion-equivalent comparator, coordinate, effect size or project-space registration is established here.",
+      "nextGate": "Review the processed metadata object and its terms before any record-level or count-level adapter is proposed."
+    },
+    {
+      "id": "TPC-002",
+      "family": "injury_timecourse",
+      "title": "Post-SCI source-label time-course groups",
+      "accession": "GSE234774",
+      "sourceModality": "single-nucleus RNA sequencing",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series sample labels only",
+      "sourceSampleLabels": ["timecourse_1d_2", "timecourse_1d_3", "timecourse_1d_8", "timecourse_4d_5", "timecourse_4d_6", "timecourse_4d_8", "timecourse_7d_4", "timecourse_7d_9", "timecourse_14d_8", "timecourse_14d_9", "timecourse_14d_10", "timecourse_1m_5", "timecourse_1m_9", "timecourse_1m_10", "timecourse_2m_2", "timecourse_2m_3", "timecourse_2m_9", "timecourse_OLD_1", "timecourse_OLD_2", "timecourse_OLD_3"],
+      "conditionAxes": [
+        {"name": "time after SCI", "sourceValues": ["1d", "4d", "7d", "14d", "1m", "2m", "OLD"], "interpretationBoundary": "The literal series labels are retained; OLD is not converted to a numeric timepoint or age definition."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists post-SCI time-course-labelled single-nucleus RNA-sequencing sample groups at the displayed literal labels.",
+      "notEstablished": "The index does not identify compatible injury model, severity, sex, cell state, individual cell trajectory, causal change or a shared coordinate frame across these groups.",
+      "nextGate": "Require sample-level metadata and a prespecified compatible-comparison rule before any numerical analysis or displayed contrast."
+    },
+    {
+      "id": "TPC-003",
+      "family": "injury_mechanism",
+      "title": "Injury-mechanism source-label groups",
+      "accession": "GSE234774",
+      "sourceModality": "single-nucleus RNA sequencing",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series sample labels only",
+      "sourceSampleLabels": ["mechanism_contusion_1", "mechanism_contusion_2", "mechanism_contusion_4", "mechanism_hemi_1", "mechanism_hemi_2", "mechanism_hemi_3"],
+      "conditionAxes": [
+        {"name": "injury model", "sourceValues": ["contusion", "hemi"], "interpretationBoundary": "The hemi label is retained exactly as supplied and is not expanded into an unverified surgical protocol."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists single-nucleus RNA-sequencing samples with contusion and hemi mechanism labels.",
+      "notEstablished": "A shared lesion geometry, severity, timing, cell composition, functional outcome, causal effect or mapping to a current atlas entity is not established.",
+      "nextGate": "Pin the sample metadata fields and define a model-stratified comparison protocol before any model contrast is calculated."
+    },
+    {
+      "id": "TPC-004",
+      "family": "injury_severity",
+      "title": "Severity source-label groups",
+      "accession": "GSE234774",
+      "sourceModality": "single-nucleus RNA sequencing",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series sample labels only",
+      "sourceSampleLabels": ["severity_0_2", "severity_0_3", "severity_0_5", "severity_0_25_2", "severity_0_25_3", "severity_0_25_4", "severity_1_1", "severity_1_2", "severity_1_4"],
+      "conditionAxes": [
+        {"name": "severity source label", "sourceValues": ["0", "0.25", "0.3", "0.5", "1"], "interpretationBoundary": "These are literal source labels, not inferred force, displacement, tissue-sparing percentage or clinical severity units."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists single-nucleus RNA-sequencing samples with the displayed severity source labels.",
+      "notEstablished": "The physical meaning, ranking comparability, model context, cell-level response, causal dose relation or relevance to another injury system is not established.",
+      "nextGate": "Obtain the source protocol and metadata definitions before translating any severity label into a measurement or ordered analysis."
+    },
+    {
+      "id": "TPC-005",
+      "family": "sex_label",
+      "title": "Male sex-label source group",
+      "accession": "GSE234774",
+      "sourceModality": "single-nucleus RNA sequencing",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series sample labels only",
+      "sourceSampleLabels": ["sex_male_11", "sex_male_13", "sex_male_20"],
+      "conditionAxes": [
+        {"name": "sex source label", "sourceValues": ["male"], "interpretationBoundary": "The index records only the visible male-labelled group; it does not create a sex comparison or infer unlisted counterpart samples."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists three single-nucleus RNA-sequencing samples with a male source label.",
+      "notEstablished": "No female comparator, sex effect, sex-by-injury interaction, cell-level identity or generalization across sexes is established.",
+      "nextGate": "Verify the complete sample metadata and an explicit comparison design before displaying a sex-stratified analysis."
+    },
+    {
+      "id": "TPC-006",
+      "family": "drug_label",
+      "title": "Drug source-label groups",
+      "accession": "GSE234774",
+      "sourceModality": "single-nucleus RNA sequencing",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series sample labels only",
+      "sourceSampleLabels": ["drug_chabc_10", "drug_chabc_7", "drug_chabc_8", "drug_gfp_2", "drug_gfp_6", "drug_gfp_9", "drug_meth_4", "drug_meth_5", "drug_meth_7", "drug_mino_5", "drug_mino_7", "drug_mino_9"],
+      "conditionAxes": [
+        {"name": "drug source label", "sourceValues": ["chabc", "gfp", "meth", "mino"], "interpretationBoundary": "Abbreviations remain as literal source labels; the index does not expand them into dose, route, timing, control or efficacy claims."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists single-nucleus RNA-sequencing samples with chabc, gfp, meth and mino source labels.",
+      "notEstablished": "Intervention identity, treatment protocol, efficacy, safety, causal molecular effect, behavioural benefit or translation to people is not established.",
+      "nextGate": "Review the per-sample protocol and treatment metadata before interpreting an abbreviation or creating any intervention contrast."
+    },
+    {
+      "id": "TPC-007",
+      "family": "spatial_section",
+      "title": "Visium spatial-section source-label groups",
+      "accession": "GSE234774",
+      "sourceModality": "Visium spatial transcriptomics",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "spatial sections; not a cell-level record",
+      "sourceSampleLabels": ["075_A", "075_B", "075_C", "075_D", "077_A", "077_B", "077_C", "077_D", "078_A", "078_B", "078_C", "078_D", "103_A", "103_B", "103_C", "103_D", "105_A", "105_B", "105_C", "105_D", "106_A", "106_B", "106_C", "106_D"],
+      "conditionAxes": [
+        {"name": "spatial section label", "sourceValues": ["075", "077", "078", "103", "105", "106"], "interpretationBoundary": "Section identifiers are source labels; they do not provide a project transform, voxel spacing, axis orientation, an individual-cell position or a named spinal segment."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public series lists 24 spatial samples arranged as four lettered section labels for each of six numeric source identifiers.",
+      "notEstablished": "A spatial sample is not an interneuron, cell coordinate, anatomical registration, 3D reconstruction, morphology, connectivity record or whole-spinal-cord map.",
+      "nextGate": "Pin a source object with specimen, coordinate units, axes, origin, scale and asset-level reuse decision before any source-local spatial display."
+    },
+    {
+      "id": "TPC-008",
+      "family": "multiome_timepoint",
+      "title": "Multiome source-label groups",
+      "accession": "GSE230765",
+      "sourceModality": "single-nucleus multiome",
+      "sourceMaterial": "mid thoracic spinal cord of mouse",
+      "aggregationLevel": "source-series RNA and ATAC sample labels only",
+      "sourceSampleLabels": ["RNA_2M_18", "RNA_2M_2", "RNA_2M_7", "RNA_D7_1", "RNA_D7_17", "RNA_UN_1", "RNA_UN_20", "RNA_UN_6", "ATAC_2M_18", "ATAC_2M_2", "ATAC_2M_7", "ATAC_D7_1", "ATAC_D7_17", "ATAC_UN_1", "ATAC_UN_20", "ATAC_UN_6"],
+      "conditionAxes": [
+        {"name": "multiome condition source label", "sourceValues": ["UN", "D7", "2M"], "interpretationBoundary": "Literal RNA and ATAC series labels are indexed without asserting a same-cell file join, a shared barcode, or a project-level multimodal correspondence."}
+      ],
+      "metadataAuthority": "GEO_SERIES_LABEL_AND_DESIGN_ONLY",
+      "established": "The public multiome series lists RNA and ATAC source-sample labels for UN, D7 and 2M condition groups in mid-thoracic mouse spinal cord.",
+      "notEstablished": "No current adapter establishes a same-nucleus join, feature matrix, cell type, chromatin effect, spatial coordinate, cross-series equivalence or registration.",
+      "nextGate": "Pin object-level metadata, modality pairing and barcode provenance before any same-nucleus or cross-modality analysis is considered."
+    }
+  ],
+  "releaseDecision": {
+    "permitted": "Display, filter and export this bounded condition-label index alongside the public source record.",
+    "forbidden": "Do not download a source body, bundle processed metadata, infer cell identity or treatment effect, call a spatial sample an interneuron, merge incompatible conditions, create a same-cell link, add a coordinate or create REG.",
+    "nextCuratorGate": "A curator must approve a version-pinned object inventory, asset-level terms, sample metadata and a condition-compatible analysis plan before any numerical source-data adapter is proposed."
+  }
+}

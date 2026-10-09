@@ -1,0 +1,49 @@
+{
+  "iteration": "I60",
+  "status": "STATIC_SUCCESS_WITH_RETAINED_UNPASSED_READ_ATTEMPTS",
+  "firstAttempt": {
+    "node": "v24.19.0",
+    "failure": "positioned-read epoch guard on sealed test source",
+    "stderr": {
+      "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/mounted-closure.stderr.log",
+      "bytes": 842,
+      "sha256": "92e534bebd8a1cecb976862ede69cea1e602a2229abe2379f8a0e669f053b3d9"
+    },
+    "output": {
+      "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/I60_MOUNTED_CLOSURE_STATIC_REVIEW.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "secondAttempt": {
+    "node": "v26.0.0",
+    "failure": "positioned-read epoch guard on site-navigation.css",
+    "stderr": {
+      "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/mounted-closure-corrected.stderr.log",
+      "bytes": 1574,
+      "sha256": "7c20d9c342a75d1761bc84082325e0259fab0b72a2dbf98d9f4b29e474437ada"
+    },
+    "output": {
+      "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/I60_MOUNTED_CLOSURE_STATIC_REVIEW_CORRECTED.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "thirdAttempt": {
+    "node": "v26.0.0",
+    "exitCode": 0,
+    "sourceEpochEndRehashCount": 59,
+    "stderr": {
+      "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/mounted-closure-diagnostic.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "receipt": {
+      "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/I60_MOUNTED_CLOSURE_STATIC_REVIEW_DIAGNOSTIC.json",
+      "bytes": 137461,
+      "sha256": "aacd5b3aa41fdd0ab5d82da8f61b6c9845dc8bc42e22ccb77c9a6c229a9bafe6"
+    }
+  },
+  "interpretation": "Earlier two attempts are unpassed; the third full static read is stable. No claim is made that the earlier refusals prove a product source mutation or a Node runtime defect. No root/stage file was written or changed by this audit.",
+  "finalPreservationExecuted": false
+}

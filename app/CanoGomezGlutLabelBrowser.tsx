@@ -38,7 +38,7 @@ export default function CanoGomezGlutLabelBrowser() {
   const [group, setGroup] = useState("all");
   const [sort, setSort] = useState("count");
   const [page, setPage] = useState(0);
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedId, setSelectedId] = useState(() => sourceAssignments.labels.slice().sort((a, b) => b.nucleusCount - a.nucleusCount || a.rawLabel.localeCompare(b.rawLabel, "en"))[0]?.id ?? "");
   const filtered = useMemo(() => {
     const terms = query.trim().toLocaleLowerCase("en").split(/\s+/).filter(Boolean);
     return sourceAssignments.labels.filter((label) => {
@@ -49,7 +49,8 @@ export default function CanoGomezGlutLabelBrowser() {
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pages - 1);
   const visible = filtered.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
-  const selected = visible.find((label) => label.id === selectedId) ?? visible[0] ?? null;
+  const selected = sourceAssignments.labels.find((label) => label.id === selectedId) ?? null;
+  const selectedVisible = visible.some((label) => label.id === selectedId);
   const matchedNuclei = filtered.reduce((total, label) => total + label.nucleusCount, 0);
 
   return <section className={styles.browser} aria-labelledby={headingId} data-cano-glut-source-label-browser="true" data-confirmed-interneuron-profiles-added="0">
@@ -72,6 +73,7 @@ export default function CanoGomezGlutLabelBrowser() {
       </div>
       <article className={styles.detail} aria-label="Selected source-label evidence">
         {selected ? <>
+          {!selectedVisible && <p className={styles.result} role="status">Selected label retained outside the current filters or result page. Details and exports still describe <code>{selected.rawLabel}</code>. Choose a label to change the selection.</p>}
           <header><span className={styles.kicker}>Exact source label</span><h5><code>{selected.rawLabel}</code></h5><p><strong>{number(selected.nucleusCount)}</strong> source nuclei · {selected.groupCounts.map((item) => `${sourceText(item.value)} (${number(item.count)})`).join(" · ")}</p></header>
           <div className={styles.contexts}>
             <ContextCounts title="Source anatomy" values={selected.contextCounts.anatomy} total={selected.nucleusCount} />
@@ -84,7 +86,7 @@ export default function CanoGomezGlutLabelBrowser() {
             <dl><dt>Source object</dt><dd><a href={sourceAssignments.source.url}>{sourceAssignments.source.fileName}</a></dd><dt>Assignment origin</dt><dd><code>active.ident</code>, with exact name/order agreement to <code>meta.data</code> row names.</dd><dt>Source SHA-256</dt><dd><code>{sourceAssignments.source.sha256}</code></dd><dt>Stable label ID</dt><dd><code>{selected.id}</code></dd><dt>Ordered selected-nucleus key SHA-256</dt><dd><code>{selected.orderedCompoundNucleusKeysSha256}</code></dd></dl>
             <p>No cross-assay or cross-source identity, morphology, internal structure, or atlas registration is established.</p>
           </details>
-        </> : <p className={styles.empty}>Change the filters to inspect source assignments.</p>}
+        </> : <p className={styles.empty} role="status">Selected source label is unavailable. Choose a visible label to inspect its source evidence.</p>}
       </article>
     </div>
     <footer className={styles.footer}><a href={sourceAssignments.artifact.publicUrl} download>Download all {number(sourceAssignments.artifact.rowCount)} exact assignment rows (.jsonl.gz)</a><span>Includes exact source filename, row name, group and context; filter by <code>source_label_id</code>. Counts describe this source object, not biological prevalence.</span></footer>

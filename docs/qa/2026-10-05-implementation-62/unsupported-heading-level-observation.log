@@ -1,0 +1,1 @@
+After the first native Enter, a getByRole heading query included an unsupported level option. The API returned all currently visible headings before navigation commitment. This does not establish failed navigation or H1 identity. Exact waitForURL and later raw h1/DOM established the destination; no link was retriggered.

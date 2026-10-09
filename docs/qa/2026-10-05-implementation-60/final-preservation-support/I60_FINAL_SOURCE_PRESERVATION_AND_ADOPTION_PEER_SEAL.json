@@ -1,0 +1,96 @@
+{
+  "iteration": "I60",
+  "status": "SEALED_PASS_FINAL_LOCAL_SOURCE_PRESERVATION_AND_BOUNDED_ADOPTION_REVIEW",
+  "sealedAtUtc": "2026-10-05T08:47:27.478098+00:00",
+  "actualFinalReadyAuthorizedByParent": true,
+  "originalHelper": {
+    "path": "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/check_i60_final_preservation.py",
+    "bytes": 11615,
+    "sha256": "5b226e6684c8f37f2c04e8b8fe89cfe073c17080f5db6b011d764a96ee8a35b7"
+  },
+  "actualExecution": {
+    "argv": [
+      "python3",
+      "/private/tmp/ohri-i60-intake-preservation-helpers-20261005/check_i60_final_preservation.py",
+      "--final-ready"
+    ],
+    "sessionId": 10234,
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "attempts": 1,
+    "helperModified": false
+  },
+  "result": {
+    "status": "PASS_I60_FINAL_LOCAL_SOURCE_PRESERVATION_ONLY",
+    "baselineCanonicalInputs": 2581,
+    "finalCanonicalInputs": 2585,
+    "protectedPriorCanonicalInputs": 2576,
+    "sealedProductAfterimages": 4,
+    "newCanonicalPaths": 4,
+    "privateRuntimeInputs": 198,
+    "positionsBuildInputs": 40,
+    "positionsSourceInputs": 23,
+    "positionsOriginalWorkbooks": 22,
+    "sourceEpochStableAtEnd": true,
+    "acceptedI59CheckpointRetained": true,
+    "registrySummaryUnchanged": {
+      "canonicalSourceCount": 32,
+      "canonicalRecordSetCount": 42,
+      "bundledExactCellProfileRosterCount": 13,
+      "bundledExactSourceObjectSetCount": 4,
+      "sourceProfileCount": 387,
+      "researchUpgradeCount": 243,
+      "completedResearchUpgradeCount": 83,
+      "displayedResearchUpgradeCount": 51,
+      "staleCanonicalDenominatorLiteralCount": 0
+    }
+  },
+  "stageCountSemantics": {
+    "actualParentReplayEntries": 2588,
+    "uniquePhysicalPaths": 2587,
+    "duplicatedPath": "data/research-renderer-runtime-inputs-2.91.json",
+    "sourceCanonicalUnique": 2585,
+    "originalParentEvidenceUnchanged": true
+  },
+  "ownedFiles": [
+    {
+      "path": "/private/tmp/ohri-i60-final-preservation-20261005/final-preservation-original-helper.stdout.json",
+      "bytes": 1119854,
+      "sha256": "8cd78451c0896185ce50e540e9532f42bd7c89821a168ec2d2a36425654116b8"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-final-preservation-20261005/final-preservation-original-helper.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-final-preservation-20261005/I60_BOUNDED_FINAL_ADOPTION_AND_PARITY_RECEIPT_PEER_REVIEW.json",
+      "bytes": 7140,
+      "sha256": "a6c60d37799cf588b841d4cf73680d67d1a52c0c16e11bf28aefa12ae7536808"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-final-preservation-20261005/bounded-adoption-peer-first-unique-stage-assumption.stderr.log",
+      "bytes": 89,
+      "sha256": "86206729f418acb8d5edc84a0878fbc0dbf6a00d2e4744952e10fdf28298730b"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-final-preservation-20261005/bounded-adoption-peer-first-unique-stage-assumption.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "preservedOwnGuardFailure": "Initial bounded peer incorrectly assumed2588 replay rows meant2588 uniquephysicalpaths; retained exact stderr and explicit corrected counting, without any product/source change.",
+  "limits": [
+    "Local byte preservation and declared membership only; no whole roadmap/Goal completion.",
+    "No new native render/private proof or source acquisition is established.",
+    "Parent actual full engineering, native UI/export/source/transport evidence remain separate."
+  ],
+  "scope": {
+    "rootWrites": 0,
+    "stageWrites": 0,
+    "browserActions": 0,
+    "networkCalls": 0,
+    "privateProofCalls": 0,
+    "sourceAdmissions": 0
+  }
+}

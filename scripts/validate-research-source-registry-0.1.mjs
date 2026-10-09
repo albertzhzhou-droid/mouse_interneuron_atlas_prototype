@@ -9,6 +9,8 @@ import { fileURLToPath } from "node:url";
 import { validateCanoGomezP56MultiomeInterneuronRegistryPackage } from "./validate-cano-gomez-p56-multiome-interneuron-registry-0.1.mjs";
 
 import { validateResearchSourceExtensions243 } from "./validate-research-source-extensions-2.43.mjs";
+import { validateGarciaRamirezSourceRegistryRelationship } from "./validate-garcia-ramirez-source-registry-0.1.mjs";
+import { validateCrozatNaVSourceRegistryRelationship, validatePersistedCrozatNaVSourceRegistryRelationship } from "./validate-crozat-nav-inhibition-source-registry-0.1.mjs";
 
 const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const REGISTRY_PATH = path.join(PROJECT_ROOT, "data/research-source-registry-0.1.json");
@@ -60,6 +62,7 @@ const CANO_GOMEZ_CONFIRMED_PROFILES = Object.freeze([
 export const EXPECTED_RESEARCH_SOURCE_IDS = Object.freeze([
   "SRC-ALLEN-CORD-20UM-3",
   "SRC-NEUROMORPHO-8-6-124",
+  "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
   "SRC-SPINALJ-MKC37W4RRV-1",
   "SRC-CANOGOMEZ-2026",
   "SRC-RUSS-2021",
@@ -85,11 +88,17 @@ export const EXPECTED_RESEARCH_SOURCE_IDS = Object.freeze([
   "SRC-IGLESIAS-GONZALEZ-2021",
   "SRC-ROOME-2026",
   "SRC-CROZAT-2025",
+  "SRC-KELLY-ZEBRAFISH-2023",
+  "SRC-SVARA-2018-SBEM",
+  "SRC-BANC-V888-IN14A018",
+  "SRC-GARCIA-RAMIREZ-2022",
 ]);
 
 const REQUIRED_ALIAS_TO_SOURCE = Object.freeze({
   "PDS-BRAINGLOBE-ATLAS": "SRC-ALLEN-CORD-20UM-3",
   "PDS-NEUROMORPHO-SWC": "SRC-NEUROMORPHO-8-6-124",
+  "NeuroMorpho.Org release 8.6.126 Todd NTS additions": "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
+  "neuromorpho:8.6.126:Todd-NTS": "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
   "PDS-SPINALJ-PROCESSED": "SRC-SPINALJ-MKC37W4RRV-1",
   "PDS-CANOGOMEZ-2026": "SRC-CANOGOMEZ-2026",
   "PDS-RUSS-2021": "SRC-RUSS-2021",
@@ -129,16 +138,25 @@ const REQUIRED_ALIAS_TO_SOURCE = Object.freeze({
   "GSE291460": "SRC-ROOME-2026",
   "crozat-2025:figshare-29430869-v2": "SRC-CROZAT-2025",
   "Figshare:29430869.v2": "SRC-CROZAT-2025",
+  "kelly-zebrafish-2023": "SRC-KELLY-ZEBRAFISH-2023",
+  "kelly-2023:GSE232801": "SRC-KELLY-ZEBRAFISH-2023",
+  "GSE232801": "SRC-KELLY-ZEBRAFISH-2023",
+  "svara-2018": "SRC-SVARA-2018-SBEM",
+  "Svara et al. 2018 larval zebrafish spinal SBEM": "SRC-SVARA-2018-SBEM",
+  "10.1016/j.celrep.2018.05.023": "SRC-SVARA-2018-SBEM",
+  "banc-v888-in14a018": "SRC-BANC-V888-IN14A018",
+  "BANC v888 root 720575941350424112": "SRC-BANC-V888-IN14A018",
 });
 
 const EXPECTED_RECORD_SET_COUNTS = Object.freeze({
   "RS-ALLEN-DIRECT-LABELS": 73,
   "RS-NEUROMORPHO-RECONSTRUCTIONS": 142,
-  "RS-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK": 4,
+  "RS-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK": 5,
   "RS-NEUROMORPHO-FUNCTIONAL-CLASS-ROUTE-PACK": 2,
   "RS-NEUROMORPHO-PRP-DORSAL-HORN-ROUTE-PACK": 2,
   "RS-NEUROMORPHO-PREMOTOR-COMPARISON-ROUTE-PACK": 1,
   "RS-NEUROMORPHO-NATIVE-CONTOUR-ADMISSION-CATALOG": 5,
+  "RS-NEUROMORPHO-8-6-126-TODD-NTS-ROUTES": 30,
   "RS-RUSS-POPULATIONS": 69,
   "RS-HARING-FINAL-TYPES": 30,
   "RS-SATHYAMURTHY-CLUSTERS": 43,
@@ -152,6 +170,10 @@ const EXPECTED_RECORD_SET_COUNTS = Object.freeze({
   "RS-CROZAT-PKD2L1-FUNCTIONAL-PROFILE": 1,
   "RS-DELILE-FINE-SUBTYPES": 51,
   "RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES": 11,
+  "RS-KELLY-GSE232801-ARTICLE-REPORTED-INTERNEURON-LABELS": 10,
+  "RS-SVARA-CID-2018-RECONSTRUCTIONS": 39,
+  "RS-SVARA-COBL-2018-RECONSTRUCTIONS": 34,
+  "RS-BANC-V888-IN14A018-MORPHOLOGY": 1,
 });
 
 const ALLOWED_SOURCE_KINDS = new Set([
@@ -536,7 +558,7 @@ export function validateResearchSourceRegistry(registry) {
   check(isRecord(registry), "Research source registry must be an object");
   check(registry.schemaVersion === "0.1.0", "Research source registry schemaVersion is invalid");
   check(registry.releaseId === "ohri-research-source-registry-0.1.0", "Research source registry releaseId is invalid");
-  check(registry.releaseDate === "2026-09-02", "Research source registry releaseDate is invalid");
+  check(registry.releaseDate === "2026-09-23", "Research source registry releaseDate is invalid");
   check(registry.sourceCount === EXPECTED_RESEARCH_SOURCE_IDS.length, "Research source registry sourceCount is invalid");
   check(Array.isArray(registry.sources) && registry.sources.length === registry.sourceCount, "Research source registry source denominator is invalid");
   check(isRecord(registry.scientificPolicy), "Research source registry scientificPolicy is required");
@@ -568,7 +590,7 @@ export function validateResearchSourceRegistry(registry) {
   for (const [alias, expectedSourceId] of Object.entries(REQUIRED_ALIAS_TO_SOURCE)) {
     check(aliases.get(alias) === expectedSourceId, `Legacy source alias is missing or misdirected: ${alias}`);
   }
-  check(recordSetIds.size === 36, "Research source registry record-set denominator must remain 36");
+  check(recordSetIds.size === 42, "Research source registry record-set denominator must remain 42");
   const coverageLaneAliases = ["russ-2021", "haring-2018", "sathyamurthy-2018", "hayashi-2018", "delile-2019", "tabulae-paralytica-2024", "iglesias-gonzalez-2021", "roome-2026"];
   check(coverageLaneAliases.every((alias) => aliases.has(alias)), "All eight knowledge-coverage lane ids must resolve as canonical source aliases");
   check(coverageLaneAliases.every((alias) => sourceById(registry, aliases.get(alias)).researchLanes.includes("coverage")), "All eight knowledge-coverage sources must declare the coverage research lane");
@@ -579,14 +601,95 @@ export function validateResearchSourceRegistry(registry) {
   const typeRecordTotal = ["RS-RUSS-POPULATIONS", "RS-SATHYAMURTHY-CLUSTERS", "RS-HAYASHI-CLUSTERS", "RS-HARING-FINAL-TYPES", "RS-ALKASLASI-INTERNEURON-CLUSTERS", "RS-DMRT3-DI6-M1-M6-GROUPS", "RS-ROOME-REFINED-DIL-TYPES", "RS-CROZAT-PKD2L1-FUNCTIONAL-PROFILE", "RS-DELILE-FINE-SUBTYPES", "RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES"]
     .reduce((total, id) => total + recordSetById(registry, id).includedRecordCount.value, 0);
   check(typeRecordTotal === 387, "Canonical source-profile denominator must remain 387 source records, not unique types");
-  check(registry.sources.flatMap((source) => source.recordSets).filter((recordSet) => recordSet.childRosterRef.status === "bundled_exact").length === 11, "Bundled exact cell/profile roster denominator must remain 11");
-  check(registry.sources.flatMap((source) => source.recordSets).filter((recordSet) => recordSet.sourceObjectSetRef?.status === "bundled_exact").length === 2, "Bundled exact source-object set denominator must remain 2");
+  check(registry.sources.flatMap((source) => source.recordSets).filter((recordSet) => recordSet.childRosterRef.status === "bundled_exact").length === 13, "Bundled exact cell/profile roster denominator must remain 13");
+  check(registry.sources.flatMap((source) => source.recordSets).filter((recordSet) => recordSet.sourceObjectSetRef?.status === "bundled_exact").length === 4, "Bundled exact source-object set denominator must remain 4");
+
+  const bancRoute = sourceById(registry, "SRC-BANC-V888-IN14A018");
+  const bancRouteSet = recordSetById(registry, "RS-BANC-V888-IN14A018-MORPHOLOGY");
+  check(bancRoute.citation.doi === "10.1038/s41586-026-10735-w"
+    && bancRoute.speciesScopes[0]?.scientificName === "Drosophila melanogaster"
+    && bancRoute.regionScopes[0]?.value === "ventral nerve cord"
+    && bancRoute.linkedUpgradeIds.includes("UPG-248"), "BANC exact comparative route source identity or taxonomic scope changed");
+  check(bancRouteSet.includedRecordCount.value === 1
+    && /not a species-wide or interneuron denominator/.test(bancRouteSet.includedRecordCount.scope)
+    && bancRouteSet.childRosterRef.status === "bundled_exact"
+    && bancRouteSet.sourceObjectSetRef?.status === "bundled_exact"
+    && bancRouteSet.dataPath === "data/banc-v888-in14a018-morphology-route-0.1.json", "BANC exact one-object route denominator or source-object set changed");
+
+  const kelly = sourceById(registry, "SRC-KELLY-ZEBRAFISH-2023");
+  check(kelly.citation.doi === "10.7554/eLife.89338"
+    && kelly.accessions.includes("GSE232801")
+    && kelly.speciesScopes.length === 1
+    && kelly.speciesScopes[0].scientificName === "Danio rerio"
+    && kelly.lifeStageScopes[0].value === "4 dpf larva"
+    && kelly.regionScopes[0].value === "spinal cord", "Kelly source identity or taxonomic scope changed");
+  check(JSON.stringify(kelly.linkedUpgradeIds) === JSON.stringify(["UPG-229"])
+    && JSON.stringify(kelly.researchLanes) === JSON.stringify(["types", "sources"]), "Kelly source-to-upgrade or research-lane link changed");
+  const kellyLabels = recordSetById(registry, "RS-KELLY-GSE232801-ARTICLE-REPORTED-INTERNEURON-LABELS");
+  check(kellyLabels.includedRecordCount.value === 10
+    && kellyLabels.includedRecordCount.unit === "article_reported_interneuron_labels"
+    && kellyLabels.childRosterRef.status === "not_linkable"
+    && /not a cluster, barcode, captured-cell, animal or prevalence denominator/.test(kellyLabels.includedRecordCount.scope), "Kelly article-reported label set was promoted to an exact cellular roster");
+  const kellyRds = kelly.assets.find((asset) => asset.id === "ASSET-KELLY-GSE232801-NEURONS-RDS");
+  check(kellyRds?.bundled === false
+    && kellyRds.integrity.status === "not_inventoried"
+    && kellyRds.integrity.bytes === null
+    && kellyRds.integrity.sha256 === null, "Kelly GEO RDS source object must remain link-only and unverified");
+  const kellyContract = kelly.assets.find((asset) => asset.id === "ASSET-KELLY-COMPACT-TAXONOMY");
+  check(kellyContract?.bundled === true
+    && kellyContract.integrity.status === "verified"
+    && kellyContract.integrity.bytes > 0
+    && validSha256(kellyContract.integrity.sha256), "Kelly project factual derivative receipt is invalid");
+  check(/150 zebrafish overall/.test(kelly.experimentalUnits.find((unit) => unit.unit === "source_animal_or_cord")?.missingReason ?? "")
+    && /150 spinal cords for each of two duplicate experiments/.test(kelly.experimentalUnits.find((unit) => unit.unit === "source_animal_or_cord")?.missingReason ?? ""), "Kelly animal/cord denominator conflict was not retained");
+
+  const svara = sourceById(registry, "SRC-SVARA-2018-SBEM");
+  const svaraCiD = recordSetById(registry, "RS-SVARA-CID-2018-RECONSTRUCTIONS");
+  const svaraCoBL = recordSetById(registry, "RS-SVARA-COBL-2018-RECONSTRUCTIONS");
+  check(svara.citation.doi === "10.1016/j.celrep.2018.05.023"
+    && svara.speciesScopes[0]?.scientificName === "Danio rerio"
+    && svara.lifeStageScopes[0]?.value === "6 dpf larva"
+    && svara.experimentalUnits.find((unit) => unit.unit === "larva")?.count === 1
+    && JSON.stringify(svara.linkedUpgradeIds) === JSON.stringify(["UPG-240", "UPG-250"]), "Svara source identity, specimen frame or queue links changed");
+  check(svaraCiD.includedRecordCount.value === 39 && svaraCoBL.includedRecordCount.value === 34
+    && svaraCiD.childRosterRef.status === "not_linkable" && svaraCoBL.childRosterRef.status === "not_linkable"
+    && /not prevalence/.test(svaraCiD.includedRecordCount.scope)
+    && /not an exact deposited roster/.test(svaraCoBL.includedRecordCount.scope), "Svara source-reported reconstructions were promoted to exact rosters or prevalence");
+  check(svara.assets.length === 3 && svara.assets.every((asset) => asset.bundled === false
+    && asset.integrity.status === "not_inventoried" && asset.integrity.bytes === null && asset.integrity.sha256 === null
+    && asset.url?.startsWith("https://pure.mpg.de/pubman/item/item_3055210_7/component/file_305523")), "Svara archive links gained unverified payload or checksum authority");
+  check(/file-specific licence.*not been verified/i.test(svara.rights.note)
+    && /public access is not treated as reuse permission/i.test(svara.rights.note)
+    && /No archive member, cell skeleton, mesh, synapse edge, coordinate/.test(svara.admission.note), "Svara supplement rights or geometry admission boundary changed");
 
   const neuromorpho = sourceById(registry, "SRC-NEUROMORPHO-8-6-124");
-  check(neuromorpho.speciesScopes[0]?.context === "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison route packs", "NeuroMorpho species-scope context is incomplete");
-  check(neuromorpho.regionScopes[0]?.context === "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison route packs", "NeuroMorpho region-scope context is incomplete");
+  const neuromorpho126 = sourceById(registry, "SRC-NEUROMORPHO-8-6-126-TODD-NTS");
+  const neuromorpho126Routes = recordSetById(registry, "RS-NEUROMORPHO-8-6-126-TODD-NTS-ROUTES");
+  check(neuromorpho126.citation.doi === "10.1096/fba.2024-00048"
+    && neuromorpho126.accessions.includes("NeuroMorpho.Org release 8.6.126")
+    && neuromorpho126.lifeStageScopes.length === 1
+    && neuromorpho126.lifeStageScopes[0].value === "adult", "NeuroMorpho 8.6.126 supplementary source identity or cohort scope drifted");
+  check(neuromorpho126Routes.includedRecordCount.value === 30
+    && neuromorpho126Routes.includedRecordCount.unit === "supplementary_reconstructions"
+    && /do not add records to or change the 1,097-record 8.6.124 query universe/.test(neuromorpho126Routes.includedRecordCount.scope)
+    && neuromorpho126Routes.childRosterRef.status === "bundled_exact"
+    && neuromorpho126Routes.childRosterRef.path === "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json"
+    && neuromorpho126Routes.sourceObjectSetRef?.status === "bundled_exact"
+    && neuromorpho126Routes.sourceObjectSetRef.path === neuromorpho126Routes.dataPath, "NeuroMorpho 8.6.126 route roster/source-object set must remain exact and supplementary");
+  const neuromorpho126RouteAsset = neuromorpho126.assets.find((asset) => asset.id === "ASSET-NEUROMORPHO-8-6-126-TODD-NTS-ROUTE-PACK");
+  check(neuromorpho126RouteAsset?.integrity.bytes === 302205
+    && neuromorpho126RouteAsset.integrity.sha256 === "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d", "NeuroMorpho 8.6.126 route-pack asset receipt is invalid");
+  check(/CC BY 4\.0/.test(neuromorpho126.rights.note)
+    && /original-paper/.test(neuromorpho126.rights.note)
+    && /unverified cohort context only/.test(neuromorpho126.rights.note), "NeuroMorpho 8.6.126 reuse and citation boundary is incomplete");
+  const neuromorpho126Gaps = new Map(neuromorpho126.missingness.map((item) => [item.field, item]));
+  check(neuromorpho126Gaps.get("source_paper_citation_and_cell_crosswalk")?.status === "NOT_ESTABLISHED"
+    && neuromorpho126Gaps.get("same_specimen_internal_structure")?.status === "UNAVAILABLE"
+    && neuromorpho126Gaps.get("atlas_registration")?.status === "NOT_ESTABLISHED", "NeuroMorpho 8.6.126 paper identity, same-specimen internal and registration missingness drifted");
+  check(neuromorpho.speciesScopes[0]?.context === "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison routes", "NeuroMorpho species-scope context is incomplete");
+  check(neuromorpho.regionScopes[0]?.context === "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison routes", "NeuroMorpho region-scope context is incomplete");
   check(JSON.stringify(neuromorpho.lifeStageScopes) === JSON.stringify([
-    {value: "adult", context: "142 admitted census records, including route-pack overlaps NMO 104003 and 108974", authority: "official_repository_metadata", missingReason: null},
+    {value: "adult", context: "142 admitted census records; active route children include NMO 104003, 108974 and 108978, with only 104003 and 108974 overlapping the frozen five-record lens", authority: "official_repository_metadata", missingReason: null},
     {value: "young", context: "supplementary dorsal-horn record NMO 249676, functional-class Renshaw record NMO 45674, and repository-labelled premotor comparison record NMO 45718; all outside the 142-record adult-query census", authority: "official_repository_metadata", missingReason: null},
     {value: "young adult", context: "supplementary dorsal-horn record NMO 170035, functional-class NPY record NMO 50424, and PrP-reporter records NMO 50394 and 50408; all outside the 142-record adult-query census", authority: "official_repository_metadata", missingReason: null},
   ]), "NeuroMorpho adult, young, and young-adult scopes or their record-level contexts drifted");
@@ -594,12 +697,12 @@ export function validateResearchSourceRegistry(registry) {
   const neuromorphoCensus = recordSetById(registry, "RS-NEUROMORPHO-RECONSTRUCTIONS");
   check(neuromorphoCensus.includedRecordCount.value === 142 && /adult-query census/.test(neuromorphoCensus.includedRecordCount.scope), "NeuroMorpho adult-query census denominator or scope drifted");
   const dorsalHornPack = recordSetById(registry, "RS-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK");
-  check(dorsalHornPack.includedRecordCount.value === 4 && dorsalHornPack.includedRecordCount.unit === "route_memberships", "Dorsal-horn route-pack denominator or unit is invalid");
-  check(/exactly two frozen-census overlaps \(NMO 104003 and 108974\)/.test(dorsalHornPack.includedRecordCount.scope), "Dorsal-horn route-pack overlap denominator is invalid");
+  check(dorsalHornPack.includedRecordCount.value === 5 && dorsalHornPack.includedRecordCount.unit === "route_memberships", "Dorsal-horn route-pack denominator or unit is invalid");
+  check(/three adult census members \(NMO 104003, 108974 and 108978\), of which two overlap the frozen cell-form lens/.test(dorsalHornPack.includedRecordCount.scope), "Dorsal-horn route-pack census and frozen-lens overlap denominators are invalid");
   check(/two supplementary records \(NMO 170035 and 249676\)/.test(dorsalHornPack.includedRecordCount.scope), "Dorsal-horn route-pack supplementary denominator is invalid");
   check(/not additive to the 142-record census/.test(dorsalHornPack.includedRecordCount.scope), "Dorsal-horn route pack must not expand the census denominator");
-  check(dorsalHornPack.dataPath === "data/dorsal-horn-observed-morphology-route-pack-0.1.json", "Dorsal-horn route-pack data path is invalid");
-  check(dorsalHornPack.idField === "routes[].sourceRecord.assetId" && dorsalHornPack.childRosterRef.idField === "routes[].sourceRecord.assetId", "Dorsal-horn route-pack child identity field is invalid");
+  check(dorsalHornPack.dataPath === "data/census-child-observed-morphology-route-0.1.json", "Dorsal-horn route-pack data path is invalid");
+  check(dorsalHornPack.idField === "dorsalHornRouteSet.members[].assetId" && dorsalHornPack.childRosterRef.idField === "dorsalHornRouteSet.members[].assetId", "Dorsal-horn route-pack child identity field is invalid");
   check(dorsalHornPack.childRosterRef.status === "bundled_exact" && dorsalHornPack.childRosterRef.path === dorsalHornPack.dataPath, "Dorsal-horn route-pack child roster must be the bundled exact contract");
   const dorsalHornPackAsset = neuromorpho.assets.find((asset) => asset.id === "ASSET-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK");
   check(dorsalHornPackAsset?.accession === "dorsal_horn_observed_morphology_route_pack_v1" && dorsalHornPackAsset.bundled === true, "Dorsal-horn route-pack asset identity is invalid");
@@ -678,9 +781,12 @@ export function validateResearchSourceRegistry(registry) {
   check(/zero fill, triangles, lofts, surfaces, membranes, volumes, internal structures, biological measurements, DAT-to-SWC overlays, joins or registrations/.test(neuromorpho.admission.note) && /no route creates exact physiology, marker-exclusivity, cross-source identity, or type-representative morphology claims/.test(neuromorpho.admission.note), "NeuroMorpho admission boundaries are incomplete");
   check(neuromorpho.linkedUpgradeIds.includes("UPG-137"), "PrP dorsal-horn route pack must remain linked to UPG-137");
   check(neuromorpho.linkedUpgradeIds.includes("UPG-143"), "Premotor comparison route pack must remain linked to UPG-143");
+  check(neuromorpho.linkedUpgradeIds.includes("UPG-226"), "NMO 108978 census-child route must remain linked to UPG-226");
   check(neuromorpho.linkedUpgradeIds.includes("UPG-186"), "NMO 45718 native contour traces must remain linked to completed UPG-186");
   check(neuromorpho.linkedUpgradeIds.includes("UPG-197") && neuromorpho.linkedUpgradeIds.includes("UPG-198"), "Per-record native DAT audit and strict NMO 45674 admission upgrades are missing");
   check(neuromorpho.linkedUpgradeIds.includes("UPG-203"), "Todd MBF Cell Body LineLoop admission upgrade is missing");
+  check(neuromorpho.linkedUpgradeIds.includes("UPG-236"), "NeuroMorpho exact source cell-type facet upgrade is missing");
+  check(neuromorpho.linkedUpgradeIds.includes("UPG-237"), "NeuroMorpho source paper-by-label cross-tab watch is missing");
 
   const canoGomez = sourceById(registry, "SRC-CANOGOMEZ-2026");
   check(canoGomez.linkedUpgradeIds.includes("UPG-190"), "Cano-Gomez RDS/Table S1 audit must remain linked to UPG-190");
@@ -865,6 +971,8 @@ export function validateResearchSourceRegistry(registry) {
   check(roomeMissingness.get("cross_source_identity")?.status === "NOT_ESTABLISHED", "Roome cross-source identity must remain unestablished");
   check(roomeMissingness.get("spreadsheet_gene_cell_anomalies")?.status === "CONFLICT_QUARANTINED" && /Twenty-six Table S7 gene cells/.test(roomeMissingness.get("spreadsheet_gene_cell_anomalies")?.reason ?? ""), "Roome spreadsheet anomaly quarantine is invalid");
 
+  validateCrozatNaVSourceRegistryRelationship(registry);
+  validateGarciaRamirezSourceRegistryRelationship(registry);
   return registry;
 }
 
@@ -932,10 +1040,20 @@ if (invokedPath === fileURLToPath(import.meta.url)) {
     loadResearchUpgradeRegistry(),
   ]);
   validateResearchSourceUpgradeLinks(registry, upgradeRegistry);
+  const releaseDeltaBytes = await readFile(path.join(PROJECT_ROOT, "data/neuromorpho-release-8-6-125-query-delta-audit-0.1.json"));
+  const neuromorpho = sourceById(registry, "SRC-NEUROMORPHO-8-6-124");
+  const releaseDeltaAsset = neuromorpho.assets.find((asset) => asset.id === "ASSET-NEUROMORPHO-RELEASE-8-6-125-METADATA-DELTA");
+  check(neuromorpho.linkedUpgradeIds.includes("UPG-228")
+    && neuromorpho.modalities.includes("repository version metadata delta audit"), "NeuroMorpho release-delta audit must remain linked to UPG-228");
+  check(releaseDeltaAsset?.accession === "ohri-neuromorpho-release-8-6-125-query-delta-audit-0.1.0"
+    && releaseDeltaAsset.bundled === true
+    && releaseDeltaAsset.integrity?.bytes === releaseDeltaBytes.byteLength
+    && releaseDeltaAsset.integrity?.sha256 === sha256Bytes(releaseDeltaBytes), "NeuroMorpho release-delta source asset receipt does not match the bundled contract");
   const canoPackage = await loadCanoGomezSourceRegistryPackage();
   await validateCanoGomezP56MultiomeInterneuronRegistryPackage(path.join(PROJECT_ROOT, CANO_GOMEZ_REGISTRY_PATH));
   validateCanoGomezSourceRegistryRelationship(registry, canoPackage.registry, canoPackage.packageFiles);
   await validateResearchSourceExtensions243(registry);
+  await validatePersistedCrozatNaVSourceRegistryRelationship(registry);
   const summary = summarizeResearchSourceRegistry(registry);
   process.stdout.write(`Research source registry valid: ${summary.sourceCount} canonical sources, ${summary.recordSetCount} record sets, ${summary.typeRecordCount} source profiles, ${summary.bundledExactRosterCount} bundled exact cell/profile rosters, ${summary.bundledExactSourceObjectSetCount} bundled exact source-object set, ${summary.openScopeContradictionCount} open scope contradictions, ${summary.registrationCount} registrations.\n`);
 }

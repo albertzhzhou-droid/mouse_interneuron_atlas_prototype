@@ -1,0 +1,222 @@
+#!/usr/bin/env node
+import { createHash } from "node:crypto";
+import { readFile, writeFile, readdir } from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
+import { fileURLToPath } from "node:url";
+import { computeManifestContentSha256 } from "../scripts/build-release-manifest.mjs";
+import { SNAPSHOT_290, validateResearchIterationManifest290Snapshot } from "../scripts/validate-research-iteration-manifest-2.90-snapshot.mjs";
+import { loadResearchSourceRegistry, loadResearchUpgradeRegistry, summarizeResearchSourceRegistry, validateResearchSourceRegistry, validateResearchSourceUpgradeLinks } from "../scripts/validate-research-source-registry-0.1.mjs";
+import { validateResearchSourceRegistryDenominators } from "../scripts/validate-research-source-registry-denominators.mjs";
+import { validateCanonicalResearchUpgradeRegistry } from "../scripts/validate-research-model-upgrade-registry-0.1.mjs";
+import { validateIncrementalIterationLayout } from "../scripts/validate-incremental-iteration-layout.mjs";
+import { buildIndependentSourceObjectIndex } from "../app/independent-source-objects.js";
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+export const MANIFEST_291_PATH = path.join(ROOT, "data/research-iteration-manifest-2.91.json");
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const json = async (name) => JSON.parse(await readFile(path.join(ROOT, name), "utf8"));
+export const CORE_INPUTS_291 = Object.freeze([
+  "app/svara-publication-navigation.js", "app/svara-publication-navigation.d.ts", "data/svara-publication-navigation-0.1.json",
+  "tools/build_svara_publication_navigation.mjs", "tests/svara-publication-navigation.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_39_PUBLICATION_NAVIGATION.md",
+  "data/source-candidates/svara-thesis-20261002/publication.json", "data/source-candidates/svara-thesis-20261002/publication.receipt.json",
+  "data/source-candidates/svara-thesis-20261002/heidok-unverified-response.html.txt", "data/source-candidates/svara-thesis-20261002/heidok-unverified-response.receipt.json",
+  "app/SvaraSynapticContacts.tsx", "app/connectivity/svara/page.tsx", "app/svara-synaptic-contacts.js", "app/svara-synaptic-contacts.d.ts", "app/svara-synaptic-contacts.css",
+  "data/svara-synaptic-contacts-0.1.json", "public/data/svara_synaptic_contacts_v1/CiD.json", "public/data/svara_synaptic_contacts_v1/CoBL.json",
+  "tools/acquire_svara_contact_workbooks.py", "tools/build_svara_synaptic_contacts.py", "scripts/validate-svara-synaptic-contacts-0.1.mjs", "tests/svara-synaptic-contacts.test.mjs",
+  "data/source-candidates/svara-contacts-20261002/1-s2.0-S2211124718307563-mmc2.xlsx.receipt.json",
+  "data/source-candidates/svara-contacts-20261002/1-s2.0-S2211124718307563-mmc3.xlsx.receipt.json",
+  "data/source-candidates/svara-contacts-20261002/1-s2.0-S2211124718307563-mmc4.xlsx.receipt.json",
+  "data/source-candidates/svara-contacts-20261002/1-s2.0-S2211124718307563-mmc5.xlsx.receipt.json",
+  "data/source-candidates/freidok-145135-20261002/landing.html", "data/source-candidates/freidok-145135-20261002/landing.receipt.json",
+  "data/source-candidates/freidok-145135-20261002/lp.js.txt", "data/source-candidates/freidok-145135-20261002/lp.receipt.json",
+  "data/source-candidates/freidok-145135-20261002/publication.json", "data/source-candidates/freidok-145135-20261002/publication.receipt.json",
+  "data/source-candidates/freidok-145135-20261002/archive-inventory.json",
+  "data/source-candidates/freidok-145135-20261002/ScienceDirect_files_19May2021_13-55-38.781.zip.receipt.json",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_38_SYNAPTIC_CONTACTS.md",
+  "app/SvaraLarvalZebrafishSpinalSbemReference.tsx", "app/SvaraCatalogueGallery.tsx", "app/catalogues/svara/page.tsx",
+  "app/svara-catalogues.js", "app/svara-catalogues.d.ts", "app/svara-catalogues.css", "data/svara-supplement-catalogues-0.1.json",
+  "tools/build_svara_supplement_catalogues.py", "scripts/validate-svara-supplement-catalogues-0.1.mjs", "tests/svara-supplement-catalogues.test.mjs", "tests/svara-catalogue-location.test.mjs", "tests/rendered-html.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_37_SVARA_LINKS.md",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_36_SVARA_CATALOGUES.md",
+  "data/source-candidates/svara-supplements-20261002/item-metadata.json",
+  "data/source-candidates/svara-supplements-20261002/item-metadata.json.receipt.json",
+  "data/source-candidates/svara-supplements-20261002/publisher-supplement-policy.html",
+  "data/source-candidates/svara-supplements-20261002/publisher-supplement-policy.receipt.json",
+  "data/source-candidates/svara-supplements-20261002/1-s2.0-S2211124718307563-mmc6.zip.receipt.json",
+  "data/source-candidates/svara-supplements-20261002/1-s2.0-S2211124718307563-mmc7.zip.receipt.json",
+  "data/source-candidates/svara-supplements-20261002/1-s2.0-S2211124718307563-mmc8.zip.receipt.json",
+  ".gitignore", "app/dandi-full-recording.js", "app/dandi-full-recording.d.ts", "app/DandiFullRecordingBrowser.tsx",
+  "data/dandi-spinalcordnet-full-recording-0.1.json", "tools/acquire_dandi_spinalcordnet_full_source.py",
+  "tools/build_dandi_spinalcordnet_full_recording.py", "scripts/validate-dandi-full-recording-0.1.mjs",
+  "tests/dandi-full-recording.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_35_FULL_RECORDING.md",
+  "data/source-candidates/dandi-spinalcordnet-full-20261002/source-download-receipt.json",
+  "app/cano-chol-rna-counts.js", "app/cano-chol-rna-counts.d.ts", "app/CanoCholInRnaCounts.tsx", "app/cano-chol-rna-counts.css", "app/CanoCholInNucleusRoster.tsx", "data/cano-chol-rna-counts-0.1.json", "tools/build_cano_chol_rna_counts.py", "scripts/validate-cano-chol-rna-counts-0.1.mjs", "tests/cano-chol-rna-counts.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_34_CHOL_RNA_COUNTS.md", "data/source-candidates/cano-chol-rna-20261002/GSE318731_P56_cholinergic_multiome.rds.download.json", "public/data/cano_chol_rna_counts_v1/counts-000.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-001.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-002.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-003.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-004.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-005.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-006.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-007.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-008.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-009.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-010.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-011.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-012.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-013.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-014.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-015.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-016.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-017.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-018.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-019.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-020.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-021.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-022.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-023.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-024.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-025.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-026.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-027.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-028.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-029.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-030.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-031.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-032.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-033.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-034.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-035.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-036.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-037.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-038.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-039.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-040.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-041.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-042.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-043.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-044.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-045.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-046.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-047.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-048.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-049.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-050.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-051.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-052.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-053.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-054.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-055.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-056.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-057.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-058.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-059.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-060.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-061.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-062.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-063.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-064.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-065.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-066.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-067.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-068.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-069.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-070.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-071.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-072.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-073.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-074.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-075.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-076.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-077.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-078.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-079.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-080.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-081.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-082.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-083.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-084.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-085.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-086.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-087.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-088.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-089.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-090.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-091.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-092.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-093.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-094.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-095.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-096.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-097.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-098.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-099.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-100.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-101.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-102.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-103.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-104.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-105.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-106.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-107.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-108.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-109.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-110.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-111.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-112.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-113.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-114.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-115.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-116.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-117.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-118.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-119.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-120.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-121.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-122.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-123.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-124.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-125.json.gzip", "public/data/cano_chol_rna_counts_v1/counts-126.json.gzip",
+  "app/cano-gaba-source-labels.js", "app/cano-gaba-source-labels.d.ts", "app/CanoGabaSourceLabelBrowser.tsx", "app/cano-gaba-source-labels.css", "data/cano-gomez-gaba-source-labels-0.1.json", "public/data/cano_gomez_gaba_source_labels_v1/GSE318731_P56_gabaergic_metadata_assignments.jsonl.gzip", "tools/build_cano_gomez_gaba_source_labels.py", "scripts/validate-cano-gaba-source-labels-0.1.mjs", "tests/cano-gaba-source-labels.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_33_GABA_SOURCE_LABELS.md",
+  "app/bil-xenium-image-metadata-audit.js", "app/bil-xenium-image-metadata-audit.d.ts", "data/bil-xenium-image-metadata-audit-0.1.json", "scripts/validate-bil-xenium-image-metadata-audit-0.1.mjs", "tests/bil-xenium-image-metadata-audit.test.mjs", "tools/bil_xenium_ome_metadata.py", "tools/bil-xenium-fetch-ome-metadata.py", "tools/audit_bil_xenium_ome_metadata.py", "tools/test_bil_xenium_ome_metadata.py", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_32_BIL_IMAGE_METADATA.md",
+  "tools/ohri-rsc-preload-vite-plugin.mjs", "tools/ohri-rsc-preload-vite-plugin.d.mts", "tests/ohri-rsc-preload-vite-plugin.test.mjs",
+  "app/SourceAuditWorkspaces.tsx", "app/source-audit-workspaces.js", "app/source-audit-workspaces.d.ts", "app/source-audit-workspaces.css", "tests/source-audit-workspaces.test.mjs", "tools/measure_source_audit_resources.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_31_SOURCE_WORKSPACES.md",
+  "public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-45674-source-closed-soma-contours.json",
+  "public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-50424-mbf-cell-body-line-loops.json",
+  "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50394-mbf-cell-body-line-loops.json",
+  "public/data/native_contour_derived_soma_surface_v1/nmo-50394-cell-body-interpolated-open-shell-0.1.json",
+  "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50408-mbf-cell-body-line-loops.json",
+  "public/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+  "public/data/neurolucida_native_detail_v1/nmo-249676-soma-line-loops.json",
+  "public/data/microns_phase1_v185_4_root_648518346349516051_v1/source/metadata/soma_valence_v185.csv",
+  "public/data/banc_v888_in14a018_comparative_v1/720575941350424112_skeleton.swc",
+  "public/data/superclem_palm_native_points_0_1.json",
+  "app/banc-v888-in14a018-morphology-route.js",
+  "app/bil-xenium-polygon-source-audit.js", "app/bil-xenium-polygon-source-audit.d.ts", "data/bil-xenium-polygon-source-audit-0.1.json", "tools/bil-xenium-fetch-polygon-candidate.py", "tools/audit_bil_xenium_polygon_source.py", "tools/test_bil_xenium_polygon_source.py", "scripts/validate-bil-xenium-polygon-source-audit-0.1.mjs", "tests/bil-xenium-polygon-source-audit.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_30_BIL_POLYGONS.md",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_29_OBJECTS_VIEW.md",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_28_COMPARATIVE_PNG.md",
+  "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_27_WT_PLANES.md",
+  "app/source-list-roving-focus.js", "app/source-list-roving-focus.d.ts", "app/useSourceListRovingFocus.ts", "app/source-list-keyboard.css", "tests/source-list-roving-focus.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_26_KEYBOARD_LISTS.md",
+  "app/bil-xenium-published-workflow-audit.js", "app/bil-xenium-published-workflow-audit.d.ts", "data/bil-xenium-published-workflow-audit-0.1.json", "tools/build_bil_xenium_published_workflow_audit.mjs", "scripts/validate-bil-xenium-published-workflow-audit-0.1.mjs", "tests/bil-xenium-published-workflow-audit.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_25_PUBLISHED_WORKFLOW.md",
+  "app/morphology-png-export.js", "app/morphology-png-export.d.ts", "app/source-view-png-raster.js", "app/source-view-png-raster.d.ts", "tests/morphology-png-export.test.mjs", "tests/source-view-png-raster.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_24_MORPHOLOGY_PNG.md",
+  "app/native-contour-png-export.js", "app/native-contour-png-export.d.ts", "tests/native-contour-png-export.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_23_NATIVE_CONTOUR_PNG.md",
+  "app/NativeContourRecordViewer.tsx", "app/native-contour-verification.js", "app/native-contour-verification.d.ts", "app/native-contour-source-view.js", "app/native-contour-source-view.d.ts", "tests/native-contour-source-view.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_22_NATIVE_CONTOUR_VIEW.md",
+  "app/neurolucida-native-soma-contours.js", "app/neurolucida-native-detail-admission.js", "app/neurolucida-native-detail-records.js", "app/neurolucida-native-contour-admission.js", "app/native-contour-derived-soma-surface.js", "app/native-contour-detail.css",
+  "app/bil-xenium-coordinate-source-audit.js", "app/bil-xenium-coordinate-source-audit.d.ts", "data/bil-xenium-coordinate-source-audit-0.1.json", "tests/bil-xenium-coordinate-source-audit.test.mjs", "scripts/validate-bil-xenium-coordinate-source-audit-0.1.mjs", "tools/bil-xenium-fetch-coordinate-candidate.py", "tools/audit_bil_xenium_coordinate_source.py", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_21_BIL_COORDINATES.md",
+  "tests/independent-morphology-discovery.test.mjs", "tests/neuromorpho-universe-source-strain-facets.test.mjs",
+  "app/main-scene-state-import.js", "app/main-scene-state-import.d.ts", "tests/main-scene-state-import.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_19_STATE_IMPORT.md",
+  "app/main-scene-export.js", "app/main-scene-export.d.ts", "tests/main-scene-export.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_20_EXPORT_SCOPE.md",
+  "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_18_MAIN_INSPECTION.md", "tests/morphology-neurite-inspection.test.mjs", "tests/research-visual-target.test.mjs",
+  "app/neurolucida-dat-swc-crosswalk.js",
+  "README.md", "app/AtlasPrototype.tsx", "app/InterneuronTypeAtlas.tsx",
+  "app/main-scene-source-view.js", "app/main-scene-source-view.d.ts", "app/main-scene-auxiliary-verification.js", "app/main-scene-auxiliary-verification.d.ts", "app/atlas-reference-geometry.js", "app/microns-source-native-clipping.js", "data/microns-source-native-clipping-0.1.json", "tests/main-scene-source-view.test.mjs", "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_17_MAIN_VIEW.md", "public/data/allen_cord_20um_v3_0/atlas-contours.json", "public/data/allen_cord_20um_v3_0/atlas-internal-compartments.json", "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json", "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.positions.f32le.bin", "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.triangles.u32le.bin", "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.positions.f32le.bin", "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.triangles.u32le.bin", "public/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json", "public/data/premotor_comparison_observed_morphology_route_pack_v1/geometry/nmo-45718.json",
+  "app/MorphologyViewer.tsx", "app/SceneCanvas.tsx", "app/main-scene-morphology-verification.js", "app/main-scene-morphology-verification.d.ts",
+  "app/MorphologySourceProof.tsx", "app/morphology-source-proof.css", "tests/main-scene-morphology-verification.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_14_LEGACY_SOURCE_PROOF.md",
+  "app/research-morphology-rendering-policy.js", "app/research-morphology-rendering-policy.d.ts", "app/ResearchMorphologyRenderingPolicy.tsx", "app/research-morphology-rendering-policy.css",
+  "tests/research-morphology-rendering-policy.test.mjs", "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_15_DOSSIER_RENDERING_POLICY.md",
+  "data/neuromorpho-census-main-scene-index-0.1.json", "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+  "vite.config.ts", "ohri-source-bytes.d.ts", "tools/ohri-source-bytes-vite-plugin.mjs", "tools/ohri-source-bytes-vite-plugin.d.mts",
+  "app/api/source-rosters/cano-chol-in/route.ts", "tests/ohri-source-bytes-vite-plugin.test.mjs",
+  "scripts/read-frozen-research-runtime.mjs", "scripts/validate-research-iteration-manifest-2.33-snapshot.mjs", "scripts/validate-research-iteration-manifest-2.34-snapshot.mjs", "tests/frozen-research-runtime.test.mjs",
+  "data/iteration-runtime-snapshots/1c246493244d75e294675eca383bf4e0bfb44a8f664e8160ed5449b6f8367bc8/validate-neuromorpho-no-age-query-universe-0.1.mjs", "data/iteration-runtime-snapshots/323285854e2663a9b2e4f4fa0c6631d768d6e8ad33478c39d529744eb08e1a31/neuromorpho-swc-runtime.js", "data/iteration-runtime-snapshots/d39ed4e91a25a653f358b35cb232f49c5ad99ca581ad2c548ba6e5d715fbb4ba/neuromorpho-swc-runtime.test.mjs",
+  "data/iteration-runtime-snapshots/fad707fdf8e41033a4c1a50b9875cc43e008d34cfb5f2a3b097c308b4c7b0bfb/microns-import-provenance.js",
+  "app/AdditionalResearchEvidence.tsx", "data/research-mvp-release-0.2.json", "data/ronzano-premotor-position-reference-0.1.json",
+  "data/cano-gomez-p56-multiome-interneuron-registry-0.1.json", "public/data/cano_gomez_p56_multiome_interneuron_v1/GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+  "docs/CANO_CHOL_IN_NUCLEUS_ROSTER_2026-09-30.md", "docs/RESEARCH_TIMELINE_2026-09-30_UPG109_ROSTER.md", "docs/RESEARCH_TIMELINE_2026-09-30_REMAINING_SCOPE.md",
+  "data/research-iteration-manifest-2.90.json", "scripts/validate-research-iteration-manifest-2.90-snapshot.mjs",
+  "data/research-source-registry-0.1.json", "data/research-model-upgrade-registry-0.1.json",
+  "scripts/validate-bil-xenium-source-metadata-0.1.mjs", "scripts/validate-janelia-wt-bounded-reference-0.1.mjs", "scripts/validate-mouse-spinal-m4-source-gate-20260930.mjs", "scripts/validate-research-source-registry-0.1.mjs", "scripts/validate-research-source-registry-denominators.mjs",
+  "scripts/validate-research-model-upgrade-registry-0.1.mjs", "tools/build_research_upgrade_registry.mjs",
+  "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md", "docs/UPGRADE_PLAN_2026-09-24.md",
+  "docs/LONG_RUN_UPGRADE_RUNBOOK_2026-09-29.md", "docs/READY_CANDIDATE_DELTA_REVIEW_2026-09-29.md",
+  "docs/RESEARCH_TIMELINE_2026-09-29_IMPLEMENTATION_01.md",
+  "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_02_IDENTITY.md", "app/CanoCholInNucleusRoster.tsx",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_03_INTERNAL_CONTRACT.md", "app/exact-record-detail-coverage.js", "tests/exact-record-detail-coverage.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_04_BIL_SCHEMA.md", "docs/BIL_XENIUM_GEOMETRY_SCHEMA_AUDIT_2026-09-30.md", "app/BilXeniumGeometrySchemaAudit.tsx", "data/bil-xenium-geometry-schema-audit-0.1.json", "scripts/validate-bil-xenium-geometry-schema-audit-0.1.mjs", "tools/bil-xenium-fetch-geometry-candidate.py", "tools/audit_bil_xenium_geometry_candidate.py",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_05_COMPARATIVE_REPLAY.md",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_06_RECORD_SCOPE.md", "app/ResearchExplorer.tsx", "app/ResearchFocusEvidencePanel.tsx", "app/ResearchRecordSourceScope.tsx", "app/research-record-source-scope.js", "app/research-record-source-scope.d.ts", "app/research-record-source-scope.css", "tests/research-record-source-scope.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_07_INDEX_TRANSPORT.md", "app/ResearchIndexLoadingEvidence.tsx", "data/research-explorer-transport-0.1.json", "public/data/research_explorer_index_v1/asset-manifest.json", "public/data/research_explorer_index_v1/search-index.json.gz", "app/api/source-records/search-index.json/route.ts", "tools/build_research_explorer_transport.mjs", "tests/research-explorer-transport.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_08_MORPHOLOGY_IDENTITY.md", "app/morphology-source-identity.js", "app/morphology-source-identity.d.ts", "app/morphology-comparison-identity.css", "app/MorphologyComparePanel.tsx", "app/morphology-comparison.js", "tests/morphology-source-identity.test.mjs", "tests/morphology-comparison.test.mjs", "data/morphology-source-frame-disclosure-0.1.json", "data/supplementary-morphology-comparison-adapter-0.1.json",
+  "app/morphology-source-frame-disclosure.ts", "app/morphology-source-frame-runtime.js", "app/morphology-source-frame-runtime.d.ts", "tests/morphology-source-frame-runtime.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_09_DANDI_TRACE.md", "app/DandiSpinalCordTracePreview.tsx", "app/dandi-spinalcordnet-trace.js", "app/dandi-spinalcordnet-trace.d.ts", "app/dandi-spinalcordnet-trace.css", "data/dandi-spinalcordnet-trace-preview-0.1.json", "tools/build_dandi_spinalcordnet_trace_preview.py", "tools/fetch_dandi_spinalcordnet_source_ranges.py", "scripts/validate-dandi-spinalcordnet-trace-preview-0.1.mjs", "tests/dandi-spinalcordnet-trace.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_10_PLANAR_RADIUS.md", "app/SourceLocalMorphologyViewport.tsx", "tests/morphology-render-mode.test.mjs", "app/morphology-microdetail.js", "tests/morphology-microdetail.test.mjs",
+  "scripts/validate-morphology-matrix-contract-0.1.mjs", "tests/morphology-matrix-contract.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_11_GEOMETRY_RUNTIME.md", "app/morphology-geometry-verification.js", "app/morphology-geometry-verification.d.ts", "app/morphology-census-data.ts", "tests/morphology-geometry-verification.test.mjs", "tests/observed-morphology-runtime-contract.test.mjs", "tests/supplementary-morphology-runtime.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_12_MORPHOLOGY_VIEW.md", "app/morphology-source-view.js", "app/morphology-source-view.d.ts", "app/MorphologySourceViewControls.tsx", "app/morphology-source-view.css", "tests/morphology-source-view.test.mjs",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_16_INDIVIDUAL_VIEW.md", "tests/individual-morphology-source-view.test.mjs",
+  "app/globals.css", "app/morphology-neurite-inspector.css",
+  "docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_13_UNIVERSE_VIEW.md", "app/neuromorpho-universe-view.css", "app/neuromorpho-universe-verification.js", "app/neuromorpho-universe-verification.d.ts", "app/neuromorpho-swc-runtime.js", "app/NeuroMorphoUniversePanel.tsx", "tests/neuromorpho-universe-verification.test.mjs", "tests/neuromorpho-swc-runtime.test.mjs", "scripts/validate-neuromorpho-no-age-query-universe-0.1.mjs",
+  "data/neuromorpho-no-age-query-universe-0.1.json", "data/neuromorpho-no-age-query-universe-roster-0.1.json", "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+  "app/source-local-morphology-geometry.js", "app/morphology-neurite-inspection.js", "app/morphology-viewport-scale.js", "app/MorphologyNeuriteInspector.tsx",
+  "data/neurolucida-native-contour-admission-catalog-0.3.json", "data/neurolucida-native-contour-admission-catalog-0.4.json",
+  "data/native-contour-source-context-0.1.json", "data/native-contour-derived-soma-surface-0.1.json", "data/neurolucida-dat-swc-crosswalk-0.1.json",
+  "data/microns-observed-cell-nucleus-reference-0.1.json", "data/banc-v888-in14a018-morphology-route-0.1.json",
+  "data/banc-v888-candidate-audit-0.1.json", "data/super-clem-palm-localization-reference-0.1.json",
+  "data/sathyamurthy-source-taxonomy-0.1.json", "data/alkaslasi-cholinergic-source-taxonomy-0.1.json", "data/haring-dorsal-horn-source-taxonomy-0.1.json", "data/hayashi-v2a-source-taxonomy-0.1.json", "data/roome-dil-source-taxonomy-0.1.json",
+  "public/data/research_explorer_index_v1/search-index.json", "app/research-explorer-index.js", "app/ResearchActiveRecordProvider.tsx",
+  "data/microstructformer-ultrastructure-reference-0.1.json", "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+  "data/neuromorpho-publication-discovery-audit-0.1.json", "data/bil-xenium-source-metadata-0.1.json", "data/mouse-spinal-m4-source-gate-20260930.json", "docs/JANELIA_WT_2D_REFERENCE_2026-09-30.md", "docs/MOUSE_SPINAL_M4_SOURCE_GATE_2026-09-30.md",
+  "app/IndependentSourceObjectWorkspace.tsx", "app/IndependentSourceObjectViewport.tsx",
+  "app/IndependentSourceObjectCoverage.tsx", "app/InternalStructureReferencePanel.tsx", "app/ResearchDataLab.tsx",
+  "app/objects/page.tsx", "app/source-audits/page.tsx", "app/independent-source-workspace-types.ts",
+  "app/atlas-types.ts", "app/CuratorFeedbackInbox.tsx", "app/PublicDataWorkbench.tsx",
+  "app/PublicFileAdmissionManifestComposer.tsx", "app/ResearchEvidencePanels.tsx",
+  "app/ObservedMorphologyRouteLibrary.tsx", "app/Nmo45718DatSwcCrosswalkViewer.tsx",
+  "app/TabulaeSpatialComparisonBoard.tsx", "app/TabulaeSpatialLocalViewer.tsx",
+  "app/EvidenceFeasibilityPlanner.tsx", "app/EvidenceProvenanceTrace.tsx",
+  "app/cross-lane-relationship-admission.js", "app/morphology-render-mode.js", "app/microns-import-provenance.js",
+  "app/ronzano-premotor-position-data.js", "worker/index.ts", "tools/run_current_research_tests.mjs", "tools/build_native_contour_source_context.mjs", "tools/build_mouse_spinal_m4_source_gate.py", "tools/mouse-spinal-m4-fetch-metadata.py", "tools/janelia-wt-fetch-bounded-reference.py",
+  "tests/research-model-upgrade-registry.test.mjs", "tests/research-iteration-manifest-2.91.test.mjs",
+  "tools/build_research_iteration_manifest_2_91.mjs", "scripts/validate-research-iteration-manifest-2.91.mjs",
+  "package.json", "package-lock.json",
+]);
+// Includes only bounded implementation families, not the whole dirty worktree.
+const FAMILIES = Object.freeze([
+  ["app", /^(?:same-cell-internal-source|source-object-identity|source-identity-hierarchy|SourceIdentityHierarchy|atlas-sampling-sensitivity|AtlasSamplingSensitivity|connectivity-assertion|ConnectivityAssertion|cano-chol-in-nucleus|CanoCholInNucleus|independent-source-|bil-xenium-(?:source|metadata|geometry)|molecular-concordance|MolecularConcordance|ExactSourceAudit|exact-source-audit|comparative-swc|ComparativeSwc|janelia-wt-|JaneliaWt|pkd2l1-experiment|Pkd2l1Experiment|crozat-experiment|CrozatExperiment)/],
+  ["data", /^(?:atlas-sampling-sensitivity|comparative-swc-reference|janelia-wt-bounded|pkd2l1-experiment|crozat-experiment|mouse-spinal-internal-availability-refresh)/],
+  ["tests", /^(?:same-cell-internal-source|source-object-identity|atlas-sampling-sensitivity|connectivity-assertions|cano-chol-in-nucleus|CanoCholInNucleus|independent-source-|bil-xenium-(?:source|geometry)|molecular-concordance|MolecularConcordance|exact-source-audit|trevisan-v1-exact|neuromorpho-publication|comparative-swc|janelia-wt-bounded|pkd2l1-experiment|crozat-experiment)/],
+  ["tools", /^(?:build_atlas_sampling_sensitivity|build_comparative_swc|build_janelia_wt_bounded|build_pkd2l1_experiment|audit_trevisan_v1_exact|audit_neuromorpho_publication|build_crozat_experiment)/],
+  ["docs", /^RESEARCH_TIMELINE_2026-09-(?:29|30)_(?:W|SOURCE_GAPS|CROZAT|COMPARATIVE|JANELIA|M4|INDEPENDENT_SOURCE)/],
+]);
+async function inputPaths() {
+  const paths = new Set(CORE_INPUTS_291);
+  for (const [directory, pattern] of FAMILIES) for (const name of await readdir(path.join(ROOT, directory))) {
+    if (pattern.test(name)) paths.add(`${directory}/${name}`);
+  }
+  paths.add("docs/ATLAS_SAMPLING_SENSITIVITY_2026-09-30.md");
+  const sensitivity = await json("data/atlas-sampling-sensitivity-0.1.json");
+  for (const receipt of sensitivity.inputReceipts) {
+    if (typeof receipt.path !== "string" || path.isAbsolute(receipt.path) || receipt.path.split("/").includes("..")) throw new Error("Sampling receipt must remain workspace-relative");
+    paths.add(receipt.path);
+  }
+  // Include complete scoped derivatives; retained large original source files stay outside this browser input inventory.
+  async function addTree(relative) {
+    let entries;
+    try { entries = await readdir(path.join(ROOT, relative), { withFileTypes: true }); }
+    catch (error) { if (error.code === "ENOENT") return; throw error; }
+    for (const entry of entries) {
+      const child = `${relative}/${entry.name}`;
+      if (entry.isDirectory()) await addTree(child); else paths.add(child);
+    }
+  }
+  for (const directory of ["public/data/svara_catalogue_pages_v1", "public/data/comparative_swc_reference_v1", "public/data/janelia_wt_reference_v1", "public/data/pkd2l1_experiment_observations_v1",
+    "public/data/dandi_spinalcordnet_full_recording_v1",
+    "public/data/dandi_spinalcordnet_trace_preview_v1", "data/source-candidates/dandi-spinalcordnet-001469-0.250611.1844",
+    "data/source-candidates/bil-xenium-20260929", "data/source-candidates/trevisan-v1-exact-inputs-20260929",
+    "data/source-candidates/bil-xenium-geometry-20260930", "data/source-candidates/bil-xenium-source-gate-20261001", "data/source-candidates/bil-xenium-polygons-20261002", "data/source-candidates/bil-xenium-ome-20261002", "data/source-candidates/published-xenium-registration-20261002",
+    "data/source-candidates/neuromorpho-publication-discovery-20260929", "data/source-candidates/mouse-spinal-true-internals-20260929",
+    "data/source-candidates/janelia-wt-reference-20260930", "data/source-candidates/mouse-spinal-m4-20260930",
+    "data/source-candidates/crozat-experiment-families-20260930", "data/source-candidates/neuromorpho-comparative-2026-09-30"]) await addTree(directory);
+  return [...paths].sort();
+}
+export async function buildResearchIterationManifest291() {
+  const parent = await validateResearchIterationManifest290Snapshot();
+  const [sourceRegistry, upgradeRegistry, upgrades, denominators, layout, packageJson, lockJson] = await Promise.all([
+    loadResearchSourceRegistry(), loadResearchUpgradeRegistry(), validateCanonicalResearchUpgradeRegistry(),
+    validateResearchSourceRegistryDenominators(), validateIncrementalIterationLayout(), json("package.json"), json("package-lock.json"),
+  ]);
+  validateResearchSourceRegistry(sourceRegistry); validateResearchSourceUpgradeLinks(sourceRegistry, upgradeRegistry);
+  const summary = summarizeResearchSourceRegistry(sourceRegistry);
+  if (packageJson.version !== "2.91.0-research.1" || lockJson.version !== packageJson.version || lockJson.packages?.[""]?.version !== packageJson.version) throw new Error("2.91 package and lock versions must match");
+  if (summary.sourceCount !== 31 || summary.recordSetCount !== 41 || summary.bundledExactRosterCount !== 13 || summary.bundledExactSourceObjectSetCount !== 4 || summary.typeRecordCount !== 387 || upgrades.upgradeCount !== 243 || denominators.staleLiteralCount !== 0 || layout.fullProjectCopyCount !== 0) throw new Error("2.91 source-unit, canonical queue or in-place boundary changed");
+  const base = await json("data/neurolucida-native-contour-admission-catalog-0.3.json"), delta = await json("data/neurolucida-native-contour-admission-catalog-0.4.json");
+  const index = buildIndependentSourceObjectIndex({ nativeContourCatalog: { ...delta, baseCatalogSnapshot: base, records: [...base.records, ...delta.addedRecords] },
+    micronsReference: await json("data/microns-observed-cell-nucleus-reference-0.1.json"), bancMorphologyRoute: await json("data/banc-v888-in14a018-morphology-route-0.1.json"),
+    superClemReference: await json("data/super-clem-palm-localization-reference-0.1.json"), microStructFormerReference: await json("data/microstructformer-ultrastructure-reference-0.1.json"),
+    nativeContourDerivedSurface: await json("data/native-contour-derived-soma-surface-0.1.json"), nativeContourCrosswalk: await json("data/neurolucida-dat-swc-crosswalk-0.1.json"), bancCandidateAudit: await json("data/banc-v888-candidate-audit-0.1.json"), nativeContourSourceContext: await json("data/native-contour-source-context-0.1.json") });
+  const indexed = Object.fromEntries(index.sources.map((source) => [source.sourceId, source.objectCount]));
+  if (JSON.stringify(indexed) !== JSON.stringify({ "native-contours": 7, "microns-phase1": 2, "banc-v888": 2, "super-clem-palm": 18358, microstructformer: 540 })) throw new Error("2.91 independent typed object counts changed");
+  const authoritativeInputs = await Promise.all((await inputPaths()).map(async (relative) => {
+    if (path.isAbsolute(relative) || relative.split("/").includes("..")) throw new Error("Unsafe manifest input path");
+    const bytes = await readFile(path.join(ROOT, relative)); return { path: relative, bytes: bytes.byteLength, sha256: sha256(bytes) };
+  }));
+  const manifest = {
+    manifestSchemaVersion: "2.91.0", releaseId: "ohri-mouse-interneuron-research-iteration-2.91.0", releaseDate: "2026-09-30", releaseStatus: "localhost_research_iteration",
+    application: { name: packageJson.name, version: packageJson.version },
+    parentIterationManifest: { path: SNAPSHOT_290.path, releaseId: parent.releaseId, bytes: SNAPSHOT_290.bytes, fileSha256: SNAPSHOT_290.fileSha256, contentSha256: SNAPSHOT_290.contentSha256 },
+    authoritativeInputs, integrity: { inputCount: authoritativeInputs.length, inputPathsUnique: true, currentInputByteReplayRequired: true },
+    registrySummary: { canonicalSourceCount: summary.sourceCount, canonicalRecordSetCount: summary.recordSetCount, bundledExactCellProfileRosterCount: summary.bundledExactRosterCount, bundledExactSourceObjectSetCount: summary.bundledExactSourceObjectSetCount, sourceProfileCount: summary.typeRecordCount, researchUpgradeCount: upgrades.upgradeCount, completedResearchUpgradeCount: upgradeRegistry.summary.byStatus.completed, displayedResearchUpgradeCount: upgrades.displayedUpgradeCount, staleCanonicalDenominatorLiteralCount: denominators.staleLiteralCount },
+    implementationScope: { independentObjectCounts: indexed, objectCountUnit: "source-specific indexed entries; never a pooled cell census", sourceProfileComparisonCount: 387, exactCrossSourceIdentityCount: 0, atlasRegistrationCount: 0, mouseSpinalInterneuronSameCellInternalObjectCount: 0, bilSectionLinkedCellNucleusGeometryCount: 0, microStructFormerGeometryCount: 0, fullProjectCopyCount: layout.fullProjectCopyCount, fullGoalComplete: false,
+      historicalParent: "Frozen 2.90 receipt retains its original hashes; current 2.91 replays every current authoritative input byte. Scientific gates remain independent from engineering validation." },
+  };
+  const sealed = { ...manifest, manifestContentSha256: computeManifestContentSha256(manifest) };
+  return { manifest: sealed, bytes: Buffer.from(JSON.stringify(sealed, null, 2) + "\n") };
+}
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) buildResearchIterationManifest291().then(async ({ manifest, bytes }) => { if (process.argv.includes("--write")) await writeFile(MANIFEST_291_PATH, bytes); console.log(`${process.argv.includes("--write") ? "Wrote" : "Built"} 2.91 manifest: ${manifest.integrity.inputCount} current byte receipts; same-cell mouse spinal interior remains gated`); }).catch((error) => { console.error(error.message); process.exitCode = 1; });

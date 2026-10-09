@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "context": {
+    "exitCode": 0,
+    "args": [
+      "--test",
+      "tests/i62-after-i61-context.qa.mjs"
+    ],
+    "stdout": {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/after-i61-context-tests.stdout.log",
+      "bytes": 1616,
+      "sha256": "70016dec8e9589adf1e2335e7f306eba5cf8434fe9b62ead827030a01c269162"
+    },
+    "stderr": {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/after-i61-context-tests.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "contextTests": 12,
+  "originalCandidateTestsReusedInContext": 9,
+  "additionalTemporaryI61RetentionChecks": 3,
+  "initialEnvironmentStopRetained": {
+    "exitCode": 1,
+    "args": [
+      "/private/tmp/ohri-i62-after-i61-rebase-20261005/qa-scoped-typecheck.mjs",
+      "--without-vinext-shim"
+    ],
+    "stdout": {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-scoped-types-environment-missing-retained.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-scoped-types-environment-missing-retained.stderr.log",
+      "bytes": 5714,
+      "sha256": "c0aff3c012c57f324e607ece84e4b2ae0b6836fb25947c179d3fc7513b763ab3"
+    }
+  },
+  "existingDeclarationInputs": [
+    {
+      "source": {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/research-source-drilldown.d.ts",
+        "bytes": 1766,
+        "sha256": "f4697d99e5c53487b5afe30677061366ab9a2ab50556c6d49fa923401241312f"
+      },
+      "copy": {
+        "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/projected-after/app/research-source-drilldown.d.ts",
+        "bytes": 1766,
+        "sha256": "f4697d99e5c53487b5afe30677061366ab9a2ab50556c6d49fa923401241312f"
+      },
+      "role": "existing declaration input, erased at runtime; not new I62 canonical admission"
+    },
+    {
+      "source": {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/source-list-roving-focus.d.ts",
+        "bytes": 385,
+        "sha256": "d5c35c9c57e41f69ae6f969510f44893a428b01c359920f363c3c2a89f7608df"
+      },
+      "copy": {
+        "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/projected-after/app/source-list-roving-focus.d.ts",
+        "bytes": 385,
+        "sha256": "d5c35c9c57e41f69ae6f969510f44893a428b01c359920f363c3c2a89f7608df"
+      },
+      "role": "existing declaration input, erased at runtime; not new I62 canonical admission"
+    }
+  ],
+  "existingVinextEnvironmentShim": {
+    "path": "/private/tmp/ohri-i51-lock-dependencies/node_modules/vinext/dist/shims/next-shims-public.d.ts",
+    "bytes": 29,
+    "sha256": "b5a4d41c85acaeb1e1cf1f6ee4a3f6eeaded2a2a6392f41d37b1d9f53a7ec017"
+  },
+  "final": {
+    "exitCode": 0,
+    "args": [
+      "/private/tmp/ohri-i62-after-i61-rebase-20261005/qa-scoped-typecheck.mjs"
+    ],
+    "stdout": {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/scoped-types-after-environment-completion.stdout.log",
+      "bytes": 110,
+      "sha256": "90e4e9381f2c3763297fdefebf06059da79119fa9d0f4f3d6e475e15c934ca9f"
+    },
+    "stderr": {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/scoped-types-after-environment-completion.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "fullRootTypecheckExecuted": false,
+  "rootWrites": 0
+}

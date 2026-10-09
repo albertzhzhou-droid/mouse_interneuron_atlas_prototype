@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { RESEARCH_ITERATION } from "./research-iteration.js";
+
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: `Mouse Spinal Interneuron Atlas · Public-Data Research Iteration ${RESEARCH_ITERATION}`,
+  description: "A localhost evidence-linked public-data workbench for mouse spinal interneuron and SCI research across source-declared life stages.",
+  icons: { icon: "/icon.svg" },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+    </html>
+  );
+}

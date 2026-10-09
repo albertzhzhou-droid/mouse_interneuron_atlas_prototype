@@ -1,0 +1,21 @@
+Native annotation sampling sensitivity
+
+Same-source sampling · UPG-026
+
+How much annotation does each plane selection represent?
+Export counts and evidence
+
+These counts replay four plane selections against the same fixed Allen annotation. The current 38 planes cover all 32 repeating annotation states and all 73 direct labels. Adding 37 midpoint planes increases the sampled budget but finds no additional state.
+
+All direct labels, including separate motor and structural context lanes
+Plane selection	States covered	Labels sampled	Represented state voxels	Voxels on selected planes
+Archived 15 planes	15/32	63/73	54.57%	0.96%
+Declared historical 33 planes	27/32	70/73	86.91%	2.10%
+Current 38 planes	32/32	73/73	100.00%	2.54%
+Declared denser 75 planes	32/32	73/73	100.00%	5.05%
+
+Represented state voxels count all native planes in a hash-verified repeating state. Selected-plane voxels count only the actual chosen planes. Neither percentage measures anatomical accuracy, biological error or registration quality; states are not spinal segments or independent specimens.
+
+The 15 and 38 selections have verified local plane assets. The historical 33 selection is declared in the fixed generator; its old output is unavailable. The 75 selection is a declared counting strategy and has no new slice assets. The original compressed cache is unavailable; all 32 state hashes and the full annotation semantic hash were reverified from existing lossless masks.
+
+Inspect exact labels, missed states and evidence

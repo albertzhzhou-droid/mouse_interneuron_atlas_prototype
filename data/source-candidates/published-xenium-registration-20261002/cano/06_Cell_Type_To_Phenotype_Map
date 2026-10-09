@@ -1,0 +1,511 @@
+###############################################
+#### Figure 7 - Cell-type to phenotype map ####
+###############################################
+
+#### Load packages and data
+library("Seurat")
+library("SeuratObject")
+library("ggplot2")
+library("dplyr")
+library("patchwork")
+
+SPN_dbase = readRDS("<location>/SPN_dbase.rds")
+DefaultAssay(SPN_dbase) <- "RNA"
+
+####  Plot circular plots for all somatosensory modalities
+##########################################################
+
+library(tidyverse)
+
+#### Calculate average expression of genetic reagents (Cre) yielding somatosensory phenotypes upon activation/inactivation/lesioning
+features_of_interest = c("Tac1", "Tacr1", "Gpr83", "Phox2a", "Calcrl", "Zic2") # Based on Huang et al. 2019. Nature; Choi et al. 2020. Nature, Roome et al. 2020. Cell Rep.; Ren et al. 2023. Neuron; Paixao et al. 2019. Neuron
+
+avg_expression = AverageExpression(SPN_dbase, assays ="RNA", layer= "data", features = features_of_interest, group.by="neuron_types")
+avg_expression = as.data.frame(t(avg_expression$RNA))
+
+#### Identify threshold (median-50 percentile)
+
+thresholds = rep(0, length(features_of_interest))
+names(thresholds) = features_of_interest
+
+for (i in features_of_interest){
+  gene_expr <- GetAssayData(SPN_dbase, assay = "RNA", layer = "data")[i, ]
+  non_zero_expr <- gene_expr[gene_expr > 0]
+  threshold <- quantile(non_zero_expr, probs = 0.5)
+  thresholds[i] = threshold
+}
+thresholds
+
+# Calculating quantile threshold for one (this is based on individual neurons and not averaged amounts)
+#gene_expr <- GetAssayData(SPN_dbase, assay = "RNA", layer = "data")["Phox2a", ]
+# non_zero_expr <- gene_expr[gene_expr > 0]
+# threshold <- quantile(non_zero_expr, probs = 0.5)
+
+#### Create a discrete expression matrix as input to circle plot
+
+discrete_expression = as.data.frame(matrix(0, nrow = nrow(avg_expression), ncol = ncol(avg_expression)))
+colnames(discrete_expression) = features_of_interest
+for (i in features_of_interest){
+  discrete_expression[,i] <- ifelse(avg_expression[,i] >= thresholds[i], 1, 0)
+}
+
+# Add neuron_type column to plotting input matrix
+discrete_expression$neuron_type = row.names(avg_expression)
+discrete_expression$neuron_type = factor(discrete_expression$neuron_type, levels = c("DSPN1", "DSPN2A", "DSPN2B", "DSPN3", "DSPN4", "DSPN5", "DSPN6", "DSPN7", "DSPN8", "DSPN9", "DSPN10", "DSPN11", "DSPN12", "DSPN13", "LSPN1A", "LSPN1B", "LSPN2", "LSPN3", "LSPN4", "LSPN5", "LSPN6", "LSPN7", "LSPN8", "LSPN9", "LSPN10", "L10-SPN1", "L10-SPN2", "L10-SPN3" , "L10-SPN4", "L10-SPN5", "L10-SPN6", "L10-SPN7", "L10-SPN8", "L10-SPN9", "CC-SPN1", "CC-SPN2", "CC-SPN3", "PSPN1", "PSPN2", "PSPN3", "PSPN4", "PSPN5", "PSPN6", "PSPN7", "PSPN8", "PSPN9", "PSPN10", "PSPN11", "PSPN12", "DP-SPN1", "DP-SPN2", "DP-SPN3", "DP-SPN4", "DP-SPN5", "DP-SPN6", "DP-SPN7", "DP-SPN8", "DP-SPN9", "DP-SPN10", "DP-SPN11", "DP-SPN12", "DP-SPN13", "DP-SPN14", "DP-SPN15", "DP-SPN16", "DP-SPN17", "DP-SPN18", "DP-SPN19", "DP-SPN20", "DP-SPN21",  "DP-SPN22", "DP-SPN23", "DP-SPN24", "DP-SPN25", "DP-SPN26", "DP-SPN27", "DP-SPN28", "DP-SPN29"))
+
+# Add categories column to plotting input matrix
+categories = rep("noname", length(levels(Idents(SPN_dbase))))
+grouping_dframe = data.frame(neuron_type = SPN_dbase$neuron_types, category = SPN_dbase$SPN_category)
+head(grouping_dframe)
+
+for (i in 1:length(levels(Idents(SPN_dbase)))){
+  temp_dframe = subset(grouping_dframe, neuron_type==levels(Idents(SPN_dbase))[i])
+  categories[i] = as.character(unique(temp_dframe$category))
+}
+categories
+discrete_expression$categories = as.factor(categories)
+discrete_expression$categories = factor(discrete_expression$categories, levels = c("Type1 DSPNs", "Type2 DSPNs", "LSN SPNs", "L10 SPNs", "Clarke's Column SPNs", "PSDC and PSDC like SPNs", "Deep SPNs"))
+head(discrete_expression) # contains discretized gene expression, neuron_type and category variables
+
+# Plot bar graph of discretized expression (sanity check)
+gene_data = discrete_expression[,"Phox2a"]
+df <- data.frame(index = seq_along(gene_data), val = gene_data)
+ggplot(df, aes(x = index, y = val)) +  geom_col() + theme_classic()
+
+## Transform data in a tidy format (long format)
+discrete_expression = discrete_expression %>% gather(key = "observation", value="value", -c(7,8))
+
+# Set a number of 'empty bar' to add at the end of each group
+empty_bar <- 2
+nObsType <- nlevels(as.factor(discrete_expression$observation))
+to_add <- data.frame(matrix(NA, empty_bar*nlevels(discrete_expression$categories)*nObsType, ncol(discrete_expression)) )
+colnames(to_add) <- colnames(discrete_expression)
+to_add$categories <- rep(levels(discrete_expression$categories), each=empty_bar*nObsType )
+discrete_expression<- rbind(discrete_expression, to_add)
+discrete_expression <- discrete_expression %>% arrange(categories, neuron_type)
+discrete_expression$id <- rep( seq(1, nrow(discrete_expression)/nObsType) , each=nObsType)
+
+# Get the name and the y position of each label
+
+label_data <- discrete_expression %>% group_by(id, neuron_type) %>% summarize(tot=sum(value))
+number_of_bar <- nrow(label_data)
+angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     # I substract 0.5 because the letter must have the angle of the center of the bars. Not extreme right(1) or extreme left (0)
+label_data$hjust <- ifelse( angle < -90, 1, 0)
+label_data$angle <- ifelse(angle < -90, angle+180, angle)
+
+ 
+# prepare a data frame for base lines
+
+base_data <- discrete_expression %>% 
+  group_by(categories) %>% 
+  summarize(start=min(id), end=max(id) - empty_bar) %>% 
+  rowwise() %>% 
+  mutate(title=mean(c(start, end)))
+
+# prepare a data frame for grid (scales)
+grid_data <- base_data
+grid_data$end <- grid_data$end[ c( nrow(grid_data), 1:nrow(grid_data)-1)] + 1
+grid_data$start <- grid_data$start - 1
+grid_data <- grid_data[-1,]
+ 
+# Make the plot
+p <- ggplot(discrete_expression) +
+  # Add the stacked bar
+  geom_bar(aes(x=as.factor(id), y=value, fill=observation), stat="identity", alpha=0.5) +
+  scale_fill_manual(values = c("red", "blue", "green", "yellow", "black", "grey")) +
+
+# Add a val=3/2/1 lines. Do it at the beginning to make sure barplots are OVER it.
+  geom_segment(data=grid_data, aes(x = end, y = 0, xend = start, yend = 0), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 1, xend = start, yend = 1), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 2, xend = start, yend = 2), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 3, xend = start, yend = 3), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+
+  # Add text showing the value of each line
+  ggplot2::annotate("text", x = rep(92, 4), y = c(0, 1, 2, 3), label = c("0", "1", "2", "3") , color="grey", size=6 , angle=0, fontface="bold", hjust=0) +
+  
+  ylim(-1.5, max(label_data$tot, na.rm=T)) + #regulates inner circle size
+  theme_minimal() +
+  theme(
+    #legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) +
+  coord_polar() +
+  
+  # Add labels on top of each bar
+  # geom_text(data=label_data, aes(x=id, y=tot+1, label=neuron_type, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=3, angle=label_data$angle, inherit.aes = FALSE) +
+  
+  # Add base line information
+  geom_segment(data=base_data, aes(x = start, y = -0.2, xend = end, yend = -0.2), colour = "black", alpha=0.8, linewidth=0.8 , inherit.aes = FALSE)  #+
+  # geom_text(data=base_data, aes(x = title, y = -2, label=categories), hjust=c(0.5,0.5,0.5,0.5, 0.5, 0.5, 0.5), angle = c(0, 0, 0, 0, 0, 0, 0), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE)
+
+p
+
+# Tac1: "#00BA38"
+# Tacr1: "black"
+# Phox2a: "#E6194B"
+# Gpr83: "#DB72FB"
+# Zic2: "#FFE119"
+# Calcrl: "#4169E1"
+
+#####################################
+#### Plot Pain Phenotype Markers ####
+#####################################
+
+## Recreate discrete expression matrix as input to circle plot
+
+discrete_expression = as.data.frame(matrix(0, nrow = nrow(avg_expression), ncol = ncol(avg_expression)))
+colnames(discrete_expression) = features_of_interest
+for (i in features_of_interest){
+  discrete_expression[,i] <- ifelse(avg_expression[,i] >= thresholds[i], 1, 0)
+}
+
+# Add neuron_type column to plotting input matrix
+discrete_expression$neuron_type = row.names(avg_expression)
+discrete_expression$neuron_type = factor(discrete_expression$neuron_type, levels = c("DSPN1", "DSPN2A", "DSPN2B", "DSPN3", "DSPN4", "DSPN5", "DSPN6", "DSPN7", "DSPN8", "DSPN9", "DSPN10", "DSPN11", "DSPN12", "DSPN13", "LSPN1A", "LSPN1B", "LSPN2", "LSPN3", "LSPN4", "LSPN5", "LSPN6", "LSPN7", "LSPN8", "LSPN9", "LSPN10", "L10-SPN1", "L10-SPN2", "L10-SPN3" , "L10-SPN4", "L10-SPN5", "L10-SPN6", "L10-SPN7", "L10-SPN8", "L10-SPN9", "CC-SPN1", "CC-SPN2", "CC-SPN3", "PSPN1", "PSPN2", "PSPN3", "PSPN4", "PSPN5", "PSPN6", "PSPN7", "PSPN8", "PSPN9", "PSPN10", "PSPN11", "PSPN12", "DP-SPN1", "DP-SPN2", "DP-SPN3", "DP-SPN4", "DP-SPN5", "DP-SPN6", "DP-SPN7", "DP-SPN8", "DP-SPN9", "DP-SPN10", "DP-SPN11", "DP-SPN12", "DP-SPN13", "DP-SPN14", "DP-SPN15", "DP-SPN16", "DP-SPN17", "DP-SPN18", "DP-SPN19", "DP-SPN20", "DP-SPN21",  "DP-SPN22", "DP-SPN23", "DP-SPN24", "DP-SPN25", "DP-SPN26", "DP-SPN27", "DP-SPN28", "DP-SPN29", "DP-SPN30"))
+
+# Add categories column to plotting input matrix
+categories = rep("noname", length(levels(Idents(SPN_dbase))))
+grouping_dframe = data.frame(neuron_type = SPN_dbase$neuron_types, category = SPN_dbase$SPN_category)
+head(grouping_dframe)
+
+for (i in 1:length(levels(Idents(SPN_dbase)))){
+  temp_dframe = subset(grouping_dframe, neuron_type==levels(Idents(SPN_dbase))[i])
+  categories[i] = as.character(unique(temp_dframe$category))
+}
+categories
+discrete_expression$categories = as.factor(categories)
+discrete_expression$categories = factor(discrete_expression$categories, levels = c("Type1 DSPNs", "Type2 DSPNs", "LSN SPNs", "L10 SPNs", "Clarke's Column SPNs", "PSDC and PSDC like SPNs", "Deep SPNs"))
+head(discrete_expression) # contains discretized gene expression, neuron_type and category variables
+
+## Isolate necessary rows from discrete expression matrix
+
+pain_markers = discrete_expression[,c("neuron_type", "categories", "Tac1", "Tacr1", "Gpr83", "Phox2a")]
+
+## Transform data in a tidy format (long format)
+pain_markers = pain_markers %>% gather(key = "observation", value="value", -c(1,2))
+
+# Set a number of 'empty bar' to add at the end of each group
+empty_bar <- 2
+nObsType <- nlevels(as.factor(pain_markers$observation))
+to_add <- data.frame(matrix(NA, empty_bar*nlevels(pain_markers$categories)*nObsType, ncol(pain_markers)))
+colnames(to_add) <- colnames(pain_markers)
+to_add$categories <- rep(levels(pain_markers$categories), each=empty_bar*nObsType )
+pain_markers<- rbind(pain_markers, to_add)
+pain_markers <- pain_markers %>% arrange(categories, neuron_type)
+pain_markers$id <- rep( seq(1, nrow(pain_markers)/nObsType) , each=nObsType)
+
+# Get the name and the y position of each label
+
+label_data <- pain_markers %>% group_by(id, neuron_type) %>% summarize(tot=sum(value))
+number_of_bar <- nrow(label_data)
+angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     # I substract 0.5 because the letter must have the angle of the center of the bars. Not extreme right(1) or extreme left (0)
+label_data$hjust <- ifelse( angle < -90, 1, 0)
+label_data$angle <- ifelse(angle < -90, angle+180, angle)
+
+ 
+# prepare a data frame for base lines
+
+base_data <- pain_markers %>% 
+  group_by(categories) %>% 
+  summarize(start=min(id), end=max(id) - empty_bar) %>% 
+  rowwise() %>% 
+  mutate(title=mean(c(start, end)))
+
+# prepare a data frame for grid (scales)
+grid_data <- base_data
+grid_data$end <- grid_data$end[ c( nrow(grid_data), 1:nrow(grid_data)-1)] + 1
+grid_data$start <- grid_data$start - 1
+grid_data <- grid_data[-1,]
+ 
+"#00BA38"
+"black"
+"#E6194B"
+"#DB72FB"
+
+
+# Make the plot
+
+pain_markers$observation = factor(pain_markers$observation, levels=c("Phox2a",  "Gpr83", "Tac1", "Tacr1"))
+p <- ggplot(pain_markers) +
+  # Add the stacked bar
+  geom_bar(aes(x=as.factor(id), y=value, fill=observation), stat="identity", alpha=0.5) +
+  scale_fill_manual(values = c("#E6194B", "#DB72FB", "#00BA38",  "black")) +
+
+# Add a val=3/2/1 lines. Do it at the beginning to make sure barplots are OVER it.
+  geom_segment(data=grid_data, aes(x = end, y = 0, xend = start, yend = 0), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 1, xend = start, yend = 1), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 2, xend = start, yend = 2), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 3, xend = start, yend = 3), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+
+  # Add text showing the value of each line
+  ggplot2::annotate("text", x = rep(92, 4), y = c(0, 1, 2, 3), label = c("0", "1", "2", "3") , color="grey", size=6 , angle=0, fontface="bold", hjust=0) +
+  
+  ylim(-1.5, max(label_data$tot, na.rm=T)) + #regulates inner circle size
+  theme_minimal() +
+  theme(
+    #legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) +
+  coord_polar() +
+  
+  # Add labels on top of each bar
+  geom_text(data=label_data, aes(x=id, y=tot+0.1, label=neuron_type, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=3, angle=label_data$angle, inherit.aes = FALSE) +
+  
+  # Add base line information
+  geom_segment(data=base_data, aes(x = start, y = -0.2, xend = end, yend = -0.2), colour = "black", alpha=0.8, linewidth=0.8 , inherit.aes = FALSE) #+
+  #geom_text(data=base_data, aes(x = title, y = -2, label=categories), hjust=c(0.5,0.5,0.5,0.5, 0.5, 0.5, 0.5), angle = c(0, 0, 0, 0, 0, 0, 0), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE)
+
+p
+ggsave("Pain_circular_bar2.pdf", p, width=10, height=10, dpi=300, device="pdf")
+
+
+#####################################
+#### Plot Itch Phenotype Markers ####
+#####################################
+
+itch_markers = discrete_expression[,c("neuron_type", "categories", "Calcrl", "Tacr1")]
+
+## Transform data in a tidy format (long format)
+itch_markers = itch_markers %>% gather(key = "observation", value="value", -c(1,2))
+
+# Set a number of 'empty bar' to add at the end of each group
+empty_bar <- 2
+nObsType <- nlevels(as.factor(itch_markers$observation))
+to_add <- data.frame(matrix(NA, empty_bar*nlevels(itch_markers$categories)*nObsType, ncol(itch_markers)))
+colnames(to_add) <- colnames(itch_markers)
+to_add$categories <- rep(levels(itch_markers$categories), each=empty_bar*nObsType )
+itch_markers<- rbind(itch_markers, to_add)
+itch_markers <- itch_markers %>% arrange(categories, neuron_type)
+itch_markers$id <- rep( seq(1, nrow(itch_markers)/nObsType) , each=nObsType)
+
+# Get the name and the y position of each label
+
+label_data <- itch_markers %>% group_by(id, neuron_type) %>% summarize(tot=sum(value))
+number_of_bar <- nrow(label_data)
+angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     # I substract 0.5 because the letter must have the angle of the center of the bars. Not extreme right(1) or extreme left (0)
+label_data$hjust <- ifelse( angle < -90, 1, 0)
+label_data$angle <- ifelse(angle < -90, angle+180, angle)
+
+ 
+# prepare a data frame for base lines
+
+base_data <- itch_markers %>% 
+  group_by(categories) %>% 
+  summarize(start=min(id), end=max(id) - empty_bar) %>% 
+  rowwise() %>% 
+  mutate(title=mean(c(start, end)))
+
+# prepare a data frame for grid (scales)
+grid_data <- base_data
+grid_data$end <- grid_data$end[ c( nrow(grid_data), 1:nrow(grid_data)-1)] + 1
+grid_data$start <- grid_data$start - 1
+grid_data <- grid_data[-1,]
+ 
+# Make the plot
+
+itch_markers$observation = factor(itch_markers$observation, levels=c("Calcrl", "Tacr1"))
+p <- ggplot(itch_markers) +
+  # Add the stacked bar
+  geom_bar(aes(x=as.factor(id), y=value, fill=observation), stat="identity", alpha=0.5) +
+  scale_fill_manual(values = c("#4169E1", "black")) +
+
+# Add a val=3/2/1 lines. Do it at the beginning to make sure barplots are OVER it.
+  geom_segment(data=grid_data, aes(x = end, y = 0, xend = start, yend = 0), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 1, xend = start, yend = 1), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 2, xend = start, yend = 2), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 3, xend = start, yend = 3), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+
+  # Add text showing the value of each line
+  ggplot2::annotate("text", x = rep(92, 4), y = c(0, 1, 2, 3), label = c("0", "1", "2", "3") , color="grey", size=6 , angle=0, fontface="bold", hjust=0) +
+  
+  ylim(-1.5, max(label_data$tot, na.rm=T)) + #regulates inner circle size
+  theme_minimal() +
+  theme(
+    #legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) +
+  coord_polar() +
+  
+  # Add labels on top of each bar
+  geom_text(data=label_data, aes(x=id, y=tot+0.1, label=neuron_type, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=3, angle=label_data$angle, inherit.aes = FALSE) +
+  
+  # Add base line information
+  geom_segment(data=base_data, aes(x = start, y = -0.2, xend = end, yend = -0.2), colour = "black", alpha=0.8, linewidth=0.8 , inherit.aes = FALSE) #+
+  #geom_text(data=base_data, aes(x = title, y = -2, label=categories), hjust=c(0.5,0.5,0.5,0.5, 0.5, 0.5, 0.5), angle = c(0, 0, 0, 0, 0, 0, 0), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE)
+
+p
+ggsave("Itch_circular_bar.pdf", p, width=10, height=10, dpi=300, device="pdf")
+
+
+#####################################
+#### Plot Cold Phenotype Markers ####
+#####################################
+
+cold_markers = discrete_expression[,c("neuron_type", "categories", "Phox2a")]
+
+## Transform data in a tidy format (long format)
+cold_markers = cold_markers %>% gather(key = "observation", value="value", -c(1,2))
+
+# Set a number of 'empty bar' to add at the end of each group
+empty_bar <- 2
+nObsType <- nlevels(as.factor(cold_markers$observation))
+to_add <- data.frame(matrix(NA, empty_bar*nlevels(cold_markers$categories)*nObsType, ncol(cold_markers)))
+colnames(to_add) <- colnames(cold_markers)
+to_add$categories <- rep(levels(cold_markers$categories), each=empty_bar*nObsType )
+cold_markers<- rbind(cold_markers, to_add)
+cold_markers <- cold_markers %>% arrange(categories, neuron_type)
+cold_markers$id <- rep( seq(1, nrow(cold_markers)/nObsType) , each=nObsType)
+
+# Get the name and the y position of each label
+
+label_data <- cold_markers %>% group_by(id, neuron_type) %>% summarize(tot=sum(value))
+number_of_bar <- nrow(label_data)
+angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     # I substract 0.5 because the letter must have the angle of the center of the bars. Not extreme right(1) or extreme left (0)
+label_data$hjust <- ifelse( angle < -90, 1, 0)
+label_data$angle <- ifelse(angle < -90, angle+180, angle)
+
+ 
+# prepare a data frame for base lines
+
+base_data <- cold_markers %>% 
+  group_by(categories) %>% 
+  summarize(start=min(id), end=max(id) - empty_bar) %>% 
+  rowwise() %>% 
+  mutate(title=mean(c(start, end)))
+
+# prepare a data frame for grid (scales)
+grid_data <- base_data
+grid_data$end <- grid_data$end[ c( nrow(grid_data), 1:nrow(grid_data)-1)] + 1
+grid_data$start <- grid_data$start - 1
+grid_data <- grid_data[-1,]
+ 
+
+# Make the plot
+
+cold_markers$observation = factor(cold_markers$observation, levels=c("Phox2a"))
+p <- ggplot(cold_markers) +
+  # Add the stacked bar
+  geom_bar(aes(x=as.factor(id), y=value, fill=observation), stat="identity", alpha=0.5) +
+  scale_fill_manual(values = c("#E6194B")) +
+
+# Add a val=3/2/1 lines. Do it at the beginning to make sure barplots are OVER it.
+  geom_segment(data=grid_data, aes(x = end, y = 0, xend = start, yend = 0), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 1, xend = start, yend = 1), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 2, xend = start, yend = 2), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 3, xend = start, yend = 3), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+
+  # Add text showing the value of each line
+  ggplot2::annotate("text", x = rep(92, 4), y = c(0, 1, 2, 3), label = c("0", "1", "2", "3") , color="grey", size=6 , angle=0, fontface="bold", hjust=0) +
+  
+  ylim(-1.5, max(label_data$tot, na.rm=T)) + #regulates inner circle size
+  theme_minimal() +
+  theme(
+    #legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) +
+  coord_polar() +
+  
+  # Add labels on top of each bar
+  geom_text(data=label_data, aes(x=id, y=tot+0.1, label=neuron_type, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=3, angle=label_data$angle, inherit.aes = FALSE) +
+  
+  # Add base line information
+  geom_segment(data=base_data, aes(x = start, y = -0.2, xend = end, yend = -0.2), colour = "black", alpha=0.8, linewidth=0.8 , inherit.aes = FALSE) #+
+  #geom_text(data=base_data, aes(x = title, y = -2, label=categories), hjust=c(0.5,0.5,0.5,0.5, 0.5, 0.5, 0.5), angle = c(0, 0, 0, 0, 0, 0, 0), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE)
+
+p
+ggsave("Cold_circular_bar.pdf", p, width=10, height=10, dpi=300, device="pdf")
+
+######################################
+#### Plot Touch Phenotype Markers ####
+######################################
+
+touch_markers = discrete_expression[,c("neuron_type", "categories", "Zic2")]
+
+## Transform data in a tidy format (long format)
+touch_markers = touch_markers %>% gather(key = "observation", value="value", -c(1,2))
+
+# Set a number of 'empty bar' to add at the end of each group
+empty_bar <- 2
+nObsType <- nlevels(as.factor(touch_markers$observation))
+to_add <- data.frame(matrix(NA, empty_bar*nlevels(touch_markers$categories)*nObsType, ncol(touch_markers)))
+colnames(to_add) <- colnames(touch_markers)
+to_add$categories <- rep(levels(touch_markers$categories), each=empty_bar*nObsType )
+touch_markers<- rbind(touch_markers, to_add)
+touch_markers <- touch_markers %>% arrange(categories, neuron_type)
+touch_markers$id <- rep( seq(1, nrow(touch_markers)/nObsType) , each=nObsType)
+
+# Get the name and the y position of each label
+
+label_data <- touch_markers %>% group_by(id, neuron_type) %>% summarize(tot=sum(value))
+number_of_bar <- nrow(label_data)
+angle <- 90 - 360 * (label_data$id-0.5) /number_of_bar     # I substract 0.5 because the letter must have the angle of the center of the bars. Not extreme right(1) or extreme left (0)
+label_data$hjust <- ifelse( angle < -90, 1, 0)
+label_data$angle <- ifelse(angle < -90, angle+180, angle)
+
+ 
+# prepare a data frame for base lines
+
+base_data <- touch_markers %>% 
+  group_by(categories) %>% 
+  summarize(start=min(id), end=max(id) - empty_bar) %>% 
+  rowwise() %>% 
+  mutate(title=mean(c(start, end)))
+
+# prepare a data frame for grid (scales)
+grid_data <- base_data
+grid_data$end <- grid_data$end[ c( nrow(grid_data), 1:nrow(grid_data)-1)] + 1
+grid_data$start <- grid_data$start - 1
+grid_data <- grid_data[-1,]
+ 
+"#FFE119"
+
+
+# Make the plot
+
+touch_markers$observation = factor(touch_markers$observation, levels=c("Zic2"))
+p <- ggplot(touch_markers) +
+  # Add the stacked bar
+  geom_bar(aes(x=as.factor(id), y=value, fill=observation), stat="identity", alpha=0.5) +
+  scale_fill_manual(values = c("#FFE119")) +
+
+# Add a val=3/2/1 lines. Do it at the beginning to make sure barplots are OVER it.
+  geom_segment(data=grid_data, aes(x = end, y = 0, xend = start, yend = 0), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 1, xend = start, yend = 1), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 2, xend = start, yend = 2), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+  geom_segment(data=grid_data, aes(x = end, y = 3, xend = start, yend = 3), colour = "grey", alpha=1, linewidth=0.3 , inherit.aes = FALSE ) +
+
+  # Add text showing the value of each line
+  ggplot2::annotate("text", x = rep(92, 4), y = c(0, 1, 2, 3), label = c("0", "1", "2", "3") , color="grey", size=6 , angle=0, fontface="bold", hjust=0) +
+  
+  ylim(-1.5, max(label_data$tot, na.rm=T)) + #regulates inner circle size
+  theme_minimal() +
+  theme(
+    #legend.position = "none",
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.margin = unit(rep(-1,4), "cm") 
+  ) +
+  coord_polar() +
+  
+  # Add labels on top of each bar
+  geom_text(data=label_data, aes(x=id, y=tot+0.1, label=neuron_type, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=3, angle=label_data$angle, inherit.aes = FALSE) +
+  
+  # Add base line information
+  geom_segment(data=base_data, aes(x = start, y = -0.2, xend = end, yend = -0.2), colour = "black", alpha=0.8, linewidth=0.8 , inherit.aes = FALSE) #+
+  #geom_text(data=base_data, aes(x = title, y = -2, label=categories), hjust=c(0.5,0.5,0.5,0.5, 0.5, 0.5, 0.5), angle = c(0, 0, 0, 0, 0, 0, 0), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE)
+
+p
+ggsave("Touch_circular_bar.pdf", p, width=10, height=10, dpi=300, device="pdf")

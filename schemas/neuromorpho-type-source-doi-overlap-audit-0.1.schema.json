@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-type-source-doi-overlap-audit-0.1.schema.json",
+  "title": "NeuroMorpho type-source DOI overlap audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "auditId", "snapshotDate", "morphologyUniverse", "method", "summary", "rows", "inputReceipts", "scientificBoundaries"],
+  "properties": {
+    "documentType": { "const": "neuromorpho_type_source_doi_overlap_audit" },
+    "schemaVersion": { "const": "0.1.0" },
+    "auditId": { "const": "neuromorpho-type-source-doi-overlap-audit-0.1" },
+    "snapshotDate": { "type": "string", "format": "date" },
+    "morphologyUniverse": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "release", "assetSetId", "queryRecordCount", "query", "indexPath", "exactDoiField"],
+      "properties": {
+        "repository": { "const": "NeuroMorpho.Org" },
+        "release": { "const": "8.6.124" },
+        "assetSetId": { "type": "string", "minLength": 1 },
+        "queryRecordCount": { "const": 1097 },
+        "query": { "type": "object" },
+        "indexPath": { "const": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json" },
+        "exactDoiField": { "const": "records[].sourcePaper.dois" }
+      }
+    },
+    "method": {
+      "type": "object", "additionalProperties": false,
+      "required": ["operation", "normalization", "profileCoverage", "noPayloadDownload"],
+      "properties": {
+        "operation": { "type": "string", "minLength": 1 },
+        "normalization": { "type": "string", "minLength": 1 },
+        "profileCoverage": { "type": "string", "minLength": 1 },
+        "noPayloadDownload": { "const": true }
+      }
+    },
+    "summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["taxonomySourceCount", "sourceProfileCount", "exactDoiMatchedTaxonomySourceCount", "exactDoiMatchedRecordCount", "identityJoins", "geometryObjectsAdmitted", "internalStructureObjectsAdmitted", "registrations", "measurements", "payloadBytesDownloaded"],
+      "properties": {
+        "taxonomySourceCount": { "const": 10 },
+        "sourceProfileCount": { "const": 387 },
+        "exactDoiMatchedTaxonomySourceCount": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "exactDoiMatchedRecordCount": { "type": "integer", "minimum": 0 },
+        "identityJoins": { "const": 0 },
+        "geometryObjectsAdmitted": { "const": 0 },
+        "internalStructureObjectsAdmitted": { "const": 0 },
+        "registrations": { "const": 0 },
+        "measurements": { "const": 0 },
+        "payloadBytesDownloaded": { "const": 0 }
+      }
+    },
+    "rows": {
+      "type": "array", "minItems": 10, "maxItems": 10,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["namespace", "label", "taxonomyId", "taxonomyPath", "sourceProfileCount", "sourcePublicationDoi", "comparison", "matchedNeuronIds", "matchedRecordCount", "interpretation"],
+        "properties": {
+          "namespace": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "taxonomyId": { "type": "string", "minLength": 1 },
+          "taxonomyPath": { "type": "string", "pattern": "^data/[^/]+\\.json$" },
+          "sourceProfileCount": { "type": "integer", "minimum": 1 },
+          "sourcePublicationDoi": { "type": "string", "pattern": "^10\\.[0-9]{4,9}/[^\\s]+$" },
+          "comparison": { "const": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata" },
+          "matchedNeuronIds": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "uniqueItems": true },
+          "matchedRecordCount": { "type": "integer", "minimum": 0 },
+          "interpretation": { "const": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity" }
+        }
+      }
+    },
+    "inputReceipts": {
+      "type": "array", "minItems": 11, "maxItems": 11,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "path", "bytes", "sha256"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "bytes": { "type": "integer", "minimum": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "scientificBoundaries": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 1 } }
+  }
+}

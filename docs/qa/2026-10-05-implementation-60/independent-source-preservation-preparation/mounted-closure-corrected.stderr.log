@@ -1,0 +1,24 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Epoch drift during 4K positioned read: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/site-navigation.css
+    at readPhysical (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:25:12)
+    at read (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:44:36)
+    at walk (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:91:27)
+    at edge (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:101:108)
+    at visit (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:108:14)
+    at visitNodes (/private/tmp/ohri-i51-lock-dependencies/node_modules/typescript/lib/typescript.js:32457:22)
+    at forEachChildInSourceFile (/private/tmp/ohri-i51-lock-dependencies/node_modules/typescript/lib/typescript.js:32670:12)
+    at Object.forEachChild (/private/tmp/ohri-i51-lock-dependencies/node_modules/typescript/lib/typescript.js:32970:35)
+    at visit (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:124:10)
+    at walk (file:///private/tmp/ohri-i60-intake-preservation-helpers-20261005/compute_i60_mounted_closure.mjs:126:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.0.0

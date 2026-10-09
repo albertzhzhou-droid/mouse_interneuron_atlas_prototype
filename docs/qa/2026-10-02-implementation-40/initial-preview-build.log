@@ -1,0 +1,55 @@
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 build
+> WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build
+
+
+  vinext build  (Vite 8.2.1)
+
+(node:23504) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/5] analyze client references...
+[2Ktransforming...✓ 252 modules transformed.
+rendering chunks...
+✓ built in 1.57s
+[2/5] analyze server references...
+[2Ktransforming...✓ 469 modules transformed.
+rendering chunks...
+✓ built in 1.29s
+[3/5] build rsc environment...
+[2Ktransforming...✓ 246 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.04s
+[4/5] build client environment...
+[2Ktransforming...✓ 474 modules transformed.
+rendering chunks...
+computing gzip size...
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.98s
+[5/5] build ssr environment...
+[2Ktransforming...✓ 471 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.04s
+[0m
+  Route (app)
+  ┌ ? /                                    
+  ├ λ /api/source-records/search-index.json
+  ├ λ /api/source-rosters/cano-chol-in     
+  ├ ? /catalogues/svara                    
+  ├ ? /connectivity/svara                  
+  ├ ? /objects                             
+  └ ? /source-audits                       
+
+  λ API  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+

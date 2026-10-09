@@ -1,0 +1,5 @@
+{
+  "reason": "Direct deepStrictEqual on the browser RPC object rejected different realm prototypes while the reported selection values were identical.",
+  "countedAsPass": false,
+  "repair": "Serialize and parse only the read-only DOM observation in the local realm, then perform strict source comparison. No source or application values changed."
+}

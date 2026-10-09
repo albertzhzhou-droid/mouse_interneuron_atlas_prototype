@@ -1,0 +1,154 @@
+{
+  "iteration": "I57",
+  "status": "SEALED_TEMP_CANDIDATE_ACTUAL_BROWSER_PENDING",
+  "sealedAtUtc": "2026-10-05T03:27:31.097299+00:00",
+  "ownership": {
+    "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/ownership.json",
+    "bytes": 2484,
+    "sha256": "2ebb8a6cf85dc001af7178189d81c3821456af2e159d2e8dbf8465ad107d838e"
+  },
+  "patch": {
+    "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/I57_EXPLORER_GROUP_KEYBOARD_CANDIDATE.patch",
+    "bytes": 19145,
+    "sha256": "6a4796313b690f85cf736e427f4f1739d9551dd5c7d7494452039e7782a1a793"
+  },
+  "files": [
+    {
+      "path": "app/ResearchExplorer.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 34557,
+        "sha256": "6833a4ada782c61d3222b43c1943126ed991ad98bb54fd41a6a7b9794d79aa82"
+      },
+      "after": {
+        "bytes": 34152,
+        "sha256": "3c552698c39d25079f293cc43132a56f34b6445e1c53c6a41ffc68794d12e086"
+      }
+    },
+    {
+      "path": "app/ResearchExplorerResultGroup.tsx",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 1939,
+        "sha256": "49ce6fb9e80e9c8721dbdac26fed362634dbde3c33e7427479428ff49d8d1ae5"
+      }
+    },
+    {
+      "path": "tests/research-explorer-keyboard-groups.test.mjs",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 11486,
+        "sha256": "ad756403d26a2274c910a68b37c89945141ba4ddd5b2de92b834f51586a8d9db"
+      }
+    }
+  ],
+  "runtime": {
+    "node": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "version": "v24.19.0",
+    "nodeModules": "/private/tmp/ohri-i51-lock-dependencies/node_modules",
+    "dependencyChanges": 0
+  },
+  "validation": {
+    "focusedAndRelatedRegression": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/source-list-roving-focus.test.mjs tests/research-explorer-keyboard-groups.test.mjs tests/research-explorer-index.test.mjs tests/research-record-source-scope.test.mjs tests/research-active-record.test.mjs tests/research-selection-delta.test.mjs tests/research-supplemental-morphology-records.test.mjs > /private/tmp/ohri-i57-explorer-keyboard-candidate/qa/focused-and-related-tests.stdout.log 2> /private/tmp/ohri-i57-explorer-keyboard-candidate/qa/focused-and-related-tests.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i57-explorer-keyboard-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/focused-and-related-tests.stdout.log",
+          "bytes": 7292,
+          "sha256": "6359e56619ddc63945fd40556902dac0f3cc7148021fe0dfebb239cfa8659646"
+        },
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/focused-and-related-tests.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "tests": 67,
+      "pass": 67,
+      "fail": 0
+    },
+    "fullShadowTypeScript": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/typescript/bin/tsc --noEmit > /private/tmp/ohri-i57-explorer-keyboard-candidate/qa/typecheck.stdout.log 2> /private/tmp/ohri-i57-explorer-keyboard-candidate/qa/typecheck.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i57-explorer-keyboard-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/typecheck.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/typecheck.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "scopedRootConfigESLint": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/eslint/bin/eslint.js app/ResearchExplorer.tsx app/ResearchExplorerResultGroup.tsx tests/research-explorer-keyboard-groups.test.mjs > /private/tmp/ohri-i57-explorer-keyboard-candidate/qa/eslint.stdout.log 2> /private/tmp/ohri-i57-explorer-keyboard-candidate/qa/eslint.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i57-explorer-keyboard-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/eslint.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/eslint.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "gitApplyCheck": {
+      "exitCode": 0,
+      "applied": false,
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/git-apply-check.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/git-apply-check.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  },
+  "earlierAttempts": {
+    "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/INITIAL_CHECK_ATTEMPTS.json",
+    "bytes": 659,
+    "sha256": "ed558eea9880dfd33f77804a04776633dc2ecb5fb523ce69da468362c2fe63de"
+  },
+  "actualBrowserPlan": {
+    "path": "/private/tmp/ohri-i57-explorer-keyboard-candidate/qa/ACTUAL_BROWSER_QA_PLAN.md",
+    "bytes": 8506,
+    "sha256": "a12e78dc8d7085f61098031445991f8ecb904732ca39b07a6e5e2828f2117699"
+  },
+  "countsRetained": {
+    "runtimeSourceRecords": 673,
+    "baseIndexRecords": 641,
+    "supplementalRecords": 32,
+    "namespaces": 28,
+    "molecularProfiles": 387,
+    "mainMorphologies": 181,
+    "frozenCensusMorphologies": 142,
+    "supplementalMorphologies": 39,
+    "exactCompletedPlanEntries": 83,
+    "controllingPlanEntries": 243
+  },
+  "authorityLimits": [
+    "SSR is actual React server markup",
+    "event replay is descriptor-only",
+    "native browser focus, Enter/Space, CSS and assistive technology remain parent-owned checks",
+    "no source byte, scientific admission, identity join, geometry permission or milestone promotion"
+  ],
+  "rootWritesByCandidatePreparation": 0
+}

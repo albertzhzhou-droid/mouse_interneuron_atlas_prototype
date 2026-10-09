@@ -1,0 +1,293 @@
+{
+  "status": "PASS_I67_SCOPED_INTEGRATION",
+  "verifiedAtUTC": "2026-10-08T03:34:15.770921+00:00",
+  "controllingUI": "current upgraded homepage, grouped SiteNavigation/sidebar, independent routes, Breadcrumb, light reading layout",
+  "fullResearch": {
+    "status": "ACTUAL_SCOPED_COMMAND_COMPLETED",
+    "startedAtUTC": "2026-10-08T03:13:08.284405+00:00",
+    "finishedAtUTC": "2026-10-08T03:16:10.337098+00:00",
+    "pid": 8438,
+    "argv": [
+      "/opt/homebrew/bin/npm",
+      "run",
+      "test:research"
+    ],
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "nodeOptions": "--import=/private/tmp/ohri-i51-exact-read.mjs",
+    "actualExitCode": 0,
+    "stdout": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-67/actual-final-full-research.stdout.log",
+      "bytes": 254736,
+      "sha256": "7be198fe24e052e587f9cd355ad2b9651a6c8aad6efb01508821f2eac64bbe01"
+    },
+    "stderr": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-67/actual-final-full-research.stderr.log",
+      "bytes": 2453,
+      "sha256": "bebede08d364192abcd9c47da09116ec2b07af47c0d231f6ac418f862dc45331"
+    }
+  },
+  "targeted": {
+    "status": "ACTUAL_SCOPED_COMMAND_COMPLETED",
+    "startedAtUTC": "2026-10-08T03:12:37.285761+00:00",
+    "finishedAtUTC": "2026-10-08T03:12:40.484180+00:00",
+    "pid": 8362,
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "--test",
+      "tests/type-profile-request.test.mjs",
+      "tests/type-profile-view-state.test.mjs",
+      "tests/research-index-demand.test.mjs"
+    ],
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "nodeOptions": null,
+    "actualExitCode": 0,
+    "stdout": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-67/actual-final-targeted-after-message.stdout.log",
+      "bytes": 5154,
+      "sha256": "98aa74409deb3984c5aacf0088bc076c2a5d5b333e24eb817cea84dc5f1af25f"
+    },
+    "stderr": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-67/actual-final-targeted-after-message.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "researchTests": {
+    "total": 1622,
+    "passed": 1607,
+    "conditionalSkipped": 15,
+    "failed": 0,
+    "cancelled": 0
+  },
+  "targetedTests": 51,
+  "finalStageCurrentManifestValidation": {
+    "status": "ACTUAL_SCOPED_COMMAND_COMPLETED",
+    "startedAtUTC": "2026-10-08T03:27:16.199426+00:00",
+    "finishedAtUTC": "2026-10-08T03:27:17.846112+00:00",
+    "pid": 24326,
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "scripts/validate-research-iteration-manifest-2.91.mjs"
+    ],
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "nodeOptions": "--import=/private/tmp/ohri-i51-exact-read.mjs",
+    "actualExitCode": 0,
+    "stdout": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-67/actual-final-current-manifest-validation.stdout.log",
+      "bytes": 1163,
+      "sha256": "71512557fe8aa48806e61b30ae8c2ad561db17c65381d5fc6ff37659b5e259f8"
+    },
+    "stderr": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-67/actual-final-current-manifest-validation.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "currentManifest": {
+    "path": "data/research-iteration-manifest-2.91.json",
+    "bytes": 537502,
+    "sha256": "99a895c8b49b224fc5d4057f7660a7dc42b4a897e390fd3c3bfda6674b989e28",
+    "inputCount": 2624
+  },
+  "rootStageActualCurrentBodyScope": [
+    {
+      "path": "app/InterneuronTypeAtlas.tsx",
+      "bytes": 157661,
+      "sha256": "118a4bbdb80af09a7d3f51cc1feb37615c30d82894b8d2bd0eceb45228644b26"
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "bytes": 16637,
+      "sha256": "f38c56e0d38167d72364627ac73d573c51edfb046b52d657fbf446c760a84ea0"
+    },
+    {
+      "path": "app/type-profile-view-state.d.ts",
+      "bytes": 1077,
+      "sha256": "9cdea69c680d054ad002f3df2ab11f730e917ecf60675d1d1df406b5c778b3ea"
+    },
+    {
+      "path": "app/type-profile-view-state.js",
+      "bytes": 4875,
+      "sha256": "01cf447a7177826c1a36b80d0817937f5e61d8eb5bb818c53001e4b6fbf0188d"
+    },
+    {
+      "path": "data/research-iteration-manifest-2.91.json",
+      "bytes": 537502,
+      "sha256": "99a895c8b49b224fc5d4057f7660a7dc42b4a897e390fd3c3bfda6674b989e28"
+    },
+    {
+      "path": "data/research-renderer-runtime-inputs-2.91.json",
+      "bytes": 36638,
+      "sha256": "8ee98d282cf4244cb92ae3d2588a4f197d1493cf5dfe0ae5a82391a678485959"
+    },
+    {
+      "path": "data/type-profile-view-membership-0.1.json",
+      "bytes": 37983,
+      "sha256": "7c635b90b3d32b356c988a19e0d4dba11389f8e08c29be8fb8ec35d2b1beba98"
+    },
+    {
+      "path": "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "bytes": 108644,
+      "sha256": "93862769c444b211dd837d7f670910a3ae4c93d3195a2ea16c80968572114288"
+    },
+    {
+      "path": "docs/RESEARCH_TIMELINE_2026-10-07_IMPLEMENTATION_67_TYPE_VIEW_STATE.md",
+      "bytes": 4046,
+      "sha256": "cc511b42145dcd34a823b3143df2d921cb918e353542a56e9274641bdb0a7729"
+    },
+    {
+      "path": "docs/UPGRADE_PLAN_2026-09-24.md",
+      "bytes": 188035,
+      "sha256": "2ccbf883d16c6e8f372654ea86f9dec1a53901e73313bacc63b5839e1dd3f134"
+    },
+    {
+      "path": "tests/research-index-demand.test.mjs",
+      "bytes": 11902,
+      "sha256": "9618795e378fc074896a812544a942f6c15c90b182f0fa8bdce0a9ac8c10053f"
+    },
+    {
+      "path": "tests/type-profile-request.test.mjs",
+      "bytes": 24917,
+      "sha256": "25cb83003b6dd81a72f3c53d240b4e15ea39ea84b6d7765d51edea1d9b504758"
+    },
+    {
+      "path": "tests/type-profile-view-state.test.mjs",
+      "bytes": 8431,
+      "sha256": "52a4a99eb925dbf11c370bd8bdd17863891707fcdbfb90ec973cdaaa434c2a36"
+    },
+    {
+      "path": "tools/build_research_iteration_manifest_2_91.mjs",
+      "bytes": 61147,
+      "sha256": "e6fc864286a189c18f9258f8e9f784bd0b8525c4669707820455d3bf98a42b2b"
+    },
+    {
+      "path": "tools/build_type_profile_view_membership.mjs",
+      "bytes": 1871,
+      "sha256": "e5b644b10e106faf0c5be6d97ea45adf33b7d6b02fc160f816b1115db1dc7af5"
+    }
+  ],
+  "currentRuntime": {
+    "path": "data/research-renderer-runtime-inputs-2.91.json",
+    "bytes": 36638,
+    "sha256": "8ee98d282cf4244cb92ae3d2588a4f197d1493cf5dfe0ae5a82391a678485959",
+    "orderedMembers": 198,
+    "changedMembers": [
+      "app/ResearchCollectionPage.tsx"
+    ]
+  },
+  "canonicalDelta": {
+    "added": [
+      "app/type-profile-view-state.d.ts",
+      "app/type-profile-view-state.js",
+      "data/type-profile-view-membership-0.1.json",
+      "docs/RESEARCH_TIMELINE_2026-10-07_IMPLEMENTATION_67_TYPE_VIEW_STATE.md",
+      "tests/type-profile-view-state.test.mjs",
+      "tools/build_type_profile_view_membership.mjs"
+    ],
+    "removed": [],
+    "changed": [
+      "app/InterneuronTypeAtlas.tsx",
+      "app/ResearchCollectionPage.tsx",
+      "data/research-renderer-runtime-inputs-2.91.json",
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "tests/research-index-demand.test.mjs",
+      "tests/type-profile-request.test.mjs",
+      "tools/build_research_iteration_manifest_2_91.mjs"
+    ],
+    "otherInputReceiptsUnchangedFromI66": 2610
+  },
+  "parentI66": {
+    "checkpoint": {
+      "bytes": 3677,
+      "sha256": "0695c8b1cbf3a116ae9a03e8e4692c861c07cdd390f178476cca50a77a732d80"
+    },
+    "archive": {
+      "path": "docs/qa/2026-10-07-implementation-66/scoped-integration-checkpoint.zip",
+      "bytes": 327054,
+      "sha256": "d21257ad48a0f52c0d82c552e1d9f830e1c87d0d1a05bfac10b9185d93d5b472"
+    },
+    "fullyReplayedMembers": 15,
+    "scope": "Actual final Stage complete 2618-input manifest validation and 9 current integration bodies at Root/Stage. Original I65 15-member scoped archive fully replayed; I64 complete Root source preservation remains inherited at its original accepted clock. No new full 2618-input Root physical replay or independent-agent review asserted."
+  },
+  "originalAcceptedI64AtUTC": "2026-10-08T01:16:54.057749+00:00",
+  "preservationBoundary": "Actual final Stage complete 2624-input manifest validation and 15 current integration bodies at Root/Stage. Original I66 15-member scoped archive fully replayed; original I64 complete Root source preservation inherited at 2026-10-08T01:16:54.057749+00:00. No new full 2624-input Root physical replay or independent-agent review asserted.",
+  "native": {
+    "status": "PASS_FINITE_I67_NATIVE_VIEW_STATE_SCOPE",
+    "verifiedAtUTC": "2026-10-08T03:21:21.160401+00:00",
+    "ledger": {
+      "path": "actual-native-finite-snapshot.jsonl",
+      "bytes": 1829842,
+      "sha256": "31d6788b8ea727837363a645d081eb56fda88e1db7626802549a6d234317cf06"
+    },
+    "observations": 39,
+    "readyObservations": 37,
+    "retainedControlLocatorFailure": 2,
+    "retainedLazyShellObservation": 36,
+    "finalBuildObservations": 9,
+    "finalBuildReadyObservations": 8,
+    "fullVisibleDossierAndControlsRestoredAcrossReloadHistoryAndFinalBuild": true,
+    "correctParentFocusWhenUnavailable": true,
+    "validZeroResultDossierRetained": true,
+    "unrelatedDuplicateFieldsAndFragmentRetained": true,
+    "viewportOverrideReset": true,
+    "screenshots": [
+      {
+        "path": "actual-final-duplicate-request-new-layout.jpg",
+        "mimeType": "image/jpeg",
+        "bytes": 122502,
+        "sha256": "0cce7be7922b3fa1664b2c4c0a90b8e340c492df21d82fd7c173a604bb99499e"
+      },
+      {
+        "path": "actual-final-valid-selected-evidence-new-layout.jpg",
+        "mimeType": "image/jpeg",
+        "bytes": 119471,
+        "sha256": "e76435b132f440ac1d6bb4e744dbb0464fe721d7554d568c03dfd9a6df1285c8"
+      },
+      {
+        "path": "actual-invalid-query-390px-new-layout.jpg",
+        "mimeType": "image/jpeg",
+        "bytes": 39281,
+        "sha256": "40a3c51b95219760bdaba5ccb68d82d57c39314a27bef6cb1f07601a3886ba3a"
+      }
+    ],
+    "scope": "Actual owned localhost browser actions and readonly DOM/AX observations. Native AX Return activates exact DE-2/DE-3 and comparison; semantic browser controls edit filters/search. The final build changes the invalid-request message only. Early AX/DOM selector corrections and one lazy-shell observation are retained. No native file export, private roster byte verification, complete accessibility/screen-reader review, actual 200 percent zoom, whole-application performance budget or new scientific source admission claimed.",
+    "fullGoalComplete": false
+  },
+  "sourceProfileRequestMembership": {
+    "profiles": 387,
+    "namespaces": 10,
+    "authority": "Exact public metadata request membership only; no private byte/identity/geometry authority"
+  },
+  "science": {
+    "sources": 32,
+    "recordSets": 42,
+    "profiles": 387,
+    "rosters": 13,
+    "objects": 4,
+    "exactCompleted": 83,
+    "queueTotal": 243,
+    "newScientificAdmissions": 0,
+    "registration": 0,
+    "sameCellMouseSpinalInteriors": 0
+  },
+  "retainedAttempts": [
+    "actual-final-scoped-adoption.execution.json",
+    "actual-request-message-repair-execution.execution.json",
+    "actual-request-message-repair-attempt-02.execution.json",
+    "actual-native-verification-execution.execution.json",
+    "actual-native-verification-attempt-02.execution.json",
+    "actual-final-docs-apply-execution.execution.json",
+    "actual-native-ledger.jsonl"
+  ],
+  "remaining": [
+    "other Cano and SCI full state/history restoration",
+    "UPG-173 fresh native study-facts export landing",
+    "actual 200 percent zoom",
+    "screen reader",
+    "whole-application performance budgets",
+    "M2 source mapping/rights",
+    "M4 same-cell mouse-spinal raw/internal evidence"
+  ],
+  "fullGoalComplete": false
+}

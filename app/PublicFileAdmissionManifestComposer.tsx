@@ -35,7 +35,7 @@ type CanoDraftFile = Omit<GenericDraftFile, "unit" | "axisOrder" | "origin" | "m
   modality: "Xenium spatial transcriptomics" | "snMultiome";
   specimenIds: string;
 };
-type ChecksumPatch = Pick<GenericDraftFile, "checksumAlgorithm" | "checksumValue">;
+type ChecksumPatch = Partial<Pick<GenericDraftFile, "checksumAlgorithm" | "checksumValue">>;
 
 const CANO_ACCESSION = "GSE318731 / BIL DOI 10.35077/g.1196";
 const CANO_SOURCE_URL = "https://www.biorxiv.org/content/10.64898/2026.06.11.731752v1";

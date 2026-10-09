@@ -1,0 +1,802 @@
+{
+  "iteration": "I50",
+  "goalTurnClassification": "progress",
+  "priorGoalTurnClassification": "I49 progress",
+  "fullGoalComplete": false,
+  "exactCompletedRequirements": 82,
+  "requirementCount": 243,
+  "completedUpgradeIdsThisIteration": [
+    "UPG-140"
+  ],
+  "additionalNamedRoutes": 2,
+  "namedRouteCount": 43,
+  "selectableMainSceneCount": 179,
+  "frozenCensusRecordCount": 142,
+  "supplementaryComparatorObjectCount": 37,
+  "additionalGeometryCount": 0,
+  "newScientificSourceDownloads": 0,
+  "finalFullResearch": {
+    "exitCode": 0,
+    "tests": 1422,
+    "passed": 1407,
+    "conditionalSkips": 15,
+    "failed": 0,
+    "cancelled": 0,
+    "buildPassed": true,
+    "strictTypecheckPassed": true,
+    "lintPassed": true,
+    "requiredValidatorsPassed": true
+  },
+  "finalDocumentationOnlySync": {
+    "applicationBytesChanged": false,
+    "manifestValidationExitCode": 0,
+    "upgradeValidationExitCode": 0,
+    "compiledDocumentationFingerprintCount": 0
+  },
+  "inputPreservation": {
+    "authoritativeInputs": 2388,
+    "workspaceAndTempInputMismatches": 0,
+    "priorUnownedInputsPreserved": 2363,
+    "priorUnownedDrift": 0,
+    "ownedPreimagesVerified": 16,
+    "allPreimagesCapturedBeforeEdit": true,
+    "manifestSha256": "5ec6e5ccb0da57d03891d91e2f23b8a97cf6ab50eb41ddb3a77821a9962350f3",
+    "retainedOriginalWorkbookCopiesVerified": 8,
+    "aggregateBytes": 33959844,
+    "aggregateSha256": "23194b4d91a0a45757b3bc1c0bdd2c39b54a4f0d9356638d9f76d02ac5edf245",
+    "addedManifestPaths": [
+      "data/chen-dai-planar-morphology-routes-0.1.json",
+      "docs/RESEARCH_TIMELINE_2026-10-03_IMPLEMENTATION_50_PLANAR_ROUTES.md",
+      "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194468.json",
+      "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194469.json",
+      "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-194468.swc",
+      "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-194469.swc",
+      "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+      "scripts/validate-chen-dai-planar-morphology-routes-0.1.mjs",
+      "tests/chen-dai-planar-morphology-routes.test.mjs",
+      "tools/build_chen_dai_planar_routes.mjs"
+    ],
+    "removedManifestPaths": [],
+    "statTimestampVariationObservations": [],
+    "statTimestampVariationByteMismatches": 0,
+    "reader": "Synchronous exact-size 4096-byte explicit positional reads; BigInt fstat size/device/inode before/after. Every timestamp difference triggers a second independent byte read, both still checked against pinned bytes/SHA. No timestamp-preservation claim."
+  },
+  "rendererTransport": {
+    "pinCount": 144,
+    "addedPaths": [
+      "app/ObservedMorphologyRouteLibrary.tsx",
+      "data/chen-dai-planar-morphology-routes-0.1.json"
+    ],
+    "modifiedPaths": [
+      "app/AtlasPrototype.tsx",
+      "app/SceneCanvas.tsx",
+      "app/atlas-types.ts",
+      "app/main-scene-source-view.js"
+    ],
+    "removedPaths": []
+  },
+  "compiledInputsAndAssets": {
+    "candidateSourceAssets": [
+      {
+        "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/swc/nmo-249676.swc",
+        "bytes": 41217,
+        "sha256": "b5a96ebc6979f0022c70a26eaa6a5c060545a05d2164852a5a5dd8dc290f4f75",
+        "pinAuthority": "public/data/dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-249676.json / swc",
+        "compiledBytes": 41217,
+        "compiledSha256": "b5a96ebc6979f0022c70a26eaa6a5c060545a05d2164852a5a5dd8dc290f4f75"
+      },
+      {
+        "path": "public/data/dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-249676.json",
+        "bytes": 122358,
+        "sha256": "bece7d31c8bad28152278bbd0b0a36359c96cf2b03ff607f414bfe9716c31e67",
+        "pinAuthority": "data/morphology-source-frame-disclosure-0.1.json / records / 249676",
+        "compiledBytes": 122358,
+        "compiledSha256": "bece7d31c8bad28152278bbd0b0a36359c96cf2b03ff607f414bfe9716c31e67"
+      },
+      {
+        "path": "public/data/functional_class_observed_morphology_route_pack_v1/swc/nmo-50424.swc",
+        "bytes": 381795,
+        "sha256": "0cdb5c32555f94d2ffd1765d8c21f1f95703692c45917f2a2d2449ecc457138b",
+        "pinAuthority": "public/data/functional_class_observed_morphology_route_pack_v1/geometry/nmo-50424.json / swc",
+        "compiledBytes": 381795,
+        "compiledSha256": "0cdb5c32555f94d2ffd1765d8c21f1f95703692c45917f2a2d2449ecc457138b"
+      },
+      {
+        "path": "public/data/functional_class_observed_morphology_route_pack_v1/geometry/nmo-50424.json",
+        "bytes": 1058012,
+        "sha256": "5f431d13fc9f857f9e179fb1061b4ae0bc1cc7504467c246ba7dd69d3cbb740f",
+        "pinAuthority": "data/morphology-source-frame-disclosure-0.1.json / records / 50424",
+        "compiledBytes": 1058012,
+        "compiledSha256": "5f431d13fc9f857f9e179fb1061b4ae0bc1cc7504467c246ba7dd69d3cbb740f"
+      },
+      {
+        "path": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/swc/nmo-50394.swc",
+        "bytes": 151317,
+        "sha256": "adeb2b0c6934ae07f32d54e8fcaebc8cee29429d884e44692756ee15da8a00d2",
+        "pinAuthority": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-50394.json / swc",
+        "compiledBytes": 151317,
+        "compiledSha256": "adeb2b0c6934ae07f32d54e8fcaebc8cee29429d884e44692756ee15da8a00d2"
+      },
+      {
+        "path": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-50394.json",
+        "bytes": 429479,
+        "sha256": "cbc08ede052636e2f30249d1a633a5f1b88531d375f80f23751b062c48eeda47",
+        "pinAuthority": "data/morphology-source-frame-disclosure-0.1.json / records / 50394",
+        "compiledBytes": 429479,
+        "compiledSha256": "cbc08ede052636e2f30249d1a633a5f1b88531d375f80f23751b062c48eeda47"
+      },
+      {
+        "path": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/swc/nmo-50408.swc",
+        "bytes": 222351,
+        "sha256": "452c2b3d76d9680318470ba16b5c271a403018a1c6dcedaa94b68f1fdec6c470",
+        "pinAuthority": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-50408.json / swc",
+        "compiledBytes": 222351,
+        "compiledSha256": "452c2b3d76d9680318470ba16b5c271a403018a1c6dcedaa94b68f1fdec6c470"
+      },
+      {
+        "path": "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-50408.json",
+        "bytes": 638051,
+        "sha256": "c545292d72010af04760fb0851fa479260c20865b4e678f596bbabf7f13f0123",
+        "pinAuthority": "data/morphology-source-frame-disclosure-0.1.json / records / 50408",
+        "compiledBytes": 638051,
+        "compiledSha256": "c545292d72010af04760fb0851fa479260c20865b4e678f596bbabf7f13f0123"
+      },
+      {
+        "path": "public/data/functional_class_observed_morphology_route_pack_v1/swc/nmo-45674.swc",
+        "bytes": 294364,
+        "sha256": "95b2fc29900a994ef87d6f50c07481115f94207c5ebaeb9f436e7e494edac1fd",
+        "pinAuthority": "public/data/functional_class_observed_morphology_route_pack_v1/geometry/nmo-45674.json / swc",
+        "compiledBytes": 294364,
+        "compiledSha256": "95b2fc29900a994ef87d6f50c07481115f94207c5ebaeb9f436e7e494edac1fd"
+      },
+      {
+        "path": "public/data/functional_class_observed_morphology_route_pack_v1/geometry/nmo-45674.json",
+        "bytes": 844047,
+        "sha256": "242f30ebc0195f4aa092532acf8534c308371ddffc09103d484578a9f941a6d5",
+        "pinAuthority": "data/morphology-source-frame-disclosure-0.1.json / records / 45674",
+        "compiledBytes": 844047,
+        "compiledSha256": "242f30ebc0195f4aa092532acf8534c308371ddffc09103d484578a9f941a6d5"
+      },
+      {
+        "path": "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-108978.swc",
+        "bytes": 62949,
+        "sha256": "016e8329e9b1f2da5c5d4a314bab7998cba66ae56f3517be573a4ac0b2b4c250",
+        "pinAuthority": "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-108978.json / swc",
+        "compiledBytes": 62949,
+        "compiledSha256": "016e8329e9b1f2da5c5d4a314bab7998cba66ae56f3517be573a4ac0b2b4c250"
+      },
+      {
+        "path": "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-108978.json",
+        "bytes": 184367,
+        "sha256": "b31ec580f0ae3f2829b301a308db47f17e1cf845636b831a1fdb3ad534078843",
+        "pinAuthority": "data/morphology-source-frame-disclosure-0.1.json / records / 108978",
+        "compiledBytes": 184367,
+        "compiledSha256": "b31ec580f0ae3f2829b301a308db47f17e1cf845636b831a1fdb3ad534078843"
+      }
+    ],
+    "completeSelectedManifestTransports": [
+      {
+        "neuronId": 45718,
+        "path": "/data/native_dat_file_manifests_v1/nmo-45718.json",
+        "bytes": 335324,
+        "sha256": "5935cf07b420f187f329f5b897813d0635a1a26904b6ea1b86c6df3a9029eab7"
+      },
+      {
+        "neuronId": 45674,
+        "path": "/data/native_dat_file_manifests_v1/nmo-45674.json",
+        "bytes": 148067,
+        "sha256": "5ad34ebf55536c6a2fd016f1e4f5ca3336ba71dc9e3cfdb9322052c57b2170ac"
+      },
+      {
+        "neuronId": 50424,
+        "path": "/data/native_dat_file_manifests_v1/nmo-50424.json",
+        "bytes": 293635,
+        "sha256": "ddcf951dcc14125734dc66907dd3abc6d5b2e484aba06ac3efe0b1f15c79c181"
+      },
+      {
+        "neuronId": 50394,
+        "path": "/data/native_dat_file_manifests_v1/nmo-50394.json",
+        "bytes": 67403,
+        "sha256": "5324a3982d72fc43911b7074d56029995348b72c250e9b1e41c8cfa5bb7cb605"
+      },
+      {
+        "neuronId": 50408,
+        "path": "/data/native_dat_file_manifests_v1/nmo-50408.json",
+        "bytes": 112400,
+        "sha256": "12ccfd9f1a70487ae8b7706393c761d3190b46bd42b7183db08510b0f4f4fe93"
+      },
+      {
+        "neuronId": 108978,
+        "path": "/data/native_dat_file_manifests_v1/nmo-108978.json",
+        "bytes": 48795,
+        "sha256": "02b1dfa96b9b1078b283dc2bcaf819c55ece65e6a5c33c2fa6730ad5dceccd98"
+      },
+      {
+        "neuronId": 249676,
+        "path": "/data/native_dat_file_manifests_v1/nmo-249676.json",
+        "bytes": 20071,
+        "sha256": "e66b61c8085091f8dfba51d093835e4d0bcc6fdcd8bec4b25e8ccd3e971a26a4"
+      }
+    ],
+    "nativeDatSourceContractsInCompiledBundles": {
+      "client": [
+        {
+          "path": "dist/client/_next/static/chunks/source-view-png-raster-BSnB4GcN.js",
+          "bytes": 1716591,
+          "sha256": "079f76a9527348ed5a310b44e879c545b1e5e791e0062eadedd242b002871314"
+        }
+      ],
+      "server": [
+        {
+          "path": "dist/server/ssr/_next/static/native-contour-verification-CvJ4hdXk.js",
+          "bytes": 109702,
+          "sha256": "aa518af3c1ab6ce27e4d775f84ec9eb177ed3d98bd6b0059ddb8ef903920bdca"
+        }
+      ]
+    },
+    "sevenExactOriginalAndDerivedAssets": [
+      {
+        "neuronId": 45718,
+        "rawBytes": 343774,
+        "rawSha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+        "geometryBytes": 45606,
+        "geometrySha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8"
+      },
+      {
+        "neuronId": 45674,
+        "rawBytes": 353251,
+        "rawSha256": "9d5a8670fdb97656c18eb8819b3c4723f438fb8929e66ea8dc6103c6bb547d87",
+        "geometryBytes": 35842,
+        "geometrySha256": "1e41538a6443dcf7893386c180d3d22ddf81cc72a4d96f66a16193c97747cec3"
+      },
+      {
+        "neuronId": 50424,
+        "rawBytes": 480757,
+        "rawSha256": "90662374ccfacc0404b1b8817161015fa52c6c384911700f428a4c5421cb79d9",
+        "geometryBytes": 71212,
+        "geometrySha256": "8bd390d698a77dc80a95c7d560e823d5f0ff1d5daadb2194be6475ba250851d6"
+      },
+      {
+        "neuronId": 50394,
+        "rawBytes": 191975,
+        "rawSha256": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109",
+        "geometryBytes": 123254,
+        "geometrySha256": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+      },
+      {
+        "neuronId": 50408,
+        "rawBytes": 300076,
+        "rawSha256": "78cfeae785b8ab4cf0792e7223cf310cd4aef1e3caa3447aa14ca61421ed9cb2",
+        "geometryBytes": 110635,
+        "geometrySha256": "30d9c7870329aa0d2c6c2e83aeb020587973bf44e72c214a46f809532ba9ae78"
+      },
+      {
+        "neuronId": 108978,
+        "rawBytes": 172603,
+        "rawSha256": "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+        "geometryBytes": 356028,
+        "geometrySha256": "565abd17700932c57c0fa210b4bb279bd2617b1f191df0b5bfabb0e514429e5d"
+      },
+      {
+        "neuronId": 249676,
+        "rawBytes": 89750,
+        "rawSha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+        "geometryBytes": 42054,
+        "geometrySha256": "ef5641ecc5e816a77eae20c2013747de6d35fddfb530c1e9925b7b82673be0b0"
+      }
+    ],
+    "compiledOriginalMovieBytes": 11361776,
+    "compiledOriginalMovieSha256": "79e6aad7f4881228cdd1f3a46d908918bd276ca93b0e98d477a9f4f4f77b2f2e",
+    "sourceContractInCompiledBundles": {
+      "client": [
+        {
+          "path": "dist/client/_next/static/chunks/MccreedyV2aPopulationMovie-BZOfzYdk.js",
+          "bytes": 15074,
+          "sha256": "ef9881a3d8dc4aba0201131d78fc65ed00895386a57b3951892fbae6891b4572"
+        }
+      ],
+      "server": [
+        {
+          "path": "dist/server/ssr/_next/static/MccreedyV2aPopulationMovie-Hh_hsv-K.js",
+          "bytes": 15104,
+          "sha256": "1c459884c899c195b4ad19b4538c26492c6f094bc551e8060a113b8c815c0531"
+        }
+      ]
+    },
+    "compiledPngsChecked": 212,
+    "compiledContactJsonsChecked": 2,
+    "compiledAssetMismatches": 0,
+    "fullAuditDocumentFingerprintsExcludedFromRuntime": {
+      "docs/UPGRADE_PLAN_2026-09-24.md": {
+        "client": [],
+        "server": []
+      },
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md": {
+        "client": [],
+        "server": []
+      },
+      "docs/RESEARCH_TIMELINE_2026-10-03_IMPLEMENTATION_50_PLANAR_ROUTES.md": {
+        "client": [],
+        "server": []
+      }
+    },
+    "current144RuntimePinsInCompiledBundles": {
+      "client": [
+        {
+          "path": "dist/client/_next/static/chunks/source-view-png-raster-BSnB4GcN.js",
+          "bytes": 1716591,
+          "sha256": "079f76a9527348ed5a310b44e879c545b1e5e791e0062eadedd242b002871314"
+        }
+      ],
+      "server": [
+        {
+          "path": "dist/server/ssr/_next/static/native-contour-verification-CvJ4hdXk.js",
+          "bytes": 109702,
+          "sha256": "aa518af3c1ab6ce27e4d775f84ec9eb177ed3d98bd6b0059ddb8ef903920bdca"
+        }
+      ]
+    },
+    "exactUnitLocatorsInCompiledBundles": {
+      "CiD": {
+        "client": [
+          "dist/client/_next/static/chunks/svara-publication-navigation-DSOgpH_5.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/svara-publication-navigation-DSOgpH_5.js"
+        ]
+      },
+      "CoBL": {
+        "client": [
+          "dist/client/_next/static/chunks/svara-publication-navigation-DSOgpH_5.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/svara-publication-navigation-DSOgpH_5.js"
+        ]
+      }
+    },
+    "sourcePinnedPublicationNavigationInCompiledBundles": {
+      "client": [
+        "dist/client/_next/static/chunks/svara-publication-navigation-DSOgpH_5.js"
+      ],
+      "server": [
+        "dist/server/ssr/_next/static/svara-publication-navigation-DSOgpH_5.js"
+      ]
+    }
+  },
+  "actualViewIndependentReplay": {
+    "actualBrowserReceipts": [
+      {
+        "file": "actual-main-view-194468.json",
+        "neuronId": 194468,
+        "nodes": 1399,
+        "segments": 1398,
+        "sourceDimensionality": "2D",
+        "sourceUniqueZ": [
+          0
+        ],
+        "mode": "observed_swc",
+        "buildInputs": 31,
+        "viewport": {
+          "cssWidth": 648,
+          "cssHeight": 440,
+          "drawingBufferWidth": 1134,
+          "drawingBufferHeight": 770,
+          "pixelRatio": 1.75
+        },
+        "wrongSourceRejected": true,
+        "unauthorizedSurfaceRejected": true,
+        "recordSourceViewValid": true
+      },
+      {
+        "file": "actual-main-view-194469.json",
+        "neuronId": 194469,
+        "nodes": 960,
+        "segments": 959,
+        "sourceDimensionality": "2D",
+        "sourceUniqueZ": [
+          0
+        ],
+        "mode": "observed_swc",
+        "buildInputs": 31,
+        "viewport": {
+          "cssWidth": 648,
+          "cssHeight": 440,
+          "drawingBufferWidth": 1134,
+          "drawingBufferHeight": 770,
+          "pixelRatio": 1.75
+        },
+        "wrongSourceRejected": true,
+        "unauthorizedSurfaceRejected": true,
+        "recordSourceViewValid": true
+      },
+      {
+        "file": "actual-main-view-194468-390.json",
+        "neuronId": 194468,
+        "nodes": 1399,
+        "segments": 1398,
+        "sourceDimensionality": "2D",
+        "sourceUniqueZ": [
+          0
+        ],
+        "mode": "observed_swc",
+        "buildInputs": 31,
+        "viewport": {
+          "cssWidth": 364,
+          "cssHeight": 500,
+          "drawingBufferWidth": 637,
+          "drawingBufferHeight": 875,
+          "pixelRatio": 1.75
+        },
+        "wrongSourceRejected": true,
+        "unauthorizedSurfaceRejected": true,
+        "recordSourceViewValid": true
+      },
+      {
+        "file": "actual-main-view-194468-restored-desktop.json",
+        "neuronId": 194468,
+        "nodes": 1399,
+        "segments": 1398,
+        "sourceDimensionality": "2D",
+        "sourceUniqueZ": [
+          0
+        ],
+        "mode": "observed_swc",
+        "buildInputs": 31,
+        "viewport": {
+          "cssWidth": 648,
+          "cssHeight": 440,
+          "drawingBufferWidth": 1134,
+          "drawingBufferHeight": 770,
+          "pixelRatio": 1.75
+        },
+        "wrongSourceRejected": true,
+        "unauthorizedSurfaceRejected": true,
+        "recordSourceViewValid": true
+      }
+    ],
+    "currentRendererPinsChecked": 124,
+    "workspaceAndTempPinMismatches": 0,
+    "sourceFileRequests": [
+      {
+        "url": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194468.json",
+        "cache": "no-store"
+      },
+      {
+        "url": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194469.json",
+        "cache": "no-store"
+      },
+      {
+        "url": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194468.json",
+        "cache": "no-store"
+      },
+      {
+        "url": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194468.json",
+        "cache": "no-store"
+      },
+      {
+        "url": "/data/premotor_comparison_observed_morphology_route_pack_v1/geometry/nmo-45718.json",
+        "cache": "no-store"
+      }
+    ],
+    "requestCache": "no-store",
+    "priorI49BuildRejected": true,
+    "browserFreshCrossViewportRestoreEvidence": "cross-viewport-restore.txt",
+    "scope": "Four actual browser captures independently replayed through current source byte producers and current build. No new biological objects, atlas transforms, group-statistic or physiology joins."
+  },
+  "browserChecks": {
+    "passed": 6,
+    "checks": [
+      {
+        "check": "desktop training named route opens verified 194468 centerlines; surface disabled",
+        "passed": true
+      },
+      {
+        "check": "desktop Enter control route opens194469; prior capture cleared; own receipt captured",
+        "passed": true
+      },
+      {
+        "check": "390px source notes12px, buttons44px, page width390/scroll390, both cards fit",
+        "passed": true
+      },
+      {
+        "check": "390px Enter training route and Enter current-view capture; actual canvas364x500",
+        "passed": true
+      },
+      {
+        "check": "resize clears capture; same-source fresh restore succeeds on desktop; recapture648x440",
+        "passed": true
+      },
+      {
+        "check": "four actual browser receipts preserve exact source ID, source2D and observed_swc",
+        "passed": true
+      }
+    ],
+    "scientificJsonDownloadVerified": false,
+    "screenshotFiles": [
+      "routes-desktop.png",
+      "control-main-desktop.png",
+      "control-route-390.png"
+    ],
+    "browserName": "Codex In-app Browser",
+    "tabId": "14",
+    "enumerationReset": {
+      "beforeId": "2",
+      "afterId": "1",
+      "sameBrowser": true
+    },
+    "viewportReset": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "narrowMetrics": {
+    "cards": [
+      {
+        "buttonHeight": 44,
+        "contextFont": "12px",
+        "scrollWidth": 336,
+        "text": "Lamina X · treadmill-training · exact 2D source plane",
+        "width": 338
+      },
+      {
+        "buttonHeight": 44,
+        "contextFont": "12px",
+        "scrollWidth": 336,
+        "text": "Lamina X · control · exact 2D source plane",
+        "width": 338
+      }
+    ],
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "sourceRecords": [
+    {
+      "neuronId": 194468,
+      "release": "8.6.124",
+      "api": {
+        "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+        "bytes": 769605,
+        "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+        "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+        "pointer": "/_embedded/neuronResources/179",
+        "objectEncoding": "JSON.stringify of exact API object",
+        "objectSha256": "f3b21b553b699f2123382525f223092c5eb675e4d9f028df1b2ccbb232922afd"
+      },
+      "swc": {
+        "path": "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-194468.swc",
+        "bytes": 44105,
+        "sha256": "a3e76ab068173cf7f8fef871a661fd6e49479bde1226b8c480ea825e5162b4f3",
+        "url": "https://neuromorpho.org/dableFiles/chen_dai/CNG%20version/training-20x.CNG.swc"
+      },
+      "geometry": {
+        "path": "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194468.json",
+        "bytes": 162339,
+        "sha256": "9950dc94612fc7d0c674507990913ba2ce9aa867495472db2bc01a2da2a925b4"
+      },
+      "topology": {
+        "nodeCount": 1399,
+        "segmentCount": 1398,
+        "nodeTypeCounts": {
+          "1": 3,
+          "6": 1396
+        },
+        "uniqueZMicrometre": [
+          0
+        ],
+        "preservedSourceNodeCoordinates": true,
+        "sevenColumnFiniteTree": true,
+        "unclassifiedType6Preserved": true
+      },
+      "sourceDimensionality": "2D",
+      "radiusSurfaceAllowed": false,
+      "registrationCount": 0,
+      "groupStatisticsJoins": 0,
+      "sameCellPhysiologyJoins": 0,
+      "parentSpecimenKnown": false
+    },
+    {
+      "neuronId": 194469,
+      "release": "8.6.124",
+      "api": {
+        "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+        "bytes": 769605,
+        "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+        "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+        "pointer": "/_embedded/neuronResources/180",
+        "objectEncoding": "JSON.stringify of exact API object",
+        "objectSha256": "aec0c38059e810c14a3d0258b56ff66da5ff2f9bfcc3750994e279efc9855067"
+      },
+      "swc": {
+        "path": "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-194469.swc",
+        "bytes": 29788,
+        "sha256": "a8915179bbce858642e6e5c2c58dc470b1999a42a25c43a5bbf25183ab333c43",
+        "url": "https://neuromorpho.org/dableFiles/chen_dai/CNG%20version/20x.CNG.swc"
+      },
+      "geometry": {
+        "path": "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194469.json",
+        "bytes": 111972,
+        "sha256": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      "topology": {
+        "nodeCount": 960,
+        "segmentCount": 959,
+        "nodeTypeCounts": {
+          "1": 3,
+          "6": 957
+        },
+        "uniqueZMicrometre": [
+          0
+        ],
+        "preservedSourceNodeCoordinates": true,
+        "sevenColumnFiniteTree": true,
+        "unclassifiedType6Preserved": true
+      },
+      "sourceDimensionality": "2D",
+      "radiusSurfaceAllowed": false,
+      "registrationCount": 0,
+      "groupStatisticsJoins": 0,
+      "sameCellPhysiologyJoins": 0,
+      "parentSpecimenKnown": false
+    }
+  ],
+  "unpassedAttempts": [
+    {
+      "action": "initial named route runtime",
+      "reason": "Unknown representation route rejected all morphology rendering. Fixed canonical census permission alias in both SceneCanvas and current representation panel; final real views pass.",
+      "resolved": true,
+      "evidence": "initial-render-refusal.txt"
+    },
+    {
+      "action": "first full research",
+      "reason": "Build/typecheck/lint and earlier validators passed; current manifest guard retained completed count81 and stopped before Node tests. Updated count82 and explicit planar scope/receipt guard.",
+      "resolved": true
+    },
+    {
+      "action": "second full research",
+      "reason": "All required engineering checks passed;1422 Node tests with1406 pass,15 conditional skips,1 failed SSR assertion expecting41 named routes. Updated43 and planar labels; final1422/1407/15/0 pass.",
+      "resolved": true
+    },
+    {
+      "action": "global scientific JSON download",
+      "reason": "Download event wait timed out after36s and reset CUA bindings. No artifact acquired or verified. Actual source-view text captures and restore were separately verified.",
+      "resolved": false,
+      "scopedExportNotClaimed": true
+    },
+    {
+      "action": "restoring browser handle after CUA reset",
+      "reason": "Enumeration changed from In-app Browser ID2 toID1; old2 now MCP Apps with no matching tab or new-tab API. Used fresh inventory to rebind the same In-app tab14, no safety boundary bypass.",
+      "resolved": true
+    },
+    {
+      "action": "control receipt and restore text selectors",
+      "reason": "Source remount closed disclosure; then restore description did not equal actual aria-label. Used current DOM disclosure and Saved source view label.",
+      "resolved": true
+    },
+    {
+      "action": "initial narrow viewport assertion",
+      "reason": "Compared canvas width to page width390. Actual DOM canvas and receipt both364; corrected harness comparison.",
+      "resolved": true
+    },
+    {
+      "action": "old-build negative replay",
+      "reason": "Empty record threw unknown source before build guard. Replaced with exact45718 record and fresh verified source; old build then rejected, four positive receipts remain valid.",
+      "resolved": true
+    },
+    {
+      "action": "initial buffered root inspection and root cwd",
+      "reason": "FileProvider read/cwd delays; one diagnostic failed EINTR uv_cwd. Exact4KiB reads and stable temporary cwd used. Own generated-copy attempt interrupted130; subsequent exact copies compared successfully. Read-only process inventory denied by sandbox and not needed.",
+      "resolved": true
+    },
+    {
+      "action": "initial paper URL reads",
+      "reason": "Unverified PMC attempt returned403 and DOI tool open failed. No claims derived. Official publisher result retrieved and abstract verified; no full-paper/raw acquisition claim.",
+      "resolved": true
+    }
+  ],
+  "scientificBoundary": {
+    "observationUnit": "repository_morphology_record",
+    "originalSourceZ": [
+      0
+    ],
+    "unclassifiedType6Retained": true,
+    "independentAnimalCount": null,
+    "independentSpecimenCount": null,
+    "paperGroupStatisticsInherited": false,
+    "causalExerciseEffectClaim": false,
+    "originalNeuronJAcquisitionRetrieved": false,
+    "originalStandardizationLogRetrieved": false,
+    "internalObjectCount": 0,
+    "registrationCount": 0,
+    "biologicalMeasurementAdded": false
+  },
+  "preview": {
+    "sessionId": 88605,
+    "host": "127.0.0.1",
+    "port": 3003,
+    "tabId": "14",
+    "browserName": "Codex In-app Browser",
+    "markedDeliverable": true
+  },
+  "remainingOpen": [
+    "Full F01-F20 and M0-M4 acceptance",
+    "M2 BIL donor/section/outline frame/curated labels/file rights",
+    "M4 exact mouse spinal interneuron raw-volume/internal object/parent/frame/source-slice chain",
+    "Independent biological calibration",
+    "Whole-App accessibility/performance",
+    "Actual200%zoom and screen reader",
+    "I50 global scientific JSON browser download verification"
+  ],
+  "logPins": {
+    "initialFocused": {
+      "path": "initialFocused.log",
+      "bytes": 978,
+      "sha256": "bfcde611b28c209822d9c23e4dffdf8ed956fa32e5fc1fe9ce46ac1c1372337e"
+    },
+    "firstTypecheck": {
+      "path": "firstTypecheck.log",
+      "bytes": 106,
+      "sha256": "4aea52f0a4debbf5e90a7bf08073646d031d4bf0ce41a31f13f51023ef698119"
+    },
+    "fixedTypecheck": {
+      "path": "fixedTypecheck.log",
+      "bytes": 106,
+      "sha256": "4aea52f0a4debbf5e90a7bf08073646d031d4bf0ce41a31f13f51023ef698119"
+    },
+    "previewBuild": {
+      "path": "previewBuild.log",
+      "bytes": 2659,
+      "sha256": "30ec82f8e1e9efbb5e2567845ee8bfb5b8d4783254755e720990e46ee54fa8a8"
+    },
+    "fixedPreviewBuild": {
+      "path": "fixedPreviewBuild.log",
+      "bytes": 2659,
+      "sha256": "b70472030a3a62545ce1d9bd9c582bbf57510fd41058993f61054c161f91ba7f"
+    },
+    "firstFullResearch": {
+      "path": "firstFullResearch.log",
+      "bytes": 19592,
+      "sha256": "7a520147f581303a3a53dbdaa3e912720523ddb913e2f672ed6d83a390570e11"
+    },
+    "secondFullResearch": {
+      "path": "secondFullResearch.log",
+      "bytes": 239755,
+      "sha256": "5c9f09b0ffbab6d4da1494ea5be0f01eb20feac5539dcf304f08a59acd3f7c4c"
+    },
+    "finalFullResearch": {
+      "path": "finalFullResearch.log",
+      "bytes": 219687,
+      "sha256": "182b536101dfa5c173dafd7311c9d36a0c9e1e7cb648c260906be29956474e54"
+    },
+    "finalInputReplay": {
+      "path": "finalInputReplay.log",
+      "bytes": 2238,
+      "sha256": "174eaa60b287e61374d79763668c41a788083700ae111ba239827673237e9d02"
+    },
+    "initialActualViewReplay": {
+      "path": "initialActualViewReplay.log",
+      "bytes": 1325,
+      "sha256": "1bd284d68fa218a97488de46e03aa7edc3f96ff99cfd4ec340d5b5d165cf471b"
+    },
+    "finalActualViewReplay": {
+      "path": "finalActualViewReplay.log",
+      "bytes": 2485,
+      "sha256": "959155600d5d07f7a3c7481e19f3f078f6febf900f73b871b4e2e23c94baf005"
+    },
+    "compiledReplay": {
+      "path": "compiledReplay.log",
+      "bytes": 9807,
+      "sha256": "f2211355edb442f9143d5c5dd9fe0e0c6c690e81d41c6931235dc218e8a7b7d3"
+    },
+    "finalManifestValidation": {
+      "path": "finalManifestValidation.log",
+      "bytes": 1163,
+      "sha256": "32f320c6990dc12875340adbb3c3c59b0dfb73378e20a982f62e665bc60bb010"
+    },
+    "finalRegistryValidation": {
+      "path": "finalRegistryValidation.log",
+      "bytes": 202,
+      "sha256": "9117490aa15b271ee2afe6fd4b1dd7977920d524cc99ddd02e485bd6debde32b"
+    }
+  },
+  "notes": "UPG140 is complete only for its declared two exact source-plane references. This does not make the whole upgrade complete. Source-view captures and browser fresh restore are verified independently of the unverified global download."
+}

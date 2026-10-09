@@ -1,0 +1,237 @@
+{
+  "iteration": "I58",
+  "status": "SEALED_TEMP_CANDIDATE_PEER_AND_ACTUAL_BROWSER_PENDING",
+  "sealedAtUtc": "2026-10-05T03:47:35.668131+00:00",
+  "files": [
+    {
+      "path": "app/TrevisanV1AgeAtlas.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 12231,
+        "sha256": "918f8eeb902a204cbc7ca8724b9d75c277822020b52cec78df445069e5633127"
+      },
+      "after": {
+        "bytes": 14607,
+        "sha256": "2a508f47c35a4dfc9ffa1260d8c7ef656399594dfd640230998091cd0c7eb533"
+      }
+    },
+    {
+      "path": "app/ExactSourceAuditWorkbench.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 15384,
+        "sha256": "5f4b89a5f8200b750d2e4873fa5472655f93c436b9bf627a7321f030687a6bac"
+      },
+      "after": {
+        "bytes": 18625,
+        "sha256": "95035af0f60ee102247f8d9763c4b0ac790503d59e344c8edcd3f00df14c2ef4"
+      }
+    },
+    {
+      "path": "app/exact-source-audit-workbench.js",
+      "operation": "modify",
+      "before": {
+        "bytes": 5025,
+        "sha256": "c80b3104d9a656c16b8670af0208663168700e875c596909ffa3f3e7cd9fe03d"
+      },
+      "after": {
+        "bytes": 9225,
+        "sha256": "cfa38097a7596d08c48a57050a2d9d5f6a344eca2adb6a8ad4a0d4c440d3990a"
+      }
+    },
+    {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 3264,
+        "sha256": "4ec9c8afd29de35849840b48588ff054f6fd5151e553af992cf209a3b1798aed"
+      },
+      "after": {
+        "bytes": 3326,
+        "sha256": "08f765746c5ef17c734893c7d42715ac12cd4df6baed8f63954ac3cd7364b9d8"
+      }
+    },
+    {
+      "path": "app/exact-source-audit-workbench.d.ts",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 2975,
+        "sha256": "9dfffba0c43bdbc7ca12f88a2259a2b199a175930e03f43a4a13c68d1d449307"
+      }
+    },
+    {
+      "path": "tests/trevisan-v1-sample-bookmark.test.mjs",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 15953,
+        "sha256": "f30e8b0540f998684404a5f6209e16ec8a6f9b286bf69a6852bede27149740f4"
+      }
+    }
+  ],
+  "patch": {
+    "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/I58_TREVISAN_SOURCE_CONTEXT_BOOKMARK_CANDIDATE.patch",
+    "bytes": 50780,
+    "sha256": "e137a23fbcd156653ec87fca44217cfaf76c8668d33f0327532bacd0839c39cf"
+  },
+  "ownership": {
+    "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/ownership.json",
+    "bytes": 4221,
+    "sha256": "a92dd578c3d12bb6a2607b0262d0d52a644db5acc6e8144d9eb8a727e3b2d3a5"
+  },
+  "validation": {
+    "focusedAndOriginalSourceRegression": {
+      "exitCode": 0,
+      "command": "PYTHONDONTWRITEBYTECODE=1 /Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/trevisan-v1-sample-bookmark.test.mjs tests/exact-source-audit-workbench.test.mjs tests/trevisan-v1-source-data-availability-audit.test.mjs tests/trevisan-v1-exact-input-crosswalk-audit.test.mjs > /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/focused-and-original-source-tests.stdout.log 2> /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/focused-and-original-source-tests.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/focused-and-original-source-tests.stdout.log",
+          "bytes": 2289,
+          "sha256": "9784b15df2890ad285d8cd6bf833f36a4e36c24a2ebaa25c2aac1ed636f392f1"
+        },
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/focused-and-original-source-tests.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "tests": 20,
+      "pass": 20,
+      "fail": 0
+    },
+    "fullCurrentShadowTypeScript": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/typescript/bin/tsc --noEmit > /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/typecheck.stdout.log 2> /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/typecheck.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/typecheck.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/typecheck.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "scopedRootConfigESLint": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/eslint/bin/eslint.js app/TrevisanV1AgeAtlas.tsx app/ExactSourceAuditWorkbench.tsx app/exact-source-audit-workbench.js app/exact-source-audit-workbench.d.ts app/SourceAuditWorkspaces.tsx tests/trevisan-v1-sample-bookmark.test.mjs > /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/eslint.stdout.log 2> /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/eslint.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/eslint.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/eslint.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "existingWorkspaceFragmentRegression": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test --test-name-pattern='existing sample and comparative fragments|source IDs, arbitrary fragments' tests/source-audit-workspaces.test.mjs > /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/workspace-fragment-tests.stdout.log 2> /private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/workspace-fragment-tests.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/workspace-fragment-tests.stdout.log",
+          "bytes": 315,
+          "sha256": "f10093933c678fba4bcb7c1844c1bb57be95c7c4757a4dd89719d17fbe211f13"
+        },
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/workspace-fragment-tests.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "unselectedBuildDependentCases": 3,
+      "scope": "existing fragment helper regression only; build-dependent route tests remain parent-owned final integration checks"
+    },
+    "gitApplyCheck": {
+      "exitCode": 0,
+      "applied": false,
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/git-apply-check.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/git-apply-check.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  },
+  "earlierAttempts": {
+    "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/INITIAL_CHECK_ATTEMPTS.json",
+    "bytes": 1407,
+    "sha256": "c4b977da29313b428da4947e6418a7aa9e85c48176149fb66866444880ad8910"
+  },
+  "originalSourceReplay": {
+    "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/ORIGINAL_SOURCE_REPLAY_AND_GAP_RECEIPT.json",
+    "bytes": 4054,
+    "sha256": "d64fefa74af79280100349983d32615598a63c132ae33cd5d8034b9d2b2d7e81",
+    "fullCurrentDerivedDocumentEqual": true,
+    "originalInputReceiptsChecked": 35,
+    "matrixSparseEntriesChecked": 13241486
+  },
+  "actualBrowserPlan": {
+    "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/ACTUAL_BROWSER_QA_PLAN.md",
+    "bytes": 9068,
+    "sha256": "1c72ca182ed4d6c4a39e148fdb72611f30b0ea902cc2847dceadcd5802adfba0"
+  },
+  "runtime": {
+    "node": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "nodeVersion": "v24.19.0",
+    "nodeModules": "/private/tmp/ohri-i51-lock-dependencies/node_modules",
+    "dependencyChanges": 0
+  },
+  "sourceScope": {
+    "sampleCharacteristics": 29,
+    "workbookSheets": 4,
+    "nativeBarcodeFiles": 29,
+    "matrixInputs": 1,
+    "articleClustersRetained": 14,
+    "finalAtlasSheetSelectionRows": 89494,
+    "sampleReplicateIsAnimal": false,
+    "embryonicConvertedToPostnatal": false,
+    "runtimeNucleusRowsAdmitted": 0,
+    "clusterAssignmentsAdmitted": 0,
+    "canonicalProfileContribution": 0,
+    "canonicalProfilesRetained": 387,
+    "sameCellJoins": 0,
+    "geometryObjects": 0,
+    "atlasRegistrations": 0,
+    "publicRawAssetPackagingAllowed": false,
+    "exactCompletedEntriesRetained": 83,
+    "controllingPlanEntries": 243
+  },
+  "evidenceLimits": [
+    "Actual React SSR is server markup only",
+    "descriptor lifecycle is not native browser proof",
+    "selected JSON contains original factual audit row, no new raw payload packaging",
+    "existing audit input hashes are source verification scope, not a runtime file/WebGL proof",
+    "original GEO/workbook conflicts and file reuse gate remain"
+  ],
+  "sharedProductRootWrites": 0,
+  "scientificSourceEdits": 0,
+  "supersedes": {
+    "receiptPath": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/before-peer-reopen-note/qa/I58_CANDIDATE_SEAL_AND_VALIDATION_RECEIPT.json",
+    "bytes": 8393,
+    "sha256": "64ce131a7e04df3ff540722e26e6a8e927949eed64e83501aa9674823463a5f8",
+    "reason": "Qualified bookmark reopen explanation and descriptor remount regression; parent-authorized sixth wrapper paragraph-only correction"
+  }
+}

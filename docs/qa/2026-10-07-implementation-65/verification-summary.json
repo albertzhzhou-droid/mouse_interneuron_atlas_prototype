@@ -1,0 +1,199 @@
+{
+  "status": "PASS_I65_SCOPED_INTEGRATION",
+  "verifiedAtUTC": "2026-10-08T02:17:53.576136+00:00",
+  "controllingUI": "current upgraded homepage, grouped SiteNavigation/sidebar, independent routes, Breadcrumb, light reading layout",
+  "fullResearch": {
+    "status": "ACTUAL_SCOPED_COMMAND_COMPLETED",
+    "startedAtUTC": "2026-10-08T02:02:48.795203+00:00",
+    "finishedAtUTC": "2026-10-08T02:05:08.704684+00:00",
+    "pid": 73111,
+    "argv": [
+      "/opt/homebrew/bin/npm",
+      "run",
+      "test:research"
+    ],
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "nodeOptions": "--import=/private/tmp/ohri-i51-exact-read.mjs",
+    "actualExitCode": 0,
+    "stdout": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-65/actual-final-full-research.stdout.log",
+      "bytes": 250851,
+      "sha256": "33a1ed7c9131b087be79fa94cc63ef64f873ae31ccf9ae8a350745a3f51c5206"
+    },
+    "stderr": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-65/actual-final-full-research.stderr.log",
+      "bytes": 551,
+      "sha256": "e8d7981d90194780bc8fc08928441b6e99d89bbbcae843976559dfa4c9d9624d"
+    }
+  },
+  "researchTests": {
+    "total": 1582,
+    "passed": 1567,
+    "conditionalSkipped": 15,
+    "failed": 0,
+    "cancelled": 0
+  },
+  "finalStageCurrentManifestValidation": {
+    "status": "ACTUAL_SCOPED_COMMAND_COMPLETED",
+    "startedAtUTC": "2026-10-08T02:10:47.926798+00:00",
+    "finishedAtUTC": "2026-10-08T02:10:49.890684+00:00",
+    "pid": 79267,
+    "argv": [
+      "/opt/homebrew/bin/node",
+      "scripts/validate-research-iteration-manifest-2.91.mjs"
+    ],
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "nodeOptions": "--import=/private/tmp/ohri-i51-exact-read.mjs",
+    "actualExitCode": 0,
+    "stdout": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-65/actual-final-doc-current-manifest-validation.stdout.log",
+      "bytes": 1163,
+      "sha256": "ec4ffb347da449806de895803b0152bb8854ba3b34b511019adcf52e96625d23"
+    },
+    "stderr": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-65/actual-final-doc-current-manifest-validation.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "currentManifest": {
+    "path": "data/research-iteration-manifest-2.91.json",
+    "bytes": 536061,
+    "sha256": "e319cc3a3345d02f5174ea2498442a6f61d2c6f2ea01eb4b0e7befed44fe7bd3",
+    "inputCount": 2616
+  },
+  "rootStageActualCurrentBodyScope": [
+    {
+      "path": "app/InterneuronTypeAtlas.tsx",
+      "bytes": 156197,
+      "sha256": "737fea494cdd5f5c73631499b4c27f2981403055b31c79aad82fba4d830ee0c0"
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "bytes": 15878,
+      "sha256": "a4db6c8260236d5133f895111201784f81d0da7315faadd6d04deebb3fde7a5a"
+    },
+    {
+      "path": "data/research-iteration-manifest-2.91.json",
+      "bytes": 536061,
+      "sha256": "e319cc3a3345d02f5174ea2498442a6f61d2c6f2ea01eb4b0e7befed44fe7bd3"
+    },
+    {
+      "path": "data/research-renderer-runtime-inputs-2.91.json",
+      "bytes": 36638,
+      "sha256": "990fd1ffd752aef551db386c123f9af30e0519ea036d96c0e62e62557ee4f8b0"
+    },
+    {
+      "path": "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "bytes": 100409,
+      "sha256": "590cd808f1b85e9d1b0ea405ccfdf7a040793f5bc14c017a14acc494ef13fc45"
+    },
+    {
+      "path": "docs/RESEARCH_TIMELINE_2026-10-07_IMPLEMENTATION_65_INVALID_PROFILE_REQUEST.md",
+      "bytes": 3762,
+      "sha256": "c989f37314ecea49739e306eb21632d26cc0c9e1597ad2f1894a4b38365c3db6"
+    },
+    {
+      "path": "docs/UPGRADE_PLAN_2026-09-24.md",
+      "bytes": 179926,
+      "sha256": "bea8708a5cdd1d0ee724be8ce827149a3226221c4a35f6251a923fc690a0a015"
+    },
+    {
+      "path": "tests/type-profile-request.test.mjs",
+      "bytes": 15712,
+      "sha256": "c967c27cad795908373fcd195d747a11c68cf3572fe5cad7ae5f6205eccac973"
+    },
+    {
+      "path": "tools/build_research_iteration_manifest_2_91.mjs",
+      "bytes": 60740,
+      "sha256": "b7a8f6ea368ce68b831e55ab4193ea12536ac97be2d38aeb6a83dcdc7ad8da90"
+    }
+  ],
+  "currentRuntime": {
+    "path": "data/research-renderer-runtime-inputs-2.91.json",
+    "bytes": 36638,
+    "sha256": "990fd1ffd752aef551db386c123f9af30e0519ea036d96c0e62e62557ee4f8b0",
+    "orderedMembers": 198,
+    "changedMembers": [
+      "app/ResearchCollectionPage.tsx"
+    ]
+  },
+  "canonicalDelta": {
+    "added": [
+      "docs/RESEARCH_TIMELINE_2026-10-07_IMPLEMENTATION_65_INVALID_PROFILE_REQUEST.md",
+      "tests/type-profile-request.test.mjs"
+    ],
+    "removed": [],
+    "changed": [
+      "app/InterneuronTypeAtlas.tsx",
+      "app/ResearchCollectionPage.tsx",
+      "data/research-renderer-runtime-inputs-2.91.json",
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "tools/build_research_iteration_manifest_2_91.mjs"
+    ],
+    "otherInputReceiptsUnchangedFromI64": 2608
+  },
+  "parentI64": {
+    "originalAcceptedAtUTC": "2026-10-08T01:16:54.057749+00:00",
+    "checkpoint": {
+      "bytes": 18582,
+      "sha256": "8fbe05e78163730ae564f265b56901d7a37dfa22c113d60853715e5efdc06843"
+    },
+    "archiveReplay": {
+      "status": "PASS_ORIGINAL_I64_ARCHIVE_98_FULL_MEMBER_REPLAY",
+      "checkedAtUTC": "2026-10-08T02:08:44.772124+00:00",
+      "originalAcceptedAtUTC": "2026-10-08T01:16:54.057749+00:00",
+      "archive": {
+        "path": "docs/qa/2026-10-07-implementation-64/accepted-i64-owned-and-layout-checkpoint.zip",
+        "bytes": 961000,
+        "sha256": "a93f8cf0658525ed722376f6cf4ff3929d6c4e5d40480265cbad5e716c8fa749"
+      },
+      "memberCount": 98,
+      "scope": "Original accepted archive full bodies only; this is not a new full Root canonical replay",
+      "fullGoalComplete": false
+    }
+  },
+  "preservationBoundary": "Actual full original I64 archive 98 members; inherited I64 full Root source preservation at its original time. I65 reads the 9 current integration bodies at Root and Stage, and actual final Stage full 2616-input manifest validation. No new full 2616-input Root physical replay is asserted.",
+  "native": {
+    "verification": "actual-final-native-verification.json",
+    "finalObservations": 11,
+    "allOriginalFinalLedgerObservations": 18,
+    "genuineNarrowKeyboardRecovery": "actual-final-native-keyboard-recovery.json",
+    "screenshots": [
+      "actual-final-empty-request-new-layout.png",
+      "actual-final-invalid-profile-390px.png"
+    ],
+    "viewportOverrideReset": true
+  },
+  "retainedFailures": [
+    "actual-native-first-pass-events.json",
+    "actual-canonical-narrow-keyboard-recovery.json",
+    "actual-final-narrow-input-attempt-rejected.json",
+    "actual-final-profile-request-tests.execution.json",
+    "actual-final-target-lint.execution.json",
+    "actual-final-types.execution.json"
+  ],
+  "science": {
+    "sources": 32,
+    "recordSets": 42,
+    "profiles": 387,
+    "rosters": 13,
+    "objects": 4,
+    "exactCompleted": 83,
+    "queueTotal": 243,
+    "newScientificAdmissions": 0,
+    "registration": 0,
+    "sameCellMouseSpinalInteriors": 0
+  },
+  "remaining": [
+    "UPG-173 fresh native study-facts export landing",
+    "complete type-profile filters/query browser-history restoration",
+    "actual 200 percent zoom",
+    "screen reader",
+    "whole-application budgets",
+    "M2 source mapping/rights",
+    "M4 same-cell mouse-spinal raw/internal evidence"
+  ],
+  "fullGoalComplete": false
+}

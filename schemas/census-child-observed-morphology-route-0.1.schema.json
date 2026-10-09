@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/census-child-observed-morphology-route-0.1.schema.json",
+  "title": "Census-child observed morphology route 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "releaseId", "releasedAt", "purpose", "runtimeMergePolicy", "dorsalHornRouteSet", "summary", "route", "contractBoundaries"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["path", "bytes", "sha256", "role"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "role": { "type": "string", "minLength": 1 }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["routeId", "title", "authority", "sourceAuthority", "censusMembership", "frozenLensMembership", "sourceRecord", "sourceObjects", "observedCellFormRecord", "fidelityRecord", "geometryReceipt", "repositoryReportedMorphometry", "somaContourReceipt", "nativeDatContract", "renderingContract", "identityBoundary", "sourceLinks", "hardBoundaries"],
+      "properties": {
+        "routeId": { "const": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108978" },
+        "title": { "type": "string", "minLength": 1 },
+        "authority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+        "sourceAuthority": { "const": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD" },
+        "censusMembership": { "const": true },
+        "frozenLensMembership": { "const": false },
+        "sourceRecord": { "type": "object", "additionalProperties": true },
+        "sourceObjects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["censusIndex", "censusAssetManifest", "officialApiSnapshot", "geometry", "swc", "originalDat", "nativeContourGeometry"],
+          "properties": {
+            "censusIndex": { "$ref": "#/$defs/receipt" },
+            "censusAssetManifest": { "$ref": "#/$defs/receipt" },
+            "officialApiSnapshot": { "$ref": "#/$defs/receipt" },
+            "geometry": { "$ref": "#/$defs/receipt" },
+            "swc": { "$ref": "#/$defs/receipt" },
+            "originalDat": { "$ref": "#/$defs/receipt" },
+            "nativeContourGeometry": { "$ref": "#/$defs/receipt" }
+          }
+        },
+        "observedCellFormRecord": { "type": "object", "additionalProperties": true },
+        "fidelityRecord": { "type": "object", "additionalProperties": true },
+        "geometryReceipt": { "type": "object", "additionalProperties": true },
+        "repositoryReportedMorphometry": { "type": "object", "additionalProperties": true },
+        "somaContourReceipt": { "type": "object", "additionalProperties": true },
+        "nativeDatContract": { "type": "object", "additionalProperties": true },
+        "renderingContract": { "type": "object", "additionalProperties": true },
+        "identityBoundary": { "type": "object", "additionalProperties": true },
+        "sourceLinks": { "type": "object", "additionalProperties": { "type": "string", "format": "uri" } },
+        "hardBoundaries": { "type": "array", "minItems": 7, "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+    ,
+    "routeMember": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["routeId", "assetId", "censusMembership", "frozenLensMembership"],
+      "properties": {
+        "routeId": { "type": "string", "pattern": "^mouse\\.sc\\..*\\.observed\\.nmo_[0-9]+$" },
+        "assetId": { "type": "string", "pattern": "^NeuroMorpho:[0-9]+$" },
+        "censusMembership": { "type": "boolean" },
+        "frozenLensMembership": { "type": "boolean" }
+      }
+    },
+    "routeSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parentRoutePack", "routeCount", "censusRecordCount", "censusMemberCount", "frozenLensOverlapCount", "supplementaryRecordCount", "censusExpansionCount", "members"],
+      "properties": {
+        "parentRoutePack": { "$ref": "#/$defs/receipt" },
+        "routeCount": { "const": 5 },
+        "censusRecordCount": { "const": 142 },
+        "censusMemberCount": { "const": 3 },
+        "frozenLensOverlapCount": { "const": 2 },
+        "supplementaryRecordCount": { "const": 2 },
+        "censusExpansionCount": { "const": 0 },
+        "members": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/$defs/routeMember" } }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "census-child-observed-morphology-route-0.1" },
+    "releaseId": { "const": "ohri-census-child-observed-morphology-route-0.1.0" },
+    "releasedAt": { "type": "string", "format": "date" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "runtimeMergePolicy": { "type": "object", "additionalProperties": true },
+    "dorsalHornRouteSet": { "$ref": "#/$defs/routeSet" },
+    "summary": { "type": "object", "additionalProperties": true },
+    "route": { "$ref": "#/$defs/route" },
+    "contractBoundaries": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 1 } }
+  }
+}

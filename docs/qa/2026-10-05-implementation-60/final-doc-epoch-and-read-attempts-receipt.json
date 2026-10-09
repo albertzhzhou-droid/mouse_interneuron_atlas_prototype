@@ -1,0 +1,237 @@
+{
+  "status": "PASS_I60_FINAL_DOC_EPOCH_STAGE_GENERATION_AND_ACTUAL_BYTE_PARITY",
+  "generatedAtUTC": "2026-10-05T08:44:06.522512+00:00",
+  "originalRootBuilderAttempt": {
+    "actualExitCode": 130,
+    "stoppedByRoot": true,
+    "reasonNotEstablished": true,
+    "notAcceptedBuildPass": true,
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/root-manifest-write-stopped-read-attempt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "prematureSyncAttempt": {
+    "actualExitCode": 1,
+    "notAcceptedStageParity": true,
+    "causeNotEstablished": true,
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/premature-stage-sync-attempt.log",
+      "bytes": 530,
+      "sha256": "59a2e20389934108d65d77dd518e1e70def2b5cee3791ba6f13e69f5e682353e"
+    }
+  },
+  "prewriteFirstAttempt": {
+    "actualExitCode": 1,
+    "failure": "exact ns epoch change1190to1215 at 589B PV asset manifest; source byte mutation and cause not established",
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/prewrite-final-doc-stage-sync.log",
+      "bytes": 802,
+      "sha256": "62150a3129d12ba2188313515912d77677c5e70f5034c4ea4954da6d2517637b"
+    }
+  },
+  "pinnedPrewriteSecondAttempt": {
+    "actualExitCode": 1,
+    "failure": "exact ns epoch change8388to8500 at400187B PV nmo-170034; cause not established",
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/prewrite-final-doc-stage-pinned-retry.log",
+      "bytes": 2869,
+      "sha256": "73cdae4da19fda9f34913bfe046f59e6ed7ecb46efd1f71c30b9ef9f7b289e16"
+    }
+  },
+  "strictBoundedFreshEpochPrewrite": {
+    "actualExitCode": 0,
+    "maximumAttemptsPerRead": 3,
+    "captureOnly": "Source epoch changed exact assertion; no EOF/IO/SHA exception",
+    "nanosecondsRounded": false,
+    "sciencePinExceptions": 0,
+    "finalDocPinsFixed": {
+      "docs/UPGRADE_PLAN_2026-09-24.md": {
+        "bytes": 166136,
+        "sha256": "9fc983a277be207d560bd709310b3f6332554ebfc4f600484c3deb0f2042c4ec"
+      },
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md": {
+        "bytes": 86274,
+        "sha256": "665049e1b1368c176e8ebe809837bbd66cf5747faa3f1cb230ba19728859d3ff"
+      },
+      "docs/RESEARCH_TIMELINE_2026-10-05_IMPLEMENTATION_60_COMPARISON_BOOKMARK.md": {
+        "bytes": 9101,
+        "sha256": "d9ab4723ab6b28f4b65f9f5af60d030462b07bf55b3d48cb4edb851e597c9b58"
+      }
+    },
+    "actualEpochRefusals": [
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/garcia-ramirez-parent-integration.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/garcia-ramirez-parent-integration.test.mjs: (228252802, 7729, 1791173291653336337) -> (228252802, 7729, 1791173291653336286); read 7729",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/garcia-ramirez-physiology.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/garcia-ramirez-physiology.test.mjs: (228252792, 7654, 1791173291551879879) -> (228252792, 7654, 1791173291551879882); read 7654",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/main-scene-morphology-verification.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/main-scene-morphology-verification.test.mjs: (220229354, 8356, 1791155313738308045) -> (220229354, 8356, 1791155313738307952); read 8356",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/morphology-source-view.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/morphology-source-view.test.mjs: (219549703, 14249, 1791164578811397034) -> (219549703, 14249, 1791164578811397075); read 14249",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/rendered-html.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/rendered-html.test.mjs: (202323560, 80631, 1791180197709966375) -> (202323560, 80631, 1791180197709966421); read 80631",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/research-explorer-keyboard-groups.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/research-explorer-keyboard-groups.test.mjs: (228296902, 11486, 1791175214485994273) -> (228296902, 11486, 1791175214485994338); read 11486",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/research-selection-delta.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/research-selection-delta.test.mjs: (228093036, 16522, 1791167056754006572) -> (228093036, 16522, 1791167056754006624); read 16522",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/source-audit-workspaces.test.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/source-audit-workspaces.test.mjs: (223429538, 4204, 1791164888717182294) -> (223429538, 4204, 1791164888717182397); read 4204",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/test_garcia_ramirez_physiology_0_1.py",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/test_garcia_ramirez_physiology_0_1.py: (228252793, 6966, 1791173291552095549) -> (228252793, 6966, 1791173291552095651); read 6966",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/build_pv_independent_routes.mjs",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/build_pv_independent_routes.mjs: (227647741, 12962, 1791155549058826393) -> (227647741, 12962, 1791155549058826446); read 12962",
+        "acceptedAttempt": false
+      },
+      {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-04-implementation-51/actual-main-view-118824.json",
+        "attempt": 1,
+        "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-04-implementation-51/actual-main-view-118824.json: (227757915, 22704, 1791157519029272589) -> (227757915, 22704, 1791157519029272556); read 22704",
+        "acceptedAttempt": false
+      }
+    ],
+    "rootOnlyRowsNotFinalStageParity": true,
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/prewrite-final-doc-stage-epoch-retry.log",
+      "bytes": 5309,
+      "sha256": "4e8d1ff351111db9680567a1bafd2adfdeb32ead3fd74118efe986c83b98a281"
+    }
+  },
+  "actualCanonicalGeneration": {
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "node": "26.0.0",
+    "actualExitCode": 0,
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-manifest-write.log",
+      "bytes": 95,
+      "sha256": "8d82e6b94ed45a7dcaee50d25e7cc9faf97e9d36fc2136d6a52c52047eb57a06"
+    },
+    "rootBuilderPassClaim": false
+  },
+  "rootManifestAdoptionAndActualFinalParity": {
+    "actualExitCode": 0,
+    "manifest": "exact stage --write output copy",
+    "runtimeByteIdentical": true,
+    "actualCanonicalInputs": 2585,
+    "actualStageInputs": 2588,
+    "bothRootStageHashesAndEndEpochsChecked": true,
+    "receipt": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-stage-root-parity-receipt.json",
+      "bytes": 828883,
+      "sha256": "c176fbdafb735412ae77c9af0ed5a07765e915446ac5f6ce2fb1816ebf5f81fe"
+    },
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-stage-sync.log",
+      "bytes": 2403,
+      "sha256": "0b61a40530d5329435632f1ec89b4c02f801e0992f8e2ce003a4f9d65ba17dc4"
+    }
+  },
+  "actualCurrentManifestValidator": {
+    "cwd": "/private/tmp/ohri-i51-verification",
+    "actualExitCode": 0,
+    "log": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-current-manifest-validator.log",
+      "bytes": 1312,
+      "sha256": "1b9f3b62f9858e154c7b595869f3d568fa89d1d045851106bfc2d7ced48d105d"
+    }
+  },
+  "fullResearchRerunNeededForDocEpochOnly": false,
+  "fullEngineeringResultRetained": "1534/1519pass/15conditionalSkip/0fail/0cancel actual0",
+  "allSourceGatesRetained": true,
+  "fullGoalComplete": false,
+  "supportPins": [
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/I60_BOUNDED_PREWRITE_DOC_EPOCH_AND_GUARD_PEER_REVIEW.json",
+      "bytes": 6199,
+      "sha256": "1dbb888fa0b0d1cd130580f771a754e240d58da8fb301ce1506bce0e8f07d10d"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/I60_NODE26_BIGINT_SINGLE_SOURCE_PROBE.json",
+      "bytes": 4462,
+      "sha256": "1b672befbe9b151e81202e9256bc13a90e69b70774a57745565c02d6ee78e577"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/I60_SINGLE_SOURCE_EPOCH_NS_PRECISION_REVIEW.json",
+      "bytes": 25313,
+      "sha256": "dcf9940517b6c36a9a901efb313593b82fa590015ae4939d346ad12d82fec285"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/I60_SINGLE_SOURCE_NS_PRECISION_REVIEW_SEAL.json",
+      "bytes": 1197,
+      "sha256": "3f1e4dd351950e66bb8561a1494cee2c65a421cacb16d85ea80d67cb6c492e83"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/check_single_source_epoch_precision.py",
+      "bytes": 5523,
+      "sha256": "fff4ed61e1aa4c55d865d85b104bfdc4d6a7bfe21d501dc1288ac22e4bebd004"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/exact-first-prewrite-589-byte-epoch-failure.log",
+      "bytes": 802,
+      "sha256": "62150a3129d12ba2188313515912d77677c5e70f5034c4ea4954da6d2517637b"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/ohri-i60-final-manifest-adopt-and-strict-stage-replay.py",
+      "bytes": 3718,
+      "sha256": "eb527e75640ecaa6d09a3e478e63d5944595f53ddbfa73d153dfb7c4d20f0a41"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/ohri-i60-prewrite-final-doc-stage-epoch-retry.py",
+      "bytes": 4041,
+      "sha256": "a780ad13e8512e32d85c0651a3d6f7a74e0087bd86e86389f55c22c6297e93b2"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/ohri-i60-prewrite-final-doc-stage-pinned-retry.py",
+      "bytes": 3475,
+      "sha256": "27d72972de26843b3198128d6a5213fb75fa602f0dca4be22601df1ea5f24828"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/ohri-i60-prewrite-final-doc-stage.py",
+      "bytes": 2607,
+      "sha256": "e87839342dd5691acb4fa6f674c51fe7646ea7f843442ad4c9d50fd4a4e7a9ea"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/final-epoch-read-support/ohri-i60-sync-exact-short-read.py",
+      "bytes": 1859,
+      "sha256": "b21b338c6d1110cd159b668e5844d5b5f128612e0af8d1b0b835f22e049e8dbb"
+    }
+  ]
+}

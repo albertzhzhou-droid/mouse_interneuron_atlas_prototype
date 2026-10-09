@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "census-child-observed-morphology-route-0.1",
+  "releaseId": "ohri-census-child-observed-morphology-route-0.1.0",
+  "releasedAt": "2026-09-23",
+  "purpose": "Admit NMO 108978 as one additional selectable source-local morphology route from the already pinned 142-record adult NeuroMorpho census. Preserve separate standardized-SWC and source-native DAT frames, expose the exact 12 source-native soma traces, and keep the underlying census denominator unchanged.",
+  "runtimeMergePolicy": {
+    "censusRecordCount": 142,
+    "censusContribution": 0,
+    "frozenLensOverlap": false,
+    "selectedCensusChildRouteCount": 1,
+    "additionalMainSceneMorphologyCount": 1,
+    "censusExpansionCount": 0,
+    "crossSourceIdentityCount": 0,
+    "projectRegistrationCount": 0
+  },
+  "dorsalHornRouteSet": {
+    "parentRoutePack": {
+      "path": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+      "bytes": 42226,
+      "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593",
+      "role": "immutable_dorsal_horn_route_pack_parent"
+    },
+    "routeCount": 5,
+    "censusRecordCount": 142,
+    "censusMemberCount": 3,
+    "frozenLensOverlapCount": 2,
+    "supplementaryRecordCount": 2,
+    "censusExpansionCount": 0,
+    "members": [
+      {
+        "routeId": "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+        "assetId": "NeuroMorpho:249676",
+        "censusMembership": false,
+        "frozenLensMembership": false
+      },
+      {
+        "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+        "assetId": "NeuroMorpho:108974",
+        "censusMembership": true,
+        "frozenLensMembership": true
+      },
+      {
+        "routeId": "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+        "assetId": "NeuroMorpho:170035",
+        "censusMembership": false,
+        "frozenLensMembership": false
+      },
+      {
+        "routeId": "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003",
+        "assetId": "NeuroMorpho:104003",
+        "censusMembership": true,
+        "frozenLensMembership": true
+      },
+      {
+        "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108978",
+        "assetId": "NeuroMorpho:108978",
+        "censusMembership": true,
+        "frozenLensMembership": false
+      }
+    ]
+  },
+  "summary": {
+    "routeCount": 1,
+    "observedSwcNodeCount": 1817,
+    "observedSwcSegmentCount": 1816,
+    "sourceDiameterAvailable": true,
+    "nativeSomaLineLoopCount": 12,
+    "nativeSomaLineLoopVertexCount": 2614,
+    "sameSpecimenInternalStructureCount": 0,
+    "renderedInternalPrimitiveCount": 0,
+    "censusExpansionCount": 0,
+    "crossSourceIdentityCount": 0,
+    "projectRegistrationCount": 0
+  },
+  "route": {
+    "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108978",
+    "title": "Tac1Cre / Brainbow SP-class excitatory interneuron — cell-4_16",
+    "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+    "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+    "censusMembership": true,
+    "frozenLensMembership": false,
+    "sourceRecord": {
+      "repository": "NeuroMorpho.Org",
+      "repositoryRelease": "8.6.124",
+      "repositoryRrid": "RRID:SCR_002145",
+      "neuronId": 108978,
+      "assetId": "NeuroMorpho:108978",
+      "neuronName": "cell-4_16",
+      "archive": "Todd",
+      "species": "mouse",
+      "lifeStage": "adult",
+      "sex": "Male/Female",
+      "strain": "Tac1-IRES2-Cre-D",
+      "regionLabels": [
+        "spinal cord",
+        "lumbar",
+        "mid-lumbar",
+        "dorsal horn"
+      ],
+      "cellTypeLabels": [
+        "interneuron",
+        "Excitatory",
+        "Substance P-(SP) expressing"
+      ],
+      "condition": [
+        "Control"
+      ],
+      "protocol": "in vivo",
+      "slicingDirection": "parasagittal",
+      "slicingThicknessMicrometre": 60,
+      "reconstructionSoftware": "Neurolucida",
+      "stain": "Brainbow",
+      "domain": "Dendrites, Soma, No Axon",
+      "physicalIntegrity": "Dendrites Complete",
+      "sourceAttributes": "Diameter, 3D, Angles",
+      "sourcePaperDoi": "10.1097/j.pain.0000000000001406",
+      "sourcePaperPmid": "30247267",
+      "numericAge": {
+        "value": null,
+        "unit": null,
+        "missingReason": "official_repository_metadata_reports_Not Reported"
+      }
+    },
+    "sourceObjects": {
+      "censusIndex": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+        "bytes": 968797,
+        "sha256": "1598b5119f5826719e390fe46615a291b51fa3cd7716e9a191ad645f73165364",
+        "role": "pinned_full_census_index"
+      },
+      "censusAssetManifest": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/asset-manifest.json",
+        "bytes": 62165,
+        "sha256": "2c1153fe86e3bc2f08505cf2416ab25b2d8e9ca747b0bffcfad5aacc9286cf91",
+        "role": "pinned_full_census_asset_manifest"
+      },
+      "officialApiSnapshot": {
+        "path": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.api.json",
+        "bytes": 1498,
+        "sha256": "1b72bd7f16d0cc08cda0b74f47f9825688320eb34e9c4c73d1dd722af70bd5b6",
+        "role": "official_api_snapshot"
+      },
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-108978.json",
+        "bytes": 184367,
+        "sha256": "b31ec580f0ae3f2829b301a308db47f17e1cf845636b831a1fdb3ad534078843",
+        "role": "source_local_lazy_geometry",
+        "canonicalGeometrySha256": "d8c621ec8a35776b2b16e192f6827bf3ec7a69a1355cd9b5e265bc53cccb3d72",
+        "topologySha256": "1ff982382a0d23dc058ce271d3112ea021e5e37103f11020aefa2e9d0efbc385"
+      },
+      "swc": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-108978.swc",
+        "bytes": 62949,
+        "sha256": "016e8329e9b1f2da5c5d4a314bab7998cba66ae56f3517be573a4ac0b2b4c250",
+        "role": "standardized_source_local_swc"
+      },
+      "originalDat": {
+        "path": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.original.dat",
+        "bytes": 172603,
+        "sha256": "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+        "role": "source_native_neurolucida_dat_receipt_only"
+      },
+      "nativeContourGeometry": {
+        "path": "/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+        "bytes": 356028,
+        "sha256": "565abd17700932c57c0fa210b4bb279bd2617b1f191df0b5bfabb0e514429e5d",
+        "role": "source_native_mbf_cell_body_line_loop",
+        "canonicalGeometrySha256": "f4ff7da0d65b798e09d7bd88c612bb956f1fe5057c13aeacaa6ef04eb14c07f9"
+      }
+    },
+    "observedCellFormRecord": {
+      "neuronId": 108978,
+      "assetId": "NeuroMorpho:108978",
+      "phenotype": "Substance P-expressing excitatory interneuron",
+      "transmitter": "excitatory",
+      "domain": "Dendrites, Soma, No Axon",
+      "physicalIntegrity": "Dendrites Complete",
+      "sourcePaperDoi": "10.1097/j.pain.0000000000001406",
+      "segmentCount": 1816,
+      "geometryStatus": "OBS",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered"
+    },
+    "fidelityRecord": {
+      "neuronId": 108978,
+      "assetId": "NeuroMorpho:108978",
+      "geometry": {
+        "path": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-108978.json",
+        "bytes": 184367,
+        "sha256": "b31ec580f0ae3f2829b301a308db47f17e1cf845636b831a1fdb3ad534078843",
+        "rawSwcSha256": "016e8329e9b1f2da5c5d4a314bab7998cba66ae56f3517be573a4ac0b2b4c250",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": true,
+        "nodeCount": 1817,
+        "segmentCount": 1816
+      },
+      "axon": {
+        "sourceType2NodeCount": 0,
+        "sourceDomain": "Dendrites, Soma, No Axon",
+        "completeAxon": false
+      },
+      "radiusEvidence": {
+        "status": "OBSERVED_SOURCE_RADIUS",
+        "minimumMicrometre": 0.075,
+        "maximumMicrometre": 4.653,
+        "meanMicrometre": 0.22752339020363113,
+        "missingReason": null
+      },
+      "modes": {
+        "observedSwc": {
+          "available": true,
+          "authority": "OBS_STANDARDIZED_SOURCE_LOCAL"
+        },
+        "radiusSurface": {
+          "available": true,
+          "authority": "DERIVED_FROM_OBSERVED_RADIUS",
+          "missingReason": null
+        },
+        "internalStructure": {
+          "available": false,
+          "authority": "UNAVAILABLE",
+          "missingEvidence": [
+            "membrane_segmentation",
+            "nucleus",
+            "organelles",
+            "synaptic_boutons",
+            "receptor_distribution",
+            "ultrastructure"
+          ]
+        }
+      }
+    },
+    "geometryReceipt": {
+      "dimensionality": "3D",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered",
+      "nodeCount": 1817,
+      "segmentCount": 1816,
+      "nodeTypeCounts": {
+        "1": 12,
+        "3": 1805
+      },
+      "boundsMicrometre": {
+        "min": [
+          -35.58,
+          -50.75,
+          -8.47
+        ],
+        "max": [
+          27.59,
+          76.62,
+          21
+        ]
+      },
+      "extentMicrometre": [
+        63.17,
+        127.37,
+        29.47
+      ],
+      "canonicalGeometrySha256": "d8c621ec8a35776b2b16e192f6827bf3ec7a69a1355cd9b5e265bc53cccb3d72",
+      "topologySha256": "1ff982382a0d23dc058ce271d3112ea021e5e37103f11020aefa2e9d0efbc385",
+      "sourceDiameterAvailable": true
+    },
+    "repositoryReportedMorphometry": {
+      "somaSurface": {
+        "value": 301.387,
+        "unit": "square_micrometre",
+        "missingReason": null
+      },
+      "surface": {
+        "value": 1733.93,
+        "unit": "square_micrometre",
+        "missingReason": null
+      },
+      "volume": {
+        "value": 270.255,
+        "unit": "cubic_micrometre",
+        "missingReason": null
+      }
+    },
+    "somaContourReceipt": {
+      "evidenceSource": "standardized_swc_header_and_checksum_pinned_source_native_dat",
+      "originalContourCount": 12,
+      "standardizedSomaPointCount": 12,
+      "nativeContourVerticesAvailable": true,
+      "nativeContourLoopCount": 12,
+      "nativeContourVertexCount": 2614,
+      "nativeContourGeometrySha256": "565abd17700932c57c0fa210b4bb279bd2617b1f191df0b5bfabb0e514429e5d",
+      "correspondenceToStandardizedSomaPoints": "not_established",
+      "coordinateTransformToStandardizedSwcStatus": "not_established",
+      "overlayWithStandardizedSwcAllowed": false,
+      "membraneClaim": false
+    },
+    "nativeDatContract": {
+      "parsed": true,
+      "rendered": true,
+      "sourceDatBytes": 172603,
+      "sourceDatSha256": "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+      "contourName": "Cell Body",
+      "independentParserClassification": "somaContour",
+      "semanticObjectCountAdmitted": 12,
+      "orderedVertexCount": 2614,
+      "rawSourceClosedFlag": false,
+      "interpretedLineClosureAuthority": "file_specific_MBF_Cell_Body_semantics",
+      "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+      "coordinateTransformToStandardizedSwcStatus": "not_established",
+      "overlayWithStandardizedSwcAllowed": false
+    },
+    "renderingContract": {
+      "observedSwc": {
+        "available": true,
+        "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "representationStateId": "OBS_SKELETON"
+      },
+      "radiusSurface": {
+        "available": true,
+        "authority": "DERIVED_FROM_OBSERVED_RADIUS",
+        "representationStateId": "DER_RADIUS_SURFACE",
+        "membraneClaim": false,
+        "measurementUse": "forbidden",
+        "missingReason": null
+      },
+      "nativeSomaContours": {
+        "available": true,
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP",
+        "representationStateId": "OBS_SOURCE_NATIVE_SOMA_LINE_LOOP",
+        "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+        "lineLoopCount": 12,
+        "vertexCount": 2614,
+        "overlayWithStandardizedSwcAllowed": false,
+        "membraneClaim": false,
+        "measurementUse": "forbidden"
+      },
+      "sameSpecimenInternalStructure": {
+        "available": false,
+        "authority": "UNAVAILABLE",
+        "representationStateId": "UNAVAILABLE",
+        "renderedPrimitiveCount": 0,
+        "missingEvidence": [
+          "membrane_segmentation",
+          "nucleus",
+          "organelles",
+          "synaptic_boutons",
+          "receptor_distribution",
+          "ultrastructure"
+        ]
+      }
+    },
+    "identityBoundary": {
+      "markerIdentityBasis": "official_repository_cell_class_labels_and_Tac1_IRES2_Cre_D_line",
+      "individualMolecularAssayClaim": false,
+      "selectedSciEntityRelationship": "none",
+      "molecularProfileRelationship": "none",
+      "otherMorphologyRelationship": "independent_record",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "coDisplayCreatesRelationship": false
+    },
+    "sourceLinks": {
+      "officialRecord": "https://neuromorpho.org/neuron_info.jsp?neuron_name=cell-4_16",
+      "officialApi": "https://neuromorpho.org/api/neuron/id/108978",
+      "standardizedSwc": "https://neuromorpho.org/dableFiles/todd/CNG%20version/cell-4_16.CNG.swc",
+      "originalDat": "https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat",
+      "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000001406",
+      "rights": "https://neuromorpho.org/useterm.jsp"
+    },
+    "hardBoundaries": [
+      "NMO 108978 is already one of the 142 pinned adult-query census records; activating this source-local route adds no census row or census denominator.",
+      "The deposited class labels are Substance P-expressing and excitatory. They do not establish a same-cell molecular assay or a cross-source subtype identity.",
+      "The 12 native Cell Body traces and 12 standardized type-1 soma points are independently reported representations; their equal count establishes no one-to-one vertex correspondence or coordinate transform.",
+      "Source-native Neurolucida DAT contours remain in the original file frame; the standardized SWC frame is separately rendered with no overlay or registration.",
+      "Dendrites Complete is the repository's domain-specific integrity label. No axon is reconstructed, which is not evidence that the biological cell lacked an axon.",
+      "No same-specimen membrane segmentation, nucleus, organelles, boutons, receptor map, or ultrastructure is available; render zero internal primitives.",
+      "The linked study's cohort-level radial-cell interpretation is not promoted to an exact NMO 108978 morphology subclass or physiology join."
+    ]
+  },
+  "contractBoundaries": [
+    "This route adds an independently reconstructed morphology exemplar, not a new interneuron type, sample-count claim, or census row.",
+    "The dorsal-horn route roster composes the four-record 0.1 parent with this one exact census-child route; the sets overlap and are not added to the 142-record census.",
+    "Source-native line loops are not a soma membrane, filled polygon, volume, or internal segmentation.",
+    "Repository-reported surface and volume values remain source-reported summaries; this project derives no mesh or biological measurement from them."
+  ]
+}

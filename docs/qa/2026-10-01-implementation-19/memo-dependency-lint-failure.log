@@ -1,0 +1,17 @@
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx
+  1135:294  error  Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This dependency may be mutated later, which could cause the value to change unexpectedly.
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx:1135:294
+  1133 |   const sourceViewRequest = useMemo<MainSceneViewRequest>(() => ({ view, sliceZ, mode: morphologyFidelityMode,
+  1134 |     layers: { scaffold: showScaffold, gray: showGrayMatter, entities: showEntities, observedForm: showObservedCellForm, datContours: showNmo45718DatSwcCrosswalk, micronsCellSurface: showMicronsCellSurface, micronsNucleus: showMicronsNucleus },
+> 1135 |     micronsClipping, evidenceFilter: { search, filters, retainedSelectedId } }), [view, sliceZ, morphologyFidelityMode, showScaffold, showGrayMatter, showEntities, showObservedCellForm, showNmo45718DatSwcCrosswalk, showMicronsCellSurface, showMicronsNucleus, micronsClipping, search, filters, retainedSelectedId]);
+       |                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^ This dependency may be modified later
+  1136 |
+  1137 |   const stateImportContext = useMemo<MainSceneImportContext>(() => ({ neuronId: viewportMorphologyNeuronId, focus: researchFocus, request: sourceViewRequest }), [viewportMorphologyNeuronId, researchFocus, sourceViewRequest]);
+  1138 |   useLayoutEffect(() => { stateImportContextRef.current = stateImportContext; }, [stateImportContext]);  react-hooks/preserve-manual-memoization
+
+✖ 1 problem (1 error, 0 warnings)
+

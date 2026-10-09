@@ -1,0 +1,20 @@
+{
+  "status": "EXACT_SOURCE_OWNER_PATH_ADAPTER_WITH_NO_SYMLINK_BYPASS",
+  "beforePath": "/private/tmp/ohri-i61-real-intake-preparation-20261005/prepare_i61_real_root_intake.before-nonowned-source-origin.py",
+  "before": {
+    "bytes": 17076,
+    "sha256": "63394fe3c43c95d031df8551ccac04d7a15900ba38ffc70ed5f911ba72ab6c26"
+  },
+  "after": {
+    "bytes": 17159,
+    "sha256": "84a271b37a973f6a33f7572ca25ef499a9fccde6b9eebb80a9117eb994a67a12"
+  },
+  "old": "  p=CORE/'proposed'/asset['path'];p=p if p.exists()else relative(asset['path']);assets.append({'id':asset['id'],**exact(p,asset['integrity'])})",
+  "new": "  core_owned={row['path'] for row in ready['owned19Targets'][:14]}\n  p=CORE/'proposed'/asset['path'] if asset['path'] in core_owned else relative(asset['path'])\n  assets.append({'id':asset['id'],**exact(p,asset['integrity'])})",
+  "firstStopRetained": "/private/tmp/ohri-i61-real-intake-preparation-20261005/I61_NONOWNED_SOURCE_SHADOW_SYMLINK_STOP.log",
+  "reason": "Legacy source JSON/CSV are not candidate owned files; always read actual root. Temporary shadow symlinks are never used as source bytes. Read only core-owned asset proposals from temp.",
+  "symlinkReadGuardRetained": true,
+  "sourceSHAAndPublicFinalByteGuardsUnchanged": true,
+  "rootWrites": 0,
+  "stageWrites": 0
+}

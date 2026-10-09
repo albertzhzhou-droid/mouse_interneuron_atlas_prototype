@@ -1,0 +1,17 @@
+import canonical from "../data/svara-supplement-catalogues-0.1.json";
+import type { SourceIdentityHierarchy } from "./source-object-identity.js";
+export const SVARA_CATALOGUES: typeof canonical;
+export type SvaraCatalogueProof = Readonly<{ key: string }>;
+export type SvaraCatalogueEntry = typeof canonical.entries[number];
+export const SVARA_DEFAULT_ENTRY: string;
+export function readSvaraCatalogueLocation(href: string): { key: string | null; refusal: string | null };
+export function writeSvaraCatalogueLocation(href: string, key: string): string;
+export function svaraCataloguePageLink(key: string): string;
+export function svaraCatalogueEntry(key: string): SvaraCatalogueEntry;
+export function svaraCatalogueIdentity(key: string): SourceIdentityHierarchy;
+export function verifySvaraCataloguePage(bytes: Uint8Array, key: string, options?: { signal?: AbortSignal }): Promise<SvaraCatalogueProof>;
+export function loadSvaraCataloguePage(key: string, options?: { signal?: AbortSignal; fetchImpl?: typeof fetch }): Promise<SvaraCatalogueProof>;
+export function svaraVerifiedPageBytes(proof: SvaraCatalogueProof, key: string): Uint8Array<ArrayBuffer>;
+export function buildSvaraCatalogueReceipt(proof: SvaraCatalogueProof, key: string, generatedAt?: string): Record<string, unknown>;
+export function inspectSvaraCatalogueReceipt(receipt: unknown): { key: string };
+export function restoreSvaraCatalogueReceipt(receipt: unknown, proof: SvaraCatalogueProof): { key: string };

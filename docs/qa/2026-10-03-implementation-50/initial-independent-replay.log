@@ -1,0 +1,26 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /renderer code, style or dependency build changed/. Input:
+
+'Error: Main-scene source verification: unknown exact source object'
+
+    at file:///private/tmp/ohri-i50-actual-view-replay.mjs:15:103 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: Error: Main-scene source verification: unknown exact source object
+      at check (file:///private/tmp/ohri-i22-local-verification/app/main-scene-morphology-verification.js:11:49)
+      at canonical (file:///private/tmp/ohri-i22-local-verification/app/main-scene-morphology-verification.js:58:3)
+      at mainSceneMorphologyVerification (file:///private/tmp/ohri-i22-local-verification/app/main-scene-morphology-verification.js:161:15)
+      at Module.validateMainSceneSourceViewReplay (file:///private/tmp/ohri-i22-local-verification/app/main-scene-source-view.js:144:20)
+      at file:///private/tmp/ohri-i50-actual-view-replay.mjs:15:116
+      at getActual (node:assert:580:5)
+      at strict.throws (node:assert:728:24)
+      at file:///private/tmp/ohri-i50-actual-view-replay.mjs:15:103,
+  expected: /renderer code, style or dependency build changed/,
+  operator: 'throws',
+  diff: 'simple'
+}
+
+Node.js v26.0.0

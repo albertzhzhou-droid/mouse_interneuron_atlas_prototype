@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import delileDevelopmentalTaxonomyJson from "../data/delile-developmental-interneuron-taxonomy-0.1.json";
 import sathyamurthySourceTaxonomyJson from "../data/sathyamurthy-source-taxonomy-0.1.json";
+const CanoCholInNucleusRoster = lazy(() => import("./CanoCholInNucleusRoster"));
+const CanoGabaSourceLabelBrowser = lazy(() => import("./CanoGabaSourceLabelBrowser"));
 import {
   alkaslasiCholinergicSourceTaxonomy,
   canoGomezP56MultiomeInterneuronRegistry,
@@ -12,12 +14,20 @@ import {
   hayashiV2aSourceTaxonomy,
   roomeDilSourceTaxonomy,
   russHarmonizedTaxonomyCrosswalk,
+  russSpinalInformationAdapter,
+  type RussSpinalInformationPopulation,
 } from "./atlas-types";
 import CanoGomezGlutLabelBrowser from "./CanoGomezGlutLabelBrowser";
 import glutSourceLabels from "../data/cano-gomez-glut-active-ident-labels-0.1.json";
+import neuromorphoTypeSourceDoiOverlapAudit from "../data/neuromorpho-type-source-doi-overlap-audit-0.1.json";
 import ResearchRecordEvidenceFingerprint, { type EvidenceFingerprintAxis } from "./ResearchRecordEvidenceFingerprint";
+import Pkd2l1IndependentPopulationContext from "./Pkd2l1IndependentPopulationContext";
 import SourceRecordDeltaInspector, { type SourceRecordDeltaDisplayRow } from "./SourceRecordDeltaInspector";
 import { buildSourceRecordDelta } from "./source-record-delta.js";
+import TrevisanV1AgeAtlas from "./TrevisanV1AgeAtlas";
+import RussSpinalInformationPanel from "./RussSpinalInformationPanel";
+import { validateRussSpinalInformationAdapter } from "./russ-spinal-information-adapter.js";
+import { parseTypeProfileViewState, serializeTypeProfileViewState } from "./type-profile-view-state.js";
 
 type HaringTaxonomy = typeof haringDorsalHornSourceTaxonomy;
 type HaringProfile = HaringTaxonomy["profiles"][number];
@@ -127,6 +137,7 @@ type TypeProfile = {
   roomeDetail?: RoomeProfile | null;
   delileDetail?: DelileProfile | null;
   canoGomezDetail?: CanoGomezProfile | null;
+  russDetail?: RussSpinalInformationPopulation | null;
 };
 
 type HayashiProfile = {
@@ -330,8 +341,6 @@ if (canoGomezRegistry.datasetId !== "GSE318731"
   throw new Error("Cano-Gomez confirmed CHOL_IN registry boundary is invalid");
 }
 type SourceFilter = "all" | SourceNamespace;
-type RegionFilter = "all" | "dorsal" | "mid" | "ventral" | "central" | "not_established";
-type TransmitterFilter = "all" | "excitatory" | "inhibitory" | "mixed" | "cholinergic" | "not_established";
 type InitialParam = string | string[] | undefined;
 
 function prettify(value: string) {
@@ -403,9 +412,12 @@ function normalizeLineageMapping(mapping: SathyLineageMapping) {
 }
 
 function buildProfiles(): TypeProfile[] {
+  validateRussSpinalInformationAdapter(russSpinalInformationAdapter, russHarmonizedTaxonomyCrosswalk);
+  const russInformationByLabel = new Map(russSpinalInformationAdapter.populations.map((population) => [population.sourceLabelRaw, population]));
   const russGroupById = new Map(russHarmonizedTaxonomyCrosswalk.groups.map((group) => [group.id, group]));
   const russProfiles: TypeProfile[] = russHarmonizedTaxonomyCrosswalk.populations.map((population) => {
     const group = russGroupById.get(population.groupId)!;
+    const russDetail = russInformationByLabel.get(population.label)!;
     const crosswalks = russHarmonizedTaxonomyCrosswalk.prototypeCrosswalks
       .filter((mapping) => mapping.candidatePopulationLabels.includes(population.label))
       .map((mapping) => ({
@@ -425,7 +437,7 @@ function buildProfiles(): TypeProfile[] {
       canonicalIdentityStatus: "not_established",
       sourceLabel: population.label,
       rawLabels: [population.label],
-      sourceName: "Russ harmonized postnatal taxonomy",
+      sourceName: "Russ harmonized spinal taxonomy",
       sourceAccession: "GSE158380",
       sourceUrl: russHarmonizedTaxonomyCrosswalk.source.processedCounts.recordUrl,
       articleUrl: russHarmonizedTaxonomyCrosswalk.source.publication.articleUrl,
@@ -437,15 +449,16 @@ function buildProfiles(): TypeProfile[] {
       spinalScope: group.sourceScope,
       spatialDomainContext: normalizeRegion(group.regionClass),
       rostrocaudalContext: "not_retained_in_this_profile",
-      majorTypeContext: "not_established",
+      majorTypeContext: `Table1 source family: ${russDetail.articleTable1.family.raw}`,
       profileAuthority: "source_population_not_canonical_identity",
-      samplingCount: null,
-      samplingUnit: null,
-      samplingBoundary: "No cell count is retained in this derived type-level record; absence of a count is not zero abundance.",
+      samplingCount: russDetail.sequencingSampling.value,
+      samplingUnit: russDetail.sequencingSampling.unit,
+      samplingBoundary: "Captured sequenced cells/nuclei in the named final six-study harmonized dataset of 19,353 observations; animal-level replication and adult prevalence are separate.",
+      russDetail,
       putativeCellType: group.label,
       putativeStatus: "source_group_context_not_exact_identity",
       activityEvidence: [],
-      locatorIds: ["Russ Results/Fig. 2", "Supplementary Table 1"],
+      locatorIds: ["Russ Results/Fig. 2", "Supplementary Table 1", russDetail.sequencingSampling.countLocator, russDetail.articleTable1.locator],
       missingEvidence: {
         morphology: "not_linked",
         cellCoordinates: "not_available_in_this_record",
@@ -903,39 +916,16 @@ function sourceProfileCount(namespace: SourceNamespace) {
   return SOURCE_PROFILE_COUNTS.get(namespace) ?? 0;
 }
 
-function firstParam(value: InitialParam) {
-  return Array.isArray(value) ? value[0] : value;
-}
-
-function initialUrlState(initialSelected?: InitialParam, initialComparison?: InitialParam) {
-  const params = typeof window === "undefined" ? null : new URLSearchParams(window.location.search);
-  const requested = firstParam(initialSelected) ?? params?.get("type") ?? null;
-  const selectedId = requested && PROFILE_BY_ID.has(requested) ? requested : "sathyamurthy-2018:DE-1";
-  const comparisonIds = (firstParam(initialComparison) ?? params?.get("typeCompare") ?? "")
-    .split(",")
-    .filter((id, index, all) => PROFILE_BY_ID.has(id) && all.indexOf(id) === index)
-    .slice(0, 4);
-  const requestedBaseline = params?.get("typeBaseline") ?? null;
-  const baselineId = requestedBaseline && PROFILE_BY_ID.has(requestedBaseline) && requestedBaseline !== selectedId
-    ? requestedBaseline
-    : null;
-  return { selectedId, comparisonIds, baselineId };
-}
-
-function updateTypeComparisonUrl(comparisonIds: string[]) {
-  if (typeof window === "undefined") return;
-  const url = new URL(window.location.href);
-  if (comparisonIds.length) url.searchParams.set("typeCompare", comparisonIds.join(","));
-  else url.searchParams.delete("typeCompare");
-  window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
-}
-
-function updateTypeBaselineUrl(baselineId: string | null) {
-  if (typeof window === "undefined") return;
-  const url = new URL(window.location.href);
-  if (baselineId) url.searchParams.set("typeBaseline", baselineId);
-  else url.searchParams.delete("typeBaseline");
-  window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
+function initialTypeProfileParams(profileLocation?: string, initialSelected?: InitialParam, initialComparison?: InitialParam) {
+  if (profileLocation !== undefined) return new URLSearchParams(profileLocation);
+  const params = new URLSearchParams(typeof window === "undefined" ? "" : window.location.search);
+  if (!params.has("focusKind") && !params.has("focusId") && !params.has("type") && initialSelected !== undefined) {
+    for (const id of Array.isArray(initialSelected) ? initialSelected : [initialSelected]) params.append("type", id);
+  }
+  if (!params.has("typeCompare") && initialComparison !== undefined) {
+    for (const ids of Array.isArray(initialComparison) ? initialComparison : [initialComparison]) params.append("typeCompare", ids);
+  }
+  return params;
 }
 
 function evidenceStatus(profile: TypeProfile, key: string) {
@@ -1127,52 +1117,88 @@ const SOURCE_RECORD_DELTA_ROWS: readonly SourceRecordDeltaDisplayRow<TypeProfile
 export default function InterneuronTypeAtlas({
   initialSelected,
   initialComparison,
+  initialSourcePanel,
   selectedFocusId,
+  requestError,
+  profileLocation,
+  onProfileLocationChange,
   onSelectedFocusChange,
+  onBrowseIndependentMorphology,
   onNotice,
 }: {
   initialSelected?: InitialParam;
   initialComparison?: InitialParam;
+  initialSourcePanel?: string;
   selectedFocusId?: string | null;
+  requestError?: string | null;
+  profileLocation?: string;
+  onProfileLocationChange?: (profileLocation: string) => void;
   onSelectedFocusChange?: (focusId: string) => void;
+  onBrowseIndependentMorphology?: (sourceLabel: string) => void;
   onNotice: (notice: string) => void;
 }) {
-  const initial = initialUrlState(initialSelected, initialComparison);
-  const [query, setQuery] = useState("");
-  const [showGlutLabels, setShowGlutLabels] = useState(false);
-  const [sourceFilter, setSourceFilter] = useState<SourceFilter>("all");
-  const [regionFilter, setRegionFilter] = useState<RegionFilter>("all");
-  const [transmitterFilter, setTransmitterFilter] = useState<TransmitterFilter>("all");
-  const [internalSelectedId, setInternalSelectedId] = useState(initial.selectedId);
-  const [comparisonIds, setComparisonIds] = useState(initial.comparisonIds);
-  const [baselineId, setBaselineId] = useState<string | null>(initial.baselineId);
-  const selectedId = selectedFocusId && PROFILE_BY_ID.has(selectedFocusId)
-    ? selectedFocusId
-    : internalSelectedId;
+  const [locationSnapshot, setLocationSnapshot] = useState(() => ({
+    originLocation: profileLocation,
+    originFocus: selectedFocusId,
+    params: initialTypeProfileParams(profileLocation, selectedFocusId ?? initialSelected, initialComparison).toString(),
+  }));
+  const restoredLocation = profileLocation !== undefined && profileLocation !== locationSnapshot.originLocation
+    ? profileLocation : locationSnapshot.params;
+  const typeLocation = useMemo(() => {
+    const next = new URLSearchParams(restoredLocation);
+    if (profileLocation === undefined && selectedFocusId != null && selectedFocusId !== locationSnapshot.originFocus) {
+      next.delete("type");
+      next.set("focusKind", "molecular_profile");
+      next.set("focusId", selectedFocusId);
+    }
+    return next.toString();
+  }, [restoredLocation, profileLocation, selectedFocusId, locationSnapshot.originFocus]);
+  const viewState = useMemo(() => parseTypeProfileViewState(new URLSearchParams(typeLocation)), [typeLocation]);
+  const params = new URLSearchParams(typeLocation);
+  const { query, regionFilter, transmitterFilter, comparisonIds, baselineId } = viewState;
+  const sourceFilter = viewState.sourceFilter as SourceFilter;
+  const selectedId = viewState.selectedId ?? "";
+  const requestedIds = params.getAll(params.has("focusKind") || params.has("focusId") ? "focusId" : "type");
+  const requestedIdDisplay = requestedIds.length > 1 ? requestedIds.map(id => JSON.stringify(id)).join(" · ")
+    : selectedId === "" ? requestedIds.length === 1 ? "(empty ID)" : "(missing ID)" : selectedId;
+  const requestedSourcePanel = params.get("sourcePanel") ?? initialSourcePanel;
+  const [glutDisclosure, setGlutDisclosure] = useState({ requestedPanel: requestedSourcePanel, open: requestedSourcePanel === "glut" });
+  const showGlutLabels = glutDisclosure.requestedPanel === requestedSourcePanel ? glutDisclosure.open : requestedSourcePanel === "glut";
+  const [showGabaLabels, setShowGabaLabels] = useState(false);
   const profileListRef = useRef<HTMLDivElement>(null);
   const dossierRef = useRef<HTMLElement>(null);
   const profileRefs = useRef(new Map<string, HTMLButtonElement>());
-  const priorSelectedIdRef = useRef(selectedId);
-  const selected = PROFILE_BY_ID.get(selectedId) ?? PROFILES[0];
+  const selected = requestError || !viewState.available ? null : PROFILE_BY_ID.get(selectedId) ?? null;
+
+  const commitParams = (next: URLSearchParams, replace = false, selectedProfileId?: string) => {
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.search = next.toString();
+      const address = `${url.pathname}${url.search}${url.hash}`;
+      if (address !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+        window.history[replace ? "replaceState" : "pushState"](window.history.state, "", address);
+      }
+    }
+    setLocationSnapshot({ originLocation: profileLocation, originFocus: selectedFocusId, params: next.toString() });
+    onProfileLocationChange?.(next.toString());
+    if (selectedProfileId !== undefined && !onProfileLocationChange) onSelectedFocusChange?.(selectedProfileId);
+  };
+
+  const changeFilter = (key: string, value: string, replace = false) => {
+    const next = new URLSearchParams(params);
+    if (value === "" || value === "all") next.delete(key);
+    else next.set(key, value);
+    // Repair only the field the reader changed. Invalid literal requests in
+    // other fields retain their address and never acquire a borrowed dossier.
+    commitParams(next, replace);
+  };
 
   useEffect(() => {
-    const restore = () => {
-      const next = initialUrlState();
-      setComparisonIds(next.comparisonIds);
-      setBaselineId(next.baselineId);
-    };
+    const restore = () => setLocationSnapshot({ originLocation: profileLocation, originFocus: selectedFocusId,
+      params: new URLSearchParams(window.location.search).toString() });
     window.addEventListener("popstate", restore);
     return () => window.removeEventListener("popstate", restore);
-  }, []);
-
-  useEffect(() => {
-    const priorId = priorSelectedIdRef.current;
-    if (priorId !== selectedId && PROFILE_BY_ID.has(priorId)) {
-      setBaselineId(priorId);
-      updateTypeBaselineUrl(priorId);
-    }
-    priorSelectedIdRef.current = selectedId;
-  }, [selectedId]);
+  }, [profileLocation, selectedFocusId]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -1217,18 +1243,21 @@ export default function InterneuronTypeAtlas({
   }, [query, regionFilter, sourceFilter, transmitterFilter]);
 
   const selectProfile = (id: string) => {
-    setInternalSelectedId(id);
-    onSelectedFocusChange?.(id);
+    if (!PROFILE_BY_ID.has(id)) return;
+    const next = new URLSearchParams(params);
+    next.delete("type");
+    next.set("focusKind", "molecular_profile");
+    next.set("focusId", id);
+    // A baseline records an explicit valid selection, never Back/Forward.
+    if (viewState.available && selected && selected.id !== id) next.set("typeBaseline", selected.id);
+    commitParams(next, false, id);
   };
 
   const toggleComparison = (id: string) => {
     const next = comparisonIds.includes(id)
       ? comparisonIds.filter((item) => item !== id)
-      : comparisonIds.length < 4
-        ? [...comparisonIds, id]
-        : comparisonIds;
-    setComparisonIds(next);
-    updateTypeComparisonUrl(next);
+      : comparisonIds.length < 4 ? [...comparisonIds, id] : comparisonIds;
+    if (next !== comparisonIds) commitParams(serializeTypeProfileViewState(params, { ...viewState, comparisonIds: next }));
     onNotice(next.length === comparisonIds.length && !comparisonIds.includes(id)
       ? "Type comparison is limited to four source records"
       : `${next.length} source type record${next.length === 1 ? "" : "s"} selected for comparison`);
@@ -1247,9 +1276,95 @@ export default function InterneuronTypeAtlas({
     profileRefs.current.get(next.id)?.focus();
   };
 
+  const browserFilters = <>
+        <label>Search label, marker, family or accession
+          <input type="search" value={query} maxLength={160} placeholder="e.g. Vsx2, Gaba1, dl1.1, Piezo2, GSE318731" onChange={(event) => changeFilter("typeQuery", event.target.value, true)} />
+        </label>
+        <label>Source namespace
+          <select value={sourceFilter} onChange={(event) => changeFilter("typeSource", event.target.value)}>
+            <option value="all">All {SOURCE_NAMESPACE_COUNT} sources · no merge</option>
+            <option value="russ-2021">Russ 2021 · {sourceProfileCount("russ-2021")}</option>
+            <option value="sathyamurthy-2018">Sathyamurthy 2018 · {sourceProfileCount("sathyamurthy-2018")}</option>
+            <option value="hayashi-2018:GSE108788">Hayashi 2018 · {sourceProfileCount("hayashi-2018:GSE108788")} P0 V2a clusters</option>
+            <option value="haring-2018:GSE103840">Häring 2018 · {sourceProfileCount("haring-2018:GSE103840")} P17–P28 dorsal-horn clusters</option>
+            <option value="alkaslasi-2021:GSE167597">Alkaslasi 2021 · {sourceProfileCount("alkaslasi-2021:GSE167597")} adult cholinergic clusters</option>
+            <option value="iglesias-gonzalez-2021:gse185731:mmusculus">Iglesias González 2021 · {sourceProfileCount("iglesias-gonzalez-2021:gse185731:mmusculus")} embryonic Dmrt3/dI6 groups</option>
+            <option value="roome-2026:GSE291462">Roome 2026 · {sourceProfileCount("roome-2026:GSE291462")} embryonic refined dIL types</option>
+            <option value="delile-2019:E-MTAB-7320">Delile 2019 · {sourceProfileCount("delile-2019:E-MTAB-7320")} E9.5–E13.5 fine subtypes</option>
+            <option value="crozat-2025:figshare-29430869-v2">Crozat 2025 · {sourceProfileCount("crozat-2025:figshare-29430869-v2")} PKD2L1 functional population</option>
+            <option value="cano-gomez-2026:GSE318731">Cano-Gomez 2026 · {sourceProfileCount("cano-gomez-2026:GSE318731")} P56 CHOL_IN profiles</option>
+          </select>
+        </label>
+        <label>Region class
+          <select value={regionFilter} onChange={(event) => changeFilter("typeRegion", event.target.value)}>
+            <option value="all">All source regions</option><option value="dorsal">Dorsal</option><option value="mid">Deep dorsal / mid</option><option value="ventral">Ventral</option><option value="central">Central</option><option value="not_established">Not established</option>
+          </select>
+        </label>
+        <label>Transmitter class
+          <select value={transmitterFilter} onChange={(event) => changeFilter("typeTransmitter", event.target.value)}>
+            <option value="all">All source classes</option><option value="excitatory">Excitatory</option><option value="inhibitory">Inhibitory</option><option value="mixed">Mixed cluster</option><option value="cholinergic">Cholinergic</option><option value="not_established">Not established</option>
+          </select>
+        </label>
+  </>;
+  const sourceLabelDisclosures = <>
+      <details className="type-source-labels-disclosure" id="cano-glut-source-labels" open={showGlutLabels} onToggle={(event) => setGlutDisclosure({ requestedPanel: requestedSourcePanel, open: event.currentTarget.open })}>
+        <summary>Cano-Gomez GLUT source assignments · {glutSourceLabels.denominators.sourceLabelCount} labels · separate from confirmed CHOL_IN profiles</summary>
+        {showGlutLabels && <CanoGomezGlutLabelBrowser />}
+      </details>
+
+      <details className="type-source-labels-disclosure" id="cano-gaba-source-labels" onToggle={(event) => setShowGabaLabels(event.currentTarget.open)}>
+        <summary>Cano-Gomez GABA source assignments · 204 labels · 73,364 source nuclei</summary>
+        {showGabaLabels && <Suspense fallback={<p role="status">Loading GABA source labels…</p>}><CanoGabaSourceLabelBrowser /></Suspense>}
+      </details>
+
+  </>;
+
+  if (!selected) return (
+    <section className="type-evidence-atlas" aria-labelledby="type-evidence-heading">
+      <div className="type-evidence-heading">
+        <div>
+          <h3 id="type-evidence-heading">Spinal neuron type evidence atlas</h3>
+          <p>{PROFILES.length.toLocaleString("en-US")} source profiles across {SOURCE_NAMESPACE_COUNT} independent study namespaces. Select a source-local record to view its evidence.</p>
+        </div>
+        <div className="type-evidence-zero" role="note"><strong>0</strong><span>exact cross-study identities · linked morphologies · registrations</span></div>
+      </div>
+      {sourceLabelDisclosures}
+      <div className="type-evidence-controls">
+        {browserFilters}
+        <button type="button" disabled>Export dossier</button>
+      </div>
+      <p className="type-result-count" role="status">{matching.length} of {PROFILES.length} source records match · filtered absence is not biological absence</p>
+      <div className="type-evidence-workspace">
+        <div ref={profileListRef} className="type-profile-list" role="listbox" aria-label="Source-local type profiles">
+          {matching.map((profile, index) => (
+            <button type="button" role="option" aria-selected={false} tabIndex={index === 0 ? 0 : -1}
+              key={profile.id}
+              ref={(node) => { if (node) profileRefs.current.set(profile.id, node); else profileRefs.current.delete(profile.id); }}
+              onClick={() => selectProfile(profile.id)} onKeyDown={(event) => handleProfileKeys(event, profile.id)}>
+              <span>{profileSourceBadge(profile)} · {prettify(profile.regionClass)}</span>
+              <strong>{profile.sourceLabel}</strong>
+              <em>{markerDisplay(profile)}</em>
+              <small>{transmitterDisplay(profile)} · {samplingCountDisplay(profile)}</small>
+            </button>
+          ))}
+          {!matching.length && <p className="type-empty">No source label matches these filters. This is not evidence that a biological population is absent.</p>}
+        </div>
+        <article className="type-dossier" aria-label="Unavailable source-profile request">
+          <header><div><h4>Requested source profile is unavailable</h4><p role="status">Check the address, search and filters. Select a valid source record to change its ID.</p></div></header>
+          <p>Requested ID: <code>{requestedIdDisplay}</code></p>
+          {(requestError || viewState.errors.length > 0) && <p role="status">{requestError ?? viewState.errors.join(" · ")}</p>}
+          {(params.has("typeCompare") || params.has("typeBaseline")) && <button type="button" onClick={() => { const next = new URLSearchParams(params); next.delete("typeCompare"); next.delete("typeBaseline"); commitParams(next); }}>Clear requested comparison and baseline</button>}
+          <p className="type-empty">No source-profile evidence is selected for this request. Dossier export is unavailable until you select a valid record.</p>
+        </article>
+      </div>
+    </section>
+  );
+
   const selectedLocatorText = selected.locatorIds.map((id) => resolveLocator(selected, id));
   const comparison = comparisonIds.map((id) => PROFILE_BY_ID.get(id)).filter((profile): profile is TypeProfile => Boolean(profile));
   const baseline = baselineId && baselineId !== selected.id ? PROFILE_BY_ID.get(baselineId) ?? null : null;
+  const morphologyCoverage = neuromorphoTypeSourceDoiOverlapAudit.rows.find((row) => row.namespace === selected.namespace);
+  if (!morphologyCoverage) throw new Error(`No pinned morphology DOI coverage row for ${selected.namespace}`);
   const sathyNonMotorUnresolved = sathyTaxonomy.profiles.filter((profile) => profile.projectUseClass === "source_local_non_motor_neuron_unresolved").length;
   const sampleFrame = sathyTaxonomy.source.geo.sampleFrame;
   const hayashiSampleFrame = hayashiTaxonomy.source.geo.sampleFrame;
@@ -1366,6 +1481,8 @@ export default function InterneuronTypeAtlas({
         <div className="type-evidence-zero" role="note"><strong>0</strong><span>exact cross-study identities · linked morphologies · registrations</span></div>
       </div>
 
+      <TrevisanV1AgeAtlas />
+
       <details className="type-collection-disclosure">
         <summary>Study coverage and sampling denominators · {SOURCE_NAMESPACE_COUNT} sources</summary>
           <p>
@@ -1399,15 +1516,12 @@ export default function InterneuronTypeAtlas({
       <div className="type-current-record-bar" aria-label="Selected source profile">
         <div><span>{profileSourceBadge(selected)}</span><strong>{selected.sourceLabel}</strong><small>{samplingCountDisplay(selected)} · {selected.lifeStage}</small></div>
         <div>
-          <button type="button" onClick={() => { setSourceFilter(selected.namespace); setQuery(""); setRegionFilter("all"); setTransmitterFilter("all"); }}>Browse this source</button>
+          <button type="button" onClick={() => commitParams(serializeTypeProfileViewState(params, { ...viewState, sourceFilter: selected.namespace, query: "", regionFilter: "all", transmitterFilter: "all" }))}>Browse this source</button>
           <button type="button" onClick={() => dossierRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}>Go to selected evidence</button>
         </div>
       </div>
 
-      <details className="type-source-labels-disclosure" onToggle={(event) => setShowGlutLabels(event.currentTarget.open)}>
-        <summary>Cano-Gomez GLUT source assignments · {glutSourceLabels.denominators.sourceLabelCount} labels · separate from confirmed CHOL_IN profiles</summary>
-        {showGlutLabels && <CanoGomezGlutLabelBrowser />}
-      </details>
+      {sourceLabelDisclosures}
 
       <details className="type-classification-boundaries">
         <summary>Source-level classification limits · collapsed</summary>
@@ -1455,34 +1569,7 @@ export default function InterneuronTypeAtlas({
       </details>
 
       <div className="type-evidence-controls">
-        <label>Search label, marker, family or accession
-          <input type="search" value={query} maxLength={160} placeholder="e.g. Vsx2, Gaba1, dl1.1, Piezo2, GSE318731" onChange={(event) => setQuery(event.target.value)} />
-        </label>
-        <label>Source namespace
-          <select value={sourceFilter} onChange={(event) => setSourceFilter(event.target.value as SourceFilter)}>
-            <option value="all">All {SOURCE_NAMESPACE_COUNT} sources · no merge</option>
-            <option value="russ-2021">Russ 2021 · {sourceProfileCount("russ-2021")}</option>
-            <option value="sathyamurthy-2018">Sathyamurthy 2018 · {sourceProfileCount("sathyamurthy-2018")}</option>
-            <option value="hayashi-2018:GSE108788">Hayashi 2018 · {sourceProfileCount("hayashi-2018:GSE108788")} P0 V2a clusters</option>
-            <option value="haring-2018:GSE103840">Häring 2018 · {sourceProfileCount("haring-2018:GSE103840")} P17–P28 dorsal-horn clusters</option>
-            <option value="alkaslasi-2021:GSE167597">Alkaslasi 2021 · {sourceProfileCount("alkaslasi-2021:GSE167597")} adult cholinergic clusters</option>
-            <option value="iglesias-gonzalez-2021:gse185731:mmusculus">Iglesias González 2021 · {sourceProfileCount("iglesias-gonzalez-2021:gse185731:mmusculus")} embryonic Dmrt3/dI6 groups</option>
-            <option value="roome-2026:GSE291462">Roome 2026 · {sourceProfileCount("roome-2026:GSE291462")} embryonic refined dIL types</option>
-            <option value="delile-2019:E-MTAB-7320">Delile 2019 · {sourceProfileCount("delile-2019:E-MTAB-7320")} E9.5–E13.5 fine subtypes</option>
-            <option value="crozat-2025:figshare-29430869-v2">Crozat 2025 · {sourceProfileCount("crozat-2025:figshare-29430869-v2")} PKD2L1 functional population</option>
-            <option value="cano-gomez-2026:GSE318731">Cano-Gomez 2026 · {sourceProfileCount("cano-gomez-2026:GSE318731")} P56 CHOL_IN profiles</option>
-          </select>
-        </label>
-        <label>Region class
-          <select value={regionFilter} onChange={(event) => setRegionFilter(event.target.value as RegionFilter)}>
-            <option value="all">All source regions</option><option value="dorsal">Dorsal</option><option value="mid">Deep dorsal / mid</option><option value="ventral">Ventral</option><option value="central">Central</option><option value="not_established">Not established</option>
-          </select>
-        </label>
-        <label>Transmitter class
-          <select value={transmitterFilter} onChange={(event) => setTransmitterFilter(event.target.value as TransmitterFilter)}>
-            <option value="all">All source classes</option><option value="excitatory">Excitatory</option><option value="inhibitory">Inhibitory</option><option value="mixed">Mixed cluster</option><option value="cholinergic">Cholinergic</option><option value="not_established">Not established</option>
-          </select>
-        </label>
+        {browserFilters}
         <button type="button" onClick={() => {
           downloadJson({
             release: "ohri-interneuron-type-evidence-atlas-0.1",
@@ -1494,7 +1581,15 @@ export default function InterneuronTypeAtlas({
               rows: SOURCE_RECORD_DELTA_ROWS,
             }) : null,
             comparison,
-            sourceReleases: [russHarmonizedTaxonomyCrosswalk.releaseId, sathyTaxonomy.releaseId, hayashiTaxonomy.releaseId, haringTaxonomy.releaseId, alkaslasiTaxonomy.releaseId, dmrt3Taxonomy.releaseId, roomeTaxonomy.releaseId, delileTaxonomy.releaseId, crozatProfileContract.releaseId, canoGomezRegistry.releaseId],
+            russInformationEvidence: selected.russDetail || baseline?.russDetail || comparison.some((profile) => profile.russDetail) ? {
+              releaseId: russSpinalInformationAdapter.releaseId,
+              source: russSpinalInformationAdapter.source,
+              derivation: russSpinalInformationAdapter.derivation,
+              sequencingDenominator: russSpinalInformationAdapter.sequencingDenominator,
+              adultValidationContext: russSpinalInformationAdapter.adultValidationContext,
+              admissionBoundary: russSpinalInformationAdapter.admissionBoundary,
+            } : null,
+            sourceReleases: [russSpinalInformationAdapter.releaseId, russHarmonizedTaxonomyCrosswalk.releaseId, sathyTaxonomy.releaseId, hayashiTaxonomy.releaseId, haringTaxonomy.releaseId, alkaslasiTaxonomy.releaseId, dmrt3Taxonomy.releaseId, roomeTaxonomy.releaseId, delileTaxonomy.releaseId, crozatProfileContract.releaseId, canoGomezRegistry.releaseId],
             sathyamurthySampleFrame: sampleFrame,
             hayashiSampleFrame,
             hayashiMatrixReceipt: {
@@ -1602,6 +1697,16 @@ export default function InterneuronTypeAtlas({
             >{comparisonIds.includes(selected.id) ? "Remove from compare" : "Add to compare"}</button>
           </header>
 
+          <aside className="type-independent-morphology-link" aria-label={`Morphology coverage for ${selected.sourceLabel}`}>
+            <div>
+              <strong>Publication-level morphology coverage · {selected.sourceLabel}</strong>
+              <p>{morphologyCoverage.label} · <a href={`https://doi.org/${morphologyCoverage.sourcePublicationDoi}`} target="_blank" rel="noreferrer">source publication DOI</a></p>
+              <p>In the pinned NeuroMorpho.Org {neuromorphoTypeSourceDoiOverlapAudit.morphologyUniverse.release} query ({neuromorphoTypeSourceDoiOverlapAudit.morphologyUniverse.queryRecordCount.toLocaleString("en-US")} deposited records), this publication DOI matches {morphologyCoverage.matchedRecordCount} morphology record{morphologyCoverage.matchedRecordCount === 1 ? "" : "s"}{morphologyCoverage.matchedNeuronIds.length ? ` · NMO IDs ${morphologyCoverage.matchedNeuronIds.join(", ")}` : ""}.</p>
+              <p>DOI overlap is publication-level metadata only—not subtype, specimen, or same-cell evidence. Zero matches are limited to this pinned query and do not establish that morphology is absent elsewhere. The button runs a separate literal source-label search.</p>
+            </div>
+            <button type="button" onClick={() => onBrowseIndependentMorphology?.(selected.sourceLabel)}>Search morphology by source label</button>
+          </aside>
+
           <ResearchRecordEvidenceFingerprint
             recordId={selected.id}
             sourceLabel={selected.sourceLabel}
@@ -1609,7 +1714,7 @@ export default function InterneuronTypeAtlas({
             observationUnit={selected.unitOfObservation}
             samplingCount={selected.samplingCount}
             samplingUnit={selected.samplingUnit}
-            samplingSummary={selected.namespace === "crozat-2025:figshare-29430869-v2" ? "Multiple experiment-specific N/n" : null}
+            samplingSummary={selected.russDetail ? `${selected.russDetail.sequencingSampling.value.toLocaleString("en-US")} captured sequenced cells/nuclei · denominator 19,353 across six studies` : selected.namespace === "crozat-2025:figshare-29430869-v2" ? "Multiple experiment-specific N/n" : null}
             markers={selected.markers}
             regionContext={selectedRegionFingerprint}
             lifeStage={selected.lifeStage}
@@ -1622,6 +1727,7 @@ export default function InterneuronTypeAtlas({
             currentRecord={{ id: selected.id, label: selected.sourceLabel, namespace: selected.namespace, value: selected }}
             rows={SOURCE_RECORD_DELTA_ROWS}
           />}
+          {selected.namespace === "crozat-2025:figshare-29430869-v2" && <Pkd2l1IndependentPopulationContext />}
           <details className="type-record-metadata">
             <summary>Source metadata and assignment details</summary>
             <dl className="type-dossier-grid">
@@ -1647,6 +1753,7 @@ export default function InterneuronTypeAtlas({
               <div><dt>Raw source label(s)</dt><dd>{selected.rawLabels.join(" · ")}</dd></div>
             </dl>
           </details>
+          {selected.russDetail && <RussSpinalInformationPanel population={selected.russDetail} />}
           {selected.namespace === "sathyamurthy-2018" && <aside className="type-sample-frame" aria-label="Sathyamurthy source sample frame">
             <div>
               <span>INDEPENDENT POOLED SAMPLES</span>
@@ -1873,6 +1980,7 @@ export default function InterneuronTypeAtlas({
             </div>
             <p>{canoGomezRegistry.identityAuthority.boundary}</p>
           </aside>}
+          {selected.namespace === "cano-gomez-2026:GSE318731" && selectedCanoGomez && <Suspense fallback={<p role="status">Preparing the exact source nucleus roster…</p>}><CanoCholInNucleusRoster profileId={selectedCanoGomez.profileId} /></Suspense>}
 
           <div className="type-context-grid">
             {selected.namespace === "haring-2018:GSE103840" && selected.haringDetail ? <>

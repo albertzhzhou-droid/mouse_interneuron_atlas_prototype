@@ -1,0 +1,1630 @@
+{
+  "schemaVersion": "0.7.0",
+  "contractId": "evidence-aware-3d-representation-contract-0.7",
+  "releaseId": "ohri-evidence-aware-3d-representation-contract-0.7.0",
+  "releasedAt": "2026-09-23",
+  "purpose": "Extend immutable representation 0.6 with exact per-record representation permissions for the thirty source-local NeuroMorpho 8.6.126 Todd interneuron reconstructions.",
+  "buildInputs": {
+    "baseContract": {
+      "path": "/project/data/evidence-aware-3d-representation-contract-0.6.json",
+      "bytes": 26445,
+      "sha256": "1b7993059154ae101242b2081e8ad5f5e0f286c567296deee36995dfd363da02"
+    },
+    "neuromorphoToddNtsRoutePack": {
+      "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "bytes": 302205,
+      "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+    }
+  },
+  "representationStates": [
+    {
+      "id": "OBS_RAW_TEXTURE",
+      "label": "Observed raw texture",
+      "geometryAuthority": "OBS",
+      "meaning": "Checksum-verified source pixels or voxels in their declared source frame.",
+      "currentlyRendered": false,
+      "visualRule": "source texture only; no generated cell boundary",
+      "forbiddenClaim": "segmentation, cell identity or 3D surface unless separately admitted"
+    },
+    {
+      "id": "OBS_SEGMENTED_SURFACE",
+      "label": "Observed segmented surface",
+      "geometryAuthority": "OBS",
+      "meaning": "Exact source segmentation boundary represented by checksum-verified vertices and triangles.",
+      "currentlyRendered": true,
+      "visualRule": "source surface with object ID and frame receipt",
+      "forbiddenClaim": "molecular membrane composition or measurement surface"
+    },
+    {
+      "id": "OBS_SKELETON",
+      "label": "Observed skeleton",
+      "geometryAuthority": "OBS",
+      "meaning": "Source-local standardized SWC coordinates, topology and source types.",
+      "currentlyRendered": true,
+      "visualRule": "centerlines; constant stroke width is a viewer aid",
+      "forbiddenClaim": "membrane, complete arbor, atlas position or internal structure"
+    },
+    {
+      "id": "OBS_POINT",
+      "label": "Observed source point",
+      "geometryAuthority": "OBS",
+      "meaning": "One exact source coordinate row rendered without biological radius.",
+      "currentlyRendered": true,
+      "visualRule": "radius-free point glyph in its source representation",
+      "forbiddenClaim": "soma geometry, neurites, cross-frame identity or atlas registration"
+    },
+    {
+      "id": "DER_RADIUS_SURFACE",
+      "label": "Radius-derived display surface",
+      "geometryAuthority": "DER",
+      "meaning": "Deterministic open frusta derived from source-authorized SWC endpoint radii.",
+      "currentlyRendered": true,
+      "visualRule": "open six-sided per-edge frusta plus visible observed centerlines",
+      "forbiddenClaim": "observed membrane, watertight biological surface or measurement"
+    },
+    {
+      "id": "INF_REFERENCE_GEOMETRY",
+      "label": "Inferred reference geometry",
+      "geometryAuthority": "INF",
+      "meaning": "Reference-only loft or plane-local display geometry derived from pinned atlas annotations.",
+      "currentlyRendered": true,
+      "visualRule": "muted reference envelope or exact sampled-plane edges",
+      "forbiddenClaim": "registration of any cell, interpolation of missing labels or measurement"
+    },
+    {
+      "id": "SCH_PATH",
+      "label": "Schematic evidence path",
+      "geometryAuthority": "SCH",
+      "meaning": "A non-anatomical path used only to organize an evidence entity.",
+      "currentlyRendered": true,
+      "visualRule": "dashed path in the synthetic evidence lane",
+      "forbiddenClaim": "observed axon, projection, connection or anatomical trajectory"
+    },
+    {
+      "id": "SYN_DATA_GLYPH",
+      "label": "Synthetic data glyph",
+      "geometryAuthority": "SYN",
+      "meaning": "A non-cell UI object representing a literature evidence entity or injury-state record.",
+      "currentlyRendered": true,
+      "visualRule": "faceted data glyph or wire frame, explicitly outside anatomy",
+      "forbiddenClaim": "soma, cell cluster geometry, membrane, count, spatial density or morphology"
+    },
+    {
+      "id": "UNAVAILABLE",
+      "label": "Unavailable object geometry",
+      "geometryAuthority": "UNAVAILABLE",
+      "meaning": "No object-level source geometry has been admitted for the requested layer.",
+      "currentlyRendered": true,
+      "visualRule": "zero primitives plus explicit missingness text",
+      "forbiddenClaim": "procedural spheres, capsules, tubes, boxes or any other geometric substitute"
+    },
+    {
+      "id": "OBS_SOURCE_NATIVE_SOMA_LINE_LOOP",
+      "label": "Observed source-native soma line loops",
+      "geometryAuthority": "OBS",
+      "meaning": "Exact checksum-verified ordered Neurolucida soma line traces in the original DAT source frame.",
+      "currentlyRendered": true,
+      "visualRule": "record-gated source-native line loops only; keep separate from standardized SWC unless a source-authorized transform exists",
+      "forbiddenClaim": "membrane, filled soma, surface, volume, DAT-to-SWC correspondence, cross-source identity or atlas registration"
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "main.reference_anatomy",
+      "label": "Allen spinal reference anatomy",
+      "sourceReceipt": {
+        "path": "/data/allen_cord_20um_v3_0/asset-manifest.json",
+        "bytes": 62846,
+        "sha256": "75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8"
+      },
+      "sourceVersion": "allen_cord_20um_v3_0",
+      "sourceFrame": "allen_cord_20um_reference_plane_index",
+      "stableIdAuthority": "source atlas asset and source annotation identifier",
+      "representationStateIds": [
+        "INF_REFERENCE_GEOMETRY"
+      ],
+      "renderedPrimitivePolicy": "only_pinned_annotation_derivatives",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "main.population_evidence",
+      "label": "SCI population evidence entities",
+      "sourceReceipt": {
+        "path": "/project/data/atlas-release-0.1.json",
+        "bytes": 12918,
+        "sha256": "b87e8d6cc6d4a42d517118d9cbbf997c1caa8189323e4ed2bc4480adfda18dc6"
+      },
+      "sourceVersion": "ohri-mouse-interneuron-atlas-0.1.0",
+      "sourceFrame": "synthetic_evidence_lane_not_anatomy",
+      "stableIdAuthority": "entity.id",
+      "representationStateIds": [
+        "SYN_DATA_GLYPH",
+        "SCH_PATH"
+      ],
+      "renderedPrimitivePolicy": "non_cell_data_glyph_and_schematic_path_only",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "main.legacy_observed_cell_forms",
+      "label": "Five frozen source-local NeuroMorpho exemplars",
+      "sourceReceipt": {
+        "path": "/project/data/morphology-fidelity-contract-0.1.json",
+        "bytes": 9666,
+        "sha256": "f8bb6079614e20e376a2e4ae51a6eb2f574e63e73d38dbebe98854ec84cdcecb"
+      },
+      "sourceVersion": "ohri-morphology-fidelity-contract-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho assetId and neuronId",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.grp_dorsal_horn.observed.nmo_109021",
+      "label": "Independent GRP dorsal-horn NMO 109021",
+      "sourceReceipt": {
+        "path": "/project/data/grp-dorsal-horn-observed-morphology-0.1.json",
+        "bytes": 10016,
+        "sha256": "6212fd3b78ad3e7ef054b656ab9cf080f57360db710eedb767c55c493036563f"
+      },
+      "sourceVersion": "ohri-grp-dorsal-horn-observed-morphology-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:109021",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "microns_observed_reference",
+      "label": "MICrONS exact cell and linked nucleus",
+      "sourceReceipt": {
+        "path": "/project/data/microns-observed-cell-nucleus-reference-0.1.json",
+        "bytes": 9639,
+        "sha256": "9b5141072192b9d272c0babe097de380d2aebd98659c2c57745ee75d226b744c"
+      },
+      "sourceVersion": "MICrONS Phase 1 v185.4",
+      "sourceFrame": "MICrONS_Phase1_v185_4_native_nanometre",
+      "stableIdAuthority": "cell root ID plus source-linked nucleus ID",
+      "representationStateIds": [
+        "OBS_SEGMENTED_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_source_arrays_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "internal_reference",
+      "label": "Cross-region internal object-geometry audit",
+      "sourceReceipt": {
+        "path": "/project/data/cross-region-internal-reference-0.1.json",
+        "bytes": 6945,
+        "sha256": "39eaf91cf6f02c45872287b2cb757e1ad43205c0d726ce1956f93bacbcfb6daa"
+      },
+      "sourceVersion": "cross-region-internal-reference-0.1",
+      "sourceFrame": "none_no_object_geometry_admitted",
+      "stableIdAuthority": "vocabulary component ID only",
+      "representationStateIds": [
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "zero_primitives",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "ronzano_premotor_positions",
+      "label": "Ronzano early-postnatal premotor source points",
+      "sourceReceipt": {
+        "path": "/project/data/ronzano-premotor-position-reference-0.1.json",
+        "bytes": 38612,
+        "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d"
+      },
+      "sourceVersion": "ohri-ronzano-premotor-position-reference-0.1.0",
+      "sourceFrame": "source_workbook_raw_or_source_normalized_representation_not_cross_frame_linked",
+      "stableIdAuthority": "source file plus source row index within one representation",
+      "representationStateIds": [
+        "OBS_POINT",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "one_radius_free_point_per_exact_source_row",
+      "cellMorphologyClaim": false,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.grpr_lamina_i_ii.observed.nmo_249676",
+      "label": "GRPRCreERT2-captured excitatory lamina I-II interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 42226,
+        "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+      },
+      "sourceVersion": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:249676",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_only_radius_surface_zero_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108974",
+      "label": "Tac1Cre / Brainbow SP-class excitatory interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 42226,
+        "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+      },
+      "sourceVersion": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:108974",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.pv_pax2_lamina_ii_iii.observed.nmo_170035",
+      "label": "PVCre / Brainbow Pax2-positive inhibitory lamina II-III interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 42226,
+        "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+      },
+      "sourceVersion": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:170035",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_only_radius_surface_zero_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.pdyn_dorsal_horn.observed.nmo_104003",
+      "label": "PdynCre / AAV-eGFP, Sst2a-receptor-positive inhibitory interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 42226,
+        "sha256": "923db6a9ed013e856ffc7c6ab601c67b25608ac68572538c578fd75fa41fe593"
+      },
+      "sourceVersion": "ohri-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:104003",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.renshaw_l5_lamina_vii.observed.nmo_45674",
+      "label": "Calbindin-positive glycinergic Renshaw interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/functional-class-observed-morphology-route-pack-0.1.json",
+        "bytes": 28937,
+        "sha256": "400b17afd707c3b53ee0cbb1d6402943535111c01402eb3903b256d12e176840"
+      },
+      "sourceVersion": "ohri-functional-class-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:45674",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only_native_dat_zero_semantics",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.npy_l2i_dorsal_horn.observed.nmo_50424",
+      "label": "NPY-positive superficial lumbar dorsal-horn interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/functional-class-observed-morphology-route-pack-0.1.json",
+        "bytes": 28937,
+        "sha256": "400b17afd707c3b53ee0cbb1d6402943535111c01402eb3903b256d12e176840"
+      },
+      "sourceVersion": "ohri-functional-class-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:50424",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only_native_dat_zero_semantics",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+      "label": "PrP-promoter reporter-positive nNOS-positive interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 31435,
+        "sha256": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709"
+      },
+      "sourceVersion": "ohri-prp-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:50394",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only_native_dat_zero_semantics",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.galanin_prp_l2i_dorsal_horn.observed.nmo_50408",
+      "label": "PrP-promoter reporter-positive galanin-positive interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
+        "bytes": 31435,
+        "sha256": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709"
+      },
+      "sourceVersion": "ohri-prp-dorsal-horn-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:50408",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only_native_dat_zero_semantics",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.repository_labeled_premotor_non_renshaw_l5_ventral_horn.observed.nmo_45718",
+      "label": "Repository-labelled calbindin-negative glycinergic premotor / non-Renshaw interneuron",
+      "sourceReceipt": {
+        "path": "/project/data/premotor-comparison-observed-morphology-route-pack-0.1.json",
+        "bytes": 19112,
+        "sha256": "39afe0acc449c367cd48776b150058982c8d57186ea9adbeb9314b08d62b2cb3"
+      },
+      "sourceVersion": "ohri-premotor-comparison-observed-morphology-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:45718",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_or_source_radius_derivative_only_native_dat_zero_semantics",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.tac1_sp_dorsal_horn.observed.nmo_108978",
+      "label": "Tac1Cre / Brainbow SP-class excitatory interneuron — cell-4_16",
+      "sourceReceipt": {
+        "path": "/project/data/census-child-observed-morphology-route-0.1.json",
+        "bytes": 15442,
+        "sha256": "dbf4640e6040ab83e171004ace1323a831917523e3915ebb59c4deaa23b497ad"
+      },
+      "sourceVersion": "ohri-census-child-observed-morphology-route-0.1.0",
+      "sourceFrame": "multiple_source_local_frames_without_overlay",
+      "stableIdAuthority": "NeuroMorpho:108978",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "OBS_SOURCE_NATIVE_SOMA_LINE_LOOP",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "checksum_verified_swc_and_source_radius_derivative_plus_separate_source_native_line_loops_no_cross_frame_overlay",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-108978.swc",
+          "bytes": 62949,
+          "sha256": "016e8329e9b1f2da5c5d4a314bab7998cba66ae56f3517be573a4ac0b2b4c250",
+          "overlayAllowed": false
+        },
+        {
+          "stateId": "OBS_SOURCE_NATIVE_SOMA_LINE_LOOP",
+          "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+          "path": "/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+          "bytes": 356028,
+          "sha256": "565abd17700932c57c0fa210b4bb279bd2617b1f191df0b5bfabb0e514429e5d",
+          "primitiveCount": 12,
+          "vertexCount": 2614,
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322379",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322379",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322379",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json",
+          "bytes": 419346,
+          "sha256": "adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc",
+            "bytes": 57837,
+            "sha256": "9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322380",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322380",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322380",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322380.json",
+          "bytes": 112168,
+          "sha256": "58c2132516d0f381da8453a7e7b76c32c6651e1b6f0fa0eb98db9d61c22c7bef",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322380.swc",
+            "bytes": 14354,
+            "sha256": "b44f37efad13dc39fb431a3007067949842531a4381b7e5510ee842b3b042ee1"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322381",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322381",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322381",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322381.json",
+          "bytes": 199366,
+          "sha256": "7388584129e18a9b3f69a04cccd03f9d26f193941e544e0a975c4e791b7691a1",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322381.swc",
+            "bytes": 25829,
+            "sha256": "5bb7c82e11dd90c3de5c47909b3fdd94be1d0114b42635d060d64b19157f118f"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322382",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322382",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322382",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322382.json",
+          "bytes": 223794,
+          "sha256": "8086401d7f2256ba64cd0db32b75f981682578d45b45f3481c4bf3dca1d7d4f1",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322382.swc",
+            "bytes": 29254,
+            "sha256": "001f7f9cdb3adc1a1b0104ca30a4477ae9f70ea297437302e479fa8168b7973a"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322383",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322383",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322383",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322383.json",
+          "bytes": 221600,
+          "sha256": "238635e1b0001bed4f2ecf41814d1cc9b97aac55a2bbe55fe1582ed42514054f",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322383.swc",
+            "bytes": 31131,
+            "sha256": "097263dc665801bcb8eca45063e52f8fdd9a4cedbcbb4ef9a8710b98db223dee"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322384",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322384",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322384",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322384.json",
+          "bytes": 106955,
+          "sha256": "0e39493a193d9aa8ade08ec7ebd08f9f3d632692014ef2452e1da95ec68274d8",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322384.swc",
+            "bytes": 13776,
+            "sha256": "4a3a247e879cf23288d008247f36eeb93e059b339bf39f04cca9486d8a582698"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322385",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322385",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322385",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322385.json",
+          "bytes": 221701,
+          "sha256": "8a82cdc98c35c518b84a1ad9d4ea5f9e8d94ad32ffc74a4b40f552720419b3f9",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322385.swc",
+            "bytes": 29419,
+            "sha256": "81527365db5afa7ea612f0f6957ee831c9ed5e4ddb19f10064a7b44f5e7fc350"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322386",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322386",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322386",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322386.json",
+          "bytes": 257331,
+          "sha256": "3d72c4f88ef29dc8a48413380d339cc5703141e07a7a97b2d1c9f4b0156efa1f",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322386.swc",
+            "bytes": 34468,
+            "sha256": "8e6ad154747ce1a6b9c2ee25fba2ddf5d01fcecff4e46b53b108bb915b9d0f13"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322387",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322387",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322387",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322387.json",
+          "bytes": 175003,
+          "sha256": "51a388d1eaa4b123d24f13a1b6acbc9816f9965eef6312026fabe51146f4b18f",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322387.swc",
+            "bytes": 22795,
+            "sha256": "f51da54aed089d93795d9a2ea6df07954f4fec3bcbbb9660a9d45b8de9bd1a36"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322388",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322388",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322388",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322388.json",
+          "bytes": 281251,
+          "sha256": "8c99bd4db3f03432e0d7026443e102fff6d19536099bf77d6402f9b80468a36a",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322388.swc",
+            "bytes": 37498,
+            "sha256": "4e07e7d37d049282369bf0f11c7f7679cfa787bf6ac1de70a5daed7349c50919"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322389",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322389",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322389",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322389.json",
+          "bytes": 110458,
+          "sha256": "610f6229daadcf2835b4ef548d50a9fcc2928b441982c4ed5aabb844614be550",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322389.swc",
+            "bytes": 14069,
+            "sha256": "aa4633f783c554b36166a704099f542363c0e7076fc3e00d5d668fd76d0c50ee"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322390",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322390",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322390",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322390.json",
+          "bytes": 144327,
+          "sha256": "738dd747113ccff48656d6179684580219e8c375fdbe8bb13c85bb9a97c3ff7e",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322390.swc",
+            "bytes": 18557,
+            "sha256": "fe43dbba9a2a84636dff5562e0b31d0be70536d10ab04e28305aee2a2e5eb052"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322391",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322391",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322391",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322391.json",
+          "bytes": 158346,
+          "sha256": "fd5878a9b8ab422b64e6656848749802f90971fd11d6aab6ec44a1b5a33cb1c4",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322391.swc",
+            "bytes": 20529,
+            "sha256": "77a2cae17eb3c7d98f55fdaa9f397522bde09da7722b1c641b08070062c9b97e"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322392",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322392",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322392",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322392.json",
+          "bytes": 165887,
+          "sha256": "1843663ea23dc842583aed2282067d78b4e04558255d9c36a4ad694eaabbf643",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322392.swc",
+            "bytes": 21773,
+            "sha256": "fae44e184f08de887706e11e346689140ac540cd34a33d1f3565f4caea3d20d3"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322393",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322393",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322393",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322393.json",
+          "bytes": 156440,
+          "sha256": "6ff5a3afa83037365b4870f9736b8b9ed5df1414f06cac6c8be582635be9a24a",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322393.swc",
+            "bytes": 20322,
+            "sha256": "5b078f60814b4552ad20f4278a4f83a16e3a9c64a7e61614b13e4f0bc44560a0"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322394",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322394",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322394",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322394.json",
+          "bytes": 275567,
+          "sha256": "842be73f9744eb4a030433160329128fc422df0b664e2fe2b55fc69f2de834c5",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322394.swc",
+            "bytes": 38375,
+            "sha256": "20c8f8ac55e9335df85a3a12db46eeab50979136a7f5d648afb8d1c6f67dba3d"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322395",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322395",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322395",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322395.json",
+          "bytes": 182597,
+          "sha256": "f195b99486628f08399d02a3e0e88a13d2b4ba933c8232426a7c76a1baad5f8c",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322395.swc",
+            "bytes": 24012,
+            "sha256": "d3f7340a6c1c6878acfc939e7e86e21f85a40d2a42314e1517350beba1179d29"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322396",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322396",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322396",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322396.json",
+          "bytes": 119913,
+          "sha256": "38ef919335fa2dea97b9af47f28dcb9a3cb4d122bd2c8685febe783de94482b5",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322396.swc",
+            "bytes": 15355,
+            "sha256": "56e44477799873f8d479f4accfc0f483f5dd03e085dc5b6a2da91e4ffbd7102c"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322397",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322397",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322397",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322397.json",
+          "bytes": 259535,
+          "sha256": "8107d405bbc16b9c6688eb3d09816d2251487fa59268d7b3587415fa0355b3bc",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322397.swc",
+            "bytes": 34758,
+            "sha256": "e2d78239f4eb2f2f6b4e5d0d88aeefb835a6fc4a87a946ce4080b2282e6aa709"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322398",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322398",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322398",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322398.json",
+          "bytes": 247860,
+          "sha256": "e2a9785bf50802d8175ceaba6af565b3e1d82aca219b2ef39ac3c626f99043a8",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322398.swc",
+            "bytes": 34480,
+            "sha256": "69e097fdfe859897dfa180cd63fd48017f7b7cf6aa93ea5bd8bb497d9cf61499"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322399",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322399",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322399",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322399.json",
+          "bytes": 138292,
+          "sha256": "ba6be9322b1bfbed6a6e9e502a187ea527809d39ca6148cac0b9e66afd5324f3",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322399.swc",
+            "bytes": 17959,
+            "sha256": "6390e3570656e6512cb514d8a6dde0fe8d0cdea59b76f70e034ca3b27740fe78"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322400",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322400",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322400",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322400.json",
+          "bytes": 129304,
+          "sha256": "1a2fb535a4acc06a90dc23a30388093b6d3833adeb3b6a3029dfe445217c836b",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322400.swc",
+            "bytes": 17871,
+            "sha256": "dfbc7b2a21aef910e56aca63a97019b1669e0e337c95cb3bc1b857ccd16b22af"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322401",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322401",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322401",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322401.json",
+          "bytes": 197080,
+          "sha256": "08b96d61bddd7cbc93b15f4e4b66b9e4357e445639d587768456d2df999147bf",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322401.swc",
+            "bytes": 26042,
+            "sha256": "ab979815f145887296d4a7f7add63cb8cbf1d1312824b1874af923092ea8cfcb"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322402",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322402",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322402",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322402.json",
+          "bytes": 414060,
+          "sha256": "7e3aff4572fd42200af126bd0fafb17de5e9dac387c52cef0e35c4336fc9c61d",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322402.swc",
+            "bytes": 56284,
+            "sha256": "0d3b9214f3285d79f610b1d1f7914ddfdfe6c165fff13a5c5bd04cd2b968c02f"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322403",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322403",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322403",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_and_source_radius_derived_open_frusta_no_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322403.json",
+          "bytes": 208164,
+          "sha256": "25127b5229486da70ae1bb32cb84209e0bb61247e881c99e120862b893d57118",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322403.swc",
+            "bytes": 27250,
+            "sha256": "eabbd946a8e560b60b239409e5baf2a34fc5533e3f642210b1806ba49ceea0a4"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322404",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322404",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322404",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322404.json",
+          "bytes": 170214,
+          "sha256": "ca4c54ae02640479608e98644f7b64710f0b1c37efaacc51037dcf0c4b054704",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322404.swc",
+            "bytes": 22016,
+            "sha256": "573aa0ca9c85e48de85ea6b3b7c0c5833162e46122f08edee2756131f0e63ceb"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322405",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322405",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322405",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322405.json",
+          "bytes": 210132,
+          "sha256": "90ee25ab653b824d7dc442c9a7a02ac7669a21f054f8e182c4128136627b294f",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322405.swc",
+            "bytes": 27477,
+            "sha256": "2a6850fcbc54644183a515c822f25a91dfce38a81f3003475de82aabd0ec7c15"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322406",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322406",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322406",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322406.json",
+          "bytes": 132148,
+          "sha256": "8a2ad18880c11ef86596b86cb615162b0bcc7a8b44aee5969ff17c6c47ee51ca",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322406.swc",
+            "bytes": 17034,
+            "sha256": "48330523e8a1460de757daac716554f8fe4f63e2be8a04ce6e32830dc5a66bcd"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322407",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322407",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322407",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322407.json",
+          "bytes": 195221,
+          "sha256": "96dbf930199f3911fa1ad8349f1b0c925b936271aea0dfd7c0fba36e8d449160",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322407.swc",
+            "bytes": 26178,
+            "sha256": "0db85b55af3c1ab67a487c658bc2e90ddc30d44a7aecd7378dda7aef5de9a0f7"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    },
+    {
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322408",
+      "label": "Neurotensin-expressing excitatory interneuron — NMO 322408",
+      "sourceReceipt": {
+        "path": "/project/data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "bytes": 302205,
+        "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d"
+      },
+      "sourceVersion": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:322408",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_source_local_standardized_swc_centerlines_only_no_radius_surface_or_internal_primitives",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0,
+      "representationFrames": [
+        {
+          "stateId": "OBS_SKELETON",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322408.json",
+          "bytes": 120481,
+          "sha256": "557605229e6ea4151b8a4e71af130caf0b14623456c3a65b3a3c3012b065b12b",
+          "sourceSwc": {
+            "path": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322408.swc",
+            "bytes": 15222,
+            "sha256": "dcd7ffe2b110641c567b89ea48dc391944d2dc0a26f2aff2d4bce5118dab86c5"
+          },
+          "overlayAllowed": false
+        }
+      ]
+    }
+  ],
+  "runtimeMetadataRequirements": [
+    "stableId",
+    "representationState",
+    "sourceFrame",
+    "sourceVersion",
+    "sourceReceiptSha256",
+    "cellMorphologyClaim",
+    "projectRegistrationCount",
+    "crossSourceIdentityCount",
+    "For a route with multiple source-local objects, carry a per-representation frame and checksum receipt; do not overlay coordinate frames without an independently authorized transform.",
+    "A source-local supplementary morphology route must resolve to an exact route-specific checksum receipt; do not fall back to another cell when its payload is unavailable.",
+    "Render a radius-derived state only when the exact source record explicitly reports diameter; otherwise use source-local centerlines with constant viewer stroke only."
+  ],
+  "globalInvariants": [
+    "Every rendered scientific object exposes a stable ID, representation state, source frame, source version and checksum receipt in machine-readable runtime metadata.",
+    "A SYN data glyph is never a soma, cell cluster, spatial density estimate or observed morphology.",
+    "A DER radius surface is never an observed membrane and is unavailable when the source does not authorize diameter.",
+    "An OBS segmented surface is a source segmentation boundary, not a molecular membrane measurement.",
+    "Unsupported or unadmitted object geometry always produces zero primitives; procedural biological proxies are prohibited.",
+    "Co-display, selection and camera switching create no cross-source identity, coordinate join or atlas registration.",
+    "Each dorsal-horn route-pack route remains an independent source-local reconstruction; admission creates no average cell, selected-SCI-entity identity, cross-source molecular identity or atlas registration.",
+    "Standardized soma points produced by contour averaging are display proxies, never native contour vertices, membranes or volumetric soma segmentations.",
+    "Bundled source-native DAT bytes are provenance receipts only: without a validated parser and object dictionary they contribute zero admitted semantic objects and zero rendered primitives.",
+    "Paper-level electrophysiology cannot be assigned to a deposited morphology unless the article or an official source exposes an exact object key; neither added route passes that join gate.",
+    "Repository 95-percent PCA morphometry is distinct from raw standardized-SWC bounds, anatomical axes, and atlas registration.",
+    "Repository-versus-paper preparation, strain, and weight conflicts remain explicit and cannot be silently normalized for display.",
+    "Each added PrP-promoter-reporter route remains one independent exact source-local reconstruction; admission creates no average cell, marker-negative inference, selected-SCI-entity identity, cross-source molecular identity, prevalence estimate, or atlas registration.",
+    "PrP-promoter-positive reporter wording does not establish endogenous PrP protein abundance, individual genotype validation, receptor distribution, or any unreported molecular state.",
+    "The 300-micrometre source slice and later 60-micrometre serial resection are distinct preparation stages and cannot be collapsed into one object-level thickness claim without an exact filename crosswalk.",
+    "For both added routes, source-native DAT contributes zero semantic objects, paper physiology contributes zero exact object joins, and missing same-specimen internals contribute zero rendered primitives.",
+    "NMO 45718 remains one independent source-local reconstruction. Repository labels calbindin-negative, glycinergic, pre-motor and non-renshaw are never upgraded into a paper-keyed molecular assay, definitive premotor identity or Renshaw exclusion.",
+    "The SWC header documents eight original soma contours averaged into eight standardized type-1 points; this is a standardization receipt, not native contour geometry, an observed membrane, a nucleus or a volumetric soma.",
+    "Raw repository slicing fields, paper recording/resection stages, source-local SWC axes, PCA morphometry and uncorrected shrinkage remain distinct and cannot create tissue thickness, anatomical axes, atlas placement or in-vivo dimensions.",
+    "For the added route, native DAT contributes zero semantic objects, paper physiology contributes zero exact object joins, moderate axon integrity creates no complete-arbor claim, and missing same-specimen internals contribute zero rendered primitives.",
+    "NMO 108978 is an existing member of the frozen 142-record census but is not in the five-record frozen morphology lens; its selectable child route adds no census row or cell-type denominator.",
+    "The NMO 108978 standardized SWC and native DAT soma line loops occupy separate source-local frames. The 12-loop and 12-SWC-soma-point counts do not establish correspondence; there is no overlay, membrane, filled surface, volume, internal object, molecular join or atlas registration.",
+    "The thirty NMO 322379–322408 routes are supplementary source-local Todd reconstructions and add zero records to the frozen 1,097-record 8.6.124 query denominator.",
+    "NMO 322379–322408 have no verified per-record original-paper, animal, figure or lamina crosswalk; the candidate neurotensin study is context only and creates no same-cell or molecular identity.",
+    "Ten NMO 322379–322408 records explicitly report source diameter and may show only radius-derived open frusta; twenty do not report diameter and remain centerline-only. All thirty have zero internal primitives, cross-source identities and project registrations.",
+    "Source-repository morphology completeness labels do not independently establish biological reconstruction completeness; original Neurolucida files and standardization logs are unavailable in this route pack."
+  ]
+}

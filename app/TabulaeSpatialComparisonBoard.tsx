@@ -167,7 +167,7 @@ export default function TabulaeSpatialComparisonBoard({ onNotice }: { onNotice: 
         sampleId: selectedSample.id,
         sectionLabel: selectedSample.sectionLabel,
         geoSampleAccession: selectedSample.geoSampleAccession,
-        imageUrl: URL.createObjectURL(new Blob([imageBytes], { type: sessionCatalog.localImport.acceptedImageMediaType })),
+        imageUrl: URL.createObjectURL(new Blob([new Uint8Array(imageBytes)], { type: sessionCatalog.localImport.acceptedImageMediaType })),
         spots: parseVisiumPositions(positionsText),
         scaleFactors: parseScaleFactors(scaleText),
         fileHashes: { low_resolution_tissue_image: imageHash, spot_positions: positionsHash, scale_factors: scaleHash },

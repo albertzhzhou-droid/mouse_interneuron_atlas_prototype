@@ -1,0 +1,1818 @@
+{
+  "releaseId": "ohri-cano-gomez-p56-multiome-interneuron-registry-0.1.0",
+  "schemaVersion": "0.1.0",
+  "releaseDate": "2026-09-02",
+  "datasetId": "GSE318731",
+  "lifeStage": "P56",
+  "coordinateAuthority": "SOURCE_LOCAL_ASSIGNMENT_ONLY",
+  "compoundNucleusKeyExpression": "GSE318731|exact source filename|row.name",
+  "identityAuthority": {
+    "mode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+    "stableKeyBasis": "exact_source_filename_plus_meta_data_row_name",
+    "metaDataRowNamesUniqueNonemptyVerified": true,
+    "crossAssayCellIdentityVerified": false,
+    "sameCellAssertionAdmitted": false,
+    "boundary": "The base-R streaming receipt verifies only unique non-empty meta.data row names and same-row raw assignments after full readRDS materialization; object Cells and assay colname identity were not resolved, so no cross-assay or same-cell claim is admitted."
+  },
+  "metadataFieldCoverage": {
+    "mode": "CONTRACTED_ASSIGNMENT_CONTEXT_COLUMNS_ONLY",
+    "preservedContractedColumns": [
+      "nucleus_id",
+      "transmitter_class",
+      "group",
+      "neuron_type",
+      "source",
+      "anatomy",
+      "sex"
+    ],
+    "boundary": "The base-R streaming derivative deliberately emits only seven contracted identity, assignment, and context columns after complete-object readRDS materialization. Required assignment columns must be source-present, except the SHA-256-pinned GLUT UPDATE neuron_types absence recorded as SOURCE_ABSENT_ASSIGNMENT; its values remain source NA without substituting active.ident. Optional context values are preserved only when their source column is present, while a source-absent context column is emitted entirely as source NA under an explicit per-object availability receipt. This is a complete row assignment audit, not a copy of every original meta.data column."
+  },
+  "sourceReferences": {
+    "dataRepository": {
+      "accession": "GSE318731",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731"
+    },
+    "publication": {
+      "doi": "10.64898/2026.06.11.731752",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13308138/",
+      "articleLicense": "CC-BY-NC-4.0",
+      "rightsBoundary": "The article licence is not generalized into a separate redistribution licence for the GEO-hosted RDS objects; the registry records derived factual assignments and does not bundle the source RDS files."
+    }
+  },
+  "inputReceipts": {
+    "authorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+    "combinedReceiptFileName": null,
+    "combinedReceiptSha256": null,
+    "sourceObjects": [
+      {
+        "objectId": "cholinergic",
+        "receiptKind": "base_r_stream_meta_data_row_only_receipt",
+        "receiptFileName": "GSE318731_P56_cholinergic_multiome.audit.json",
+        "receiptSha256": "26ee50fa7308dad1775c4eb077e244b251da0e9e76052f2adb948a4495231ce0",
+        "rawMetadataFileName": "GSE318731_P56_cholinergic_multiome.metadata.csv.gz",
+        "rawMetadataCompressedSha256": "a0657eaf3e50b5a0c8e307617e19d627c9ff5200a41a6c4dd88b6b8bafd5d88b",
+        "rawMetadataUncompressedSha256": "8ecfe8e426a1bb7642a83890099af8cd609453051c0c7f674040c625e75c0c46",
+        "orderedSourceNucleusIdsSha256": "31a25e734b3fe1010d8b38456575c533c4911874101cd5a110e7821dc1ff5ae3"
+      },
+      {
+        "objectId": "gabaergic",
+        "receiptKind": "base_r_stream_meta_data_row_only_receipt",
+        "receiptFileName": "GSE318731_P56_gabaergic_multiome.audit.json",
+        "receiptSha256": "d5230b4bbec345669824eb0f72fe2ab5ff1dc1284c7194f2af3837ab04492982",
+        "rawMetadataFileName": "GSE318731_P56_gabaergic_multiome.metadata.csv.gz",
+        "rawMetadataCompressedSha256": "7ea2ea82dd81ef8c184eb1dd542a7588edf21256b1d889859fd952c7a56f43bf",
+        "rawMetadataUncompressedSha256": "27354b866e385c8abcacbcfd622987bd2ec0ecd0b8ff436a4eb9d9bb0a5ba673",
+        "orderedSourceNucleusIdsSha256": "6d6c266adb29d3020c7a609af4f79703d0546b11616d03ff01f3462cd9178ea4"
+      },
+      {
+        "objectId": "glutamatergic",
+        "receiptKind": "base_r_stream_meta_data_row_only_receipt",
+        "receiptFileName": "GSE318731_P56_glutamatergic_multiome_UPDATE.audit.json",
+        "receiptSha256": "25aceddee594c541fa28a08b42227d42676f0bce2e7a9611dd6b897f0b0762bb",
+        "rawMetadataFileName": "GSE318731_P56_glutamatergic_multiome_UPDATE.metadata.csv.gz",
+        "rawMetadataCompressedSha256": "53bcada180ce5e6c5b7622bd67f6ad02a5abd6ecd6d2caadb8c44a0dfe947308",
+        "rawMetadataUncompressedSha256": "a3ab9da863ba4890b33a1bb497d9d1b5554bf0c21b0ff2428c5e4959baf069f4",
+        "orderedSourceNucleusIdsSha256": "8e9076441428d82aec74b5cb637786e4fc58098f748788f6ef913375e2ef1f22"
+      }
+    ]
+  },
+  "decisionPolicy": {
+    "policyId": "CANO_GOMEZ_GSE318731_CONFIRMED_ONLY_0.1",
+    "confirmedRule": {
+      "sourceObjectId": "cholinergic",
+      "rawField": "groups",
+      "exactValue": "CHOL_IN",
+      "authority": "source_explicit_group_label"
+    },
+    "motorExclusionRule": {
+      "sourceObjectId": "cholinergic",
+      "rawField": "groups",
+      "exactValues": [
+        "CHOL_aMN_Vipr2",
+        "CHOL_vMN_Vwa5b1",
+        "CHOL_gMN_Col27a1",
+        "CHOL_gsMN_Prkcd"
+      ]
+    },
+    "sensoryScopeExclusionRule": {
+      "sourceObjectId": "gabaergic",
+      "rawField": "groups",
+      "exactValue": "GABA_CSF-cN_Pkd2l1"
+    },
+    "glutamatergicRule": {
+      "decision": "EXCLUDED_PROJECTION_LOCAL_STATUS_UNRESOLVED",
+      "boundary": "Every glutamatergic row remains excluded because this source-local roster does not establish projection-versus-local interneuron status per type."
+    },
+    "remainingGabaergicRule": {
+      "decision": "EXCLUDED_AMBIGUOUS_OR_PROJECTION_EXCEPTION_UNRESOLVED",
+      "sourceCategoricalInterneuronFlagUsed": false,
+      "gabaergicClassUsedAsInterneuronFlag": false,
+      "boundary": "GABA identity is not treated as a categorical interneuron flag; inhibitory projection exceptions remain unresolved at the source-type level."
+    },
+    "nonNeuronalRule": {
+      "sourceLevelPreprocessingReported": true,
+      "perNucleusFlagAvailable": false,
+      "perNucleusExcludedCount": null,
+      "boundary": "Non-neuronal removal is retained only as a source-level preprocessing statement; no per-nucleus non-neuronal flag or fabricated zero is emitted."
+    }
+  },
+  "denominatorReconciliation": {
+    "sourceTotalNucleusCount": 169345,
+    "sourceObjectCount": 3,
+    "sourceScopedGroupCount": 57,
+    "paperReportedNeuronTypeCount": 516,
+    "observedRawNonMissingNonEmptyTypeLabelUnionCount": 242,
+    "paperReportedTypeCountMatchesObservedRawUnion": false,
+    "paperReportedTypeCountUsedAsInterneuronDenominator": false,
+    "confirmedInterneuronNucleusCount": 923,
+    "confirmedInterneuronProfileCount": 11,
+    "excludedMotorNucleusCount": 2276,
+    "excludedSensoryScopeNucleusCount": 611,
+    "excludedProjectionLocalStatusUnresolvedNucleusCount": 92782,
+    "excludedAmbiguousOrProjectionExceptionUnresolvedNucleusCount": 72753,
+    "perNucleusNonNeuronalExcludedCount": null,
+    "generatedGeometryCount": 0,
+    "internalStructureObjectCount": 0,
+    "sameCellLinkCount": 0,
+    "atlasRegistrationCount": 0
+  },
+  "sourceObjects": [
+    {
+      "objectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceRdsBytes": 127862795,
+      "sourceRdsSha256": "d4ad07a1e434f2ed4553738f3e1df1b395ce81b154f974c41f3ba6a9d674aed2",
+      "nucleusCount": 3199,
+      "sourceScopedGroupCount": 5,
+      "rawNonMissingNonEmptyNeuronTypeLabelCount": 38,
+      "identityAuthorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+      "crossAssayCellIdentityVerified": false,
+      "metadataFieldAvailability": [
+        {
+          "field": "groups",
+          "requirement": "REQUIRED_ASSIGNMENT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 10,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 3199,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 5
+        },
+        {
+          "field": "neuron_types",
+          "requirement": "REQUIRED_ASSIGNMENT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 17,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 3199,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 38
+        },
+        {
+          "field": "source",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 14,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 3199,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 12
+        },
+        {
+          "field": "anatomy",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 6,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 3199,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 4
+        },
+        {
+          "field": "Sex",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 15,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 3199,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 3
+        }
+      ],
+      "decisionCounts": [
+        {
+          "decision": "CONFIRMED_INTERNEURON",
+          "count": 923
+        },
+        {
+          "decision": "EXCLUDED_MOTOR",
+          "count": 2276
+        },
+        {
+          "decision": "EXCLUDED_SENSORY_SCOPE",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_PROJECTION_LOCAL_STATUS_UNRESOLVED",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_AMBIGUOUS_OR_PROJECTION_EXCEPTION_UNRESOLVED",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "objectId": "gabaergic",
+      "sourceFileName": "GSE318731_P56_gabaergic_multiome.rds",
+      "sourceRdsBytes": 1646402816,
+      "sourceRdsSha256": "700361c804806b521bb01aa58c263cd01b189fe03d3299aeef5806839a4f5f31",
+      "nucleusCount": 73364,
+      "sourceScopedGroupCount": 24,
+      "rawNonMissingNonEmptyNeuronTypeLabelCount": 204,
+      "identityAuthorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+      "crossAssayCellIdentityVerified": false,
+      "metadataFieldAvailability": [
+        {
+          "field": "groups",
+          "requirement": "REQUIRED_ASSIGNMENT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 10,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 73364,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 24
+        },
+        {
+          "field": "neuron_types",
+          "requirement": "REQUIRED_ASSIGNMENT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 13,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 73364,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 204
+        },
+        {
+          "field": "source",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": false,
+          "sourceColumnIndex": null,
+          "emissionMode": "SOURCE_COLUMN_ABSENT_EMITTED_AS_SOURCE_NA",
+          "sourceColumnAbsenceReason": "source_meta_data_column_absent",
+          "rowCount": 73364,
+          "sourceMissingCount": 73364,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 0
+        },
+        {
+          "field": "anatomy",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 8,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 73364,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 4
+        },
+        {
+          "field": "Sex",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": false,
+          "sourceColumnIndex": null,
+          "emissionMode": "SOURCE_COLUMN_ABSENT_EMITTED_AS_SOURCE_NA",
+          "sourceColumnAbsenceReason": "source_meta_data_column_absent",
+          "rowCount": 73364,
+          "sourceMissingCount": 73364,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 0
+        }
+      ],
+      "decisionCounts": [
+        {
+          "decision": "CONFIRMED_INTERNEURON",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_MOTOR",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_SENSORY_SCOPE",
+          "count": 611
+        },
+        {
+          "decision": "EXCLUDED_PROJECTION_LOCAL_STATUS_UNRESOLVED",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_AMBIGUOUS_OR_PROJECTION_EXCEPTION_UNRESOLVED",
+          "count": 72753
+        }
+      ]
+    },
+    {
+      "objectId": "glutamatergic",
+      "sourceFileName": "GSE318731_P56_glutamatergic_multiome_UPDATE.rds",
+      "sourceRdsBytes": 1832005077,
+      "sourceRdsSha256": "ff3784791ccb5d23311b9d0a8e2a4bd09dd251f75d0a2fc4b30e762dcef29c92",
+      "nucleusCount": 92782,
+      "sourceScopedGroupCount": 28,
+      "rawNonMissingNonEmptyNeuronTypeLabelCount": 0,
+      "identityAuthorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+      "crossAssayCellIdentityVerified": false,
+      "metadataFieldAvailability": [
+        {
+          "field": "groups",
+          "requirement": "REQUIRED_ASSIGNMENT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 5,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 92782,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 28
+        },
+        {
+          "field": "neuron_types",
+          "requirement": "SOURCE_ABSENT_ASSIGNMENT",
+          "sourceColumnPresent": false,
+          "sourceColumnIndex": null,
+          "emissionMode": "SOURCE_COLUMN_ABSENT_EMITTED_AS_SOURCE_NA",
+          "sourceColumnAbsenceReason": "source_meta_data_column_absent",
+          "rowCount": 92782,
+          "sourceMissingCount": 92782,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 0
+        },
+        {
+          "field": "source",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 6,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 92782,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 12
+        },
+        {
+          "field": "anatomy",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 4,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 92782,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 4
+        },
+        {
+          "field": "Sex",
+          "requirement": "OPTIONAL_CONTEXT",
+          "sourceColumnPresent": true,
+          "sourceColumnIndex": 7,
+          "emissionMode": "PRESERVED_SOURCE_COLUMN_VALUES",
+          "sourceColumnAbsenceReason": null,
+          "rowCount": 92782,
+          "sourceMissingCount": 0,
+          "sourceEmptyStringCount": 0,
+          "sourceWhitespaceOnlyCount": 0,
+          "observedNonemptyUniqueCount": 3
+        }
+      ],
+      "decisionCounts": [
+        {
+          "decision": "CONFIRMED_INTERNEURON",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_MOTOR",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_SENSORY_SCOPE",
+          "count": 0
+        },
+        {
+          "decision": "EXCLUDED_PROJECTION_LOCAL_STATUS_UNRESOLVED",
+          "count": 92782
+        },
+        {
+          "decision": "EXCLUDED_AMBIGUOUS_OR_PROJECTION_EXCEPTION_UNRESOLVED",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifactKind": "all_nucleus_assignment_audit",
+      "fileName": "GSE318731_all_nucleus_assignment_audit.csv.gz",
+      "mediaType": "text/csv",
+      "contentEncoding": "gzip",
+      "deterministicCompression": "gzip_level_9_mtime_0",
+      "rowCount": 169345,
+      "columnCount": 22,
+      "orderedColumnNames": [
+        "source_accession",
+        "source_file_name",
+        "compound_nucleus_key",
+        "source_nucleus_id",
+        "source_active_assay",
+        "source_active_ident",
+        "groups",
+        "neuron_types",
+        "source",
+        "anatomy",
+        "Sex",
+        "transmitter_class",
+        "source_object_id",
+        "identity_authority_mode",
+        "cross_assay_cell_identity_verified",
+        "scope_decision",
+        "scope_decision_reason",
+        "confirmed_interneuron_profile_id",
+        "per_nucleus_non_neuronal_status",
+        "geometry_object_count",
+        "internal_structure_object_count",
+        "same_cell_link_count"
+      ],
+      "uncompressedBytes": 79283254,
+      "uncompressedSha256": "ba0927849e585969af6e8ef312a94a443db9bc663f24affea4bf80a461b16778",
+      "compressedBytes": 2766515,
+      "compressedSha256": "f2d28d26820fd27fad5b5e5aacf175acb3812159a62c030da16d727ec747820b"
+    },
+    {
+      "artifactKind": "confirmed_interneuron_nucleus_roster",
+      "fileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+      "mediaType": "text/csv",
+      "contentEncoding": "gzip",
+      "deterministicCompression": "gzip_level_9_mtime_0",
+      "rowCount": 923,
+      "columnCount": 22,
+      "orderedColumnNames": [
+        "source_accession",
+        "source_file_name",
+        "compound_nucleus_key",
+        "source_nucleus_id",
+        "source_active_assay",
+        "source_active_ident",
+        "groups",
+        "neuron_types",
+        "source",
+        "anatomy",
+        "Sex",
+        "transmitter_class",
+        "source_object_id",
+        "identity_authority_mode",
+        "cross_assay_cell_identity_verified",
+        "scope_decision",
+        "scope_decision_reason",
+        "confirmed_interneuron_profile_id",
+        "per_nucleus_non_neuronal_status",
+        "geometry_object_count",
+        "internal_structure_object_count",
+        "same_cell_link_count"
+      ],
+      "uncompressedBytes": 428897,
+      "uncompressedSha256": "2ec453defffb0a1a8ac7de27b3189d56059571166dd984f73356b5cdf0eaccb7",
+      "compressedBytes": 16348,
+      "compressedSha256": "1db93e5f6e52ead4f869553cf3634a82237fc3817aadb4c8187a75b81323db9a"
+    }
+  ],
+  "profiles": [
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Best3_Htr1b",
+      "nucleusCount": 146,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "b414cbd10c293c4d96a2b6cb4545bcb531952d7e94e598dd2591853dd0a6d47a",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 37
+            },
+            {
+              "value": "Lumbar",
+              "count": 40
+            },
+            {
+              "value": "Sacral",
+              "count": 36
+            },
+            {
+              "value": "Thoracic",
+              "count": 33
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 16
+            },
+            {
+              "value": "AC04",
+              "count": 15
+            },
+            {
+              "value": "AC05",
+              "count": 6
+            },
+            {
+              "value": "AL01",
+              "count": 5
+            },
+            {
+              "value": "AL02",
+              "count": 17
+            },
+            {
+              "value": "AL03",
+              "count": 18
+            },
+            {
+              "value": "AS01",
+              "count": 9
+            },
+            {
+              "value": "AS02",
+              "count": 10
+            },
+            {
+              "value": "AS03",
+              "count": 17
+            },
+            {
+              "value": "AT01",
+              "count": 15
+            },
+            {
+              "value": "AT02",
+              "count": 9
+            },
+            {
+              "value": "AT03",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 68
+            },
+            {
+              "value": "Male",
+              "count": 75
+            },
+            {
+              "value": "Unassigned",
+              "count": 3
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Best3_Slc9a3",
+      "nucleusCount": 119,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "185b687c38de28884945a77e06689790c36453ebaa7791f7b38a5cc0733d6327",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 33
+            },
+            {
+              "value": "Lumbar",
+              "count": 23
+            },
+            {
+              "value": "Sacral",
+              "count": 31
+            },
+            {
+              "value": "Thoracic",
+              "count": 32
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 12
+            },
+            {
+              "value": "AC04",
+              "count": 11
+            },
+            {
+              "value": "AC05",
+              "count": 10
+            },
+            {
+              "value": "AL01",
+              "count": 2
+            },
+            {
+              "value": "AL02",
+              "count": 10
+            },
+            {
+              "value": "AL03",
+              "count": 11
+            },
+            {
+              "value": "AS01",
+              "count": 12
+            },
+            {
+              "value": "AS02",
+              "count": 8
+            },
+            {
+              "value": "AS03",
+              "count": 11
+            },
+            {
+              "value": "AT01",
+              "count": 9
+            },
+            {
+              "value": "AT02",
+              "count": 11
+            },
+            {
+              "value": "AT03",
+              "count": 12
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 56
+            },
+            {
+              "value": "Male",
+              "count": 57
+            },
+            {
+              "value": "Unassigned",
+              "count": 6
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Galr1_Ccdc3",
+      "nucleusCount": 150,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "91b44f175883c24ac696f23ea3007e71e385e864b0f9dd41392fbd0945e493fc",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 52
+            },
+            {
+              "value": "Lumbar",
+              "count": 40
+            },
+            {
+              "value": "Sacral",
+              "count": 27
+            },
+            {
+              "value": "Thoracic",
+              "count": 31
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 18
+            },
+            {
+              "value": "AC04",
+              "count": 19
+            },
+            {
+              "value": "AC05",
+              "count": 15
+            },
+            {
+              "value": "AL01",
+              "count": 5
+            },
+            {
+              "value": "AL02",
+              "count": 16
+            },
+            {
+              "value": "AL03",
+              "count": 19
+            },
+            {
+              "value": "AS01",
+              "count": 4
+            },
+            {
+              "value": "AS02",
+              "count": 15
+            },
+            {
+              "value": "AS03",
+              "count": 8
+            },
+            {
+              "value": "AT01",
+              "count": 12
+            },
+            {
+              "value": "AT02",
+              "count": 10
+            },
+            {
+              "value": "AT03",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 69
+            },
+            {
+              "value": "Male",
+              "count": 78
+            },
+            {
+              "value": "Unassigned",
+              "count": 3
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Galr1_P2rx5",
+      "nucleusCount": 66,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "94aeb6108099a5357e07aa8bdef1bb0ca9f3f4b5b13974ddea92464178a32174",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 10
+            },
+            {
+              "value": "Lumbar",
+              "count": 16
+            },
+            {
+              "value": "Sacral",
+              "count": 18
+            },
+            {
+              "value": "Thoracic",
+              "count": 22
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 2
+            },
+            {
+              "value": "AC04",
+              "count": 1
+            },
+            {
+              "value": "AC05",
+              "count": 7
+            },
+            {
+              "value": "AL01",
+              "count": 6
+            },
+            {
+              "value": "AL02",
+              "count": 5
+            },
+            {
+              "value": "AL03",
+              "count": 5
+            },
+            {
+              "value": "AS01",
+              "count": 3
+            },
+            {
+              "value": "AS02",
+              "count": 6
+            },
+            {
+              "value": "AS03",
+              "count": 9
+            },
+            {
+              "value": "AT01",
+              "count": 8
+            },
+            {
+              "value": "AT02",
+              "count": 10
+            },
+            {
+              "value": "AT03",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 29
+            },
+            {
+              "value": "Male",
+              "count": 37
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Galr1_Rasgrp1",
+      "nucleusCount": 20,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "97825f09b33d1b1d550db4be7e47c4eea35b55e36a4588250d4d60ad25dd039c",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 8
+            },
+            {
+              "value": "Lumbar",
+              "count": 3
+            },
+            {
+              "value": "Sacral",
+              "count": 8
+            },
+            {
+              "value": "Thoracic",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 2
+            },
+            {
+              "value": "AC04",
+              "count": 3
+            },
+            {
+              "value": "AC05",
+              "count": 3
+            },
+            {
+              "value": "AL02",
+              "count": 3
+            },
+            {
+              "value": "AS01",
+              "count": 2
+            },
+            {
+              "value": "AS02",
+              "count": 3
+            },
+            {
+              "value": "AS03",
+              "count": 3
+            },
+            {
+              "value": "AT01",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 5
+            },
+            {
+              "value": "Male",
+              "count": 5
+            },
+            {
+              "value": "Unassigned",
+              "count": 10
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Nr5a2_Cdh23",
+      "nucleusCount": 78,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "1ea9a6a243223acb78cca1977a756f38735196bcfda34c2ba9f2f21f4cf0d375",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 67
+            },
+            {
+              "value": "Lumbar",
+              "count": 5
+            },
+            {
+              "value": "Thoracic",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 22
+            },
+            {
+              "value": "AC04",
+              "count": 26
+            },
+            {
+              "value": "AC05",
+              "count": 19
+            },
+            {
+              "value": "AL02",
+              "count": 2
+            },
+            {
+              "value": "AL03",
+              "count": 3
+            },
+            {
+              "value": "AT01",
+              "count": 5
+            },
+            {
+              "value": "AT02",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 29
+            },
+            {
+              "value": "Male",
+              "count": 35
+            },
+            {
+              "value": "Unassigned",
+              "count": 14
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Nr5a2_Rxfp2",
+      "nucleusCount": 82,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "e75d1bb5751b0c6da9de3c934ff912d9791164bea4195c341ba2e00f9eb4a6d0",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 7
+            },
+            {
+              "value": "Lumbar",
+              "count": 44
+            },
+            {
+              "value": "Thoracic",
+              "count": 31
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 6
+            },
+            {
+              "value": "AC05",
+              "count": 1
+            },
+            {
+              "value": "AL01",
+              "count": 5
+            },
+            {
+              "value": "AL02",
+              "count": 18
+            },
+            {
+              "value": "AL03",
+              "count": 21
+            },
+            {
+              "value": "AT01",
+              "count": 11
+            },
+            {
+              "value": "AT02",
+              "count": 6
+            },
+            {
+              "value": "AT03",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 35
+            },
+            {
+              "value": "Male",
+              "count": 40
+            },
+            {
+              "value": "Unassigned",
+              "count": 7
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Pde5a_Piezo2",
+      "nucleusCount": 100,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "31cdf7def93a2bd41b4d395f28b05f85e76177c5d25ff64619c0d24b47e6c906",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 35
+            },
+            {
+              "value": "Lumbar",
+              "count": 24
+            },
+            {
+              "value": "Sacral",
+              "count": 15
+            },
+            {
+              "value": "Thoracic",
+              "count": 26
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 12
+            },
+            {
+              "value": "AC04",
+              "count": 11
+            },
+            {
+              "value": "AC05",
+              "count": 12
+            },
+            {
+              "value": "AL01",
+              "count": 2
+            },
+            {
+              "value": "AL02",
+              "count": 10
+            },
+            {
+              "value": "AL03",
+              "count": 12
+            },
+            {
+              "value": "AS01",
+              "count": 4
+            },
+            {
+              "value": "AS02",
+              "count": 4
+            },
+            {
+              "value": "AS03",
+              "count": 7
+            },
+            {
+              "value": "AT01",
+              "count": 11
+            },
+            {
+              "value": "AT02",
+              "count": 5
+            },
+            {
+              "value": "AT03",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 42
+            },
+            {
+              "value": "Male",
+              "count": 53
+            },
+            {
+              "value": "Unassigned",
+              "count": 5
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Pitx2_ Srpx2",
+      "nucleusCount": 74,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "0876317c2a9e33192c5f8867ec26d81ad36fbdfba18afe5d45aecbff02dd2c19",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 28
+            },
+            {
+              "value": "Lumbar",
+              "count": 18
+            },
+            {
+              "value": "Thoracic",
+              "count": 28
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 10
+            },
+            {
+              "value": "AC04",
+              "count": 7
+            },
+            {
+              "value": "AC05",
+              "count": 11
+            },
+            {
+              "value": "AL01",
+              "count": 2
+            },
+            {
+              "value": "AL02",
+              "count": 10
+            },
+            {
+              "value": "AL03",
+              "count": 6
+            },
+            {
+              "value": "AT01",
+              "count": 10
+            },
+            {
+              "value": "AT02",
+              "count": 7
+            },
+            {
+              "value": "AT03",
+              "count": 11
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 27
+            },
+            {
+              "value": "Male",
+              "count": 31
+            },
+            {
+              "value": "Unassigned",
+              "count": 16
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Pitx2_Eya1",
+      "nucleusCount": 35,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "c7a9da276e28dd98bb156df8d68425945eddebb62121c321a859821619eb7980",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 15
+            },
+            {
+              "value": "Lumbar",
+              "count": 10
+            },
+            {
+              "value": "Thoracic",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 6
+            },
+            {
+              "value": "AC04",
+              "count": 6
+            },
+            {
+              "value": "AC05",
+              "count": 3
+            },
+            {
+              "value": "AL01",
+              "count": 2
+            },
+            {
+              "value": "AL02",
+              "count": 3
+            },
+            {
+              "value": "AL03",
+              "count": 5
+            },
+            {
+              "value": "AT01",
+              "count": 2
+            },
+            {
+              "value": "AT03",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 21
+            },
+            {
+              "value": "Male",
+              "count": 14
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516"
+      }
+    },
+    {
+      "profileId": "cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617",
+      "recordKind": "source_local_exact_nucleus_roster_profile",
+      "unitOfObservation": "nucleus",
+      "sourceObjectId": "cholinergic",
+      "sourceFileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "sourceGroup": "CHOL_IN",
+      "sourceLocalLabel": "CHOL_IN_Pitx2_Skor2",
+      "nucleusCount": 53,
+      "assignmentAuthority": "source_explicit_groups_equals_CHOL_IN",
+      "stableIdentityField": "compound_nucleus_key",
+      "orderedCompoundNucleusKeysSha256": "3d00db81527017831dabb3492c4c307c008ed247a51ea8b26b35542f6dc70b63",
+      "contextFieldCounts": [
+        {
+          "field": "anatomy",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Cervical",
+              "count": 23
+            },
+            {
+              "value": "Lumbar",
+              "count": 7
+            },
+            {
+              "value": "Thoracic",
+              "count": 23
+            }
+          ]
+        },
+        {
+          "field": "source",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "AC03",
+              "count": 12
+            },
+            {
+              "value": "AC04",
+              "count": 5
+            },
+            {
+              "value": "AC05",
+              "count": 6
+            },
+            {
+              "value": "AL01",
+              "count": 1
+            },
+            {
+              "value": "AL02",
+              "count": 2
+            },
+            {
+              "value": "AL03",
+              "count": 4
+            },
+            {
+              "value": "AT01",
+              "count": 11
+            },
+            {
+              "value": "AT02",
+              "count": 8
+            },
+            {
+              "value": "AT03",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "field": "Sex",
+          "status": "SOURCE_FIELD_PRESENT",
+          "missingCount": 0,
+          "emptyCount": 0,
+          "counts": [
+            {
+              "value": "Female",
+              "count": 19
+            },
+            {
+              "value": "Male",
+              "count": 28
+            },
+            {
+              "value": "Unassigned",
+              "count": 6
+            }
+          ]
+        }
+      ],
+      "markerEvidenceStatus": "NOT_EXTRACTED_NO_LABEL_TOKEN_INFERENCE",
+      "geometryAuthority": {
+        "geometryObjectCount": 0,
+        "internalStructureObjectCount": 0,
+        "sameCellLinkCount": 0,
+        "atlasRegistrationCount": 0
+      },
+      "rosterLink": {
+        "artifactFileName": "GSE318731_confirmed_interneuron_nucleus_roster.csv.gz",
+        "idField": "compound_nucleus_key",
+        "filterField": "confirmed_interneuron_profile_id",
+        "filterEquals": "cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617"
+      }
+    }
+  ],
+  "hardBoundaries": [
+    "Only rows whose exact source `groups` value is `CHOL_IN` are admitted as confirmed interneurons in this registry.",
+    "GABA identity is not an interneuron flag: GABA_CSF-cN_Pkd2l1 is excluded as sensory scope and every remaining GABA row stays ambiguous or projection-exception unresolved.",
+    "Every glutamatergic row stays excluded because source-local projection-versus-local interneuron status is unresolved per type.",
+    "The paper-reported 516 neuronal-type denominator is recorded for reconciliation and is never asserted as an interneuron denominator.",
+    "The checksum-pinned GLUT UPDATE object lacks meta.data neuron_types; every absent value remains source NA under SOURCE_ABSENT_ASSIGNMENT. Its separate active.ident slot is not copied into this metadata-only contract, and the missing column is not biological absence.",
+    "Raw group and neuron-type strings, plus source, anatomy and sex strings when those source columns are present, are preserved exactly and are not trimmed, repaired, or converted into marker claims; an absent optional context column remains source NA and is never inferred, silently defaulted, or interpreted as biological absence.",
+    "Non-neuronal removal is a source-level preprocessing statement only; no per-nucleus non-neuronal flag or zero-valued exclusion denominator is fabricated.",
+    "The registry admits no morphology, generated geometry, intracellular structure, atlas registration, projection target, synaptic edge, or same-cell linkage.",
+    "All profile identifiers are source-local hashes of exact raw neuron_types labels and do not establish cross-source canonical identity."
+  ]
+}

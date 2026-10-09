@@ -1,0 +1,48 @@
+[
+  {
+    "attempt": 1,
+    "exitCode": 1,
+    "stage": "pretest immutable 2.34 reference",
+    "reason": "historical referenced Markdown inputs were not yet staged"
+  },
+  {
+    "attempt": 2,
+    "exitCode": 130,
+    "stage": "lint",
+    "reason": "original dependency config import stalled; interrupted, no completed regression claim"
+  },
+  {
+    "attempt": 3,
+    "exitCode": 1,
+    "stage": "public-intake validator",
+    "reason": "missing temporary SpinalJ metadata intake; build, strict types and lint reached successfully"
+  },
+  {
+    "attempt": 4,
+    "exitCode": 1,
+    "stage": "spatial validator",
+    "reason": "missing temporary RIGHTS_LEDGER.csv; preceding required stages reached successfully"
+  },
+  {
+    "attempt": 5,
+    "exitCode": 1,
+    "stage": "current test suite",
+    "tests": 1432,
+    "passed": 1401,
+    "failed": 16,
+    "skipped": 15,
+    "cancelled": 0,
+    "reason": "15 failures refer to three unstaged original R/parser inputs; one comparative PNG build recipe assertion still expected 31 instead of current 32"
+  },
+  {
+    "attempt": 6,
+    "exitCode": 0,
+    "stage": "complete research entry",
+    "tests": 1432,
+    "passed": 1417,
+    "failed": 0,
+    "skipped": 15,
+    "cancelled": 0,
+    "log": "full-research-final.log"
+  }
+]

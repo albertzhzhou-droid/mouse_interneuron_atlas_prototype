@@ -1,0 +1,26 @@
+test_01_strict_duplicate_root_nested (__main__.GuardTests) ... ok
+test_02_nonfinite_literals_and_overflow (__main__.GuardTests) ... ok
+test_03_physical_path_duplicates (__main__.GuardTests) ... ok
+test_04_paths_and_invalid_pins (__main__.GuardTests) ... ok
+test_05_repeated_same_read_preserves_first_epoch (__main__.GuardTests) ... ok
+test_06_cross_read_semantic_whitespace_change_refused (__main__.GuardTests) ... ok
+test_07_same_byte_inode_replacement_refused (__main__.GuardTests) ... ok
+test_08_short_pread_actual_progress (__main__.GuardTests) ... ok
+test_09_unexpected_eof_never_retries (__main__.GuardTests) ... ok
+test_10_io_error_never_retries (__main__.GuardTests) ... ok
+test_11_hash_mismatch_no_read_retry (__main__.GuardTests) ... ok
+test_12_only_unobserved_epoch_mismatch_may_retry (__main__.GuardTests) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-yv19gjq_/source.json", "attempt": 1, "timeUtc": "2026-10-05T09:37:28.719838+00:00", "failure": "Source epoch changed: /private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-yv19gjq_/source.json: (16777234, 228546998, 12, 1791193048719773065) -> (16777234, 228546998, 12, 1791193048719773066) -> (16777234, 228546998, 12, 1791193048719773065); read 12"}}
+ok
+test_13_permanent_epoch_refusal_at_most_three (__main__.GuardTests) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-tbqee0ob/source.json", "attempt": 1, "timeUtc": "2026-10-05T09:37:28.720418+00:00", "failure": "Source epoch changed: /private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-tbqee0ob/source.json: (16777234, 228547000, 12, 1791193048720363073) -> (16777234, 228547000, 12, 1791193048720363074) -> (16777234, 228547000, 12, 1791193048720363073); read 12"}}
+{"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-tbqee0ob/source.json", "attempt": 2, "timeUtc": "2026-10-05T09:37:28.720466+00:00", "failure": "Source epoch changed: /private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-tbqee0ob/source.json: (16777234, 228547000, 12, 1791193048720363073) -> (16777234, 228547000, 12, 1791193048720363074) -> (16777234, 228547000, 12, 1791193048720363073); read 12"}}
+{"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-tbqee0ob/source.json", "attempt": 3, "timeUtc": "2026-10-05T09:37:28.720508+00:00", "failure": "Source epoch changed: /private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-tbqee0ob/source.json: (16777234, 228547000, 12, 1791193048720363073) -> (16777234, 228547000, 12, 1791193048720363074) -> (16777234, 228547000, 12, 1791193048720363073); read 12"}}
+ok
+test_14_observed_mid_read_epoch_never_refreshes (__main__.GuardTests) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-xikcoc44/source.json", "attempt": 1, "timeUtc": "2026-10-05T09:37:28.721084+00:00", "failure": "Source epoch changed: /private/tmp/ohri-i62-real-intake-recipe-preparation-20261005/i62-tiny-xikcoc44/source.json: (16777234, 228547002, 12, 1791193048720953165) -> (16777234, 228547002, 12, 1791193048720953166) -> (16777234, 228547002, 12, 1791193048720953165); read 12"}}
+ok
+test_15_output_refuses_outside_private_tmp_and_overwrite (__main__.GuardTests) ... ok
+test_16_prepared_config_does_not_bind_final_epoch_or_invent_members (__main__.GuardTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.009s
+
+OK

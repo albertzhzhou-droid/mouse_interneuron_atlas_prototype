@@ -1,0 +1,30 @@
+.svara-contacts { line-height: 1.55; color: #243443; }
+.svara-contacts p, .svara-contacts pre { overflow-wrap: anywhere; }
+.svara-contact-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.svara-contact-controls label, .svara-contact-restore label { display: grid; gap: .4rem; min-width: 0; }
+.svara-contacts select, .svara-contacts button, .svara-contact-downloads a { min-height: 44px; font: inherit; }
+.svara-contacts select { width: 100%; min-width: 0; }
+.svara-contacts button { cursor: pointer; padding: .6rem .8rem; border: 1px solid #8297a8; border-radius: .35rem; background: #fff; color: #243443; }
+.svara-contacts :focus-visible { outline: 3px solid #1b7183; outline-offset: 3px; }
+.svara-contact-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.svara-contact-summary > div { background: #edf4f5; padding: 1rem; border-radius: .4rem; min-width: 0; overflow-wrap: anywhere; }
+.svara-contact-summary dt { font-weight: 600; }
+.svara-contact-summary dd { margin: .5rem 0 0; }
+.svara-contact-table-scroll { max-width: 100%; overflow: auto; }
+.svara-contacts table { border-collapse: collapse; width: 100%; }
+.svara-contacts th, .svara-contacts td { border-bottom: 1px solid #c8d3da; padding: .6rem; text-align: left; }
+.svara-contacts caption { text-align: left; margin-bottom: .6rem; overflow-wrap: anywhere; }
+.svara-contact-downloads { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin: 1rem 0; }
+.svara-contact-downloads a { display: inline-flex; align-items: center; }
+.svara-contacts details { margin: 1rem 0; padding: .8rem; border: 1px solid #c8d3da; border-radius: .4rem; }
+.svara-contacts summary { min-height: 44px; cursor: pointer; font-weight: 600; }
+.svara-contact-matrix { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+.svara-contact-matrix button { display: grid; text-align: left; gap: .2rem; overflow-wrap: anywhere; }
+.svara-contact-matrix button[aria-pressed="true"] { background: #d8edf0; border: 2px solid #1b7183; }
+.svara-contacts pre { max-height: 24rem; overflow: auto; white-space: pre-wrap; font-size: .85rem; }
+.svara-contact-restore textarea { width: 100%; min-width: 0; box-sizing: border-box; font: inherit; }
+.svara-contact-boundary { border-left: 3px solid #597683; padding-left: .8rem; }
+@media (max-width: 700px) {
+  .svara-contact-controls, .svara-contact-summary { grid-template-columns: 1fr; }
+  .svara-contact-matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

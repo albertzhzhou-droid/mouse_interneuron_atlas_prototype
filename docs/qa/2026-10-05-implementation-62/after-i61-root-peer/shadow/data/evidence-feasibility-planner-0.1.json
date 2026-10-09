@@ -1,0 +1,142 @@
+{
+  "releaseId": "ohri-evidence-feasibility-planner-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "title": "Public-source research-question feasibility planner",
+  "selectedAxisLimit": 4,
+  "publicSourceIds": [
+    "PDS-BRAINGLOBE-ATLAS",
+    "PDS-NEUROMORPHO-SWC",
+    "PDS-SPINALJ-PROCESSED",
+    "PDS-CANOGOMEZ-2026",
+    "PDS-RUSS-2021",
+    "PDS-STARMAP-PLUS-2023",
+    "PDS-TABULAE-PARALYTICA"
+  ],
+  "axes": [
+    {
+      "id": "reference_anatomy",
+      "label": "Reference anatomy",
+      "description": "A declared mouse spinal reference for visualization or source-local planning."
+    },
+    {
+      "id": "molecular_taxonomy",
+      "label": "Molecular cell taxonomy",
+      "description": "A type-level molecular population framework, not an exact identity transfer."
+    },
+    {
+      "id": "adult_lumbar_marker_context",
+      "label": "Adult lumbar marker context",
+      "description": "Adult lumbar in-tissue marker context attached to a postnatal taxonomy reference."
+    },
+    {
+      "id": "source_local_spatial_lead",
+      "label": "Source-local spatial lead",
+      "description": "A named spatial data lead whose coordinates remain in the source frame until separately admitted and audited."
+    },
+    {
+      "id": "morphology",
+      "label": "Interneuron morphology",
+      "description": "A reconstruction in its reported local frame with topology and provenance checks."
+    },
+    {
+      "id": "injury_condition_metadata",
+      "label": "SCI condition metadata",
+      "description": "Condition-, aggregation-, or spot-level injury metadata; not an individual-cell result."
+    },
+    {
+      "id": "projection_class_metadata",
+      "label": "Projection-class metadata",
+      "description": "A preprint-bounded source lead for future projection-class object review."
+    },
+    {
+      "id": "registration_reproducibility_planning",
+      "label": "Registration reproducibility planning",
+      "description": "A metadata-only benchmark lead for a future transform and held-out-error study."
+    },
+    {
+      "id": "same_cell_multimodal_join",
+      "label": "Same-cell multimodal join",
+      "description": "One declared cell linked across modalities by verified object- and specimen-level keys."
+    },
+    {
+      "id": "synaptic_connectivity",
+      "label": "Synaptic connectivity",
+      "description": "Observed pre/post synaptic edges with direction and strength in the requested population."
+    },
+    {
+      "id": "project_atlas_registration",
+      "label": "Validated project atlas registration",
+      "description": "A source-to-project transform with a checksum, held-out landmarks, physical-space error, and curator review."
+    }
+  ],
+  "routes": [
+    {
+      "id": "ROUTE-BRAINGLOBE-REFERENCE",
+      "sourceIds": ["PDS-BRAINGLOBE-ATLAS"],
+      "supportedAxisIds": ["reference_anatomy"],
+      "readiness": "bundled_reference_inferred",
+      "label": "BrainGlobe reference anatomy",
+      "boundary": "The bundled reference is an inferred derivative for visualization. It is not a cell-level project registration or a source-object admission decision."
+    },
+    {
+      "id": "ROUTE-NEUROMORPHO-MORPHOLOGY",
+      "sourceIds": ["PDS-NEUROMORPHO-SWC"],
+      "supportedAxisIds": ["morphology"],
+      "readiness": "bundled_local_unregistered",
+      "label": "NeuroMorpho local-frame morphology",
+      "boundary": "The five reconstructions are phenotype-stratified exemplars in reported local frames. They are not a census, atlas placement, connectivity map, or registration."
+    },
+    {
+      "id": "ROUTE-SPINALJ-REGISTRATION-PLANNING",
+      "sourceIds": ["PDS-SPINALJ-PROCESSED"],
+      "supportedAxisIds": ["registration_reproducibility_planning"],
+      "readiness": "metadata_audited_not_admitted",
+      "label": "SpinalJ registration benchmark planning",
+      "boundary": "The source record supports planning a reproducibility benchmark only. No processed object, transform, landmark split, error result, or registration is in this release."
+    },
+    {
+      "id": "ROUTE-CANOGOMEZ-PROJECTION-PLANNING",
+      "sourceIds": ["PDS-CANOGOMEZ-2026"],
+      "supportedAxisIds": ["projection_class_metadata"],
+      "readiness": "preprint_metadata_audited_not_admitted",
+      "label": "Cano-Gomez projection-class planning",
+      "boundary": "This is a preprint-bounded metadata lead. It does not provide an admitted object, same-cell key, project transform, or independent held-out registration error."
+    },
+    {
+      "id": "ROUTE-RUSS-TAXONOMY",
+      "sourceIds": ["PDS-RUSS-2021"],
+      "supportedAxisIds": ["molecular_taxonomy", "adult_lumbar_marker_context"],
+      "readiness": "derived_type_level_attributed",
+      "label": "Russ 2021 taxonomy and adult-lumbar context",
+      "boundary": "The 69-population crosswalk is type-level and retains postnatal transcriptomic versus adult-lumbar validation context. It makes no exact identity, coordinate, morphology, or same-cell claim."
+    },
+    {
+      "id": "ROUTE-STARMAP-SPATIAL-LEAD",
+      "sourceIds": ["PDS-STARMAP-PLUS-2023"],
+      "supportedAxisIds": ["source_local_spatial_lead"],
+      "readiness": "metadata_audit_required",
+      "label": "STARmap PLUS lumbar spatial lead",
+      "boundary": "The source is a spatial lead only. No exact object, coordinates, specimen/slice identity, rights decision, or project-space transform is admitted."
+    },
+    {
+      "id": "ROUTE-TABULAE-INJURY-METADATA",
+      "sourceIds": ["PDS-TABULAE-PARALYTICA"],
+      "supportedAxisIds": ["injury_condition_metadata"],
+      "readiness": "metadata_audited_aggregate_or_spot_level",
+      "label": "Tabulae Paralytica injury-condition metadata",
+      "boundary": "The implemented index preserves source labels and aggregation distinctions. It does not admit a source body, quantify an effect, label a spot as an interneuron, or create a registration."
+    }
+  ],
+  "unqualifiedAxisDecision": "No qualified route is catalogued in this release. This is a package-coverage result, not a biological absence claim or a statement that no public dataset exists.",
+  "multiRouteDecision": "Separate source-specific routes can inform a study plan, but they do not establish a same-cell, same-specimen, coordinate, or causal relationship. A proposed join requires its own object-level and curator-reviewed gate.",
+  "localRuntime": {
+    "networkRequests": false,
+    "sourceFileDownload": false,
+    "sourceFileUpload": false,
+    "persistentStorage": "none",
+    "output": "browser_download_of_feasibility_receipt_json"
+  },
+  "scientificBoundary": "The planner maps declared package capabilities to source-specific research-planning routes only. It does not acquire, inspect, hash, transform, align, combine, analyze, or bundle a source object; it does not authorize reuse, establish biological truth, infer a same-cell relationship, or create REG.",
+  "nextQueueItems": ["UPG-001", "UPG-002", "UPG-005", "UPG-006", "UPG-008", "UPG-010", "UPG-011", "UPG-012", "UPG-013"]
+}

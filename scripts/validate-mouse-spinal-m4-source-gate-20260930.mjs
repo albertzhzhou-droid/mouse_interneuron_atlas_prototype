@@ -1,0 +1,42 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
+
+const root = new URL("../", import.meta.url);
+const read = (path) => readFile(new URL(path, root));
+const json = async (path) => JSON.parse(await read(path));
+const gate = await json("data/mouse-spinal-m4-source-gate-20260930.json");
+assert.equal(gate.gateId, "mouse-spinal-m4-source-gate-20260930");
+assert.equal(gate.checkedDate, "2026-09-30");
+assert.equal(gate.disposition, "blocked_exact_interneuron_source_chain");
+assert.equal(gate.scope.repositoryWideAbsenceClaim, false);
+assert.equal(gate.scope.historicalEmpiar3119CounterRechecked, false);
+assert.equal(gate.scope.universalCandidateCount, null);
+assert.equal(gate.reviewedNearMisses.length, 5);
+assert.ok(gate.reviewedNearMisses.every((candidate) => candidate.qualifiesForM4 === false && candidate.blockers.length > 0));
+assert.ok(Object.values(gate.admission).every((value) => value === 0));
+assert.equal(gate.restartRequiredInputs.length, 6);
+assert.equal(gate.sourceReceipts.length, 14);
+assert.equal(gate.historicalAuditPins.length, 3);
+for (const receipt of [...gate.sourceReceipts, ...gate.historicalAuditPins]) {
+  const bytes = await read(receipt.path);
+  assert.equal(bytes.length, receipt.bytes, receipt.path);
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), receipt.sha256, receipt.path);
+}
+const articleReceipt = gate.sourceReceipts.find((item) => item.path.endsWith("pkd2l1-elife-83108.json"));
+const article = await json(articleReceipt.path);
+const articleHistory = await json("data/pkd2l1-sbfsem-public-availability-audit-0.1.json");
+assert.equal(article.version, 2);
+assert.equal(article.id, "83108");
+assert.equal(articleReceipt.sha256, articleHistory.scope.articleApiReceipt.sha256);
+assert.equal(article.dataSets.generated, undefined);
+assert.match(article.dataSets.availability[0].text, /Figure 2.+Figure 7/);
+const bia = await json("data/source-candidates/mouse-spinal-m4-20260930/biostudies-S-BIAD2822-study.json");
+const actualBiosamples = bia.section.subsections.filter((section) => section.type === "Biosample").map((section) => section.attributes.find((item) => item.name === "Title").value);
+assert.deepEqual(gate.reviewedNearMisses.find((candidate) => candidate.key === "S-BIAD2822").biosamples, actualBiosamples);
+assert.ok(actualBiosamples.every((value) => !/spinal|interneuron/i.test(value)));
+const wt = await json("data/janelia-wt-bounded-reference-0.1.json");
+assert.equal(wt.claims.cellClass, "unknown");
+assert.equal(wt.claims.sameCellInternalChainCount, 0);
+assert.equal(gate.reviewedNearMisses.find((candidate) => candidate.key === wt.datasetId).allowedOutput, "independent_source_local_native_2d_raw_nucleus_reference");
+console.log(JSON.stringify({ status: "passed", reviewedNearMisses: 5, sourceFiles: 14, qualifyingM4Chains: 0, repositoryWideClaim: false }));

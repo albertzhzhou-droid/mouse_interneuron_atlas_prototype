@@ -1,0 +1,50 @@
+{
+  "status": "SEALED_CURRENT_PACKAGE_ONLY_PARENT_ADDON",
+  "rootWrites": false,
+  "coreCandidateUnmodified": {
+    "path": "/private/tmp/ohri-i59-cano-rna-pair-candidate/I59_CANO_CHOL_RNA_PAIR_COUNTS_CANDIDATE.patch",
+    "bytes": 36413,
+    "sha256": "a492064899a487c0efed2a6893e3c17e02eb3ea1135fc35819c4d01fe235f4cb"
+  },
+  "ownedTargets": [
+    {
+      "operation": "modify",
+      "path": "package.json",
+      "before": {
+        "bytes": 40210,
+        "sha256": "8ab53acc6e3ac86015fb8aeb0bc1f9b93f4af49bd975fda5ec21d0b17511efde"
+      },
+      "after": {
+        "bytes": 40345,
+        "sha256": "208fe6a1e92e9e2af82306d359ea5bb11226d27bcc701743bc8b9c9e9b50e585"
+      }
+    }
+  ],
+  "patch": {
+    "path": "/private/tmp/ohri-i59-current-package-parent-addon/I59_CURRENT_PACKAGE_PARENT_ADDON.patch",
+    "bytes": 12987,
+    "sha256": "244bc197fb838d98054b3e0e54901a2f5230d626d10cbdb9a95afc46d3307a2b"
+  },
+  "scriptName": "validate:cano-chol-rna-pairs",
+  "scriptValue": "node scripts/validate-cano-chol-rna-pair-counts-0.1.mjs",
+  "requiredChain": "test:research",
+  "requiredChainPreceding": "validate:cano-gomez-p56",
+  "requiredChainInvocationCount": 1,
+  "pretestResearchUnchanged": true,
+  "otherPackageFieldsAndScriptsUnchanged": true,
+  "lockUnchanged": {
+    "path": "package-lock.json",
+    "bytes": 300345,
+    "sha256": "ab6e0796bea41042a5ff48619c7464ce486e08c2d6dbd911091e4eee7032219f"
+  },
+  "newScientificAdmissions": 0,
+  "privateRuntimeMembershipRequiresASTEvidence": true,
+  "privateRuntimeMembershipChange": false,
+  "packageDirectBuildScopes": [
+    "COMPARATIVE_SWC_VIEW_BUILD",
+    "INDEPENDENT_OBJECT_VIEW_BUILD",
+    "RONZANO_SOURCE_VIEW_BUILD"
+  ],
+  "otherFiveDeclaredPrivateScopesContainPackage": false,
+  "nativeBrowserObserved": false
+}

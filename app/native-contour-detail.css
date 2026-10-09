@@ -1,14 +1,40 @@
+.native-contour-record-viewer { min-width: 0; grid-template-columns: minmax(0, 1fr); }
+.native-contour-record-viewer > *, .native-contour-record-viewer .native-soma-contour-layout > * { min-width: 0; }
+.native-contour-record-viewer > header { flex-wrap: wrap; }
+.native-contour-record-viewer > header > div { min-width: 0; overflow-wrap: anywhere; }
+.native-contour-record-viewer .native-soma-contour-layout { min-width: 0; }
+.native-contour-record-viewer .native-contour-inspection-controls { color: #c5d8d1; }
+.native-contour-record-viewer .native-derived-surface-status { color: #b8cec3; }
+@media (max-width: 460px) {
+  .native-contour-record-viewer .native-soma-contour-layout { grid-template-columns: minmax(0, 1fr); }
+}
 .native-contour-inspection-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin: .7rem 0; color: #314e43; font-size: .78rem; }
-.native-contour-inspection-controls select { min-width: 0; max-width: 100%; border: 1px solid #a5b9ac; border-radius: .5rem; padding: .55rem; background: #fffef9; color: #183d2d; }
-.native-contour-inspection-controls .native-contour-isolate { display: inline-flex; align-items: center; gap: .35rem; }
+.native-contour-inspection-controls select { min-width: 44px; min-height: 44px; max-width: 100%; box-sizing: border-box; border: 1px solid #a5b9ac; border-radius: .5rem; padding: .55rem; background: #fffef9; color: #183d2d; }
+.native-contour-inspection-controls .native-contour-isolate { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; min-width: 44px; cursor: pointer; }
+.native-contour-record-viewer .native-soma-contour-controls button, .native-contour-camera-actions button { min-width: 44px; min-height: 44px; box-sizing: border-box; white-space: normal; }
+.native-contour-camera-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .65rem; }
+.native-contour-camera-actions button { padding: .55rem .7rem; border: 1px solid #a5b9ac; border-radius: .5rem; background: #fffef9; color: #183d2d; font-size: max(12px, .75rem); cursor: pointer; }
+.native-contour-camera-actions button:disabled { opacity: .5; cursor: default; }
+.native-contour-camera-help { font-size: max(12px, .75rem); line-height: 1.5; }
+.native-contour-record-viewer button:focus-visible, .native-contour-record-viewer summary:focus-visible, .native-contour-record-viewer select:focus-visible, .native-contour-record-viewer canvas:focus-visible, .native-contour-isolate input:focus-visible { outline: 2px solid #78b99b; outline-offset: 2px; }
 .native-contour-selected-trace { margin-top: .7rem; padding: .85rem; background: #f6f5df; border-left: 3px solid #b58a22; border-radius: .3rem; color: #314335; font-size: .8rem; }
 .native-contour-selected-trace p { line-height: 1.5; }
 .native-contour-selected-trace details { overflow-x: auto; }
-.native-contour-selected-trace summary { cursor: pointer; padding: .35rem 0; }
+.native-contour-selected-trace summary { cursor: pointer; padding: .35rem 0; min-height: 44px; box-sizing: border-box; }
 .native-contour-selected-trace table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.native-contour-selected-trace caption { text-align: left; padding: .5rem 0; font-size: .72rem; }
+.native-contour-selected-trace caption { text-align: left; padding: .5rem 0; font-size: max(12px, .72rem); }
 .native-contour-selected-trace td, .native-contour-selected-trace th { padding: .4rem; text-align: right; border-bottom: 1px solid #d3d7bd; white-space: nowrap; }
-.native-contour-selected-trace td { font-family: ui-monospace, monospace; font-size: .72rem; }
+.native-contour-selected-trace td { font-family: ui-monospace, monospace; font-size: max(12px, .72rem); }
 .native-soma-contour-controls button.active.derived { border-color: #167c69; background: #e4f4ef; color: #135b4d; }
-.native-derived-surface-status { flex-basis: 100%; color: #53645b; font-size: .72rem; line-height: 1.45; }
+.native-derived-surface-status { flex-basis: 100%; color: #53645b; font-size: max(12px, .72rem); line-height: 1.45; }
+.native-contour-topology-review { margin-top: .8rem; padding: .75rem; border: 1px solid #d6c9a3; border-radius: .5rem; background: #fbf8ed; color: #39483d; font-size: .76rem; line-height: 1.5; }
+.native-contour-topology-review > summary, .native-contour-topology-review details > summary { cursor: pointer; color: #284737; font-weight: 650; min-height: 44px; box-sizing: border-box; }
+.native-contour-topology-review p { margin: .55rem 0; }
+.native-contour-topology-review details { max-width: 100%; overflow-x: auto; }
+.native-contour-topology-review table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: max(12px, .7rem); }
+.native-contour-topology-review caption { padding: .4rem 0; text-align: left; color: #606c61; }
+.native-contour-topology-review th, .native-contour-topology-review td { padding: .4rem; border-bottom: 1px solid #e1dac7; text-align: left; vertical-align: top; }
+.native-contour-topology-review td:nth-child(2), .native-contour-topology-review td:nth-child(3), .native-contour-topology-review td:nth-child(4) { text-align: right; white-space: nowrap; font-family: ui-monospace, monospace; }
+.native-contour-topology-review ul { padding-left: 1.2rem; }
+.native-contour-topology-review li { margin: .25rem 0; overflow-wrap: anywhere; }
 .universe-panel > .native-contour-record-viewer { margin-top: 1.5rem; }

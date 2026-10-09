@@ -1,0 +1,448 @@
+{
+  "documentType": "independent-source-object-view",
+  "schemaVersion": "0.1.0",
+  "applicationVersion": "2.91.0-research.1",
+  "object": {
+    "sourceId": "native-contours",
+    "registryId": "neurolucida-native-contour-admission-catalog-0.4",
+    "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.4.0",
+    "objectKind": "native_contour_record",
+    "sourceObjectId": "50394",
+    "key": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/50394",
+    "title": "NMO 50394 · PrP-promoter reporter-positive nNOS-positive interneuron",
+    "sourceUrl": "https://neuromorpho.org/api/neuron/id/50394",
+    "context": {
+      "scope": "source_native_unregistered",
+      "species": "mouse",
+      "region": "spinal cord / lumbar / L2i / dorsal horn / superficial",
+      "age": "young adult; 1.0–1.5 Month (repository cohort)",
+      "condition": "Control",
+      "sourceContext": {
+        "neuronId": "50394",
+        "neuronName": "C11-15-08-12-B",
+        "repository": "NeuroMorpho.Org",
+        "repositoryRelease": "8.6.124",
+        "display": {
+          "species": "mouse",
+          "region": "spinal cord / lumbar / L2i / dorsal horn / superficial",
+          "age": "young adult; 1.0–1.5 Month (repository cohort)",
+          "condition": "Control"
+        },
+        "fields": {
+          "species": {
+            "value": "mouse",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#species"
+          },
+          "region": {
+            "value": [
+              "spinal cord",
+              "lumbar",
+              "L2i",
+              "dorsal horn",
+              "superficial"
+            ],
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#brain_region"
+          },
+          "lifeStage": {
+            "value": "young adult",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#age_classification"
+          },
+          "numericAge": {
+            "value": {
+              "minimum": "1.0",
+              "maximum": "1.5",
+              "scale": "Month"
+            },
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#min_age,max_age,age_scale"
+          },
+          "sex": {
+            "value": "Male/Female",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#gender"
+          },
+          "condition": {
+            "value": [
+              "Control"
+            ],
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#experiment_condition"
+          },
+          "strain": {
+            "value": "Swiss-Webster ",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#strain"
+          },
+          "protocol": {
+            "value": "in vitro",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#protocol"
+          },
+          "sourceDomain": {
+            "value": "Dendrites, Soma, Axon",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#domain"
+          },
+          "sourceIntegrity": {
+            "value": "Dendrites & Axon Moderate",
+            "status": "source_reported",
+            "locator": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json#physical_Integrity"
+          }
+        },
+        "sourceApiReceipt": {
+          "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/api/nmo-50394.json",
+          "bytes": 1542,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "d5954d795e3a2308ae3bb7077d546766641b2e169c4be73f2bfdaa0c663081d1"
+          }
+        },
+        "exactRouteReceipt": {
+          "path": "data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
+          "bytes": 31435,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "a8737dff3fbfe244d36e2af19b32e1dd8142e2626a90c0d89c00881b83eaf709"
+          },
+          "routeId": "mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394",
+          "locator": "data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json#routes/routeId=mouse.sc.nnos_prp_l2i_dorsal_horn.observed.nmo_50394/sourceRecord"
+        },
+        "verificationScope": "Exact stored small API bytes checked at build; source-reported metadata only, not same-cell paper, molecular identity or runtime API refresh."
+      },
+      "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution"
+    },
+    "coordinateFrame": {
+      "frame": "Neurolucida_DAT_source_native_unregistered",
+      "unit": "micrometre",
+      "unitStatus": "source_reported",
+      "dimensions": 3
+    },
+    "components": [
+      {
+        "id": "soma-contours",
+        "representation": "source_native_line_loops",
+        "dimensions": 3,
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP",
+        "evidenceState": "observed_source_object",
+        "fileId": "native-contours"
+      },
+      {
+        "id": "derived-open-shell",
+        "representation": "interpolated_uncapped_open_shell",
+        "dimensions": 3,
+        "authority": "DER_INTERPOLATED_SOURCE_CONTOUR_OPEN_SHELL",
+        "evidenceState": "derived_display",
+        "fileId": "derived-open-shell"
+      }
+    ],
+    "relationships": [
+      {
+        "kind": "derived_from_exact_source_contours",
+        "targetObjectId": "50394",
+        "status": "derived_display",
+        "evidence": {
+          "locator": "data/native-contour-derived-soma-surface-0.1.json#sourceNativeContourGeometry",
+          "sourceSha256": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+        },
+        "samePhysicalObject": false
+      }
+    ],
+    "files": [
+      {
+        "id": "source-dat",
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/original/nmo-50394.dat",
+        "sourceUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/C11-15-08-12-B.dat",
+        "bytes": 191975,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109"
+        },
+        "role": "source",
+        "requiredForDisplay": false,
+        "verification": "receipt_only"
+      },
+      {
+        "id": "native-contours",
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50394-mbf-cell-body-line-loops.json",
+        "sourceUrl": null,
+        "bytes": 123254,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+        },
+        "role": "geometry",
+        "requiredForDisplay": true,
+        "verification": "receipt_only"
+      },
+      {
+        "id": "derived-open-shell",
+        "path": "/data/native_contour_derived_soma_surface_v1/nmo-50394-cell-body-interpolated-open-shell-0.1.json",
+        "sourceUrl": null,
+        "bytes": 309804,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "a1d4d93ef2e8e2d95a6ae479524ed4a960fdfe49d76fe62da1d10a386873b0e0"
+        },
+        "role": "geometry",
+        "requiredForDisplay": false,
+        "verification": "receipt_only"
+      }
+    ],
+    "counts": [
+      {
+        "value": 14,
+        "unit": "contours",
+        "scopeKey": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/50394",
+        "derivedFrom": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394/admission"
+      }
+    ],
+    "structureCoverage": [
+      {
+        "id": "cell_geometry",
+        "label": "Source-local morphology",
+        "status": "unavailable",
+        "detail": "Source soma contours only; these traces do not supply a whole-cell reconstruction.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "radius_surface",
+        "label": "Radius-derived surface",
+        "status": "not_assessed",
+        "detail": "No exact-object assessment or display geometry is admitted; this does not establish biological absence.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "soma_trace",
+        "label": "Soma trace / outline",
+        "status": "observed_source_object",
+        "detail": "Exactly 14 Cell Body objects pass the checksum + empty-value CellBody presence-property + pinned-parser somaContour + MBF cell-body closure rule. Raw sourceClosedFlag=false is preserved; four User Line objects remain excluded.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "cell_boundary",
+        "label": "Cell boundary / membrane",
+        "status": "derived_display",
+        "detail": "One separately documented interpolated open shell; no observed membrane or volume.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "nucleus",
+        "label": "Nucleus",
+        "status": "unavailable",
+        "detail": "No exact-source nucleus object is admitted.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "organelles",
+        "label": "Organelles",
+        "status": "unavailable",
+        "detail": "No exact-source organelle object is admitted.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "synaptic_structures",
+        "label": "Synaptic structures",
+        "status": "unavailable",
+        "detail": "No exact-source synaptic object is admitted.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "receptor_distribution",
+        "label": "Receptor distribution",
+        "status": "not_assessed",
+        "detail": "No exact-object assessment or display geometry is admitted; this does not establish biological absence.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "source_frame",
+        "label": "Source coordinates / frame",
+        "status": "observed_source_object",
+        "detail": "Source-native coordinates; no atlas registration.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "reconstruction_completeness",
+        "label": "Reconstruction domain / completeness",
+        "status": "not_established",
+        "detail": "Admission covers the exact soma contour subset; whole-cell completeness is not certified.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      },
+      {
+        "id": "relationships",
+        "label": "Object relationships",
+        "status": "derived_display",
+        "detail": "Only the separately listed record-specific derivative / frame receipts apply. No same-cell internal structure or atlas placement.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=50394"
+      }
+    ],
+    "viewer": {
+      "kind": "native_contours",
+      "neuronId": 50394
+    }
+  },
+  "verification": {
+    "documentType": "independent_source_object_runtime_receipt",
+    "objectKey": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/50394",
+    "sourceId": "native-contours",
+    "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.4.0",
+    "objectKind": "native_contour_record",
+    "sourceObjectId": "50394",
+    "status": "verified",
+    "coordinateFrame": {
+      "frame": "Neurolucida_DAT_source_native_unregistered",
+      "unit": "micrometre",
+      "unitStatus": "source_reported",
+      "dimensions": 3
+    },
+    "verifiedFiles": [
+      {
+        "fileId": "native-contours",
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50394-mbf-cell-body-line-loops.json",
+        "bytes": 123254,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+        },
+        "status": "verified"
+      },
+      {
+        "fileId": "derived-open-shell",
+        "path": "/data/native_contour_derived_soma_surface_v1/nmo-50394-cell-body-interpolated-open-shell-0.1.json",
+        "bytes": 309804,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "a1d4d93ef2e8e2d95a6ae479524ed4a960fdfe49d76fe62da1d10a386873b0e0"
+        },
+        "status": "verified"
+      }
+    ],
+    "embeddedAssetIdentities": [
+      {
+        "fileId": "native-contours",
+        "assetId": "NeuroMorpho:50394",
+        "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.3.0",
+        "schemaVersion": "0.3.0",
+        "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry"
+      },
+      {
+        "fileId": "derived-open-shell",
+        "assetId": "NeuroMorpho:50394",
+        "releaseId": "ohri-native-contour-derived-soma-surface-0.1.0",
+        "schemaVersion": "0.1.0",
+        "documentType": "source_contour_derived_display_open_shell"
+      }
+    ],
+    "sourceOnlyFiles": [
+      {
+        "id": "source-dat",
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/original/nmo-50394.dat",
+        "sourceUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/C11-15-08-12-B.dat",
+        "bytes": 191975,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109"
+        },
+        "role": "source",
+        "requiredForDisplay": false,
+        "verification": "receipt_only"
+      }
+    ],
+    "displayed": {
+      "pointCount": 0,
+      "edgeCount": 0,
+      "meshCount": 1,
+      "contourCount": 14
+    },
+    "relationships": [
+      {
+        "kind": "derived_from_exact_source_contours",
+        "targetObjectId": "50394",
+        "status": "derived_display",
+        "evidence": {
+          "locator": "data/native-contour-derived-soma-surface-0.1.json#sourceNativeContourGeometry",
+          "sourceSha256": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+        },
+        "samePhysicalObject": false
+      }
+    ],
+    "verificationScope": "Listed runtime SHA-256 bytes and selected representation/frame contracts; source-only receipts are separately listed.",
+    "geometryScope": "Exact selected source object representations only; no fallback shapes, biological measurements or atlas registration."
+  },
+  "view": {
+    "key": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/50394",
+    "verificationRevision": 2,
+    "revision": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/50394:2:derived-open-shell:0:1",
+    "status": "rendered",
+    "representation": "native_contours",
+    "layers": [
+      {
+        "id": "derived-open-shell",
+        "requested": false,
+        "actual": false
+      },
+      {
+        "id": "source-contour-traces",
+        "requested": true,
+        "actual": true
+      }
+    ],
+    "camera": {
+      "position": [
+        229.99999999999997,
+        189.99999999999997,
+        300
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "projection": "perspective",
+      "fov": 38,
+      "near": 0.1,
+      "far": 4000
+    },
+    "displayTransform": {
+      "centerNative": [
+        329.5176086425781,
+        -56.270484924316406,
+        -51.5
+      ],
+      "scale": 13.707363189906882,
+      "coordinateFrame": {
+        "frame": "Neurolucida_DAT_source_native_unregistered",
+        "unit": "micrometre",
+        "unitStatus": "source_reported",
+        "dimensions": 3
+      }
+    },
+    "renderer": {
+      "name": "three",
+      "version": "185",
+      "width": 1368,
+      "height": 880
+    },
+    "loadMilliseconds": 27,
+    "renderMilliseconds": 26.700000047683716
+  },
+  "scope": "Source-local object; source-specific units and missingness retained. No cross-source identity or atlas registration is implied."
+}

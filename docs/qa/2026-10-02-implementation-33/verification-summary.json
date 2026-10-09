@@ -1,0 +1,504 @@
+{
+  "iteration": "I33",
+  "goalStatus": "active",
+  "entireGoalAchieved": false,
+  "implementation": "GABA exact source metadata labels and nucleus assignment browser",
+  "denominators": {
+    "nucleusCount": 73364,
+    "sourceLabelCount": 204,
+    "sourceGroupCount": 24,
+    "confirmedInterneuronProfilesAdded": 0
+  },
+  "artifact": {
+    "path": "public/data/cano_gomez_gaba_source_labels_v1/GSE318731_P56_gabaergic_metadata_assignments.jsonl.gzip",
+    "publicUrl": "/data/cano_gomez_gaba_source_labels_v1/GSE318731_P56_gabaergic_metadata_assignments.jsonl.gzip",
+    "rowCount": 73364,
+    "compressedBytes": 1945750,
+    "compressedSha256": "d483fdfeef5bc4bdffa02741f65cbab2a2b4fcd7225f984c0a08df4355dbc910",
+    "uncompressedBytes": 24709447,
+    "uncompressedSha256": "43a1a623be4f008f942f3d78f3e3bf5ecb3c1319f33497d2ae110ea0a47365f1",
+    "rowOrder": "exact retained meta.data row.name order",
+    "contentEncoding": "gzip"
+  },
+  "originalSource": {
+    "accession": "GSE318731",
+    "fileName": "GSE318731_P56_gabaergic_multiome.rds",
+    "bytes": 1646402816,
+    "sha256": "700361c804806b521bb01aa58c263cd01b189fe03d3299aeef5806839a4f5f31",
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_gabaergic_multiome.rds",
+    "lifeStage": "P56",
+    "lifeStageScope": "source_dataset_context_not_per_nucleus_measurement",
+    "slot": "meta.data",
+    "labelColumn": "neuron_types",
+    "groupColumn": "groups",
+    "authorityMode": "BASE_R_STREAM_META_DATA_ROW_ONLY",
+    "originalRdsReacquiredThisIteration": false
+  },
+  "originalRdsReacquiredThisIteration": false,
+  "allOriginalSourceRowsVerified": 73364,
+  "sourceRowMismatches": 0,
+  "fullResearchValidation": {
+    "exitCode": 0,
+    "tests": 1332,
+    "pass": 1317,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 15,
+    "todo": 0,
+    "log": "full-research-validation-final-code.log",
+    "build": "passed",
+    "strictTypecheck": "passed",
+    "fullLint": "passed",
+    "configuredValidators": "passed"
+  },
+  "finalDocumentationStage": {
+    "exitCode": 0,
+    "productionBuild": "passed",
+    "currentManifest": "passed",
+    "newFocusedTests": 7,
+    "allSourceRowValidator": "passed",
+    "byteDeterministicBuilderReplay": "passed"
+  },
+  "nativeBrowser": {
+    "checks": [
+      {
+        "check": "default disclosure closed and GABA component unmounted",
+        "pass": true
+      },
+      {
+        "check": "keyboard Enter opens browser",
+        "pass": true
+      },
+      {
+        "check": "exact Pkd2l1 group filter",
+        "labels": 3,
+        "nuclei": 611,
+        "pass": true
+      },
+      {
+        "check": "all original assignments verified on production route",
+        "rows": 73364,
+        "pass": true
+      },
+      {
+        "check": "nucleus pagination clears selected detail",
+        "selectedDetails": 0,
+        "pass": true
+      },
+      {
+        "check": "Sacral nucleus search matches selected-label source summary",
+        "matches": 127,
+        "page": "1 / 7",
+        "pass": true
+      },
+      {
+        "check": "empty query clears old nucleus detail",
+        "matches": 0,
+        "selectedDetails": 0,
+        "pass": true
+      },
+      {
+        "check": "changing raw label discards verified roster and old nucleus export",
+        "pass": true
+      },
+      {
+        "check": "CHOL-GABA-Crnde exact source spelling and source counts",
+        "labels": 8,
+        "nuclei": 1020,
+        "pass": true
+      },
+      {
+        "check": "literal Pkd2l1 search retains distinct Mix1 source label",
+        "labels": 4,
+        "nuclei": 805,
+        "pass": true
+      },
+      {
+        "check": "raw-label ordering and second label page",
+        "selected": "GABA_Colq_Trhr",
+        "pass": true
+      },
+      {
+        "check": "closing disclosure unmounts browser; reopen resets filters and roster",
+        "pass": true
+      },
+      {
+        "check": "served same-length corrupted roster rejects and clears old nucleus detail/export",
+        "error": "compressed source bytes/checksum changed",
+        "selectedDetails": 0,
+        "pass": true
+      },
+      {
+        "check": "restored exact gzip retry by keyboard verifies all rows",
+        "rows": 73364,
+        "pass": true
+      },
+      {
+        "check": "mobile exact nucleus ID search and keyboard selection",
+        "sourceRow": 357,
+        "matches": 1,
+        "pass": true
+      },
+      {
+        "check": "final 390px layout has no horizontal overflow and all measured controls at least 44px high",
+        "viewport": 390,
+        "documentWidth": 390,
+        "minimumHeight": 44,
+        "pass": true
+      }
+    ],
+    "downloadLandingVerified": false,
+    "downloadEventObservation": "native click issued; download event timed out after 10000 ms; no downloaded file asserted",
+    "nativePendingCancellationVerified": false,
+    "screenReaderVerified": false,
+    "actual200PercentZoomVerified": false
+  },
+  "nativeExportSourceReplay": {
+    "exactSourceRow": 1704,
+    "rawNucleus": "ACATCATCAATGCGCT-1_1",
+    "nucleusReceiptMatchesBundledSourceRow": true,
+    "labelSummariesVerified": [
+      "native-label-cacng5-summary.json",
+      "native-label-nr2f2-summary.json",
+      "native-label-chol-gaba-summary.json"
+    ],
+    "runtimeCompressedAndDecodedChecksumsVerified": true,
+    "mismatches": [],
+    "additionalMobileExactSourceRow": 357,
+    "additionalMobileReceiptVerified": true,
+    "literalPkd2l1SearchSourceCounts": {
+      "labels": 4,
+      "nuclei": 805
+    },
+    "CervicalLabelSummarySearchSourceCounts": {
+      "labels": 186,
+      "nuclei": 70376
+    }
+  },
+  "nativeFault": {
+    "servedTemporaryPath": "/private/tmp/ohri-i22-local-verification/dist/client/data/cano_gomez_gaba_source_labels_v1/GSE318731_P56_gabaergic_metadata_assignments.jsonl.gzip",
+    "originalWorkspaceAssetChanged": false,
+    "originalBytes": 1945750,
+    "faultBytes": 1945750,
+    "originalSha256": "d483fdfeef5bc4bdffa02741f65cbab2a2b4fcd7225f984c0a08df4355dbc910",
+    "faultSha256": "8e533f62b491c924edc6bf699a114e76f888ac16e78da4f9fbeec1e80e788d60",
+    "changedByteOffset": 1000,
+    "change": "xor 1",
+    "sameLength": true,
+    "restoredSha256": "d483fdfeef5bc4bdffa02741f65cbab2a2b4fcd7225f984c0a08df4355dbc910",
+    "exactRestored": true
+  },
+  "screenshots": {
+    "images": [
+      {
+        "path": "mobile-final-labels.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "bytes": 50906,
+        "sha256": "f3c1ea71d38b3d1613c97f41c9fe0bb9dd9eb263bf0df03c937b403e733d7345",
+        "decodeVerified": true
+      },
+      {
+        "path": "desktop-labels.jpg",
+        "format": "JPEG",
+        "width": 1280,
+        "height": 900,
+        "bytes": 89950,
+        "sha256": "c510dcf48998ed6018cd94a2acfb6004fd4610c878a53e0c31b147fdcd3a2aca",
+        "decodeVerified": true
+      },
+      {
+        "path": "native-checksum-failure.jpg",
+        "format": "JPEG",
+        "width": 1280,
+        "height": 900,
+        "bytes": 96279,
+        "sha256": "9d0ee5d863032fd746d54d48f25697d95d3469da9c0a398a9da62ce66620da06",
+        "decodeVerified": true
+      },
+      {
+        "path": "mobile-nucleus.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 844,
+        "bytes": 50851,
+        "sha256": "f0920008bceabde497b69023caf8ca314705fe9d68915158ac4bd3997f4df481",
+        "decodeVerified": true
+      },
+      {
+        "path": "desktop-final-labels.jpg",
+        "format": "JPEG",
+        "width": 1280,
+        "height": 900,
+        "bytes": 107314,
+        "sha256": "49acb8e4e7bd077f3adc27bcaa002f24a208c76843dcd8de490bd9ed7f3eeda0",
+        "decodeVerified": true
+      }
+    ],
+    "visuallyInspected": [
+      "desktop-labels.jpg",
+      "mobile-nucleus.jpg",
+      "desktop-final-labels.jpg",
+      "mobile-final-labels.jpg"
+    ]
+  },
+  "preservation": {
+    "fixedScientificInputsVerified": 398,
+    "priorAuthoritativeInputsOutsideOwnedVerified": 1250,
+    "currentOriginalAndTemporaryInputsVerified": 1266,
+    "mismatches": [],
+    "existingOwnedFilesBackedUp": 7,
+    "changedOwnedFiles": [
+      "app/InterneuronTypeAtlas.tsx",
+      "tools/build_research_iteration_manifest_2_91.mjs",
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "data/research-iteration-manifest-2.91.json"
+    ],
+    "newAuthoritativeFiles": [
+      "app/CanoGabaSourceLabelBrowser.tsx",
+      "app/cano-gaba-source-labels.css",
+      "app/cano-gaba-source-labels.d.ts",
+      "app/cano-gaba-source-labels.js",
+      "data/cano-gomez-gaba-source-labels-0.1.json",
+      "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_33_GABA_SOURCE_LABELS.md",
+      "public/data/cano_gomez_gaba_source_labels_v1/GSE318731_P56_gabaergic_metadata_assignments.jsonl.gzip",
+      "scripts/validate-cano-gaba-source-labels-0.1.mjs",
+      "tests/cano-gaba-source-labels.test.mjs",
+      "tools/build_cano_gomez_gaba_source_labels.py"
+    ],
+    "ownedBackupSha256": "b2651ffb0fc9182ec9472c8b6d87ad60c9e745592bbe5faf999133a29616ae31",
+    "frozenManifestChecks": [
+      {
+        "path": "data/research-iteration-manifest-2.34.json",
+        "matches": true,
+        "bytes": 125197,
+        "sha256": "76ead4e29455c8e9250f294afa4e78b6a72bb76709115d15954564545bb43d1e"
+      },
+      {
+        "path": "data/research-iteration-manifest-2.90.json",
+        "matches": true,
+        "bytes": 7954,
+        "sha256": "8bca8205ed5671241e083b1f36bec1d566fc591a93b44cc75ae1d1d8c13c2480"
+      }
+    ],
+    "canonicalUpgrades": 243,
+    "exactCompleted": 79,
+    "originalDependenciesPreserved": true,
+    "gitPushOrPublication": false
+  },
+  "scientificClaimsAdded": {
+    "confirmedInterneuronProfiles": 0,
+    "donors": 0,
+    "sections": 0,
+    "markerMeasurements": 0,
+    "geometry": 0,
+    "internalObjects": 0,
+    "sameCell": 0,
+    "crossAssayCell": 0,
+    "atlasRegistration": 0
+  },
+  "remainingFullGoalConditions": [
+    "F01-F20 and all 243 task requirements remain incomplete",
+    "M2 exact Run8 section/donor/outline frame/curated labels/file rights remain unresolved",
+    "M4 exact mouse spinal interneuron raw volume, segmentation parent, frame and source slice chain remain missing"
+  ],
+  "evidenceFiles": [
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/before-authoritative-inputs.json",
+      "bytes": 246800,
+      "sha256": "69da81342b2933f438cb39abb3c558807196ba6c1f1717a4e9a48986a88b8601"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/before-baseline-check.json",
+      "bytes": 1305,
+      "sha256": "e72f51663a1f8858b82c3ef61a1f901d51ec006f38350a944838b4a3119deec8"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/before-owned-inputs.json",
+      "bytes": 1161,
+      "sha256": "768c803d40226b2662de99e6b2a38c520809e22f81b40635520c4801b9154768"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/desktop-final-labels.jpg",
+      "bytes": 107314,
+      "sha256": "49acb8e4e7bd077f3adc27bcaa002f24a208c76843dcd8de490bd9ed7f3eeda0"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/desktop-labels.jpg",
+      "bytes": 89950,
+      "sha256": "c510dcf48998ed6018cd94a2acfb6004fd4610c878a53e0c31b147fdcd3a2aca"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-all-source-row-validation.log",
+      "bytes": 136,
+      "sha256": "9fc3317cc3d6013c77221ea80907b5efaa799a6e71b900a7dad3c60c9340913e"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-builder-replay.log",
+      "bytes": 127,
+      "sha256": "87651544cdf2a0a63f73961033f5d823fe8f747bf808c03d7b51c9e1dc23915c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-document-build.log",
+      "bytes": 2567,
+      "sha256": "89f44ab2b76ed31bd6507d867ae11d7a92c4931ff982cf361474ff8bb01c05e4"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-document-native-dom.txt",
+      "bytes": 201631,
+      "sha256": "4f6632d615787fac7186a45f77647469abd922b923b4873eb7be2ea25fbe9860"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-manifest-validation.log",
+      "bytes": 1312,
+      "sha256": "64c0cb6de95653b609fea8ccf7b3b167b5dc1de73a4dbce7ab22eb35d6586ce5"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-preservation-check.json",
+      "bytes": 1703,
+      "sha256": "26d4e8fc85372631fc58278a703903e6e3ce5ceadc8ee498eaa82eb7ded4c4bd"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/final-targeted-tests.log",
+      "bytes": 778,
+      "sha256": "005ebc7a1cdf1f543dc5bc22521e722825c27b51ddcd295058a91553f204dccd"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/full-research-validation-after-transport-fix.log",
+      "bytes": 207348,
+      "sha256": "abf499bfc125f4598bebe459a77a2852a2042eebe4a997dfed1add541938a94b"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/full-research-validation-final-code.log",
+      "bytes": 206032,
+      "sha256": "3aac83e1abe143580f6e9dd0e6e308716414ee6a7e92153062def2679e49b8a1"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/full-research-validation.log",
+      "bytes": 207205,
+      "sha256": "4af4bee1114f4ad4747d9abdab19a91c4af43eef70331d9e83b52121a792f7ee"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/mobile-final-labels.jpg",
+      "bytes": 50906,
+      "sha256": "f3c1ea71d38b3d1613c97f41c9fe0bb9dd9eb263bf0df03c937b403e733d7345"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/mobile-nucleus.jpg",
+      "bytes": 50851,
+      "sha256": "f0920008bceabde497b69023caf8ca314705fe9d68915158ac4bd3997f4df481"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-before-checksum-fault-dom.txt",
+      "bytes": 213671,
+      "sha256": "4a9231318da758749b44ca5a55bdb4f5c11e22de0548a91f9b9dd21f10f91d29"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-checks.json",
+      "bytes": 2506,
+      "sha256": "937e8e7b5b238eef8e2ed76e60b93698dd7dc8535b2bc93492e633a84647ee1f"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-checksum-failure-dom.txt",
+      "bytes": 204674,
+      "sha256": "72d2cf8fc49e4b932eebdb04988ce48e308a17131d44148d5913eef373a20dc9"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-checksum-failure.jpg",
+      "bytes": 96279,
+      "sha256": "9d0ee5d863032fd746d54d48f25697d95d3469da9c0a398a9da62ce66620da06"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-export-source-replay.json",
+      "bytes": 603,
+      "sha256": "b85df9645c308af3e46c8182e6c5be207ba9263aa4f5728bd86950f33536a3e3"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-final-mobile-dom.txt",
+      "bytes": 202602,
+      "sha256": "1dae450d066965ab03b85e730e9687f49bd5b5db1b6074b726926c5620850883"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-first-transport-404-dom.txt",
+      "bytes": 205214,
+      "sha256": "2be1122e2baa834e2a0a370c3a6326396e34c7a898d5da613c05b2986944c1aa"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-label-cacng5-summary.json",
+      "bytes": 3475,
+      "sha256": "00bc22e2867d1bd8cc161f25d992ba14934b78b43119ad4fa25f1e1876ec9d7b"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-label-chol-gaba-summary.json",
+      "bytes": 3473,
+      "sha256": "e7e7505f51b1180d97d91a223a7ea9e0f62cc70aff1310709fd0621e10e46415"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-label-nr2f2-summary.json",
+      "bytes": 3472,
+      "sha256": "e559658eec65556f23c7903aeb659dd78b119b9790ec2807e24a324d17c2536c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-mobile-target-measurements.json",
+      "bytes": 3100,
+      "sha256": "29b40070d71a8d5b888f8283424f34879bb5ddb654ae154d82f18491cf55f17f"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-nucleus-cartpt-row1704.json",
+      "bytes": 4456,
+      "sha256": "4793788a28966d341e4cecd18e6fa60cf100c492fb407e19eff957bc19adb296"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-nucleus-nr2f2-row357-mobile.json",
+      "bytes": 4432,
+      "sha256": "154cf5a42eeb1469d9ef0c7a3a76146f3e71ea8156a7bff0b12dcead36519bae"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-open-dom.txt",
+      "bytes": 201243,
+      "sha256": "870825f4a1aa9c21c9ad4212c03f6012e895be60836d1ff1fd87ca46fff44c84"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-region-search-dom.txt",
+      "bytes": 205619,
+      "sha256": "6ea830cbf8bae92c075564351885ed0789d2189a5e6d38a1c7445e6e9163e2c4"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-served-checksum-fault.json",
+      "bytes": 631,
+      "sha256": "c6c60496fe78d9ee9ee6eee414374535cf4b5472473d72e7bb1105369baf2a78"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/native-verified-roster-dom.txt",
+      "bytes": 205210,
+      "sha256": "6750c1d5a690dec5b56ebc7b46376a264a1241b6a37969f8399334109f1e7321"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/owned-before.zip",
+      "bytes": 406127,
+      "sha256": "b2651ffb0fc9182ec9472c8b6d87ad60c9e745592bbe5faf999133a29616ae31"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/public-route-intake.zip",
+      "bytes": 67841,
+      "sha256": "86e5c7448b9f14024863e85fcf304380f70ed5eabaa442122cd937b450f1f153"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/public-route-observations.json",
+      "bytes": 1089,
+      "sha256": "8a77f51f3d8d5ef80b48b987423d40a948d490451f66f3160056a5ae90010c84"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/screenshot-verification.json",
+      "bytes": 1434,
+      "sha256": "f4a049acc0605319c3da87e364b87407dfcb1fe42270a96bac36bb5658c36da4"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-33/temporary-input-replay.json",
+      "bytes": 371,
+      "sha256": "9785c45c6fb4bd3b0dc3fe855cd0b4f5782f2fba2260697fa2363001ab5fa77f"
+    }
+  ]
+}

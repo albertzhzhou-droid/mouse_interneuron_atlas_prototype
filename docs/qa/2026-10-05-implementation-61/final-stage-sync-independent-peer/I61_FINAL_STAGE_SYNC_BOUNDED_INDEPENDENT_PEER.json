@@ -1,0 +1,51 @@
+{
+  "status": "PASS_BOUNDED_PREPARED_I61_FINAL_STAGE_SYNC_CODE_PEER_NOT_EXECUTED",
+  "generatedAtUTC": "2026-10-05T09:31:52.424340Z",
+  "reviewedHelper": {
+    "path": "/private/tmp/ohri-i61-sync-final-stage.py",
+    "bytes": 4177,
+    "sha256": "a675b93e18aaa66654ebf68db9dd4eccd32d4ce1ea1f7ad911d0005341db8a17"
+  },
+  "currentManifestDescriptorOnly": {
+    "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/research-iteration-manifest-2.91.json",
+    "bytes": 533020,
+    "sha256": "b3e441bf7e3a507936f3dbfbdbfdf4de674afe9a2c34c916edd0f95841d1c3ef",
+    "canonicalUnique": 2601,
+    "derivedReplayEntries": 2604,
+    "derivedPhysicalUnique": 2603,
+    "duplicateRuntimeEntries": 2,
+    "finalDocManifestEpochStillParentOwned": true
+  },
+  "independentOfflineTests": {
+    "count": 18,
+    "passed": 18,
+    "failed": 0,
+    "log": {
+      "path": "/private/tmp/ohri-i61-final-stage-sync-bounded-peer-20261005/epoch-guards.log",
+      "bytes": 517,
+      "sha256": "c991609bfeb67b4f15f2b7c4486042aabbea92aff826b26160d53c9201c42e61"
+    },
+    "test": {
+      "path": "/private/tmp/ohri-i61-final-stage-sync-bounded-peer-20261005/test_stage_epoch_guards.py",
+      "bytes": 6876,
+      "sha256": "86879c36644f6727376dbd8a4a13afca2eb2f89e0fb68ebaf38d7b8b92a441dd"
+    },
+    "executionScope": "AST extracted strict_read_once/read only, tiny own-temp root/stage; complete sync main never executed"
+  },
+  "checkedInvariants": [
+    "4K positioned read returns original accepted inode/size/mtime; caller root and final stage poststat match that accepted epoch.",
+    "Root first epoch is written once; duplicate runtime never refreshes it; root endstats require that original epoch.",
+    "Untracked stage compare before the first planned write creates no first-stage authority; only first final checked copy read(track_stage=True) records the epoch.",
+    "Every later stage reread, including duplicate runtime, compares retained first-stage epoch before reading; seen changes fail before any planned rewrite.",
+    "Only an unseen source exact Source epoch changed: assertion can refresh metadata up to three attempts; EOF/IO/pin/similar-prefix/postaccepted-path errors fail without retry.",
+    "Manifest SHA/byte gate and actual stage_bytes == root_bytes gate retained; leaf symlink and stage containment guards retained.",
+    "Outputs use final-* names and leave the initial parity receipt intact.",
+    "Current descriptor algebra gives2601 unique canonical /2604 ordered replay /2603 physical paths; no scientific count or private graph enlargement."
+  ],
+  "boundary": [
+    "No full source hash or actual stage/root/proof replay performed.",
+    "No root/stage/browser/server/network/private authority execution or writes.",
+    "Future complete sync writes and final doc manifest epoch belong exclusively to parent."
+  ],
+  "findings": []
+}

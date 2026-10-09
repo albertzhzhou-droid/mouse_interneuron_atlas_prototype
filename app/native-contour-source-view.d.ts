@@ -1,0 +1,17 @@
+import type { NativeContourPayload, DerivedSurfacePayload } from "./NativeContourRecordViewer";
+import type { NativeContourVerification } from "./native-contour-verification.js";
+type Vector3 = [number,number,number];
+export type NativeContourView = { status:"rendered"; runtimeBinding:{instanceId:string;revision:number};
+ camera:{kind:"PerspectiveCamera";position:Vector3;target:Vector3;up:Vector3;quaternion:[number,number,number,number];fov:number;zoom:number;aspect:number;near:number;far:number};
+ viewport:{cssWidth:number;cssHeight:number;drawingBufferWidth:number;drawingBufferHeight:number;pixelRatio:number};
+ renderer:{engine:"THREE";revision:string;type:"WebGLRenderer";outputColorSpace:string;toneMapping:number;alpha:boolean;antialias:boolean};
+ clipping:{globalPlanes:[];localClippingEnabled:false};layers:{showPrimary:boolean;showSecondary:boolean;showDerivedSurface:boolean;primaryVisible:boolean;secondaryVisible:boolean;derivedSurfaceVisible:boolean;visibleContourIds:string[];axesVisible:true;scaleGuideVisible:true};
+ inspection:{selectedContourId:string|null;isolateContour:boolean};displayTransform:unknown;sceneBounds:{min:number[];max:number[];center:number[];radius:number} };
+export type NativeContourSourceViewDocument = { documentType:"native_contour_source_view";schemaVersion:"0.1.0";rendererBuild:typeof NATIVE_CONTOUR_VIEW_BUILD;source:unknown;verification:NativeContourVerification;view:NativeContourView };
+export const NATIVE_CONTOUR_VIEW_BUILD: { applicationVersion:string;scope:string;inputs:readonly {path:string;bytes:number;sha256:string}[] };
+export const NATIVE_CONTOUR_VIEW_BUILD_READY: boolean;
+export function nativeContourRenderedBounds(contours:NativeContourPayload,shell?:DerivedSurfacePayload|null): NativeContourView["sceneBounds"];
+export function captureNativeContourSourceView(neuronId:number,contours:NativeContourPayload,shell:DerivedSurfacePayload|null,view:NativeContourView,rendererRevision:string): NativeContourSourceViewDocument;
+export function preflightNativeContourSourceView(document:unknown,neuronId:number): NativeContourSourceViewDocument;
+export function validateNativeContourSourceViewReplay(document:unknown,neuronId:number,contours:NativeContourPayload,shell:DerivedSurfacePayload|null,rendererRevision:string): NativeContourSourceViewDocument;
+export function assertNativeContourSourceViewApplied(saved:NativeContourSourceViewDocument,current:NativeContourSourceViewDocument): void;

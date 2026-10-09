@@ -1,0 +1,14 @@
+import type { BilXeniumCoordinateSourceAudit } from "./bil-xenium-coordinate-source-audit.js";
+import type { BilXeniumPolygonSourceAudit } from "./bil-xenium-polygon-source-audit.js";
+import type { BilXeniumImageMetadataAudit } from "./bil-xenium-image-metadata-audit.js";
+import type { BilPublishedWorkflowAudit } from "./bil-xenium-published-workflow-audit.js";
+import { buildBilPublishedWorkflowContext } from "./bil-xenium-published-workflow-audit.js";
+import audit from "../data/bil-xenium-geometry-schema-audit-0.1.json";
+import metadata from "../data/bil-xenium-source-metadata-0.1.json";
+import { buildBilXeniumRunReceipt } from "./bil-xenium-source-metadata.js";
+import type { SourceIdentityHierarchy } from "./source-object-identity.js";
+export type BilXeniumGeometrySchemaAudit = typeof audit;
+export type BilXeniumMetadata = typeof metadata;
+export function validateBilXeniumGeometrySchemaAudit(value: BilXeniumGeometrySchemaAudit, sourceMetadata: BilXeniumMetadata): { sourceObjectKey: string; rawCellRows: number; sourceBytes: number; cellBoundaryVertexRows: number; nucleusBoundaryVertexRows: number; geometryObjects: number };
+export function buildBilXeniumCurrentRunReceipt(value: BilXeniumGeometrySchemaAudit, sourceMetadata: BilXeniumMetadata, sourceObjectKey: string, coordinateAudit?: BilXeniumCoordinateSourceAudit | null, workflowAudit?: BilPublishedWorkflowAudit | null, polygonAudit?: BilXeniumPolygonSourceAudit | null, imageMetadataAudit?: BilXeniumImageMetadataAudit | null): (NonNullable<ReturnType<typeof buildBilXeniumRunReceipt>> & { sourceTableSchemaAudit: BilXeniumGeometrySchemaAudit | null; sourceCoordinateAudit: BilXeniumCoordinateSourceAudit | null; sourcePolygonAudit: BilXeniumPolygonSourceAudit | null; sourceImageMetadataAudit: BilXeniumImageMetadataAudit | null; publishedWorkflowInspection: ReturnType<typeof buildBilPublishedWorkflowContext> | null; metadataSnapshotCheckedDate: string }) | null;
+export function buildBilXeniumAuditedCellHierarchy(value: BilXeniumGeometrySchemaAudit, sourceMetadata: BilXeniumMetadata, cellId: string): SourceIdentityHierarchy | null;

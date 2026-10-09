@@ -297,7 +297,8 @@ async function validateCurrentInputs(sources, envelope) {
   const molecularProfiles = (explorer.records ?? []).filter((record) => record.focusKind === "molecular_profile");
   const namespaces = new Set(molecularProfiles.map((record) => record.namespace));
   const canoExplorerProfiles = molecularProfiles.filter((record) => record.namespace === "cano-gomez-2026:GSE318731");
-  check(explorerManifest.assetSetId === "ohri:research-explorer-index:1.13.0" && explorerManifest.sourceFiles?.length === 21, "Explorer 1.13 asset/source-file denominator drifted");
+  // The reused current-input validator follows the live1.14/22 source identity. Frozen2.41 receipts are validated separately and are not regenerated here.
+  check(explorerManifest.assetSetId === "ohri:research-explorer-index:1.14.0" && explorerManifest.sourceFiles?.length === 22, "Explorer 1.14 asset/source-file denominator drifted");
   check(explorer.records?.length === 641 && explorer.counts?.total === 641, "Explorer record denominator drifted");
   check(molecularProfiles.length === 387 && namespaces.size === 10 && canoExplorerProfiles.length === 11, "Explorer molecular profile or namespace denominator drifted");
   check(explorerManifest.sourceFiles.some((source) => source.path === CANO_REGISTRY_PATH), "Explorer manifest does not receipt the Cano-Gomez registry");

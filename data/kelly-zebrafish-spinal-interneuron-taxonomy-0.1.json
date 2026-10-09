@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "kelly-zebrafish-spinal-interneuron-taxonomy-0.1",
+  "releaseId": "ohri-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.0",
+  "source": {
+    "sourceId": "SRC-KELLY-ZEBRAFISH-2023",
+    "datasetId": "GSE232801",
+    "species": "Danio rerio",
+    "taxonId": "NCBITaxon:7955",
+    "lifeStage": "4 dpf larva",
+    "region": "spinal cord",
+    "article": {
+      "citation": "Kelly JJ, Wen H, Brehm P. Single-cell RNAseq analysis of spinal locomotor circuitry in larval zebrafish. eLife 12:RP89338 (2023).",
+      "doi": "10.7554/eLife.89338",
+      "url": "https://elifesciences.org/articles/89338",
+      "tableUrl": "https://elifesciences.org/articles/89338#table1",
+      "reviewedStatus": "peer_reviewed_article",
+      "licenseNotice": "CC BY-ND 4.0"
+    },
+    "geo": {
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE232801",
+      "spinalNeuronSamples": [
+        { "accession": "GSM7383490", "label": "Spinal cord, saig, rep 1" },
+        { "accession": "GSM7383491", "label": "Spinal cord, saig, rep 2" }
+      ],
+      "integratedNeuronalObject": {
+        "fileName": "GSE232801_Neurons.RDS.gz",
+        "reportedDisplaySize": "928.5 MB",
+        "exactBytes": null,
+        "sha256": null,
+        "downloaded": false,
+        "redistributionStatus": "not_assessed_link_only"
+      }
+    }
+  },
+  "samplingAndAssignment": {
+    "reportedSequencingReplicateCount": 2,
+    "reportedIntegratedPostQcSpinalCellCount": 11762,
+    "reportedAllSpinalNeuronClusterCount": 33,
+    "reportedConfidentlyAssignedClusterCount": 22,
+    "reportedCombinationCodeTableRowCount": 13,
+    "includedInterneuronLabelCount": 10,
+    "animalDenominator": {
+      "value": null,
+      "status": "source_report_conflict",
+      "observations": [
+        "The GEO Series summary describes 150 tg(SAIG213a;EGFP) zebrafish overall for the spinal scRNA-seq cohort.",
+        "The article methods describe approximately 150 spinal cords for each of two duplicate experiments."
+      ],
+      "resolution": "The animal/cord denominator is not reconciled; neither report is selected as authoritative here."
+    },
+    "cellRoster": {
+      "status": "article_label_summary_only",
+      "exactBarcodeToInterneuronLabelMapVerified": false,
+      "reason": "This compact adapter transcribes article-reported type labels and marker combinations; the GEO RDS has not been parsed for an exact barcode-to-label roster."
+    }
+  },
+  "populations": [
+    {
+      "id": "kelly-2023:DoLA",
+      "sourceLabel": "DoLA",
+      "expandedLabel": "Dorsal longitudinal ascending",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "GABA",
+      "filterClass": "inhibitory",
+      "combinationCodeMarkers": ["pnoca"],
+      "evidenceLocator": "Table 1; Figure 4B",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:CoLo",
+      "sourceLabel": "CoLo",
+      "expandedLabel": "Commissural local",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glycine",
+      "filterClass": "inhibitory",
+      "combinationCodeMarkers": ["chga"],
+      "evidenceLocator": "Table 1; Figure 4A",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:v1",
+      "sourceLabel": "v1",
+      "expandedLabel": "ventral V1",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glycine/GABA",
+      "filterClass": "inhibitory",
+      "combinationCodeMarkers": ["sp9", "foxd3", "en1b"],
+      "evidenceLocator": "Table 1",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:v2b",
+      "sourceLabel": "v2b",
+      "expandedLabel": "ventral V2b",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glycine",
+      "filterClass": "inhibitory",
+      "combinationCodeMarkers": ["tal1", "tal2"],
+      "evidenceLocator": "Table 1",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:v2s",
+      "sourceLabel": "v2s",
+      "expandedLabel": "ventral V2 slow",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glycine",
+      "filterClass": "inhibitory",
+      "combinationCodeMarkers": ["nkx1.2lb", "irx1a"],
+      "evidenceLocator": "Table 1",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:dl1",
+      "sourceLabel": "dl1",
+      "expandedLabel": "dorsal longitudinal 1",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glutamate",
+      "filterClass": "excitatory",
+      "combinationCodeMarkers": ["lhx9", "barhl1b", "barhl2"],
+      "evidenceLocator": "Table 1",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:dl2",
+      "sourceLabel": "dl2",
+      "expandedLabel": "dorsal longitudinal 2",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glutamate",
+      "filterClass": "excitatory",
+      "combinationCodeMarkers": ["foxd3"],
+      "evidenceLocator": "Table 1",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:v2a",
+      "sourceLabel": "v2a",
+      "expandedLabel": "ventral V2a",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glutamate",
+      "filterClass": "excitatory",
+      "combinationCodeMarkers": ["vsx2", "shox2"],
+      "evidenceLocator": "Table 1; Figure 3B-C",
+      "subtypeEvidence": [
+        {
+          "label": "Type I candidate",
+          "sourceStatement": "Two v2a clusters with stronger vsx2 and shox2 expression are interpreted by the authors as likely Type I.",
+          "authority": "article_author_interpretation"
+        },
+        {
+          "label": "Type II candidate",
+          "sourceStatement": "A third cluster with weaker vsx2, no detected shox2, and gjd2b is supported by the authors as Type II; the study reports in situ hybridization validation.",
+          "authority": "article_author_interpretation_with_in_situ_validation"
+        }
+      ]
+    },
+    {
+      "id": "kelly-2023:v0v",
+      "sourceLabel": "v0v",
+      "expandedLabel": "ventral V0 ventral",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glutamate",
+      "filterClass": "excitatory",
+      "combinationCodeMarkers": ["evx1", "evx2"],
+      "evidenceLocator": "Table 1",
+      "subtypeEvidence": []
+    },
+    {
+      "id": "kelly-2023:v0c",
+      "sourceLabel": "v0c",
+      "expandedLabel": "ventral V0 cholinergic",
+      "sourceRole": "interneuron",
+      "transmitterLabel": "glutamate/acetylcholine",
+      "filterClass": "mixed",
+      "combinationCodeMarkers": ["evx1", "evx2"],
+      "evidenceLocator": "Table 1; Figure 4C",
+      "additionalTransmitterEvidence": "Figure 4C reports co-expression of glutamate and acetylcholine pathway genes and absence of motoneuron markers; this is a source-local phenotype, not an inferred cross-species marker equivalence.",
+      "subtypeEvidence": []
+    }
+  ],
+  "excludedSourceLabels": [
+    { "sourceLabel": "KA", "sourceRole": "sensory / CSF-contacting neuron", "reason": "Not admitted to the interneuron population view." },
+    { "sourceLabel": "RB", "sourceRole": "sensory neuron", "reason": "Not admitted to the interneuron population view." },
+    { "sourceLabel": "Mns", "sourceRole": "motoneuron", "reason": "Motor context is excluded from the interneuron population view." }
+  ],
+  "unassignedOrAmbiguousEvidence": {
+    "mixedNeuronGliaClusters": [6, 11, 17],
+    "status": "excluded_from_subsequent_identity_assignment",
+    "reason": "The article says these clusters could be true types or doublets and could not be assigned confidently.",
+    "unidentifiedMentionedTypes": ["v3", "v0d"],
+    "reasonForUnidentifiedMentionedTypes": "The article notes these known classes were not confidently identified in this 4 dpf dataset."
+  },
+  "modelingAuthority": {
+    "sourceLocalTranscriptomicTypeLabels": 10,
+    "cellGeometry": 0,
+    "internalStructures": 0,
+    "sameCellMorphologyLinks": 0,
+    "mouseTypeEquivalences": 0,
+    "atlasRegistrations": 0,
+    "animalPrevalenceEstimate": false,
+    "note": "This is a comparative larval-zebrafish molecular-evidence lane only; it adds no mouse identity, morphology, spatial placement, internal detail or prevalence authority."
+  }
+}

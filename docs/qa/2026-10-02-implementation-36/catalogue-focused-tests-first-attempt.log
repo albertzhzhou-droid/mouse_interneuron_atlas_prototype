@@ -1,0 +1,39 @@
+✖ all 212 pages retain exact official archive/member lineage, published strings and PNG receipts (29.835875ms)
+✔ publication entry identity does not manufacture a physical cell, parent chain or mouse linkage (0.641917ms)
+✔ caller buffers and exported byte copies cannot alter private current page proof (2.304292ms)
+✔ metadata, cloned proofs, other pages and corrupted PNG bytes cannot authorize display/export (0.777833ms)
+✔ the loader fetches only the selected PNG with no-store and verifies its bytes (31.067792ms)
+✔ HTTP failure and cancellation before or during loading clear page authority (0.598084ms)
+✔ fresh byte proof restores an exact source page, independent of JSON object key order (1.555459ms)
+✔ restoration refuses changed reported values, source version, rights, dimensions and scientific claims (3.136208ms)
+✔ the canonical source document and all source strings remain immutable (13.677875ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 172.097291
+
+✖ failing tests:
+
+test at tests/svara-supplement-catalogues.test.mjs:11:1
+✖ all 212 pages retain exact official archive/member lineage, published strings and PNG receipts (29.835875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'MN Diameter [µm]'
+  - 'CiD 001 (standard)'
+  
+      at validateSvaraSupplementCatalogues (file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/scripts/validate-svara-supplement-catalogues-0.1.mjs:59:14)
+      at async TestContext.<anonymous> (file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/svara-supplement-catalogues.test.mjs:12:17)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'MN Diameter [µm]',
+    expected: 'CiD 001 (standard)',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

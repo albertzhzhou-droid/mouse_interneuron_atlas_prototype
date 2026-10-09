@@ -1,0 +1,960 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "bil-xenium-geometry-schema-audit-0.1",
+  "checkedDate": "2026-09-30",
+  "scope": "one_run_local_source_schema_inspection_not_section_pilot",
+  "sourceObjectKey": "BIL:ace-pie-cot",
+  "collectionDoi": "10.35077/g.1196",
+  "directoryFolder": "Run8_Slide2_Mus_M7_F7",
+  "manifestIdentity": {
+    "run_name": "Spinal_Run8",
+    "cassette_name": "CombC_M1F3_800_250723",
+    "slide_id": "0068800",
+    "region_name": "Reg1_CombC_M1F3_800",
+    "experiment_uuid": "a26c0699-52f5-4558-b559-ef5279d07de8",
+    "analysis_uuid": "97bd35fe-159d-472d-872f-a7949a4d6209",
+    "roi_uuid": "075490e7-4e87-42ee-a488-bdc975443129",
+    "cassette_uuid": "f0376688-4fc7-4d2e-9215-582f6e080f82"
+  },
+  "sourceFiles": [
+    {
+      "path": "data/source-candidates/bil-xenium-geometry-20260930/Run8_Slide2_Mus_M7_F7/cells.parquet",
+      "bytes": 3763859,
+      "sha256": "14e4d07383d1ec2c33d124c48a3c71fb5f502721e875bfc3379b0ecfc8623dec",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7/cells.parquet"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-geometry-20260930/Run8_Slide2_Mus_M7_F7/cell_boundaries.parquet",
+      "bytes": 17485669,
+      "sha256": "3a36dac7a0e5bc11ca6acdbe5550a22a1df2f0c3bfdb6cf68c62693dd8052425",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7/cell_boundaries.parquet"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-geometry-20260930/Run8_Slide2_Mus_M7_F7/nucleus_boundaries.parquet",
+      "bytes": 16032941,
+      "sha256": "9a746dd2846835614e0bc207b4869691517e6cdf20105e7cf5fd9ad9f6d4ad44",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7/nucleus_boundaries.parquet"
+    }
+  ],
+  "dependencyReceipts": [
+    {
+      "path": "data/source-candidates/bil-xenium-geometry-20260930/receipt.json",
+      "bytes": 3071,
+      "sha256": "4560a0640d990226efed7ad5b85d8296d9a075fa4045bb73d6b30625bafc9361"
+    },
+    {
+      "path": "data/bil-xenium-source-metadata-0.1.json",
+      "bytes": 116531,
+      "sha256": "9b932a755af6b90c9d20b44a6a13a4b2044f942753f1b0c12e0f3e3d322bf404"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-20260929/Run8_Slide2_Mus_M7_F7/experiment.xenium",
+      "bytes": 2472,
+      "sha256": "a8a25dfe81509a98e22e237b4a2703f8966ac7331f9eefa067e4bf34d94082e5",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7/experiment.xenium"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-20260929/Run8_Slide2_Mus_M7_F7/metrics_summary.csv",
+      "bytes": 2080,
+      "sha256": "c8f5ae4879bc38aa18fbae6598099f57237a7809ffd6fdd31eaa5dc196f5437f",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7/metrics_summary.csv"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-20260929/metadata/ace-pie-cot.json",
+      "bytes": 5233,
+      "sha256": "fed4c3ca4299a879cc6a87514a11eb6cb4996667f30d3429baa4015d512cb2da",
+      "url": "https://api.brainimagelibrary.org/retrieve?bildid=ace-pie-cot"
+    }
+  ],
+  "totalSourceBytes": 37282469,
+  "reader": {
+    "package": "pyarrow",
+    "version": "21.0.0",
+    "projectRuntimeDependency": false
+  },
+  "tables": {
+    "cells": {
+      "columns": [
+        {
+          "name": "cell_id",
+          "type": "large_string",
+          "nullable": true
+        },
+        {
+          "name": "x_centroid",
+          "type": "double",
+          "nullable": true
+        },
+        {
+          "name": "y_centroid",
+          "type": "double",
+          "nullable": true
+        },
+        {
+          "name": "transcript_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "control_probe_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "genomic_control_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "control_codeword_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "unassigned_codeword_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "deprecated_codeword_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "total_counts",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "cell_area",
+          "type": "double",
+          "nullable": true
+        },
+        {
+          "name": "nucleus_area",
+          "type": "double",
+          "nullable": true
+        },
+        {
+          "name": "nucleus_count",
+          "type": "int64",
+          "nullable": true
+        },
+        {
+          "name": "segmentation_method",
+          "type": "large_string",
+          "nullable": true
+        }
+      ],
+      "rowCount": 182698,
+      "rowGroupCount": 1,
+      "createdBy": "Polars",
+      "fileDeclaredPhysicalUnits": null,
+      "physicalUnitMetadataPresent": false,
+      "uniqueCellIdCount": 182698,
+      "duplicateCellIdCount": 0,
+      "duplicateCellRowCount": 0,
+      "nullCountByColumn": {
+        "cell_id": 0,
+        "x_centroid": 0,
+        "y_centroid": 0,
+        "transcript_counts": 0,
+        "control_probe_counts": 0,
+        "genomic_control_counts": 0,
+        "control_codeword_counts": 0,
+        "unassigned_codeword_counts": 0,
+        "deprecated_codeword_counts": 0,
+        "total_counts": 0,
+        "cell_area": 0,
+        "nucleus_area": 0,
+        "nucleus_count": 0,
+        "segmentation_method": 0
+      },
+      "nonfiniteCountByColumn": {
+        "cell_id": 0,
+        "x_centroid": 0,
+        "y_centroid": 0,
+        "transcript_counts": 0,
+        "control_probe_counts": 0,
+        "genomic_control_counts": 0,
+        "control_codeword_counts": 0,
+        "unassigned_codeword_counts": 0,
+        "deprecated_codeword_counts": 0,
+        "total_counts": 0,
+        "cell_area": 0,
+        "nucleus_area": 2262,
+        "nucleus_count": 0,
+        "segmentation_method": 0
+      },
+      "nucleusCountDistribution": {
+        "0": 2262,
+        "1": 180374,
+        "2": 58,
+        "3": 4
+      },
+      "zeroTranscriptCellCount": 208,
+      "segmentationMethodCounts": {
+        "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)": 3008,
+        "Segmented by interior stain (18S)": 169374,
+        "Segmented by nucleus expansion of 5.0µm": 10316
+      },
+      "sampleRows": [
+        {
+          "cellId": "aaaalblj-1",
+          "rowIndexZeroBased": 0,
+          "fields": {
+            "cell_id": {
+              "value": "aaaalblj-1",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "cell_id"
+              }
+            },
+            "x_centroid": {
+              "value": 195.26731872558594,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "x_centroid"
+              }
+            },
+            "y_centroid": {
+              "value": 1790.8363037109375,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "y_centroid"
+              }
+            },
+            "transcript_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "transcript_counts"
+              }
+            },
+            "control_probe_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "control_probe_counts"
+              }
+            },
+            "genomic_control_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "genomic_control_counts"
+              }
+            },
+            "control_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "control_codeword_counts"
+              }
+            },
+            "unassigned_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "unassigned_codeword_counts"
+              }
+            },
+            "deprecated_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "deprecated_codeword_counts"
+              }
+            },
+            "total_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "total_counts"
+              }
+            },
+            "cell_area": {
+              "value": 115.73547295108438,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "cell_area"
+              }
+            },
+            "nucleus_area": {
+              "value": null,
+              "state": "source_nonfinite",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "nucleus_area"
+              }
+            },
+            "nucleus_count": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "nucleus_count"
+              }
+            },
+            "segmentation_method": {
+              "value": "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 0,
+                "column": "segmentation_method"
+              }
+            }
+          }
+        },
+        {
+          "cellId": "aaaalnbo-1",
+          "rowIndexZeroBased": 1,
+          "fields": {
+            "cell_id": {
+              "value": "aaaalnbo-1",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "cell_id"
+              }
+            },
+            "x_centroid": {
+              "value": 1722.3082275390625,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "x_centroid"
+              }
+            },
+            "y_centroid": {
+              "value": 1788.02880859375,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "y_centroid"
+              }
+            },
+            "transcript_counts": {
+              "value": 530,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "transcript_counts"
+              }
+            },
+            "control_probe_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "control_probe_counts"
+              }
+            },
+            "genomic_control_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "genomic_control_counts"
+              }
+            },
+            "control_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "control_codeword_counts"
+              }
+            },
+            "unassigned_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "unassigned_codeword_counts"
+              }
+            },
+            "deprecated_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "deprecated_codeword_counts"
+              }
+            },
+            "total_counts": {
+              "value": 530,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "total_counts"
+              }
+            },
+            "cell_area": {
+              "value": 225.96188320219517,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "cell_area"
+              }
+            },
+            "nucleus_area": {
+              "value": 111.03922278061509,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "nucleus_area"
+              }
+            },
+            "nucleus_count": {
+              "value": 1,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "nucleus_count"
+              }
+            },
+            "segmentation_method": {
+              "value": "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 1,
+                "column": "segmentation_method"
+              }
+            }
+          }
+        },
+        {
+          "cellId": "aaaangkh-1",
+          "rowIndexZeroBased": 2,
+          "fields": {
+            "cell_id": {
+              "value": "aaaangkh-1",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "cell_id"
+              }
+            },
+            "x_centroid": {
+              "value": 1260.6087646484375,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "x_centroid"
+              }
+            },
+            "y_centroid": {
+              "value": 980.3363037109375,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "y_centroid"
+              }
+            },
+            "transcript_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "transcript_counts"
+              }
+            },
+            "control_probe_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "control_probe_counts"
+              }
+            },
+            "genomic_control_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "genomic_control_counts"
+              }
+            },
+            "control_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "control_codeword_counts"
+              }
+            },
+            "unassigned_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "unassigned_codeword_counts"
+              }
+            },
+            "deprecated_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "deprecated_codeword_counts"
+              }
+            },
+            "total_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "total_counts"
+              }
+            },
+            "cell_area": {
+              "value": 50.484689332544804,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "cell_area"
+              }
+            },
+            "nucleus_area": {
+              "value": null,
+              "state": "source_nonfinite",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "nucleus_area"
+              }
+            },
+            "nucleus_count": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "nucleus_count"
+              }
+            },
+            "segmentation_method": {
+              "value": "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 2,
+                "column": "segmentation_method"
+              }
+            }
+          }
+        },
+        {
+          "cellId": "aaaemofc-1",
+          "rowIndexZeroBased": 20,
+          "fields": {
+            "cell_id": {
+              "value": "aaaemofc-1",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "cell_id"
+              }
+            },
+            "x_centroid": {
+              "value": 3604.076416015625,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "x_centroid"
+              }
+            },
+            "y_centroid": {
+              "value": 2484.001708984375,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "y_centroid"
+              }
+            },
+            "transcript_counts": {
+              "value": 258,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "transcript_counts"
+              }
+            },
+            "control_probe_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "control_probe_counts"
+              }
+            },
+            "genomic_control_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "genomic_control_counts"
+              }
+            },
+            "control_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "control_codeword_counts"
+              }
+            },
+            "unassigned_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "unassigned_codeword_counts"
+              }
+            },
+            "deprecated_codeword_counts": {
+              "value": 0,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "deprecated_codeword_counts"
+              }
+            },
+            "total_counts": {
+              "value": 258,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "total_counts"
+              }
+            },
+            "cell_area": {
+              "value": 106.47844136506319,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "cell_area"
+              }
+            },
+            "nucleus_area": {
+              "value": 23.571563355624676,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "nucleus_area"
+              }
+            },
+            "nucleus_count": {
+              "value": 2,
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "nucleus_count"
+              }
+            },
+            "segmentation_method": {
+              "value": "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)",
+              "state": "source_value",
+              "locator": {
+                "file": "cells.parquet",
+                "rowIndexZeroBased": 20,
+                "column": "segmentation_method"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "cellBoundaries": {
+      "columns": [
+        {
+          "name": "cell_id",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "vertex_x",
+          "type": "float",
+          "nullable": true
+        },
+        {
+          "name": "vertex_y",
+          "type": "float",
+          "nullable": true
+        },
+        {
+          "name": "label_id",
+          "type": "int64",
+          "nullable": true
+        }
+      ],
+      "rowCount": 4564211,
+      "rowGroupCount": 5,
+      "createdBy": "fastparquet-python version 2024.5.0 (build 0)",
+      "fileDeclaredPhysicalUnits": null,
+      "physicalUnitMetadataPresent": false,
+      "uniqueCellIdCount": 182698,
+      "uniqueLabelIdCount": 182698,
+      "polygonGroupCount": 182698,
+      "closedPolygonGroupCount": 182698,
+      "openPolygonGroupCount": 0,
+      "degeneratePolygonGroupCount": 0,
+      "noncontiguousRepeatedGroupCount": 0,
+      "nonfiniteOrMissingCoordinateRowCount": 0,
+      "invalidLabelRowCount": 0,
+      "labelMapsToMultipleCellsRowCount": 0,
+      "cellsWithMultiplePolygonGroups": 0,
+      "nativeCoordinateBounds": {
+        "min": [
+          28.900001525878906,
+          191.46250915527344
+        ],
+        "max": [
+          11475.6376953125,
+          23823.587890625
+        ]
+      },
+      "sampleGroupsWithoutGeometry": [
+        {
+          "cellId": "aaaalblj-1",
+          "labelId": 1,
+          "firstVertexRowIndexZeroBased": 0,
+          "vertexRowCount": 25,
+          "closedExactly": true,
+          "distinctVertexCount": 24
+        },
+        {
+          "cellId": "aaaalnbo-1",
+          "labelId": 2,
+          "firstVertexRowIndexZeroBased": 25,
+          "vertexRowCount": 25,
+          "closedExactly": true,
+          "distinctVertexCount": 24
+        }
+      ]
+    },
+    "nucleusBoundaries": {
+      "columns": [
+        {
+          "name": "cell_id",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "vertex_x",
+          "type": "float",
+          "nullable": true
+        },
+        {
+          "name": "vertex_y",
+          "type": "float",
+          "nullable": true
+        },
+        {
+          "name": "label_id",
+          "type": "int64",
+          "nullable": true
+        }
+      ],
+      "rowCount": 4468434,
+      "rowGroupCount": 5,
+      "createdBy": "fastparquet-python version 2024.5.0 (build 0)",
+      "fileDeclaredPhysicalUnits": null,
+      "physicalUnitMetadataPresent": false,
+      "uniqueCellIdCount": 180436,
+      "uniqueLabelIdCount": 180502,
+      "polygonGroupCount": 180502,
+      "closedPolygonGroupCount": 180502,
+      "openPolygonGroupCount": 0,
+      "degeneratePolygonGroupCount": 0,
+      "noncontiguousRepeatedGroupCount": 0,
+      "nonfiniteOrMissingCoordinateRowCount": 0,
+      "invalidLabelRowCount": 0,
+      "labelMapsToMultipleCellsRowCount": 0,
+      "cellsWithMultiplePolygonGroups": 62,
+      "nativeCoordinateBounds": {
+        "min": [
+          30.17500114440918,
+          468.5625
+        ],
+        "max": [
+          11472.4501953125,
+          23821.462890625
+        ]
+      },
+      "sampleGroupsWithoutGeometry": [
+        {
+          "cellId": "aaaalnbo-1",
+          "labelId": 1,
+          "firstVertexRowIndexZeroBased": 0,
+          "vertexRowCount": 25,
+          "closedExactly": true,
+          "distinctVertexCount": 24
+        },
+        {
+          "cellId": "aaaaoipb-1",
+          "labelId": 2,
+          "firstVertexRowIndexZeroBased": 25,
+          "vertexRowCount": 25,
+          "closedExactly": true,
+          "distinctVertexCount": 24
+        }
+      ]
+    }
+  },
+  "idJoins": {
+    "key": "exact_string_cell_id_scoped_to_source_analysis_roi",
+    "cellTableIdsWithoutCellBoundary": 0,
+    "orphanCellBoundaryIds": 0,
+    "cellTableIdsWithoutNucleusBoundary": 2262,
+    "orphanNucleusBoundaryIds": 0,
+    "positiveNucleusCountWithoutBoundary": 0,
+    "zeroNucleusCountWithBoundary": 0,
+    "nucleusCountVersusPolygonGroupMismatchCellCount": 0,
+    "crossFileSharedLabelIdCount": 180502,
+    "crossFileLabelIdDifferentCellCount": 180502,
+    "labelIdCanJoinCellAndNucleusFiles": false,
+    "sourceBoundaryVertexRowsAreDuplicateCells": false
+  },
+  "methodCrosscheck": {
+    "nativeLabelToMetricsField": {
+      "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)": "boundary",
+      "Segmented by interior stain (18S)": "interior",
+      "Segmented by nucleus expansion of 5.0µm": "nuc_expansion"
+    },
+    "tableCounts": {
+      "boundary": 3008,
+      "interior": 169374,
+      "nuc_expansion": 10316
+    },
+    "metricsCounts": {
+      "boundary": 3008,
+      "interior": 169374,
+      "nuc_expansion": 10316
+    },
+    "countsMatchMetrics": true,
+    "rawCellCountMatchMetrics": true,
+    "nuclearExpansionDistanceUm": 5.0,
+    "distanceScope": "only_rows_with_native_method_label_Segmented_by_nucleus_expansion_of_5.0µm",
+    "distanceEvidence": {
+      "file": "cells.parquet",
+      "column": "segmentation_method",
+      "nativeValue": "Segmented by nucleus expansion of 5.0µm"
+    }
+  },
+  "coordinateEvidence": {
+    "nativeColumns": [
+      "x_centroid",
+      "y_centroid",
+      "vertex_x",
+      "vertex_y"
+    ],
+    "platformDocumentationUrl": "https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/tutorials/outputs/xoa-output-understanding-outputs",
+    "platformDocumentationCheckedDate": "2026-09-30",
+    "platformDocumentationVersion": "4.1",
+    "acquiredAnalysisVersion": "xenium-3.3.0.1",
+    "platformDescribedUnit": "um",
+    "status": "platform_schema_consistent_not_file_declared",
+    "fileMetadataUnit": null,
+    "sectionCoordinateFrame": null,
+    "outlineToCellFrameTransform": null,
+    "atlasRegistration": null,
+    "geometryMeaning": "source_simplified_segmentation_visualization_polygons_not_observed_membranes_or_3d"
+  },
+  "remainingGates": [
+    {
+      "id": "section_identity",
+      "status": "blocked",
+      "reason": "No source-supported cell_id-to-section table or declared outline-to-cell frame transform."
+    },
+    {
+      "id": "specimen_identity",
+      "status": "blocked",
+      "reason": "Dataset specimen record does not assign each cell or named outline to a verified donor/tissue."
+    },
+    {
+      "id": "curated_labels",
+      "status": "blocked_for_interneuron_lane",
+      "reason": "No exact deposited cell_id-to-curated-type label table in the acquired inputs; segmentation methods are not cell types."
+    },
+    {
+      "id": "file_rights",
+      "status": "unresolved_policy_difference",
+      "reason": "Dataset API/workbook CC-BY-4.0 and site CC-BY-SA-4.0 remain distinct. No viewer geometry or derived polygon asset admitted."
+    }
+  ],
+  "admission": {
+    "disposition": "local_schema_audit_only",
+    "geometryViewerAdmission": false,
+    "sectionLinkedCellNucleusGeometryCount": 0,
+    "interneuronObjects": 0,
+    "threeDimensionalCellObjects": 0,
+    "atlasRegistrations": 0,
+    "sameCellMorphologyJoins": 0,
+    "fullGoalComplete": false
+  }
+}

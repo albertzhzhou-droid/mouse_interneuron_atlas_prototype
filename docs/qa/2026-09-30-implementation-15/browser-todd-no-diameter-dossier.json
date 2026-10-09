@@ -1,0 +1,788 @@
+{
+  "documentType": "research_record_scientific_dossier",
+  "schemaVersion": "0.2.0",
+  "applicationVersion": "2.91.0-research.1",
+  "selection": {
+    "key": "morphology_record:NeuroMorpho:322379",
+    "generation": 3,
+    "namespace": "neuromorpho:8.6.126:Todd",
+    "status": "current_verified_record"
+  },
+  "sourceScope": {
+    "documentType": "research_record_source_scope",
+    "schemaVersion": "0.2.0",
+    "recordKey": "morphology_record:NeuroMorpho:322379",
+    "namespace": "neuromorpho:8.6.126:Todd",
+    "focusKind": "morphology_record",
+    "focusId": "NeuroMorpho:322379",
+    "recordLocation": {
+      "path": "app/research-supplemental-morphology-records.js",
+      "pointer": "buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379",
+      "releaseId": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+      "contractSha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+      "status": "runtime_materialized_source_route_record",
+      "sourceContract": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json"
+    },
+    "displayUnit": "source_reconstruction_record",
+    "underlyingObservationUnit": null,
+    "registryReleaseId": "ohri-research-source-registry-0.1.0",
+    "sourceId": "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
+    "sourceResolution": "exact_source_route_contract",
+    "sourceLocator": "data/research-source-registry-0.1.json#/sources/28",
+    "sourceMissingReason": null,
+    "species": [
+      {
+        "value": "Mus musculus",
+        "status": "source_context_only",
+        "context": "30 novel Todd archive NeuroMorpho release additions whose current API metadata match mouse, spinal cord and interneuron filters",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/28/speciesScopes/0/scientificName"
+      }
+    ],
+    "lifeStages": [
+      {
+        "value": "adult",
+        "status": "source_context_only",
+        "context": "30 supplementary reconstructions; official repository metadata reports adult and source age bounds of 49-91 days",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/28/lifeStageScopes/0/value"
+      }
+    ],
+    "regions": [
+      {
+        "value": "spinal cord; L2/L3 and dorsal-horn labels retained with source asterisks",
+        "status": "source_context_only",
+        "context": "30 supplementary source-local reconstructions; no atlas registration or laminar placement is inferred",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/28/regionScopes/0/value"
+      }
+    ],
+    "experimentalUnits": [
+      {
+        "unit": "supplementary_reconstructed_neuron",
+        "count": 30,
+        "scope": "exact novel Todd release-set IDs 322379-322408; separate from and not additive to the frozen 8.6.124 no-age universe",
+        "authority": "checksum_pinned_official_API_and_SWCs",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/28/experimentalUnits/0",
+        "pooledWithOtherUnits": false
+      },
+      {
+        "unit": "current_filtered_repository_query_record",
+        "count": 339,
+        "scope": "complete mouse + spinal cord + interneuron + Todd API query without an age filter; used only for exact release-delta reconciliation",
+        "authority": "official_repository_API_snapshot",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/28/experimentalUnits/1",
+        "pooledWithOtherUnits": false
+      }
+    ],
+    "conditions": [],
+    "fieldLocators": [
+      {
+        "index": 0,
+        "label": "Source identifier",
+        "value": "NeuroMorpho:322379",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/0",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 1,
+        "label": "Repository release",
+        "value": "NeuroMorpho.Org · 8.6.126 · Todd",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/1",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 2,
+        "label": "Source-local label",
+        "value": "interneuron · Excitatory · Neurotensin-expressing*",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/2",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 3,
+        "label": "Repository region labels",
+        "value": "spinal cord · L3* · dorsal horn*",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/3",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 4,
+        "label": "Species · life stage · sex · strain",
+        "value": "mouse · adult · Female · B6;129-Ntstm1(cre)Mgmj/J",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/4",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 5,
+        "label": "Age range",
+        "value": "49–91 Day",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/5",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 6,
+        "label": "Condition · protocol",
+        "value": "Control · in vivo",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/6",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 7,
+        "label": "Reconstruction · stain",
+        "value": "Neurolucida · Brainbow",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/7",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 8,
+        "label": "Source geometry",
+        "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json · 419346 bytes · SHA-256 adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+        "authority": "checksum_verified_source_route_pack",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/8",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 9,
+        "label": "Raw SWC",
+        "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc · 57837 bytes · SHA-256 9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7",
+        "authority": "checksum_verified_source_route_pack",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/9",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 10,
+        "label": "Diameter authority",
+        "value": "Source reports No Diameter; centerlines only and radius-derived surface unavailable.",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/10",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 11,
+        "label": "Original paper fields",
+        "value": "DOI blank; PMID 2017 (record-level article mapping unresolved)",
+        "authority": "source_reported_unresolved",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/11",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 12,
+        "label": "Route and non-census receipt",
+        "value": "mouse.sc.todd_nts.observed.nmo_322379 · neuromorpho-release-8-6-126-todd-nts-route-pack-0.1 · 01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+        "authority": "checksum_verified_source_route_pack",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/12",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 13,
+        "label": "Internal structures",
+        "value": "Unavailable: no same-specimen membrane, nucleus, organelle, bouton, receptor or ultrastructure source.",
+        "authority": "UNAVAILABLE",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/13",
+        "materializationStatus": "runtime_materialized_source_route_record",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      }
+    ],
+    "gaps": [
+      {
+        "axisId": "original_morphology_file",
+        "label": "Original morphology file",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "The repository exposes no original Neurolucida file for this route pack.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "standardization_log",
+        "label": "Standardization log",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "The source standardization log is unavailable; no reverse transform is inferred.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "record_to_article_mapping",
+        "label": "Record-to-article mapping",
+        "status": "unresolved",
+        "reasonCode": "unresolved_source_conflict",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "The exact per-record DOI is blank and the PMID field does not resolve to a verified article crosswalk.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "independent_specimen_identity",
+        "label": "Independent specimen identity",
+        "status": "unavailable",
+        "reasonCode": "source_schema_no_field",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "No stable animal or specimen identifier is exposed for this record.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "biological_completeness",
+        "label": "Biological completeness",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "Repository completeness wording is retained but has not been independently validated against raw imagery.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_placement",
+        "label": "Atlas placement",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "This source-local frame has no admitted atlas transform.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "cross_source_same_cell_identity",
+        "label": "Cross-source same-cell identity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "No identity or transcriptomic crosswalk is established for this reconstruction.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "same_specimen_internal_structure",
+        "label": "Same-specimen internal structure",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "No same-specimen internal-structure source is linked; do not add substitute primitives.",
+        "inferenceAllowed": false
+      }
+    ],
+    "renderingPolicy": {
+      "documentType": "research_morphology_rendering_policy",
+      "schemaVersion": "0.1.0",
+      "recordKey": "morphology_record:NeuroMorpho:322379",
+      "namespace": "neuromorpho:8.6.126:Todd",
+      "repositoryRelease": "8.6.126",
+      "membership": "todd_supplementary",
+      "censusContribution": 0,
+      "declaredSource": {
+        "neuronId": 322379,
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": false,
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "geometryPath": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json",
+        "geometryBytes": 419346,
+        "geometrySha256": "adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+        "rawSwcSha256Declared": "9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7",
+        "contractLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#/routes/0"
+      },
+      "radiusSurface": {
+        "allowedAfterCurrentByteVerification": false,
+        "reason": "source_reports_no_diameter",
+        "authority": "UNAVAILABLE",
+        "requirement": "source_labelled_3d_and_source_diameter_and_current_private_geometry_byte_proof",
+        "observedMembrane": false,
+        "thicknessInferenceAllowed": false,
+        "depthInferenceAllowed": false,
+        "planarCoordinatesChanged": false
+      },
+      "actualGeometryVerification": {
+        "status": "not_included",
+        "verifiedBytes": null,
+        "reason": "This dossier policy reads canonical declarations; current source bytes require the independent private loader proof."
+      },
+      "actualRenderedView": {
+        "status": "not_included",
+        "camera": null,
+        "layers": null,
+        "clipping": null
+      },
+      "sameCellInternalGeometryAllowed": false,
+      "registrationCount": 0,
+      "archivedSurfaceDeclarations": [],
+      "scope": "declared_source_metadata_and_project_rendering_policy_not_actual_view_or_source_byte_verification"
+    },
+    "physicalSpecimenIdentity": {
+      "status": "not_established",
+      "id": null,
+      "reason": "Study, profile and reconstruction identifiers do not supply a physical specimen identity."
+    },
+    "relationship": {
+      "type": "co_display_only",
+      "samePhysicalObject": false,
+      "sourcePopulationJoinGranted": false,
+      "grantsGeometryTransfer": false
+    },
+    "scientificBoundary": "Source context is not an individual-cell measurement. Denominators and conditions remain separate. Missing evidence is not biological absence. Exact upstream field resolution is distinguished from the indexed project field; a hash verifies bytes only."
+  },
+  "record": {
+    "key": "morphology_record:NeuroMorpho:322379",
+    "focusKind": "morphology_record",
+    "focusId": "NeuroMorpho:322379",
+    "title": "Neurotensin-expressing excitatory interneuron — NMO 322379",
+    "subtitle": "NMO 322379 · 8.6.126 · Todd · supplementary source-local record",
+    "namespace": "neuromorpho:8.6.126:Todd",
+    "laneLabel": "Source-local morphology",
+    "summary": "Dendrites, Soma, No Axon; Dendrites Complete. One repository reconstruction object only; the 8.6.124 frozen query census and 142-record morphology subset are unchanged.",
+    "morphologyMembership": {
+      "collection": "supplementary",
+      "censusContribution": 0,
+      "supplementaryContribution": 1,
+      "sourceFrameLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+      "analysisLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379#source_metadata_and_geometry_receipt",
+      "geometryPath": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json",
+      "geometrySha256": "adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+      "routeId": "mouse.sc.todd_nts.observed.nmo_322379",
+      "routeContractPath": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "routeContractSha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+      "routeAssetManifestPath": "public/data/neuromorpho_release_8_6_126_todd_nts_v1/asset-manifest.json",
+      "routeAssetManifestSha256": "5e52e05227f9ebeb0e05b5dae9de6f564e99bbc62ddb9624fec74ad2f4337ccb"
+    },
+    "searchTerms": [
+      "NeuroMorpho:322379",
+      322379,
+      "AT_11-05-21A_s6_NTS_cell_1",
+      "Todd",
+      "mouse",
+      "adult",
+      "Female",
+      "B6;129-Ntstm1(cre)Mgmj/J",
+      [
+        "interneuron",
+        "Excitatory",
+        "Neurotensin-expressing*"
+      ],
+      [
+        "spinal cord",
+        "L3*",
+        "dorsal horn*"
+      ],
+      [
+        "Control"
+      ],
+      "Dendrites, Soma, No Axon",
+      "mouse.sc.todd_nts.observed.nmo_322379"
+    ],
+    "evidence": [
+      {
+        "label": "Source identifier",
+        "value": "NeuroMorpho:322379",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Repository release",
+        "value": "NeuroMorpho.Org · 8.6.126 · Todd",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Source-local label",
+        "value": "interneuron · Excitatory · Neurotensin-expressing*",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Repository region labels",
+        "value": "spinal cord · L3* · dorsal horn*",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Species · life stage · sex · strain",
+        "value": "mouse · adult · Female · B6;129-Ntstm1(cre)Mgmj/J",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Age range",
+        "value": "49–91 Day",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Condition · protocol",
+        "value": "Control · in vivo",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Reconstruction · stain",
+        "value": "Neurolucida · Brainbow",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Source geometry",
+        "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json · 419346 bytes · SHA-256 adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+        "authority": "checksum_verified_source_route_pack",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Raw SWC",
+        "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc · 57837 bytes · SHA-256 9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7",
+        "authority": "checksum_verified_source_route_pack",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Diameter authority",
+        "value": "Source reports No Diameter; centerlines only and radius-derived surface unavailable.",
+        "authority": "source_reported",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Original paper fields",
+        "value": "DOI blank; PMID 2017 (record-level article mapping unresolved)",
+        "authority": "source_reported_unresolved",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Route and non-census receipt",
+        "value": "mouse.sc.todd_nts.observed.nmo_322379 · neuromorpho-release-8-6-126-todd-nts-route-pack-0.1 · 01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+        "authority": "checksum_verified_source_route_pack",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      },
+      {
+        "label": "Internal structures",
+        "value": "Unavailable: no same-specimen membrane, nucleus, organelle, bouton, receptor or ultrastructure source.",
+        "authority": "UNAVAILABLE",
+        "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      }
+    ],
+    "gaps": [
+      {
+        "axisId": "original_morphology_file",
+        "label": "Original morphology file",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "The repository exposes no original Neurolucida file for this route pack.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "standardization_log",
+        "label": "Standardization log",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "The source standardization log is unavailable; no reverse transform is inferred.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "record_to_article_mapping",
+        "label": "Record-to-article mapping",
+        "status": "unresolved",
+        "reasonCode": "unresolved_source_conflict",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "The exact per-record DOI is blank and the PMID field does not resolve to a verified article crosswalk.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "independent_specimen_identity",
+        "label": "Independent specimen identity",
+        "status": "unavailable",
+        "reasonCode": "source_schema_no_field",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "No stable animal or specimen identifier is exposed for this record.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "biological_completeness",
+        "label": "Biological completeness",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "Repository completeness wording is retained but has not been independently validated against raw imagery.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_placement",
+        "label": "Atlas placement",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "This source-local frame has no admitted atlas transform.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "cross_source_same_cell_identity",
+        "label": "Cross-source same-cell identity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "No identity or transcriptomic crosswalk is established for this reconstruction.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "same_specimen_internal_structure",
+        "label": "Same-specimen internal structure",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "rawValue": null,
+        "detail": "No same-specimen internal-structure source is linked; do not add substitute primitives.",
+        "inferenceAllowed": false
+      }
+    ],
+    "provenance": {
+      "label": "NeuroMorpho.Org · Todd archive · release 8.6.126",
+      "citation": "NeuroMorpho.Org, Todd archive; record-to-original-paper mapping unresolved.",
+      "doi": null,
+      "urls": [
+        {
+          "label": "Official record",
+          "url": "https://neuromorpho.org/api/neuron/id/322379"
+        },
+        {
+          "label": "Reuse terms",
+          "url": "https://neuromorpho.org/useterm.jsp"
+        },
+        {
+          "label": "Candidate study context (unverified mapping)",
+          "url": "https://journals.sagepub.com/doi/10.1177/17448069261468203"
+        }
+      ],
+      "accessions": [
+        "NeuroMorpho:322379"
+      ],
+      "locators": [
+        "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "public/data/neuromorpho_release_8_6_126_todd_nts_v1/asset-manifest.json",
+        "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json",
+        "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc",
+        "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+      ],
+      "objectHashes": [
+        {
+          "label": "Canonical route pack",
+          "sha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537"
+        },
+        {
+          "label": "Public asset manifest",
+          "sha256": "5e52e05227f9ebeb0e05b5dae9de6f564e99bbc62ddb9624fec74ad2f4337ccb"
+        },
+        {
+          "label": "Standardized SWC",
+          "sha256": "9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7"
+        },
+        {
+          "label": "Canonical geometry",
+          "sha256": "adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a"
+        }
+      ]
+    },
+    "coordinate": {
+      "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "frame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered",
+      "registrationCount": 0,
+      "measurementUse": "source_local_descriptive_only"
+    },
+    "relationshipStatus": "not_established_outside_this_source_record",
+    "boundary": "not_established; unresolved; cohort-level matching does not establish a record-level link. The route remains outside the frozen census, source-local and unregistered; repository labels are not promoted to a paper-level subtype.",
+    "navigation": {
+      "lab": "morphology",
+      "params": {
+        "morphologyView": "individual",
+        "morphologyNeuron": "322379"
+      },
+      "anchor": "morphology-panel"
+    },
+    "sourceRouteVerification": {
+      "authority": "checksum_verified_source_route_pack",
+      "contractId": "neuromorpho-release-8-6-126-todd-nts-route-pack-0.1",
+      "canonicalSha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537"
+    },
+    "presentation": {
+      "contractId": "research-record-presentation-0.1",
+      "sourceSiblingCount": 30,
+      "evidencePartition": {
+        "identityEvidenceIndices": [
+          0,
+          2,
+          10
+        ],
+        "recordSpecificEvidenceIndices": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13
+        ],
+        "sharedEvidenceIndices": []
+      },
+      "missingnessPartition": {
+        "recordSpecificGapIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          7
+        ],
+        "sharedGapIndices": [
+          5,
+          6
+        ]
+      },
+      "modeling": {
+        "route": "exact_source_morphology",
+        "admittedCellGeometryObjectCount": 1,
+        "admittedInternalObjectCount": 0,
+        "generatedFallbackPrimitiveCount": 0,
+        "registrationCount": 0,
+        "sameCellJoinCount": 0,
+        "switchEffect": "replace_with_exact_selected_source_geometry",
+        "noFallbackPrimitive": true,
+        "axes": [
+          {
+            "axisId": "source_record",
+            "status": "available",
+            "authority": "checksum_verified_source_route_pack",
+            "detail": "The exact route identity and source-declared metadata are resolved from the byte-locked Todd 8.6.126 route pack."
+          },
+          {
+            "axisId": "cell_geometry",
+            "status": "available_exact_source_local",
+            "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+            "detail": "One checksum-gated source-local morphology object is admitted for this exact morphology record."
+          },
+          {
+            "axisId": "internal_structure",
+            "status": "unavailable",
+            "authority": "record_missingness_contract",
+            "detail": "No same-record nucleus, organelle, membrane, receptor, bouton or synapse geometry is admitted."
+          },
+          {
+            "axisId": "atlas_registration",
+            "status": "not_established",
+            "authority": "project_relationship_policy",
+            "detail": "The selected source record has zero admitted registrations to project anatomy."
+          },
+          {
+            "axisId": "cross_source_same_cell",
+            "status": "not_established",
+            "authority": "project_relationship_policy",
+            "detail": "No co-displayed record is asserted to be the same biological cell."
+          }
+        ]
+      }
+    }
+  },
+  "view": {
+    "status": "not_included",
+    "camera": null,
+    "clipping": null,
+    "renderedRevision": null,
+    "reason": "This export contains source-record evidence and context. The current rendered scene requires its independent actual-view receipt."
+  }
+}

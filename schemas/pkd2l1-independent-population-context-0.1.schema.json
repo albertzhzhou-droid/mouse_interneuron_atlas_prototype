@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/pkd2l1-independent-population-context-0.1.schema.json",
+  "title": "Independent PKD2L1 population context 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contextId", "source", "studyFrame", "imagingMethods", "publishedSummaries", "identityAndRepresentationBoundary"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "contextId": { "const": "leblond-2025-pkd2l1-independent-population-context" },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["citation", "doi", "articleUrl", "license", "tableLocator", "rawDataAvailabilityStatement", "publicRawDataDepositVerified", "rawImageFilesBundled"],
+      "properties": {
+        "citation": { "type": "string", "minLength": 1 },
+        "doi": { "const": "10.3389/fnana.2025.1652848" },
+        "articleUrl": { "type": "string", "format": "uri" },
+        "license": { "const": "CC BY" },
+        "tableLocator": { "const": "Table 5" },
+        "rawDataAvailabilityStatement": { "type": "string", "minLength": 1 },
+        "publicRawDataDepositVerified": { "const": false },
+        "rawImageFilesBundled": { "const": false }
+      }
+    },
+    "studyFrame": {
+      "type": "object", "additionalProperties": false,
+      "required": ["species", "mouseCount", "ageGroupsWeeks", "sectionCount", "sectionCountsByAge", "sectionCountsBySex", "regions", "measurementUnit", "biologicalUnit", "nestingBoundary"],
+      "properties": {
+        "species": { "const": "Mus musculus" },
+        "mouseCount": { "const": 18 },
+        "ageGroupsWeeks": { "const": [3, 8] },
+        "sectionCount": { "const": 811 },
+        "sectionCountsByAge": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/sectionGroup" } },
+        "sectionCountsBySex": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/sectionGroup" } },
+        "regions": { "const": ["Cervical", "High thoracic", "Low thoracic", "Lumbar"] },
+        "measurementUnit": { "const": "histological section" },
+        "biologicalUnit": { "const": "mouse" },
+        "nestingBoundary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "imagingMethods": {
+      "type": "object", "additionalProperties": false,
+      "required": ["modality", "wholeCordImages", "centralCanalImages", "reportedStackDepthMicrometers", "imageFilesAvailableInThisProject", "interpretationBoundary"],
+      "properties": {
+        "modality": { "const": "confocal fluorescence microscopy" },
+        "wholeCordImages": { "$ref": "#/$defs/imageSettings" },
+        "centralCanalImages": { "$ref": "#/$defs/imageSettings" },
+        "reportedStackDepthMicrometers": { "const": [25, 37] },
+        "imageFilesAvailableInThisProject": { "const": false },
+        "interpretationBoundary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "publishedSummaries": {
+      "type": "array", "minItems": 8, "maxItems": 8, "items": { "$ref": "#/$defs/summary" }
+    },
+    "identityAndRepresentationBoundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["populationLabel", "proximalDefinition", "distalDefinition", "distalCellIdentity", "summaryGranularity", "perCellCoordinatesAvailable", "perCellMorphologyAvailable", "reconstructedCellsAdmitted", "geometryPrimitivesAdmitted", "sameCellJoinToCrozat", "atlasRegistrationCount", "includedInInterneuronTypeCounts", "boundary"],
+      "properties": {
+        "populationLabel": { "const": "PKD2L1-positive cells" },
+        "proximalDefinition": { "type": "string" },
+        "distalDefinition": { "type": "string" },
+        "distalCellIdentity": { "type": "string" },
+        "summaryGranularity": { "const": "article-published stratum-level mean, standard deviation and range" },
+        "perCellCoordinatesAvailable": { "const": false },
+        "perCellMorphologyAvailable": { "const": false },
+        "reconstructedCellsAdmitted": { "const": 0 },
+        "geometryPrimitivesAdmitted": { "const": 0 },
+        "sameCellJoinToCrozat": { "const": false },
+        "atlasRegistrationCount": { "const": 0 },
+        "includedInInterneuronTypeCounts": { "const": false },
+        "boundary": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "$defs": {
+    "sectionGroup": {
+      "type": "object", "additionalProperties": false, "required": ["label", "count"],
+      "properties": { "label": { "type": "string" }, "count": { "type": "integer", "minimum": 1 } }
+    },
+    "imageSettings": {
+      "type": "object", "additionalProperties": false,
+      "required": ["magnification", "pixelSizeMicrometers", "voxelDepthMicrometers"],
+      "properties": {
+        "magnification": { "type": "string" },
+        "pixelSizeMicrometers": { "type": "number", "exclusiveMinimum": 0 },
+        "voxelDepthMicrometers": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["stratum", "group", "sectionsInStudyFrame", "pkd2l1PositiveCellsPerSection", "centroidDistanceFromCentralCanalCenterMicrometers"],
+      "properties": {
+        "stratum": { "enum": ["age", "sex", "spinal_region"] },
+        "group": { "type": "string", "minLength": 1 },
+        "sectionsInStudyFrame": { "type": ["integer", "null"], "minimum": 1 },
+        "pkd2l1PositiveCellsPerSection": { "$ref": "#/$defs/statistic" },
+        "centroidDistanceFromCentralCanalCenterMicrometers": { "$ref": "#/$defs/statistic" }
+      }
+    },
+    "statistic": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mean", "standardDeviation", "minimum", "maximum"],
+      "properties": {
+        "mean": { "type": "number", "minimum": 0 },
+        "standardDeviation": { "type": "number", "minimum": 0 },
+        "minimum": { "type": "number", "minimum": 0 },
+        "maximum": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

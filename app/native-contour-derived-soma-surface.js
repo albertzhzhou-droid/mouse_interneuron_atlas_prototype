@@ -1,6 +1,11 @@
 export const NATIVE_CONTOUR_DERIVED_SURFACE_ALGORITHM = "equal_arclength_128_sample_minimum_rms_cyclic_phase_open_quad_strip_v1";
 export const NATIVE_CONTOUR_DERIVED_SURFACE_AUTHORITY = "DER_INTERPOLATED_SOURCE_CONTOUR_OPEN_SHELL";
 export const NATIVE_CONTOUR_DERIVED_SURFACE_SAMPLE_COUNT = 128;
+export const NATIVE_CONTOUR_DERIVED_SURFACE_SCREEN_THRESHOLDS = Object.freeze({
+  maximumAdjacentCentroidShiftMicrometre: 1.5,
+  maximumAdjacentContourAreaRatio: 1.6,
+  maximumAdjacentAlignedRmsMicrometre: 1.5,
+});
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -188,9 +193,12 @@ export function buildNativeContourDerivedSomaSurface(sourcePayload, sourceReceip
     previousSampled = aligned;
     previousContour = contour;
   }
-  assert(maximumAdjacentCentroidShiftMicrometre <= 1.5, "Adjacent contour centroid displacement exceeds the pinned 1.5 micrometre gate");
-  assert(maximumAdjacentContourAreaRatio <= 1.6, "Adjacent contour area ratio exceeds the pinned 1.6 gate");
-  assert(maximumAdjacentAlignedRmsMicrometre <= 1.5, "Cyclic correspondence RMS exceeds the pinned 1.5 micrometre gate");
+  assert(maximumAdjacentCentroidShiftMicrometre <= NATIVE_CONTOUR_DERIVED_SURFACE_SCREEN_THRESHOLDS.maximumAdjacentCentroidShiftMicrometre,
+    "Adjacent contour centroid displacement exceeds the pinned 1.5 micrometre gate");
+  assert(maximumAdjacentContourAreaRatio <= NATIVE_CONTOUR_DERIVED_SURFACE_SCREEN_THRESHOLDS.maximumAdjacentContourAreaRatio,
+    "Adjacent contour area ratio exceeds the pinned 1.6 gate");
+  assert(maximumAdjacentAlignedRmsMicrometre <= NATIVE_CONTOUR_DERIVED_SURFACE_SCREEN_THRESHOLDS.maximumAdjacentAlignedRmsMicrometre,
+    "Cyclic correspondence RMS exceeds the pinned 1.5 micrometre gate");
 
   const ringSize = NATIVE_CONTOUR_DERIVED_SURFACE_SAMPLE_COUNT;
   const triangleIndices = [];

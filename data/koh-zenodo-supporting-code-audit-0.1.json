@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "koh-zenodo-supporting-code-audit-0.1.0",
+  "auditDate": "2026-09-24",
+  "researchUpgradeId": "UPG-259",
+  "scope": "Version-pinned public code-deposit and exact-file content audit; no execution of deposited scripts",
+  "article": {
+    "pmcid": "PMC12958134",
+    "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12958134/",
+    "paperCitedConceptDoi": "10.5281/zenodo.17475612",
+    "articleReportedAgeDaysPostFertilization": 6,
+    "articleSaysCodeUsedToGenerateFigureData": true,
+    "additionalReanalysisMaterialsStatement": "available from the lead contact upon request"
+  },
+  "zenodoRecord": {
+    "metadataApiUrl": "https://zenodo.org/api/records/17475613",
+    "conceptRecordId": "17475612",
+    "conceptDoi": "10.5281/zenodo.17475612",
+    "versionRecordId": "17475613",
+    "versionDoi": "10.5281/zenodo.17475613",
+    "version": "v1.0",
+    "publicationDate": "2025-10-29",
+    "license": "CC BY 4.0",
+    "relatedGithubTag": "https://github.com/ZacharyMKoh/Spinal-Sensorimotor-Circuit/tree/v1.0"
+  },
+  "archive": {
+    "fileName": "ZacharyMKoh/Spinal-Sensorimotor-Circuit-v1.0.zip",
+    "downloadUrl": "https://zenodo.org/api/records/17475613/files/ZacharyMKoh/Spinal-Sensorimotor-Circuit-v1.0.zip/content",
+    "byteCount": 9289,
+    "metadataMd5": "c14ff27245d1e91f3b3fe7ab02dbc976",
+    "observedMd5": "c14ff27245d1e91f3b3fe7ab02dbc976",
+    "observedSha256": "94395039f962e2da831a3926902b0e7b97c398478c4af23f9e43c161f525cdfd",
+    "archiveMembers": [
+      {
+        "path": "ZacharyMKoh-Spinal-Sensorimotor-Circuit-07f1ed1/Quantification of cell measurements.py",
+        "uncompressedBytes": 8164,
+        "kind": "python_source"
+      },
+      {
+        "path": "ZacharyMKoh-Spinal-Sensorimotor-Circuit-07f1ed1/Quantification of synaptic and glia organization.py",
+        "uncompressedBytes": 75881,
+        "kind": "python_source"
+      }
+    ],
+    "nonDirectoryMemberCount": 2,
+    "dataFilesPresent": false,
+    "workbookPresent": false,
+    "knossosArchivePresent": false,
+    "annotationXmlPresent": false
+  },
+  "codeInputAudit": {
+    "synapseGliaScript": {
+      "name": "Quantification of synaptic and glia organization.py",
+      "initializesEmptyObjectSynapseGliaLists": true,
+      "readsExternalWorkbookPathLeaf": "excel_file.xlsx",
+      "expectedCircuitWorksheetNames": [
+        "1A IN to IN",
+        "1B IN to IN",
+        "2A IN to IN",
+        "2B IN to IN",
+        "3A IN to IN",
+        "4C IN to IN",
+        "6A IN to IN",
+        "6B IN to IN"
+      ],
+      "allExpectedSheetsAbsentFromAuditedPmcWorkbook": true,
+      "usesOptionalKnossosDatasetAndAuthConfig": true,
+      "expectedKnossosAuthConfigPathLeaf": "knossos_file.auth.k.toml",
+      "executesOrWritesDuringAudit": false
+    },
+    "cellMeasurementScript": {
+      "name": "Quantification of cell measurements.py",
+      "readsExternalKnossosArchivePathLeaf": "Completed_labeling.k.zip",
+      "expectsAnnotationXmlMember": "annotation.xml",
+      "externalKnossosArchivePresentInZenodoDeposit": false,
+      "executesOrWritesDuringAudit": false
+    },
+    "publishedInputsSufficientToMaterializeLists": false,
+    "paperDescribedListValuesBundled": false,
+    "machineReadableReconstructionGeometryBundled": false,
+    "interpretation": "The scripts encode transformations from external Excel/Knossos inputs; the versioned Zenodo archive itself contains source code only. The audited PMC figure-summary workbook does not expose the exact circuit sheet names expected by the code."
+  },
+  "rightsAndAdmission": {
+    "depositCodeLicense": "CC BY 4.0",
+    "underlyingInputFileRightsVerified": false,
+    "projectDisposition": "link_only_no_code_or_data_copy",
+    "authorContacted": false,
+    "credentialsInspected": false,
+    "depositedCodeExecuted": false,
+    "sourceObjectsAdmitted": 0,
+    "coordinatesRendered": 0,
+    "geometryAdmitted": 0,
+    "sameCellJoins": 0,
+    "crossSpeciesIdentityJoins": 0,
+    "registrationCount": 0,
+    "measurementsAdded": 0,
+    "mouseDenominatorDelta": 0,
+    "nextAuditId": "UPG-260"
+  }
+}

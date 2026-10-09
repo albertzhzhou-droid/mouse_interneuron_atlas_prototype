@@ -1,0 +1,567 @@
+---
+title: "Mice CSF-cN Intrinsic Properties along the rostro-caudal axis"
+author: "Nicolas Wanaverbecq - Elysa Crozat - Edith Blasco"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document: 
+    toc: yes
+    toc_depth: 5
+params: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## OPEN REQUIRED PACKAGES
+
+```{r}
+if(!require(psych)){install.packages("psych")}
+if(!require(FSA)){install.packages("FSA")}
+if(!require(car)){install.packages("car")}
+if(!require(multcompView)){install.packages("multcompView")}
+if(!require(PMCMRplus)){install.packages("PMCMRplus")}
+if(!require(emmeans)){install.packages("emmeans")}
+if(!require(lsmeans)){install.packages("lsmeans")}
+if(!require(nlme)){install.packages("nlme")}
+if(!require(Rmisc)){install.packages("Rmisc")}
+if(!require(rcompanion)){install.packages("rcompanion")}
+if(!require(pastecs)){install.packages("pastecs")}
+
+if(!require(dplyr)){install.packages("dplyr")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(lattice)){install.packages("lattice")}
+if(!require(BSDA)){install.packages("BSDA")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(rstatix)) install.packages("rstatix")
+if(!require(pak)) install.packages("pak")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(shiny)){install.packages("shiny")}
+if(!require(knitr)){install.packages("knitr")}
+if(!require(rmarkdown)){install.packages("rmarkdown")}
+
+```
+
+### OPEN FILES AND DISPLAY DATA
+
+```{r}
+library(readxl)
+PropPass <- read_excel("PropPass_Stats.xlsx")
+names(PropPass)
+#View(PropPass)
+
+```
+
+```{r}
+
+PropPass$Cell -> Cell
+PropPass$Level -> Level
+
+PropPass$Rs -> Rs
+PropPass$Rm -> Rm
+PropPass$Cm -> Cm
+PropPass$Tau ->Tau
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+PropPass$Level <- factor(PropPass$Level, levels = c("Cerv", "Tho", "Lumb"))
+
+```
+
+### A) Acces Resistance (Rs)
+
+#### 1-SUMMARIZE Rs by Region
+
+```{r}
+library(FSA)
+
+Summarize(Rs~Level,
+       PropPass,
+        digits = 1)
+
+```
+
+#### 2-PLOT DATA for Rs
+
+```{r}
+
+Bx_Rs <- ggplot(PropPass, aes(x=Level,y=Rs, color=Level)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Rs + coord_cartesian(ylim = c(0, 50))
+
+ggsave(path = "Fig_ProPass", filename = "Bx_Rs.eps", units="cm", width=10, height=6, dpi=300)
+
+
+Pt_Rs<-ggplot(PropPass, aes(x=Level,y=Rs, color=Level)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Rs + coord_cartesian(ylim = c(0, 50))
+
+ggsave(path = "Fig_ProPass", filename = "Pt_Rs.eps", units="cm", width=10, height=6, dpi=300)
+```
+
+#### 3-STATISTICAL analysis - Rs
+
+#### Kruskal Wallis test - Rs
+
+```{r}
+kruskal.test(Rs ~ Level, data = PropPass)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Rs, Level,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Rs ~ Level,
+                    data   = PropPass,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### B) Membrane Resistance (Rm)
+
+#### 1-SUMMARIZE Rm by Region
+
+```{r}
+library(FSA)
+
+Summarize(Rm~Level,
+       PropPass,
+        digits = 2)
+
+```
+
+#### 2-PLOT DATA for Rm
+
+```{r}
+
+Bx_Rm <- ggplot(PropPass, aes(x=Level,y=Rm, color=Level)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Rm  + coord_cartesian( ylim = c(-5, 15))
+
+ggsave(path = "Fig_ProPass", filename = "Bx_Rm .eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Rm<-ggplot(PropPass, aes(x=Level,y=Rm, color=Level)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Rm + coord_cartesian( ylim = c(-5, 15))
+
+ggsave(path = "Fig_ProPass", filename = "Pt_Rm .eps", units="cm", width=10, height=6, dpi=300)
+```
+
+#### 3-STATISTICAL analysis - Rm
+
+#### Kruskal Wallis test - Rm
+
+```{r}
+kruskal.test(Rm ~ Level, data = PropPass)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Rm, Level,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Rm ~ Level,
+                    data   = PropPass,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### C) Membrane Capacitance (Cm)
+
+#### 1-SUMMARIZE Cm by Region
+
+```{r}
+library(FSA)
+
+Summarize(Cm~Level,
+          PropPass,
+        digits = 2)
+
+```
+
+#### 2-PLOT DATA for Cm
+
+```{r}
+
+Bx_Cm <- ggplot(PropPass, aes(x=Level,y=Cm, color=Level)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Cm  + coord_cartesian( ylim = c(-5, 15))
+
+ggsave(path = "Fig_ProPass", filename = "Bx_Cm .eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Cm<-ggplot(PropPass, aes(x=Level,y=Cm, color=Level)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Cm + coord_cartesian( ylim = c(-5, 15))
+
+ggsave(path = "Fig_ProPass", filename = "Pt_Cm .eps", units="cm", width=10, height=6, dpi=300)
+```
+
+#### 3-STATISTICAL analysis - Cm
+
+#### Kruskal Wallis test - Cm
+
+```{r}
+
+kruskal.test(Cm ~ Level, data = PropPass)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Cm, Level,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Cm ~ Level,
+                    data   = PropPass,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### D) Membrane time constant (Tau)
+
+#### 1-SUMMARIZE Tau by Region
+
+```{r}
+library(FSA)
+
+Summarize(Tau~Level,
+          PropPass,
+        digits = 3)
+
+```
+
+#### 2-PLOT DATA for Tau
+
+```{r}
+
+Bx_Tau <- ggplot(PropPass, aes(x=Level,y=Tau, color=Level)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Tau  + coord_cartesian( ylim = c(-0.05, 0.2))
+
+ggsave(path = "Fig_ProPass", filename = "Bx_Tau .eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Tau<-ggplot(PropPass, aes(x=Level,y=Tau, color=Level)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Tau + coord_cartesian( ylim = c(-0.05, 0.2))
+
+ggsave(path = "Fig_ProPass", filename = "Pt_Tau .eps", units="cm", width=10, height=6, dpi=300)
+```
+
+#### 3-STATISTICAL analysis - Tau
+
+#### Kruskal Wallis test - TAU
+
+```{r}
+
+kruskal.test(Tau ~ Level, data = PropPass)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Tau, Level,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Tau ~ Level,
+                    data   = PropPass,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### F) Resting membrane Potential (RMP)
+
+#### 1-Open file RMP
+
+```{r}
+library(readxl)
+VR <- read_excel("RMP.xlsx")
+names(VR)
+#View(VR)
+
+
+VR$Cell -> Cell
+VR$Level -> Level
+
+VR$RMP -> RMP
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+VR$Level <- factor(VR$Level, levels = c("Cerv", "Tho", "Lumb"))
+
+```
+
+#### 2-SUMMARIZE RMP by Region
+
+```{r}
+library(FSA)
+
+Summarize(RMP~Level,
+          VR,
+        digits = 0)
+
+```
+
+#### 3-PLOT DATA for RMP
+
+```{r}
+
+Bx_RMP <- ggplot(VR, aes(x=Level, y=RMP, color=Level)) +
+  geom_boxplot(width=0.5 ) + theme_minimal()
+Bx_RMP + coord_cartesian( ylim = c(-100,10))
+
+ggsave(path = "Fig_ProPass", filename = "Bx_RMP.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_RMP <- ggplot(VR, aes(x=Level, y=RMP, color=Level)) +
+ geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_RMP + coord_cartesian( ylim = c(-100,10))
+
+ggsave(path = "Fig_ProPass", filename = "Pt_RMP.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### 4-STATISTICAL analysis - RMP
+
+```{r}
+
+kruskal.test(RMP ~ Level, data = VR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(RMP, Level,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(RMP ~ Level,
+                    data   = VR,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### G) Firing pattern across Levels
+
+#### 1-Open file Firing Pattern
+
+```{r}
+library(readxl)
+FP <- read_excel("Firing_Pattern.xlsx")
+names(FP)
+#View(FP)
+
+FP$Level -> Level
+FP$Fire -> Fire
+FP$Perc -> Perc
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+FP$Level <- factor(FP$Level, levels = c("Cerv", "Tho", "Lumb"))
+FP$Fire <- factor(FP$Fire, levels = c("Tonic", "Phasic"))
+
+```
+
+#### 2-SUMMARIZE Firing Pattern by Region
+
+```{r}
+print(FP)
+
+```
+
+#### 3-STATISTICAL analysis - Firing Pattern
+
+```{r}
+
+# Load necessary packages
+library(tidyverse)
+
+# Merge it with the FP data
+total_counts <- data.frame(Level = unique(FP$Level), Total = 100)  # Replace with actual counts
+FP <- left_join(FP, total_counts, by = "Level")
+
+# Reshape data into a contingency table
+table_data <- FP %>%
+  select(Level, Fire, Perc) %>%
+  pivot_wider(names_from = Fire, values_from = Perc, values_fill = list(Perc = 0))
+
+# Convert dataframe to matrix
+matrix_data <- as.matrix(table_data[, -1])  # Remove first column (Level)
+rownames(matrix_data) <- table_data$Level  # Assign row names
+
+# Perform Fisher’s Exact Test
+fisher_result <- fisher.test(matrix_data)
+
+# Print results
+print(matrix_data)
+print(fisher_result)
+
+# Load necessary packages
+library(tidyverse)
+
+# Define all possible pairs of regions
+region_pairs <- combn(unique(FP$Level), 2, simplify = FALSE)
+
+# Number of comparisons for Bonferroni correction
+num_comparisons <- length(region_pairs)
+alpha <- 0.05  # Standard significance level
+alpha_adjusted <- alpha / num_comparisons  # Bonferroni correction
+
+# Loop through each pair and perform Fisher’s Exact Test
+pairwise_results <- lapply(region_pairs, function(pair) {
+  # Filter data for the current pair of regions
+  sub_data <- FP %>% filter(Level %in% pair)
+  
+  # Reshape into a contingency table
+  table_data <- sub_data %>%
+    select(Level, Fire, Perc) %>%
+    pivot_wider(names_from = Fire, values_from = Perc, values_fill = list(Count = 0))
+  
+  # Convert to matrix format
+  matrix_data <- as.matrix(table_data[, -1])  # Remove Level column
+  rownames(matrix_data) <- table_data$Level  # Assign row names
+  
+  # Perform Fisher’s Exact Test
+  test_result <- fisher.test(matrix_data)
+  
+  # Store results in a list
+  list(
+    Pair = paste(pair, collapse = " vs. "),
+    Matrix = matrix_data,
+    P_Value = test_result$p.value,
+    Significant = test_result$p.value < alpha_adjusted,  # Adjusted significance check
+    Adjusted_Alpha = alpha_adjusted,
+    Result = test_result
+  )
+})
+
+# Print results
+for (res in pairwise_results) {
+  cat("\n\n🔹 Comparison:", res$Pair, "\n")
+  print(res$Matrix)
+  cat("P-value:", res$P_Value, "\n")
+  cat("Bonferroni-adjusted threshold:", res$Adjusted_Alpha, "\n")
+  cat("Significant after Bonferroni correction?", ifelse(res$Significant, "✅ YES", "❌ NO"), "\n")
+}
+
+
+```
+
+### H) Firing pattern across Levels and Localisation
+
+#### 1-Open file Firing Pattern per Level and Localisation
+
+```{r}
+library(readxl)
+FPL <- read_excel("Firing_pattern_Loc.xlsx")
+names(FPL)
+#View(FPL)
+
+
+FPL$Level -> Level
+FPL$Loc -> Loc
+FPL$Fire -> Fire
+FPL$Perc -> Perc
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+
+FPL$Level <- factor(FPL$Level, levels = c("Cerv", "Tho", "Lumb"))
+FPL$Loc <- factor(FPL$Loc, levels = c("Dorsal", "Lateral","Ventral"))
+FPL$Fire <- factor(FPL$Fire, levels = c("Tonic", "Phasic"))
+
+```
+
+#### 2-SUMMARIZE Firing Pattern by Region
+
+```{r}
+print(FPL)
+
+```
+
+#### 3-STATISTICAL analysis - Firing Pattern
+
+```{r}
+
+# Load necessary packages
+library(tidyverse)
+
+# Merge it with the FP data
+total_counts <- data.frame(Loc = unique(FPL$Loc), Total = 100)  # Replace with actual counts
+FPL <- left_join(FPL, total_counts, by = "Loc")
+
+# Reshape data into a contingency table
+table_data <- FPL %>%
+  select(Loc, Fire, Perc) %>%
+  pivot_wider(names_from = Fire, values_from = Perc)
+
+# Convert dataframe to matrix
+matrix_data <- as.matrix(table_data[, -1])  # Remove first column (Level)
+rownames(matrix_data) <- table_data$Level  # Assign row names
+
+# Perform Fisher’s Exact Test
+fisher_result <- fisher.test(matrix_data)
+
+# Print results
+print(matrix_data)
+print(fisher_result)
+
+# Load necessary packages
+library(tidyverse)
+
+# Define all possible pairs of regions
+region_pairs <- combn(unique(FP$Level), 2, simplify = FALSE)
+
+# Number of comparisons for Bonferroni correction
+num_comparisons <- length(region_pairs)
+alpha <- 0.05  # Standard significance level
+alpha_adjusted <- alpha / num_comparisons  # Bonferroni correction
+
+# Loop through each pair and perform Fisher’s Exact Test
+pairwise_results <- lapply(region_pairs, function(pair) {
+  # Filter data for the current pair of regions
+  sub_data <- FPL %>% filter(Level %in% pair)
+  
+  # Reshape into a contingency table
+  table_data <- sub_data %>%
+    select(Level, Fire, Perc) %>%
+    pivot_wider(names_from = Fire, values_from = Perc, values_fill = list(Count = 0))
+  
+  # Convert to matrix format
+  matrix_data <- as.matrix(table_data[, -1])  # Remove Level column
+  rownames(matrix_data) <- table_data$Level  # Assign row names
+  
+  # Perform Fisher’s Exact Test
+  test_result <- fisher.test(matrix_data)
+  
+  # Store results in a list
+  list(
+    Pair = paste(pair, collapse = " vs. "),
+    Matrix = matrix_data,
+    P_Value = test_result$p.value,
+    Significant = test_result$p.value < alpha_adjusted,  # Adjusted significance check
+    Adjusted_Alpha = alpha_adjusted,
+    Result = test_result
+  )
+})
+
+# Print results
+for (res in pairwise_results) {
+  cat("\n\n🔹 Comparison:", res$Pair, "\n")
+  print(res$Matrix)
+  cat("P-value:", res$P_Value, "\n")
+  cat("Bonferroni-adjusted threshold:", res$Adjusted_Alpha, "\n")
+  cat("Significant after Bonferroni correction?", ifelse(res$Significant, "✅ YES", "❌ NO"), "\n")
+}
+
+```

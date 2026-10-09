@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/svara-larval-zebrafish-spinal-sbem-reference-0.1.schema.json",
+  "title": "Svara Larval Zebrafish Spinal SBEM Comparative Reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "auditDate", "source", "biologicalScope", "acquisition", "publishedReconstructions", "supplementPackages", "identityAndGeometryBoundary", "sources"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "contractId": {"const": "svara-larval-zebrafish-spinal-sbem-reference-0.1"},
+    "auditDate": {"type": "string", "format": "date"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["studyTitle", "doi", "authors", "articleLicense"],
+      "properties": {
+        "studyTitle": {"type": "string", "minLength": 1},
+        "doi": {"const": "10.1016/j.celrep.2018.05.023"},
+        "authors": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 1}},
+        "articleLicense": {"type": "string", "minLength": 1}
+      }
+    },
+    "biologicalScope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["species", "lifeStage", "specimenCount", "specimenUnit", "scopeNote"],
+      "properties": {
+        "species": {"const": "Danio rerio"}, "lifeStage": {"const": "6 dpf larval zebrafish"},
+        "specimenCount": {"const": 1}, "specimenUnit": {"const": "larva"}, "scopeNote": {"type": "string", "minLength": 1}
+      }
+    },
+    "acquisition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["modality", "reportedVolumeLengthMicrometre", "reportedVoxelPitchNanometre", "axisOrderNamed", "segmentCoverage"],
+      "properties": {
+        "modality": {"const": "serial block-face electron microscopy (SBEM)"},
+        "reportedVolumeLengthMicrometre": {"const": [74, 74, 207]},
+        "reportedVoxelPitchNanometre": {"const": [9, 9, 21]},
+        "axisOrderNamed": {"const": false},
+        "segmentCoverage": {
+          "type": "object", "additionalProperties": false,
+          "required": ["fullyContainedSegments", "adjacentSegmentCoveragePercent", "fullSegmentSomata", "somataInVolume"],
+          "properties": {
+            "fullyContainedSegments": {"const": 2},
+            "adjacentSegmentCoveragePercent": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "object", "additionalProperties": false, "required": ["position", "coveragePercent"], "properties": {"position": {"enum": ["rostral", "caudal"]}, "coveragePercent": {"enum": [51, 71]}}}},
+            "fullSegmentSomata": {"const": [671, 652]}, "somataInVolume": {"const": 2177}
+          }
+        }
+      }
+    },
+    "publishedReconstructions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["motoneurons", "morphologyConsistentCiDs", "CoBLs"],
+      "properties": {
+        "motoneurons": {"type": "object", "additionalProperties": false, "required": ["count", "leftHemisegment", "rightHemisegment"], "properties": {"count": {"const": 139}, "leftHemisegment": {"const": 68}, "rightHemisegment": {"const": 71}}},
+        "morphologyConsistentCiDs": {"type": "object", "additionalProperties": false, "required": ["count", "completelyTracedCellContext", "geneticV2aAssignmentAvailable"], "properties": {"count": {"const": 39}, "completelyTracedCellContext": {"const": 170}, "geneticV2aAssignmentAvailable": {"const": false}}},
+        "CoBLs": {"type": "object", "additionalProperties": false, "required": ["count", "selectionContext"], "properties": {"count": {"const": 34}, "selectionContext": {"type": "string", "minLength": 1}}}
+      }
+    },
+    "supplementPackages": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sourceListingUrl", "reportedPackageCount", "articleSupplementStatement", "packages", "packageContentInspection", "fileSizesBytes", "checksums", "memberFileFormats", "stableNeuronObjectIdCrosswalk", "perPackageReuseTerms", "assetDecision"],
+      "properties": {
+        "sourceListingUrl": {"const": "https://www.bi.mpg.de/publication-search/2328567?person=%2Fpersons%2Fresource%2Fpersons118241"},
+        "reportedPackageCount": {"const": 3},
+        "articleSupplementStatement": {"const": "Supplemental Information includes four figures, four tables, and three data files."},
+        "packages": {
+          "type": "array", "minItems": 3, "maxItems": 3,
+          "items": {"type": "object", "additionalProperties": false, "required": ["repositoryComponentId", "filename", "sourceUrl", "listed"], "properties": {"repositoryComponentId": {"enum": ["file_3055230", "file_3055231", "file_3055232"]}, "filename": {"enum": ["1-s2.0-S2211124718307563-mmc6.zip", "1-s2.0-S2211124718307563-mmc7.zip", "1-s2.0-S2211124718307563-mmc8.zip"]}, "sourceUrl": {"type": "string", "format": "uri", "pattern": "^https://pure\\.mpg\\.de/pubman/item/item_3055210_7/component/file_305523[0-2]/1-s2\\.0-S2211124718307563-mmc[6-8]\\.zip$"}, "listed": {"const": true}}}
+        },
+        "packageContentInspection": {"const": "not performed"}, "fileSizesBytes": {"type": "null"}, "checksums": {"type": "null"},
+        "memberFileFormats": {"const": "unknown"}, "stableNeuronObjectIdCrosswalk": {"const": "unknown"},
+        "perPackageReuseTerms": {"const": "not verified"}, "assetDecision": {"type": "string", "minLength": 1}
+      }
+    },
+    "identityAndGeometryBoundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["appAdmittedNeuronObjects", "appAdmittedSkeletons", "appAdmittedMeshes", "appAdmittedSynapseEdges", "sameCellJoinCount", "mouseIdentityTransferAllowed", "crossSpeciesCoordinateTransferAllowed", "createInterpolatedGeometry", "interpretation"],
+      "properties": {
+        "appAdmittedNeuronObjects": {"const": 0}, "appAdmittedSkeletons": {"const": 0}, "appAdmittedMeshes": {"const": 0}, "appAdmittedSynapseEdges": {"const": 0}, "sameCellJoinCount": {"const": 0},
+        "mouseIdentityTransferAllowed": {"const": false}, "crossSpeciesCoordinateTransferAllowed": {"const": false}, "createInterpolatedGeometry": {"const": false}, "interpretation": {"type": "string", "minLength": 1}
+      }
+    },
+    "sources": {
+      "type": "array", "minItems": 4,
+      "items": {"type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": {"label": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}}}
+    }
+  }
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Downloading Data · Brain Image Library</title>
+  <meta name="description" content="How to download data from BIL.">
+  <link rel="icon" href="/assets/BIL_logo.png">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css?v=1790857466">
+
+<!-- Google Analytics (moved from index.html to fire on every page) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1YK9CG4GL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R1YK9CG4GL');
+</script>
+
+</head>
+<body>
+  <header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="/">
+      <img src="/assets/brainicon.png" alt="" height="30">
+      <span>Brain Image Library</span>
+    </a>
+
+    <nav class="navbar navbar-expand-lg topbar-nav" aria-label="Primary">
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#bilPrimaryNav"
+              aria-controls="bilPrimaryNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="bilPrimaryNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">About</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/about.html">About BIL</a></li>
+              <li><a class="dropdown-item" href="/people.html">BIL Staff</a></li>
+              <li><a class="dropdown-item" href="/partners.html">Partners</a></li>
+              <li><a class="dropdown-item" href="/braindataarchives.html">BRAIN Initiative Data Archives</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Data Submission</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/datarequirements.html">Data Depositor FAQ</a></li>
+              <li><a class="dropdown-item" href="/submission.html">Instructions</a></li>
+              <li><a class="dropdown-item" href="/account.html">Create Account</a></li>
+              <li><a class="dropdown-item" href="/datadirbp.html">Submission Best Practices</a></li>
+              <li><a class="dropdown-item" href="https://submit.brainimagelibrary.org/">Data Submission Portal</a></li>
+              <li><a class="dropdown-item" href="/newmetadatamodel.html">Metadata Model</a></li>
+              <li><a class="dropdown-item" href="/training.html">Training</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">Data Access</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://api.brainimagelibrary.org/web">Search Brain Inventory</a></li>
+              <li><a class="dropdown-item" href="/download.html">Downloading Data</a></li>
+              <li><a class="dropdown-item" href="/identifiers.html">BIL Identifiers</a></li>
+              <li><a class="dropdown-item" href="/computevisual.html">Computing and Visualization</a></li>
+              <li><a class="dropdown-item" href="/visual.html">Web Visualization</a></li>
+              <li><a class="dropdown-item" href="/analysis_ecosystem.html">Analysis Ecosystem</a></li>
+              <li><a class="dropdown-item" href="/restrictedaccess.html">Restricted Data</a></li>
+              <li><a class="dropdown-item" href="/metadataapi.html">Metadata API</a></li>
+              <li><a class="dropdown-item" href="/citation.html">Citing Data</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  
+  <main id="content">
+    <div class="container my-5">
+  <div class="content-card">
+<h1>Downloading Data</h1>
+<h2>Overview</h2>
+There are many supported ways to download datasets from BIL. 
+This section discusses how to locate datasets in BIL and download them using these methods.   
+<ol>
+<li><a href="#Locating">Locating Data</a> 
+	First, find the location of the dataset of interest using the <a href="https://api.brainimagelibrary.org/web/">Brain
+	Inventory</a> or the <a href="https://www.brainimagelibrary.org/metadataapi.html">metadata API</a>.
+</li>
+<li><a href="#HTTPS">Using a web browser: </a> How to download datasets using a web browser.</li>
+<!-- <li><a href="#FTP">Anonymous FTP:</a> How to download datasets using anonymous FTP.</li>
+<ol type="A">
+<li><a href="#WEB">Using a web browser: anonymous FTP</a> How to download datasets using anonymous FTP 
+	through a web browser.</li>
+-->
+<li><a href="#WGET">Using wget</a> How to download datasets using unix wget command.</li>
+<!-- <li><a href="#OtherClients">Using other clients:</a>Advice on how to download datasets using other ftp clients.</li>
+</ol> -->
+<li><a href="#GLOBUS">Globus:</a> How to download datasets using Globus.</li>
+<li><a href="#Help">Assistance and Help</a></li>
+<li><a href="#Licence">Distribution Licence</a></li>
+<li><a href="#Embargo">Embargoed entries</a></li>
+<li><a href="#Citation">Citation of entries and use of non-embargoed pre-publication data</a></li>
+</ol>
+<h2>Download Steps</h2>
+<ol>
+<li id="Locating"><b>Locating Data</b>
+<p>Find the location of the dataset of interest using the <a href="https://api.brainimagelibrary.org/web/">Brain
+	Inventory</a> web search tool or the <a href="https://www.brainimagelibrary.org/metadataapi.html">metadata API</a>
+</p>
+<p>If using the metadata API, look for the field "bildirectory" under the "Dataset" subsection. </p>
+<p>The path shown will be in the form:<br/>
+<i>/bil/data/&lt;c1c2&gt;/&lt;c3c4&gt;/&lt;16-digit-submission-identifier&gt;/&lt;subdirectoryName&gt;</i></p>
+<p>where &lt;c1c2&gt; are replaced by the first and second characters of the submission identifier and &lt;c3c4&gt; 
+	are replaced by the third and fourth characters of the submission identifier.  For example:</p>
+<p>/bil/data/ab/cd/abcdef0123456789/example_dataset_01/</p>
+</li>
+<li id="HTTPS"><b>Using a web browser: HTTPS</b>
+<p>
+  To access the files, enter the following URL in your web browser:</p>
+<p><i>https://download.brainimagelibrary.org/</i></p>
+<p>The URL to access the example dataset mentioned above would be:</p>
+<p><i><a href="https://download.brainimagelibrary.org/ab/cd/abcdef0123456789/example_dataset_01/">
+	  https://download.brainimagelibrary.org/ab/cd/abcdef0123456789/example_dataset_01/</a></i></p>
+</li>
+<!--	
+<li id="FTP"><b>Anonymous FTP</b> 
+<ol type="A">
+
+<li id="#WEB"><b>Using a web browser: FTP</b> 
+<p>
+  To access the files, enter the following URL in your web browser:</p>
+  <p><i>ftp://download.brainimagelibrary.org:8811/</i></p>
+  <div class="alert alert-primary" role="alert">
+  Most web browser anonymous ftp clients (Chrome, Firefox, Safari) will place you in the <i>/bil/data</i> 
+  directory as the root directory. Internet Explorer/Edge will place you in <i>/</i> as the root directory.
+  </div>
+  <p>The URL to access the example dataset mentioned above (Chrome, Firefox, Safari) would be:</p>
+  <p><i>ftp://download.brainimagelibrary.org:8811/ab/cd/abcdef0123456789/example_dataset_01/</i></p>
+  <p>The URL to access the example dataset mentioned above (Internet Explorer/Edge) would be:</p>
+  <p><i>ftp://download.brainimagelibrary.org:8811/bil/data/ab/cd/abcdef0123456789/example_dataset_01/</i>
+
+  <div class="alert alert-primary" role="alert">
+  With some web browsers, if you forget the trailing / in the URL you may receive a blank page. 
+  </div>
+  <p>
+  <img width="100%" height="100%" src="assets/AnonFTP.png">
+
+</p> 
+</li>
+-->
+<li id="WGET"><b>Using wget:</b>
+<p>  To download the files, use wget with the -r option and the URL to the desired dataset without the 
+    /bil/data path.</p>
+<p>For example, to retreive the example dataset mentioned above with wget, enter:</p>
+<p><code>wget -r https://download.brainimagelibrary.org/ab/cd/abcdef0123456789/example_dataset_01/
+	</code></p>
+</li>
+<!--	
+<li id="OtherClients"><b>Using other clients:</b>
+  <p>
+  Due to the variety of FTP clients produced, we can only offer the following general advice:
+  </p>
+  <ol type="A">
+  <li>Connect to the host: download.brainimagelibrary.org.</li>
+  <li>Connect through port 8811. <I>IMPORTANT: THIS IS NOT THE DEFAULT ANONYMOUS FTP PORT/</i>.</li>
+  <li>For some clients, you will have to use the complete file path to acces the data (e.g. begin with /bil/data).</li>
+  </ol>
+</li>
+</ol>
+</li>
+-->
+<li id="GLOBUS"><b>Using Globus:</b>
+
+  &lt;<p><span>To upload or download data via Globus, we will need your CILogon ePPN. To set up Globus for the first time:</span></p>
+<ol>
+<li><span>Find your CILogon ePPN by logging in with your preferred identity at </span><a href="https://cilogon.org/" rel="noopener" target="_blank"><span>https://cilogon.org/</span></a><span>.</span></li>
+<li><span>Send an e-mail to </span><a href="mailto:bil-support@psc.edu" rel="noopener" target="_blank"><span>bil-support@psc.edu</span></a><span> with your name, institution, and the value of the ePPN field under "User Attributes" from the CILogon website.</span></li>
+<li><span>Once your ePPN has been mapped to your BIL/PSC username, you will be able to log in via the Globus website</span></li>
+</ol>
+<p><span>Once your ePPN has been mapped to BIL user, you can upload via Globus:</span></p>
+<ol>
+<li>
+<p><span>Login at </span><a href="https://globus.org/" rel="noopener" target="_blank"><span>https://globus.org/</span></a><span> - select the LOG IN button at the top-right to begin.</span></p>
+</li>
+<li>
+<p><span>From the drop-down list, find the organization for the identity associated with the ePPN we have mapped for you. This could either be ACCESS (XSEDE), or your institution (e.g. Carnegie Mellon University). After you select the organization for the identity that you want to authenticate with, select the Continue button to proceed.</span></p>
+</li>
+<li>
+<p><span>You will be redirected to your organization's login page, where you enter the account name, password, and possibly also complete an additional two-factor authentication (e.g. DUO) to log in.</span></p>
+</li>
+<li>
+<p><span>Upon successful authentication to your organization, your browser will show the Globus File Manager page where you can connect to the Brain Image Library service.</span><br/>
+<span>Click in the field labeled "Collection" (the Globus term for a remote data site), and start typing "Brain Image Library". This should bring up the new Globus collection labeled "Brain Image Library /bil filesystem" on the Brain Image Library Globus Connect Server 5 Endpoint. Select it to proceed.</span></p>
+</li>
+<li>
+<p><span>The first time that you connect to this Globus collection, you may be asked to provide consent to use your identity to authenticate to it. Select "Continue" to proceed.</span></p>
+</li>
+<li>
+<p><span>There may be more than one identity mapped to your BIL/PSC username. Select the identity that you used to login to Globus with, and then select "Continue" to proceed.</span></p>
+</li>
+<li>
+<p><span>The Globus service will then ask you to allow the service to use your identity to facilitate activities including file transfers, file management, and remote access to data. Select "Allow" to proceed.</span></p>
+</li>
+<li>
+<p><span>Once you have allowed the Globus service to employ your identity to authenticate you to the BIL Globus service, you will be connected and arrive at the Path /bil. You can navigate with clicks or by typing the path to your desired location in the Path field.</span><br/>
+<span>Globus path to /bil/data</span></p>
+</li>
+<li>
+<p><span>When you are done with your Globus session, we recommend logging out completely. This is a two-step process: Select the LOGOUT icon toward the bottom of the left sidebar. Clicking on the LOGOUT icon logs you out of the Globus file manager web app. To logout from the Globus service, select the Globus ID "Log Out" link.</span></p>
+</li>
+</ol>
+<p><span>If you require assistance in accessing the BIL Globus service, please reach out to </span><a href="mailto:bil-support@psc.edu" rel="noopener" target="_blank"><span>bil-support@psc.edu</span></a><span>.</span></p>
+<li id="Help"><b>Assistance and Help</b>
+<p>If you need assistance with anything, please email: bil-support@psc.edu.</p>
+<p>
+If you are having networking issues related to data transfer (including 
+slow transfer speeds), email us at at bil-support@psc.edu and one of our 
+networking experts will get in contact with you.</p>
+</li>
+<li id="Licence"><b>Distribution Licence</b>
+<p>BIL Data is distributed under the Creative Commons Attribution-ShareAlike 
+4.0 International License. 
+</p>
+</li>
+<li id="Embargo"><b>Embargoed Entries</b>
+<p>
+Data submitted to the library, by default,  will be released as soon 
+as possible once data has been validated. Optionally, data submitters 
+can select a limited embargo period for their submitted data. Entries 
+deposited with NIH BRAIN Initiative funding may request an embargo
+period not exceeding the limits outlined in the 
+	<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-MH-19-010.html">
+	Notice of Data Sharing Policy for the BRAIN Initiative.</a>
+All other deposited entries may request an embargo period of up to 
+one year. Data subjected to embargo can not be downloaded.
+</p>
+<li id="Citation"><b>Citation of entries and use of non-embargoed pre-publication data</b>
+<p>
+	Please see <a href="http://www.brainimagelibrary.org/citation.html">this page</a> for suggested acknowledgement text for entries from the Brain Image 
+Library.</p>
+<!--
+<div class="alert alert-secondary" role="alert">
+<p><i>This work used data from the Brain Image Library[1], which is supported by 
+the National Institutes of Mental Health of the National Institutes of 
+Health under award number R24-MH-114793. The content is solely the 
+responsibility of the authors and does not necessarily represent the 
+official views of the National Institutes of Health.</i></p>
+<p>[1] Sean Deitrich, Jacob Czech, Alexander Ropelewski, Arthur W. Wetzel, Greg Hood, Derek Simmel, 
+Marcel Bruchez, Simon C. Watkins, and Alan M. Watson. 2018. Applying iRODS to the Brain Image Library. 
+In Proceedings of the Practice and Experience on Advanced Research Computing (PEARC '18). ACM, 
+New York, NY, USA, Article 79, 4 pages. DOI: https://doi.org/10.1145/3219104.3229266 </p>
+</div>
+
+<p>
+Sample text for citing two datasets (abcdef0123456789.example_dataset_01 
+and abcdef0123456789.example_dataset_02) within in the Brain Image Library 
+is shown below:</p>
+
+<div class="alert alert-secondary" role="alert">
+<p><i>In this work, we used datasets abcdef0123456789.example_dataset_01 and
+abcdef0123456789.example_dataset_02 from the Brain Image Library [1,2].</i></p>
+<p>[1] Sean Deitrich, Jacob Czech, Alexander Ropelewski, Arthur W. Wetzel, Greg Hood, Derek Simmel, 
+Marcel Bruchez, Simon C. Watkins, and Alan M. Watson. 2018. Applying iRODS to the Brain Image Library. 
+In Proceedings of the Practice and Experience on Advanced Research Computing (PEARC '18). ACM, 
+New York, NY, USA, Article 79, 4 pages. DOI: https://doi.org/10.1145/3219104.3229266 </p>
+<p>
+[2] If the metadata record for the entry contains a citation, we recommend 
+that you also include that citation here. 
+</p>
+</div>
+-->
+<p><i>Use of Non-embargoed Pre-publication Data.</i></p>
+<p>The library encourages researchers using datasets from the Brain Image
+Library for which there is no peer-reviewed publication identified, to 
+contact the data producers to discuss possible coordinated publications 
+and collaborations. </p>
+</li></li></li></ol>
+  </div>
+</div>
+
+  </main>
+  <footer class="site-footer">
+  <div class="site-footer-in">
+    <p class="site-footer-lead">
+      The Brain Image Library is a BRAIN Initiative data archive that helps
+      neuroscientists preserve, analyze, and share their microscopy data.
+    </p>
+    <p class="site-footer-support">
+      Supported by the National Institutes of Mental Health of the National
+      Institutes of Health under award number R24-MH-114793. The content is
+      solely the responsibility of the authors and does not necessarily
+      represent the official views of the National Institutes of Health.
+    </p>
+    <p class="site-footer-rrid">Brain Image Library · RRID:SCR_017272</p>
+    <div class="announcement">
+      This repository is under review for potential modification in
+      compliance with Administration directives.
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/stats.js?v=1790857466" defer></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+[
+  {
+    "label": "new build source-native 108978 current capture",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "buildPins": 34,
+      "traces": 12
+    }
+  },
+  {
+    "label": "old-build rejection follow-up assumed the current capture textarea remained available",
+    "passed": false,
+    "data": {
+      "reason": "Rejection clears the prior export capture, so the textarea is absent; renderer/source are checked separately."
+    }
+  },
+  {
+    "label": "old I45 build rejected and capture cleared while exact source remains selected",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "obsoleteCaptureCount": 0
+    }
+  },
+  {
+    "label": "native current-build same-source fresh restore rechecked all three private sources and camera",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "pins": 34,
+      "allPrivateSourcesNoStore": true,
+      "cameraEqual": true
+    }
+  },
+  {
+    "label": "main-view disclosure locator also matched nested native disclosure",
+    "passed": false,
+    "data": {
+      "reason": "The atlas region contains both controls; use the observed direct child main-view disclosure."
+    }
+  },
+  {
+    "label": "main scene current renderer capture with exact auxiliary source pins",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "buildPins": 29,
+      "documentType": "main_scene_morphology_view_receipt"
+    }
+  },
+  {
+    "label": "frozen individual current 33-pin source-native renderer capture",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "pins": 33
+    }
+  },
+  {
+    "label": "main current-build source geometry no-store restore and camera unchanged",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "buildPins": 29,
+      "verifiedAuxiliaryAssets": 2,
+      "cameraEqual": true
+    }
+  },
+  {
+    "label": "frozen individual current-build no-store restore retained exact camera and source",
+    "passed": true,
+    "data": {
+      "source": 108978,
+      "buildPins": 33,
+      "cameraEqual": true
+    }
+  },
+  {
+    "label": "source switch removes prior native source and capture immediately",
+    "passed": true,
+    "data": {
+      "requested": 45718,
+      "oldNativeRegions": 0
+    }
+  },
+  {
+    "label": "390px exact source 45718 native current-build capture",
+    "passed": true,
+    "data": {
+      "source": 45718,
+      "traces": 8,
+      "pins": 34,
+      "viewport": {
+        "cssWidth": 306,
+        "cssHeight": 300,
+        "drawingBufferWidth": 459,
+        "drawingBufferHeight": 450,
+        "pixelRatio": 1.5
+      }
+    }
+  },
+  {
+    "label": "current browser observes compiled compact-runtime shared script",
+    "passed": true,
+    "data": {
+      "asset": {
+        "id": "1cfdd58afbf2d919",
+        "kind": "script",
+        "name": "source-view-png-raster-C6jTyDrI.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "other"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1244345,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:3003/_next/static/chunks/source-view-png-raster-C6jTyDrI.js"
+      },
+      "scope": "Observed resource identity only; no transfer/parse/execute/latency claim"
+    }
+  }
+]

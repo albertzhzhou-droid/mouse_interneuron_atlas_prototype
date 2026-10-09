@@ -1,0 +1,16 @@
+{
+  "status": "EXACT_NULL_RENDER_ADAPTER_ONLY",
+  "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/PREPARATION_NULL_LABEL_REPAIR_BEFORE.py",
+  "before": {
+    "bytes": 30690,
+    "sha256": "a17af11721c33ab88739cf09b671cd7cc7eb5eab8279ff48e5fdce82fb5bd207"
+  },
+  "after": {
+    "bytes": 30560,
+    "sha256": "174aca04300668bc6c6fba26f11463871281a64393b829244c80fb779f8b5127"
+  },
+  "old": "(' \u00b7 '.join(a['markers']['exactStrings']) or 'Unknown') + str(a['markers']['sourceRowLabel']) + ' \u00b7 ' + a['markers']['locator'],\n                 (' \u00b7 '.join(b['markers']['exactStrings']) or 'Unknown') + str(b['markers']['sourceRowLabel']) + ' \u00b7 ' + b['markers']['locator'], comparison_label(pair['markers']['status'])]]\n    # React renders a null source-row label as empty text; Python's None is not a source assertion.\n    expected[0][1] = expected[0][1].replace('None \u00b7 ', ' \u00b7 '); expected[0][2] = expected[0][2].replace('None \u00b7 ', ' \u00b7 ')",
+  "new": "(' \u00b7 '.join(a['markers']['exactStrings']) or 'Unknown') + (a['markers']['sourceRowLabel'] or '') + ' \u00b7 ' + a['markers']['locator'],\n                 (' \u00b7 '.join(b['markers']['exactStrings']) or 'Unknown') + (b['markers']['sourceRowLabel'] or '') + ' \u00b7 ' + b['markers']['locator'], comparison_label(pair['markers']['status'])]]\n    # React's null source-row label renders as empty text; retain every original string.",
+  "actualCaptureRead": false,
+  "reason": "Map only null source-row labels to React empty text; never replace text inside an original assertion."
+}

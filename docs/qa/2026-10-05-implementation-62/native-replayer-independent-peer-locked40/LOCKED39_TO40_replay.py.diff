@@ -1,0 +1,13 @@
+--- locked39/replay.py
++++ locked40/replay.py
+@@ -50,7 +50,9 @@
+             with (HERE/'BOUNDED_STRICT_FSTAT_REFUSALS.jsonl').open('a',encoding='utf-8') as handle:handle.write(json.dumps(event,ensure_ascii=False)+'\n')
+             if attempt==3:raise
+ def pinned(e):
+-    p=pin(e['path']);check(all(p[k]==e[k] for k in ('bytes','sha256')),'input pin mismatch: '+e['path']);return p
++    p=pin(e['path']);check(all(p[k]==e[k] for k in ('bytes','sha256')),'input pin mismatch: '+e['path'])
++    if 'readEpoch' in e:exact(p['readEpoch'],e['readEpoch'],'$.declaredReadEpoch')
++    return p
+ def exact(a,b,path='$'):
+     check(type(a) is type(b),'JSON type mismatch at '+path)
+     if isinstance(a,dict):

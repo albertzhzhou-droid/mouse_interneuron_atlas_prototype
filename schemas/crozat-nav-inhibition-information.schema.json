@@ -1,0 +1,306 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/crozat-nav-inhibition-information.schema.json",
+  "title": "Two exact Crozat v2 NaV information tables; original worksheet-row units",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "adapterId",
+    "documentType",
+    "parentSourceId",
+    "profileId",
+    "source",
+    "summary",
+    "articleContext",
+    "conflicts",
+    "scope",
+    "interpretation",
+    "derivation",
+    "tables"
+  ],
+  "properties": {
+    "source": {
+      "type": "object"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "articleContext": {
+      "type": "object"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "interpretation": {
+      "type": "object"
+    },
+    "derivation": {
+      "type": "object"
+    },
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "adapterId": {
+      "const": "crozat-nav-inhibition-information-0.1"
+    },
+    "documentType": {
+      "const": "source_table_information_not_cell_roster"
+    },
+    "parentSourceId": {
+      "const": "SRC-CROZAT-2025"
+    },
+    "profileId": {
+      "const": "crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn"
+    },
+    "conflicts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object"
+      }
+    },
+    "tables": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/table"
+      }
+    }
+  },
+  "$defs": {
+    "table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "fileId",
+        "sourceFile",
+        "sheet",
+        "worksheetMember",
+        "formattingDimension",
+        "nativeHeaders",
+        "metricField",
+        "metricUnit",
+        "sourceHeaderUnit",
+        "unitAuthority",
+        "sourceAnalysis",
+        "observationRowCount",
+        "distinctRegionNativeLabelKeyCount",
+        "distinctKeysCountPhysicalCells",
+        "regionConditionCounts",
+        "duplicateNativeLabels",
+        "observedNativeLabelGaps",
+        "rawRange",
+        "observations"
+      ],
+      "properties": {
+        "sourceFile": {
+          "type": "object"
+        },
+        "unitAuthority": {
+          "type": "object"
+        },
+        "sourceAnalysis": {
+          "type": "object"
+        },
+        "rawRange": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sheet": {
+          "type": "string"
+        },
+        "worksheetMember": {
+          "type": "string"
+        },
+        "formattingDimension": {
+          "type": "string"
+        },
+        "metricField": {
+          "type": "string"
+        },
+        "metricUnit": {
+          "type": "string"
+        },
+        "fileId": {
+          "enum": [
+            56062562,
+            56062565
+          ]
+        },
+        "nativeHeaders": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceHeaderUnit": {
+          "type": "null"
+        },
+        "observationRowCount": {
+          "enum": [
+            56,
+            28
+          ]
+        },
+        "distinctRegionNativeLabelKeyCount": {
+          "const": 27
+        },
+        "distinctKeysCountPhysicalCells": {
+          "const": false
+        },
+        "regionConditionCounts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "duplicateNativeLabels": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "observedNativeLabelGaps": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "observations": {
+          "type": "array",
+          "minItems": 28,
+          "maxItems": 56,
+          "items": {
+            "$ref": "#/$defs/observation"
+          }
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "tableId",
+        "sourceRow",
+        "raw",
+        "nativeCellLabel",
+        "regionRaw",
+        "region",
+        "conditionRaw",
+        "value",
+        "rawNumericLexical",
+        "metricField",
+        "metricUnit",
+        "cellLocators",
+        "nativeLabelIsPhysicalCellIdentity",
+        "animalId",
+        "perRowAge",
+        "perRowSex",
+        "rawTraceId",
+        "sourcePairId",
+        "nativeLabelAuditStatus"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "tableId": {
+          "type": "string"
+        },
+        "sourceRow": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "raw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "nativeCellLabel": {
+          "type": "string"
+        },
+        "regionRaw": {
+          "enum": [
+            "Cerv",
+            "Tho",
+            "Lomb"
+          ]
+        },
+        "region": {
+          "enum": [
+            "cervical",
+            "thoracic",
+            "lumbar"
+          ]
+        },
+        "conditionRaw": {
+          "enum": [
+            "CTR",
+            "TTX",
+            null
+          ]
+        },
+        "value": {
+          "type": "number"
+        },
+        "rawNumericLexical": {
+          "type": "string"
+        },
+        "metricField": {
+          "enum": [
+            "Dens",
+            "Perc"
+          ]
+        },
+        "metricUnit": {
+          "enum": [
+            "pA/pF",
+            "%"
+          ]
+        },
+        "cellLocators": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "nativeLabelIsPhysicalCellIdentity": {
+          "const": false
+        },
+        "animalId": {
+          "type": "null"
+        },
+        "perRowAge": {
+          "type": "null"
+        },
+        "perRowSex": {
+          "type": "null"
+        },
+        "rawTraceId": {
+          "type": "null"
+        },
+        "sourcePairId": {
+          "type": "null"
+        },
+        "nativeLabelAuditStatus": {
+          "enum": [
+            "ambiguous_repeated_native_label",
+            "table_local_label_only_not_physical_identity"
+          ]
+        }
+      }
+    }
+  }
+}

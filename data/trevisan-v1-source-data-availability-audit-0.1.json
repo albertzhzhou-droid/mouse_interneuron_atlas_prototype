@@ -1,0 +1,70 @@
+{
+  "auditId": "trevisan-v1-source-data-availability-audit-0.1",
+  "auditDate": "2026-09-24",
+  "auditScope": "Read-only audit of the publication, linked analysis repository, analysis functions and visible interactive-source controls; no count files or supplementary workbooks were downloaded or bundled.",
+  "source": {
+    "articleUrl": "https://www.nature.com/articles/s41467-026-76522-3",
+    "doi": "10.1038/s41467-026-76522-3",
+    "geoAccession": "GSE275595",
+    "geoUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595",
+    "interactiveUrl": "https://v1interneurons.stjude.org/shinyApp/",
+    "analysisRepositoryUrl": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas",
+    "analysisRepositoryLicenseUrl": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/LICENSE",
+    "analysisScriptUrl": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/09_Integration_FinalData/Code_Integration_FinalData.R",
+    "matrixLoadingFunctionUrl": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/2_Load_and_merge.R",
+    "metadataDerivationFunctionUrl": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/3_Add_metadata.R"
+  },
+  "verifiedUpstreamAvailability": {
+    "articleReportsGeoRawSequencingCountsAndAssociatedMetadata": true,
+    "articleReportsUniqueFinalFigureCellBarcodesInSupplementaryData3": true,
+    "selectedStudyWideNucleusCount": 89494,
+    "postnatalAges": ["P0", "P14", "P28", "P56"],
+    "articleReportedClusterCount": 14,
+    "interactiveAnnotationFieldsObserved": ["age", "replicate", "seurat_clusters"],
+    "interactiveSubsetFieldsObserved": ["replicate", "seurat_clusters"],
+    "interactiveClusterIdsObserved": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "publishedScriptCellMetadataFields": ["age", "replicate", "region", "seurat_clusters"],
+    "analysisRepositoryCodeLicense": "MIT",
+    "integrationScriptReferencesInputs": ["Data_raw_Merged.rds", "Cells_pos.csv"],
+    "inspectedIntegrationDirectoryContainsOnlyScript": true,
+    "matrixLoadingFunctionDiscoversDirectorySuffix": "*_cellranger",
+    "matrixLoadingFunctionDefaultPathSuffix": "/outs/filtered_feature_bc_matrix",
+    "matrixLoadingFunctionReadMethod": "Read10X",
+    "matrixLoadingFunctionDefaultMinCells": 10,
+    "matrixLoadingFunctionDefaultMinFeatures": 1000,
+    "sampleIdentifierDerivedFromDirectoryBasenameBeforeUnderscore": true,
+    "metadataFunctionDerivesAgeFromFirstNumericSubstring": true,
+    "metadataFunctionDerivesRegionFromThirdCharacterFromEnd": true,
+    "metadataFunctionDerivesReplicateFromLastCharacter": true
+  },
+  "notYetVerifiedOrImported": {
+    "supplementaryData3DownloadedOrInspected": false,
+    "geoPayloadDownloadedOrChecksummed": false,
+    "barcodeToCountMatrixRowCrosswalkValidated": false,
+    "perNucleusAgeClusterRegionRowsValidated": false,
+    "exactCountsByAgeClusterOrRegionImported": false,
+    "geoFileSpecificReuseTermsVerified": false,
+    "sampleIdentifierParsingValidatedAgainstAllGeoRecords": false,
+    "perCellMetadataDerivationReproduced": false,
+    "prebuiltIntegratedObjectAvailableInInspectedRepositoryDirectory": false,
+    "individualMorphologyOrInternalStructureSupported": false
+  },
+  "interpretationBoundary": {
+    "sourceCodeFieldsAreNotValidatedPerNucleusAssignments": true,
+    "interactiveControlsAreNotAReproducibleCellRoster": true,
+    "studyWideCountIsNotAnExactClusterAgeRegionDenominator": true,
+    "articleLicenseDoesNotAutomaticallyEstablishGeoFileLicense": true,
+    "sampleNameParsingRulesAreNotValidatedAgainstGeoRecords": true,
+    "clusterLabelsDoNotEstablishMorphologyOrSameCellIdentity": true
+  },
+  "admissionBoundary": {
+    "canonicalSourceProfileContribution": 0,
+    "includedInExisting387ProfileDenominator": false,
+    "includedInMain3dScene": false,
+    "morphologyGeometryObjectCount": 0,
+    "internalStructureObjectCount": 0,
+    "sameCellJoinCount": 0,
+    "atlasRegistrationCount": 0,
+    "measurementCount": 0
+  }
+}

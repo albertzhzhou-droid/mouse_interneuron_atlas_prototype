@@ -1,0 +1,110 @@
+{
+  "auditId": "microns-phase1-subcellular-source-audit-0.1.0",
+  "schemaVersion": "0.1.0",
+  "auditDate": "2026-09-23",
+  "targetReference": {
+    "contractId": "microns-observed-cell-nucleus-reference-0.1",
+    "cellRootId": "648518346349516051",
+    "cellClass": "inhibitory",
+    "coarseClassification": "chandelier",
+    "region": "visual cortex layer 2/3",
+    "segmentationRelease": "v185.4"
+  },
+  "synapseTable": {
+    "status": "source_and_schema_verified_exact_cell_rows_pending",
+    "zenodoRecordId": "7510511",
+    "metadataDepositVersion": "185.3",
+    "tableLabel": "v185",
+    "fileName": "221206_pni_synapses_v185.csv",
+    "fileBytes": 388781071,
+    "publishedMd5": "19073f4b5cbae60d7f92d73f204940ed",
+    "publishedRowDescription": "3.2 million putative synapse detections between objects within the volume",
+    "observedColumns": [
+      "id",
+      "pre_root_id",
+      "post_root_id",
+      "cleft_vx",
+      "ctr_pt_x_nm",
+      "ctr_pt_y_nm",
+      "ctr_pt_z_nm",
+      "pre_pos_x_vx",
+      "pre_pos_y_vx",
+      "pre_pos_z_vx",
+      "ctr_pos_x_vx",
+      "ctr_pos_y_vx",
+      "ctr_pos_z_vx",
+      "post_pos_x_vx",
+      "post_pos_y_vx",
+      "post_pos_z_vx"
+    ],
+    "coordinateFields": {
+      "nativeFrame": "MICrONS_Phase1_aligned_EM_native",
+      "nativeUnit": "nanometre",
+      "centerNanometreColumns": ["ctr_pt_x_nm", "ctr_pt_y_nm", "ctr_pt_z_nm"],
+      "prePostEndpointVoxelColumns": [
+        "pre_pos_x_vx", "pre_pos_y_vx", "pre_pos_z_vx",
+        "post_pos_x_vx", "post_pos_y_vx", "post_pos_z_vx"
+      ],
+      "releaseNotesNominalVoxelResolutionNanometre": [4, 4, 40],
+      "postHocMeasurementCorrectionApplied": false
+    },
+    "qualityBoundary": "Automated putative detections; the source states that many objects are not proofread and the table cannot be trivially interpreted as a connectivity graph. This CSV does not provide a per-row proofread flag.",
+    "accessAudit": {
+      "officialCaveGuideRequiresConfiguredToken": true,
+      "unauthenticatedMetadataRequest": "redirected_to_sticky_auth_authorization",
+      "authenticatedExactRootQueryRun": false,
+      "fullTableDownloaded": false,
+      "filteredRowsRetained": 0,
+      "retainedSourcePayloadBytes": 0,
+      "reasonNotDownloaded": "The public file is 388.8 MB; the MICrONS page advises contacting the project before large-scale downloads. No full-table transfer or credentialed query was performed."
+    },
+    "versionJoin": {
+      "tableDepositVersion": "185.3",
+      "cellSegmentationRelease": "v185.4",
+      "exactRootLineageAcrossTheseProductsVerified": false,
+      "coordinateFrameCandidateCompatible": true,
+      "overlayAdmitted": false
+    }
+  },
+  "mitochondriaRoute": {
+    "status": "official_source_route_listed_exact_cell_mapping_pending",
+    "sourceRelease": "v185",
+    "precomputedLayer": "precomputed://gs://neuroglancer/pinky10/ground_truth_registration/dst/mit_new",
+    "exactTargetRootMappingVerified": false,
+    "versionAndCoordinateJoinVerified": false,
+    "mitochondriaGeometryImported": false
+  },
+  "admission": {
+    "synapsePointCount": 0,
+    "mitochondriaObjectCount": 0,
+    "sameCellCrossSourceJoinCount": 0,
+    "mouseSpinalIdentityJoinCount": 0,
+    "registrationCount": 0,
+    "functionalConnectivityClaims": false
+  },
+  "nextEvidenceGate": [
+    "Obtain an authorized root-ID-filtered query through the documented CAVE client or an official compact cell-specific export; do not download the full table as a substitute.",
+    "Verify the exact root-object lineage between the v185 table and v185.4 mesh, then audit every returned uint64 identifier and native coordinate against that mesh.",
+    "Keep automated detections distinct from proofread contacts; the table has no per-row proofread field.",
+    "Resolve exact mitochondria segment IDs, target-cell membership, source version, coordinate transform, and reuse terms before admitting any internal geometry.",
+    "Keep this visual-cortex comparator separate from all spinal molecular or morphology records."
+  ],
+  "sources": [
+    {
+      "label": "MICrONS Phase 1 data and public synapse-table scope",
+      "url": "https://www.microns-explorer.org/phase1"
+    },
+    {
+      "label": "MICrONS Layer 2/3 Data Tables, Zenodo record 7510511",
+      "url": "https://zenodo.org/records/7510511"
+    },
+    {
+      "label": "Official CAVE synapse-query guide and token setup",
+      "url": "https://tutorial.microns-explorer.org/quickstart_notebooks/04-cave-query-synapses.html"
+    },
+    {
+      "label": "MICrONS v185 release notes: nominal coordinates and mitochondria route",
+      "url": "https://www.microns-explorer.org/v185-release-notes"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "releaseId": "ohri-evidence-provenance-trace-0.1.0",
+  "schemaVersion": "0.1.0",
+  "researchReleaseId": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "plannerReleaseId": "ohri-evidence-feasibility-planner-0.1.0",
+  "title": "Two-lane evidence and public-source provenance trace",
+  "lanes": [
+    {
+      "id": "research_evidence",
+      "label": "Research evidence chain",
+      "nodeKinds": ["entity", "claim", "condition", "statement", "source"],
+      "expectedCounts": {"entities": 7, "claims": 8, "conditions": 13, "statements": 31, "sources": 7},
+      "boundary": "This lane shows the frozen entity-to-claim-to-condition-to-source/statement references in the Research MVP. It does not turn a linked record into cell geometry, a coordinate, a causal extension beyond the recorded condition, or REG."
+    },
+    {
+      "id": "public_source_routes",
+      "label": "Public-source planning chain",
+      "nodeKinds": ["axis", "route", "public_source"],
+      "expectedCounts": {"axes": 11, "routes": 7, "publicSources": 7},
+      "boundary": "This lane shows declared feasibility-planner coverage only. A route is neither a downloaded source object nor a same-cell, same-specimen, coordinate, causal, or project-registration relation."
+    }
+  ],
+  "crossLanePolicy": "The two lanes are deliberately unjoined. A visual adjacency or a shared biological term does not establish an identity transfer, source-object link, same-cell relationship, coordinate transform, causal relation, asset authorization, or REG.",
+  "localRuntime": {
+    "networkRequests": false,
+    "sourceFileDownload": false,
+    "sourceFileUpload": false,
+    "persistentStorage": "none",
+    "output": "browser_download_of_provenance_trace_receipt_json"
+  },
+  "scientificBoundary": "The trace derives immutable, declared references from bundled release contracts only. It does not acquire, inspect, hash, transform, align, combine, analyze, persist, or bundle a source object; it does not infer new evidence, biological truth, same-cell identity, spatial registration, or REG.",
+  "nextQueueItems": ["UPG-001", "UPG-002", "UPG-006", "UPG-007", "UPG-009", "UPG-014", "UPG-015", "UPG-017"]
+}

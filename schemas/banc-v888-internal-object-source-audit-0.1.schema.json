@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/banc-v888-internal-object-source-audit-0.1.schema.json",
+  "title": "BANC v888 internal-object public route and admission audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "auditDate", "authority", "relationshipToMouseAtlas", "candidate", "sources", "actions", "admission", "nextGates", "hardBoundaries", "sourceReferences"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "auditId": {"const": "banc-v888-internal-object-source-audit-0.1.0"},
+    "auditDate": {"type": "string", "format": "date"},
+    "authority": {"const": "OPEN_SOURCE_ROUTE_AND_ADMISSION_AUDIT"},
+    "relationshipToMouseAtlas": {"const": "comparative_reference_only"},
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["species", "materializationId", "rootId", "cellType", "nucleusId", "sourceRootAndNucleusJoinVerified"],
+      "properties": {
+        "species": {"const": "Drosophila melanogaster"}, "materializationId": {"const": "v888"},
+        "rootId": {"const": "720575941350424112"}, "cellType": {"const": "IN14A018"},
+        "nucleusId": {"const": "73044750394982464"}, "sourceRootAndNucleusJoinVerified": {"const": true}
+      }
+    },
+    "sources": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nucleusBoundary", "mitochondriaAnnotations", "mitochondriaSegmentation", "synapses"],
+      "properties": {
+        "nucleusBoundary": {"type": "object", "additionalProperties": false, "required": ["publicAccessRouteDocumented", "package", "function", "cloudVolumePrefix", "candidateNucleusId", "sourceMapListsAnnotationTable", "sourceMapListsMeshProduct", "exactMeshPayloadFetched", "payloadBytes", "payloadSha256", "materializationV888BindingVerified", "objectReuseTermsVerified", "admitted", "reason"], "properties": {"publicAccessRouteDocumented": {"const": true}, "package": {"const": "bancr"}, "function": {"const": "banc_read_nuclei_mesh"}, "cloudVolumePrefix": {"type": "string", "format": "uri"}, "candidateNucleusId": {"const": "73044750394982464"}, "sourceMapListsAnnotationTable": {"const": true}, "sourceMapListsMeshProduct": {"const": false}, "exactMeshPayloadFetched": {"const": false}, "payloadBytes": {"type": ["integer", "null"]}, "payloadSha256": {"type": ["string", "null"]}, "materializationV888BindingVerified": {"const": false}, "objectReuseTermsVerified": {"const": false}, "admitted": {"const": false}, "reason": {"type": "string", "minLength": 80}}},
+        "mitochondriaAnnotations": {"type": "object", "additionalProperties": false, "required": ["publicDataverseFile", "publicGcsMirrorObjectPath", "rootFilteredQueryDocumented", "rootFilterField", "queryFunction", "configuredCaveClientRequiresRegisteredToken", "credentialsInspectedOrUsed", "queryExecuted", "perMitochondrionCoordinatesVerified", "separateSegmentationProductSourceMapStatus", "admittedPoints", "admittedSurfaces"], "properties": {"publicDataverseFile": {"type": "object", "additionalProperties": false, "required": ["fileId", "filename", "bytes", "md5", "dataverseVersion", "releaseLicense", "candidateRowsRetrieved"], "properties": {"fileId": {"const": 13917846}, "filename": {"const": "banc_888_mitochondria_v1_human_readable.csv.gz"}, "bytes": {"const": 1107598431}, "md5": {"const": "2e3be9c0d063969ae019121117007e9a"}, "dataverseVersion": {"const": 3}, "releaseLicense": {"const": "CC BY 4.0"}, "candidateRowsRetrieved": {"const": false}}}, "publicGcsMirrorObjectPath": {"const": "neuron_annotations/v888/mitochondria_v1_human_readable.csv.gz"}, "rootFilteredQueryDocumented": {"const": true}, "rootFilterField": {"const": "pt_root_id"}, "queryFunction": {"const": "bancr::banc_mitochondria(rootids=...)"}, "configuredCaveClientRequiresRegisteredToken": {"const": true}, "credentialsInspectedOrUsed": {"const": false}, "queryExecuted": {"const": false}, "perMitochondrionCoordinatesVerified": {"const": false}, "separateSegmentationProductSourceMapStatus": {"const": "MISSING"}, "admittedPoints": {"const": 0}, "admittedSurfaces": {"const": 0}}},
+        "mitochondriaSegmentation": {"type": "object", "additionalProperties": false, "required": ["publicRouteDocumentedInClient", "package", "function", "cloudVolumePrefix", "routeVersionLinkedToBancV888", "candidateObjectIdsVerified", "exactPayloadFetched", "objectReuseTermsVerified", "admittedSurfaces", "reason"], "properties": {"publicRouteDocumentedInClient": {"const": true}, "package": {"const": "bancr"}, "function": {"const": "banc_read_mitochondria_mesh"}, "cloudVolumePrefix": {"type": "string", "format": "uri"}, "routeVersionLinkedToBancV888": {"const": false}, "candidateObjectIdsVerified": {"const": false}, "exactPayloadFetched": {"const": false}, "objectReuseTermsVerified": {"const": false}, "admittedSurfaces": {"const": 0}, "reason": {"type": "string", "minLength": 80}}},
+        "synapses": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["publicRawVersionsListed", "publicRawObjectPaths", "paperVersion", "v3Status", "v2File", "v3CoordinateFrame", "publicEnrichedParquetSizesBytes", "sourceRowsCarryPreAndPostRootIds", "boundedCandidateQueryRoutePinned", "candidateRowsRetrieved", "payloadDownloaded", "stableObjectIdsAndCoordinatesVerified", "admittedSynapseObjects"],
+          "properties": {
+            "publicRawVersionsListed": {"const": ["v2", "v3"]},
+            "publicRawObjectPaths": {"const": ["neuron_connectivity/v888/synapses_v2_human_readable.csv.gz", "neuron_connectivity/v888/synapses_v3_human_readable.csv.gz"]},
+            "paperVersion": {"const": "v2"},
+            "v3Status": {"const": "in_testing"},
+            "v2File": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fileId", "filename", "bytes", "md5", "coordinateUnits"],
+              "properties": {
+                "fileId": {"const": 13916483},
+                "filename": {"const": "banc_888_synapses_v2_human_readable.csv.gz"},
+                "bytes": {"const": 12257440602},
+                "md5": {"const": "e3679e7b9cec032ed1745c7a9dfd42d8"},
+                "coordinateUnits": {"const": "nanometres"}
+              }
+            },
+            "v3CoordinateFrame": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["units", "voxelResolutionNanometres"],
+              "properties": {
+                "units": {"const": "source_grid_voxels"},
+                "voxelResolutionNanometres": {"const": [16, 16, 45]}
+              }
+            },
+            "publicEnrichedParquetSizesBytes": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["v2Approximate", "v3Approximate"],
+              "properties": {
+                "v2Approximate": {"const": 9600000000},
+                "v3Approximate": {"const": 15000000000}
+              }
+            },
+            "sourceRowsCarryPreAndPostRootIds": {"const": true},
+            "boundedCandidateQueryRoutePinned": {"const": false},
+            "candidateRowsRetrieved": {"const": false},
+            "payloadDownloaded": {"const": false},
+            "stableObjectIdsAndCoordinatesVerified": {"const": false},
+            "admittedSynapseObjects": {"const": 0}
+          }
+        }
+      }
+    },
+    "actions": {"type": "object", "additionalProperties": false, "required": ["privateCredentialsInspected", "caveTokenRequested", "sourceQueryExecuted", "largeArchiveDownloaded", "newGeometryImported"], "properties": {"privateCredentialsInspected": {"const": false}, "caveTokenRequested": {"const": false}, "sourceQueryExecuted": {"const": false}, "largeArchiveDownloaded": {"const": false}, "newGeometryImported": {"const": false}}},
+    "admission": {"type": "object", "additionalProperties": false, "required": ["nucleusSurfaces", "mitochondriaPoints", "mitochondriaSurfaces", "synapseObjects", "mouseIdentityJoins", "atlasRegistrations", "measurements"], "properties": {"nucleusSurfaces": {"const": 0}, "mitochondriaPoints": {"const": 0}, "mitochondriaSurfaces": {"const": 0}, "synapseObjects": {"const": 0}, "mouseIdentityJoins": {"const": 0}, "atlasRegistrations": {"const": 0}, "measurements": {"const": 0}}},
+    "nextGates": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 40}},
+    "hardBoundaries": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 40}},
+    "sourceReferences": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string", "format": "uri"}}
+  }
+}

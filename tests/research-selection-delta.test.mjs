@@ -103,16 +103,16 @@ test("same-namespace adjacent records compare all eight slots and retain exact l
   assert.equal(Object.isFrozen(receipt), true);
 });
 
-test("cross-namespace receipt preserves available-to-missing status changes and source locators", () => {
+test("cross-namespace receipt preserves source-specific availability, missingness and locators", () => {
   const receipt = buildResearchSelectionDeltaReceipt(russ, delile);
   const changed = Object.fromEntries(receipt.fixedSlots.changedSlots.map((slot) => [slot.slotId, slot]));
 
   assert.equal(receipt.namespace.changed, true);
   assert.equal(receipt.sharedContext.status, "not_compared_different_namespace");
   assert.equal(receipt.sharedContext.unchangedRowCount, 0);
-  assert.equal(changed.sampling.previous.status, "missing");
-  assert.equal(changed.sampling.previous.reasonCode, "not_ingested");
-  assert.equal(changed.sampling.previous.sourceLocator, "Results; Fig. 2");
+  assert.equal(changed.sampling.previous.status, "available");
+  assert.equal(changed.sampling.previous.reasonCode, null);
+  assert.match(changed.sampling.previous.sourceLocator, /MOESM6_ESM\.xlsx#Sheet1!H/);
   assert.equal(changed.sampling.current.status, "available");
   assert.match(changed.sampling.current.sourceLocator, /phenoData_annotated\.csv/);
   assert.equal(changed.markers.previous.status, "available");

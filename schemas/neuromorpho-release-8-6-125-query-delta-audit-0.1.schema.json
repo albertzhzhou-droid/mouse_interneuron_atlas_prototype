@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-release-8-6-125-query-delta-audit-0.1.schema.json",
+  "title": "NeuroMorpho 8.6.125 exact-query metadata delta audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "releaseId", "observedDate", "activeModelRelease", "candidateRepositoryRelease", "query", "comparison", "observedResponseReceipt", "assetAndAdmissionBoundaries", "rightsLocator", "interpretationBoundary"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "auditId": { "const": "neuromorpho-release-8-6-125-query-delta-audit-0.1" },
+    "releaseId": { "const": "ohri-neuromorpho-release-8-6-125-query-delta-audit-0.1.0" },
+    "observedDate": { "type": "string", "format": "date" },
+    "activeModelRelease": { "const": "8.6.124" },
+    "candidateRepositoryRelease": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "postedDate", "officialMetadataUrl"],
+      "properties": {
+        "version": { "const": "8.6.125" },
+        "postedDate": { "const": "2026-09-17" },
+        "officialMetadataUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "query": {
+      "type": "object", "additionalProperties": false,
+      "required": ["endpoint", "parameters", "reportedUrl", "apiDocumentationUrl", "apiReferenceUrl"],
+      "properties": {
+        "endpoint": { "type": "string", "format": "uri" },
+        "parameters": {
+          "type": "object", "additionalProperties": false,
+          "required": ["q", "fq", "page", "size", "sort"],
+          "properties": {
+            "q": { "const": "species:mouse" },
+            "fq": { "const": ["brain_region:spinal cord", "cell_type:interneuron", "age_classification:adult"] },
+            "page": { "const": 0 },
+            "size": { "const": 500 },
+            "sort": { "const": "neuron_id,asc" }
+          }
+        },
+        "reportedUrl": { "type": "string", "format": "uri" },
+        "apiDocumentationUrl": { "type": "string", "format": "uri" },
+        "apiReferenceUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "comparison": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "baselineRelease", "baselineIndexPath", "baselineRecordCount", "candidateRecordCount", "stableNeuronIdCount", "stableNeuronIdsAllMatch", "semanticFieldsCompared", "semanticallyUnchangedRecordCount", "addedRecordCount", "removedRecordCount", "changedSemanticMetadataRecordCount"],
+      "properties": {
+        "mode": { "const": "semantic_metadata_only" },
+        "baselineRelease": { "const": "8.6.124" },
+        "baselineIndexPath": { "type": "string", "minLength": 1 },
+        "baselineRecordCount": { "const": 142 },
+        "candidateRecordCount": { "const": 142 },
+        "stableNeuronIdCount": { "const": 142 },
+        "stableNeuronIdsAllMatch": { "const": true },
+        "semanticFieldsCompared": { "type": "string", "minLength": 1 },
+        "semanticallyUnchangedRecordCount": { "const": 142 },
+        "addedRecordCount": { "const": 0 },
+        "removedRecordCount": { "const": 0 },
+        "changedSemanticMetadataRecordCount": { "const": 0 }
+      }
+    },
+    "observedResponseReceipt": {
+      "type": "object", "additionalProperties": false,
+      "required": ["byteCount", "sha256", "rawResponseRetained", "independentReproductionStatus"],
+      "properties": {
+        "byteCount": { "const": 219524 },
+        "sha256": { "const": "f35f1755885ca495ab3fecb2385e797eaeec3dc56d684413a8324a2e9297113b" },
+        "rawResponseRetained": { "const": false },
+        "independentReproductionStatus": { "const": "requires_exact_GET_rerun" }
+      }
+    },
+    "assetAndAdmissionBoundaries": {
+      "type": "object", "additionalProperties": false,
+      "required": ["geometryAssetBytesRechecked", "perObjectGeometryHashesRechecked", "dimensionalityDeltaAuditedAtAssetLevel", "fileSpecificReuseAndAttributionRightsRechecked", "promotedIntoActiveModel", "activeGeometryReleaseRemains", "sameCellInternalStructureCount", "crossSourceIdentityCount", "registrationCount", "researchUpgradeId"],
+      "properties": {
+        "geometryAssetBytesRechecked": { "const": false },
+        "perObjectGeometryHashesRechecked": { "const": false },
+        "dimensionalityDeltaAuditedAtAssetLevel": { "const": false },
+        "fileSpecificReuseAndAttributionRightsRechecked": { "const": false },
+        "promotedIntoActiveModel": { "const": false },
+        "activeGeometryReleaseRemains": { "const": "8.6.124" },
+        "sameCellInternalStructureCount": { "const": 0 },
+        "crossSourceIdentityCount": { "const": 0 },
+        "registrationCount": { "const": 0 },
+        "researchUpgradeId": { "const": "UPG-228" }
+      }
+    },
+    "rightsLocator": { "type": "string", "format": "uri" },
+    "interpretationBoundary": { "type": "string", "minLength": 1 }
+  }
+}

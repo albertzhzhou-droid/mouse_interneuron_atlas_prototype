@@ -187,9 +187,10 @@ test("Russ, Delile and Crozat completeness preserves source-specific availabilit
   );
 
   const russ = bySlot(record("molecular_profile", "russ-2021:CSF-cN"));
-  assert.equal(russ.sampling.status, "missing");
-  assert.equal(russ.sampling.reasonCode, "not_ingested");
-  assert.equal(russ.sampling.sourceLocator, "Results; Fig. 2");
+  assert.equal(russ.sampling.status, "available");
+  assert.equal(russ.sampling.reasonCode, null);
+  assert.equal(russ.sampling.rowLabel, "Exact captured-cell/nucleus count");
+  assert.match(russ.sampling.locator, /MOESM6_ESM\.xlsx#Sheet1!H/);
   assert.equal(russ.markers.rowLabel, "Primary markers");
   assert.equal(russ.region.rowLabel, "Region class");
   assert.equal(russ.life_stage.rowLabel, "Life-stage scope");

@@ -1,0 +1,45 @@
+{
+  "attempts": [
+    {
+      "label": "Initial camera-change full research verification",
+      "log": "/private/tmp/ohri-i44-full-research.log",
+      "exitCode": 0,
+      "tests": 1393,
+      "passed": 1378,
+      "conditionalSkips": 15,
+      "failed": 0,
+      "scope": "Predates the actual radius re-entry visibility defect and its repair; does not prove final UI behavior."
+    },
+    {
+      "label": "Post-repair verification with unintentionally changed Python runtime",
+      "log": "unpassed-python312-research.log",
+      "exitCode": 1,
+      "stage": "validate:supplementary-morphology-comparison",
+      "pythonVersion": "3.12.14",
+      "reason": "Three existing morphology analysis floats differ by their least significant bits from the immutable Python 3.9.6 outputs, changing generated analysis and dependent hashes.",
+      "dataRegenerated": false,
+      "originalsModified": false,
+      "finalPass": false
+    },
+    {
+      "label": "Existing supplementary adapter replay in its original runtime",
+      "pythonVersion": "3.9.6",
+      "exitCode": 0,
+      "census": 142,
+      "supplementary": 7,
+      "registrationCount": 0,
+      "geometryCopies": 0
+    }
+  ],
+  "final": {
+    "log": "full-research.log",
+    "exitCode": 0,
+    "tests": 1393,
+    "passed": 1378,
+    "conditionalSkips": 15,
+    "failed": 0,
+    "cancelled": 0,
+    "pythonVersion": "3.9.6",
+    "finalDocumentFingerprintsCompiled": true
+  }
+}

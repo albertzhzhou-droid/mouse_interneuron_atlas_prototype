@@ -24,6 +24,8 @@ const nativeSomaContourBytes = await readFile(new URL("../public/data/premotor_c
 const nativeSomaContours = JSON.parse(nativeSomaContourBytes.toString("utf8"));
 const nativeContourCatalogBytes = await readFile(new URL("../data/neurolucida-native-contour-admission-catalog-0.3.json", import.meta.url));
 const nativeContourCatalog = JSON.parse(nativeContourCatalogBytes.toString("utf8"));
+const neuromorphoReleaseDeltaBytes = await readFile(new URL("../data/neuromorpho-release-8-6-125-query-delta-audit-0.1.json", import.meta.url));
+const neuromorphoReleaseDelta = JSON.parse(neuromorphoReleaseDeltaBytes.toString("utf8"));
 const renshawNativeContourBytes = await readFile(new URL("../public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-45674-source-closed-soma-contours.json", import.meta.url));
 const toddNativeContourBytes = new Map(await Promise.all([
   [50424, "../public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-50424-mbf-cell-body-line-loops.json"],
@@ -49,10 +51,12 @@ const [
   superClem,
   morphologyCensus,
   dorsalHornRoutePack,
+  censusChildMorphologyRoute,
   functionalClassRoutePack,
   prpDorsalHornRoutePack,
   premotorComparisonRoutePack,
   ronzanoPositions,
+  kellyTaxonomy,
 ] = await Promise.all([
   "../data/public-data-catalog-0.4.json",
   "../data/research-mvp-release-0.2.json",
@@ -70,10 +74,12 @@ const [
   "../data/super-clem-synapse-reference-0.1.json",
   "../public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
   "../data/dorsal-horn-observed-morphology-route-pack-0.1.json",
+  "../data/census-child-observed-morphology-route-0.1.json",
   "../data/functional-class-observed-morphology-route-pack-0.1.json",
   "../data/prp-dorsal-horn-observed-morphology-route-pack-0.1.json",
   "../data/premotor-comparison-observed-morphology-route-pack-0.1.json",
   "../public/data/ronzano_premotor_positions_v1/positions.json",
+  "../data/kelly-zebrafish-spinal-interneuron-taxonomy-0.1.json",
 ].map(async (relativePath) => JSON.parse(await readFile(new URL(relativePath, import.meta.url), "utf8"))));
 
 function source(sourceId, value = registry) {
@@ -84,23 +90,45 @@ function recordSet(recordSetId, value = registry) {
   return value.sources.flatMap((item) => item.recordSets).find((candidate) => candidate.recordSetId === recordSetId);
 }
 
-test("validates 27 canonical research sources without creating a registration or cross-source identity", () => {
+test("validates 32 canonical research sources without creating a registration or cross-source identity", () => {
   assert.equal(validateResearchSourceRegistry(registry), registry);
   assert.equal(validateResearchSourceUpgradeLinks(registry, upgradeRegistry), registry);
   assert.deepEqual(new Set(registry.sources.map((item) => item.id)), new Set(EXPECTED_RESEARCH_SOURCE_IDS));
   const summary = summarizeResearchSourceRegistry(registry);
   assert.deepEqual(summary, {
     releaseId: "ohri-research-source-registry-0.1.0",
-    sourceCount: 27,
-    recordSetCount: 36,
+    sourceCount: 32,
+    recordSetCount: 42,
     aliasCount: registry.sources.reduce((total, item) => total + item.aliases.length, 0),
     typeRecordCount: 387,
-    bundledExactRosterCount: 11,
-    bundledExactSourceObjectSetCount: 2,
+    bundledExactRosterCount: 13,
+    bundledExactSourceObjectSetCount: 4,
     openScopeContradictionCount: 0,
     registrationCount: 0,
   });
   assert.ok(registry.sources.every((item) => item.recordSets.every((set) => set.canonicalIdentityStatus === "source_local_not_cross_source_canonical")));
+  const fishSource = source("SRC-KELLY-ZEBRAFISH-2023");
+  assert.equal(fishSource.citation.doi, kellyTaxonomy.source.article.doi);
+  assert.equal(fishSource.speciesScopes[0].scientificName, "Danio rerio");
+  assert.equal(fishSource.lifeStageScopes[0].value, "4 dpf larva");
+  assert.equal(recordSet("RS-KELLY-GSE232801-ARTICLE-REPORTED-INTERNEURON-LABELS").includedRecordCount.value, kellyTaxonomy.populations.length);
+  assert.equal(recordSet("RS-KELLY-GSE232801-ARTICLE-REPORTED-INTERNEURON-LABELS").childRosterRef.status, "not_linkable");
+  assert.equal(fishSource.assets.find((item) => item.id === "ASSET-KELLY-GSE232801-NEURONS-RDS").bundled, false);
+  const bancSource = source("SRC-BANC-V888-IN14A018");
+  const bancRoute = recordSet("RS-BANC-V888-IN14A018-MORPHOLOGY");
+  assert.equal(bancSource.speciesScopes[0].scientificName, "Drosophila melanogaster");
+  assert.equal(bancSource.regionScopes[0].value, "ventral nerve cord");
+  assert.equal(bancRoute.includedRecordCount.value, 1);
+  assert.match(bancRoute.includedRecordCount.scope, /not a species-wide or interneuron denominator/);
+  assert.equal(bancRoute.sourceObjectSetRef.status, "bundled_exact");
+  assert.ok(bancSource.linkedUpgradeIds.includes("UPG-248"));
+  const nmoSource = source("SRC-NEUROMORPHO-8-6-124");
+  const nmoDeltaAsset = nmoSource.assets.find((item) => item.id === "ASSET-NEUROMORPHO-RELEASE-8-6-125-METADATA-DELTA");
+  assert.ok(nmoSource.linkedUpgradeIds.includes("UPG-228"));
+  assert.equal(nmoDeltaAsset.integrity.bytes, neuromorphoReleaseDeltaBytes.byteLength);
+  assert.equal(nmoDeltaAsset.integrity.sha256, createHash("sha256").update(neuromorphoReleaseDeltaBytes).digest("hex"));
+  assert.equal(neuromorphoReleaseDelta.comparison.changedSemanticMetadataRecordCount, 0);
+  assert.equal(neuromorphoReleaseDelta.assetAndAdmissionBoundaries.activeGeometryReleaseRemains, "8.6.124");
 });
 
 test("resolves every research milestone link while retaining governance IDs in a separate namespace", () => {
@@ -153,6 +181,7 @@ test("resolves every legacy source dialect to one canonical source id", () => {
   assert.equal(aliases.get("eLife-81976"), "SRC-RONZANO-2022-81976");
   assert.equal(aliases.get("crozat-2025:figshare-29430869-v2"), "SRC-CROZAT-2025");
   assert.equal(aliases.get("Figshare:29430869.v2"), "SRC-CROZAT-2025");
+  assert.equal(aliases.get("GSE232801"), "SRC-KELLY-ZEBRAFISH-2023");
   assert.equal(aliases.size, registry.sources.reduce((total, item) => total + item.aliases.length, 0));
 });
 
@@ -182,7 +211,7 @@ test("reconciles the current catalog, evidence, taxonomy, morphology, and intern
   assert.equal(recordSet("RS-ROOME-REFINED-DIL-TYPES").includedRecordCount.value, roome.profiles.length);
   assert.equal(recordSet("RS-MATSON-NEURONAL-POPULATIONS").includedRecordCount.value, matson.populations.length);
   assert.equal(recordSet("RS-NEUROMORPHO-RECONSTRUCTIONS").includedRecordCount.value, morphologyCensus.records.length);
-  assert.equal(recordSet("RS-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK").includedRecordCount.value, dorsalHornRoutePack.routes.length);
+  assert.equal(recordSet("RS-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK").includedRecordCount.value, censusChildMorphologyRoute.dorsalHornRouteSet.routeCount);
   assert.equal(recordSet("RS-NEUROMORPHO-FUNCTIONAL-CLASS-ROUTE-PACK").includedRecordCount.value, functionalClassRoutePack.routes.length);
   assert.equal(recordSet("RS-NEUROMORPHO-PRP-DORSAL-HORN-ROUTE-PACK").includedRecordCount.value, prpDorsalHornRoutePack.routes.length);
 
@@ -208,26 +237,36 @@ test("reconciles the current catalog, evidence, taxonomy, morphology, and intern
   assert.equal(ronzanoAsset.integrity.sha256, "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3");
 });
 
-test("registers the four-record dorsal-horn route pack without duplicating its two frozen overlaps or expanding the 142-record census", () => {
+test("registers five dorsal-horn route memberships without duplicating frozen overlaps or expanding the 142-record census", () => {
   const neuromorpho = source("SRC-NEUROMORPHO-8-6-124");
   const census = recordSet("RS-NEUROMORPHO-RECONSTRUCTIONS");
   const routePack = recordSet("RS-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK");
   const asset = neuromorpho.assets.find((item) => item.id === "ASSET-NEUROMORPHO-DORSAL-HORN-ROUTE-PACK");
 
-  assert.equal(registry.sourceCount, 27);
-  assert.equal(registry.sources.flatMap((item) => item.recordSets).length, 36);
-  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.childRosterRef.status === "bundled_exact").length, 11);
-  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.sourceObjectSetRef?.status === "bundled_exact").length, 2);
+  assert.equal(registry.sourceCount, 32);
+  assert.equal(registry.sources.flatMap((item) => item.recordSets).length, 42);
+  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.childRosterRef.status === "bundled_exact").length, 13);
+  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.sourceObjectSetRef?.status === "bundled_exact").length, 4);
   assert.deepEqual(neuromorpho.lifeStageScopes.map((scope) => [scope.value, scope.context]), [
-    ["adult", "142 admitted census records, including route-pack overlaps NMO 104003 and 108974"],
+    ["adult", "142 admitted census records; active route children include NMO 104003, 108974 and 108978, with only 104003 and 108974 overlapping the frozen five-record lens"],
     ["young", "supplementary dorsal-horn record NMO 249676, functional-class Renshaw record NMO 45674, and repository-labelled premotor comparison record NMO 45718; all outside the 142-record adult-query census"],
     ["young adult", "supplementary dorsal-horn record NMO 170035, functional-class NPY record NMO 50424, and PrP-reporter records NMO 50394 and 50408; all outside the 142-record adult-query census"],
   ]);
   assert.equal(census.includedRecordCount.value, 142);
-  assert.equal(routePack.includedRecordCount.value, 4);
+  assert.equal(routePack.includedRecordCount.value, 5);
   assert.equal(routePack.includedRecordCount.unit, "route_memberships");
   assert.equal(routePack.childRosterRef.status, "bundled_exact");
-  assert.equal(routePack.childRosterRef.path, "data/dorsal-horn-observed-morphology-route-pack-0.1.json");
+  assert.equal(routePack.childRosterRef.path, "data/census-child-observed-morphology-route-0.1.json");
+  assert.deepEqual(censusChildMorphologyRoute.dorsalHornRouteSet.members.map((member) => member.assetId), [
+    "NeuroMorpho:249676",
+    "NeuroMorpho:108974",
+    "NeuroMorpho:170035",
+    "NeuroMorpho:104003",
+    "NeuroMorpho:108978",
+  ]);
+  assert.equal(censusChildMorphologyRoute.dorsalHornRouteSet.members.filter((member) => member.censusMembership).length, 3);
+  assert.equal(censusChildMorphologyRoute.dorsalHornRouteSet.members.filter((member) => member.frozenLensMembership).length, 2);
+  assert.equal(censusChildMorphologyRoute.dorsalHornRouteSet.censusExpansionCount, 0);
   assert.deepEqual(dorsalHornRoutePack.routes.map((route) => route.sourceRecord.neuronId), [249676, 108974, 170035, 104003]);
   assert.deepEqual(dorsalHornRoutePack.routes.filter((route) => route.censusMembership).map((route) => route.sourceRecord.neuronId).sort((a, b) => a - b), [104003, 108974]);
   assert.deepEqual(dorsalHornRoutePack.routes.filter((route) => !route.censusMembership).map((route) => route.sourceRecord.neuronId).sort((a, b) => a - b), [170035, 249676]);
@@ -284,11 +323,11 @@ test("registers two exact PrP-reporter dorsal-horn routes without promoting DAT,
   const asset = neuromorpho.assets.find((item) => item.id === "ASSET-NEUROMORPHO-PRP-DORSAL-HORN-ROUTE-PACK");
   const missingness = new Map(neuromorpho.missingness.map((item) => [item.field, item]));
 
-  assert.equal(registry.releaseDate, "2026-09-02");
-  assert.equal(registry.sourceCount, 27);
-  assert.equal(registry.sources.flatMap((item) => item.recordSets).length, 36);
-  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.childRosterRef.status === "bundled_exact").length, 11);
-  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.sourceObjectSetRef?.status === "bundled_exact").length, 2);
+  assert.equal(registry.releaseDate, "2026-09-23");
+  assert.equal(registry.sourceCount, 32);
+  assert.equal(registry.sources.flatMap((item) => item.recordSets).length, 42);
+  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.childRosterRef.status === "bundled_exact").length, 13);
+  assert.equal(registry.sources.flatMap((item) => item.recordSets).filter((item) => item.sourceObjectSetRef?.status === "bundled_exact").length, 4);
   assert.equal(census.includedRecordCount.value, 142);
   assert.equal(routePack.includedRecordCount.value, 2);
   assert.equal(routePack.includedRecordCount.unit, "supplementary_reconstructions");
@@ -454,6 +493,8 @@ test("registers the five-file native contour audit with five exact record-gated 
   assert.ok(neuromorpho.linkedUpgradeIds.includes("UPG-197"));
   assert.ok(neuromorpho.linkedUpgradeIds.includes("UPG-198"));
   assert.ok(neuromorpho.linkedUpgradeIds.includes("UPG-203"));
+  assert.ok(neuromorpho.linkedUpgradeIds.includes("UPG-236"));
+  assert.ok(neuromorpho.linkedUpgradeIds.includes("UPG-237"));
 
   const mislabeledAsCells = structuredClone(registry);
   const mislabeledContours = recordSet("RS-NEUROMORPHO-NATIVE-CONTOUR-ADMISSION-CATALOG", mislabeledAsCells);

@@ -1,0 +1,202 @@
+{
+  "iteration": "I60",
+  "status": "SEALED_TEMP_CANDIDATE_PEER_AND_NATIVE_BROWSER_PENDING",
+  "sealedAtUtc": "2026-10-05T04:09:50.245459+00:00",
+  "route": "/explore/cell-types/compare",
+  "files": [
+    {
+      "path": "app/MolecularConcordanceWorkbench.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 10902,
+        "sha256": "210b9550c1ca8cfc73abc87797e791c9171f873ba5f6b309213c3db959b80473"
+      },
+      "after": {
+        "bytes": 14524,
+        "sha256": "df66bb7d4d4258fede3d1b741990b91cc250aac37eaaadcab3bf90d5debcf1b2"
+      }
+    },
+    {
+      "path": "app/molecular-concordance-bookmark.js",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 5734,
+        "sha256": "e7c18f01cf97a7274eca61405badb427d28a2d34bf1d21e1fae7716982b991c3"
+      }
+    },
+    {
+      "path": "app/molecular-concordance-bookmark.d.ts",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 1274,
+        "sha256": "7f320df87611700089c789d61bb59458412e783ba2c8cd0628ba00be748866b1"
+      }
+    },
+    {
+      "path": "tests/molecular-concordance-bookmark.test.mjs",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 20838,
+        "sha256": "6a65b73be55c0de7a82b34ccb396acbd844b27804197ba5c739ff6f8bf187a38"
+      }
+    }
+  ],
+  "patch": {
+    "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/I60_MOLECULAR_COMPARISON_BOOKMARK_CANDIDATE.patch",
+    "bytes": 41707,
+    "sha256": "c5fb662612b47908209bd8f77fa3be3fc0c35164577ed70465a3f69a10d89020"
+  },
+  "ownership": {
+    "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/ownership.json",
+    "bytes": 6495,
+    "sha256": "b7119dfc9d92a44b6d8fb6379df54682d343bbb140633e1b1694ecfcd17f7f37"
+  },
+  "validation": {
+    "focusedAndScientificComparatorRegression": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/molecular-concordance-bookmark.test.mjs tests/molecular-concordance.test.mjs > /private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/focused-tests.stdout.log 2> /private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/focused-tests.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/focused-tests.stdout.log",
+          "bytes": 1997,
+          "sha256": "36df6f231ebe22958da9a53a4ba02b3d18e51a466ef02296489dfe066e9afbb4"
+        },
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/focused-tests.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "newBookmarkTests": 8,
+      "unchangedScientificComparatorTests": 7,
+      "tests": 15,
+      "pass": 15,
+      "fail": 0
+    },
+    "fullCurrentShadowTypeScript": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/typescript/bin/tsc --noEmit > /private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/typecheck.stdout.log 2> /private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/typecheck.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/typecheck.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/typecheck.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "scopedRootConfigESLint": {
+      "exitCode": 0,
+      "command": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node node_modules/eslint/bin/eslint.js app/MolecularConcordanceWorkbench.tsx app/molecular-concordance-bookmark.js app/molecular-concordance-bookmark.d.ts tests/molecular-concordance-bookmark.test.mjs > /private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/eslint.stdout.log 2> /private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/eslint.stderr.log",
+      "workingDirectory": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/proposed",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/eslint.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/eslint.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "gitApplyCheck": {
+      "exitCode": 0,
+      "applied": false,
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/git-apply-check.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/git-apply-check.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  },
+  "earlierUnpassedAttempts": {
+    "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/initial-check-attempt/ATTEMPT_NOTES.json",
+    "bytes": 880,
+    "sha256": "d2a5ff7bfb11ce1c3a1c97250e1abec8ac91739ea74da065fa127b84690b3235"
+  },
+  "originalInputAndGapRead": {
+    "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/READ_ONLY_BEFORE_SCOPE_PINS.json",
+    "bytes": 3221,
+    "sha256": "393ed0156086d4744da9a8f643f78b3fd1b5d3167f179c9c9bc1f043d3306b06"
+  },
+  "nativeBrowserPlan": {
+    "path": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/ACTUAL_BROWSER_QA_PLAN.md",
+    "bytes": 9004,
+    "sha256": "41eab2bb680ea266626fbc973750ebbc5ec5e49d9224d891f7f144d89376965b",
+    "scenarioCount": 11,
+    "executed": false
+  },
+  "runtime": {
+    "node": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "nodeVersion": "v24.19.0",
+    "nodeModules": "/private/tmp/ohri-i51-lock-dependencies/node_modules",
+    "dependencyChanges": 0,
+    "qaOnlyEslintConfigByteIdentical": true,
+    "qaOnlyTypeScriptIncremental": false
+  },
+  "bookmarkAuthority": {
+    "type": "local_product_state_only",
+    "canonicalDecodedIndex": {
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+    },
+    "source": "existing researchExplorerLoadingReceipt(index) WeakMap receipt plus that exact index.records object",
+    "version": "1",
+    "selectionUnit": "complete molecular_profile source key",
+    "selectedKeyRange": [
+      0,
+      4
+    ],
+    "scientificComparisonKeyRange": [
+      2,
+      4
+    ],
+    "candidateFilterAffectsBasket": false,
+    "unknownOrStaleReplacementCount": 0,
+    "publicQaHooksAdded": 0,
+    "actualSourceViewProofCreated": false
+  },
+  "scientificScope": {
+    "profilesRetained": 387,
+    "namespacesRetained": 10,
+    "indexRecordsRetained": 641,
+    "comparatorAndOriginalExportsChanged": false,
+    "sourceStringNormalization": false,
+    "sameCellJoins": 0,
+    "sameTypeJoins": 0,
+    "deduplication": 0,
+    "newGeometry": 0,
+    "newRawPayloadPublication": 0,
+    "exactCompletedEntriesRetained": 83,
+    "controllingPlanEntries": 243,
+    "M2M4Admission": false
+  },
+  "evidenceLimits": [
+    "Actual React SSR does not prove browser hydration/layout",
+    "descriptor-only VM hooks/history/Blob replay is not native keyboard/history/download evidence",
+    "the in-memory changed-byte fixture is a negative loader test, not new scientific source evidence",
+    "the bookmark helper does not attest source assets, renderer proof or identity",
+    "whole-App performance/access and scientific M2/M4 remain open"
+  ],
+  "sharedProductRootWrites": 0,
+  "scientificSourceEdits": 0
+}

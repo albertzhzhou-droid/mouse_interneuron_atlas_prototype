@@ -1,0 +1,30 @@
+{
+  "originalProjectDependenciesModified": false,
+  "temporaryDirectory": "/private/tmp/ohri-i22-local-verification",
+  "temporaryInstall": {
+    "exitCode": 0,
+    "lockedPackageCountInstalled": 467,
+    "lockfileUnchanged": true
+  },
+  "supersededRuns": [
+    {
+      "sessionId": 55174,
+      "reason": "I22 renderer/source-view bytes changed after actual lint findings; this running candidate cannot validate final bytes; fresh locked-toolchain checks replace it"
+    },
+    {
+      "sessionId": 39013,
+      "reason": "read-only all-dependency hydration replaced by completed exact-lock temporary install, whose compiler and linter executed; no need to hydrate unrelated old dependency files"
+    },
+    {
+      "sessionId": 41532,
+      "reason": "same dependency-hydration prerequisite replaced by completed fresh locked toolchain"
+    }
+  ],
+  "lintInitialResult": {
+    "exitCode": 1,
+    "errors": 4,
+    "scope": "seven exact I22 code/test/builder paths in byte-identical temporary snapshot",
+    "fixed": true
+  },
+  "fullGoalComplete": false
+}

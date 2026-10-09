@@ -1,0 +1,232 @@
+############################################################################################
+#### Create summary graphs and pivot tables for Xenium spinal cord statistical analysis ####
+############################################################################################
+
+library(Seurat)
+library(ggplot2)
+library(dplyr)
+library(ggplot2)
+library(dplyr)
+
+# Note that sex-balanced datasets live on Box: C:\Users\allan\Box\Allan-Hermann Pool Lab\BICAN_Pool_Lab\Data\Xenium\GLUT_dataset / GABA_dataset / CHOL_dataset
+
+
+#### Create sex balanced datasets
+#################################
+
+setwd("C:/Users/allan/OneDrive/Desktop/Gomez Poldsam et al. 2025 Manuscript/XENIUM/GLUT_Xenium")
+setwd("C:/Users/allan/OneDrive/Desktop/Gomez Poldsam et al. 2025 Manuscript/XENIUM/GABA_Xenium")
+setwd("C:/Users/allan/OneDrive/Desktop/Gomez Poldsam et al. 2025 Manuscript/XENIUM/CHOL_Xenium")
+
+glut_neurons = readRDS("./Xen_GLUT_COMBINED_v24_named.rds")
+gaba_neurons = readRDS("./Xen_GABA_COMBINED_v9_named.rds")
+chol_neurons = readRDS("./Xen_CHOL_COMBINED_v6_named.rds")
+
+#### Create a down-sampled dataset with equal male/female cell representation
+
+## Make sure the datasets has sex and experimental animal information
+table(glut_neurons$animal)
+table(glut_neurons$sex)
+
+## Downsample datasets to equal sex ID representation
+sex_levels <- unique(glut_neurons$sex)
+sample_size <- min(table(glut_neurons$sex))
+
+balanced_cells <- unlist(lapply(sex_levels, function(sex) {
+  sex_cells <- colnames(glut_neurons[["RNA"]]$count)[glut_neurons$sex == sex]
+  sample(sex_cells, sample_size, replace = FALSE)
+}))
+
+subset_balanced <- subset(glut_neurons, cells = balanced_cells)
+table(subset_balanced$sex)
+
+saveRDS(subset_balanced, "./SEX_balanced_GLUT_Neurons_Xen_v24.rds")
+
+
+#### Create bargraph of sex biased cell-types
+#############################################
+
+glut_balanced = readRDS("./SEX_balanced_GLUT_Neurons_Xen_v24.rds")
+gaba_balanced = readRDS("./SEX_balanced_GABA_Neurons_Xen_v9.rds")
+chol_balanced = readRDS("./SEX_balanced_CHOL_Neurons_Xen_v6.rds")
+
+glut_balanced = subset_balanced
+
+## Generate prop.table (% proportions) for graphing sex representation across neuron types
+
+percent_df <- as.data.frame(prop.table(table(glut_balanced$neuron_types, glut_balanced$sex), 1))
+colnames(percent_df) <- c("type", "sex", "percent")
+percent_df$percent <- percent_df$percent * 100
+
+# Make sure clusters are character 
+percent_df$type <- as.character(percent_df$type)
+
+# Extract male percentages into named vector to prep reordering
+male_percents <- percent_df %>%
+  filter(sex == "M") %>%
+  select(type, percent) %>%
+  { setNames(.$percent, .$type) }
+
+# Makes sure to include clusters that have 0% whatever your grouping by
+all_clusters <- unique(percent_df$type)
+male_percents_complete <- male_percents[all_clusters]
+male_percents_complete[is.na(male_percents_complete)] <- 0 #Makes values that are N/A 0 so it can be processed
+
+# Order clusters by male percentage
+order_vector <- order(male_percents_complete, decreasing = TRUE)
+male_order <- all_clusters[order_vector]
+
+# Set new levels for plotting
+percent_df$type <- factor(percent_df$type, levels = male_order)
+male_order
+
+# Plot
+ggplot(percent_df, aes(x = type, y = percent, fill = sex)) + geom_bar(stat = "identity", width=1) + scale_fill_manual(values=c("M"="#0095FF", "F"="#FF6B9D")) + labs(title = "Cell-type sex proportions", x = "Neuron-type (ordered by Male %)", y = "Percent", fill = "Sex") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.5))
+
+#### Do graph for all neuron types together
+###########################################
+
+glut_percent= percent_df
+gaba_percent=percent_df
+chol_percent = percent_df
+
+percent_df = rbind(glut_percent, gaba_percent, chol_percent)
+percent_df$type = as.character(percent_df$type)
+
+# Extract male percentages into named vector to prep reordering
+male_percents <- percent_df %>%
+  filter(sex == "M") %>%
+  select(type, percent) %>%
+  { setNames(.$percent, .$type) }
+
+# Makes sure to include clusters that have 0% whatever your grouping by
+all_clusters <- unique(percent_df$type)
+male_percents_complete <- male_percents[all_clusters]
+male_percents_complete[is.na(male_percents_complete)] <- 0 #Makes values that are N/A 0 so it can be processed
+
+# Order clusters by male percentage
+order_vector <- order(male_percents_complete, decreasing = TRUE)
+male_order <- all_clusters[order_vector]
+
+# Set new levels for plotting
+percent_df$type <- factor(percent_df$type, levels = male_order)
+male_order
+
+# Plot
+ggplot(percent_df, aes(x = type, y = percent, fill = sex)) + geom_bar(stat = "identity", width=1) + scale_fill_manual(values=c("M"="#0095FF", "F"="#FF6B9D")) + labs(title = "Cell-type sex proportions", x = "Neuron-type (ordered by Male %)", y = "Percent", fill = "Sex") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.5))
+
+
+#### Generate aggregate table for statistical analysis
+######################################################
+
+glut_counts = table(glut_balanced$neuron_types, glut_balanced$animal)
+head(glut_counts)
+write.csv(glut_counts, "gaba_aggregate_table.csv")
+
+
+#### Assemble master aggregate table
+
+glut_aggregate = read.csv("./glut_aggregate_table.csv", header=T, row.names=1)
+gaba_aggregate = read.csv("./gaba_aggregate_table.csv", header=T, row.names=1)
+chol_aggregate = read.csv("./chol_aggregate_table.csv", header=T, row.names=1)
+head(glut_aggregate)
+head(gaba_aggregate)
+head(chol_aggregate)
+
+master_aggregate = rbind(glut_aggregate, gaba_aggregate, chol_aggregate)
+dim(glut_aggregate)
+dim(gaba_aggregate)
+dim(chol_aggregate)
+dim(master_aggregate)
+
+
+#### Plot violinplot of sex markers
+###################################
+
+subset_dbase # Should contain vMN
+DefaultAssay(subset_dbase) = "Xenium"
+
+## Figure out useful genes (Sanity vlnplot)
+VlnPlot(subset_dbase, features = c("Cnih3"), log = FALSE, pt.size = 0) + NoLegend() + theme(axis.text.x = element_text(angle = 90))
+
+## Specify genes to plot
+genes_fixed <- c(
+  "Chat",
+  "Vwa5b1",
+  "Rxfp1",
+  "Grp",
+  "Gpr6",
+  "Tacr3",
+  "Npy2r",
+  "Sema3e",
+  "Fam160a1",
+  "Phldb2",
+  "Scn4b",
+  "Cspg4",
+  "Hhip", 
+  "Qrfprl",
+  "Cdh23",
+  "Npffr2",
+  "Mamdc2",
+  "Tll2",
+  "Ano2",
+  "Col14a1",
+  "Nrgn",
+  "Adra2b")
+
+
+df <- FetchData(subset_dbase, vars = genes_fixed)
+df$cluster <- as.character(Idents(subset_dbase))
+
+long_list <- lapply(genes_fixed, function(g) {
+  tibble(
+    cluster = df$cluster,
+    gene = g,
+    expr = df[[g]]
+  )
+})
+long_df <- bind_rows(long_list)
+
+# Order genes and cells
+
+long_df$cluster <- factor(long_df$cluster, levels = male_order)
+long_df$gene    <- factor(long_df$gene, levels = genes_fixed)
+
+
+# -------------------------
+# Plot: genes as facet columns, clusters as y, horizontal violins
+#  - cluster order top->bottom: use rev(present_ct)
+#  - no dots
+#  - rotate gene labels 50°
+# -------------------------
+p <- ggplot(long_df, aes(x = expr, y = cluster, fill = cluster)) +
+  geom_violin(scale = "width", trim = TRUE, color = NA) +
+  facet_wrap(~ gene, nrow = 1, scales = "free_x") +
+  scale_fill_manual(values = cluster_cols) +
+  scale_y_discrete(limits = rev(male_order)) +
+  labs(x = "Expression (normalized)", y = "Cluster") +
+  theme_classic(base_size = 11) +
+  theme(
+    strip.background = element_blank(),
+    strip.text = element_text(size = 9),
+    strip.placement = "inside",
+    strip.clip = "off",
+    strip.text.x = element_text(angle = 50, hjust = 0, vjust = 0.5),
+    axis.text.y = element_text(size = 9),
+    axis.text.x = element_text(size = 8),
+    panel.spacing.x = unit(0.12, "lines"),
+    legend.title = element_blank(),
+    legend.position = "right",
+    plot.margin = margin(t = 10, r = 5, b = 5, l = 5, unit = "pt")
+  ) + NoLegend()
+p
+
+
+# save jpeg
+ggsave(
+  filename = file.path(outdir, "Violin_horizontalFacet_MarkersByCluster_20260120_minimum.jpeg"),
+  plot = p,
+  width = w, height = 7.0,
+  dpi = 300, device = "jpeg"
+)
+

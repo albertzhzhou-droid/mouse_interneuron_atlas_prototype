@@ -1,0 +1,139 @@
+{
+  "iteration": "I60",
+  "status": "READONLY_INSTALLED_PRODUCTION_CODE_EVIDENCE",
+  "generatedAtUtc": "2026-10-05T07:31:45.320324+00:00",
+  "sourcePins": [
+    {
+      "path": "node_modules/vinext/package.json",
+      "bytes": 6780,
+      "sha256": "9f5f15611cc6cc6b1cb88080e1051ac06a2276f19ea232d9424e92a1b1e51ffa"
+    },
+    {
+      "path": "node_modules/vinext/dist/server/prod-server.js",
+      "bytes": 58776,
+      "sha256": "d385b32207c01ff10b3d3d724b38c01a2442949df8ab4883c2222abc80a8ae17"
+    },
+    {
+      "path": "node_modules/vinext/dist/server/static-file-cache.js",
+      "bytes": 9641,
+      "sha256": "36bd0af5cc8164f60d987ca1ce76079bbe0b1f156b5cf2b4b062ed2352b1fd35"
+    },
+    {
+      "path": "node_modules/vinext/dist/server/accept-encoding.js",
+      "bytes": 3875,
+      "sha256": "b46db626b223bc63548ca16a4c47a6fa6a3c526751917ff2d74f6854a3199e9b"
+    },
+    {
+      "path": "node_modules/vinext/dist/utils/precompressed-variant.js",
+      "bytes": 489,
+      "sha256": "e0ee727d9c3d2b6d922fd67891525ca89776a14f71244e78ad4f59d2071704f7"
+    },
+    {
+      "path": "app/api/source-records/search-index.json/route.ts",
+      "bytes": 578,
+      "sha256": "45317632af32f818f27cb94a8942af6712c495bed811f7fb8aea1b893b7d0a97"
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "bytes": 28427,
+      "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+    },
+    {
+      "path": "app/ResearchActiveRecordProvider.tsx",
+      "bytes": 8161,
+      "sha256": "9365f7106dd429065b97be89776b36b0eae3c17b62c310f4e4d434e064852224"
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "bytes": 661,
+      "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+    },
+    {
+      "path": "next.config.ts",
+      "bytes": 133,
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 2030,
+      "sha256": "c91faed16b00e3e161c43b118485d381b0a288fae7c63c39046c7d95e267754f"
+    },
+    {
+      "path": "package.json",
+      "bytes": 40345,
+      "sha256": "208fe6a1e92e9e2af82306d359ea5bb11226d27bcc701743bc8b9c9e9b50e585"
+    }
+  ],
+  "findings": [
+    {
+      "scope": "default production configuration",
+      "source": "node_modules/vinext/dist/server/prod-server.js:809-810",
+      "fact": "noCompression defaults false; compress is enabled unless explicitly disabled."
+    },
+    {
+      "scope": "canonical cached static JSON gzip",
+      "source": "node_modules/vinext/dist/server/static-file-cache.js:127-135,207-216; prod-server.js:442-451,509-525",
+      "fact": "Existing beneficial same-name .gz variant preserves JSON Content-Type and uses gzip Content-Encoding, encoded Content-Length and Vary; request Accept-Encoding chooses exact encoded source variant."
+    },
+    {
+      "scope": "identity preference and accepted encoding",
+      "source": "node_modules/vinext/dist/server/accept-encoding.js:71-92",
+      "fact": "Gzip can win for accepted gzip when no higher preferred available encoding exists. Explicit identity quality/order can win. Gzip is possible, not mandatory for every request."
+    },
+    {
+      "scope": "conditional cache",
+      "source": "node_modules/vinext/dist/server/prod-server.js:466-476",
+      "fact": "304 is a supported no-body response and can preserve the selected Content-Encoding."
+    },
+    {
+      "scope": "API measurement gzip",
+      "source": "app/api/source-records/search-index.json/route.ts:1-12; prod-server.js:776-784",
+      "fact": "API embeds exact precompressed source bytes with explicit gzip/no-transform; production response handling skips new compression when already encoded."
+    },
+    {
+      "scope": "client verification unit",
+      "source": "app/research-explorer-index.js:143-168",
+      "fact": "Browser fetch exposes decoded arrayBuffer, verified against canonical decoded bytes/hash/schema; loading receipt keeps Content-Encoding/declared encoded length and observed timing sizes separate."
+    }
+  ],
+  "currentRetainedTransportMetadata": {
+    "schemaVersion": "0.1.0",
+    "documentType": "research_explorer_transport_receipt",
+    "source": {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "assetSetId": "ohri:research-explorer-index:1.14.0"
+    },
+    "transport": {
+      "path": "public/data/research_explorer_index_v1/search-index.json.gz",
+      "bytes": 628095,
+      "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b",
+      "contentEncoding": "gzip",
+      "route": "/api/source-records/search-index.json"
+    },
+    "scientificRecordsChanged": false
+  },
+  "actualSiblingStat": {
+    "path": "public/data/research_explorer_index_v1/search-index.json.gz",
+    "exists": true,
+    "bytes": 628095
+  },
+  "sourceGateAdvice": "A canonical direct-response proxy must distinguish exact identity bytes and exact original gzip encoded bytes under their corresponding actual headers, verifying decoded canonical pin separately. Do not treat any arbitrary gzip, bad CRC, transformed index, stale source hash, bodyless 304 or missing encoding evidence as a fresh verified source body. Implementation/authorization remain parent/camera owned.",
+  "notClaimed": [
+    "No HTTP/header transport was newly observed by this code read.",
+    "No new gzip or source acquisition/hash/CRC replay was performed.",
+    "No browser behavior, live proxy, wire transfer or source-proof event was created."
+  ],
+  "executionScope": {
+    "serverStarts": 0,
+    "HTTPOrNetworkRequests": 0,
+    "browserActions": 0,
+    "rootStageOrProxyHelperWrites": 0,
+    "productionHandlerImportsOrInvocations": 0
+  },
+  "readAttemptNotes": [
+    "Initial next/dist probe absent because current production package is vinext, then corrected to existing installed vinext source.",
+    "An unmatched config wildcard command stopped before running; exact discovered next.config.ts and vite.config.ts were then read."
+  ]
+}

@@ -1,0 +1,17 @@
+import http from 'node:http';
+import {appendFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const log='/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-02-implementation-38/native-delay-events.jsonl';
+writeFileSync(log,'');let nextId=0;
+const record=value=>appendFileSync(log,JSON.stringify({at:new Date().toISOString(),...value})+'\n');
+http.createServer(async(req,res)=>{
+ const id=++nextId,url=new URL(req.url,'http://127.0.0.1:3003');
+ if(url.origin!=='http://127.0.0.1:3003'){res.writeHead(400);res.end();return;}
+ const delayed=url.pathname==='/data/svara_synaptic_contacts_v1/CoBL.json';let closed=false;
+ if(delayed){record({id,event:'requested',path:url.pathname});res.on('close',()=>{closed=true;record({id,event:'client-response-closed',writableFinished:res.writableFinished});});}
+ try{
+  const response=await fetch(url),data=Buffer.from(await response.arrayBuffer());
+  const send=()=>{if(delayed)record({id,event:'delay-deadline',closed,bytes:data.length,sha256:createHash('sha256').update(data).digest('hex')});if(closed)return;res.writeHead(response.status,{'Content-Type':response.headers.get('content-type')??'application/octet-stream','Cache-Control':'no-store'});res.end(data);};
+  if(delayed){record({id,event:'upstream-ready',bytes:data.length});setTimeout(send,12000);}else send();
+ }catch(error){record({id,event:'proxy-error',message:error.message});if(!closed){res.writeHead(502);res.end();}}
+}).listen(3004,'127.0.0.1',()=>record({event:'listening',port:3004,delayMs:12000}));

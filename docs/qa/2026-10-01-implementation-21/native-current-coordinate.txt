@@ -1,0 +1,20 @@
+Original coordinate evidence · 182,698 exact cell IDs
+
+The original cells.zarr.zip metadata for this run declares “microns”. Every cell ID joins the original cells.parquet, and all X/Y centroids, cell areas, nucleus areas and nucleus counts are exactly equal. The 2,262 missing nucleus areas remain source NaN.
+
+Cell centroid coordinates
+µm · original archive declaration
+Exact ID joins / different centroid values
+182,698 / 0
+Archive entry version
+6.2 · XOA 3.3.0.1 run
+Coordinate evidence scope
+Cell centroids · no section or atlas transform
+
+The stored physical-to-image matrix has X/Y scale 4.7058820724487305, with the run’s pixel_size 0.2125. The matrix is retained at its original float32 precision; it does not map named outlines to cells or establish anatomical orientation. The Parquet files themselves contain no unit metadata, and their polygon coordinates have not been compared with Zarr polygon arrays.
+
+Only selected archive entries were acquired and replayed from exact byte ranges with ZIP CRC checks. Unread masks, polygons and the whole 252 MB archive are not claimed verified.
+
+Ten automatic clusterings assign 182,490 cells and leave 208 unassigned. Their “Cluster” names are algorithm groups, with no curated interneuron labels. The 609 fields of view in each source location file do not establish sections.
+
+Section, per-section donor, curated types and the separate rights declarations remain unresolved. This coordinate evidence adds 0 viewer geometry, 0 3D cells, 0 identity joins and 0 REG.

@@ -42,6 +42,10 @@ function hasOnlyKeys(value: Record<string, unknown>, keys: string[]) {
   return Object.keys(value).every((key) => keys.includes(key)) && keys.every((key) => key in value);
 }
 
+function isStringRecord(value: Record<string, unknown>): value is Record<string, string> {
+  return Object.values(value).every((response) => typeof response === "string");
+}
+
 function downloadJson(value: unknown, filename: string) {
   const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -64,18 +68,19 @@ function parseCuratorFeedback(value: unknown): CuratorFeedback {
   if (value.registrationCount !== 0) throw new Error("feedback cannot claim a nonzero registration count");
   if (typeof value.exportedAt !== "string" || Number.isNaN(Date.parse(value.exportedAt))) throw new Error("feedback export timestamp is invalid");
   if (value.privacy !== curatorFeedbackContract.privacy || !isRecord(value.responses)) throw new Error("feedback privacy or response payload is invalid");
+  const responses = value.responses;
   const knownResponseKeys = [...curatorFeedbackContract.requiredResponseKeys, ...curatorFeedbackContract.optionalResponseKeys];
-  if (!hasOnlyKeys(value.responses, knownResponseKeys.filter((key) => key in value.responses))) throw new Error("feedback contains an unknown response field");
-  if (!curatorFeedbackContract.requiredResponseKeys.every((key) => typeof value.responses[key] === "string" && value.responses[key].trim())) {
+  if (!hasOnlyKeys(responses, knownResponseKeys.filter((key) => key in responses))) throw new Error("feedback contains an unknown response field");
+  if (!curatorFeedbackContract.requiredResponseKeys.every((key) => typeof responses[key] === "string" && responses[key].trim())) {
     throw new Error("feedback is missing a required response");
   }
-  if (!Object.values(value.responses).every((response) => typeof response === "string" && response.length <= 10_000)) {
+  if (!isStringRecord(responses) || !Object.values(responses).every((response) => response.length <= 10_000)) {
     throw new Error("feedback responses must be bounded strings");
   }
-  if (!/^(accept|revise|unable_to_assess)$/.test(value.responses.overall_verdict)) throw new Error("overall verdict is invalid");
-  if (!/^(yes|no)$/.test(value.responses.zip_verified)) throw new Error("ZIP verification outcome is invalid");
-  if (!normalizeZipSha256(value.responses.zip_sha256)) throw new Error("ZIP SHA-256 must be a 64-character hexadecimal value");
-  if (value.responses.attestation !== "confirmed") throw new Error("feedback attestation is missing");
+  if (!/^(accept|revise|unable_to_assess)$/.test(responses.overall_verdict)) throw new Error("overall verdict is invalid");
+  if (!/^(yes|no)$/.test(responses.zip_verified)) throw new Error("ZIP verification outcome is invalid");
+  if (!normalizeZipSha256(responses.zip_sha256)) throw new Error("ZIP SHA-256 must be a 64-character hexadecimal value");
+  if (responses.attestation !== "confirmed") throw new Error("feedback attestation is missing");
   return value as CuratorFeedback;
 }
 

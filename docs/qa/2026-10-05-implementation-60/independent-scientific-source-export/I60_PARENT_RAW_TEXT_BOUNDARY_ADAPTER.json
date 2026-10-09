@@ -1,0 +1,26 @@
+{
+  "status": "RAW_DOM_CONCATENATION_AND_UNMOUNTED_SCOPE_ADAPTER",
+  "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/replay_i60_comparison_source.py.RAW_TEXT_BOUNDARY_BEFORE",
+  "before": {
+    "bytes": 30648,
+    "sha256": "a9ace5eab6de6a34c3cc50dbd8c15bbac2ddf462a0f41ca490c15c38dbd441b7"
+  },
+  "after": {
+    "bytes": 31117,
+    "sha256": "91c66276a3917cae4503c9d374904742839c29495cb966a8f6b7557445436b1a"
+  },
+  "exactReplacements": [
+    {
+      "old": "assert re.search(rf'{count} matches\\s*·\\s*page {view[\"page\"] + 1}\\s*/\\s*{max(1, (count + 11) // 12)}\\b', page_text)",
+      "new": "assert re.search(rf'{count} matches\\s*·\\s*page {view[\"page\"] + 1}\\s*/\\s*{max(1, (count + 11) // 12)}(?=Next|\\s|$)', page_text)"
+    },
+    {
+      "old": "assert role in ('ready', 'invalid', 'source_unavailable', 'source_waiting')\n    status, view = address_view(capture['url'], authority)",
+      "new": "assert role in ('ready', 'invalid', 'source_unavailable', 'source_waiting', 'not_mounted')\n    if role == 'not_mounted':\n        assert urlsplit(capture['url']).path in ('/explore/cell-types/compare', '/research/explorer')\n        assert capture['sectionText'] == '' and capture['controls'] == [] and capture['comparisons'] == [] and capture['selections'] == ''\n        return {'role': role, 'url': capture['url'], 'bracket': bracket, 'reportPairs': 0, 'exports': 0, 'mountedSourceGateEstablished': False, 'sourceProofMinted': False}\n    status, view = address_view(capture['url'], authority)"
+    }
+  ],
+  "reason": "Actual pages raw text concatenates Next with the numeric count; empty workbench captures are explicit not_mounted with no source readiness claim. No original evidence text is changed.",
+  "rootWrites": 0,
+  "rawCaptureWrites": 0,
+  "sourceContentGuardsWeakened": false
+}

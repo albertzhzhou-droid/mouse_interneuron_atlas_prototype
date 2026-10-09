@@ -1,0 +1,82 @@
+entries 8377 coordinate entries 18
+.zattrs {
+    "major_version": 6,
+    "minor_version": 2,
+    "name": "CellSegmentationDataset",
+    "number_cells": 182698,
+    "polygon_set_descriptions": [
+        "DAPI-based nuclei segmentation",
+        "Cell Segmentation"
+    ],
+    "polygon_set_display_names": [
+        "Nucleus boundaries",
+        "Cell boundaries"
+    ],
+    "polygon_set_names": [
+        "nucleus",
+        "cell"
+    ],
+    "segmentation_methods": [
+        "Segmented by boundary stain (ATP1A1+CD45+E-Cadherin)",
+        "Seg
+cell_id/.zarray 340
+cell_id/0.0 231597
+cell_id/0.1 1512
+cell_id/1.0 231457
+cell_id/1.1 1512
+masks/homogeneous_transform/.zarray 333
+masks/homogeneous_transform/0.0 80
+cell_summary/.zarray 343
+cell_summary/.zattrs {
+    "column_descriptions": [
+        "Cell centroid in X",
+        "Cell centroid in Y",
+        "Cell area",
+        "Nucleus centroid in X",
+        "Nucleus centroid in Y",
+        "Nucleus area",
+        "z_level",
+        "Nucleus count"
+    ],
+    "column_names": [
+        "cell_centroid_x",
+        "cell_centroid_y",
+        "cell_area",
+        "nucleus_centroid_x",
+        "nucleus_centroid_y",
+        "nucleus_area",
+        "z_level",
+        "nucleus_count"
+    ]
+}
+cell_summary/0.0 600689
+cell_summary/0.1 590162
+cell_summary/0.2 918587
+cell_summary/0.3 597466
+cell_summary/0.4 587393
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i21-bil-zarr-coordinate-fetch.py", line 37, in <module>
+    data=z.read(name);safe=name.replace('/','__');p=out/safe;p.write_bytes(data)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 1464, in read
+    return fp.read()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 908, in read
+    buf += self._read1(self.MAX_N)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 992, in _read1
+    data = self._read2(n)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 1022, in _read2
+    data = self._fileobj.read(n)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 742, in read
+    data = self._file.read(n)
+  File "/private/tmp/ohri-i21-bil-zarr-coordinate-fetch.py", line 24, in read
+    data=r.read(n+1)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 459, in read
+    n = self.readinto(b)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 503, in readinto
+    n = self.fp.readinto(b)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out

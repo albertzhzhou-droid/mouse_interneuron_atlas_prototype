@@ -1,0 +1,178 @@
+- heading "V1 interneuron snRNA-seq dataset" [level=2]
+- navigation:
+  - list:
+    - link "CellInfo vs GeneExpr":
+      - /url: "#tab-3354-1"
+    - link "CellInfo vs CellInfo":
+      - /url: "#tab-3354-2"
+    - link "GeneExpr vs GeneExpr":
+      - /url: "#tab-3354-3"
+    - link "Violinplot / Boxplot":
+      - /url: "#tab-3354-4"
+    - link "Proportion plot":
+      - /url: "#tab-3354-5"
+    - link "Bubbleplot / Heatmap":
+      - /url: "#tab-3354-6"
+    - link:
+      - /url: "#tab-3354-7"
+    - link:
+      - /url: "#tab-3354-8"
+    - link:
+      - /url: "#tab-3354-9"
+    - link:
+      - /url: "#tab-3354-10"
+    - link:
+      - /url: "#tab-3354-11"
+    - link:
+      - /url: "#tab-3354-12"
+    - link:
+      - /url: "#tab-3354-13"
+    - link:
+      - /url: "#tab-3354-14"
+- heading "Cell information vs gene expression on reduced dimensions" [level=4]
+- text: In this tab, users can visualise both cell information and gene expression side-by-side on low-dimensional representions.
+- heading "Dimension Reduction" [level=4]
+- generic: "X-axis:"
+- generic: UMAP1
+- combobox "X-axis:"
+- generic: "Y-axis:"
+- generic: UMAP2
+- combobox "Y-axis:"
+- button "Toggle to subset cells"
+- button "Toggle graphics controls"
+- heading "Cell information" [level=4]
+- generic: "Cell information:"
+- generic: nCount_RNA
+- combobox "Cell information:"
+- generic "circle-question icon": 
+- button "Toggle plot controls"
+- img "Plot object"
+- link "download icon Download PDF":
+  - /url: session/d224f5258debaa6f8f1b4072df406130/download/sc1a1oup1.pdf?w=dd27cabd
+  - generic "download icon": 
+  - text: Download PDF
+- link "download icon Download PNG":
+  - /url: session/d224f5258debaa6f8f1b4072df406130/download/sc1a1oup1.png?w=dd27cabd
+  - generic "download icon": 
+  - text: Download PNG
+- generic: "PDF / PNG height:"
+- spinbutton "PDF / PNG height:": "6"
+- generic: "PDF / PNG width:"
+- spinbutton "PDF / PNG width:": "8"
+- button "Toggle to show cell numbers / statistics" [active]
+- heading "Cell numbers / statistics" [level=4]
+- radiogroup "Split continuous cell info into:":
+  - generic: "Split continuous cell info into:"
+  - radio "Quartile"
+  - text: Quartile
+  - radio "Decile" [checked]
+  - text: Decile
+- table:
+  - rowgroup:
+    - 'row "group: activate to sort column ascending nCells: activate to sort column ascending nExpress_Xkr4: activate to sort column ascending pctExpress: activate to sort column ascending"':
+      - 'columnheader "group: activate to sort column ascending"': group
+      - 'columnheader "nCells: activate to sort column ascending"': nCells
+      - 'columnheader "nExpress_Xkr4: activate to sort column ascending"': nExpress_Xkr4
+      - 'columnheader "pctExpress: activate to sort column ascending"': pctExpress
+  - rowgroup:
+    - row "(1.4e+03,3.29e+03] 6940 6078 87.58":
+      - cell "(1.4e+03,3.29e+03]"
+      - cell "6940"
+      - cell "6078"
+      - cell "87.58"
+    - row "(3.29e+03,5.17e+03] 29009 27748 95.65":
+      - cell "(3.29e+03,5.17e+03]"
+      - cell "29009"
+      - cell "27748"
+      - cell "95.65"
+    - row "(5.17e+03,7.04e+03] 24834 24307 97.88":
+      - cell "(5.17e+03,7.04e+03]"
+      - cell "24834"
+      - cell "24307"
+      - cell "97.88"
+    - row "(7.04e+03,8.91e+03] 14747 14583 98.89":
+      - cell "(7.04e+03,8.91e+03]"
+      - cell "14747"
+      - cell "14583"
+      - cell "98.89"
+    - row "(8.91e+03,1.08e+04] 7122 7078 99.38":
+      - cell "(8.91e+03,1.08e+04]"
+      - cell "7122"
+      - cell "7078"
+      - cell "99.38"
+    - row "(1.08e+04,1.27e+04] 3525 3515 99.72":
+      - cell "(1.08e+04,1.27e+04]"
+      - cell "3525"
+      - cell "3515"
+      - cell "99.72"
+    - row "(1.27e+04,1.45e+04] 1773 1771 99.89":
+      - cell "(1.27e+04,1.45e+04]"
+      - cell "1773"
+      - cell "1771"
+      - cell "99.89"
+    - row "(1.45e+04,1.64e+04] 897 896 99.89":
+      - cell "(1.45e+04,1.64e+04]"
+      - cell "897"
+      - cell "896"
+      - cell "99.89"
+    - row "(1.64e+04,1.83e+04] 468 468 100.00":
+      - cell "(1.64e+04,1.83e+04]"
+      - cell "468"
+      - cell "468"
+      - cell "100.00"
+    - row "(1.83e+04,2.02e+04] 179 179 100.00":
+      - cell "(1.83e+04,2.02e+04]"
+      - cell "179"
+      - cell "179"
+      - cell "100.00"
+- button "Copy"
+- button "CSV"
+- button "Excel"
+- heading "Gene expression" [level=4]
+- generic: "Gene name:"
+- generic: Xkr4
+- combobox "Gene name:"
+- generic "circle-question icon": 
+- button "Toggle plot controls"
+- img "Plot object"
+- link "download icon Download PDF":
+  - /url: session/d224f5258debaa6f8f1b4072df406130/download/sc1a1oup2.pdf?w=dd27cabd
+  - generic "download icon": 
+  - text: Download PDF
+- link "download icon Download PNG":
+  - /url: session/d224f5258debaa6f8f1b4072df406130/download/sc1a1oup2.png?w=dd27cabd
+  - generic "download icon": 
+  - text: Download PNG
+- generic: "PDF / PNG height:"
+- spinbutton "PDF / PNG height:": "6"
+- generic: "PDF / PNG width:"
+- spinbutton "PDF / PNG width:": "8"
+- text:                        
+- paragraph: Transcriptomic analysis of spinal V1 interneurons informs their multifunctional role in motor output
+- paragraph:
+  - emphasis: This webpage was made using
+  - link "ShinyCell":
+    - /url: https://github.com/SGDDNB/ShinyCell
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log
+- log

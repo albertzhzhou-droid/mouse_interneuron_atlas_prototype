@@ -1,0 +1,31 @@
+{
+  "status": "ORIGINAL_DESCRIPTOR_SCHEMA_ADAPTER_ONLY",
+  "generatedAtUTC": "2026-10-05T07:07:47.270620+00:00",
+  "helperBefore": {
+    "bytes": 26826,
+    "sha256": "e6fa144eeb6e5e1da6769ff9a028674ce7cf0b066e6762515365089bc3ae41f7"
+  },
+  "helperAfter": {
+    "bytes": 27991,
+    "sha256": "46059b13e244d98fd4da6c262b689140c799571960988ded1487af71beda53cc"
+  },
+  "exactReplacement": {
+    "before": "source_descriptors = [{'path': rna['reproduction']['sourcePath'], **pin(rna['source'])}] + rna['reproduction']['inputs'] + rna['chunks']\nfor item in source_descriptors:\n    rel = item['path']; now = actual(rel)[0]\n    source_rows.append({'path': rel, 'declared': pin(item), 'before': pin(before[rel]), 'actual': now,\n                        'exactUnchanged': now == pin(item) == pin(before[rel])})\n",
+    "after": "source_descriptors = [{'path': rna['reproduction']['sourcePath'], **pin(rna['source'])}] + rna['reproduction']['inputs'] + rna['chunks']\n# The sole original RDS object is source-descriptor authority, outside both canonical manifests.\n# Its before descriptor is bound through the byte-identical prior source document; never invent a baseline row.\noriginal_rds_path = 'data/source-candidates/cano-chol-rna-20261002/GSE318731_P56_cholinergic_multiome.rds'\nassert {item['path'] for item in source_descriptors if item['path'] not in before} == {original_rds_path}\nassert original_rds_path not in current and rna['reproduction']['sourcePath'] == original_rds_path\nassert pin(rna['source']) == {'bytes': 127862795, 'sha256': 'd4ad07a1e434f2ed4553738f3e1df1b395ce81b154f974c41f3ba6a9d674aed2'}\nassert rna_pin == pin(before[RNA]), 'Original descriptor must be inherited from unchanged prior source document'\nfor item in source_descriptors:\n    rel = item['path']; now = actual(rel)[0]\n    before_row = pin(before[rel]) if rel in before else None\n    exact_inherited_descriptor = now == pin(item) and (now == before_row if before_row is not None else rel == original_rds_path and rna_pin == pin(before[RNA]))\n    source_rows.append({'path': rel, 'declared': pin(item), 'beforeCanonical': before_row, 'actual': now,\n                        'beforeSourceDescriptorBoundThroughUnchangedDocument': pin(item),\n                        'notInCanonicalBaselineDoesNotProvePhysicalAbsence': before_row is None,\n                        'exactUnchanged': exact_inherited_descriptor})\n"
+  },
+  "soleNoncanonicalDescriptor": {
+    "path": "data/source-candidates/cano-chol-rna-20261002/GSE318731_P56_cholinergic_multiome.rds",
+    "bytes": 127862795,
+    "sha256": "d4ad07a1e434f2ed4553738f3e1df1b395ce81b154f974c41f3ba6a9d674aed2"
+  },
+  "sourceDocumentAuthority": {
+    "path": "data/cano-chol-rna-counts-0.1.json",
+    "bytes": 847412,
+    "sha256": "3c3ef4b675df7840f7e97663d318a7b28b6186f05dcefbd9f509399fdb21bc95"
+  },
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "inventedBaselineRows": 0,
+  "canonicalScientificPreservationChecksChanged": false,
+  "stoppedAttemptLog": "I59_FINAL_PRESERVATION_SECOND_DESCRIPTOR_SCHEMA_STOP.log"
+}

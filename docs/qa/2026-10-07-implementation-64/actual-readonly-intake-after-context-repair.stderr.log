@@ -1,0 +1,18 @@
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__cell_index__2", "attempt": 1, "timeUtc": "2026-10-07T17:27:04.226221+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__cell_index__2: (16777234, 223368473, 1748, 1790920415478978398) -> (16777234, 223368473, 1748, 1790920415478978395) -> (16777234, 223368473, 1748, 1790920415478978395); read 1748"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__cell_index__3", "attempt": 1, "timeUtc": "2026-10-07T17:27:05.541797+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__cell_index__3: (16777234, 223368492, 1743, 1790920415745761777) -> (16777234, 223368492, 1743, 1790920415745761871) -> (16777234, 223368492, 1743, 1790920415745761871); read 1743"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__num_vertices__3", "attempt": 1, "timeUtc": "2026-10-07T17:27:45.695653+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__num_vertices__3: (16777234, 223368434, 10877, 1790920414522352635) -> (16777234, 223368434, 10877, 1790920414522352695) -> (16777234, 223368434, 10877, 1790920414522352695); read 10877"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__vertices__0.1", "attempt": 1, "timeUtc": "2026-10-07T17:27:49.809888+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__vertices__0.1: (16777234, 223367009, 455205, 1790920365769468375) -> (16777234, 223367009, 455205, 1790920365769468307) -> (16777234, 223367009, 455205, 1790920365769468307); read 455205"}}
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i64-noncanonical-context-repair-20261007/capture_i64_readonly_intake.py", line 240, in <module>
+    main()
+  File "/private/tmp/ohri-i64-noncanonical-context-repair-20261007/capture_i64_readonly_intake.py", line 226, in main
+    result, role_bodies, preimages = capture_actual_intake(config, external_roles, strict_json(history_body), observed, failures, cache)
+  File "/private/tmp/ohri-i64-noncanonical-context-repair-20261007/capture_i64_readonly_intake.py", line 152, in capture_actual_intake
+    actual, _ = require_expected_read(under_root(name), only_pin(baseline[name]), observed, failures, cache,
+  File "/private/tmp/ohri-i64-noncanonical-context-repair-20261007/capture_i64_readonly_intake.py", line 47, in require_expected_read
+    actual, body = read_regular(path, observed, failures, keep_body=keep_body, cache=cache)
+  File "/private/tmp/ohri-i64-noncanonical-context-repair-20261007/v6_cached_regular.py", line 28, in read_regular
+    actual,payload=exact_read(path,observed,failures,keep_body)
+  File "/private/tmp/ohri-i64-noncanonical-context-repair-20261007/source_epoch_guard.py", line 58, in exact_read
+    chunk = os.pread(fd, min(1048576, a.st_size - position), position)
+TimeoutError: [Errno 60] Operation timed out

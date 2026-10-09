@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <title>Brain Image Library: A public resource enabling researchers to deposit, analyze, mine, share and interact with large brain image datasets.</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+        <!-- <link rel="stylesheet" href="/web/static/css/bootstrap.css" /> -->
+        <link rel="stylesheet" href="/web/static/css/my.css" />
+        <link rel="icon" href="/web/static/assets/BIL_logo.png" />
+        <!--<link rel="stylesheet" href="/css/styles.css"> -->
+        <script src="/web/static/js/jquery.min.js"></script>
+        
+    </head>
+<style>
+p {
+    font-size: 16px;
+    padding-right: 80px;
+    padding-left: 80px;
+}
+</style>
+  <body class="bg">
+        <div class="container">
+            <p>&nbsp;</p>
+          <!--  <img src="assets/brainicon.png">
+            <img src="assets/BIL_logo.png"> -->
+        </div>
+    <div class="container">
+      <div class="card bg-success text-light">
+		<p class="card-text text-center text-dark fs-5">
+		This repository is under review for potential modification in compliance with Administration directives.	
+		</p>
+      </div>
+
+      <!--Navigation bar-->
+       <div id="topmenu">
+       </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <img src="/web/static/assets/brainicon.png"  height="23" width="23">
+       <!-- <img src="assets/brainicon.png" height="23" width="23"> -->
+        <a class="navbar-brand" href="index.html">&nbsp;Brain Image Library </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu">
+		        <a class="dropdown-item" href="https://www.brainimagelibrary.org/about.html">About BIL</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/people.html">BIL Staff</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/partners.html">Partners</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/braindataarchives.html">BRAIN
+			  Initiative Data Archives</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">Data Submission</a>
+                    <div class="dropdown-menu">
+		        <a class="dropdown-item" href="https://www.brainimagelibrary.org/datarequirements.html">Data Depositor FAQ</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/submission.html">Instructions</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/account.html">Create Account</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/datadirbp.html">Submission Best Practices</a>
+                        <a class="dropdown-item" href="https://submit.brainimagelibrary.org/">Data Submission Portal</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/newmetadatamodel.html">New Metadata Model</a> 
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/training.html">Training</a>
+                   </div>
+                </li>
+		
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">Data Access</a>
+                    <div class="dropdown-menu">
+                        <!--
+                        <a class="dropdown-item" href="#">Data Access Portal</a>
+                        -->
+			<a class="dropdown-item" href="https://api.brainimagelibrary.org/web/">Brain Inventory</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/download.html">Downloading Data</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/computevisual.html">Computing and Visualization</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/visual.html">Web Visualization</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/analysis_ecosystem.html">Analysis Ecosystem</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/restrictedaccess.html">Restricted Data</a>
+			<a class="dropdown-item" href="https://www.brainimagelibrary.org/metadataapi.html">Metadata API</a>
+                        <a class="dropdown-item" href="https://www.brainimagelibrary.org/citation.html">Citing Data</a>
+                   </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.brainimagelibrary.org/contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  </div>
+<div class="well bg-dark text-light">
+<!--   <i> <div class="mx-auto" style="width:800px;">A national public resource enabling researchers to deposit, analyze, mine, share and interact with large brain image datasets</div></i>
+-->
+</div>
+      
+
+
+
+
+       <!--end of Navigation bar-->
+       <div class="container">
+       <div class="p-4 bg-light rounded">
+       
+
+
+
+
+
+  
+  
+  
+  
+  
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+  
+  
+  
+      
+  
+  
+  
+      
+  
+  
+  
+      
+  
+  
+  
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+            
+     
+     
+     
+            
+     
+     
+     
+            
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+
+
+
+
+
+     
+     
+            
+     
+     
+     
+            
+     
+     
+     
+            
+     
+     
+     
+     
+     
+     
+
+
+
+<!-- ── Header ───────────────────────────────────────────────────────────────── -->
+<div class="landing-header">
+    <h1 class="landing-title">Mouse rostro-caudal spinal cord Xenium - Retrograde Tracing 14</h1>
+    <div class="landing-meta-row">
+        
+        
+        <span class="badge bg-secondary">ace-pie-cot</span>
+        
+        
+          
+            
+            <a class="license-badge" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>
+            
+          
+        
+        
+        <span class="badge bg-dark fw-normal">Brain Initiative Cell Atlas Network (BICAN)</span>
+        
+    </div>
+</div>
+
+<!-- ── Citation ──────────────────────────────────────────────────────────────── -->
+
+<section class="panel citation-panel">
+    <div class="panel-head">
+        <h2>Cite this dataset</h2>
+        <button class="btn btn-sm btn-outline-secondary" id="copyCitationBtn" onclick="copyCitation()">Copy citation</button>
+    </div>
+    <p class="citation-text" id="citationText">Pool, Allan-Hermann, Cano Gomez, Liliana.  (2026). Mouse rostro-caudal spinal cord Xenium - Retrograde Tracing 14 [Dataset/Microscopy].  Brain Image Library. </p>
+</section>
+
+
+<!-- ── Abstract ──────────────────────────────────────────────────────────────── -->
+
+<section class="panel">
+    <h2>Abstract</h2>
+    <p class="abstract-text">This dataset includes spatial transcriptomics data from cervical, thoracic, lumbar and sacral sections of the adult mouse spinal cord with retrogradely labeled ascending spinal projection neurons innervating Posterior Triangle Nucleus of the Thalamus (PoT, tdTomato), Cerebellum (CER, GFP) and Superior Colliculus (SCol, mNeonGreen). It was generated on the Xenium (10x Genomics) platform including gene expression data from 480 genes to discriminate major cell classes and neuron types in the mouse spinal cord and determine the projectome and sex specific differences of the structure. This resource was generated as part of the BRAIN Initiative Cell Atlas Network (BICAN).</p>
+</section>
+
+
+<!-- ── Methods ───────────────────────────────────────────────────────────────── -->
+
+
+<!-- ── Contributors ──────────────────────────────────────────────────────────── -->
+<section class="panel">
+    <h2>Contributors</h2>
+    
+    <ul class="view-contributor-list">
+    
+        <li class="view-contributor-item">
+            
+                
+                    <a href="https://orcid.org/0000-0002-0811-9861" class="author-name">Pool, Allan-Hermann</a>
+                    <a class="orcid-badge" href="https://orcid.org/0000-0002-0811-9861" target="_blank" rel="noreferrer">ORCID</a>
+                
+                
+                    <span class="author-affil text-muted"><a href="https://ror.org/05byvp690">The University of Texas Southwestern Medical Center</a></span>
+                
+            
+            <span class="view-role-badge">ProjectLeader</span>
+        </li>
+    
+        <li class="view-contributor-item">
+            
+                
+                    <a href="https://orcid.org/0000-0001-5869-4402" class="author-name">Cano Gomez, Liliana</a>
+                    <a class="orcid-badge" href="https://orcid.org/0000-0001-5869-4402" target="_blank" rel="noreferrer">ORCID</a>
+                
+                
+                    <span class="author-affil text-muted"><a href="https://ror.org/05byvp690">The University of Texas Southwestern Medical Center</a></span>
+                
+            
+            <span class="view-role-badge">DataCollector</span>
+        </li>
+    
+        <li class="view-contributor-item">
+            
+                
+                    <a href="https://orcid.org/0009-0008-0390-2620" class="author-name">Poldsam, Helen</a>
+                    <a class="orcid-badge" href="https://orcid.org/0009-0008-0390-2620" target="_blank" rel="noreferrer">ORCID</a>
+                
+                
+                    <span class="author-affil text-muted"><a href="https://ror.org/05byvp690">The University of Texas Southwestern Medical Center</a></span>
+                
+            
+            <span class="view-role-badge">DataCurator</span>
+        </li>
+    
+        <li class="view-contributor-item">
+            
+                
+                    <a href="https://orcid.org/0000-0003-4334-0243" class="author-name">C. Lai, Helen</a>
+                    <a class="orcid-badge" href="https://orcid.org/0000-0003-4334-0243" target="_blank" rel="noreferrer">ORCID</a>
+                
+                
+                    <span class="author-affil text-muted"><a href="https://ror.org/05byvp690">The University of Texas Southwestern Medical Center</a></span>
+                
+            
+            <span class="view-role-badge">ProjectMember</span>
+        </li>
+    
+    </ul>
+    
+</section>
+
+<!-- ── Funding ───────────────────────────────────────────────────────────────── -->
+<section class="panel">
+    <h2>Funding</h2>
+    
+    <ul class="funding-list">
+    
+        <li>
+            
+                <a href="https://ror.org/04t0s7x83">National Institute of Mental Health</a>
+                <code class="kv-code">1-R01-MH134799-01</code> Molecular and anatomical atlases from progenitors to adult neurons in the mouse spinal cord
+            
+        </li>
+    
+    </ul>
+    
+</section>
+
+<!-- ── Tags ──────────────────────────────────────────────────────────────────── -->
+
+
+<!-- ── Technical information ─────────────────────────────────────────────────── -->
+<section class="panel">
+    <details>
+        <summary class="panel-toggle"><h2>Technical Information</h2></summary>
+        <div class="panel-toggle-body">
+
+        
+        <div class="kv" style="margin-bottom:12px;">
+            
+            <div class="kv-row">
+                <div class="kv-key">Modality</div>
+                <div class="kv-val">spatial transcriptomics</div>
+            </div>
+            
+            
+            <div class="kv-row">
+                <div class="kv-key">Technique</div>
+                <div class="kv-val">other</div>
+            </div>
+            
+            
+        </div>
+        
+
+        <div class="view-meta-scroll">
+        
+        <h3 class="view-meta-subhead">Instrument</h3>
+        
+        <table class="table table-sm table-bordered view-meta-table">
+        <tbody>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Type of microscope used to capture the image (e.g., inverted, upright, light sheet, confocal, two photon).">microscopetype</a></td>
+            
+            <td>Epifluorescence</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Manufacturer and model of the microscope used.">microscopemanufacturerandmodel</a></td>
+            
+            <td>Xenium (10x Genomics) </td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Manufacturer and model of the lens used.">objectivename</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Immersion medium for the lens. Suggested values: Air, Glycerol, Multi, Oil, Water, Water dipping.">objectiveimmersion</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Lens numerical aperture.">objectivena</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Lens magnification">objectivemagnification</a></td>
+            
+            <td>20x</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Type of detector used.">detectortype</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Manufacturer and model of the detector.">detectormodel</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Type of illumination.">illuminationtypes</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Bandwidth of illumination light.">illuminationwavelength</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Bandwidth of collected light.">detectionwavelength</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Instrument" data-bs-toggle="tooltip" data-bs-placement="right" title="Sample temperature at capture.">sampletemperature</a></td>
+            
+            <td></td>
+            </tr>
+        
+        </tbody>
+        </table>
+        
+        
+
+        
+        <h3 class="view-meta-subhead">Specimen</h3>
+        
+        <table class="table table-sm table-bordered view-meta-table">
+        <tbody>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Local (lab) reference ID attached to the source organism (if any).">localid</a></td>
+            
+            <td>Mus_M7_F7</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Common organism classification name for the donor organism (e.g., mouse, human).">species</a></td>
+            
+            <td>Mouse</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="NCBI taxonomy code for species of the donor organism.">ncbitaxonomy</a></td>
+            
+            <td>NCBI:txid10090</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Age of the source/donor (or unknown).">age</a></td>
+            
+            <td>66.0</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Unit for the age of the source/donor.">ageunit</a></td>
+            
+            <td>Days</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Sex of the source/donor.">sex</a></td>
+            
+            <td>Female</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Genotype or transgenetic line information.">genotype</a></td>
+            
+            <td>C57BL6J</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Local (lab) reference ID attached to the organ (if any).">organlocalid</a></td>
+            
+            <td>DHBA:12890</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Component part of the nervous system where the tissue is found.">organname</a></td>
+            
+            <td>Spinal Cord</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Local (lab) reference ID attached to the sample (if any).">samplelocalid</a></td>
+            
+            <td>TI-PNMU972746</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Atlas used to describe the location.">atlas</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="(Sub)location or region where the tissue is found.">locations</a></td>
+            
+            <td>Cervical, Thoracic, Lumbar, Sacral</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen">linkage</a></td>
+            
+            <td>[{&#39;class&#39;: &#39;xref&#39;, &#39;type&#39;: &#39;cubie_tissue&#39;, &#39;relationship&#39;: &#39;tissue&#39;, &#39;xid&#39;: &#39;TI-PNMU972746&#39;}, {&#39;class&#39;: &#39;xref&#39;, &#39;type&#39;: &#39;cubie_tissue&#39;, &#39;relationship&#39;: &#39;donor&#39;, &#39;xid&#39;: &#39;DO-HPXY5220&#39;}]</td>
+            </tr>
+        
+        </tbody>
+        </table>
+        
+        
+
+        
+        <h3 class="view-meta-subhead">Image</h3>
+        
+        <table class="table table-sm table-bordered view-meta-table">
+        <tbody>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Image" data-bs-toggle="tooltip" data-bs-placement="right" title="Predominant tissue direction as one moves from the left side of the image to the right side.">xaxis</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliquexdim1</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliquexdim2</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliquexdim3</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Image" data-bs-toggle="tooltip" data-bs-placement="right" title="Predominant tissue direction as one moves from the top of the image to the bottom.">yaxis</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliqueydim1</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliqueydim2</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliqueydim3</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Image" data-bs-toggle="tooltip" data-bs-placement="right" title="Predominant tissue direction through the image stack.">zaxis</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliquezdim1</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliquezdim2</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Oblique axis orientation.">obliquezdim3</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Name of the landmark (e.g., bregma).">landmarkname</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Coordinate of the landmark.">landmarkx</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Coordinate of the landmark.">landmarky</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Coordinate of the landmark.">landmarkz</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Number assigned to each channel.">number</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Display color of each channel in RGB triplet format.">displaycolor</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="What the channel represents.">representation</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Fluorophore used in the channel.">flurophore</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Physical step size in the X-dimension (microns).">stepsizex</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Physical step size in the Y-dimension (microns).">stepsizey</a></td>
+            
+            <td>NA</td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Distance between the center of adjacent images in the Z-dimension (microns).">stepsizez</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Physical step size in the T dimension (time).">stepsizet</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Number of channels.">channels</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Number of slices per channel (approximate).">slices</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen">z</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Number of pixels in the X-dimension.">xsize</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Number of pixels in the Y-dimension.">ysize</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Number of pixels in the Z-dimension.">zsize</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Total size in gigabytes.">gbytes</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Total number of image files.">files</a></td>
+            
+            <td></td>
+            </tr>
+        
+            <tr>
+            
+               <td><a href="https://www.brainimagelibrary.org/newmetadatamodel.html#Specimen" data-bs-toggle="tooltip" data-bs-placement="right" title="Dimension order (e.g., XYZT).">dimensionorder</a></td>
+            
+            <td></td>
+            </tr>
+        
+        </tbody>
+        </table>
+        
+        
+
+        
+
+        </div>
+        </div>
+    </details>
+</section>
+
+<!-- ── Related identifiers ───────────────────────────────────────────────────── -->
+
+
+<!-- ── Data & Downloads ──────────────────────────────────────────────────────── -->
+<section class="panel">
+    <h2>Data</h2>
+
+    
+
+    <div class="kv view-downloads-kv">
+        <div class="kv-row">
+            <div class="kv-key">Analysis Ecosystem path</div>
+            <div class="kv-val"><code class="kv-code">/bil/data/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7</code></div>
+        </div>
+        <div class="kv-row">
+            <div class="kv-key">Download</div>
+            <div class="kv-val"><a href="https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7" target="_blank" rel="noreferrer" class="text-break">https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run8_Slide2_Mus_M7_F7</a></div>
+        </div>
+        <div class="kv-row">
+            <div class="kv-key">Metadata</div>
+            <div class="kv-val"><a href="https://api.brainimagelibrary.org/retrieve?bildid=ace-pie-cot" target="_blank" rel="noreferrer" class="text-break">https://api.brainimagelibrary.org/retrieve?bildid=ace-pie-cot</a></div>
+        </div>
+        
+    </div>
+</section>
+
+
+       </div>
+       </div>
+    </div> <!-- Container -->
+    <!--Bottom Footer -->
+    <div id="bottomfooter">
+    </div>
+
+
+    <div class="container">
+    <footer class="footer">
+      <div class="container">
+        <span class="text-light">The Brain Image Library is supported by the National Institutes of Mental Health of the National Institutes of Health under award number R24-MH-114793. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health. This repository is under review for potential modification in compliance with Administration directives.</span>
+      </div>
+    </footer>
+    </div>
+    <!--end of bottomfooter-->
+        <script src="/web/static/js/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+<script>
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+    new bootstrap.Tooltip(el);
+});
+function copyCitation() {
+    var text = document.getElementById('citationText').textContent;
+    var btn = document.getElementById('copyCitationBtn');
+    navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = '✓ Copied!';
+        setTimeout(function() { btn.textContent = 'Copy citation'; }, 2000);
+    });
+}
+</script>
+
+  </body>
+</html>

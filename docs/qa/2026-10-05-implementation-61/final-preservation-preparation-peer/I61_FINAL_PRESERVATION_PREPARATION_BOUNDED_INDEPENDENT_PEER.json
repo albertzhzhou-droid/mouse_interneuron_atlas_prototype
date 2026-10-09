@@ -1,0 +1,134 @@
+{
+  "status": "PASS_INDEPENDENT_BOUNDED_CODE_METADATA_AND_SYNTHETIC_PREPARATION_PEER_NOT_FINAL_PRESERVATION",
+  "sealedUTC": "2026-10-05T09:09:28.395772+00:00",
+  "ownerFinalSeal": {
+    "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/I61_REAL_INTAKE_FINAL_PRESERVATION_PREPARATION_SEAL.json",
+    "bytes": 4757,
+    "sha256": "c8d0ced96276d1c40bd5aec1194b0ebcc39aead9d8c20c4d6ea3e9cff61e6b1f"
+  },
+  "ownerFinalHelper": {
+    "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/check_i61_final_preservation.py",
+    "bytes": 17753,
+    "sha256": "94cba6b40a7c3ec0993b8f671f1762cff3bfd60f4c13a54f3008a2f9f3fdfcd6"
+  },
+  "counts": {
+    "baselineInputs": 2585,
+    "expectedCanonicalInputs": 2601,
+    "protectedPriorInputs": 2577,
+    "ownedExactTargets": 19,
+    "newCanonicalPaths": 16,
+    "acceptedI60CheckpointMembers": 64,
+    "acceptedI60ProtectedMembers": 58,
+    "runtimeInputs": 198,
+    "positionsBuildInputs": 40,
+    "positionsSourceInputs": 23,
+    "positionsOriginalWorkbooks": 22
+  },
+  "archived64CheckpointBodiesExact": true,
+  "actual19AfterimageMetadataBound": true,
+  "protectedLayoutInputs": [
+    "app/layout.tsx",
+    "app/SiteNavigation.tsx",
+    "app/site-navigation.ts",
+    "app/site-navigation.css",
+    "app/ResearchRoutePage.tsx",
+    "app/ResearchCollectionPage.tsx",
+    "app/research-information-layout.css",
+    "app/research-pages.css",
+    "app/SourceAuditWorkspaces.tsx"
+  ],
+  "eightPrivateProducerModulesProtected": true,
+  "runtime198OnlyOwnedPackagePinMayChange": true,
+  "positions40Plus23MembershipUnchanged": true,
+  "sourceUnitBoundary": {
+    "legacySelectedWorkbooks": 23,
+    "legacyRetainedOriginalWorkbooks": 24,
+    "withNaVSelectedWorkbooks": 25,
+    "withNaVRetainedOriginalWorkbooks": 26,
+    "soleRetainedUnselected": [
+      56062547,
+      "INa.xlsx"
+    ],
+    "legacyObservationRows": 2115,
+    "legacyWithinTableGroups": 220,
+    "additionalWorksheetRows": 84,
+    "densityRows": 56,
+    "percentageRows": 28,
+    "independentPhysicalCells": null,
+    "sourceProfile": 1,
+    "firingPatternCells": 65,
+    "passivePropertyObservations": 654,
+    "sourceRegistrySources": 32,
+    "sourceRegistryRecordSets": 42,
+    "newSourcesSetsProfilesRostersObjectsGeometryInternalREGCompletions": 0
+  },
+  "findingAndRepair": {
+    "originalHelper": {
+      "bytes": 16923,
+      "sha256": "f184bb0368cc415e89e9c440a77608fa57749f121077a4980bbb456f4d7f47fe"
+    },
+    "counterexample": {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/cross-read-counterexample-f184bb0368cc.json",
+      "bytes": 940,
+      "sha256": "83abb9ae4b574b9614467f13ff8919c0d0f495f4b4d7f835ae87fa88b89ae58b"
+    },
+    "cause": "A successful second read overwrote the first verified epoch; a body caller also discarded its returned SHA.",
+    "repair": "Retain the first observed epoch, reject cross-read drift fatally, allow at most3 epoch-only retry attempts solely for unseen paths, and compare every repeated body digest to its canonical pin (manifest to its initial exact pin).",
+    "intermediateRepairedEpochRefusal": {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/cross-read-counterexample-793acf1bf196.json",
+      "bytes": 767,
+      "sha256": "5ffee172e4d76fb4f40ea0a99a61075b54e84ed6b8f7b248beb982ab68e7d922"
+    },
+    "noRemainingActionableFindingsInDeclaredScope": true
+  },
+  "independentSyntheticGuards": {
+    "tests": 17,
+    "pass": 17,
+    "fail": 0,
+    "stdout": {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/final-17-read-json-guards.stdout.log",
+      "bytes": 191,
+      "sha256": "23be7dc07b5d39c61d6e0110dcd8814422606fc69e94c4f660ed185c32bcfa48"
+    },
+    "stderr": {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/final-17-read-json-guards.stderr.log",
+      "bytes": 4320,
+      "sha256": "397ebb6fafc3c5a098c2019874c56a9e4ffe3f5ec47e34dfeca8b40f7373b078"
+    },
+    "scope": "strict duplicate root/nested JSON; nonfinite literals/overflow; stable/short pread actual progress; EOF/IO/SHA no retry; unseen epoch bounded retry; observed path same/different-body replacement and fd/mid-read drift fatal"
+  },
+  "support": [
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/check-metadata-only.py",
+      "bytes": 4536,
+      "sha256": "80fb92bcdd3b721b87414d141e8d69192e3e71e333e9edcbc4600c9cb1a9bcfb"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/metadata-peer-c8d0ced96276.json",
+      "bytes": 2072,
+      "sha256": "e2012b81b3ddf1f304ba1a315232a71f54723d67ffa9dc85613c1f24c6f0f6fc"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/test-read-json-guards.py",
+      "bytes": 8074,
+      "sha256": "8dc49867d95d278b2effba3293c0a968b345be029838b4813a537adb22ded89e"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/reproduce-cross-read-epoch.py",
+      "bytes": 2510,
+      "sha256": "d76af193e45b9e9e2fa67da7fe21ce9f34cc0a238bfa1f911741d48e64d269e5"
+    }
+  ],
+  "codeReviewLimits": "Prepare/code/archived metadata only; final helper main was never run, current19 root physical afterimages were not rehashed, and no canonical/source tree was scanned.",
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "ownerFolderWrites": 0,
+  "browserOperations": 0,
+  "serverOperations": 0,
+  "networkOperations": 0,
+  "sourceBytesParsedOrFullHashed": false,
+  "productProducerOrPrivateProofExecuted": false,
+  "nativeAcceptanceOrActualExportReplayExecuted": false,
+  "finalSourcePreservationExecuted": false,
+  "finalParentAuthorizationRequired": "Explicit I61 FINAL_READY before owner final mode; this peer receipt does not authorize or replace final execution."
+}

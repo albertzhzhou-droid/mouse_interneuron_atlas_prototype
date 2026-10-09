@@ -1,0 +1,772 @@
+{
+  "status": "PASS_SOURCE_AND_STATE_REVIEW",
+  "scope": "Read-only exact scientific source/audit metadata and six-file candidate review including solely wrapper bookmark lifecycle wording; native browser and downloads remain pending",
+  "generatedAtUTC": "2026-10-05T03:48:11.161623+00:00",
+  "rootWrites": 0,
+  "proposalWrites": 0,
+  "networkRequests": 0,
+  "seal": {
+    "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/qa/I58_CANDIDATE_SEAL_AND_VALIDATION_RECEIPT.json",
+    "actual": {
+      "bytes": 10593,
+      "sha256": "63d8c6609e07b54869aa17f8ed2d5324e2bfb7c0a136083e2ddfa42e025a0b42"
+    }
+  },
+  "patch": {
+    "bytes": 50780,
+    "sha256": "e137a23fbcd156653ec87fca44217cfaf76c8668d33f0327532bacd0839c39cf"
+  },
+  "ownedFiles": [
+    {
+      "path": "app/TrevisanV1AgeAtlas.tsx",
+      "operation": "modify",
+      "rootBefore": {
+        "bytes": 12231,
+        "sha256": "918f8eeb902a204cbc7ca8724b9d75c277822020b52cec78df445069e5633127"
+      },
+      "proposed": {
+        "bytes": 14607,
+        "sha256": "2a508f47c35a4dfc9ffa1260d8c7ef656399594dfd640230998091cd0c7eb533"
+      },
+      "exactSealed": true
+    },
+    {
+      "path": "app/ExactSourceAuditWorkbench.tsx",
+      "operation": "modify",
+      "rootBefore": {
+        "bytes": 15384,
+        "sha256": "5f4b89a5f8200b750d2e4873fa5472655f93c436b9bf627a7321f030687a6bac"
+      },
+      "proposed": {
+        "bytes": 18625,
+        "sha256": "95035af0f60ee102247f8d9763c4b0ac790503d59e344c8edcd3f00df14c2ef4"
+      },
+      "exactSealed": true
+    },
+    {
+      "path": "app/exact-source-audit-workbench.js",
+      "operation": "modify",
+      "rootBefore": {
+        "bytes": 5025,
+        "sha256": "c80b3104d9a656c16b8670af0208663168700e875c596909ffa3f3e7cd9fe03d"
+      },
+      "proposed": {
+        "bytes": 9225,
+        "sha256": "cfa38097a7596d08c48a57050a2d9d5f6a344eca2adb6a8ad4a0d4c440d3990a"
+      },
+      "exactSealed": true
+    },
+    {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "operation": "modify",
+      "rootBefore": {
+        "bytes": 3264,
+        "sha256": "4ec9c8afd29de35849840b48588ff054f6fd5151e553af992cf209a3b1798aed"
+      },
+      "proposed": {
+        "bytes": 3326,
+        "sha256": "08f765746c5ef17c734893c7d42715ac12cd4df6baed8f63954ac3cd7364b9d8"
+      },
+      "exactSealed": true
+    },
+    {
+      "path": "app/exact-source-audit-workbench.d.ts",
+      "operation": "add",
+      "rootBefore": null,
+      "proposed": {
+        "bytes": 2975,
+        "sha256": "9dfffba0c43bdbc7ca12f88a2259a2b199a175930e03f43a4a13c68d1d449307"
+      },
+      "exactSealed": true
+    },
+    {
+      "path": "tests/trevisan-v1-sample-bookmark.test.mjs",
+      "operation": "add",
+      "rootBefore": null,
+      "proposed": {
+        "bytes": 15953,
+        "sha256": "f30e8b0540f998684404a5f6209e16ec8a6f9b286bf69a6852bede27149740f4"
+      },
+      "exactSealed": true
+    }
+  ],
+  "sourceAudit": {
+    "path": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+    "actual": {
+      "bytes": 122391,
+      "sha256": "ec34da947a38f574bf6c80495a3f1ede02377a5adc3020d8e079c2a880fb07be"
+    },
+    "originalReceipts": [
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSE275595-family.soft.txt",
+        "declared": {
+          "bytes": 31675401,
+          "sha256": "2cce322e348e90c40488453d70301f3c17330d3bb9d3b65f4b563ba854f6e16c"
+        },
+        "actual": {
+          "bytes": 31675401,
+          "sha256": "2cce322e348e90c40488453d70301f3c17330d3bb9d3b65f4b563ba854f6e16c"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/41467_2026_76522_MOESM7_ESM.xlsx",
+        "declared": {
+          "bytes": 1664319,
+          "sha256": "0029957d08d7d32e500c7e392eee71f3e2472a3e22f6d986d18cf8bad37e3f2a"
+        },
+        "actual": {
+          "bytes": 1664319,
+          "sha256": "0029957d08d7d32e500c7e392eee71f3e2472a3e22f6d986d18cf8bad37e3f2a"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480577_P0CR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480577_P0CR1_features.tsv.gz",
+        "declared": {
+          "bytes": 290896,
+          "sha256": "3a13403f84738655823c424f4eaa559648f059b9127230cc9f66cbe81a404659"
+        },
+        "actual": {
+          "bytes": 290896,
+          "sha256": "3a13403f84738655823c424f4eaa559648f059b9127230cc9f66cbe81a404659"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480577_P0CR1_matrix.mtx.gz",
+        "declared": {
+          "bytes": 49356598,
+          "sha256": "7e8537e85e190ac0238fc6e713a76039e27472222625cc0ac7542ced33866549"
+        },
+        "actual": {
+          "bytes": 49356598,
+          "sha256": "7e8537e85e190ac0238fc6e713a76039e27472222625cc0ac7542ced33866549"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480578_P0CR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480579_P0LR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480580_P0LR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480581_P0TR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480582_P0TR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480583_P14CR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480584_P14CR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480585_P14LR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480586_P14LR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480587_P14TR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480588_P14TR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480589_P28CR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480590_P28CR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480591_P28LR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480592_P28LR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480593_P28TR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480594_P28TR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480595_P56CR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480596_P56CR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480597_P56LR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480598_P56LR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480599_P56TR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480600_P56TR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480601_P0HetR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480602_P0KoR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480603_P0HetR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480604_P0KoR2_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "receipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480605_E135HetR1_barcodes.tsv.gz",
+        "declared": {
+          "bytes": 38578,
+          "sha256": "0dcc52d7b8b1997a3d7964d88e91d7e955abd53364604e5b37ea7e5f69d6aeca"
+        },
+        "actual": {
+          "bytes": 38578,
+          "sha256": "0dcc52d7b8b1997a3d7964d88e91d7e955abd53364604e5b37ea7e5f69d6aeca"
+        },
+        "exact": true
+      },
+      {
+        "kind": "alternateBarcodeReceipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480577-ncbi-download-barcodes.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      },
+      {
+        "kind": "alternateBarcodeReceipts",
+        "path": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480578-barcodes-cachebust.tsv.gz",
+        "declared": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "actual": {
+          "bytes": 41212,
+          "sha256": "898cba2e06cc239f6073addb8d4366d04bf450683249cc705e8d0cbf619bfbaf"
+        },
+        "exact": true
+      }
+    ],
+    "totalReceipts": 35,
+    "sourceReceiptBytes": 84262152,
+    "fullOriginalBuilderReplay": {
+      "independentReceipt": "/private/tmp/ohri-i58-peer-independent-review/I58_ORIGINAL_SOURCE_INDEPENDENT_REPLAY.json",
+      "actual": {
+        "bytes": 12874,
+        "sha256": "8e6d33e5a151ec297a038400c5b4d465ed72ecfacae6fd7b2f23a2c66f33d0fa"
+      },
+      "derivedDocumentExactlyCurrent": true,
+      "sameCurrentSourcePins": true,
+      "durationSeconds": 11.081413984298706,
+      "sparseEntries": 13241486
+    },
+    "summary": {
+      "sampleCharacteristicsChecked": 29,
+      "workbookSheetCount": 4,
+      "workbookTotalRowCount": 111141,
+      "atlasFinalBarcodeCount": 89494,
+      "atlasSamplePrefixCount": 23,
+      "atlasDeclaredSampleTitlesWithoutFinalBarcodes": [
+        "P56LR1"
+      ],
+      "nativeBarcodeFileCount": 29,
+      "nativeBarcodeDistinctPayloadCount": 2,
+      "sourceBarcodeMatchedRowsAcrossSeparateSheets": 6901,
+      "sourceBarcodeMissingRowsAcrossSeparateSheets": 104240,
+      "matrixPayloadsStructurallyValidated": 1,
+      "perNucleusClusterAssignmentsValidated": 0,
+      "runtimeNucleusRosterRowsAdmitted": 0,
+      "canonicalSourceProfileContribution": 0,
+      "sameCellJoins": 0,
+      "geometryObjects": 0,
+      "atlasRegistrations": 0
+    },
+    "rights": {
+      "article": "CC BY 4.0 subject to third-party exceptions; article Rights and permissions and the linked Supplementary Data 3 are source locators, not a license inferred for GEO files.",
+      "geoObjects": "No affirmative file-specific submitter reuse license verified; local audit inputs remain quarantined outside public/.",
+      "workbookRedistribution": "Not enabled by this audit; attribution and any supplement-specific exception still need a release check.",
+      "codeMITDoesNotLicenseData": true,
+      "publicAssetPackagingAllowed": false
+    },
+    "sampleUnit": "GEO source sample/experiment replicate, not asserted individual animal or nucleus",
+    "matrixUnit": "one representative original input structure, final-figure biological mapping held"
+  },
+  "independentNodeTestLog": {
+    "path": "/private/tmp/ohri-i58-peer-independent-tests.log",
+    "actual": {
+      "bytes": 2282,
+      "sha256": "7a249f69def3fe6d87f2bebdf6e9123866e8def9fbee73607d423b13c5c68901"
+    },
+    "counts": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "reviewFindings": {
+    "actionableBugs": [],
+    "scientificPromotion": [],
+    "URLAuthority": {
+      "sourceAuditIdAndDateRequired": true,
+      "fullSourceQualifiedMembershipOnly": true,
+      "duplicateOwnedParametersReject": true,
+      "foreignStalePartialUnknownCaseRepairedKeyReject": true,
+      "filterIncompatibleSelectionCleared": true,
+      "unrelatedQueriesAndFragmentPreserved": true
+    },
+    "lifecycle": {
+      "defaultSelected": false,
+      "preRestoreControlsDisabled": true,
+      "popstateRestoresSelectionFilterOnly": true,
+      "invisibleSelectionClearedWithoutReplacement": true,
+      "mountPopstateClearExportStatus": true,
+      "nativeDownloadNotExecutedByReviewer": true
+    },
+    "factualSelectedExport": {
+      "rows": 1,
+      "sourcePayloadsIncluded": false,
+      "runtimeRosterAdmission": false,
+      "sameCellJoins": 0,
+      "geometryObjects": 0,
+      "registrations": 0
+    },
+    "existingWrapperCopyNoteResolved": {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "exactSingleParagraphDelta": [
+        {
+          "line": 55,
+          "before": "    <p>Open a workspace to inspect its source files and controls. Closing it clears its local selection, saved-view preview and pending loading. Reopening starts a fresh view; exported files remain available for restoration.</p>",
+          "after": "    <p>Open a workspace to inspect its source files and controls. Closing releases the local view, saved-view preview and pending loading. Reopening creates a new view; supported workspaces restore their current URL bookmark and filters. Exported files remain available for restoration.</p>"
+        }
+      ],
+      "allOtherWrapperBytesAndLogicRetained": true,
+      "peerAndParentAuthorizedSixthPath": true
+    }
+  },
+  "newLayoutBoundaries": [
+    {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "rootActual": {
+        "bytes": 3264,
+        "sha256": "4ec9c8afd29de35849840b48588ff054f6fd5151e553af992cf209a3b1798aed"
+      },
+      "outsideFiveOwnedPaths": false,
+      "materializedProposalActual": {
+        "bytes": 3326,
+        "sha256": "08f765746c5ef17c734893c7d42715ac12cd4df6baed8f63954ac3cd7364b9d8"
+      },
+      "materializedProposalMatchesRoot": false
+    },
+    {
+      "path": "app/source-audit-workspaces.js",
+      "rootActual": {
+        "bytes": 1464,
+        "sha256": "5c0056892e8e3d3ed33507cb197ed73fa5bb33c4c866183d6b1b75eeb2920d42"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 1464,
+        "sha256": "5c0056892e8e3d3ed33507cb197ed73fa5bb33c4c866183d6b1b75eeb2920d42"
+      },
+      "materializedProposalMatchesRoot": true
+    },
+    {
+      "path": "app/source-audits/page.tsx",
+      "rootActual": {
+        "bytes": 891,
+        "sha256": "2c5daacfd954ef20b153390a457fb5a780de8d00d0f5ad711323b4fa3c75b5db"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 891,
+        "sha256": "2c5daacfd954ef20b153390a457fb5a780de8d00d0f5ad711323b4fa3c75b5db"
+      },
+      "materializedProposalMatchesRoot": true
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "rootActual": {
+        "bytes": 14684,
+        "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 14684,
+        "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76"
+      },
+      "materializedProposalMatchesRoot": true
+    },
+    {
+      "path": "app/SiteNavigation.tsx",
+      "rootActual": {
+        "bytes": 3534,
+        "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 3534,
+        "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd"
+      },
+      "materializedProposalMatchesRoot": true
+    },
+    {
+      "path": "app/globals.css",
+      "rootActual": {
+        "bytes": 336412,
+        "sha256": "703c8cc80e9a6d4ab03d6c422f37beff15eb6c331a07a97f767fff396e9f254e"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 336412,
+        "sha256": "703c8cc80e9a6d4ab03d6c422f37beff15eb6c331a07a97f767fff396e9f254e"
+      },
+      "materializedProposalMatchesRoot": true
+    },
+    {
+      "path": "app/research-information-layout.css",
+      "rootActual": {
+        "bytes": 15146,
+        "sha256": "e40034fdf3cd2add08c53cb385815166f1f82f26e7d276cb8665fa4b13aebafe"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 15146,
+        "sha256": "e40034fdf3cd2add08c53cb385815166f1f82f26e7d276cb8665fa4b13aebafe"
+      },
+      "materializedProposalMatchesRoot": true
+    },
+    {
+      "path": "app/exact-source-audit-workbench.css",
+      "rootActual": {
+        "bytes": 2738,
+        "sha256": "188cff5f5a63dbacb9e1e0c13c30fd4aa3f967fee88ee163a9134b6593ffb90a"
+      },
+      "outsideFiveOwnedPaths": true,
+      "materializedProposalActual": {
+        "bytes": 2738,
+        "sha256": "188cff5f5a63dbacb9e1e0c13c30fd4aa3f967fee88ee163a9134b6593ffb90a"
+      },
+      "materializedProposalMatchesRoot": true
+    }
+  ],
+  "readContract": {
+    "strategy": "complete_os_pread_4096",
+    "files": 70,
+    "calls": 20953,
+    "bytes": 85350248
+  },
+  "limitations": [
+    "Twenty independent Node tests include actual React server markup and explicitly labeled descriptor lifecycle, not native browser proof.",
+    "The original builder was imported and build_audit called read-only; __main__ output writer was never called.",
+    "All35 physical original source receipts are verified, but raw GEO/workbook conflicts, cluster labels and file-specific reuse gates remain held.",
+    "The full243-item plan and scientific admissions are not promoted."
+  ]
+}

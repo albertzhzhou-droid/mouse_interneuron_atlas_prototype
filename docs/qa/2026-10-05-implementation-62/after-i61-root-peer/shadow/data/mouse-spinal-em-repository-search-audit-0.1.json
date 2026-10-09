@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "mouse-spinal-em-repository-search-audit-0.1",
+  "researchUpgradeId": "UPG-243",
+  "auditDate": "2026-09-23",
+  "scope": "Bounded public-repository screen for mouse spinal-cord volume EM or segmentation with a source-local route to an exact interneuron object.",
+  "repositoryQueries": [
+    {
+      "repository": "EMPIAR",
+      "query": "mouse spinal cord",
+      "queryMode": "catalogue table filter",
+      "searchUrl": "https://www.ebi.ac.uk/empiar/",
+      "resultCount": 0,
+      "searchedEntryCount": 3119,
+      "resultScope": "Current catalogue UI filter; displayed zero matches among 3,119 entries including one test dataset."
+    },
+    {
+      "repository": "EMDB",
+      "query": "mouse spinal cord",
+      "queryMode": "public entry search",
+      "searchUrl": "https://www.ebi.ac.uk/emdb/emsearch/?q=mouse%20spinal%20cord",
+      "resultCount": 0,
+      "searchedEntryCount": null,
+      "resultScope": "Current EMDB search UI displayed No Entries Found; this query result is not a complete repository absence claim."
+    },
+    {
+      "repository": "BioImage Archive",
+      "query": "mouse spinal cord electron microscopy",
+      "queryMode": "full-text study search",
+      "searchUrl": "https://www.ebi.ac.uk/bioimage-archive/",
+      "resultCount": 2692,
+      "searchedEntryCount": null,
+      "resultScope": "Fuzzy full-text results; first 20 visible results screened, not an exact-match count."
+    },
+    {
+      "repository": "BioImage Archive",
+      "query": "spinal cord mouse",
+      "queryMode": "full-text study search",
+      "searchUrl": "https://www.ebi.ac.uk/bioimage-archive/",
+      "resultCount": 889,
+      "searchedEntryCount": null,
+      "resultScope": "Fuzzy full-text results; first 20 visible results screened, not an exact-match count."
+    }
+  ],
+  "reviewedCandidateRecords": [
+    {
+      "accession": "S-BSST609",
+      "title": "Microglial refinement of spinal cord sensory circuitry regulates normal maturation of dynamic touch",
+      "recordUrl": "https://www.ebi.ac.uk/biostudies/BioImages/studies/S-BSST609",
+      "observedSpecies": ["mouse", "Sprague Dawley rat"],
+      "observedStudyLicense": "CC0",
+      "observedFileFormats": ["TIFF", "CZI", "LSM", "LIFF"],
+      "exclusion": "Spinal sensory-circuit microscopy, but the reviewed record exposes no serial EM volume, EM segmentation, or stable interneuron-object crosswalk."
+    },
+    {
+      "accession": "S-BIAD2822",
+      "title": "2D and 3D instance segmentation of nuclei from volume electron microscopy data",
+      "recordUrl": "https://www.ebi.ac.uk/biostudies/BioImages/studies/S-BIAD2822",
+      "observedSpecies": ["human", "mouse"],
+      "observedStudyLicense": "CC-BY-4.0",
+      "observedSamples": ["human breast", "mouse lung tumor", "mouse 4T1 mammary gland", "human MB-231"],
+      "observedSegmentationScope": "The reviewed record describes a 3D segmentation of one breast-cancer-cell nucleus; no spinal cord or interneuron object route was identified.",
+      "exclusion": "Relevant as an annotation-method example only; it does not provide a mouse spinal-cord interneuron volume or identity crosswalk."
+    }
+  ],
+  "admission": {
+    "eligibleMouseSpinalInterneuronObjectRoutes": 0,
+    "volumePayloadsDownloaded": 0,
+    "downloadedPayloadBytes": 0,
+    "voxelVolumesAdmitted": 0,
+    "segmentationObjectsAdmitted": 0,
+    "stableInterneuronObjectCrosswalksAdmitted": 0,
+    "sameCellJoins": 0,
+    "atlasRegistrations": 0,
+    "biologicalMeasurements": 0,
+    "interpretation": "This closes only the declared bounded query and candidate screen. It does not establish that no qualifying record exists elsewhere or under different indexing terms. No candidate data or geometry is admitted."
+  },
+  "sources": [
+    {"label": "EMPIAR public image archive", "url": "https://www.ebi.ac.uk/empiar/"},
+    {"label": "EMPIAR FAQ and reuse policy", "url": "https://www.ebi.ac.uk/empiar/faq"},
+    {"label": "EMDB search", "url": "https://www.ebi.ac.uk/emdb/emsearch/?q=mouse%20spinal%20cord"},
+    {"label": "BioImage Archive study S-BSST609", "url": "https://www.ebi.ac.uk/biostudies/BioImages/studies/S-BSST609"},
+    {"label": "BioImage Archive study S-BIAD2822", "url": "https://www.ebi.ac.uk/biostudies/BioImages/studies/S-BIAD2822"}
+  ]
+}

@@ -89,7 +89,7 @@ function claimsForCondition(conditionId: string) {
 function statementSummary(condition: Condition, kinds: string[]) {
   const linked = condition.statementIds
     .map((id) => statementById.get(id))
-    .filter((statement): statement is EvidenceStatement => Boolean(statement) && kinds.includes(statement.kind));
+    .filter((statement): statement is EvidenceStatement => statement !== undefined && kinds.includes(statement.kind));
   return linked.length
     ? linked.map((statement) => `${statement.id}: ${statement.text}`).join(" · ")
     : "None recorded for this condition";

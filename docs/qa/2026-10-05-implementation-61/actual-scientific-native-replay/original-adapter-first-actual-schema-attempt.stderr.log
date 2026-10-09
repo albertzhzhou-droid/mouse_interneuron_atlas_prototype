@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i61-actual-scientific-native-replay-20261005/replay.py", line 252, in <module>
+    result = run(arguments.manifest, arguments.output, arguments.actual_ready)
+  File "/private/tmp/ohri-i61-actual-scientific-native-replay-20261005/replay.py", line 221, in run
+    results[pin['path']] = verify_capture(capture, item['expected'], fixture, selectors)
+  File "/private/tmp/ohri-i61-actual-scientific-native-replay-20261005/replay.py", line 151, in verify_capture
+    c = control(nav['controls'], label); assert c['value'] == case['filter'][field]
+  File "/private/tmp/ohri-i61-actual-scientific-native-replay-20261005/replay.py", line 102, in control
+    values = [c for c in controls if normalized(c.get(by, '')) == label]
+  File "/private/tmp/ohri-i61-actual-scientific-native-replay-20261005/replay.py", line 102, in <listcomp>
+    values = [c for c in controls if normalized(c.get(by, '')) == label]
+  File "/private/tmp/ohri-i61-actual-scientific-native-replay-20261005/replay.py", line 69, in normalized
+    assert isinstance(value, str), 'Original text must be a captured string'
+AssertionError: Original text must be a captured string

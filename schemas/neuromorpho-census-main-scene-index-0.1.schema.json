@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-census-main-scene-index-0.1.schema.json",
+  "title": "NeuroMorpho frozen-census main-scene morphology index 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "contractId", "releaseId", "source", "purpose", "summary", "scientificBoundary", "records"],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["neuronId", "assetId", "sourceMetadata", "sourcePaper", "geometry", "quality"],
+      "properties": {
+        "neuronId": { "type": "integer", "minimum": 1 },
+        "assetId": { "type": "string", "pattern": "^NeuroMorpho:[1-9][0-9]*$" },
+        "sourceMetadata": { "type": "object", "additionalProperties": true },
+        "sourcePaper": { "type": "object", "additionalProperties": true },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "bytes", "sha256", "rawSwcSha256", "dimensionality", "sourceDiameterAvailable", "nodeCount", "segmentCount", "nodeTypeCounts", "radiusEvidence"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-[1-9][0-9]*\\.json$" },
+            "bytes": { "type": "integer", "minimum": 1 },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "rawSwcSha256": { "$ref": "#/$defs/sha256" },
+            "dimensionality": { "enum": ["2D", "3D"] },
+            "sourceDiameterAvailable": { "type": "boolean" },
+            "nodeCount": { "type": "integer", "minimum": 1 },
+            "segmentCount": { "type": "integer", "minimum": 0 },
+            "nodeTypeCounts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+            "radiusEvidence": { "type": ["object", "null"] }
+          }
+        },
+        "quality": { "type": "object", "additionalProperties": true }
+      }
+    }
+  },
+  "properties": {
+    "documentType": { "const": "neuromorpho_census_main_scene_index" },
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "neuromorpho-census-main-scene-index-0.1" },
+    "releaseId": { "type": "string", "minLength": 1 },
+    "source": { "type": "object", "additionalProperties": true },
+    "purpose": { "type": "string", "minLength": 1 },
+    "summary": { "type": "object", "additionalProperties": true },
+    "scientificBoundary": { "type": "object", "additionalProperties": true },
+    "records": { "type": "array", "minItems": 142, "maxItems": 142, "items": { "$ref": "#/$defs/record" } }
+  }
+}

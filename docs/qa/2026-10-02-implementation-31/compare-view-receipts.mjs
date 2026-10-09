@@ -1,0 +1,9 @@
+import {readFile,writeFile} from 'node:fs/promises';import assert from 'node:assert/strict';
+const q='/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-02-implementation-31/';
+const load=async n=>JSON.parse(await readFile(q+n));const wtA=await load('wt-saved-view.json'),wtB=await load('wt-restored-view.json'),swA=await load('swc-saved-view.json'),swB=await load('swc-restored-view.json');
+for(const k of ['sourceContext','sourceIdentity','scientificScope'])assert.deepEqual(wtA[k],wtB[k]);
+for(const k of ['rawSlice','mapping','nativePlanes','renderer','layout','layers','rawPatchOutline'])assert.deepEqual(wtA.view[k],wtB.view[k]);
+const differences=[];function compare(a,b,p){if(a===b)return;if(typeof a==='number'&&typeof b==='number'){differences.push({path:p,delta:Math.abs(a-b)});return;}if(a&&b&&typeof a==='object'&&typeof b==='object'){assert.deepEqual(Object.keys(a),Object.keys(b));for(const k of Object.keys(a))compare(a[k],b[k],p+'.'+k);return;}differences.push({path:p,saved:a,restored:b});}
+compare(swA.view,swB.view,'view');console.log(JSON.stringify(differences));
+assert.deepEqual(swA.sourceIdentity,swB.sourceIdentity);for(const d of differences){if(['view.verificationRevision','view.revision','view.loadMilliseconds','view.renderMilliseconds'].includes(d.path))continue;assert.ok(typeof d.delta==='number'&&d.delta<1e-10,JSON.stringify(d));}
+await writeFile(q+'view-replay-comparison.json',JSON.stringify({wtNativePixelsMappingLayersRendererAndLayoutExactEqual:true,wtSourceIdentityAndScientificScopeExactEqual:true,wtOldRuntimeBinding:wtA.view.runtimeBinding,wtFreshRuntimeBinding:wtB.view.runtimeBinding,swcSourceIdentityExactEqual:true,swcViewDifferences:differences,scope:'Runtime verification sequences are fresh after re-open; camera, layers, clipping, transform and renderer are exact equal; only fresh verification revision and timings change.'},null,2)+'\n');

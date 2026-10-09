@@ -1,0 +1,56 @@
+{
+  "status": "PASS_ORIGINAL_METADATA_DOCUMENT_CONSISTENCY_AND_NONCLAIM_CLASSIFICATION",
+  "inputPins": [
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/actual-09-stage-metadata-cache-epoch.json",
+      "bytes": 1059,
+      "sha256": "d8b0ad069ab9ddfa66b4edb6a37d0a557af362b18d92f3b23b26626a5120c2f4"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/actual-09-dist-metadata-cache-epoch.json",
+      "bytes": 1057,
+      "sha256": "c9692cdbba76624285a1573da18951bc21d1555d035c29b26b98fbd64ad3cd40"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/actual-09-recovery-dist-metadata-cache-epoch.json",
+      "bytes": 1048,
+      "sha256": "1b04ffc1ac5ad5942cb4ff04165b5eb0218ba6ea3ce1956940de1bcd36b06e16"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/actual-12-stage-metadata-original-restored.json",
+      "bytes": 1970,
+      "sha256": "4fb817199ca7d6843eda42a6284b71ce4d080a2cefaed179bfde9c737e6100ba"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-60/actual-08-hard-reload-native-action.json",
+      "bytes": 137,
+      "sha256": "5f9b547b6ef5fe07040394d503cf41280c26deb238255762c14429bf350ee2a4"
+    }
+  ],
+  "metadataMechanism": "Actual dist JSONmtime changes plus parent-owned production restart produced different original upstream ETags for84/87. Public-copy attempt was insufficient. This verifies original recorded metadata relationships only, not current filesystem restat or browser cache bypass.",
+  "faultOriginalUpstreamETag": "W/\"12327624-1791187570\"",
+  "retryOriginalUpstreamETag": "W/\"12327624-1791187615\"",
+  "originalRecordedFourMetadataRestorationsExact": true,
+  "currentStageFilesystemRestatPerformedByThisHelper": false,
+  "hardReloadAttemptAction": {
+    "name": "actual-08-hard-reload",
+    "startUTC": "2026-10-05T08:02:24.276Z",
+    "endUTC": "2026-10-05T08:02:24.282Z",
+    "error": null
+  },
+  "canonicalRequestStartsDuringHardReloadAction": [
+    75
+  ],
+  "hardReloadFreshRequestAcceptanceEstablished": false,
+  "request80": {
+    "upstreamStatus": 304,
+    "localResponseStatus": 502,
+    "controlledDecodedProofAvailable": false
+  },
+  "noApiNativeRequestClaimed": true,
+  "actualReplayReceipt": {
+    "path": "/private/tmp/ohri-i60-native-live-replay/actual-canonical-log-dom-receipt.json",
+    "bytes": 41431,
+    "sha256": "2b89ad954efbb804ef110ef327bbfb1863bb6ab2f7aa26210bc61cc212d5d40c"
+  }
+}

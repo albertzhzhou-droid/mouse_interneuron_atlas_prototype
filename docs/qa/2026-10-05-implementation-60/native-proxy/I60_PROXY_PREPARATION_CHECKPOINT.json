@@ -1,0 +1,124 @@
+{
+  "status": "PREPARATION_ONLY_PENDING_CANONICAL_WIRE_DECISION_AND_PEER",
+  "files": [
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/proxy.mjs",
+      "bytes": 22582,
+      "sha256": "1761f41771821faee609b583790914fbaf7282028b4e60588558249b022ae233"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/proxy.test.mjs",
+      "bytes": 27804,
+      "sha256": "30d1120a48bfbfc76db084326a557e5bb021c6f73912e678d7be184b4401f3d0"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/prepare-fixture.mjs",
+      "bytes": 3076,
+      "sha256": "64e7e9ab13bf58a9643e7f5131179d7cc0f944e826e738f8dad7e5102e6e6975"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/set-mode.mjs",
+      "bytes": 1197,
+      "sha256": "29aea8aab0585e083e5d95196e9c7973597d6f8c50a6bc33c21dc6469875416e"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/README.md",
+      "bytes": 9996,
+      "sha256": "c0f76371e0a9c9e95cb309aa84937c50f7fb87c4695ef079734d433213cb2546"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json.gz",
+      "bytes": 626119,
+      "sha256": "b69d9d989646c542c1efcf001201910ed9680db001d5e9a41092fe07b2cfb6a6"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json",
+      "bytes": 12327624,
+      "sha256": "d6e8b386b3c9ff8cd785174d419116a07b78779e2fd60abbaf5eb4760e581552"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/fixture-preparation-receipt.json",
+      "bytes": 2612,
+      "sha256": "35e20530a57f104c707b0bd36468a1847e937332928bfa68341f45e8cabb7cba"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/offline-guards.log",
+      "bytes": 2894,
+      "sha256": "b7e01e87ebe8842029cfa7c8315c5e893109b7a0374981bafa0b3b682b0dcf3f"
+    }
+  ],
+  "retainedI59HelperPins": [
+    {
+      "path": "/private/tmp/ohri-i59-native-proxy/proxy.mjs",
+      "bytes": 14202,
+      "sha256": "fe99148882c366ad8b39585dfed31a8a7fa5aecd8c2455b53f507cdadf57104d"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-native-proxy/proxy.test.mjs",
+      "bytes": 13034,
+      "sha256": "81ae52368bedbfb34e2b05e041b43a05c060542c284368881bd4a0cfc7f102ae"
+    }
+  ],
+  "sourcePinsRetained": [
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json.gz",
+      "bytes": 628095,
+      "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+    },
+    {
+      "path": "app/api/source-records/search-index.json/route.ts",
+      "bytes": 578,
+      "sha256": "45317632af32f818f27cb94a8942af6712c495bed811f7fb8aea1b893b7d0a97"
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "bytes": 28427,
+      "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "bytes": 661,
+      "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+      "bytes": 5622,
+      "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+    }
+  ],
+  "tests": {
+    "command": "bundled Node24 --test proxy.test.mjs",
+    "tests": 26,
+    "passed": 26,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "scope": "Offline fake streams/timers and injected production-loader fetch only."
+  },
+  "authorizedExactGetPaths": [
+    "/api/source-records/search-index.json",
+    "/data/research_explorer_index_v1/search-index.json"
+  ],
+  "modeIsolation": "set-mode explicit api/canonical, selected owner only; other route pass",
+  "sourceMutation": "Only temp fixtures replace final LF byte with space; original data/code/manifest assets unchanged.",
+  "comparisonPathEvidence": {
+    "component": "app/MolecularConcordanceWorkbench.tsx",
+    "provider": "app/ResearchActiveRecordProvider.tsx",
+    "defaultTransport": "canonical",
+    "apiConsumer": "app/ResearchIndexLoadingEvidence.tsx independent measurement"
+  },
+  "wireAssumptions": "API requires actual gzip 200 source gate; canonical substitution currently requires actual plain200/source gate; historical canonical gzip/304 caveat pending parent decision. Pass/delay preserve actual original raw response.",
+  "nativeActualEstablished": false,
+  "serverStarted": false,
+  "browserRequestsExecuted": 0,
+  "rootProductWrites": 0,
+  "stageWrites": 0,
+  "rootOrStageSourceEdits": 0,
+  "actualSourceFetches": 0,
+  "proxyTransportLogCreated": false
+}

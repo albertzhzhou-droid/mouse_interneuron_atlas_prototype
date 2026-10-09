@@ -16,6 +16,10 @@ import type {
 } from "./ResearchExplorer";
 import { loadVerifiedResearchExplorerIndex } from "./research-explorer-index.js";
 import {
+  loadVerifiedSupplementalMorphologyResearchRecords,
+  resolveSupplementalMorphologyResearchRecord,
+} from "./research-supplemental-morphology-records.js";
+import {
   beginResearchActiveRecordRequest,
   canonicalResearchFocusKey,
   createResearchActiveRecordState,
@@ -41,6 +45,7 @@ export type ResearchActiveRecordState = {
 };
 
 export type ResearchIndexState =
+  | { status: "idle"; index: null; records: ResearchRecord[]; error: "" }
   | { status: "verifying"; index: null; records: ResearchRecord[]; error: "" }
   | { status: "ready"; index: ResearchIndex; records: ResearchRecord[]; error: "" }
   | { status: "unavailable"; index: null; records: ResearchRecord[]; error: string };
@@ -60,6 +65,10 @@ function activeRecordError(error: unknown) {
     ? error.message
     : "The exact source record could not be verified.";
 }
+
+const IDLE_INDEX_STATE: ResearchIndexState = Object.freeze({
+  status: "idle", index: null, records: [], error: "",
+});
 
 const INITIAL_INDEX_STATE: ResearchIndexState = Object.freeze({
   status: "verifying",
@@ -102,6 +111,7 @@ function advanceResearchActiveRecordRuntime(
 
 export function useResearchActiveRecordLoader(
   focus: ResearchFocus | null,
+  indexRequested = true,
 ): ResearchActiveRecordContextValue {
   const generationRef = useRef(0);
   const [indexState, setIndexState] = useState<ResearchIndexState>(INITIAL_INDEX_STATE);
@@ -111,6 +121,9 @@ export function useResearchActiveRecordLoader(
   const focusKind = focus?.focusKind ?? null;
   const focusId = focus?.focusId ?? null;
   const focusKey = canonicalResearchFocusKey(focus);
+  const needsIndex = indexRequested || focusKey !== null;
+  // A route opt-out must hide a previous ready index before its effect runs.
+  const visibleIndexState = needsIndex ? indexState : IDLE_INDEX_STATE;
 
   useEffect(() => {
     const requestedFocus = focusKind && focusId ? { focusKind, focusId } as ResearchFocus : null;
@@ -126,25 +139,38 @@ export function useResearchActiveRecordLoader(
         generation,
       ) as ResearchActiveRecordState,
     ));
+    if (!needsIndex) {
+      setIndexState(IDLE_INDEX_STATE);
+      return () => controller.abort();
+    }
     setIndexState((current) => current.status === "ready" ? current : INITIAL_INDEX_STATE);
 
     void (async () => {
       let verifiedIndex: ResearchIndex | null = null;
+      let combinedCollectionReady = false;
       try {
         verifiedIndex = await loadVerifiedResearchExplorerIndex({
           signal: controller.signal,
         } as Parameters<typeof loadVerifiedResearchExplorerIndex>[0] & { signal: AbortSignal }) as ResearchIndex;
         if (generationRef.current !== generation) return;
+        const supplementalMorphologyRecords = await loadVerifiedSupplementalMorphologyResearchRecords() as ResearchRecord[];
+        if (generationRef.current !== generation) return;
+        const records = [...verifiedIndex.records, ...supplementalMorphologyRecords];
+        if (new Set(records.map((record) => record.key)).size !== records.length) {
+          throw new Error("The verified research index and source-route supplements contain duplicate record keys");
+        }
         const readyIndexState = Object.freeze({
           status: "ready" as const,
           index: verifiedIndex,
-          records: verifiedIndex.records,
+          records,
           error: "" as const,
         });
         setIndexState(readyIndexState);
+        combinedCollectionReady = true;
 
         if (!requestedFocus || !requestKey) return;
-        const record = resolveResearchActiveRecord(verifiedIndex, requestedFocus) as ResearchRecord | null;
+        const record = resolveResearchActiveRecord(verifiedIndex, requestedFocus) as ResearchRecord | null
+          ?? await resolveSupplementalMorphologyResearchRecord(requestedFocus) as ResearchRecord | null;
         if (!record) {
           throw new Error("The canonical focus is absent from the checksum-verified Research Explorer index");
         }
@@ -160,7 +186,7 @@ export function useResearchActiveRecordLoader(
         if (error instanceof DOMException && error.name === "AbortError") return;
         if (generationRef.current !== generation) return;
         const message = activeRecordError(error);
-        if (!verifiedIndex) {
+        if (!combinedCollectionReady) {
           setIndexState(Object.freeze({
             status: "unavailable",
             index: null,
@@ -182,7 +208,7 @@ export function useResearchActiveRecordLoader(
     })();
 
     return () => controller.abort();
-  }, [focusId, focusKind]);
+  }, [focusId, focusKind, needsIndex]);
 
   const storedActiveRecord = runtime.storedActiveRecord;
   const activeRecord = useMemo(
@@ -198,10 +224,10 @@ export function useResearchActiveRecordLoader(
   return useMemo(() => Object.freeze({
     focus,
     focusKey,
-    indexState,
+    indexState: visibleIndexState,
     activeRecord,
     selectionDelta,
-  }), [activeRecord, focus, focusKey, indexState, selectionDelta]);
+  }), [activeRecord, focus, focusKey, visibleIndexState, selectionDelta]);
 }
 
 export function ResearchActiveRecordProvider({

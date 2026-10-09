@@ -45,6 +45,17 @@ test("never promotes standardized soma samples into a contour or membrane", () =
   }
 });
 
+test("planar source diameter remains observed but never authorizes a three-dimensional surface", () => {
+  for (const neuronId of [194468, 194469]) {
+    const coverage = buildMorphologyMicrodetailCoverage(byId.get(neuronId));
+    assert.equal(coverage.coverageStatus, "verified");
+    assert.deepEqual(coverage.admissionConflicts, []);
+    assert.equal(axis(coverage, "diameter_input").status, "OBS");
+    assert.equal(axis(coverage, "radius_derived_surface").status, "UNAVAILABLE");
+    assert.equal(axis(coverage, "radius_derived_surface").basis, "source_labelled_2d_no_depth_or_extrusion");
+  }
+});
+
 test("fails topology and QC receipt conflicts closed without crashing the coverage UI", () => {
   for (const mutate of [
     (record) => { record.geometry.sha256 = "0".repeat(64); },

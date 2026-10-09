@@ -1,0 +1,414 @@
+{
+  "increment": "I60",
+  "status": "PASS_SCOPED_READONLY_PEER_REVIEW",
+  "generatedAtUTC": "2026-10-05T04:17:31.353055+00:00",
+  "sharedRootWrites": 0,
+  "candidateWrites": 0,
+  "readContract": {
+    "strategy": "full_file_os_pread_4096_byte_chunks",
+    "files": 41,
+    "bytes": 27069670,
+    "preadCalls": 6672
+  },
+  "checks": {
+    "sealedFourPathAndPatchPinsExact": true,
+    "allRootPreimagesAndExplicitNewAbsencesStillMatch": true,
+    "scientificInputAndComparatorCSSPinsPreserved": true,
+    "newMultipageRouteWrappersPreserved": true,
+    "originalScientificSegmentsFullByteTextPreserved": true,
+    "independentFocusedAndScientificRegression15Pass": true,
+    "currentRootReadOnlyPatchApplyCheck": true
+  },
+  "candidateEpoch": {
+    "sealPath": "/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/I60_CANDIDATE_SEAL_AND_VALIDATION_RECEIPT.json",
+    "sealActual": {
+      "bytes": 8493,
+      "sha256": "40e544b05981b0678149ab08b0e6725afd0df5ab84bb8afbcf01b3ebc3567b2d"
+    },
+    "ownershipActual": {
+      "bytes": 6495,
+      "sha256": "b7119dfc9d92a44b6d8fb6379df54682d343bbb140633e1b1694ecfcd17f7f37"
+    },
+    "patchActual": {
+      "bytes": 41707,
+      "sha256": "c5fb662612b47908209bd8f77fa3be3fc0c35164577ed70465a3f69a10d89020"
+    }
+  },
+  "ownedPathPins": [
+    {
+      "path": "app/MolecularConcordanceWorkbench.tsx",
+      "expectedAfter": {
+        "bytes": 14524,
+        "sha256": "df66bb7d4d4258fede3d1b741990b91cc250aac37eaaadcab3bf90d5debcf1b2"
+      },
+      "actualAfter": {
+        "bytes": 14524,
+        "sha256": "df66bb7d4d4258fede3d1b741990b91cc250aac37eaaadcab3bf90d5debcf1b2"
+      },
+      "exactSealed": true,
+      "expectedBefore": {
+        "bytes": 10902,
+        "sha256": "210b9550c1ca8cfc73abc87797e791c9171f873ba5f6b309213c3db959b80473"
+      },
+      "actualRootBefore": {
+        "bytes": 10902,
+        "sha256": "210b9550c1ca8cfc73abc87797e791c9171f873ba5f6b309213c3db959b80473"
+      },
+      "rootMatchesPreimageOrExplicitAbsence": true
+    },
+    {
+      "path": "app/molecular-concordance-bookmark.js",
+      "expectedAfter": {
+        "bytes": 5734,
+        "sha256": "e7c18f01cf97a7274eca61405badb427d28a2d34bf1d21e1fae7716982b991c3"
+      },
+      "actualAfter": {
+        "bytes": 5734,
+        "sha256": "e7c18f01cf97a7274eca61405badb427d28a2d34bf1d21e1fae7716982b991c3"
+      },
+      "exactSealed": true,
+      "expectedBefore": null,
+      "actualRootBefore": null,
+      "rootMatchesPreimageOrExplicitAbsence": true
+    },
+    {
+      "path": "app/molecular-concordance-bookmark.d.ts",
+      "expectedAfter": {
+        "bytes": 1274,
+        "sha256": "7f320df87611700089c789d61bb59458412e783ba2c8cd0628ba00be748866b1"
+      },
+      "actualAfter": {
+        "bytes": 1274,
+        "sha256": "7f320df87611700089c789d61bb59458412e783ba2c8cd0628ba00be748866b1"
+      },
+      "exactSealed": true,
+      "expectedBefore": null,
+      "actualRootBefore": null,
+      "rootMatchesPreimageOrExplicitAbsence": true
+    },
+    {
+      "path": "tests/molecular-concordance-bookmark.test.mjs",
+      "expectedAfter": {
+        "bytes": 20838,
+        "sha256": "6a65b73be55c0de7a82b34ccb396acbd844b27804197ba5c739ff6f8bf187a38"
+      },
+      "actualAfter": {
+        "bytes": 20838,
+        "sha256": "6a65b73be55c0de7a82b34ccb396acbd844b27804197ba5c739ff6f8bf187a38"
+      },
+      "exactSealed": true,
+      "expectedBefore": null,
+      "actualRootBefore": null,
+      "rootMatchesPreimageOrExplicitAbsence": true
+    }
+  ],
+  "scientificSourcePins": [
+    {
+      "path": "app/molecular-concordance.js",
+      "sealed": {
+        "bytes": 9203,
+        "sha256": "02d26633a7493503ea5af790e9e462b5e8d473b9e13ead1a94b9c250aed82bda"
+      },
+      "actualRoot": {
+        "bytes": 9203,
+        "sha256": "02d26633a7493503ea5af790e9e462b5e8d473b9e13ead1a94b9c250aed82bda"
+      },
+      "candidateShadowActual": {
+        "bytes": 9203,
+        "sha256": "02d26633a7493503ea5af790e9e462b5e8d473b9e13ead1a94b9c250aed82bda"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "app/molecular-concordance.d.ts",
+      "sealed": {
+        "bytes": 2395,
+        "sha256": "12c22bb9fea97ccdc4f39818ee291b91f4b264817594f6bcaa38a71477e20101"
+      },
+      "actualRoot": {
+        "bytes": 2395,
+        "sha256": "12c22bb9fea97ccdc4f39818ee291b91f4b264817594f6bcaa38a71477e20101"
+      },
+      "candidateShadowActual": {
+        "bytes": 2395,
+        "sha256": "12c22bb9fea97ccdc4f39818ee291b91f4b264817594f6bcaa38a71477e20101"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "app/molecular-concordance.css",
+      "sealed": {
+        "bytes": 2626,
+        "sha256": "d5983b85d2a29537e7a0519222c4cac03625347454aa5acd3d358f160517084c"
+      },
+      "actualRoot": {
+        "bytes": 2626,
+        "sha256": "d5983b85d2a29537e7a0519222c4cac03625347454aa5acd3d358f160517084c"
+      },
+      "candidateShadowActual": {
+        "bytes": 2626,
+        "sha256": "d5983b85d2a29537e7a0519222c4cac03625347454aa5acd3d358f160517084c"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "sealed": {
+        "bytes": 28427,
+        "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+      },
+      "actualRoot": {
+        "bytes": 28427,
+        "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+      },
+      "candidateShadowActual": {
+        "bytes": 28427,
+        "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "sealed": {
+        "bytes": 661,
+        "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+      },
+      "actualRoot": {
+        "bytes": 661,
+        "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+      },
+      "candidateShadowActual": {
+        "bytes": 661,
+        "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+      "sealed": {
+        "bytes": 5622,
+        "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+      },
+      "actualRoot": {
+        "bytes": 5622,
+        "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+      },
+      "candidateShadowActual": {
+        "bytes": 5622,
+        "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "sealed": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      },
+      "actualRoot": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      },
+      "candidateShadowActual": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "data/sathyamurthy-source-taxonomy-0.1.json",
+      "sealed": {
+        "bytes": 120542,
+        "sha256": "16fa0d796951e5dd746f2634da7c7a079c390e149aba324a5a060c9f9f527149"
+      },
+      "actualRoot": {
+        "bytes": 120542,
+        "sha256": "16fa0d796951e5dd746f2634da7c7a079c390e149aba324a5a060c9f9f527149"
+      },
+      "candidateShadowActual": {
+        "bytes": 120542,
+        "sha256": "16fa0d796951e5dd746f2634da7c7a079c390e149aba324a5a060c9f9f527149"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "data/alkaslasi-cholinergic-source-taxonomy-0.1.json",
+      "sealed": {
+        "bytes": 65802,
+        "sha256": "e87729a1ef5f0d521fb583a2a34173e0f1b169799c60b6017a3a8cfeca1bec7e"
+      },
+      "actualRoot": {
+        "bytes": 65802,
+        "sha256": "e87729a1ef5f0d521fb583a2a34173e0f1b169799c60b6017a3a8cfeca1bec7e"
+      },
+      "candidateShadowActual": {
+        "bytes": 65802,
+        "sha256": "e87729a1ef5f0d521fb583a2a34173e0f1b169799c60b6017a3a8cfeca1bec7e"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "data/haring-dorsal-horn-source-taxonomy-0.1.json",
+      "sealed": {
+        "bytes": 221175,
+        "sha256": "23d6cda3af6c4205926e8d994fea0cbc11d5cd02c2287e72f7c6a17c89c98549"
+      },
+      "actualRoot": {
+        "bytes": 221175,
+        "sha256": "23d6cda3af6c4205926e8d994fea0cbc11d5cd02c2287e72f7c6a17c89c98549"
+      },
+      "candidateShadowActual": {
+        "bytes": 221175,
+        "sha256": "23d6cda3af6c4205926e8d994fea0cbc11d5cd02c2287e72f7c6a17c89c98549"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "data/hayashi-v2a-source-taxonomy-0.1.json",
+      "sealed": {
+        "bytes": 25309,
+        "sha256": "eaaa49ea63c300d1a719eb9119a3c2735674d3f0d5113567dcb583489674f882"
+      },
+      "actualRoot": {
+        "bytes": 25309,
+        "sha256": "eaaa49ea63c300d1a719eb9119a3c2735674d3f0d5113567dcb583489674f882"
+      },
+      "candidateShadowActual": {
+        "bytes": 25309,
+        "sha256": "eaaa49ea63c300d1a719eb9119a3c2735674d3f0d5113567dcb583489674f882"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "data/roome-dil-source-taxonomy-0.1.json",
+      "sealed": {
+        "bytes": 631320,
+        "sha256": "dc25145e21a2f3be4faf0d65c2bd8418339a173c99ed1548564cc07c03c348e9"
+      },
+      "actualRoot": {
+        "bytes": 631320,
+        "sha256": "dc25145e21a2f3be4faf0d65c2bd8418339a173c99ed1548564cc07c03c348e9"
+      },
+      "candidateShadowActual": {
+        "bytes": 631320,
+        "sha256": "dc25145e21a2f3be4faf0d65c2bd8418339a173c99ed1548564cc07c03c348e9"
+      },
+      "unchanged": true
+    }
+  ],
+  "newUILayoutPins": [
+    {
+      "path": "app/ResearchRoutePage.tsx",
+      "sealedBefore": {
+        "bytes": 4905,
+        "sha256": "711583dbf0968dc507280f33f00b1ae0b6634833a832415ebd6d9d734269f1c2"
+      },
+      "actualRoot": {
+        "bytes": 4905,
+        "sha256": "711583dbf0968dc507280f33f00b1ae0b6634833a832415ebd6d9d734269f1c2"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "sealedBefore": {
+        "bytes": 14684,
+        "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76"
+      },
+      "actualRoot": {
+        "bytes": 14684,
+        "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "app/SiteNavigation.tsx",
+      "sealedBefore": {
+        "bytes": 3534,
+        "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd"
+      },
+      "actualRoot": {
+        "bytes": 3534,
+        "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd"
+      },
+      "unchanged": true
+    },
+    {
+      "path": "app/ResearchActiveRecordProvider.tsx",
+      "sealedBefore": {
+        "bytes": 8161,
+        "sha256": "9365f7106dd429065b97be89776b36b0eae3c17b62c310f4e4d434e064852224"
+      },
+      "actualRoot": {
+        "bytes": 8161,
+        "sha256": "9365f7106dd429065b97be89776b36b0eae3c17b62c310f4e4d434e064852224"
+      },
+      "unchanged": true
+    }
+  ],
+  "originalScientificSegments": [
+    {
+      "scope": "source scopes and download/label functions",
+      "bytes": 1915,
+      "sha256": "f6a1b9c045ff1efd8375ec06e5119f68d466db270a5af390a134912cfbb7ce93",
+      "entireOriginalTextRetained": true
+    },
+    {
+      "scope": "original comparator",
+      "bytes": 277,
+      "sha256": "a6ef4624468ca0ea436f5782cab50595f533085fb2564657803ef98a95922907",
+      "entireOriginalTextRetained": true
+    },
+    {
+      "scope": "scientific pair and complete evidence display",
+      "bytes": 2740,
+      "sha256": "1c3374e11c93fb97e6f187f606c81064ee5f3ad67c80b12c4410a9423a4f2433",
+      "entireOriginalTextRetained": true
+    }
+  ],
+  "independentTests": {
+    "path": "/private/tmp/ohri-i60-independent-focused-tests.log",
+    "actual": {
+      "bytes": 1992,
+      "sha256": "f06b390f55b02425dfa8b806eb8c083cf405a4970cf522cd11f0ff11d034f7b3"
+    },
+    "counts": {
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "reviewFindings": [],
+  "reviewedCodeAuthority": {
+    "canonicalRecords": "indexState.index.records filtered to 387 molecular profiles, with WeakMap load receipt on that exact index object",
+    "bookmarkBinding": "version1 + verifiedDecodedSha256; exact complete source-profile key basket0–4; member anchor; query/namespace/page",
+    "invalidInputs": "Duplicate reserved params, stale hash, foreign version/key, nonmolecular key, malformed JSON, invalid namespace/page/query fail closed to empty basket. No replacement default.",
+    "candidateFilter": "Independent of comparison basket; preserves original cross-namespace comparison ability and source denominators",
+    "renderGate": "Source unavailable/absent private receipt/changed index hash uses empty view immediately, before restore effect; no retained report/export",
+    "history": "Initial restore does not rewrite URL; selected key/anchor/page actions push; candidate filters replace; unrelated duplicate params/hash/router state preserved; popstate and remount restore from current address",
+    "scientificSemantics": "Original sourceScopes, comparison construction, field/status/missingness/conflict display and JSON/CSV handlers retained; identity not_established, no same-cell/type join, pooling, new geometry or scientific admission"
+  },
+  "notExecuted": [
+    "Actual native browser hydration, focus, keyboard, Back/Forward and reopened-link checks",
+    "Native Blob/download saved-artifact verification",
+    "Current narrow/200%/screenreader/whole-App performance budgets"
+  ],
+  "scientificPromotion": {
+    "newSourceInputs": 0,
+    "newProfiles": 0,
+    "sameCellJoins": 0,
+    "sameTypeJoins": 0,
+    "newGeometry": 0,
+    "REG": 0,
+    "strictCompletedRetained": 83,
+    "goalEntries": 243,
+    "M2M4Admission": false
+  },
+  "limitations": [
+    "Focused descriptor VM/SSR tests do not establish native browser behavior or downloads.",
+    "Bookmark helper restores local product state; it does not mint renderer/source/identity proof.",
+    "Parent owns intake, full build/recipe/runtime authority, current UI rendering and final browser/doc closure."
+  ]
+}

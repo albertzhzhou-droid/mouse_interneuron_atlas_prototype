@@ -1,5 +1,8 @@
 import { buildMorphologyMicrodetailCoverage } from "./morphology-microdetail.js";
 import { computeMorphologyViewportScaleBar } from "./morphology-viewport-scale.js";
+import { morphologySourceIdentityHierarchy, morphologyComparisonSourceRelationships, validateMorphologyComparisonIdentityReceipt } from "./morphology-source-identity.js";
+import { canUseRadiusDerivedSurface } from "./morphology-render-mode.js";
+import { morphologyGeometryVerificationReceipt } from "./morphology-geometry-verification.js";
 
 const MORPHOLOGY_SOURCE_FRAME_DISCLOSURE_CONTENT_SHA256 = "cd6b85eb5961e49667bdc126b0230fba35db534fdcc2c8008d5655893978a8ad";
 
@@ -189,13 +192,14 @@ export function buildMorphologyComparisonReceipt(
   );
   const runtimeBindingById = new Map(selectedRuntimeBindings.map((binding) => [binding.neuronId, binding]));
   const verifiedGeometryById = new Map((authority.runtimeGeometryReceipts ?? []).map((receipt) => [receipt.neuronId, receipt.sha256]));
+  const runtimeGeometryById = new Map((authority.runtimeGeometryPayloads ?? []).map(payload => [payload.neuronId, payload.geometry]));
   const analysisById = new Map(analysisRecords.map((record) => [record.neuronId, record]));
   const disclosureAuthority = sourceFrameDisclosureAuthority(authority);
   const sourceObjects = records.map((record, index) => {
     const membership = comparisonMembership(record);
     const disclosure = sourceFrameDisclosure(record, authority);
     const requestedMode = requestedModes[index] === "radius" ? "radius" : "skeleton";
-    const radiusAuthorized = record.normalizedMetadata.sourceDiameterAvailable === true;
+    const radiusAuthorized = canUseRadiusDerivedSurface(record.normalizedMetadata);
     const actualMode = requestedMode === "radius" && radiusAuthorized ? "radius" : "skeleton";
     const viewportScale = viewportScaleReceipt(
       record,
@@ -220,11 +224,13 @@ export function buildMorphologyComparisonReceipt(
       verifiedGeometryById.get(record.neuronId) === record.geometry.sha256,
       `Morphology comparison geometry ${record.neuronId} was not checksum verified in this runtime session`,
     );
+    const byteReceipt = morphologyGeometryVerificationReceipt(record, disclosure, runtimeGeometryById.get(record.neuronId));
     const analysisAsset = analysisAssetAuthority(authority, membership.collection);
     return {
       slot: String.fromCharCode(65 + index),
       neuronId: record.neuronId,
       assetId: record.assetId,
+      sourceIdentity: morphologySourceIdentityHierarchy(record),
       name: record.normalizedMetadata.name,
       sourceFrame: record.normalizedMetadata.sourceFrame,
       dimensionality: record.normalizedMetadata.dimensionality,
@@ -249,6 +255,7 @@ export function buildMorphologyComparisonReceipt(
         rawSwcSha256: record.geometry.rawSwcSha256,
         geometryStatus: "OBS_STANDARDIZED_SOURCE_LOCAL",
         runtimeVerification: "verified_before_export",
+        runtimeByteReceipt: byteReceipt,
       },
       sourceFrameDisclosure: {
         sourceCoordinates: disclosure.sourceCoordinates,
@@ -260,7 +267,8 @@ export function buildMorphologyComparisonReceipt(
         requestedMode,
         actualMode,
         radiusAuthorized,
-        radiusUnavailableReason: radiusAuthorized ? null : "official_attributes_report_no_diameter",
+        sourceDiameterAvailable: record.normalizedMetadata.sourceDiameterAvailable,
+        radiusUnavailableReason: radiusAuthorized ? null : record.normalizedMetadata.dimensionality === "2D" ? "source_labelled_2d_no_depth_or_extrusion" : "official_attributes_report_no_diameter",
         radiusSurfaceStatus: actualMode === "radius" ? "DERIVED_FROM_OBSERVED_RADIUS" : "not_rendered",
         membraneClaim: false,
       },
@@ -276,12 +284,14 @@ export function buildMorphologyComparisonReceipt(
       microdetailCoverage: buildMorphologyMicrodetailCoverage(record),
     };
   });
-  return {
+  const receipt = {
     documentType: "source_local_morphology_comparison_receipt",
-    schemaVersion: "0.3.0",
+    schemaVersion: "0.5.0",
     generatedAt,
-    release: "2.30.0-research.1",
+    release: "2.91.0-research.1",
+    previousReceiptRelease: "2.30.0-research.1",
     relationshipClass: "co_display_only",
+    sourceRelationships: morphologyComparisonSourceRelationships(records),
     sourceFrameDisclosureAuthority: disclosureAuthority,
     denominatorPolicy: {
       kind: "declared_release_membership_not_runtime_availability",
@@ -324,11 +334,16 @@ export function buildMorphologyComparisonReceipt(
       "supplementary_record_as_census_member",
     ],
   };
+  validateMorphologyComparisonIdentityReceipt(receipt);
+  return receipt;
 }
 
 export function morphologyComparisonReceiptCsv(receipt) {
+  validateMorphologyComparisonIdentityReceipt(receipt);
   const header = ["slot", "neuron_id", "name", "collection", "census_contribution", "supplementary_contribution", "route_id", "route_contract_path", "route_contract_sha256", "route_asset_manifest_path", "route_asset_manifest_sha256", "source_section", "shrinkage_normalized_status", "shrinkage_normalized_interpretation", "shrinkage_reported_raw", "shrinkage_corrected_raw", "source_extent_micrometre", "source_physical_integrity", "axon_field", "scale_algorithm", "scale_measurement_plane", "scale_bar_micrometre", "scale_bar_css_pixel", "micrometre_per_css_pixel", "viewport_css_width", "viewport_css_height", "metric", "value", "unit", "actual_mode", "radius_authorized", "geometry_sha256", "runtime_geometry_verification", "analysis_asset_sha256", "analysis_source_geometry_sha256", "relationship_class", "registration_count"];
   const rows = [header];
+  header.push("source_identity_key", "repository_release", "source_namespace", "observation_kind", "native_observation_id", "specimen_status", "specimen_id", "specimen_missing_reason", "section_status", "section_id", "section_missing_reason", "physical_cell_status", "physical_cell_id", "physical_cell_missing_reason", "source_identity_json", "pairwise_source_relationships_json");
+  header.push("geometry_runtime_byte_receipt_json");
   for (const sourceObject of receipt.sourceObjects) {
     for (const metric of MORPHOLOGY_COMPARISON_METRICS) {
       rows.push([
@@ -369,6 +384,15 @@ export function morphologyComparisonReceiptCsv(receipt) {
         sourceObject.analysis.sourceGeometry.sha256,
         receipt.relationshipClass,
         sourceObject.registrationCount,
+        sourceObject.sourceIdentity.key,
+        sourceObject.sourceIdentity.releaseId,
+        sourceObject.sourceIdentity.namespace,
+        sourceObject.sourceIdentity.objectKind,
+        sourceObject.sourceIdentity.objectId,
+        ...["specimen", "section", "cell"].flatMap(level => [sourceObject.sourceIdentity.nodes[level].status, sourceObject.sourceIdentity.nodes[level].id, sourceObject.sourceIdentity.nodes[level].reason]),
+        JSON.stringify(sourceObject.sourceIdentity),
+        JSON.stringify(receipt.sourceRelationships.filter(relation => relation.leftKey === sourceObject.sourceIdentity.key || relation.rightKey === sourceObject.sourceIdentity.key)),
+        JSON.stringify(sourceObject.geometry.runtimeByteReceipt),
       ]);
     }
   }

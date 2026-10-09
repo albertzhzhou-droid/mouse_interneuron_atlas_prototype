@@ -195,3 +195,15 @@ test("verified loader propagates no-diameter and 2D semantics without modifying 
   assert.equal(geometry.extrusionApplied, false);
   assert.deepEqual(geometry.nodes.map((row) => [row[4], row[5]]), [[-1, 2], [5, 0.2]]);
 });
+
+
+test("source-labelled 2D diameter is retained as input without authorizing a 3D surface", () => {
+  const geometry = parseNeuromorphoSwc("1 1 0 0 -2 4 -1\n2 3 1 2 7 0.375 1\n", { dimensionality: "2D", diameterAuthorized: true });
+  assert.equal(geometry.diameterAuthorized, true);
+  assert.equal(geometry.swc.sourceDiameterAvailable, true);
+  assert.equal(geometry.radiusSurfaceAuthorized, false);
+  assert.equal(geometry.swc.radiusSurfaceAuthorized, false);
+  assert.equal(geometry.computed.radiusSurfaceAuthorized, false);
+  assert.ok(geometry.computed.radiusDerived.value);
+  assert.deepEqual(geometry.nodes.map(row => row[4]), [-2, 7]);
+});

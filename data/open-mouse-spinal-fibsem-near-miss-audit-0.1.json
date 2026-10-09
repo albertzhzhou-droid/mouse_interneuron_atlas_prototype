@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "open-mouse-spinal-fibsem-near-miss-audit-0.1",
+  "researchUpgradeId": "UPG-249",
+  "auditDate": "2026-09-23",
+  "scope": "Review of newly discovered, openly licensed adult-mouse spinal-cord FIB-SEM volumes for a documented exact interneuron-object route and potential source-local ultrastructure comparison.",
+  "candidateVolumes": [
+    {
+      "datasetId": "jrc_mus-sc-zp104a",
+      "sample": "Wild-type female, 6-month-old mouse dorsal corticospinal tract",
+      "genotype": "wild type",
+      "sex": "female",
+      "ageMonths": 6,
+      "anatomicalRegion": "dorsal corticospinal tract",
+      "modality": "FIB-SEM",
+      "voxelSizeNanometres": [6, 6, 6],
+      "dimensionsMicrometres": [40, 30, 75],
+      "license": "CC-BY-4.0",
+      "figshareUrl": "https://figshare.com/articles/dataset/Isotropic_3D_electron_microscopy_data_of_wild-type_mouse_dorsal_corticospinal_tract_jrc_mus-sc-zp104a_/20134574",
+      "openOrganelleUrl": "https://openorganelle.janelia.org/datasets/jrc_mus-sc-zp104a",
+      "rawVolumeUrl": "s3://janelia-cosem-datasets/jrc_mus-sc-zp104a/jrc_mus-sc-zp104a.zarr/recon-1/em/",
+      "publishedStructures": ["corticospinal axons", "endoplasmic reticulum", "mitochondria"],
+      "interneuronObjectCrosswalk": false,
+      "admissionNote": "Public raw EM volume. The article reports selected corticospinal-axon ER and mitochondria reconstructions; this is a projection-axon tract comparator, not an interneuron record. No source mask or exact reconstructed-axon ID was imported in this audit."
+    },
+    {
+      "datasetId": "jrc_mus-sc-zp105a",
+      "sample": "Atl1 KI/KI / Reep1 KO female, 6-month-old mouse dorsal corticospinal tract",
+      "genotype": "Atl1 KI/KI / Reep1 KO",
+      "sex": "female",
+      "ageMonths": 6,
+      "anatomicalRegion": "dorsal corticospinal tract",
+      "modality": "FIB-SEM",
+      "voxelSizeNanometres": [6, 6, 6],
+      "dimensionsMicrometres": [40, 30, 75],
+      "license": "CC-BY-4.0",
+      "figshareUrl": "https://figshare.com/articles/dataset/Isotropic_3D_electron_microscopy_data_of_double-mutant_ATL1_KI_REEP1_KO_mouse_dorsal_corticospinal_tract_jrc_mus-sc-zp105a_/20134979",
+      "openOrganelleUrl": "https://openorganelle.janelia.org/datasets/jrc_mus-sc-zp105a",
+      "rawVolumeUrl": "s3://janelia-cosem-datasets/jrc_mus-sc-zp105a/jrc_mus-sc-zp105a.zarr/recon-1/em/",
+      "publishedStructures": ["corticospinal axons", "endoplasmic reticulum", "mitochondria"],
+      "interneuronObjectCrosswalk": false,
+      "admissionNote": "Public raw EM volume from a disease-model mouse. The published ER morphology is genotype- and disease-context-specific; it is not a normal interneuron template. No source mask or exact reconstructed-axon ID was imported in this audit."
+    }
+  ],
+  "article": {
+    "title": "Transverse endoplasmic reticulum expansion in hereditary spastic paraplegia corticospinal axons",
+    "doi": "10.1093/hmg/ddac072",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9402237/",
+    "reportedManualReconstruction": "One selected corticospinal axon per genotype was manually reconstructed across 501 consecutive images; the publication also describes machine-learning-based ER and mitochondria analysis across the FIB-SEM volumes."
+  },
+  "admission": {
+    "publicAdultMouseSpinalEmVolumes": 2,
+    "eligibleMouseSpinalInterneuronObjectRoutes": 0,
+    "rawVolumesDownloaded": 0,
+    "segmentationPayloadsDownloaded": 0,
+    "interneuronObjectsAdmitted": 0,
+    "organelleObjectsAdmitted": 0,
+    "sameCellJoins": 0,
+    "atlasRegistrations": 0,
+    "measurements": 0,
+    "interpretation": "These open, high-resolution spinal-cord FIB-SEM volumes establish availability of an adjacent mouse spinal ultrastructure reference, not a mouse interneuron volume or interneuron cell identity. They may be used only as separately labeled corticospinal-axon comparators unless a source-supported cell-object crosswalk is found."
+  },
+  "sources": [
+    {"label": "Wild-type mouse dorsal corticospinal-tract volume · CC BY 4.0", "url": "https://figshare.com/articles/dataset/Isotropic_3D_electron_microscopy_data_of_wild-type_mouse_dorsal_corticospinal_tract_jrc_mus-sc-zp104a_/20134574"},
+    {"label": "Wild-type volume viewer", "url": "https://openorganelle.janelia.org/datasets/jrc_mus-sc-zp104a"},
+    {"label": "Atl1/Reep1 double-mutant mouse dorsal corticospinal-tract volume · CC BY 4.0", "url": "https://figshare.com/articles/dataset/Isotropic_3D_electron_microscopy_data_of_double-mutant_ATL1_KI_REEP1_KO_mouse_dorsal_corticospinal_tract_jrc_mus-sc-zp105a_/20134979"},
+    {"label": "Double-mutant volume viewer", "url": "https://openorganelle.janelia.org/datasets/jrc_mus-sc-zp105a"},
+    {"label": "Primary article and data availability", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9402237/"}
+  ]
+}

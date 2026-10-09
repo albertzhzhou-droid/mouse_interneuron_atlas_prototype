@@ -1,0 +1,150 @@
+{
+  "iteration": "I60",
+  "status": "PASS_BOUNDED_PREWRITE_PEER_WITH_FINAL_ROOT_STAGE_REPLAY_REQUIRED",
+  "generatedAtUtc": "2026-10-05T08:32:28.018402+00:00",
+  "reviewedCodePins": {
+    "/private/tmp/ohri-i60-prewrite-final-doc-stage.py": {
+      "bytes": 2607,
+      "sha256": "e87839342dd5691acb4fa6f674c51fe7646ea7f843442ad4c9d50fd4a4e7a9ea"
+    },
+    "/private/tmp/ohri-i60-sync.py": {
+      "bytes": 1551,
+      "sha256": "5e90ca98079d591cebd5a18199c9d04cb6202cc15ddb5bb90699647189ba9e24"
+    },
+    "/private/tmp/ohri-i60-sync-exact-short-read.py": {
+      "bytes": 1859,
+      "sha256": "b21b338c6d1110cd159b668e5844d5b5f128612e0af8d1b0b835f22e049e8dbb"
+    },
+    "/private/tmp/ohri-i60-final-docs.py": {
+      "bytes": 14502,
+      "sha256": "a9eb84920ace569bd5ccbb217bdcd40d4bf0506909e4ae254142686b86347b91"
+    }
+  },
+  "currentCanonicalAtReview": {
+    "bytes": 529935,
+    "sha256": "e886cf5a356f800b8a69bb1d2dfdb1d2072226aaca13554c34f9db3457936703"
+  },
+  "codeReview": {
+    "actualShortReadProgression": true,
+    "unexpectedEofFailsClosed": true,
+    "fdInodeSizeMtimeChecked": true,
+    "allRootObservedEpochsCheckedAtEnd": true,
+    "exceptionPathsExactlyThreeDeclaredOwnedDocs": [
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "docs/RESEARCH_TIMELINE_2026-10-05_IMPLEMENTATION_60_COMPARISON_BOOKMARK.md"
+    ],
+    "otherCanonicalInputsRequireExactExistingManifestSizeAndSha256": 2582,
+    "docExceptionMeaning": "Three explicitly advanced owned final-document bytes may differ from their stale current canonical pins before regeneration. Scientific/source inputs have no exception.",
+    "noSourceGateBypass": true,
+    "writesAllowedOnlyByParentOwner": true
+  },
+  "boundedPhysicalChecks": {
+    "canonicalRows": 2585,
+    "canonicalNamesUnique": true,
+    "stageNames": 2588,
+    "stageRootRealpath": "/private/tmp/ohri-i51-verification",
+    "stageParentsChecked": 117,
+    "parentsOutsideStage": 0,
+    "leafSymlinks": 0,
+    "checksAreMetadataOnlyForAllStagePaths": "No all-source data hash replay was performed by this peer."
+  },
+  "declaredFinalDocEpochObservedPins": [
+    {
+      "path": "docs/UPGRADE_PLAN_2026-09-24.md",
+      "priorCanonicalPin": {
+        "bytes": 163946,
+        "sha256": "eadd52ff1120092a5b31a5c3911c1b443042fd2039cfede2d9c15c9d8d5de0b1"
+      },
+      "declaredFinalDocObservedPin": {
+        "bytes": 166136,
+        "sha256": "9fc983a277be207d560bd709310b3f6332554ebfc4f600484c3deb0f2042c4ec"
+      }
+    },
+    {
+      "path": "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "priorCanonicalPin": {
+        "bytes": 84081,
+        "sha256": "f542f4fe8c6f9b238ee8ad715a75bdc36beda69d9de71a5511cd65af68590b9e"
+      },
+      "declaredFinalDocObservedPin": {
+        "bytes": 86274,
+        "sha256": "665049e1b1368c176e8ebe809837bbd66cf5747faa3f1cb230ba19728859d3ff"
+      }
+    },
+    {
+      "path": "docs/RESEARCH_TIMELINE_2026-10-05_IMPLEMENTATION_60_COMPARISON_BOOKMARK.md",
+      "priorCanonicalPin": {
+        "bytes": 2117,
+        "sha256": "87c1d70f728616c58d6d5d062b8047dcdb02aa75a5ad1c7ff5bef73b7eae42e3"
+      },
+      "declaredFinalDocObservedPin": {
+        "bytes": 9101,
+        "sha256": "d9ab4723ab6b28f4b65f9f5af60d030462b07bf55b3d48cb4edb851e597c9b58"
+      }
+    }
+  ],
+  "fourSealedProductsCurrentAfterimagePins": [
+    {
+      "path": "app/MolecularConcordanceWorkbench.tsx",
+      "bytes": 14524,
+      "sha256": "df66bb7d4d4258fede3d1b741990b91cc250aac37eaaadcab3bf90d5debcf1b2"
+    },
+    {
+      "path": "app/molecular-concordance-bookmark.js",
+      "bytes": 5734,
+      "sha256": "e7c18f01cf97a7274eca61405badb427d28a2d34bf1d21e1fae7716982b991c3"
+    },
+    {
+      "path": "app/molecular-concordance-bookmark.d.ts",
+      "bytes": 1274,
+      "sha256": "7f320df87611700089c789d61bb59458412e783ba2c8cd0628ba00be748866b1"
+    },
+    {
+      "path": "tests/molecular-concordance-bookmark.test.mjs",
+      "bytes": 20838,
+      "sha256": "6a65b73be55c0de7a82b34ccb396acbd844b27804197ba5c739ff6f8bf187a38"
+    }
+  ],
+  "recipe": {
+    "path": "tools/build_research_iteration_manifest_2_91.mjs",
+    "bytes": 58632,
+    "sha256": "49c4c9736a16fe148b5c616663ba1dd02b776a30f6e298d9f92a332f79233d8f",
+    "soleI60Change": "One timeline CORE input line; removing it reproduces the exact archived intake preimage.",
+    "threeNewCodeAndTestInputs": "Already admitted molecular-concordance filename families.",
+    "registrySummary": {
+      "canonicalSourceCount": 32,
+      "canonicalRecordSetCount": 42,
+      "bundledExactCellProfileRosterCount": 13,
+      "bundledExactSourceObjectSetCount": 4,
+      "sourceProfileCount": 387,
+      "researchUpgradeCount": 243,
+      "completedResearchUpgradeCount": 83,
+      "displayedResearchUpgradeCount": 51,
+      "staleCanonicalDenominatorLiteralCount": 0
+    }
+  },
+  "runtime": {
+    "path": "data/research-renderer-runtime-inputs-2.91.json",
+    "bytes": 36638,
+    "sha256": "5f06ab21e349df760c18f36a0679b3f5392fae302fd3a50c6364db0ceb40f8e5",
+    "byteIdenticalToActualIntakePreimage": true,
+    "noPrivateScopeExpansion": true
+  },
+  "remainingFinalChecks": [
+    "The prewrite rows contain root-read hashes; after writing, the tool does not reread every stage target or assert end-of-run stage hashes. Parent must use the already planned exact 2585 physical root/stage replay before final parity PASS.",
+    "Bind the three declared final-document pins to the chosen epoch. A name-only allowlist accepts any stable bytes at those names; parent final replay must match the intended final-document epoch rather than accepting unrelated concurrent edits.",
+    "The sync checks leaf symlink only in the write branch. This peer observed all 117 current parents within the exact private stage and no leaf symlinks. Future reuse should enforce ancestor/leaf containment before any mkdir/write."
+  ],
+  "evidenceLimits": {
+    "notFinalPreservation": true,
+    "notStageParityReplay": true,
+    "notBuildExecution": true,
+    "doesNotAssignCauseToInterruptedManifestOrEarlierGuardFailure": true,
+    "rootWrites": 0,
+    "stageWrites": 0,
+    "sourceDataHashAll": 0,
+    "browserActions": 0,
+    "networkCalls": 0
+  }
+}

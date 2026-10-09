@@ -46,7 +46,7 @@ function explicitRecordMembership(source, contractName) {
   return directLookup.test(source) || frozenIdSet.test(source);
 }
 
-function loadMorphologyLoaderWithMocks({ expectedRecord, geometryBytes, expectedSha256, audit }) {
+function loadMorphologyLoaderWithMocks({ expectedRecord, geometryBytes, expectedSha256, audit, fetchResponseFactory }) {
   const output = ts.transpileModule(morphologyLoaderSource, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
@@ -60,6 +60,18 @@ function loadMorphologyLoaderWithMocks({ expectedRecord, geometryBytes, expected
     if (specifier === "react") return { useEffect() {}, useState() {} };
     if (specifier === "./source-local-morphology-geometry.js") {
       return { sha256Hex: async () => expectedSha256 };
+    }
+    if (specifier === "./morphology-geometry-verification.js") {
+      return {
+        async readVerifiedMorphologyGeometry(record, disclosure, { fetchImpl, signal }) {
+          const response = await fetchImpl(record.geometry.path, { signal });
+          if (signal?.aborted) throw new DOMException("Source request cancelled", "AbortError");
+          const bytes = await response.arrayBuffer();
+          if (signal?.aborted) throw new DOMException("Source request cancelled", "AbortError");
+          return JSON.parse(new TextDecoder().decode(bytes));
+        },
+        morphologyGeometryVerificationReceipt() { return { sha256: expectedSha256 }; },
+      };
     }
     if (specifier === "./morphology-source-frame-disclosure") {
       return {
@@ -90,8 +102,9 @@ function loadMorphologyLoaderWithMocks({ expectedRecord, geometryBytes, expected
     }
     throw new Error(`unexpected mocked import: ${specifier}`);
   };
-  const fetchMock = async () => {
+  const fetchMock = async (url, options) => {
     audit.fetches += 1;
+    if (fetchResponseFactory) return fetchResponseFactory(url, options);
     return {
       ok: true,
       status: 200,
@@ -145,8 +158,8 @@ test("cached morphology geometry revalidates the current source record and discl
     audit,
   });
 
-  await loader.loadVerifiedMorphologyGeometry(validRecord);
-  await loader.loadVerifiedMorphologyGeometry(structuredClone(validRecord));
+  const originalVerified = await loader.loadVerifiedMorphologyGeometry(validRecord);
+  assert.equal(await loader.loadVerifiedMorphologyGeometry(structuredClone(validRecord)), originalVerified);
   assert.deepEqual(audit, { disclosureChecks: 2, geometryDisclosureChecks: 2, fetches: 1 });
 
   const driftedRecords = [
@@ -182,6 +195,56 @@ test("cached morphology geometry revalidates the current source record and discl
     "cached geometry must still be asserted against the current record",
   );
   assert.equal(audit.fetches, 1, "no drifted record may trigger or evade the existing cache entry");
+  const freshVerified = await loader.loadVerifiedMorphologyGeometry(validRecord, { forceReload: true });
+  assert.equal(audit.fetches, 2, "explicit replay verification must bypass the existing promise cache");
+  assert.notEqual(freshVerified, originalVerified);
+  assert.equal(await loader.loadVerifiedMorphologyGeometry(validRecord), freshVerified);
+});
+
+test("cancelling one in-flight viewport leaves another consumer of the same source independently verifiable", async () => {
+  const expectedSha256 = "a".repeat(64), geometry = { neuronId: 45674, assetId: "neuromorpho-45674",
+    geometryStatus: "OBS_STANDARDIZED_SOURCE_LOCAL", segments: [[0, 0, 0, 1, 1, 1, 1, 1, 3, "observed"]] };
+  const geometryBytes = new TextEncoder().encode(JSON.stringify(geometry));
+  const record = { neuronId: 45674, assetId: geometry.assetId, geometry: { available: true, path: "/data/geometry-45674.json",
+    sha256: expectedSha256, bytes: geometryBytes.byteLength, rawSwcSha256: "b".repeat(64) },
+    morphometrics: { computed: { segmentCount: 1 } }, comparisonMembership: { collection: "supplementary", censusContribution: 0, supplementaryContribution: 1 } };
+  const pending = [], audit = { disclosureChecks: 0, geometryDisclosureChecks: 0, fetches: 0 };
+  const loader = loadMorphologyLoaderWithMocks({ expectedRecord: record, geometryBytes, expectedSha256, audit,
+    fetchResponseFactory: (url, options) => new Promise(resolve => pending.push({ signal: options.signal, resolve })) });
+  const left = new AbortController(), right = new AbortController();
+  const abandoned = loader.loadVerifiedMorphologyGeometry(record, { signal: left.signal });
+  const current = loader.loadVerifiedMorphologyGeometry(record, { signal: right.signal });
+  assert.equal(pending.length, 2, "in-flight requests must not share the first consumer's abort signal");
+  assert.equal(pending[0].signal, left.signal); assert.equal(pending[1].signal, right.signal);
+  const abandonedResult = assert.rejects(abandoned, { name: "AbortError" });
+  left.abort();
+  const response = { ok: true, status: 200, arrayBuffer: async () => geometryBytes.buffer };
+  pending[0].resolve(response); pending[1].resolve(response);
+  await abandonedResult;
+  const verified = await current;
+  assert.deepEqual(verified, geometry); assert.equal(right.signal.aborted, false);
+  assert.equal(await loader.loadVerifiedMorphologyGeometry(record), verified);
+  assert.equal(audit.fetches, 2, "only completed verified geometry may be shared after the independent load");
+});
+
+test("a failed fresh recheck removes the older cached payload before a subsequent source request", async () => {
+  const expectedSha256 = "a".repeat(64), geometry = { neuronId: 45674, assetId: "neuromorpho-45674",
+    geometryStatus: "OBS_STANDARDIZED_SOURCE_LOCAL", segments: [[0, 0, 0, 1, 1, 1, 1, 1, 3, "observed"]] };
+  const geometryBytes = new TextEncoder().encode(JSON.stringify(geometry));
+  const record = { neuronId: 45674, assetId: geometry.assetId, geometry: { available: true, path: "/data/geometry-45674.json",
+    sha256: expectedSha256, bytes: geometryBytes.byteLength, rawSwcSha256: "b".repeat(64) },
+    morphometrics: { computed: { segmentCount: 1 } }, comparisonMembership: { collection: "supplementary", censusContribution: 0, supplementaryContribution: 1 } };
+  let missing = false;
+  const audit = { disclosureChecks: 0, geometryDisclosureChecks: 0, fetches: 0 };
+  const loader = loadMorphologyLoaderWithMocks({ expectedRecord: record, geometryBytes, expectedSha256, audit,
+    fetchResponseFactory: async () => {
+      if (missing) throw new Error("Exact source file unavailable");
+      return { ok: true, status: 200, arrayBuffer: async () => geometryBytes.buffer };
+    } });
+  await loader.loadVerifiedMorphologyGeometry(record); missing = true;
+  await assert.rejects(() => loader.loadVerifiedMorphologyGeometry(record, { forceReload: true }), /unavailable/);
+  await assert.rejects(() => loader.loadVerifiedMorphologyGeometry(record), /unavailable/);
+  assert.equal(audit.fetches, 3, "the failed fresh recheck cannot leave the old geometry available as a cache fallback");
 });
 
 test("legacy morphology routes use a non-null fallback whose binding is defined", () => {
@@ -203,9 +266,9 @@ test("legacy morphology routes use a non-null fallback whose binding is defined"
   );
 });
 
-test("the application imports the current research iteration 2.50 manifest", () => {
-  assert.match(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.50\.json["']/);
-  assert.doesNotMatch(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.(?:24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49)\.json["']/);
+test("the application imports the current research iteration 2.58 manifest", () => {
+  assert.match(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.58\.json["']/);
+  assert.doesNotMatch(atlasTypesSource, /from\s+["']\.\.\/data\/research-iteration-manifest-2\.(?:24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|53|55|56|57)\.json["']/);
 });
 
 test("exports gate both frozen morphology contracts by explicit record membership", () => {

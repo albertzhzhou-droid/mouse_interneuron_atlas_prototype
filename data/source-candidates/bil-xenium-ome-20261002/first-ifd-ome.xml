@@ -1,0 +1,23 @@
+<OME xmlns="http://www.openmicroscopy.org/Schemas/OME/2016-06" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openmicroscopy.org/Schemas/OME/2016-06 http://www.openmicroscopy.org/Schemas/OME/2016-06/ome.xsd">
+  <Plate ID="Plate:0" WellOriginX="0.0" WellOriginXUnit="µm" WellOriginY="0.0" WellOriginYUnit="µm"/>
+  <Instrument ID="Instrument:0">
+    <Microscope Manufacturer="10x Genomics" Model="Xenium"/>
+  </Instrument>
+  <Image ID="Image:0">
+    <InstrumentRef ID="Instrument:0"/>
+    <Pixels ID="Pixels:0" DimensionOrder="XYZCT" Type="uint16" SizeX="54030" SizeY="112160" SizeZ="16" SizeC="1" SizeT="1" PhysicalSizeX="0.2125" PhysicalSizeXUnit="µm" PhysicalSizeY="0.2125" PhysicalSizeYUnit="µm" PhysicalSizeZ="3.0" PhysicalSizeZUnit="µm">
+      <Channel ID="Channel:0" Name="DAPI" SamplesPerPixel="1">
+        <AnnotationRef ID="Annotation:0"/>
+      </Channel>
+      <TiffData PlaneCount="16"/>
+    </Pixels>
+    <AnnotationRef ID="Annotation:0"/>
+  </Image>
+  <StructuredAnnotations>
+    <MapAnnotation ID="Annotation:0">
+      <Value>
+        <M K="Purpose">Nuclear</M>
+      </Value>
+    </MapAnnotation>
+  </StructuredAnnotations>
+</OME>

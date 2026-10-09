@@ -1,0 +1,162 @@
+{
+  "contractId": "cross-region-internal-reference-0.1",
+  "schemaVersion": "0.1.0",
+  "releaseDate": "2026-08-30",
+  "modeId": "internal_reference",
+  "authority": "UNAVAILABLE_OBJECT_GEOMETRY",
+  "relationshipToSelectedPopulation": "co_display_only",
+  "relationshipToSelectedMorphology": "co_display_only",
+  "samePhysicalObject": false,
+  "registrationCount": 0,
+  "measurementUse": "forbidden",
+  "sourceDerivedGeometryCount": 0,
+  "renderedPrimitiveCount": 0,
+  "missingEvidencePolicy": "zero_primitives",
+  "summary": "A cross-region compartment-vocabulary audit grounded in public mouse EM resources. No object-level geometry is admitted, so the 3D scene intentionally renders zero primitives rather than substituting illustrative cell, nucleus, organelle, neurite or synapse shapes.",
+  "sources": [
+    {
+      "id": "MICRONS_PHASE1_V185_4",
+      "title": "MICrONS Phase 1 layer 2/3 release v185.4",
+      "species": "Mus musculus",
+      "region": "visual cortex layer 2/3",
+      "lifeStage": "P36 male",
+      "modality": "3.58 x 3.58 x 40 nm serial-section EM with dense cell, nucleus, mitochondria-ground-truth and synapse resources",
+      "sourceUrl": "https://www.microns-explorer.org/phase1",
+      "primaryDoi": "10.1016/j.cell.2022.01.023",
+      "rightsUrl": "https://www.microns-explorer.org/terms-and-conditions",
+      "supports": [
+        "neuronal envelope vocabulary",
+        "nucleus vocabulary",
+        "mitochondrion vocabulary",
+        "synaptic-cleft context vocabulary"
+      ],
+      "exactObjectAdmittedToThisMode": false,
+      "relationship": "cross_region_reference_only"
+    },
+    {
+      "id": "SUPERCLEM_GLYR_17816747_V1",
+      "title": "Super-CLEM GlyR mouse spinal dorsal-horn synapse dataset v1",
+      "species": "Mus musculus",
+      "region": "spinal dorsal horn",
+      "lifeStage": "source-bounded postnatal mouse tissue",
+      "modality": "correlative PALM, SRRF, confocal and serial 70 nm electron microscopy",
+      "sourceUrl": "https://doi.org/10.6084/m9.figshare.17816747.v1",
+      "primaryDoi": "10.7554/eLife.74441",
+      "rightsUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "supports": [
+        "spinal synapse-scale context",
+        "electron-microscopy ultrastructure context"
+      ],
+      "exactObjectAdmittedToThisMode": false,
+      "relationship": "independent_spinal_2d_reference_only"
+    },
+    {
+      "id": "OPENORGANELLE_JRC_MUS_HIPPOCAMPUS_1",
+      "title": "OpenOrganelle jrc_mus-hippocampus-1",
+      "species": "Mus musculus",
+      "region": "hippocampus",
+      "lifeStage": "P7",
+      "modality": "8 x 8 x 8 nm near-isotropic FIB-SEM",
+      "sourceUrl": "https://openorganelle.janelia.org/datasets/jrc_mus-hippocampus-1",
+      "primaryDoi": "10.25378/janelia.24085176",
+      "rightsUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "supports": [
+        "future raw mouse-neural-tissue ultrastructure inspection"
+      ],
+      "exactObjectAdmittedToThisMode": false,
+      "relationship": "cross_region_future_source_only"
+    }
+  ],
+  "components": [
+    {
+      "id": "neuronal-envelope",
+      "label": "Neuronal envelope",
+      "displayAuthority": "VOCABULARY_REFERENCE_ONLY",
+      "rendered": false,
+      "supportSourceIds": ["MICRONS_PHASE1_V185_4"],
+      "sourceGeometryUsed": false,
+      "placementMeasured": false,
+      "countMeasured": false,
+      "color": "#6fc7b4",
+      "claim": "No neuronal-envelope primitive is rendered without an admitted object-level boundary segmentation."
+    },
+    {
+      "id": "nucleus",
+      "label": "Nucleus",
+      "displayAuthority": "VOCABULARY_REFERENCE_ONLY",
+      "rendered": false,
+      "supportSourceIds": ["MICRONS_PHASE1_V185_4"],
+      "sourceGeometryUsed": false,
+      "placementMeasured": false,
+      "countMeasured": false,
+      "color": "#a98bd4",
+      "claim": "Nucleus is listed as vocabulary only; no nucleus primitive is rendered without an admitted source-linked segmentation."
+    },
+    {
+      "id": "mitochondria",
+      "label": "Mitochondria",
+      "displayAuthority": "VOCABULARY_REFERENCE_ONLY",
+      "rendered": false,
+      "supportSourceIds": ["MICRONS_PHASE1_V185_4"],
+      "sourceGeometryUsed": false,
+      "placementMeasured": false,
+      "countMeasured": false,
+      "color": "#e59d4f",
+      "claim": "Mitochondria are listed as vocabulary only; no count, shape or placement is rendered."
+    },
+    {
+      "id": "neurite-stubs",
+      "label": "Neurite continuity",
+      "displayAuthority": "VOCABULARY_REFERENCE_ONLY",
+      "rendered": false,
+      "supportSourceIds": ["MICRONS_PHASE1_V185_4"],
+      "sourceGeometryUsed": false,
+      "placementMeasured": false,
+      "countMeasured": false,
+      "color": "#4fa897",
+      "claim": "Neurite continuity is listed as vocabulary only; no topology, caliber or projection primitive is rendered."
+    },
+    {
+      "id": "synaptic-contact-context",
+      "label": "Synaptic contact context",
+      "displayAuthority": "VOCABULARY_REFERENCE_ONLY",
+      "rendered": false,
+      "supportSourceIds": ["MICRONS_PHASE1_V185_4", "SUPERCLEM_GLYR_17816747_V1"],
+      "sourceGeometryUsed": false,
+      "placementMeasured": false,
+      "countMeasured": false,
+      "color": "#e8c76a",
+      "claim": "Synaptic-contact context is listed as vocabulary only; no bouton, cleft, vesicle or partner primitive is rendered."
+    }
+  ],
+  "notRendered": [
+    {
+      "id": "object-level-cross-region-cutaway",
+      "reason": "The cited sources ground compartment vocabulary but no exact source object was admitted for this route; arbitrary 3D proxies are prohibited."
+    },
+    {
+      "id": "endoplasmic-reticulum",
+      "reason": "No admitted neuron-specific object-level 3D source in this release."
+    },
+    {
+      "id": "golgi-apparatus",
+      "reason": "No admitted neuron-specific object-level 3D source in this release."
+    },
+    {
+      "id": "receptor-distribution",
+      "reason": "The admitted spinal Super-CLEM slice is not an exact receptor-overlay crosswalk for this schematic."
+    },
+    {
+      "id": "same-specimen-internal-structure",
+      "reason": "No public source links an admitted spinal NeuroMorpho reconstruction to membrane, nucleus, organelle, bouton, receptor and synapse objects from the same physical cell."
+    }
+  ],
+  "prohibitedClaims": [
+    "The reference cutaway is not a spinal interneuron reconstruction.",
+    "The reference cutaway is not the selected evidence population or NeuroMorpho cell.",
+    "Primitive size, number, distance and placement are not measurements.",
+    "Cross-region evidence cannot establish spinal identity, cell type, atlas position, connectivity or same-specimen internal structure.",
+    "Page proximity and camera switching create no biological join.",
+    "Spheres, capsules, tubes, boxes and other procedural primitives cannot substitute for missing object-level cell or organelle geometry."
+  ]
+}

@@ -8,6 +8,7 @@ import {
   morphologyShrinkageInterpretation,
 } from "../app/morphology-comparison.js";
 import { computeMorphologyViewportScaleBar } from "../app/morphology-viewport-scale.js";
+import { readVerifiedMorphologyGeometry, verifiedMorphologyGeometryUrl } from "../app/morphology-geometry-verification.js";
 
 const census = JSON.parse(await readFile(new URL("../public/data/neuromorpho_release_8_6_124_census_v1/census-index.json", import.meta.url), "utf8"));
 const analysis = JSON.parse(await readFile(new URL("../public/data/neuromorpho_release_8_6_124_analysis_v1/analysis-index.json", import.meta.url), "utf8"));
@@ -17,6 +18,17 @@ const sourceFrameDisclosureContract = JSON.parse(await readFile(new URL("../data
 const comparisonPanelSource = await readFile(new URL("../app/MorphologyComparePanel.tsx", import.meta.url), "utf8");
 const recordDisclosureSource = await readFile(new URL("../app/MorphologyRecordDisclosure.tsx", import.meta.url), "utf8");
 const sourceFrameDisclosureById = new Map(sourceFrameDisclosureContract.records.map((record) => [record.neuronId, record]));
+function parseCsv(text) {
+  const rows = []; let row = [], value = "", quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '"') { if (quoted && text[i + 1] === '"') { value += '"'; i++; } else quoted = !quoted; }
+    else if (ch === "," && !quoted) { row.push(value); value = ""; }
+    else if (ch === "\n" && !quoted) { row.push(value); rows.push(row); row = []; value = ""; }
+    else value += ch;
+  }
+  assert.equal(quoted, false); return rows;
+}
 const records = [109005, 260150, 104003, 108974].map((id) => ({
   ...census.records.find((record) => record.neuronId === id),
   comparisonMembership: {
@@ -43,6 +55,14 @@ const twoDimensionalRecord = {
     routeAssetManifestSha256: null,
   },
 };
+const runtimeGeometryById = new Map();
+for (const record of [...records, twoDimensionalRecord, { ...census.records.find(row => row.neuronId === 194469), comparisonMembership: twoDimensionalRecord.comparisonMembership }, ...supplementary.records]) {
+  const disclosure = sourceFrameDisclosureById.get(record.neuronId);
+  const bytes = await readFile(new URL(`../public${verifiedMorphologyGeometryUrl(record, disclosure)}`, import.meta.url));
+  const geometry = await readVerifiedMorphologyGeometry(record, disclosure, { fetchImpl: async () => ({ ok: true, status: 200,
+    arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) }) });
+  runtimeGeometryById.set(record.neuronId, geometry);
+}
 
 function viewportScaleFor(record, disclosure, index) {
   const viewportCssWidth = 680 + index * 37;
@@ -83,7 +103,7 @@ function viewportScaleFor(record, disclosure, index) {
 }
 
 function effectiveModeFor(record, requestedMode) {
-  return requestedMode === "radius" && record.normalizedMetadata.sourceDiameterAvailable === true
+  return requestedMode === "radius" && record.normalizedMetadata.dimensionality === "3D" && record.normalizedMetadata.sourceDiameterAvailable === true
     ? "radius"
     : "skeleton";
 }
@@ -111,6 +131,7 @@ function authorityFor(selectedRecords, { includeSupplementary = false, modes = [
       recordCount: 7,
     } : null,
     runtimeGeometryReceipts: selectedRecords.map((record) => ({ neuronId: record.neuronId, sha256: record.geometry.sha256 })),
+    runtimeGeometryPayloads: selectedRecords.map(record => ({ neuronId: record.neuronId, geometry: runtimeGeometryById.get(record.neuronId) })),
     sourceFrameDisclosureAuthority: {
       path: "data/morphology-source-frame-disclosure-0.1.json",
       contractId: sourceFrameDisclosureContract.contractId,
@@ -151,8 +172,9 @@ test("builds a replayable co-display-only receipt for two to four real records",
   const requestedModes = ["radius", "radius", "skeleton", "radius"];
   const receipt = buildMorphologyComparisonReceipt(records, analysis.records, requestedModes, "2026-08-30T00:00:00.000Z", authorityFor(records, { modes: requestedModes }));
   assert.equal(receipt.documentType, "source_local_morphology_comparison_receipt");
-  assert.equal(receipt.release, "2.30.0-research.1");
-  assert.equal(receipt.schemaVersion, "0.3.0");
+  assert.equal(receipt.release, "2.91.0-research.1");
+  assert.equal(receipt.previousReceiptRelease, "2.30.0-research.1");
+  assert.equal(receipt.schemaVersion, "0.5.0");
   assert.equal(receipt.relationshipClass, "co_display_only");
   assert.deepEqual(receipt.sourceFrameDisclosureAuthority, {
     path: "data/morphology-source-frame-disclosure-0.1.json",
@@ -315,6 +337,39 @@ test("requires a truthful straight-on source-plane lock for 2D records", () => {
   );
 });
 
+test("both deposited 2D records reject radius extrusion while retaining native diameter data", () => {
+  for (const neuronId of [194468, 194469]) {
+    const planar = { ...census.records.find(record => record.neuronId === neuronId), comparisonMembership: twoDimensionalRecord.comparisonMembership };
+    assert.equal(planar.normalizedMetadata.dimensionality, "2D");
+    assert.equal(planar.normalizedMetadata.sourceDiameterAvailable, true);
+    const selected = [planar, records[0]], modes = ["radius", "radius"];
+    const authority = authorityFor(selected, { modes });
+    const receipt = buildMorphologyComparisonReceipt(selected, analysis.records, modes, undefined, authority);
+    const source = receipt.sourceObjects[0];
+    assert.deepEqual(source.rendering, {
+      requestedMode: "radius", actualMode: "skeleton", radiusAuthorized: false,
+      sourceDiameterAvailable: true, radiusUnavailableReason: "source_labelled_2d_no_depth_or_extrusion",
+      radiusSurfaceStatus: "not_rendered", membraneClaim: false,
+    });
+    assert.equal(source.viewportScale.effectiveRenderMode, "skeleton");
+    assert.equal(source.viewportScale.sourcePlaneLocked, true);
+    assert.equal(source.sourceFrameDisclosure.sourceCoordinates.extentMicrometre[2], 0);
+    assert.equal(source.geometry.sha256, planar.geometry.sha256);
+    assert.equal(source.microdetailCoverage.axes.find(axis => axis.id === "diameter_input").status, "OBS");
+    assert.equal(source.microdetailCoverage.axes.find(axis => axis.id === "radius_derived_surface").status, "UNAVAILABLE");
+    assert.equal(receipt.sourceObjects[1].rendering.actualMode, "radius");
+    const [header, ...rows] = parseCsv(morphologyComparisonReceiptCsv(receipt));
+    for (const row of rows.filter(row => row[header.indexOf("neuron_id")] === String(neuronId))) {
+      assert.equal(row[header.indexOf("actual_mode")], "skeleton");
+      assert.equal(row[header.indexOf("radius_authorized")], "false");
+    }
+    const forbiddenRuntime = authorityFor(selected, { modes });
+    forbiddenRuntime.runtimeScaleReceipts[0].effectiveRenderMode = "radius";
+    forbiddenRuntime.runtimeViewportBindings[0].effectiveRenderMode = "radius";
+    assert.throws(() => buildMorphologyComparisonReceipt(selected, analysis.records, modes, undefined, forbiddenRuntime), /render mode is stale/);
+  }
+});
+
 test("exports exact metrics with authority and relationship columns", () => {
   const selected = records.slice(0, 2);
   const receipt = buildMorphologyComparisonReceipt(selected, analysis.records, ["skeleton", "skeleton"], "2026-08-30T00:00:00.000Z", authorityFor(selected));
@@ -324,6 +379,33 @@ test("exports exact metrics with authority and relationship columns", () => {
   assert.match(csv, /300 micrometre · parasagittal,not_reported,Not reported by source,Not reported,/);
   assert.match(csv, /camera_target_plane_source_local_scale_v1,camera_target_depth/);
   assert.match(csv, /co_display_only,0/);
+  const [header, ...rows] = parseCsv(csv);
+  for (const row of rows) {
+    assert.equal(row.length, header.length);
+    const values = Object.fromEntries(header.map((key, index) => [key, row[index]]));
+    const original = receipt.sourceObjects.find(object => String(object.neuronId) === values.neuron_id);
+    assert.deepEqual(JSON.parse(values.source_identity_json), original.sourceIdentity);
+    assert.equal(values.source_identity_key, original.sourceIdentity.key);
+    assert.equal(values.physical_cell_id, ""); assert.equal(values.physical_cell_status, "unknown");
+    assert.equal(values.repository_release, "8.6.124");
+    assert.deepEqual(JSON.parse(values.pairwise_source_relationships_json), receipt.sourceRelationships);
+    assert.deepEqual(JSON.parse(values.geometry_runtime_byte_receipt_json), original.geometry.runtimeByteReceipt);
+  }
+});
+
+test("scientific comparison export requires the actual private byte-verified payloads", () => {
+  const selected = records.slice(0, 2), build = authority => buildMorphologyComparisonReceipt(selected, analysis.records, [], undefined, authority);
+  const valid = build(authorityFor(selected));
+  assert.equal(valid.sourceObjects[0].geometry.runtimeByteReceipt.sha256, selected[0].geometry.sha256);
+  assert.equal(valid.sourceObjects[0].geometry.runtimeByteReceipt.scope, "standardized_geometry_bytes_only_raw_swc_hash_declared");
+  for (const mutate of [
+    authority => { delete authority.runtimeGeometryPayloads; },
+    authority => { authority.runtimeGeometryPayloads[0].geometry = structuredClone(authority.runtimeGeometryPayloads[0].geometry); },
+    authority => { authority.runtimeGeometryPayloads[0].geometry = runtimeGeometryById.get(selected[1].neuronId); },
+  ]) {
+    const authority = authorityFor(selected); mutate(authority);
+    assert.throws(() => build(authority), /no runtime byte-verification receipt|current source differs/);
+  }
 });
 
 test("normalizes shrinkage interpretation without altering raw source capitalization", () => {
@@ -369,6 +451,6 @@ test("shows raw shrinkage fields and invalidates runtime viewport authority on m
   assert.match(recordDisclosureSource, /<b>reportedRaw<\/b>\{rawSourceText\(disclosure\.preparation\.shrinkage\.reportedRaw\)\}/);
   assert.match(recordDisclosureSource, /<b>correctedRaw<\/b>\{rawSourceText\(disclosure\.preparation\.shrinkage\.correctedRaw\)\}/);
   assert.match(comparisonPanelSource, /const updateMode[\s\S]*invalidateViewportRuntime\(\[neuronId\]\);[\s\S]*const next = modes/);
-  assert.match(comparisonPanelSource, /const updateRecord[\s\S]*invalidateViewportRuntime\(\);[\s\S]*onComparisonChange\(next\)/);
+  assert.match(comparisonPanelSource, /const updateRecord[\s\S]*invalidateViewportRuntime\(\[comparisonIds\[index\]\]\);[\s\S]*onComparisonChange\(next\)/);
   assert.match(comparisonPanelSource, /runtimeViewportBindings: selectedRecords\.map/);
 });

@@ -1,0 +1,25 @@
+{
+  "status": "PASS_EXACT_SINGLE_OWNED_INFORMATION_LINK_STYLE_CORRECTION",
+  "recordedAtUTC": "2026-10-05T10:04:31.239872+00:00",
+  "path": "app/ResearchSourceRegistry.tsx",
+  "before": {
+    "bytes": 23841,
+    "sha256": "c423792176942a66d70c480a19d083ade86a4e51970be9bec018474e88068cd0"
+  },
+  "after": {
+    "bytes": 23881,
+    "sha256": "55f6d1f090e0ebb64f7f56ee697b04bd82305d6c437c110449807fc5eb571189"
+  },
+  "literalBefore": "<Link href={information.link.href} prefetch={false}>{information.link.label}</Link>",
+  "literalAfter": "<Link href={information.link.href} prefetch={false} style={{ minHeight: 44, fontSize: 12 }}>{information.link.label}</Link>",
+  "occurrences": 1,
+  "originalNativeFinding": "actual-08c-narrow-focused-link-style.json",
+  "preimageZip": {
+    "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-62/owned-ui-correction-preimage.zip",
+    "bytes": 6456,
+    "sha256": "9fa0ff3e6affaf810e27c66eb2bc70182e6c7df0e9f2d3ca029932dd5233d456"
+  },
+  "originalCandidatePatchAndApplyReceiptPreserved": true,
+  "layoutCssChanged": false,
+  "nativeCorrectedAcceptancePending": true
+}

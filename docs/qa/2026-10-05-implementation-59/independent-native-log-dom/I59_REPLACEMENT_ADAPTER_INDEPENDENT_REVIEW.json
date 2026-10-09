@@ -1,0 +1,138 @@
+{
+  "status": "PASS_READ_ONLY_REPLACEMENT_ADAPTER_NECESSARY_GUARDS",
+  "generatedAtUTC": "2026-10-05T06:58:57.038159+00:00",
+  "finalHelper": {
+    "path": "/private/tmp/ohri-i59-native-live-replay/replay.mjs",
+    "bytes": 30635,
+    "sha256": "58a9561a7682da8c393e86ad181d0e3edb18f4c56dee1b919d8a4e97f24b9425"
+  },
+  "finalSyntheticTest": {
+    "path": "/private/tmp/ohri-i59-native-live-replay/replay.test.mjs",
+    "bytes": 25871,
+    "sha256": "cffc6cfb8983f4b0eca832f3acb103e1362cf2e9eeb860b7bd765991e2ca975b"
+  },
+  "ownerPreparationReceipt": {
+    "path": "/private/tmp/ohri-i59-native-live-replay/I59_REPLACEMENT_ADAPTER_PREPARATION_RECEIPT.json",
+    "bytes": 1480,
+    "sha256": "05683174fb094213ad30340236d41e9be69046f31081228a365fe5880a6d96c2"
+  },
+  "independentSyntheticTestRun": {
+    "actualExitCode": 0,
+    "counts": {
+      "tests": 28,
+      "pass": 28,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "log": {
+      "path": "/private/tmp/ohri-i59-native-live-replay-peer-review/INDEPENDENT_SYNTHETIC_ADAPTER28_FINAL_TESTS.log",
+      "bytes": 2604,
+      "sha256": "808fd17ece032f2447e1d95f4d1d1e8890cf2d4243260da992622af013133881"
+    },
+    "evidenceLevel": "synthetic only"
+  },
+  "staticDraftInspected": {
+    "pin": {
+      "path": "/private/tmp/ohri-i59-native-sidecar-draft/I59_NATIVE_PHASES_DRAFT_NOT_READY.json",
+      "bytes": 84787,
+      "sha256": "bced991837d7deb66b1a1f7e4b6971f2683a56cf1fbad95d80443fd09b571972"
+    },
+    "phaseCount": 10,
+    "distinctMainOwnedRequestIds": 23,
+    "status": "PREPARATION_NOT_NATIVE_READY",
+    "actualReplayedByThisPeer": false
+  },
+  "exactExistingSourceFeatureMetadata": {
+    "document": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/cano-chol-rna-counts-0.1.json",
+      "bytes": 847412,
+      "sha256": "3c3ef4b675df7840f7e97663d318a7b28b6186f05dcefbd9f509399fdb21bc95"
+    },
+    "Chat": 23903,
+    "Pitx2": 5471,
+    "Xkr4": 1,
+    "Gm1992": 2,
+    "countParserExecuted": false
+  },
+  "replacementPairs": [
+    {
+      "phase": "11-profile-switch-old-delayed",
+      "oldIDs": [
+        60,
+        61,
+        62
+      ],
+      "replacementPairIDs": [
+        65,
+        66
+      ],
+      "referenceOnlyNoDuplicateOwnership": true,
+      "exactProfile": "cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239",
+      "exactTuple": [
+        "Chat",
+        "Pitx2"
+      ],
+      "exactSourceRows": [
+        23903,
+        5471
+      ]
+    },
+    {
+      "phase": "12-404-sibling",
+      "oldIDs": [
+        67,
+        68
+      ],
+      "replacementPairIDs": [
+        69,
+        70
+      ],
+      "referenceOnlyNoDuplicateOwnership": true,
+      "exactProfile": "cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239",
+      "exactTuple": [
+        "Chat",
+        "Pitx2"
+      ],
+      "exactSourceRows": [
+        23903,
+        5471
+      ]
+    }
+  ],
+  "sameChunkMainOwnership": [
+    {
+      "requestId": 80,
+      "role": "single_feature"
+    },
+    {
+      "requestId": 83,
+      "role": "pair"
+    }
+  ],
+  "identifiedFindingAndRepair": {
+    "finding": "Replacement exact-profile/feature/ordered-source-row constraints were optional, allowing missing metadata to skip promised replacement identity checks.",
+    "repair": "replacement_pair_ready now mandates CHOL profile key, distinct first/second source features, and two distinct positive ordered source rows. Missing each metadata negative rejects. Replacement single requires profileAfter and actual DOM selection agrees with proof."
+  },
+  "otherNecessaryGuards": [
+    "Old canceled IDs still abort before controlled deadline; no upstream start/response finished/revival permitted.",
+    "Every referenced replacement request has exactly one separately declared main owner of matching pair/single role; references do not duplicate request counts.",
+    "Fresh replacement request starts after exact native open/change trigger, uses exact captured configuration and original upstream target, and completes before current ready capture.",
+    "Mandatory embedded capture/action brackets are exact; action completion and network effect are separately bounded.",
+    "Pair failures require actual unavailable message and withhold private JSON/count tables/exports; only explicitly verified new replacement may be ready after an old deadline.",
+    "Feature16 independently owns old75/76 and new78/79 cancellation, while separate single77 can finish and retain current Pitx2 proof.",
+    "Current provider focusKind/focusId key is used with actual DOM profile consistency; samechunk80/83 is distinct from prior tuple81/82."
+  ],
+  "actionableFindingsRemaining": [],
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "candidateHelperWrites": 0,
+  "networkBrowserProxyConfigServerActions": 0,
+  "actualNativeFinalReplayExecuted": false,
+  "sourceAdmissionChanged": false,
+  "limitations": [
+    "This peer independently ran synthetic guards and read the draft only; the owning agent will perform actual replay after parent native-ready authorization.",
+    "Existing source feature-row declarations are checked without new original-RDS parsing or scientific partition/export-file replay.",
+    "The earlier19-test helper receipt is superseded for this replacement adapter; prior scoped source/temporal findings remain retained."
+  ]
+}

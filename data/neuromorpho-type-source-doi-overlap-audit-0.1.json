@@ -1,0 +1,268 @@
+{
+  "documentType": "neuromorpho_type_source_doi_overlap_audit",
+  "schemaVersion": "0.1.0",
+  "auditId": "neuromorpho-type-source-doi-overlap-audit-0.1",
+  "snapshotDate": "2026-09-01",
+  "morphologyUniverse": {
+    "repository": "NeuroMorpho.Org",
+    "release": "8.6.124",
+    "assetSetId": "neuromorpho:8.6.124:mouse-spinal-interneuron-no-age-universe-v1",
+    "queryRecordCount": 1097,
+    "query": {
+      "species": "mouse",
+      "brainRegion": "spinal cord",
+      "cellType": "interneuron",
+      "ageFilter": null,
+      "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc",
+      "pageSize": 500,
+      "pageCount": 3,
+      "pageReceipts": [
+        {
+          "page": 0,
+          "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+          "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+          "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+          "bytes": 769605,
+          "responseDate": "cached_snapshot",
+          "recordCount": 500
+        },
+        {
+          "page": 1,
+          "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=1",
+          "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-1.json",
+          "sha256": "6b03f0627a6972c027c152458ac5c5d322b03a78a725beea16438424dc87d77c",
+          "bytes": 753972,
+          "responseDate": "cached_snapshot",
+          "recordCount": 500
+        },
+        {
+          "page": 2,
+          "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=2",
+          "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-2.json",
+          "sha256": "43076e7f418c7284eeaa331e7573a66ff19a66fb190cbd7cf133ddfceaad60e4",
+          "bytes": 146925,
+          "responseDate": "cached_snapshot",
+          "recordCount": 97
+        }
+      ],
+      "rawServerOrderNeuronIdSha256": "a285255615ea67f098e740cbddc2947488068fbbb70dfb0ad0f758e8e2a13b8b",
+      "numericNeuronIdSha256": "fe2ee83caf63fbfa4e881c9ce7163b2d1612bb3d916a3eb159cc5757ad70a47e",
+      "rawPageSetSha256": "f262c1e92a3853f44e2fe135b0abda987ea4fe74f4697a45a168d7b33fe719fd"
+    },
+    "indexPath": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+    "exactDoiField": "records[].sourcePaper.dois"
+  },
+  "method": {
+    "operation": "Exact normalized DOI equality between each source taxonomy publication and each NeuroMorpho source-paper DOI field.",
+    "normalization": "Trim whitespace; lowercase; remove doi.org URL or doi: prefix; strip trailing citation punctuation.",
+    "profileCoverage": "Each selected profile is represented by its source namespace; the source study's DOI is used for the publication-level check.",
+    "noPayloadDownload": true
+  },
+  "summary": {
+    "taxonomySourceCount": 10,
+    "sourceProfileCount": 387,
+    "exactDoiMatchedTaxonomySourceCount": 0,
+    "exactDoiMatchedRecordCount": 0,
+    "identityJoins": 0,
+    "geometryObjectsAdmitted": 0,
+    "internalStructureObjectsAdmitted": 0,
+    "registrations": 0,
+    "measurements": 0,
+    "payloadBytesDownloaded": 0
+  },
+  "rows": [
+    {
+      "namespace": "russ-2021",
+      "label": "Russ harmonized postnatal taxonomy",
+      "taxonomyId": "russ-harmonized-taxonomy-crosswalk-0.1",
+      "taxonomyPath": "data/russ-harmonized-taxonomy-crosswalk-0.1.json",
+      "sourceProfileCount": 69,
+      "sourcePublicationDoi": "10.1038/s41467-021-25125-1",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "sathyamurthy-2018",
+      "label": "Sathyamurthy adult lumbar taxonomy",
+      "taxonomyId": "sathyamurthy-source-taxonomy-0.1",
+      "taxonomyPath": "data/sathyamurthy-source-taxonomy-0.1.json",
+      "sourceProfileCount": 43,
+      "sourcePublicationDoi": "10.1016/j.celrep.2018.02.003",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "hayashi-2018:GSE108788",
+      "label": "Hayashi spinal V2a taxonomy",
+      "taxonomyId": "hayashi-v2a-source-taxonomy-0.1",
+      "taxonomyPath": "data/hayashi-v2a-source-taxonomy-0.1.json",
+      "sourceProfileCount": 11,
+      "sourcePublicationDoi": "10.1016/j.neuron.2018.01.023",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "haring-2018:GSE103840",
+      "label": "Häring dorsal-horn taxonomy",
+      "taxonomyId": "haring-dorsal-horn-source-taxonomy-0.1",
+      "taxonomyPath": "data/haring-dorsal-horn-source-taxonomy-0.1.json",
+      "sourceProfileCount": 30,
+      "sourcePublicationDoi": "10.1038/s41593-018-0141-1",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "alkaslasi-2021:GSE167597",
+      "label": "Alkaslasi cholinergic taxonomy",
+      "taxonomyId": "alkaslasi-cholinergic-source-taxonomy-0.1",
+      "taxonomyPath": "data/alkaslasi-cholinergic-source-taxonomy-0.1.json",
+      "sourceProfileCount": 8,
+      "sourcePublicationDoi": "10.1038/s41467-021-22691-2",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "label": "Iglesias-González Dmrt3/dI6 taxonomy",
+      "taxonomyId": "dmrt3-di6-source-taxonomy-0.1",
+      "taxonomyPath": "data/dmrt3-di6-source-taxonomy-0.1.json",
+      "sourceProfileCount": 6,
+      "sourcePublicationDoi": "10.3389/fncel.2021.781197",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "roome-2026:GSE291462",
+      "label": "Roome developmental dIL taxonomy",
+      "taxonomyId": "roome-dil-source-taxonomy-0.1",
+      "taxonomyPath": "data/roome-dil-source-taxonomy-0.1.json",
+      "sourceProfileCount": 157,
+      "sourcePublicationDoi": "10.1126/science.adx5781",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "delile-2019:E-MTAB-7320",
+      "label": "Delile developmental taxonomy",
+      "taxonomyId": "delile-developmental-interneuron-taxonomy-0.1",
+      "taxonomyPath": "data/delile-developmental-interneuron-taxonomy-0.1.json",
+      "sourceProfileCount": 51,
+      "sourcePublicationDoi": "10.1242/dev.173807",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "crozat-2025:figshare-29430869-v2",
+      "label": "Crozat PKD2L1 functional profile",
+      "taxonomyId": "crozat-pkd2l1-functional-profile-0.1",
+      "taxonomyPath": "data/crozat-pkd2l1-functional-profile-0.1.json",
+      "sourceProfileCount": 1,
+      "sourcePublicationDoi": "10.1038/s42003-025-08559-x",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    },
+    {
+      "namespace": "cano-gomez-2026:GSE318731",
+      "label": "Cano-Gómez P56 multiome taxonomy",
+      "taxonomyId": "cano-gomez-p56-multiome-interneuron-registry-0.1",
+      "taxonomyPath": "data/cano-gomez-p56-multiome-interneuron-registry-0.1.json",
+      "sourceProfileCount": 11,
+      "sourcePublicationDoi": "10.64898/2026.06.11.731752",
+      "comparison": "exact_normalized_doi_match_to_neuromorpho_source_paper_metadata",
+      "matchedNeuronIds": [],
+      "matchedRecordCount": 0,
+      "interpretation": "publication_level_metadata_overlap_only_not_profile_or_same_cell_identity"
+    }
+  ],
+  "inputReceipts": [
+    {
+      "id": "neuromorpho8124UniverseIndex",
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+      "bytes": 8025022,
+      "sha256": "1ba52eb81aa141349f9e9a6916f8acf5a089ba079e9de34507e50f32bd6cfd68"
+    },
+    {
+      "id": "russ-2021",
+      "path": "data/russ-harmonized-taxonomy-crosswalk-0.1.json",
+      "bytes": 34465,
+      "sha256": "dfa02071a2dbc73cfadeb86c751742775b79767c7bf7426ce9f60340bb13475b"
+    },
+    {
+      "id": "sathyamurthy-2018",
+      "path": "data/sathyamurthy-source-taxonomy-0.1.json",
+      "bytes": 120542,
+      "sha256": "16fa0d796951e5dd746f2634da7c7a079c390e149aba324a5a060c9f9f527149"
+    },
+    {
+      "id": "hayashi-2018:GSE108788",
+      "path": "data/hayashi-v2a-source-taxonomy-0.1.json",
+      "bytes": 25309,
+      "sha256": "eaaa49ea63c300d1a719eb9119a3c2735674d3f0d5113567dcb583489674f882"
+    },
+    {
+      "id": "haring-2018:GSE103840",
+      "path": "data/haring-dorsal-horn-source-taxonomy-0.1.json",
+      "bytes": 221175,
+      "sha256": "23d6cda3af6c4205926e8d994fea0cbc11d5cd02c2287e72f7c6a17c89c98549"
+    },
+    {
+      "id": "alkaslasi-2021:GSE167597",
+      "path": "data/alkaslasi-cholinergic-source-taxonomy-0.1.json",
+      "bytes": 65802,
+      "sha256": "e87729a1ef5f0d521fb583a2a34173e0f1b169799c60b6017a3a8cfeca1bec7e"
+    },
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "path": "data/dmrt3-di6-source-taxonomy-0.1.json",
+      "bytes": 22490,
+      "sha256": "e5d7b26df781033a971282b697684cf6f71daa2fe711883475723186c2d92468"
+    },
+    {
+      "id": "roome-2026:GSE291462",
+      "path": "data/roome-dil-source-taxonomy-0.1.json",
+      "bytes": 631320,
+      "sha256": "dc25145e21a2f3be4faf0d65c2bd8418339a173c99ed1548564cc07c03c348e9"
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320",
+      "path": "data/delile-developmental-interneuron-taxonomy-0.1.json",
+      "bytes": 122037,
+      "sha256": "7a77c8c10f15224188bb542fddf63bc97de57b06dd9289e324bc7b8612219597"
+    },
+    {
+      "id": "crozat-2025:figshare-29430869-v2",
+      "path": "data/crozat-pkd2l1-functional-profile-0.1.json",
+      "bytes": 20460,
+      "sha256": "ca022532c23f5d9967fce7efcbd5bde57b1d4f59516cb10764dd1b422dd8ed64"
+    },
+    {
+      "id": "cano-gomez-2026:GSE318731",
+      "path": "data/cano-gomez-p56-multiome-interneuron-registry-0.1.json",
+      "bytes": 56773,
+      "sha256": "533d3baa573a11296b86c4810a2f2af7fcbb661568f540b37f63c8b353db60ac"
+    }
+  ],
+  "scientificBoundaries": [
+    "A DOI overlap is a publication-level metadata relation only; it does not establish a matching profile, subtype, specimen, cell, or geometry.",
+    "Zero DOI overlap is limited to the pinned 1,097-record NeuroMorpho 8.6.124 query and the ten listed taxonomy source publications; it does not establish that morphology is absent from other archives, papers, or records with incomplete citation metadata.",
+    "No morphology geometry, same-cell identity, cross-source join, registration, measurement, or new biological denominator is admitted by this audit."
+  ]
+}

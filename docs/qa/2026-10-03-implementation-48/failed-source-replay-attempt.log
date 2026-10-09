@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: public/data/dorsal_horn_observed_morphology_route_pack_v1/geometry/nmo-249676.json
+
+0 !== 122358
+
+    at readSourceGeometry (file:///private/tmp/ohri-i22-local-verification/tools/audit_native_dat_swc_candidates_0_1.mjs:92:404)
+    at async buildNativeDatSwcCandidateAudit (file:///private/tmp/ohri-i22-local-verification/tools/audit_native_dat_swc_candidates_0_1.mjs:97:134)
+    at async file:///private/tmp/ohri-i22-local-verification/tools/audit_native_dat_swc_candidates_0_1.mjs:109:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 122358,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.0.0

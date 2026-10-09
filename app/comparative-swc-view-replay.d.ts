@@ -1,0 +1,10 @@
+import type { ComparativeIndex, ComparativeObject, ComparativePayload } from "./comparative-swc-reference.js";
+import type { IndependentViewState } from "./independent-source-workspace-types";
+import type { SourceIdentityHierarchy, SourceRelationship } from "./source-object-identity.js";
+export type ComparativeViewDocument = { documentType: string; schemaVersion: string; applicationVersion: string; object: Record<string, unknown>; verification: Record<string, unknown>; view: IndependentViewState; sourceIdentity: SourceIdentityHierarchy; comparativeContractId: string; scientificScope: Record<string, unknown>; scope: string; generatedAt:string;comparativeViewSchemaVersion:'0.2.0';rendererBuild:typeof COMPARATIVE_SWC_VIEW_BUILD };
+export const COMPARATIVE_SWC_VIEW_BUILD: Readonly<{applicationVersion:string;scope:string;inputs:readonly {path:string;bytes:number;sha256:string}[]}>;
+export function assertComparativeSwcViewApplied(index: ComparativeIndex, document: ComparativeViewDocument, payload: ComparativePayload, actualView: IndependentViewState, applicationVersion: string, previousPayload: ComparativePayload, revision: number): true;
+export function comparativeSourceIdentityHierarchy(index: ComparativeIndex, key: string): SourceIdentityHierarchy;
+export function comparativeSourceCoDisplayRelationship(index: ComparativeIndex): SourceRelationship;
+export function exportComparativeSwcView(index: ComparativeIndex, key: string, payload: ComparativePayload, view: IndependentViewState, applicationVersion: string, verificationRevision: number): ComparativeViewDocument;
+export function validateComparativeSwcViewReplay(index: ComparativeIndex, document: unknown, payload: ComparativePayload, applicationVersion: string, currentRendererVersion?: string | null): { record: ComparativeObject; view: IndependentViewState };

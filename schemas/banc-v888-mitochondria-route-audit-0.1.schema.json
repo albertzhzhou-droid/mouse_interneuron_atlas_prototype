@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/banc-v888-mitochondria-route-audit-0.1.schema.json",
+  "title": "BANC v888 candidate mitochondria route audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "auditDate", "authority", "relationshipToMouseAtlas", "source", "queryRoute", "candidate", "representation", "nextGates", "hardBoundaries"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "auditId": {"const": "banc-v888-mitochondria-route-audit-0.1.0"},
+    "auditDate": {"type": "string", "format": "date"},
+    "authority": {"const": "SOURCE_OBJECT_AND_ACCESS_ROUTE_AUDIT"},
+    "relationshipToMouseAtlas": {"const": "comparative_reference_only"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleDoi", "dataLocationsUrl", "dataverseDoi", "dataverseVersion", "dataverseLicense", "mitochondriaTable", "separateSegmentationProductStatus", "separateSegmentationProductMeaning"],
+      "properties": {
+        "articleDoi": {"const": "10.1038/s41586-026-10735-w"},
+        "dataLocationsUrl": {"type": "string", "format": "uri"},
+        "dataverseDoi": {"const": "10.7910/DVN/7WTH1N"},
+        "dataverseVersion": {"const": 3},
+        "dataverseLicense": {"const": "CC BY 4.0"},
+        "mitochondriaTable": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fileId", "filename", "bytes", "md5", "restricted", "sourceMapSemantics", "candidateRowsRetrieved", "candidatePayloadRetained"],
+          "properties": {
+            "fileId": {"const": 13917846},
+            "filename": {"const": "banc_888_mitochondria_v1_human_readable.csv.gz"},
+            "bytes": {"const": 1107598431},
+            "md5": {"const": "2e3be9c0d063969ae019121117007e9a"},
+            "restricted": {"const": false},
+            "sourceMapSemantics": {"type": "string", "minLength": 20},
+            "candidateRowsRetrieved": {"const": false},
+            "candidatePayloadRetained": {"const": false}
+          }
+        },
+        "separateSegmentationProductStatus": {"const": "MISSING"},
+        "separateSegmentationProductMeaning": {"type": "string", "minLength": 20}
+      }
+    },
+    "queryRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["packageName", "functionName", "rootFilteredQuerySupported", "rootFilterField", "implementationUrl", "clientSetupCheck", "configuredCaveClientRequiredByDocumentedImplementation", "credentialsInspectedOrUsed", "queryExecuted", "reasonNotExecuted"],
+      "properties": {
+        "packageName": {"const": "bancr"},
+        "functionName": {"const": "banc_mitochondria"},
+        "rootFilteredQuerySupported": {"const": true},
+        "rootFilterField": {"const": "pt_root_id"},
+        "implementationUrl": {"type": "string", "format": "uri"},
+        "clientSetupCheck": {"const": "fafbseg:::check_cave()"},
+        "configuredCaveClientRequiredByDocumentedImplementation": {"const": true},
+        "credentialsInspectedOrUsed": {"const": false},
+        "queryExecuted": {"const": false},
+        "reasonNotExecuted": {"type": "string", "minLength": 40}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rootId", "materializationId", "cellType", "cellSubClass", "region", "flow", "proofread", "metadataRowCountByRootId", "rootIdStableAcrossMaterializations626850888890", "species", "mouseInterneuronJoin", "mitochondriaCountMetric"],
+      "properties": {
+        "rootId": {"const": "720575941350424112"},
+        "materializationId": {"const": "v888"},
+        "cellType": {"const": "IN14A018"},
+        "cellSubClass": {"const": "ventral_nerve_cord_contralateral_restricted"},
+        "region": {"const": "ventral_nerve_cord"},
+        "flow": {"const": "intrinsic"},
+        "proofread": {"const": true},
+        "metadataRowCountByRootId": {"const": 1},
+        "rootIdStableAcrossMaterializations626850888890": {"const": true},
+        "species": {"const": "Drosophila melanogaster"},
+        "mouseInterneuronJoin": {"const": false},
+        "mitochondriaCountMetric": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "source", "interpretation", "perMitochondrionAnnotationRowsRetrieved", "positionsVerified"],
+          "properties": {
+            "value": {"const": 31},
+            "source": {"const": "pinned Dataverse v3 per-neuron metadata row"},
+            "interpretation": {"const": "source-reported count metric only"},
+            "perMitochondrionAnnotationRowsRetrieved": {"const": false},
+            "positionsVerified": {"const": false}
+          }
+        }
+      }
+    },
+    "representation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eligibleForObjectLevelInternalRendering", "perMitochondrionRowsAdmitted", "mitochondriaPointMarkersAdmitted", "mitochondriaSurfacesAdmitted", "cellSurfaceAdmitted", "sameCellObjectJoinCount", "mouseCellJoinCount", "registrationCount", "displayBoundary"],
+      "properties": {
+        "eligibleForObjectLevelInternalRendering": {"const": false},
+        "perMitochondrionRowsAdmitted": {"const": 0},
+        "mitochondriaPointMarkersAdmitted": {"const": 0},
+        "mitochondriaSurfacesAdmitted": {"const": 0},
+        "cellSurfaceAdmitted": {"const": false},
+        "sameCellObjectJoinCount": {"const": 0},
+        "mouseCellJoinCount": {"const": 0},
+        "registrationCount": {"const": 0},
+        "displayBoundary": {"type": "string", "minLength": 100}
+      }
+    },
+    "nextGates": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 30}},
+    "hardBoundaries": {"type": "array", "minItems": 4, "items": {"type": "string", "minLength": 30}}
+  }
+}

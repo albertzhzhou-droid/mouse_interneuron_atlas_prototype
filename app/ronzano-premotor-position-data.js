@@ -1,5 +1,8 @@
+/** @type {readonly ["raw", "normalized"]} */
 export const RONZANO_POSITION_FRAMES = Object.freeze(["raw", "normalized"]);
+/** @type {readonly ["all", "LG", "TA"]} */
 export const RONZANO_POSITION_MUSCLES = Object.freeze(["all", "LG", "TA"]);
+/** @type {readonly ["all", "L1", "L2", "L3", "L4", "L5", "L6"]} */
 export const RONZANO_POSITION_SEGMENTS = Object.freeze(["all", "L1", "L2", "L3", "L4", "L5", "L6"]);
 
 function check(condition, message) {

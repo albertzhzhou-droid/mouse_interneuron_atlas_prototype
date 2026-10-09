@@ -1,0 +1,60 @@
+Research/model upgrade registry validation passed: ohri-research-model-upgrade-registry-0.1.0
+243 queue rows (UPG-022–UPG-261); 50 research-facing UI ids resolved; governance/admission queue excluded
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:source-registry
+> node scripts/validate-research-source-registry-0.1.mjs
+
+Research source registry valid: 31 canonical sources, 41 record sets, 387 source profiles, 13 bundled exact cell/profile rosters, 4 bundled exact source-object set, 0 open scope contradictions, 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:schema
+> node scripts/validate-json-schema.mjs
+
+Research MVP JSON Schema validation passed: ohri-mouse-interneuron-research-mvp-candidate-0.2.0 (schema 0.2.0)
+✔ exact native source payloads pass hashes; corruption or truncation cannot display (15.170916ms)
+✔ unverified identity, frame, rights or biological promotion fail closed (1.777458ms)
+✔ 128 raw Z planes map to eight native label planes at group mean sample coordinates (2.410375ms)
+✔ native source labels identify a partial instance and uniformly cover only the bounded raw patch (11.419375ms)
+✔ plane receipt retains native calibration and zero cell/atlas/measurement claims (0.116833ms)
+✔ all 17 specified build inputs are pinned to their actual byte counts and hashes (15.464042ms)
+✔ two privately verified exact source chunks use the requested cache mode and return isolated native copies (75.310583ms)
+✔ every raw slice attests the actual native byte ranges, corresponding label slice and four independent pixel hashes (862.32375ms)
+✔ metadata, copied tokens, stale slices, corrupted actual pixels and unreadable layout cannot attest a rendered view (16.500291ms)
+✔ replay accepts a saved event from another page and adapts only layout and fresh runtime binding (45.833167ms)
+✔ source, calibration, build, pixels, missing identity and scientific claim tampering each fail replay (29.311167ms)
+✔ fetch rejection, HTTP failure, corruption, truncation and cancellation never create a reusable chunk-pair token (7.370209ms)
+✔ shared identity retains a repository component key while biological cell, specimen and section remain unknown (0.28275ms)
+✔ 2.91 replays all current bytes while preserving 2.90 and independent scientific gates (566.099291ms)
+✔ a recomputed content digest cannot excuse changed current inputs or broadened geometry claims (10.482625ms)
+✔ an index transport increment cannot promote UPG-230 to whole-App performance completion (47.252959ms)
+✔ generated registry is byte-deterministic from every UPG-022-or-later queue row (56.696541ms)
+✔ UPG-180 through UPG-182 preserve the 2.37 molecular, workspace, and planned morphology boundaries (0.164583ms)
+✔ UPG-183 through UPG-189 preserve the 2.38 record-presentation, Delile, publication-video, and future-object gates (0.1435ms)
+✔ UPG-190 through UPG-196 separate exact source acquisition, identity, coordinate, surface, and internal-detail gates (2.928125ms)
+✔ UPG-197 through UPG-204 preserve the 2.40 inputs and completed 2.41 active-record, denominator, Todd and Cano receipts (1.629083ms)
+✔ validation rejects drift in every completed UPG-200 through UPG-204 receipt (24.95775ms)
+✔ registry satisfies the JSON Schema contract (76.004667ms)
+✔ every upgrade resolves status, lane, blocker, evidence, verification, and acceptance boundary (1.735458ms)
+✔ UPG-113 is a provenance milestone and does not absorb the governance/admission queue (0.193834ms)
+✔ UPG-143 and UPG-149 close exact morphology increments while UPG-144 remains deferred (0.365792ms)
+✔ every UPG id present in app source at UPG-022 or later resolves (74.098708ms)
+✔ validation rejects governance ids, unresolved UI ids, and missing acceptance boundaries (4.852333ms)
+✔ validation rejects queue drift and invented independent evidence verification (20.921334ms)
+✔ identity keys separate namespace, parent section and release, without numeric coercion (4.355083ms)
+✔ actual MICrONS/BANC parent context remains distinct from physical-object identity and missing specimen/section (1.514208ms)
+✔ native contours, PALM detections and image/mask rows do not gain invented cell or section parents (3.182125ms)
+✔ relation enums require their own immutable source-registry entry, exact endpoint bindings and QC (1.901667ms)
+✔ missing identity and unproven parent chains fail closed even with complete synthetic QC flags (1.725708ms)
+✔ all eleven actual Cano source populations bind their verified nucleus rows without animal/cell geometry claims (26.403708ms)
+✔ a changed key, authority or coordinate-like proximity cannot promote an exported hierarchy (0.412834ms)
+✔ a cell and its exact source component cannot become the same physical object through synthetic QC flags (0.59075ms)
+✔ even registry-approved population evidence cannot merge distinct actual Cano profiles (4.995ms)
+✔ actual MICrONS view replay binds canonical identity, parent IDs and missingness while retaining older exports (4.122875ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1278.242875
+

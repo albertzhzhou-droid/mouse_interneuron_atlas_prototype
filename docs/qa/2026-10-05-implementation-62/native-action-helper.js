@@ -1,0 +1,1 @@
+async function(name,fn){let startedAt=new Date().toISOString();let error=null;try{await fn();}catch(e){error=String(e);}let finishedAt=new Date().toISOString();i62NativeActions.push({name,startedAt,finishedAt,error});await i61Fs.writeFile(i62QA+'original-native-actions.json',JSON.stringify(i62NativeActions,null,2)+'\n');if(error)throw Error(error);}

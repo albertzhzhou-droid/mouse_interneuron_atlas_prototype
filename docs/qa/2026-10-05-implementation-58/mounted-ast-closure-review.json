@@ -1,0 +1,4514 @@
+{
+  "status": "PASS_READ_ONLY_I58_BEFORE_PROPOSAL_MOUNTED_AST_CLOSURE",
+  "generatedAtUtc": "2026-10-05T05:49:59.749Z",
+  "root": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype",
+  "candidate": {
+    "ownershipPin": {
+      "bytes": 4221,
+      "sha256": "a92dd578c3d12bb6a2607b0262d0d52a644db5acc6e8144d9eb8a727e3b2d3a5"
+    },
+    "patch": {
+      "path": "/private/tmp/ohri-i58-trevisan-sample-bookmark-candidate/I58_TREVISAN_SOURCE_CONTEXT_BOOKMARK_CANDIDATE.patch",
+      "bytes": 50780,
+      "sha256": "e137a23fbcd156653ec87fca44217cfaf76c8668d33f0327532bacd0839c39cf"
+    },
+    "targets": [
+      {
+        "path": "app/TrevisanV1AgeAtlas.tsx",
+        "operation": "modify",
+        "before": {
+          "bytes": 12231,
+          "sha256": "918f8eeb902a204cbc7ca8724b9d75c277822020b52cec78df445069e5633127"
+        },
+        "after": {
+          "bytes": 14607,
+          "sha256": "2a508f47c35a4dfc9ffa1260d8c7ef656399594dfd640230998091cd0c7eb533"
+        }
+      },
+      {
+        "path": "app/ExactSourceAuditWorkbench.tsx",
+        "operation": "modify",
+        "before": {
+          "bytes": 15384,
+          "sha256": "5f4b89a5f8200b750d2e4873fa5472655f93c436b9bf627a7321f030687a6bac"
+        },
+        "after": {
+          "bytes": 18625,
+          "sha256": "95035af0f60ee102247f8d9763c4b0ac790503d59e344c8edcd3f00df14c2ef4"
+        }
+      },
+      {
+        "path": "app/exact-source-audit-workbench.js",
+        "operation": "modify",
+        "before": {
+          "bytes": 5025,
+          "sha256": "c80b3104d9a656c16b8670af0208663168700e875c596909ffa3f3e7cd9fe03d"
+        },
+        "after": {
+          "bytes": 9225,
+          "sha256": "cfa38097a7596d08c48a57050a2d9d5f6a344eca2adb6a8ad4a0d4c440d3990a"
+        }
+      },
+      {
+        "path": "app/SourceAuditWorkspaces.tsx",
+        "operation": "modify",
+        "before": {
+          "bytes": 3264,
+          "sha256": "4ec9c8afd29de35849840b48588ff054f6fd5151e553af992cf209a3b1798aed"
+        },
+        "after": {
+          "bytes": 3326,
+          "sha256": "08f765746c5ef17c734893c7d42715ac12cd4df6baed8f63954ac3cd7364b9d8"
+        }
+      },
+      {
+        "path": "app/exact-source-audit-workbench.d.ts",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "bytes": 2975,
+          "sha256": "9dfffba0c43bdbc7ca12f88a2259a2b199a175930e03f43a4a13c68d1d449307"
+        }
+      },
+      {
+        "path": "tests/trevisan-v1-sample-bookmark.test.mjs",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "bytes": 15953,
+          "sha256": "f30e8b0540f998684404a5f6209e16ec8a6f9b286bf69a6852bede27149740f4"
+        }
+      }
+    ],
+    "currentRootState": "all4sealed_preimages_and2physical_absences",
+    "actualRootTargetPins": [
+      {
+        "path": "app/TrevisanV1AgeAtlas.tsx",
+        "state": "sealed_before",
+        "pin": {
+          "bytes": 12231,
+          "sha256": "918f8eeb902a204cbc7ca8724b9d75c277822020b52cec78df445069e5633127"
+        }
+      },
+      {
+        "path": "app/ExactSourceAuditWorkbench.tsx",
+        "state": "sealed_before",
+        "pin": {
+          "bytes": 15384,
+          "sha256": "5f4b89a5f8200b750d2e4873fa5472655f93c436b9bf627a7321f030687a6bac"
+        }
+      },
+      {
+        "path": "app/exact-source-audit-workbench.js",
+        "state": "sealed_before",
+        "pin": {
+          "bytes": 5025,
+          "sha256": "c80b3104d9a656c16b8670af0208663168700e875c596909ffa3f3e7cd9fe03d"
+        }
+      },
+      {
+        "path": "app/SourceAuditWorkspaces.tsx",
+        "state": "sealed_before",
+        "pin": {
+          "bytes": 3264,
+          "sha256": "4ec9c8afd29de35849840b48588ff054f6fd5151e553af992cf209a3b1798aed"
+        }
+      },
+      {
+        "path": "app/exact-source-audit-workbench.d.ts",
+        "state": "physical_absence",
+        "pin": null
+      },
+      {
+        "path": "tests/trevisan-v1-sample-bookmark.test.mjs",
+        "state": "physical_absence",
+        "pin": null
+      }
+    ]
+  },
+  "sharedRootWrites": 0,
+  "stageWrites": 0,
+  "sourceAdmissionsChanged": false,
+  "originalSourcePeerTestsRepeated": false,
+  "interpretation": "Static reachable local runtime module/CSS closure of selected states. Explicit type imports are erased; closed SourceAuditWorkspaces sibling branches and the nested closed Crozat panel are excluded. Optional opened Crozat is separately described. No native execution, bundle measurement or source authority is inferred from a URL/type/import.",
+  "scenarios": [
+    {
+      "name": "source_audits_all_workspaces_closed",
+      "baseline": {
+        "route": "/source-audits",
+        "roots": [
+          "app/layout.tsx",
+          "app/source-audits/page.tsx"
+        ],
+        "workspace": null,
+        "crozatOpen": false,
+        "pageId": null,
+        "overlay": false,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 84
+        },
+        "paths": [
+          "app/ResearchSkipLink.tsx",
+          "app/SiteNavigation.tsx",
+          "app/SourceAuditWorkspaces.tsx",
+          "app/academic-interface.css",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-skip-link.css",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "app/source-audit-workspaces.css",
+          "app/source-audit-workspaces.js",
+          "app/source-audits/page.tsx",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "to": "app/SourceAuditWorkspaces.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.js",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.css",
+            "line": 5,
+            "kind": "side_effect_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./bil-xenium-metadata-explorer",
+            "line": 8,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ExactSourceAuditWorkbench",
+            "line": 9,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./janelia-wt-bounded-reference-viewer",
+            "line": 10,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ComparativeSwcReferenceWorkbench",
+            "line": 11,
+            "reason": "closed/unselected sibling source workspace"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next/link",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "proposed": {
+        "route": "/source-audits",
+        "roots": [
+          "app/layout.tsx",
+          "app/source-audits/page.tsx"
+        ],
+        "workspace": null,
+        "crozatOpen": false,
+        "pageId": null,
+        "overlay": true,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 121
+        },
+        "paths": [
+          "app/ResearchSkipLink.tsx",
+          "app/SiteNavigation.tsx",
+          "app/SourceAuditWorkspaces.tsx",
+          "app/academic-interface.css",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-skip-link.css",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "app/source-audit-workspaces.css",
+          "app/source-audit-workspaces.js",
+          "app/source-audits/page.tsx",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "to": "app/SourceAuditWorkspaces.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.js",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.css",
+            "line": 5,
+            "kind": "side_effect_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./bil-xenium-metadata-explorer",
+            "line": 8,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ExactSourceAuditWorkbench",
+            "line": 9,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./janelia-wt-bounded-reference-viewer",
+            "line": 10,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ComparativeSwcReferenceWorkbench",
+            "line": 11,
+            "reason": "closed/unselected sibling source workspace"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next/link",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "baselineCount": 15,
+      "proposedCount": 15,
+      "addedRuntimePaths": [],
+      "removedRuntimePaths": [],
+      "sameStaticEdgeSet": true
+    },
+    {
+      "name": "source_audits_exact_workspace_selected",
+      "baseline": {
+        "route": "/source-audits#source-exact-inputs",
+        "roots": [
+          "app/layout.tsx",
+          "app/source-audits/page.tsx"
+        ],
+        "workspace": "source-exact-inputs",
+        "crozatOpen": false,
+        "pageId": null,
+        "overlay": false,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 84
+        },
+        "paths": [
+          "app/ExactSourceAuditWorkbench.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/SiteNavigation.tsx",
+          "app/SourceAuditWorkspaces.tsx",
+          "app/academic-interface.css",
+          "app/exact-source-audit-workbench.css",
+          "app/exact-source-audit-workbench.js",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-skip-link.css",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "app/source-audit-workspaces.css",
+          "app/source-audit-workspaces.js",
+          "app/source-audits/page.tsx",
+          "data/neuromorpho-publication-discovery-audit-0.1.json",
+          "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "to": "app/SourceAuditWorkspaces.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.js",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.css",
+            "line": 5,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/ExactSourceAuditWorkbench.tsx",
+            "line": 9,
+            "kind": "selected_workspace_lazy_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/neuromorpho-publication-discovery-audit-0.1.json",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.js",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.css",
+            "line": 7,
+            "kind": "side_effect_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./bil-xenium-metadata-explorer",
+            "line": 8,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "./CrozatExperimentObservationBrowser",
+            "line": 11,
+            "reason": "nested Crozat disclosure is closed by actual false initializer and JSX guard"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./janelia-wt-bounded-reference-viewer",
+            "line": 10,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ComparativeSwcReferenceWorkbench",
+            "line": 11,
+            "reason": "closed/unselected sibling source workspace"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next/link",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "proposed": {
+        "route": "/source-audits#source-exact-inputs",
+        "roots": [
+          "app/layout.tsx",
+          "app/source-audits/page.tsx"
+        ],
+        "workspace": "source-exact-inputs",
+        "crozatOpen": false,
+        "pageId": null,
+        "overlay": true,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 121
+        },
+        "paths": [
+          "app/ExactSourceAuditWorkbench.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/SiteNavigation.tsx",
+          "app/SourceAuditWorkspaces.tsx",
+          "app/academic-interface.css",
+          "app/exact-source-audit-workbench.css",
+          "app/exact-source-audit-workbench.js",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-skip-link.css",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "app/source-audit-workspaces.css",
+          "app/source-audit-workspaces.js",
+          "app/source-audits/page.tsx",
+          "data/neuromorpho-publication-discovery-audit-0.1.json",
+          "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "to": "app/SourceAuditWorkspaces.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.js",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.css",
+            "line": 5,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/ExactSourceAuditWorkbench.tsx",
+            "line": 9,
+            "kind": "selected_workspace_lazy_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/neuromorpho-publication-discovery-audit-0.1.json",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.js",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "./exact-source-audit-workbench.js",
+            "line": 7,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./bil-xenium-metadata-explorer",
+            "line": 8,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "./CrozatExperimentObservationBrowser",
+            "line": 12,
+            "reason": "nested Crozat disclosure is closed by actual false initializer and JSX guard"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./janelia-wt-bounded-reference-viewer",
+            "line": 10,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ComparativeSwcReferenceWorkbench",
+            "line": 11,
+            "reason": "closed/unselected sibling source workspace"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next/link",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "baselineCount": 20,
+      "proposedCount": 20,
+      "addedRuntimePaths": [],
+      "removedRuntimePaths": [],
+      "sameStaticEdgeSet": true
+    },
+    {
+      "name": "source_audits_exact_workspace_nested_crozat_open",
+      "baseline": {
+        "route": "/source-audits#source-exact-inputs",
+        "roots": [
+          "app/layout.tsx",
+          "app/source-audits/page.tsx"
+        ],
+        "workspace": "source-exact-inputs",
+        "crozatOpen": true,
+        "pageId": null,
+        "overlay": false,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 84
+        },
+        "paths": [
+          "app/CrozatExperimentObservationBrowser.tsx",
+          "app/ExactSourceAuditWorkbench.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/SiteNavigation.tsx",
+          "app/SourceAuditWorkspaces.tsx",
+          "app/academic-interface.css",
+          "app/crozat-experiment-observations.js",
+          "app/exact-source-audit-workbench.css",
+          "app/exact-source-audit-workbench.js",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-skip-link.css",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "app/source-audit-workspaces.css",
+          "app/source-audit-workspaces.js",
+          "app/source-audits/page.tsx",
+          "data/crozat-experiment-family-observations-0.1.json",
+          "data/neuromorpho-publication-discovery-audit-0.1.json",
+          "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "to": "app/SourceAuditWorkspaces.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.js",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.css",
+            "line": 5,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/ExactSourceAuditWorkbench.tsx",
+            "line": 9,
+            "kind": "selected_workspace_lazy_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/neuromorpho-publication-discovery-audit-0.1.json",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.js",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.css",
+            "line": 7,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/CrozatExperimentObservationBrowser.tsx",
+            "line": 11,
+            "kind": "literal_dynamic_import_in_reachable_module"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "to": "data/crozat-experiment-family-observations-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "to": "app/crozat-experiment-observations.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "to": "app/exact-source-audit-workbench.css",
+            "line": 6,
+            "kind": "side_effect_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./bil-xenium-metadata-explorer",
+            "line": 8,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./janelia-wt-bounded-reference-viewer",
+            "line": 10,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ComparativeSwcReferenceWorkbench",
+            "line": 11,
+            "reason": "closed/unselected sibling source workspace"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next/link",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "proposed": {
+        "route": "/source-audits#source-exact-inputs",
+        "roots": [
+          "app/layout.tsx",
+          "app/source-audits/page.tsx"
+        ],
+        "workspace": "source-exact-inputs",
+        "crozatOpen": true,
+        "pageId": null,
+        "overlay": true,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 121
+        },
+        "paths": [
+          "app/CrozatExperimentObservationBrowser.tsx",
+          "app/ExactSourceAuditWorkbench.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/SiteNavigation.tsx",
+          "app/SourceAuditWorkspaces.tsx",
+          "app/academic-interface.css",
+          "app/crozat-experiment-observations.js",
+          "app/exact-source-audit-workbench.css",
+          "app/exact-source-audit-workbench.js",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-skip-link.css",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "app/source-audit-workspaces.css",
+          "app/source-audit-workspaces.js",
+          "app/source-audits/page.tsx",
+          "data/crozat-experiment-family-observations-0.1.json",
+          "data/neuromorpho-publication-discovery-audit-0.1.json",
+          "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "to": "app/SourceAuditWorkspaces.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.js",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/source-audit-workspaces.css",
+            "line": 5,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "to": "app/ExactSourceAuditWorkbench.tsx",
+            "line": 9,
+            "kind": "selected_workspace_lazy_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "data/neuromorpho-publication-discovery-audit-0.1.json",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.js",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/exact-source-audit-workbench.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "to": "app/CrozatExperimentObservationBrowser.tsx",
+            "line": 12,
+            "kind": "literal_dynamic_import_in_reachable_module"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "to": "data/crozat-experiment-family-observations-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "to": "app/crozat-experiment-observations.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "to": "app/exact-source-audit-workbench.css",
+            "line": 6,
+            "kind": "side_effect_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "./exact-source-audit-workbench.js",
+            "line": 7,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./bil-xenium-metadata-explorer",
+            "line": 8,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./janelia-wt-bounded-reference-viewer",
+            "line": 10,
+            "reason": "closed/unselected sibling source workspace"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "./ComparativeSwcReferenceWorkbench",
+            "line": 11,
+            "reason": "closed/unselected sibling source workspace"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/source-audits/page.tsx",
+            "specifier": "next/link",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SourceAuditWorkspaces.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ExactSourceAuditWorkbench.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/CrozatExperimentObservationBrowser.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "baselineCount": 23,
+      "proposedCount": 23,
+      "addedRuntimePaths": [],
+      "removedRuntimePaths": [],
+      "sameStaticEdgeSet": true
+    },
+    {
+      "name": "positions",
+      "baseline": {
+        "route": "/explore/positions",
+        "roots": [
+          "app/layout.tsx",
+          "app/explore/[...section]/page.tsx"
+        ],
+        "workspace": null,
+        "crozatOpen": false,
+        "pageId": "positions",
+        "overlay": false,
+        "selectedCollectionBranch": {
+          "pageId": "positions",
+          "branchLine": 280,
+          "component": "RonzanoPremotorPositionViewer",
+          "specifier": "./RonzanoPremotorPositionViewer",
+          "line": 280
+        },
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 84
+        },
+        "paths": [
+          "app/ResearchActiveRecordProvider.tsx",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/RonzanoPremotorPositionViewer.tsx",
+          "app/SiteNavigation.tsx",
+          "app/academic-interface.css",
+          "app/explore/[...section]/page.tsx",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/matson-sci-timecourse.js",
+          "app/morphology-viewport-scale.js",
+          "app/neurolucida-native-contour-admission.js",
+          "app/neurolucida-native-detail-admission.js",
+          "app/neurolucida-native-detail-records.js",
+          "app/neurolucida-native-soma-contours.js",
+          "app/pv-independent-research-records.js",
+          "app/research-active-record.js",
+          "app/research-explorer-index.js",
+          "app/research-information-layout.css",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-record-presentation.js",
+          "app/research-selection-delta.js",
+          "app/research-skip-link.css",
+          "app/research-supplemental-morphology-records.js",
+          "app/ronzano-premotor-position-data.js",
+          "app/ronzano-premotor-position-source-view.js",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "data/neurolucida-native-contour-admission-catalog-0.3.json",
+          "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+          "data/pv-independent-morphology-routes-0.1.json",
+          "data/research-explorer-transport-0.1.json",
+          "data/research-renderer-runtime-inputs-2.91.json",
+          "data/ronzano-premotor-position-reference-0.1.json",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/explore/[...section]/page.tsx",
+            "to": "app/ResearchRoutePage.tsx",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchRoutePage.tsx",
+            "to": "app/ResearchCollectionPage.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/ResearchActiveRecordProvider.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-explorer-index.js",
+            "line": 17,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-explorer-index.js",
+            "to": "app/research-record-presentation.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-record-presentation.js",
+            "to": "data/neurolucida-native-contour-admission-catalog-0.3.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-record-presentation.js",
+            "to": "app/neurolucida-native-contour-admission.js",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/neurolucida-native-contour-admission.js",
+            "to": "app/neurolucida-native-soma-contours.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/neurolucida-native-contour-admission.js",
+            "to": "app/neurolucida-native-detail-admission.js",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/neurolucida-native-detail-admission.js",
+            "to": "app/neurolucida-native-detail-records.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-explorer-index.js",
+            "to": "data/research-explorer-transport-0.1.json",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-supplemental-morphology-records.js",
+            "line": 18,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-supplemental-morphology-records.js",
+            "to": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-supplemental-morphology-records.js",
+            "to": "app/pv-independent-research-records.js",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/pv-independent-research-records.js",
+            "to": "data/pv-independent-morphology-routes-0.1.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/pv-independent-research-records.js",
+            "to": "data/research-renderer-runtime-inputs-2.91.json",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/pv-independent-research-records.js",
+            "to": "app/research-record-presentation.js",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-supplemental-morphology-records.js",
+            "to": "app/research-record-presentation.js",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-active-record.js",
+            "line": 22,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-active-record.js",
+            "to": "app/research-explorer-index.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-selection-delta.js",
+            "line": 31,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-selection-delta.js",
+            "to": "app/research-active-record.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-selection-delta.js",
+            "to": "app/research-record-presentation.js",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/research-explorer-index.js",
+            "line": 12,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/matson-sci-timecourse.js",
+            "line": 13,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/research-information-layout.css",
+            "line": 14,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/RonzanoPremotorPositionViewer.tsx",
+            "line": 23,
+            "kind": "selected_page_lazy_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "to": "data/ronzano-premotor-position-reference-0.1.json",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "to": "app/ronzano-premotor-position-data.js",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "to": "app/ronzano-premotor-position-source-view.js",
+            "line": 8,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "data/ronzano-premotor-position-reference-0.1.json",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "data/research-renderer-runtime-inputs-2.91.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "app/ronzano-premotor-position-data.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "app/morphology-viewport-scale.js",
+            "line": 6,
+            "kind": "value_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchRoutePage.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "specifier": "./ResearchExplorer",
+            "line": 12,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchExplorer",
+            "line": 10,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MatsonSciTimecourseExplorer",
+            "line": 11,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ObservedMorphologyRouteLibrary",
+            "line": 16,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MorphologyViewer",
+            "line": 17,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./InterneuronTypeAtlas",
+            "line": 18,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ZebrafishSpinalTaxonomyPanel",
+            "line": 19,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./AdditionalResearchEvidence",
+            "line": 20,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MolecularConcordanceWorkbench",
+            "line": 21,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./AtlasReferenceViewer",
+            "line": 22,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchExplorer",
+            "line": 24,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchOverview",
+            "line": 25,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MatsonSciTimecourseExplorer",
+            "line": 26,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./InterneuronKnowledgeCoverage",
+            "line": 27,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchSourceRegistry",
+            "line": 28,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchRoutePage.tsx",
+            "specifier": "next/navigation",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "react",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "specifier": "three",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "specifier": "three/examples/jsm/controls/OrbitControls.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "specifier": "three",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "specifier": "three/examples/jsm/controls/OrbitControls.js",
+            "line": 2,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "proposed": {
+        "route": "/explore/positions",
+        "roots": [
+          "app/layout.tsx",
+          "app/explore/[...section]/page.tsx"
+        ],
+        "workspace": null,
+        "crozatOpen": false,
+        "pageId": "positions",
+        "overlay": true,
+        "selectedCollectionBranch": {
+          "pageId": "positions",
+          "branchLine": 280,
+          "component": "RonzanoPremotorPositionViewer",
+          "specifier": "./RonzanoPremotorPositionViewer",
+          "line": 280
+        },
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 121
+        },
+        "paths": [
+          "app/ResearchActiveRecordProvider.tsx",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/RonzanoPremotorPositionViewer.tsx",
+          "app/SiteNavigation.tsx",
+          "app/academic-interface.css",
+          "app/explore/[...section]/page.tsx",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/matson-sci-timecourse.js",
+          "app/morphology-viewport-scale.js",
+          "app/neurolucida-native-contour-admission.js",
+          "app/neurolucida-native-detail-admission.js",
+          "app/neurolucida-native-detail-records.js",
+          "app/neurolucida-native-soma-contours.js",
+          "app/pv-independent-research-records.js",
+          "app/research-active-record.js",
+          "app/research-explorer-index.js",
+          "app/research-information-layout.css",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-record-presentation.js",
+          "app/research-selection-delta.js",
+          "app/research-skip-link.css",
+          "app/research-supplemental-morphology-records.js",
+          "app/ronzano-premotor-position-data.js",
+          "app/ronzano-premotor-position-source-view.js",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "data/neurolucida-native-contour-admission-catalog-0.3.json",
+          "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+          "data/pv-independent-morphology-routes-0.1.json",
+          "data/research-explorer-transport-0.1.json",
+          "data/research-renderer-runtime-inputs-2.91.json",
+          "data/ronzano-premotor-position-reference-0.1.json",
+          "package.json"
+        ],
+        "edges": [
+          {
+            "from": "app/layout.tsx",
+            "to": "app/globals.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/academic-interface.css",
+            "line": 4,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-iteration.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-iteration.js",
+            "to": "package.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/ResearchSkipLink.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchSkipLink.tsx",
+            "to": "app/research-skip-link.css",
+            "line": 3,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/SiteNavigation.tsx",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.ts",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "to": "app/site-navigation.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/layout.tsx",
+            "to": "app/research-pages.css",
+            "line": 8,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/explore/[...section]/page.tsx",
+            "to": "app/ResearchRoutePage.tsx",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchRoutePage.tsx",
+            "to": "app/ResearchCollectionPage.tsx",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/ResearchActiveRecordProvider.tsx",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-explorer-index.js",
+            "line": 17,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-explorer-index.js",
+            "to": "app/research-record-presentation.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-record-presentation.js",
+            "to": "data/neurolucida-native-contour-admission-catalog-0.3.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-record-presentation.js",
+            "to": "app/neurolucida-native-contour-admission.js",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/neurolucida-native-contour-admission.js",
+            "to": "app/neurolucida-native-soma-contours.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/neurolucida-native-contour-admission.js",
+            "to": "app/neurolucida-native-detail-admission.js",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/neurolucida-native-detail-admission.js",
+            "to": "app/neurolucida-native-detail-records.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-explorer-index.js",
+            "to": "data/research-explorer-transport-0.1.json",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-supplemental-morphology-records.js",
+            "line": 18,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-supplemental-morphology-records.js",
+            "to": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-supplemental-morphology-records.js",
+            "to": "app/pv-independent-research-records.js",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/pv-independent-research-records.js",
+            "to": "data/pv-independent-morphology-routes-0.1.json",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/pv-independent-research-records.js",
+            "to": "data/research-renderer-runtime-inputs-2.91.json",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/pv-independent-research-records.js",
+            "to": "app/research-record-presentation.js",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-supplemental-morphology-records.js",
+            "to": "app/research-record-presentation.js",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-active-record.js",
+            "line": 22,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-active-record.js",
+            "to": "app/research-explorer-index.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "to": "app/research-selection-delta.js",
+            "line": 31,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-selection-delta.js",
+            "to": "app/research-active-record.js",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/research-selection-delta.js",
+            "to": "app/research-record-presentation.js",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/research-explorer-index.js",
+            "line": 12,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/matson-sci-timecourse.js",
+            "line": 13,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/research-information-layout.css",
+            "line": 14,
+            "kind": "side_effect_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "to": "app/RonzanoPremotorPositionViewer.tsx",
+            "line": 23,
+            "kind": "selected_page_lazy_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "to": "data/ronzano-premotor-position-reference-0.1.json",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "to": "app/ronzano-premotor-position-data.js",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "to": "app/ronzano-premotor-position-source-view.js",
+            "line": 8,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "data/ronzano-premotor-position-reference-0.1.json",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "data/research-renderer-runtime-inputs-2.91.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "app/ronzano-premotor-position-data.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "to": "app/morphology-viewport-scale.js",
+            "line": 6,
+            "kind": "value_import"
+          }
+        ],
+        "typeOnly": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "react",
+            "line": 5,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchRoutePage.tsx",
+            "specifier": "next",
+            "line": 1,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "specifier": "./ResearchExplorer",
+            "line": 12,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchExplorer",
+            "line": 10,
+            "reason": "explicit type-only import is erased"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MatsonSciTimecourseExplorer",
+            "line": 11,
+            "reason": "explicit type-only import is erased"
+          }
+        ],
+        "excludedLazy": [
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ObservedMorphologyRouteLibrary",
+            "line": 16,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MorphologyViewer",
+            "line": 17,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./InterneuronTypeAtlas",
+            "line": 18,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ZebrafishSpinalTaxonomyPanel",
+            "line": 19,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./AdditionalResearchEvidence",
+            "line": 20,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MolecularConcordanceWorkbench",
+            "line": 21,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./AtlasReferenceViewer",
+            "line": 22,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchExplorer",
+            "line": 24,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchOverview",
+            "line": 25,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./MatsonSciTimecourseExplorer",
+            "line": 26,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./InterneuronKnowledgeCoverage",
+            "line": 27,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "./ResearchSourceRegistry",
+            "line": 28,
+            "reason": "alternate Collection pageId is not mounted on /explore/positions"
+          }
+        ],
+        "externals": [
+          {
+            "from": "app/layout.tsx",
+            "specifier": "next/font/google",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/globals.css",
+            "specifier": "tailwindcss",
+            "kind": "CSS_external_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/SiteNavigation.tsx",
+            "specifier": "next/navigation",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchRoutePage.tsx",
+            "specifier": "next/navigation",
+            "line": 2,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "next/link",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchCollectionPage.tsx",
+            "specifier": "react",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ResearchActiveRecordProvider.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "specifier": "three",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/RonzanoPremotorPositionViewer.tsx",
+            "specifier": "three/examples/jsm/controls/OrbitControls.js",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "specifier": "three",
+            "line": 1,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/ronzano-premotor-position-source-view.js",
+            "specifier": "three/examples/jsm/controls/OrbitControls.js",
+            "line": 2,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "baselineCount": 37,
+      "proposedCount": 37,
+      "addedRuntimePaths": [],
+      "removedRuntimePaths": [],
+      "sameStaticEdgeSet": true
+    },
+    {
+      "name": "trevisan_component_import_closure",
+      "baseline": {
+        "route": "component-import-closure-only",
+        "roots": [
+          "app/TrevisanV1AgeAtlas.tsx"
+        ],
+        "workspace": null,
+        "crozatOpen": false,
+        "pageId": null,
+        "overlay": false,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 84
+        },
+        "paths": [
+          "app/TrevisanV1AgeAtlas.tsx",
+          "data/trevisan-v1-age-atlas-reference-0.1.json",
+          "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+          "data/trevisan-v1-source-data-availability-audit-0.1.json"
+        ],
+        "edges": [
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-age-atlas-reference-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-source-data-availability-audit-0.1.json",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+            "line": 6,
+            "kind": "value_import"
+          }
+        ],
+        "typeOnly": [],
+        "excludedLazy": [],
+        "externals": [
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "proposed": {
+        "route": "component-import-closure-only",
+        "roots": [
+          "app/TrevisanV1AgeAtlas.tsx"
+        ],
+        "workspace": null,
+        "crozatOpen": false,
+        "pageId": null,
+        "overlay": true,
+        "selectedCollectionBranch": null,
+        "nestedCrozatGuard": {
+          "component": "CrozatExperimentObservationBrowser",
+          "specifier": "./CrozatExperimentObservationBrowser",
+          "defaultOpen": false,
+          "guard": "showCrozatObservations && component",
+          "guardLine": 121
+        },
+        "paths": [
+          "app/TrevisanV1AgeAtlas.tsx",
+          "app/exact-source-audit-workbench.js",
+          "data/trevisan-v1-age-atlas-reference-0.1.json",
+          "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+          "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+          "data/trevisan-v1-source-data-availability-audit-0.1.json"
+        ],
+        "edges": [
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-age-atlas-reference-0.1.json",
+            "line": 4,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-source-data-availability-audit-0.1.json",
+            "line": 5,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+            "line": 6,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+            "line": 7,
+            "kind": "value_import"
+          },
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "to": "app/exact-source-audit-workbench.js",
+            "line": 8,
+            "kind": "value_import"
+          }
+        ],
+        "typeOnly": [],
+        "excludedLazy": [],
+        "externals": [
+          {
+            "from": "app/TrevisanV1AgeAtlas.tsx",
+            "specifier": "react",
+            "line": 3,
+            "kind": "value_import"
+          }
+        ],
+        "unresolvedDynamic": []
+      },
+      "baselineCount": 4,
+      "proposedCount": 6,
+      "addedRuntimePaths": [
+        "app/exact-source-audit-workbench.js",
+        "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json"
+      ],
+      "removedRuntimePaths": [],
+      "sameStaticEdgeSet": false
+    }
+  ],
+  "workspaceFragmentProof": [
+    {
+      "fragment": "#source-exact-inputs",
+      "resolvedWorkspace": "source-exact-inputs"
+    },
+    {
+      "fragment": "#exact-source-audit-heading",
+      "resolvedWorkspace": "source-exact-inputs"
+    },
+    {
+      "fragment": "#esa-selected-sample-heading",
+      "resolvedWorkspace": "source-exact-inputs"
+    }
+  ],
+  "workspaceMountGuards": {
+    "before": {
+      "defaultOpen": false,
+      "viewLookup": "views[workspace.id]",
+      "viewLookupLine": 26,
+      "guard": "open && selected View",
+      "guardLine": 46,
+      "sourceAuditsPageFollowFragmentsLiteralTrue": true,
+      "pageMountLine": 10
+    },
+    "proposed": {
+      "defaultOpen": false,
+      "viewLookup": "views[workspace.id]",
+      "viewLookupLine": 26,
+      "guard": "open && selected View",
+      "guardLine": 46,
+      "sourceAuditsPageFollowFragmentsLiteralTrue": true,
+      "pageMountLine": 10
+    }
+  },
+  "trevisanExistingParentMount": {
+    "parentPath": "app/InterneuronTypeAtlas.tsx",
+    "parentPin": {
+      "bytes": 153132,
+      "sha256": "7f05bd0419dbcc34dee6f144e37f66528682a6e3c4474943662a20ce91a1cd86"
+    },
+    "importLine": 27,
+    "childMountLine": 1392,
+    "mountUnconditionalWhenParentRenders": true,
+    "selectedSourceAuditsWorkspaceContainsTrevisanComponent": false
+  },
+  "graphCoverage": [
+    {
+      "path": "app/CrozatExperimentObservationBrowser.tsx",
+      "origin": "actual_current_root",
+      "bytes": 9830,
+      "sha256": "b901cff2ebb52f83e5fa4956e52704cd2c0eca520b514fa6567cd1320fb27c86",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/ExactSourceAuditWorkbench.tsx",
+      "origin": "sealed_proposal",
+      "bytes": 18625,
+      "sha256": "95035af0f60ee102247f8d9763c4b0ac790503d59e344c8edcd3f00df14c2ef4",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/ResearchActiveRecordProvider.tsx",
+      "origin": "actual_current_root",
+      "bytes": 8161,
+      "sha256": "9365f7106dd429065b97be89776b36b0eae3c17b62c310f4e4d434e064852224",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "origin": "actual_current_root",
+      "bytes": 14684,
+      "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/ResearchRoutePage.tsx",
+      "origin": "actual_current_root",
+      "bytes": 4905,
+      "sha256": "711583dbf0968dc507280f33f00b1ae0b6634833a832415ebd6d9d734269f1c2",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/ResearchSkipLink.tsx",
+      "origin": "actual_current_root",
+      "bytes": 506,
+      "sha256": "0506d46f103723d4c81696f03ff67508dba1bd0a27cd28e2520fdcd134f6c817",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/RonzanoPremotorPositionViewer.tsx",
+      "origin": "actual_current_root",
+      "bytes": 38229,
+      "sha256": "7d991ea250384f3bfca2b1b186d984c85b308153e99dca5bda16e53c32a72c6c",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/SiteNavigation.tsx",
+      "origin": "actual_current_root",
+      "bytes": 3534,
+      "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "origin": "sealed_proposal",
+      "bytes": 3326,
+      "sha256": "08f765746c5ef17c734893c7d42715ac12cd4df6baed8f63954ac3cd7364b9d8",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/TrevisanV1AgeAtlas.tsx",
+      "origin": "sealed_proposal",
+      "bytes": 14607,
+      "sha256": "2a508f47c35a4dfc9ffa1260d8c7ef656399594dfd640230998091cd0c7eb533",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/academic-interface.css",
+      "origin": "actual_current_root",
+      "bytes": 14349,
+      "sha256": "6781d5ee5291e534f0b07716467bfb71665ffeec260921b4ad2c173fa36dd7a1",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/crozat-experiment-observations.js",
+      "origin": "actual_current_root",
+      "bytes": 3544,
+      "sha256": "6bfe1142a45aff9e259910c6ab74031879abf76d3c64e3b09bd3282f7e2ea66a",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/exact-source-audit-workbench.css",
+      "origin": "actual_current_root",
+      "bytes": 2738,
+      "sha256": "188cff5f5a63dbacb9e1e0c13c30fd4aa3f967fee88ee163a9134b6593ffb90a",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/exact-source-audit-workbench.js",
+      "origin": "sealed_proposal",
+      "bytes": 9225,
+      "sha256": "cfa38097a7596d08c48a57050a2d9d5f6a344eca2adb6a8ad4a0d4c440d3990a",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/explore/[...section]/page.tsx",
+      "origin": "actual_current_root",
+      "bytes": 618,
+      "sha256": "667907e536b0501cd175e8bfa1a3ba9f56eaf3e2e9d6af6ee3f2096aa9ed7577",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/globals.css",
+      "origin": "actual_current_root",
+      "bytes": 336412,
+      "sha256": "703c8cc80e9a6d4ab03d6c422f37beff15eb6c331a07a97f767fff396e9f254e",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/layout.tsx",
+      "origin": "actual_current_root",
+      "bytes": 1120,
+      "sha256": "9fc00113c433c050f51d51f33ac6416febf1950322df01c08a42d52f67a2c01a",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/matson-sci-timecourse.js",
+      "origin": "actual_current_root",
+      "bytes": 2258,
+      "sha256": "93d4befd4d4b9db85adabbde548d60c9264457f19b378c01ef044080607d5b98",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/morphology-viewport-scale.js",
+      "origin": "actual_current_root",
+      "bytes": 3658,
+      "sha256": "f51a96dd5fe21d36ca7455245145b002a232116115e5af992d0f6465542f1aac",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/neurolucida-native-contour-admission.js",
+      "origin": "actual_current_root",
+      "bytes": 24905,
+      "sha256": "1094e09a727dbaf63979fd472384aa90ec5bfddd70130ac8c4fbd00ce8f0f238",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/neurolucida-native-detail-admission.js",
+      "origin": "actual_current_root",
+      "bytes": 11002,
+      "sha256": "463797dbe8725e35b23ec26f95fb5506e2f553436f78d2013b62a5778f6ea50a",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/neurolucida-native-detail-records.js",
+      "origin": "actual_current_root",
+      "bytes": 3861,
+      "sha256": "102be381c2479bcfb49b8638e7a65e5747c3cebf7280baa669d1ba7af3eefef3",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/neurolucida-native-soma-contours.js",
+      "origin": "actual_current_root",
+      "bytes": 6013,
+      "sha256": "e3224b3a1bfd1fb4c6ddb223b6dc0d8f7ddcb4628048f44a6eb5ce499fec144e",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/pv-independent-research-records.js",
+      "origin": "actual_current_root",
+      "bytes": 7327,
+      "sha256": "2cf5ea49bb1b0208d38bd74ada692160e40f860c72b8fccf5442662c6c207ac7",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-active-record.js",
+      "origin": "actual_current_root",
+      "bytes": 4478,
+      "sha256": "9a37d242aecdc4e55cfc319b4bcc7738b4bd03edaef137e693025768aecc7586",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "origin": "actual_current_root",
+      "bytes": 28427,
+      "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-information-layout.css",
+      "origin": "actual_current_root",
+      "bytes": 15146,
+      "sha256": "e40034fdf3cd2add08c53cb385815166f1f82f26e7d276cb8665fa4b13aebafe",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-iteration.js",
+      "origin": "actual_current_root",
+      "bytes": 131,
+      "sha256": "be28603427513929ddec42cef88f9450bbdced99e76a8d5131128544f09f4773",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-pages.css",
+      "origin": "actual_current_root",
+      "bytes": 15287,
+      "sha256": "568e33287d920c68604b0d5d84396636d69a8086bbe2253ce7ba1ebd2bae0113",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-record-presentation.js",
+      "origin": "actual_current_root",
+      "bytes": 17681,
+      "sha256": "22d7ec19c1a4da3180cbad55181f76974e83f4b3df90aacdd2537b8e1138df04",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-selection-delta.js",
+      "origin": "actual_current_root",
+      "bytes": 18317,
+      "sha256": "b71bff9c254f1e4b6650f35fd67426e9300ba4d8fa2e1b4059b91d7f0d16d450",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-skip-link.css",
+      "origin": "actual_current_root",
+      "bytes": 637,
+      "sha256": "78853b80261fe922a0a5ecf85450845bdf615be60a117a78d85d8c54072a5cbe",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/research-supplemental-morphology-records.js",
+      "origin": "actual_current_root",
+      "bytes": 12820,
+      "sha256": "3dc60172e4e2c74c590a32ac3d5f86222288031a9e02fcf3db37c10c1bda4944",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/ronzano-premotor-position-data.js",
+      "origin": "actual_current_root",
+      "bytes": 6530,
+      "sha256": "d3ce7835d6818aa1f8ac37da5a5e1d1b63aee76ea889a987cf7b3f907019e4a5",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/ronzano-premotor-position-source-view.js",
+      "origin": "actual_current_root",
+      "bytes": 32695,
+      "sha256": "1669186c3ff17ef8e44940f15cd8d9afe75a93653a3ff9aadc03ce7924458827",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/site-navigation.css",
+      "origin": "actual_current_root",
+      "bytes": 5436,
+      "sha256": "e76e52308dc6c4d072095430881dcca53eb49e5c5b26bf72e54793a71967c31b",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/site-navigation.ts",
+      "origin": "actual_current_root",
+      "bytes": 4819,
+      "sha256": "4d064821ad98494a20f2096596b63b87c4dfa664d77cda49a8db3d154e17b612",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "app/source-audit-workspaces.css",
+      "origin": "actual_current_root",
+      "bytes": 1160,
+      "sha256": "e44f14c166a4a5027e9fd383c1c024032268024080b265319b932bb3fac48f25",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/source-audit-workspaces.js",
+      "origin": "actual_current_root",
+      "bytes": 1464,
+      "sha256": "5c0056892e8e3d3ed33507cb197ed73fa5bb33c4c866183d6b1b75eeb2920d42",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "app/source-audits/page.tsx",
+      "origin": "actual_current_root",
+      "bytes": 891,
+      "sha256": "2c5daacfd954ef20b153390a457fb5a780de8d00d0f5ad711323b4fa3c75b5db",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/crozat-experiment-family-observations-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 1878506,
+      "sha256": "94b3dfda943df4979ae6dec09ebf2ff9d74e12cf81b04cbae6ac9c9c54ae0e42",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/neurolucida-native-contour-admission-catalog-0.3.json",
+      "origin": "actual_current_root",
+      "bytes": 23571,
+      "sha256": "d5cc13f99c2e6ec0e41d6352512e592f5d6dc1d118f7d7c0b69ec2239deda8fe",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "data/neuromorpho-publication-discovery-audit-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 1341528,
+      "sha256": "9d79394d0baf5bafbc4265b4b4baec72e0d62982b5a359292993673c482f0fcc",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 302205,
+      "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "data/pv-independent-morphology-routes-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 22190,
+      "sha256": "13ed6f8fce5170100e3aad42fb220ff1b129fa1a850b93dbea39f2951ff0ceef",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 661,
+      "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "data/research-renderer-runtime-inputs-2.91.json",
+      "origin": "actual_current_root",
+      "bytes": 36638,
+      "sha256": "35ce037dd7e4e2bafa3083114eccc7f050b01e2ec0cea1a8b3f684c617d6efdf",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/ronzano-premotor-position-reference-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 38612,
+      "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    },
+    {
+      "path": "data/trevisan-v1-age-atlas-reference-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 8298,
+      "sha256": "fa9fe22ca6a94cc4460ac3364d28c4982b5e4e06b0bb321b700f7f7a5c95aa03",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 122391,
+      "sha256": "ec34da947a38f574bf6c80495a3f1ede02377a5adc3020d8e079c2a880fb07be",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 6504,
+      "sha256": "4b910fa5aaeeabd30fa42c75de8e79f9e381520605c88c5c69a5c31c79ec1fe6",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "data/trevisan-v1-source-data-availability-audit-0.1.json",
+      "origin": "actual_current_root",
+      "bytes": 4062,
+      "sha256": "2e5b3437c2cb367b1733d75fedb6112b6c875ffc3c1d469eaa6ace43227d8e8f",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 0
+    },
+    {
+      "path": "package.json",
+      "origin": "actual_current_root",
+      "bytes": 40210,
+      "sha256": "8ab53acc6e3ac86015fb8aeb0bc1f9b93f4af49bd975fda5ec21d0b17511efde",
+      "currentCanonicalCount": 1,
+      "compactRuntimeCount": 1
+    }
+  ],
+  "canonical": {
+    "recipePath": "tools/build_research_iteration_manifest_2_91.mjs",
+    "recipePin": {
+      "bytes": 58149,
+      "sha256": "7fff6ee2ea2620d0d06483a6da4e54dae50472e2a990228a2feb4ce4065c87ec"
+    },
+    "manifestPath": "data/research-iteration-manifest-2.91.json",
+    "manifestPin": {
+      "bytes": 527719,
+      "sha256": "4d1828ceabcb1d399819383ad54340feb846b86de1e24d1ff9932564dc0cf7fe"
+    },
+    "currentCount": 2573,
+    "requiredNewPaths": [
+      "app/exact-source-audit-workbench.d.ts",
+      "tests/trevisan-v1-sample-bookmark.test.mjs"
+    ],
+    "newTargetAdvice": [
+      {
+        "path": "app/exact-source-audit-workbench.d.ts",
+        "currentCanonicalCount": 0,
+        "explicitCoreCount": 0,
+        "coveringBoundedFamilies": [
+          {
+            "directory": "app",
+            "pattern": "/^(?:same-cell-internal-source|source-object-identity|source-identity-hierarchy|SourceIdentityHierarchy|atlas-sampling-sensitivity|AtlasSamplingSensitivity|connectivity-assertion|ConnectivityAssertion|cano-chol-in-nucleus|CanoCholInNucleus|independent-source-|bil-xenium-(?:source|metadata|geometry)|molecular-concordance|MolecularConcordance|ExactSourceAudit|exact-source-audit|comparative-swc|ComparativeSwc|janelia-wt-|JaneliaWt|pkd2l1-experiment|Pkd2l1Experiment|crozat-experiment|CrozatExperiment)/"
+          }
+        ],
+        "runtimeImportedInAnyAuditedScenario": false
+      },
+      {
+        "path": "tests/trevisan-v1-sample-bookmark.test.mjs",
+        "currentCanonicalCount": 0,
+        "explicitCoreCount": 0,
+        "coveringBoundedFamilies": [],
+        "runtimeImportedInAnyAuditedScenario": false
+      }
+    ],
+    "mandatoryExplicitCoreAddition": [
+      "tests/trevisan-v1-sample-bookmark.test.mjs"
+    ],
+    "repinExistingModifiedPaths": [
+      "app/TrevisanV1AgeAtlas.tsx",
+      "app/ExactSourceAuditWorkbench.tsx",
+      "app/exact-source-audit-workbench.js",
+      "app/SourceAuditWorkspaces.tsx"
+    ],
+    "noUnrelatedExistingInputRemoval": true,
+    "timelineAndRecipePinsParentOwned": true,
+    "newRuntimeModuleFiles": []
+  },
+  "privateAuthority": {
+    "buildScopes": [
+      {
+        "module": "app/main-scene-source-view.js",
+        "modulePin": {
+          "bytes": 22896,
+          "sha256": "747c1d160d19886c24959b76b5562053fae717279c75c949dbfdb151577f1173"
+        },
+        "export": "MAIN_SCENE_SOURCE_VIEW_BUILD",
+        "count": 40,
+        "paths": [
+          "app/SceneCanvas.tsx",
+          "app/AtlasPrototype.tsx",
+          "app/atlas-types.ts",
+          "app/ObservedMorphologyRouteLibrary.tsx",
+          "data/chen-dai-planar-morphology-routes-0.1.json",
+          "data/pv-independent-morphology-routes-0.1.json",
+          "app/MorphologySourceViewControls.tsx",
+          "app/main-scene-source-view.js",
+          "app/main-scene-state-import.js",
+          "app/main-scene-export.js",
+          "app/main-scene-auxiliary-verification.js",
+          "app/main-scene-morphology-verification.js",
+          "app/morphology-geometry-verification.js",
+          "app/morphology-source-frame-runtime.js",
+          "app/morphology-source-identity.js",
+          "app/source-object-identity.js",
+          "app/source-local-morphology-geometry.js",
+          "app/atlas-reference-geometry.js",
+          "app/morphology-neurite-inspection.js",
+          "app/MorphologyNeuriteInspector.tsx",
+          "app/morphology-neurite-inspector.css",
+          "app/morphology-viewport-scale.js",
+          "app/main-scene-source-camera-fit.js",
+          "app/neurolucida-dat-swc-crosswalk.js",
+          "app/microns-source-native-clipping.js",
+          "app/globals.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/morphology-source-view.css",
+          "package-lock.json",
+          "data/neuromorpho-census-main-scene-index-0.1.json",
+          "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+          "data/microns-observed-cell-nucleus-reference-0.1.json",
+          "data/microns-source-native-clipping-0.1.json",
+          "data/neurolucida-dat-swc-crosswalk-0.1.json"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/native-contour-source-view.js",
+        "modulePin": {
+          "bytes": 14185,
+          "sha256": "70e4e37c7ff52af96ac5f69dc5fc2df471b269bfae8778e42ac984f43803ebad"
+        },
+        "export": "NATIVE_CONTOUR_VIEW_BUILD",
+        "count": 41,
+        "paths": [
+          "app/NativeContourRecordViewer.tsx",
+          "app/native-contour-verification.js",
+          "app/native-contour-source-view.js",
+          "app/MorphologySourceViewControls.tsx",
+          "app/native-contour-png-export.js",
+          "app/main-scene-source-view.js",
+          "app/native-contour-detail.css",
+          "app/morphology-source-view.css",
+          "app/globals.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/neurolucida-native-contour-admission.js",
+          "app/neurolucida-native-soma-contours.js",
+          "app/neurolucida-native-detail-admission.js",
+          "app/neurolucida-native-detail-records.js",
+          "app/native-contour-derived-soma-surface.js",
+          "app/source-object-identity.js",
+          "app/independent-source-objects.js",
+          "data/neurolucida-native-contour-admission-catalog-0.3.json",
+          "data/neurolucida-native-contour-admission-catalog-0.4.json",
+          "data/native-contour-source-context-0.1.json",
+          "data/native-contour-derived-soma-surface-0.1.json",
+          "package-lock.json",
+          "app/neurolucida-dat-inventory.js",
+          "app/neurolucida-dat-file-admission.js",
+          "data/neurolucida-dat-file-manifest-0.1.json",
+          "app/native-dat-manifest-transport.js",
+          "data/native-dat-manifest-transport-0.1.json",
+          "app/morphology-viewport-scale.js",
+          "public/data/native_dat_file_manifests_v1/nmo-45718.json",
+          "public/data/native_dat_file_manifests_v1/nmo-45674.json",
+          "public/data/native_dat_file_manifests_v1/nmo-50424.json",
+          "public/data/native_dat_file_manifests_v1/nmo-50394.json",
+          "public/data/native_dat_file_manifests_v1/nmo-50408.json",
+          "public/data/native_dat_file_manifests_v1/nmo-108978.json",
+          "public/data/native_dat_file_manifests_v1/nmo-249676.json"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/morphology-source-view.js",
+        "modulePin": {
+          "bytes": 19028,
+          "sha256": "9cf704f3136e67925fc3fd7b4d1eab602015ae7a674d63be3399052329136fe3"
+        },
+        "export": "MORPHOLOGY_SOURCE_VIEW_RENDERER_BUILD",
+        "count": 40,
+        "paths": [
+          "app/morphology-png-export.js",
+          "app/source-view-png-raster.js",
+          "app/native-contour-png-export.js",
+          "app/main-scene-source-view.js",
+          "app/SourceLocalMorphologyViewport.tsx",
+          "app/MorphologySourceViewControls.tsx",
+          "app/MorphologyNeuriteInspector.tsx",
+          "app/morphology-source-view.js",
+          "app/morphology-census-data.ts",
+          "app/morphology-geometry-verification.js",
+          "app/morphology-source-frame-runtime.js",
+          "app/morphology-source-identity.js",
+          "app/source-object-identity.js",
+          "app/source-local-morphology-geometry.js",
+          "app/morphology-neurite-inspection.js",
+          "app/morphology-render-mode.js",
+          "app/morphology-viewport-scale.js",
+          "package-lock.json",
+          "app/neuromorpho-universe-view.css",
+          "app/neuromorpho-universe-verification.js",
+          "app/neuromorpho-swc-runtime.js",
+          "app/NeuroMorphoUniversePanel.tsx",
+          "data/neuromorpho-no-age-query-universe-0.1.json",
+          "data/neuromorpho-no-age-query-universe-roster-0.1.json",
+          "app/MorphologyViewer.tsx",
+          "app/source-list-roving-focus.js",
+          "app/source-list-roving-focus.d.ts",
+          "app/useSourceListRovingFocus.ts",
+          "app/source-list-keyboard.css",
+          "app/globals.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/morphology-neurite-inspector.css",
+          "app/morphology-source-view.css",
+          "app/morphology-source-proof.css"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/janelia-wt-source-view.js",
+        "modulePin": {
+          "bytes": 18994,
+          "sha256": "228c1de8ca691d2e6ed7e022d619ba90b71fd41f65234a9ebfb686bc1f37d103"
+        },
+        "export": "JANELIA_WT_SOURCE_VIEW_BUILD",
+        "count": 24,
+        "paths": [
+          "app/janelia-wt-source-view.js",
+          "app/janelia-wt-source-view.d.ts",
+          "app/janelia-wt-bounded-reference.js",
+          "app/janelia-wt-bounded-reference-viewer.tsx",
+          "app/janelia-wt-bounded-reference-viewer.module.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/source-object-identity.js",
+          "app/source-object-identity.d.ts",
+          "app/SourceIdentityHierarchyPanel.tsx",
+          "app/source-identity-hierarchy.css",
+          "app/source-view-png-raster.js",
+          "app/source-view-png-raster.d.ts",
+          "app/native-contour-png-export.js",
+          "app/main-scene-source-view.js",
+          "data/janelia-wt-bounded-reference-0.1.json",
+          "public/data/janelia_wt_reference_v1/raw.u8",
+          "public/data/janelia_wt_reference_v1/nucleus.u8",
+          "package-lock.json"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/comparative-swc-view-replay.js",
+        "modulePin": {
+          "bytes": 10257,
+          "sha256": "ce9134452000d839e9cc212cd76e5fd197ad40ff1186f9881a185e2a6cdcf157"
+        },
+        "export": "COMPARATIVE_SWC_VIEW_BUILD",
+        "count": 38,
+        "paths": [
+          "app/comparative-swc-view-replay.js",
+          "app/comparative-swc-view-replay.d.ts",
+          "app/comparative-swc-reference.js",
+          "app/comparative-swc-reference.d.ts",
+          "app/ComparativeSwcReferenceWorkbench.tsx",
+          "app/comparative-swc-reference.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/IndependentSourceObjectViewport.tsx",
+          "app/independent-source-workspace-types.ts",
+          "app/independent-source-workspace-state.js",
+          "app/independent-source-objects.js",
+          "app/independent-source-object-loader.js",
+          "app/neuromorpho-swc-runtime.js",
+          "app/source-object-identity.js",
+          "app/source-object-identity.d.ts",
+          "app/SourceIdentityHierarchyPanel.tsx",
+          "app/source-identity-hierarchy.css",
+          "app/comparative-swc-png-export.js",
+          "app/comparative-swc-png-export.d.ts",
+          "app/source-view-png-raster.js",
+          "app/source-view-png-raster.d.ts",
+          "app/native-contour-png-export.js",
+          "app/main-scene-source-view.js",
+          "data/comparative-swc-reference-0.1.json",
+          "public/data/comparative_swc_reference_v1/nmo-183779-api.json",
+          "public/data/comparative_swc_reference_v1/nmo-183779.swc",
+          "public/data/comparative_swc_reference_v1/nmo-183779-morphometry.json",
+          "public/data/comparative_swc_reference_v1/nmo-34024-api.json",
+          "public/data/comparative_swc_reference_v1/nmo-34024.swc",
+          "public/data/comparative_swc_reference_v1/nmo-34024-morphometry.json",
+          "package.json",
+          "package-lock.json"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/independent-source-object-view.js",
+        "modulePin": {
+          "bytes": 14209,
+          "sha256": "55887faab9c54643696e5a7397cf97d287aedc962a0722ad789db149da62e71b"
+        },
+        "export": "INDEPENDENT_OBJECT_VIEW_BUILD",
+        "count": 62,
+        "paths": [
+          "app/IndependentSourceObjectWorkspace.tsx",
+          "app/IndependentSourceObjectViewport.tsx",
+          "app/independent-source-workspace.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/independent-source-workspace-types.ts",
+          "app/independent-source-objects.js",
+          "app/independent-source-object-loader.js",
+          "app/independent-source-object-loader.d.ts",
+          "app/independent-source-workspace-state.js",
+          "app/independent-source-object-view.js",
+          "app/independent-source-object-view.d.ts",
+          "app/independent-source-object-png.js",
+          "app/independent-source-object-png.d.ts",
+          "app/source-object-identity.js",
+          "app/source-object-identity.d.ts",
+          "app/SourceIdentityHierarchyPanel.tsx",
+          "app/source-identity-hierarchy.css",
+          "app/source-list-roving-focus.js",
+          "app/source-list-roving-focus.d.ts",
+          "app/useSourceListRovingFocus.ts",
+          "app/source-list-keyboard.css",
+          "app/neurolucida-native-contour-admission.js",
+          "app/native-contour-derived-soma-surface.js",
+          "app/banc-v888-in14a018-morphology-route.js",
+          "app/source-view-png-raster.js",
+          "app/source-view-png-raster.d.ts",
+          "app/native-contour-png-export.js",
+          "app/main-scene-source-view.js",
+          "data/neurolucida-native-contour-admission-catalog-0.3.json",
+          "data/neurolucida-native-contour-admission-catalog-0.4.json",
+          "data/microns-observed-cell-nucleus-reference-0.1.json",
+          "data/banc-v888-in14a018-morphology-route-0.1.json",
+          "data/super-clem-palm-localization-reference-0.1.json",
+          "data/microstructformer-ultrastructure-reference-0.1.json",
+          "data/native-contour-derived-soma-surface-0.1.json",
+          "data/neurolucida-dat-swc-crosswalk-0.1.json",
+          "data/banc-v888-candidate-audit-0.1.json",
+          "data/native-contour-source-context-0.1.json",
+          "package.json",
+          "package-lock.json",
+          "public/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+          "public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-45674-source-closed-soma-contours.json",
+          "public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-50424-mbf-cell-body-line-loops.json",
+          "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50394-mbf-cell-body-line-loops.json",
+          "public/data/native_contour_derived_soma_surface_v1/nmo-50394-cell-body-interpolated-open-shell-0.1.json",
+          "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50408-mbf-cell-body-line-loops.json",
+          "public/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+          "public/data/neurolucida_native_detail_v1/nmo-249676-soma-line-loops.json",
+          "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+          "public/data/microns_phase1_v185_4_root_648518346349516051_v1/source/metadata/soma_valence_v185.csv",
+          "public/data/banc_v888_in14a018_comparative_v1/720575941350424112_skeleton.swc",
+          "public/data/superclem_palm_native_points_0_1.json",
+          "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.positions.f32le.bin",
+          "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.triangles.u32le.bin",
+          "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.positions.f32le.bin",
+          "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.triangles.u32le.bin"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/native-contour-diagnostics.js",
+        "modulePin": {
+          "bytes": 16673,
+          "sha256": "cd020b5ac3dfcf9ad09bffac7f7ae286dc10caaad618a9f896629ba78e98b8f2"
+        },
+        "export": "NATIVE_CONTOUR_DIAGNOSTIC_BUILD",
+        "count": 25,
+        "paths": [
+          "app/NativeContourRecordViewer.tsx",
+          "app/NativeContourDiagnosticsDisclosure.tsx",
+          "app/NativeContourDiagnostics.tsx",
+          "app/native-contour-diagnostics.js",
+          "app/native-contour-diagnostics.d.ts",
+          "app/native-contour-diagnostics.css",
+          "app/academic-interface.css",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/SiteNavigation.tsx",
+          "app/site-navigation.ts",
+          "app/site-navigation.css",
+          "app/research-pages.css",
+          "app/native-contour-verification.js",
+          "app/neurolucida-native-contour-admission.js",
+          "app/neurolucida-native-detail-admission.js",
+          "app/neurolucida-dat-inventory.js",
+          "app/neurolucida-dat-file-admission.js",
+          "app/native-dat-manifest-transport.js",
+          "data/neurolucida-native-contour-admission-catalog-0.3.json",
+          "data/neurolucida-native-contour-admission-catalog-0.4.json",
+          "data/native-contour-source-context-0.1.json",
+          "data/neurolucida-dat-file-manifest-0.1.json",
+          "data/native-dat-manifest-transport-0.1.json",
+          "package-lock.json"
+        ],
+        "I58OwnedIntersection": []
+      },
+      {
+        "module": "app/ronzano-premotor-position-source-view.js",
+        "modulePin": {
+          "bytes": 32695,
+          "sha256": "1669186c3ff17ef8e44940f15cd8d9afe75a93653a3ff9aadc03ce7924458827"
+        },
+        "export": "RONZANO_SOURCE_VIEW_BUILD",
+        "count": 40,
+        "paths": [
+          "app/ResearchActiveRecordProvider.tsx",
+          "app/ResearchCollectionPage.tsx",
+          "app/ResearchRoutePage.tsx",
+          "app/ResearchSkipLink.tsx",
+          "app/RonzanoPremotorPositionViewer.tsx",
+          "app/SiteNavigation.tsx",
+          "app/academic-interface.css",
+          "app/explore/[...section]/page.tsx",
+          "app/globals.css",
+          "app/layout.tsx",
+          "app/matson-sci-timecourse.js",
+          "app/morphology-viewport-scale.js",
+          "app/neurolucida-native-contour-admission.js",
+          "app/neurolucida-native-detail-admission.js",
+          "app/neurolucida-native-detail-records.js",
+          "app/neurolucida-native-soma-contours.js",
+          "app/pv-independent-research-records.js",
+          "app/research-active-record.js",
+          "app/research-explorer-index.js",
+          "app/research-information-layout.css",
+          "app/research-iteration.js",
+          "app/research-pages.css",
+          "app/research-record-presentation.js",
+          "app/research-selection-delta.js",
+          "app/research-skip-link.css",
+          "app/research-supplemental-morphology-records.js",
+          "app/ronzano-premotor-position-data.js",
+          "app/ronzano-premotor-position-source-view.d.ts",
+          "app/ronzano-premotor-position-source-view.js",
+          "app/site-navigation.css",
+          "app/site-navigation.ts",
+          "data/neurolucida-native-contour-admission-catalog-0.3.json",
+          "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+          "data/pv-independent-morphology-routes-0.1.json",
+          "data/research-explorer-transport-0.1.json",
+          "data/ronzano-premotor-position-reference-0.1.json",
+          "package-lock.json",
+          "package.json",
+          "public/data/research_explorer_index_v1/asset-manifest.json",
+          "public/data/research_explorer_index_v1/search-index.json"
+        ],
+        "I58OwnedIntersection": []
+      }
+    ],
+    "union": [
+      "app/AtlasPrototype.tsx",
+      "app/ComparativeSwcReferenceWorkbench.tsx",
+      "app/IndependentSourceObjectViewport.tsx",
+      "app/IndependentSourceObjectWorkspace.tsx",
+      "app/MorphologyNeuriteInspector.tsx",
+      "app/MorphologySourceViewControls.tsx",
+      "app/MorphologyViewer.tsx",
+      "app/NativeContourDiagnostics.tsx",
+      "app/NativeContourDiagnosticsDisclosure.tsx",
+      "app/NativeContourRecordViewer.tsx",
+      "app/NeuroMorphoUniversePanel.tsx",
+      "app/ObservedMorphologyRouteLibrary.tsx",
+      "app/ResearchActiveRecordProvider.tsx",
+      "app/ResearchCollectionPage.tsx",
+      "app/ResearchRoutePage.tsx",
+      "app/ResearchSkipLink.tsx",
+      "app/RonzanoPremotorPositionViewer.tsx",
+      "app/SceneCanvas.tsx",
+      "app/SiteNavigation.tsx",
+      "app/SourceIdentityHierarchyPanel.tsx",
+      "app/SourceLocalMorphologyViewport.tsx",
+      "app/academic-interface.css",
+      "app/atlas-reference-geometry.js",
+      "app/atlas-types.ts",
+      "app/banc-v888-in14a018-morphology-route.js",
+      "app/comparative-swc-png-export.d.ts",
+      "app/comparative-swc-png-export.js",
+      "app/comparative-swc-reference.css",
+      "app/comparative-swc-reference.d.ts",
+      "app/comparative-swc-reference.js",
+      "app/comparative-swc-view-replay.d.ts",
+      "app/comparative-swc-view-replay.js",
+      "app/explore/[...section]/page.tsx",
+      "app/globals.css",
+      "app/independent-source-object-loader.d.ts",
+      "app/independent-source-object-loader.js",
+      "app/independent-source-object-png.d.ts",
+      "app/independent-source-object-png.js",
+      "app/independent-source-object-view.d.ts",
+      "app/independent-source-object-view.js",
+      "app/independent-source-objects.js",
+      "app/independent-source-workspace-state.js",
+      "app/independent-source-workspace-types.ts",
+      "app/independent-source-workspace.css",
+      "app/janelia-wt-bounded-reference-viewer.module.css",
+      "app/janelia-wt-bounded-reference-viewer.tsx",
+      "app/janelia-wt-bounded-reference.js",
+      "app/janelia-wt-source-view.d.ts",
+      "app/janelia-wt-source-view.js",
+      "app/layout.tsx",
+      "app/main-scene-auxiliary-verification.js",
+      "app/main-scene-export.js",
+      "app/main-scene-morphology-verification.js",
+      "app/main-scene-source-camera-fit.js",
+      "app/main-scene-source-view.js",
+      "app/main-scene-state-import.js",
+      "app/matson-sci-timecourse.js",
+      "app/microns-source-native-clipping.js",
+      "app/morphology-census-data.ts",
+      "app/morphology-geometry-verification.js",
+      "app/morphology-neurite-inspection.js",
+      "app/morphology-neurite-inspector.css",
+      "app/morphology-png-export.js",
+      "app/morphology-render-mode.js",
+      "app/morphology-source-frame-runtime.js",
+      "app/morphology-source-identity.js",
+      "app/morphology-source-proof.css",
+      "app/morphology-source-view.css",
+      "app/morphology-source-view.js",
+      "app/morphology-viewport-scale.js",
+      "app/native-contour-derived-soma-surface.js",
+      "app/native-contour-detail.css",
+      "app/native-contour-diagnostics.css",
+      "app/native-contour-diagnostics.d.ts",
+      "app/native-contour-diagnostics.js",
+      "app/native-contour-png-export.js",
+      "app/native-contour-source-view.js",
+      "app/native-contour-verification.js",
+      "app/native-dat-manifest-transport.js",
+      "app/neurolucida-dat-file-admission.js",
+      "app/neurolucida-dat-inventory.js",
+      "app/neurolucida-dat-swc-crosswalk.js",
+      "app/neurolucida-native-contour-admission.js",
+      "app/neurolucida-native-detail-admission.js",
+      "app/neurolucida-native-detail-records.js",
+      "app/neurolucida-native-soma-contours.js",
+      "app/neuromorpho-swc-runtime.js",
+      "app/neuromorpho-universe-verification.js",
+      "app/neuromorpho-universe-view.css",
+      "app/pv-independent-research-records.js",
+      "app/research-active-record.js",
+      "app/research-explorer-index.js",
+      "app/research-information-layout.css",
+      "app/research-iteration.js",
+      "app/research-pages.css",
+      "app/research-record-presentation.js",
+      "app/research-selection-delta.js",
+      "app/research-skip-link.css",
+      "app/research-supplemental-morphology-records.js",
+      "app/ronzano-premotor-position-data.js",
+      "app/ronzano-premotor-position-source-view.d.ts",
+      "app/ronzano-premotor-position-source-view.js",
+      "app/site-navigation.css",
+      "app/site-navigation.ts",
+      "app/source-identity-hierarchy.css",
+      "app/source-list-keyboard.css",
+      "app/source-list-roving-focus.d.ts",
+      "app/source-list-roving-focus.js",
+      "app/source-local-morphology-geometry.js",
+      "app/source-object-identity.d.ts",
+      "app/source-object-identity.js",
+      "app/source-view-png-raster.d.ts",
+      "app/source-view-png-raster.js",
+      "app/useSourceListRovingFocus.ts",
+      "data/banc-v888-candidate-audit-0.1.json",
+      "data/banc-v888-in14a018-morphology-route-0.1.json",
+      "data/chen-dai-planar-morphology-routes-0.1.json",
+      "data/comparative-swc-reference-0.1.json",
+      "data/janelia-wt-bounded-reference-0.1.json",
+      "data/microns-observed-cell-nucleus-reference-0.1.json",
+      "data/microns-source-native-clipping-0.1.json",
+      "data/microstructformer-ultrastructure-reference-0.1.json",
+      "data/native-contour-derived-soma-surface-0.1.json",
+      "data/native-contour-source-context-0.1.json",
+      "data/native-dat-manifest-transport-0.1.json",
+      "data/neurolucida-dat-file-manifest-0.1.json",
+      "data/neurolucida-dat-swc-crosswalk-0.1.json",
+      "data/neurolucida-native-contour-admission-catalog-0.3.json",
+      "data/neurolucida-native-contour-admission-catalog-0.4.json",
+      "data/neuromorpho-census-main-scene-index-0.1.json",
+      "data/neuromorpho-no-age-query-universe-0.1.json",
+      "data/neuromorpho-no-age-query-universe-roster-0.1.json",
+      "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "data/pv-independent-morphology-routes-0.1.json",
+      "data/research-explorer-transport-0.1.json",
+      "data/ronzano-premotor-position-reference-0.1.json",
+      "data/super-clem-palm-localization-reference-0.1.json",
+      "package-lock.json",
+      "package.json",
+      "public/data/allen_cord_20um_v3_0/atlas-contours.json",
+      "public/data/allen_cord_20um_v3_0/atlas-internal-compartments.json",
+      "public/data/banc_v888_in14a018_comparative_v1/720575941350424112_skeleton.swc",
+      "public/data/comparative_swc_reference_v1/nmo-183779-api.json",
+      "public/data/comparative_swc_reference_v1/nmo-183779-morphometry.json",
+      "public/data/comparative_swc_reference_v1/nmo-183779.swc",
+      "public/data/comparative_swc_reference_v1/nmo-34024-api.json",
+      "public/data/comparative_swc_reference_v1/nmo-34024-morphometry.json",
+      "public/data/comparative_swc_reference_v1/nmo-34024.swc",
+      "public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-45674-source-closed-soma-contours.json",
+      "public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-50424-mbf-cell-body-line-loops.json",
+      "public/data/janelia_wt_reference_v1/nucleus.u8",
+      "public/data/janelia_wt_reference_v1/raw.u8",
+      "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.positions.f32le.bin",
+      "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.triangles.u32le.bin",
+      "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.positions.f32le.bin",
+      "public/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.triangles.u32le.bin",
+      "public/data/microns_phase1_v185_4_root_648518346349516051_v1/source/metadata/soma_valence_v185.csv",
+      "public/data/native_contour_derived_soma_surface_v1/nmo-50394-cell-body-interpolated-open-shell-0.1.json",
+      "public/data/native_dat_file_manifests_v1/nmo-108978.json",
+      "public/data/native_dat_file_manifests_v1/nmo-249676.json",
+      "public/data/native_dat_file_manifests_v1/nmo-45674.json",
+      "public/data/native_dat_file_manifests_v1/nmo-45718.json",
+      "public/data/native_dat_file_manifests_v1/nmo-50394.json",
+      "public/data/native_dat_file_manifests_v1/nmo-50408.json",
+      "public/data/native_dat_file_manifests_v1/nmo-50424.json",
+      "public/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+      "public/data/neurolucida_native_detail_v1/nmo-249676-soma-line-loops.json",
+      "public/data/premotor_comparison_observed_morphology_route_pack_v1/geometry/nmo-45718.json",
+      "public/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+      "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50394-mbf-cell-body-line-loops.json",
+      "public/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50408-mbf-cell-body-line-loops.json",
+      "public/data/research_explorer_index_v1/asset-manifest.json",
+      "public/data/research_explorer_index_v1/search-index.json",
+      "public/data/ronzano_premotor_positions_v1/positions.json",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data10-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data11-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data12-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data2-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data3-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data4-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data5-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data6-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data7-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data8-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data9-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data10-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data11-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data12-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data2-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data3-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data4-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data5-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data6-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data7-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data8-v3.xlsx",
+      "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data9-v3.xlsx",
+      "public/data/superclem_palm_native_points_0_1.json"
+    ],
+    "exactUnionEqualsCurrentRecipe": true,
+    "runtimeRecipePath": "tools/build_research_renderer_runtime_inputs.mjs",
+    "runtimeRecipePin": {
+      "bytes": 13450,
+      "sha256": "acaa9e266151961571ef3da653720f5a4bc8cdc18e28de67913b25a24883fce9"
+    },
+    "compactTransportPath": "data/research-renderer-runtime-inputs-2.91.json",
+    "compactTransportPin": {
+      "bytes": 36638,
+      "sha256": "35ce037dd7e4e2bafa3083114eccc7f050b01e2ec0cea1a8b3f684c617d6efdf"
+    },
+    "compactCount": 198,
+    "I58OwnedIntersection": [],
+    "compactMembershipChangeRequired": false,
+    "positionsBuildCount": 40,
+    "positionsSourceCount": 23,
+    "positionsTotalAuthority": 63,
+    "positionsDerivedPaths": [
+      "app/ResearchActiveRecordProvider.tsx",
+      "app/ResearchCollectionPage.tsx",
+      "app/ResearchRoutePage.tsx",
+      "app/ResearchSkipLink.tsx",
+      "app/RonzanoPremotorPositionViewer.tsx",
+      "app/SiteNavigation.tsx",
+      "app/academic-interface.css",
+      "app/explore/[...section]/page.tsx",
+      "app/globals.css",
+      "app/layout.tsx",
+      "app/matson-sci-timecourse.js",
+      "app/morphology-viewport-scale.js",
+      "app/neurolucida-native-contour-admission.js",
+      "app/neurolucida-native-detail-admission.js",
+      "app/neurolucida-native-detail-records.js",
+      "app/neurolucida-native-soma-contours.js",
+      "app/pv-independent-research-records.js",
+      "app/research-active-record.js",
+      "app/research-explorer-index.js",
+      "app/research-information-layout.css",
+      "app/research-iteration.js",
+      "app/research-pages.css",
+      "app/research-record-presentation.js",
+      "app/research-selection-delta.js",
+      "app/research-skip-link.css",
+      "app/research-supplemental-morphology-records.js",
+      "app/ronzano-premotor-position-data.js",
+      "app/ronzano-premotor-position-source-view.d.ts",
+      "app/ronzano-premotor-position-source-view.js",
+      "app/site-navigation.css",
+      "app/site-navigation.ts",
+      "data/neurolucida-native-contour-admission-catalog-0.3.json",
+      "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "data/pv-independent-morphology-routes-0.1.json",
+      "data/research-explorer-transport-0.1.json",
+      "data/ronzano-premotor-position-reference-0.1.json",
+      "package-lock.json",
+      "package.json",
+      "public/data/research_explorer_index_v1/asset-manifest.json",
+      "public/data/research_explorer_index_v1/search-index.json"
+    ],
+    "positionsDeclaredPaths": [
+      "app/ResearchActiveRecordProvider.tsx",
+      "app/ResearchCollectionPage.tsx",
+      "app/ResearchRoutePage.tsx",
+      "app/ResearchSkipLink.tsx",
+      "app/RonzanoPremotorPositionViewer.tsx",
+      "app/SiteNavigation.tsx",
+      "app/academic-interface.css",
+      "app/explore/[...section]/page.tsx",
+      "app/globals.css",
+      "app/layout.tsx",
+      "app/matson-sci-timecourse.js",
+      "app/morphology-viewport-scale.js",
+      "app/neurolucida-native-contour-admission.js",
+      "app/neurolucida-native-detail-admission.js",
+      "app/neurolucida-native-detail-records.js",
+      "app/neurolucida-native-soma-contours.js",
+      "app/pv-independent-research-records.js",
+      "app/research-active-record.js",
+      "app/research-explorer-index.js",
+      "app/research-information-layout.css",
+      "app/research-iteration.js",
+      "app/research-pages.css",
+      "app/research-record-presentation.js",
+      "app/research-selection-delta.js",
+      "app/research-skip-link.css",
+      "app/research-supplemental-morphology-records.js",
+      "app/ronzano-premotor-position-data.js",
+      "app/ronzano-premotor-position-source-view.d.ts",
+      "app/ronzano-premotor-position-source-view.js",
+      "app/site-navigation.css",
+      "app/site-navigation.ts",
+      "data/neurolucida-native-contour-admission-catalog-0.3.json",
+      "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "data/pv-independent-morphology-routes-0.1.json",
+      "data/research-explorer-transport-0.1.json",
+      "data/ronzano-premotor-position-reference-0.1.json",
+      "package-lock.json",
+      "package.json",
+      "public/data/research_explorer_index_v1/asset-manifest.json",
+      "public/data/research_explorer_index_v1/search-index.json"
+    ],
+    "positionsMembershipChangeRequired": false,
+    "newUrlsTypesAndLazySiblingsGrantScientificAuthority": false,
+    "currentPrivateProducerLogicModified": false
+  },
+  "sourceScope": {
+    "existingSourcePinsUnchanged": [
+      {
+        "path": "app/source-audits/page.tsx",
+        "bytes": 891,
+        "sha256": "2c5daacfd954ef20b153390a457fb5a780de8d00d0f5ad711323b4fa3c75b5db"
+      },
+      {
+        "path": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+        "bytes": 122391,
+        "sha256": "ec34da947a38f574bf6c80495a3f1ede02377a5adc3020d8e079c2a880fb07be"
+      },
+      {
+        "path": "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+        "bytes": 6504,
+        "sha256": "4b910fa5aaeeabd30fa42c75de8e79f9e381520605c88c5c69a5c31c79ec1fe6"
+      },
+      {
+        "path": "data/trevisan-v1-source-data-availability-audit-0.1.json",
+        "bytes": 4062,
+        "sha256": "2e5b3437c2cb367b1733d75fedb6112b6c875ffc3c1d469eaa6ace43227d8e8f"
+      },
+      {
+        "path": "data/trevisan-v1-age-atlas-reference-0.1.json",
+        "bytes": 8298,
+        "sha256": "fa9fe22ca6a94cc4460ac3364d28c4982b5e4e06b0bb321b700f7f7a5c95aa03"
+      },
+      {
+        "path": "tools/audit_trevisan_v1_exact_inputs_0_1.py",
+        "bytes": 15050,
+        "sha256": "7973fa02c4d0962f2922855609c983ab4734659d7ce884700643b1bc95dbdee7"
+      }
+    ],
+    "originalGEOOrWorkbookFilesFetchedOrReplayedHere": false,
+    "bookkeepingUrlDoesNotVerifyOriginalBytes": true,
+    "newNucleusRosterOrClusterAssignments": 0,
+    "newGeometry": 0,
+    "newIdentities": 0,
+    "newRegistrations": 0,
+    "M2OrM4Admitted": false
+  },
+  "rootEpochPins": [
+    {
+      "path": "app/TrevisanV1AgeAtlas.tsx",
+      "bytes": 12231,
+      "sha256": "918f8eeb902a204cbc7ca8724b9d75c277822020b52cec78df445069e5633127",
+      "positionedReadCalls": 4
+    },
+    {
+      "path": "app/ExactSourceAuditWorkbench.tsx",
+      "bytes": 15384,
+      "sha256": "5f4b89a5f8200b750d2e4873fa5472655f93c436b9bf627a7321f030687a6bac",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/exact-source-audit-workbench.js",
+      "bytes": 5025,
+      "sha256": "c80b3104d9a656c16b8670af0208663168700e875c596909ffa3f3e7cd9fe03d",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "bytes": 3264,
+      "sha256": "4ec9c8afd29de35849840b48588ff054f6fd5151e553af992cf209a3b1798aed",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/source-audits/page.tsx",
+      "bytes": 891,
+      "sha256": "2c5daacfd954ef20b153390a457fb5a780de8d00d0f5ad711323b4fa3c75b5db",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+      "bytes": 122391,
+      "sha256": "ec34da947a38f574bf6c80495a3f1ede02377a5adc3020d8e079c2a880fb07be",
+      "positionedReadCalls": 31
+    },
+    {
+      "path": "data/trevisan-v1-geo-series-sample-audit-0.1.json",
+      "bytes": 6504,
+      "sha256": "4b910fa5aaeeabd30fa42c75de8e79f9e381520605c88c5c69a5c31c79ec1fe6",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "data/trevisan-v1-source-data-availability-audit-0.1.json",
+      "bytes": 4062,
+      "sha256": "2e5b3437c2cb367b1733d75fedb6112b6c875ffc3c1d469eaa6ace43227d8e8f",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "data/trevisan-v1-age-atlas-reference-0.1.json",
+      "bytes": 8298,
+      "sha256": "fa9fe22ca6a94cc4460ac3364d28c4982b5e4e06b0bb321b700f7f7a5c95aa03",
+      "positionedReadCalls": 4
+    },
+    {
+      "path": "tools/audit_trevisan_v1_exact_inputs_0_1.py",
+      "bytes": 15050,
+      "sha256": "7973fa02c4d0962f2922855609c983ab4734659d7ce884700643b1bc95dbdee7",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/InterneuronTypeAtlas.tsx",
+      "bytes": 153132,
+      "sha256": "7f05bd0419dbcc34dee6f144e37f66528682a6e3c4474943662a20ce91a1cd86",
+      "positionedReadCalls": 39
+    },
+    {
+      "path": "app/layout.tsx",
+      "bytes": 1120,
+      "sha256": "9fc00113c433c050f51d51f33ac6416febf1950322df01c08a42d52f67a2c01a",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/globals.css",
+      "bytes": 336412,
+      "sha256": "703c8cc80e9a6d4ab03d6c422f37beff15eb6c331a07a97f767fff396e9f254e",
+      "positionedReadCalls": 84
+    },
+    {
+      "path": "app/academic-interface.css",
+      "bytes": 14349,
+      "sha256": "6781d5ee5291e534f0b07716467bfb71665ffeec260921b4ad2c173fa36dd7a1",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/research-iteration.js",
+      "bytes": 131,
+      "sha256": "be28603427513929ddec42cef88f9450bbdced99e76a8d5131128544f09f4773",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "package.json",
+      "bytes": 40210,
+      "sha256": "8ab53acc6e3ac86015fb8aeb0bc1f9b93f4af49bd975fda5ec21d0b17511efde",
+      "positionedReadCalls": 11
+    },
+    {
+      "path": "app/ResearchSkipLink.tsx",
+      "bytes": 506,
+      "sha256": "0506d46f103723d4c81696f03ff67508dba1bd0a27cd28e2520fdcd134f6c817",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/research-skip-link.css",
+      "bytes": 637,
+      "sha256": "78853b80261fe922a0a5ecf85450845bdf615be60a117a78d85d8c54072a5cbe",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/SiteNavigation.tsx",
+      "bytes": 3534,
+      "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/site-navigation.ts",
+      "bytes": 4819,
+      "sha256": "4d064821ad98494a20f2096596b63b87c4dfa664d77cda49a8db3d154e17b612",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/site-navigation.css",
+      "bytes": 5436,
+      "sha256": "e76e52308dc6c4d072095430881dcca53eb49e5c5b26bf72e54793a71967c31b",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/research-pages.css",
+      "bytes": 15287,
+      "sha256": "568e33287d920c68604b0d5d84396636d69a8086bbe2253ce7ba1ebd2bae0113",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/source-audit-workspaces.js",
+      "bytes": 1464,
+      "sha256": "5c0056892e8e3d3ed33507cb197ed73fa5bb33c4c866183d6b1b75eeb2920d42",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/source-audit-workspaces.css",
+      "bytes": 1160,
+      "sha256": "e44f14c166a4a5027e9fd383c1c024032268024080b265319b932bb3fac48f25",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "data/neuromorpho-publication-discovery-audit-0.1.json",
+      "bytes": 1341528,
+      "sha256": "9d79394d0baf5bafbc4265b4b4baec72e0d62982b5a359292993673c482f0fcc",
+      "positionedReadCalls": 329
+    },
+    {
+      "path": "app/exact-source-audit-workbench.css",
+      "bytes": 2738,
+      "sha256": "188cff5f5a63dbacb9e1e0c13c30fd4aa3f967fee88ee163a9134b6593ffb90a",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/CrozatExperimentObservationBrowser.tsx",
+      "bytes": 9830,
+      "sha256": "b901cff2ebb52f83e5fa4956e52704cd2c0eca520b514fa6567cd1320fb27c86",
+      "positionedReadCalls": 4
+    },
+    {
+      "path": "data/crozat-experiment-family-observations-0.1.json",
+      "bytes": 1878506,
+      "sha256": "94b3dfda943df4979ae6dec09ebf2ff9d74e12cf81b04cbae6ac9c9c54ae0e42",
+      "positionedReadCalls": 460
+    },
+    {
+      "path": "app/crozat-experiment-observations.js",
+      "bytes": 3544,
+      "sha256": "6bfe1142a45aff9e259910c6ab74031879abf76d3c64e3b09bd3282f7e2ea66a",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "bytes": 14684,
+      "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/explore/[...section]/page.tsx",
+      "bytes": 618,
+      "sha256": "667907e536b0501cd175e8bfa1a3ba9f56eaf3e2e9d6af6ee3f2096aa9ed7577",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/ResearchRoutePage.tsx",
+      "bytes": 4905,
+      "sha256": "711583dbf0968dc507280f33f00b1ae0b6634833a832415ebd6d9d734269f1c2",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/ResearchActiveRecordProvider.tsx",
+      "bytes": 8161,
+      "sha256": "9365f7106dd429065b97be89776b36b0eae3c17b62c310f4e4d434e064852224",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "bytes": 28427,
+      "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d",
+      "positionedReadCalls": 8
+    },
+    {
+      "path": "app/research-record-presentation.js",
+      "bytes": 17681,
+      "sha256": "22d7ec19c1a4da3180cbad55181f76974e83f4b3df90aacdd2537b8e1138df04",
+      "positionedReadCalls": 6
+    },
+    {
+      "path": "data/neurolucida-native-contour-admission-catalog-0.3.json",
+      "bytes": 23571,
+      "sha256": "d5cc13f99c2e6ec0e41d6352512e592f5d6dc1d118f7d7c0b69ec2239deda8fe",
+      "positionedReadCalls": 7
+    },
+    {
+      "path": "app/neurolucida-native-contour-admission.js",
+      "bytes": 24905,
+      "sha256": "1094e09a727dbaf63979fd472384aa90ec5bfddd70130ac8c4fbd00ce8f0f238",
+      "positionedReadCalls": 8
+    },
+    {
+      "path": "app/neurolucida-native-soma-contours.js",
+      "bytes": 6013,
+      "sha256": "e3224b3a1bfd1fb4c6ddb223b6dc0d8f7ddcb4628048f44a6eb5ce499fec144e",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/neurolucida-native-detail-admission.js",
+      "bytes": 11002,
+      "sha256": "463797dbe8725e35b23ec26f95fb5506e2f553436f78d2013b62a5778f6ea50a",
+      "positionedReadCalls": 4
+    },
+    {
+      "path": "app/neurolucida-native-detail-records.js",
+      "bytes": 3861,
+      "sha256": "102be381c2479bcfb49b8638e7a65e5747c3cebf7280baa669d1ba7af3eefef3",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "bytes": 661,
+      "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/research-supplemental-morphology-records.js",
+      "bytes": 12820,
+      "sha256": "3dc60172e4e2c74c590a32ac3d5f86222288031a9e02fcf3db37c10c1bda4944",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+      "bytes": 302205,
+      "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d",
+      "positionedReadCalls": 75
+    },
+    {
+      "path": "app/pv-independent-research-records.js",
+      "bytes": 7327,
+      "sha256": "2cf5ea49bb1b0208d38bd74ada692160e40f860c72b8fccf5442662c6c207ac7",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "data/pv-independent-morphology-routes-0.1.json",
+      "bytes": 22190,
+      "sha256": "13ed6f8fce5170100e3aad42fb220ff1b129fa1a850b93dbea39f2951ff0ceef",
+      "positionedReadCalls": 7
+    },
+    {
+      "path": "data/research-renderer-runtime-inputs-2.91.json",
+      "bytes": 36638,
+      "sha256": "35ce037dd7e4e2bafa3083114eccc7f050b01e2ec0cea1a8b3f684c617d6efdf",
+      "positionedReadCalls": 10
+    },
+    {
+      "path": "app/research-active-record.js",
+      "bytes": 4478,
+      "sha256": "9a37d242aecdc4e55cfc319b4bcc7738b4bd03edaef137e693025768aecc7586",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/research-selection-delta.js",
+      "bytes": 18317,
+      "sha256": "b71bff9c254f1e4b6650f35fd67426e9300ba4d8fa2e1b4059b91d7f0d16d450",
+      "positionedReadCalls": 6
+    },
+    {
+      "path": "app/matson-sci-timecourse.js",
+      "bytes": 2258,
+      "sha256": "93d4befd4d4b9db85adabbde548d60c9264457f19b378c01ef044080607d5b98",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "app/research-information-layout.css",
+      "bytes": 15146,
+      "sha256": "e40034fdf3cd2add08c53cb385815166f1f82f26e7d276cb8665fa4b13aebafe",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/RonzanoPremotorPositionViewer.tsx",
+      "bytes": 38229,
+      "sha256": "7d991ea250384f3bfca2b1b186d984c85b308153e99dca5bda16e53c32a72c6c",
+      "positionedReadCalls": 11
+    },
+    {
+      "path": "data/ronzano-premotor-position-reference-0.1.json",
+      "bytes": 38612,
+      "sha256": "37833a6db9f1f6345f0ccc9f71083f9b11b7e8f232b8e4fa6d5879618092d82d",
+      "positionedReadCalls": 11
+    },
+    {
+      "path": "app/ronzano-premotor-position-data.js",
+      "bytes": 6530,
+      "sha256": "d3ce7835d6818aa1f8ac37da5a5e1d1b63aee76ea889a987cf7b3f907019e4a5",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/ronzano-premotor-position-source-view.js",
+      "bytes": 32695,
+      "sha256": "1669186c3ff17ef8e44940f15cd8d9afe75a93653a3ff9aadc03ce7924458827",
+      "positionedReadCalls": 9
+    },
+    {
+      "path": "app/morphology-viewport-scale.js",
+      "bytes": 3658,
+      "sha256": "f51a96dd5fe21d36ca7455245145b002a232116115e5af992d0f6465542f1aac",
+      "positionedReadCalls": 2
+    },
+    {
+      "path": "tools/build_research_iteration_manifest_2_91.mjs",
+      "bytes": 58149,
+      "sha256": "7fff6ee2ea2620d0d06483a6da4e54dae50472e2a990228a2feb4ce4065c87ec",
+      "positionedReadCalls": 16
+    },
+    {
+      "path": "tools/build_research_renderer_runtime_inputs.mjs",
+      "bytes": 13450,
+      "sha256": "acaa9e266151961571ef3da653720f5a4bc8cdc18e28de67913b25a24883fce9",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "data/research-iteration-manifest-2.91.json",
+      "bytes": 527719,
+      "sha256": "4d1828ceabcb1d399819383ad54340feb846b86de1e24d1ff9932564dc0cf7fe",
+      "positionedReadCalls": 130
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 300345,
+      "sha256": "ab6e0796bea41042a5ff48619c7464ce486e08c2d6dbd911091e4eee7032219f",
+      "positionedReadCalls": 75
+    },
+    {
+      "path": "app/ronzano-premotor-position-source-view.d.ts",
+      "bytes": 6678,
+      "sha256": "e77770ca0e915776c4cea1262ef284d41bc184f00178cf574957d8f8070edd7b",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "positionedReadCalls": 3011
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+      "bytes": 5622,
+      "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888",
+      "positionedReadCalls": 3
+    },
+    {
+      "path": "app/main-scene-source-view.js",
+      "bytes": 22896,
+      "sha256": "747c1d160d19886c24959b76b5562053fae717279c75c949dbfdb151577f1173",
+      "positionedReadCalls": 7
+    },
+    {
+      "path": "app/native-contour-source-view.js",
+      "bytes": 14185,
+      "sha256": "70e4e37c7ff52af96ac5f69dc5fc2df471b269bfae8778e42ac984f43803ebad",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/morphology-source-view.js",
+      "bytes": 19028,
+      "sha256": "9cf704f3136e67925fc3fd7b4d1eab602015ae7a674d63be3399052329136fe3",
+      "positionedReadCalls": 6
+    },
+    {
+      "path": "app/janelia-wt-source-view.js",
+      "bytes": 18994,
+      "sha256": "228c1de8ca691d2e6ed7e022d619ba90b71fd41f65234a9ebfb686bc1f37d103",
+      "positionedReadCalls": 6
+    },
+    {
+      "path": "app/comparative-swc-view-replay.js",
+      "bytes": 10257,
+      "sha256": "ce9134452000d839e9cc212cd76e5fd197ad40ff1186f9881a185e2a6cdcf157",
+      "positionedReadCalls": 4
+    },
+    {
+      "path": "app/independent-source-object-view.js",
+      "bytes": 14209,
+      "sha256": "55887faab9c54643696e5a7397cf97d287aedc962a0722ad789db149da62e71b",
+      "positionedReadCalls": 5
+    },
+    {
+      "path": "app/native-contour-diagnostics.js",
+      "bytes": 16673,
+      "sha256": "cd020b5ac3dfcf9ad09bffac7f7ae286dc10caaad618a9f896629ba78e98b8f2",
+      "positionedReadCalls": 6
+    },
+    {
+      "path": "app/main-scene-auxiliary-verification.js",
+      "bytes": 3339,
+      "sha256": "31ca3b35e1a7d99197eb5400d2157b856e0fdd873986c7bc28a2f431e3d57462",
+      "positionedReadCalls": 2
+    }
+  ],
+  "overlayPins": [
+    {
+      "path": "app/TrevisanV1AgeAtlas.tsx",
+      "bytes": 14607,
+      "sha256": "2a508f47c35a4dfc9ffa1260d8c7ef656399594dfd640230998091cd0c7eb533"
+    },
+    {
+      "path": "app/ExactSourceAuditWorkbench.tsx",
+      "bytes": 18625,
+      "sha256": "95035af0f60ee102247f8d9763c4b0ac790503d59e344c8edcd3f00df14c2ef4"
+    },
+    {
+      "path": "app/exact-source-audit-workbench.js",
+      "bytes": 9225,
+      "sha256": "cfa38097a7596d08c48a57050a2d9d5f6a344eca2adb6a8ad4a0d4c440d3990a"
+    },
+    {
+      "path": "app/SourceAuditWorkspaces.tsx",
+      "bytes": 3326,
+      "sha256": "08f765746c5ef17c734893c7d42715ac12cd4df6baed8f63954ac3cd7364b9d8"
+    },
+    {
+      "path": "app/exact-source-audit-workbench.d.ts",
+      "bytes": 2975,
+      "sha256": "9dfffba0c43bdbc7ca12f88a2259a2b199a175930e03f43a4a13c68d1d449307"
+    },
+    {
+      "path": "tests/trevisan-v1-sample-bookmark.test.mjs",
+      "bytes": 15953,
+      "sha256": "f30e8b0540f998684404a5f6209e16ec8a6f9b286bf69a6852bede27149740f4"
+    }
+  ],
+  "readContract": "Explicit-position4096-byte reads; inode/size/mtime checked per read; all actual current root and sealed candidate cached files rehashed at end; newrootpaths checked absent again.",
+  "limitations": [
+    "Static import closure is not per-call coverage or actual browser selection/history/export evidence.",
+    "Trevisan component import closure is listed separately; its direct parent mount is an existing unconditional InterneuronTypeAtlas component, not the selected source-audits workspace.",
+    "New .d.ts/test canonical pins do not become runtime or scientific source proof.",
+    "Current source counts and83/243/F/MfullGoal remain unchanged; this audit never marks a candidate integrated."
+  ]
+}

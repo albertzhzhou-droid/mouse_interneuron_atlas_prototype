@@ -1,0 +1,26 @@
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/ACTUAL_FINAL_READY_FOR_PRESERVATION.json", "attempt": 1, "timeUtc": "2026-10-08T01:04:00.153850+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/ACTUAL_FINAL_READY_FOR_PRESERVATION.json: (16777234, 230718297, 3258, 1791421204476794214) -> (16777234, 230718297, 3258, 1791421204476794242) -> (16777234, 230718297, 3258, 1791421204476794242); read 3258"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-stage-parity.execution.json", "attempt": 1, "timeUtc": "2026-10-08T01:04:21.885858+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-stage-parity.execution.json: (16777234, 230707371, 997, 1791421092198459357) -> (16777234, 230707371, 997, 1791421092198459386) -> (16777234, 230707371, 997, 1791421092198459386); read 997"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-stage-parity.stdout.log", "attempt": 1, "timeUtc": "2026-10-08T01:04:23.035762+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-stage-parity.stdout.log: (16777234, 230651223, 1138874, 1791421092185033897) -> (16777234, 230651223, 1138874, 1791421092185033798) -> (16777234, 230651223, 1138874, 1791421092185033798); read 1138874"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-stage-parity.stderr.log", "attempt": 1, "timeUtc": "2026-10-08T01:04:24.118752+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-stage-parity.stderr.log: (16777234, 230651224, 1207, 1791421091754662158) -> (16777234, 230651224, 1207, 1791421091754662275) -> (16777234, 230651224, 1207, 1791421091754662275); read 1207"}}
+distinct physical checks completed 200 of 2614
+distinct physical checks completed 400 of 2614
+distinct physical checks completed 600 of 2614
+distinct physical checks completed 800 of 2614
+distinct physical checks completed 1000 of 2614
+distinct physical checks completed 1200 of 2614
+distinct physical checks completed 1400 of 2614
+distinct physical checks completed 1600 of 2614
+distinct physical checks completed 1800 of 2614
+distinct physical checks completed 2000 of 2614
+distinct physical checks completed 2200 of 2614
+distinct physical checks completed 2400 of 2614
+distinct physical checks completed 2600 of 2614
+final full ROOT physical inputs completed 2614 of 2614
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i64-distinct-source-replay-preparation-20261008/check_final_source_preservation.py", line 124, in <module>
+    main()
+  File "/private/tmp/ohri-i64-distinct-source-replay-preparation-20261008/check_final_source_preservation.py", line 103, in main
+    end()
+  File "/private/tmp/ohri-i64-integration-guarded-tools-20261007/common.py", line 63, in end
+    assert epoch(path.lstat()) == first, ('Accepted first epoch changed', str(path))
+AssertionError: ('Accepted first epoch changed', '/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-selection-apply.stderr.log')

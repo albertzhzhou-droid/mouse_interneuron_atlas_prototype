@@ -50,6 +50,7 @@ const MOLECULAR_COMPLETENESS_DEFINITIONS = Object.freeze([
     evidenceLabels: [
       "Exact sampled-nucleus count",
       "Exact sampled-cell count",
+      "Exact captured-cell/nucleus count",
       "Exact captured-cell count",
       "Sampled nuclei",
       "Figure-reported cell count",

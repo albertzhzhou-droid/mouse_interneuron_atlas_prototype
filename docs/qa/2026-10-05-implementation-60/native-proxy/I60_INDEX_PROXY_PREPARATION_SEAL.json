@@ -1,0 +1,180 @@
+{
+  "status": "OFFLINE_PREPARATION_PASS_NATIVE_PENDING",
+  "files": [
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/proxy.mjs",
+      "bytes": 23904,
+      "sha256": "8ee4333d980b484b8890f1a4d28c73d6c00a3bd238114aac11670e0515790384"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/proxy.test.mjs",
+      "bytes": 32188,
+      "sha256": "4002e24793d131c0ae1507106d4fdf541b8108941fd9dd832ba96919beae5421"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/prepare-fixture.mjs",
+      "bytes": 2790,
+      "sha256": "a8ddff2310d86fcc58be7976d2e1328a3b9bd166a0cd53704ada836b14ed9bd5"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/set-mode.mjs",
+      "bytes": 1197,
+      "sha256": "29aea8aab0585e083e5d95196e9c7973597d6f8c50a6bc33c21dc6469875416e"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/README.md",
+      "bytes": 11416,
+      "sha256": "d0a3f20c2083189b372f5eeb7df339b224503f38e4afabe88264182f332dbf4a"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json.gz",
+      "bytes": 626119,
+      "sha256": "b69d9d989646c542c1efcf001201910ed9680db001d5e9a41092fe07b2cfb6a6"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json",
+      "bytes": 12327624,
+      "sha256": "d6e8b386b3c9ff8cd785174d419116a07b78779e2fd60abbaf5eb4760e581552"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/fixture-preparation-receipt.json",
+      "bytes": 2612,
+      "sha256": "35e20530a57f104c707b0bd36468a1847e937332928bfa68341f45e8cabb7cba"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/offline-guards.log",
+      "bytes": 3384,
+      "sha256": "fc94219992bec25b99267cd161e88b3f71f82817cf3249ad880faafc76d853d2"
+    }
+  ],
+  "retainedI59HelperPins": [
+    {
+      "path": "/private/tmp/ohri-i59-native-proxy/proxy.mjs",
+      "bytes": 14202,
+      "sha256": "fe99148882c366ad8b39585dfed31a8a7fa5aecd8c2455b53f507cdadf57104d"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-native-proxy/proxy.test.mjs",
+      "bytes": 13034,
+      "sha256": "81ae52368bedbfb34e2b05e041b43a05c060542c284368881bd4a0cfc7f102ae"
+    }
+  ],
+  "sourcePinsRetained": [
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json.gz",
+      "bytes": 628095,
+      "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+    },
+    {
+      "path": "app/api/source-records/search-index.json/route.ts",
+      "bytes": 578,
+      "sha256": "45317632af32f818f27cb94a8942af6712c495bed811f7fb8aea1b893b7d0a97"
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "bytes": 28427,
+      "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "bytes": 661,
+      "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+      "bytes": 5622,
+      "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+    }
+  ],
+  "tests": {
+    "command": "bundled Node24 --test proxy.test.mjs",
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "nodeSyntaxChecks": [
+      "proxy.mjs",
+      "prepare-fixture.mjs",
+      "set-mode.mjs"
+    ],
+    "allSyntaxCheckExitCodes": 0,
+    "scope": "Offline fake streams/timers and injected production-loader fetch only."
+  },
+  "authorizedExactGetPaths": [
+    {
+      "path": "/api/source-records/search-index.json",
+      "requestOwner": "compressed_api_route",
+      "wireFormats": [
+        "http_gzip_json"
+      ],
+      "intendedNativeScope": "Independent compressed measurement; never comparison provider readiness."
+    },
+    {
+      "path": "/data/research_explorer_index_v1/search-index.json",
+      "requestOwner": "canonical_provider_route",
+      "wireFormats": [
+        "plain_canonical_json",
+        "http_gzip_json"
+      ],
+      "intendedNativeScope": "Canonical shared provider comparison readiness/failure; actual isolated native action evidence must establish consumer."
+    }
+  ],
+  "upstreamResponseGates": {
+    "plain": "full200, JSON Content-Type, exact12327624 Content-Length, no Content-Encoding/Transfer-Encoding, full original SHA c1fb…7085",
+    "gzip": "full200, exactly one gzip Content-Encoding, JSON Content-Type, exact628095 Content-Length, no Transfer-Encoding, full original encoded SHA715236…436b plus decoded12327624/c1fb…7085",
+    "otherEncoding304OrWrongBody": "Reject with explicit502; no controlled body proof or decoded-checksum claim."
+  },
+  "modeIsolation": "set-mode explicit api/canonical, selected route only; other route pass; each request immutable normalized config SHA snapshot",
+  "fixedEndpoints": {
+    "listen": {
+      "host": "127.0.0.1",
+      "port": 3005
+    },
+    "upstream": {
+      "host": "127.0.0.1",
+      "port": 3004
+    }
+  },
+  "sourceMutation": "Only temp plain/gzip fixtures replace final LF byte with space; all JSON values and decodedlength retained, decoded SHA deliberately mismatches. Original root/stage source, route, loader, transport and manifest assets unchanged.",
+  "requestLogIsolation": "Fresh O_EXCL mode0600 log on startup; no restart append/duplicate IDs. Private config/output real parent/O_NOFOLLOW/exclusive atomic file/fsync/rename.",
+  "ownerClaimBoundary": "Route class/intended QA scope only; no captured CDP/networkinitiator or browser-consumption claim.",
+  "cacheBoundary": "Fault retains original ETag/cache headers. Parent recovery must observe full200 fresh original source response after cache-bypassing document reload; config change/no-cache/304 alone cannot establish pass recovery.",
+  "nativeActualEstablished": false,
+  "serverStarted": false,
+  "browserRequestsExecuted": 0,
+  "rootProductWrites": 0,
+  "stageWrites": 0,
+  "rootOrStageSourceEdits": 0,
+  "actualSourceFetches": 0,
+  "proxyTransportLogCreated": false,
+  "initialMutableConfig": {
+    "path": "/private/tmp/ohri-i60-index-native-proxy/config.json",
+    "bytes": 205,
+    "sha256": "2f9ce0108aff5447cec82c3e630a68d17f19c75d1cde5fc199a3daf2f75baf5a"
+  },
+  "parentOwnedRemaining": [
+    "Full stage engineering check closure",
+    "require_escalated fixed-loopback startup after build checks",
+    "actual browser action/capture clocks/URL bookmark and failure/loading/retry DOM",
+    "wire/body/requestID/config log-to-native mapping and frozen final log",
+    "source/export/scientific count boundaries"
+  ],
+  "earlierPreparationEvidence": [
+    {
+      "path": "/private/tmp/ohri-i60-index-native-proxy/I60_PROXY_PREPARATION_CHECKPOINT.json",
+      "bytes": 4746,
+      "sha256": "a7c5e42e26397615dd23c8d171d1313476c4bf47c6df3a14de74b56ba0d758a9"
+    },
+    {
+      "path": "/private/tmp/ohri-i60-proxy-independent-peer/I60_REPAIRED_PROXY_BOUNDED_PEER_CHECKPOINT.json",
+      "bytes": 7109,
+      "sha256": "a921a30ac89540fe30aa94df6764fb86726144f43cb2c653f504f8b699d0da59"
+    }
+  ]
+}

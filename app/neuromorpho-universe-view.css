@@ -1,0 +1,9 @@
+/* The canvas and the source-view controls occupy separate rows. */
+.neuromorpho-universe .universe-stage { display: block; min-width: 0; }
+.neuromorpho-universe .universe-source-viewport { position: relative !important; inset: auto; height: 500px; min-height: 500px; }
+.neuromorpho-universe .morphology-source-view-controls { margin: .65rem; }
+@media (max-width: 760px) {
+  .neuromorpho-universe .universe-source-viewport { height: 400px; min-height: 400px; }
+  .neuromorpho-universe .universe-source-viewport canvas { min-height: 400px; }
+  .neuromorpho-universe .morphology-source-axes-label { top: auto; bottom: 74px; }
+}

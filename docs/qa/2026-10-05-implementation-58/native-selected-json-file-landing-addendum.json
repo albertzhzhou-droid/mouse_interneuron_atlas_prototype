@@ -1,0 +1,160 @@
+{
+  "addendumId": "I58-native-selected-JSON-file-landing-independent-addendum-20261005",
+  "status": "PASS_CURRENT_NATIVE_SELECTED_JSON_FILE_LANDING_OBSERVED_IN_EXACT_EVENT_WINDOW",
+  "checkedAtUtc": "2026-10-05T06:25:03.829457+00:00",
+  "observationLayers": {
+    "cuaDownloadEventApi": "Timed out after5000ms; original landedfalse unchanged",
+    "independentFilesystemLanding": "Observed exact requested file, timestamp and content bound to this single nativeEnter window",
+    "noClaimEventApiSucceeded": true
+  },
+  "eventWindow": {
+    "preEnterSnapshot": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-58/actual-12-fresh-reopen.json",
+      "bytes": 22716,
+      "sha256": "7ec69188a2e7864bbb9d334228c3bac432a75956bf26aa409492528fab0a968e",
+      "mtimeNs": 1791180326387206860,
+      "mtimeUtc": "2026-10-05T06:05:26.387207+00:00",
+      "snapshotChecks": {
+        "selected": [
+          "E135HetR1GSM8480605"
+        ],
+        "cohort": "all",
+        "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample&qa=one&qa=two&note=keep#source-exact-inputs",
+        "statuses": [
+          "29 of 29 sample records. Workbook selection rows and native columns are separate units.",
+          "1,127 records in this filter · page 1 of 57",
+          ""
+        ]
+      }
+    },
+    "postTimeoutAttempt": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-58/actual-13-native-download-attempt.json",
+      "bytes": 88,
+      "sha256": "54aa729087981284fcb19aa100356cad055114e5eb9f405595c0af9c7b009944",
+      "mtimeNs": 1791180331394403226,
+      "mtimeUtc": "2026-10-05T06:05:31.394403+00:00",
+      "snapshotChecks": {
+        "landed": false,
+        "error": "Error: Timed out after 5000ms waiting for download."
+      }
+    },
+    "postTimeoutProducerStatus": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-58/actual-13-native-download-producer-status.json",
+      "bytes": 22812,
+      "sha256": "9d18c2f057bc502afd2e43f4b7136cf76c401d77a76d074c422846409e618f38",
+      "mtimeNs": 1791180331465829422,
+      "mtimeUtc": "2026-10-05T06:05:31.465829+00:00",
+      "snapshotChecks": {
+        "selected": [
+          "E135HetR1GSM8480605"
+        ],
+        "cohort": "all",
+        "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample&qa=one&qa=two&note=keep#source-exact-inputs",
+        "statuses": [
+          "29 of 29 sample records. Workbook selection rows and native columns are separate units.",
+          "1,127 records in this filter · page 1 of 57",
+          "Exported the exact GSM8480605 source-sample audit row; no nucleus roster or source matrix payload."
+        ]
+      }
+    },
+    "inclusiveStartNs": 1791180326387206860,
+    "inclusiveEndNs": 1791180331394403226,
+    "generatedAtInside": true,
+    "fileBirthInside": true,
+    "fileMtimeInside": true,
+    "nativeEnterCountThisIteration": 1,
+    "nativeEnterCountAuthority": "parent confirmed exactly one selectedJSON nativeEnter in this iteration; no search of other exports"
+  },
+  "download": {
+    "path": "/Users/zhouzhenghang/Downloads/ohri-trevisan-v1-exact-input-crosswalk-audit-0.1-GSM8480605.json",
+    "bytes": 3647,
+    "sha256": "7e16a9fa4fff83905a21827f6c019b6d2206c00f12e0a0fdae4c8fbe2d6a0a55",
+    "regularFile": true,
+    "symlink": false,
+    "generatedAt": "2026-10-05T06:05:26.401Z",
+    "mtimeNs": 1791180326407263554,
+    "mtimeUtc": "2026-10-05T06:05:26.407264+00:00",
+    "birthtimeUtc": "2026-10-05T06:05:26.406986+00:00",
+    "generatedMinusPreSnapshotMs": 13.793076,
+    "mtimeMinusPreSnapshotMs": 20.056694,
+    "notCountedMerelyBecauseFilenameOrDateMatched": true,
+    "noOlderSameNameFileUsed": true
+  },
+  "exactContentChecks": {
+    "exactCurrentHelperSerializedByteMatch": true,
+    "exactCurrentSampleObjectMatch": true,
+    "currentAuditId": "trevisan-v1-exact-input-crosswalk-audit-0.1",
+    "sourceAuditDate": "2026-09-29",
+    "sourceAuditDateIsOriginalAuditNotDownloadDate": true,
+    "selectedSourceKey": "trevisan-v1:GSE275595:GSM8480605:source-sample",
+    "rowCount": 1,
+    "recordsCount": 1,
+    "sourcePayloadsIncluded": false,
+    "runtimeRosterAdmission": false,
+    "sameCellJoins": 0,
+    "geometryObjects": 0,
+    "atlasRegistrations": 0,
+    "rawMatrixOrFullRosterIncluded": false,
+    "finalNucleusRosterAdmission": "held_cluster_and_reuse_gate",
+    "individualAnimalIdentity": null,
+    "clusterAssignment": null
+  },
+  "rightsChecks": {
+    "downloadDoesNotHaveStandaloneRightsField": true,
+    "currentPinnedAuditPublicAssetPackagingAllowed": false,
+    "contextualNucleusGate": {
+      "admitted": false,
+      "reasons": [
+        "No exact per-nucleus cluster assignment is supplied.",
+        "File-specific reuse and release scope remain unresolved."
+      ]
+    },
+    "rightsSource": "current pinned source-audit rights, not inferred from filename or downloaded record"
+  },
+  "currentHelperAndAuditPins": [
+    {
+      "path": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json",
+      "bytes": 122391,
+      "sha256": "ec34da947a38f574bf6c80495a3f1ede02377a5adc3020d8e079c2a880fb07be"
+    },
+    {
+      "path": "app/exact-source-audit-workbench.js",
+      "bytes": 9225,
+      "sha256": "cfa38097a7596d08c48a57050a2d9d5f6a344eca2adb6a8ad4a0d4c440d3990a"
+    },
+    {
+      "path": "app/ExactSourceAuditWorkbench.tsx",
+      "bytes": 18625,
+      "sha256": "95035af0f60ee102247f8d9763c4b0ac790503d59e344c8edcd3f00df14c2ef4"
+    }
+  ],
+  "priorProvisionalFilesystemReceipt": {
+    "path": "/private/tmp/ohri-i58-selected-json-download-check-20261005/I58_SELECTED_JSON_DOWNLOAD_FILESYSTEM_CHECK.json",
+    "bytes": 3071,
+    "sha256": "0713f40ec2ff59439b8f9122883f9cc3f13d6495e60896af6af23cf72f3706f9"
+  },
+  "exactRetainedDownloadedBytesCopy": {
+    "path": "/private/tmp/ohri-i58-selected-json-download-check-20261005/selected-GSM8480605-exact-downloaded-content.json",
+    "bytes": 3647,
+    "sha256": "7e16a9fa4fff83905a21827f6c019b6d2206c00f12e0a0fdae4c8fbe2d6a0a55"
+  },
+  "preservation": {
+    "sourceDownloadModified": false,
+    "sourceMtimeUnchanged": true,
+    "rootQAOrCanonicalModified": false,
+    "I58PreimagesModified": false,
+    "browserModified": false,
+    "otherPersonalFilesRead": 0,
+    "homeOrDownloadsDirectoryEnumerated": false,
+    "fallbackSearchOrDownloadSettingChanges": false,
+    "personalPathsInspected": [
+      "/Users/zhouzhenghang/Downloads/ohri-trevisan-v1-exact-input-crosswalk-audit-0.1-GSM8480605.json"
+    ],
+    "projectEventFilesInspected": [
+      "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-58/actual-12-fresh-reopen.json",
+      "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-58/actual-13-native-download-attempt.json",
+      "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-58/actual-13-native-download-producer-status.json"
+    ]
+  },
+  "scope": "One source-sample information JSON only; no native matrix payload/full nucleus roster, animal assignment, cluster assignment, same-cell joins, geometry, registrations or data redistribution-rights admission. This postseal QA addendum changes observed download evidence only."
+}

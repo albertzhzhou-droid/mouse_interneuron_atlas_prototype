@@ -1,0 +1,37 @@
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 lint
+> eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern release
+
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/DandiSpinalCordTracePreview.tsx
+  30:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/DandiSpinalCordTracePreview.tsx:30:5
+  28 |     let active = true; const controller = new AbortController(); generation.current += 1;
+  29 |     const run = generation.current;
+> 30 |     setPayload(null);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  31 |     loadDandiTrace({ signal: controller.signal }).then(value => {
+  32 |       if (active && generation.current === run) { setPayload(value); setStatus("Exact preview bytes and SHA-256 verified. The full NWB checksum remains unverified."); }
+  33 |     }).catch(error => {  react-hooks/set-state-in-effect
+  48:88  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/DandiSpinalCordTracePreview.tsx:48:88
+  46 |   };
+  47 |   const selected = payload ? dandiTraceWindow(payload, firstSample, cursorOffset) : null;
+> 48 |   const receipt = payload ? buildDandiTraceReceipt(payload, firstSample, cursorOffset, generation.current) : null;
+     |                                                                                        ^^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  49 |   const restore = () => {
+  50 |     if (!payload) return;
+  51 |     try {                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/refs
+
+✖ 2 problems (2 errors, 0 warnings)
+

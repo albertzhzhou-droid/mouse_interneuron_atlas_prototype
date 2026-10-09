@@ -1,0 +1,40 @@
+{
+  "status": "REPAIRED_INHERITED_STALE_STATEMENTS_PENDING_VALIDATION",
+  "reason": "Two existing tests still required source-availability wording superseded by the existing original-input audit",
+  "targets": [
+    {
+      "path": "tests/rendered-html.test.mjs",
+      "before": {
+        "bytes": 80086,
+        "sha256": "20bfc8a237fd89d318d3bbb9c902796083c1a7e3f157908ba8095fae3f0feebc"
+      },
+      "after": {
+        "bytes": 80631,
+        "sha256": "2dd5f40c30e17a05e7ecf48550738ba6060f20a46a694f1b598807c2a08239ce"
+      }
+    },
+    {
+      "path": "tests/trevisan-v1-geo-series-sample-audit.test.mjs",
+      "before": {
+        "bytes": 3522,
+        "sha256": "27162b3af04631087134d7b4ecfaec0fa9d48f04253a761c5a0ca292ca55662e"
+      },
+      "after": {
+        "bytes": 3983,
+        "sha256": "e0bc48766787e9c890322f51084520aa6338e758be1d8be03fef2b5ca569e89a"
+      }
+    }
+  ],
+  "preimagesArchive": {
+    "bytes": 21624,
+    "sha256": "ddae0bb2a836f6cfb6cdad14a16f4d6e70b429bfdf0195668bcaa6354bd37f81"
+  },
+  "newCanonicalExistingTestPath": "tests/trevisan-v1-geo-series-sample-audit.test.mjs",
+  "productCandidatePathsChanged": 0,
+  "exactExpectedStructure": {
+    "entries": 13241486,
+    "features": 32285,
+    "columns": 8000,
+    "source": "data/trevisan-v1-exact-input-crosswalk-audit-0.1.json#representativeMatrix"
+  }
+}

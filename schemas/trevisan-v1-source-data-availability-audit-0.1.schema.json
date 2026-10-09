@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/trevisan-v1-source-data-availability-audit-0.1.schema.json",
+  "title": "Trevisan V1 source data availability audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["auditId", "auditDate", "auditScope", "source", "verifiedUpstreamAvailability", "notYetVerifiedOrImported", "interpretationBoundary", "admissionBoundary"],
+  "properties": {
+    "auditId": { "const": "trevisan-v1-source-data-availability-audit-0.1" },
+    "auditDate": { "type": "string", "const": "2026-09-24", "format": "date" },
+    "auditScope": { "type": "string", "minLength": 40 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleUrl", "doi", "geoAccession", "geoUrl", "interactiveUrl", "analysisRepositoryUrl", "analysisRepositoryLicenseUrl", "analysisScriptUrl", "matrixLoadingFunctionUrl", "metadataDerivationFunctionUrl"],
+      "properties": {
+        "articleUrl": { "type": "string", "format": "uri", "const": "https://www.nature.com/articles/s41467-026-76522-3" },
+        "doi": { "const": "10.1038/s41467-026-76522-3" },
+        "geoAccession": { "const": "GSE275595" },
+        "geoUrl": { "type": "string", "format": "uri", "const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595" },
+        "interactiveUrl": { "type": "string", "format": "uri", "const": "https://v1interneurons.stjude.org/shinyApp/" },
+        "analysisRepositoryUrl": { "type": "string", "format": "uri", "const": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas" },
+        "analysisRepositoryLicenseUrl": { "type": "string", "format": "uri", "const": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/LICENSE" },
+        "analysisScriptUrl": { "type": "string", "format": "uri", "const": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/09_Integration_FinalData/Code_Integration_FinalData.R" },
+        "matrixLoadingFunctionUrl": { "type": "string", "format": "uri", "const": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/2_Load_and_merge.R" },
+        "metadataDerivationFunctionUrl": { "type": "string", "format": "uri", "const": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/3_Add_metadata.R" }
+      }
+    },
+    "verifiedUpstreamAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleReportsGeoRawSequencingCountsAndAssociatedMetadata", "articleReportsUniqueFinalFigureCellBarcodesInSupplementaryData3", "selectedStudyWideNucleusCount", "postnatalAges", "articleReportedClusterCount", "interactiveAnnotationFieldsObserved", "interactiveSubsetFieldsObserved", "interactiveClusterIdsObserved", "publishedScriptCellMetadataFields", "analysisRepositoryCodeLicense", "integrationScriptReferencesInputs", "inspectedIntegrationDirectoryContainsOnlyScript", "matrixLoadingFunctionDiscoversDirectorySuffix", "matrixLoadingFunctionDefaultPathSuffix", "matrixLoadingFunctionReadMethod", "matrixLoadingFunctionDefaultMinCells", "matrixLoadingFunctionDefaultMinFeatures", "sampleIdentifierDerivedFromDirectoryBasenameBeforeUnderscore", "metadataFunctionDerivesAgeFromFirstNumericSubstring", "metadataFunctionDerivesRegionFromThirdCharacterFromEnd", "metadataFunctionDerivesReplicateFromLastCharacter"],
+      "properties": {
+        "articleReportsGeoRawSequencingCountsAndAssociatedMetadata": { "const": true },
+        "articleReportsUniqueFinalFigureCellBarcodesInSupplementaryData3": { "const": true },
+        "selectedStudyWideNucleusCount": { "const": 89494 },
+        "postnatalAges": { "const": ["P0", "P14", "P28", "P56"] },
+        "articleReportedClusterCount": { "const": 14 },
+        "interactiveAnnotationFieldsObserved": { "const": ["age", "replicate", "seurat_clusters"] },
+        "interactiveSubsetFieldsObserved": { "const": ["replicate", "seurat_clusters"] },
+        "interactiveClusterIdsObserved": { "const": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
+        "publishedScriptCellMetadataFields": { "const": ["age", "replicate", "region", "seurat_clusters"] },
+        "analysisRepositoryCodeLicense": { "const": "MIT" },
+        "integrationScriptReferencesInputs": { "const": ["Data_raw_Merged.rds", "Cells_pos.csv"] },
+        "inspectedIntegrationDirectoryContainsOnlyScript": { "const": true },
+        "matrixLoadingFunctionDiscoversDirectorySuffix": { "const": "*_cellranger" },
+        "matrixLoadingFunctionDefaultPathSuffix": { "const": "/outs/filtered_feature_bc_matrix" },
+        "matrixLoadingFunctionReadMethod": { "const": "Read10X" },
+        "matrixLoadingFunctionDefaultMinCells": { "const": 10 },
+        "matrixLoadingFunctionDefaultMinFeatures": { "const": 1000 },
+        "sampleIdentifierDerivedFromDirectoryBasenameBeforeUnderscore": { "const": true },
+        "metadataFunctionDerivesAgeFromFirstNumericSubstring": { "const": true },
+        "metadataFunctionDerivesRegionFromThirdCharacterFromEnd": { "const": true },
+        "metadataFunctionDerivesReplicateFromLastCharacter": { "const": true }
+      }
+    },
+    "notYetVerifiedOrImported": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supplementaryData3DownloadedOrInspected", "geoPayloadDownloadedOrChecksummed", "barcodeToCountMatrixRowCrosswalkValidated", "perNucleusAgeClusterRegionRowsValidated", "exactCountsByAgeClusterOrRegionImported", "geoFileSpecificReuseTermsVerified", "sampleIdentifierParsingValidatedAgainstAllGeoRecords", "perCellMetadataDerivationReproduced", "prebuiltIntegratedObjectAvailableInInspectedRepositoryDirectory", "individualMorphologyOrInternalStructureSupported"],
+      "properties": {
+        "supplementaryData3DownloadedOrInspected": { "const": false },
+        "geoPayloadDownloadedOrChecksummed": { "const": false },
+        "barcodeToCountMatrixRowCrosswalkValidated": { "const": false },
+        "perNucleusAgeClusterRegionRowsValidated": { "const": false },
+        "exactCountsByAgeClusterOrRegionImported": { "const": false },
+        "geoFileSpecificReuseTermsVerified": { "const": false },
+        "sampleIdentifierParsingValidatedAgainstAllGeoRecords": { "const": false },
+        "perCellMetadataDerivationReproduced": { "const": false },
+        "prebuiltIntegratedObjectAvailableInInspectedRepositoryDirectory": { "const": false },
+        "individualMorphologyOrInternalStructureSupported": { "const": false }
+      }
+    },
+    "interpretationBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceCodeFieldsAreNotValidatedPerNucleusAssignments", "interactiveControlsAreNotAReproducibleCellRoster", "studyWideCountIsNotAnExactClusterAgeRegionDenominator", "articleLicenseDoesNotAutomaticallyEstablishGeoFileLicense", "sampleNameParsingRulesAreNotValidatedAgainstGeoRecords", "clusterLabelsDoNotEstablishMorphologyOrSameCellIdentity"],
+      "properties": {
+        "sourceCodeFieldsAreNotValidatedPerNucleusAssignments": { "const": true },
+        "interactiveControlsAreNotAReproducibleCellRoster": { "const": true },
+        "studyWideCountIsNotAnExactClusterAgeRegionDenominator": { "const": true },
+        "articleLicenseDoesNotAutomaticallyEstablishGeoFileLicense": { "const": true },
+        "sampleNameParsingRulesAreNotValidatedAgainstGeoRecords": { "const": true },
+        "clusterLabelsDoNotEstablishMorphologyOrSameCellIdentity": { "const": true }
+      }
+    },
+    "admissionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalSourceProfileContribution", "includedInExisting387ProfileDenominator", "includedInMain3dScene", "morphologyGeometryObjectCount", "internalStructureObjectCount", "sameCellJoinCount", "atlasRegistrationCount", "measurementCount"],
+      "properties": {
+        "canonicalSourceProfileContribution": { "const": 0 },
+        "includedInExisting387ProfileDenominator": { "const": false },
+        "includedInMain3dScene": { "const": false },
+        "morphologyGeometryObjectCount": { "const": 0 },
+        "internalStructureObjectCount": { "const": 0 },
+        "sameCellJoinCount": { "const": 0 },
+        "atlasRegistrationCount": { "const": 0 },
+        "measurementCount": { "const": 0 }
+      }
+    }
+  }
+}

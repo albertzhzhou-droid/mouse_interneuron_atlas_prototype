@@ -1,0 +1,86 @@
+{
+  "case": "actual valid-JSON/gzip same-size decoded checksum fault; isolated preview only",
+  "generatedAtUTC": "2026-10-05T05:34:43.447821+00:00",
+  "rootScientificInputsModified": false,
+  "decodedBytes": 12327624,
+  "originalDecoded": {
+    "bytes": 12327624,
+    "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+  },
+  "faultDecoded": {
+    "bytes": 12327624,
+    "sha256": "74445eb76894ae3dc87c2f897348819e21145008cc6090150c361ff4c8f2fd39"
+  },
+  "gzipWireSizeAssertedEqual": false,
+  "files": [
+    {
+      "path": "/private/tmp/ohri-i51-verification/public/data/research_explorer_index_v1/search-index.json",
+      "backup": "/private/tmp/ohri-i57-wire-fault/public-search-index.json",
+      "before": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      },
+      "fault": {
+        "bytes": 12327624,
+        "sha256": "74445eb76894ae3dc87c2f897348819e21145008cc6090150c361ff4c8f2fd39"
+      },
+      "restoredActual": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      }
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/public/data/research_explorer_index_v1/search-index.json.gz",
+      "backup": "/private/tmp/ohri-i57-wire-fault/public-search-index.json.gz",
+      "before": {
+        "bytes": 628095,
+        "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+      },
+      "fault": {
+        "bytes": 628096,
+        "sha256": "3d5295706dbdf3a5420123eca3a9c6edf2eadee62c0936f8a126a08b389a6d1f"
+      },
+      "restoredActual": {
+        "bytes": 628095,
+        "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+      }
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/dist/client/data/research_explorer_index_v1/search-index.json",
+      "backup": "/private/tmp/ohri-i57-wire-fault/dist_client-search-index.json",
+      "before": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      },
+      "fault": {
+        "bytes": 12327624,
+        "sha256": "74445eb76894ae3dc87c2f897348819e21145008cc6090150c361ff4c8f2fd39"
+      },
+      "restoredActual": {
+        "bytes": 12327624,
+        "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+      }
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/dist/client/data/research_explorer_index_v1/search-index.json.gz",
+      "backup": "/private/tmp/ohri-i57-wire-fault/dist_client-search-index.json.gz",
+      "before": {
+        "bytes": 628095,
+        "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+      },
+      "fault": {
+        "bytes": 628096,
+        "sha256": "3d5295706dbdf3a5420123eca3a9c6edf2eadee62c0936f8a126a08b389a6d1f"
+      },
+      "restoredActual": {
+        "bytes": 628095,
+        "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+      }
+    }
+  ],
+  "restored": true,
+  "browserObserved": true,
+  "originalRootIndexStillExact": true,
+  "restoredAtUTC": "2026-10-05T05:35:50.365273+00:00",
+  "browserEvidence": "actual-index-checksum-rejected.json"
+}

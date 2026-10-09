@@ -1,0 +1,204 @@
+{
+  "scope": "I51 actual current production browser checks at localhost; final captures exclude the preserved earlier initial-build captures",
+  "origin": "http://127.0.0.1:3003",
+  "interactionTool": "CUA in-app browser",
+  "checks": [
+    {
+      "check": "170034 route card opens exact verified main scene",
+      "result": "pass",
+      "evidence": "actual-main-view-170034.json",
+      "mode": "observed_swc",
+      "surfaceControl": "disabled by No Diameter source permission"
+    },
+    {
+      "check": "118824 route opens exact verified main scene and DER radius mode",
+      "result": "pass",
+      "evidence": "actual-main-view-118824.json",
+      "mode": "radius_surface",
+      "boundary": "derived open surface, no membrane or interior claim"
+    },
+    {
+      "check": "source and render-mode changes invalidate previous capture",
+      "result": "pass",
+      "evidenceKind": "live UI observation"
+    },
+    {
+      "check": "Enter selection at 390px and page horizontal overflow",
+      "result": "pass",
+      "evidenceKind": "live DOM observation",
+      "innerWidth": 390,
+      "documentScrollWidth": 390
+    },
+    {
+      "check": "same-source fresh restore at 390px for both independent records",
+      "result": "pass",
+      "evidence": [
+        "actual-main-view-170034-restored-390.json",
+        "actual-main-view-118824-restored-390.json"
+      ],
+      "cacheMode": "no-store",
+      "assertions": [
+        "updated verifiedAt",
+        "increased verification sequence",
+        "source hashes retained",
+        "current viewport captured"
+      ]
+    },
+    {
+      "check": "118824 receipt restoration into 170034 scene",
+      "result": "pass",
+      "evidenceKind": "live UI observation",
+      "rejection": "Main scene view: exact source, frame or scientific scope changed",
+      "correctSceneRetained": true
+    },
+    {
+      "check": "four final view receipts independently validate current source geometry and build pins",
+      "result": "pass",
+      "evidence": "actual-view-independent-replay.json",
+      "buildPinChecks": 132,
+      "geometryChecks": 4,
+      "auxiliaryFileChecks": 8,
+      "mismatchCount": 0
+    }
+  ],
+  "attemptsAndLimits": [
+    {
+      "check": "native export download completion",
+      "result": "not_verified",
+      "reason": "download-event waiting timed out and reset the CUA kernel; the exact displayed receipt textarea was read and saved instead"
+    },
+    {
+      "check": "initial direct URL lacking research focus",
+      "result": "failed_attempt",
+      "reason": "first main admission did not complete; route-card navigation and canonical focus URLs were subsequently verified"
+    },
+    {
+      "check": "all branches inside current main camera frustum",
+      "result": "not_claimed",
+      "reason": "current camera crops some upper branches; no full-frustum or pixel-equivalence claim"
+    },
+    {
+      "check": "whole application accessibility, real 200% browser zoom and screen reader",
+      "result": "not_verified"
+    },
+    {
+      "check": "same physical cell, paired experiment, internal structure and atlas registration",
+      "result": "not_admitted"
+    }
+  ],
+  "finalReceipts": [
+    {
+      "file": "actual-main-view-170034.json",
+      "bytes": 22895,
+      "sha256": "393db1fd1074785c488b46768282c7d754d66baddd86faaf1908ada1fc22a511",
+      "neuronId": 170034,
+      "mode": "observed_swc",
+      "buildInputCount": 33,
+      "actualGeometryBytes": 400187,
+      "sourceSha256": "27bb9f87ceb9a55ad7a538ba871fc2a1a81d089db5bde7476e45eccc61937adc",
+      "auxiliaryFileCount": 2,
+      "cacheMode": "default",
+      "verifiedAt": "2026-10-04T23:43:50.802Z",
+      "mainSceneVerificationSequence": 2,
+      "viewport": {
+        "cssWidth": 990,
+        "cssHeight": 460,
+        "drawingBufferWidth": 1732,
+        "drawingBufferHeight": 805,
+        "pixelRatio": 1.75
+      },
+      "sourceIdentityPhysicalCell": "unknown",
+      "registrationCount": 0
+    },
+    {
+      "file": "actual-main-view-118824.json",
+      "bytes": 22704,
+      "sha256": "827fd65eb8d7d7eaba3b054c7672547d0bc783b3a6ac3bdc20f505612cb1d00e",
+      "neuronId": 118824,
+      "mode": "radius_surface",
+      "buildInputCount": 33,
+      "actualGeometryBytes": 132502,
+      "sourceSha256": "a498553500c7b03dd979f8e7eaeb3be6408a8f9459d8e56a905fd04f7fa3cb36",
+      "auxiliaryFileCount": 2,
+      "cacheMode": "default",
+      "verifiedAt": "2026-10-04T23:44:50.538Z",
+      "mainSceneVerificationSequence": 6,
+      "viewport": {
+        "cssWidth": 990,
+        "cssHeight": 460,
+        "drawingBufferWidth": 1732,
+        "drawingBufferHeight": 805,
+        "pixelRatio": 1.75
+      },
+      "sourceIdentityPhysicalCell": "unknown",
+      "registrationCount": 0
+    },
+    {
+      "file": "actual-main-view-170034-restored-390.json",
+      "bytes": 22896,
+      "sha256": "742e1850267e58d4244b467df714be93ef83c713ac1dc4682438064081d455df",
+      "neuronId": 170034,
+      "mode": "observed_swc",
+      "buildInputCount": 33,
+      "actualGeometryBytes": 400187,
+      "sourceSha256": "27bb9f87ceb9a55ad7a538ba871fc2a1a81d089db5bde7476e45eccc61937adc",
+      "auxiliaryFileCount": 2,
+      "cacheMode": "no-store",
+      "verifiedAt": "2026-10-04T23:50:46.304Z",
+      "mainSceneVerificationSequence": 14,
+      "viewport": {
+        "cssWidth": 356,
+        "cssHeight": 549,
+        "drawingBufferWidth": 356,
+        "drawingBufferHeight": 549,
+        "pixelRatio": 1
+      },
+      "sourceIdentityPhysicalCell": "unknown",
+      "registrationCount": 0
+    },
+    {
+      "file": "actual-main-view-118824-restored-390.json",
+      "bytes": 22704,
+      "sha256": "1220db363ac600725014acbfc8e6fcf7731bdd200935b2052795cc2cb1f3f7b3",
+      "neuronId": 118824,
+      "mode": "radius_surface",
+      "buildInputCount": 33,
+      "actualGeometryBytes": 132502,
+      "sourceSha256": "a498553500c7b03dd979f8e7eaeb3be6408a8f9459d8e56a905fd04f7fa3cb36",
+      "auxiliaryFileCount": 2,
+      "cacheMode": "no-store",
+      "verifiedAt": "2026-10-04T23:46:38.621Z",
+      "mainSceneVerificationSequence": 10,
+      "viewport": {
+        "cssWidth": 356,
+        "cssHeight": 549,
+        "drawingBufferWidth": 356,
+        "drawingBufferHeight": 549,
+        "pixelRatio": 1
+      },
+      "sourceIdentityPhysicalCell": "unknown",
+      "registrationCount": 0
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "pv-centerlines-final.jpg",
+      "bytes": 74668,
+      "sha256": "3e8137801281b24cb7badaf14116531d850c7e2f837a4878637807b5f44f077c"
+    },
+    {
+      "file": "pv-derived-surface-final.jpg",
+      "bytes": 85048,
+      "sha256": "fbc668a4b8d96ceab16a813ce3698fe2ada62ff562388088d7560c1115a3b5d8"
+    },
+    {
+      "file": "pv-390-final.jpg",
+      "bytes": 32696,
+      "sha256": "0a8d1d9e2c2f1847786439014f479817f67d1a70a9c213419fbee5c9cde44fb6"
+    }
+  ],
+  "screenshotInspection": "final JPEG frames visually inspected; rendered evidence is bounded to the displayed modes and viewport",
+  "registrationCount": 0,
+  "newObservedInternalObjects": 0,
+  "physicalParentIdentity": "unknown"
+}

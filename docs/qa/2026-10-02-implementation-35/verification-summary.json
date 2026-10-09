@@ -1,0 +1,374 @@
+{
+  "implementation": "I35",
+  "sealedAtUtc": "2026-10-02T20:59:46.908179+00:00",
+  "version": "2.91.0-research.1",
+  "goalStatus": "active",
+  "fullGoalComplete": false,
+  "scientificDelta": {
+    "sourceId": "DANDI:001469",
+    "releaseId": "0.250611.1844",
+    "sourceAsset": {
+      "id": "0e0ca61c-4206-46ad-8c78-0ce7b1252b33",
+      "path": "sub-Chronic-Implant-1/sub-Chronic-Implant-1_obj-1m4dmm2_ecephys.nwb",
+      "bytesDeclared": 355191072,
+      "sha256Declared": "b7e323f222791499af6d13ad8fa7d5ea9850fcf59e0de0dfa84c598a4a1be0ae",
+      "etagDeclared": "992cec0901b7b705d0fa1ccb8b7de263-6",
+      "wholeFileSha256Verified": true,
+      "sourceShape": [
+        5543424,
+        32
+      ],
+      "dtype": "int16",
+      "chunkShape": [
+        43308,
+        1
+      ],
+      "compression": null,
+      "nwbVersion": "2.6.0"
+    },
+    "allSourceChannelsAndNativeTimesRetained": true,
+    "recording": {
+      "sampleCountPerChannel": 5543424,
+      "channelCount": 32,
+      "totalStoredSamples": 177389568,
+      "sampleRateHz": 30000,
+      "startingTimeSeconds": 0,
+      "durationSeconds": 184.7808,
+      "lastSampleTimeSeconds": 184.78076666666666,
+      "dataPath": "/acquisition/ElectricalSeries/data",
+      "blockSamples": 300000,
+      "blocksPerChannel": 19,
+      "chunkCount": 608,
+      "sourceArrayCOrderInt16LeSha256": "493853ea12ef93f5952a30528fe0433faf1a09b5d1333c2e0c4fc2bfb143ddd4",
+      "allTimeSamplesAndChannelsRetained": true,
+      "filtering": false,
+      "decimation": false,
+      "physicalAmplitudeRescaling": false,
+      "zeroPadding": false,
+      "compressedBytes": 160220016,
+      "maximumCompressedChunkBytes": 306357
+    },
+    "acquisitionReusedPriorBytes": 3918112,
+    "newlyFetchedBytes": 351272960,
+    "rawNwbRetainedOnceOutsidePublic": true,
+    "priorI09SourceContractAndPreviewUnchanged": true,
+    "nativeSessionId": null,
+    "physicalVoltageCalibrationEstablished": false,
+    "isolatedUnitCount": 0,
+    "identifiedInterneuronCount": 0,
+    "newTypeProfileCount": 0,
+    "newPhysiologyToCellJoinCount": 0,
+    "atlasRegistrations": 0,
+    "newM2SectionCellNucleusGeometry": 0,
+    "newM4MouseSpinalInterneuronInternalObject": 0,
+    "publication": false
+  },
+  "engineeringValidation": {
+    "completeFunctionalImplementationFullResearchObservedExitCode": 0,
+    "tests": 1345,
+    "passed": 1330,
+    "conditionalSkips": 15,
+    "failed": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "fullLog": "full-research-validation-node26.log",
+    "scopeOfFullEntry": "Full functional implementation and scoped queue/registry; final historical reference wording and docs synchronized in separately validated final build.",
+    "initialFailedFullEntry": "full-research-validation.log",
+    "initialFailureCause": "Unchanged Research Explorer gzip deterministic recompression differed under bundled Node 24 zlib. Original Node 26 validates exact original bytes. No canonical gzip regenerated.",
+    "runtimeDiagnosis": "runtime-transport-diagnosis.json",
+    "finalBuildStrictTypesFullLintManifestRegistryAndBothDandiSuitesObservedExitCode": 0,
+    "finalTargetedTests": 14,
+    "finalTargetedPassed": 14,
+    "finalChecks": "final-document-and-reference-checks.json",
+    "completeNwbDeterministicDerivativeReplayObservedExitCode": 0,
+    "completeNwbByteReplayLog": "full-source-byte-replay.log",
+    "currentManifestInputs": 2022,
+    "finalManifestFileSha256": "b4f5af4db42ae772430965120668b5e229bbc1752528bbbb499664063b17f7c1",
+    "allOriginalAndTemporaryInputsMatch": true
+  },
+  "nativeValidation": {
+    "checks": 14,
+    "passed": 14,
+    "failed": 0,
+    "nativeReceipt": "native-checks.json",
+    "actualDomWindowsComparedToCompleteNwb": 3,
+    "actualDomSamplesReplayed": 8424,
+    "actualDomMismatches": 0,
+    "actualSvgPointsCompared": 5424,
+    "actualSvgCoordinateMismatches": 0,
+    "servedChecksumFault": "served-checksum-fault.json",
+    "originalWorkspaceNeverDamaged": true,
+    "temporaryExactBlockAndActualWireRestored": true,
+    "viewport390NoHorizontalOverflow": true,
+    "primaryControlMinimumPixels": 44,
+    "downloadFileLandingVerified": false,
+    "realBrowser200PercentZoomVerified": false,
+    "screenReaderVerified": false,
+    "nativePendingCancelVerified": false
+  },
+  "preservation": {
+    "currentOriginalAndTemporaryInputsVerified": 2022,
+    "priorAuthoritativeInputsOutsideOwnedVerified": 1394,
+    "fixedScientificInputsVerified": 398,
+    "existingOwnedFilesBackedUp": 11,
+    "ownedBackupSha256": "0e6372793bb32acc8f1f03ba7d5f4088bf24401f6efe4f6e1ccb92bc731068b2",
+    "changedOwnedFiles": [
+      ".gitignore",
+      "app/DandiSpinalCordTracePreview.tsx",
+      "app/dandi-spinalcordnet-trace.css",
+      "tools/build_research_iteration_manifest_2_91.mjs",
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "data/research-model-upgrade-registry-0.1.json",
+      "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+      "data/research-iteration-manifest-2.91.json"
+    ],
+    "newAuthoritativeFileCount": 619,
+    "frozenManifestChecks": [
+      {
+        "path": "data/research-iteration-manifest-2.34.json",
+        "matches": true,
+        "bytes": 125197,
+        "sha256": "76ead4e29455c8e9250f294afa4e78b6a72bb76709115d15954564545bb43d1e"
+      },
+      {
+        "path": "data/research-iteration-manifest-2.90.json",
+        "matches": true,
+        "bytes": 7954,
+        "sha256": "8bca8205ed5671241e083b1f36bec1d566fc591a93b44cc75ae1d1d8c13c2480"
+      }
+    ],
+    "canonicalUpgrades": 243,
+    "exactCompleted": 79,
+    "mismatches": [],
+    "sourceNwbNotCopiedIntoTemporaryOrPublic": true,
+    "originalDependenciesPreserved": true,
+    "gitPushOrPublication": false
+  },
+  "remainingScientificAndProductScope": [
+    "Physical ADC/voltage calibration in this source",
+    "Other NWB recordings and exact physiology-to-cell mapping",
+    "M2 section/donor/frame/curated labels and rights gates",
+    "M4 exact mouse spinal interneuron raw volume, object, parent and frame chain",
+    "Remaining F01-F20 and canonical queue scopes",
+    "Automatic file download landing, screen reader, real 200% zoom and other native viewer routes"
+  ],
+  "canonicalUpgrades": 243,
+  "exactCompleted": 79,
+  "images": [
+    {
+      "path": "desktop-complete-recording.jpg",
+      "pixelWidth": 1280,
+      "pixelHeight": 720,
+      "bytes": 81385,
+      "sha256": "7044ed61381d6331ba935ad3bc96a0212b23ece00878ef006ae70285aa190f25"
+    },
+    {
+      "path": "desktop-recording-controls.jpg",
+      "pixelWidth": 1280,
+      "pixelHeight": 720,
+      "bytes": 97562,
+      "sha256": "1c01d2b9fdbff8259e1eb249b55278ea9944d39c76015b235c0bb8fbe34b26d3"
+    },
+    {
+      "path": "mobile-final-window.jpg",
+      "pixelWidth": 390,
+      "pixelHeight": 844,
+      "bytes": 55104,
+      "sha256": "4e1e511edb4e24969ca0bf92f88d5b020d260abe3cc5189a046fa9f8b40d4eb9"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "before-authoritative-inputs.json",
+      "bytes": 273322,
+      "sha256": "3b919a9caae9597e2f2c4010097357d0aa0ab4f5088bcea51d23db124fcf44e8"
+    },
+    {
+      "path": "before-baseline-check.json",
+      "bytes": 80,
+      "sha256": "5148813c16e170e70167953cbaba4afb5e71c219b6a20e5da071728cf347c357"
+    },
+    {
+      "path": "before-owned-inputs.json",
+      "bytes": 1775,
+      "sha256": "5c71d16f980b74047f900c6b8ff9de1b66ea85abaf7b1dad92b3da83d4f397f8"
+    },
+    {
+      "path": "code-manifest-generation.log",
+      "bytes": 95,
+      "sha256": "e2fb313c60f61c1138db69713d7a00852646df5819660d4dc0bfca7c2f9fa073"
+    },
+    {
+      "path": "desktop-complete-recording.jpg",
+      "bytes": 81385,
+      "sha256": "7044ed61381d6331ba935ad3bc96a0212b23ece00878ef006ae70285aa190f25"
+    },
+    {
+      "path": "desktop-recording-controls.jpg",
+      "bytes": 97562,
+      "sha256": "1c01d2b9fdbff8259e1eb249b55278ea9944d39c76015b235c0bb8fbe34b26d3"
+    },
+    {
+      "path": "final-authoritative-manifest.json",
+      "bytes": 423359,
+      "sha256": "b4f5af4db42ae772430965120668b5e229bbc1752528bbbb499664063b17f7c1"
+    },
+    {
+      "path": "final-document-and-reference-checks.json",
+      "bytes": 7273,
+      "sha256": "5f19086331b406c1e520afccf796e78d789d4a8f1df531fabc680834b5bc7a02"
+    },
+    {
+      "path": "final-manifest-generation.log",
+      "bytes": 95,
+      "sha256": "e2fb313c60f61c1138db69713d7a00852646df5819660d4dc0bfca7c2f9fa073"
+    },
+    {
+      "path": "final-preservation-check.json",
+      "bytes": 1368,
+      "sha256": "0733a88db16f83c2c6e7e4af1e058fd17642f471ef8e7ec3b8eb18d956f69882"
+    },
+    {
+      "path": "final-temporary-input-replay.json",
+      "bytes": 285,
+      "sha256": "241d0af0d78b35824ce02c007f3b17b11b18b1d9ab692b6e7fe55c1b6bbe6f97"
+    },
+    {
+      "path": "full-recording-extraction.log",
+      "bytes": 1498,
+      "sha256": "51adf94215717443d4430bed380f9c354296f135ddf6d1a4eb3ee3b00d0f8b69"
+    },
+    {
+      "path": "full-research-validation-node26.log",
+      "bytes": 208200,
+      "sha256": "26a045211133fe4e9680f46124c91dc93cfe3e0e473d4f6019533cf8894b095d"
+    },
+    {
+      "path": "full-research-validation.log",
+      "bytes": 72786,
+      "sha256": "65150eb8b76a64e9f4aaff8bd024c38f9915311efa8680dbeb9e6d6e776f1275"
+    },
+    {
+      "path": "full-source-acquisition.log",
+      "bytes": 2397,
+      "sha256": "ae1f1daffeb9547b6f4352bfc357e2f9128fb111db4cdf81ca19429b19f893e9"
+    },
+    {
+      "path": "full-source-byte-replay.log",
+      "bytes": 1505,
+      "sha256": "9952ea626ba487d58ab40a84a5c0d3514bdca7cc74f1afae7aba76dfd44c9b94"
+    },
+    {
+      "path": "initial-manifest-generation.log",
+      "bytes": 95,
+      "sha256": "e2fb313c60f61c1138db69713d7a00852646df5819660d4dc0bfca7c2f9fa073"
+    },
+    {
+      "path": "lint-first.log",
+      "bytes": 1055,
+      "sha256": "91f9a63116df0ff3fd7ac833f70f6bf84ef19d5369854cee68e7af85ab15cefa"
+    },
+    {
+      "path": "mobile-final-window.jpg",
+      "bytes": 55104,
+      "sha256": "4e1e511edb4e24969ca0bf92f88d5b020d260abe3cc5189a046fa9f8b40d4eb9"
+    },
+    {
+      "path": "native-channel-0-first-window.json",
+      "bytes": 39564,
+      "sha256": "4fa42edb8b2b02cd3b43b05c1f5cfc1c11e9f6ab962d1ac754ccc72719ed236b"
+    },
+    {
+      "path": "native-channel-31-final-window.json",
+      "bytes": 33848,
+      "sha256": "73bd20fdff82d4379c3becdbfdd3c62f0196f7b84d51992114d4f14cf7f06059"
+    },
+    {
+      "path": "native-channel-7-middle-window.json",
+      "bytes": 40444,
+      "sha256": "ba5b39dc28928f77ac18236ae26a7800fb5151ead7ddee7c8843845d8ed095f6"
+    },
+    {
+      "path": "native-checks.json",
+      "bytes": 2326,
+      "sha256": "d07a0f7acf43c02fb95cf28b72051270b88e9bc1494bfc42463a563f06ad311a"
+    },
+    {
+      "path": "native-export-source-replay.json",
+      "bytes": 1279,
+      "sha256": "4e111e29d6adf11a67c45f8f82d7b1ec76c514a0a1e8eeed5176e9689d25d37e"
+    },
+    {
+      "path": "native-final-plot-dom.json",
+      "bytes": 279,
+      "sha256": "7f59a35d2c52b5ea2cff317ce0f6dfd640325dd1cd8e5ba6c0c72c81f73005f9"
+    },
+    {
+      "path": "native-final-svg-points.json",
+      "bytes": 87390,
+      "sha256": "308a56e112841d703e224b8d6216dffb7a312beb636d0943577f3f89c5000222"
+    },
+    {
+      "path": "native-legacy-scope-text.json",
+      "bytes": 436,
+      "sha256": "9cf0ee4da9df4733a97c062339e6307bf1b23637b7f9bd7f6df8809be671570a"
+    },
+    {
+      "path": "native-middle-svg-points.json",
+      "bytes": 108636,
+      "sha256": "0878e9d7052733c642652b161bd4eee3ee90ba3a0a7bbbfb812ad46d95fe102c"
+    },
+    {
+      "path": "native-mobile-layout.json",
+      "bytes": 149,
+      "sha256": "0928f6249b945ed267a0bfe3444adcf999e12d19c97c1b2c6d8242897c24c81a"
+    },
+    {
+      "path": "native-svg-source-replay.json",
+      "bytes": 865,
+      "sha256": "1b629940e3a224866dc1463885ba86368aa96eb5543fb16688b5d8cc2bd5c2c2"
+    },
+    {
+      "path": "owned-before.zip",
+      "bytes": 396274,
+      "sha256": "0e6372793bb32acc8f1f03ba7d5f4088bf24401f6efe4f6e1ccb92bc731068b2"
+    },
+    {
+      "path": "pre-final-manifest-generation.log",
+      "bytes": 95,
+      "sha256": "e2fb313c60f61c1138db69713d7a00852646df5819660d4dc0bfca7c2f9fa073"
+    },
+    {
+      "path": "pre-final-temporary-input-replay.json",
+      "bytes": 354,
+      "sha256": "8f72799a93abe96b1362b32b18bb9adb1a59e0a9690817da72cb454e7763a3d9"
+    },
+    {
+      "path": "runtime-transport-diagnosis.json",
+      "bytes": 2438,
+      "sha256": "25561429553915e353d2d44fe88e250b6e03723110d5ab8c47b92fe25c086df1"
+    },
+    {
+      "path": "served-checksum-fault.json",
+      "bytes": 865,
+      "sha256": "5a7f029068c8e90f365e525cf3243bcb922326254ee41275e9317c9a3c468035"
+    },
+    {
+      "path": "targeted-tests.log",
+      "bytes": 1012,
+      "sha256": "6044df18862429e51f89f51d37739d5a9905db1dc669aae90e4dd4b3103ebc03"
+    },
+    {
+      "path": "temporary-input-replay.json",
+      "bytes": 54374,
+      "sha256": "7a79b3e98e561787ed5c7fcd0e04c0a552ea8d1cb923014073c87ed7a2f3f46a"
+    },
+    {
+      "path": "typecheck-first.log",
+      "bytes": 106,
+      "sha256": "4aea52f0a4debbf5e90a7bf08073646d031d4bf0ce41a31f13f51023ef698119"
+    }
+  ],
+  "sourceRecordBrowserUrl": "http://127.0.0.1:3003/source-audits?dandiChannel=7&dandiFullStart=2109000#dandi-trace-preview-panel"
+}

@@ -55,8 +55,11 @@ test("scene and information surface wire the reference as an isolated mode", () 
   assert.match(prototype, /InternalStructureReferencePanel/);
   assert.match(prototype, /Same-specimen interior/);
   assert.match(prototype, /Compartment evidence audit/);
-  assert.match(panel, /Current knowledge record:/);
-  assert.match(panel, /this same-record internal scene correctly stays empty/);
+  assert.match(prototype, /Current knowledge record:/);
+  assert.match(panel, /UPG-251 · ACTIVE-RECORD DETAIL AUDIT/);
+  assert.match(panel, /matrix below follows this verified record only/);
+  assert.match(panel, /<IndependentSourceObjectCoverage \/>/);
+  assert.match(panel, /independent-reference-library/);
   assert.match(panel, /Open zero-geometry evidence audit/);
   assert.match(panel, /co-display only/);
 });

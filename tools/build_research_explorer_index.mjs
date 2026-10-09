@@ -7,16 +7,18 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 import { attachResearchRecordPresentations } from "../app/research-record-presentation.js";
+import { russPrevalenceDisplay, validateRussSpinalInformationAdapter } from "../app/russ-spinal-information-adapter.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DEFAULT_OUTPUT = path.join(ROOT, "public/data/research_explorer_index_v1");
-const RELEASE_DATE = "2026-09-02";
-const ASSET_SET_ID = "ohri:research-explorer-index:1.13.0";
+const RELEASE_DATE = "2026-10-04";
+const ASSET_SET_ID = "ohri:research-explorer-index:1.14.0";
 
 const INPUTS = {
   atlasRelease: "data/atlas-release-0.1.json",
   researchMvp: "data/research-mvp-release-0.2.json",
   russ: "data/russ-harmonized-taxonomy-crosswalk-0.1.json",
+  russInformation: "data/russ-spinal-information-adapter-0.1.json",
   sathyamurthy: "data/sathyamurthy-source-taxonomy-0.1.json",
   hayashiV2a: "data/hayashi-v2a-source-taxonomy-0.1.json",
   haringDorsalHorn: "data/haring-dorsal-horn-source-taxonomy-0.1.json",
@@ -351,10 +353,23 @@ function buildSciEvidenceRecords(atlasRelease, researchMvp) {
   });
 }
 
-function buildRussRecords(russ) {
+function buildRussRecords(russ, information, informationSha256) {
+  validateRussSpinalInformationAdapter(information, russ);
+  const informationByLabel = new Map(information.populations.map((row) => [row.sourceLabelRaw, row]));
+  const denominator = information.sequencingDenominator;
+  const adult = information.adultValidationContext;
+  const adultPanelEvidence = adult.panels.map((panel) => field(
+    `Adult in situ panel context · ${panel.sourceLabelRaw}`,
+    `Raw cluster strings: ${panel.clustersProbedRaw.map((cluster) => cluster.raw).join(" · ")}; ${panel.countedCells.value} counted adult cells from three animals, one counted L4 section per animal. Raw targets and source font colors: ${panel.targetGenesRaw.map((gene) => `${gene.raw} [${JSON.stringify(gene.fontColorRaw)}]`).join(" · ")}; target validation unassessable from the retained color legend; targets are not assigned to every named cluster. Single-cluster fraction ${panel.assignmentStatistics.assignedToCluster.sourceValueRaw}, source uncertainty ${panel.assignmentStatistics.assignedToCluster.uncertaintyRaw}; cumulative single-cluster-or-related-pair fraction ${panel.assignmentStatistics.assignedToClusterOrPair.sourceValueRaw}, source uncertainty ${panel.assignmentStatistics.assignedToClusterOrPair.uncertaintyRaw}; fractions displayed as percent in the workbook.`,
+    "source_panel_context_not_per_population_or_verified_marker",
+    `${information.source.inputs.adult_in_situ_panels.fileName}#Sheet1!${panel.countedCells.locator.match(/!([A-Z]+)22$/)[1]}1:${panel.countedCells.locator.match(/!([A-Z]+)22$/)[1]}26; ${adult.sectionMethodsStatement.locator}; ${adult.panelAssignmentInterpretationLocator}`,
+  ));
   const groupById = new Map(russ.groups.map((group) => [group.id, group]));
   return russ.populations.map((population) => {
     const group = groupById.get(population.groupId);
+    const detail = informationByLabel.get(population.label);
+    const sampled = detail.sequencingSampling;
+    const table = detail.articleTable1;
     const projectClass = group?.interneuronCandidate
       ? "source-local interneuron or projection-neuron candidate"
       : "source context excluded from interneuron-candidate count";
@@ -374,7 +389,7 @@ function buildRussRecords(russ) {
         cellRosterAvailability: "no_roster_retained",
         canonicalIdentityStatus: "not_established",
       },
-      searchTerms: [population.id, population.primaryMarkers, group?.regionClass, group?.transmitterClass, russ.source.publication.citation, russ.source.publication.doi, russ.source.processedCounts.accession],
+      searchTerms: [population.id, population.primaryMarkers, table.individualMarkersRaw, table.family.raw, table.lamina.raw, table.rawCells.neurotransmitterMarker, table.putativeLineage.raw, detail.adultPanelMembership.exactRawLabelPanelIds, group?.regionClass, group?.transmitterClass, russ.source.publication.citation, russ.source.publication.doi, russ.source.processedCounts.accession],
       evidence: [
         field("Canonical parent source", "SRC-RUSS-2021", "project_source_registry", "UPG-108"),
         field("Record granularity", "harmonized population · observation unit: source population", "project_curated", "UPG-109"),
@@ -383,13 +398,29 @@ function buildRussRecords(russ) {
         field("Canonical transmitter", canonicalTransmitterValue(group?.transmitterClass), "source_reported", "Results; Supplementary Table 1"),
         field("Source group", group?.label, "source_reported", "Results; Fig. 2"),
         field("Primary markers", population.primaryMarkers, "source_reported", russ.source.markerTable.title),
+        field("Exact captured-cell/nucleus count", `${sampled.value} captured sequenced cells/nuclei · denominator ${denominator.value.toLocaleString("en-US")} captured observations across six studies; independent animals and adult prevalence remain separate`, "source_reported_captured_sequencing_observations", sampled.countLocator),
+        field("Named sequencing denominator", `${denominator.id}: ${denominator.value} captured sequenced cells/nuclei across ${denominator.studies.map((study) => `${study.sourceLabelRaw}=${study.value}`).join(" · ")}; no individual age or animal-resolved replication assigned`, "source_harmonized_sequencing_denominator", denominator.countLocator),
+        ...sampled.byStudy.map((study) => field(`Captured sequencing contribution · ${study.studyLabelRaw}`, `${study.value} captured sequenced cells/nuclei · ${study.sourceCompositionPercentRaw}% of this ${sampled.value}-observation population; sampled zero is not biological absence`, "source_study_composition_within_population", `${study.countLocator}; ${study.compositionLocator}`)),
+        field("Raw Table1 family", table.family.raw || "Blank source value", "source_population_family_context", table.fieldLocators.family),
+        field("Raw Table1 lamina", `${table.lamina.raw || "Blank source value"}; adult source-population context, no individual coordinate`, "source_population_spatial_context", table.fieldLocators.lamina),
+        field("Raw Table1 NT marker", table.rawCells.neurotransmitterMarker || "Blank source value", "source_marker_string_not_validated_gene_identity", table.fieldLocators.neurotransmitterMarker),
+        field("Raw Table1 individual markers", `${table.individualMarkersRaw.map((value) => value || "Blank source value").join(" · ")}; validation unassessable because text XML loses gray styling`, "source_raw_combinatorial_marker_strings_validation_unassessable", `${table.fieldLocators.individualMarker1}; ${table.fieldLocators.individualMarker2}; ${table.fieldLocators.individualMarker3}`),
+        field("Raw Table1 adult prevalence", russPrevalenceDisplay(table.prevalence), "source_adult_prevalence_numeric_denominator_not_supplied", `${table.fieldLocators.prevalence}; ${table.prevalence.denominatorLocator}`),
+        field("Raw Table1 putative lineage", `${table.putativeLineage.raw || "Blank source value"}; source transcriptomic context, exact lineage assignment not established`, "source_putative_transcriptomic_context", table.fieldLocators.putativeLineage),
+        field("Selected raw-label panel membership", detail.adultPanelMembership.exactRawLabelPanelIds.join(" · ") || `${detail.adultPanelMembership.status}; no biological-absence or per-cell claim`, "exact_raw_source_label_context_only", `${INPUTS.russInformation}#populations[sourceLabelRaw=${population.label}]/adultPanelMembership`),
+        field("Table1 annotation conventions", information.derivation.table1FootnoteRaw, "source_table1_annotation_conventions", information.derivation.table1FootnoteLocator),
+        field("Adult in situ validation sampling", `9-week validation animals; L4 ${adult.sectionSamplingContext.sourceSectionThicknessRaw} sections; one counted section per animal, three animals per panel. This context does not assign age or L4 to every observation in the six-study sequencing dataset`, "separate_adult_validation_cohort_context", `${adult.methodsStatement.locator}; ${adult.sectionMethodsStatement.locator}`),
+        field("Adult in situ counted-source discrepancy", `${adult.panelCountedCellsSum} Supplement3 panel sum versus ${adult.articleReportedCountedCells} article counted total; difference ${adult.countDiscrepancy.arithmeticDifference}; cause unresolved and counts not harmonized`, "unresolved_source_scope_or_value_difference", adult.countDiscrepancy.sourceLocators.join("; ")),
+        field("Adult article assignment counts", `${adult.articleReportedSingleClusterAssignedCells} single-cluster assigned and ${adult.articleReportedAdditionalPairAssignedCells} additional related-pair assigned out of ${adult.articleReportedCountedCells} article counted cells; these do not supply Table1 numerical per-row prevalence denominators`, "separate_article_adult_assignment_scope", adult.assignmentStatement.locator),
+        ...adultPanelEvidence,
         field("Region class", group?.regionClass, "source_reported", "Fig. 2e; Table 1"),
         field("Transmitter class", group?.transmitterClass, "source_reported", "Results; Supplementary Table 1"),
         field("Life-stage scope", russ.scope.lifeStage, "source_reported", "Study design"),
         field("Project use", projectClass, "project_curated", "UPG-027A"),
       ],
       gaps: [
-        gap("Profile-specific sampling denominator", "not_retained", "No cell count is retained in this derived type-level record; missing is not zero abundance."),
+        gap("Sequenced-cell identity roster", "not_retained", "Population counts do not retain individual sequenced cells/nuclei or animal-resolved replicates."),
+        gap("Adult prevalence numerical denominator", "source_schema_no_field", "Table1 footnote retains confidently assigned adult-neuron scope without a numerical per-row denominator; neither 19,353 sequencing observations nor 2,894 all counted adult cells substitute.", { sourceLocator: information.derivation.table1FootnoteLocator }),
         gap("Single-cell morphology", "not_measured", "No reconstructable single-neuron arbor is linked to this source population."),
         gap("Cell coordinates", "not_available_in_this_record", "Published population-level spatial context is not a project xyz coordinate."),
         gap("SCI context", "not_established", "The taxonomy reference is not an SCI condition series."),
@@ -398,16 +429,17 @@ function buildRussRecords(russ) {
         gap("Cross-source same-cell identity", "not_established", "No Russ population is declared identical to a Sathyamurthy, morphology, anatomy or SCI record."),
       ],
       provenance: sourceBlock({
-        label: "Russ harmonized postnatal taxonomy",
+        label: "Russ harmonized spinal taxonomy",
         citation: russ.source.publication.citation,
         doi: russ.source.publication.doi,
         urls: [
           { label: "Primary article", url: russ.source.publication.articleUrl },
           { label: "GEO record", url: russ.source.processedCounts.recordUrl },
+          ...Object.values(information.source.inputs).filter((input) => input.sourceUrl).map((input) => ({ label: input.fileName, url: input.sourceUrl })),
         ],
         accessions: [russ.source.processedCounts.accession],
-        locators: ["Results; Fig. 2", "Supplementary Table 1"],
-        objectHashes: [{ label: russ.source.markerTable.fileName, sha256: russ.source.markerTable.sha256 }],
+        locators: ["Results; Fig. 2", "Supplementary Table 1", sampled.countLocator, table.locator, adult.sectionMethodsStatement.locator],
+        objectHashes: [{ label: russ.source.markerTable.fileName, sha256: russ.source.markerTable.sha256 }, { label: INPUTS.russInformation, sha256: informationSha256 }, ...Object.values(information.source.inputs).map((input) => ({ label: input.fileName, sha256: input.sha256 }))],
       }),
       coordinate: {
         geometryStatus: "TYPE_LEVEL",
@@ -1734,7 +1766,7 @@ async function main() {
   const { loaded, sourceFiles } = await loadInputs();
   const baseRecords = [
     ...buildSciEvidenceRecords(loaded.atlasRelease, loaded.researchMvp),
-    ...buildRussRecords(loaded.russ),
+    ...buildRussRecords(loaded.russ, loaded.russInformation, sourceFiles.find((source) => source.name === "russInformation").sha256),
     ...buildSathyamurthyRecords(loaded.sathyamurthy),
     ...buildHayashiV2aRecords(loaded.hayashiV2a),
     ...buildHaringDorsalHornRecords(loaded.haringDorsalHorn),
@@ -1764,12 +1796,12 @@ async function main() {
       throw new Error(`Research Explorer ${focusKind} count ${focusCounts[focusKind]} does not match expected ${expectedCount}`);
     }
   }
-  if (records.length !== 641 || sourceFiles.length !== 21) {
+  if (records.length !== 641 || sourceFiles.length !== 22) {
     throw new Error(`Research Explorer build denominator mismatch: ${records.length} records from ${sourceFiles.length} source files`);
   }
 
   const indexPayload = {
-    schemaVersion: "1.13.0",
+    schemaVersion: "1.14.0",
     assetSetId: ASSET_SET_ID,
     releaseDate: RELEASE_DATE,
     scientificPolicy: {
@@ -1807,7 +1839,7 @@ async function main() {
   };
   const indexBytes = Buffer.from(stableJson(indexPayload));
   const manifestPayload = {
-    schemaVersion: "1.13.0",
+    schemaVersion: "1.14.0",
     assetSetId: ASSET_SET_ID,
     releaseDate: RELEASE_DATE,
     index: {

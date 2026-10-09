@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "banc-v888-internal-object-source-audit-0.1.0",
+  "auditDate": "2026-09-23",
+  "authority": "OPEN_SOURCE_ROUTE_AND_ADMISSION_AUDIT",
+  "relationshipToMouseAtlas": "comparative_reference_only",
+  "candidate": {
+    "species": "Drosophila melanogaster",
+    "materializationId": "v888",
+    "rootId": "720575941350424112",
+    "cellType": "IN14A018",
+    "nucleusId": "73044750394982464",
+    "sourceRootAndNucleusJoinVerified": true
+  },
+  "sources": {
+    "nucleusBoundary": {
+      "publicAccessRouteDocumented": true,
+      "package": "bancr",
+      "function": "banc_read_nuclei_mesh",
+      "cloudVolumePrefix": "precomputed://gs://lee-lab_brain-and-nerve-cord-fly-connectome/nuclei/seg_v1",
+      "candidateNucleusId": "73044750394982464",
+      "sourceMapListsAnnotationTable": true,
+      "sourceMapListsMeshProduct": false,
+      "exactMeshPayloadFetched": false,
+      "payloadBytes": null,
+      "payloadSha256": null,
+      "materializationV888BindingVerified": false,
+      "objectReuseTermsVerified": false,
+      "admitted": false,
+      "reason": "The maintained client documents an ID-addressable public mesh route, but this audit did not retrieve the candidate mesh or establish its exact payload, v888 materialization binding, or object-level reuse terms."
+    },
+    "mitochondriaAnnotations": {
+      "publicDataverseFile": {
+        "fileId": 13917846,
+        "filename": "banc_888_mitochondria_v1_human_readable.csv.gz",
+        "bytes": 1107598431,
+        "md5": "2e3be9c0d063969ae019121117007e9a",
+        "dataverseVersion": 3,
+        "releaseLicense": "CC BY 4.0",
+        "candidateRowsRetrieved": false
+      },
+      "publicGcsMirrorObjectPath": "neuron_annotations/v888/mitochondria_v1_human_readable.csv.gz",
+      "rootFilteredQueryDocumented": true,
+      "rootFilterField": "pt_root_id",
+      "queryFunction": "bancr::banc_mitochondria(rootids=...)",
+      "configuredCaveClientRequiresRegisteredToken": true,
+      "credentialsInspectedOrUsed": false,
+      "queryExecuted": false,
+      "perMitochondrionCoordinatesVerified": false,
+      "separateSegmentationProductSourceMapStatus": "MISSING",
+      "admittedPoints": 0,
+      "admittedSurfaces": 0
+    },
+    "mitochondriaSegmentation": {
+      "publicRouteDocumentedInClient": true,
+      "package": "bancr",
+      "function": "banc_read_mitochondria_mesh",
+      "cloudVolumePrefix": "precomputed://gs://zetta_lee_fly_cns_001_mito/250423_mito/seg",
+      "routeVersionLinkedToBancV888": false,
+      "candidateObjectIdsVerified": false,
+      "exactPayloadFetched": false,
+      "objectReuseTermsVerified": false,
+      "admittedSurfaces": 0,
+      "reason": "This is a separate precomputed segmentation route; the BANC source map marks its detected-mitochondria segmentation product missing and does not establish that this route contains the candidate's v888 mitochondria."
+    },
+    "synapses": {
+      "publicRawVersionsListed": ["v2", "v3"],
+      "publicRawObjectPaths": [
+        "neuron_connectivity/v888/synapses_v2_human_readable.csv.gz",
+        "neuron_connectivity/v888/synapses_v3_human_readable.csv.gz"
+      ],
+      "paperVersion": "v2",
+      "v3Status": "in_testing",
+      "v2File": {
+        "fileId": 13916483,
+        "filename": "banc_888_synapses_v2_human_readable.csv.gz",
+        "bytes": 12257440602,
+        "md5": "e3679e7b9cec032ed1745c7a9dfd42d8",
+        "coordinateUnits": "nanometres"
+      },
+      "v3CoordinateFrame": {
+        "units": "source_grid_voxels",
+        "voxelResolutionNanometres": [16, 16, 45]
+      },
+      "publicEnrichedParquetSizesBytes": {
+        "v2Approximate": 9600000000,
+        "v3Approximate": 15000000000
+      },
+      "sourceRowsCarryPreAndPostRootIds": true,
+      "boundedCandidateQueryRoutePinned": false,
+      "candidateRowsRetrieved": false,
+      "payloadDownloaded": false,
+      "stableObjectIdsAndCoordinatesVerified": false,
+      "admittedSynapseObjects": 0
+    }
+  },
+  "actions": {
+    "privateCredentialsInspected": false,
+    "caveTokenRequested": false,
+    "sourceQueryExecuted": false,
+    "largeArchiveDownloaded": false,
+    "newGeometryImported": false
+  },
+  "admission": {
+    "nucleusSurfaces": 0,
+    "mitochondriaPoints": 0,
+    "mitochondriaSurfaces": 0,
+    "synapseObjects": 0,
+    "mouseIdentityJoins": 0,
+    "atlasRegistrations": 0,
+    "measurements": 0
+  },
+  "nextGates": [
+    "For the nucleus, fetch only the exact stable nucleus ID from the documented seg_v1 route and pin its bytes, mesh topology, coordinate scale, source update/version metadata, same-cell placement check, and applicable reuse terms before display.",
+    "For mitochondria, obtain a root-filtered v888 row subset through an explicitly authorized registered-token query or a separately published exact subset; do not read local credentials or download the entire compressed archive as a shortcut.",
+    "For synapses, select one pinned version first, query exact pre/post root IDs, preserve exact synapse row IDs and source coordinate frame, and validate all coordinates against the exact candidate skeleton before considering points.",
+    "Keep all BANC objects in the Drosophila comparison lane; do not join them to mouse records or infer a homolog, spinal identity, function, or registration."
+  ],
+  "hardBoundaries": [
+    "A public URL or client accessor proves a documented route, not that a candidate object was downloaded, version-matched, hashed, or licensed for project redistribution.",
+    "The Dataverse v3 file-level source release license does not automatically establish reuse terms for separate mutable or separately hosted CloudVolume products.",
+    "The candidate's source-reported count of 31 mitochondria remains metadata and is not 31 verified annotation rows, spatial points, or surfaces.",
+    "Synapse v2 coordinates are already in nanometres while v3 coordinates use a distinct voxel grid; coordinates must not be mixed without the source-defined scale and pinned version.",
+    "The comparator is adult female Drosophila VNC, not a mouse spinal interneuron or a vertebrate homolog."
+  ],
+  "sourceReferences": [
+    "https://github.com/htem/BANC-project/blob/main/manuscript/print/banc_data_locations.md",
+    "https://github.com/natverse/bancr/blob/main/R/meshes.R",
+    "https://natverse.org/bancr/reference/banc_cave_tables.html",
+    "https://natverse.org/bancr/reference/banc_all_synapses.html",
+    "https://natverse.org/bancr/reference/banc_synapses_enriched.html",
+    "https://github.com/natverse/bancr"
+  ]
+}

@@ -1,0 +1,386 @@
+{
+  "registryReleaseId": "ohri-research-source-registry-0.1.0",
+  "researchUpgradeRegistryId": "ohri-research-model-upgrade-registry-0.1.0",
+  "exportedAt": "2026-10-05T09:51:14.644Z",
+  "source": {
+    "id": "SRC-CROZAT-2025",
+    "aliases": [
+      "crozat-2025:figshare-29430869-v2",
+      "Figshare:29430869.v2"
+    ],
+    "sourceKind": "dataset",
+    "title": "Crozat et al. PKD2L1 CSF-contacting-neuron anatomy and electrophysiology source data",
+    "shortLabel": "Crozat PKD2L1 2025",
+    "citation": {
+      "text": "Crozat et al. 2025, Communications Biology",
+      "doi": "10.1038/s42003-025-08559-x",
+      "articleUrl": "https://doi.org/10.1038/s42003-025-08559-x"
+    },
+    "accessions": [
+      "Figshare:29430869.v2",
+      "DOI:10.6084/m9.figshare.29430869.v2"
+    ],
+    "speciesScopes": [
+      {
+        "scientificName": "Mus musculus",
+        "taxonId": "NCBITaxon:10090",
+        "context": "PKD2L1-positive cerebrospinal-fluid-contacting spinal neurons",
+        "authority": "source_reported"
+      }
+    ],
+    "lifeStageScopes": [
+      {
+        "value": "3-6 weeks",
+        "context": "anatomy and acute-slice electrophysiology",
+        "authority": "source_reported",
+        "missingReason": null
+      }
+    ],
+    "regionScopes": [
+      {
+        "value": "cervical, thoracic and lumbar spinal cord; central-canal-contacting population",
+        "context": "source-local anatomy and electrophysiology",
+        "authority": "source_reported_and_checksum_pinned_tables"
+      }
+    ],
+    "conditionScopes": [
+      "uninjured anatomy",
+      "acute-slice passive and active membrane properties",
+      "ion-channel and receptor experiments",
+      "extracellular-pH responses"
+    ],
+    "modalities": [
+      "source-data anatomy tables",
+      "whole-cell electrophysiology summary and observation tables",
+      "experiment-family analysis scripts"
+    ],
+    "experimentalUnits": [
+      {
+        "unit": "marker_defined_source_population",
+        "count": 1,
+        "scope": "one displayed source-local PKD2L1 functional profile",
+        "authority": "project_record_contract",
+        "missingReason": null
+      },
+      {
+        "unit": "firing_pattern_cell",
+        "count": 65,
+        "scope": "cervical 21, thoracic 23 and lumbar 21 cells; 31 animals across segment-specific cohorts",
+        "authority": "checksum_pinned_source_cells",
+        "missingReason": null
+      },
+      {
+        "unit": "passive_property_observation",
+        "count": 654,
+        "scope": "complete deposited rows; primary article reports n=659 cells from N=191 animals",
+        "authority": "checksum_pinned_source_table_with_denominator_conflict",
+        "missingReason": null
+      }
+    ],
+    "recordSets": [
+      {
+        "recordSetId": "RS-CROZAT-PKD2L1-FUNCTIONAL-PROFILE",
+        "parentSourceId": "SRC-CROZAT-2025",
+        "recordKind": "marker_defined_functional_profile",
+        "unitOfObservation": "source_population_with_experiment_family_observations",
+        "assignmentAuthority": "primary_article_plus_checksum_pinned_figshare_tables",
+        "includedRecordCount": {
+          "value": 1,
+          "unit": "source_profiles",
+          "scope": "one marker-defined PKD2L1 population; segment, firing-pattern and quadrant rows remain nested evidence rather than additional types",
+          "authority": "checksum_pinned_project_derivative",
+          "missingReason": null
+        },
+        "cellRosterAvailability": "none_reported",
+        "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+        "dataPath": "data/crozat-pkd2l1-functional-profile-0.1.json",
+        "idField": "profile.id",
+        "childRosterRef": {
+          "status": "none_reported",
+          "path": null,
+          "idField": null,
+          "missingReason": "The deposit has no globally stable cell identifier across anatomy and electrophysiology experiment families."
+        }
+      }
+    ],
+    "assets": [
+      {
+        "id": "ASSET-CROZAT-FIGSHARE-29430869-V2",
+        "kind": "remote_dataset",
+        "accession": "10.6084/m9.figshare.29430869.v2",
+        "url": "https://figshare.com/articles/dataset/29430869",
+        "bundled": false,
+        "integrity": {
+          "status": "verified_file_inventory",
+          "bytes": 1848613,
+          "sha256": null,
+          "missingReason": "Figshare supplies file-level MD5 values but no dataset-level SHA-256; seven key files have local SHA-256 receipts in the derived contract."
+        }
+      },
+      {
+        "id": "ASSET-CROZAT-PKD2L1-DERIVED-CONTRACT",
+        "kind": "checksum_pinned_project_derivative",
+        "accession": "ohri-crozat-pkd2l1-functional-profile-0.1.0",
+        "url": null,
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 20460,
+          "sha256": "ca022532c23f5d9967fce7efcbd5bde57b1d4f59516cb10764dd1b422dd8ed64",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-CROZAT-EXPERIMENT-FAMILY-OBSERVATIONS",
+        "kind": "checksum_pinned_project_derivative",
+        "accession": "crozat-experiment-family-observations-0.1",
+        "path": "data/crozat-experiment-family-observations-0.1.json",
+        "url": null,
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 1878506,
+          "sha256": "94b3dfda943df4979ae6dec09ebf2ff9d74e12cf81b04cbae6ac9c9c54ae0e42",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-CROZAT-NAV-INHIBITION-INFORMATION",
+        "kind": "checksum_pinned_project_derivative",
+        "accession": "crozat-nav-inhibition-information-0.1",
+        "path": "data/crozat-nav-inhibition-information-0.1.json",
+        "url": null,
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 104945,
+          "sha256": "43be824627a3d8b4f8c647b7d162735ab4e57a5243f84ec695d3265d67be6339",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-CROZAT-NAV-INHNA-ORIGINAL",
+        "kind": "checksum_pinned_original_source",
+        "accession": "Figshare-file:56062562",
+        "path": "data/source-candidates/crozat-nav-inhibition-20261004/56062562-InhNa.xlsx",
+        "url": "https://ndownloader.figshare.com/files/56062562",
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 11543,
+          "sha256": "53216ac2508ca26a3ac03cb40d796ca9973db25bbc120dce9fcf802e33dfbf81",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-CROZAT-NAV-INHNAPERC-ORIGINAL",
+        "kind": "checksum_pinned_original_source",
+        "accession": "Figshare-file:56062565",
+        "path": "data/source-candidates/crozat-nav-inhibition-20261004/56062565-InhNaPerc.xlsx",
+        "url": "https://ndownloader.figshare.com/files/56062565",
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 11016,
+          "sha256": "b5e7f7f67d4efc94b0582da92046c292b477f54d03f4016dcbbd6a0c197d5226",
+          "missingReason": null
+        }
+      }
+    ],
+    "rights": {
+      "status": "CC-BY-4.0",
+      "note": "Figshare dataset version 2 and its downloadable files are CC BY 4.0; attribution and change notice are retained."
+    },
+    "admission": {
+      "status": "derived_functional_profile_bundled",
+      "note": "One source-local population profile remains admitted. Selected local source information uses 25 original workbooks: 23 existing experiment-family workbooks with 2,115 source observations and 220 within-table condition groups, plus two separate NaV inhibition workbooks with 84 worksheet measurement rows. The full retained original XLSX inventory is 26, including INa.xlsx not selected by the existing family adapter. These file and row counts are not a unique physical-cell or animal denominator and add no type or exact-cell roster. Four source conflicts stay quarantined; the separate NaV label/protocol discrepancies remain visible. No geometry, registration, global per-cell or cross-workbook NaV pairing, cross-experiment-family join, or link to the separate PKD2L1 SBF-SEM study is created."
+    },
+    "researchLanes": [
+      "types",
+      "sources"
+    ],
+    "linkedUpgradeIds": [
+      "UPG-168",
+      "UPG-172"
+    ],
+    "missingness": [
+      {
+        "field": "global_cell_roster",
+        "status": "UNAVAILABLE",
+        "reason": "Generic cell labels are reused across regions and experiment families; no global stable cell ID exists."
+      },
+      {
+        "field": "raw_electrophysiology_traces",
+        "status": "UNAVAILABLE",
+        "reason": "No raw ABF/pClamp traces, acquisition timestamps or recording-file identifiers are deposited."
+      },
+      {
+        "field": "single_cell_morphology_and_internal_structure",
+        "status": "UNAVAILABLE",
+        "reason": "No raw microscopy volume, segmentation, SWC, EM stack, organelle mesh or stable same-cell morphology object is deposited."
+      },
+      {
+        "field": "atlas_registration",
+        "status": "NOT_ESTABLISHED",
+        "reason": "No source coordinate transform or atlas registration is admitted."
+      },
+      {
+        "field": "cross_source_identity",
+        "status": "NOT_ESTABLISHED",
+        "reason": "Shared PKD2L1 identity does not join this functional profile to the separate SBF-SEM paper, morphology records or transcriptomic records."
+      }
+    ],
+    "localWorkbookReadiness": {
+      "status": "checksum_verified_selected_source_information_workbooks",
+      "unit": "original_xlsx_files",
+      "selectedInformationWorkbookFiles": 25,
+      "allRetainedOriginalWorkbookFiles": 26,
+      "existingExperimentFamilyWorkbookFiles": 23,
+      "additionalNaVInhibitionWorkbookFiles": 2,
+      "retainedButUnselectedWorkbookFiles": 1,
+      "retainedButUnselectedWorkbookPins": [
+        {
+          "fileId": 56062547,
+          "fileName": "INa.xlsx",
+          "path": "data/source-candidates/crozat-experiment-families-20260930/56062547-INa.xlsx",
+          "bytes": 10956,
+          "sha256": "1fe223cbfcae802817843dae7a09bcc7306efa3fd0815c12301ac7aec8754f64",
+          "publisherMd5": "2dd19378e236c6d0ab72a5632814cde3"
+        }
+      ],
+      "existingExperimentFamilySourceObservationRows": 2115,
+      "additionalNaVInhibitionWorksheetMeasurementRows": 84,
+      "additionalNaVDensityRows": 56,
+      "additionalNaVPercentageRows": 28,
+      "existingInformationPath": "data/crozat-experiment-family-observations-0.1.json",
+      "additionalInformationPath": "data/crozat-nav-inhibition-information-0.1.json",
+      "additionalInputManifestPath": "data/source-candidates/crozat-nav-inhibition-20261004/crozat-nav-inhibition-inputs-manifest-0.1.json",
+      "individualPhysicalCellDenominator": null,
+      "individualAnimalMappingEstablished": false,
+      "crossExperimentFamilyJoins": 0,
+      "crossWorkbookNaVRowPairing": 0,
+      "newSourceProfiles": 0,
+      "newExactCellRosterRows": 0,
+      "newGeometryObjects": 0,
+      "newInternalObjects": 0,
+      "registrations": 0,
+      "scope": "Selected source-information scope: retain the existing 23-workbook/2115-observation/220-within-table-group adapter and separate two-workbook/84-worksheet-row NaV slice. The complete local original XLSX inventory is 26, including INa.xlsx retained but not selected by the existing family adapter; no reason for that selection difference is inferred. No independent-cell or animal denominator, cross-table pairing, type or geometry follows from these file/row counts."
+    }
+  },
+  "recordSetNavigation": [
+    {
+      "schemaVersion": "0.1.0",
+      "registryReleaseId": "ohri-research-source-registry-0.1.0",
+      "sourceId": "SRC-CROZAT-2025",
+      "recordSetId": "RS-CROZAT-PKD2L1-FUNCTIONAL-PROFILE",
+      "recordKind": "marker_defined_functional_profile",
+      "unitOfObservation": "source_population_with_experiment_family_observations",
+      "includedRecordCount": {
+        "value": 1,
+        "unit": "source_profiles",
+        "scope": "one marker-defined PKD2L1 population; segment, firing-pattern and quadrant rows remain nested evidence rather than additional types",
+        "authority": "checksum_pinned_project_derivative",
+        "missingReason": null
+      },
+      "sourceObjectSetReference": null,
+      "authority": "declared_metadata_navigation_only",
+      "boundary": "Navigation uses declared source metadata only. The destination verifies its own source files and rendering permissions. No new profile, physical-cell identity, geometry, internal object or registration is admitted.",
+      "newAdmissionCount": 0,
+      "crossSourceIdentityJoinCount": 0,
+      "registrationCount": 0,
+      "status": "unavailable",
+      "reference": {
+        "status": "none_reported",
+        "path": null,
+        "idField": null,
+        "missingReason": "The deposit has no globally stable cell identifier across anatomy and electrophysiology experiment families."
+      },
+      "entries": [],
+      "reason": "The deposit has no globally stable cell identifier across anatomy and electrophysiology experiment families.",
+      "sourceCitation": {
+        "text": "Crozat et al. 2025, Communications Biology",
+        "doi": "10.1038/s42003-025-08559-x",
+        "articleUrl": "https://doi.org/10.1038/s42003-025-08559-x"
+      },
+      "rights": {
+        "status": "CC-BY-4.0",
+        "note": "Figshare dataset version 2 and its downloadable files are CC BY 4.0; attribution and change notice are retained."
+      },
+      "requestedSourcePage": "/sources?source=SRC-CROZAT-2025&recordSet=RS-CROZAT-PKD2L1-FUNCTIONAL-PROFILE#RS-CROZAT-PKD2L1-FUNCTIONAL-PROFILE",
+      "renderedViewCaptured": false,
+      "sourceBytesVerifiedByThisReceipt": false
+    }
+  ],
+  "linkedResearchUpgrades": [
+    {
+      "id": "UPG-168",
+      "priority": "P0",
+      "status": "research watch — biologically relevant PKD2L1 vEM study lacks deposited source objects",
+      "lane": "internal_microdetail",
+      "description": "Monitor the PKD2L1 cerebrospinal-fluid-contacting-neuron SBF-SEM study as the closest biologically qualifying mouse-spinal interneuron internal-detail candidate found. The paper identifies GABAergic PKD2L1-positive spinal interneurons and reports targeted same-cell serial block-face EM, but no stable public raw stack, section series, segmentation, mesh or source-to-figure object manifest was located. Publication images and measurements cannot substitute for downloadable calibrated voxels or establish a reusable cell object. Admission remains blocked until the authors or a repository deposit stable object IDs, raw calibrated 3D pixels, same-cell membrane/cell segmentation and labelled nucleus, organelle or synapse objects, coordinate/voxel metadata, bytes, cryptographic checksums, object-level reuse rights and raw-versus-mask overlay QC. Until then the runtime renders zero PKD2L1 geometry or internals and makes no atlas registration, complete-cell, prevalence or general-interneuron claim",
+      "blocker": {
+        "code": "rights_or_permission",
+        "detail": "Admission remains blocked until the authors or a repository deposit stable object IDs, raw calibrated 3D pixels, same-cell membrane/cell segmentation and labelled nucleus, organelle or synapse objects, coordinate/voxel metadata, bytes, cryptographic checksums, object-level reuse rights and raw-versus-mask overlay QC."
+      },
+      "evidenceBasis": {
+        "markdown": "[primary PKD2L1 SBF-SEM article](https://pmc.ncbi.nlm.nih.gov/articles/PMC9943067/)",
+        "unlinkedText": "primary PKD2L1 SBF-SEM article",
+        "references": [
+          {
+            "label": "primary PKD2L1 SBF-SEM article",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9943067/"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-24",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L163",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "The paper identifies GABAergic PKD2L1-positive spinal interneurons and reports targeted same-cell serial block-face EM, but no stable public raw stack, section series, segmentation, mesh or source-to-figure object manifest was located.; Publication images and measurements cannot substitute for downloadable calibrated voxels or establish a reusable cell object.; Admission remains blocked until the authors or a repository deposit stable object IDs, raw calibrated 3D pixels, same-cell membrane/cell segmentation and labelled nucleus, organelle or synapse objects, coordinate/voxel metadata, bytes, cryptographic checksums, object-level reuse rights and raw-versus-mask overlay QC.; Until then the runtime renders zero PKD2L1 geometry or internals and makes no atlas registration, complete-cell, prevalence or general-interneuron claim"
+    },
+    {
+      "id": "UPG-172",
+      "priority": "P2",
+      "status": "completed",
+      "lane": "electrophysiology",
+      "description": "Add exactly one source-local PKD2L1 CSF-contacting-neuron functional profile from Figshare version `10.6084/m9.figshare.29430869.v2`. The deterministic contract records the official CC BY 4.0 92-file / 1,848,613-byte inventory and pins seven key objects by file ID, bytes, publisher MD5 and locally verified SHA-256. It preserves 3–6-week cervical/thoracic/lumbar scope; exact firing-pattern denominators (C N=10/n=21, T N=12/n=23, L N=9/n=21); paper N=191/n=659 versus 654 deposited passive-property rows; N=25/n=125 resting-potential observations; and exact anatomy FOV/cell totals. Four conflicts remain quarantined: paper-versus-workbook firing p values, incomplete/no-denominator firing-location coverage, 659-versus-654 passive-property rows, and thoracic 6-week distance n=478 versus FOV n=457. The deposit contains observation tables but no globally stable cell key: tonic/single-spike, segment, quadrant and experiment-family rows stay nested evidence rather than new types. The UI exposes observed cohort/experiment-family electrophysiology while retaining zero raw traces, microscopy volume, morphology, geometry, internal objects, atlas registration, whole-deposit per-cell join or link to the separate UPG-168 SBF-SEM study",
+      "blocker": {
+        "code": "none_for_declared_increment",
+        "detail": "No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies."
+      },
+      "evidenceBasis": {
+        "markdown": "[Crozat et al.](https://doi.org/10.1038/s42003-025-08559-x); [Figshare version 2](https://doi.org/10.6084/m9.figshare.29430869.v2); `data/crozat-pkd2l1-functional-profile-0.1.json`; `app/InterneuronTypeAtlas.tsx`; `public/data/research_explorer_index_v1/search-index.json`",
+        "unlinkedText": "Crozat et al.; Figshare version 2; `data/crozat-pkd2l1-functional-profile-0.1.json`; `app/InterneuronTypeAtlas.tsx`; `public/data/research_explorer_index_v1/search-index.json`",
+        "references": [
+          {
+            "label": "Crozat et al.",
+            "url": "https://doi.org/10.1038/s42003-025-08559-x"
+          },
+          {
+            "label": "Figshare version 2",
+            "url": "https://doi.org/10.6084/m9.figshare.29430869.v2"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-24",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L167",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "Four conflicts remain quarantined: paper-versus-workbook firing p values, incomplete/no-denominator firing-location coverage, 659-versus-654 passive-property rows, and thoracic 6-week distance n=478 versus FOV n=457.; The deposit contains observation tables but no globally stable cell key: tonic/single-spike, segment, quadrant and experiment-family rows stay nested evidence rather than new types.; The UI exposes observed cohort/experiment-family electrophysiology while retaining zero raw traces, microscopy volume, morphology, geometry, internal objects, atlas registration, whole-deposit per-cell join or link to the separate UPG-168 SBF-SEM study"
+    }
+  ],
+  "scientificPolicy": {
+    "canonicalIdNamespace": "SRC-",
+    "legacyIdsAreAliasesOnly": true,
+    "sourceRecordIsBiologicalRecord": false,
+    "crossSourceIdentityDefault": "not_established",
+    "registrationCount": 0,
+    "missingIsBiologicalAbsence": false,
+    "publicAccessImpliesRedistributionPermission": false,
+    "drillDownGate": "child roster drill-down is allowed only when childRosterRef.status is bundled_exact"
+  }
+}

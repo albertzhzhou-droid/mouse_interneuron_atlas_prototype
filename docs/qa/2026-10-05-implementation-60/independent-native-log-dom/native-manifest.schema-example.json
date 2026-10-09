@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "PREPARATION_NOT_NATIVE_READY",
+  "scope": "canonical_fault_recovery_with_cached_delay_supplemental",
+  "qualifiedUrl": null,
+  "proxyPreparationSeal": {
+    "path": "/private/tmp/ohri-i60-index-native-proxy/I60_INDEX_PROXY_PREPARATION_SEAL.json",
+    "bytes": 7310,
+    "sha256": "4995caf3889089a99ee6db53401b127f6587b8d065339c495f4ccbd82f3e76b8"
+  },
+  "originalProxyLog": { "path": null, "bytes": null, "sha256": null },
+  "frozenLog": { "path": null, "bytes": null, "sha256": null },
+  "sourceIndex": { "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/public/data/research_explorer_index_v1/search-index.json" },
+  "supportingEvidencePaths": [],
+  "unownedCanonicalRequests": [ { "requestId": 80, "reason": "Parent-reported metadata on wrong public copy:304 then controlled502, not decoded checksum evidence; independently verify original rows before final replay." } ],
+  "phases": [
+    {
+      "kind": "canonical_delay_cached_304_supplemental",
+      "qualifiedUrl": null,
+      "requestId": 75,
+      "configPath": null,
+      "action": { "evidencePath": null, "windowUTC": { "startUTC": null, "endUTC": null }, "ownerEvidence": null },
+      "waiting": { "path": null, "windowUTC": { "startUTC": null, "endUTC": null } },
+      "ready": { "path": null, "windowUTC": { "startUTC": null, "endUTC": null } }
+    },
+    {
+      "kind": "canonical_checksum_failure_recovery",
+      "faultRequestId": 84,
+      "retryRequestId": 87,
+      "faultConfigPath": null,
+      "retryConfigPath": null,
+      "before": { "path": null, "windowUTC": { "startUTC": null, "endUTC": null } },
+      "faultAction": { "evidencePath": null, "windowUTC": { "startUTC": null, "endUTC": null }, "ownerEvidence": null },
+      "retryAction": { "evidencePath": null, "windowUTC": { "startUTC": null, "endUTC": null }, "ownerEvidence": null },
+      "unavailable": { "path": null, "windowUTC": { "startUTC": null, "endUTC": null } },
+      "restored": { "path": null, "windowUTC": { "startUTC": null, "endUTC": null } }
+    }
+  ]
+}

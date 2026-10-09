@@ -1,0 +1,231 @@
+{
+  "contractId": "microns-observed-cell-nucleus-reference-0.1",
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-microns-observed-cell-nucleus-reference-0.1.0",
+  "upgradeId": "UPG-111",
+  "upgradePhase": "A",
+  "modeId": "microns_observed_cell_nucleus_reference",
+  "admissionStatus": "admitted_component_limited",
+  "authority": "OBS_EM_SEGMENTATION",
+  "summary": "One exact MICrONS Phase 1 cortical inhibitory-neuron segmentation surface and its source-linked nucleus segmentation are admitted as a separate cross-region observed-EM reference. No membrane, mitochondrion, synapse, other organelle, molecular subtype, spinal identity, NeuroMorpho identity or atlas placement is admitted.",
+  "sourceDataset": {
+    "name": "MICrONS Phase 1",
+    "species": "Mus musculus",
+    "specimen": {
+      "age": "P36",
+      "sex": "male",
+      "region": "visual cortex layer 2/3",
+      "regionRelationshipToProject": "cross_region_not_spinal_cord"
+    },
+    "modality": "electron_microscopy_segmentation",
+    "segmentationRelease": "v185.4",
+    "metadataDepositVersion": "185.3",
+    "metadataDepositDoi": "10.5281/zenodo.7510511",
+    "primaryPublicationDoi": "10.1016/j.cell.2022.01.023",
+    "sourcePage": "https://www.microns-explorer.org/phase1",
+    "releaseNotes": "https://www.microns-explorer.org/v185-release-notes",
+    "rights": {
+      "license": "CC BY 4.0",
+      "termsUrl": "https://www.microns-explorer.org/terms-and-conditions",
+      "attributionRequired": true
+    },
+    "segmentationTimestamp": {
+      "value": null,
+      "missingReason": "not_present_in_the_admitted_public_receipts"
+    },
+    "proofreadingBoundary": "The v185 release describes soma-containing excitatory and inhibitory neurons as proofread as far as possible. Remaining mergers or splits and static-mesh fragment/self-contact caveats are not silently repaired by this project.",
+    "voxelScaleBoundary": "Source geometry remains in the nominal native nanometre coordinate frame. No optional post-hoc XY measurement correction is applied."
+  },
+  "identityChain": {
+    "cellRootId": "648518346349516051",
+    "cellClass": "inhibitory",
+    "coarseMorphologyClassification": "chandelier",
+    "classificationAuthority": "human_coarse_classification_table",
+    "molecularSubtype": {
+      "value": null,
+      "missingReason": "not_established_by_the_admitted_identity_tables"
+    },
+    "classificationTable": {
+      "sourceUrl": "https://zenodo.org/records/7510511/files/220309_cell_type_classification.csv?download=1",
+      "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/source/metadata/220309_cell_type_classification.csv",
+      "bytes": 38810,
+      "md5": "736d70283da0f7bd6daada3dc76beb5b",
+      "sha256": "a78f1a946dc11f8a875fd810e7783e5fab719c380631bfae23de7df875ba5a67",
+      "exactSourceRow": "834,62032,41200,2015,648518346349516051,inhibitory,chandelier"
+    },
+    "somaValenceTable": {
+      "sourceUrl": "https://zenodo.org/records/7510511/files/soma_valence_v185.csv?download=1",
+      "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/source/metadata/soma_valence_v185.csv",
+      "bytes": 33983,
+      "md5": "b7c349b1ecbdad46185bb98d88b96d20",
+      "sha256": "f307135c77e44644d220304673ff50f1b0ebbf8d91a581aa5dc7e6ebaad870e3",
+      "exactSourceRow": "195,345,i,[61716 41167  2006],648518346349516051,246864,164668,80240,4309",
+      "sourceLocalId": 345,
+      "sourceCellClassCode": "i",
+      "pointPositionVoxel": [61716, 41167, 2006],
+      "somaCentreNanometre": [246864, 164668, 80240],
+      "nucleusId": "4309"
+    }
+  },
+  "assetBundle": {
+    "directory": "/data/microns_phase1_v185_4_root_648518346349516051_v1/",
+    "manifest": {
+      "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "bytes": 94901,
+      "sha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1"
+    },
+    "sourceFragmentCount": 97,
+    "admittedComponentCount": 2,
+    "browserGeometryFormat": "parallel_binary_arrays_v1"
+  },
+  "coordinateContract": {
+    "nativeFrame": "MICrONS_Phase1_aligned_EM_native",
+    "nativeUnits": "nanometre",
+    "cellToNucleusTransformReceipt": {
+      "canonical": {
+        "relationship": "cell_to_nucleus",
+        "matrixRowMajor": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+        "units": "nanometre",
+        "status": "SOURCE_NATIVE_IDENTITY",
+        "registrationCount": 0
+      },
+      "canonicalJsonSha256": "cc86b5c67ff83e475ddb17b5d271323d5bb2efc393bbf2a32150bcc8098702db"
+    },
+    "displayTransformReceipt": {
+      "canonical": {
+        "kind": "soma_centered_uniform_scale",
+        "originNanometre": [246864, 164668, 80240],
+        "scaleViewerUnitPerNanometre": 0.00003177859061454084,
+        "sourceMaxExtentNanometre": 188806.359375,
+        "basis": "6_viewer_units_over_max_exact_cell_extent",
+        "use": "DISPLAY_ONLY"
+      },
+      "canonicalJsonSha256": "90033e1c6bb90562d54432e9352ca6f49b7324f9746c5a9b6699066d56df3720"
+    },
+    "coordinateTransformAppliedToBrowserGeometry": false,
+    "projectDerivedRegistrationCount": 0
+  },
+  "components": [
+    {
+      "id": "cell-segmentation-surface",
+      "assetManifestComponent": "cell",
+      "sourceObjectId": "648518346349516051",
+      "authority": "OBS_EM_SEGMENTATION",
+      "displayLabel": "Cell segmentation surface",
+      "membraneClaim": false,
+      "sourceFragmentCount": 94,
+      "vertexCount": 372382,
+      "triangleCount": 704444,
+      "sourceGeometryPreserved": true
+    },
+    {
+      "id": "nucleus-segmentation-surface",
+      "assetManifestComponent": "nucleus",
+      "sourceObjectId": "4309",
+      "authority": "OBS_EM_SEGMENTATION",
+      "displayLabel": "Linked nucleus segmentation",
+      "manualProofreadingClaim": false,
+      "sourceFragmentCount": 3,
+      "vertexCount": 12682,
+      "triangleCount": 23344,
+      "sourceGeometryPreserved": true
+    }
+  ],
+  "geometryDerivationPolicy": {
+    "algorithmId": "concatenate_legacy_mesh_fragments_rebase_indices_v1",
+    "fragmentOrder": "exact_source_manifest_order",
+    "positionPolicy": "copy_source_float32_bytes_without_numeric_conversion",
+    "trianglePolicy": "copy_source_triangle_order_and_add_cumulative_fragment_vertex_offset",
+    "vertexWelding": false,
+    "smoothing": false,
+    "repair": false,
+    "decimation": false,
+    "holeFilling": false,
+    "normalGeneration": false,
+    "coordinateTransformApplied": false
+  },
+  "relationshipPolicy": {
+    "withinAdmittedObject": {
+      "relationship": "source_linked_same_physical_cell",
+      "samePhysicalObject": true,
+      "cellRootId": "648518346349516051",
+      "nucleusId": "4309",
+      "sourceFrameRelationship": "source_native_identity",
+      "projectDerivedRegistrationCount": 0
+    },
+    "crossRegionRelationships": [
+      {
+        "targetLane": "neuromorpho_spinal_morphology",
+        "relationship": "co_display_only",
+        "samePhysicalObject": false,
+        "joinedEntityIds": [],
+        "joinCount": 0,
+        "registrationCount": 0
+      },
+      {
+        "targetLane": "spinal_interneuron_type_evidence",
+        "relationship": "co_display_only",
+        "samePhysicalObject": false,
+        "joinedEntityIds": [],
+        "joinCount": 0,
+        "registrationCount": 0
+      },
+      {
+        "targetLane": "allen_spinal_atlas",
+        "relationship": "co_display_only",
+        "samePhysicalObject": false,
+        "joinedEntityIds": [],
+        "joinCount": 0,
+        "registrationCount": 0
+      }
+    ]
+  },
+  "claimPermissions": {
+    "sourceCellSegmentationSurfaceDisplay": true,
+    "sourceNucleusSegmentationSurfaceDisplay": true,
+    "sourceNativeGeometryDescription": true,
+    "coarseHumanMorphologyLabel": true,
+    "membrane": false,
+    "membraneMolecularComposition": false,
+    "mitochondria": false,
+    "synapses": false,
+    "otherOrganelles": false,
+    "molecularSubtype": false,
+    "spinalInterneuronIdentity": false,
+    "neuroMorphoIdentity": false,
+    "atlasPlacement": false,
+    "connectivity": false,
+    "postHocMeasurementCorrectionApplied": false
+  },
+  "notAdmitted": [
+    {
+      "id": "mitochondria",
+      "status": "UNAVAILABLE_IN_THIS_ADMISSION",
+      "reason": "same-cell mitochondrion IDs and per-object mesh receipts are not pinned"
+    },
+    {
+      "id": "synapses",
+      "status": "UNAVAILABLE_IN_THIS_ADMISSION",
+      "reason": "same-cell synapse objects and proofreading authority are not pinned"
+    },
+    {
+      "id": "other-internal-organelles",
+      "status": "UNAVAILABLE_IN_THIS_ADMISSION",
+      "reason": "no exact same-object source geometry is admitted"
+    },
+    {
+      "id": "membrane",
+      "status": "UNAVAILABLE_IN_THIS_ADMISSION",
+      "reason": "a segmentation boundary is not a molecular membrane measurement"
+    }
+  ],
+  "hardBoundaries": [
+    "This is a visual-cortex reference, not a spinal-cord interneuron or atlas placement.",
+    "The outer mesh is a cell segmentation surface, not a measured molecular membrane.",
+    "The human coarse chandelier label is not a transcriptomic or molecular subtype.",
+    "Cell and nucleus share a source-native coordinate frame; their identity transform is not a project-derived registration.",
+    "All relationships to NeuroMorpho, spinal type evidence and the Allen spinal atlas remain co-display only with zero joins and zero registrations.",
+    "Mitochondria, synapses, ER, Golgi, receptors and other internal structures are not rendered or inferred.",
+    "Static source fragments are preserved without welding, smoothing, repair, decimation, hole filling or coordinate transformation."
+  ]
+}

@@ -11,6 +11,7 @@ function ensureKnown(record, label) {
   return record;
 }
 
+/** @param {import("./atlas-types").CrossLaneRelationshipAdmission} contract */
 export function relationshipAdmissionKinds(contract) {
   return contract.relationshipKinds.map((kind) => ({ ...kind }));
 }

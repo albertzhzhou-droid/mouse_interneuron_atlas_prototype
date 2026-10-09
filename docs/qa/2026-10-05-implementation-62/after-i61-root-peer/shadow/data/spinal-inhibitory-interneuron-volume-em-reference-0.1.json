@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "spinal-inhibitory-interneuron-volume-em-reference-0.1.0",
+  "releaseDate": "2026-09-22",
+  "authority": "PUBLICATION_RENDERED_RECONSTRUCTION_REFERENCE",
+  "source": {
+    "title": "Multiplexed peroxidase-based electron microscopy labeling enables simultaneous visualization of multiple cell types",
+    "citation": "Zhang Q, Lee WCA, Paul DL, Ginty DD. Nature Neuroscience. 2019;22:828–839.",
+    "doi": "10.1038/s41593-019-0358-7",
+    "pmid": "30886406",
+    "pmcid": "PMC6555422",
+    "articleUrl": "https://www.nature.com/articles/s41593-019-0358-7",
+    "figureUrl": "https://www.nature.com/articles/s41593-019-0358-7/figures/4",
+    "fullTextAndSupplementUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555422/",
+    "supplementLocator": "Supplementary Video 2; Figure 4b",
+    "reuseStatus": "link_only_no_media_rehosted_or_embedded"
+  },
+  "biologicalScope": {
+    "species": "Mus musculus",
+    "region": "spinal cord dorsal horn",
+    "populationLabel": "Slc32a1 IRES-Cre inhibitory-neuron population",
+    "subtypeResolution": "broad inhibitory population; no molecular interneuron subtype assigned to the reconstructed profiles",
+    "interneuronLabelMethod": "AAV1-DIO-Matrix-dAPEX2 labels mitochondrial matrix in Slc32a1 IRES-Cre inhibitory neurons",
+    "afferentLabelMethod": "AAV9-FDIO-IMS-dAPEX2 labels mitochondrial intermembrane space in Avil FlpO primary somatosensory afferents",
+    "sampleIdentity": null,
+    "stableCellIds": false,
+    "relationshipToSelectedAtlasRecord": "independent_publication_reference_only",
+    "sameSpecimenJoinCount": 0,
+    "sameCellJoinCount": 0,
+    "registrationCount": 0
+  },
+  "acquisition": {
+    "modality": "serial-section transmission electron microscopy",
+    "reportedVolumeMicrometre": [35, 24, 2],
+    "finalPixelSizeNanometre": 4.26,
+    "sectionCountReported": 50,
+    "sectionsLostDuringImaging": [45, 46, 47],
+    "sourceLocator": "Methods · Electron microscopy · serial sections"
+  },
+  "publishedReconstruction": {
+    "profileDescription": "one primary-afferent profile plus two inhibitory-interneuron profiles (one axon and one dendrite); profiles are not a cell count",
+    "profileCountIsCellCount": false,
+    "reconstructedStructures": [
+      "primary-afferent profile",
+      "inhibitory-interneuron axonal profile",
+      "inhibitory-interneuron dendritic profile",
+      "labeled mitochondria",
+      "axoaxonic synapse",
+      "axodendritic synapse"
+    ],
+    "sourceMethod": "Images were elastically montaged and aligned in TrakEM2; profiles, mitochondria and synapses were manually reconstructed. TrakEM2 arealists were interpolated and meshes smoothed for the published 3D visualization.",
+    "editableAreaListsExposedInThisApp": false,
+    "rawSerialImageStackExposedInThisApp": false,
+    "meshOrSegmentationExposedInThisApp": false,
+    "admittedProjectGeometryCount": 0,
+    "measurementUse": "forbidden"
+  },
+  "availabilityBoundary": {
+    "auditScope": "primary article text, Figure 4, methods and listed supplementary materials",
+    "finding": "The source provides a publication-rendered reconstruction and supplementary video. This application links to those source pages but does not contain the raw serial stack, editable area lists, segmentation labels or mesh.",
+    "notAUniversalAbsenceClaim": true,
+    "fileLevelReuseLicenceVerified": false
+  },
+  "hardBoundaries": [
+    "This is an independent published spinal-cord example, not the currently selected interneuron or any NeuroMorpho record.",
+    "The Slc32a1 label is broad inhibitory-neuron context and does not resolve a named interneuron subtype for these profiles.",
+    "The reported axonal and dendritic profiles are not promoted to a stable cell count or a joined complete cell.",
+    "Published interpolated and smoothed meshes are viewable only at the linked source; no model geometry is imported, retraced, measured, registered or assigned to a selected record.",
+    "The source imagery and supplementary video are opened at the publisher or PMC; media is not copied into this project while file-level reuse terms remain unverified.",
+    "A missing or unreachable source page produces no substitute shape and zero project geometry."
+  ]
+}

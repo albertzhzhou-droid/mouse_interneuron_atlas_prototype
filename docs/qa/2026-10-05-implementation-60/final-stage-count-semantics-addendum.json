@@ -1,0 +1,15 @@
+{
+  "status": "PASS_I60_EXPLICIT_STAGE_REPLAY_ENTRY_SEMANTICS",
+  "generatedAtUTC": "2026-10-05T08:46:22.960063+00:00",
+  "canonicalUniqueInputs": 2585,
+  "actualStageReplayEntries": 2588,
+  "actualStageUniquePhysicalPaths": 2587,
+  "duplicateReplayPath": {
+    "data/research-renderer-runtime-inputs-2.91.json": 2
+  },
+  "reason": "The existing runtime transport is already canonical and is also explicitly appended as an operational extra. Both actual reads/hash rows are identical. No extra physical file or scientific input is inferred.",
+  "interpretation": "All I60 stage2588 counts denote replay entries, not distinct physical files. Canonical2585 remains unique.",
+  "sourceOrManifestRewrite": false,
+  "rootStageProductChanges": 0,
+  "rehashRequiredForCountSemanticsOnly": false
+}

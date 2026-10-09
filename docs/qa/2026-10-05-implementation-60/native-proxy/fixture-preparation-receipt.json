@@ -1,0 +1,65 @@
+{
+  "status": "OFFLINE_FIXTURE_PREPARATION_ONLY",
+  "sourcePins": [
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json.gz",
+      "bytes": 628095,
+      "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+    },
+    {
+      "path": "app/api/source-records/search-index.json/route.ts",
+      "bytes": 578,
+      "sha256": "45317632af32f818f27cb94a8942af6712c495bed811f7fb8aea1b893b7d0a97"
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "bytes": 28427,
+      "sha256": "dbce3e2fc1e6209118c1229b6492709277d42e22f4c228adbce912c65bb7b20d"
+    },
+    {
+      "path": "data/research-explorer-transport-0.1.json",
+      "bytes": 661,
+      "sha256": "7fe594db641ba370fd2fd9a4946abcadd7f9b8e3336c97dbcfa90b315e20d32c"
+    },
+    {
+      "path": "public/data/research_explorer_index_v1/asset-manifest.json",
+      "bytes": 5622,
+      "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+    }
+  ],
+  "fixture": {
+    "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json.gz",
+    "originalUpstreamBytes": 628095,
+    "originalUpstreamSha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b",
+    "controlledBodyBytes": 626119,
+    "controlledBodySha256": "b69d9d989646c542c1efcf001201910ed9680db001d5e9a41092fe07b2cfb6a6",
+    "controlledDecodedBytes": 12327624,
+    "controlledDecodedSha256": "d6e8b386b3c9ff8cd785174d419116a07b78779e2fd60abbaf5eb4760e581552",
+    "mutation": {
+      "offset": 12327623,
+      "originalByte": 10,
+      "replacementByte": 32,
+      "changedByteCount": 1,
+      "validJsonValuesUnchanged": true
+    }
+  },
+  "plainFixture": {
+    "path": "/private/tmp/ohri-i60-index-native-proxy/decoded-checksum-fault.json",
+    "bytes": 12327624,
+    "sha256": "d6e8b386b3c9ff8cd785174d419116a07b78779e2fd60abbaf5eb4760e581552",
+    "mutation": {
+      "offset": 12327623,
+      "originalByte": 10,
+      "replacementByte": 32,
+      "changedByteCount": 1,
+      "validJsonValuesUnchanged": true
+    }
+  },
+  "scope": "Only a temp gzip fixture was produced. No source JSON/index/metadata edit; no server/socket/browser request or actual failure observation.",
+  "loaderReason": "The API uses Content-Encoding:gzip. fetch arrayBuffer exposes decoded bytes. The loader compares decoded byte count then SHA against the canonical manifest before JSON parse/selection."
+}

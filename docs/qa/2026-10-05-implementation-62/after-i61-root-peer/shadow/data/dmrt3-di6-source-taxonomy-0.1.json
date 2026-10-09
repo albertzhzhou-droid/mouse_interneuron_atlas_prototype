@@ -1,0 +1,547 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-dmrt3-di6-source-taxonomy-0.1.0",
+  "releaseDate": "2026-09-01",
+  "title": "Pinned source-local E14.5 mouse Dmrt3/dI6 M1–M6 transcriptomic taxonomy",
+  "source": {
+    "publication": {
+      "citation": "Iglesias González et al. 2021, Frontiers in Cellular Neuroscience",
+      "doi": "10.3389/fncel.2021.781197",
+      "articleUrl": "https://doi.org/10.3389/fncel.2021.781197",
+      "pmcUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8733252/",
+      "studyContext": "Single-cell transcriptomic characterization of embryonic Dmrt3-lineage spinal interneurons",
+      "dataAvailabilityBoundary": "The public GEO loom and pinned authors' notebook support source-local group summaries. The source does not export a per-well M1–M6 roster or a reusable morphology, coordinate, physiology, synapse, internal-structure or cross-source identity object."
+    },
+    "geo": {
+      "accession": "GSE185731",
+      "seriesUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185731",
+      "bioproject": "PRJNA770633",
+      "sraStudy": "SRP341021",
+      "processedObject": {
+        "fileName": "GSE185731_mmusculus.loom.gz",
+        "downloadUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE185nnn/GSE185731/suppl/GSE185731_mmusculus.loom.gz",
+        "compressedBytes": 47641669,
+        "compressedMd5": "1b2a877ffd70afbc75efc21ed2de8303",
+        "compressedSha256": "f31abb7678ed88af3e140ca488dfdce867809569784bc1881777462fdc87b23c",
+        "uncompressedFileName": "GSE185731_mmusculus.loom",
+        "uncompressedBytes": 56090164,
+        "uncompressedMd5": "8f5fa6d548f8f776e02a7777678e34f9",
+        "uncompressedSha256": "ccf345c05ceb27f9075a5add155cf70c162a0f8a70a9b6860bfb7b45bc03997f",
+        "objectKind": "HDF5 loom expression object",
+        "mGroupAssignmentsPresent": false,
+        "pseudotimeScalarPresent": false,
+        "sourceFileBundled": false,
+        "accessMode": "link_only"
+      }
+    },
+    "repository": {
+      "url": "https://github.com/JonETJakobsson/dmrt3-single-cell",
+      "pinnedCommit": "4096425edc4a8c008f6069e08ef4583120e550ae",
+      "commitTree": "5dc914d53212e68104de30a84735c8ad21b5c4e7",
+      "commitUrl": "https://github.com/JonETJakobsson/dmrt3-single-cell/commit/4096425edc4a8c008f6069e08ef4583120e550ae",
+      "license": {
+        "spdxId": "MIT",
+        "path": "LICENSE",
+        "bytes": 1070,
+        "sha256": "2d3fdfcc73a76dd7f7a4b2c759703ab6ca3ff1b7b057a207abce373769989e49",
+        "gitBlobSha1": "bf3b72c16957c8cb5fd9c47e1adbc4d99d2ad89b"
+      },
+      "sourceFiles": [
+        {
+          "id": "authors-loom",
+          "path": "Analysis_pipeline/data/mmusculus.loom",
+          "bytes": 56090164,
+          "md5": "8f5fa6d548f8f776e02a7777678e34f9",
+          "sha256": "ccf345c05ceb27f9075a5add155cf70c162a0f8a70a9b6860bfb7b45bc03997f",
+          "gitBlobSha1": "05263c67a113ad14ba178f1385d4e548ab9fce0e",
+          "role": "expression_input_without_M1_to_M6_or_pseudotime_assignments",
+          "bundled": false,
+          "accessMode": "link_only"
+        },
+        {
+          "id": "executed-notebook",
+          "path": "Analysis_pipeline/210909_Final_run.ipynb",
+          "bytes": 21627568,
+          "md5": "b57f43d03fc4f4a2db4f21ea78aabb26",
+          "sha256": "c51fa89ea3ce7f55a361ffe8b94f48b73bd9669c4260aeb3ee482208f23a9008",
+          "gitBlobSha1": "bf219e6dc49c18e67acd96573e01e8cce5cc3ff8",
+          "role": "executed_derivation_authority_for_QC_lineage_subset_M1_to_M6_and_counts",
+          "bundled": false,
+          "accessMode": "link_only"
+        }
+      ],
+      "sourceFilesBundled": false,
+      "derivedFactualContractBundled": true,
+      "reuseBoundary": "The compact factual derivative is bundled. The source loom and notebook remain checksum-pinned, link-only objects in this release."
+    }
+  },
+  "scope": {
+    "species": "Mus musculus",
+    "taxonId": "NCBITaxon:10090",
+    "lifeStage": "embryonic day 14.5",
+    "sampledRegion": "spinal cord",
+    "sourceEmbryoCount": 3,
+    "poolCount": 1,
+    "independentLibraryCount": 1,
+    "animalResolvedReplicateCount": 0,
+    "preparation": "Three E14.5 mouse embryos pooled into one tube before single-cell processing",
+    "populationContext": "Dmrt3-lineage dI6 interneurons; the source population is inhibitory with dual GABAergic and glycinergic context",
+    "displayedProfileCount": 6,
+    "depositedMouseWellCount": 384,
+    "qcRetainedCellCount": 354,
+    "di6LineageRetainedCellCount": 274,
+    "groupSummaryDerivativeBundled": true,
+    "perWellMGroupRosterBundled": false,
+    "projectRegistrationCount": 0,
+    "admittedGeometryCount": 0,
+    "admittedInternalStructureCount": 0,
+    "exactCrossSourceIdentityCount": 0
+  },
+  "sourceLocators": [
+    {
+      "id": "primary-article-sample-context",
+      "locator": "Primary article · mouse E14.5 Dmrt3-lineage sampling and pooled preparation",
+      "authority": "primary_article",
+      "supports": [
+        "life_stage",
+        "three_embryo_pool",
+        "spinal_Dmrt3_lineage_context",
+        "inhibitory_transmitter_context"
+      ]
+    },
+    {
+      "id": "primary-article-temporal-context",
+      "locator": "Primary article · M1 early/Onecut2, M2–M3 middle/Zfhx3–Zfhx4 and M4–M6 late/Neurod6 birth-order interpretation",
+      "authority": "primary_article",
+      "supports": [
+        "study_local_temporal_context",
+        "article_anchor_genes",
+        "apparent_birth_order"
+      ]
+    },
+    {
+      "id": "geo-series",
+      "locator": "GEO GSE185731 · mouse 384-well series and processed loom",
+      "authority": "official_repository",
+      "supports": [
+        "mouse_well_frame",
+        "processed_object_identity",
+        "public_access"
+      ]
+    },
+    {
+      "id": "pinned-commit",
+      "locator": "JonETJakobsson/dmrt3-single-cell · commit 4096425edc4a8c008f6069e08ef4583120e550ae · tree 5dc914d53212e68104de30a84735c8ad21b5c4e7",
+      "authority": "authors_repository",
+      "supports": [
+        "code_version",
+        "source_object_git_blobs",
+        "executed_notebook_identity"
+      ]
+    },
+    {
+      "id": "notebook-cell-14-exec-13",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 14 · execution 13",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "384_input_wells",
+        "354_QC_retained_cells",
+        "executed_QC_thresholds"
+      ]
+    },
+    {
+      "id": "notebook-cell-26-exec-24",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 26 · execution 24",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "lineage_label_map"
+      ]
+    },
+    {
+      "id": "notebook-cell-28-exec-26",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 28 · execution 26",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "dI6_lineage_subset_operation"
+      ]
+    },
+    {
+      "id": "notebook-cell-74-exec-65",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 74 · execution 65",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "M1_to_M6_clustering_operation"
+      ]
+    },
+    {
+      "id": "notebook-cell-76-exec-66",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 76 · execution 66",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "274_retained_dI6_lineage_cells"
+      ]
+    },
+    {
+      "id": "notebook-cell-80-exec-195",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 80 · execution 195",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "numeric_cluster_to_M1_to_M6_map"
+      ]
+    },
+    {
+      "id": "notebook-cell-83-exec-71",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 83 · execution 71",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "source_local_top_marker_ranks"
+      ]
+    },
+    {
+      "id": "notebook-cell-84-exec-72",
+      "locator": "Analysis_pipeline/210909_Final_run.ipynb · cell 84 · execution 72",
+      "authority": "pinned_executed_notebook",
+      "supports": [
+        "exact_M1_to_M6_count_vector"
+      ]
+    },
+    {
+      "id": "methods-qc-description",
+      "locator": "Primary article · Methods · stated QC, normalization and highly-variable-gene workflow",
+      "authority": "primary_article_methods",
+      "supports": [
+        "stated_QC_plan",
+        "stated_normalize_total",
+        "stated_2000_HVG"
+      ]
+    },
+    {
+      "id": "study-missing-axes",
+      "locator": "Combined GEO, pinned loom, pinned notebook and article object audit",
+      "authority": "project_source_audit",
+      "supports": [
+        "no_per_well_M_roster_export",
+        "no_morphology",
+        "no_xyz",
+        "no_registration",
+        "no_physiology",
+        "no_synapse",
+        "no_internal_structure",
+        "no_cross_source_identity"
+      ]
+    }
+  ],
+  "analysisLineage": {
+    "stageCounts": [
+      {
+        "stage": "deposited_mouse_wells",
+        "count": 384,
+        "unit": "wells",
+        "locatorIds": [
+          "geo-series",
+          "notebook-cell-14-exec-13"
+        ]
+      },
+      {
+        "stage": "executed_notebook_QC_retained",
+        "count": 354,
+        "unit": "cells",
+        "locatorIds": [
+          "notebook-cell-14-exec-13"
+        ]
+      },
+      {
+        "stage": "retained_dI6_lineage_subset",
+        "count": 274,
+        "unit": "cells",
+        "locatorIds": [
+          "notebook-cell-26-exec-24",
+          "notebook-cell-28-exec-26",
+          "notebook-cell-76-exec-66"
+        ]
+      },
+      {
+        "stage": "M1_to_M6_partition",
+        "count": 274,
+        "unit": "cells",
+        "locatorIds": [
+          "notebook-cell-74-exec-65",
+          "notebook-cell-80-exec-195",
+          "notebook-cell-84-exec-72"
+        ]
+      }
+    ],
+    "transformationAuthority": {
+      "repositoryCommit": "4096425edc4a8c008f6069e08ef4583120e550ae",
+      "notebookPath": "Analysis_pipeline/210909_Final_run.ipynb",
+      "notebookGitBlobSha1": "bf219e6dc49c18e67acd96573e01e8cce5cc3ff8",
+      "executedNotebookIsDerivationAuthority": true,
+      "sourceLoomContainsM1ToM6Assignments": false,
+      "sourceLoomContainsPseudotimeScalar": false,
+      "perWellM1ToM6RosterExported": false,
+      "compactDerivativeContainsGroupSummariesOnly": true,
+      "interpretationBoundary": "M1–M6 and pseudotime are notebook-derived study-local analyses absent from the loom. This contract preserves counts, marker summaries, temporal context and execution locators, but does not invent or reconstruct a per-well roster."
+    }
+  },
+  "qualityControl": {
+    "methodsDescription": {
+      "minimumLog1pTotalCountsExclusive": 10,
+      "maximumPercentCountsInTop50GenesExclusive": 40,
+      "minimumDetectedGenesExclusive": 3000,
+      "normalization": "normalize_total",
+      "highlyVariableGeneCount": 2000,
+      "locatorIds": [
+        "methods-qc-description"
+      ]
+    },
+    "executedNotebook": {
+      "minimumLog1pTotalCountsExclusive": 12.3,
+      "maximumPercentCountsInTop50GenesExclusive": 35,
+      "minimumDetectedGenesExclusive": 3700,
+      "normalization": "normalize_total_skipped_because_input_treated_as_RPKM",
+      "highlyVariableGeneCount": 5000,
+      "authorityStatus": "derivation_authority",
+      "locatorIds": [
+        "notebook-cell-14-exec-13",
+        "pinned-commit"
+      ]
+    },
+    "reconciliationStatus": "methods_vs_executed_notebook_conflict_quarantined",
+    "authorityBoundary": "The executed pinned notebook governs this derivative. The article Methods values remain visible and are not harmonized into the executed thresholds."
+  },
+  "profiles": [
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus:m1",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "recordKind": "source_local_embryonic_transcriptomic_group",
+      "unitOfObservation": "retained_dI6_lineage_cells_in_one_pooled_library",
+      "sourceLocalLabel": "M1",
+      "samplingCount": 84,
+      "samplingUnit": "retained cells",
+      "markerPanel": [
+        "Zfhx3",
+        "Meis2",
+        "Zfhx4"
+      ],
+      "articleTemporalPhase": "early",
+      "articleTemporalAnchorGenes": [
+        "Onecut2"
+      ],
+      "temporalEvidenceStatus": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar",
+      "populationTransmitterContext": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification",
+      "putativeAssignmentStatus": "study_local_group_not_adult_canonical_type",
+      "locatorIds": [
+        "primary-article-sample-context",
+        "primary-article-temporal-context",
+        "notebook-cell-74-exec-65",
+        "notebook-cell-80-exec-195",
+        "notebook-cell-83-exec-71",
+        "notebook-cell-84-exec-72",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus:m2",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "recordKind": "source_local_embryonic_transcriptomic_group",
+      "unitOfObservation": "retained_dI6_lineage_cells_in_one_pooled_library",
+      "sourceLocalLabel": "M2",
+      "samplingCount": 34,
+      "samplingUnit": "retained cells",
+      "markerPanel": [
+        "Irx4",
+        "Tshz3",
+        "Ldb2"
+      ],
+      "articleTemporalPhase": "middle",
+      "articleTemporalAnchorGenes": [
+        "Zfhx3",
+        "Zfhx4"
+      ],
+      "temporalEvidenceStatus": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar",
+      "populationTransmitterContext": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification",
+      "putativeAssignmentStatus": "study_local_group_not_adult_canonical_type",
+      "locatorIds": [
+        "primary-article-sample-context",
+        "primary-article-temporal-context",
+        "notebook-cell-74-exec-65",
+        "notebook-cell-80-exec-195",
+        "notebook-cell-83-exec-71",
+        "notebook-cell-84-exec-72",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus:m3",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "recordKind": "source_local_embryonic_transcriptomic_group",
+      "unitOfObservation": "retained_dI6_lineage_cells_in_one_pooled_library",
+      "sourceLocalLabel": "M3",
+      "samplingCount": 33,
+      "samplingUnit": "retained cells",
+      "markerPanel": [
+        "Pid1",
+        "Sst",
+        "Slit2"
+      ],
+      "articleTemporalPhase": "middle",
+      "articleTemporalAnchorGenes": [
+        "Zfhx3",
+        "Zfhx4"
+      ],
+      "temporalEvidenceStatus": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar",
+      "populationTransmitterContext": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification",
+      "putativeAssignmentStatus": "study_local_group_not_adult_canonical_type",
+      "locatorIds": [
+        "primary-article-sample-context",
+        "primary-article-temporal-context",
+        "notebook-cell-74-exec-65",
+        "notebook-cell-80-exec-195",
+        "notebook-cell-83-exec-71",
+        "notebook-cell-84-exec-72",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus:m4",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "recordKind": "source_local_embryonic_transcriptomic_group",
+      "unitOfObservation": "retained_dI6_lineage_cells_in_one_pooled_library",
+      "sourceLocalLabel": "M4",
+      "samplingCount": 45,
+      "samplingUnit": "retained cells",
+      "markerPanel": [
+        "Hoxb8",
+        "Hoxb7",
+        "Hoxb9"
+      ],
+      "articleTemporalPhase": "late",
+      "articleTemporalAnchorGenes": [
+        "Neurod6"
+      ],
+      "temporalEvidenceStatus": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar",
+      "populationTransmitterContext": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification",
+      "putativeAssignmentStatus": "study_local_group_not_adult_canonical_type",
+      "locatorIds": [
+        "primary-article-sample-context",
+        "primary-article-temporal-context",
+        "notebook-cell-74-exec-65",
+        "notebook-cell-80-exec-195",
+        "notebook-cell-83-exec-71",
+        "notebook-cell-84-exec-72",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus:m5",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "recordKind": "source_local_embryonic_transcriptomic_group",
+      "unitOfObservation": "retained_dI6_lineage_cells_in_one_pooled_library",
+      "sourceLocalLabel": "M5",
+      "samplingCount": 54,
+      "samplingUnit": "retained cells",
+      "markerPanel": [
+        "Sall3",
+        "Npy",
+        "Nxph1"
+      ],
+      "articleTemporalPhase": "late",
+      "articleTemporalAnchorGenes": [
+        "Neurod6"
+      ],
+      "temporalEvidenceStatus": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar",
+      "populationTransmitterContext": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification",
+      "putativeAssignmentStatus": "study_local_group_not_adult_canonical_type",
+      "locatorIds": [
+        "primary-article-sample-context",
+        "primary-article-temporal-context",
+        "notebook-cell-74-exec-65",
+        "notebook-cell-80-exec-195",
+        "notebook-cell-83-exec-71",
+        "notebook-cell-84-exec-72",
+        "study-missing-axes"
+      ]
+    },
+    {
+      "id": "iglesias-gonzalez-2021:gse185731:mmusculus:m6",
+      "namespace": "iglesias-gonzalez-2021:gse185731:mmusculus",
+      "parentSourceId": "SRC-IGLESIAS-GONZALEZ-2021",
+      "recordKind": "source_local_embryonic_transcriptomic_group",
+      "unitOfObservation": "retained_dI6_lineage_cells_in_one_pooled_library",
+      "sourceLocalLabel": "M6",
+      "samplingCount": 24,
+      "samplingUnit": "retained cells",
+      "markerPanel": [
+        "Neurod6",
+        "Neurod2",
+        "Zeb2"
+      ],
+      "articleTemporalPhase": "late",
+      "articleTemporalAnchorGenes": [
+        "Neurod6"
+      ],
+      "temporalEvidenceStatus": "apparent_birth_order_corroborated_by_pseudotimeline_without_exported_scalar",
+      "populationTransmitterContext": "inhibitory_dual_GABAergic_glycinergic_context_not_per_cell_or_group_quantification",
+      "putativeAssignmentStatus": "study_local_group_not_adult_canonical_type",
+      "locatorIds": [
+        "primary-article-sample-context",
+        "primary-article-temporal-context",
+        "notebook-cell-74-exec-65",
+        "notebook-cell-80-exec-195",
+        "notebook-cell-83-exec-71",
+        "notebook-cell-84-exec-72",
+        "study-missing-axes"
+      ]
+    }
+  ],
+  "globalMissingEvidence": {
+    "perWellM1ToM6Roster": "not_exported_by_source",
+    "pseudotimeScalar": "not_exported_by_source",
+    "morphology": "not_measured_or_deposited",
+    "cellCoordinates": "not_measured_or_deposited",
+    "atlasRegistration": "no_admitted_transform",
+    "electrophysiology": "not_measured_by_study",
+    "projectionTarget": "not_measured_by_study",
+    "synapticConnectivity": "not_measured_by_study",
+    "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+    "sciContext": "not_measured_by_study",
+    "adultIdentity": "not_established",
+    "crossSourceSameCellIdentity": "not_established"
+  },
+  "joinPolicy": {
+    "globallyStableCellIdAvailable": false,
+    "perWellM1ToM6RosterAvailable": false,
+    "perWellM1ToM6RosterReconstructionAllowed": false,
+    "crossSourceJoinAllowed": false,
+    "morphologyTranscriptomicsJoinCount": 0,
+    "physiologyTranscriptomicsJoinCount": 0,
+    "internalStructureTranscriptomicsJoinCount": 0,
+    "exactCrossSourceIdentityCount": 0,
+    "boundary": "Only source-local M1–M6 group summaries are admitted. Group identity cannot be joined to a well, adult type, morphology, physiology, coordinate, synapse or internal object without a new exact source key."
+  },
+  "quarantinedConflicts": [
+    {
+      "id": "methods-vs-executed-notebook-qc-hvg",
+      "status": "quarantined",
+      "methodsDescription": "Methods states log1p total counts >10, top-50-gene percentage <40, detected genes >3000, normalize_total and 2000 highly variable genes.",
+      "executedNotebookDescription": "The pinned executed notebook applies log1p total counts >12.3, top-50-gene percentage <35, detected genes >3700, skips normalize_total because the input is treated as RPKM, and uses 5000 highly variable genes.",
+      "resolution": "executed_notebook_is_derivation_authority_methods_discrepancy_remains_visible",
+      "interpretationBoundary": "The difference is not silently harmonized and no claim is made that the article Methods exactly reproduce the committed result."
+    }
+  ],
+  "hardBoundaries": [
+    "M1–M6 are six study-local embryonic transcriptomic groups, not six adult Dmrt3 types or canonical cross-study identities.",
+    "The 384 wells, 354 QC cells and 274 retained dI6-lineage cells are successive analysis denominators from one pooled preparation, not animal-level replication or prevalence.",
+    "The three embryos were pooled into one tube; individual embryos cannot be recovered as independent group-level replicates.",
+    "The M1–M6 and pseudotime assignments are derived in the pinned notebook and absent from the loom; no per-well M-group roster or scalar pseudotime is exported or reconstructed here.",
+    "Marker panels are source-local top-marker summaries and do not establish necessary-and-sufficient diagnostic markers or same-cell protein expression.",
+    "The population-level dual GABAergic and glycinergic context is not a per-cell or per-group transmitter quantification.",
+    "This contract admits zero morphology, cell coordinates, atlas registrations, electrophysiology, projections, synapses, raw volumes, segmentations, meshes or internal structures.",
+    "The source loom and notebook remain checksum-pinned and link-only; only this compact factual derivative is bundled."
+  ]
+}

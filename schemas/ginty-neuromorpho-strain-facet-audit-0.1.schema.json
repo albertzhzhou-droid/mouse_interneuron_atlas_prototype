@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/ginty-neuromorpho-strain-facet-audit-0.1.schema.json",
+  "title": "Ginty NeuroMorpho source strain facet audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "releaseId", "observedDate", "repositoryRelease", "sourceUniverse", "selection", "repositoryRoster", "paperScopeReconciliation", "representationBoundary", "references"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "auditId": { "const": "ginty-neuromorpho-strain-facet-audit-0.1" },
+    "releaseId": { "const": "ohri-ginty-neuromorpho-strain-facet-audit-0.1.0" },
+    "observedDate": { "type": "string", "format": "date" },
+    "repositoryRelease": { "const": "8.6.124" },
+    "sourceUniverse": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contractPath", "contractSha256", "indexPath", "indexBytes", "indexSha256", "indexQueryRecordCount", "geometryCopyCount", "repositoryQuery"],
+      "properties": {
+        "contractPath": { "type": "string" }, "contractSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "indexPath": { "type": "string" }, "indexBytes": { "type": "integer", "minimum": 1 }, "indexSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "indexQueryRecordCount": { "const": 1097 }, "geometryCopyCount": { "const": 0 }, "repositoryQuery": { "type": "string" }
+      }
+    },
+    "selection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["paperDoi", "archive", "exactSourceFields"],
+      "properties": {
+        "paperDoi": { "const": "10.1016/j.cell.2016.12.010" }, "archive": { "const": "Ginty" },
+        "exactSourceFields": { "type": "array", "minItems": 5, "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "repositoryRoster": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recordCount", "uniqueNeuronIdCount", "uniqueIndexedSwcSha256Count", "rawSwcBytesRehashedInThisAudit", "sourceStrainLabelCount", "sourceStrainGroups", "sourceCellClassCounts", "dimensionalityCounts", "sourceDomainCounts", "sourceIntegrityCounts", "diameterAvailableRecordCount", "sourceAxonReconstructionCount", "indexedDuplicateNeuronIdCount", "indexedDuplicateSwcSha256Count"],
+      "properties": {
+        "recordCount": { "const": 650 }, "uniqueNeuronIdCount": { "const": 650 }, "uniqueIndexedSwcSha256Count": { "const": 650 },
+        "rawSwcBytesRehashedInThisAudit": { "const": false }, "sourceStrainLabelCount": { "const": 12 },
+        "sourceStrainGroups": { "type": "array", "minItems": 12, "maxItems": 12, "items": { "$ref": "#/$defs/strainGroup" } },
+        "sourceCellClassCounts": { "type": "array", "items": { "$ref": "#/$defs/valueCount" } },
+        "dimensionalityCounts": { "type": "array", "items": { "$ref": "#/$defs/valueCount" } },
+        "sourceDomainCounts": { "type": "array", "items": { "$ref": "#/$defs/valueCount" } },
+        "sourceIntegrityCounts": { "type": "array", "items": { "$ref": "#/$defs/valueCount" } },
+        "diameterAvailableRecordCount": { "const": 650 }, "sourceAxonReconstructionCount": { "const": 0 },
+        "indexedDuplicateNeuronIdCount": { "const": 0 }, "indexedDuplicateSwcSha256Count": { "const": 0 }
+      }
+    },
+    "paperScopeReconciliation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sourceUrl", "distinctReportedMorphologyAnalysisCounts", "exactRepositoryRecordToPaperFigureCrosswalk", "independentAnimalDenominator", "paperAnalysisMembershipReconciled", "status", "interpretation"],
+      "properties": {
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "distinctReportedMorphologyAnalysisCounts": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "object", "additionalProperties": false, "required": ["count", "scope", "rosterCrosswalk"], "properties": { "count": { "enum": [305, 351] }, "scope": { "type": "string" }, "rosterCrosswalk": { "const": false } } } },
+        "exactRepositoryRecordToPaperFigureCrosswalk": { "const": false }, "independentAnimalDenominator": { "const": false }, "paperAnalysisMembershipReconciled": { "const": false },
+        "status": { "const": "repository-roster-counted; paper-analysis membership unresolved" }, "interpretation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "representationBoundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sourceStrainValuesAreCanonicalSubtypeIds", "repositoryRecordsAreSubtypePrevalence", "representativeOrMeanNeuronCreated", "molecularProfileJoinCount", "sameCellJoinCount", "atlasRegistrationCount", "internalStructurePrimitiveCount", "surfacesAdmittedByThisAudit", "axonsAddedOrRepaired", "use"],
+      "properties": {
+        "sourceStrainValuesAreCanonicalSubtypeIds": { "const": false }, "repositoryRecordsAreSubtypePrevalence": { "const": false }, "representativeOrMeanNeuronCreated": { "const": false },
+        "molecularProfileJoinCount": { "const": 0 }, "sameCellJoinCount": { "const": 0 }, "atlasRegistrationCount": { "const": 0 },
+        "internalStructurePrimitiveCount": { "const": 0 }, "surfacesAdmittedByThisAudit": { "const": 0 }, "axonsAddedOrRepaired": { "const": 0 }, "use": { "type": "string", "minLength": 1 }
+      }
+    },
+    "references": { "type": "array", "minItems": 4, "items": { "type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": { "label": { "type": "string" }, "url": { "type": "string", "format": "uri" } } } }
+  },
+  "$defs": {
+    "valueCount": { "type": "object", "additionalProperties": false, "required": ["sourceValue", "recordCount"], "properties": { "sourceValue": { "type": "string" }, "recordCount": { "type": "integer", "minimum": 0 } } },
+    "strainGroup": { "type": "object", "additionalProperties": false, "required": ["sourceStrainLabel", "recordCount", "neuronIds"], "properties": { "sourceStrainLabel": { "type": "string", "minLength": 1 }, "recordCount": { "type": "integer", "minimum": 1 }, "neuronIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "integer", "minimum": 1 } } } }
+  }
+}

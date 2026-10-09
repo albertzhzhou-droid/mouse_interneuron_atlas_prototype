@@ -7,7 +7,6 @@ import {
   MORPHOLOGY_FOCUS_NOT_ADMITTED,
   NO_MORPHOLOGY_VISUAL_TARGET,
   SOURCE_DIAMETER_UNAVAILABLE_SKELETON_REQUIRED,
-  SOURCE_SPECIFIC_MORPHOLOGY_VIEWER_ONLY,
   parseNeuroMorphoFocusId,
   resolveExplicitMorphologySelection,
   resolveResearchVisualTarget,
@@ -18,6 +17,10 @@ const atlasPrototypeSource = await readFile(
   new URL("../app/AtlasPrototype.tsx", import.meta.url),
   "utf8",
 );
+const atlasTypesSource = await readFile(
+  new URL("../app/atlas-types.ts", import.meta.url),
+  "utf8",
+);
 const sceneCanvasSource = await readFile(
   new URL("../app/SceneCanvas.tsx", import.meta.url),
   "utf8",
@@ -26,19 +29,27 @@ const researchFocusEvidenceSource = await readFile(
   new URL("../app/ResearchFocusEvidencePanel.tsx", import.meta.url),
   "utf8",
 );
+const censusMainSceneIndex = JSON.parse(await readFile(
+  new URL("../data/neuromorpho-census-main-scene-index-0.1.json", import.meta.url),
+  "utf8",
+));
 
+const supplementaryMainSceneIds = [45674, 45718, 50394, 50408, 50424, 170035, 249676];
 const productionMainSceneIds = [
-  45674, 45718, 50394, 50408, 50424, 104003, 108974,
-  109005, 109021, 170035, 242822, 249676, 260150,
+  ...censusMainSceneIndex.records.map((record) => record.neuronId),
+  ...supplementaryMainSceneIds,
 ];
 const productionSourceViewerIds = [...productionMainSceneIds, 109006];
+const sourceDiameter3dIds = censusMainSceneIndex.records
+  .filter((record) => record.geometry.dimensionality === "3D" && record.geometry.sourceDiameterAvailable)
+  .map((record) => record.neuronId);
 
 function resolve(focus, options = {}) {
   return resolveResearchVisualTarget({
     focus,
     admittedMainSceneNeuronIds: productionMainSceneIds,
     admittedSourceViewerNeuronIds: productionSourceViewerIds,
-    sourceDiameterNeuronIds: [109005],
+    sourceDiameterNeuronIds: sourceDiameter3dIds,
     requestedFidelityMode: "radius_surface",
     currentView: "cell_detail",
     ...options,
@@ -102,18 +113,13 @@ test("a supplied admitted 109006 focus replaces 109005 atomically with exact 109
   });
 });
 
-test("production NMO 109006 is viewer-only and never falls back to a main-scene form", () => {
+test("production NMO 109006 resolves through its newly admitted checksum-pinned census record", () => {
   const target = resolve({ focusKind: "morphology_record", focusId: "NeuroMorpho:109006" });
-  assert.equal(target.status, "source_specific_viewer_only");
-  assert.equal(target.neuronId, null);
-  assert.equal(target.showObservedCellForm, false);
-  assert.equal(target.nextView, "home");
-  assert.equal(target.reason, SOURCE_SPECIFIC_MORPHOLOGY_VIEWER_ONLY);
-  assert.deepEqual(target.sourceSpecificViewer, {
-    lab: "morphology",
-    focusId: "NeuroMorpho:109006",
-    neuronId: 109006,
-  });
+  assert.equal(target.status, "exact_main_scene_morphology");
+  assert.equal(target.neuronId, 109006);
+  assert.equal(target.showObservedCellForm, true);
+  assert.equal(target.nextView, "cell_detail");
+  assert.equal(censusMainSceneIndex.records.some((record) => record.neuronId === 109006), true);
 });
 
 test("a syntactically valid but unadmitted NeuroMorpho ID fails closed", () => {
@@ -144,6 +150,15 @@ test("a no-diameter exact morphology forces observed skeleton mode", () => {
   assert.equal(target.modeReason, SOURCE_DIAMETER_UNAVAILABLE_SKELETON_REQUIRED);
 });
 
+test("every checksum-pinned census ID is a main-scene target, while a 2D diameter record stays planar", () => {
+  const target = resolve({ focusKind: "morphology_record", focusId: "NeuroMorpho:194468" });
+  assert.equal(target.status, "exact_main_scene_morphology");
+  assert.equal(target.neuronId, 194468);
+  assert.equal(target.fidelityMode, "observed_swc", "the 2D source record has no 3D surface authorization");
+  assert.ok(censusMainSceneIndex.records.every((record) => productionMainSceneIds.includes(record.neuronId)));
+  assert.match(atlasTypesSource, /sourceRadiusAvailable && record\.geometry\.dimensionality === "3D"/);
+});
+
 test("explicit selection binds research focus only through the supplied current index", () => {
   const options = {
     neuronId: 45718,
@@ -155,7 +170,7 @@ test("explicit selection binds research focus only through the supplied current 
   };
   const indexed = resolveExplicitMorphologySelection({
     ...options,
-    indexedMorphologyFocusIds: ["NeuroMorpho:45718"],
+    resolvableMorphologyFocusIds: ["NeuroMorpho:45718"],
   });
   assert.deepEqual(indexed.researchFocus, {
     focusKind: "morphology_record",
@@ -164,31 +179,33 @@ test("explicit selection binds research focus only through the supplied current 
 
   const absent = resolveExplicitMorphologySelection({
     ...options,
-    indexedMorphologyFocusIds: ["NeuroMorpho:109005"],
+    resolvableMorphologyFocusIds: ["NeuroMorpho:109005"],
   });
   assert.equal(absent.researchFocus, null);
-  assert.equal(absent.focusUpdateReason, "morphology_focus_not_present_in_current_index");
+  assert.equal(absent.focusUpdateReason, "morphology_focus_not_resolvable_by_active_record_loader");
 });
 
 test("AtlasPrototype clears the renderer target, old lane label and selected-morphology export fields", () => {
   assert.match(atlasPrototypeSource, /showObservedCellForm=\{morphologyVisibleRequested\}/);
   assert.match(atlasPrototypeSource, /observedCellFormId=\{viewportMorphologyNeuronId \?\? 0\}/);
-  assert.match(atlasPrototypeSource, /\{morphologyVisibleRequested && view !== "internal_reference" && view !== "microns_observed_reference" && <div className="observed-cell-lane-label">/);
+  assert.match(atlasPrototypeSource, /\{morphologyActuallyVisible && view !== "internal_reference" && view !== "microns_observed_reference" && <div className="observed-cell-lane-label">/);
   assert.match(atlasPrototypeSource, /data-reason=\{morphologyVisualTarget\.reason\}/);
   assert.match(atlasPrototypeSource, /data-focus-id=\{researchFocus\?\.focusId \?\? "none"\}/);
   assert.match(atlasPrototypeSource, /0 admitted main-scene geometry/);
-  assert.match(atlasPrototypeSource, /source-record fingerprint and evidence delta updated · main-scene geometry cleared because no same-cell morphology is admitted/);
+  assert.match(atlasPrototypeSource, /if \(target\.neuronId === null\) \{\s+setShowObservedCellForm\(false\);\s+setMorphologyFidelityMode\("observed_swc"\);\s+setMorphologyRuntime\(clearedMorphologyRuntime\(target\.reason\)\);\s+return;/);
   assert.match(atlasPrototypeSource, /selectedObservedCellFormAssetId: activeObservedCellForm\?\.assetId \?\? null/);
   assert.match(atlasPrototypeSource, /activeObservedCellFidelity\?\.geometry\.sha256 \?\? null/);
   assert.match(atlasPrototypeSource, /morphologyRuntimeReason: guardedMorphologyRuntime\.reason/);
   assert.match(atlasPrototypeSource, /observedMorphologyRoute: morphologyTargetActive && observedMorphologyRoute \? \{/);
-  assert.match(atlasPrototypeSource, /releaseId: morphologyTargetActive && frozenObservedCellFormRecord \? observedCellFormLens\.releaseId : null/);
-  assert.match(atlasPrototypeSource, /sourceObject: morphologyTargetActive && frozenObservedCellFormRecord \? observedCellFormLens\.sourceObject : null/);
+  assert.match(atlasPrototypeSource, /frozenObservedCellFormRecord \? observedCellFormLens\.releaseId : censusIndexRecord \? neuromorphoCensusMainSceneIndex\.releaseId : null/);
+  assert.match(atlasPrototypeSource, /frozenObservedCellFormRecord \? observedCellFormLens\.sourceObject : censusIndexRecord \? neuromorphoCensusMainSceneIndex\.source\.censusIndex : null/);
   assert.match(atlasPrototypeSource, /selectedRecord: morphologyTargetActive \? frozenObservedCellFormRecord : null/);
   assert.match(atlasPrototypeSource, /renderingContract: morphologyTargetActive && frozenObservedCellFormRecord \? observedCellFormLens\.renderingContract : null/);
-  assert.match(atlasPrototypeSource, /hardBoundaries: morphologyTargetActive && frozenObservedCellFormRecord \? observedCellFormLens\.hardBoundaries : \[\]/);
-  assert.match(atlasPrototypeSource, /releaseId: morphologyTargetActive && frozenMorphologyFidelityRecord \? morphologyFidelityContract\.releaseId : null/);
-  assert.match(atlasPrototypeSource, /sourceObjects: morphologyTargetActive && frozenMorphologyFidelityRecord \? morphologyFidelityContract\.sourceObjects : null/);
+  assert.match(atlasPrototypeSource, /CHECKSUM_PINNED_NEUROMORPHO_CENSUS_MAIN_SCENE_INDEX/);
+  assert.match(atlasPrototypeSource, /selectedCensusIndexRecord: morphologyTargetActive \? censusIndexRecord : null/);
+  assert.match(atlasPrototypeSource, /neuromorphoCensusMainSceneIndex\.scientificBoundary\.geometry/);
+  assert.match(atlasPrototypeSource, /frozenMorphologyFidelityRecord \? morphologyFidelityContract\.releaseId : censusIndexRecord \? neuromorphoCensusMainSceneIndex\.releaseId : null/);
+  assert.match(atlasPrototypeSource, /frozenMorphologyFidelityRecord \? morphologyFidelityContract\.sourceObjects : censusIndexRecord \? neuromorphoCensusMainSceneIndex\.source : null/);
   assert.match(atlasPrototypeSource, /selectedContractRecord: morphologyTargetActive \? frozenMorphologyFidelityRecord : null/);
   assert.match(atlasPrototypeSource, /routeSourceObjects: morphologyTargetActive \? observedMorphologyRoute\?\.sourceObjects \?\? null : null/);
   assert.match(atlasPrototypeSource, /selectedObservedMorphologyRouteId: morphologyTargetActive \? observedMorphologyRoute\?\.routeId \?\? null : null/);
@@ -279,8 +296,11 @@ test("AtlasPrototype canonicalizes imported and restored SCI focus without inven
 
 test("SceneCanvas target deactivation aborts the previous fetch effect and disposes old geometry", () => {
   assert.match(sceneCanvasSource, /morphologyTargetActive: boolean/);
-  assert.match(sceneCanvasSource, /context\.observedCellRoot\.children\.forEach\(\(child\) => disposeObject\(child\)\);\s+context\.observedCellRoot\.clear\(\);\s+if \(!morphologyTargetActive\)/);
+  assert.match(sceneCanvasSource, /function clearSourceGeometryRoot\(root: THREE\.Group\)[\s\S]*?root\.children\.forEach\(\(child\) => disposeObject\(child\)\);[\s\S]*?root\.clear\(\);[\s\S]*?root\.userData = \{\};/);
+  assert.match(sceneCanvasSource, /clearSourceGeometryRoot\(context\.observedCellRoot\);\s+if \(!morphologyTargetActive\)/);
   assert.match(sceneCanvasSource, /requestedNeuronId: 0[\s\S]*reason: "no_admitted_morphology_target"/);
-  assert.match(sceneCanvasSource, /\[morphologyFidelityMode, morphologyTargetActive, observedCellFormId, publishMorphologyRuntime\]/);
+  assert.match(sceneCanvasSource, /\[morphologyFidelityMode, morphologyTargetActive, observedCellFormId, publishMorphologyRuntime, sourceSceneEpoch, clearInspection, fitSourceCamera\]/);
+  assert.match(sceneCanvasSource, /useLayoutEffect\(\(\) => \{\s+morphologyLoadEpochRef\.current \+= 1;\s+clearInspection\(\);\s+const root = contextRef\.current\?\.observedCellRoot;\s+if \(root\) clearSourceGeometryRoot\(root\);\s+if \(contextRef\.current\) \{\s+contextRef\.current\.sourceGeometry = null;[\s\S]*?\[morphologyFidelityMode, morphologyTargetActive, observedCellFormId, sourceSceneEpoch, clearInspection\]/);
+  assert.match(sceneCanvasSource, /return \(\) => controller\.abort\(\);\s+\}, \[morphologyFidelityMode, morphologyTargetActive, observedCellFormId, publishMorphologyRuntime, sourceSceneEpoch, clearInspection, fitSourceCamera\]/);
   assert.match(atlasPrototypeSource, /morphologyTargetActive=\{morphologyTargetActive\}/);
 });

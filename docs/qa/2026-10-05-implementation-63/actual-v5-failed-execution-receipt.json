@@ -1,0 +1,48 @@
+{
+  "status": "I63_ACTUAL_READONLY_INTAKE_EXECUTION",
+  "parentIntakeReadyClockUTC": "2026-10-05 11:26:55 UTC",
+  "startedAtUTC": "2026-10-05T11:27:31.347284+00:00",
+  "finishedAtUTC": "2026-10-05T11:58:39.481092+00:00",
+  "argv": [
+    "python3",
+    "/private/tmp/ohri-i63-accepted-i62-v5-preparation-20261005/capture_i63_readonly_intake.py",
+    "--intake-authorized-after-accepted-i62",
+    "--accepted-checkpoint-relative",
+    "docs/qa/2026-10-05-implementation-62/accepted-i62-owned-and-layout-checkpoint.json",
+    "--accepted-archive-relative",
+    "docs/qa/2026-10-05-implementation-62/accepted-i62-owned-and-layout-checkpoint.zip",
+    "--parent-mutable",
+    "tools/build_research_iteration_manifest_2_91.mjs",
+    "--parent-mutable",
+    "docs/UPGRADE_PLAN_2026-09-24.md",
+    "--parent-mutable",
+    "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+    "--output",
+    "/private/tmp/ohri-i63-actual-readonly-intake-after-accepted-i62-20261005"
+  ],
+  "actualExitCode": 1,
+  "helperPin": {
+    "bytes": 11924,
+    "sha256": "1c33f3c3763d66a4426536f24b145a49042442bc98640e6723f872aae176376f"
+  },
+  "epochFields": [
+    "dev",
+    "ino",
+    "size",
+    "mtime_ns"
+  ],
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "logs": [
+    {
+      "path": "actual.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "actual.stderr.log",
+      "bytes": 233458,
+      "sha256": "5163d8fa8ddabe9540a805c16c13317b953ade40546c279d179f158f3a360d20"
+    }
+  ]
+}

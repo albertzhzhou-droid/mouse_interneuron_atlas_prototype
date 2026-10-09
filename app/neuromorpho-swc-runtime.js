@@ -254,6 +254,9 @@ export function parseNeuromorphoSwc(value, {
       ];
     });
   const computed = summarizeNodes(orderedNodes, nodesById, rootId, diameterAuthorized);
+  // Reported diameter remains native input; only 3D sources authorize a surface.
+  const radiusSurfaceAuthorized = dimensionality === "3D" && diameterAuthorized;
+  computed.radiusSurfaceAuthorized = radiusSurfaceAuthorized;
   const root = nodesById.get(rootId);
   const maximumExtent = Math.max(...computed.extentMicrometre);
   const receipt = isObject(sourceReceipt) ? { ...sourceReceipt } : {};
@@ -271,7 +274,7 @@ export function parseNeuromorphoSwc(value, {
     extrusionApplied: false,
     zCoordinatePolicy: "preserve_source_values_never_extrude",
     diameterAuthorized,
-    radiusSurfaceAuthorized: diameterAuthorized,
+    radiusSurfaceAuthorized,
     rawRadiusPreserved: true,
     registration: {
       status: "unregistered",
@@ -291,7 +294,7 @@ export function parseNeuromorphoSwc(value, {
       nodeTypeCounts: computed.nodeTypeCounts,
       dimensionality,
       sourceDiameterAvailable: diameterAuthorized,
-      radiusSurfaceAuthorized: diameterAuthorized,
+      radiusSurfaceAuthorized,
       rawRadiusPreserved: true,
       extrusionApplied: false,
       type6Policy: "preserve_uninterpreted_never_infer_axon_or_dendrite",

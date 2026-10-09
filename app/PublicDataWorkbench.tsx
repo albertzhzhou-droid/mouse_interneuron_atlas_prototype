@@ -118,7 +118,7 @@ function parseCanoSpecimenManifest(value: Record<string, unknown>): CanoSpecimen
   const files = value.files.map((candidate) => {
     if (!isRecord(candidate) || !hasOnlyKeys(candidate, ["id", "stableName", "sourceUrl", "bytes", "format", "modality", "specimenIds", "sourceChecksum", "localSha256", "rightsDecision"])
       || typeof candidate.id !== "string" || !candidate.id || typeof candidate.stableName !== "string" || !candidate.stableName || !isHttpsUrl(candidate.sourceUrl)
-      || !Number.isInteger(candidate.bytes) || candidate.bytes < 1 || typeof candidate.format !== "string" || !candidate.format
+      || typeof candidate.bytes !== "number" || !Number.isInteger(candidate.bytes) || candidate.bytes < 1 || typeof candidate.format !== "string" || !candidate.format
       || (candidate.modality !== "Xenium spatial transcriptomics" && candidate.modality !== "snMultiome") || !Array.isArray(candidate.specimenIds) || candidate.specimenIds.length === 0 || !candidate.specimenIds.every((id) => typeof id === "string" && specimenIds.has(id))
       || !isRecord(candidate.sourceChecksum) || !hasOnlyKeys(candidate.sourceChecksum, ["algorithm", "value", "provenance"])
       || (candidate.sourceChecksum.algorithm !== "sha1" && candidate.sourceChecksum.algorithm !== "sha256") || typeof candidate.sourceChecksum.value !== "string"
@@ -159,7 +159,7 @@ function parsePublicFileAdmissionManifest(value: unknown): PublicFileAdmissionMa
       || typeof candidate.id !== "string" || !candidate.id
       || typeof candidate.stableName !== "string" || !candidate.stableName
       || !isHttpsUrl(candidate.sourceUrl)
-      || !Number.isInteger(candidate.bytes) || candidate.bytes < 1
+      || typeof candidate.bytes !== "number" || !Number.isInteger(candidate.bytes) || candidate.bytes < 1
       || typeof candidate.format !== "string" || !candidate.format
       || !isRecord(candidate.sourceChecksum)
       || !hasOnlyKeys(candidate.sourceChecksum, ["algorithm", "value", "provenance"])

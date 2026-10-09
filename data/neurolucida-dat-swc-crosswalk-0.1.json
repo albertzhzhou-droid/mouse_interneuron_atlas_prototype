@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "neurolucida-dat-swc-coordinate-crosswalk-0.1",
+  "releaseId": "ohri-neurolucida-dat-swc-crosswalk-0.1.0",
+  "createdFor": "one-record research visualization; not a general coordinate registration",
+  "record": {
+    "repository": "NeuroMorpho.Org",
+    "repositoryRelease": "8.6.124",
+    "neuronId": 45718,
+    "assetId": "NeuroMorpho:45718",
+    "recordUrl": "https://neuromorpho.org/api/neuron/id/45718"
+  },
+  "sourceFrames": {
+    "nativeDat": "Neurolucida_DAT_source_native_unregistered",
+    "standardizedSwc": "NeuroMorpho_CNG_standardized_local_frame",
+    "relation": "project-derived same-record frame crosswalk; no atlas registration"
+  },
+  "receipts": {
+    "nativeDat": {
+      "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/original/nmo-45718.dat",
+      "bytes": 343774,
+      "sha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415"
+    },
+    "sourceSwc": {
+      "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/swc/nmo-45718.swc",
+      "bytes": 214337,
+      "sha256": "c8926708a1350c58124c47ebee8167820b8e0bd568bcb676e90e34f3ca6dfaee"
+    },
+    "nativeContours": {
+      "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+      "bytes": 45606,
+      "sha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8"
+    },
+    "standardizedGeometry": {
+      "path": "public/data/premotor_comparison_observed_morphology_route_pack_v1/geometry/nmo-45718.json",
+      "bytes": 615468,
+      "sha256": "c5193dbca4f17bb945a034196dd7dee130096502c71e01b6e5aedacfcade8865",
+      "canonicalGeometrySha256": "08514c7c924c2b1ff444eb45f43e89ab1633bce64dc1618be148617e80de52a3"
+    }
+  },
+  "modelFamilyDeclaredBeforeFit": "2D reflection + rotation + uniform scale + translation; independent z translation",
+  "correspondence": {
+    "method": "same-record ordered source-closed Soma 1 contours paired by consecutive 2 µm z levels to standardized SWC type-1 nodes; correspondence is a project-derived audit, not source-deposited point identity",
+    "sourceContourIds": [
+      "source-native-contour-1",
+      "source-native-contour-2",
+      "source-native-contour-3",
+      "source-native-contour-4",
+      "source-native-contour-5",
+      "source-native-contour-6",
+      "source-native-contour-7"
+    ],
+    "sourceNodeIds": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sourceZMicrometre": [
+      -29,
+      -31,
+      -33,
+      -35,
+      -37,
+      -39,
+      -41
+    ],
+    "standardizedZMicrometre": [
+      0,
+      -2,
+      -4,
+      -6,
+      -8,
+      -10,
+      -12
+    ],
+    "zOffsetMicrometre": 29,
+    "sourceVertexCount": 252
+  },
+  "transform": {
+    "a": -0.9697188756534749,
+    "b": -0.21747445980264343,
+    "sourceXMean": 365.69793678136404,
+    "sourceYMean": 256.2765159188446,
+    "targetXMean": 0.312,
+    "targetYMean": 0.252,
+    "zOffsetMicrometre": 29,
+    "scale": 0.9938057347716862,
+    "determinant": -0.9876498384650911
+  },
+  "validation": {
+    "model": "2D reflection + rotation + uniform scale + translation; independent z translation",
+    "primaryFit": {
+      "fitContourIndicesZeroBased": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "heldOutContourIndicesZeroBased": [
+        5,
+        6
+      ],
+      "fitNodeIds": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "heldOutNodeIds": [
+        7,
+        8
+      ],
+      "training": {
+        "count": 5,
+        "rmsMicrometre": 0.0037848562724105946,
+        "maximumMicrometre": 0.006172804780946705,
+        "valuesMicrometre": [
+          0.0012477168418908204,
+          0.004150819965202205,
+          0.006172804780946705,
+          0.0035116189897631605,
+          0.0015506755044257733
+        ]
+      },
+      "heldOut": {
+        "count": 2,
+        "rmsMicrometre": 0.0057022244120277675,
+        "maximumMicrometre": 0.005933177838453799,
+        "valuesMicrometre": [
+          0.005933177838453799,
+          0.005461513272668258
+        ]
+      }
+    },
+    "alternatingSensitivity": {
+      "fitContourIndicesZeroBased": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "heldOutContourIndicesZeroBased": [
+        1,
+        3,
+        5
+      ],
+      "fitNodeIds": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "heldOutNodeIds": [
+        3,
+        5,
+        7
+      ],
+      "heldOut": {
+        "count": 3,
+        "rmsMicrometre": 0.007743171842906737,
+        "maximumMicrometre": 0.00922271476751292,
+        "valuesMicrometre": [
+          0.007289303656957401,
+          0.006455827993380685,
+          0.00922271476751292
+        ]
+      }
+    },
+    "properRotationAlternative": {
+      "heldOut": {
+        "count": 2,
+        "rmsMicrometre": 2.1621068150264198,
+        "maximumMicrometre": 2.474690403728459,
+        "valuesMicrometre": [
+          2.474690403728459,
+          1.7959173602539886
+        ]
+      },
+      "rejected": true,
+      "rejectionReason": "A proper-rotation-only model fails the predeclared 0.01 µm display-consistency screen on primary held-out points; this supports the reflection family for this record only."
+    },
+    "displayConsistencyScreen": {
+      "maximumHeldOutResidualMicrometre": 0.01,
+      "designation": "last-place digitization consistency screen only; not measurement accuracy, biological tolerance, anatomical truth or generalizable registration confidence",
+      "passed": true
+    }
+  },
+  "displayContract": {
+    "authorizedPrimitives": [
+      "exact type-labelled standardized SWC line segments",
+      "seven transformed source-closed Soma 1 line loops"
+    ],
+    "nativeContourIdsDisplayed": [
+      "source-native-contour-1",
+      "source-native-contour-2",
+      "source-native-contour-3",
+      "source-native-contour-4",
+      "source-native-contour-5",
+      "source-native-contour-6",
+      "source-native-contour-7"
+    ],
+    "excludedNativeContourIds": [
+      "source-native-contour-8"
+    ],
+    "excludedContourReason": "The source-open legacy Cell Body object is not part of the seven-plane Soma 1 correspondence and remains visible only in the separate native-DAT contour view.",
+    "displayFrame": "NeuroMorpho_CNG_standardized_local_frame",
+    "reversible": true,
+    "changesExistingNativeContourViewer": false,
+    "surfaces": false,
+    "meshes": false,
+    "volumes": false,
+    "membranes": false,
+    "internalStructures": false,
+    "biologicalMeasurements": false,
+    "sameSpecimenInternalStructureJoin": false,
+    "atlasRegistration": false,
+    "representativeCellTypeMorphologyClaim": false,
+    "otherRecordTransformReuse": false
+  },
+  "references": [
+    {
+      "label": "NeuroMorpho.Org record",
+      "url": "https://neuromorpho.org/api/neuron/id/45718"
+    },
+    {
+      "label": "Original Neurolucida DAT",
+      "url": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat"
+    },
+    {
+      "label": "Standardized CNG SWC",
+      "url": "https://neuromorpho.org/dableFiles/bannatyne/CNG%20version/101026p1-A-In.CNG.swc"
+    },
+    {
+      "label": "NeuroMorpho Soma Format and contour standardization",
+      "url": "https://www.neuromorpho.org/SomaFormat.html"
+    },
+    {
+      "label": "NeuroMorpho FAQ on SWC coordinate standardization",
+      "url": "https://neuromorpho.org/myfaq.jsp"
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+- link "Skip to research content":
+  - /url: "#research-content"
+- complementary "Atlas navigation":
+  - link "Interneuron Atlas overview":
+    - /url: /
+    - text: Interneuron
+    - text: Atlas
+    - generic: Mouse spinal cord
+  - navigation "Atlas pages":
+    - region "Start":
+      - heading "Start" [level=2]
+      - list:
+        - link "Overview":
+          - /url: /
+          - generic: Overview
+        - link "3D workspace":
+          - /url: /workspace
+          - generic: 3D workspace
+    - region "Explore":
+      - heading "Explore" [level=2]
+      - list:
+        - link "Morphology":
+          - /url: /explore/morphology
+          - generic: Morphology
+        - link "Cell types":
+          - /url: /explore/cell-types
+          - generic: Cell types
+        - link "Anatomy":
+          - /url: /explore/anatomy
+          - generic: Anatomy
+        - link "Positions":
+          - /url: /explore/positions
+          - generic: Positions
+    - region "Research":
+      - heading "Research" [level=2]
+      - list:
+        - link "Research explorer":
+          - /url: /research/explorer
+          - generic: Research explorer
+        - link "Evidence map":
+          - /url: /research/overview
+          - generic: Evidence map
+        - link "SCI conditions":
+          - /url: /research/sci
+          - generic: SCI conditions
+        - link "Evidence coverage":
+          - /url: /research/coverage
+          - generic: Evidence coverage
+    - region "Sources":
+      - heading "Sources" [level=2]
+      - list:
+        - link "Source registry":
+          - /url: /sources
+          - generic: Source registry
+        - link "Source objects":
+          - /url: /objects
+          - generic: Source objects
+        - link "Source audits":
+          - /url: /source-audits
+          - generic: Source audits
+        - link "Svara catalogue":
+          - /url: /catalogues/svara
+          - generic: Svara catalogue
+        - link "Svara connectivity":
+          - /url: /connectivity/svara
+          - generic: Svara connectivity
+  - paragraph:
+    - text: Public-data research
+    - text: Source identities remain distinct.
+- navigation "Breadcrumb":
+  - list:
+    - link "Overview":
+      - /url: /
+    - text: /
+    - generic: Research
+    - text: /
+    - generic: Research explorer
+- main:
+  - paragraph: Research · Record search
+  - heading "Search source records" [level=1]
+  - paragraph: Find a label, marker, publication or accession, then continue to its dedicated research page.
+  - status
+  - region "Interneuron Research Explorer":
+    - paragraph: UPG-049 + UPG-180 + UPG-183 + UPG-185 + UPG-204 · CHECKSUM-VERIFIED · RECORD-DRIVEN · ZERO BIOLOGICAL JOINS
+    - heading "Interneuron Research Explorer" [level=3]
+    - paragraph: Search 673 cross-lane source records by label, marker, DOI, PMID or accession. The molecular lane includes 387 source profiles, including the exact Cano-Gomez P56 CHOL_IN registry, while retaining 181 morphology records (142 frozen census + 39 supplementary exact objects); the separate frozen NeuroMorpho universe contains 1,097 source objects. Selecting a molecular record replaces its source-record evidence model and clears prior cell geometry; a shared term never creates a same-cell or same-type relationship.
+    - generic "Research Explorer source-record denominator":
+      - strong: "673"
+      - generic: source records
+      - generic: 387 source profiles · 181 source-local morphologies · 73 anatomy labels · 17 SCI populations · 7 SCI entities · 8 source lanes · separate frozen morphology universe 1,097
+    - text: Search exact source records
+    - searchbox "Search exact source records"
+    - text: Evidence lane
+    - combobox "Evidence lane":
+      - option "All independent lanes" [selected]
+      - option "SCI evidence entity"
+      - option "Source profile"
+      - option "Morphology record"
+      - option "Anatomy label"
+      - option "SCI time-course population"
+      - option "Coverage source lane"
+    - button "Reset search"
+    - region "Grouped source results":
+      - heading "Grouped source results" [level=4]
+      - status: 673 records across 28 source namespaces
+      - generic: Grouping is bibliographic, not biological
+      - region "alkaslasi-2021:GSE167597 results":
+        - generic: Molecular population
+        - heading "alkaslasi-2021:GSE167597" [level=5]
+        - strong: "8"
+        - 'button "I1 1520 nuclei · Markers: Pax2 · Mpped2 · Slc6a1 · Piezo2 alkaslasi-2021:GSE167597:I1"':
+          - generic: I1
+          - generic: "1520 nuclei · Markers: Pax2 · Mpped2 · Slc6a1 · Piezo2"
+          - code: alkaslasi-2021:GSE167597:I1
+        - 'button "I2 780 nuclei · Markers: Pax2 · Mpped2 · Slc6a1 alkaslasi-2021:GSE167597:I2"':
+          - generic: I2
+          - generic: "780 nuclei · Markers: Pax2 · Mpped2 · Slc6a1"
+          - code: alkaslasi-2021:GSE167597:I2
+        - 'button "I3 756 nuclei · Markers: Pax2 · Mpped2 · Slc6a1 alkaslasi-2021:GSE167597:I3"':
+          - generic: I3
+          - generic: "756 nuclei · Markers: Pax2 · Mpped2 · Slc6a1"
+          - code: alkaslasi-2021:GSE167597:I3
+        - 'button "I4 702 nuclei · Markers: Pax2 · Mpped2 · Slc6a1 alkaslasi-2021:GSE167597:I4"':
+          - generic: I4
+          - generic: "702 nuclei · Markers: Pax2 · Mpped2 · Slc6a1"
+          - code: alkaslasi-2021:GSE167597:I4
+        - button "Show all 8"
+      - region "cano-gomez-2026:GSE318731 results":
+        - generic: Molecular population
+        - heading "cano-gomez-2026:GSE318731" [level=5]
+        - strong: "11"
+        - button "CHOL_IN_Best3_Htr1b 146 source-assigned nuclei cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c":
+          - generic: CHOL_IN_Best3_Htr1b
+          - generic: 146 source-assigned nuclei
+          - code: cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c
+        - button "CHOL_IN_Best3_Slc9a3 119 source-assigned nuclei cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37":
+          - generic: CHOL_IN_Best3_Slc9a3
+          - generic: 119 source-assigned nuclei
+          - code: cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37
+        - button "CHOL_IN_Galr1_Ccdc3 150 source-assigned nuclei cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29":
+          - generic: CHOL_IN_Galr1_Ccdc3
+          - generic: 150 source-assigned nuclei
+          - code: cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29
+        - button "CHOL_IN_Galr1_P2rx5 66 source-assigned nuclei cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596":
+          - generic: CHOL_IN_Galr1_P2rx5
+          - generic: 66 source-assigned nuclei
+          - code: cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596
+        - button "Show all 11"
+      - region "delile-2019:E-MTAB-7320 results":
+        - generic: Molecular population
+        - heading "delile-2019:E-MTAB-7320" [level=5]
+        - strong: "51"
+        - button "dl1.1 30 source-annotated fine-subtype cells delile-2019:E-MTAB-7320:dl1.1":
+          - generic: dl1.1
+          - generic: 30 source-annotated fine-subtype cells
+          - code: delile-2019:E-MTAB-7320:dl1.1
+        - button "dl1.2 67 source-annotated fine-subtype cells delile-2019:E-MTAB-7320:dl1.2":
+          - generic: dl1.2
+          - generic: 67 source-annotated fine-subtype cells
+          - code: delile-2019:E-MTAB-7320:dl1.2
+        - button "dl1.3 255 source-annotated fine-subtype cells delile-2019:E-MTAB-7320:dl1.3":
+          - generic: dl1.3
+          - generic: 255 source-annotated fine-subtype cells
+          - code: delile-2019:E-MTAB-7320:dl1.3
+        - button "dl1.4 128 source-annotated fine-subtype cells delile-2019:E-MTAB-7320:dl1.4":
+          - generic: dl1.4
+          - generic: 128 source-annotated fine-subtype cells
+          - code: delile-2019:E-MTAB-7320:dl1.4
+        - button "Show all 51"
+      - region "haring-2018:GSE103840 results":
+        - generic: Molecular population
+        - heading "haring-2018:GSE103840" [level=5]
+        - strong: "30"
+        - 'button "Gaba1 18 cells · Markers: source label GABA1; main Gal; co-marker 1 Slc17a6; co-marker 2 not populated in source table haring-2018:GSE103840:Gaba1"':
+          - generic: Gaba1
+          - generic: "18 cells · Markers: source label GABA1; main Gal; co-marker 1 Slc17a6; co-marker 2 not populated in source table"
+          - code: haring-2018:GSE103840:Gaba1
+        - 'button "Gaba10 66 cells · Markers: source label GABA10; main Adamts5; co-marker 1 Cplx1; co-marker 2 not populated in source table haring-2018:GSE103840:Gaba10"':
+          - generic: Gaba10
+          - generic: "66 cells · Markers: source label GABA10; main Adamts5; co-marker 1 Cplx1; co-marker 2 not populated in source table"
+          - code: haring-2018:GSE103840:Gaba10
+        - 'button "Gaba11 48 cells · Markers: source label GABA11; main Calb2; co-marker 1 Cplx1; co-marker 2 not populated in source table haring-2018:GSE103840:Gaba11"':
+          - generic: Gaba11
+          - generic: "48 cells · Markers: source label GABA11; main Calb2; co-marker 1 Cplx1; co-marker 2 not populated in source table"
+          - code: haring-2018:GSE103840:Gaba11
+        - 'button "Gaba12 56 cells · Markers: source label GABA12; main Sorcs3; co-marker 1 Cplx1; co-marker 2 not populated in source table haring-2018:GSE103840:Gaba12"':
+          - generic: Gaba12
+          - generic: "56 cells · Markers: source label GABA12; main Sorcs3; co-marker 1 Cplx1; co-marker 2 not populated in source table"
+          - code: haring-2018:GSE103840:Gaba12
+        - button "Show all 30"
+      - region "hayashi-2018:GSE108788 results":
+        - generic: Molecular population
+        - heading "hayashi-2018:GSE108788" [level=5]
+        - strong: "11"
+        - 'button "Cluster 1 144 cells · Markers: Zfhx3 · Zfhx4 · Nefl · Shox2 hayashi-2018:GSE108788:cluster-1"':
+          - generic: Cluster 1
+          - generic: "144 cells · Markers: Zfhx3 · Zfhx4 · Nefl · Shox2"
+          - code: hayashi-2018:GSE108788:cluster-1
+        - 'button "Cluster 10 48 cells · Markers: Zfhx3 · Zfhx4 · Nefl · Shox2 hayashi-2018:GSE108788:cluster-10"':
+          - generic: Cluster 10
+          - generic: "48 cells · Markers: Zfhx3 · Zfhx4 · Nefl · Shox2"
+          - code: hayashi-2018:GSE108788:cluster-10
+        - button "Cluster 11 29 cells hayashi-2018:GSE108788:cluster-11":
+          - generic: Cluster 11
+          - generic: 29 cells
+          - code: hayashi-2018:GSE108788:cluster-11
+        - 'button "Cluster 2 130 cells · Markers: Zfhx3 · Zfhx4 · Nefl · Shox2 hayashi-2018:GSE108788:cluster-2"':
+          - generic: Cluster 2
+          - generic: "130 cells · Markers: Zfhx3 · Zfhx4 · Nefl · Shox2"
+          - code: hayashi-2018:GSE108788:cluster-2
+        - button "Show all 11"
+      - region "iglesias-gonzalez-2021:gse185731:mmusculus results":
+        - generic: Molecular population
+        - heading "iglesias-gonzalez-2021:gse185731:mmusculus" [level=5]
+        - strong: "6"
+        - 'button "M1 84 retained cells · Markers: Zfhx3 · Meis2 · Zfhx4 iglesias-gonzalez-2021:gse185731:mmusculus:m1"':
+          - generic: M1
+          - generic: "84 retained cells · Markers: Zfhx3 · Meis2 · Zfhx4"
+          - code: iglesias-gonzalez-2021:gse185731:mmusculus:m1
+        - 'button "M2 34 retained cells · Markers: Irx4 · Tshz3 · Ldb2 iglesias-gonzalez-2021:gse185731:mmusculus:m2"':
+          - generic: M2
+          - generic: "34 retained cells · Markers: Irx4 · Tshz3 · Ldb2"
+          - code: iglesias-gonzalez-2021:gse185731:mmusculus:m2
+        - 'button "M3 33 retained cells · Markers: Pid1 · Sst · Slit2 iglesias-gonzalez-2021:gse185731:mmusculus:m3"':
+          - generic: M3
+          - generic: "33 retained cells · Markers: Pid1 · Sst · Slit2"
+          - code: iglesias-gonzalez-2021:gse185731:mmusculus:m3
+        - 'button "M4 45 retained cells · Markers: Hoxb8 · Hoxb7 · Hoxb9 iglesias-gonzalez-2021:gse185731:mmusculus:m4"':
+          - generic: M4
+          - generic: "45 retained cells · Markers: Hoxb8 · Hoxb7 · Hoxb9"
+          - code: iglesias-gonzalez-2021:gse185731:mmusculus:m4
+        - button "Show all 6"
+      - region "roome-2026:GSE291462 results":
+        - generic: Molecular population
+        - heading "roome-2026:GSE291462" [level=5]
+        - strong: "157"
+        - 'button "dILA1-A1 179 captured refined dIL cells · Markers: Tfap2b · Islr2 · Lhx1 · Lhx1os · Npy roome-2026:GSE291462:dILA1-A1"':
+          - generic: dILA1-A1
+          - generic: "179 captured refined dIL cells · Markers: Tfap2b · Islr2 · Lhx1 · Lhx1os · Npy"
+          - code: roome-2026:GSE291462:dILA1-A1
+        - 'button "dILA1-A1-L 53 captured refined dIL cells · Markers: Cyp26b1 · Tfap2b · Lhx1 · Lhx1os · Uncx roome-2026:GSE291462:dILA1-A1-L"':
+          - generic: dILA1-A1-L
+          - generic: "53 captured refined dIL cells · Markers: Cyp26b1 · Tfap2b · Lhx1 · Lhx1os · Uncx"
+          - code: roome-2026:GSE291462:dILA1-A1-L
+        - 'button "dILA1-A2 230 captured refined dIL cells · Markers: Tfap2b · Islr2 · Zfhx3 · Sox6 · 2700069I18Rik roome-2026:GSE291462:dILA1-A2"':
+          - generic: dILA1-A2
+          - generic: "230 captured refined dIL cells · Markers: Tfap2b · Islr2 · Zfhx3 · Sox6 · 2700069I18Rik"
+          - code: roome-2026:GSE291462:dILA1-A2
+        - 'button "dILA1-A3 120 captured refined dIL cells · Markers: Tfap2b · Islr2 · Skor2 · Lhx1 · Lhx1os roome-2026:GSE291462:dILA1-A3"':
+          - generic: dILA1-A3
+          - generic: "120 captured refined dIL cells · Markers: Tfap2b · Islr2 · Skor2 · Lhx1 · Lhx1os"
+          - code: roome-2026:GSE291462:dILA1-A3
+        - button "Show all 157"
+      - region "russ-2021 results":
+        - generic: Molecular population
+        - heading "russ-2021" [level=5]
+        - strong: "69"
+        - 'button "CSF-cN 126 captured sequenced cells/nuclei · Markers: Pkd1l2 · Myo3b · Pkd2l1 russ-2021:CSF-cN"':
+          - generic: CSF-cN
+          - generic: "126 captured sequenced cells/nuclei · Markers: Pkd1l2 · Myo3b · Pkd2l1"
+          - code: russ-2021:CSF-cN
+        - 'button "Excit-1 266 captured sequenced cells/nuclei · Markers: Cpne4 · Bnc2 · Dach2 russ-2021:Excit-1" [pressed]':
+          - generic: Excit-1
+          - generic: "266 captured sequenced cells/nuclei · Markers: Cpne4 · Bnc2 · Dach2"
+          - code: russ-2021:Excit-1
+        - 'button "Excit-10 624 captured sequenced cells/nuclei · Markers: Pde11a · Cpne8 · Prex2 russ-2021:Excit-10"':
+          - generic: Excit-10
+          - generic: "624 captured sequenced cells/nuclei · Markers: Pde11a · Cpne8 · Prex2"
+          - code: russ-2021:Excit-10
+        - 'button "Excit-11 166 captured sequenced cells/nuclei · Markers: Pde11a · Tex15 · Reln russ-2021:Excit-11"':
+          - generic: Excit-11
+          - generic: "166 captured sequenced cells/nuclei · Markers: Pde11a · Tex15 · Reln"
+          - code: russ-2021:Excit-11
+        - button "Show all 69"
+      - button "Show all 28 source namespaces"
+    - region "Excit-1":
+      - paragraph: SOURCE PROFILE · SOURCE-LOCKED
+      - heading "Excit-1" [level=3]
+      - paragraph: Dorsal excitatory · Russ 2021
+      - button "Open source-specific workspace"
+      - region "Current record source scope":
+        - paragraph:
+          - strong: Record scope
+          - generic: source profile aggregate · Mus musculus
+        - paragraph: Species and age below describe the source context. They do not establish the identity or measurements of an individual cell.
+        - generic "Source context, experimental units and conditions"
+        - generic "40 field locators and exact record export"
+        - generic "Loading evidence for the source index"
+      - tablist "Focused research dossier views":
+        - tab "Summary" [selected]
+        - tab "Evidence40"
+        - tab "Gaps9"
+        - tab "Provenance"
+      - tabpanel "Summary":
+        - region "Excit-1":
+          - text: SELECTED SOURCE-RECORD FINGERPRINT
+          - heading "Excit-1" [level=5]
+          - paragraph: Molecular population · GEO GSE158380
+          - strong: 266 captured sequenced cells/nuclei · denominator 19,353 captured observations across six studies; independent animals and adult prevalence remain separate
+          - term: Observation unit
+          - definition: Source population
+          - term: Source markers
+          - definition: Cpne4 · Bnc2 · Dach2
+          - term: Source-local region evidence
+          - definition: Dorsal
+          - term: Life stage / transmitter
+          - definition: Postnatal harmonized transcriptomic reference; the paper separately validates selected marker panels in adult lumbar tissue. · Excitatory
+          - generic "Evidence-axis status for Excit-1":
+            - strong: Source profile
+            - generic: 40 source evidence rows
+            - strong: Anatomy context
+            - generic: Dorsal
+          - generic "9 unavailable or unlinked evidence axes · consolidated"
+          - status:
+            - strong: 0 admitted cell-geometry primitives
+            - text: Source-profile evidence changes this fingerprint only. It does not create a sphere, representative cell, neurite arbor, internal structure, or fallback morphology in 3D.
+          - generic "Identity and geometry limits · collapsed"

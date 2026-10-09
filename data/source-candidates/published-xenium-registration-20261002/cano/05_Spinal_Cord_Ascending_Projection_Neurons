@@ -1,0 +1,87 @@
+###############################################################################################################
+#### Identification of Spinal Projection Neurons from Xenium Retrograde Tracing Data with Permutation Test ####
+###############################################################################################################
+
+
+#### Set up the input data (Tracer Glut dataset to serve as test) and parallel compute framework
+###########################################################################################################################
+
+library(foreach)
+library(doParallel)
+
+glut_neurons = readRDS("<location>/Xen_GLUT_COMBINED.rds")
+GABA_neurons = readRDS("<location>/Xen_GABA_COMBINED.rds")
+
+
+cores = detectCores()
+cores
+cl <- makeCluster(cores - 4)
+registerDoParallel(cl)
+# stopCluster(cl)
+
+#### Generate control data for permutation testing
+GABA_combined = subset(GABA_combined, subset = source=="R1S1" | source=="R1S2", invert=T) # Restrict control data to GABAergic neurons from tracing experiments
+
+# extract values
+control_tdTomato_val = GABA_combined$tdTomato_meta_count
+control_GFP_val = GABA_combined$GFP_meta_count
+control_mNeonGreen_val = GABA_combined$mNeonGreen_meta_count
+
+# assign labels
+control_tdTomato_label = rep("blank", length(control_tdTomato_val))
+control_GFP_label = rep("blank", length(control_GFP_val))
+control_mNeonGreen_label = rep("blank", length(control_mNeonGreen_val))
+
+# Make control dataframes
+tomato_frame <- data.frame(value = control_tdTomato_val, group = control_tdTomato_label)
+# GFP_frame <- data.frame(value = control_GFP_val, group = control_GFP_label)
+# neon_frame <- data.frame(value = control_mNeonGreen_val, group = control_mNeonGreen_label)
+
+
+#### Generate test data seurat object
+PBN_DCN_MD_cells = WhichCells(glut_neurons, expression = source=="R2S1" | source=="R2S2"| source=="R3S1"| source=="R3S2" | source=="R4S1" | source=="R4S2")
+# PAG_CVLM_VPL_cells = WhichCells(glut_neurons, expression = source=="R5S1" | source=="R5S2" | source=="R6S1" | source=="R6S2")
+# POT_CEB_SCOL_cells = WhichCells(glut_neurons, expression = source== "R7S1" | source=="R7S2" | source=="R8S1" | source=="R8S2")
+
+subset_dbase = subset(glut_neurons, cells = PBN_DCN_MD_cells)
+
+rm(glut_neurons)
+
+#### Generate results capture framework
+neuron_types = levels(Idents(subset_dbase))
+neuron_numbers = as.numeric(table(Idents(subset_dbase)))
+observed_diff = rep(100, length(neuron_types))
+p_val = rep(100, length(neuron_types))
+p_adjust = p_val*length(neuron_types)
+
+results_dframe = data.frame(neuron_types = neuron_types, neuron_numbers=neuron_numbers, observed_diff = observed_diff, p_val=p_val, p_adjust=p_adjust)
+head(results_dframe)
+
+#### set up the loop
+
+for (i in 1:length(neuron_types)){
+  cell_type = results_dframe$neuron_types[i]
+  rakuvalim = WhichCells(subset_dbase, idents = cell_type)
+  PBN_val = subset_dbase$tdTomato_meta_count[rakuvalim]
+  candidate_dframe = data.frame(value = PBN_val, group = rep("labeled", length(PBN_val)))
+  test_frame =rbind(candidate_dframe, tomato_frame)
+  n_perms <- 100000 # Number of permutations to approximate the null distribution
+  perm_results <- numeric(n_perms) # Vector to store permutation differences
+  perm_results <- foreach(i = 1:n_perms, .combine = "c") %dopar% {
+    # Scramble the group labels
+    permuted_groups <- sample(test_frame$group)
+    # Calculate the difference in means for the permuted data
+    perm_diff <- mean(test_frame$value[permuted_groups == "labeled"]) - mean(test_frame$value[permuted_groups == "blank"])
+    # return_value for collection
+    perm_diff
+  }
+  observed_diff <- mean(test_frame$value[test_frame$group == "labeled"]) - mean(test_frame$value[test_frame$group == "blank"])
+  p_value <- mean(abs(perm_results) >= abs(observed_diff))
+  print(cell_type)
+  print(paste("Observed Difference:", observed_diff))
+  print(paste("P-value:", p_value))
+  results_dframe$observed_diff[i] = observed_diff
+  results_dframe$p_val[i] = p_value
+  results_dframe$p_adjust[i] = results_dframe$p_val[i] * length(results_dframe$neuron_types)
+  write.csv(results_dframe, "results_dframe1.csv")
+}

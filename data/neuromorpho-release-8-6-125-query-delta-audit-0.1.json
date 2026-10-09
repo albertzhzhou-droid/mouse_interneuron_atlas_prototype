@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "neuromorpho-release-8-6-125-query-delta-audit-0.1",
+  "releaseId": "ohri-neuromorpho-release-8-6-125-query-delta-audit-0.1.0",
+  "observedDate": "2026-09-23",
+  "activeModelRelease": "8.6.124",
+  "candidateRepositoryRelease": {
+    "version": "8.6.125",
+    "postedDate": "2026-09-17",
+    "officialMetadataUrl": "https://neuromorpho.org/MetaData.jsp"
+  },
+  "query": {
+    "endpoint": "https://neuromorpho.org/api/neuron/select",
+    "parameters": {
+      "q": "species:mouse",
+      "fq": [
+        "brain_region:spinal cord",
+        "cell_type:interneuron",
+        "age_classification:adult"
+      ],
+      "page": 0,
+      "size": 500,
+      "sort": "neuron_id,asc"
+    },
+    "reportedUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&fq=age_classification:adult&page=0&size=500&sort=neuron_id,asc",
+    "apiDocumentationUrl": "https://neuromorpho.org/api.jsp",
+    "apiReferenceUrl": "https://neuromorpho.org/apiReference.html"
+  },
+  "comparison": {
+    "mode": "semantic_metadata_only",
+    "baselineRelease": "8.6.124",
+    "baselineIndexPath": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+    "baselineRecordCount": 142,
+    "candidateRecordCount": 142,
+    "stableNeuronIdCount": 142,
+    "stableNeuronIdsAllMatch": true,
+    "semanticFieldsCompared": "All API neuron semantic metadata fields after excluding response navigation links under _links.",
+    "semanticallyUnchangedRecordCount": 142,
+    "addedRecordCount": 0,
+    "removedRecordCount": 0,
+    "changedSemanticMetadataRecordCount": 0
+  },
+  "observedResponseReceipt": {
+    "byteCount": 219524,
+    "sha256": "f35f1755885ca495ab3fecb2385e797eaeec3dc56d684413a8324a2e9297113b",
+    "rawResponseRetained": false,
+    "independentReproductionStatus": "requires_exact_GET_rerun"
+  },
+  "assetAndAdmissionBoundaries": {
+    "geometryAssetBytesRechecked": false,
+    "perObjectGeometryHashesRechecked": false,
+    "dimensionalityDeltaAuditedAtAssetLevel": false,
+    "fileSpecificReuseAndAttributionRightsRechecked": false,
+    "promotedIntoActiveModel": false,
+    "activeGeometryReleaseRemains": "8.6.124",
+    "sameCellInternalStructureCount": 0,
+    "crossSourceIdentityCount": 0,
+    "registrationCount": 0,
+    "researchUpgradeId": "UPG-228"
+  },
+  "rightsLocator": "https://www.neuromorpho.org/useterm.jsp",
+  "interpretationBoundary": "This receipt records an observed API metadata comparison only. It is not a geometry-asset or redistribution-rights audit, biological census update, morphology promotion, specimen count, subtype reconciliation, or proof that the remote response can be reproduced without rerunning the exact request."
+}

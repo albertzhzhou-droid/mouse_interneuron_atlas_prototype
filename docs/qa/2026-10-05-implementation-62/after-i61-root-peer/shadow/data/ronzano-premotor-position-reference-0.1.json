@@ -1,0 +1,1115 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-ronzano-premotor-position-reference-0.1.0",
+  "releaseDate": "2026-08-30",
+  "iteration": "2.22",
+  "assetId": "ronzano-premotor-positions-v1",
+  "source": {
+    "title": "Spinal premotor interneurons controlling antagonistic muscles are spatially intermingled",
+    "citation": "Ronzano R, Skarlatou S, Barriga BK, et al. eLife 11:e81976 (2022).",
+    "doi": "10.7554/eLife.81976",
+    "pmid": "36512397",
+    "pmcid": "PMC9844990",
+    "articleUrl": "https://elifesciences.org/articles/81976",
+    "figuresAndDataUrl": "https://elifesciences.org/articles/81976/figures",
+    "species": {
+      "scientificName": "Mus musculus",
+      "taxonId": "NCBITaxon:10090"
+    },
+    "lifeStage": {
+      "injection": "postnatal day P1-P2",
+      "analysisInterval": "8-9 days after injection",
+      "adultTransfer": "not_established"
+    },
+    "region": "lumbar spinal cord, source segments L1-L6; LG segment files begin at L2",
+    "cohort": {
+      "LGExperiments": 11,
+      "TAExperiments": 7,
+      "authority": "Figure 3 figure supplement 1 and 2 source-data descriptions"
+    },
+    "tracingContext": "delta-G rabies viral tracing in ChatCre/+; Rosa26-RPhiGT neonatal mice for the pooled LG and TA coordinate series"
+  },
+  "rights": {
+    "status": "CC-BY-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "articleCopyright": "Copyright 2022 Ronzano, Skarlatou, Barriga et al.",
+    "scope": "Article and supporting source-data files redistributed with attribution."
+  },
+  "sourceObjectContract": {
+    "sourceObjectKind": "labelled_cell_coordinate_row",
+    "rowIdentity": "source_file_id_plus_one_based_excel_row",
+    "columnOrder": [
+      "x",
+      "y",
+      "z"
+    ],
+    "headerRows": 0,
+    "everyCellNumericFinite": true,
+    "sourceFileCount": 22,
+    "coordinateRowCountAcrossRepresentations": 31878,
+    "representations": {
+      "raw": {
+        "frame": "raw",
+        "sourceFileCount": 11,
+        "coordinateRowCount": 14484,
+        "byMuscle": {
+          "LG": 6849,
+          "TA": 7635
+        },
+        "representedSegmentsByMuscle": {
+          "LG": [
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "TA": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ]
+        }
+      },
+      "normalized": {
+        "frame": "normalized",
+        "sourceFileCount": 11,
+        "coordinateRowCount": 17394,
+        "byMuscle": {
+          "LG": 9759,
+          "TA": 7635
+        },
+        "representedSegmentsByMuscle": {
+          "LG": [
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "TA": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ]
+        }
+      }
+    },
+    "sourceBundleTotalBytes": 1046636,
+    "sourceBundleCanonicalReceipt": {
+      "algorithm": "sha256_of_sorted_filename_tab_bytes_tab_sha256_tab_rowcount_lines_utf8",
+      "sha256": "2b8b75cae1a7cd559dc4b213923538c5a08b66ecd7a8dfec4b72a355aa8e7481"
+    }
+  },
+  "coordinateFrames": {
+    "raw": {
+      "x": "source x coordinate before normalization",
+      "y": "source y coordinate before normalization",
+      "z": "micrometre coordinate shifted so zero is the L4-L5 border; negative is rostral",
+      "displayTransform": "uniform viewer scaling only; no atlas transform",
+      "measurementUse": "forbidden"
+    },
+    "normalized": {
+      "x": "source section-normalized mediolateral coordinate relative to central-canal and white-matter reference points",
+      "y": "source quadrant-normalized dorsoventral coordinate relative to central-canal and white-matter reference points",
+      "z": "micrometre coordinate shifted so zero is the L4-L5 border; negative is rostral",
+      "displayTransform": "x multiplied by 1700 micrometres and y multiplied by 900 micrometres, matching the source's illustrational idealized-cord scaling; z unchanged; then uniformly fit to the viewport",
+      "measurementUse": "forbidden"
+    },
+    "registrationStatus": "source_local_unregistered",
+    "registrationCount": 0,
+    "atlasJoinCount": 0
+  },
+  "crossFrameAudit": {
+    "pairCount": 11,
+    "exactRowCountAndZSequencePairs": 6,
+    "mismatchedRowCountPairs": 5,
+    "admittedPointIdentityAcrossFrames": false,
+    "pairs": [
+      {
+        "muscle": "LG",
+        "segment": "L2",
+        "normalizedRowCount": 1521,
+        "rawRowCount": 867,
+        "rowCountMatch": false,
+        "zSequenceExactMatch": false,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "The source workbooks contain different row counts, so point-level pairing is impossible."
+      },
+      {
+        "muscle": "LG",
+        "segment": "L3",
+        "normalizedRowCount": 2136,
+        "rawRowCount": 1229,
+        "rowCountMatch": false,
+        "zSequenceExactMatch": false,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "The source workbooks contain different row counts, so point-level pairing is impossible."
+      },
+      {
+        "muscle": "LG",
+        "segment": "L4",
+        "normalizedRowCount": 2802,
+        "rawRowCount": 2017,
+        "rowCountMatch": false,
+        "zSequenceExactMatch": false,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "The source workbooks contain different row counts, so point-level pairing is impossible."
+      },
+      {
+        "muscle": "LG",
+        "segment": "L5",
+        "normalizedRowCount": 2348,
+        "rawRowCount": 1850,
+        "rowCountMatch": false,
+        "zSequenceExactMatch": false,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "The source workbooks contain different row counts, so point-level pairing is impossible."
+      },
+      {
+        "muscle": "LG",
+        "segment": "L6",
+        "normalizedRowCount": 952,
+        "rawRowCount": 886,
+        "rowCountMatch": false,
+        "zSequenceExactMatch": false,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "The source workbooks contain different row counts, so point-level pairing is impossible."
+      },
+      {
+        "muscle": "TA",
+        "segment": "L1",
+        "normalizedRowCount": 296,
+        "rawRowCount": 296,
+        "rowCountMatch": true,
+        "zSequenceExactMatch": true,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "Matching row counts and z order do not establish a source-declared stable cell identifier across workbooks."
+      },
+      {
+        "muscle": "TA",
+        "segment": "L2",
+        "normalizedRowCount": 883,
+        "rawRowCount": 883,
+        "rowCountMatch": true,
+        "zSequenceExactMatch": true,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "Matching row counts and z order do not establish a source-declared stable cell identifier across workbooks."
+      },
+      {
+        "muscle": "TA",
+        "segment": "L3",
+        "normalizedRowCount": 1519,
+        "rawRowCount": 1519,
+        "rowCountMatch": true,
+        "zSequenceExactMatch": true,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "Matching row counts and z order do not establish a source-declared stable cell identifier across workbooks."
+      },
+      {
+        "muscle": "TA",
+        "segment": "L4",
+        "normalizedRowCount": 1923,
+        "rawRowCount": 1923,
+        "rowCountMatch": true,
+        "zSequenceExactMatch": true,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "Matching row counts and z order do not establish a source-declared stable cell identifier across workbooks."
+      },
+      {
+        "muscle": "TA",
+        "segment": "L5",
+        "normalizedRowCount": 1891,
+        "rawRowCount": 1891,
+        "rowCountMatch": true,
+        "zSequenceExactMatch": true,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "Matching row counts and z order do not establish a source-declared stable cell identifier across workbooks."
+      },
+      {
+        "muscle": "TA",
+        "segment": "L6",
+        "normalizedRowCount": 1123,
+        "rawRowCount": 1123,
+        "rowCountMatch": true,
+        "zSequenceExactMatch": true,
+        "admittedPointIdentityAcrossFrames": false,
+        "reason": "Matching row counts and z order do not establish a source-declared stable cell identifier across workbooks."
+      }
+    ]
+  },
+  "sourceFiles": [
+    {
+      "id": "RONZANO-81976-RAW-LG-L2",
+      "frame": "raw",
+      "dataNumber": 2,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L2",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L2 for LG",
+      "fileName": "elife-81976-fig3-figsupp2-data2-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data2-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data2-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data2-v3.xlsx",
+      "bytes": 24107,
+      "sha256": "2a6a22807f185acf1dd0b6dcecca2e20eaf900f45eb8485cbfc8b5cef0d0cdb1",
+      "rowCount": 867,
+      "firstSourceRow": 1,
+      "lastSourceRow": 867,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -833.35,
+          "maximum": 774.38
+        },
+        "y": {
+          "minimum": -675.474,
+          "maximum": 493.47101
+        },
+        "z": {
+          "minimum": -2400,
+          "maximum": -1600.162257
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-LG-L3",
+      "frame": "raw",
+      "dataNumber": 3,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L3",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L3 for LG",
+      "fileName": "elife-81976-fig3-figsupp2-data3-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data3-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data3-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data3-v3.xlsx",
+      "bytes": 33308,
+      "sha256": "24a515c12ad26187a9f19c4bb080b0afca2092257461e73931d9ce5bc24caca5",
+      "rowCount": 1229,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1229,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -562.07397,
+          "maximum": 778.34497
+        },
+        "y": {
+          "minimum": -487.64301,
+          "maximum": 545.29401
+        },
+        "z": {
+          "minimum": -1599.121677,
+          "maximum": -867.49
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-LG-L4",
+      "frame": "raw",
+      "dataNumber": 4,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L4",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L4 for LG",
+      "fileName": "elife-81976-fig3-figsupp2-data4-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data4-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data4-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data4-v3.xlsx",
+      "bytes": 52381,
+      "sha256": "8e26c080042880b097adc039f9e84797be470f0b12df7c3e202a083e33d9ae7d",
+      "rowCount": 2017,
+      "firstSourceRow": 1,
+      "lastSourceRow": 2017,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -643.29,
+          "maximum": 784.62
+        },
+        "y": {
+          "minimum": -479.72,
+          "maximum": 533.38
+        },
+        "z": {
+          "minimum": -798.61000001,
+          "maximum": -2
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-LG-L5",
+      "frame": "raw",
+      "dataNumber": 5,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L5",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L5 for LG",
+      "fileName": "elife-81976-fig3-figsupp2-data5-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data5-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data5-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data5-v3.xlsx",
+      "bytes": 47325,
+      "sha256": "56fa098c95f42deb28b69356df65d5fff6e43055273f600372d082fc1798e9bc",
+      "rowCount": 1850,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1850,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -632.24298,
+          "maximum": 799.21
+        },
+        "y": {
+          "minimum": -478.73,
+          "maximum": 602.07
+        },
+        "z": {
+          "minimum": 0,
+          "maximum": 798
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-LG-L6",
+      "frame": "raw",
+      "dataNumber": 6,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L6",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L6 for LG",
+      "fileName": "elife-81976-fig3-figsupp2-data6-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data6-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data6-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data6-v3.xlsx",
+      "bytes": 26236,
+      "sha256": "e308fbc0e4ed877bd42a73f714428aca556196a943133361db17a12ca53dcf87",
+      "rowCount": 886,
+      "firstSourceRow": 1,
+      "lastSourceRow": 886,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -580.672,
+          "maximum": 713.06
+        },
+        "y": {
+          "minimum": -477.823,
+          "maximum": 662.81
+        },
+        "z": {
+          "minimum": 801.39,
+          "maximum": 2690
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-TA-L1",
+      "frame": "raw",
+      "dataNumber": 7,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L1",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L1 for TA",
+      "fileName": "elife-81976-fig3-figsupp2-data7-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data7-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data7-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data7-v3.xlsx",
+      "bytes": 9658,
+      "sha256": "34c0863e7686978d751a5d0ef6b1595804ec8a20ef19eebc0a6e13e18926e1e1",
+      "rowCount": 296,
+      "firstSourceRow": 1,
+      "lastSourceRow": 296,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -412.981,
+          "maximum": 628.10901
+        },
+        "y": {
+          "minimum": -419.19,
+          "maximum": 417.05
+        },
+        "z": {
+          "minimum": -5028,
+          "maximum": -2400
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-TA-L2",
+      "frame": "raw",
+      "dataNumber": 8,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L2",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L2 for TA",
+      "fileName": "elife-81976-fig3-figsupp2-data8-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data8-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data8-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data8-v3.xlsx",
+      "bytes": 24686,
+      "sha256": "4c8229e1447c1bed035750448c6574c95af56ca77558e107a3fb0c7da17aef66",
+      "rowCount": 883,
+      "firstSourceRow": 1,
+      "lastSourceRow": 883,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -737.245,
+          "maximum": 815.89301
+        },
+        "y": {
+          "minimum": -433.68,
+          "maximum": 519.008
+        },
+        "z": {
+          "minimum": -2400,
+          "maximum": -1601.39
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-TA-L3",
+      "frame": "raw",
+      "dataNumber": 9,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L3",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L3 for TA",
+      "fileName": "elife-81976-fig3-figsupp2-data9-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data9-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data9-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data9-v3.xlsx",
+      "bytes": 40998,
+      "sha256": "e3016288fa54c15b4113d5899df622935356d5eef458c82eff8d7ec90434d82a",
+      "rowCount": 1519,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1519,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -847.27301,
+          "maximum": 963.62598
+        },
+        "y": {
+          "minimum": -835.04602,
+          "maximum": 588.24
+        },
+        "z": {
+          "minimum": -1598.61,
+          "maximum": -804.1700001
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-TA-L4",
+      "frame": "raw",
+      "dataNumber": 10,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L4",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L4 for TA",
+      "fileName": "elife-81976-fig3-figsupp2-data10-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data10-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data10-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data10-v3.xlsx",
+      "bytes": 51694,
+      "sha256": "2ee6e529636e6e6e7b16bd2df78bade11eab4c7d1bcd73d28667a1db6c3f405f",
+      "rowCount": 1923,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1923,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -595.987,
+          "maximum": 887.71698
+        },
+        "y": {
+          "minimum": -524.375,
+          "maximum": 528.82
+        },
+        "z": {
+          "minimum": -798.61000001,
+          "maximum": -1.39
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-TA-L5",
+      "frame": "raw",
+      "dataNumber": 11,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L5",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L5 for TA",
+      "fileName": "elife-81976-fig3-figsupp2-data11-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data11-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data11-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data11-v3.xlsx",
+      "bytes": 50383,
+      "sha256": "7ab88071d8f3b6782804057f704edd800139e5c320c590bbc46731716807a9eb",
+      "rowCount": 1891,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1891,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -698.24402,
+          "maximum": 928.64301
+        },
+        "y": {
+          "minimum": -475.15,
+          "maximum": 695.11
+        },
+        "z": {
+          "minimum": 0,
+          "maximum": 798.6100301
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-RAW-TA-L6",
+      "frame": "raw",
+      "dataNumber": 12,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L6",
+      "sourceDescription": "Cartesian x-y-z raw-before-normalization coordinates pooled within lumbar segment L6 for TA",
+      "fileName": "elife-81976-fig3-figsupp2-data12-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp2-data12-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data12-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp2-data12-v3.xlsx",
+      "bytes": 31631,
+      "sha256": "448d575329a12b2b3cc1bdcb8369da3880a286a66e8251fb3e2f070ad875dc11",
+      "rowCount": 1123,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1123,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -593.365,
+          "maximum": 958.09198
+        },
+        "y": {
+          "minimum": -493.782,
+          "maximum": 496.996
+        },
+        "z": {
+          "minimum": 801.39,
+          "maximum": 1995.83
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-LG-L2",
+      "frame": "normalized",
+      "dataNumber": 2,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L2",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L2 for LG",
+      "fileName": "elife-81976-fig3-figsupp1-data2-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data2-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data2-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data2-v3.xlsx",
+      "bytes": 56846,
+      "sha256": "1afaf1b38370f9b47221a6bf71446ff5aa625ae79598eabfead6aafd77ee2120",
+      "rowCount": 1521,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1521,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.32863705913609753,
+          "maximum": 0.4387874772380707
+        },
+        "y": {
+          "minimum": -0.6381547244757525,
+          "maximum": 0.3513334339195614
+        },
+        "z": {
+          "minimum": -2400,
+          "maximum": -1600.162257
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-LG-L3",
+      "frame": "normalized",
+      "dataNumber": 3,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L3",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L3 for LG",
+      "fileName": "elife-81976-fig3-figsupp1-data3-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data3-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data3-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data3-v3.xlsx",
+      "bytes": 78667,
+      "sha256": "fd8216a12ed55a1d4621106c41be350935890535aae5c3d60cfb833d2375d34c",
+      "rowCount": 2136,
+      "firstSourceRow": 1,
+      "lastSourceRow": 2136,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.35192688352300205,
+          "maximum": 0.45759532481495135
+        },
+        "y": {
+          "minimum": -0.4413305231899292,
+          "maximum": 0.3860067552561311
+        },
+        "z": {
+          "minimum": -1599.788056,
+          "maximum": -801.85666
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-LG-L4",
+      "frame": "normalized",
+      "dataNumber": 4,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L4",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L4 for LG",
+      "fileName": "elife-81976-fig3-figsupp1-data4-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data4-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data4-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data4-v3.xlsx",
+      "bytes": 103767,
+      "sha256": "c66428958fdbfaf1f477ffa0c60e3ecf546e84c69fb109842a7b80a7f951e91b",
+      "rowCount": 2802,
+      "firstSourceRow": 1,
+      "lastSourceRow": 2802,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.3908821450526595,
+          "maximum": 0.47931453523992273
+        },
+        "y": {
+          "minimum": -0.4175532310069687,
+          "maximum": 0.41622742976481114
+        },
+        "z": {
+          "minimum": -799.286523,
+          "maximum": -1.16655
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-LG-L5",
+      "frame": "normalized",
+      "dataNumber": 5,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L5",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L5 for LG",
+      "fileName": "elife-81976-fig3-figsupp1-data5-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data5-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data5-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data5-v3.xlsx",
+      "bytes": 86569,
+      "sha256": "387a65ac47c26fd009d70968235dd34d1124d8172e931a3225a4821dd8f138da",
+      "rowCount": 2348,
+      "firstSourceRow": 1,
+      "lastSourceRow": 2348,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.3548904303974817,
+          "maximum": 0.4635442306706774
+        },
+        "y": {
+          "minimum": -0.4164808348506177,
+          "maximum": 0.43028973285116
+        },
+        "z": {
+          "minimum": 0,
+          "maximum": 798
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-LG-L6",
+      "frame": "normalized",
+      "dataNumber": 6,
+      "muscle": "LG",
+      "muscleRole": "ankle_extensor",
+      "segment": "L6",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L6 for LG",
+      "fileName": "elife-81976-fig3-figsupp1-data6-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data6-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data6-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data6-v3.xlsx",
+      "bytes": 37950,
+      "sha256": "92c5a5ef86e894075204f996f5778663899029bf950c280ef1514df3c1142a7b",
+      "rowCount": 952,
+      "firstSourceRow": 1,
+      "lastSourceRow": 952,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.47061325599129017,
+          "maximum": 0.42730596935271575
+        },
+        "y": {
+          "minimum": -0.39420631402316425,
+          "maximum": 0.3646034054528851
+        },
+        "z": {
+          "minimum": 801.39,
+          "maximum": 2690
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-TA-L1",
+      "frame": "normalized",
+      "dataNumber": 7,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L1",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L1 for TA",
+      "fileName": "elife-81976-fig3-figsupp1-data7-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data7-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data7-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data7-v3.xlsx",
+      "bytes": 13113,
+      "sha256": "bc7e0870fca86284686eb581b0fd53138b6a16e06c8b144217259a8712f56482",
+      "rowCount": 296,
+      "firstSourceRow": 1,
+      "lastSourceRow": 296,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.31077373427247,
+          "maximum": 0.4439472571931005
+        },
+        "y": {
+          "minimum": -0.36301490306985096,
+          "maximum": 0.2760795312108298
+        },
+        "z": {
+          "minimum": -5028,
+          "maximum": -2400
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-TA-L2",
+      "frame": "normalized",
+      "dataNumber": 8,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L2",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L2 for TA",
+      "fileName": "elife-81976-fig3-figsupp1-data8-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data8-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data8-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data8-v3.xlsx",
+      "bytes": 34133,
+      "sha256": "bfbbc44c598521ccdf09d5ca0aae34e91bdc6073406686a1a22018c8a8f61829",
+      "rowCount": 883,
+      "firstSourceRow": 1,
+      "lastSourceRow": 883,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.3797162715215555,
+          "maximum": 0.46868881904456394
+        },
+        "y": {
+          "minimum": -0.40238710732984295,
+          "maximum": 0.33895981187922697
+        },
+        "z": {
+          "minimum": -2400,
+          "maximum": -1601.39
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-TA-L3",
+      "frame": "normalized",
+      "dataNumber": 9,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L3",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L3 for TA",
+      "fileName": "elife-81976-fig3-figsupp1-data9-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data9-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data9-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data9-v3.xlsx",
+      "bytes": 56947,
+      "sha256": "bc9ce3f32beae7b89345a510fcfd6848002351f520684cae317983218c2eab39",
+      "rowCount": 1519,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1519,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.42766381082994753,
+          "maximum": 0.4618030632685728
+        },
+        "y": {
+          "minimum": -0.6239919405308523,
+          "maximum": 0.4123659305993691
+        },
+        "z": {
+          "minimum": -1598.61,
+          "maximum": -804.1700001
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-TA-L4",
+      "frame": "normalized",
+      "dataNumber": 10,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L4",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L4 for TA",
+      "fileName": "elife-81976-fig3-figsupp1-data10-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data10-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data10-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data10-v3.xlsx",
+      "bytes": 72126,
+      "sha256": "2c9f7561bfbfd6f52c80491a74ccd6350e8d80b795a6cf3b8fcb12a404a20783",
+      "rowCount": 1923,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1923,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.307368079570822,
+          "maximum": 0.42112210742037404
+        },
+        "y": {
+          "minimum": -0.40874745408466395,
+          "maximum": 0.36947573334918415
+        },
+        "z": {
+          "minimum": -798.61000001,
+          "maximum": -1.39
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-TA-L5",
+      "frame": "normalized",
+      "dataNumber": 11,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L5",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L5 for TA",
+      "fileName": "elife-81976-fig3-figsupp1-data11-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data11-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data11-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data11-v3.xlsx",
+      "bytes": 70778,
+      "sha256": "2b4938b9dbcbd799a7d5b2d79977d82db4c10b09e0f0f03118ed3e33f08fa64c",
+      "rowCount": 1891,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1891,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.3495175709674801,
+          "maximum": 0.4836071454629549
+        },
+        "y": {
+          "minimum": -0.39390170432817484,
+          "maximum": 0.43094768689010404
+        },
+        "z": {
+          "minimum": 0,
+          "maximum": 798.6100301
+        }
+      }
+    },
+    {
+      "id": "RONZANO-81976-NORM-TA-L6",
+      "frame": "normalized",
+      "dataNumber": 12,
+      "muscle": "TA",
+      "muscleRole": "ankle_flexor",
+      "segment": "L6",
+      "sourceDescription": "Cartesian x-y-z normalized coordinates pooled within lumbar segment L6 for TA",
+      "fileName": "elife-81976-fig3-figsupp1-data12-v3.xlsx",
+      "sourceUrl": "https://cdn.elifesciences.org/articles/81976/elife-81976-fig3-figsupp1-data12-v3.xlsx",
+      "bundledPath": "public/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data12-v3.xlsx",
+      "browserUrl": "/data/ronzano_premotor_positions_v1/source/elife-81976-fig3-figsupp1-data12-v3.xlsx",
+      "bytes": 43333,
+      "sha256": "619ea71b0f340446e11988213a33aa9cb2a2c43a9823ebfff6158d3fb551b5b6",
+      "rowCount": 1123,
+      "firstSourceRow": 1,
+      "lastSourceRow": 1123,
+      "columns": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinateRanges": {
+        "x": {
+          "minimum": -0.39987775176464724,
+          "maximum": 0.45782139034366764
+        },
+        "y": {
+          "minimum": -0.38512512999347165,
+          "maximum": 0.4410818217802099
+        },
+        "z": {
+          "minimum": 801.39,
+          "maximum": 1995.83
+        }
+      }
+    }
+  ],
+  "derivedAsset": {
+    "path": "public/data/ronzano_premotor_positions_v1/positions.json",
+    "browserUrl": "/data/ronzano_premotor_positions_v1/positions.json",
+    "bytes": 1274690,
+    "sha256": "abf46460d0e37c2ea82b90f2eaf6531d5df8f44e9dcea8448d43d321835184f3",
+    "derivation": "Exact numeric XYZ cells copied in source-file row order; no smoothing, interpolation, imputation, registration, point pairing, deduplication, coordinate rounding, cell generation, or geometry generation."
+  },
+  "relationshipBoundary": {
+    "relationshipToMuscle": "source experimental tracing group, not a complete connectome edge list",
+    "samePhysicalCellAcrossFrames": "not_established",
+    "crossSourceRelationship": "co_display_only",
+    "crossSourceJoinCount": 0,
+    "registrationCount": 0
+  },
+  "missingness": [
+    {
+      "field": "soma_surface",
+      "status": "UNAVAILABLE",
+      "reason": "Coordinate rows provide positions, not soma contours, radii, volumes, or membranes."
+    },
+    {
+      "field": "neurite_morphology",
+      "status": "UNAVAILABLE",
+      "reason": "No dendrite or axon tracing is present in the admitted workbooks."
+    },
+    {
+      "field": "molecular_identity",
+      "status": "UNAVAILABLE",
+      "reason": "The pooled LG and TA coordinate workbooks do not assign a molecular interneuron type to each row."
+    },
+    {
+      "field": "same_cell_nucleus_or_organelles",
+      "status": "UNAVAILABLE",
+      "reason": "No nucleus, mitochondrion, ER, Golgi, vesicle, receptor, or other internal object is linked to a coordinate row."
+    },
+    {
+      "field": "synapse_roster",
+      "status": "UNAVAILABLE",
+      "reason": "Tracing group context is not a complete source-object synapse or partner roster."
+    },
+    {
+      "field": "adult_anatomy",
+      "status": "NOT_ESTABLISHED",
+      "reason": "The source explicitly limits the neonatal tracing result; adult output connectivity is not established."
+    },
+    {
+      "field": "atlas_registration",
+      "status": "UNAVAILABLE",
+      "reason": "Neither raw nor normalized source coordinates are registered to the project's Allen-derived anatomy."
+    }
+  ],
+  "scientificBoundary": "Every rendered primitive is one source coordinate row from a pinned workbook. A point is a labelled-cell position only—not a soma, neurite, molecular type, synapse, internal structure, adult placement, atlas registration, prevalence estimate, or complete interneuron census."
+}

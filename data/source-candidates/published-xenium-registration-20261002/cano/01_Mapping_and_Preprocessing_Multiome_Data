@@ -1,0 +1,7 @@
+#### Mapping 10x Genomics Next-GEM Multiome sequencing reads to reference transcriptome (mm10-2020-A-2.0.0) with Cell Ranger ARC 2.0.2 
+
+cellranger-arc count --id=<sample_id> --reference=/refdata-cellranger-arc-mm10-2020-A-2.0.0 --libraries=/<configuration.csv> --localcores=20 --localmem=200
+
+#### Removing ambient RNA from snRNA-seq data in Multiomic samples with CellBender
+
+cellbender remove-background --input /<input_data_location>/raw_feature_bc_matrix.h5 --output /<sample_id>_output.h5 --expected-cells <Cell Ranger Arc cell count estimate> --total-droplets-included <1.75*expected_cells> --fpr 0.01 --epochs 150 --cuda --exclude-feature-types Peaks --projected-ambient-count-threshold 0.1 --zdim 40

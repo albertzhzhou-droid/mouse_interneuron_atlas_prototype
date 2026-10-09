@@ -74,7 +74,7 @@ test("rejects invalid topology, missing selections, disconnected cycles and dupl
   assert.throws(() => inspectSwcNode(indexSwcNeurites(geometry), 999), /does not exist/);
 });
 
-function setupController({ sourceRadiusAvailable = true, isTwoDimensional = false, isSourceTypeVisible } = {}) {
+function setupController({ sourceRadiusAvailable = true, isTwoDimensional = false, isSourceTypeVisible, sourceTransformRoot = null } = {}) {
   const canvas = new EventTarget();
   canvas.getBoundingClientRect = () => ({ left: 0, top: 0, width: 400, height: 400 });
   const scene = new THREE.Scene();
@@ -86,10 +86,11 @@ function setupController({ sourceRadiusAvailable = true, isTwoDimensional = fals
   const contextRoot = new THREE.Group();
   const material = new THREE.LineBasicMaterial({ opacity: 0.8, transparent: true });
   contextRoot.add(new THREE.LineSegments(new THREE.BufferGeometry(), material));
-  scene.add(contextRoot);
+  if (sourceTransformRoot) { scene.add(sourceTransformRoot); sourceTransformRoot.add(contextRoot); }
+  else scene.add(contextRoot);
   const published = [];
   const controller = attachSwcNeuriteInspection({ geometry, canvas, scene, camera, controls, contextRoot, sourceRadiusAvailable, isTwoDimensional,
-    isSourceTypeVisible, onSelection: (value) => published.push(value) });
+    sourceTransformRoot, isSourceTypeVisible, onSelection: (value) => published.push(value) });
   return { controller, canvas, scene, camera, controls, material, published, contextRoot };
 }
 
@@ -126,6 +127,31 @@ test("controller focuses the selected arbor, dims/restores context, steps landma
   pointer(canvas, "pointerup", 200, 200);
   assert.equal(published.length, count);
   dispose(setup.contextRoot);
+});
+
+test("transformed main lane applies the same world placement to picking, overlay and focus without changing source measurements", () => {
+  const lane=new THREE.Group(); lane.position.set(-4.4,0.3,-0.2); lane.rotation.z=0.25; lane.scale.setScalar(1.2);
+  const setup=setupController({ sourceTransformRoot:lane });
+  setup.camera.position.set(-4.4,0.3,3); setup.camera.lookAt(-4.4,0.3,0); setup.camera.updateMatrixWorld(true); lane.updateWorldMatrix(true,true);
+  const world=new THREE.Vector3(0.3,0.2,0).applyMatrix4(lane.matrixWorld).project(setup.camera);
+  pointer(setup.canvas,'pointerdown',(world.x+1)*200,(1-world.y)*200); pointer(setup.canvas,'pointerup',(world.x+1)*200,(1-world.y)*200);
+  assert.equal(setup.controller.getState().selection.nodeId,90);
+  assert.equal(setup.published.at(-1).rootPathLengthMicrometre,7);
+  const overlay=lane.getObjectByName('exact-swc-inspection-90'); assert.equal(overlay.parent,lane);
+  setup.controller.focus(); assert.ok(setup.controls.target.x < -3.5 && setup.controls.target.x > -4.5);
+  assert.ok(setup.controls.target.y > 0.3);
+  setup.controller.dimContext(); assert.equal(setup.controller.getState().dimmed,true); assert.equal(setup.material.opacity,0.8*0.13);
+  setup.controller.dispose(); assert.equal(setup.material.opacity,0.8); assert.equal(lane.getObjectByName('exact-swc-inspection-90'),undefined); dispose(setup.contextRoot);
+});
+
+test("picking updates after a lane transform and ignores a hidden lane; detached overlay has no current inspection receipt", () => {
+  const lane=new THREE.Group(), setup=setupController({sourceTransformRoot:lane});
+  lane.position.x=-0.6; lane.updateWorldMatrix(true,true);
+  const point=new THREE.Vector3(0.3,0.2,0).applyMatrix4(lane.matrixWorld).project(setup.camera), x=(point.x+1)*200,y=(1-point.y)*200;
+  lane.visible=false; pointer(setup.canvas,'pointerdown',x,y); pointer(setup.canvas,'pointerup',x,y); assert.equal(setup.published.length,0);
+  lane.visible=true; pointer(setup.canvas,'pointerdown',x,y); pointer(setup.canvas,'pointerup',x,y); assert.equal(setup.controller.getState().selection.nodeId,90);
+  lane.getObjectByName('exact-swc-inspection-90').removeFromParent(); assert.throws(()=>setup.controller.getState(),/no longer attached/);
+  setup.controller.clear(); assert.equal(setup.controller.getState().selection,null); setup.controller.dispose(); dispose(setup.contextRoot);
 });
 
 test("pointer picking selects the exact edge child, ignores drag and respects hidden source types", () => {

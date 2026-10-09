@@ -6,6 +6,7 @@ import {
   evidenceProvenanceTrace,
   publicDataCatalog,
   researchMvpRelease,
+  type ResearchClaim,
 } from "./atlas-types";
 import {
   buildProvenanceTraceReceipt,
@@ -13,6 +14,9 @@ import {
   buildResearchEvidenceTrace,
   provenanceTraceReceiptFilename,
 } from "./evidence-provenance-trace.js";
+
+type TraceRecord<T> = { id: string; record: T };
+type PublicTraceRoute = (typeof evidenceFeasibilityPlanner.routes)[number];
 
 function downloadJson(value: unknown, filename: string) {
   const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
@@ -82,7 +86,7 @@ export default function EvidenceProvenanceTrace({
         </div>
         {researchTrace.entity ? <ol className="provenance-node-list">
           <TraceNode kind="entity" title={researchTrace.entity.record.id} detail="Selected synthetic evidence entity; not a registered cell" />
-          {researchTrace.claims.map((claim) => <TraceNode key={claim.id} kind="claim" title={claim.record.id} detail={claim.record.statement} />)}
+          {researchTrace.claims.map((claim: TraceRecord<ResearchClaim>) => <TraceNode key={claim.id} kind="claim" title={claim.record.id} detail={claim.record.statement} />)}
           {researchTrace.conditions.map((condition) => <TraceNode key={condition.id} kind="condition" title={condition.record.id} detail={`${condition.record.species} · ${condition.record.lifeStage} · ${condition.record.injuryType} · ${condition.record.endpoint}`} />)}
           {researchTrace.statements.map((statement) => <TraceNode key={statement.id} kind="statement" title={`${statement.record.id} · ${statement.record.kind}`} detail={statement.record.text} />)}
           {researchTrace.sources.map((source) => <TraceNode key={source.id} kind="source" title={source.record.id} detail={`${source.record.citation} · DOI ${source.record.doi}`} />)}
@@ -95,7 +99,7 @@ export default function EvidenceProvenanceTrace({
         </div>
         {publicTrace.axes.length ? <ol className="provenance-node-list">
           {publicTrace.axes.map((axis) => <TraceNode key={axis.id} kind="axis" title={axis.record.label} detail={axis.record.description} />)}
-          {publicTrace.routes.map((route) => <TraceNode key={route.id} kind="route" title={route.record.label} detail={route.record.boundary} />)}
+          {publicTrace.routes.map((route: TraceRecord<PublicTraceRoute>) => <TraceNode key={route.id} kind="route" title={route.record.label} detail={route.record.boundary} />)}
           {publicTrace.sources.map((source) => <TraceNode key={source.id} kind="public_source" title={source.record.id} detail={`${source.record.title} · ${source.record.content.coordinateAuthority}`} />)}
           {publicTrace.unqualifiedAxisIds.length > 0 && <li className="provenance-unqualified">No qualified package route: {publicTrace.unqualifiedAxisIds.join(" · ")}. This is a package-coverage gap, not a biological-absence claim.</li>}
         </ol> : <p className="catalog-empty">Select one or more feasibility-planner axes to expose their declared public-source routes.</p>}

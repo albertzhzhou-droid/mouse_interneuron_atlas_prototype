@@ -152,11 +152,11 @@ export function resolveResearchVisualTarget({
 
 /**
  * Dropdown and exact-route selections may update the research focus only when
- * that canonical focus ID is present in the current verified research index.
+ * that canonical focus ID is resolvable by the shared verified record loader.
  */
 export function resolveExplicitMorphologySelection({
   neuronId,
-  indexedMorphologyFocusIds,
+  resolvableMorphologyFocusIds,
   ...visualOptions
 }) {
   if (!Number.isSafeInteger(neuronId) || neuronId <= 0) {
@@ -169,12 +169,12 @@ export function resolveExplicitMorphologySelection({
 
   const focus = { focusKind: "morphology_record", focusId: `NeuroMorpho:${neuronId}` };
   const target = resolveResearchVisualTarget({ focus, ...visualOptions });
-  const indexed = focusIdSet(indexedMorphologyFocusIds).has(focus.focusId);
+  const resolvable = focusIdSet(resolvableMorphologyFocusIds).has(focus.focusId);
   return {
     ...target,
-    researchFocus: indexed ? focus : null,
-    focusUpdateReason: indexed
-      ? "exact_indexed_morphology_focus_selected"
-      : "morphology_focus_not_present_in_current_index",
+    researchFocus: resolvable ? focus : null,
+    focusUpdateReason: resolvable
+      ? "exact_resolvable_morphology_focus_selected"
+      : "morphology_focus_not_resolvable_by_active_record_loader",
   };
 }

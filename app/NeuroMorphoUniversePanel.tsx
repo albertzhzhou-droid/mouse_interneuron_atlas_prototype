@@ -1,104 +1,28 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
-import universeContractJson from "../data/neuromorpho-no-age-query-universe-0.1.json";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import SourceLocalMorphologyViewport, { type MorphologyRenderMode } from "./SourceLocalMorphologyViewport";
+import { canUseRadiusDerivedSurface, resolveMorphologyRenderMode } from "./morphology-render-mode.js";
 import NativeContourRecordViewer from "./NativeContourRecordViewer";
+import Nmo45718DatSwcCrosswalkViewer from "./Nmo45718DatSwcCrosswalkViewer";
 import {
   type MorphologyCensusRecord,
   type MorphologyGeometryPayload,
 } from "./morphology-census-data";
-import { loadVerifiedUniverseSwc } from "./neuromorpho-swc-runtime.js";
-import { sha256Hex } from "./source-local-morphology-geometry.js";
-
-type UniverseMembership = {
-  noAgeQueryUniverse: true;
-  frozenAdultSubset: boolean;
-  namedRouteIds: string[];
-};
-
-type UniverseRecord = {
-  assetId: string;
-  neuronId: number;
-  officialMetadata: Record<string, unknown>;
-  normalizedMetadata: {
-    name: string;
-    archive: string;
-    species: string | string[];
-    lifeStage: string;
-    brainRegion: string[];
-    cellType: string[];
-    strain: string | string[];
-    gender: string | string[];
-    experimentCondition: string | string[];
-    domain: string;
-    physicalIntegrity: string;
-    attributes: string;
-    dimensionality: "2D" | "3D";
-    sourceDiameterAvailable: boolean;
-    sourceFrame: string;
-    registrationStatus: "unregistered";
-  };
-  missingness: Record<string, { value: unknown; missingReason: string | null }>;
-  sourcePaper: { pmids: string[]; dois: string[] };
-  memberships: UniverseMembership;
-  sourceObject: {
-    status: "admitted" | "quarantined";
-    transport: "existing_generated_geometry" | "raw_swc_lazy_parse" | "unavailable";
-    directUrl: string;
-    rawSwcPath: string | null;
-    rawSwcSha256: string | null;
-    rawSwcBytes: number | null;
-    existingGeometryPath: string | null;
-    existingGeometrySha256: string | null;
-    existingGeometryBytes: number | null;
-    geometryCopyCount: 0;
-    registrationCount: 0;
-    errors: string[];
-  };
-  qc: Record<string, unknown>;
-  morphometrics: {
-    sourceReported: Record<string, unknown>;
-    computed: Record<string, unknown>;
-  };
-};
-
-type UniversePayload = {
-  documentType: "neuromorpho_no_age_query_universe_index";
-  schemaVersion: string;
-  assetSetId: string;
-  repositoryRelease: string;
-  snapshotDate: string;
-  query: Record<string, unknown>;
-  summary: {
-    queryRecordCount: number;
-    admittedSourceObjectCount: number;
-    quarantinedSourceObjectCount: number;
-    frozenAdultSubsetCount: number;
-    namedRouteCount: number;
-    existingGeometryReferenceCount: number;
-    deltaRawSwcCount: number;
-    sourceLabelled3DCount: number;
-    sourceLabelled2DCount: number;
-    diameterAuthorizedCount: number;
-    diameterUnavailableCount: number;
-    axonDomainCount: number;
-    completeAxonClaimCount: 0;
-    registrationCount: 0;
-    sameSpecimenInternalStructureCount: 0;
-    paperCount: number;
-    archiveCount: number;
-  };
-  records: UniverseRecord[];
-};
-
-type UniverseContract = {
-  dataset: {
-    indexPath: string;
-    indexSha256: string;
-    indexBytes: number;
-  };
-};
+import { readVerifiedUniverseIndex, readVerifiedUniverseGeometry, universeIndexVerificationReceipt, universeGeometryVerificationReceipt, universeSourceIdentityHierarchy, type UniverseRecord, type UniversePayload } from "./neuromorpho-universe-verification.js";
+import SourceIdentityHierarchyPanel from "./SourceIdentityHierarchyPanel";
+import { useSourceListRovingFocus } from "./useSourceListRovingFocus";
+import "./neuromorpho-universe-view.css";
+import {
+  buildPaperCellTypeCrossTab,
+  buildSourceCellTypeFacetOptions,
+  buildSourceStrainFacetOptions,
+  filterUniverseBySourceCellType,
+  filterUniverseBySourceStrain,
+  UNREPORTED_SOURCE_ARCHIVE,
+  UNREPORTED_SOURCE_CELL_TYPE,
+  UNREPORTED_SOURCE_DOI,
+} from "./neuromorpho-universe-facets.js";
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -159,7 +83,6 @@ type GeometryState =
   | { status: "unavailable"; neuronId: number; geometry: null; error: string };
 
 const PAGE_SIZE = 48;
-const contract = universeContractJson as UniverseContract;
 
 function readable(value: unknown) {
   if (Array.isArray(value)) return value.length ? value.join(" · ") : "Not reported";
@@ -193,9 +116,16 @@ function searchText(record: UniverseRecord) {
     record.normalizedMetadata.lifeStage,
     ...record.normalizedMetadata.brainRegion,
     ...record.normalizedMetadata.cellType,
+    ...sourceStrainFacetSearchValues(record),
     ...record.sourcePaper.dois,
     ...record.sourcePaper.pmids,
   ].join(" ").toLowerCase();
+}
+
+function sourceStrainFacetSearchValues(record: UniverseRecord) {
+  const value = record.officialMetadata.strain;
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string")
+    : typeof value === "string" ? [value] : [];
 }
 
 function unique(valuesToSort: string[]) {
@@ -224,19 +154,7 @@ function asViewportRecord(record: UniverseRecord): MorphologyCensusRecord {
   };
 }
 
-function asRuntimeRecord(record: UniverseRecord) {
-  return {
-    assetId: record.assetId,
-    neuronId: record.neuronId,
-    normalizedMetadata: record.normalizedMetadata,
-    swc: {
-      neuronId: record.neuronId,
-      path: record.sourceObject.rawSwcPath,
-      bytes: record.sourceObject.rawSwcBytes,
-      sha256: record.sourceObject.rawSwcSha256,
-    },
-  };
-}
+
 
 function numericMetric(record: UniverseRecord, key: string) {
   const value = record.morphometrics.computed[key];
@@ -284,14 +202,22 @@ function controlledNeuronId(focusId: string | null | undefined) {
 export default function NeuroMorphoUniversePanel({
   selectedFocusId,
   onSelectedFocusChange,
+  morphologySearchQuery = "",
+  morphologyDiscoveryRequestId = 0,
+  onMorphologySearchQueryChange,
 }: {
   selectedFocusId?: string | null;
   onSelectedFocusChange?: (focusId: string) => void;
+  morphologySearchQuery?: string;
+  morphologyDiscoveryRequestId?: number;
+  onMorphologySearchQueryChange?: (query: string) => void;
 }) {
+  const explicitDiscoveryMode = morphologyDiscoveryRequestId > 0 || morphologySearchQuery.trim().length > 0;
+  const explicitDiscoveryRef = useRef(explicitDiscoveryMode);
   const [payload, setPayload] = useState<UniversePayload | null>(null);
   const [indexError, setIndexError] = useState("");
-  const [internalSelectedId, setInternalSelectedId] = useState<number | null>(() => controlledNeuronId(selectedFocusId));
-  const [query, setQuery] = useState("");
+  const [internalSelectedId, setInternalSelectedId] = useState<number | null>(() => explicitDiscoveryMode ? null : controlledNeuronId(selectedFocusId));
+  const query = morphologySearchQuery;
   const [archive, setArchive] = useState<SelectFilter>("all");
   const [lifeStage, setLifeStage] = useState<SelectFilter>("all");
   const [paper, setPaper] = useState<SelectFilter>("all");
@@ -299,31 +225,28 @@ export default function NeuroMorphoUniversePanel({
   const [diameter, setDiameter] = useState<SelectFilter>("all");
   const [axon, setAxon] = useState<SelectFilter>("all");
   const [membership, setMembership] = useState<SelectFilter>("all");
+  const [sourceStrain, setSourceStrain] = useState<SelectFilter>("all");
+  const [sourceCellType, setSourceCellType] = useState<SelectFilter>("all");
   const [page, setPage] = useState(0);
   const [renderModeSelection, setRenderModeSelection] = useState<{ neuronId: number | null; mode: MorphologyRenderMode }>({ neuronId: null, mode: "skeleton" });
   const [geometryState, setGeometryState] = useState<GeometryState>({ status: "idle", neuronId: null, geometry: null, error: "" });
+  const [freshVerificationStatus, setFreshVerificationStatus] = useState<{ neuronId: number; status: "pending" | "verified" | "unavailable" } | null>(null);
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(contract.dataset.indexPath, { signal: controller.signal })
-      .then(async (response) => {
-        if (!response.ok) throw new Error(`No-age universe request failed (${response.status})`);
-        const bytes = await response.arrayBuffer();
-        if (bytes.byteLength !== contract.dataset.indexBytes || await sha256Hex(bytes) !== contract.dataset.indexSha256) {
-          throw new Error("No-age universe index receipt changed");
-        }
-        return JSON.parse(new TextDecoder().decode(bytes)) as UniversePayload;
-      })
+    readVerifiedUniverseIndex({ signal: controller.signal })
       .then((next) => {
-        if (next.records.length !== next.summary.queryRecordCount) throw new Error("No-age universe record count mismatch");
+        if (controller.signal.aborted) return;
         setPayload(next);
-        setInternalSelectedId((current) => next.records.some((record) => record.neuronId === current)
-          ? current
-          : next.records.find((record) => record.neuronId === 104003)?.neuronId ?? next.records[0]?.neuronId ?? null);
+        setInternalSelectedId((current) => explicitDiscoveryRef.current
+          ? null
+          : next.records.some((record) => record.neuronId === current)
+            ? current
+            : next.records.find((record) => record.neuronId === 104003)?.neuronId ?? next.records[0]?.neuronId ?? null);
       })
       .catch((error: Error) => {
-        if (error.name !== "AbortError") setIndexError(error.message);
+        if (!controller.signal.aborted && error.name !== "AbortError") setIndexError(error.message);
       });
     return () => controller.abort();
   }, []);
@@ -335,7 +258,10 @@ export default function NeuroMorphoUniversePanel({
     archives: unique(records.map((record) => record.normalizedMetadata.archive)),
     lifeStages: unique(records.map((record) => record.normalizedMetadata.lifeStage)),
     papers: unique(records.flatMap((record) => record.sourcePaper.dois)),
+    sourceStrains: buildSourceStrainFacetOptions(records),
+    sourceCellTypes: buildSourceCellTypeFacetOptions(records),
   }), [records]);
+  const paperCellTypeCrossTab = useMemo(() => buildPaperCellTypeCrossTab(records), [records]);
   const filtered = useMemo(() => records.filter((record) => {
     if (deferredQuery && !searchText(record).includes(deferredQuery)) return false;
     if (archive !== "all" && record.normalizedMetadata.archive !== archive) return false;
@@ -347,8 +273,10 @@ export default function NeuroMorphoUniversePanel({
     if (axon === "present" && !hasAxon(record)) return false;
     if (axon === "not-reconstructed" && hasAxon(record)) return false;
     if (membership !== "all" && membershipLabel(record) !== membership) return false;
+    if (!filterUniverseBySourceStrain([record], sourceStrain).length) return false;
+    if (!filterUniverseBySourceCellType([record], sourceCellType).length) return false;
     return true;
-  }), [archive, axon, deferredQuery, diameter, dimension, lifeStage, membership, paper, records]);
+  }), [archive, axon, deferredQuery, diameter, dimension, lifeStage, membership, paper, records, sourceCellType, sourceStrain]);
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const safePage = Math.min(page, pageCount - 1);
   const visible = filtered.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
@@ -357,20 +285,31 @@ export default function NeuroMorphoUniversePanel({
       ? externalId
       : null
     : internalSelectedId;
+  const listFocus = useSourceListRovingFocus(visible.map(record => `NeuroMorpho:${record.neuronId}`), activeSelectedId === null ? null : `NeuroMorpho:${activeSelectedId}`, "neuromorpho-exact-universe");
   const selected = records.find((record) => record.neuronId === activeSelectedId) ?? null;
   const externalFocusRejected = externalMorphologyFocus && payload !== null && selected === null;
   const selectionVisible = selected ? filtered.some((record) => record.neuronId === selected.neuronId) : true;
-  const renderMode: MorphologyRenderMode = renderModeSelection.neuronId === selected?.neuronId
-    ? renderModeSelection.mode
-    : "skeleton";
+  const selectedRenderAuthority = selected ? {
+    dimensionality: selected.normalizedMetadata.dimensionality,
+    sourceDiameterAvailable: selected.normalizedMetadata.sourceDiameterAvailable,
+  } : null;
+  const requestedRenderMode: MorphologyRenderMode = renderModeSelection.neuronId === selected?.neuronId ? renderModeSelection.mode
+    : selectedRenderAuthority && canUseRadiusDerivedSurface(selectedRenderAuthority) ? "radius" : "skeleton";
+  const renderMode: MorphologyRenderMode = resolveMorphologyRenderMode(
+    selectedRenderAuthority,
+    renderModeSelection.neuronId === selected?.neuronId ? renderModeSelection.mode : null,
+  );
+  const radiusSurfaceAllowed = selectedRenderAuthority !== null && canUseRadiusDerivedSurface(selectedRenderAuthority);
 
   useEffect(() => {
     let cancelled = false;
+    const controller = new AbortController();
+    queueMicrotask(() => { if (!cancelled) setFreshVerificationStatus(null); });
     if (!selected) {
       queueMicrotask(() => {
         if (!cancelled) setGeometryState({ status: "idle", neuronId: null, geometry: null, error: "" });
       });
-      return () => { cancelled = true; };
+      return () => { cancelled = true; controller.abort(); };
     }
     if (selected.sourceObject.status !== "admitted") {
       queueMicrotask(() => {
@@ -381,12 +320,12 @@ export default function NeuroMorphoUniversePanel({
           error: selected.sourceObject.errors.join(" · ") || "This source object was quarantined.",
         });
       });
-      return () => { cancelled = true; };
+      return () => { cancelled = true; controller.abort(); };
     }
     queueMicrotask(() => {
       if (!cancelled) setGeometryState({ status: "loading", neuronId: selected.neuronId, geometry: null, error: "" });
     });
-    loadVerifiedUniverseSwc(asRuntimeRecord(selected), fetch, sha256Hex)
+    readVerifiedUniverseGeometry(selected, { signal: controller.signal })
       .then((parsed: unknown) => {
         assertUniverseViewportGeometry(parsed, selected);
         const geometry = parsed;
@@ -395,21 +334,25 @@ export default function NeuroMorphoUniversePanel({
       .catch((error: Error) => {
         if (!cancelled) setGeometryState({ status: "unavailable", neuronId: selected.neuronId, geometry: null, error: error.message });
       });
-    return () => { cancelled = true; };
+    return () => { cancelled = true; controller.abort(); };
   }, [selected]);
 
   const activeGeometry = geometryState.status === "verified" && geometryState.neuronId === selected?.neuronId
     ? geometryState.geometry
     : null;
-  const viewportRecord = selected ? asViewportRecord(selected) : null;
+  const viewportRecord = useMemo(() => selected ? asViewportRecord(selected) : null, [selected]);
+  const currentVerificationStatus = freshVerificationStatus && freshVerificationStatus.neuronId === selected?.neuronId ? freshVerificationStatus.status : geometryState.status;
+  const currentProof = selected && activeGeometry && currentVerificationStatus === "verified" ? universeGeometryVerificationReceipt(selected, activeGeometry) : null;
   const resetFilters = () => {
-    setQuery("");
+    onMorphologySearchQueryChange?.("");
     setArchive("all");
     setLifeStage("all");
     setPaper("all");
     setDimension("all");
     setDiameter("all");
     setAxon("all");
+    setSourceStrain("all");
+    setSourceCellType("all");
     setMembership("all");
     setPage(0);
   };
@@ -421,6 +364,11 @@ export default function NeuroMorphoUniversePanel({
     setter(value);
     setPage(0);
   };
+  const updateSearchQuery = (value: string) => {
+    explicitDiscoveryRef.current = morphologyDiscoveryRequestId > 0 || value.trim().length > 0;
+    onMorphologySearchQueryChange?.(value);
+    setPage(0);
+  };
 
   return (
     <section className="neuromorpho-universe" aria-label="Exact NeuroMorpho no-age query universe">
@@ -429,7 +377,7 @@ export default function NeuroMorphoUniversePanel({
         <span><strong>{payload?.summary.admittedSourceObjectCount.toLocaleString() ?? "—"}</strong> exact SWCs admitted</span>
         <span><strong>{payload?.summary.sourceLabelled3DCount.toLocaleString() ?? "—"}</strong> source-labelled 3D</span>
         <span><strong>{payload?.summary.sourceLabelled2DCount.toLocaleString() ?? "—"}</strong> source-labelled 2D</span>
-        <span><strong>{payload?.summary.diameterAuthorizedCount.toLocaleString() ?? "—"}</strong> diameter-authorized</span>
+        <span><strong>{payload?.summary.diameterAuthorizedCount.toLocaleString() ?? "—"}</strong> reported diameter</span>
         <span><strong>{payload?.summary.axonDomainCount.toLocaleString() ?? "—"}</strong> axon-domain records</span>
         <span><strong>{payload?.summary.paperCount.toLocaleString() ?? "—"}</strong> source papers</span>
         <span className="limit"><strong>0</strong> complete-axon claims</span>
@@ -444,22 +392,51 @@ export default function NeuroMorphoUniversePanel({
       <div className="universe-workspace">
         <aside className="universe-browser">
           <header><div><span>NO-AGE OFFICIAL QUERY</span><h3>Exact source objects</h3></div><button type="button" onClick={resetFilters}>Reset</button></header>
-          <label className="universe-search">Search ID, label, region, DOI, or PMID<input value={query} onChange={(event) => updateFilter(setQuery, event.target.value)} placeholder="e.g. 45674, Renshaw, lumbar…" /></label>
+          <label className="universe-search">Search ID, label, region, DOI, or PMID<input value={query} onChange={(event) => updateSearchQuery(event.target.value)} placeholder="e.g. 45674, Renshaw, lumbar…" /></label>
           <div className="universe-filter-grid">
             <label>Life stage<select value={lifeStage} onChange={(event) => updateFilter(setLifeStage, event.target.value)}><option value="all">All life stages</option>{options.lifeStages.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
             <label>Archive<select value={archive} onChange={(event) => updateFilter(setArchive, event.target.value)}><option value="all">All archives</option>{options.archives.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
             <label>Dimensionality<select value={dimension} onChange={(event) => updateFilter(setDimension, event.target.value)}><option value="all">2D and 3D</option><option value="3D">3D</option><option value="2D">2D</option></select></label>
-            <label>Diameter<select value={diameter} onChange={(event) => updateFilter(setDiameter, event.target.value)}><option value="all">Available and unavailable</option><option value="available">Surface authorized</option><option value="unavailable">Centerline only</option></select></label>
+            <label>Diameter<select value={diameter} onChange={(event) => updateFilter(setDiameter, event.target.value)}><option value="all">Available and unavailable</option><option value="available">Reported diameter</option><option value="unavailable">No reported diameter</option></select></label>
             <label>Axon field<select value={axon} onChange={(event) => updateFilter(setAxon, event.target.value)}><option value="all">All source domains</option><option value="present">Axon reconstructed</option><option value="not-reconstructed">Axon not reconstructed</option></select></label>
             <label>Asset membership<select value={membership} onChange={(event) => updateFilter(setMembership, event.target.value)}><option value="all">All memberships</option><option value="frozen adult subset">Frozen adult subset</option><option value="named exact route">Named exact route</option><option value="no-age delta SWC">No-age delta SWC</option></select></label>
             <label className="wide">Source paper<select value={paper} onChange={(event) => updateFilter(setPaper, event.target.value)}><option value="all">All 12 papers</option>{options.papers.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
+            <label className="wide">Raw source strain / reporter label<select value={sourceStrain} onChange={(event) => updateFilter(setSourceStrain, event.target.value)}><option value="all">All source labels</option>{options.sourceStrains.map((option) => <option key={option.value} value={option.value}>{option.label} · {option.count} records in this exact index</option>)}</select></label>
+          <label className="wide">UPG-236 · Exact repository cell-type label<select value={sourceCellType} onChange={(event) => updateFilter(setSourceCellType, event.target.value)}><option value="all">All exact cell-type labels</option>{options.sourceCellTypes.map((option) => <option key={option.value} value={option.value}>{option.value === UNREPORTED_SOURCE_CELL_TYPE ? option.label : `“${option.label}”`} · {option.count} {option.count === 1 ? "record" : "records"}</option>)}</select></label>
           </div>
+          <p className="universe-source-facet-note">The strain and official <code>cell_type</code> facets preserve distinct source fields. Cell-type labels may be hierarchical and overlap across records; counts are exact repository records under each label—not canonical type, animal, or prevalence denominators. Filtering only narrows this list; choosing an exact NMO record loads that record&apos;s checksum-verified morphology.</p>
+          <details className="universe-paper-label-crosswalk">
+            <summary>UPG-237 · Paper × source-label evidence map · {paperCellTypeCrossTab.doiCount} cited DOIs</summary>
+            <p role="note">The pinned query has {paperCellTypeCrossTab.uniqueNmoIdCount.toLocaleString()} exact NMO IDs, {paperCellTypeCrossTab.recordsWithoutDoiCount.toLocaleString()} DOI-unreported records, and {paperCellTypeCrossTab.multiDoiRecordCount.toLocaleString()} records with more than one DOI. Raw label memberships overlap. The index contains no record-to-figure crosswalk, so figure membership is unassessable for {paperCellTypeCrossTab.figureMembershipUnassessableRecordCount.toLocaleString()} records; a DOI is not a figure assignment.</p>
+            {paperCellTypeCrossTab.papers.map((paperRow) => <details className="universe-paper-crosswalk-entry" key={paperRow.doi}>
+              <summary><a href={`https://doi.org/${encodeURIComponent(paperRow.doi)}`} target="_blank" rel="noreferrer">{paperRow.doi}</a> · {paperRow.recordCount.toLocaleString()} repository records · {paperRow.multiLabelRecordCount.toLocaleString()} multi-label</summary>
+              <div className="universe-paper-crosswalk-table-wrap"><table>
+                <thead><tr><th>Exact raw <code>cell_type</code></th><th>NMO IDs</th><th>Archive membership</th><th>Record IDs</th><th>Browser</th></tr></thead>
+                <tbody>{paperRow.cellTypeRows.map((cellTypeRow) => <tr key={cellTypeRow.value}>
+                  <th scope="row">{cellTypeRow.value === UNREPORTED_SOURCE_CELL_TYPE ? "Missing (not source-reported)" : cellTypeRow.value}</th>
+                  <td>{cellTypeRow.recordCount.toLocaleString()}</td>
+                  <td>{cellTypeRow.archiveCounts.map((entry) => `${entry.value === UNREPORTED_SOURCE_ARCHIVE ? "Archive unreported" : entry.value}: ${entry.count.toLocaleString()}`).join(" · ")}</td>
+                  <td><details><summary>Show {cellTypeRow.nmoIds.length.toLocaleString()} exact IDs</summary><code>{cellTypeRow.nmoIds.join(", ") || "No NMO ID reported"}</code></details></td>
+                  <td><button type="button" disabled={paperRow.doi === UNREPORTED_SOURCE_DOI} onClick={() => {
+                    if (paperRow.doi === UNREPORTED_SOURCE_DOI) return;
+                    setPaper(paperRow.doi);
+                    setSourceCellType(cellTypeRow.value);
+                    setPage(0);
+                  }}>Filter this pair</button></td>
+                </tr>)}</tbody>
+              </table></div>
+            </details>)}
+            {paperCellTypeCrossTab.missingDoi && <p>DOI not reported: {paperCellTypeCrossTab.missingDoi.recordCount} records; exact cell-type rows remain available, but the browser cannot filter them by paper.</p>}
+            <p className="universe-paper-crosswalk-footnote">Filtering a pair only narrows the list. It does not select a record, change the active geometry, reconcile taxonomy, or add a source object.</p>
+          </details>
           <p className="universe-result-count" aria-live="polite">{filtered.length.toLocaleString()} of {records.length.toLocaleString()} records · page {safePage + 1} of {pageCount}</p>
           {!selectionVisible && selected && <p className="universe-retained-focus">Selected NMO {selected.neuronId} remains active outside the filtered list; no replacement object is substituted.</p>}
           {indexError && <p className="universe-error" role="alert">Universe unavailable: {indexError}</p>}
           {!payload && !indexError && <p className="universe-loading">Verifying the local 1,097-record index…</p>}
-          <div className="universe-record-list">
+          <p id={listFocus.helpId} className="source-list-keyboard-help">Use Up/Down or Home/End to move through this page. Enter or Space selects a record; Tab leaves the list.</p>
+          <div className="universe-record-list" role="group" aria-label="Exact morphology objects" aria-describedby={listFocus.helpId}>
             {visible.map((record) => <button
+              {...listFocus.buttonProps(`NeuroMorpho:${record.neuronId}`)}
               type="button"
               key={record.neuronId}
               className={selected?.neuronId === record.neuronId ? "selected" : ""}
@@ -467,7 +444,7 @@ export default function NeuroMorphoUniversePanel({
               onClick={() => chooseRecord(record)}
             >
               <i className={record.sourceObject.status} aria-hidden="true" />
-              <span><strong>{record.normalizedMetadata.name}</strong><small>NMO {record.neuronId} · {record.normalizedMetadata.lifeStage} · {record.normalizedMetadata.archive}</small><em>{record.normalizedMetadata.dimensionality} · {record.normalizedMetadata.sourceDiameterAvailable ? "diameter" : "centerline only"} · {membershipLabel(record)}</em></span>
+              <span><strong>{record.normalizedMetadata.name}</strong><small>NMO {record.neuronId} · {record.normalizedMetadata.lifeStage} · {record.normalizedMetadata.archive}</small><em>{record.normalizedMetadata.dimensionality} · {record.normalizedMetadata.sourceDiameterAvailable ? "diameter" : "centerline only"} · {membershipLabel(record)}</em><small className="universe-record-source-strain">Raw strain: {readable(record.officialMetadata.strain)}</small></span>
             </button>)}
           </div>
           {filtered.length > PAGE_SIZE && <nav className="universe-pagination" aria-label="Morphology result pages"><button type="button" disabled={safePage === 0} onClick={() => setPage((current) => Math.max(0, current - 1))}>Previous</button><span>{safePage * PAGE_SIZE + 1}–{Math.min(filtered.length, (safePage + 1) * PAGE_SIZE)}</span><button type="button" disabled={safePage >= pageCount - 1} onClick={() => setPage((current) => Math.min(pageCount - 1, current + 1))}>Next</button></nav>}
@@ -480,7 +457,7 @@ export default function NeuroMorphoUniversePanel({
           </header>
           <div className="universe-render-controls">
             <button type="button" className={renderMode === "skeleton" ? "active" : ""} onClick={() => setRenderModeSelection({ neuronId: selected?.neuronId ?? null, mode: "skeleton" })}>Observed centerlines</button>
-            <button type="button" className={renderMode === "radius" ? "active" : ""} disabled={!selected?.normalizedMetadata.sourceDiameterAvailable || !activeGeometry} onClick={() => setRenderModeSelection({ neuronId: selected?.neuronId ?? null, mode: "radius" })}>Radius-derived surface</button>
+            <button type="button" className={renderMode === "radius" ? "active" : ""} disabled={!radiusSurfaceAllowed || !activeGeometry} onClick={() => setRenderModeSelection({ neuronId: selected?.neuronId ?? null, mode: "radius" })}>Radius-derived surface</button>
           </div>
           <div className="universe-stage">
             {externalFocusRejected && <p role="alert"><strong>No geometry rendered.</strong> The requested NeuroMorpho focus is not admitted in this exact source universe.</p>}
@@ -490,12 +467,20 @@ export default function NeuroMorphoUniversePanel({
               key={`${selected?.neuronId}:${selected?.sourceObject.rawSwcSha256}`}
               record={viewportRecord}
               geometry={activeGeometry}
-              mode={renderMode}
+              mode={requestedRenderMode}
               className="universe-source-viewport"
+              replayRecord={selected ?? undefined}
+              onRestoreRequestedMode={(mode) => { if (selected) setRenderModeSelection({ neuronId: selected.neuronId, mode }); }}
+              onFreshVerifiedGeometry={(geometry) => { if (selected) setGeometryState({ status: "verified", neuronId: selected.neuronId, geometry, error: "" }); }}
+              onFreshVerificationStateChange={(status) => { if (selected) setFreshVerificationStatus({ neuronId: selected.neuronId, status }); }}
             />}
           </div>
           <footer>
-            <span>{selected?.normalizedMetadata.sourceDiameterAvailable ? "Exact endpoint radii authorize a deterministic surface; it is not a membrane." : "Official No Diameter authority: source radii remain stored but only centerlines may be rendered."}</span>
+            <span>{selected?.normalizedMetadata.dimensionality === "2D"
+              ? "Source-labelled 2D keeps a front-facing XY view and its deposited z values; no radius surface, thickness or extrusion is added."
+              : selected?.normalizedMetadata.sourceDiameterAvailable
+                ? "Exact endpoint radii authorize a deterministic open-frustum surface; it is a derivative, not a membrane."
+                : "Official No Diameter authority: stored radii cannot be rendered; only observed centerlines are shown."}</span>
             <span>{selected?.normalizedMetadata.dimensionality === "2D" ? "Source-labelled 2D: source z values are preserved, rotation is locked to XY, and no depth is inferred or extruded." : "Source-labelled 3D in an unregistered repository-standardized frame."}</span>
           </footer>
         </section>
@@ -504,18 +489,27 @@ export default function NeuroMorphoUniversePanel({
           {selected ? <>
             <span className="universe-record-id">RECORD-SPECIFIC · NEUROMORPHO {selected.neuronId}</span>
             <h3>{selected.normalizedMetadata.name}</h3>
+            <SourceIdentityHierarchyPanel hierarchy={universeSourceIdentityHierarchy(selected)} />
+            <details className="universe-method-details"><summary>Current source verification</summary>
+              <p role="status">{currentVerificationStatus === "verified" ? "Source SWC verified" : currentVerificationStatus === "pending" || currentVerificationStatus === "loading" ? "Source verification pending" : "Source geometry unavailable"}</p>
+              <dl><div><dt>Index SHA-256</dt><dd><code>{payload && universeIndexVerificationReceipt(payload).sha256}</code></dd></div>
+                <div><dt>Exact index membership</dt><dd>1,097 repository observations · 8.6.124</dd></div>
+                <div><dt>Geometry proof</dt><dd>{currentProof ? `${currentProof.bytes.toLocaleString()} actual SWC bytes · ${currentProof.requestCacheMode} · verification ${currentProof.verificationSequence}` : "No current verified source geometry"}</dd></div>
+                <div><dt>Verification scope</dt><dd>Actual standardized SWC bytes and runtime parse; native coordinates retained.</dd></div></dl>
+            </details>
             <div className="universe-record-tags"><span>{membershipLabel(selected)}</span><span>{selected.sourceObject.status}</span><span>{selected.sourceObject.transport.replaceAll("_", " ")}</span></div>
             <section><h4>What differs for this cell</h4><dl>
               <div><dt>Source labels</dt><dd>{readable(selected.normalizedMetadata.cellType)}</dd></div>
               <div><dt>Reported region</dt><dd>{readable(selected.normalizedMetadata.brainRegion)}</dd></div>
               <div><dt>Life stage / sex</dt><dd>{readable(selected.normalizedMetadata.lifeStage)} · {readable(selected.normalizedMetadata.gender)}</dd></div>
               <div><dt>Numeric age</dt><dd>{numericAgeLabel(selected)}</dd></div>
-              <div><dt>Strain</dt><dd>{readable(selected.normalizedMetadata.strain)}</dd></div>
+              <div><dt>Raw strain / reporter label</dt><dd>{readable(selected.officialMetadata.strain)}</dd></div>
               <div><dt>Condition</dt><dd>{readable(selected.normalizedMetadata.experimentCondition)}</dd></div>
               <div><dt>Domain</dt><dd>{selected.normalizedMetadata.domain}</dd></div>
               <div><dt>Physical integrity</dt><dd>{selected.normalizedMetadata.physicalIntegrity}</dd></div>
               <div><dt>Source attributes</dt><dd>{selected.normalizedMetadata.attributes}</dd></div>
             </dl></section>
+            {selected.sourcePaper.dois.includes("10.1016/j.cell.2016.12.010") && <p className="universe-study-boundary" role="note">Abraira/Ginty entries can be faceted by the exact deposited strain label. This repository label is not a paper-figure membership key or a cross-study subtype join; the repository-record count is not a subtype, animal, or prevalence denominator.</p>}
             <section><h4>Exact geometry audit</h4><dl>
               <div><dt>Nodes / segments</dt><dd>{numericMetric(selected, "nodeCount")} / {numericMetric(selected, "segmentCount")}</dd></div>
               <div><dt>Cable length</dt><dd>{numericMetric(selected, "totalCableLengthMicrometre")} µm · source-local</dd></div>
@@ -543,6 +537,7 @@ export default function NeuroMorphoUniversePanel({
         </aside>
       </div>
       {selected && <NativeContourRecordViewer key={selected.neuronId} neuronId={selected.neuronId} />}
+      {selected?.neuronId === 45718 && <Nmo45718DatSwcCrosswalkViewer key={`dat-swc-${selected.neuronId}`} neuronId={selected.neuronId} />}
     </section>
   );
 }

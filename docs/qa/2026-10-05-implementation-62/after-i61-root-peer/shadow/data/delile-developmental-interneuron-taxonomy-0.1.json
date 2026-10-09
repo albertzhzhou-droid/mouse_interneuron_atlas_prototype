@@ -1,0 +1,3357 @@
+{
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-delile-developmental-interneuron-taxonomy-0.1.0",
+  "releaseDate": "2026-09-02",
+  "title": "Exact source-local Delile 2019 embryonic mouse spinal interneuron fine-subtype taxonomy",
+  "source": {
+    "publication": {
+      "citation": "Delile J, Rayon T, Melchionda M, et al. Single cell transcriptomics reveals spatial and temporal dynamics of gene expression in the developing mouse spinal cord. Development 146, dev173807 (2019).",
+      "doi": "10.1242/dev.173807",
+      "pmcid": "PMC6602353",
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6602353/",
+      "studyContext": "Single-cell RNA sequencing of developing mouse cervical and thoracic spinal cord from embryonic day 9.5 through 13.5."
+    },
+    "biostudies": {
+      "accession": "E-MTAB-7320",
+      "studyUrl": "https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-7320",
+      "relationshipToParsedObject": "The accession is the publication-declared sequencing-data repository. The parsed annotation object is pinned separately in the authors' analysis repository."
+    },
+    "repository": {
+      "url": "https://github.com/juliendelile/MouseSpinalCordAtlas",
+      "pinnedCommit": "5de98d43bf89a003ea43aeb599136f7a4e1ee055",
+      "commitUrl": "https://github.com/juliendelile/MouseSpinalCordAtlas/tree/5de98d43bf89a003ea43aeb599136f7a4e1ee055",
+      "rightsStatus": "public_repository_no_explicit_license",
+      "license": "NOASSERTION",
+      "sourceFilesBundled": false,
+      "derivedFactualContractBundled": true,
+      "reuseBoundary": "Public access is not treated as affirmative permission to redistribute repository files. The source TSV remains link-only; this package contains only a compact factual derivative and receipt."
+    },
+    "annotatedMetadataObject": {
+      "fileName": "phenoData_annotated.csv",
+      "bytes": 3036323,
+      "md5": "43685445c3bd8a593e6bd7099d1a6eb3",
+      "sha256": "4f5bd353771ea478928e305df784f3fc868bb89a9ffc5fbce112da70c4a769bf",
+      "gitBlobSha1": "38945377a551225f0b216b1a818b80585a4b6cae",
+      "rowCount": 41025,
+      "columnCount": 9,
+      "repositoryPath": "output/phenoData_annotated.csv",
+      "pinnedUrl": "https://raw.githubusercontent.com/juliendelile/MouseSpinalCordAtlas/5de98d43bf89a003ea43aeb599136f7a4e1ee055/output/phenoData_annotated.csv",
+      "delimiter": "tab",
+      "columns": [
+        "",
+        "timepoint",
+        "replicate_id",
+        "Type_step1",
+        "Type_step2",
+        "Type_step2_unique",
+        "DV",
+        "Neuron_subtypes",
+        "Pseudotime"
+      ],
+      "sourceFileBundled": false,
+      "accessMode": "link_only",
+      "rightsStatus": "public_repository_no_explicit_license",
+      "license": "NOASSERTION",
+      "derivationAuthority": "authors_exported_per_cell_annotation_table"
+    }
+  },
+  "scope": {
+    "species": "Mus musculus",
+    "taxonId": "NCBITaxon:10090",
+    "lifeStages": [
+      "E9.5",
+      "E10.5",
+      "E11.5",
+      "E12.5",
+      "E13.5"
+    ],
+    "sampledRegions": [
+      "cervical spinal cord",
+      "thoracic spinal cord"
+    ],
+    "sourceStageReplicateLabelCount": 12,
+    "biologicalAnimalCount": null,
+    "biologicalAnimalCountMissingReason": "The parsed annotation table identifies stage and replicate_id but does not resolve an animal denominator; replicate labels must not be promoted to animals.",
+    "totalMetadataCellCount": 41025,
+    "sourceDefinedNeuronCellCount": 18144,
+    "sourceTypedNonmotorNeuronCellCount": 15394,
+    "fineSubtypeInterneuronCellCount": 15217,
+    "cardinalOnlyInterneuronCellCount": 177,
+    "motorNeuronExcludedCellCount": 1056,
+    "nullNeuronExcludedCellCount": 1694,
+    "cardinalClassCount": 11,
+    "fineSubtypeProfileCount": 51,
+    "perCellRosterBundled": false,
+    "admittedGeometryCount": 0,
+    "admittedInternalStructureCount": 0,
+    "sameCellMorphologyTranscriptomicsJoinCount": 0,
+    "sameCellPhysiologyTranscriptomicsJoinCount": 0,
+    "sameCellInternalStructureTranscriptomicsJoinCount": 0,
+    "projectRegistrationCount": 0,
+    "exactCrossSourceIdentityCount": 0
+  },
+  "denominatorFlow": [
+    {
+      "stage": "all_annotated_cells",
+      "count": 41025,
+      "unit": "cells"
+    },
+    {
+      "stage": "source_Type_step1_Neuron",
+      "count": 18144,
+      "unit": "cells"
+    },
+    {
+      "stage": "source_typed_nonmotor_neurons",
+      "count": 15394,
+      "unit": "cells"
+    },
+    {
+      "stage": "fine_subtype_interneurons",
+      "count": 15217,
+      "unit": "cells"
+    },
+    {
+      "stage": "cardinal_only_interneurons",
+      "count": 177,
+      "unit": "cells"
+    },
+    {
+      "stage": "excluded_motor_neurons",
+      "count": 1056,
+      "unit": "cells"
+    },
+    {
+      "stage": "excluded_Null_Neuron",
+      "count": 1694,
+      "unit": "cells"
+    }
+  ],
+  "denominatorBoundary": "The 41,025 annotation rows are cells, not animals. Source replicate_id values form 12 stage-replicate labels and are not asserted to be 12 biological replicates. The 15,217 displayed fine-subtype cells exclude 177 cardinal-only interneurons, 1,056 motor neurons and 1,694 Null_Neuron rows while retaining each denominator explicitly.",
+  "sampleRecords": [
+    {
+      "sourceTimepoint": 9.5,
+      "lifeStage": "E9.5",
+      "sourceReplicateId": 1,
+      "totalMetadataCellCount": 3541,
+      "sourceDefinedNeuronCellCount": 88,
+      "sourceTypedNonmotorNeuronCellCount": 23,
+      "fineSubtypeInterneuronCellCount": 23,
+      "cardinalOnlyInterneuronCellCount": 0,
+      "motorNeuronExcludedCellCount": 44,
+      "nullNeuronExcludedCellCount": 21
+    },
+    {
+      "sourceTimepoint": 9.5,
+      "lifeStage": "E9.5",
+      "sourceReplicateId": 2,
+      "totalMetadataCellCount": 4055,
+      "sourceDefinedNeuronCellCount": 249,
+      "sourceTypedNonmotorNeuronCellCount": 92,
+      "fineSubtypeInterneuronCellCount": 90,
+      "cardinalOnlyInterneuronCellCount": 2,
+      "motorNeuronExcludedCellCount": 103,
+      "nullNeuronExcludedCellCount": 54
+    },
+    {
+      "sourceTimepoint": 10.5,
+      "lifeStage": "E10.5",
+      "sourceReplicateId": 1,
+      "totalMetadataCellCount": 3462,
+      "sourceDefinedNeuronCellCount": 897,
+      "sourceTypedNonmotorNeuronCellCount": 529,
+      "fineSubtypeInterneuronCellCount": 517,
+      "cardinalOnlyInterneuronCellCount": 12,
+      "motorNeuronExcludedCellCount": 225,
+      "nullNeuronExcludedCellCount": 143
+    },
+    {
+      "sourceTimepoint": 10.5,
+      "lifeStage": "E10.5",
+      "sourceReplicateId": 2,
+      "totalMetadataCellCount": 3362,
+      "sourceDefinedNeuronCellCount": 1034,
+      "sourceTypedNonmotorNeuronCellCount": 677,
+      "fineSubtypeInterneuronCellCount": 666,
+      "cardinalOnlyInterneuronCellCount": 11,
+      "motorNeuronExcludedCellCount": 227,
+      "nullNeuronExcludedCellCount": 130
+    },
+    {
+      "sourceTimepoint": 11.5,
+      "lifeStage": "E11.5",
+      "sourceReplicateId": 1,
+      "totalMetadataCellCount": 3962,
+      "sourceDefinedNeuronCellCount": 2245,
+      "sourceTypedNonmotorNeuronCellCount": 1927,
+      "fineSubtypeInterneuronCellCount": 1895,
+      "cardinalOnlyInterneuronCellCount": 32,
+      "motorNeuronExcludedCellCount": 144,
+      "nullNeuronExcludedCellCount": 174
+    },
+    {
+      "sourceTimepoint": 11.5,
+      "lifeStage": "E11.5",
+      "sourceReplicateId": 2,
+      "totalMetadataCellCount": 2710,
+      "sourceDefinedNeuronCellCount": 1562,
+      "sourceTypedNonmotorNeuronCellCount": 1304,
+      "fineSubtypeInterneuronCellCount": 1282,
+      "cardinalOnlyInterneuronCellCount": 22,
+      "motorNeuronExcludedCellCount": 143,
+      "nullNeuronExcludedCellCount": 115
+    },
+    {
+      "sourceTimepoint": 12.5,
+      "lifeStage": "E12.5",
+      "sourceReplicateId": 1,
+      "totalMetadataCellCount": 3789,
+      "sourceDefinedNeuronCellCount": 2361,
+      "sourceTypedNonmotorNeuronCellCount": 2117,
+      "fineSubtypeInterneuronCellCount": 2097,
+      "cardinalOnlyInterneuronCellCount": 20,
+      "motorNeuronExcludedCellCount": 53,
+      "nullNeuronExcludedCellCount": 191
+    },
+    {
+      "sourceTimepoint": 12.5,
+      "lifeStage": "E12.5",
+      "sourceReplicateId": 2,
+      "totalMetadataCellCount": 3085,
+      "sourceDefinedNeuronCellCount": 1870,
+      "sourceTypedNonmotorNeuronCellCount": 1720,
+      "fineSubtypeInterneuronCellCount": 1699,
+      "cardinalOnlyInterneuronCellCount": 21,
+      "motorNeuronExcludedCellCount": 42,
+      "nullNeuronExcludedCellCount": 108
+    },
+    {
+      "sourceTimepoint": 12.5,
+      "lifeStage": "E12.5",
+      "sourceReplicateId": 3,
+      "totalMetadataCellCount": 2609,
+      "sourceDefinedNeuronCellCount": 1181,
+      "sourceTypedNonmotorNeuronCellCount": 1074,
+      "fineSubtypeInterneuronCellCount": 1051,
+      "cardinalOnlyInterneuronCellCount": 23,
+      "motorNeuronExcludedCellCount": 28,
+      "nullNeuronExcludedCellCount": 79
+    },
+    {
+      "sourceTimepoint": 13.5,
+      "lifeStage": "E13.5",
+      "sourceReplicateId": 1,
+      "totalMetadataCellCount": 4106,
+      "sourceDefinedNeuronCellCount": 2741,
+      "sourceTypedNonmotorNeuronCellCount": 2466,
+      "fineSubtypeInterneuronCellCount": 2452,
+      "cardinalOnlyInterneuronCellCount": 14,
+      "motorNeuronExcludedCellCount": 12,
+      "nullNeuronExcludedCellCount": 263
+    },
+    {
+      "sourceTimepoint": 13.5,
+      "lifeStage": "E13.5",
+      "sourceReplicateId": 2,
+      "totalMetadataCellCount": 3311,
+      "sourceDefinedNeuronCellCount": 2037,
+      "sourceTypedNonmotorNeuronCellCount": 1806,
+      "fineSubtypeInterneuronCellCount": 1795,
+      "cardinalOnlyInterneuronCellCount": 11,
+      "motorNeuronExcludedCellCount": 22,
+      "nullNeuronExcludedCellCount": 209
+    },
+    {
+      "sourceTimepoint": 13.5,
+      "lifeStage": "E13.5",
+      "sourceReplicateId": 3,
+      "totalMetadataCellCount": 3033,
+      "sourceDefinedNeuronCellCount": 1879,
+      "sourceTypedNonmotorNeuronCellCount": 1659,
+      "fineSubtypeInterneuronCellCount": 1650,
+      "cardinalOnlyInterneuronCellCount": 9,
+      "motorNeuronExcludedCellCount": 13,
+      "nullNeuronExcludedCellCount": 207
+    }
+  ],
+  "cardinalClassSummaries": [
+    {
+      "sourceLocalLabel": "dl1",
+      "sourceTypedCellCount": 875,
+      "fineSubtypeCellCount": 875,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "dl2",
+      "sourceTypedCellCount": 999,
+      "fineSubtypeCellCount": 999,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "dl3",
+      "sourceTypedCellCount": 1596,
+      "fineSubtypeCellCount": 1596,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "dl4",
+      "sourceTypedCellCount": 5369,
+      "fineSubtypeCellCount": 5369,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "dl5",
+      "sourceTypedCellCount": 4063,
+      "fineSubtypeCellCount": 4063,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "dl6",
+      "sourceTypedCellCount": 95,
+      "fineSubtypeCellCount": 0,
+      "cardinalOnlyCellCount": 95
+    },
+    {
+      "sourceLocalLabel": "V0",
+      "sourceTypedCellCount": 188,
+      "fineSubtypeCellCount": 188,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "V1",
+      "sourceTypedCellCount": 869,
+      "fineSubtypeCellCount": 869,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "V2a",
+      "sourceTypedCellCount": 493,
+      "fineSubtypeCellCount": 411,
+      "cardinalOnlyCellCount": 82
+    },
+    {
+      "sourceLocalLabel": "V2b",
+      "sourceTypedCellCount": 462,
+      "fineSubtypeCellCount": 462,
+      "cardinalOnlyCellCount": 0
+    },
+    {
+      "sourceLocalLabel": "V3",
+      "sourceTypedCellCount": 385,
+      "fineSubtypeCellCount": 385,
+      "cardinalOnlyCellCount": 0
+    }
+  ],
+  "cardinalOnlySummaries": [
+    {
+      "sourceLocalLabel": "dl6",
+      "cellCount": 95,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 8
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 27
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 41
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 19
+        }
+      ]
+    },
+    {
+      "sourceLocalLabel": "V2a",
+      "cellCount": 82,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 15
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 27
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 23
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 15
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.1",
+      "sourceLocalLabel": "dl1.1",
+      "cardinalClass": "dl1",
+      "cellCount": 30,
+      "percentOfFineSubtypeInterneuronCells": 0.197148,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 18
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 9
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 3
+        }
+      ],
+      "dvObservedCellCount": 30,
+      "pseudotimeObservedCellCount": 30,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.2",
+      "sourceLocalLabel": "dl1.2",
+      "cardinalClass": "dl1",
+      "cellCount": 67,
+      "percentOfFineSubtypeInterneuronCells": 0.440297,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 47
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 18
+        }
+      ],
+      "dvObservedCellCount": 67,
+      "pseudotimeObservedCellCount": 67,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.3",
+      "sourceLocalLabel": "dl1.3",
+      "cardinalClass": "dl1",
+      "cellCount": 255,
+      "percentOfFineSubtypeInterneuronCells": 1.675757,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 13
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 124
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 83
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 35
+        }
+      ],
+      "dvObservedCellCount": 255,
+      "pseudotimeObservedCellCount": 255,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.4",
+      "sourceLocalLabel": "dl1.4",
+      "cardinalClass": "dl1",
+      "cellCount": 128,
+      "percentOfFineSubtypeInterneuronCells": 0.841164,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 82
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 40
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 3
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 1
+        }
+      ],
+      "dvObservedCellCount": 128,
+      "pseudotimeObservedCellCount": 128,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.5",
+      "sourceLocalLabel": "dl1.5",
+      "cardinalClass": "dl1",
+      "cellCount": 41,
+      "percentOfFineSubtypeInterneuronCells": 0.269435,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 8
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 10
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 14
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 9
+        }
+      ],
+      "dvObservedCellCount": 41,
+      "pseudotimeObservedCellCount": 41,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.5",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.6",
+      "sourceLocalLabel": "dl1.6",
+      "cardinalClass": "dl1",
+      "cellCount": 238,
+      "percentOfFineSubtypeInterneuronCells": 1.56404,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 59
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 154
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 22
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 3
+        }
+      ],
+      "dvObservedCellCount": 238,
+      "pseudotimeObservedCellCount": 238,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.6",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl1.7",
+      "sourceLocalLabel": "dl1.7",
+      "cardinalClass": "dl1",
+      "cellCount": 116,
+      "percentOfFineSubtypeInterneuronCells": 0.762305,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 10
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 49
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 56
+        }
+      ],
+      "dvObservedCellCount": 116,
+      "pseudotimeObservedCellCount": 116,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl1.7",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl2.1",
+      "sourceLocalLabel": "dl2.1",
+      "cardinalClass": "dl2",
+      "cellCount": 446,
+      "percentOfFineSubtypeInterneuronCells": 2.930933,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 12
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 114
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 149
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 170
+        }
+      ],
+      "dvObservedCellCount": 446,
+      "pseudotimeObservedCellCount": 446,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl2.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl2"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl2.2",
+      "sourceLocalLabel": "dl2.2",
+      "cardinalClass": "dl2",
+      "cellCount": 243,
+      "percentOfFineSubtypeInterneuronCells": 1.596898,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 11
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 72
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 93
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 67
+        }
+      ],
+      "dvObservedCellCount": 243,
+      "pseudotimeObservedCellCount": 243,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl2.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl2"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl2.3",
+      "sourceLocalLabel": "dl2.3",
+      "cardinalClass": "dl2",
+      "cellCount": 35,
+      "percentOfFineSubtypeInterneuronCells": 0.230006,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 3
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 21
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 10
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 1
+        }
+      ],
+      "dvObservedCellCount": 35,
+      "pseudotimeObservedCellCount": 35,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl2.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl2"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl2.4",
+      "sourceLocalLabel": "dl2.4",
+      "cardinalClass": "dl2",
+      "cellCount": 157,
+      "percentOfFineSubtypeInterneuronCells": 1.031741,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 9
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 75
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 53
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 19
+        }
+      ],
+      "dvObservedCellCount": 157,
+      "pseudotimeObservedCellCount": 157,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl2.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl2"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl2.5",
+      "sourceLocalLabel": "dl2.5",
+      "cardinalClass": "dl2",
+      "cellCount": 118,
+      "percentOfFineSubtypeInterneuronCells": 0.775449,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 11
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 75
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 18
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 11
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 3
+        }
+      ],
+      "dvObservedCellCount": 118,
+      "pseudotimeObservedCellCount": 118,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl2.5",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl2"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl3.1",
+      "sourceLocalLabel": "dl3.1",
+      "cardinalClass": "dl3",
+      "cellCount": 90,
+      "percentOfFineSubtypeInterneuronCells": 0.591444,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 3
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 17
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 50
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 20
+        }
+      ],
+      "dvObservedCellCount": 90,
+      "pseudotimeObservedCellCount": 90,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl3.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl3.2",
+      "sourceLocalLabel": "dl3.2",
+      "cardinalClass": "dl3",
+      "cellCount": 367,
+      "percentOfFineSubtypeInterneuronCells": 2.411776,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 11
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 153
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 142
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 61
+        }
+      ],
+      "dvObservedCellCount": 367,
+      "pseudotimeObservedCellCount": 367,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl3.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl3.3",
+      "sourceLocalLabel": "dl3.3",
+      "cardinalClass": "dl3",
+      "cellCount": 404,
+      "percentOfFineSubtypeInterneuronCells": 2.654925,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 19
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 34
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 118
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 233
+        }
+      ],
+      "dvObservedCellCount": 404,
+      "pseudotimeObservedCellCount": 404,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl3.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl3.4",
+      "sourceLocalLabel": "dl3.4",
+      "cardinalClass": "dl3",
+      "cellCount": 418,
+      "percentOfFineSubtypeInterneuronCells": 2.746928,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 6
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 4
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 158
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 250
+        }
+      ],
+      "dvObservedCellCount": 418,
+      "pseudotimeObservedCellCount": 418,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl3.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl3.5",
+      "sourceLocalLabel": "dl3.5",
+      "cardinalClass": "dl3",
+      "cellCount": 138,
+      "percentOfFineSubtypeInterneuronCells": 0.90688,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 53
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 26
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 15
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 39
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 5
+        }
+      ],
+      "dvObservedCellCount": 138,
+      "pseudotimeObservedCellCount": 138,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl3.5",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl3.6",
+      "sourceLocalLabel": "dl3.6",
+      "cardinalClass": "dl3",
+      "cellCount": 179,
+      "percentOfFineSubtypeInterneuronCells": 1.176316,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 51
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 98
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 24
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 6
+        }
+      ],
+      "dvObservedCellCount": 179,
+      "pseudotimeObservedCellCount": 179,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl3.6",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl4.1",
+      "sourceLocalLabel": "dl4.1",
+      "cardinalClass": "dl4",
+      "cellCount": 1089,
+      "percentOfFineSubtypeInterneuronCells": 7.15647,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 50
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 324
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 357
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 358
+        }
+      ],
+      "dvObservedCellCount": 1089,
+      "pseudotimeObservedCellCount": 1089,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl4.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl4"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl4.2",
+      "sourceLocalLabel": "dl4.2",
+      "cardinalClass": "dl4",
+      "cellCount": 626,
+      "percentOfFineSubtypeInterneuronCells": 4.11382,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 15
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 128
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 195
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 175
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 113
+        }
+      ],
+      "dvObservedCellCount": 626,
+      "pseudotimeObservedCellCount": 626,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl4.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl4"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl4.3",
+      "sourceLocalLabel": "dl4.3",
+      "cardinalClass": "dl4",
+      "cellCount": 1010,
+      "percentOfFineSubtypeInterneuronCells": 6.637314,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 361
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 646
+        }
+      ],
+      "dvObservedCellCount": 1010,
+      "pseudotimeObservedCellCount": 1010,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl4.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl4"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl4.4",
+      "sourceLocalLabel": "dl4.4",
+      "cardinalClass": "dl4",
+      "cellCount": 611,
+      "percentOfFineSubtypeInterneuronCells": 4.015246,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 67
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 542
+        }
+      ],
+      "dvObservedCellCount": 611,
+      "pseudotimeObservedCellCount": 611,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl4.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl4"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl4.5",
+      "sourceLocalLabel": "dl4.5",
+      "cardinalClass": "dl4",
+      "cellCount": 333,
+      "percentOfFineSubtypeInterneuronCells": 2.188342,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 3
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 58
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 136
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 136
+        }
+      ],
+      "dvObservedCellCount": 333,
+      "pseudotimeObservedCellCount": 333,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl4.5",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl4"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl4.6",
+      "sourceLocalLabel": "dl4.6",
+      "cardinalClass": "dl4",
+      "cellCount": 1700,
+      "percentOfFineSubtypeInterneuronCells": 11.171716,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 78
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 448
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 773
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 399
+        }
+      ],
+      "dvObservedCellCount": 1700,
+      "pseudotimeObservedCellCount": 1700,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl4.6",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl4"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl5.1",
+      "sourceLocalLabel": "dl5.1",
+      "cardinalClass": "dl5",
+      "cellCount": 949,
+      "percentOfFineSubtypeInterneuronCells": 6.236446,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 8
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 92
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 139
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 441
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 269
+        }
+      ],
+      "dvObservedCellCount": 949,
+      "pseudotimeObservedCellCount": 949,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl5.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl5"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl5.2",
+      "sourceLocalLabel": "dl5.2",
+      "cardinalClass": "dl5",
+      "cellCount": 857,
+      "percentOfFineSubtypeInterneuronCells": 5.631859,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 35
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 51
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 339
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 432
+        }
+      ],
+      "dvObservedCellCount": 857,
+      "pseudotimeObservedCellCount": 857,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl5.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl5"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl5.3",
+      "sourceLocalLabel": "dl5.3",
+      "cardinalClass": "dl5",
+      "cellCount": 689,
+      "percentOfFineSubtypeInterneuronCells": 4.527831,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 11
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 218
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 460
+        }
+      ],
+      "dvObservedCellCount": 689,
+      "pseudotimeObservedCellCount": 689,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl5.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl5"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl5.4",
+      "sourceLocalLabel": "dl5.4",
+      "cardinalClass": "dl5",
+      "cellCount": 1149,
+      "percentOfFineSubtypeInterneuronCells": 7.550766,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 4
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 26
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 247
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 872
+        }
+      ],
+      "dvObservedCellCount": 1149,
+      "pseudotimeObservedCellCount": 1149,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl5.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl5"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:dl5.5",
+      "sourceLocalLabel": "dl5.5",
+      "cardinalClass": "dl5",
+      "cellCount": 419,
+      "percentOfFineSubtypeInterneuronCells": 2.753499,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 56
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 77
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 286
+        }
+      ],
+      "dvObservedCellCount": 419,
+      "pseudotimeObservedCellCount": 419,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=dl5.5",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=dl5"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V0.1",
+      "sourceLocalLabel": "V0.1",
+      "cardinalClass": "V0",
+      "cellCount": 92,
+      "percentOfFineSubtypeInterneuronCells": 0.604587,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 7
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 30
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 31
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 23
+        }
+      ],
+      "dvObservedCellCount": 92,
+      "pseudotimeObservedCellCount": 92,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V0.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V0"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V0.2",
+      "sourceLocalLabel": "V0.2",
+      "cardinalClass": "V0",
+      "cellCount": 50,
+      "percentOfFineSubtypeInterneuronCells": 0.32858,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 8
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 10
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 19
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 13
+        }
+      ],
+      "dvObservedCellCount": 50,
+      "pseudotimeObservedCellCount": 50,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V0.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V0"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V0.3",
+      "sourceLocalLabel": "V0.3",
+      "cardinalClass": "V0",
+      "cellCount": 46,
+      "percentOfFineSubtypeInterneuronCells": 0.302293,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 25
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 17
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 4
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 0
+        }
+      ],
+      "dvObservedCellCount": 46,
+      "pseudotimeObservedCellCount": 46,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V0.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V0"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.1",
+      "sourceLocalLabel": "V1.1",
+      "cardinalClass": "V1",
+      "cellCount": 151,
+      "percentOfFineSubtypeInterneuronCells": 0.992311,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 12
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 96
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 31
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 11
+        }
+      ],
+      "dvObservedCellCount": 151,
+      "pseudotimeObservedCellCount": 151,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.2",
+      "sourceLocalLabel": "V1.2",
+      "cardinalClass": "V1",
+      "cellCount": 140,
+      "percentOfFineSubtypeInterneuronCells": 0.920024,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 41
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 77
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 13
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 9
+        }
+      ],
+      "dvObservedCellCount": 140,
+      "pseudotimeObservedCellCount": 140,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.3",
+      "sourceLocalLabel": "V1.3",
+      "cardinalClass": "V1",
+      "cellCount": 231,
+      "percentOfFineSubtypeInterneuronCells": 1.518039,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 85
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 112
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 34
+        }
+      ],
+      "dvObservedCellCount": 231,
+      "pseudotimeObservedCellCount": 231,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.4",
+      "sourceLocalLabel": "V1.4",
+      "cardinalClass": "V1",
+      "cellCount": 82,
+      "percentOfFineSubtypeInterneuronCells": 0.538871,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 10
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 43
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 22
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 5
+        }
+      ],
+      "dvObservedCellCount": 82,
+      "pseudotimeObservedCellCount": 82,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.5",
+      "sourceLocalLabel": "V1.5",
+      "cardinalClass": "V1",
+      "cellCount": 144,
+      "percentOfFineSubtypeInterneuronCells": 0.94631,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 4
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 61
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 67
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 12
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 0
+        }
+      ],
+      "dvObservedCellCount": 144,
+      "pseudotimeObservedCellCount": 144,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.5",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.6",
+      "sourceLocalLabel": "V1.6",
+      "cardinalClass": "V1",
+      "cellCount": 67,
+      "percentOfFineSubtypeInterneuronCells": 0.440297,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 23
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 44
+        }
+      ],
+      "dvObservedCellCount": 67,
+      "pseudotimeObservedCellCount": 67,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.6",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V1.7",
+      "sourceLocalLabel": "V1.7",
+      "cardinalClass": "V1",
+      "cellCount": 54,
+      "percentOfFineSubtypeInterneuronCells": 0.354866,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 9
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 45
+        }
+      ],
+      "dvObservedCellCount": 54,
+      "pseudotimeObservedCellCount": 54,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V1.7",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V1"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2a.1",
+      "sourceLocalLabel": "V2a.1",
+      "cardinalClass": "V2a",
+      "cellCount": 32,
+      "percentOfFineSubtypeInterneuronCells": 0.210291,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 4
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 28
+        }
+      ],
+      "dvObservedCellCount": 32,
+      "pseudotimeObservedCellCount": 32,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2a.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2a"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2a.2",
+      "sourceLocalLabel": "V2a.2",
+      "cardinalClass": "V2a",
+      "cellCount": 190,
+      "percentOfFineSubtypeInterneuronCells": 1.248604,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 85
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 71
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 34
+        }
+      ],
+      "dvObservedCellCount": 190,
+      "pseudotimeObservedCellCount": 190,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2a.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2a"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2a.3",
+      "sourceLocalLabel": "V2a.3",
+      "cardinalClass": "V2a",
+      "cellCount": 86,
+      "percentOfFineSubtypeInterneuronCells": 0.565157,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 21
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 47
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 12
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 6
+        }
+      ],
+      "dvObservedCellCount": 86,
+      "pseudotimeObservedCellCount": 86,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2a.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2a"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2a.4",
+      "sourceLocalLabel": "V2a.4",
+      "cardinalClass": "V2a",
+      "cellCount": 103,
+      "percentOfFineSubtypeInterneuronCells": 0.676875,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 9
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 53
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 32
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 5
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 4
+        }
+      ],
+      "dvObservedCellCount": 103,
+      "pseudotimeObservedCellCount": 103,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2a.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2a"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2b.1",
+      "sourceLocalLabel": "V2b.1",
+      "cardinalClass": "V2b",
+      "cellCount": 94,
+      "percentOfFineSubtypeInterneuronCells": 0.61773,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 26
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 35
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 12
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 21
+        }
+      ],
+      "dvObservedCellCount": 94,
+      "pseudotimeObservedCellCount": 94,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2b.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2b"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2b.2",
+      "sourceLocalLabel": "V2b.2",
+      "cardinalClass": "V2b",
+      "cellCount": 55,
+      "percentOfFineSubtypeInterneuronCells": 0.361438,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 15
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 38
+        }
+      ],
+      "dvObservedCellCount": 55,
+      "pseudotimeObservedCellCount": 55,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2b.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2b"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2b.3",
+      "sourceLocalLabel": "V2b.3",
+      "cardinalClass": "V2b",
+      "cellCount": 26,
+      "percentOfFineSubtypeInterneuronCells": 0.170862,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 14
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 9
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 1
+        }
+      ],
+      "dvObservedCellCount": 26,
+      "pseudotimeObservedCellCount": 26,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2b.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2b"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V2b.4",
+      "sourceLocalLabel": "V2b.4",
+      "cardinalClass": "V2b",
+      "cellCount": 287,
+      "percentOfFineSubtypeInterneuronCells": 1.886048,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 46
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 133
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 80
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 27
+        }
+      ],
+      "dvObservedCellCount": 287,
+      "pseudotimeObservedCellCount": 287,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V2b.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V2b"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V3.1",
+      "sourceLocalLabel": "V3.1",
+      "cardinalClass": "V3",
+      "cellCount": 110,
+      "percentOfFineSubtypeInterneuronCells": 0.722876,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 57
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 26
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 15
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 11
+        }
+      ],
+      "dvObservedCellCount": 110,
+      "pseudotimeObservedCellCount": 110,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V3.1",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V3.2",
+      "sourceLocalLabel": "V3.2",
+      "cardinalClass": "V3",
+      "cellCount": 119,
+      "percentOfFineSubtypeInterneuronCells": 0.78202,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 1
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 26
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 41
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 37
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 14
+        }
+      ],
+      "dvObservedCellCount": 119,
+      "pseudotimeObservedCellCount": 119,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V3.2",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V3.3",
+      "sourceLocalLabel": "V3.3",
+      "cardinalClass": "V3",
+      "cellCount": 78,
+      "percentOfFineSubtypeInterneuronCells": 0.512585,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 47
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 19
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 10
+        }
+      ],
+      "dvObservedCellCount": 78,
+      "pseudotimeObservedCellCount": 78,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V3.3",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    },
+    {
+      "id": "delile-2019:E-MTAB-7320:V3.4",
+      "sourceLocalLabel": "V3.4",
+      "cardinalClass": "V3",
+      "cellCount": 78,
+      "percentOfFineSubtypeInterneuronCells": 0.512585,
+      "timepointCellCounts": [
+        {
+          "sourceTimepoint": 9.5,
+          "lifeStage": "E9.5",
+          "cellCount": 0
+        },
+        {
+          "sourceTimepoint": 10.5,
+          "lifeStage": "E10.5",
+          "cellCount": 2
+        },
+        {
+          "sourceTimepoint": 11.5,
+          "lifeStage": "E11.5",
+          "cellCount": 3
+        },
+        {
+          "sourceTimepoint": 12.5,
+          "lifeStage": "E12.5",
+          "cellCount": 27
+        },
+        {
+          "sourceTimepoint": 13.5,
+          "lifeStage": "E13.5",
+          "cellCount": 46
+        }
+      ],
+      "dvObservedCellCount": 78,
+      "pseudotimeObservedCellCount": 78,
+      "assignmentAuthority": "Neuron_subtypes column in the pinned authors' annotation table",
+      "sourceLocators": [
+        "output/phenoData_annotated.csv · Neuron_subtypes=V3.4",
+        "output/phenoData_annotated.csv · Type_step1=Neuron · Type_step2=V3"
+      ],
+      "missingEvidence": {
+        "morphology": "not_measured_or_deposited",
+        "wholeCellGeometry": "not_measured_or_deposited",
+        "axonDendriteTopology": "not_measured_or_deposited",
+        "electrophysiology": "not_measured_by_study",
+        "projectionTarget": "not_measured_by_study",
+        "synapticConnectivity": "not_measured_by_study",
+        "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+        "atlasRegistration": "no_admitted_transform",
+        "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+        "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+        "crossSourceSameCellIdentity": "relationship_not_established",
+        "adultIdentity": "not_established",
+        "sciContext": "not_measured_by_study"
+      }
+    }
+  ],
+  "globalMissingEvidence": {
+    "morphology": "not_measured_or_deposited",
+    "wholeCellGeometry": "not_measured_or_deposited",
+    "axonDendriteTopology": "not_measured_or_deposited",
+    "electrophysiology": "not_measured_by_study",
+    "projectionTarget": "not_measured_by_study",
+    "synapticConnectivity": "not_measured_by_study",
+    "internalStructure": "no_raw_volume_segmentation_mesh_or_internal_object",
+    "atlasRegistration": "no_admitted_transform",
+    "sameCellMorphologyTranscriptomicsJoin": "relationship_not_established",
+    "sameCellPhysiologyTranscriptomicsJoin": "relationship_not_established",
+    "sameCellInternalStructureTranscriptomicsJoin": "relationship_not_established",
+    "crossSourceSameCellIdentity": "relationship_not_established",
+    "adultIdentity": "not_established",
+    "sciContext": "not_measured_by_study"
+  },
+  "joinPolicy": {
+    "sourceCellBarcodesPresent": true,
+    "perCellRosterBundled": false,
+    "crossSourceJoinAllowed": false,
+    "typeToMorphologyJoinAllowed": false,
+    "typeToPhysiologyJoinAllowed": false,
+    "typeToInternalStructureJoinAllowed": false,
+    "sourcePseudotimeIsPhysicalCoordinate": false,
+    "sourceDvClassIsAtlasRegistration": false,
+    "projectAtlasTransform": null,
+    "boundary": "A barcode links annotation fields only within the pinned source table. It does not establish a morphology, physiology, internal-object, adult-type, SCI, atlas-registration or cross-source same-cell relationship."
+  },
+  "hardBoundaries": [
+    "All 51 fine labels and their 15,217 captured-cell counts remain source-local to the Delile 2019 Neuron_subtypes column and are not cross-study canonical identities.",
+    "The source spelling dl is preserved exactly and must not be silently normalized to dI in identifiers or labels.",
+    "The 177 source-typed cells without a fine Neuron_subtypes value remain cardinal-only: 95 dl6 and 82 V2a; neither group becomes an invented fine subtype.",
+    "The displayed fine-subtype denominator excludes 1,056 source-labelled MN cells and 1,694 Null_Neuron cells without deleting those counts from the provenance chain.",
+    "Cell counts and percentages describe captured cells in this source object; they are not animal-resolved prevalence estimates.",
+    "Source timepoint, replicate_id, DV and pseudotime fields do not supply a physical 3D coordinate, an atlas transform or an observed same-cell trajectory.",
+    "This taxonomy admits zero morphology, whole-cell geometry, axon-dendrite topology, electrophysiology, synapses, organelles or other internal structures.",
+    "No adult identity, SCI identity, cross-source identity, morphology join, physiology join, internal-object join or registration may be inferred from these developmental labels.",
+    "The source annotation TSV remains link-only because its public repository has no explicit license; only this attributed compact factual derivative is bundled."
+  ]
+}

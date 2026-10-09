@@ -1,0 +1,21 @@
+I62 independent source/native preparation
+
+PREPARED ONLY. No future actual capture has been read; no actual replay/native action/export has run. Parent must explicitly declare ACTUAL_READY, provide immutable original raw capture filenames and two independently attributed source-owned native export temp copies. Source-owner final preservation remains separate.
+
+The fixture is built by direct strict JSON reads of the current after-I61 registry, linked upgrade registry and already accepted Garcia/Crozat source derivatives. Expected seven-field source dossiers retain the entire original source, record sets, linked upgrades and scientific policy. Only `exportedAt` varies. Existing child-navigation receipts remain unavailable, empty, metadata-only, `renderedViewCaptured:false`, `sourceBytesVerifiedByThisReceipt:false`. No new information receipt is inserted in the export.
+
+Garcia has one aggregate adapter, four asset metadata pins and four alternative partitions of one171-observation pool. The 51/6 reporter mouse cohorts and prior-study60-record/28-mouse subsets remain distinct. Unknown individual cell/animal mapping remains null. Crozat has six source assets and original1/65/654 units; old23 tables/2115 rows/220 within-table groups remain separate from additional56+28 rows. Selected25 workbooks versus retained26 differ only by original unselected INa file56062547. This replay does not reopen/reparse originals or repeat I61 scientific acceptance.
+
+Producer schema
+
+Root's native-capture-helper.js returns original `toolCaptureWindowUTC:{startedAt,finishedAt}`, top-level `url/sidebar/breadcrumb/statuses/hydration/controls`, `dossier:{present,sourceId,title,scopeFields,units,recordSets,assets,exportButtons}`, `details` and `tables`. Record-set information hrefs are scoped `recordSets[].informationLinks`.
+
+The base `exactChildNavigationCount` uses a selector not present in the product and is deliberately ignored. Every accepted registry capture requires its original `*-navigation-dom.json` companion: same name, independently bracketed after base, exact owned record-set rows, actual `ul[aria-label^="Navigation entries for "]` entriesLists and record-set details. The two scoped unavailable sources require no lists/links/details. The companion's explicit unsupported-field flag is mandatory. Unknown-source error panels may exist as DOM elements; absent canonical `data-source-id` and zero exports/information actions identify refusal, rather than assuming the entire panel disappears.
+
+Destination source qualification is the fixed relative Additional route with exact Garcia source/set and fragment. Existing disclosure open/close state, grouping control, caption, group headers, mean/SD/test/p cells and individual original source locators are independently checked against literal tables. Current base table rows capture `td` only, excluding property `th`; the receipt will state that DOM row-header labels were not captured. Locator row/column matching still binds every reported cell to its source property row. Closed capture scopes validate no tables/enabled facts export in captured main; they do not assert whole DOM deletion.
+
+Strict JSON loader refuses duplicate keys, NaN/Infinity/-Infinity and overflowing JSON float values. Recursive exact comparison distinguishes booleans from numeric0/1. Native copies must be regular, nonsymlink files under private temp; no Downloads original is read or enumerated. Independent file creation/event-window attribution remains the separate landing owner review, whose immutable review/seal hashes will be bound in the actual manifest.
+
+Run only synthetic guards now: `python3 test_guards.py`. Actual `replay.py --manifest ... --output ...` refuses the draft before reading any future capture because `parentActualReady:false`. Raw captures, tool timestamps and source files are never rewritten. Parent readiness time is a declaration/tool observation, not a reconstructed native-action clock.
+
+Limits: native focus/Enter/history/actual widths/zoom/AT require original parent captures/actions. This preparation checks literal field ownership and scoped observed DOM, without issuing source-byte/render proof, changing scientific admission counts or declaring the full goal complete.

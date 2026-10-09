@@ -1,0 +1,28 @@
+{
+  "releaseId": "ohri-public-source-release-admission-service-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "manifestComposerReleaseId": "ohri-public-file-admission-composer-0.1.0",
+  "queueItemId": "UPG-006",
+  "title": "Public-source metadata release-admission review service",
+  "admissionDecision": "not_admitted_pending_curator_object_and_rights_review",
+  "supportedManifestFormats": [
+    {"formatVersion": "0.7.0", "sourceId": "PDS-SPINALJ-PROCESSED", "requiredChecks": ["manifest_identity", "catalogue_source_match", "publisher_object_url", "declared_source_checksum", "null_local_checksum", "coordinate_metadata_or_missingness", "asset_level_rights_review"]},
+    {"formatVersion": "0.8.0", "sourceId": "PDS-CANOGOMEZ-2026", "requiredChecks": ["manifest_identity", "catalogue_source_match", "publisher_object_url", "declared_source_checksum", "null_local_checksum", "specimen_identity", "source_frame_or_missingness", "preprint_disclosure", "asset_level_rights_review"]}
+  ],
+  "reviewSemantics": {
+    "metadataCompleteStatus": "metadata_complete_for_curator_review_only",
+    "nonTerminalStatuses": ["missing_or_explicitly_unresolved", "recorded_not_authorized", "requires_independent_curator_review"],
+    "blockedActions": ["source_object_acquisition", "source_object_bundling", "local_checksum_calculation", "reuse_authorization", "coordinate_transform", "registration", "automatic_public_release"]
+  },
+  "localRuntime": {
+    "networkRequests": false,
+    "sourceFileDownload": false,
+    "sourceFileUpload": false,
+    "metadataManifestImport": true,
+    "persistentStorage": "none",
+    "output": "browser_download_of_not_admitted_admission_review_receipt_json"
+  },
+  "scientificBoundary": "The service reviews only a locally supplied metadata manifest against frozen catalogue rules. It does not authenticate a publisher assertion, acquire or inspect a source object, calculate a local checksum, grant rights, establish biological truth, transform coordinates, create a source-to-project relationship, or create REG.",
+  "nextQueueItems": ["UPG-001", "UPG-002", "UPG-008", "UPG-010", "UPG-011", "UPG-018"]
+}

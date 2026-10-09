@@ -1,0 +1,47 @@
+{
+  "status": "PREPARED_NOT_NATIVE_REPLAYED",
+  "preparedAtUTC": "2026-10-05T06:39:35.374369+00:00",
+  "pins": [
+    {
+      "path": "/private/tmp/ohri-i59-native-live-replay/replay.mjs",
+      "bytes": 22878,
+      "sha256": "655a0ba646467e837f0cf3f9a09fd33e722e7011aa6ec8b62559ae9868021694"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-native-live-replay/replay.test.mjs",
+      "bytes": 14623,
+      "sha256": "393b06e1faf27fdf7a93113ce380038877df71ed7487f98ef3ffba2aa1459df9"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-native-live-replay/README.md",
+      "bytes": 5543,
+      "sha256": "b1b080bb8bd73defab9fb141b00d8e3ffe5e2e74524415dbe4546c150ab27b76"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-native-live-replay/logic-tests.log",
+      "bytes": 3977,
+      "sha256": "34f3bb170fa9842d4de5214eddae453be45de1948c67b4fb4857e94fd40e255a"
+    }
+  ],
+  "logicTests": {
+    "tests": 19,
+    "pass": 19,
+    "fail": 0,
+    "evidenceLevel": "synthetic timeline and DOM only; independent from previous proxy handler tests"
+  },
+  "nativeReadyRequired": true,
+  "liveLogInspectedForSchemaOnly": true,
+  "noActualReconciliationExecuted": true,
+  "noBrowserActions": true,
+  "noRootStageWrites": true,
+  "noProxyConfigServerWrites": true,
+  "old09PreciseNativeWindowsNotInvented": true,
+  "independentExportReplayOwner": "source_next_i52",
+  "peerFindingsAddressed": [
+    "single_ready must follow its separately owned feature response",
+    "wrong_chunk error must follow substituted response completion",
+    "all strict DOM captures require embedded exact native clocks",
+    "cancellation phases require original pinned action bracket"
+  ],
+  "parentReaderSupport": "actual singleJSON preferred; original captured keys retained; optional exact current first-feature binding"
+}

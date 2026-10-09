@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "0.1.0",
+  "routeId": "banc-v888-in14a018-source-local-morphology-0.1.0",
+  "researchUpgradeId": "UPG-248",
+  "sourceId": "SRC-BANC-V888-IN14A018",
+  "recordSetId": "RS-BANC-V888-IN14A018-MORPHOLOGY",
+  "identity": {
+    "materialization": "v888",
+    "rootId": "720575941350424112",
+    "cellType": "IN14A018",
+    "cellSubClass": "ventral_nerve_cord_contralateral_restricted",
+    "superClass": "ventral_nerve_cord_intrinsic",
+    "region": "ventral_nerve_cord",
+    "flow": "intrinsic",
+    "proofread": true,
+    "nucleusId": "73044750394982464",
+    "rootIdStableAcrossMaterializations": ["v626", "v850", "v888", "v890"]
+  },
+  "biologicalScope": {
+    "species": "Drosophila melanogaster",
+    "lifeStage": "adult",
+    "sex": "female",
+    "specimenCount": 1,
+    "region": "ventral nerve cord",
+    "comparisonOnly": true,
+    "mouseIdentityOrHomologyEstablished": false
+  },
+  "skeleton": {
+    "format": "SWC",
+    "memberName": "720575941350424112_skeleton.swc",
+    "projectPath": "public/data/banc_v888_in14a018_comparative_v1/720575941350424112_skeleton.swc",
+    "publicUrl": "/data/banc_v888_in14a018_comparative_v1/720575941350424112_skeleton.swc",
+    "sourceArchive": {
+      "filename": "banc_swc_skeletons.zip",
+      "dataverseFileId": "13952186",
+      "doi": "10.7910/DVN/7WTH1N",
+      "version": 3,
+      "memberRetrievedBy": "bounded_http_byte_range_reads",
+      "fullArchiveDownloaded": false
+    },
+    "bytes": 489716,
+    "sha256": "aff95c90a2ba5449f93573769f61aad6b02eb3db75108287d8cb6ee78f0d395e",
+    "nodeCount": 7451,
+    "segmentCount": 7450,
+    "nodeTypeCodes": [2],
+    "nodeTypeInterpretation": "uninterpreted_source_type_2",
+    "coordinates": {
+      "frame": "BANC native source frame",
+      "unit": "nanometre",
+      "boundsNanometres": {
+        "min": [375107, 847895, 167325],
+        "max": [472740.963399508, 957720, 232760]
+      },
+      "displayTransform": "subtract source-bounds centre and convert nanometres to micrometres",
+      "atlasRegistration": false
+    },
+    "radiusValues": {
+      "presentInFile": true,
+      "rendered": false,
+      "interpretation": "not admitted as a neurite or cell surface"
+    }
+  },
+  "nucleusAnnotation": {
+    "nucleusId": "73044750394982464",
+    "rootId": "720575941350424112",
+    "exactAnnotationRowCount": 1,
+    "positionNanometres": [461824, 954944, 188415],
+    "sourceVoxelPosition": [115456, 238736, 4187],
+    "sourceVoxelResolutionNanometres": [4, 4, 45],
+    "withinSkeletonBounds": true,
+    "rendering": "single screen-space point marker only",
+    "surfaceOrVolumeAdmitted": false,
+    "sourceAsset": {
+      "filename": "somas_v1.parquet",
+      "dataverseFileId": "13916460",
+      "url": "https://dataverse.harvard.edu/api/access/datafile/13916460",
+      "sha256": "54a2b72cb72117fa6358962655625bb1"
+    }
+  },
+  "displayAuthority": {
+    "admittedGeometry": ["source SWC parent-child centerline segments", "same-root source nucleus annotation point"],
+    "cellSurface": false,
+    "nucleusSurface": false,
+    "mitochondriaCoordinatesOrGeometry": false,
+    "synapseCoordinatesOrGeometry": false,
+    "sourceReportedMitochondriaCount": 31,
+    "mitochondriaCountIsGeometry": false,
+    "axonDendriteSemanticSplit": false,
+    "includedInMouseInterneuronCounts": false,
+    "crossSourceIdentityJoin": false,
+    "atlasRegistration": false,
+    "measurementAuthorized": false
+  },
+  "rights": {
+    "license": "CC BY 4.0",
+    "attribution": "BANC / Lee Lab; source morphology member from Dataverse DOI 10.7910/DVN/7WTH1N, version 3. Cite the BANC primary paper DOI 10.1038/s41586-026-10735-w.",
+    "sourceUrl": "https://doi.org/10.7910/DVN/7WTH1N",
+    "primaryArticleUrl": "https://doi.org/10.1038/s41586-026-10735-w"
+  }
+}

@@ -6,6 +6,8 @@ import type { ResearchFocus, ResearchRecord } from "./ResearchExplorer";
 import { ResearchEvidenceCard } from "./ResearchEvidencePanels";
 import { useResearchActiveRecord } from "./ResearchActiveRecordProvider";
 import ResearchSelectionDeltaReceipt from "./ResearchSelectionDeltaReceipt";
+import ResearchRecordSourceScope from "./ResearchRecordSourceScope";
+import { researchEvidenceDisplayLabel } from "./research-morphology-rendering-policy.js";
 import { selectResearchEvidencePreviewRows } from "./research-explorer-index.js";
 import {
   rowsForPresentationIndices,
@@ -96,6 +98,8 @@ function VerifiedResearchRecord({ record }: { record: ResearchRecord }) {
         <span>{FOCUS_KIND_LABELS[record.focusKind]}</span>
       </header>
 
+      <ResearchRecordSourceScope key={record.key} record={record} />
+
       <dl className="research-focus-evidence-identity">
         <div><dt>Canonical focus</dt><dd>{record.focusId}</dd></div>
         <div><dt>Source namespace</dt><dd>{record.namespace}</dd></div>
@@ -173,7 +177,7 @@ function VerifiedResearchRecord({ record }: { record: ResearchRecord }) {
           <dl>
             {previewRows.map((row) => (
               <div key={`${row.label}-${row.locator}`}>
-                <dt>{row.label}</dt>
+                <dt>{researchEvidenceDisplayLabel(record, row)}</dt>
                 <dd>{row.value}<small>{readable(row.authority)} · {row.locator}</small></dd>
               </div>
             ))}
@@ -187,7 +191,7 @@ function VerifiedResearchRecord({ record }: { record: ResearchRecord }) {
           <dl>
             {additionalRows.map((row, index) => (
               <div key={`${row.label}-${row.locator}-${index}`}>
-                <dt>{row.label}</dt>
+                <dt>{researchEvidenceDisplayLabel(record, row)}</dt>
                 <dd>{row.value}<small>{readable(row.authority)} · {row.locator}</small></dd>
               </div>
             ))}
@@ -202,7 +206,7 @@ function VerifiedResearchRecord({ record }: { record: ResearchRecord }) {
           <dl>
             {sharedEvidenceRows.map((row, index) => (
               <div key={`${row.label}-${row.locator}-${index}`}>
-                <dt>{row.label}</dt>
+                <dt>{researchEvidenceDisplayLabel(record, row)}</dt>
                 <dd>{row.value}<small>{readable(row.authority)} · {row.locator}</small></dd>
               </div>
             ))}
@@ -250,7 +254,7 @@ export default function ResearchFocusEvidencePanel({
       && activeRecord.record?.focusKind === "sci_entity"
       && activeRecord.record.focusId === focus.focusId
       && sciEntity?.id === focus.focusId
-      ? <VerifiedResearchFocusShell><ResearchEvidenceCard entity={sciEntity} /></VerifiedResearchFocusShell>
+      ? <VerifiedResearchFocusShell><ResearchRecordSourceScope key={activeRecord.record.key} record={activeRecord.record} /><ResearchEvidenceCard entity={sciEntity} /></VerifiedResearchFocusShell>
       : activeRecord.status === "unavailable"
         ? <UnavailableResearchFocus focus={focus} message={`${activeRecord.error} No substitute was selected.`} />
         : (

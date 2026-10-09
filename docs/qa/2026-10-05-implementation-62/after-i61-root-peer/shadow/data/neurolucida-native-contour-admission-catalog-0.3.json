@@ -1,0 +1,531 @@
+{
+  "schemaVersion": "0.3.0",
+  "contractId": "neurolucida-native-contour-admission-catalog-0.3",
+  "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.3.0",
+  "releasedAt": "2026-09-02",
+  "title": "Per-record Neurolucida native contour admission catalog",
+  "purpose": "Admit exact source-native line loops only when each record passes its explicit closure rule, while preserving raw flags, exclusions and zero-authority boundaries.",
+  "parentCatalog": {
+    "path": "data/neurolucida-native-contour-admission-catalog-0.2.json",
+    "bytes": 17392,
+    "sha256": "fa27f8e6d4cfebadd2d0127c43b7aa2a5496066fd7dd5b613b3b9a8c68346d86",
+    "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.2.0"
+  },
+  "parserAudit": {
+    "repository": "https://github.com/NeuroMorpho/xyz2swc",
+    "commit": "e07fd2d53c03945f011c335c7b643765f2d85a09",
+    "parserPath": "modules/hbp/node_modules/morphology_io/app/morphology_parser.js",
+    "parserGitBlobSha1": "0934ced806f0a4e4992fe2edae2e8e060a23f1a7",
+    "parserSha256": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2",
+    "typeLibraryPath": "modules/hbp/node_modules/morphology_io/app/swcPlus_typeLibrary.js",
+    "typeLibraryGitBlobSha1": "31d223b111f2109e0c72149b367efd885f45e0ed",
+    "typeLibrarySha256": "8006588950ef0ee55da9a4bea46f93b9120a5dc6c29d6b5263050c7a6d168d89",
+    "requiredClassification": "somaContour",
+    "classificationBasis": "The pinned type library maps the CellBody presence property to the somaContour semantic class.",
+    "parserLicenseNotice": "GPL-3.0-or-later parser used only for independent offline comparison; parser code is not bundled",
+    "diagnosticLog": [
+      "Neurolucida.DAT: ignoring thumbnail"
+    ]
+  },
+  "mbfCellBodySemantics": {
+    "documentationUrl": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+    "documentationTitle": "Tracing cell bodies",
+    "sourceStatement": "MBF documents Neurolucida cell bodies as closed shapes, including separate cross-sections traced at multiple focal planes.",
+    "admissionScope": "Only an exact-checksum DAT contour named Cell Body with a zero-value CellBody presence property and pinned-parser somaContour classification may use this closure interpretation."
+  },
+  "records": [
+    {
+      "neuronId": 45718,
+      "assetId": "NeuroMorpho:45718",
+      "title": "Repository-labelled calbindin-negative glycinergic premotor / non-Renshaw interneuron",
+      "admissionStatus": "admitted_prior_exact_contract",
+      "source": {
+        "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/original/nmo-45718.dat",
+        "bytes": 343774,
+        "sha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/45718",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat",
+        "sourcePaperDoi": "10.1523/JNEUROSCI.0199-14.2014",
+        "repositoryRrid": "RRID:SCR_002145",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "derivedObject": {
+        "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+        "bytes": 45606,
+        "sha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8",
+        "documentType": "neurolucida_source_native_soma_contour_trace_geometry",
+        "authority": "OBS_SOURCE_NATIVE_CONTOUR_TRACE"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 10,
+        "somaNamedContourObjectCount": 8,
+        "somaNamedVertexCount": 275,
+        "somaNamedVertexCountsInSourceOrder": [
+          21,
+          30,
+          40,
+          37,
+          50,
+          40,
+          34,
+          23
+        ],
+        "somaNamedPointPayloadSha256": "a478e6263e7d00c1f17bc64143014a3519c39f771b6809a28b057db07c724ab4",
+        "sourceClosedSomaNamedContourCount": 7,
+        "sourceOpenSomaNamedContourCount": 1,
+        "auxiliaryTraceObjectCount": 2,
+        "auxiliaryTraceVertexCount": 4,
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 8,
+        "admittedVertexCount": 275,
+        "renderedPrimitiveCount": 8,
+        "reason": "Seven source-closed Soma 1 traces plus the separately disclosed NMF legacy Cell Body closure from the immutable 0.1 contract."
+      },
+      "viewer": {
+        "primaryLabel": "Seven-plane Soma 1 stack",
+        "secondaryLabel": "Separate legacy Cell Body trace",
+        "primarySourceNames": [
+          "Soma 1"
+        ],
+        "secondarySourceNames": [
+          "Cell Body"
+        ]
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/45718",
+        "originalDat": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat",
+        "primaryPaper": "https://doi.org/10.1523/JNEUROSCI.0199-14.2014",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "morphologySpecification": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html",
+        "somaStandardization": "https://neuromorpho.org/SomaFormat.html",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "The legacy Cell Body trace remains separate from the Soma 1 stack.",
+        "No fill, triangle, loft, surface, membrane, volume, internal object, SWC overlay, same-cell join or registration is admitted."
+      ]
+    },
+    {
+      "neuronId": 45674,
+      "assetId": "NeuroMorpho:45674",
+      "title": "Calbindin-positive glycinergic Renshaw interneuron",
+      "admissionStatus": "admitted_source_closed_subset",
+      "source": {
+        "path": "/data/functional_class_observed_morphology_route_pack_v1/original/nmo-45674.dat",
+        "bytes": 353251,
+        "sha256": "9d5a8670fdb97656c18eb8819b3c4723f438fb8929e66ea8dc6103c6bb547d87",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/45674",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101029p2-A-In.dat",
+        "sourcePaperDoi": "10.1523/JNEUROSCI.0199-14.2014",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "derivedObject": {
+        "path": "/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-45674-source-closed-soma-contours.json",
+        "bytes": 35842,
+        "sha256": "1e41538a6443dcf7893386c180d3d22ddf81cc72a4d96f66a16193c97747cec3",
+        "documentType": "neurolucida_source_native_closed_soma_contour_geometry",
+        "authority": "OBS_SOURCE_NATIVE_CLOSED_CONTOUR_TRACE"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 10,
+        "somaNamedContourObjectCount": 8,
+        "somaNamedVertexCount": 227,
+        "somaNamedVertexCountsInSourceOrder": [
+          14,
+          33,
+          27,
+          50,
+          46,
+          17,
+          13,
+          27
+        ],
+        "somaNamedPointPayloadSha256": "fdf787a947c962e25880c427fd4004a39cb1b48526cb06a0b485d675be1a0c7f",
+        "sourceClosedSomaNamedContourCount": 7,
+        "sourceOpenSomaNamedContourCount": 1,
+        "auxiliaryTraceObjectCount": 2,
+        "auxiliaryTraceVertexCount": 4,
+        "fullObjectInventory": {
+          "propertyListCount": 2,
+          "thumbnailCount": 1,
+          "contourCount": 10,
+          "markerObjectCount": 2,
+          "treeCount": 32,
+          "branchCount": 675,
+          "markerCount": 1054,
+          "spineCount": 0,
+          "textObjectCount": 0
+        },
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 7,
+        "admittedVertexCount": 200,
+        "renderedPrimitiveCount": 7,
+        "reason": "Only seven CellBody objects whose source closed flag is true are admitted. One spaced Cell Body false-flag object and two open Unknown1 traces are excluded."
+      },
+      "viewer": {
+        "primaryLabel": "Seven source-closed CellBody traces",
+        "secondaryLabel": null,
+        "primarySourceNames": [
+          "CellBody"
+        ],
+        "secondarySourceNames": []
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/45674",
+        "originalDat": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101029p2-A-In.dat",
+        "primaryPaper": "https://doi.org/10.1523/JNEUROSCI.0199-14.2014",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "morphologySpecification": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "Duplicate -80 and -76 micrometre planes remain separate and in source order.",
+        "One source-open Cell Body and two Unknown1 traces remain excluded.",
+        "No fill, triangle, loft, surface, membrane, volume, internal object, SWC overlay, same-cell join or registration is admitted."
+      ]
+    },
+    {
+      "neuronId": 50424,
+      "assetId": "NeuroMorpho:50424",
+      "title": "NPY-positive superficial lumbar dorsal-horn interneuron",
+      "admissionStatus": "admitted_mbf_cell_body_semantic_rule",
+      "source": {
+        "path": "/data/functional_class_observed_morphology_route_pack_v1/original/nmo-50424.dat",
+        "bytes": 480757,
+        "sha256": "90662374ccfacc0404b1b8817161015fa52c6c384911700f428a4c5421cb79d9",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/50424",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/C135-18-06-13-Ab.dat",
+        "sourcePaperDoi": "10.1097/j.pain.0000000000000407",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "derivedObject": {
+        "path": "/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-50424-mbf-cell-body-line-loops.json",
+        "bytes": 71212,
+        "sha256": "8bd390d698a77dc80a95c7d560e823d5f0ff1d5daadb2194be6475ba250851d6",
+        "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry",
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 12,
+        "somaNamedContourObjectCount": 8,
+        "somaNamedVertexCount": 427,
+        "somaNamedVertexCountsInSourceOrder": [
+          64,
+          64,
+          59,
+          41,
+          67,
+          66,
+          46,
+          20
+        ],
+        "somaNamedZInSourceOrderMicrometre": [
+          -17,
+          -16,
+          -15,
+          -14,
+          -18,
+          -19,
+          -20,
+          -21
+        ],
+        "somaNamedPointPayloadSha256": "6638f9b056bedadaba503f3607115a4be27988ae71dd0ed8b309f3085143ab8b",
+        "sourceClosedSomaNamedContourCount": 0,
+        "sourceOpenSomaNamedContourCount": 8,
+        "emptyValueCellBodyPresencePropertyCount": 8,
+        "independentParserSomaContourCount": 8,
+        "independentParserClassification": "somaContour",
+        "auxiliaryTraceObjectCount": 4,
+        "auxiliaryTraceVertexCount": 185,
+        "fullObjectInventory": {
+          "propertyListCount": 2,
+          "thumbnailCount": 1,
+          "contourCount": 12,
+          "markerObjectCount": 0,
+          "treeCount": 3,
+          "branchCount": 609,
+          "markerCount": 803,
+          "spineCount": 59,
+          "textObjectCount": 0
+        },
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 8,
+        "admittedVertexCount": 427,
+        "renderedPrimitiveCount": 8,
+        "reason": "Exactly 8 Cell Body objects pass the checksum + empty-value CellBody presence-property + pinned-parser somaContour + MBF cell-body closure rule. Raw sourceClosedFlag=false is preserved; four User Line objects remain excluded."
+      },
+      "viewer": {
+        "primaryLabel": "8 MBF Cell Body line loops",
+        "secondaryLabel": null,
+        "primarySourceNames": [
+          "Cell Body"
+        ],
+        "secondarySourceNames": []
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/50424",
+        "originalDat": "https://neuromorpho.org/dableFiles/todd/Source-Version/C135-18-06-13-Ab.dat",
+        "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000000407",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "mbfCellBodySemantics": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+        "morphologySpecification": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "Raw sourceClosedFlag=false is preserved; this is a source-evidenced MBF cell-body semantic interpretation, not a generic false-flag closure rule.",
+        "User Line 1–4 objects remain excluded because their biological meaning is unresolved.",
+        "LineLoop only: no fill, triangle, loft, surface, membrane, volume, internal object, biological measurement, SWC overlay, same-cell join or registration is admitted."
+      ]
+    },
+    {
+      "neuronId": 50394,
+      "assetId": "NeuroMorpho:50394",
+      "title": "PrP-promoter reporter-positive nNOS-positive interneuron",
+      "admissionStatus": "admitted_mbf_cell_body_semantic_rule",
+      "source": {
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/original/nmo-50394.dat",
+        "bytes": 191975,
+        "sha256": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/50394",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/C11-15-08-12-B.dat",
+        "sourcePaperDoi": "10.1523/JNEUROSCI.0406-15.2015",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "derivedObject": {
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50394-mbf-cell-body-line-loops.json",
+        "bytes": 123254,
+        "sha256": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92",
+        "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry",
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 18,
+        "somaNamedContourObjectCount": 14,
+        "somaNamedVertexCount": 768,
+        "somaNamedVertexCountsInSourceOrder": [
+          67,
+          63,
+          55,
+          57,
+          51,
+          56,
+          58,
+          41,
+          68,
+          59,
+          59,
+          47,
+          48,
+          39
+        ],
+        "somaNamedZInSourceOrderMicrometre": [
+          -51,
+          -52,
+          -53,
+          -54,
+          -55,
+          -56,
+          -57,
+          -58,
+          -50,
+          -49,
+          -48,
+          -47,
+          -46,
+          -45
+        ],
+        "somaNamedPointPayloadSha256": "b823d7ef36d28ec05836425c82ba5b9bd4edfd8fb1bf1b821eecce833abe8f4b",
+        "sourceClosedSomaNamedContourCount": 0,
+        "sourceOpenSomaNamedContourCount": 14,
+        "emptyValueCellBodyPresencePropertyCount": 14,
+        "independentParserSomaContourCount": 14,
+        "independentParserClassification": "somaContour",
+        "auxiliaryTraceObjectCount": 4,
+        "auxiliaryTraceVertexCount": 130,
+        "fullObjectInventory": {
+          "propertyListCount": 2,
+          "thumbnailCount": 1,
+          "contourCount": 18,
+          "markerObjectCount": 0,
+          "treeCount": 5,
+          "branchCount": 283,
+          "markerCount": 194,
+          "spineCount": 86,
+          "textObjectCount": 0
+        },
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 14,
+        "admittedVertexCount": 768,
+        "renderedPrimitiveCount": 14,
+        "reason": "Exactly 14 Cell Body objects pass the checksum + empty-value CellBody presence-property + pinned-parser somaContour + MBF cell-body closure rule. Raw sourceClosedFlag=false is preserved; four User Line objects remain excluded."
+      },
+      "viewer": {
+        "primaryLabel": "14 MBF Cell Body line loops",
+        "secondaryLabel": null,
+        "primarySourceNames": [
+          "Cell Body"
+        ],
+        "secondarySourceNames": []
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/50394",
+        "originalDat": "https://neuromorpho.org/dableFiles/todd/Source-Version/C11-15-08-12-B.dat",
+        "primaryPaper": "https://doi.org/10.1523/JNEUROSCI.0406-15.2015",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "mbfCellBodySemantics": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+        "morphologySpecification": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "Raw sourceClosedFlag=false is preserved; this is a source-evidenced MBF cell-body semantic interpretation, not a generic false-flag closure rule.",
+        "User Line 1–4 objects remain excluded because their biological meaning is unresolved.",
+        "LineLoop only: no fill, triangle, loft, surface, membrane, volume, internal object, biological measurement, SWC overlay, same-cell join or registration is admitted."
+      ]
+    },
+    {
+      "neuronId": 50408,
+      "assetId": "NeuroMorpho:50408",
+      "title": "PrP-promoter reporter-positive galanin-positive interneuron",
+      "admissionStatus": "admitted_mbf_cell_body_semantic_rule",
+      "source": {
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/original/nmo-50408.dat",
+        "bytes": 300076,
+        "sha256": "78cfeae785b8ab4cf0792e7223cf310cd4aef1e3caa3447aa14ca61421ed9cb2",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/50408",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/C113-08-05-13-C.dat",
+        "sourcePaperDoi": "10.1523/JNEUROSCI.0406-15.2015",
+        "rights": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "derivedObject": {
+        "path": "/data/prp_dorsal_horn_observed_morphology_route_pack_v1/native-contours/nmo-50408-mbf-cell-body-line-loops.json",
+        "bytes": 110635,
+        "sha256": "30d9c7870329aa0d2c6c2e83aeb020587973bf44e72c214a46f809532ba9ae78",
+        "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry",
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 15,
+        "somaNamedContourObjectCount": 11,
+        "somaNamedVertexCount": 709,
+        "somaNamedVertexCountsInSourceOrder": [
+          58,
+          71,
+          80,
+          69,
+          49,
+          26,
+          82,
+          83,
+          83,
+          61,
+          47
+        ],
+        "somaNamedZInSourceOrderMicrometre": [
+          -21,
+          -20,
+          -19,
+          -18,
+          -17,
+          -16,
+          -22,
+          -23,
+          -24,
+          -25,
+          -26
+        ],
+        "somaNamedPointPayloadSha256": "8052deb6cef02af95f8b7864784f8e5b9ed2c1d070c87698150b4152701a14b5",
+        "sourceClosedSomaNamedContourCount": 0,
+        "sourceOpenSomaNamedContourCount": 11,
+        "emptyValueCellBodyPresencePropertyCount": 11,
+        "independentParserSomaContourCount": 11,
+        "independentParserClassification": "somaContour",
+        "auxiliaryTraceObjectCount": 4,
+        "auxiliaryTraceVertexCount": 155,
+        "fullObjectInventory": {
+          "propertyListCount": 2,
+          "thumbnailCount": 1,
+          "contourCount": 15,
+          "markerObjectCount": 0,
+          "treeCount": 4,
+          "branchCount": 645,
+          "markerCount": 404,
+          "spineCount": 117,
+          "textObjectCount": 0
+        },
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 11,
+        "admittedVertexCount": 709,
+        "renderedPrimitiveCount": 11,
+        "reason": "Exactly 11 Cell Body objects pass the checksum + empty-value CellBody presence-property + pinned-parser somaContour + MBF cell-body closure rule. Raw sourceClosedFlag=false is preserved; four User Line objects remain excluded."
+      },
+      "viewer": {
+        "primaryLabel": "11 MBF Cell Body line loops",
+        "secondaryLabel": null,
+        "primarySourceNames": [
+          "Cell Body"
+        ],
+        "secondarySourceNames": []
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/50408",
+        "originalDat": "https://neuromorpho.org/dableFiles/todd/Source-Version/C113-08-05-13-C.dat",
+        "primaryPaper": "https://doi.org/10.1523/JNEUROSCI.0406-15.2015",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "mbfCellBodySemantics": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+        "morphologySpecification": "https://neuromorphological-file-specification.readthedocs.io/en/latest/NMF.html",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "Raw sourceClosedFlag=false is preserved; this is a source-evidenced MBF cell-body semantic interpretation, not a generic false-flag closure rule.",
+        "User Line 1–4 objects remain excluded because their biological meaning is unresolved.",
+        "LineLoop only: no fill, triangle, loft, surface, membrane, volume, internal object, biological measurement, SWC overlay, same-cell join or registration is admitted."
+      ]
+    }
+  ],
+  "summary": {
+    "auditedDatFileCount": 5,
+    "admittedRecordCount": 5,
+    "heldRecordCount": 0,
+    "admittedContourObjectCount": 48,
+    "admittedVertexCount": 2379,
+    "admittedRenderedPrimitiveCount": 48,
+    "toddAdmittedRecordCount": 3,
+    "toddAdmittedContourObjectCount": 33,
+    "toddAdmittedVertexCount": 1904,
+    "excludedToddUserLineObjectCount": 12,
+    "admittedFilledPolygonCount": 0,
+    "admittedTriangleCount": 0,
+    "admittedLoftCount": 0,
+    "admittedSurfaceCount": 0,
+    "admittedMembraneCount": 0,
+    "admittedVolumeCount": 0,
+    "admittedInternalStructureObjectCount": 0,
+    "biologicalMeasurementCount": 0,
+    "standardizedSwcOverlayCount": 0,
+    "sameCellCrossModalJoinCount": 0,
+    "registrationCount": 0
+  },
+  "relationshipBoundary": {
+    "sourceNativeFrameOnly": true,
+    "coordinateTransformToStandardizedSwcStatus": "not_established",
+    "overlayWithStandardizedSwcAllowed": false,
+    "sameCellMolecularProfileJoinCount": 0,
+    "sameSpecimenInternalStructureCount": 0,
+    "atlasRegistrationCount": 0
+  }
+}

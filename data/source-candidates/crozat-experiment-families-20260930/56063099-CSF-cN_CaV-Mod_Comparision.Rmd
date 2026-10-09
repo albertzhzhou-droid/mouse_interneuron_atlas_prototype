@@ -1,0 +1,2970 @@
+---
+title: "Modulation of calcium channel in spinal CSF-cNs"
+author: "Nicolas Wanaverbecq - Elysa Crozat - Edith Blasco"
+date: "`r Sys.Date()`"
+output:
+  word_document: 
+    toc: true
+    toc_depth: 5
+    highlight: null
+    fig_width: 5
+    fig_height: 3
+    keep_md: true
+  html_notebook:
+    toc: true
+    code_folding: hide
+    toc_depth: 5
+  pdf_document:
+    toc: true
+    toc_depth: 5
+  html_document:
+    toc: true
+    toc_depth: '5'
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# OPEN REQUIRED PACKAGES
+
+```{r}
+if(!require(psych)){install.packages("psych")}
+if(!require(FSA)){install.packages("FSA")}
+if(!require(car)){install.packages("car")}
+if(!require(multcompView)){install.packages("multcompView")}
+if(!require(PMCMRplus)){install.packages("PMCMRplus")}
+if(!require(emmeans)){install.packages("emmeans")}
+if(!require(lsmeans)){install.packages("lsmeans")}
+if(!require(nlme)){install.packages("nlme")}
+if(!require(Rmisc)){install.packages("Rmisc")}
+if(!require(rcompanion)){install.packages("rcompanion")}
+if(!require(pastecs)){install.packages("pastecs")}
+if(!require(dplyr)){install.packages("dplyr")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(lattice)){install.packages("lattice")}
+if(!require(BSDA)){install.packages("BSDA")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(rstatix)) install.packages("rstatix")
+if(!require(pak)) install.packages("pak")
+
+```
+
+# CALCIUM current modulation in CSF-cNs
+
+## **1 - CaV Modulation by GABA-B Rs**
+
+## **1.1 - CaV Modulation in Baclofen**
+
+```{r}
+
+library(readxl)
+
+BCL<- read_xlsx("BCL_INCA.xlsx")
+
+#View(BCL)
+names(BCL)
+
+BCL$Cell ->Cell
+BCL$Level ->Level
+BCL$Cond->Cond
+BCL$Dens->Dens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+BCL$Cond <- factor(BCL$Cond, levels = c("CTR", "BCL", "WASH"))
+BCL$Level <- factor(BCL$Level, levels = c("Cerv", "Tho", "Lumb"))
+BCL$Cell <- factor(BCL$Cell)
+
+```
+
+### a) SUMMARIZE data for CaV modulation with Baclofen
+
+#### Current Density CTR vs BCL
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          BCL,
+          digits=0)
+
+Summarize(Dens~Level*Cond,
+          BCL,
+          digits=0)
+
+```
+
+### b) PLOT CaV Current modulation by Baclofen
+
+#### Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(BCL$Cond)  # This should only return onlmy Condition
+levels(BCL$Cond)  # Verify that levels match your intended order
+
+table(BCL$Cond, useNA = "ifany")  # Includes a count of NA values
+table(BCL$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+Bplot <- ggplot(BCL, aes(x = Cond, y = Dens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(Bplot)
+ggsave('Bplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(Dens ~ Level * Cond, BCL, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "BCL", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotBSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotBSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotBSE)
+ggsave('plotBSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotBSD)
+ggsave('plotBSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+### c) STATISTICAL analysis for CaV modulation by Baclofen
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+library(FSA)
+
+kruskal.test(Dens~Cond, data = BCL)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+```
+
+#### =\> Linear Model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+modelB = lm(Dens ~ Level*Cond,
+           data = BCL)
+# Summary overall p-value and r-square 
+summary(modelB)
+```
+
+#### ##Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelB,type = "II")
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelB,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelB, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## **1.2 - CaV Modulation Baclofen in CGP**
+
+```{r}
+
+library(readxl)
+
+CGP<- read_xlsx("CGP_INCA.xlsx")
+#View(CGP)
+names(CGP)
+
+CGP$Cell ->Cell
+CGP$Level ->Level
+CGP$Cond ->Cond
+CGP$Dens ->Dens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+CGP$Cond <- factor(CGP$Cond, levels = c("CTR", "CGP", "WASH"))
+CGP$Level <- factor(CGP$Level, levels = c("Cerv", "Tho", "Lumb"))
+CGP$Cell <- factor(CGP$Cell)
+
+```
+
+### a) SUMMARIZE data for GABA-B Rs in CGP
+
+#### Current Density CTR vs BCL in CGP
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          CGP,
+          digits=0)
+
+Summarize(Dens~Level*Cond,
+          CGP,
+          digits=0)
+
+```
+
+### b) PLOT CaV Current modulation by Baclofen in CGP
+
+#### Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(CGP$Cond)  # This should only return CTR, CGP, Wash
+levels(CGP$Cond)  # Verify that levels match your intended order
+
+table(CGP$Cond, useNA = "ifany")  # Includes a count of NA values
+table(CGP$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+Gplot <- ggplot(CGP, aes(x = Cond, y = Dens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(Gplot)
+ggsave('Gplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM/SD
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(Dens ~ Level * Cond, CGP, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "CGP", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotGSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotGSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotGSE)
+ggsave('plotGSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotGSD)
+ggsave('plotGSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+```
+
+### c) STATISTICAL analysis for CaV CURRENTS in BCL + CGP
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(FSA)
+
+kruskal.test(Dens~Cond, data = CGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Cond,
+                    data   = CGP,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+```
+
+#### =\> Linear model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelC = lm(Dens ~ Level*Cond,
+           data = CGP)
+# Summary overall p-value and r-square 
+summary(modelC)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelC,type = "II")
+
+```
+
+#### ###Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelC,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelC, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## **1.3 - CaV Inhibition in Baclofen +/- CGP**
+
+### a1) SUMMARIZE data for Baclofen inhibition
+
+```{r}
+
+library(readxl)
+IBCL<- read_excel("IBCL.xlsx")
+#View(IBCL)
+names(IBCL)
+
+IBCL$Cell -> Cell
+IBCL$Level ->Level
+IBCL$Cond ->Cond
+IBCL$Inh->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IBCL$Cond <- factor(IBCL$Cond, levels = c("BCL","WASH"))
+IBCL$Level <- factor(IBCL$Level, levels = c("Cerv", "Tho", "Lumb"))
+IBCL$Cell <- factor(IBCL$Cell)
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh~Cond,
+          IBCL,
+          digits=0)
+
+Summarize(Inh~Level*Cond,
+          IBCL,
+          digits=0)
+```
+
+### b1) PLOT Current data for Baclofen inhibition
+
+```{r}
+
+p0 <- ggplot(IBCL, aes(x=Level, y=Inh, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave('Bx_IBCL.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(IBCL, aes(x=Level, y=Inh, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave('Pt_IBCL.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis data for Baclofen inhibition
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+kruskal.test(Inh~Cond, data = IBCL)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+
+```
+
+#### =\> Linear model - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelIB = lm(Inh ~ Level*Cond,
+           data = IBCL)
+# Summary overall p-value and r-square 
+summary(modelIB)
+
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelIB,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelIB,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelIB, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### a2) SUMMARIZE data for Baclofen inhibition in CGP
+
+```{r}
+
+library(readxl)
+ICGP<- read_excel("ICGP.xlsx")
+#View(ICGP)
+names(ICGP)
+
+ICGP$Cell ->Cell
+ICGP$Cond->Cond
+ICGP$Level ->Level
+ICGP$Inh->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+ICGP$Cond <- factor(ICGP$Cond, levels = c("CTR", "CGP", "WASH"))
+ICGP$Level <- factor(ICGP$Level, levels = c("Cerv", "Tho", "Lumb"))
+ICGP$CELL <- factor(ICGP$Cell)
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh~Cond,
+          ICGP,
+          digits=1)
+
+Summarize(Inh~Level*Cond,
+          ICGP,
+          digits=1)
+```
+
+### b2) PLOT Current data for Baclofen inhibition in CGP
+
+```{r}
+
+p0 <- ggplot(ICGP, aes(x=Level<- factor(Level,levels = c("Cerv","Tho","Lopmb")), y=Inh, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-50, 100))
+
+ggsave('Bx_ICGP.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(ICGP, aes(x=Level<- factor(Level,levels = c("Cerv","Tho","Lomb")), y=Inh, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-50, 100))
+
+ggsave('Pt_ICGP.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c2) STATISTICAL analysis data for Baclofen inhibition in CGP
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+kruskal.test(Inh~Cond, data = ICGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+#### =\> Linear Model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model - region \* Cond
+
+```{r}
+
+modelIC = lm(Inh ~ Level*Cond,
+           data = ICGP)
+# Summary overall p-value and r-square 
+summary(modelIC)
+
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelIC,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelIC,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelIC, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## 1.4 Analysis on normalized currents - Cav BCL +/- CGP
+
+### a1) Normalized Current Density CTR vs BCL alone
+
+```{r}
+
+library(readxl)
+
+nBCL<- read_xlsx("BCL_nINCA.xlsx")
+
+#View(nBCL)
+names(nBCL)
+
+nBCL$Cell ->Cell
+nBCL$Level ->Level
+nBCL$Cond->Cond
+nBCL$nDens->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nBCL$Cond <- factor(nBCL$Cond, levels = c("CTR", "BCL", "WASH"))
+nBCL$Level <- factor(nBCL$Level, levels = c("Cerv", "Tho", "Lumb"))
+nBCL$Cell <- factor(nBCL$Cell)
+library(FSA)
+
+Summarize(nDens~Cond,
+          nBCL,
+          digits=0)
+
+Summarize(nDens~Level*Cond,
+          nBCL,
+          digits=0)
+
+kruskal.test(nDens~Cond, data = nBCL)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+### b1) PLOT CaV normalized Current Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(nBCL$Cond)  # This should only return CTR, BCL, WASH
+levels(nBCL$Cond)  # Verify that levels match your intended order
+
+table(nBCL$Cond, useNA = "ifany")  # Includes a count of NA values
+table(nBCL$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+nBplot <- ggplot(nBCL, aes(x = Cond, y = nDens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "nDens") +
+    theme_minimal()
+
+# Print the plot
+print(nBplot)
+ggsave('nBplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(nDens ~ Level * Cond, nBCL, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "BCL", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotnBSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotnBSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotnBSE)
+ggsave('plotnBSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotnBSD)
+ggsave('plotnBSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+### a2) Normalized Current Density CTR vs BCL in CGP
+
+```{r}
+
+library(readxl)
+
+nCGP<- read_xlsx("CGP_nINCA.xlsx")
+
+#View(nCGP)
+names(nCGP)
+
+nCGP$Cell ->Cell
+nCGP$Level ->Level
+nCGP$Cond->Cond
+nCGP$nDens->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nCGP$Cond <- factor(nCGP$Cond, levels = c("CTR", "CGP", "WASH"))
+nCGP$Level <- factor(nCGP$Level, levels = c("Cerv", "Tho", "Lumb"))
+nCGP$Cell <- factor(nCGP$Cell)
+library(FSA)
+
+Summarize(nDens~Cond,
+          nCGP,
+          digits=0)
+
+Summarize(nDens~Level*Cond,
+          nCGP,
+          digits=0)
+
+kruskal.test(nDens~Cond, data = nCGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+### b2) PLOT CaV normalized Current density in CGP
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(nCGP$Cond)  # This should only return Condition
+levels(nCGP$Cond)  # Verify that levels match your intended order
+
+table(nCGP$Cond, useNA = "ifany")  # Includes a count of NA values
+table(nCGP$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+nCplot <- ggplot(nCGP, aes(x = Cond, y = nDens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "nDens") +
+    theme_minimal()
+
+# Print the plot
+print(nCplot)
+ggsave('nCplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(nDens ~ Level * Cond, nCGP, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "CGP", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotnCSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotnCSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotnCSE)
+ggsave('plotnCSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotnCSD)
+ggsave('plotnCSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+## **2 - CaV Modulation by mACh-Rs**
+
+## **2.1 - CaV Modulation in Oxo-M**
+
+```{r}
+
+library(readxl)
+
+OXO<- read_xlsx("OXO_INCA.xlsx")
+
+#View(OXO)
+names(OXO)
+
+OXO$Cell ->Cell
+OXO$Level ->Level
+OXO$Cond->Cond
+OXO$Dens->Dens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+OXO$Cond <- factor(OXO$Cond, levels = c("CTR", "OXO", "WASH"))
+OXO$Level <- factor(OXO$Level, levels = c("Cerv", "Tho", "Lumb"))
+OXO$Cell <- factor(OXO$Cell)
+
+```
+
+### a) SUMMARIZE data for CaV modulation with Oxo-M
+
+#### Current Density CTR vs OXO
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          OXO,
+          digits=0)
+
+Summarize(Dens~Level*Cond,
+          OXO,
+          digits=0)
+
+```
+
+### b) PLOT CaV Current modulation by Oxo-M
+
+#### Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(OXO$Cond)  # This should only return onlmy Condition
+levels(OXO$Cond)  # Verify that levels match your intended order
+
+table(OXO$Cond, useNA = "ifany")  # Includes a count of NA values
+table(OXO$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+Oplot <- ggplot(OXO, aes(x = Cond, y = Dens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(Oplot)
+ggsave('Oplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(Dens ~ Level * Cond, OXO, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "OXO", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotOSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotOSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotOSE)
+ggsave('plotOSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotOSD)
+ggsave('plotOSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+### c) STATISTICAL analysis for CaV modulation by Oxo-M
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+library(FSA)
+
+kruskal.test(Dens~Cond, data = OXO)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+```
+
+#### =\> Linear Model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+modelO = lm(Dens ~ Level*Cond,
+           data = OXO)
+# Summary overall p-value and r-square 
+summary(modelO)
+```
+
+#### ##Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelO,type = "II")
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelO,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelO, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## **2.2 - CaV Modulation Oxo-M in Atropine**
+
+```{r}
+
+library(readxl)
+
+ATR<- read_xlsx("ATR_INCA.xlsx")
+#View(ATR)
+names(ATR)
+
+ATR$Cell ->Cell
+ATR$Level ->Level
+ATR$Cond->Cond
+ATR$Dens->Dens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+ATR$Cond <- factor(ATR$Cond, levels = c("CTR", "ATR", "WASH"))
+ATR$Level <- factor(ATR$Level, levels = c("Cerv", "Tho", "Lumb"))
+ATR$Cell <- factor(ATR$Cell)
+
+```
+
+### a) SUMMARIZE data for mACh-R in Atropine
+
+#### Current Density CTR vs Oxo in Atr
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          ATR,
+          digits=0)
+
+Summarize(Dens~Level*Cond,
+          ATR,
+          digits=0)
+
+```
+
+### b) PLOT CaV Current modulation by Oxo-M in Atropine
+
+#### Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(ATR$Cond)  # This should only return Condition
+levels(ATR$Cond)  # Verify that levels match your intended order
+
+table(ATR$Cond, useNA = "ifany")  # Includes a count of NA values
+table(ATR$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+Aplot <- ggplot(ATR, aes(x = Cond, y = Dens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(Aplot)
+ggsave('Aplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM/SD
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(Dens ~ Level * Cond, ATR, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "ATR", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotASE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotASD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotASE)
+ggsave('plotASE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotASD)
+ggsave('plotASD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+```
+
+### c) STATISTICAL analysis for CaV CURRENTS in OXO + ATR
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(FSA)
+
+kruskal.test(Dens~Cond, data = ATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+#### =\> Linear model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelA = lm(Dens ~ Level*Cond,
+           data = ATR)
+# Summary overall p-value and r-square 
+summary(modelA)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelA,type = "II")
+
+```
+
+#### ###Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelA,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelA, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## **2.3 - CaV Inhibition in Oxo-M +/- Atropine**
+
+### a1) SUMMARIZE data for Oxo-M inhibition
+
+```{r}
+
+library(readxl)
+IOXO<- read_excel("IOXO.xlsx")
+#View(IOXO)
+names(IOXO)
+
+IOXO$Cell -> Cell
+IOXO$Level ->Level
+IOXO$Cond ->Cond
+IOXO$Inh->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IOXO$Cond <- factor(IOXO$Cond, levels = c("OXO","WASH"))
+IOXO$Level <- factor(IOXO$Level, levels = c("Cerv", "Tho", "Lumb"))
+IOXO$Cell <- factor(IOXO$Cell)
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh~Cond,
+          IOXO,
+          digits=0)
+
+Summarize(Inh~Level*Cond,
+          IOXO,
+          digits=0)
+```
+
+### b1) PLOT Current data for Oxo-M inhibition
+
+```{r}
+
+p0 <- ggplot(IOXO, aes(x=Level, y=Inh, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-50, 120))
+
+ggsave('Bx_IOXO.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(IOXO, aes(x=Level, y=Inh, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-50, 120))
+
+ggsave('Pt_IOXO.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis data for Oxo-M inhibition
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+kruskal.test(Inh~Cond, data = IOXO)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+### d1) STATISTICAL analysis data for Oxo-M inhibition - 2 Factors
+
+### =\>Linear model - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelIO = lm(Inh ~ Level*Cond,
+           data = IOXO)
+# Summary overall p-value and r-square 
+summary(modelIO)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelIO,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelIO,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelIO, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### a2) SUMMARIZE data for Oxo-M inhibition in ATR
+
+```{r}
+
+library(readxl)
+IATR<- read_excel("IATR.xlsx")
+#View(IATR)
+names(IATR)
+
+IATR$Cell ->Cell
+IATR$Cond->Cond
+IATR$Level ->Level
+IATR$Inh->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IATR$Cond <- factor(IATR$Cond, levels = c("CTR", "ATR", "WASH"))
+IATR$Level <- factor(IATR$Level, levels = c("Cerv", "Tho", "Lumb"))
+IATR$CELL <- factor(IATR$Cell)
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh~Cond,
+          IATR,
+          digits=0)
+
+Summarize(Inh~Level*Cond,
+          IATR,
+          digits=0)
+```
+
+### b2) PLOT Current data for Oxo-M inhibition in ATR
+
+```{r}
+
+p0 <- ggplot(IATR, aes(x=Level<- factor(Level,levels = c("Cerv","Tho","Lumb")), y=Inh, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-50, 100))
+
+ggsave('Bx_IATR.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(IATR, aes(x=Level<- factor(Level,levels = c("Cerv","Tho","Lumb")), y=Inh, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-50, 100))
+
+ggsave('Pt_IATR.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c2) STATISTICAL analysis data for Oxo-M inhibition in Atr
+
+#### =\> Kruskal-Wallis Conditiion
+
+```{r}
+kruskal.test(Inh~Cond, data = IATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+#### =\> Linear Model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model - region \* Cond
+
+```{r}
+
+modelIA = lm(Inh ~ Level*Cond,
+           data = IATR)
+# Summary overall p-value and r-square 
+summary(modelIA)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelIA,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelIA,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelIA, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## 2.4 Analysis on normalized currents - Cav Oxo-M +/- ATR
+
+### a1) Normalized Current Density CTR vs Oxo-M alone
+
+```{r}
+
+library(readxl)
+
+nOXO<- read_xlsx("OXO_nINCA.xlsx")
+
+#View(nOXO)
+names(nOXO)
+
+nOXO$Cell ->Cell
+nOXO$Level ->Level
+nOXO$Cond->Cond
+nOXO$nDens->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nOXO$Cond <- factor(nOXO$Cond, levels = c("CTR", "OXO", "WASH"))
+nOXO$Level <- factor(nOXO$Level, levels = c("Cerv", "Tho", "Lumb"))
+nOXO$Cell <- factor(nOXO$Cell)
+library(FSA)
+
+Summarize(nDens~Cond,
+          nOXO,
+          digits=0)
+
+Summarize(nDens~Level*Cond,
+          nOXO,
+          digits=0)
+
+kruskal.test(nDens~Cond, data = nOXO)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+```
+
+### b1) PLOT CaV normalized Current Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(nOXO$Cond)  # This should only return Condition
+levels(nOXO$Cond)  # Verify that levels match your intended order
+
+table(nOXO$Cond, useNA = "ifany")  # Includes a count of NA values
+table(nOXO$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+nOplot <- ggplot(nOXO, aes(x = Cond, y = nDens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(nOplot)
+ggsave('nOplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(nDens ~ Level * Cond, nOXO, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "OXO", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotnOSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotnOSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotnOSE)
+ggsave('plotnOSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotnOSD)
+ggsave('plotnOSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+### a2) Normalized Current Density CTR vs Oxo-M in ATR
+
+```{r}
+
+library(readxl)
+
+nATR<- read_xlsx("ATR_nINCA.xlsx")
+
+#View(nATR)
+names(nATR)
+
+nATR$Cell ->Cell
+nATR$Level ->Level
+nATR$Cond->Cond
+nATR$nDens->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nATR$Cond <- factor(nATR$Cond, levels = c("CTR", "ATR", "WASH"))
+nATR$Level <- factor(nATR$Level, levels = c("Cerv", "Tho", "Lumb"))
+nATR$Cell <- factor(nATR$Cell)
+
+library(FSA)
+
+Summarize(nDens~Cond,
+          nATR,
+          digits=0)
+
+Summarize(nDens~Level*Cond,
+          nATR,
+          digits=0)
+
+kruskal.test(nDens~Cond, data = nATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+### b2) PLOT CaV normalized Current Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(nATR$Cond)  # This should only return CTR, CGP, WASH
+levels(nATR$Cond)  # Verify that levels match your intended order
+
+table(nATR$Cond, useNA = "ifany")  # Includes a count of NA values
+table(nATR$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+nAplot <- ggplot(nATR, aes(x = Cond, y = nDens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(nAplot)
+ggsave('nAplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(nDens ~ Level * Cond, nATR, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "ATR", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotnASE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotnASD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotnASE)
+ggsave('plotnASE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotnASD)
+ggsave('plotnASD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+## **3 - CaV Modulation by mGlu-Rs**
+
+## **3.1 - CaV Modulation in Glutamate**
+
+```{r}
+
+library(readxl)
+
+GLU<- read_xlsx("GLU_INCA.xlsx")
+
+#View(GLU)
+names(GLU)
+
+GLU$Cell ->Cell
+GLU$Level ->Level
+GLU$Cond->Cond
+GLU$Dens->Dens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+GLU$Cond <- factor(GLU$Cond, levels = c("CTR", "GLU", "WASH"))
+GLU$Level <- factor(GLU$Level, levels = c("Cerv", "Tho", "Lumb"))
+GLU$Cell <- factor(GLU$Cell)
+
+```
+
+### a) SUMMARIZE data for CaV modulation with Glu
+
+#### Current Density CTR vs OXO
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          GLU,
+          digits=0)
+
+Summarize(Dens~Level*Cond,
+          GLU,
+          digits=0)
+
+```
+
+### b) PLOT CaV Current modulation by Glu
+
+#### Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(GLU$Cond)  # This should only return onlmy Condition
+levels(GLU$Cond)  # Verify that levels match your intended order
+
+table(GLU$Cond, useNA = "ifany")  # Includes a count of NA values
+table(GLU$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+Gplot <- ggplot(GLU, aes(x = Cond, y = Dens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(Gplot)
+ggsave('Gplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(Dens ~ Level * Cond, GLU, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "GLU", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotGSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotGSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotGSE)
+ggsave('plotGSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotGSD)
+ggsave('plotGSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+### c) STATISTICAL analysis for CaV modulation by Glu
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+library(FSA)
+
+kruskal.test(Dens~Cond, data = GLU)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+```
+
+#### =\> Linear Model - 2 Factors Level \* Cond
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+modelG = lm(Dens ~ Level*Cond,
+           data = GLU)
+# Summary overall p-value and r-square 
+summary(modelG)
+```
+
+#### ##Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelG,type = "II")
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelG,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelG, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## **3.2 - CaV Inhibition in GLU**
+
+### a) SUMMARIZE data for GLU inhibition
+
+```{r}
+
+library(readxl)
+IGLU<- read_excel("IGLU.xlsx")
+#View(IGLU)
+names(IGLU)
+
+IGLU$Cell -> Cell
+IGLU$Level ->Level
+IGLU$Cond ->Cond
+IGLU$Inh->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IGLU$Cond <- factor(IGLU$Cond, levels = c("GLU","WASH"))
+IGLU$Level <- factor(IGLU$Level, levels = c("Cerv", "Tho", "Lumb"))
+IGLU$Cell <- factor(IGLU$Cell)
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh~Cond,
+          IGLU,
+          digits=0)
+
+Summarize(Inh~Level*Cond,
+          IGLU,
+          digits=0)
+```
+
+### b) PLOT Current data for GLU inhibition
+
+```{r}
+
+p0 <- ggplot(IGLU, aes(x=Level, y=Inh, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave('Bx_IGLU.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(IGLU, aes(x=Level, y=Inh, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave('Pt_IGLU.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c) STATISTICAL analysis data for GLU inhibition
+
+#### =\> Kruskal-Wallis Conditiion
+
+```{r}
+kruskal.test(Inh~Cond, data = IGLU)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+```
+
+#### =\> Linear model - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelIG = lm(Inh ~ Level*Cond,
+           data = IGLU)
+# Summary overall p-value and r-square 
+summary(modelIG)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelIG,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelIG,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelIG, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+## 3.3 Analysis on normalized currents - Cav Glu
+
+### a) Normalized Current Density CTR vs GLU alone
+
+```{r}
+
+library(readxl)
+
+nGLU<- read_xlsx("GLU_nINCA.xlsx")
+
+#View(nGLU)
+names(nGLU)
+
+nGLU$Cell ->Cell
+nGLU$Level ->Level
+nGLU$Cond->Cond
+nGLU$nDens->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nGLU$Cond <- factor(nGLU$Cond, levels = c("CTR", "GLU", "WASH"))
+nGLU$Level <- factor(nGLU$Level, levels = c("Cerv", "Tho", "Lumb"))
+nGLU$Cell <- factor(nGLU$Cell)
+
+library(FSA)
+
+Summarize(nDens~Cond,
+          nGLU,
+          digits=0)
+
+Summarize(nDens~Level*Cond,
+          nGLU,
+          digits=0)
+
+kruskal.test(nDens~Cond, data = nGLU)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+
+```
+
+### b) PLOT CaV normalized Current Current density
+
+```{r}
+
+# Load necessary packages
+library(ggplot2)
+library(readxl)
+library(dplyr)
+
+unique(nGLU$Cond)  # This should only return Condition
+levels(nGLU$Cond)  # Verify that levels match your intended order
+
+table(nGLU$Cond, useNA = "ifany")  # Includes a count of NA values
+table(nGLU$Level, useNA = "ifany")
+
+# Create the plot with distributed data points
+nGplot <- ggplot(nGLU, aes(x = Cond, y = nDens, group = Cell, color = Level)
+) +
+    geom_line() + 
+    geom_point() +
+    facet_wrap(~ Level, scales = "free_x") +
+    labs(title = "Densities by Condition and Level",
+         x = "Condition",
+         y = "Dens") +
+    theme_minimal()
+
+# Print the plot
+print(nGplot)
+ggsave('nGplot.eps', units="cm", width=10, height=6, dpi=300)
+
+# Create the plot with error bars and lines connecting the points Mean + SEM
+
+## Use the FSA Summarize function to summarize the data by Level and Cond
+summary_stats <- Summarize(nDens ~ Level * Cond, nGLU, digits = 0)
+
+## Compute SEM (Standard Error of the Mean) manually
+summary_stats$sem <- summary_stats$sd / sqrt(summary_stats$n) 
+
+# Ensure the order of Cond and Level in the summarized data
+summary_stats$Level <- factor(summary_stats$Level, levels = c("Cerv", "Tho", "Lumb"))
+summary_stats$Cond <- factor(summary_stats$Cond, levels = c("CTR", "GLU", "WASH"))
+
+## Create the plot with error bars (mean ± SEM)
+plotnGSE <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sem, ymax = mean + sem), width = 0.2) +  # Error bars for SEM
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with SEM",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+## Create the plot with error bars (mean ± standard deviation)
+plotnGSD <- ggplot(summary_stats, aes(x = Cond, y = mean, color = Level, group = Cond)) +
+  geom_line(aes(group = Cond), linewidth = 1) +  # Line connecting points by Cond
+  geom_point(size = 3) +  # Plot the mean data points
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.2) +  # Error bars for SD
+  facet_wrap(~ Level, scales = "free_x") +  # Faceting by Level
+  labs(title = "Mean Densities by Condition and Level with Standard Deviation",
+       x = "Condition",
+       y = "Mean Dens") +
+  theme_minimal()
+
+# Print the plot
+print(plotnGSE)
+ggsave('plotGSE.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+print(plotnGSD)
+ggsave('plotnGSD.eps', units = "cm", width = 10, height = 6, dpi = 300)
+
+
+```
+
+## 4 CaV modulation by mRs
+
+## 4.1 STATISTICAL analysis for normalized currents
+
+### a) CTR vs BCL +/- CGP
+
+### =\> Kruskal-Wallis Condition BCL +/- CGP
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+nBCL<- read_xlsx("BCL_nINCA.xlsx")
+#View(IBCL)
+
+nBCL$Cell ->Cell
+nBCL$Level ->Level
+nBCL$Cond ->Cond
+nBCL$nDens ->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nBCL$Cond <- factor(nBCL$Cond, levels = c("CTR", "BCL", "WASH"))
+nBCL$Level <- factor(nBCL$Level, levels = c("Cerv", "Tho", "Lumb"))
+nBCL$Cell <- factor(nBCL$Cell)
+
+print("1.1) Kruskal-Wallis test for BCL normalized current - Conditions")
+
+kruskal.test(nDens~Cond, data = nBCL)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for BCL normalized current - Levels")
+
+kruskal.test(nDens~Level, data = nBCL)
+
+pairwise.wilcox.test(nDens, Level,
+                 p.adjust.method = "BH")
+
+
+nCGP<- read_xlsx("CGP_nINCA.xlsx")
+#View(ICGP)
+
+nCGP$Cell ->Cell
+nCGP$Level ->Level
+nCGP$Cond ->Cond
+nCGP$nDens ->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nCGP$Cond <- factor(nCGP$Cond, levels = c("CTR","CGP", "WASH"))
+nCGP$Level <- factor(nCGP$Level, levels = c("Cerv", "Tho", "Lumb"))
+nCGP$Cell <- factor(nCGP$Cell)
+
+print("2.1) Kruskal-Wallis test for BCL in CGP inhibition - Conditions")
+
+kruskal.test(nDens~Cond, data = nCGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+print(" 2.2) Kruskal-Wallis test for BCL in CGP inhibition - Levels")
+
+kruskal.test(nDens~Level, data = nCGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Level,
+                 p.adjust.method = "BH")
+```
+
+### =\> Linear model BCL alone - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelnB = lm(nDens ~ Level*Cond,
+           data = nBCL)
+# Summary overall p-value and r-square 
+summary(modelnB)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelnB,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelnB,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelnB, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### =\> Linear model BCL in CGP - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelnC = lm(nDens ~ Level*Cond,
+           data = nCGP)
+# Summary overall p-value and r-square 
+summary(modelnC)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelnC,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelnC,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelnC, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### =\> Friedman test BCL alone
+
+```{r}
+library(tidyverse)
+library(rstatix)
+library(knitr)  # For tables
+library(gt)     # For better table formatting
+
+# Test data with Friedmlan test
+friedman_results <- nBCL %>%
+  group_by(Level) %>%
+  friedman_test(nDens ~ Cond | Cell)
+
+#colnames(friedman_results)
+#str(friedman_results)
+```
+
+#### #Pairwise comparison in one Level against condition / **Benjamini-Hochberg (FDR) correction**
+
+```{r}
+
+pairwise_results <- nBCL %>%
+  group_by(Level) %>%
+  pairwise_wilcox_test(nDens ~ Cond, paired = TRUE, p.adjust.method = "BH")
+
+```
+
+#### \## Print Test results
+
+```{r}
+
+
+print(friedman_results)
+
+# Print Pairwise Wilcoxon results with p-values and BH correction
+pairwise_results %>% select(Level, group1, group2, p, p.adj)
+
+```
+
+### =\> Friedman test BCL in CGP
+
+```{r}
+library(tidyverse)
+library(rstatix)
+library(knitr)  # For tables
+library(gt)     # For better table formatting
+
+# Test data with Friedmlan test
+friedman_results <- CGP %>%
+  group_by(Level) %>%
+  friedman_test(Dens ~ Cond | Cell)
+
+#colnames(friedman_results)
+#str(friedman_results)
+```
+
+#### #Pairwise comparison in one Level against condition / **Benjamini-Hochberg (FDR) correction**
+
+```{r}
+
+pairwise_results <- CGP %>%
+  group_by(Level) %>%
+  pairwise_wilcox_test(Dens ~ Cond, paired = TRUE, p.adjust.method = "BH")
+
+```
+
+#### ##Print Test results
+
+```{r}
+
+print(friedman_results)
+
+# Print Pairwise Wilcoxon results with p-values and BH correction
+pairwise_results %>% select(Level, group1, group2, p, p.adj)
+
+```
+
+### b) CTR vs OXO +/- ATR
+
+### =\> Kruskal-Wallis Condition OXO +/- ATR
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+nOXO<- read_xlsx("OXO_nINCA.xlsx")
+#View(nOXO)
+
+nOXO$Cell ->Cell
+nOXO$Level ->Level
+nOXO$Cond ->Cond
+nOXO$nDens ->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nOXO$Cond <- factor(nOXO$Cond, levels = c("CTR", "OXO", "WASH"))
+nOXO$Level <- factor(nOXO$Level, levels = c("Cerv", "Tho", "Lumb"))
+nOXO$Cell <- factor(nOXO$Cell)
+
+print("1.1) Kruskal-Wallis test for OXO normalized current - Conditions")
+
+kruskal.test(nDens~Cond, data = nOXO)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for OXO normalized current - Levels")
+
+kruskal.test(nDens~Level, data = nOXO)
+
+pairwise.wilcox.test(nDens, Level,
+                 p.adjust.method = "BH")
+
+
+nATR<- read_xlsx("ATR_nINCA.xlsx")
+#View(ICGP)
+
+nATR$Cell ->Cell
+nATR$Level ->Level
+nATR$Cond ->Cond
+nATR$nDens ->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nATR$Cond <- factor(nATR$Cond, levels = c("CTR", "ATR", "WASH"))
+nATR$Level <- factor(nATR$Level, levels = c("Cerv", "Tho", "Lumb"))
+nATR$Cell <- factor(nATR$Cell)
+
+print("2.1) Kruskal-Wallis test for OXO inn ATRR inhibition - Conditions")
+
+kruskal.test(nDens~Cond, data = nATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+print(" 2.2) Kruskal-Wallis test for BCL in CGP inhibition - Levels")
+
+kruskal.test(nDens~Level, data = nATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(nDens, Level,
+                 p.adjust.method = "BH")
+```
+
+### =\> Linear model OXO alone - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelnO = lm(nDens ~ Level*Cond,
+           data = nOXO)
+# Summary overall p-value and r-square 
+summary(modelnO)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelnO,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelnO,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelnO, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### =\> Linear model OXO in ATR - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelnA = lm(nDens ~ Level*Cond,
+           data = nATR)
+# Summary overall p-value and r-square 
+summary(modelnA)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelnA,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelnA,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelnA, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### =\> Friedman test OXO alone
+
+```{r}
+library(tidyverse)
+library(rstatix)
+library(knitr)  # For tables
+library(gt)     # For better table formatting
+
+# Test data with Friedmlan test
+friedman_results <- OXO %>%
+  group_by(Level) %>%
+  friedman_test(Dens ~ Cond | Cell)
+
+#colnames(friedman_results)
+#str(friedman_results)
+```
+
+#### #Pairwise comparison in one Level against condition / **Benjamini-Hochberg (FDR) correction**
+
+```{r}
+
+pairwise_results <- OXO %>%
+  group_by(Level) %>%
+  pairwise_wilcox_test(Dens ~ Cond, paired = TRUE, p.adjust.method = "BH")
+
+```
+
+#### ##Print Test results
+
+```{r}
+
+print(friedman_results)
+
+# Print Pairwise Wilcoxon results with p-values and BH correction
+pairwise_results %>% select(Level, group1, group2, p, p.adj)
+
+```
+
+### =\> Friedman test OXO in ATR
+
+```{r}
+library(tidyverse)
+library(rstatix)
+library(knitr)  # For tables
+library(gt)     # For better table formatting
+
+# Test data with Friedmlan test
+friedman_results <- ATR %>%
+  group_by(Level) %>%
+  friedman_test(Dens ~ Cond | Cell)
+
+#colnames(friedman_results)
+#str(friedman_results)
+```
+
+#### #Pairwise comparison in one Level against condition / **Benjamini-Hochberg (FDR) correction**
+
+```{r}
+
+pairwise_results <- ATR %>%
+  group_by(Level) %>%
+  pairwise_wilcox_test(Dens ~ Cond, paired = TRUE, p.adjust.method = "BH")
+
+```
+
+#### #Print Test results
+
+```{r}
+
+print(friedman_results)
+
+# Print Pairwise Wilcoxon results with p-values and BH correction
+pairwise_results %>% select(Level, group1, group2, p, p.adj)
+
+```
+
+### c) CTR vs GLU Alone
+
+### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+nGLU<- read_xlsx("GLU_nINCA.xlsx")
+#View(IGLU)
+
+nGLU$Cell ->Cell
+nGLU$Level ->Level
+nGLU$Cond ->Cond
+nGLU$nDens ->nDens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+nGLU$Cond <- factor(nGLU$Cond, levels = c("CTR", "GLU", "WASH"))
+nGLU$Level <- factor(nGLU$Level, levels = c("Cerv", "Tho", "Lumb"))
+nGLU$Cell <- factor(nGLU$Cell)
+
+print(" 1.1) Kruskal-Wallis test for GLU inhibition - Conditions")
+
+kruskal.test(nDens~Cond, data = nGLU)
+
+pairwise.wilcox.test(nDens, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for GLU inhibition - Levels")
+
+kruskal.test(nDens~Level, data = nGLU)
+
+pairwise.wilcox.test(nDens, Level,
+                 p.adjust.method = "BH")
+
+```
+
+### =\> Linear model GLU alone - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelnG = lm(nDens ~ Level*Cond,
+           data = nGLU)
+# Summary overall p-value and r-square 
+summary(modelnG)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelnG,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelnG,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelnG, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```
+
+### =\> Friedman test GLU alone
+
+```{r}
+library(tidyverse)
+library(rstatix)
+library(knitr)  # For tables
+library(gt)     # For better table formatting
+
+# Test data with Friedmlan test
+friedman_results <- GLU %>%
+  group_by(Level) %>%
+  friedman_test(Dens ~ Cond | Cell)
+
+#colnames(friedman_results)
+#str(friedman_results)
+```
+
+#### #Pairwise comparison in one Level against condition / **Benjamini-Hochberg (FDR) correction**
+
+```{r}
+
+pairwise_results <- GLU %>%
+  group_by(Level) %>%
+  pairwise_wilcox_test(Dens ~ Cond, paired = TRUE, p.adjust.method = "BH")
+
+```
+
+#### ##Print Test results
+
+```{r}
+
+print(friedman_results)
+
+# Print Pairwise Wilcoxon results with p-values and BH correction
+pairwise_results %>% select(Level, group1, group2, p, p.adj)
+
+```
+
+## 4.2 STATISTICAL analysis for CaV inhibition
+
+### a) CTR vs BCL +/- CGP
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+IBCL<- read_xlsx("IBCL.xlsx")
+#View(IBCL)
+
+IBCL$Cell ->Cell
+IBCL$Level ->Level
+IBCL$Cond ->Cond
+IBCL$Inh ->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IBCL$Cond <- factor(IBCL$Cond, levels = c("BCL", "WASH"))
+IBCL$Level <- factor(IBCL$Level, levels = c("Cerv", "Tho", "Lumb"))
+IBCL$Cell <- factor(IBCL$Cell)
+
+print(" 1.1) Kruskal-Wallis test for BCL inhibition - Conditions")
+
+kruskal.test(Inh~Cond, data = IBCL)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for BCL inhibition - Levels")
+
+kruskal.test(Inh~Level, data = IBCL)
+
+pairwise.wilcox.test(Inh, Level,
+                 p.adjust.method = "BH")
+
+
+ICGP<- read_xlsx("ICGP.xlsx")
+#View(ICGP)
+
+ICGP$Cell ->Cell
+ICGP$Level ->Level
+ICGP$Cond ->Cond
+ICGP$Inh ->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+ICGP$Cond <- factor(ICGP$Cond, levels = c("CGP", "WASH"))
+ICGP$Level <- factor(ICGP$Level, levels = c("Cerv", "Tho", "Lumb"))
+ICGP$Cell <- factor(ICGP$Cell)
+
+print("2.1) Kruskal-Wallis test for BCL in CGP inhibition - Conditions")
+
+kruskal.test(Inh~Cond, data = ICGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+print(" 2.2) Kruskal-Wallis test for BCL in CGP inhibition - Levels")
+
+kruskal.test(Inh~Level, data = ICGP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Level,
+                 p.adjust.method = "BH")
+```
+
+### b) CTR vs Oxo-M +/- ATR
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+IOXO<- read_xlsx("IOXO.xlsx")
+#View(IOXO)
+
+IOXO$Cell ->Cell
+IOXO$Level ->Level
+IOXO$Cond ->Cond
+IOXO$Inh ->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IOXO$Cond <- factor(IOXO$Cond, levels = c("OXO", "WASH"))
+IOXO$Level <- factor(IOXO$Level, levels = c("Cerv", "Tho", "Lumb"))
+IOXO$Cell <- factor(IOXO$Cell)
+
+print(" 1.1) Kruskal-Wallis test for OXO-M inhibition - Conditions")
+
+kruskal.test(Inh~Cond, data = IOXO)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for OXO-M inhibition - Levels")
+
+kruskal.test(Inh~Level, data = IOXO)
+
+pairwise.wilcox.test(Inh, Level,
+                 p.adjust.method = "BH")
+
+
+IATR<- read_xlsx("IATR.xlsx")
+#View(IATR)
+
+IATR$Cell ->Cell
+IATR$Level ->Level
+IATR$Cond ->Cond
+IATR$Inh ->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IATR$Cond <- factor(IATR$Cond, levels = c("ATR", "WASH"))
+IATR$Level <- factor(IATR$Level, levels = c("Cerv", "Tho", "Lumb"))
+IATR$Cell <- factor(IATR$Cell)
+
+print("2.1) Kruskal-Wallis test for OXO-M in ATR inhibition - Conditions")
+
+kruskal.test(Inh~Cond, data = IATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+print(" 2.2) Kruskal-Wallis test for OXO-M in ATR inhibition - Levels")
+
+kruskal.test(Inh~Level, data = IATR)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Level,
+                 p.adjust.method = "BH")
+```
+
+### c) CTR vs Glu
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+IGLU<- read_xlsx("IGLU.xlsx")
+#View(IGLU)
+
+IGLU$Cell ->Cell
+IGLU$Level ->Level
+IGLU$Cond ->Cond
+IGLU$Inh ->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IGLU$Cond <- factor(IGLU$Cond, levels = c("GLU", "WASH"))
+IGLU$Level <- factor(IGLU$Level, levels = c("Cerv", "Tho", "Lumb"))
+IGLU$Cell <- factor(IGLU$Cell)
+
+print(" 1.1) Kruskal-Wallis test for GLU inhibition - Conditions")
+
+kruskal.test(Inh~Cond, data = IGLU)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for GLU inhibition - Levels")
+
+kruskal.test(Inh~Level, data = IGLU)
+
+pairwise.wilcox.test(Inh, Level,
+                 p.adjust.method = "BH")
+
+```
+
+## **5 - CaV Inhibition comparison BCL vs OXO**
+
+### a) SUMMARIZE data fo BCL - OXO inhibition
+
+```{r}
+
+library(readxl)
+IBO<- read_excel("IBCL_OXO.xlsx")
+#View(IBO)
+names(IBO)
+
+IBO$Cell -> Cell
+IBO$Level ->Level
+IBO$Cond ->Cond
+IBO$Inh->Inh
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IBO$Cond <- factor(IBO$Cond, levels = c("BCL","OXO"))
+IBO$Level <- factor(IBO$Level, levels = c("Cerv", "Tho", "Lumb"))
+IBO$Cell <- factor(IBO$Cell)
+```
+
+```{r}
+
+library(FSA)
+
+Summarize(Inh~Cond,
+          IBO,
+          digits=0)
+
+Summarize(Inh~Level*Cond,
+          IBO,
+          digits=0)
+```
+
+### b) PLOT Current data for Baclofen vs Oxo-M inhibition
+
+```{r}
+
+p0 <- ggplot(IBO, aes(x=Level, y=Inh, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave('Bx_IBO.eps', units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(IBO, aes(x=Level, y=Inh, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave('Pt_IBO.eps', units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c) STATISTICAL analysis data for Baclofen vs Oxo-M inhibition
+
+#### =\> Kruskal-Wallis Condition
+
+```{r}
+
+library(readxl)
+library(rcompanion)
+
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+IBO$Cond <- factor(IBO$Cond, levels = c("BCL", "OXO"))
+IBO$Level <- factor(IBO$Level, levels = c("Cerv", "Tho", "Lumb"))
+IBO$Cell <- factor(IBO$Cell)
+
+print(" 1.1) Kruskal-Wallis test for BCL vs OXO inhibition - Conditions")
+
+kruskal.test(Inh~IBO$Cond, data = IBO)
+
+pairwise.wilcox.test(Inh, Cond,
+                 p.adjust.method = "BH")
+
+print("1.2) Kruskal-Wallis test for BCL vs OXO inhibition - Levels")
+
+kruskal.test(Inh~IBO$Level, data = IBO)
+
+pairwise.wilcox.test(Inh, Level,
+                 p.adjust.method = "BH")
+
+
+```
+
+#### s=\> Linear model - 2 Factors Condition \* Level
+
+#### \# Define Linear Model -) region \* Cond
+
+```{r}
+
+modelIBO = lm(Inh ~ Level*Cond,
+           data = IBO)
+# Summary overall p-value and r-square 
+summary(modelIBO)
+
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelIBO,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelIBO,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelIB, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+
+```

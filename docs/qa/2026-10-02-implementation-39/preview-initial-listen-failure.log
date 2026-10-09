@@ -1,0 +1,27 @@
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 start
+> WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start --host 127.0.0.1 --port 3003
+
+
+  vinext start  (port 3003)
+
+file:///private/tmp/ohri-i22-local-verification/node_modules/vinext/dist/server/socket-error-backstop.js:186
+		throw err;
+		^
+
+Error: listen EPERM: operation not permitted 0.0.0.0:3003
+    at Server.setupListenHandle [as _listen2] (node:net:1986:21)
+    at listenInCluster (node:net:2065:12)
+    at node:net:2274:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3003
+}
+
+Node.js v26.0.0

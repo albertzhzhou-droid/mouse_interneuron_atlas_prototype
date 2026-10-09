@@ -1,6 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import SourceRecordSetNavigation from "./SourceRecordSetNavigation";
+import { getSourceRecordSetInformation } from "./research-source-information-navigation.js";
+import { readSourceRegistrySelection, readSourceRegistryRecordSetSelection, writeSourceRegistryLocation, sourceDrilldownReceipt } from "./research-source-drilldown.js";
+import { useSourceListRovingFocus } from "./useSourceListRovingFocus";
 import {
   researchModelUpgradeRegistry as upgradeRegistryJson,
   researchSourceRegistry as registryJson,
@@ -42,6 +47,17 @@ function getSourceObjectSetRef(recordSet: RecordSet): SourceObjectSetRef | null 
   return recordSet.sourceObjectSetRef as SourceObjectSetRef;
 }
 
+function SourceInformationNavigation({ sourceId, recordSet }: { sourceId: string; recordSet: RecordSet }) {
+  let information;
+  try { information = getSourceRecordSetInformation(sourceId, recordSet.recordSetId, recordSet); }
+  catch (error) { return <p role="status">Source information unavailable: {error instanceof Error ? error.message : "The current source information declaration could not be verified."}</p>; }
+  if (information.status !== "available" || !information.link) return null;
+  return <div aria-label="Source aggregate information">
+    <p><strong>Source information:</strong> {information.boundary}</p>
+    <div className="source-registry-links"><Link href={information.link.href} prefetch={false} style={{ minHeight: 44, fontSize: 12 }}>{information.link.label}</Link></div>
+  </div>;
+}
+
 function integrityText(asset: Source["assets"][number]) {
   const receipt = asset.integrity;
   if (receipt.sha256) return `${readable(receipt.status)} · SHA-256 ${receipt.sha256.slice(0, 12)}…${receipt.sha256.slice(-8)}`;
@@ -57,6 +73,7 @@ function downloadSource(source: Source) {
     researchUpgradeRegistryId: upgradeRegistryJson.registryId,
     exportedAt: new Date().toISOString(),
     source,
+    recordSetNavigation: source.recordSets.map(recordSet => sourceDrilldownReceipt(source.id, recordSet.recordSetId)),
     linkedResearchUpgrades,
     scientificPolicy: registryJson.scientificPolicy,
   }, null, 2)], { type: "application/json" });
@@ -70,14 +87,62 @@ function downloadSource(source: Source) {
   window.setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
-export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notice: string) => void }) {
+function sourceParams(initialParams: Record<string, string | string[] | undefined>) {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(initialParams)) {
+    for (const item of Array.isArray(value) ? value : value === undefined ? [] : [value]) params.append(key, item);
+  }
+  return params;
+}
+
+function updateSourceUrl(values: Record<string, string | null>, push = false) {
+  const location = writeSourceRegistryLocation(window.location.href, values);
+  if (push) window.history.pushState(window.history.state, "", location);
+  else window.history.replaceState(window.history.state, "", location);
+}
+
+export default function ResearchSourceRegistry({ initialParams = {}, onNotice }: {
+  initialParams?: Record<string, string | string[] | undefined>;
+  onNotice?: (notice: string) => void;
+}) {
   const sources = registryJson.sources;
-  const [query, setQuery] = useState("");
-  const [laneFilter, setLaneFilter] = useState<Filter>("all");
-  const [speciesFilter, setSpeciesFilter] = useState<Filter>("all");
-  const [lifeStageFilter, setLifeStageFilter] = useState<Filter>("all");
-  const [admissionFilter, setAdmissionFilter] = useState<Filter>("all");
-  const [selectedId, setSelectedId] = useState(sources[0].id);
+  const initial = sourceParams(initialParams);
+  const initialSelection = readSourceRegistrySelection(initial);
+  const initialRecordSet = readSourceRegistryRecordSetSelection(initial, initialSelection.sourceId);
+  const initialParamsKey = JSON.stringify(initialParams);
+  const [locationHydrated, setLocationHydrated] = useState(false);
+  const [query, setQuery] = useState(initial.get("sourceQuery") ?? "");
+  const [laneFilter, setLaneFilter] = useState<Filter>(initial.get("sourceLane") ?? "all");
+  const [speciesFilter, setSpeciesFilter] = useState<Filter>(initial.get("sourceSpecies") ?? "all");
+  const [lifeStageFilter, setLifeStageFilter] = useState<Filter>(initial.get("sourceStage") ?? "all");
+  const [admissionFilter, setAdmissionFilter] = useState<Filter>(initial.get("sourceAdmission") ?? "all");
+  const [selectedId, setSelectedId] = useState<string | null>(initialSelection.sourceId);
+  const [sourceError, setSourceError] = useState(initialSelection.error);
+  const [requestedRecordSetId, setRequestedRecordSetId] = useState(initialRecordSet.recordSetId);
+  const [recordSetError, setRecordSetError] = useState(initialRecordSet.error);
+
+  useEffect(() => {
+    const restore = () => {
+      const params = new URLSearchParams(window.location.search);
+      const selection = readSourceRegistrySelection(params);
+      setSelectedId(selection.sourceId); setSourceError(selection.error);
+      const recordSet = readSourceRegistryRecordSetSelection(params, selection.sourceId);
+      setRequestedRecordSetId(recordSet.recordSetId); setRecordSetError(recordSet.error);
+      setQuery(params.get("sourceQuery") ?? ""); setLaneFilter(params.get("sourceLane") ?? "all");
+      setSpeciesFilter(params.get("sourceSpecies") ?? "all"); setLifeStageFilter(params.get("sourceStage") ?? "all");
+      setAdmissionFilter(params.get("sourceAdmission") ?? "all");
+      setLocationHydrated(true);
+    };
+    restore();
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, [initialParamsKey]);
+
+  const selectSource = (id: string) => {
+    setSelectedId(id); setSourceError(null); setRequestedRecordSetId(null); setRecordSetError(null);
+    updateSourceUrl({ source: id, recordSet: null }, true);
+    onNotice?.(`Selected source ${id}; no biological identity or geometry was changed`);
+  };
 
   const lanes = unique(sources.flatMap((source) => source.researchLanes));
   const species = unique(sources.flatMap((source) => source.speciesScopes.map((scope) => scope.scientificName)));
@@ -113,14 +178,17 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
     });
   }, [admissionFilter, laneFilter, lifeStageFilter, query, sources, speciesFilter]);
 
-  const selected = sources.find((source) => source.id === selectedId) ?? sources[0];
-  const selectedUpgrades = selected.linkedUpgradeIds.map((id) => (
+  const selected = sources.find((source) => source.id === selectedId) ?? null;
+  const sourceListFocus = useSourceListRovingFocus(visibleSources.map(source => source.id), selectedId, "canonical-source-registry");
+  const selectedUpgrades = (selected?.linkedUpgradeIds ?? []).map((id) => (
     upgradeRegistryJson.upgrades.find((upgrade) => upgrade.id === id)
   )).filter((upgrade): upgrade is (typeof upgradeRegistryJson.upgrades)[number] => Boolean(upgrade));
-  const selectedVisible = visibleSources.some((source) => source.id === selected.id);
+  const selectedVisible = visibleSources.some((source) => source.id === selected?.id);
   const aliases = sources.reduce((count, source) => count + source.aliases.length, 0);
   return (
-    <section className="source-registry" aria-labelledby="source-registry-heading">
+    <>
+    {!locationHydrated && <p className="source-registry-boundary" role="status" aria-live="polite">Preparing source selection…</p>}
+    <section className="source-registry" aria-labelledby="source-registry-heading" inert={!locationHydrated} aria-busy={!locationHydrated}>
       <header className="source-registry-heading">
         <div>
           <p className="panel-kicker">UPG-108 / UPG-110 / UPG-113 · CANONICAL PROVENANCE · LANE-SCOPED CONTEXT</p>
@@ -148,28 +216,28 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
 
       <div className="source-registry-controls">
         <label>Search source, DOI, accession or scope
-          <input type="search" value={query} maxLength={180} placeholder="e.g. GSE103840, P17–P28, nucleus, UPG-109" onChange={(event) => setQuery(event.target.value)} />
+          <input type="search" value={query} maxLength={180} placeholder="e.g. GSE103840, P17–P28, nucleus, UPG-109" onChange={(event) => { setQuery(event.target.value); updateSourceUrl({ sourceQuery: event.target.value }); }} />
         </label>
         <label>Research lane
-          <select value={laneFilter} onChange={(event) => setLaneFilter(event.target.value)}>
+          <select value={laneFilter} onChange={(event) => { setLaneFilter(event.target.value); updateSourceUrl({ sourceLane: event.target.value }); }}>
             <option value="all">All lanes</option>
             {lanes.map((lane) => <option value={lane} key={lane}>{readable(lane)}</option>)}
           </select>
         </label>
         <label>Species
-          <select value={speciesFilter} onChange={(event) => setSpeciesFilter(event.target.value)}>
+          <select value={speciesFilter} onChange={(event) => { setSpeciesFilter(event.target.value); updateSourceUrl({ sourceSpecies: event.target.value }); }}>
             <option value="all">All source-declared species</option>
             {species.map((item) => <option value={item} key={item}>{item}</option>)}
           </select>
         </label>
         <label>Life stage
-          <select value={lifeStageFilter} onChange={(event) => setLifeStageFilter(event.target.value)}>
+          <select value={lifeStageFilter} onChange={(event) => { setLifeStageFilter(event.target.value); updateSourceUrl({ sourceStage: event.target.value }); }}>
             <option value="all">All source-declared stages</option>
             {lifeStages.map((stage) => <option value={stage} key={stage}>{stage}</option>)}
           </select>
         </label>
         <label>Admission
-          <select value={admissionFilter} onChange={(event) => setAdmissionFilter(event.target.value)}>
+          <select value={admissionFilter} onChange={(event) => { setAdmissionFilter(event.target.value); updateSourceUrl({ sourceAdmission: event.target.value }); }}>
             <option value="all">All admission states</option>
             {admissions.map((status) => <option value={status} key={status}>{readable(status)}</option>)}
           </select>
@@ -177,16 +245,18 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
       </div>
 
       <p className="taxonomy-result-count" role="status">{visibleSources.length} of {sources.length} canonical sources match · filtered absence is not biological absence</p>
+      <p id={sourceListFocus.helpId} className="sr-only">Use Up / Down, Home / End to move between sources; Enter selects the focused source.</p>
       <div className="source-registry-workspace">
-        <div className="source-registry-list" role="listbox" aria-label="Canonical research sources">
+        <div className="source-registry-list" role="listbox" aria-label="Canonical research sources" aria-describedby={sourceListFocus.helpId}>
           {visibleSources.map((source) => (
             <button
               type="button"
               role="option"
-              aria-selected={selected.id === source.id}
-              className={selected.id === source.id ? "selected" : ""}
+              aria-selected={selected?.id === source.id}
+              className={selected?.id === source.id ? "selected" : ""}
               key={source.id}
-              onClick={() => setSelectedId(source.id)}
+              {...sourceListFocus.buttonProps(source.id)}
+              onClick={() => selectSource(source.id)}
             >
               <span>{source.shortLabel} · {readable(source.sourceKind)}</span>
               <strong>{source.title}</strong>
@@ -197,7 +267,8 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
           {!visibleSources.length && <p className="type-empty">No canonical source matches these filters. This is not evidence that a source or biological feature is absent.</p>}
         </div>
 
-        <article className="source-registry-dossier" data-source-id={selected.id} aria-labelledby="selected-source-heading">
+        {!selected && <article className="source-registry-dossier" role="status"><h4>Requested source unavailable</h4><p>{sourceError}</p><p>No source dossier, navigation receipt or prior-source export is retained.</p></article>}
+        {selected && <article className="source-registry-dossier" data-source-id={selected.id} aria-labelledby="selected-source-heading">
           {!selectedVisible && <p className="source-registry-retained">Selected source retained outside the current filters; no replacement was inferred.</p>}
           <header>
             <div><span>{selected.id}</span><h4 id="selected-source-heading">{selected.title}</h4><p>{selected.citation.text}</p></div>
@@ -235,12 +306,13 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
             </div>
           </section>
 
+          {recordSetError && <p role="status">{recordSetError}</p>}
           <section className="source-registry-section" aria-labelledby="record-set-heading">
             <h5 id="record-set-heading">Source → record set → exact child gate</h5>
             <div className="source-record-set-list">
               {selected.recordSets.map((recordSet) => {
                 const sourceObjectSetRef = getSourceObjectSetRef(recordSet as RecordSet);
-                return <article key={recordSet.recordSetId}>
+                return <article key={recordSet.recordSetId} id={recordSet.recordSetId} data-record-set-id={recordSet.recordSetId}>
                   <header><span>{recordSet.recordSetId}</span><strong>{countText(recordSet)}</strong></header>
                   <dl>
                     <div><dt>Record kind</dt><dd>{readable(recordSet.recordKind)}</dd></div>
@@ -253,6 +325,11 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
                   </dl>
                   <p>{recordSet.childRosterRef.missingReason ?? "Exact bundled roster is available for constrained drill-down."}</p>
                   {sourceObjectSetRef && <p><strong>Source-object drill-down:</strong> {sourceObjectSetRef.missingReason ?? `Exact bundled objects are keyed by ${sourceObjectSetRef.idField}.`}</p>}
+                  {!recordSetError && <SourceInformationNavigation sourceId={selected.id} recordSet={recordSet} />}
+                  <SourceRecordSetNavigation key={`${selected.id}:${recordSet.recordSetId}`} sourceId={selected.id} recordSet={recordSet} initiallyOpen={requestedRecordSetId === recordSet.recordSetId} onOpenChange={open => {
+                    if (open) { setRequestedRecordSetId(recordSet.recordSetId); setRecordSetError(null); updateSourceUrl({ source: selected.id, recordSet: recordSet.recordSetId }); }
+                    else if (requestedRecordSetId === recordSet.recordSetId) { setRequestedRecordSetId(null); updateSourceUrl({ recordSet: null }); }
+                  }} />
                 </article>;
               })}
             </div>
@@ -294,8 +371,9 @@ export default function ResearchSourceRegistry({ onNotice }: { onNotice?: (notic
               )) : <p>None declared for this source.</p>}
             </div>
           </section>
-        </article>
+        </article>}
       </div>
     </section>
+    </>
   );
 }

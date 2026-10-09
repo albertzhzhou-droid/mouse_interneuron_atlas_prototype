@@ -1,0 +1,465 @@
+{
+  "registryReleaseId": "ohri-research-source-registry-0.1.0",
+  "researchUpgradeRegistryId": "ohri-research-model-upgrade-registry-0.1.0",
+  "exportedAt": "2026-10-05T09:52:07.735Z",
+  "source": {
+    "id": "SRC-GARCIA-RAMIREZ-2022",
+    "aliases": [
+      "garcia-ramirez-2022:aggregate-physiology",
+      "Figshare:20428674",
+      "PMCID:PMC9385948"
+    ],
+    "sourceKind": "dataset",
+    "title": "Identification of adult spinal Shox2 neuronal subpopulations based on unbiased computational clustering of electrophysiological properties",
+    "shortLabel": "Garcia-Ramirez adult physiology 2022",
+    "citation": {
+      "text": "Garcia-Ramirez DL, Singh S, McGrath JR, Ha NT and Dougherty KJ (2022). Identification of adult spinal Shox2 neuronal subpopulations based on unbiased computational clustering of electrophysiological properties. Frontiers in Neural Circuits 16:957084. CC BY 4.0.",
+      "doi": "10.3389/fncir.2022.957084",
+      "articleUrl": "https://doi.org/10.3389/fncir.2022.957084"
+    },
+    "accessions": [
+      "PMID:35991345",
+      "PMCID:PMC9385948",
+      "Figshare:20428674",
+      "Figshare-file:36551718",
+      "DOI:10.3389/fncir.2022.957084.s001"
+    ],
+    "speciesScopes": [
+      {
+        "scientificName": "Mus musculus",
+        "taxonId": "NCBITaxon:10090",
+        "context": "adult Shox2/Chx10 reporter whole-cell recording study",
+        "authority": "source_reported"
+      }
+    ],
+    "lifeStageScopes": [
+      {
+        "value": "adult, 8–25 weeks",
+        "context": "study-level recording preparation; individual recorded-cell ages remain unavailable",
+        "authority": "checksum_pinned_primary_article_methods",
+        "missingReason": null
+      }
+    ],
+    "regionScopes": [
+      {
+        "value": "lumbar spinal cord, L2–L5 transverse slices",
+        "context": "source study preparation, not atlas coordinates or an individual observation-to-segment assignment",
+        "authority": "checksum_pinned_primary_article_methods"
+      }
+    ],
+    "conditionScopes": [
+      "adult lumbar transverse slices",
+      "whole-cell patch clamp at room temperature",
+      "source-local alternative reporter, firing, k-means and hierarchical partitions"
+    ],
+    "modalities": [
+      "published aggregate electrophysiology summaries",
+      "primary article methodological context"
+    ],
+    "experimentalUnits": [
+      {
+        "unit": "source_recorded_neuronal_observations",
+        "count": 171,
+        "scope": "One recorded study analysis pool: 143 Shox2 and 28 Chx10 observations. Four alternative partitions are not pooled; this is not an animal count or an individually identified physical-cell roster.",
+        "authority": "checksum_pinned_published_source_context",
+        "missingReason": null,
+        "denominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+        "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "sourceLocator": {
+          "fileName": "PMC9385948.fullText.xml",
+          "sectionId": null,
+          "sectionTitleRaw": "Measurement and calculation of passive and active membrane properties",
+          "paragraphOrdinalWithinSection": 1,
+          "elementSha256": "20b23253da3ab386d83360aef2cb111d12886713000e27496920e3f92b81f367"
+        },
+        "reporterComposition": {
+          "Shox2": 143,
+          "Chx10": 28
+        },
+        "independentAnimalCount": null,
+        "cellToAnimalMapping": null
+      },
+      {
+        "unit": "source_reported_shox2_reporter_mice",
+        "count": 51,
+        "scope": "Source-reported Shox2 reporter animal cohort; no individual cell-to-animal mapping is provided in the retained adapter scope.",
+        "authority": "checksum_pinned_published_source_context",
+        "missingReason": null,
+        "denominatorId": "garcia-ramirez-2022:aggregate-physiology:shox2-reporter-mice-51",
+        "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "sourceLocator": {
+          "fileName": "PMC9385948.fullText.xml",
+          "sectionId": "s2",
+          "sectionTitleRaw": "Materials and methods",
+          "paragraphOrdinalWithinSection": 1,
+          "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+        }
+      },
+      {
+        "unit": "source_reported_chx10_reporter_mice",
+        "count": 6,
+        "scope": "Separate source-reported Chx10 reporter animal cohort; no individual cell-to-animal mapping is provided in the retained adapter scope.",
+        "authority": "checksum_pinned_published_source_context",
+        "missingReason": null,
+        "denominatorId": "garcia-ramirez-2022:aggregate-physiology:chx10-reporter-mice-6",
+        "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "sourceLocator": {
+          "fileName": "PMC9385948.fullText.xml",
+          "sectionId": "s2",
+          "sectionTitleRaw": "Materials and methods",
+          "paragraphOrdinalWithinSection": 1,
+          "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+        }
+      },
+      {
+        "unit": "prior_study_reused_shox2_recorded_observation_subset",
+        "count": 60,
+        "scope": "These Shox2 recordings were reused from a prior study within the present 171-observation pool; they are not added again to the current cohort.",
+        "authority": "checksum_pinned_published_source_context",
+        "missingReason": null,
+        "parentDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+        "isSubsetOfCurrentShox2Cohort": true,
+        "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "sourceLocator": {
+          "fileName": "PMC9385948.fullText.xml",
+          "sectionId": "s2",
+          "sectionTitleRaw": "Materials and methods",
+          "paragraphOrdinalWithinSection": 1,
+          "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+        }
+      },
+      {
+        "unit": "prior_study_reused_shox2_reporter_mice_subset",
+        "count": 28,
+        "scope": "These are 28 of the 51 source-reported Shox2 mice; they are a prior-study reuse subset and are not additional animals.",
+        "authority": "checksum_pinned_published_source_context",
+        "missingReason": null,
+        "parentDenominatorId": "garcia-ramirez-2022:aggregate-physiology:shox2-reporter-mice-51",
+        "isSubsetOfCurrentShox2Cohort": true,
+        "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "sourceLocator": {
+          "fileName": "PMC9385948.fullText.xml",
+          "sectionId": "s2",
+          "sectionTitleRaw": "Materials and methods",
+          "paragraphOrdinalWithinSection": 1,
+          "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+        }
+      }
+    ],
+    "recordSets": [
+      {
+        "recordSetId": "RS-GARCIA-RAMIREZ-ADULT-SPINAL-AGGREGATE-PHYSIOLOGY",
+        "parentSourceId": "SRC-GARCIA-RAMIREZ-2022",
+        "recordKind": "published_study_aggregate_electrophysiology_information",
+        "unitOfObservation": "source_study_aggregate_information_adapter",
+        "assignmentAuthority": "literal_published_supplement_tables_and_attributed_primary_article_context",
+        "includedRecordCount": {
+          "value": 1,
+          "unit": "study_aggregate_information_adapters",
+          "scope": "One information adapter retains four alternative partitions of the same 171 recorded neuronal observations; 48 property rows, 192 source-reported mean/SD summaries and 48 source statistical comparisons are nested evidence, not extra cells or types.",
+          "authority": "checksum_pinned_project_derivative",
+          "missingReason": null
+        },
+        "cellRosterAvailability": "not_applicable_aggregate_summary",
+        "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+        "dataPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "idField": "adapterId",
+        "childRosterRef": {
+          "status": "not_applicable_aggregate_summary",
+          "path": null,
+          "idField": null,
+          "missingReason": "This is a study aggregate information adapter. Retained source tables do not establish an individual physical-cell, molecular-profile or cell-to-animal roster; group/table identifiers cannot be promoted to cell identities."
+        },
+        "sourceInformationRef": {
+          "status": "bundled_aggregate_information",
+          "path": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "idField": "adapterId",
+          "href": "/explore/cell-types/additional#garcia-ramirez-physiology-panel"
+        },
+        "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+        "alternativePartitions": [
+          {
+            "tableId": "garcia-ramirez-2022:aggregate-physiology:ST1",
+            "partitionKind": "reporter_population",
+            "groupCounts": [
+              143,
+              28
+            ],
+            "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+            "groupCountSum": 171
+          },
+          {
+            "tableId": "garcia-ramirez-2022:aggregate-physiology:ST2",
+            "partitionKind": "firing_pattern",
+            "groupCounts": [
+              88,
+              49,
+              24,
+              10
+            ],
+            "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+            "groupCountSum": 171
+          },
+          {
+            "tableId": "garcia-ramirez-2022:aggregate-physiology:ST3",
+            "partitionKind": "k_means",
+            "groupCounts": [
+              23,
+              11,
+              68,
+              69
+            ],
+            "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+            "groupCountSum": 171
+          },
+          {
+            "tableId": "garcia-ramirez-2022:aggregate-physiology:ST4",
+            "partitionKind": "hierarchical",
+            "groupCounts": [
+              15,
+              20,
+              32,
+              25,
+              27,
+              52
+            ],
+            "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+            "groupCountSum": 171
+          }
+        ],
+        "sourceSummaryCounts": {
+          "supplementTables": 4,
+          "propertyRows": 48,
+          "meanSdSummaries": 192,
+          "sourceReportedComparisons": 48
+        },
+        "admissionBoundary": {
+          "newMolecularProfiles": 0,
+          "newPhysicalCellRosterRows": 0,
+          "newObservedGeometryObjects": 0,
+          "sameCellCrossSourceJoins": 0,
+          "registrations": 0,
+          "sourceTracesAvailableInAdapterScope": false,
+          "rawAbfFilesAvailableInAdapterScope": false,
+          "physiologyGroupsAreMolecularCellTypes": false,
+          "clusterLabelsAreGeneticLineage": false,
+          "adultAtlasCoordinatesEstablished": false,
+          "M2Admission": 0,
+          "M4Admission": 0,
+          "text": "These are published aggregate electrophysiology summaries and study-local classification methods. No cell-level roster, raw trace, morphology, atlas placement, molecular equivalence, synapse or internal structure is admitted."
+        }
+      }
+    ],
+    "assets": [
+      {
+        "id": "ASSET-GARCIA-RAMIREZ-2022-AGGREGATE-FACTS",
+        "kind": "checksum_pinned_project_derivative",
+        "accession": "ohri-garcia-ramirez-adult-spinal-aggregate-physiology-0.1.0",
+        "url": null,
+        "path": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 203887,
+          "sha256": "48e1788f3ee0e4472e7431f349418aea078a4b89b3766c35bcddfb946f4f1bf9",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-GARCIA-RAMIREZ-2022-DATA-SHEET-1",
+        "kind": "checksum_pinned_original_source",
+        "accession": "Figshare-file:36551718",
+        "url": "https://ndownloader.figshare.com/files/36551718",
+        "path": "data/source-candidates/garcia-ramirez-physiology-20261004/data-sheet-1-file36551718.docx",
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 687234,
+          "sha256": "7ef955d8378020d95eeff07be83ad0c602699337fdb89b79f6796c3e96b845e2",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-GARCIA-RAMIREZ-2022-PRIMARY-ARTICLE-XML",
+        "kind": "checksum_pinned_original_source",
+        "accession": "PMCID:PMC9385948",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9385948/fullTextXML",
+        "path": "data/source-candidates/garcia-ramirez-physiology-20261004/PMC9385948.fullText.xml",
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 228780,
+          "sha256": "b997e9c1565ba55dd361dcf47ac315883a9d1108c55d74c48db87f70f8bb7517",
+          "missingReason": null
+        }
+      },
+      {
+        "id": "ASSET-GARCIA-RAMIREZ-2022-FIGSHARE-METADATA",
+        "kind": "checksum_pinned_original_asset_metadata",
+        "accession": "Figshare:20428674",
+        "url": "https://api.figshare.com/v2/articles/20428674",
+        "path": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-article-20428674.json",
+        "bundled": true,
+        "integrity": {
+          "status": "verified",
+          "bytes": 35029,
+          "sha256": "ea6183d6e34233889e2900b14d980ad61edaf28f616052291bfaefac2406d865",
+          "missingReason": null
+        }
+      }
+    ],
+    "rights": {
+      "status": "CC-BY-4.0",
+      "note": "Exact Figshare asset metadata and primary article state CC BY4.0. Source attribution, original bytes, literal tables and extraction receipts are retained; no source code or inferential analysis was executed.",
+      "metadataPath": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-article-20428674.json",
+      "metadataLocator": "license"
+    },
+    "admission": {
+      "status": "published_aggregate_information_bundled",
+      "note": "One study information adapter and four alternative published aggregate tables are admitted. Zero new molecular profiles, physical-cell roster rows, geometry objects, same-cell joins, atlas registrations, M2 or M4 admissions are created."
+    },
+    "researchLanes": [
+      "electrophysiology",
+      "sources"
+    ],
+    "linkedUpgradeIds": [
+      "UPG-173"
+    ],
+    "missingness": [
+      {
+        "field": "physical_cell_and_cell_to_animal_roster",
+        "status": "NOT_ESTABLISHED",
+        "reason": "The retained aggregate tables have no individually identified cell roster or cell-to-animal mapping; n=171 denotes recorded neuronal observations, not 171 animals."
+      },
+      {
+        "field": "individual_age_and_sex",
+        "status": "NOT_ESTABLISHED",
+        "reason": "8–25 weeks is the study preparation range. Individual observation ages and sex are not provided in the retained article methods/tables."
+      },
+      {
+        "field": "raw_electrophysiology_traces_in_adapter_scope",
+        "status": "NOT_BUNDLED",
+        "reason": "No raw ABF or source trace is retained in this aggregate adapter scope; no synthetic or reconstructed trace is substituted."
+      },
+      {
+        "field": "physiology_group_molecular_equivalence",
+        "status": "NOT_ESTABLISHED",
+        "reason": "Reporter/firing/k/H groups are source analytical partitions, not new canonical molecular types or genetic lineage assignments."
+      },
+      {
+        "field": "geometry_internal_structure_and_registration",
+        "status": "NOT_ADMITTED",
+        "reason": "No observed morphology, soma boundary, internal object, source anatomical coordinates or atlas transform is established by these aggregate tables."
+      },
+      {
+        "field": "cross_source_identity",
+        "status": "NOT_ESTABLISHED",
+        "reason": "Study aggregate and group identifiers do not establish physical-cell identity or a link to another source."
+      },
+      {
+        "field": "printed_fahp_and_fi_units",
+        "status": "SOURCE_UNIT_NOT_PRINTED",
+        "reason": "Normalized fAHP amplitude and F/I slope have no printed table units; missing units remain null."
+      },
+      {
+        "field": "attributed_source_statements",
+        "status": "SOURCE_STATEMENTS_HELD",
+        "reason": "The printed Cm = Rin/τ expression is not used to recompute values. The six-positive versus four-listed k-group count remains unresolved; no assignments are filled."
+      }
+    ]
+  },
+  "recordSetNavigation": [
+    {
+      "schemaVersion": "0.1.0",
+      "registryReleaseId": "ohri-research-source-registry-0.1.0",
+      "sourceId": "SRC-GARCIA-RAMIREZ-2022",
+      "recordSetId": "RS-GARCIA-RAMIREZ-ADULT-SPINAL-AGGREGATE-PHYSIOLOGY",
+      "recordKind": "published_study_aggregate_electrophysiology_information",
+      "unitOfObservation": "source_study_aggregate_information_adapter",
+      "includedRecordCount": {
+        "value": 1,
+        "unit": "study_aggregate_information_adapters",
+        "scope": "One information adapter retains four alternative partitions of the same 171 recorded neuronal observations; 48 property rows, 192 source-reported mean/SD summaries and 48 source statistical comparisons are nested evidence, not extra cells or types.",
+        "authority": "checksum_pinned_project_derivative",
+        "missingReason": null
+      },
+      "sourceObjectSetReference": null,
+      "authority": "declared_metadata_navigation_only",
+      "boundary": "Navigation uses declared source metadata only. The destination verifies its own source files and rendering permissions. No new profile, physical-cell identity, geometry, internal object or registration is admitted.",
+      "newAdmissionCount": 0,
+      "crossSourceIdentityJoinCount": 0,
+      "registrationCount": 0,
+      "status": "unavailable",
+      "reference": {
+        "status": "not_applicable_aggregate_summary",
+        "path": null,
+        "idField": null,
+        "missingReason": "This is a study aggregate information adapter. Retained source tables do not establish an individual physical-cell, molecular-profile or cell-to-animal roster; group/table identifiers cannot be promoted to cell identities."
+      },
+      "entries": [],
+      "reason": "This is a study aggregate information adapter. Retained source tables do not establish an individual physical-cell, molecular-profile or cell-to-animal roster; group/table identifiers cannot be promoted to cell identities.",
+      "sourceCitation": {
+        "text": "Garcia-Ramirez DL, Singh S, McGrath JR, Ha NT and Dougherty KJ (2022). Identification of adult spinal Shox2 neuronal subpopulations based on unbiased computational clustering of electrophysiological properties. Frontiers in Neural Circuits 16:957084. CC BY 4.0.",
+        "doi": "10.3389/fncir.2022.957084",
+        "articleUrl": "https://doi.org/10.3389/fncir.2022.957084"
+      },
+      "rights": {
+        "status": "CC-BY-4.0",
+        "note": "Exact Figshare asset metadata and primary article state CC BY4.0. Source attribution, original bytes, literal tables and extraction receipts are retained; no source code or inferential analysis was executed.",
+        "metadataPath": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-article-20428674.json",
+        "metadataLocator": "license"
+      },
+      "requestedSourcePage": "/sources?source=SRC-GARCIA-RAMIREZ-2022&recordSet=RS-GARCIA-RAMIREZ-ADULT-SPINAL-AGGREGATE-PHYSIOLOGY#RS-GARCIA-RAMIREZ-ADULT-SPINAL-AGGREGATE-PHYSIOLOGY",
+      "renderedViewCaptured": false,
+      "sourceBytesVerifiedByThisReceipt": false
+    }
+  ],
+  "linkedResearchUpgrades": [
+    {
+      "id": "UPG-173",
+      "priority": "P2",
+      "status": "in progress — exact-source aggregate physiology; integration validation pending",
+      "lane": "electrophysiology",
+      "description": "The prepared source information adapter retains exact Garcia-Ramirez 2022 Data Sheet 1 tables and primary Methods context for adult 8–25-week L2–L5 Shox2/Chx10 whole-cell recordings. It preserves four alternative partitions of one 171-recorded-observation pool (143 Shox2 and 28 Chx10), 192 literal mean ± SD summaries and 48 source comparisons, with original table labels/units/locators, separate 51-Shox2-mouse and 6-Chx10-mouse context, and prior-study reuse of 60 Shox2 recordings from 28 of those 51 mice as a subset. Figshare article 20428674/file 36551718 original 687,234 B DOCX is pinned by MD5 cd540639b14fda1fd1149b235384b795 and SHA-256 7ef955d8378020d95eeff07be83ad0c602699337fdb89b79f6796c3e96b845e2; the exact CC BY 4.0 asset metadata and primary article XML are retained. Complete only after current dedicated-route keyboard/narrow-screen/actual-download checks and current package/source-registry/manifest acceptance; the queue remains in progress. The four partitions are not independent cohorts, animals or molecular types; unprinted fAHP/F-I units and individual sex/age/cell-to-animal mapping remain unknown. Raw source statements are held without recalculation or missing assignments. No raw ABF/trace/per-cell roster or Supplementary Figure 1 image is bundled in this adapter scope, and zero new molecular profiles, physical cells, observed morphology, internal objects, cross-source identities, atlas placements, REG, M2 or M4 admissions are authorized",
+      "blocker": {
+        "code": "remaining_validation",
+        "detail": "Complete only after current dedicated-route keyboard/narrow-screen/actual-download checks and current package/source-registry/manifest acceptance"
+      },
+      "evidenceBasis": {
+        "markdown": "[Garcia-Ramirez et al.](https://doi.org/10.3389/fncir.2022.957084); [Data Sheet 1](https://doi.org/10.3389/fncir.2022.957084.s001); `data/garcia-ramirez-adult-spinal-physiology-0.1.json`; [exact Figshare asset metadata](https://api.figshare.com/v2/articles/20428674)",
+        "unlinkedText": "Garcia-Ramirez et al.; Data Sheet 1; `data/garcia-ramirez-adult-spinal-physiology-0.1.json`; exact Figshare asset metadata",
+        "references": [
+          {
+            "label": "Garcia-Ramirez et al.",
+            "url": "https://doi.org/10.3389/fncir.2022.957084"
+          },
+          {
+            "label": "Data Sheet 1",
+            "url": "https://doi.org/10.3389/fncir.2022.957084.s001"
+          },
+          {
+            "label": "exact Figshare asset metadata",
+            "url": "https://api.figshare.com/v2/articles/20428674"
+          }
+        ]
+      },
+      "lastVerification": {
+        "date": "2026-09-24",
+        "scope": "queue_row_and_registry_derivation",
+        "sourcePath": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#L168",
+        "independentEvidenceRecheck": false
+      },
+      "acceptanceBoundary": "It preserves four alternative partitions of one 171-recorded-observation pool (143 Shox2 and 28 Chx10), 192 literal mean ± SD summaries and 48 source comparisons, with original table labels/units/locators, separate 51-Shox2-mouse and 6-Chx10-mouse context, and prior-study reuse of 60 Shox2 recordings from 28 of those 51 mice as a subset.; Complete only after current dedicated-route keyboard/narrow-screen/actual-download checks and current package/source-registry/manifest acceptance; the queue remains in progress.; The four partitions are not independent cohorts, animals or molecular types; unprinted fAHP/F-I units and individual sex/age/cell-to-animal mapping remain unknown.; Raw source statements are held without recalculation or missing assignments.; No raw ABF/trace/per-cell roster or Supplementary Figure 1 image is bundled in this adapter scope, and zero new molecular profiles, physical cells, observed morphology, internal objects, cross-source identities, atlas placements, REG, M2 or M4 admissions are authorized"
+    }
+  ],
+  "scientificPolicy": {
+    "canonicalIdNamespace": "SRC-",
+    "legacyIdsAreAliasesOnly": true,
+    "sourceRecordIsBiologicalRecord": false,
+    "crossSourceIdentityDefault": "not_established",
+    "registrationCount": 0,
+    "missingIsBiologicalAbsence": false,
+    "publicAccessImpliesRedistributionPermission": false,
+    "drillDownGate": "child roster drill-down is allowed only when childRosterRef.status is bundled_exact"
+  }
+}

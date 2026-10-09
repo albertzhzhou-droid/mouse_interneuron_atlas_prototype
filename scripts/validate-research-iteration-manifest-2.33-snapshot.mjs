@@ -10,6 +10,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 import { computeManifestContentSha256 } from "./build-release-manifest.mjs";
+import { readFrozenResearchRuntime } from "./read-frozen-research-runtime.mjs";
 
 const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MANIFEST_PATH = path.join(PROJECT_ROOT, "data/research-iteration-manifest-2.33.json");
@@ -45,6 +46,8 @@ const EXPECTED_ADDED_IDS = Object.freeze([
 // remains immutable, so compare every other input while retaining these exact
 // receipts only inside the locked manifest.
 const SUPERSEDED_LIVE_INPUT_IDS = new Set([
+  // Iteration 2.55 expands this evolving main-scene morphology route.
+  "mainSceneTopologyIntegration",
   "researchSourceRegistry",
   "researchModelUpgradeRegistry",
   "rightsLedger",
@@ -103,7 +106,7 @@ async function checkImmutableInputFiles(manifest, errors) {
         return;
       }
       try {
-        const bytes = await readFile(resolved);
+        const bytes = await readFrozenResearchRuntime(input, resolved, PROJECT_ROOT);
         check(
           bytes.byteLength === input.bytes && sha256(bytes) === input.sha256,
           `${input.id} immutable on-disk receipt drifted`,

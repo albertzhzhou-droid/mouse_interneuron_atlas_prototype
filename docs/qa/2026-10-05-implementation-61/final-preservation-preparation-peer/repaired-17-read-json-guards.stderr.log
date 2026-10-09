@@ -1,0 +1,28 @@
+test_actual_progress_short_pread (__main__.Guards) ... ok
+test_cross_read_replacement_does_not_erase_verified_epoch (__main__.Guards) ... ok
+test_cross_read_same_bytes_replacement_also_refused (__main__.Guards) ... ok
+test_duplicate_nested_key_refused (__main__.Guards) ... ok
+test_duplicate_root_key_refused (__main__.Guards) ... ok
+test_eof_is_not_retried (__main__.Guards) ... ok
+test_expected_sha_failure_is_not_retry_policy (__main__.Guards) ... ok
+test_io_is_not_retried (__main__.Guards) ... ok
+test_nonfinite_literal_refused (__main__.Guards) ... ok
+test_numeric_overflow_refused (__main__.Guards) ... ok
+test_observed_fd_epoch_mismatch_is_fatal_without_fresh_retry (__main__.Guards) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_observed_fd_epoch_mismatch_is_fatal_without_fresh_retry.json", "attempt": 1, "timeUtc": "2026-10-05T09:07:48.750269+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_observed_fd_epoch_mismatch_is_fatal_without_fresh_retry.json: (16777234, 228528544, 13, 1791191268750106899) -> (16777234, 228528545, 13, 1791191268750106899)"}}
+ok
+test_observed_mid_read_replacement_cannot_refresh_final_epoch (__main__.Guards) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_observed_mid_read_replacement_cannot_refresh_final_epoch.json", "attempt": 1, "timeUtc": "2026-10-05T09:07:48.750818+00:00", "failure": "Source epoch changed: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_observed_mid_read_replacement_cannot_refresh_final_epoch.json: (16777234, 228528545, 13, 1791191268750467862) -> (16777234, 228528545, 13, 1791191268750467862) -> (16777234, 228528546, 13, 1791191268750699615); read 13"}}
+ok
+test_only_epoch_exception_retries_at_most_three (__main__.Guards) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json", "attempt": 1, "timeUtc": "2026-10-05T09:07:48.751423+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json: (16777234, 228528453, 13, 1791191268750922743) -> (16777234, 228528454, 13, 1791191268750922743)"}}
+{"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json", "attempt": 2, "timeUtc": "2026-10-05T09:07:48.751461+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json: (16777234, 228528453, 13, 1791191268750922743) -> (16777234, 228528454, 13, 1791191268750922743)"}}
+{"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json", "attempt": 3, "timeUtc": "2026-10-05T09:07:48.751495+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json: (16777234, 228528453, 13, 1791191268750922743) -> (16777234, 228528454, 13, 1791191268750922743)"}}
+ok
+test_regular_json (__main__.Guards) ... ok
+test_stable_read_hash_and_body (__main__.Guards) ... ok
+test_stable_second_read_keeps_epoch (__main__.Guards) ... ok
+test_unseen_epoch_mismatch_can_freshly_retry_once (__main__.Guards) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_unseen_epoch_mismatch_can_freshly_retry_once.json", "attempt": 1, "timeUtc": "2026-10-05T09:07:48.752040+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_unseen_epoch_mismatch_can_freshly_retry_once.json: (16777234, 228528547, 13, 1791191268751930008) -> (16777234, 228528548, 13, 1791191268751930008)"}}
+ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.005s
+
+OK

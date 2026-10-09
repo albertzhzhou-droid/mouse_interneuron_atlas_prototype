@@ -1,0 +1,32 @@
+{
+  "path": "app/ResearchSourceRegistry.tsx",
+  "reason": "First native fill immediately after reload observed empty/unfocused state; completed hydration fill correctly matches exact source ID. Controls are inert until source/record-set URL hydration is committed. Ready is committed inside the existing complete URL restore operation; full lint found and rejected the initial separate direct effect setter.",
+  "before": {
+    "bytes": 22529,
+    "sha256": "7f6dcf860e60fc286fecc8c8c0bebb4cb33c170d7c51e1c6ceb94398a87e7376"
+  },
+  "after": {
+    "bytes": 22834,
+    "sha256": "eb84daf3886b96a9c5b7a38bdd91a571fcbaa06d2327a3fab44bd054eb3e68b7"
+  },
+  "exactReplacements": [
+    {
+      "before": "  const [query, setQuery] = useState(initial.get(\"sourceQuery\") ?? \"\");",
+      "after": "  const [locationHydrated, setLocationHydrated] = useState(false);\n  const [query, setQuery] = useState(initial.get(\"sourceQuery\") ?? \"\");"
+    },
+    {
+      "before": "      setAdmissionFilter(params.get(\"sourceAdmission\") ?? \"all\");\n    };",
+      "after": "      setAdmissionFilter(params.get(\"sourceAdmission\") ?? \"all\");\n      setLocationHydrated(true);\n    };"
+    },
+    {
+      "before": "  return (\n    <section className=\"source-registry\" aria-labelledby=\"source-registry-heading\">",
+      "after": "  return (\n    <>\n    {!locationHydrated && <p className=\"source-registry-boundary\" role=\"status\" aria-live=\"polite\">Preparing source selection…</p>}\n    <section className=\"source-registry\" aria-labelledby=\"source-registry-heading\" inert={!locationHydrated} aria-busy={!locationHydrated}>"
+    },
+    {
+      "before": "    </section>\n  );\n}",
+      "after": "    </section>\n    </>\n  );\n}"
+    }
+  ],
+  "sourcePermissionsAndLayoutUnchanged": true,
+  "beforeArchive": "root-source-initialization-preimage.zip"
+}

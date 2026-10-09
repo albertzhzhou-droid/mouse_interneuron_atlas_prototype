@@ -1,0 +1,51 @@
+file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/independent-source-object-view.js:26
+ const rows=iteration.authoritativeInputs.filter(row=>row.path===path);if(rows.length!==1||!Number.isSafeInteger(rows[0].bytes)||rows[0].bytes<=0||!/^[a-f0-9]{64}$/.test(rows[0].sha256))throw new Error('Independent object build receipt is missing: '+path);
+                                                                                                                                                                                                ^
+
+Error: Independent object build receipt is missing: public/data/functional_class_observed_morphology_route_pack_v1/native-contours/nmo-45674-source-closed-soma-contours.json
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/independent-source-object-view.js:26:193
+    at Array.map (<anonymous>)
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/independent-source-object-view.js:25:221
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:642:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.0.0
+✖ tests/independent-source-object-view.test.mjs (114.523583ms)
+✔ all five source indices preserve seven native records and separate scientific denominators (1.742959ms)
+✔ all seven native contexts come from exact small source APIs with raw age/condition and field locators (78.869041ms)
+✔ full source/release/kind/native-ID keys retain large strings, escaping and reject alternate spellings (0.267291ms)
+✔ source ranges resolve final detections and all train/validation rows, never out-of-range or fabricated IDs (4.155958ms)
+✔ record-specific shell/crosswalk and parent evidence never leak to other records; MD5 remains MD5 (2.129709ms)
+✔ actual assets verify every native contour record and retain exact contour IDs/order/coordinates (21.452625ms)
+✔ actual MICrONS bytes verify parent row, two source meshes, bounds and exact selected nucleus (30.766541ms)
+✔ actual BANC SWC and PALM first/final columns display their own representations without inferred mesh (31.75475ms)
+✔ bad bytes, digest, native frame, units and identity fail closed with no fallback geometry (2.877875ms)
+✔ valid byte/hash receipt cannot bypass MICrONS semantic frame or component-ID checks (1.729417ms)
+✔ independent nucleus-parent relation requires versioned exact evidence and never equates nucleus with parent object (1.088042ms)
+✔ export rejects a foreign receipt and retains source identity, status and unit boundaries (0.149625ms)
+✔ A → B → A ignores obsolete same-key success/failure and synchronously clears geometry and receipt (0.206334ms)
+✔ asynchronous controller cancels prior requests; late A1/B2 cannot override A3 even when loader ignores abort (0.264375ms)
+✔ source URL roundtrip retains full large IDs, existing atlas query and hash (2.187125ms)
+✔ restored pages clamp to actual filtered rows before any offset multiplication (0.824042ms)
+✔ URL rejects a wrong release, unknown source and conflicting object namespace without a fallback (0.1755ms)
+✔ changing or clearing the selection hides the old loaded payload synchronously (0.072959ms)
+✔ view export binds current verified object, actual layers and source frame (0.294333ms)
+✔ replay rejects changed files, versions, camera and coordinate frames before applying a view (0.521958ms)
+✔ replay layer sets are source/viewer/component scoped and permit a present but hidden native DER (1.108042ms)
+✔ rendered replay requires a camera, source transform and valid THREE dimensions/actual layers (0.5545ms)
+✔ text-only and link-only replay retain availability and cannot claim a rendered camera or layer (1.428791ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 23
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 272.213083
+
+✖ failing tests:
+
+test at tests/independent-source-object-view.test.mjs:1:1
+✖ tests/independent-source-object-view.test.mjs (114.523583ms)
+  'test failed'

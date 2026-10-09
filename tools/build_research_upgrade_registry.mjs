@@ -39,24 +39,24 @@ export const BLOCKER_CODES = Object.freeze([
 const LANE_OVERRIDE_GROUPS = Object.freeze({
   reference_anatomy: ["UPG-022", "UPG-024", "UPG-025", "UPG-026", "UPG-037", "UPG-038"],
   molecular_taxonomy: [
-    "UPG-023", "UPG-027A", "UPG-027B", "UPG-032", "UPG-033", "UPG-040", "UPG-041", "UPG-044",
+    "UPG-023", "UPG-027A", "UPG-027B", "UPG-032", "UPG-033", "UPG-040", "UPG-041", "UPG-044", "UPG-254",
     "UPG-054", "UPG-055", "UPG-056", "UPG-060", "UPG-066", "UPG-067", "UPG-072", "UPG-076",
     "UPG-077", "UPG-079", "UPG-082", "UPG-084", "UPG-086", "UPG-106", "UPG-117", "UPG-132",
     "UPG-133", "UPG-141", "UPG-142", "UPG-146", "UPG-157", "UPG-164", "UPG-171", "UPG-174",
-    "UPG-180", "UPG-185", "UPG-187", "UPG-190", "UPG-204", "UPG-209", "UPG-210", "UPG-211",
+    "UPG-180", "UPG-185", "UPG-187", "UPG-190", "UPG-204", "UPG-209", "UPG-210", "UPG-211", "UPG-229",
   ],
   spatial_context: [
     "UPG-028", "UPG-029", "UPG-029A", "UPG-031", "UPG-035", "UPG-036", "UPG-039", "UPG-039A",
     "UPG-042", "UPG-065", "UPG-073", "UPG-083", "UPG-100", "UPG-114", "UPG-115", "UPG-135",
-    "UPG-144", "UPG-161", "UPG-163", "UPG-170",
+    "UPG-144", "UPG-161", "UPG-163", "UPG-170", "UPG-234", "UPG-244", "UPG-255",
   ],
   morphology: [
     "UPG-030", "UPG-046", "UPG-050", "UPG-087", "UPG-088", "UPG-098", "UPG-105", "UPG-119",
     "UPG-126", "UPG-127", "UPG-130", "UPG-131", "UPG-137", "UPG-138", "UPG-139", "UPG-140",
     "UPG-143", "UPG-145", "UPG-149", "UPG-155", "UPG-158", "UPG-182", "UPG-186", "UPG-193", "UPG-194",
-    "UPG-197", "UPG-198", "UPG-203", "UPG-205", "UPG-207", "UPG-208", "UPG-220",
+    "UPG-197", "UPG-198", "UPG-203", "UPG-205", "UPG-207", "UPG-208", "UPG-220", "UPG-227", "UPG-228", "UPG-231", "UPG-233", "UPG-235", "UPG-236", "UPG-237", "UPG-240", "UPG-245", "UPG-246", "UPG-250", "UPG-256",
   ],
-  connectivity: ["UPG-034", "UPG-045", "UPG-047", "UPG-057", "UPG-058", "UPG-059", "UPG-061", "UPG-081", "UPG-085", "UPG-123", "UPG-147"],
+  connectivity: ["UPG-034", "UPG-045", "UPG-047", "UPG-057", "UPG-058", "UPG-059", "UPG-061", "UPG-081", "UPG-085", "UPG-123", "UPG-147", "UPG-224", "UPG-257", "UPG-259", "UPG-260"],
   injury_state_context: [
     "UPG-062", "UPG-063", "UPG-064", "UPG-068", "UPG-069", "UPG-070", "UPG-071", "UPG-074",
     "UPG-075", "UPG-078", "UPG-116", "UPG-148", "UPG-156", "UPG-162",
@@ -65,16 +65,16 @@ const LANE_OVERRIDE_GROUPS = Object.freeze({
   internal_microdetail: [
     "UPG-089", "UPG-092", "UPG-093", "UPG-094", "UPG-095", "UPG-096", "UPG-099", "UPG-101",
     "UPG-103", "UPG-104", "UPG-111", "UPG-112", "UPG-120", "UPG-121", "UPG-122", "UPG-124", "UPG-128", "UPG-129",
-    "UPG-134", "UPG-136", "UPG-177", "UPG-178", "UPG-179", "UPG-184", "UPG-188", "UPG-189",
-    "UPG-195", "UPG-196", "UPG-213", "UPG-214", "UPG-215", "UPG-216", "UPG-217", "UPG-218", "UPG-219", "UPG-221",
+    "UPG-134", "UPG-136", "UPG-177", "UPG-178", "UPG-179", "UPG-184", "UPG-188", "UPG-189", "UPG-248", "UPG-249", "UPG-251", "UPG-252",
+    "UPG-195", "UPG-196", "UPG-213", "UPG-214", "UPG-215", "UPG-216", "UPG-217", "UPG-218", "UPG-219", "UPG-221", "UPG-223", "UPG-225", "UPG-239", "UPG-243", "UPG-258",
   ],
   provenance_and_identity: [
-    "UPG-051", "UPG-052", "UPG-090", "UPG-091", "UPG-097", "UPG-102", "UPG-108", "UPG-109",
-    "UPG-110", "UPG-113", "UPG-118", "UPG-125", "UPG-191", "UPG-192", "UPG-202", "UPG-222",
+    "UPG-051", "UPG-052", "UPG-090", "UPG-091", "UPG-097", "UPG-102", "UPG-108", "UPG-109", "UPG-238",
+    "UPG-110", "UPG-113", "UPG-118", "UPG-125", "UPG-191", "UPG-192", "UPG-202", "UPG-222", "UPG-247", "UPG-253",
   ],
   research_experience: [
     "UPG-048", "UPG-049", "UPG-053", "UPG-107", "UPG-159", "UPG-160", "UPG-167", "UPG-181", "UPG-183",
-    "UPG-199", "UPG-200", "UPG-201", "UPG-206", "UPG-212",
+    "UPG-199", "UPG-200", "UPG-201", "UPG-206", "UPG-212", "UPG-230",
   ],
 });
 

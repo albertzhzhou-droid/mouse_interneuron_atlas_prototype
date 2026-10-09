@@ -1,0 +1,76 @@
+{
+  "releaseId": "trevisan-v1-age-atlas-reference-0.1",
+  "source": {
+    "title": "Transcriptomic analysis of spinal V1 interneurons informs their multifunctional role in motor output",
+    "citation": "Trevisan AJ, Han K, Chapman PD, et al. Nat Commun. 2026;17:9614.",
+    "doi": "10.1038/s41467-026-76522-3",
+    "articleUrl": "https://www.nature.com/articles/s41467-026-76522-3",
+    "geoAccession": "GSE275595",
+    "geoUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595",
+    "interactiveUrl": "https://v1interneurons.stjude.org/shinyApp/",
+    "articleLicense": "CC BY 4.0",
+    "articleLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Trevisan et al., Nature Communications 17, 9614 (2026), https://doi.org/10.1038/s41467-026-76522-3. Article licensed CC BY 4.0. Atlas summary curated from article text and figures; no article images are redistributed.",
+    "reuseBoundary": "The article is CC BY 4.0. This does not establish reuse rights for GEO files or other repository objects; those remain link-only and are not bundled."
+  },
+  "study": {
+    "species": "Mus musculus",
+    "populationScope": "En1-lineage spinal V1 interneurons; one source-specific population, not a comprehensive spinal interneuron census",
+    "assay": "single-nucleus RNA sequencing",
+    "postnatalAges": ["P0", "P14", "P28", "P56"],
+    "independentTranscriptomicReplicates": 2,
+    "selectedNucleusCount": 89494,
+    "selectedNucleusUnit": "V1 nuclei passing the source selection criteria across two replicates and four postnatal ages",
+    "reportedClusterCount": 14,
+    "clusterSizeRange": {
+      "largestClusterId": 0,
+      "largestClusterPercent": 22.9,
+      "smallestClusterId": 13,
+      "smallestClusterPercent": 2.2,
+      "denominatorDescription": "percent of the larger source V1 population; exact per-cluster nucleus counts are not imported"
+    },
+    "ageCoverageDescription": "The article reports nuclei from P0, P14, P28 and P56 in each of the 14 clusters, in roughly equal proportions. These are cross-sectional samples, not longitudinal tracking of the same cells.",
+    "regionCoverageDescription": "No cluster-by-region assignment is represented in this panel. Do not infer segment localization from a cluster label.",
+    "sourceLocators": {
+      "clusterAssignments": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2c-f",
+      "ageCoverage": "Results, Changes in gene expression across postnatal development do not alter the core identity of V1 interneuron clades; Fig. 5a-c",
+      "rnf220": "Results, Identification of an additional V1 subset; Fig. 3a and Fig. 4a",
+      "nr5a2": "Results, Identification of an additional V1 subset; Supplementary Fig. 5a and Supplementary Data 4",
+      "oc2": "Results, Identification of an additional V1 subset; Supplementary Fig. 5b-f"
+    },
+    "exactPerClusterCountsImported": false,
+    "exactBarcodeRosterImported": false,
+    "clusterByRegionAssignmentsImported": false,
+    "rawExpressionDataBundled": false,
+    "geoPayloadBytesDownloaded": 0
+  },
+  "clusters": [
+    { "clusterId": 0, "sourceAssignment": "Foxp2 clade", "markerEvidence": ["Foxp2"], "sourceNote": "Assigned from cluster-level expression; this label is not a per-nucleus marker call.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 1, "sourceAssignment": "Rnf220-enriched V1 subset", "markerEvidence": ["Rnf220", "Esrrg", "Nr3c2", "Maf", "Dach1"], "sourceNote": "Rnf220 is reported as selective for clusters 1 and 6; the additional listed genes are enriched in cluster 1.", "sourceLocator": "Results, Identification of an additional V1 subset; Fig. 3a and Fig. 4a" },
+    { "clusterId": 2, "sourceAssignment": "Foxp2 clade", "markerEvidence": ["Foxp2"], "sourceNote": "Assigned from cluster-level expression; this label is not a per-nucleus marker call.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 3, "sourceAssignment": "Pou6f2 clade", "markerEvidence": ["Pou6f2"], "sourceNote": "Assigned from cluster-level expression; this label is not a per-nucleus marker call.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 4, "sourceAssignment": "Foxp2 clade", "markerEvidence": ["Foxp2"], "sourceNote": "Assigned from cluster-level expression; this label is not a per-nucleus marker call.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 5, "sourceAssignment": "Sp8 clade; Pou6f2 co-expression noted", "markerEvidence": ["Sp8", "Pou6f2"], "sourceNote": "The article reports some degree of Sp8/Pou6f2 co-expression in this cluster; it is not treated as an exclusive assignment.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 6, "sourceAssignment": "Rnf220-enriched V1 subset", "markerEvidence": ["Rnf220", "Bcl11a", "Bcl11b"], "sourceNote": "Rnf220 is reported as selective for clusters 1 and 6; Bcl11a and Bcl11b are additionally enriched in cluster 6.", "sourceLocator": "Results, Identification of an additional V1 subset; Fig. 3a and Fig. 4a" },
+    { "clusterId": 7, "sourceAssignment": "Sp8 clade", "markerEvidence": ["Sp8"], "sourceNote": "The article reports Sp8 more weakly detected than Foxp2 and Pou6f2 in the postnatal data.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 8, "sourceAssignment": "Calb1 proxy for the MafA clade", "markerEvidence": ["Calb1"], "sourceNote": "Calb1 is used as a proxy because MafA detection was low; the paper says this cluster likely corresponds to Renshaw cells, not that the identity is canonical.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f; Fig. 4c-e" },
+    { "clusterId": 9, "sourceAssignment": "Nr5a2-characterized V1 subset", "markerEvidence": ["Nr5a2"], "sourceNote": "No single marker is reported as exclusive to this cluster; Nr5a2 is its most specific characterization in the paper.", "sourceLocator": "Results, Identification of an additional V1 subset; Supplementary Fig. 5a and Supplementary Data 4" },
+    { "clusterId": 10, "sourceAssignment": "Sp8 clade; Oc2-associated subset", "markerEvidence": ["Sp8", "Oc2"], "sourceNote": "In the reported marker panel, cluster 10 expresses Oc2 without Prox1, Prdm8 or St18; retain this as source-level context.", "sourceLocator": "Results, Identification of an additional V1 subset; Supplementary Fig. 5b-f" },
+    { "clusterId": 11, "sourceAssignment": "Foxp2 clade", "markerEvidence": ["Foxp2"], "sourceNote": "Assigned from cluster-level expression; this label is not a per-nucleus marker call.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 12, "sourceAssignment": "Pou6f2 clade", "markerEvidence": ["Pou6f2"], "sourceNote": "Assigned from cluster-level expression; this label is not a per-nucleus marker call.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f" },
+    { "clusterId": 13, "sourceAssignment": "Pou6f2 clade", "markerEvidence": ["Pou6f2", "Piezo2"], "sourceNote": "Piezo2 is reported as particularly strongly expressed in cluster 13; this is cluster-level transcriptomic evidence, not a spatial or functional assignment.", "sourceLocator": "Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f; Fig. 4c-e" }
+  ],
+  "admissionBoundary": {
+    "canonicalSourceProfileContribution": 0,
+    "includedInExisting387ProfileDenominator": false,
+    "includedInMain3dScene": false,
+    "morphologyGeometryObjectCount": 0,
+    "internalStructureObjectCount": 0,
+    "sameCellJoinCount": 0,
+    "atlasRegistrationCount": 0,
+    "measurementCount": 0,
+    "articleImagesRedistributed": false,
+    "geoFilesRedistributed": false,
+    "reason": "A transcriptomic cluster assignment is not a source-backed individual-cell reconstruction. The article and GEO records are context-only until source files, rights, exact rosters and any object-level geometry are separately audited."
+  }
+}

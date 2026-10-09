@@ -1,0 +1,39 @@
+.nmo-dat-swc-crosswalk { margin-top: 1.4rem; padding: clamp(1rem, 2.5vw, 1.5rem); border: 1px solid #b8c4cf; border-radius: .9rem; background: #f7fafc; color: #253340; }
+.nmo-dat-swc-crosswalk-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.nmo-dat-swc-crosswalk-kicker { color: #4d6b7e; font-size: .68rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+.nmo-dat-swc-crosswalk h3 { margin: .25rem 0 .4rem; color: #1b3546; font-size: clamp(1.05rem, 2vw, 1.38rem); }
+.nmo-dat-swc-crosswalk-heading p { max-width: 72rem; margin: 0; color: #52616c; font-size: .82rem; line-height: 1.5; }
+.nmo-dat-swc-crosswalk-state { flex: 0 0 auto; padding: .4rem .55rem; border: 1px solid #afc0cc; border-radius: 99px; color: #466174; font-size: .62rem; font-weight: 750; letter-spacing: .05em; }
+.nmo-dat-swc-crosswalk-state.verified { border-color: #8ab7a0; background: #e7f3eb; color: #245a3d; }
+.nmo-dat-swc-crosswalk-state.unavailable { border-color: #cda59b; background: #f8ece8; color: #873d31; }
+.nmo-dat-swc-crosswalk-status { margin: .65rem 0; color: #4e6370; font-size: .75rem; }
+.nmo-dat-swc-crosswalk-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .7rem 1rem; margin: .75rem 0; }
+.nmo-dat-swc-crosswalk-focus { display: flex; flex-wrap: wrap; gap: .4rem; }
+.nmo-dat-swc-crosswalk-focus button { border: 1px solid #9eafb9; border-radius: .5rem; padding: .45rem .65rem; background: #fff; color: #314b5a; font: inherit; font-size: .74rem; cursor: pointer; }
+.nmo-dat-swc-crosswalk-focus button.active { border-color: #266f81; background: #e4f2f5; color: #174f5d; }
+.nmo-dat-swc-crosswalk-legend { display: flex; flex-wrap: wrap; gap: .35rem .85rem; color: #50606a; font-size: .68rem; }
+.nmo-dat-swc-crosswalk-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.nmo-dat-swc-crosswalk-legend i { width: .56rem; height: .56rem; border-radius: 50%; background: #9ba9b4; }
+.nmo-dat-swc-crosswalk-legend i.soma { background: #ffd66b; }
+.nmo-dat-swc-crosswalk-legend i.axon { background: #73c9e8; }
+.nmo-dat-swc-crosswalk-legend i.dendrite { background: #ee9fc2; }
+.nmo-dat-swc-crosswalk-legend i.swc-soma { background: #f2c66d; }
+.nmo-dat-swc-crosswalk-stage-wrap { position: relative; overflow: hidden; border: 1px solid #263b4a; border-radius: .7rem; background: #0d1720; }
+.nmo-dat-swc-crosswalk-stage { width: 100%; height: clamp(340px, 50vw, 560px); }
+.nmo-dat-swc-crosswalk-stage canvas { display: block; width: 100%; height: 100%; outline: none; }
+.nmo-dat-swc-crosswalk-no-webgl { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; background: #0d1720; color: #e8eef1; text-align: center; font-size: .85rem; line-height: 1.55; }
+.nmo-dat-swc-crosswalk-evidence { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; margin-top: .9rem; }
+.nmo-dat-swc-crosswalk-evidence section { min-width: 0; padding: .8rem .9rem; border: 1px solid #d2dbe1; border-radius: .6rem; background: #fff; }
+.nmo-dat-swc-crosswalk-evidence h4 { margin: 0 0 .55rem; color: #274556; font-size: .8rem; }
+.nmo-dat-swc-crosswalk-evidence p { margin: .45rem 0; color: #596772; font-size: .72rem; line-height: 1.55; }
+.nmo-dat-swc-crosswalk-evidence dl { display: grid; grid-template-columns: minmax(7.5rem, .65fr) minmax(0, 1.35fr); gap: .38rem .7rem; margin: 0; font-size: .7rem; line-height: 1.45; }
+.nmo-dat-swc-crosswalk-evidence dt { color: #586a76; font-weight: 700; }
+.nmo-dat-swc-crosswalk-evidence dd { min-width: 0; margin: 0; color: #2e3f4b; overflow-wrap: anywhere; }
+.nmo-dat-swc-crosswalk-links { display: flex; flex-wrap: wrap; gap: .45rem .9rem; }
+.nmo-dat-swc-crosswalk-links a { color: #135f78; font-weight: 650; text-decoration-thickness: .08em; text-underline-offset: .15em; }
+.nmo-dat-swc-crosswalk-unavailable { padding: .8rem; border: 1px solid #d8c5a2; border-radius: .55rem; background: #fffaf0; color: #6d5834; font-size: .78rem; line-height: 1.5; }
+@media (max-width: 760px) {
+  .nmo-dat-swc-crosswalk-heading { flex-direction: column; }
+  .nmo-dat-swc-crosswalk-evidence { grid-template-columns: minmax(0, 1fr); }
+  .nmo-dat-swc-crosswalk-evidence dl { grid-template-columns: minmax(6.6rem, .6fr) minmax(0, 1.4fr); }
+}

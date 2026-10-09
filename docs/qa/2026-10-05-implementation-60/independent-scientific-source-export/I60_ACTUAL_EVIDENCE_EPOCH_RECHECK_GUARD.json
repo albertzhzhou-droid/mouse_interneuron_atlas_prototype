@@ -1,0 +1,26 @@
+{
+  "status": "ALL_ACTUAL_CAPTURE_AND_SEALED_EXPORT_INPUTS_END_REHASH_GUARD",
+  "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/replay_i60_comparison_source.py.ACTUAL_EPOCH_RECHECK_BEFORE",
+  "before": {
+    "bytes": 34554,
+    "sha256": "db73b9f71f32b5ec6f88e443beac1940683cdf8640fb2a4c7225f6980dcca614"
+  },
+  "after": {
+    "bytes": 35291,
+    "sha256": "25383fd2165a6d7dde47d81efc1e4eb6e4ed395551cecfcb55b89e7e453d5e3f"
+  },
+  "exactReplacements": [
+    {
+      "old": "    authority.stable()\n    return {'status': 'PASS_INDEPENDENT_I60_ACTUAL_SOURCE_COMPARISON_REPLAY'",
+      "new": "    authority.stable()\n    for row in capture_rows:\n        assert read_file(row['path'])[0] == row['actual'], 'Actual capture epoch moved after replay'\n    for row in export_rows:\n        assert read_file(row['path'])[0] == row['actual'], 'Sealed exact export copy moved after replay'\n        assert read_file(attribution['path'])[0] == row['landingAttributionActual']\n        assert read_file(seal_item['path'])[0] == row['landingSealActual']\n        for descriptor in row['sealedLandingInputs']:\n            assert read_file(descriptor['path'])[0] == descriptor['actual'], 'Landing input epoch moved after replay'\n    return {'status': 'PASS_INDEPENDENT_I60_ACTUAL_SOURCE_COMPARISON_REPLAY'"
+    },
+    {
+      "old": "'DownloadsDirectoryEnumerations': 0, 'rootWrites': 0, 'stageWrites': 0, 'browserRequests': 0,",
+      "new": "'DownloadsDirectoryEnumerations': 0, 'personalDownloadsFilesRead': 0, 'actualEvidenceRehashedAfterReplay': True,\n            'nativeScientificExportsExact': len(export_rows) == 2, 'rootWrites': 0, 'stageWrites': 0, 'browserRequests': 0,"
+    }
+  ],
+  "guardsWeakened": false,
+  "personalDownloadsRead": 0,
+  "rootWrites": 0,
+  "stageWrites": 0
+}

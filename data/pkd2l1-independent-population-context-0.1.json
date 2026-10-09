@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "0.1.0",
+  "contextId": "leblond-2025-pkd2l1-independent-population-context",
+  "source": {
+    "citation": "Leblond L, Ramirez-Franco J, Michelle C, Wanaverbecq N, Evin M. Spinal cord morphology and PKD2L1+ cells distribution: effects of age, sex, and spinal segment in mice. Frontiers in Neuroanatomy. 2025;19:1652848.",
+    "doi": "10.3389/fnana.2025.1652848",
+    "articleUrl": "https://www.frontiersin.org/journals/neuroanatomy/articles/10.3389/fnana.2025.1652848/full",
+    "license": "CC BY",
+    "tableLocator": "Table 5",
+    "rawDataAvailabilityStatement": "The raw data supporting the conclusions of this article will be made available by the authors, without undue reservation.",
+    "publicRawDataDepositVerified": false,
+    "rawImageFilesBundled": false
+  },
+  "studyFrame": {
+    "species": "Mus musculus",
+    "mouseCount": 18,
+    "ageGroupsWeeks": [3, 8],
+    "sectionCount": 811,
+    "sectionCountsByAge": [
+      { "label": "3 weeks", "count": 401 },
+      { "label": "8 weeks", "count": 410 }
+    ],
+    "sectionCountsBySex": [
+      { "label": "Female", "count": 413 },
+      { "label": "Male", "count": 398 }
+    ],
+    "regions": ["Cervical", "High thoracic", "Low thoracic", "Lumbar"],
+    "measurementUnit": "histological section",
+    "biologicalUnit": "mouse",
+    "nestingBoundary": "The 811 sections are nested within 18 mice and are not 811 independent biological replicates. The article reports section-level summaries and explicitly cautions that the animal is the biological replicate."
+  },
+  "imagingMethods": {
+    "modality": "confocal fluorescence microscopy",
+    "wholeCordImages": { "magnification": "10x", "pixelSizeMicrometers": 1.25, "voxelDepthMicrometers": 5.35 },
+    "centralCanalImages": { "magnification": "20x", "pixelSizeMicrometers": 0.31, "voxelDepthMicrometers": 0.85 },
+    "reportedStackDepthMicrometers": [25, 37],
+    "imageFilesAvailableInThisProject": false,
+    "interpretationBoundary": "Acquisition settings are reported methods metadata only; no raw image, segmentation, cell coordinate, per-cell morphology or 3D object is included."
+  },
+  "publishedSummaries": [
+    {
+      "stratum": "age",
+      "group": "3 weeks",
+      "sectionsInStudyFrame": 401,
+      "pkd2l1PositiveCellsPerSection": { "mean": 7.88, "standardDeviation": 3.4, "minimum": 2, "maximum": 16 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 83.83, "standardDeviation": 50.55, "minimum": 2.8, "maximum": 214 }
+    },
+    {
+      "stratum": "age",
+      "group": "8 weeks",
+      "sectionsInStudyFrame": 410,
+      "pkd2l1PositiveCellsPerSection": { "mean": 9.06, "standardDeviation": 5.92, "minimum": 1, "maximum": 32 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 96.08, "standardDeviation": 52.98, "minimum": 0.63, "maximum": 226.83 }
+    },
+    {
+      "stratum": "sex",
+      "group": "Female",
+      "sectionsInStudyFrame": 413,
+      "pkd2l1PositiveCellsPerSection": { "mean": 6.82, "standardDeviation": 3.5, "minimum": 1, "maximum": 21 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 84.4, "standardDeviation": 52.12, "minimum": 6.82, "maximum": 226.1 }
+    },
+    {
+      "stratum": "sex",
+      "group": "Male",
+      "sectionsInStudyFrame": 398,
+      "pkd2l1PositiveCellsPerSection": { "mean": 10, "standardDeviation": 5.71, "minimum": 2, "maximum": 32 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 95.53, "standardDeviation": 52.21, "minimum": 0.63, "maximum": 226.83 }
+    },
+    {
+      "stratum": "spinal_region",
+      "group": "Cervical",
+      "sectionsInStudyFrame": null,
+      "pkd2l1PositiveCellsPerSection": { "mean": 7.32, "standardDeviation": 3.64, "minimum": 2, "maximum": 17 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 85.13, "standardDeviation": 50.8, "minimum": 5.37, "maximum": 209.86 }
+    },
+    {
+      "stratum": "spinal_region",
+      "group": "High thoracic",
+      "sectionsInStudyFrame": null,
+      "pkd2l1PositiveCellsPerSection": { "mean": 8.3, "standardDeviation": 4.63, "minimum": 2, "maximum": 27 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 90.17, "standardDeviation": 51.27, "minimum": 2.8, "maximum": 214 }
+    },
+    {
+      "stratum": "spinal_region",
+      "group": "Low thoracic",
+      "sectionsInStudyFrame": null,
+      "pkd2l1PositiveCellsPerSection": { "mean": 9.12, "standardDeviation": 6.42, "minimum": 1, "maximum": 32 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 93.94, "standardDeviation": 53.2, "minimum": 3.73, "maximum": 226.16 }
+    },
+    {
+      "stratum": "spinal_region",
+      "group": "Lumbar",
+      "sectionsInStudyFrame": null,
+      "pkd2l1PositiveCellsPerSection": { "mean": 9.32, "standardDeviation": 4.75, "minimum": 2, "maximum": 21 },
+      "centroidDistanceFromCentralCanalCenterMicrometers": { "mean": 94.51, "standardDeviation": 53.17, "minimum": 0.63, "maximum": 226.83 }
+    }
+  ],
+  "identityAndRepresentationBoundary": {
+    "populationLabel": "PKD2L1-positive cells",
+    "proximalDefinition": "up to 100 micrometers from the central canal center",
+    "distalDefinition": "100 to 230 micrometers from the central canal center",
+    "distalCellIdentity": "uncertain in the source; do not assume functional equivalence with proximal cells",
+    "summaryGranularity": "article-published stratum-level mean, standard deviation and range",
+    "perCellCoordinatesAvailable": false,
+    "perCellMorphologyAvailable": false,
+    "reconstructedCellsAdmitted": 0,
+    "geometryPrimitivesAdmitted": 0,
+    "sameCellJoinToCrozat": false,
+    "atlasRegistrationCount": 0,
+    "includedInInterneuronTypeCounts": false,
+    "boundary": "This is independent population context, not a new interneuron type, a Crozat record-level merge, a cell-specific 3D reconstruction, a spinal atlas coordinate set, or an animal-level raw-data release. Do not sum marginal age, sex and region summaries."
+  }
+}

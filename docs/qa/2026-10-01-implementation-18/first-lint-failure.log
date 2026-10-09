@@ -1,0 +1,243 @@
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                              react-hooks/refs
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                              react-hooks/refs
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                              react-hooks/refs
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                       react-hooks/refs
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                       react-hooks/refs
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                       react-hooks/refs
+  2408:29  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2408:29
+  2406 |
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+> 2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+       |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                      react-hooks/refs
+  2409:8   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2409:8
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+  2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       |        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/refs
+  2409:9   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2409:9
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+  2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |
+
+To initialize a ref only once, check that the ref is null with the pattern `if (ref.current == null) { ref.current = ... }`                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/refs
+  2409:38  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2409:38
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+  2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       |                                      ^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/refs
+  2409:38  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2409:38
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+  2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/refs
+  2409:38  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2409:38
+  2407 |   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+  2408 |   const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+> 2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+       |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2410 |     ? contextRef.current.sourceGeometry : null;
+  2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+  2412 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/refs
+  2411:30  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2411:30
+  2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+  2410 |     ? contextRef.current.sourceGeometry : null;
+> 2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+       |                              ^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2412 |
+  2413 |   return (
+  2414 |     <><div className="three-canvas" ref={containerRef} data-testid="three-canvas" data-morphology-fidelity-mode={morphologyFidelityMode}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/refs
+  2411:83  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2411:83
+  2409 |     && !pendingRestoreRef.current && contextRef.current?.sourceGeometry?.neuronId === observedCellFormId && contextRef.current.inspection
+  2410 |     ? contextRef.current.sourceGeometry : null;
+> 2411 |   const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
+       |                                                                                   ^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  2412 |
+  2413 |   return (
+  2414 |     <><div className="three-canvas" ref={containerRef} data-testid="three-canvas" data-morphology-fidelity-mode={morphologyFidelityMode}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/refs
+  2503:6   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2503:6
+  2501 |       )}
+  2502 |     </div>
+> 2503 |     {inspectedGeometry && inspectedLandmarks && <div className="main-scene-neurite-inspector" role="region" aria-label={`Main-scene SWC branch inspection for NeuroMorpho ${observedCellFormId}`}>
+       |      ^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2504 |       <MorphologyNeuriteInspector key={`${observedCellFormId}:${morphologyFidelityMode}:${sourceSceneEpoch}`} controllerRef={inspectionRef}
+  2505 |         selection={inspectionSelection} geometry={inspectedGeometry} branchpointCount={inspectedLandmarks.branchpoints.length} terminalCount={inspectedLandmarks.terminals.length} />
+  2506 |     </div>}</>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/refs
+  2503:6   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2503:6
+  2501 |       )}
+  2502 |     </div>
+> 2503 |     {inspectedGeometry && inspectedLandmarks && <div className="main-scene-neurite-inspector" role="region" aria-label={`Main-scene SWC branch inspection for NeuroMorpho ${observedCellFormId}`}>
+       |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2504 |       <MorphologyNeuriteInspector key={`${observedCellFormId}:${morphologyFidelityMode}:${sourceSceneEpoch}`} controllerRef={inspectionRef}
+  2505 |         selection={inspectionSelection} geometry={inspectedGeometry} branchpointCount={inspectedLandmarks.branchpoints.length} terminalCount={inspectedLandmarks.terminals.length} />
+  2506 |     </div>}</>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/refs
+  2503:6   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2503:6
+  2501 |       )}
+  2502 |     </div>
+> 2503 |     {inspectedGeometry && inspectedLandmarks && <div className="main-scene-neurite-inspector" role="region" aria-label={`Main-scene SWC branch inspection for NeuroMorpho ${observedCellFormId}`}>
+       |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2504 |       <MorphologyNeuriteInspector key={`${observedCellFormId}:${morphologyFidelityMode}:${sourceSceneEpoch}`} controllerRef={inspectionRef}
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2505 |         selection={inspectionSelection} geometry={inspectedGeometry} branchpointCount={inspectedLandmarks.branchpoints.length} terminalCount={inspectedLandmarks.terminals.length} />
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 2506 |     </div>}</>
+       | ^^^^^^^^^^^ Cannot access ref value during render
+  2507 |   );
+  2508 | }
+  2509 |  react-hooks/refs
+  2505:51  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SceneCanvas.tsx:2505:51
+  2503 |     {inspectedGeometry && inspectedLandmarks && <div className="main-scene-neurite-inspector" role="region" aria-label={`Main-scene SWC branch inspection for NeuroMorpho ${observedCellFormId}`}>
+  2504 |       <MorphologyNeuriteInspector key={`${observedCellFormId}:${morphologyFidelityMode}:${sourceSceneEpoch}`} controllerRef={inspectionRef}
+> 2505 |         selection={inspectionSelection} geometry={inspectedGeometry} branchpointCount={inspectedLandmarks.branchpoints.length} terminalCount={inspectedLandmarks.terminals.length} />
+       |                                                   ^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  2506 |     </div>}</>
+  2507 |   );
+  2508 | }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/refs
+
+✖ 18 problems (18 errors, 0 warnings)
+

@@ -1,4 +1,5 @@
 import disclosureJson from "../data/morphology-source-frame-disclosure-0.1.json";
+import { assertMorphologyGeometrySourceFrame } from "./morphology-source-frame-runtime.js";
 import type {
   MorphologyCensusRecord,
   MorphologyComparisonRecord,
@@ -115,10 +116,6 @@ function invariant(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(`Morphology source-frame disclosure: ${message}`);
 }
 
-function same(left: unknown, right: unknown) {
-  return JSON.stringify(left) === JSON.stringify(right);
-}
-
 const contract = disclosureJson as unknown as MorphologySourceFrameDisclosureContract;
 invariant(contract.documentType === "morphology_source_frame_and_preparation_disclosure_contract", "document identity drifted");
 invariant(contract.schemaVersion === "0.1.0" && contract.contractId === "morphology-source-frame-disclosure-0.1", "contract version drifted");
@@ -192,26 +189,5 @@ export function assertGeometryMatchesSourceFrameDisclosure(
   disclosure: MorphologySourceFrameDisclosure,
   geometry: MorphologyGeometryPayload,
 ) {
-  const computed = geometry.morphometrics.computedFromStandardizedSwc;
-  invariant(geometry.neuronId === disclosure.neuronId && geometry.assetId === disclosure.assetId, `NMO ${disclosure.neuronId} geometry identity drifted`);
-  invariant(geometry.geometryStatus === disclosure.geometryReceipt.geometryStatus, `NMO ${disclosure.neuronId} geometry status drifted`);
-  invariant(geometry.units === disclosure.sourceCoordinates.unit, `NMO ${disclosure.neuronId} coordinate unit drifted`);
-  invariant(geometry.sourceFrame === disclosure.sourceCoordinates.sourceFrame, `NMO ${disclosure.neuronId} source frame drifted`);
-  invariant(
-    geometry.registration?.status === "unregistered" &&
-      geometry.registration?.registrationCount === 0 &&
-      geometry.registration?.atlasTransform?.value === null &&
-      geometry.registration?.atlasPlacement?.value === null,
-    `NMO ${disclosure.neuronId} gained registration or atlas placement`,
-  );
-  invariant(computed, `NMO ${disclosure.neuronId} computed geometry receipt is unavailable`);
-  invariant(same(computed.boundsMicrometre, disclosure.sourceCoordinates.boundsMicrometre), `NMO ${disclosure.neuronId} source bounds drifted`);
-  invariant(same(computed.extentMicrometre, disclosure.sourceCoordinates.extentMicrometre), `NMO ${disclosure.neuronId} source extent drifted`);
-  invariant(same(geometry.displayTransform, disclosure.sourceCoordinates.displayTransform), `NMO ${disclosure.neuronId} display transform drifted`);
-  if (disclosure.preparation.dimensionality === "2D") {
-    invariant(computed.extentMicrometre[2] === 0, `NMO ${disclosure.neuronId} 2D source object gained inferred z depth`);
-  } else {
-    invariant(computed.extentMicrometre[2] > 0, `NMO ${disclosure.neuronId} 3D source object lost observed z depth`);
-  }
-  return true;
+  return assertMorphologyGeometrySourceFrame(disclosure, geometry);
 }

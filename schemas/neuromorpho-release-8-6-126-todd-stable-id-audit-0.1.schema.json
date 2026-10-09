@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-release-8-6-126-todd-stable-id-audit-0.1.schema.json",
+  "title": "NeuroMorpho 8.6.126 Todd Stable-ID Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "researchUpgradeId", "auditDate", "currentRelease", "currentQuery", "baseline", "releaseSetReview", "comparison", "sourceAssetReview", "admission", "sources", "interpretationBoundary"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "auditId": { "const": "neuromorpho-release-8-6-126-todd-stable-id-audit-0.1" },
+    "researchUpgradeId": { "const": "UPG-245" },
+    "auditDate": { "type": "string", "format": "date" },
+    "currentRelease": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "releaseDate", "reportedRepositoryReconstructionCount", "announcedToddNovelReconstructionCount", "officialReleaseUrl", "releaseSetUrl"],
+      "properties": {
+        "version": { "const": "8.6.126" }, "releaseDate": { "const": "2026-09-23" },
+        "reportedRepositoryReconstructionCount": { "const": 298745 }, "announcedToddNovelReconstructionCount": { "const": 30 },
+        "officialReleaseUrl": { "type": "string", "format": "uri", "pattern": "^https://" }, "releaseSetUrl": { "type": "string", "format": "uri", "pattern": "^https://" }
+      }
+    },
+    "currentQuery": {
+      "type": "object", "additionalProperties": false,
+      "required": ["filters", "ageFilterApplied", "observedMetadataUiHitCount", "completeCurrentStableIdRosterRetrieved"],
+      "properties": {
+        "filters": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "object", "additionalProperties": false, "required": ["field", "value"], "properties": { "field": { "enum": ["species", "brain_region", "cell_type", "archive"] }, "value": { "type": "string", "minLength": 1 } } } },
+        "ageFilterApplied": { "const": false }, "observedMetadataUiHitCount": { "const": 339 }, "completeCurrentStableIdRosterRetrieved": { "const": false }
+      }
+    },
+    "baseline": {
+      "type": "object", "additionalProperties": false,
+      "required": ["release", "queryRecordCount", "queryScope", "archive", "archiveQueryRecordCount", "sourceIndexPath"],
+      "properties": {
+        "release": { "const": "8.6.124" }, "queryRecordCount": { "const": 1097 }, "queryScope": { "type": "string", "minLength": 20 },
+        "archive": { "const": "Todd" }, "archiveQueryRecordCount": { "const": 309 }, "sourceIndexPath": { "const": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json" }
+      }
+    },
+    "releaseSetReview": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidateStableIdCount", "candidateIdsAbsentFromBaseline", "candidateRecords", "verifiedCommonMetadataFields", "observedMorphologicalAttributeLabels"],
+      "properties": {
+        "candidateStableIdCount": { "const": 30 }, "candidateIdsAbsentFromBaseline": { "const": 30 },
+        "candidateRecords": {
+          "type": "array", "minItems": 30, "maxItems": 30, "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["neuronId", "neuronName", "recordUrl", "apiRecordUrl"],
+            "properties": { "neuronId": { "type": "integer", "minimum": 1 }, "neuronName": { "type": "string", "minLength": 1 }, "recordUrl": { "type": "string", "format": "uri", "pattern": "^https://neuromorpho.org/neuron_info\\.jsp\\?neuron_name=" }, "apiRecordUrl": { "type": "string", "format": "uri", "pattern": "^https://neuromorpho.org/api/neuron/id/[0-9]+$" } }
+          }
+        },
+        "verifiedCommonMetadataFields": { "type": "object", "additionalProperties": false, "required": ["archive", "species", "primaryBrainRegion", "primaryCellClass", "originalFormat", "physicalIntegrity"], "properties": { "archive": { "const": "Todd" }, "species": { "const": "mouse" }, "primaryBrainRegion": { "const": "spinal cord" }, "primaryCellClass": { "const": "interneuron" }, "originalFormat": { "const": "Neurolucida.dat" }, "physicalIntegrity": { "const": "Dendrites Complete" } } },
+        "observedMorphologicalAttributeLabels": { "const": ["No Diameter, 3D, Angles", "Diameter, 3D, Angles"] }
+      }
+    },
+    "comparison": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidateIdsComparedAgainstBaseline", "candidateIdsFoundInBaseline", "releaseSetCandidatesAbsentFromBaseline", "baselineToddCountPlusCandidates", "observedCurrentQueryHits", "arithmeticCountReconciles", "arithmeticIsNotACompleteCurrentRosterProof", "completeCurrentQueryDeltaStatus", "removedRecordCount", "changedRecordCount"],
+      "properties": {
+        "candidateIdsComparedAgainstBaseline": { "const": 30 }, "candidateIdsFoundInBaseline": { "const": 0 }, "releaseSetCandidatesAbsentFromBaseline": { "const": 30 }, "baselineToddCountPlusCandidates": { "const": 339 }, "observedCurrentQueryHits": { "const": 339 }, "arithmeticCountReconciles": { "const": true }, "arithmeticIsNotACompleteCurrentRosterProof": { "const": true }, "completeCurrentQueryDeltaStatus": { "const": "unresolved_without_complete_current_id_roster" }, "removedRecordCount": { "type": "null" }, "changedRecordCount": { "type": "null" }
+      }
+    },
+    "sourceAssetReview": { "type": "object", "additionalProperties": false, "required": ["candidateSourceFilesDownloaded", "candidateSourceFilesHashed", "objectLevelReuseTermsVerified", "fileDimensionalityIndependentlyInspected", "fileCompletenessIndependentlyInspected"], "properties": { "candidateSourceFilesDownloaded": { "const": 0 }, "candidateSourceFilesHashed": { "const": 0 }, "objectLevelReuseTermsVerified": { "const": false }, "fileDimensionalityIndependentlyInspected": { "const": false }, "fileCompletenessIndependentlyInspected": { "const": false } } },
+    "admission": { "type": "object", "additionalProperties": false, "required": ["newRecordsAdmitted", "newGeometryObjectsAdmitted", "newIdentityJoins", "registrations", "measurements"], "properties": { "newRecordsAdmitted": { "const": 0 }, "newGeometryObjectsAdmitted": { "const": 0 }, "newIdentityJoins": { "const": 0 }, "registrations": { "const": 0 }, "measurements": { "const": 0 } } },
+    "sources": { "type": "array", "minItems": 5, "items": { "type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": { "label": { "type": "string", "minLength": 1 }, "url": { "type": "string", "format": "uri", "pattern": "^https://" } } } },
+    "interpretationBoundary": { "type": "string", "minLength": 200 }
+  }
+}

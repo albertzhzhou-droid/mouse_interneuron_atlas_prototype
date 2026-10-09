@@ -1,0 +1,29 @@
+--- locked40/test_guards.py
++++ actual41/test_guards.py
+@@ -170,7 +170,7 @@
+     r,c=raw_registry('SRC-ALLEN-CORD-20UM-3');check_registry_dom(r,F,c)
+     for bad in [{'unexpected':'not a producer companion'},{**copy.deepcopy(c),'name':'other'},{**copy.deepcopy(c),'rows':[{'recordSetId':GSET,'entriesLists':[],'details':[]}]}]:
+         with self.assertRaises(ValueError):check_registry_dom(r,F,bad)
+-    c['rows'][0]['entriesLists']=[{'label':'Navigation entries for '+c['rows'][0]['recordSetId'],'links':[{'text':'Existing own entry','href':'/existing'}]}];c['rows'][0]['details']=[{'open':True,'summary':'Existing own disclosure','text':'Existing child authority retained'}];out=check_registry_dom(r,F,c);self.assertEqual(out['actualNavigationCompanion']['actualEntriesLists'],1);self.assertFalse(out['actualNavigationCompanion']['unavailableGateChecked'])
++    c['rows'][0]['entriesLists']=[{'label':'Navigation entries for '+c['rows'][0]['recordSetId'],'links':[{'text':'Existing own entry','href':'/existing'}]}];c['rows'][0]['details']=[{'open':True,'summary':'Existing own disclosure','text':'Existing child authority retained'}];r['dossier']['exportButtons'].append({'text':'Export navigation receipt','disabled':False});out=check_registry_dom(r,F,c);self.assertEqual(out['actualNavigationCompanion']['actualEntriesLists'],1);self.assertFalse(out['actualNavigationCompanion']['unavailableGateChecked'])
+  def test_36_transient_ns_refusal_discarded_then_complete_strict_stable_retry(self):
+     p=HERE/'synthetic-copy-guard/first-unseen-36.json';p.write_text('{}');s=p.stat();same=types.SimpleNamespace(**{k:getattr(s,k) for k in ['st_dev','st_ino','st_size','st_mtime_ns','st_ctime_ns']});changed=copy.copy(same);changed.st_ctime_ns+=1
+     with patch('replay.os.fstat',side_effect=[same,changed,same,same]) as m:
+@@ -197,5 +197,17 @@
+     changed=copy.deepcopy(original);changed['readEpoch']['dev']=False
+     with self.assertRaisesRegex(ValueError,'JSON type mismatch'):pinned(changed)
+     exact(pinned(original),original)
++ def test_41_other_source_existing_navigation_export_not_a_second_dossier(self):
++    r,c=raw_registry('SRC-DELILE-2019');c['rows'][1]['details']=[{'open':True,'summary':'Existing exact record set','text':'Existing source-owned entries'}];r['dossier']['exportButtons'].append({'text':'Export navigation receipt','disabled':False})
++    out=check_registry_dom(r,F,c);self.assertEqual(out['sourceDossierExports'],1);self.assertEqual(out['existingNavigationReceiptExports'],1)
++    for edit in ['closed','duplicateDossier','otherExport','missingNavigation','disabledNavigation','coercedOpen']:
++        rr,cc=copy.deepcopy(r),copy.deepcopy(c)
++        if edit=='closed':cc['rows'][1]['details'][0]['open']=False
++        if edit=='duplicateDossier':rr['dossier']['exportButtons'].append({'text':'Export source dossier','disabled':False})
++        if edit=='otherExport':rr['dossier']['exportButtons'][1]['text']='Export unrelated facts'
++        if edit=='missingNavigation':rr['dossier']['exportButtons'].pop()
++        if edit=='disabledNavigation':rr['dossier']['exportButtons'][1]['disabled']=True
++        if edit=='coercedOpen':cc['rows'][1]['details'][0]['open']=1
++        with self.assertRaises(ValueError):check_registry_dom(rr,F,cc)
+ 
+ if __name__=='__main__':unittest.main(verbosity=2)

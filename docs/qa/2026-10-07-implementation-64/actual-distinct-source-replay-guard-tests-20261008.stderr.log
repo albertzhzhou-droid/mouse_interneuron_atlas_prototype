@@ -1,0 +1,21 @@
+test_accepted_epoch_cannot_refresh_when_read_again (__main__.DistinctSourceReplay) ... ok
+test_duplicate_scope_refuses_before_any_callback (__main__.DistinctSourceReplay) ... ok
+test_empty_scope_refuses_before_any_callback (__main__.DistinctSourceReplay) ... ok
+test_failed_check_propagates_after_every_started_worker_is_joined (__main__.DistinctSourceReplay) ... ok
+test_ordinary_io_error_is_not_retried_or_accepted (__main__.DistinctSourceReplay) ... FAIL
+test_unique_jobs_keep_order_and_all_original_first_epochs (__main__.DistinctSourceReplay) ... ok
+test_worker_concurrency_is_bounded (__main__.DistinctSourceReplay) ... ok
+test_wrong_body_pin_is_a_terminal_leaf_failure (__main__.DistinctSourceReplay) ... ok
+
+======================================================================
+FAIL: test_ordinary_io_error_is_not_retried_or_accepted (__main__.DistinctSourceReplay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i64-distinct-source-replay-preparation-20261008/test_parallel_reads.py", line 88, in test_ordinary_io_error_is_not_retried_or_accepted
+    self.assertEqual(pread.call_count, len(paths))
+AssertionError: 3 != 4
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.046s
+
+FAILED (failures=1)

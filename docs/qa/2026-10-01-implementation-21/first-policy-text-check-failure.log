@@ -1,0 +1,14 @@
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/audit_bil_xenium_coordinate_source.py", line 115, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/audit_bil_xenium_coordinate_source.py", line 104, in main
+    check('BIL Data is distributed under the Creative Commons Attribution-ShareAlike 4.0 International License.' in policy, 'Site distribution policy differs')
+  File "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tools/audit_bil_xenium_coordinate_source.py", line 22, in check
+    if not condition: raise ValueError(reason)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Site distribution policy differs

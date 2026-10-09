@@ -1,0 +1,68 @@
+{
+  "releaseId": "ohri-public-file-admission-composer-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "publicSourceIds": [
+    "PDS-SPINALJ-PROCESSED",
+    "PDS-CANOGOMEZ-2026"
+  ],
+  "supportedManifestFormats": [
+    {
+      "formatVersion": "0.7.0",
+      "sourceId": "PDS-SPINALJ-PROCESSED",
+      "schemaPath": "schemas/public-file-admission-manifest-0.7.schema.json",
+      "manifestIdPattern": "^PFM-SPINALJ-[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "fixedAdmissionDecision": "metadata_only_not_downloaded_not_registered",
+      "fixedLocalSha256": null,
+      "requiredPublisherMetadata": [
+        "stable public object URL",
+        "published byte count",
+        "format",
+        "source-declared SHA-1 or SHA-256 checksum",
+        "recorded file-level rights decision",
+        "coordinate unit, axis order and origin, or an explicit missing reason"
+      ]
+    },
+    {
+      "formatVersion": "0.8.0",
+      "sourceId": "PDS-CANOGOMEZ-2026",
+      "schemaPath": "schemas/public-file-admission-manifest-0.8.schema.json",
+      "manifestIdPattern": "^PFM-CANOGOMEZ-[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "fixedAdmissionDecision": "metadata_only_not_downloaded_not_registered",
+      "fixedLocalSha256": null,
+      "fixedPreprintStatus": "preprint_resource",
+      "requiredPublisherMetadata": [
+        "stable public object URL",
+        "published byte count",
+        "format and modality",
+        "source-declared SHA-1 or SHA-256 checksum",
+        "recorded file-level rights decision",
+        "specimen ID, sex, spinal region, assay and source frame",
+        "animal ID and coordinate metadata, or an explicit missing reason"
+      ]
+    }
+  ],
+  "localRuntime": {
+    "automaticRemoteAcquisition": false,
+    "sourceFileUpload": false,
+    "credentialStorage": false,
+    "persistentStorage": "none",
+    "localHashCalculation": false,
+    "output": "browser_download_of_metadata_only_json"
+  },
+  "releaseDecision": {
+    "permitted": "Compose and export a schema-shaped metadata-only admission manifest for curator review.",
+    "blockedUntilCuratorGate": [
+      "acquiring or bundling a source object",
+      "asset-level reuse authorization",
+      "coordinate transform or source-to-project registration",
+      "biological, cell-identity or connectivity claim promotion"
+    ]
+  },
+  "nextQueueItems": [
+    "UPG-001",
+    "UPG-002",
+    "UPG-014"
+  ],
+  "scientificBoundary": "The composer records researcher-entered public metadata only. It does not contact a repository, inspect or hash a source file, validate a publisher claim, acquire or bundle data, establish rights, transform coordinates, create a source-to-project relationship or create REG."
+}

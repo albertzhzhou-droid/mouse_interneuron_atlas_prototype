@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/todd-native-contour-topology-audit-0.1.schema.json",
+  "title": "Todd native contour topology audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["documentType", "schemaVersion", "releaseId", "auditedDateUtc", "catalogueReceipt", "method", "referenceScreen", "records", "summary"],
+  "properties": {
+    "documentType": { "const": "todd_native_contour_topology_audit" },
+    "schemaVersion": { "const": "0.1.0" },
+    "releaseId": { "const": "ohri-todd-native-contour-topology-audit-0.1.0" },
+    "auditedDateUtc": { "const": "2026-09-23" },
+    "catalogueReceipt": { "type": "object", "$ref": "#/$defs/receipt", "properties": { "releaseId": { "const": "ohri-neurolucida-native-contour-admission-catalog-0.3.0" } }, "required": ["releaseId"] },
+    "method": {
+      "type": "object", "additionalProperties": false,
+      "required": ["coordinateFrame", "sourcePolylineModification", "sourcePointRepair", "smoothing", "interpolationGeometryGenerated", "selfIntersectionMethod", "adjacentCorrespondenceDiagnostic", "referenceScreenAlgorithmId", "referenceScreenSampleCount", "contourAreaUse"],
+      "properties": {
+        "coordinateFrame": { "const": "Neurolucida_DAT_source_native_unregistered" },
+        "sourcePolylineModification": { "const": false }, "sourcePointRepair": { "const": false }, "smoothing": { "const": false }, "interpolationGeometryGenerated": { "const": false },
+        "selfIntersectionMethod": { "type": "string", "minLength": 1 },
+        "adjacentCorrespondenceDiagnostic": { "type": "string", "minLength": 1 },
+        "referenceScreenAlgorithmId": { "type": "string", "minLength": 1 },
+        "referenceScreenSampleCount": { "const": 128 },
+        "contourAreaUse": { "type": "string", "minLength": 1 }
+      }
+    },
+    "referenceScreen": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sourceRecordId", "thresholds", "independentlyValidatedAsBiologicalTolerances", "interpretation"],
+      "properties": {
+        "sourceRecordId": { "const": "NeuroMorpho:50394" },
+        "thresholds": { "type": "object", "additionalProperties": false, "required": ["maximumAdjacentCentroidShiftMicrometre", "maximumAdjacentContourAreaRatio", "maximumAdjacentAlignedRmsMicrometre"], "properties": { "maximumAdjacentCentroidShiftMicrometre": { "const": 1.5 }, "maximumAdjacentContourAreaRatio": { "const": 1.6 }, "maximumAdjacentAlignedRmsMicrometre": { "const": 1.5 } } },
+        "independentlyValidatedAsBiologicalTolerances": { "const": false },
+        "interpretation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "records": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/record" } },
+    "summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["auditedRecordCount", "sourceContourCount", "sourceVertexCount", "uniqueSourcePlaneCount", "selfIntersectingContourCount", "selfIntersectionCount", "zeroLengthEdgeContourCount", "zeroLengthEdgeCount", "adjacentTransitionCount", "adjacentTransitionsWithinReferenceScreen", "adjacentTransitionsHeld", "contourDerivedSurfaceAdmittedCount", "admittedTriangleCount", "internalStructureObjectCount", "biologicalMeasurementCount", "sameCellJoinCount", "crossSourceIdentityCount", "registrationCount"],
+      "properties": {
+        "auditedRecordCount": { "const": 2 }, "sourceContourCount": { "const": 19 }, "sourceVertexCount": { "const": 1136 }, "uniqueSourcePlaneCount": { "const": 19 },
+        "selfIntersectingContourCount": { "const": 2 }, "selfIntersectionCount": { "const": 2 }, "zeroLengthEdgeContourCount": { "const": 1 }, "zeroLengthEdgeCount": { "const": 1 },
+        "adjacentTransitionCount": { "const": 17 }, "adjacentTransitionsWithinReferenceScreen": { "const": 9 }, "adjacentTransitionsHeld": { "const": 8 },
+        "contourDerivedSurfaceAdmittedCount": { "const": 0 }, "admittedTriangleCount": { "const": 0 }, "internalStructureObjectCount": { "const": 0 }, "biologicalMeasurementCount": { "const": 0 }, "sameCellJoinCount": { "const": 0 }, "crossSourceIdentityCount": { "const": 0 }, "registrationCount": { "const": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "receipt": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": { "path": { "type": "string", "minLength": 1 }, "bytes": { "type": "integer", "minimum": 1 }, "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }, "releaseId": { "type": "string" }, "originalDatUrl": { "type": "string", "format": "uri" }, "officialRecordUrl": { "type": "string", "format": "uri" }, "pointPayloadSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } }
+    },
+    "record": {
+      "type": "object", "additionalProperties": false,
+      "required": ["neuronId", "assetId", "title", "authority", "source", "geometry", "sourceContourOrderZMicrometre", "contoursSortedByZ", "transitionDiagnostics", "summary", "decision", "decisionReason"],
+      "properties": {
+        "neuronId": { "enum": [50424, 50408] }, "assetId": { "type": "string" }, "title": { "type": "string" }, "authority": { "const": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP" },
+        "source": { "allOf": [{ "$ref": "#/$defs/receipt" }, { "type": "object", "required": ["originalDatUrl", "officialRecordUrl"], "properties": { "originalDatUrl": { "type": "string", "format": "uri" }, "officialRecordUrl": { "type": "string", "format": "uri" } } }] },
+        "geometry": { "allOf": [{ "$ref": "#/$defs/receipt" }, { "type": "object", "required": ["pointPayloadSha256"], "properties": { "pointPayloadSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" } } }] },
+        "sourceContourOrderZMicrometre": { "type": "array", "items": { "type": "number" } },
+        "contoursSortedByZ": { "type": "array", "minItems": 8, "maxItems": 11, "items": { "type": "object", "additionalProperties": false, "required": ["id", "sourceClosedFlag", "sourceOrderIndex", "zMicrometre", "vertexCount", "zeroLengthEdgeIndices", "selfIntersectionEdgePairs"], "properties": { "id": { "type": "string" }, "sourceClosedFlag": { "const": false }, "sourceOrderIndex": { "type": "integer", "minimum": 0 }, "zMicrometre": { "type": "number" }, "vertexCount": { "type": "integer", "minimum": 3 }, "zeroLengthEdgeIndices": { "type": "array", "items": { "type": "integer", "minimum": 0 } }, "selfIntersectionEdgePairs": { "type": "array", "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer", "minimum": 0 } } } } } },
+        "transitionDiagnostics": { "type": "array", "minItems": 7, "maxItems": 10, "items": { "type": "object", "additionalProperties": false, "required": ["fromContourId", "toContourId", "fromZMicrometre", "toZMicrometre", "zGapMicrometre", "centroidShiftMicrometre", "areaRatio", "alignedCyclicRmsMicrometre", "phaseShiftAt128Samples", "bothSourceContoursSimple", "centroidWithinReferenceScreen", "areaRatioWithinReferenceScreen", "alignedCyclicRmsWithinReferenceScreen", "withinReferenceScreen", "result"], "properties": { "fromContourId": { "type": "string" }, "toContourId": { "type": "string" }, "fromZMicrometre": { "type": "number" }, "toZMicrometre": { "type": "number" }, "zGapMicrometre": { "const": 1 }, "centroidShiftMicrometre": { "type": "number", "minimum": 0 }, "areaRatio": { "type": "number", "minimum": 1 }, "alignedCyclicRmsMicrometre": { "type": "number", "minimum": 0 }, "phaseShiftAt128Samples": { "type": "integer", "minimum": 0, "maximum": 127 }, "bothSourceContoursSimple": { "type": "boolean" }, "centroidWithinReferenceScreen": { "type": "boolean" }, "areaRatioWithinReferenceScreen": { "type": "boolean" }, "alignedCyclicRmsWithinReferenceScreen": { "type": "boolean" }, "withinReferenceScreen": { "type": "boolean" }, "result": { "enum": ["within_reference_screen_not_surface_admission", "hold_outside_reference_screen", "hold_self_intersecting_source_contour"] } } } },
+        "summary": { "type": "object", "additionalProperties": false, "required": ["contourCount", "vertexCount", "uniqueContiguousPlaneCount", "zMinimumMicrometre", "zMaximumMicrometre", "sourceArrayOrderMatchesZOrder", "sourceContourCountWithRawClosedFlagFalse", "simpleContourCount", "selfIntersectingContourCount", "selfIntersectionCount", "zeroLengthEdgeContourCount", "zeroLengthEdgeCount", "adjacentTransitionCount", "adjacentTransitionsWithinReferenceScreen", "adjacentTransitionsHeld", "contourDerivedSurfaceAdmitted", "admittedTriangleCount", "internalStructureObjectCount", "sameCellJoinCount", "registrationCount"], "properties": { "contourCount": { "type": "integer" }, "vertexCount": { "type": "integer" }, "uniqueContiguousPlaneCount": { "type": "integer" }, "zMinimumMicrometre": { "type": "number" }, "zMaximumMicrometre": { "type": "number" }, "sourceArrayOrderMatchesZOrder": { "type": "boolean" }, "sourceContourCountWithRawClosedFlagFalse": { "type": "integer" }, "simpleContourCount": { "type": "integer" }, "selfIntersectingContourCount": { "type": "integer" }, "selfIntersectionCount": { "type": "integer" }, "zeroLengthEdgeContourCount": { "type": "integer" }, "zeroLengthEdgeCount": { "type": "integer" }, "adjacentTransitionCount": { "type": "integer" }, "adjacentTransitionsWithinReferenceScreen": { "type": "integer" }, "adjacentTransitionsHeld": { "type": "integer" }, "contourDerivedSurfaceAdmitted": { "const": false }, "admittedTriangleCount": { "const": 0 }, "internalStructureObjectCount": { "const": 0 }, "sameCellJoinCount": { "const": 0 }, "registrationCount": { "const": 0 } } },
+        "decision": { "const": "retain_exact_observed_line_loops_only" }, "decisionReason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

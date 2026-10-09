@@ -1,0 +1,289 @@
+{
+  "contractId": "chen-dai-planar-morphology-routes-0.1",
+  "releaseId": "ohri-chen-dai-planar-morphology-routes-0.1.0",
+  "schemaVersion": "0.1.0",
+  "implementationDate": "2026-10-03",
+  "repositoryRelease": "8.6.124",
+  "repositorySnapshotDate": "2026-09-01",
+  "inputReceipts": [
+    {
+      "path": "data/neuromorpho-census-main-scene-index-0.1.json",
+      "bytes": 344383,
+      "sha256": "74421f5721ad7be42f81529ae423eb64af2d72f55fbaa384a225ab9f7c9d1a92"
+    },
+    {
+      "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+      "bytes": 8025022,
+      "sha256": "1ba52eb81aa141349f9e9a6916f8acf5a089ba079e9de34507e50f32bd6cfd68"
+    }
+  ],
+  "rights": {
+    "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use",
+    "requiredCitations": [
+      "Each original paper associated with a displayed reconstruction",
+      "NeuroMorpho.Org, RRID:SCR_002145",
+      "Tecuatl, Ljungquist & Ascoli 2024, doi:10.1096/fba.2024-00048"
+    ]
+  },
+  "paperContext": {
+    "doi": "10.1113/JP283037",
+    "pmid": "35848453",
+    "authority": "repository_record_citation_and_publisher_abstract",
+    "url": "https://physoc.onlinelibrary.wiley.com/doi/10.1113/JP283037",
+    "checkedDate": "2026-10-03",
+    "abstractScope": "The publisher abstract describes three-week exercise beginning at P21–P24. Its dendritic-length groups are control n=12 and exercise n=14. These study groups are context only; no deposited-record-to-animal, figure, electrophysiology or group-statistic crosswalk is established."
+  },
+  "runtimeMergePolicy": {
+    "overlappingFrozenNeuronIds": [
+      194468,
+      194469
+    ],
+    "supplementaryNeuronIds": [],
+    "frozenCensusRecordCount": 142,
+    "selectableMainSceneCount": 179,
+    "censusExpansionCount": 0,
+    "geometryCopyCount": 0
+  },
+  "routes": [
+    {
+      "routeId": "chen-dai-lamina-x-planar-194468",
+      "title": "Lamina X · treadmill-training · exact 2D source plane",
+      "representationRouteId": "main.legacy_observed_cell_forms",
+      "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+      "censusMembership": true,
+      "sourceRecord": {
+        "neuronId": 194468,
+        "assetId": "NeuroMorpho:194468",
+        "repository": "NeuroMorpho.Org",
+        "repositoryRelease": "8.6.124",
+        "name": "training-20x",
+        "archive": "Chen_Dai",
+        "species": "mouse",
+        "lifeStage": "adult",
+        "regionLabels": [
+          "spinal cord",
+          "lumbar",
+          "medial",
+          "lamina X"
+        ],
+        "cellTypeLabels": [
+          "interneuron"
+        ],
+        "strain": "C57BL/6",
+        "sexRaw": "Male/Female",
+        "ageRangeDays": [
+          42,
+          45
+        ],
+        "condition": [
+          "Treadmill training"
+        ],
+        "sourceNote": "This reconstruction was obtained from a mouse with 3 weeks treadmill training.",
+        "domain": "Neurites, Soma",
+        "physicalIntegrity": "Neurites Moderate",
+        "sourceAttributes": "Diameter, 2D, Angles",
+        "slicingThicknessMicrometre": 250,
+        "slicingDirection": "transverse",
+        "stain": "lucifer yellow",
+        "protocol": "in vitro",
+        "reconstructionSoftware": "NeuronJ",
+        "parentAnimalId": null,
+        "parentSpecimenId": null,
+        "parentIdentityMissingReason": "not_provided_by_official_api_schema"
+      },
+      "sourceObjects": {
+        "api": {
+          "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+          "bytes": 769605,
+          "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+          "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+          "pointer": "/_embedded/neuronResources/179",
+          "objectEncoding": "JSON.stringify of exact API object",
+          "objectSha256": "f3b21b553b699f2123382525f223092c5eb675e4d9f028df1b2ccbb232922afd"
+        },
+        "standardizedSwc": {
+          "path": "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-194468.swc",
+          "bytes": 44105,
+          "sha256": "a3e76ab068173cf7f8fef871a661fd6e49479bde1226b8c480ea825e5162b4f3",
+          "url": "https://neuromorpho.org/dableFiles/chen_dai/CNG%20version/training-20x.CNG.swc"
+        },
+        "geometry": {
+          "path": "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194468.json",
+          "bytes": 162339,
+          "sha256": "9950dc94612fc7d0c674507990913ba2ce9aa867495472db2bc01a2da2a925b4"
+        }
+      },
+      "topology": {
+        "nodeCount": 1399,
+        "segmentCount": 1398,
+        "nodeTypeCounts": {
+          "1": 3,
+          "6": 1396
+        },
+        "uniqueZMicrometre": [
+          0
+        ],
+        "preservedSourceNodeCoordinates": true,
+        "sevenColumnFiniteTree": true,
+        "unclassifiedType6Preserved": true
+      },
+      "renderingContract": {
+        "dimensionality": "2D",
+        "sourcePlane": "standardized_SWC_XY",
+        "sourceCoordinatesChanged": false,
+        "inferredZCount": 0,
+        "extrusionAllowed": false,
+        "radiusSurfaceAllowed": false,
+        "registrationCount": 0,
+        "internalPrimitiveCount": 0,
+        "sameCellPhysiologyJoinCount": 0,
+        "groupStatisticsJoinCount": 0,
+        "anatomicalAxesEstablished": false,
+        "displayTransformUse": "viewer_only"
+      },
+      "identityBoundary": {
+        "observationUnit": "repository_morphology_record",
+        "sameAnimalPairEstablished": false,
+        "independentAnimalCount": null,
+        "independentSpecimenCount": null,
+        "exactCrossSourceIdentityCount": 0
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/194468",
+        "standardizedSwc": "https://neuromorpho.org/dableFiles/chen_dai/CNG%20version/training-20x.CNG.swc",
+        "primaryPaper": "https://doi.org/10.1113/JP283037",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "This is one repository-deposited morphology record in its exact 2D source plane; it is not an averaged cell type, an observed atlas placement or a 3D cell.",
+        "All original standardized SWC coordinates are preserved; this exact file has z=0 throughout. No extrusion, invented depth, radius surface, membrane, volume or internal object is authorized.",
+        "The source reports soma and neurites with moderate neurite integrity. SWC type 6 remains uninterpreted; no axon or dendrite identity is inferred from it.",
+        "Age 42–45 days, condition, transverse plane and 250 µm preparation are repository metadata. The Male/Female field does not identify an individual sex; parent animal/specimen IDs are unavailable.",
+        "The two deposited objects are independent source records, with no verified same-animal pairing. They do not represent the paper’s control n=12 and exercise n=14 dendritic-length groups.",
+        "No paper-level statistics, electrophysiology, causal exercise effect, physical-cell identity, synapse or internal structure is joined to this object.",
+        "The standardized XY frame is source-local. Its axes are not established anatomical axes, and viewer camera/display poses are not biological registration."
+      ]
+    },
+    {
+      "routeId": "chen-dai-lamina-x-planar-194469",
+      "title": "Lamina X · control · exact 2D source plane",
+      "representationRouteId": "main.legacy_observed_cell_forms",
+      "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_CENSUS_CHILD",
+      "censusMembership": true,
+      "sourceRecord": {
+        "neuronId": 194469,
+        "assetId": "NeuroMorpho:194469",
+        "repository": "NeuroMorpho.Org",
+        "repositoryRelease": "8.6.124",
+        "name": "20x",
+        "archive": "Chen_Dai",
+        "species": "mouse",
+        "lifeStage": "adult",
+        "regionLabels": [
+          "spinal cord",
+          "lumbar",
+          "medial",
+          "lamina X"
+        ],
+        "cellTypeLabels": [
+          "interneuron"
+        ],
+        "strain": "C57BL/6",
+        "sexRaw": "Male/Female",
+        "ageRangeDays": [
+          42,
+          45
+        ],
+        "condition": [
+          "Control"
+        ],
+        "sourceNote": "",
+        "domain": "Neurites, Soma",
+        "physicalIntegrity": "Neurites Moderate",
+        "sourceAttributes": "Diameter, 2D, Angles",
+        "slicingThicknessMicrometre": 250,
+        "slicingDirection": "transverse",
+        "stain": "lucifer yellow",
+        "protocol": "in vitro",
+        "reconstructionSoftware": "NeuronJ",
+        "parentAnimalId": null,
+        "parentSpecimenId": null,
+        "parentIdentityMissingReason": "not_provided_by_official_api_schema"
+      },
+      "sourceObjects": {
+        "api": {
+          "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+          "bytes": 769605,
+          "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+          "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+          "pointer": "/_embedded/neuronResources/180",
+          "objectEncoding": "JSON.stringify of exact API object",
+          "objectSha256": "aec0c38059e810c14a3d0258b56ff66da5ff2f9bfcc3750994e279efc9855067"
+        },
+        "standardizedSwc": {
+          "path": "public/data/neuromorpho_release_8_6_124_census_v1/swc/nmo-194469.swc",
+          "bytes": 29788,
+          "sha256": "a8915179bbce858642e6e5c2c58dc470b1999a42a25c43a5bbf25183ab333c43",
+          "url": "https://neuromorpho.org/dableFiles/chen_dai/CNG%20version/20x.CNG.swc"
+        },
+        "geometry": {
+          "path": "public/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194469.json",
+          "bytes": 111972,
+          "sha256": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+        }
+      },
+      "topology": {
+        "nodeCount": 960,
+        "segmentCount": 959,
+        "nodeTypeCounts": {
+          "1": 3,
+          "6": 957
+        },
+        "uniqueZMicrometre": [
+          0
+        ],
+        "preservedSourceNodeCoordinates": true,
+        "sevenColumnFiniteTree": true,
+        "unclassifiedType6Preserved": true
+      },
+      "renderingContract": {
+        "dimensionality": "2D",
+        "sourcePlane": "standardized_SWC_XY",
+        "sourceCoordinatesChanged": false,
+        "inferredZCount": 0,
+        "extrusionAllowed": false,
+        "radiusSurfaceAllowed": false,
+        "registrationCount": 0,
+        "internalPrimitiveCount": 0,
+        "sameCellPhysiologyJoinCount": 0,
+        "groupStatisticsJoinCount": 0,
+        "anatomicalAxesEstablished": false,
+        "displayTransformUse": "viewer_only"
+      },
+      "identityBoundary": {
+        "observationUnit": "repository_morphology_record",
+        "sameAnimalPairEstablished": false,
+        "independentAnimalCount": null,
+        "independentSpecimenCount": null,
+        "exactCrossSourceIdentityCount": 0
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/194469",
+        "standardizedSwc": "https://neuromorpho.org/dableFiles/chen_dai/CNG%20version/20x.CNG.swc",
+        "primaryPaper": "https://doi.org/10.1113/JP283037",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "This is one repository-deposited morphology record in its exact 2D source plane; it is not an averaged cell type, an observed atlas placement or a 3D cell.",
+        "All original standardized SWC coordinates are preserved; this exact file has z=0 throughout. No extrusion, invented depth, radius surface, membrane, volume or internal object is authorized.",
+        "The source reports soma and neurites with moderate neurite integrity. SWC type 6 remains uninterpreted; no axon or dendrite identity is inferred from it.",
+        "Age 42–45 days, condition, transverse plane and 250 µm preparation are repository metadata. The Male/Female field does not identify an individual sex; parent animal/specimen IDs are unavailable.",
+        "The two deposited objects are independent source records, with no verified same-animal pairing. They do not represent the paper’s control n=12 and exercise n=14 dendritic-length groups.",
+        "No paper-level statistics, electrophysiology, causal exercise effect, physical-cell identity, synapse or internal structure is joined to this object.",
+        "The standardized XY frame is source-local. Its axes are not established anatomical axes, and viewer camera/display poses are not biological registration."
+      ]
+    }
+  ]
+}

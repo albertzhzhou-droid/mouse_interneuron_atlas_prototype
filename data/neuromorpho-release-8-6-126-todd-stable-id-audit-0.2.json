@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "0.2.0",
+  "auditId": "neuromorpho-release-8-6-126-todd-stable-id-audit-0.2",
+  "researchUpgradeId": "UPG-245",
+  "auditDate": "2026-09-23",
+  "currentRelease": {
+    "version": "8.6.126",
+    "releaseDate": "2026-09-23",
+    "announcedToddNovelReconstructionCount": 30,
+    "officialReleaseUrl": "https://neuromorpho.org/",
+    "releaseSetUrl": "https://neuromorpho.org/NeuroMorpho_ArchiveLinkout.jsp?ARCHIVE=Todd&DATE=2026-09-23"
+  },
+  "currentQuery": {
+    "filters": [
+      { "field": "species", "value": "mouse" },
+      { "field": "brain_region", "value": "spinal cord" },
+      { "field": "cell_type", "value": "interneuron" },
+      { "field": "archive", "value": "Todd" }
+    ],
+    "ageFilterApplied": false,
+    "completeCurrentStableIdRosterRetrieved": true,
+    "stableIdCount": 339,
+    "responseReceipt": {
+      "path": "data/source-candidates/neuromorpho-release-8-6-126-todd-nts-v1/official-current-query-response.json",
+      "bytes": 510772,
+      "sha256": "3165dcc2fe894d321bbfb7971cfc326235261f1cb8b1930e6dfda523b7f55b8d",
+      "requestUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&fq=archive:Todd&page=0&size=500&sort=neuron_id,asc",
+      "userAgent": "OHRI-Open-Data-Census-UPG-245/1.0 (NeuroMorpho API and direct SWC research audit)"
+    }
+  },
+  "baseline": {
+    "release": "8.6.124",
+    "queryRecordCount": 1097,
+    "archive": "Todd",
+    "archiveQueryRecordCount": 309,
+    "sourceIndexPath": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json"
+  },
+  "comparison": {
+    "commonStableIdCount": 309,
+    "candidateStableIdCount": 30,
+    "candidateIdsAbsentFromBaseline": 30,
+    "removedStableIdCount": 0,
+    "commonMetadataChangeCount": 0,
+    "currentQueryRosterReconcilesExactly": true,
+    "currentRosterIsASeparateReleaseSnapshot": true,
+    "frozenBaselineDenominatorChanged": false
+  },
+  "sourceAssetReview": {
+    "routePackPath": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+    "routePackBytes": 302205,
+    "routePackSha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d",
+    "candidateStandardizedSwcDownloadedCount": 30,
+    "candidateStandardizedSwcHashedCount": 30,
+    "candidateStandardizedSwcTopologyQcCount": 30,
+    "standardizedSwcNodeCount": 24209,
+    "standardizedSwcSegmentCount": 24179,
+    "sourceLabelledThreeDimensionalCount": 30,
+    "positiveZExtentCount": 30,
+    "sourceDiameterReportedCount": 10,
+    "sourceDiameterNotReportedCount": 20,
+    "repositoryReportedDendritesCompleteCount": 30,
+    "biologicalCompletenessIndependentlyEstablishedCount": 0,
+    "applicableRepositoryReuseTermsVerified": true,
+    "originalNeurolucidaFilesDownloaded": 0,
+    "standardizationLogsAvailable": 0,
+    "sourcePaperCrosswalkVerifiedCount": 0,
+    "originalPaperCitationResolvedForPublication": false
+  },
+  "admission": {
+    "supplementarySourceLocalRoutesAdmitted": 30,
+    "supplementaryGeometryObjectsAdmitted": 30,
+    "newFrozenCensusRecords": 0,
+    "censusExpansion": 0,
+    "crossSourceIdentityJoins": 0,
+    "atlasRegistrations": 0,
+    "biologicalMeasurements": 0,
+    "sameSpecimenInternalStructures": 0,
+    "renderedInternalPrimitives": 0
+  },
+  "contextualStudy": {
+    "doi": "10.1177/17448069261468203",
+    "title": "Characterisation of neurotensin-expressing interneurons in the mouse spinal dorsal horn",
+    "relationStatus": "candidate_context_only_record_level_crosswalk_unverified",
+    "articleDataAvailability": "Available from corresponding authors on reasonable request; this is not treated as an open downloadable dataset."
+  },
+  "sources": [
+    { "label": "Official NeuroMorpho 8.6.126 release notice", "url": "https://neuromorpho.org/" },
+    { "label": "NeuroMorpho API reference", "url": "https://neuromorpho.org/apiReference.html" },
+    { "label": "NeuroMorpho terms of use", "url": "https://neuromorpho.org/useterm.jsp" },
+    { "label": "Candidate contextual study; not a verified per-record crosswalk", "url": "https://journals.sagepub.com/doi/10.1177/17448069261468203" }
+  ],
+  "interpretationBoundary": "The official current 339-ID query exactly reconciles to the pinned 309-record Todd subset plus the 30 stable IDs in the 8.6.126 novel-release set, with no removals and zero changes across the compared metadata fields for shared IDs. Thirty standardized CNG SWCs were acquired, hashed, parsed as connected trees, and confirmed to have positive z extent. This establishes file-level geometry receipts, not independently verified biological completeness. Twenty objects are source-labelled No Diameter and remain centerline-only; ten permit a radius-derived visualization under repository metadata. The source-native Neurolucida files and standardization logs are not available. NeuroMorpho terms state CC BY 4.0 and require original-paper, repository RRID and repository-method citations in publications; current per-record API citation fields are blank or non-resolving, so original-paper citations remain unresolved. A 2026 neurotensin article is displayed only as candidate cohort context because matching count and broad labels do not prove a record-level crosswalk. The 30 routes are supplementary to, and do not alter, the frozen 1,097-record 8.6.124 denominator; no cross-source identities, registrations, measurements, or internal primitives are admitted."
+}

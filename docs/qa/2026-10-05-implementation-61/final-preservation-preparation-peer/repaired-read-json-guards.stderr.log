@@ -1,0 +1,22 @@
+test_actual_progress_short_pread (__main__.Guards) ... ok
+test_cross_read_replacement_does_not_erase_verified_epoch (__main__.Guards) ... ok
+test_cross_read_same_bytes_replacement_also_refused (__main__.Guards) ... ok
+test_duplicate_nested_key_refused (__main__.Guards) ... ok
+test_duplicate_root_key_refused (__main__.Guards) ... ok
+test_eof_is_not_retried (__main__.Guards) ... ok
+test_expected_sha_failure_is_not_retry_policy (__main__.Guards) ... ok
+test_io_is_not_retried (__main__.Guards) ... ok
+test_nonfinite_literal_refused (__main__.Guards) ... ok
+test_numeric_overflow_refused (__main__.Guards) ... ok
+test_only_epoch_exception_retries_at_most_three (__main__.Guards) ... {"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json", "attempt": 1, "timeUtc": "2026-10-05T09:07:16.964620+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json: (16777234, 228528453, 13, 1791191236964499994) -> (16777234, 228528454, 13, 1791191236964499994)"}}
+{"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json", "attempt": 2, "timeUtc": "2026-10-05T09:07:16.964750+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json: (16777234, 228528453, 13, 1791191236964499994) -> (16777234, 228528454, 13, 1791191236964499994)"}}
+{"strictEpochAttemptRefused": {"path": "/private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json", "attempt": 3, "timeUtc": "2026-10-05T09:07:16.964786+00:00", "failure": "Path/fd epoch mismatch before read: /private/tmp/ohri-i61-final-preservation-bounded-peer-20261005/synthetic-test_only_epoch_exception_retries_at_most_three.json: (16777234, 228528453, 13, 1791191236964499994) -> (16777234, 228528454, 13, 1791191236964499994)"}}
+ok
+test_regular_json (__main__.Guards) ... ok
+test_stable_read_hash_and_body (__main__.Guards) ... ok
+test_stable_second_read_keeps_epoch (__main__.Guards) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.004s
+
+OK

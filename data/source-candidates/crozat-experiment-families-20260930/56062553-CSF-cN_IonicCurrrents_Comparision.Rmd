@@ -1,0 +1,1123 @@
+---
+title: "voltage-dependent ionic conductance expressed in mice CSF-cNs  along the rostrol-caudal axis "
+author: "Nicolas Wanaverbecq - Elysa Crozat - Edith Blasco"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 5
+  html_notebook:
+    toc: yes
+    code_folding: hide
+    toc_depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# OPEN REQUIRED PACKAGES
+
+```{r}
+if(!require(psych)){install.packages("psych")}
+if(!require(FSA)){install.packages("FSA")}
+if(!require(car)){install.packages("car")}
+if(!require(multcompView)){install.packages("multcompView")}
+if(!require(PMCMRplus)){install.packages("PMCMRplus")}
+if(!require(emmeans)){install.packages("emmeans")}
+if(!require(lsmeans)){install.packages("lsmeans")}
+if(!require(nlme)){install.packages("nlme")}
+if(!require(Rmisc)){install.packages("Rmisc")}
+if(!require(rcompanion)){install.packages("rcompanion")}
+if(!require(pastecs)){install.packages("pastecs")}
+
+if(!require(dplyr)){install.packages("dplyr")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(lattice)){install.packages("lattice")}
+if(!require(BSDA)){install.packages("BSDA")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(rstatix)) install.packages("rstatix")
+if(!require(pak)) install.packages("pak")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(shiny)){install.packages("shiny")}
+if(!require(knitr)){install.packages("knitr")}
+if(!require(rmarkdown)){install.packages("rmarkdown")}
+
+```
+
+# IONIC CONDUCTANCE expressed in CSF-cNs
+
+## **1- SODIUM Voltage-dependent channels (NaV)**
+
+```{r}
+
+library(readxl)
+
+NAV<- read_xlsx("NAV.xlsx")
+#View(NAV)
+names(NAV)
+
+```
+
+```{r}
+
+NAV$Region ->Region
+NAV$Cond ->Cond
+NAV$Amp->Amp
+NAV$Dens->Dens
+
+```
+
+### a1) SUMMARIZE data for NaV Currents
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(Amp,
+          digits=0)
+
+
+Summarize(Amp~Region,
+          NAV,
+          digits=0)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=0)
+
+Summarize(Dens~Region,
+          NAV,
+          digits=0)
+
+```
+
+### b1) PLOT Current DATA for NaV
+
+#### Current
+
+```{r}
+
+Bx_Ina <- ggplot(NAV, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Ina + coord_cartesian( ylim = c(-2500, 500))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_Ina.eps", units="cm", width=10, height=6, dpi=300)
+ggsave(path = "Fig_IonCond", filename = "Bx_Ina.pdf", units="cm", width=10, height=6, dpi=300)
+
+
+Pt_Ina <- ggplot(NAV, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Amp, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Ina + coord_cartesian( ylim = c(-2500, 500))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_Ina.eps", units="cm", width=10, height=6, dpi=300)
+ggsave(path = "Fig_IonCond", filename = "Pt_Ina.pdf", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Current Density
+
+```{r}
+
+Bx_dIna <- ggplot(NAV, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_dIna + coord_cartesian( ylim = c(-350, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_dIna.eps", units="cm", width=10, height=6, dpi=300)
+ggsave(path = "Fig_IonCond", filename = "Bx_dIna.pdf", units="cm", width=10, height=6, dpi=300)
+
+
+Pt_dIna <- ggplot(NAV, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_dIna + coord_cartesian( ylim = c(-350, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_dIna.eps", units="cm", width=10, height=6, dpi=300)
+ggsave(path = "Fig_IonCond", filename = "Pt_Idna.pdf", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for NaV CURRENTS
+
+### =\> KRUSKAL WALLIS test - NaV Current
+
+```{r}
+
+kruskal.test(Amp~Region, data = NAV)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Region,
+                    data   = NAV,
+                    conf   = 0.95,
+                    digits = 4,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+Sum
+
+```
+
+### =\> KRUSKAL WALLIS test - NaV Current Density
+
+```{r}
+
+kruskal.test(Dens~Region, data = NAV)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Region,
+                    data   = NAV,
+                    conf   = 0.95,
+                    digits = 4,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+Sum
+```
+
+### **a2)** SUMMARIZE data for NaV Current, TTX INHIBITION
+
+```{r}
+
+library(readxl)
+InhNa<- read_excel("InhNa.xlsx")
+#View(InhNa)
+names(InhNa)
+
+
+```
+
+```{r}
+
+InhNa$Region ->Region
+InhNa$Cond ->Cond
+InhNa$Dens ->Dens
+
+```
+
+#### Current density in Control and in TTX
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          InhNa,
+          digits=0)
+
+Summarize(Dens~Region*Cond,
+          InhNa,
+          digits=0)
+
+```
+
+### b2) PLOT Current DATA for NaV-current in Control and TTX
+
+```{r}
+
+Bx_IhNa <- ggplot(InhNa, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_IhNa + coord_cartesian( ylim = c(-350, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_IhNa.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_IhNa<-ggplot(InhNa, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))  + theme_minimal()
+Pt_IhNa + coord_cartesian( ylim = c(-350, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_IhNa.pdf", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c2) STATISTICAL analysis for NaV-current in Control and TTX
+
+#### =\> Linear Model -\> region \* Condition
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+
+modelNaI = lm(Dens ~ Region*Cond,
+           data = InhNa)
+
+# Summary overall p-value and r-square 
+summary(modelNaI)
+
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelNaI,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelNaI = lm(Dens ~ Region*Cond,
+           data = InhNa)
+# Summary overall p-value and r-square 
+
+summary(modelNaI)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelNaI,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelNaI, ~  Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+```
+
+### a3) SUMMARIZE data for NaV current inhibition
+
+#### Percentage of inhibition in TTX
+
+```{r}
+
+library(readxl)
+InhNaP<- read_excel("InhNaPerc.xlsx")
+#View(InhNaP)
+names(InhNaP)
+
+InhNaP$Region ->Region
+InhNaP$Perc->Perc
+```
+
+```{r}
+library(FSA)
+
+Summarize(Perc,
+          digits=0)
+
+Summarize(Perc~Region,
+          InhNaP,
+          digits=0)
+```
+
+### b3) PLOT Current DATA for NaV Inhibition
+
+```{r}
+
+Bx_PercInh <- ggplot(InhNaP, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Perc, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_PercInh + coord_cartesian( ylim = c(0, 150))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_INa.eps", units="cm", width=10, height=6, dpi=300)
+ggsave(path = "Fig_IonCond", filename = "Bx_INa.pdf", units="cm", width=10, height=6, dpi=300)
+
+
+Pt_PercInh <- ggplot(InhNaP, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Perc, color=Region))  +
+   geom_jitter(shape=16, position=position_jitter(0.1))  + theme_minimal()
+Pt_PercInh + coord_cartesian( ylim = c(0, 150))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_INa.eps", units="cm", width=10, height=6, dpi=300)
+ggsave(path = "Fig_IonCond", filename = "Pt_INa.pdf", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c3) STATISTICAL analysis for NaV INHIBITION
+
+#### =\> KRUSKAL WALLIS test - NaV Inhibition
+
+```{r}
+
+kruskal.test(Perc~Region, data = InhNaP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Perc, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Perc ~ Region,
+                    data   = InhNaP,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## 2- **POTASSIUM Voltage-dependent channels (KV)**
+
+### a1) Potassium Current and Current densities
+
+```{r}
+
+library(readxl)
+
+KVC<- read_xlsx("KVC.xlsx")
+#View(KVC)
+names(KVC)
+```
+
+```{r}
+
+KVC$Region ->Region
+KVC$Current ->Current
+
+KVC$Amp->Amp
+KVC$Dens->Dens
+```
+
+### SUMMARIZE data for KV Currents
+
+#### Current Amplitude and Density Current Peak (E vs P) in Control
+
+```{r}
+library(FSA)
+
+Summarize(Amp~Current,
+          digits=0)
+
+Summarize(Dens~Current,
+          digits=0)
+
+Summarize(Amp~Current*Region,
+          KVC,
+          digits=0)
+
+Summarize(Dens~Current*Region,
+          KVC,
+          digits=0)
+
+
+```
+
+### b1) PLOT Current DATA for KV
+
+```{r}
+
+Bx_KA <- ggplot(KVC, aes(x=Current<- factor(Current,levels = c("Trans","Pers")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_KA + coord_cartesian( ylim = c(0, 15000))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_KAmp.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_KA <- ggplot(KVC, aes(x=Current<- factor(Current,levels = c("Trans","Pers")), y=Amp, color=Region))  +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_KA + coord_cartesian( ylim = c(0, 15000))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_KAmp.eps", units="cm", width=10, height=6, dpi=300)
+
+Bx_Kd <- ggplot(KVC, aes(x=Current<- factor(Current,levels = c("Trans","Pers")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Kd + coord_cartesian( ylim = c(0, 3000))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_KDens.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Kd <- ggplot(KVC, aes(x=Current<- factor(Current,levels = c("Trans","Pers")), y=Dens, color=Region))  +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Kd + coord_cartesian( ylim = c(0, 3000))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_KDens.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for Kv Currents
+
+#### =\> KRUSKAL WALLIS test - Kv currents AMPLITUDE E vs P
+
+```{r}
+
+kruskal.test(Amp~Current, data = KVC)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Current,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Current,
+                    data   = KVC,
+                    conf   = 0.95,
+                    digits = 4,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+Sum
+
+```
+
+#### =\> KRUSKAL WALLIS test - Kv currents DENSITIES E vs P
+
+```{r}
+
+kruskal.test(Dens~Current, data = KVC)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Current,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Current,
+                    data   = KVC,
+                    conf   = 0.95,
+                    digits = 4,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+Sum
+
+```
+
+#### =\> Linear Model -\> Region \* Current density (E vs P)
+
+```{r}
+modelK = lm(Dens ~ Current*Region,
+           data = KVC)
+# Summary overall p-value and r-square 
+summary(modelK)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelK,type = "II")
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelK,
+                      pairwise ~ Current*Region,
+                      adjust = "sidak")
+leastsquare
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelK = lm(Dens ~ Region*Current,
+           data = KVC)
+# Summary overall p-value and r-square 
+summary(modelK)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelK,
+                      ~ Current*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelK, ~ Current*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Current")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+```
+
+### a2) Kv Current block in TEA and 4AP on early current only
+
+```{r}
+library(readxl)
+KVB<- read_excel("KVBE.xlsx")
+#View(KVB)
+names(KVB)
+```
+
+```{r}
+
+KVB$Region ->Region
+KVB$Cond ->Cond
+
+KVB$Dens ->Dens
+KVB$Amp ->Amp
+
+```
+
+#### SUMMARIZE data for KV Current density in Control, TEA and 4AP
+
+```{r}
+
+library(FSA)
+
+Summarize(Dens~Cond,
+          digits=0)
+
+Summarize(Dens~Region*Cond,
+          KVB,
+          digits=0)
+```
+
+### b2) PLOT Current DATA for KV Current density in Control, TEA and 4AP
+
+```{r}
+
+Bx_KE <- ggplot(KVB, aes(x=Region<- factor(Region,levels = c("Lumb","Tho","Cerv")), y=Dens, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_KE + coord_cartesian( ylim = c(0, 1500))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_KvB.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_KE <- ggplot(KVB, aes(x=Region<- factor(Region,levels = c("Lumb","Tho","Cerv")), y=Dens, color=Cond))  +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_KE + coord_cartesian( ylim = c(0, 1500))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_KvB.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c2) STATISTICAL analysis for KV-current in Control, TEA and 4AP
+
+#### =\> KRUSKAL WALLIS test - Kv in CTR, TEA and 4-AP in all segments
+
+```{r}
+
+kruskal.test(Dens~Cond, data = KVB)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Cond,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Cond,
+                    data   = KVB,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+#### =\> Linear Model -\> Kv in CTR, TEA and 4-AP in all segments per Region (Region \* Cond)
+
+```{r}
+
+modelKS = lm(Dens ~ Region*Cond,
+           data = KVB)
+# Summary overall p-value and r-square 
+summary(modelKS)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelKS,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelKS = lm(Dens ~ Region*Cond,
+           data = KVB)
+# Summary overall p-value and r-square 
+summary(modelKS)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelKS,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelKS, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+
+```
+
+### a3) TEA- and 4AP-sensitive currents block
+
+```{r}
+library(readxl)
+KS<- read_excel("KVES.xlsx")
+#View(KS)
+names(KS)
+```
+
+```{r}
+
+KS$Region ->Region
+KS$Cond ->Cond
+
+KS$Amp ->Amp
+KS$Dens ->Dens
+```
+
+### SUMMARIZE data for KV Current density in Control, TEA and 4AP
+
+```{r}
+
+library(FSA)
+
+Summarize(Dens~Cond,
+          digits=0)
+
+Summarize(Dens~Region*Cond,
+          KS,
+          digits=0)
+```
+
+### b3) PLOT Current DATA for KV Current density in Control, TEA and 4AP
+
+```{r}
+
+Bx_KS <- ggplot(KS, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Dens, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_KS + coord_cartesian( ylim = c(0, 1500))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_KSens.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_KS <- ggplot(KS, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Dens, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_KS + coord_cartesian( ylim = c(0, 1500))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_KSens.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c3) STATISTICAL analysis for KV-current in Control, TEA and 4AP
+
+#### =\> Linear Model -\> region \* Cond
+
+```{r}
+modelKS = lm(Dens ~ Region*Cond,
+           data = KS)
+# Summary overall p-value and r-square 
+summary(modelKS)
+
+```
+
+#### \# Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelKS,type = "II")
+```
+
+#### \## Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelKS = lm(Dens ~ Region*Cond,
+           data = KS)
+# Summary overall p-value and r-square 
+summary(modelKS)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelKS,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelKS, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+```
+
+### a4) TEA and 4AP Percentage of block on early current only
+
+```{r}
+library(readxl)
+KVB<- read_excel("InhKVPerc.xlsx")
+#View(KVB)
+names(KVB)
+```
+
+```{r}
+
+KVB$Region ->Region
+KVB$Cond ->Cond
+
+KVB$Perc ->Perc
+
+```
+
+#### SUMMARIZE data for KV Current density in Control, TEA and 4AP
+
+```{r}
+
+library(FSA)
+
+Summarize(Perc~Cond,
+          digits=0)
+
+Summarize(Perc~Region*Cond,
+          KVB,
+          digits=0)
+```
+
+### b3) PLOT Current DATA for KV Current density in Control, TEA and 4AP
+
+```{r}
+
+Bx_KVB <- ggplot(KVB, aes(x=Region<- factor(Region,levels = c("Lumb","Tho","Cerv")), y=Perc, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_KVB + coord_cartesian( ylim = c(-50, 150))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_KSPerc.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_KVB <- ggplot(KVB, aes(x=Region<- factor(Region,levels = c("Lumb","Tho","Cerv")), y=Perc, color=Cond))  +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_KVB + coord_cartesian( ylim = c(-50, 150))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_KSPerc.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c3) STATISTICAL analysis for KV-current in Control, TEA and 4AP
+
+#### =\> KRUSKAL WALLIS test - Kv in CTR, TEA and 4-AP in all segments
+
+```{r}
+
+kruskal.test(Perc~Cond, data = KVB)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Perc, Cond,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Perc ~ Cond,
+                    data   = KVB,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+#### =\> Linear Model -\> Kv in CTR, TEA and 4-AP in all segments per Region (Region \* Cond)
+
+```{r}
+
+modelKVB = lm(Perc ~ Region*Cond,
+           data = KVB)
+# Summary overall p-value and r-square 
+summary(modelKVB)
+
+```
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelKVB,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelKS = lm(Perc ~ Region*Cond,
+           data = KVB)
+# Summary overall p-value and r-square 
+summary(modelKS)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelKVB,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelKVB, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+
+```
+
+### 3- **CALCIUM Voltage-dependent channels (CaV)**
+
+```{r}
+
+library(readxl)
+
+CAV<- read_xlsx("CAV.xlsx")
+#View(CAV)
+names(CAV)
+
+```
+
+```{r}
+
+CAV$Region->Region
+CAV$Amp->Amp
+CAV$Dens->Dens
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+CAV$Region <- factor(CAV$Region, levels =c("Cerv", "Tho", "Lumb"))
+
+```
+
+### a1) SUMMARIZE data for CaV Currents
+
+#### ICa Current Amplitude
+
+```{r}
+library(FSA)
+
+Summarize(Amp,
+          digits=0)
+
+Summarize(Amp~Region,
+            CAV,
+          digits=0)
+```
+
+#### ICa Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=0)
+
+Summarize(Dens~Region,
+            CAV,
+          digits=0)
+```
+
+### b1) PLOT ICa per Region
+
+```{r}
+
+Bx_ICa <- ggplot(CAV, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_ICa + coord_cartesian( ylim = c(-200, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_ICa.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_ICa  <- ggplot(CAV, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Dens, color=Region))  +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_ICa + coord_cartesian( ylim = c(-200, 50))
+
+
+ggsave(path = "Fig_IonCond", filename = "Pt_ICa.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for CaV CURRENTS
+
+#### =\> KRUSKAL WALLIS test - CaV Current Density
+
+```{r}
+
+kruskal.test(Dens~Region, data = CAV)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens~Region,
+                    data   = CAV,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### a2) INHIBITION by Cadmium (Current density)
+
+```{r}
+
+library(readxl)
+InhCa<- read_excel("InhCa.xlsx")
+#View(InhCa)
+names(InhCa)
+```
+
+```{r}
+InhCa$Region ->Region
+InhCa$Cond ->Cond
+InhCa$Dens ->Dens
+```
+
+### SUMMARIZE data for CaV Current density in Control and in Cadmium
+
+```{r}
+
+library(FSA)
+
+Summarize(Dens~Cond,
+          digits=0)
+
+Summarize(Dens~Region*Cond,
+          InhCa,
+          digits=0)
+```
+
+### b2) PLOT Current DATA for CaV-current in Control and Cadmium
+
+```{r}
+
+Bx_CaCd <- ggplot(InhCa, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Dens, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_CaCd + coord_cartesian( ylim = c(-200, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_IhCa.eps", units="cm", width=20, height=12, dpi=300)
+
+Pt_CaCd <- ggplot(InhCa, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Dens, color=Cond)) +
+  geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_CaCd + coord_cartesian( ylim = c(-200, 50))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_IhCa.eps", units="cm", width=20, height=12, dpi=300)
+
+```
+
+### c2) STATISTICAL analysis for CaV-current in Control and Cadmium
+
+#### =\> Linear Model -\> region \* Cond
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+
+modelICa = lm(Dens ~ Region*Cond,
+           data = InhCa)
+
+# Summary overall p-value and r-square 
+summary(modelICa)
+
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelICa,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelICa = lm(Dens ~ Region*Cond,
+           data = InhCa)
+# Summary overall p-value and r-square 
+summary(modelICa)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelICa,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelICa, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+```
+
+### a3) SUMMARIZE data for CaV current inhibition in Percentage
+
+```{r}
+
+library(readxl)
+InhCaP<- read_excel("InhCaPerc.xlsx")
+#View(InhCaP)
+names(InhCaP)
+
+InhCaP$Region ->Region
+InhCaP$Perc->Perc 
+```
+
+```{r}
+library(FSA)
+
+Summarize(Perc,
+          digits=0)
+
+Summarize(Perc~Region,
+          InhCaP,
+          digits=0)
+```
+
+### b3) PLOT Current DATA for CaV Inhibition
+
+```{r}
+
+Bx_IhnCa <- ggplot(InhCaP, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Perc, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_IhnCa + coord_cartesian( ylim = c(0, 150))
+
+ggsave(path = "Fig_IonCond", filename = "Bx_IhnCa.eps", units="cm", width=20, height=12, dpi=300)
+
+Pt_IhnCa<<- ggplot(InhCaP, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Perc, color=Region))   +
+   geom_jitter(shape=16, position=position_jitter(0.1))  + theme_minimal()
+Pt_IhnCa + coord_cartesian( ylim = c(0, 150))
+
+ggsave(path = "Fig_IonCond", filename = "Pt_IhnCa.eps", units="cm", width=20, height=12, dpi=300)
+
+```
+
+### c3) STATISTICAL analysis for CaV INHIBITION
+
+#### =\> KRUSKAL WALLIS test - CaV Inhibition
+
+```{r}
+
+kruskal.test(Perc~Region, data = InhCaP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Perc, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Perc ~ Region,
+                    data   = InhCaP,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```

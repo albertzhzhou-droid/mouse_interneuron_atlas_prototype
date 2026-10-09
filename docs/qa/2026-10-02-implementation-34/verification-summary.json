@@ -1,0 +1,386 @@
+{
+  "implementation": "I34",
+  "sealedAtUtc": "2026-10-02T20:07:51.815316+00:00",
+  "version": "2.91.0-research.1",
+  "goalStatus": "active",
+  "fullGoalComplete": false,
+  "scientificDelta": {
+    "rnaCountsToSameSourceNamedMetadataMappingVerified": true,
+    "source": {
+      "accession": "GSE318731",
+      "fileName": "GSE318731_P56_cholinergic_multiome.rds",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_cholinergic_multiome.rds",
+      "bytes": 127862795,
+      "sha256": "d4ad07a1e434f2ed4553738f3e1df1b395ce81b154f974c41f3ba6a9d674aed2",
+      "matrixLocator": "assays$RNA@layers$counts",
+      "matrixClass": "dgCMatrix",
+      "assayClass": "Assay5",
+      "layer": "counts",
+      "dimensionNames": "source Assay5 cells/features LogMaps; matrix Dimnames are NULL"
+    },
+    "allSourceCountsColumnsReplayed": 3199,
+    "retainedFeatureCount": 32285,
+    "existingCanonicalCholInProfiles": 11,
+    "existingCanonicalCholInNuclei": 923,
+    "positiveEntries": 4610528,
+    "totalCounts": 22637377,
+    "chunks": 127,
+    "compressedBytes": 4650673,
+    "sourceRdsRetainedOnceOutsidePublic": true,
+    "originalCholMetadataAndRosterPreserved": true,
+    "canonicalProfilesAdded": 0,
+    "rnaAtacJoinsEstablished": 0,
+    "crossSourcePhysicalCellJoinsEstablished": 0,
+    "geometryOrInternalStructureEstablished": false,
+    "newDonorOrSectionIdentityEstablished": false,
+    "normalization": "none; source RNA counts",
+    "markerOrDifferentialExpressionClaim": false,
+    "publication": false
+  },
+  "engineeringValidation": {
+    "finalCompactCodeFullResearchCommandObservedExitCode": 0,
+    "tests": 1338,
+    "passed": 1323,
+    "conditionalSkips": 15,
+    "failed": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "fullResearchBuildStrictTypesLintAndConfiguredValidatorsPassed": true,
+    "fullLog": "full-research-validation-final-compact-code.log",
+    "initialLintFailureRetained": "full-research-validation.log",
+    "finalDocumentBuildAndValidatorsObservedExitCode": 0,
+    "finalTargetedTests": {
+      "tests": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "finalSourceByteReplay": {
+      "features": 32285,
+      "nuclei": 923,
+      "profiles": 11,
+      "chunks": 127,
+      "countSum": 22637377,
+      "selectedNonzeroEntries": 4610528,
+      "totalCompressedBytes": 4650673,
+      "allSourceColumnsReplayed": 3199,
+      "exactRetainedRosterRows": 923,
+      "mode": "exact_replay"
+    },
+    "finalAllFeatureRowsAndNucleiReplay": {
+      "features": 32285,
+      "nuclei": 923,
+      "profiles": 11,
+      "chunks": 127,
+      "compressedBytes": 4650673,
+      "allNucleusColumnStatisticsReplayed": 923,
+      "totalCount": 22637377,
+      "positiveEntries": 4610528,
+      "mismatches": 0,
+      "canonicalProfilesAdded": 0,
+      "rnaAtacJoins": 0
+    },
+    "currentManifest": {
+      "releaseId": "ohri-mouse-interneuron-research-iteration-2.91.0",
+      "version": "2.91.0-research.1",
+      "inputCount": 1403,
+      "parentReleaseId": "ohri-mouse-interneuron-research-iteration-2.90.0",
+      "canonicalSourceCount": 31,
+      "canonicalRecordSetCount": 41,
+      "bundledExactCellProfileRosterCount": 13,
+      "bundledExactSourceObjectSetCount": 4,
+      "sourceProfileCount": 387,
+      "researchUpgradeCount": 243,
+      "completedResearchUpgradeCount": 79,
+      "displayedResearchUpgradeCount": 50,
+      "staleCanonicalDenominatorLiteralCount": 0,
+      "independentObjectCounts": {
+        "native-contours": 7,
+        "microns-phase1": 2,
+        "banc-v888": 2,
+        "super-clem-palm": 18358,
+        "microstructformer": 540
+      },
+      "objectCountUnit": "source-specific indexed entries; never a pooled cell census",
+      "sourceProfileComparisonCount": 387,
+      "exactCrossSourceIdentityCount": 0,
+      "atlasRegistrationCount": 0,
+      "mouseSpinalInterneuronSameCellInternalObjectCount": 0,
+      "bilSectionLinkedCellNucleusGeometryCount": 0,
+      "microStructFormerGeometryCount": 0,
+      "fullProjectCopyCount": 0,
+      "fullGoalComplete": false,
+      "historicalParent": "Frozen 2.90 receipt retains its original hashes; current 2.91 replays every current authoritative input byte. Scientific gates remain independent from engineering validation."
+    }
+  },
+  "nativeValidation": {
+    "browser": "Codex in-app browser",
+    "checks": 16,
+    "passed": 16,
+    "failed": 0,
+    "receipt": "native-checks.json",
+    "independentNativeJsonExportsReplayed": 3,
+    "exportMismatches": 0,
+    "exportReceipt": "native-export-source-replay.json",
+    "mobileViewportWidth": 390,
+    "mobileDocumentWidth": 390,
+    "servedChecksumFaultVerifiedThenExactRestorationAndRetryPassed": true,
+    "servedFaultReceipt": "native-served-checksum-fault.json",
+    "warmCachedOriginalResponseWasNotCountedAsRefusal": true,
+    "csvKeyboardActionPerformed": true,
+    "csvFileLandingConfirmed": false,
+    "csvContentSourceValidatedByUnitAndIndependentReplay": true,
+    "unverified": [
+      "Native pending-request cancellation timing",
+      "Screen reader",
+      "200 percent actual browser zoom",
+      "Download file landing"
+    ]
+  },
+  "preservation": {
+    "receipt": "final-preservation-check.json",
+    "currentOriginalAndTemporaryInputsVerified": 1403,
+    "priorAuthoritativeInputsOutsideOwnedVerified": 1259,
+    "fixedScientificInputsVerified": 398,
+    "existingOwnedPreimagesBackedUp": 8,
+    "ownedBackupSha256": "3aea8086be1b922c63adccf6e044d39e60fb7c4cf1c2e7950d891650b8ea91f0",
+    "actualOldFilesChanged": [
+      "app/CanoCholInNucleusRoster.tsx",
+      "tools/build_research_iteration_manifest_2_91.mjs",
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+      "data/research-iteration-manifest-2.91.json"
+    ],
+    "newAuthoritativeInputFiles": 137,
+    "frozenManifestChecks": [
+      {
+        "path": "data/research-iteration-manifest-2.34.json",
+        "matches": true,
+        "bytes": 125197,
+        "sha256": "76ead4e29455c8e9250f294afa4e78b6a72bb76709115d15954564545bb43d1e"
+      },
+      {
+        "path": "data/research-iteration-manifest-2.90.json",
+        "matches": true,
+        "bytes": 7954,
+        "sha256": "8bca8205ed5671241e083b1f36bec1d566fc591a93b44cc75ae1d1d8c13c2480"
+      }
+    ],
+    "mismatches": [],
+    "originalDependenciesPreserved": true,
+    "gitPushOrPublication": false
+  },
+  "screenshots": {
+    "receipt": "screenshot-verification.json",
+    "decodedAndHashed": 7,
+    "finalDesktop": "desktop-final-rna-counts.jpg",
+    "finalMobile": "mobile-final-rna-counts.jpg",
+    "finalDocumentCurrentNucleusMobile": "mobile-current-nucleus.jpg"
+  },
+  "goalProgress": {
+    "canonicalResearchUpgrades": 243,
+    "exactCompleted": 79,
+    "newCompletedThisImplementation": 0,
+    "remainingSourceGates": [
+      "M2 exact section/donor and outline frame registration, curated cell types and applicable rights",
+      "M4 actual mouse spinal interneuron volume, segmentation, parent, frame and raw slice chain",
+      "V1 corrected source barcode/count/cluster crosswalk not acquired; existing I01 conflicts retained",
+      "Other requirements remain open in the canonical goal audit and upgrade queue"
+    ]
+  },
+  "localPreview": {
+    "url": "http://127.0.0.1:3003",
+    "finalDocumentProductionBuild": true
+  },
+  "qaEvidence": [
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/all-feature-nucleus-replay.log",
+      "bytes": 233,
+      "sha256": "224dc85d47e80b3403d823ead7aa0c278b7e384ace5b8ce83272c578053af30c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/before-authoritative-inputs.json",
+      "bytes": 248530,
+      "sha256": "c06a180b3500f289f7c40e7426a95fa09272448820eb61c15693e93ae5942360"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/before-baseline-check.json",
+      "bytes": 1472,
+      "sha256": "c42454126275f8e41b8d0d62e6bd4fac31999ec8be9bf753211a10e0ba6035e2"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/before-owned-inputs.json",
+      "bytes": 1318,
+      "sha256": "ec386ba0574a8eeca173aba385342209fe5d7435df6c117d48bea3d939f98450"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/desktop-final-rna-counts.jpg",
+      "bytes": 77435,
+      "sha256": "3f9dc409bcd79b58a7cbc72ff71cc37036d25977f392dd96144a2f01b8717553"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/desktop-rna-counts.jpg",
+      "bytes": 83649,
+      "sha256": "9d0ad4d931d4ac3809917d7fe24f091794da14c5c13cd3fc3501455dfa94fb1e"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-all-source-row-validation.log",
+      "bytes": 233,
+      "sha256": "224dc85d47e80b3403d823ead7aa0c278b7e384ace5b8ce83272c578053af30c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-code-native-dom.txt",
+      "bytes": 1332,
+      "sha256": "bf1efa0bbb05c1cd2e6ad5ff8f9024072cf9811d95fbbc0a99d00a824c960af1"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-document-build.log",
+      "bytes": 2608,
+      "sha256": "ead440681a4fd3fc9214e22a5002c14bd76a6eca535fc96bfb3d2886c79e0170"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-document-native-dom.txt",
+      "bytes": 899,
+      "sha256": "c877f357ce8c5bc164ab47eb44f4f2734a1cacd8604653d4da6309de0110857c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-manifest-validation.log",
+      "bytes": 1163,
+      "sha256": "40d6d455612c897294682256640f4eeab66ba04b469b9bc272cdac226d24b793"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-preservation-check.json",
+      "bytes": 9789,
+      "sha256": "0ca73fbbe6c52d161f861005c5266e81babb6ca8eb76b09d9d41236326903584"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-source-byte-replay.log",
+      "bytes": 246,
+      "sha256": "de2d468a7390119da868b5c48915fcefb935f35dc2e1006dcdfc39c836e55119"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/final-targeted-tests.log",
+      "bytes": 847,
+      "sha256": "efdecd7b7bc841f937739e271816332756958f461c8b68c3e19981ddd59a9dea"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/full-research-validation-final-code.log",
+      "bytes": 208230,
+      "sha256": "21a074b6132abb7ee70616bec8620fb7035ee0bdc5585c6d4b3705934452435a"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/full-research-validation-final-compact-code.log",
+      "bytes": 207300,
+      "sha256": "152a32c4d139293de892a57860aec1369a484f48fcc6a98595426f9a85e1ac0f"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/full-research-validation.log",
+      "bytes": 29114,
+      "sha256": "d463eb642b63d4ce4f9921e1106eb62e0416e51b543e48b676e0b1d893d87e16"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/mobile-comparison.jpg",
+      "bytes": 43290,
+      "sha256": "e225b710e3760543859668e96c82ffd840ae37d37354077fd062976345bbe242"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/mobile-current-nucleus.jpg",
+      "bytes": 51722,
+      "sha256": "3ca119874cf60bb1faa402a714b16c795c5f603f60cd60d29f2c6318b0ed5809"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/mobile-final-rna-counts.jpg",
+      "bytes": 60149,
+      "sha256": "9b1afe186b062c8b3c70a290d6645dbd2b621e0d6094f4d05328501fda253916"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/mobile-rna-counts.jpg",
+      "bytes": 64469,
+      "sha256": "6f3415ed28996bd91a5399eafec9d848dedc81115d023c679cb0436ad74f4220"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-checks.json",
+      "bytes": 2694,
+      "sha256": "bed2a43af855f7b1ae0ae2263ff1730df43e2e0a01c660a5667473553745b6a8"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-checksum-failure.jpg",
+      "bytes": 72647,
+      "sha256": "930c8f5cd939950eaa0d509c14a28d846e79589e31e3973ef30f08b5312cf4d6"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-checksum-failure.txt",
+      "bytes": 479,
+      "sha256": "cd5db07811f34f866208c732b444c49b3ac04e526d4671c29ee12924f657536c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-csv-download-observation.json",
+      "bytes": 97,
+      "sha256": "ec50c4019db8aec32d7f19655529e6bd54453e4094618aa251f7af4c3bf324ee"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-export-source-replay.json",
+      "bytes": 1146,
+      "sha256": "194f7ee7957ffb0dd70a530b83315aad1fba0a7574b4d63c48502e7de0487b9c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-final-pitx2-receipt.json",
+      "bytes": 6961,
+      "sha256": "c87a414a864766f740fe6c107a17c9e10ad9902f2197c671f35ebd086ea43ed9"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-mobile-measurements.json",
+      "bytes": 1195,
+      "sha256": "1656fd3cf1b8321731ff68ba424f7030f666aecee1bb23844853487c5f12fd74"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-pitx2-receipt.json",
+      "bytes": 6961,
+      "sha256": "c87a414a864766f740fe6c107a17c9e10ad9902f2197c671f35ebd086ea43ed9"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-served-checksum-fault.json",
+      "bytes": 1647,
+      "sha256": "141314dc1f60658326e89c457550f23379eb657600b531e0e571801c94507021"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/native-skor2-receipt.json",
+      "bytes": 6994,
+      "sha256": "0d76b971958b4dc9c255c0454f42d7c382e3a0294413431099306e0a57d0de0c"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/owned-before.zip",
+      "bytes": 412269,
+      "sha256": "3aea8086be1b922c63adccf6e044d39e60fb7c4cf1c2e7950d891650b8ea91f0"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/screenshot-verification.json",
+      "bytes": 2077,
+      "sha256": "c9107ba03848520cd4873036cea93138a0ea32ce8775f4e4ed9049bd85ba24be"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/source-matrix-extraction.log",
+      "bytes": 239,
+      "sha256": "6e674e81a672a8e17bc840d5a504b361315b1f91f7ee350367a354ab3189a052"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/source-matrix-final-builder.log",
+      "bytes": 239,
+      "sha256": "6e674e81a672a8e17bc840d5a504b361315b1f91f7ee350367a354ab3189a052"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/targeted-tests.log",
+      "bytes": 851,
+      "sha256": "c5e9236f46d4ebc43be00a819367c11275d89b00bd56fae12c19fcf676b10c70"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/temporary-input-replay.json",
+      "bytes": 368,
+      "sha256": "17b6e1b3e55a9745ac8daed9763af0fe2f1eacd534b853bbe80af7bced436696"
+    },
+    {
+      "path": "docs/qa/2026-10-02-implementation-34/v1-author-visible-controls.txt",
+      "bytes": 5428,
+      "sha256": "129142feda3bd247dd62a6dadb08ca588cace39ee0d219f73ebb57390ebc021b"
+    }
+  ]
+}

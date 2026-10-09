@@ -1,0 +1,29 @@
+{
+  "case": "Actual same-size bad index bytes in disposable staged preview only",
+  "rootScientificInputsModified": false,
+  "files": [
+    {
+      "path": "/private/tmp/ohri-i51-verification/public/data/research_explorer_index_v1/search-index.json",
+      "backup": "/private/tmp/ohri-i53-cache-fault/public.json",
+      "bytes": 12327624,
+      "originalSha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "faultSha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d",
+      "sameSize": true
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/dist/client/data/research_explorer_index_v1/search-index.json",
+      "backup": "/private/tmp/ohri-i53-cache-fault/dist.json",
+      "bytes": 12327624,
+      "originalSha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "faultSha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d",
+      "sameSize": true
+    }
+  ],
+  "restored": true,
+  "actualHTTPResponse": {
+    "bytes": 12327624,
+    "sha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d"
+  },
+  "faultDelivery": "pending diagnosis: live server response hash compared below",
+  "browserFaultStatus": "not delivered to browser: ready dossier was observed; plain curl received altered bytes but unchanged precompressed representation remained available"
+}

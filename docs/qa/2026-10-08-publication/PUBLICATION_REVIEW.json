@@ -1,0 +1,118 @@
+{
+  "recordedAtUTC": "2026-10-09T00:49:03.133879+00:00",
+  "scope": "Public repository handoff after user-authorized restoration and review of all 9730 originally cloud-only repository files; development remains paused.",
+  "originalCloudFilesRecovered": 9730,
+  "secretReview": {
+    "tool": "Official Gitleaks 8.30.1, archive checksum verified",
+    "existingHistoryCommits": 3,
+    "historyRawFindings": 312,
+    "historyUnresolvedFindings": 0,
+    "fullSnapshotRawFindings": 2085,
+    "fullSnapshotUnresolvedFindings": 0,
+    "projectCredentialsFound": 0,
+    "rawScannerExitCode": 1,
+    "interpretation": "All findings classified using source context: scientific SHA256 fields, public accession/scope identifiers and public third-party frontend configuration. Raw scanner output is retained privately. One JSON archive member with .gz in its basename was separately parsed and scanned."
+  },
+  "heldFiles": [
+    {
+      "path": "data/source-candidates/russ-geo-original-audit-20261005/GSE158380_cells.csv.gz",
+      "bytes": 111999,
+      "sha256": "2268141a1c5efbecd9dc85fc80bc7296c00f3dea04d2a6555be90c9c831729c6",
+      "disposition": "local original retained; excluded from public Git handoff"
+    },
+    {
+      "path": "data/source-candidates/russ-geo-original-audit-20261005/GSE158380_features.updated-11-22-2022.csv.gz",
+      "bytes": 113707,
+      "sha256": "9ed13abf990d17d5b19a2c9f18db7ccd3e662d4325f184324f639882a8db917d",
+      "disposition": "local original retained; excluded from public Git handoff"
+    },
+    {
+      "path": "data/source-candidates/svara-supplements-20261002/publisher-supplement-policy.html",
+      "bytes": 120589,
+      "sha256": "9f5f91bf00a11fea8918fc75b5881d33cd2bd5148e5dede7fd52648ffa73ac44",
+      "disposition": "local original retained; excluded from public Git handoff"
+    },
+    {
+      "path": "data/source-candidates/mccreedy-v2a-20261002/publisher.html.txt",
+      "bytes": 898397,
+      "sha256": "449e165a4c626e693d662063cbf4b55f9e35c231e424c79e2625ef33b074ef90",
+      "disposition": "local original retained; excluded from public Git handoff"
+    },
+    {
+      "path": "docs/qa/2026-10-05-implementation-63/accepted-i63-owned-and-layout-checkpoint.zip",
+      "bytes": 943860,
+      "sha256": "09f9229297f75b3fc1d07117829f21f8ce1bde090f3e58bde2c9b8092b4eef16",
+      "disposition": "local original retained; excluded from public Git handoff"
+    },
+    {
+      "path": "docs/qa/2026-10-07-implementation-64/exact-accepted-i63-checkpoint.zip",
+      "bytes": 943860,
+      "sha256": "09f9229297f75b3fc1d07117829f21f8ce1bde090f3e58bde2c9b8092b4eef16",
+      "disposition": "local original retained; excluded from public Git handoff"
+    },
+    {
+      "path": "docs/qa/2026-10-07-implementation-64/accepted-i64-owned-and-layout-checkpoint.zip",
+      "bytes": 961000,
+      "sha256": "a93f8cf0658525ed722376f6cf4ff3929d6c4e5d40480265cbad5e716c8fa749",
+      "disposition": "local original retained; excluded from public Git handoff"
+    }
+  ],
+  "workspaceConfig": {
+    "path": ".openai/hosting.json",
+    "disposition": "Workspace-only project identifier removed from current public tree; local original retained; no project credential identified in historical scan"
+  },
+  "recoveryNotes": "Two newly evicted files were recovered from exact existing manifest/checkpoint backups; the unchanged Davis source receipt was recovered from its committed Git blob with matching original index inode/size/mtime. Original cloud placeholders are preserved inside local .git and are not published.",
+  "scienceGoalComplete": false,
+  "exactCompletedUpgradeRows": 83,
+  "remainingUpgradeRows": 160,
+  "nativeI68NewFileLandingAccepted": false,
+  "developmentPausedByUser": true,
+  "publicCandidateSecretReview": {
+    "rawFindings": 2064,
+    "unresolvedFindings": 0,
+    "projectCredentialsFound": 0,
+    "rawScannerExitCode": 1,
+    "manualCompressionNameJSONScanExitCode": 0
+  },
+  "publicCandidateBuildAndPackagingChecks": [
+    {
+      "path": "docs/qa/2026-10-08-publication/actual-public-candidate-build-attempt-02.execution.json",
+      "bytes": 1545,
+      "sha256": "03f5990e89633d91a1def6f7365a77570001d296206006e531184bcf891b4ad3",
+      "actualExitCode": 0
+    },
+    {
+      "path": "docs/qa/2026-10-08-publication/actual-packaging-typecheck.execution.json",
+      "bytes": 879,
+      "sha256": "3bd0aabd7d89364cbbaf5a4185239f6a49490b2bdd1ec07b49797c84873e085a",
+      "actualExitCode": 0
+    },
+    {
+      "path": "docs/qa/2026-10-08-publication/actual-packaging-lint.execution.json",
+      "bytes": 864,
+      "sha256": "d59783a27e0ba90f2217c7d0cf54695142c1ffbe7c0d1ac770063d8f2d0b6b31",
+      "actualExitCode": 0
+    },
+    {
+      "path": "docs/qa/2026-10-08-publication/actual-existing-hosting-config-build.execution.json",
+      "bytes": 898,
+      "sha256": "6221904148395884982b49e7083f8ceb5695a9746348657a05b5b5f4cd50754b",
+      "actualExitCode": 0
+    },
+    {
+      "path": "docs/qa/2026-10-08-publication/actual-final-publication-manifest-build.execution.json",
+      "bytes": 1008,
+      "sha256": "1cfedc0c9ccedc7d02c4d184f1e7fbf1619c14a4b63aa97373007d19f0c4fecc",
+      "actualExitCode": 0
+    },
+    {
+      "path": "docs/qa/2026-10-08-publication/actual-final-publication-manifest-validation.execution.json",
+      "bytes": 1010,
+      "sha256": "e7bd3825a0a07ed981224459bacf9750c2ba88f24818354459b7176e1561729a",
+      "actualExitCode": 0
+    }
+  ],
+  "packagingFix": "vite.config.ts loads .openai/hosting.json and the Sites export plugin only when the local file exists; local behavior retained, public clone builds without workspace configuration",
+  "finalCanonicalManifestSha256": "fd65d7729b37f309d1b29a4a8c4e8cf84003e83afaaaf2a5d40b109ac8a5df1e",
+  "finalInputReplay": "docs/qa/2026-10-08-publication/publication-input-replay-final.json"
+}

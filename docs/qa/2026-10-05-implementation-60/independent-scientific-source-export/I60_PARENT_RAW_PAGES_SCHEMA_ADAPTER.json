@@ -1,0 +1,47 @@
+{
+  "status": "EXACT_RAW_PAGES_STRING_SCHEMA_ADAPTER_ONLY",
+  "parentSchemaConfirmation": "pages/selections string; candidates string[]; alerts/statuses string[]; no raw overwrite",
+  "actualReadyNotice": "ACTUAL_READY",
+  "targets": [
+    {
+      "path": "/private/tmp/ohri-i60-comparison-source-replay/replay_i60_comparison_source.py",
+      "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/replay_i60_comparison_source.py.PAGES_SCHEMA_REPAIR_BEFORE",
+      "before": {
+        "bytes": 30560,
+        "sha256": "174aca04300668bc6c6fba26f11463871281a64393b829244c80fb779f8b5127"
+      },
+      "after": {
+        "bytes": 30648,
+        "sha256": "a9ace5eab6de6a34c3cc50dbd8c15bbac2ddf462a0f41ca490c15c38dbd441b7"
+      },
+      "exactReplacements": [
+        {
+          "old": "count = len(candidate_records(authority, view)); page_text = ' '.join(capture['pages'])",
+          "new": "count = len(candidate_records(authority, view)); assert isinstance(capture['pages'], str), 'Original DOM pages text must be retained as a string'; page_text = capture['pages']"
+        }
+      ]
+    },
+    {
+      "path": "/private/tmp/ohri-i60-comparison-source-replay/test_replay_i60_comparison_source.py",
+      "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/test_replay_i60_comparison_source.py.PAGES_SCHEMA_REPAIR_BEFORE",
+      "before": {
+        "bytes": 11759,
+        "sha256": "9930c4fbb01a3552ff4691cfeeccdb2db6d4cddb1d28b2b3648c542d6d29270b"
+      },
+      "after": {
+        "bytes": 11757,
+        "sha256": "527cc428eeaa0877354cfecd595f768db6edd00de163351766723564b86a9fbf"
+      },
+      "exactReplacements": [
+        {
+          "old": "'pages': ['387 matches · page 1 / 33']",
+          "new": "'pages': '387 matches · page 1 / 33'"
+        }
+      ]
+    }
+  ],
+  "checksWeakened": false,
+  "rawWrites": 0,
+  "rootWrites": 0,
+  "stageWrites": 0
+}

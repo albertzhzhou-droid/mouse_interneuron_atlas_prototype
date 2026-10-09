@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-release-8-6-126-ui-query-audit-0.1.schema.json",
+  "title": "NeuroMorpho 8.6.126 Metadata UI Query Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "researchUpgradeId", "auditDate", "observedRelease", "query", "comparison", "admission", "sources", "interpretationBoundary"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "auditId": {"const": "neuromorpho-release-8-6-126-ui-query-audit-0.1"},
+    "researchUpgradeId": {"const": "UPG-245"},
+    "auditDate": {"type": "string", "format": "date"},
+    "observedRelease": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "releaseDate", "reportedRepositoryCellCount", "sourceUrl", "announcement"],
+      "properties": {
+        "version": {"const": "8.6.126"},
+        "releaseDate": {"type": "string", "format": "date"},
+        "reportedRepositoryCellCount": {"type": "integer", "minimum": 1},
+        "sourceUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "announcement": {"type": "string", "minLength": 20}
+      }
+    },
+    "query": {
+      "type": "object", "additionalProperties": false,
+      "required": ["interfaceUrl", "filters", "ageFilterApplied", "observedMetadataUiHitCount", "countSemantics", "stableNeuronIdsRetrieved", "machineReadableResponseRetrieved", "apiResponseRetrievalStatus"],
+      "properties": {
+        "interfaceUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "filters": {
+          "type": "array", "minItems": 4, "maxItems": 4,
+          "items": {"type": "object", "additionalProperties": false, "required": ["field", "value", "selected"], "properties": {"field": {"enum": ["species", "brain_region", "cell_type", "archive"]}, "value": {"type": "string", "minLength": 1}, "selected": {"const": true}}}
+        },
+        "ageFilterApplied": {"const": false},
+        "observedMetadataUiHitCount": {"const": 339},
+        "countSemantics": {"type": "string", "minLength": 40},
+        "stableNeuronIdsRetrieved": {"const": false},
+        "machineReadableResponseRetrieved": {"const": false},
+        "apiResponseRetrievalStatus": {"const": "not_obtained_in_this_review"}
+      }
+    },
+    "comparison": {
+      "type": "object", "additionalProperties": false,
+      "required": ["baselineRelease", "baselineQueryRecordCount", "baselineQueryScope", "candidateRecordIdsCompared", "addedRecordCount", "removedRecordCount", "changedRecordCount", "deltaStatus"],
+      "properties": {
+        "baselineRelease": {"const": "8.6.124"},
+        "baselineQueryRecordCount": {"const": 1097},
+        "baselineQueryScope": {"type": "string", "minLength": 20},
+        "candidateRecordIdsCompared": {"const": 0},
+        "addedRecordCount": {"type": "null"},
+        "removedRecordCount": {"type": "null"},
+        "changedRecordCount": {"type": "null"},
+        "deltaStatus": {"const": "unresolved_without_stable_ids"}
+      }
+    },
+    "admission": {
+      "type": "object", "additionalProperties": false,
+      "required": ["newRecordsAdmitted", "newGeometryObjectsAdmitted", "newIdentityJoins", "registrations", "measurements", "payloadBytesDownloaded", "interpretation"],
+      "properties": {
+        "newRecordsAdmitted": {"const": 0},
+        "newGeometryObjectsAdmitted": {"const": 0},
+        "newIdentityJoins": {"const": 0},
+        "registrations": {"const": 0},
+        "measurements": {"const": 0},
+        "payloadBytesDownloaded": {"const": 0},
+        "interpretation": {"type": "string", "minLength": 100}
+      }
+    },
+    "sources": {"type": "array", "minItems": 5, "items": {"type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": {"label": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}}}},
+    "interpretationBoundary": {"type": "string", "minLength": 100}
+  }
+}

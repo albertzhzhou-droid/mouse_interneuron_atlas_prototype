@@ -1,0 +1,12 @@
+import data from '../data/garcia-ramirez-adult-spinal-physiology-0.1.json';
+import derivation from '../data/garcia-ramirez-adult-spinal-physiology-derivation-receipt-0.1.json';
+export type GarciaRamirezPhysiologyTable = typeof data.tables[number];
+export type GarciaRamirezPhysiologyView = { tableId: string | null; query: string; error: string | null };
+export const garciaRamirezPhysiologyFacts: typeof data;
+export const garciaRamirezPhysiologyDerivation: typeof derivation;
+export function validateGarciaRamirezPhysiology(facts?: typeof data, receipt?: typeof derivation): { sourceTables: number; propertyRows: number; sourceMeanSdValues: number; sourceReportedComparisons: number; recordedObservationDenominator: number; newProfiles: number; newCellRosterRows: number; geometryObjects: number; registrations: number };
+export function readGarciaRamirezPhysiologyView(params: URLSearchParams): GarciaRamirezPhysiologyView;
+export function writeGarciaRamirezPhysiologyView(href: string, view: { tableId: string; query: string }): string;
+export function garciaRamirezSourceTable(tableId: string | null): GarciaRamirezPhysiologyTable | null;
+export function garciaRamirezPropertyRows(table: GarciaRamirezPhysiologyTable, query?: string): GarciaRamirezPhysiologyTable['propertyRows'];
+export function exportGarciaRamirezPhysiology(view: { tableId: string; query: string }): { documentType: string; schemaVersion: string; sourceFacts: typeof data; derivationReceipt: typeof derivation; selection: { sourceTableId: string; sourceTableLabel: string; query: string; visiblePropertyIds: string[] }; authority: string; newMolecularProfiles: number; newPhysicalCellRosterRows: number; geometryObjects: number; sameCellCrossSourceJoins: number; registrations: number; actualViewCaptured: boolean; sourceInputsFetchedDuringThisExport: boolean };

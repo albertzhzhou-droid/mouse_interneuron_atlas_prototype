@@ -1,0 +1,151 @@
+var LpApp = angular.module("LpApp", [
+  "filterApp",
+  "Tabs2App",
+  "ListEntityApp",
+  "TreeApp",
+]);
+LpApp.controller("LpCtrl", [
+  "$scope",
+  "$http",
+  function ($scope, $http) {
+    //Objekt fuer Korrekturanfrage-Formular
+    $scope.correction_data = {
+      id: null,
+      mode: null,
+      contact: "",
+      message: "",
+      _other_info: "none",
+    };
+
+    $scope.display_data = {
+      relations_custom_style: null,
+      loading: false,
+      correction_sent: false,
+      correction_error: false,
+      allianzVisible: false,
+      licenseVisible: false,
+    };
+
+    $scope.$watch(
+      () => $scope.language_used,
+      function (newVal) {
+        if (newVal === undefined || !newVal) {
+          return;
+        }
+        $scope.urlParamsLp.lang = newVal;
+        $scope.getDataLp($scope.entityLp, $scope.urlParamsLp);
+      }
+    );
+
+    $scope.setupLp = function (entity, urlParams) {
+      $scope.urlParamsLp = urlParams;
+      if (urlParams.fieldset === undefined) {
+        $scope.urlParamsLp.fieldset = "lp";
+      }
+      $scope.urlParamsLp.maxRows = 1;
+      $scope.urlParamsLp.lang = $scope.language_used;
+      $scope.entityLp = entity;
+    };
+
+    // wird zum ersten mal beim init von language_used im watch aufgerufen
+    $scope.getDataLp = function (entity, params) {
+      if (
+        angular.equals($scope.last_call_params.lp_data_all_params, params) &&
+        $scope.promises.lp_data
+      ) {
+        return $scope.promises.lp_data;
+      }
+      $scope.last_call_params.lp_data_all_params = angular.copy(params);
+      $scope.display_data.loading = true;
+      $scope.promises.lp_data = $http
+        .get(freidok_base_path + "/jsonApi/v1/" + entity, {
+          params: params,
+        })
+        .then(function (response) {
+          //Daten kommen als JSON
+          $scope.last_call_params.lp_data_all_params.lang = response.data.lang;
+
+          //mode speichern (project, person)
+          $scope.mode = response.data.type;
+          $scope.lp_data = response.data.docs[0];
+          $scope.display_data.loading = false;
+          return response.data;
+        });
+      return $scope.promises.lp_data;
+    };
+
+    $scope.getFileExtensionInfo = function () {
+      if (!$scope.promises.file_format) {
+        $scope.promises.file_format = $http
+          .get(freidok_base_path + "/jsonApi/v1/getUploadFormatsByExtension")
+          .then(function (response) {
+            //Daten kommen als JSON
+            $scope.file_format_data = response.data;
+            return response.data;
+          });
+      }
+      return $scope.promises.file_format;
+    };
+
+    $scope.show_additional_author_info = true;
+    $scope.show_all_authors = false;
+
+    $scope.setAdditionalAuthorInfo = function (show) {
+      if ($scope.display_data.loading) {
+        return;
+      }
+      var MAX_PERS_COUNT = 25; // muss auch auf Landingpage bei setupLP angepasst werden!
+      $scope.show_additional_author_info = $scope.show_all_authors = show;
+      if ($scope.lp_data.persons_stat.total_count > MAX_PERS_COUNT) {
+        $scope.urlParamsLp.maxPers = $scope.show_all_authors
+          ? 0
+          : MAX_PERS_COUNT;
+        $scope.getDataLp($scope.entityLp, $scope.urlParamsLp);
+      }
+    };
+
+    $scope.showAdditionalAuthorInfo = function () {
+      $scope.setAdditionalAuthorInfo(true);
+    };
+
+    $scope.hideAdditionalAuthorInfo = function () {
+      $scope.setAdditionalAuthorInfo(false);
+    };
+
+    //Korrekturanfrage verarbeiten
+    $scope.processCorrectionData = function () {
+      //Zuesatzliche Merkmale setzen, damit Feedback bei korrektem Datensatz gespeichert wird
+      $scope.correction_data["mode"] = $scope.mode;
+      $scope.correction_data["id"] = $scope.lp_data.id;
+
+      //Feedback speichern
+      $http
+        .post(
+          freidok_base_path + "/landingpage/processCorrectionData",
+          $scope.correction_data
+        )
+        //im Erfolgsfall Block einblenden "Danke fuer Ihre Feedback"
+        .then(
+          function (resp) {
+            console.log(resp);
+            $scope.display_data.correction_sent = true;
+            $scope.display_data.correction_error = resp.data !== "1";
+          },
+          //Im Fehlerfall Block einblenden "Es ist ein Fehler aufgetreten"
+          function () {
+            $scope.display_data.correction_sent = true;
+            $scope.display_data.correction_error = true;
+          }
+        );
+    };
+  },
+]).filter("convertDate", function () {
+  return function (input) {
+    if (!input || !angular.isString(input)) {
+      return "";
+    }
+    var output_parts = input.split("-");
+    output_parts.reverse();
+    return output_parts.join(".");
+  };
+});

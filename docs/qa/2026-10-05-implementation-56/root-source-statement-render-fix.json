@@ -1,0 +1,16 @@
+{
+  "path": "app/GarciaRamirezPhysiologyPanel.tsx",
+  "before": {
+    "bytes": 8133,
+    "sha256": "bd2595e7deba177d69927047110f8997bbb48f3a1c88b759e03a913819dfe423"
+  },
+  "after": {
+    "bytes": 8211,
+    "sha256": "657eb884c090286dd2ea812b319af73a98e36383ee0daf338e25cdec1ed09353"
+  },
+  "exactBefore": "{facts.rawSourceDiscrepancies.map(item => <p key={item.id}>{item.reason}</p>)}",
+  "exactAfter": "{facts.rawSourceDiscrepancies.map(item => <p key={item.id}>{item.sourceRawFragment && <><code>{item.sourceRawFragment}</code>{\" · \"}</>}{item.reason}</p>)}",
+  "beforeArchive": "source-statement-render-preimage.zip",
+  "scope": "Only displays existing exact sourceRawFragment beside its unchanged reason; source data, scientific interpretation, table rows, styles and layout unchanged.",
+  "reason": "Actual first source context rendered rationale for held printed formula without showing Cm = Rin/τ itself."
+}

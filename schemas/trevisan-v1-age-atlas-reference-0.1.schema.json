@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.local/schemas/trevisan-v1-age-atlas-reference-0.1.schema.json",
+  "title": "Trevisan V1 postnatal age atlas article-derived reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["releaseId", "source", "study", "clusters", "admissionBoundary"],
+  "properties": {
+    "releaseId": { "const": "trevisan-v1-age-atlas-reference-0.1" },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "citation", "doi", "articleUrl", "geoAccession", "geoUrl", "interactiveUrl", "articleLicense", "articleLicenseUrl", "attribution", "reuseBoundary"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 }, "citation": { "type": "string", "minLength": 1 },
+        "doi": { "const": "10.1038/s41467-026-76522-3" }, "articleUrl": { "type": "string", "format": "uri" },
+        "geoAccession": { "const": "GSE275595" }, "geoUrl": { "type": "string", "format": "uri" }, "interactiveUrl": { "type": "string", "format": "uri" },
+        "articleLicense": { "const": "CC BY 4.0" }, "articleLicenseUrl": { "type": "string", "format": "uri" },
+        "attribution": { "type": "string", "minLength": 1 }, "reuseBoundary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "study": {
+      "type": "object", "additionalProperties": false,
+      "required": ["species", "populationScope", "assay", "postnatalAges", "independentTranscriptomicReplicates", "selectedNucleusCount", "selectedNucleusUnit", "reportedClusterCount", "clusterSizeRange", "ageCoverageDescription", "regionCoverageDescription", "sourceLocators", "exactPerClusterCountsImported", "exactBarcodeRosterImported", "clusterByRegionAssignmentsImported", "rawExpressionDataBundled", "geoPayloadBytesDownloaded"],
+      "properties": {
+        "species": { "const": "Mus musculus" }, "populationScope": { "type": "string", "minLength": 1 }, "assay": { "const": "single-nucleus RNA sequencing" },
+        "postnatalAges": { "type": "array", "const": ["P0", "P14", "P28", "P56"] },
+        "independentTranscriptomicReplicates": { "const": 2 }, "selectedNucleusCount": { "const": 89494 },
+        "selectedNucleusUnit": { "type": "string", "minLength": 1 }, "reportedClusterCount": { "const": 14 },
+        "clusterSizeRange": {
+          "type": "object", "additionalProperties": false,
+          "required": ["largestClusterId", "largestClusterPercent", "smallestClusterId", "smallestClusterPercent", "denominatorDescription"],
+          "properties": { "largestClusterId": { "const": 0 }, "largestClusterPercent": { "const": 22.9 }, "smallestClusterId": { "const": 13 }, "smallestClusterPercent": { "const": 2.2 }, "denominatorDescription": { "type": "string", "minLength": 1 } }
+        },
+        "ageCoverageDescription": { "type": "string", "minLength": 1 }, "regionCoverageDescription": { "type": "string", "minLength": 1 },
+        "sourceLocators": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 }, "minProperties": 5 },
+        "exactPerClusterCountsImported": { "const": false }, "exactBarcodeRosterImported": { "const": false },
+        "clusterByRegionAssignmentsImported": { "const": false }, "rawExpressionDataBundled": { "const": false }, "geoPayloadBytesDownloaded": { "const": 0 }
+      }
+    },
+    "clusters": {
+      "type": "array", "minItems": 14, "maxItems": 14,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["clusterId", "sourceAssignment", "markerEvidence", "sourceNote", "sourceLocator"],
+        "properties": {
+          "clusterId": { "type": "integer", "minimum": 0, "maximum": 13 }, "sourceAssignment": { "type": "string", "minLength": 1 },
+          "markerEvidence": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+          "sourceNote": { "type": "string", "minLength": 1 }, "sourceLocator": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "admissionBoundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["canonicalSourceProfileContribution", "includedInExisting387ProfileDenominator", "includedInMain3dScene", "morphologyGeometryObjectCount", "internalStructureObjectCount", "sameCellJoinCount", "atlasRegistrationCount", "measurementCount", "articleImagesRedistributed", "geoFilesRedistributed", "reason"],
+      "properties": {
+        "canonicalSourceProfileContribution": { "const": 0 }, "includedInExisting387ProfileDenominator": { "const": false },
+        "includedInMain3dScene": { "const": false }, "morphologyGeometryObjectCount": { "const": 0 }, "internalStructureObjectCount": { "const": 0 },
+        "sameCellJoinCount": { "const": 0 }, "atlasRegistrationCount": { "const": 0 }, "measurementCount": { "const": 0 },
+        "articleImagesRedistributed": { "const": false }, "geoFilesRedistributed": { "const": false }, "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

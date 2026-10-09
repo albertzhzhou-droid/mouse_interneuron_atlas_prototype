@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/trevisan-v1-geo-series-sample-audit-0.1.schema.json",
+  "title": "Trevisan V1 GEO series sample audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["auditId", "auditDate", "auditScope", "source", "geoSampleTitlesObserved", "analysisCodeParser", "representativeSampleMetadataVerified", "sampleTitlePatternExceptionRecords", "notYetVerifiedOrImported", "interpretationBoundary", "admissionBoundary"],
+  "properties": {
+    "auditId": { "const": "trevisan-v1-geo-series-sample-audit-0.1" },
+    "auditDate": { "type": "string", "const": "2026-09-24", "format": "date" },
+    "auditScope": { "type": "string", "minLength": 40 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seriesAccession", "seriesUrl", "sampleRecordBaseUrl", "seriesSampleRecordCount", "seriesSupplementaryTarBytes", "seriesSupplementaryTarDescription", "seriesReportsRawDataInSra", "representativeSampleMatrixRecord"],
+      "properties": {
+        "seriesAccession": { "const": "GSE275595" },
+        "seriesUrl": { "type": "string", "format": "uri", "const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595" },
+        "sampleRecordBaseUrl": { "type": "string", "format": "uri", "const": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" },
+        "seriesSampleRecordCount": { "const": 29 },
+        "seriesSupplementaryTarBytes": { "const": 1450055680 },
+        "seriesSupplementaryTarDescription": { "const": "TAR of MTX, TSV" },
+        "seriesReportsRawDataInSra": { "const": true },
+        "representativeSampleMatrixRecord": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["geoSampleAccession", "sampleTitle", "samplePageReportsCellRangerFilteredFeatureBarcodeMatrix", "components"],
+          "properties": {
+            "geoSampleAccession": { "const": "GSM8480577" },
+            "sampleTitle": { "const": "P0CR1" },
+            "samplePageReportsCellRangerFilteredFeatureBarcodeMatrix": { "const": true },
+            "components": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                { "$ref": "#/$defs/barcodeComponent" },
+                { "$ref": "#/$defs/featureComponent" },
+                { "$ref": "#/$defs/matrixComponent" }
+              ],
+              "items": false
+            }
+          }
+        }
+      }
+    },
+    "geoSampleTitlesObserved": {
+      "type": "array",
+      "minItems": 29,
+      "maxItems": 29,
+      "items": { "$ref": "#/$defs/sampleTitle" }
+    },
+    "analysisCodeParser": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceFunctionUrl", "expectedPostnatalSampleTitlePattern", "sampleTitlePatternMatchCount", "sampleTitlePatternExceptionCount", "ageRule", "regionRule", "replicateRule"],
+      "properties": {
+        "sourceFunctionUrl": { "type": "string", "format": "uri", "const": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/3_Add_metadata.R" },
+        "expectedPostnatalSampleTitlePattern": { "const": "^P(?:0|14|28|56)[CLT]R[12]$" },
+        "sampleTitlePatternMatchCount": { "const": 24 },
+        "sampleTitlePatternExceptionCount": { "const": 5 },
+        "ageRule": { "const": "first numeric substring in orig.ident" },
+        "regionRule": { "const": "third character from end of orig.ident" },
+        "replicateRule": { "const": "last character of orig.ident" }
+      }
+    },
+    "representativeSampleMetadataVerified": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/representativeMetadata" }
+    },
+    "sampleTitlePatternExceptionRecords": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/exceptionRecord" }
+    },
+    "notYetVerifiedOrImported": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anyGsmMatrixPayloadDownloadedOrChecksummed", "all29SampleCharacteristicsInspected", "perCellBarcodeToMatrixCrosswalkValidated", "perCellAgeClusterRegionRowsReproduced", "geoFileSpecificReuseTermsVerified", "supplementaryData3DownloadedOrInspected"],
+      "properties": {
+        "anyGsmMatrixPayloadDownloadedOrChecksummed": { "const": false },
+        "all29SampleCharacteristicsInspected": { "const": false },
+        "perCellBarcodeToMatrixCrosswalkValidated": { "const": false },
+        "perCellAgeClusterRegionRowsReproduced": { "const": false },
+        "geoFileSpecificReuseTermsVerified": { "const": false },
+        "supplementaryData3DownloadedOrInspected": { "const": false }
+      }
+    },
+    "interpretationBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seriesSampleTitlesAreNotACellRoster", "sampleNameParserMustNotBeAppliedToTheFiveExceptionRecords", "sampleLevelMetadataDoesNotEstablishPerCellClusterAssignments", "articleAndCodeLicensesDoNotEstablishGeoFileReuseTerms", "geneExpressionLabelsDoNotEstablishMorphologyOrSameCellIdentity"],
+      "properties": {
+        "seriesSampleTitlesAreNotACellRoster": { "const": true },
+        "sampleNameParserMustNotBeAppliedToTheFiveExceptionRecords": { "const": true },
+        "sampleLevelMetadataDoesNotEstablishPerCellClusterAssignments": { "const": true },
+        "articleAndCodeLicensesDoNotEstablishGeoFileReuseTerms": { "const": true },
+        "geneExpressionLabelsDoNotEstablishMorphologyOrSameCellIdentity": { "const": true }
+      }
+    },
+    "admissionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalSourceProfileContribution", "includedInExisting387ProfileDenominator", "includedInMain3dScene", "morphologyGeometryObjectCount", "internalStructureObjectCount", "sameCellJoinCount", "atlasRegistrationCount", "measurementCount"],
+      "properties": {
+        "canonicalSourceProfileContribution": { "const": 0 },
+        "includedInExisting387ProfileDenominator": { "const": false },
+        "includedInMain3dScene": { "const": false },
+        "morphologyGeometryObjectCount": { "const": 0 },
+        "internalStructureObjectCount": { "const": 0 },
+        "sameCellJoinCount": { "const": 0 },
+        "atlasRegistrationCount": { "const": 0 },
+        "measurementCount": { "const": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "sampleTitle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geoSampleAccession", "sampleTitle"],
+      "properties": {
+        "geoSampleAccession": { "type": "string", "pattern": "^GSM[0-9]{7}$" },
+        "sampleTitle": { "type": "string", "minLength": 3, "maxLength": 16 }
+      }
+    },
+    "fileComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "fileName", "bytes"],
+      "properties": {
+        "kind": { "enum": ["barcodes", "features", "matrix"] },
+        "fileName": { "type": "string", "minLength": 10 },
+        "bytes": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "barcodeComponent": {
+      "allOf": [
+        { "$ref": "#/$defs/fileComponent" },
+        { "type": "object", "properties": { "kind": { "const": "barcodes" }, "fileName": { "const": "GSM8480577_P0CR1_barcodes.tsv.gz" }, "bytes": { "const": 41212 } } }
+      ]
+    },
+    "featureComponent": {
+      "allOf": [
+        { "$ref": "#/$defs/fileComponent" },
+        { "type": "object", "properties": { "kind": { "const": "features" }, "fileName": { "const": "GSM8480577_P0CR1_features.tsv.gz" }, "bytes": { "const": 290896 } } }
+      ]
+    },
+    "matrixComponent": {
+      "allOf": [
+        { "$ref": "#/$defs/fileComponent" },
+        { "type": "object", "properties": { "kind": { "const": "matrix" }, "fileName": { "const": "GSM8480577_P0CR1_matrix.mtx.gz" }, "bytes": { "const": 49356598 } } }
+      ]
+    },
+    "representativeMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geoSampleAccession", "sampleTitle", "age", "region", "replicate"],
+      "properties": {
+        "geoSampleAccession": { "type": "string", "pattern": "^GSM[0-9]{7}$" },
+        "sampleTitle": { "type": "string" },
+        "age": { "enum": ["P0", "P14", "P28", "P56", "E13.5"] },
+        "region": { "enum": ["Cervical", "Lumbar", "Thoracic", "Whole cord"] },
+        "replicate": { "enum": ["1", "2"] }
+      }
+    },
+    "exceptionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["geoSampleAccession", "sampleTitle", "geoAge", "geoRegion", "geoReplicate", "geoGenotype", "parserAge", "parserRegion", "parserReplicate"],
+      "properties": {
+        "geoSampleAccession": { "type": "string", "pattern": "^GSM[0-9]{7}$" },
+        "sampleTitle": { "type": "string" },
+        "geoAge": { "enum": ["P0", "P14", "P28", "P56", "E13.5"] },
+        "geoRegion": { "const": "Whole cord" },
+        "geoReplicate": { "enum": ["1", "2"] },
+        "geoGenotype": { "type": "string", "enum": ["En1::Cre heterozygous; RC.lsl.Sun1-sfGFP", "En1::Cre homozygous; RC.lsl.Sun1-sfGFP"] },
+        "parserAge": { "type": "string", "pattern": "^[0-9]+$" },
+        "parserRegion": { "enum": ["t", "o"] },
+        "parserReplicate": { "enum": ["1", "2"] }
+      }
+    }
+  }
+}

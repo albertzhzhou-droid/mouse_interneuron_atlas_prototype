@@ -1,0 +1,746 @@
+{
+  "documentType": "independent_comparative_swc_reference",
+  "schemaVersion": "0.1.0",
+  "contractId": "comparative-swc-reference-0.1",
+  "snapshotDate": "2026-09-30",
+  "releaseId": "exact-source-snapshot-2026-09-30",
+  "repositoryReleaseObservation": {
+    "value": "8.6.127",
+    "releaseDate": "2026-09-25",
+    "locator": "https://neuromorpho.org/useterm.jsp",
+    "status": "source_page_observed",
+    "boundary": "API/SWC endpoints do not embed this release; object identity is frozen by retrieval snapshot and exact bytes, not claimed as a server-side release lock."
+  },
+  "scope": {
+    "comparativeSourceObjects": 2,
+    "scientificDenominators": "one zebrafish reconstruction; one rat reconstruction; separate species and frames",
+    "mouseCensusAdditions": 0,
+    "sameCellJoins": 0,
+    "registrations": 0,
+    "membraneSurfaces": 0,
+    "internalObjects": 0
+  },
+  "sourceLocalCoordinatePolicy": {
+    "frame": "NeuroMorpho_CNG_standardized_local_frame",
+    "unit": "micrometre",
+    "unitsLocator": "https://neuromorpho.org/StdSwc1.21.jsp",
+    "unitAuthority": "repository_standardized_SWC_convention; standardization_rules_report_lengths_and_radii_in_micrometres; no_unit_embedded_in_API_object",
+    "standardizationLocator": "https://neuromorpho.org/myfaq.jsp",
+    "somaConversionLocator": "https://neuromorpho.org/SomaFormat.html",
+    "displayTransform": "per-object bounding-box center and uniform scale only; native source values retained",
+    "transformsBetweenSources": []
+  },
+  "auxiliarySourceReceipts": [
+    {
+      "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-34024-source.dat",
+      "bytes": 1174877,
+      "checksum": {
+        "algorithm": "SHA-256",
+        "digest": "29a96dfbb51009c64ccfb420c52ca7cc119ebc031156bc552d255186e11f3a67"
+      },
+      "url": "https://neuromorpho.org/dableFiles/szucs/Source-Version/L420-LCN.dat",
+      "retrievedDate": "2026-09-30",
+      "publicPackaging": false,
+      "scope": "Source DAT bytes verified only; semantics unparsed; no native contour admission; not publicly packaged."
+    },
+    {
+      "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/PMC3738926.xml",
+      "bytes": 163042,
+      "checksum": {
+        "algorithm": "SHA-256",
+        "digest": "d1ce14d56e1afc59cdb64ccbc713ef1bd1c4c8ef930df7f9833c1509cce44fc6"
+      },
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3738926/fullTextXML",
+      "retrievedDate": "2026-09-30",
+      "publicPackaging": false,
+      "scope": "Primary-paper context only; no exact deposited L420-LCN to L420_E2 identity; not publicly packaged."
+    }
+  ],
+  "objects": [
+    {
+      "sourceId": "neuromorpho-zebrafish-comparative",
+      "releaseId": "exact-source-snapshot-2026-09-30",
+      "objectKind": "standardized_swc",
+      "sourceObjectId": "183779",
+      "key": "neuromorpho-zebrafish-comparative/exact-source-snapshot-2026-09-30/standardized_swc/183779",
+      "registryId": "UPG-127",
+      "title": "Zebrafish · 5 dpf V3 tonic-spiking · NMO_183779",
+      "context": {
+        "species": "zebrafish",
+        "name": "20190706_8_1",
+        "archive": "Cohen_A",
+        "rawMetadata": {
+          "neuron_id": 183779,
+          "neuron_name": "20190706_8_1",
+          "archive": "Cohen_A",
+          "note": "",
+          "age_scale": "Day",
+          "gender": "Not reported",
+          "age_classification": "larval",
+          "brain_region": [
+            "spinal cord",
+            "ventral"
+          ],
+          "cell_type": [
+            "interneuron",
+            "glutamatergic",
+            "V3",
+            "tonic-spiking"
+          ],
+          "species": "zebrafish",
+          "strain": "vGlut2a:Gal4; UAS:Kaede",
+          "scientific_name": null,
+          "stain": "Kaede photoconversion",
+          "experiment_condition": [
+            "Control"
+          ],
+          "protocol": "in vivo",
+          "slicing_direction": "Not applicable",
+          "reconstruction_software": "Simple Neurite Tracer",
+          "objective_type": "water",
+          "original_format": "Simple Neurite Tracer.swc",
+          "domain": "No Dendrites, No Soma, Axon",
+          "attributes": "No Diameter, 3D, Angles",
+          "magnification": "40",
+          "upload_date": "2022-05-16",
+          "deposition_date": "2022-04-19",
+          "shrinkage_reported": "Not applicable",
+          "shrinkage_corrected": "",
+          "reported_value": null,
+          "reported_xy": null,
+          "reported_z": null,
+          "corrected_value": null,
+          "corrected_xy": null,
+          "corrected_z": null,
+          "soma_surface": null,
+          "surface": "828.393",
+          "volume": "51.7746",
+          "slicing_thickness": "Not applicable",
+          "min_age": "5.0",
+          "max_age": "5.0",
+          "min_weight": "Not Reported",
+          "max_weight": "Not Reported",
+          "png_url": null,
+          "reference_pmid": [
+            "35104451"
+          ],
+          "reference_doi": [
+            "10.1016/j.neuron.2022.01.001"
+          ],
+          "physical_Integrity": "Axon Complete",
+          "_links": {
+            "self": {
+              "href": "http://neuromorpho.org/api/neuron/id/183779"
+            },
+            "measurements": {
+              "href": "http://neuromorpho.org/api/morphometry/id/183779"
+            },
+            "persistence_vector": {
+              "href": "http://neuromorpho.org/api/pvec/id/183779"
+            }
+          }
+        },
+        "sourceMorphometry": {
+          "neuron_name": "20190706_8_1",
+          "bif_ampl_remote": 69.6476,
+          "neuron_id": 183779,
+          "surface": 828.393,
+          "volume": 51.7746,
+          "contraction": 0.883486,
+          "fragmentation": 3849,
+          "partition_asymmetry": 0.533333,
+          "pk_classic": 2,
+          "bif_ampl_local": 64.6799,
+          "fractal_Dim": 1.07204,
+          "soma_Surface": null,
+          "n_stems": 1,
+          "n_bifs": 13,
+          "n_branch": 27,
+          "width": 25.9897,
+          "height": 755.7,
+          "depth": 42.06,
+          "diameter": 0.25,
+          "eucDistance": 550.326,
+          "pathDistance": 624.553,
+          "branch_Order": 7,
+          "length": 1054.74
+        },
+        "sourceMorphometryPolicy": "repository_reported_only; dimensions_use_principal_components_not_axis_aligned_extent; no_membrane_or_physical_volume_claim",
+        "qc": {
+          "status": "passed",
+          "sevenColumns": true,
+          "finite": true,
+          "uniquePositiveNodeIds": true,
+          "singleRoot": true,
+          "parentsPresent": true,
+          "noSelfParent": true,
+          "acyclic": true,
+          "connected": true,
+          "positiveRadius": true,
+          "sourceTypesPreserved": true,
+          "errors": []
+        },
+        "computedFromExactSwc": {
+          "nodeCount": 3849,
+          "segmentCount": 3848,
+          "rootNodeId": 1,
+          "nodeTypeCounts": {
+            "2": 3849
+          },
+          "boundsMicrometre": {
+            "min": [
+              -2.02,
+              -251.65,
+              -10.52
+            ],
+            "max": [
+              29.33,
+              549.47,
+              32.29
+            ]
+          },
+          "extentMicrometre": [
+            31.349999999999998,
+            801.12,
+            42.81
+          ],
+          "zeroLengthEdgeCount": 0,
+          "totalCableLengthMicrometre": 1054.7427595180777,
+          "radiusDerived": {
+            "value": null,
+            "missingReason": "official_attributes_report_no_diameter"
+          },
+          "sourceDiameterAttributePresent": false
+        },
+        "conflicts": [],
+        "boundaries": [
+          "One zebrafish source reconstruction; the V3 and tonic-spiking labels are exact repository assertions, with no V2/Vsx2 or mouse identity.",
+          "Only the axon centerline is deposited. The source reports No Soma, No Dendrites and No Diameter; positive raw SWC radii do not authorize measured calibre, membrane, volume or a tube surface.",
+          "Axon Complete is source-reported reconstruction integrity; no whole-cell completeness, same-cell electrophysiology, action-potential initiation site or circuit/behavior effect is assigned to this exact file.",
+          "Independent auto-fit display only; zero mouse-census additions, cross-species identity, common biological scale, atlas transforms or registrations."
+        ]
+      },
+      "coordinateFrame": {
+        "frame": "NeuroMorpho_CNG_standardized_local_frame",
+        "unit": "micrometre",
+        "unitStatus": "source_reported",
+        "dimensions": 3
+      },
+      "components": [
+        {
+          "id": "source-swc-centerline",
+          "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+          "sourceTypes": [
+            2
+          ],
+          "representation": "centerline_only"
+        }
+      ],
+      "relationships": [],
+      "files": [
+        {
+          "id": "api",
+          "path": "/data/comparative_swc_reference_v1/nmo-183779-api.json",
+          "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-183779-api.json",
+          "bytes": 1461,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "8345b0ee16cb7b183666790e06a18a5f0ed0018cf1e53e79c48e25c9dbc6d348"
+          },
+          "retrievedDate": "2026-09-30",
+          "url": "https://neuromorpho.org/api/neuron/id/183779",
+          "contentType": "application/json"
+        },
+        {
+          "id": "swc",
+          "path": "/data/comparative_swc_reference_v1/nmo-183779.swc",
+          "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-183779.swc",
+          "bytes": 145055,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "40c6fc025a7224390b5d74064301250281ca1bc8deac63cbcd5fdabb134413c7"
+          },
+          "retrievedDate": "2026-09-30",
+          "url": "https://neuromorpho.org/dableFiles/cohen_a/CNG%20version/20190706_8_1.CNG.swc",
+          "contentType": "source_server_unspecified; validated_UTF8_seven_column_SWC"
+        },
+        {
+          "id": "morphometry",
+          "path": "/data/comparative_swc_reference_v1/nmo-183779-morphometry.json",
+          "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-183779-morphometry.json",
+          "bytes": 457,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "3e81f6abc0a7f24e57f481884f174c94ab3579eea37e7352338097bbffc61f8a"
+          },
+          "retrievedDate": "2026-09-30",
+          "url": "https://neuromorpho.org/api/morphometry/id/183779",
+          "contentType": "application/json"
+        }
+      ],
+      "structureCoverage": [
+        {
+          "id": "axon",
+          "label": "Axon centerline",
+          "status": "observed_source_object",
+          "detail": "3849 exact type-2 samples; source reconstruction, no membrane surface.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-183779.swc"
+        },
+        {
+          "id": "soma",
+          "label": "Soma samples",
+          "status": "source_reported_absent",
+          "detail": "Repository No Soma; the deposited axon root is not a soma.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-183779-api.json#domain"
+        },
+        {
+          "id": "dendrites",
+          "label": "Dendrite centerline",
+          "status": "source_reported_absent",
+          "detail": "Repository No Dendrites; no dendritic geometry is supplied.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-183779-api.json#domain"
+        },
+        {
+          "id": "diameter",
+          "label": "Source diameter",
+          "status": "source_reported_absent",
+          "detail": "No Diameter; raw constant radius and source diameter/surface/volume metrics remain unvalidated for physical calibre.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-183779-api.json#attributes"
+        },
+        {
+          "id": "membrane",
+          "label": "membrane",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/183779"
+        },
+        {
+          "id": "nucleus",
+          "label": "nucleus",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/183779"
+        },
+        {
+          "id": "organelles",
+          "label": "organelles",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/183779"
+        },
+        {
+          "id": "synapses",
+          "label": "synapses",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/183779"
+        }
+      ],
+      "counts": [
+        {
+          "value": 1,
+          "unit": "source_reconstruction",
+          "scopeKey": "neuromorpho-zebrafish-comparative/exact-source-snapshot-2026-09-30/standardized_swc/183779",
+          "derivedFrom": "/data/comparative_swc_reference_v1/nmo-183779-api.json#neuron_id"
+        },
+        {
+          "value": 3849,
+          "unit": "SWC_node",
+          "scopeKey": "neuromorpho-zebrafish-comparative/exact-source-snapshot-2026-09-30/standardized_swc/183779",
+          "derivedFrom": "/data/comparative_swc_reference_v1/nmo-183779.swc"
+        },
+        {
+          "value": 3848,
+          "unit": "SWC_edge",
+          "scopeKey": "neuromorpho-zebrafish-comparative/exact-source-snapshot-2026-09-30/standardized_swc/183779",
+          "derivedFrom": "/data/comparative_swc_reference_v1/nmo-183779.swc"
+        }
+      ],
+      "viewer": {
+        "kind": "comparative_swc",
+        "neuronId": 183779,
+        "diameterAuthorized": false,
+        "radiusSurfaceAdmitted": false
+      },
+      "sourceUrl": "https://neuromorpho.org/api/neuron/id/183779",
+      "provenance": {
+        "sourceId": "NeuroMorpho.Org",
+        "rrid": "SCR_002145",
+        "originalPaper": "https://doi.org/10.1016/j.neuron.2022.01.001",
+        "repositoryCitation": "NeuroMorpho.Org (RRID:SCR_002145)",
+        "repositoryMethodsCitation": "Tecuatl C, Ljungquist B, Ascoli GA (2024). FASEB Bioadv. 6(7):207–221. doi:10.1096/fba.2024-00048",
+        "reuse": {
+          "status": "source_license_confirmed",
+          "license": "CC-BY-4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "termsUrl": "https://neuromorpho.org/useterm.jsp",
+          "observedDate": "2026-09-30",
+          "verificationMethod": "official_terms_page_read_via_browser_tool; no_terms_bytes_snapshot_claim",
+          "attributionRequirement": "Original paper, NeuroMorpho.Org complete name/RRID, and repository methods paper."
+        }
+      }
+    },
+    {
+      "sourceId": "neuromorpho-rat-comparative",
+      "releaseId": "exact-source-snapshot-2026-09-30",
+      "objectKind": "standardized_swc",
+      "sourceObjectId": "34024",
+      "key": "neuromorpho-rat-comparative/exact-source-snapshot-2026-09-30/standardized_swc/34024",
+      "registryId": "UPG-145",
+      "title": "Rat · Wistar P14–P24 · NMO_34024 L420-LCN",
+      "context": {
+        "species": "rat",
+        "name": "L420-LCN",
+        "archive": "Szucs",
+        "rawMetadata": {
+          "neuron_id": 34024,
+          "neuron_name": "L420-LCN",
+          "archive": "Szucs",
+          "note": "",
+          "age_scale": "Day",
+          "gender": "Male/Female",
+          "age_classification": "young",
+          "brain_region": [
+            "spinal cord",
+            "lumbar",
+            "lamina I"
+          ],
+          "cell_type": [
+            "Flattened",
+            "Local circuit neuron",
+            "interneuron"
+          ],
+          "species": "rat",
+          "strain": "Wistar",
+          "scientific_name": "rattus norvegicus",
+          "stain": "biocytin",
+          "experiment_condition": [
+            "Control"
+          ],
+          "protocol": "in vitro",
+          "slicing_direction": "parasagittal",
+          "reconstruction_software": "Neurolucida",
+          "objective_type": "dry",
+          "original_format": "Neurolucida.dat",
+          "domain": "Dendrites, Soma, Axon",
+          "attributes": "Diameter, 3D, Angles",
+          "magnification": "40",
+          "upload_date": "2015-10-06",
+          "deposition_date": "2014-04-22",
+          "shrinkage_reported": "Reported",
+          "shrinkage_corrected": "Not Corrected",
+          "reported_value": null,
+          "reported_xy": null,
+          "reported_z": "90.0",
+          "corrected_value": null,
+          "corrected_xy": null,
+          "corrected_z": null,
+          "soma_surface": "1598.7",
+          "surface": "33989.1",
+          "volume": "11161.4",
+          "slicing_thickness": "100",
+          "min_age": "14.0",
+          "max_age": "24.0",
+          "min_weight": "Not Reported",
+          "max_weight": "Not Reported",
+          "png_url": "http://neuromorpho.org/images/imageFiles/Szucs/L420-LCN.png",
+          "reference_pmid": [
+            "23386329"
+          ],
+          "reference_doi": [
+            "10.1002/cne.23311"
+          ],
+          "physical_Integrity": "Dendrites & Axon Complete",
+          "_links": {
+            "self": {
+              "href": "http://neuromorpho.org/api/neuron/id/34024"
+            },
+            "measurements": {
+              "href": "http://neuromorpho.org/api/morphometry/id/34024"
+            },
+            "persistence_vector": {
+              "href": "http://neuromorpho.org/api/pvec/id/34024"
+            }
+          }
+        },
+        "sourceMorphometry": {
+          "neuron_name": "L420-LCN",
+          "bif_ampl_remote": 82.0357,
+          "neuron_id": 34024,
+          "surface": 33989.1,
+          "volume": 11161.4,
+          "contraction": 0.879827,
+          "fragmentation": 17973,
+          "partition_asymmetry": 0.733374,
+          "pk_classic": 1.6465,
+          "bif_ampl_local": 88.8816,
+          "fractal_Dim": 1.04709,
+          "soma_Surface": 1598.7,
+          "n_stems": 5,
+          "n_bifs": 376,
+          "n_branch": 756,
+          "width": 2876.29,
+          "height": 567.695,
+          "depth": 461.82,
+          "diameter": 0.350771,
+          "eucDistance": 2496.66,
+          "pathDistance": 3443.37,
+          "branch_Order": 37,
+          "length": 32766
+        },
+        "sourceMorphometryPolicy": "repository_reported_only; dimensions_use_principal_components_not_axis_aligned_extent; no_membrane_or_physical_volume_claim",
+        "qc": {
+          "status": "passed",
+          "sevenColumns": true,
+          "finite": true,
+          "uniquePositiveNodeIds": true,
+          "singleRoot": true,
+          "parentsPresent": true,
+          "noSelfParent": true,
+          "acyclic": true,
+          "connected": true,
+          "positiveRadius": true,
+          "sourceTypesPreserved": true,
+          "errors": []
+        },
+        "computedFromExactSwc": {
+          "nodeCount": 17973,
+          "segmentCount": 17972,
+          "rootNodeId": 1,
+          "nodeTypeCounts": {
+            "1": 12,
+            "2": 14988,
+            "3": 2973
+          },
+          "boundsMicrometre": {
+            "min": [
+              -2462.5,
+              -254.42,
+              -458.5
+            ],
+            "max": [
+              1151.8,
+              418.14,
+              32.63
+            ]
+          },
+          "extentMicrometre": [
+            3614.3,
+            672.56,
+            491.13
+          ],
+          "zeroLengthEdgeCount": 0,
+          "totalCableLengthMicrometre": 32766.011309305515,
+          "radiusDerived": {
+            "value": {
+              "minimumMicrometre": 0.02,
+              "maximumMicrometre": 9.6002,
+              "meanMicrometre": 0.175385383630907
+            },
+            "missingReason": null
+          },
+          "sourceDiameterAttributePresent": true
+        },
+        "conflicts": [
+          {
+            "id": "paper-repository-name",
+            "status": "not_established",
+            "left": "L420-LCN (exact repository object)",
+            "right": "L420_E2 (primary paper)",
+            "locator": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3738926/fullTextXML#article/body/sec[@id=sec11]/sec[@id=sec13]/fig[@id=fig06]",
+            "consequence": "No same-cell join; paper cautions remain paper-level only."
+          },
+          {
+            "id": "soma-conversion-count",
+            "status": "source_assertion_difference",
+            "left": "SWC header: 23 contours averaged into 23 soma points",
+            "right": "Exact parsed SWC: 12 type-1 nodes",
+            "locator": "/data/comparative_swc_reference_v1/nmo-34024.swc#header-and-type-1-rows",
+            "consequence": "Preserve both assertions; zero native contour, membrane or internal geometry."
+          },
+          {
+            "id": "historical-morphometry-receipt",
+            "status": "receipt_drift",
+            "historicalDate": "2026-08-31",
+            "historicalBytes": 468,
+            "historicalSha256": "2ae700c70fa9c4bf49dd1dffd2143ef86147e9a5fbfa7e1ba803c06d615ea9c4",
+            "currentBytes": 468,
+            "currentSha256": "a1ea035737fb8bc47afef7292e00216fa9bea068d09bc3346dae0637eb893d38",
+            "historicalBytesAvailable": false,
+            "locator": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md#UPG-145",
+            "consequence": "Current 2026-09-30 receipt is a new snapshot; historical bytes are not substituted or claimed verified."
+          }
+        ],
+        "boundaries": [
+          "One rat source reconstruction; Male/Female and P14–P24 remain raw cohort-valued metadata. The exact cell's sex, age within that range and transmitter are not established.",
+          "Repository L420-LCN and paper L420_E2 have no exact source-deposited crosswalk. Article physiology, inhibitory labels, boutons or projections cannot become same-cell fields.",
+          "Source-reported Dendrites & Axon Complete remains distinct from biological intactness: article Fig. 6 describes an abrupt ending of L420_E2 likely caused by pia removal, and its methods report deletion of unconnectable processes below 5%; these are paper-level cautions without an exact object join.",
+          "The SWC header reports 23 source contours averaged into 23 soma points, while this exact SWC contains 12 type-1 samples. Neither samples nor the unparsed DAT receipt are a membrane or internal structure.",
+          "The repository's 100 micrometre parasagittal field and reported_z=90.0 remain raw metadata. No shrinkage correction is applied; standardization and source-local coordinates do not establish a tissue slab or atlas placement.",
+          "Independent auto-fit display only; zero mouse-census additions, cross-species identity, common biological scale, atlas transforms or registrations."
+        ]
+      },
+      "coordinateFrame": {
+        "frame": "NeuroMorpho_CNG_standardized_local_frame",
+        "unit": "micrometre",
+        "unitStatus": "source_reported",
+        "dimensions": 3
+      },
+      "components": [
+        {
+          "id": "source-swc-centerline",
+          "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+          "sourceTypes": [
+            1,
+            2,
+            3
+          ],
+          "representation": "centerline_only"
+        }
+      ],
+      "relationships": [],
+      "files": [
+        {
+          "id": "api",
+          "path": "/data/comparative_swc_reference_v1/nmo-34024-api.json",
+          "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-34024-api.json",
+          "bytes": 1466,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "b8c71a80fe29e4be2e0806349c4ba2ba5f611e7c24262d6bf5157ad39a05201e"
+          },
+          "retrievedDate": "2026-09-30",
+          "url": "https://neuromorpho.org/api/neuron/id/34024",
+          "contentType": "application/json"
+        },
+        {
+          "id": "swc",
+          "path": "/data/comparative_swc_reference_v1/nmo-34024.swc",
+          "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-34024.swc",
+          "bytes": 731956,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "7b71de215c860af28ed78381eaaaad2c03d24d19038ee5e1e8c7962cdf901357"
+          },
+          "retrievedDate": "2026-09-30",
+          "url": "https://neuromorpho.org/dableFiles/szucs/CNG%20version/L420-LCN.CNG.swc",
+          "contentType": "source_server_unspecified; validated_UTF8_seven_column_SWC"
+        },
+        {
+          "id": "morphometry",
+          "path": "/data/comparative_swc_reference_v1/nmo-34024-morphometry.json",
+          "sourcePath": "data/source-candidates/neuromorpho-comparative-2026-09-30/nmo-34024-morphometry.json",
+          "bytes": 468,
+          "checksum": {
+            "algorithm": "SHA-256",
+            "digest": "a1ea035737fb8bc47afef7292e00216fa9bea068d09bc3346dae0637eb893d38"
+          },
+          "retrievedDate": "2026-09-30",
+          "url": "https://neuromorpho.org/api/morphometry/id/34024",
+          "contentType": "application/json"
+        }
+      ],
+      "structureCoverage": [
+        {
+          "id": "axon",
+          "label": "Axon centerline",
+          "status": "observed_source_object",
+          "detail": "14988 exact type-2 samples; source reconstruction, no membrane surface.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-34024.swc"
+        },
+        {
+          "id": "soma",
+          "label": "Soma samples",
+          "status": "observed_source_object",
+          "detail": "12 standardized type-1 samples; header conversion discrepancy retained.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-34024-api.json#domain"
+        },
+        {
+          "id": "dendrites",
+          "label": "Dendrite centerline",
+          "status": "observed_source_object",
+          "detail": "2973 exact type-3 samples.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-34024-api.json#domain"
+        },
+        {
+          "id": "diameter",
+          "label": "Source diameter",
+          "status": "source_reported",
+          "detail": "Source Diameter attribute authorizes raw radii, but this lane displays centerlines only.",
+          "locator": "/data/comparative_swc_reference_v1/nmo-34024-api.json#attributes"
+        },
+        {
+          "id": "membrane",
+          "label": "membrane",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/34024"
+        },
+        {
+          "id": "nucleus",
+          "label": "nucleus",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/34024"
+        },
+        {
+          "id": "organelles",
+          "label": "organelles",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/34024"
+        },
+        {
+          "id": "synapses",
+          "label": "synapses",
+          "status": "unavailable",
+          "detail": "No admitted same-object surface, volume or internal evidence in these exact standardized SWC assets.",
+          "locator": "data/comparative-swc-reference-0.1.json#objects/34024"
+        }
+      ],
+      "counts": [
+        {
+          "value": 1,
+          "unit": "source_reconstruction",
+          "scopeKey": "neuromorpho-rat-comparative/exact-source-snapshot-2026-09-30/standardized_swc/34024",
+          "derivedFrom": "/data/comparative_swc_reference_v1/nmo-34024-api.json#neuron_id"
+        },
+        {
+          "value": 17973,
+          "unit": "SWC_node",
+          "scopeKey": "neuromorpho-rat-comparative/exact-source-snapshot-2026-09-30/standardized_swc/34024",
+          "derivedFrom": "/data/comparative_swc_reference_v1/nmo-34024.swc"
+        },
+        {
+          "value": 17972,
+          "unit": "SWC_edge",
+          "scopeKey": "neuromorpho-rat-comparative/exact-source-snapshot-2026-09-30/standardized_swc/34024",
+          "derivedFrom": "/data/comparative_swc_reference_v1/nmo-34024.swc"
+        }
+      ],
+      "viewer": {
+        "kind": "comparative_swc",
+        "neuronId": 34024,
+        "diameterAuthorized": true,
+        "radiusSurfaceAdmitted": false
+      },
+      "sourceUrl": "https://neuromorpho.org/api/neuron/id/34024",
+      "provenance": {
+        "sourceId": "NeuroMorpho.Org",
+        "rrid": "SCR_002145",
+        "originalPaper": "https://doi.org/10.1002/cne.23311",
+        "repositoryCitation": "NeuroMorpho.Org (RRID:SCR_002145)",
+        "repositoryMethodsCitation": "Tecuatl C, Ljungquist B, Ascoli GA (2024). FASEB Bioadv. 6(7):207–221. doi:10.1096/fba.2024-00048",
+        "reuse": {
+          "status": "source_license_confirmed",
+          "license": "CC-BY-4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "termsUrl": "https://neuromorpho.org/useterm.jsp",
+          "observedDate": "2026-09-30",
+          "verificationMethod": "official_terms_page_read_via_browser_tool; no_terms_bytes_snapshot_claim",
+          "attributionRequirement": "Original paper, NeuroMorpho.Org complete name/RRID, and repository methods paper."
+        }
+      }
+    }
+  ]
+}

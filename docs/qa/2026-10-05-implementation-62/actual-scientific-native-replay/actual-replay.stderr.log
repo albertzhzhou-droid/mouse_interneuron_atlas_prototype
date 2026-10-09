@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i62-actual-scientific-native-replay-20261005/replay.py", line 281, in <module>
+    result=run_actual(args.manifest);pathlib.Path(args.output).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(result['status'])
+  File "/private/tmp/ohri-i62-actual-scientific-native-replay-20261005/replay.py", line 257, in run_actual
+    pinned(entry['navigationDOM']);sidecar=strict_load(entry['navigationDOM']['path']);input_pins.append(entry['navigationDOM']);results.append(check_registry_dom(raw,fixture,sidecar))
+  File "/private/tmp/ohri-i62-actual-scientific-native-replay-20261005/replay.py", line 151, in check_registry_dom
+    exact(actions,[]);check(len(buttons)==1 and buttons[0]['text']=='Export source dossier' and buttons[0]['disabled'] is False,'other explicit source export unavailable')
+  File "/private/tmp/ohri-i62-actual-scientific-native-replay-20261005/replay.py", line 14, in check
+    if not ok:raise ValueError(message)
+ValueError: other explicit source export unavailable

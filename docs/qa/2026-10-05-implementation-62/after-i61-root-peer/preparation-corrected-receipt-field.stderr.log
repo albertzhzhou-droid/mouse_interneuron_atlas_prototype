@@ -1,0 +1,19 @@
+node:fs:556
+  return binding.open(
+                 ^
+
+Error: EEXIST: file already exists, open '/private/tmp/ohri-i62-independent-after-i61-root-peer-20261005/shadow/package.json'
+    at Object.openSync (node:fs:556:18)
+    at Object.writeFileSync (node:fs:2412:35)
+    at write (file:///private/tmp/ohri-i62-independent-after-i61-root-peer-20261005/prepare-and-audit.mjs:35:6)
+    at file:///private/tmp/ohri-i62-independent-after-i61-root-peer-20261005/prepare-and-audit.mjs:133:42
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:642:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -17,
+  code: 'EEXIST',
+  syscall: 'open',
+  path: '/private/tmp/ohri-i62-independent-after-i61-root-peer-20261005/shadow/package.json'
+}
+
+Node.js v26.0.0

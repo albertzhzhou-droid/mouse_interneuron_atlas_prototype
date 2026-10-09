@@ -56,12 +56,14 @@ export async function validateBancV888ComparativeInternalReference() {
   assert.match(card, /objectReceipts\.mitochondria/);
   assert.match(card, /sourceProducts\.neuronMeshes/);
   assert.match(card, /Nucleus ID ↔ root ID/);
-  assert.match(card, /No BANC objects or geometries are imported/);
+  assert.match(card, /only admitted candidate geometry; this availability card imports no additional geometry/);
+  assert.match(panel, /<BancV888IN14A018MorphologyReference\s*\/>/);
   assert.match(card, /source\.portalUrl/);
   assert.match(card, /source\.dataLocationsUrl/);
   assert.doesNotMatch(scene, /bancV888ComparativeInternalReference|banc-v888-comparative-internal-reference/, "availability reference must not become selected-cell scene geometry");
   assert.match(queue, /UPG-219[^\n]*partially completed/);
   assert.match(queue, /UPG-221/);
+  assert.match(queue, /UPG-232[^\n]*count metric of 31/);
 
   return {
     contractId: reference.contractId,

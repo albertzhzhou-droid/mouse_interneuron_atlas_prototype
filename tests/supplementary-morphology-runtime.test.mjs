@@ -2,11 +2,12 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const [viewerSource, comparisonSource, loaderSource, censusDataSource, adapter] = await Promise.all([
+const [viewerSource, comparisonSource, loaderSource, censusDataSource, geometryVerificationSource, adapter] = await Promise.all([
   readFile(new URL("../app/MorphologyViewer.tsx", import.meta.url), "utf8"),
   readFile(new URL("../app/MorphologyComparePanel.tsx", import.meta.url), "utf8"),
   readFile(new URL("../app/supplementary-morphology-comparison.ts", import.meta.url), "utf8"),
   readFile(new URL("../app/morphology-census-data.ts", import.meta.url), "utf8"),
+  readFile(new URL("../app/morphology-geometry-verification.js", import.meta.url), "utf8"),
   readFile(new URL("../data/supplementary-morphology-comparison-adapter-0.1.json", import.meta.url), "utf8").then(JSON.parse),
 ]);
 
@@ -20,7 +21,7 @@ test("wires the exact supplementary adapter into only the source-object comparat
   assert.match(comparisonSource, /149<\/b><span>declared release objects/);
   assert.match(comparisonSource, /Runtime index: \{indexedCensusRecordCount\} census \+ \{indexedSupplementaryRecordCount\} supplementary/);
   assert.match(comparisonSource, /selectedRecords\.length >= MORPHOLOGY_MATRIX_MIN_SELECTIONS/);
-  assert.match(comparisonSource, /verifiedGeometryReceipts\.get\(record\.neuronId\) === record\.geometry\.sha256/);
+  assert.match(comparisonSource, /verifiedGeometryReceipts\.get\(record\.neuronId\)\?\.verification\.sha256 === record\.geometry\.sha256/);
   assert.match(comparisonSource, /window\.addEventListener\("popstate", restoreModes\)/);
   assert.match(comparisonSource, /analysisState\.sha256/);
   assert.match(comparisonSource, /supplementaryAnalysisSha256/);
@@ -32,8 +33,10 @@ test("keeps direct route geometry paths and verifies bytes before rendering", ()
   assert.ok(adapter.records.every((record) => record.geometry.path.startsWith("/data/") && record.geometry.available));
   assert.equal(new Set(adapter.records.map((record) => record.geometry.path)).size, 7);
   assert.match(censusDataSource, /path\.startsWith\("\/"\) \? path :/);
-  assert.match(censusDataSource, /bytes\.byteLength !== record\.geometry\.bytes/);
-  assert.match(censusDataSource, /sha256Hex\(bytes\) !== record\.geometry\.sha256/);
+  assert.match(censusDataSource, /readVerifiedMorphologyGeometry\(record, disclosure/);
+  assert.match(censusDataSource, /morphologyGeometryVerificationReceipt\(record, disclosure, geometry\)/);
+  assert.match(geometryVerificationSource, /bytes\.byteLength === record\.geometry\.bytes/);
+  assert.match(geometryVerificationSource, /actualSha256 === record\.geometry\.sha256/);
 });
 
 test("fails the supplementary analysis delta closed without weakening the census analysis", () => {

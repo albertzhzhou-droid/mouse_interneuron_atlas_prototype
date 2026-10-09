@@ -1,0 +1,18 @@
+PASS 4K positional complete bytes and UTF8 original encoding
+PASS short reads advance by actual n
+PASS unseen metadata retry discards all first body
+PASS permanent unseen metadata refusal stops at3 complete bodies
+PASS accepted later pre-read epoch drift never retries or opens
+PASS accepted mid-read drift never retries
+PASS accepted drift after pre-check and before fd before rejects no retry
+PASS pathEnd disagreement only unseen allows fresh full retry
+PASS EOF never retries
+PASS IO never retries
+PASS aborted before read never opens or retries
+PASS aborted during partial read closes no retry
+PASS relative string and fileURL share immutable absolute anchor
+PASS external original SHA validator retains authority
+PASS external original length validator retains authority
+PASS empty regular file retains stable exact epoch
+PASS non filename path delegates original behavior
+{"status":"PASS_SYNTHETIC_ONLY_STRICT_FIRST_EPOCH_READER","passed":17,"failed":0,"sourceFullReads":0,"sourceOrRootOrStageWrites":0,"scope":"Exact copiedhelper instantiated with injected fake FS; no actual fs.promises patch/import execution or product validators."}

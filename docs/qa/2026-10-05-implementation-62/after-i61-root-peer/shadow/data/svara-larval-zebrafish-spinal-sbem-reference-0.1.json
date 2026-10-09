@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "svara-larval-zebrafish-spinal-sbem-reference-0.1",
+  "auditDate": "2026-09-23",
+  "source": {
+    "studyTitle": "Volume EM Reconstruction of Spinal Cord Reveals Wiring Specificity in Speed-Related Motor Circuits",
+    "doi": "10.1016/j.celrep.2018.05.023",
+    "authors": ["Fabian N. Svara", "Jörgen Kornfeld", "Winfried Denk", "Johann H. Bollmann"],
+    "articleLicense": "The author-hosted article states CC BY 4.0; this is an article-level statement and is not treated as a separately verified licence for each supplementary archive."
+  },
+  "biologicalScope": {
+    "species": "Danio rerio",
+    "lifeStage": "6 dpf larval zebrafish",
+    "specimenCount": 1,
+    "specimenUnit": "larva",
+    "scopeNote": "One source volume from one larva; reconstruction counts are source-specific object selections, not population prevalence or a complete interneuron census."
+  },
+  "acquisition": {
+    "modality": "serial block-face electron microscopy (SBEM)",
+    "reportedVolumeLengthMicrometre": [74, 74, 207],
+    "reportedVoxelPitchNanometre": [9, 9, 21],
+    "axisOrderNamed": false,
+    "segmentCoverage": {
+      "fullyContainedSegments": 2,
+      "adjacentSegmentCoveragePercent": [
+        {"position": "rostral", "coveragePercent": 51},
+        {"position": "caudal", "coveragePercent": 71}
+      ],
+      "fullSegmentSomata": [671, 652],
+      "somataInVolume": 2177
+    }
+  },
+  "publishedReconstructions": {
+    "motoneurons": {"count": 139, "leftHemisegment": 68, "rightHemisegment": 71},
+    "morphologyConsistentCiDs": {"count": 39, "completelyTracedCellContext": 170, "geneticV2aAssignmentAvailable": false},
+    "CoBLs": {"count": 34, "selectionContext": "Seeded from synaptic inputs onto two motoneurons, then traced for source-reported CoBL morphology and connectivity."}
+  },
+  "supplementPackages": {
+    "sourceListingUrl": "https://www.bi.mpg.de/publication-search/2328567?person=%2Fpersons%2Fresource%2Fpersons118241",
+    "reportedPackageCount": 3,
+    "articleSupplementStatement": "Supplemental Information includes four figures, four tables, and three data files.",
+    "packages": [
+      {"repositoryComponentId": "file_3055230", "filename": "1-s2.0-S2211124718307563-mmc6.zip", "sourceUrl": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055230/1-s2.0-S2211124718307563-mmc6.zip", "listed": true},
+      {"repositoryComponentId": "file_3055231", "filename": "1-s2.0-S2211124718307563-mmc7.zip", "sourceUrl": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055231/1-s2.0-S2211124718307563-mmc7.zip", "listed": true},
+      {"repositoryComponentId": "file_3055232", "filename": "1-s2.0-S2211124718307563-mmc8.zip", "sourceUrl": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055232/1-s2.0-S2211124718307563-mmc8.zip", "listed": true}
+    ],
+    "packageContentInspection": "not performed",
+    "fileSizesBytes": null,
+    "checksums": null,
+    "memberFileFormats": "unknown",
+    "stableNeuronObjectIdCrosswalk": "unknown",
+    "perPackageReuseTerms": "not verified",
+    "assetDecision": "Expose direct official repository links only; no archive payload is downloaded or redistributed, and per-package reuse terms remain unverified."
+  },
+  "identityAndGeometryBoundary": {
+    "appAdmittedNeuronObjects": 0,
+    "appAdmittedSkeletons": 0,
+    "appAdmittedMeshes": 0,
+    "appAdmittedSynapseEdges": 0,
+    "sameCellJoinCount": 0,
+    "mouseIdentityTransferAllowed": false,
+    "crossSpeciesCoordinateTransferAllowed": false,
+    "createInterpolatedGeometry": false,
+    "interpretation": "The article establishes a detailed larval-zebrafish spinal SBEM and selected source-reported reconstructions. Until archive members, exact object keys, completeness, source coordinates and reuse terms are verified, the app displays article-level comparative context only, not neuron geometry."
+  },
+  "sources": [
+    {"label": "Primary author-hosted article PDF", "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055224/1-s2.0-S2211124718307563-main.pdf"},
+    {"label": "Author-hosted supplementary information PDF", "url": "https://pure.mpg.de/rest/items/item_3055210/component/file_3055225/content"},
+    {"label": "Official Max Planck publication listing with three ZIP links", "url": "https://www.bi.mpg.de/publication-search/2328567?person=%2Fpersons%2Fresource%2Fpersons118241"},
+    {"label": "Supplement mmc6 ZIP · direct repository route", "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055230/1-s2.0-S2211124718307563-mmc6.zip"},
+    {"label": "Supplement mmc7 ZIP · direct repository route", "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055231/1-s2.0-S2211124718307563-mmc7.zip"},
+    {"label": "Supplement mmc8 ZIP · direct repository route", "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055232/1-s2.0-S2211124718307563-mmc8.zip"},
+    {"label": "FreiDok archive candidate; existing UPG-081 rights and stable-volume gate remains unresolved", "url": "https://freidok.uni-freiburg.de/data/145135"}
+  ]
+}

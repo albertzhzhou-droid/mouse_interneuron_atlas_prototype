@@ -1,0 +1,118 @@
+{
+  "status": "PASS_BOUNDED_INDEPENDENT_I62_TEMP_STRICT_FIRST_EPOCH_NODE_READER_PEER",
+  "generatedAtUTC": "2026-10-05T10:29:56.413562+00:00",
+  "currentParentHelper": {
+    "path": "/private/tmp/ohri-i62-strict-first-epoch-read.mjs",
+    "bytes": 2655,
+    "sha256": "2c190d880e22318c332fb9d69b1c62d016edf0c4c5e2f8e6b9c15f0987303b8f"
+  },
+  "ownedEvidencePins": [
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/exact-root-helper.mjs",
+      "bytes": 2655,
+      "sha256": "2c190d880e22318c332fb9d69b1c62d016edf0c4c5e2f8e6b9c15f0987303b8f"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/ROOT_HELPER_EXACT_SNAPSHOT_PIN.json",
+      "bytes": 163,
+      "sha256": "7a1d5f1561ae24ecce0bacc279b17f1679b873076032f4238392f182832dbf4e"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/test-strict-read-helper.mjs",
+      "bytes": 8229,
+      "sha256": "e51e6e90b733b12c2176622b59d7f857a26295293736df16286a4d61574fdb29"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/independent17-synthetic.stdout.log",
+      "bytes": 1144,
+      "sha256": "8b2fdc1d4bfc0e3ef099847f09e0970571a1e040fcdf6ba9afc066a07af2f985"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/independent17-synthetic.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/real-tiny-preloader-replay.mjs",
+      "bytes": 1257,
+      "sha256": "a39b683f5705af52226c0509812b6c38a3196fa9c60a5910a6b4da2678cbc399"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/actual-tiny-preloader.stdout.log",
+      "bytes": 418,
+      "sha256": "fb95ff83afb1b67e8ca0aaa268e1135cd99d75b48e73d6bfec29e7b840928782"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/actual-tiny-preloader.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/tiny-real-source.bin",
+      "bytes": 5001,
+      "sha256": "89206d01a7a5f7f6d904c37e473b8b9c695376f9bada9711cde47b23aff314f9"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-strict-node-read-bounded-peer-20261005/tiny-real-source.bin.preserved-first-inode",
+      "bytes": 5001,
+      "sha256": "89206d01a7a5f7f6d904c37e473b8b9c695376f9bada9711cde47b23aff314f9"
+    }
+  ],
+  "independentInjectedFSGuards": {
+    "passed": 17,
+    "failed": 0,
+    "actualExitCode": 0,
+    "semantics": "Exact helper body with only four imports supplied through fake FS seam; no actual root/stage/process promise patch in synthetic guards."
+  },
+  "actualOwnTinyPhysicalPreloader": {
+    "status": "PASS_ACTUAL_NODE26_COPIED_PRELOADER_ON_OWN_TINY5001_BYTES_ONLY",
+    "execPath": "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+    "node": "v26.0.0",
+    "sha256": "89206d01a7a5f7f6d904c37e473b8b9c695376f9bada9711cde47b23aff314f9",
+    "namedFsPromisesBindingWorked": true,
+    "relativeAbsoluteAndURLSharedAnchor": true,
+    "sameBytesNewInodeRefused": true,
+    "rootStageSourceOrNetworkReads": 0,
+    "actualCanonicalBuilderOrValidatorExecuted": false
+  },
+  "staticFindings": [],
+  "sourceReadPolicy": {
+    "keyNormalizedAbsoluteStringAndFileURL": true,
+    "readsActual4KPositionsWithShortReadProgress": true,
+    "fdBeforeFdEndAndPathEndDevInodeSizeMtimeNsCtimeNsStrict": true,
+    "unseenRefusedAttemptBodyDiscarded": true,
+    "unseenCompleteMetadataMismatchAtMost3Attempts": true,
+    "firstAcceptedAnchorImmutable": true,
+    "acceptedPreOrMidOrBetweenPreAndFdDriftFatalWithoutRetry": true,
+    "EOF_IO_AbortNeverRetried": true,
+    "externalOriginalShaAndLengthValidatorsRemainSeparateAndActive": true
+  },
+  "boundedOriginalBuilderInspection": {
+    "path": "tools/build_research_iteration_manifest_2_91.mjs",
+    "unchangedSemanticsInspected": [
+      "createHash sha256 of actual readFile buffer at395",
+      "runtime transport equals exact recomputed runtimeBytes at399"
+    ],
+    "codeModified": false,
+    "originalBuilderOrValidatorExecution": false
+  },
+  "preloaderScopeLimitations": [
+    "Global temporary fs.promises readFile override applies to filename strings and fileURLs; non-filename FileHandle/Buffer input delegates to original Node behavior and is not assigned this source epoch authority.",
+    "Existing temporary readdir/writeFile wrappers retain synchronous counterparts; no root/stage output was invoked by this peer.",
+    "Positive physical execution uses only our private tiny5001-byte file; it is not source corpus or canonical manifest success.",
+    "Metadata refusal is preserved without inferring byte change or cause; original validators and future canonical/root-stage hash gates remain required."
+  ],
+  "endParentHelperAndOwnedEvidenceEpochsStable": true,
+  "strictEpochRefusals": [],
+  "scope": {
+    "sourceFullReads": 0,
+    "sourceOriginals": 0,
+    "rootWrites": 0,
+    "stageWrites": 0,
+    "originalProjectValidatorRuns": 0,
+    "browser": 0,
+    "network": 0,
+    "otherFinalHelperConfigChanges": 0,
+    "I63IntakeOrPreparationRuns": 0
+  }
+}

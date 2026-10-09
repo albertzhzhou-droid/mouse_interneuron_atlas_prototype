@@ -1,0 +1,757 @@
+{
+  "receiptType": "bil_xenium_current_source_inspection",
+  "checkedDate": "2026-09-30",
+  "collectionDoi": "10.35077/g.1196",
+  "sourceObjectKey": "BIL:ace-pie-bin",
+  "directoryFolder": "Run1_Slide1_Mus_M1_F1",
+  "directoryDonorToken": "Mus_M1_F1",
+  "manifestIdentity": {
+    "run_name": "Spinal_Run1",
+    "cassette_name": "SC01_A",
+    "slide_id": "00063884",
+    "region_name": "Reg1",
+    "experiment_uuid": "977eb4bb-986d-403e-a81a-b977ae7b1779",
+    "analysis_uuid": "1ddbcf41-d992-4814-b190-b7d87c687eb4",
+    "roi_uuid": "acd8ad6d-60d8-4dcf-8046-e96cd5ce32f8",
+    "cassette_uuid": "a06268eb-0a14-41d9-9cb4-cf8e24019173"
+  },
+  "apiSpecimens": [
+    {
+      "localid": "Mus_M1_F1",
+      "species": "Mouse",
+      "ncbitaxonomy": "NCBI:txid10090",
+      "age": "56.0",
+      "ageunit": "Days",
+      "sex": "Male",
+      "genotype": "C57BL6J",
+      "organlocalid": "DHBA:12890",
+      "organname": "Spinal Cord",
+      "samplelocalid": "TI-SBNC685386",
+      "atlas": "",
+      "locations": "Cervical, Thoracic, Lumbar, Sacral",
+      "linkage": [
+        {
+          "class": "xref",
+          "type": "cubie_tissue",
+          "relationship": "tissue",
+          "xid": "TI-SBNC685386"
+        },
+        {
+          "class": "xref",
+          "type": "cubie_tissue",
+          "relationship": "donor",
+          "xid": "DO-MKUV8311"
+        }
+      ]
+    }
+  ],
+  "specimenScope": "API_dataset_record_not_per_cell_or_section",
+  "rawSegmentedCellCount": 208799,
+  "processing": {
+    "analysisSoftware": "xenium-3.3.0.1",
+    "instrumentSoftware": "3.3.0.1",
+    "chemistry": "v1",
+    "stain": "Xenium Multi-Tissue Stain",
+    "pixelSizeUm": 0.2125,
+    "methodCounts": {
+      "boundary": 1121,
+      "interior": 194741,
+      "nuc_expansion": 12937
+    },
+    "nuclearExpansionDistanceUm": null,
+    "distanceReason": "not_declared_in_the_acquired_run_manifest_or_metrics",
+    "methodEvidence": "run-level_manifest_and_metrics_not_per_cell_method_assignment"
+  },
+  "rights": {
+    "apiIdentifier": "CC-BY-4.0",
+    "apiText": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "apiUri": "https://creativecommons.org/licenses/by/4.0/",
+    "workbook": {
+      "sheet": "Dataset",
+      "row": 7,
+      "directory": "/bil/lz/apool/fe798993f13debd2/Run1_Slide1_Mus_M1_F1",
+      "rights": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "rightsUri": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsIdentifier": "CC-BY-4.0"
+    },
+    "sitePolicyIdentifier": "CC-BY-SA-4.0",
+    "policyDifferenceResolved": false,
+    "disposition": "local_metadata_inspection_geometry_not_admitted"
+  },
+  "outlineCandidates": [
+    {
+      "fileName": "SpinRun1_slide1_SC1.csv",
+      "vertexRowCount": 28,
+      "selectionNames": [
+        "Selection 2"
+      ],
+      "columns": [
+        "Selection",
+        "X",
+        "Y"
+      ],
+      "cellIdColumnPresent": false,
+      "coordinateUnitsDeclared": false,
+      "cellFrameTransformDeclared": false,
+      "areaUnitCommentPresent": true,
+      "boundaryAdmission": "metadata_only_unverified_section_frame"
+    },
+    {
+      "fileName": "SpinRun1_slide1_SC1A.csv",
+      "vertexRowCount": 28,
+      "selectionNames": [
+        "Selection 2"
+      ],
+      "columns": [
+        "Selection",
+        "X",
+        "Y"
+      ],
+      "cellIdColumnPresent": false,
+      "coordinateUnitsDeclared": false,
+      "cellFrameTransformDeclared": false,
+      "areaUnitCommentPresent": false,
+      "boundaryAdmission": "metadata_only_unverified_section_frame"
+    },
+    {
+      "fileName": "coordinates_mod.csv",
+      "vertexRowCount": 1933,
+      "selectionNames": [
+        "Cervical_1_M_R1_884",
+        "Cervical_2_M_R1_884",
+        "Cervical_3_M_R1_884",
+        "Cervical_4_M_R1_884",
+        "Cervical_5_F_R1_884",
+        "Cervical_6_F_R1_884",
+        "Cervical_7_F_R1_884",
+        "Cervical_8_F_R1_884",
+        "Cervical_9_F_R1_884",
+        "Lumbar_1_M_R1_884",
+        "Lumbar_2_M_R1_884",
+        "Lumbar_3_M_R1_884",
+        "Lumbar_4_M_R1_884",
+        "Lumbar_5_F_R1_884",
+        "Lumbar_6_F_R1_884",
+        "Lumbar_7_F_R1_884",
+        "Lumbar_8_F_R1_884",
+        "Lumbar_9_F_R1_884",
+        "Sacral_1_M_R1_884",
+        "Sacral_2_M_R1_884",
+        "Sacral_3_M_R1_884",
+        "Sacral_4_M_R1_884",
+        "Sacral_5_F_R1_884",
+        "Sacral_6_F_R1_884",
+        "Sacral_7_F_R1_884",
+        "Sacral_8_F_R1_884",
+        "Thoracic_1_M_R1_884",
+        "Thoracic_2_M_R1_884",
+        "Thoracic_3_M_R1_884",
+        "Thoracic_4_M_R1_884",
+        "Thoracic_5_F_R1_884",
+        "Thoracic_6_F_R1_884",
+        "Thoracic_7_F_R1_884",
+        "Thoracic_8_F_R1_884"
+      ],
+      "columns": [
+        "Selection",
+        "X",
+        "Y"
+      ],
+      "cellIdColumnPresent": false,
+      "coordinateUnitsDeclared": false,
+      "cellFrameTransformDeclared": false,
+      "areaUnitCommentPresent": false,
+      "boundaryAdmission": "metadata_only_unverified_section_frame"
+    },
+    {
+      "fileName": "coordinatestoadd.csv",
+      "vertexRowCount": 164,
+      "selectionNames": [
+        "Cervical_9_F_R1_884",
+        "Lumbar_9_F_R1_884",
+        "Thoracic_2_M_R1_884"
+      ],
+      "columns": [
+        "Selection",
+        "X",
+        "Y"
+      ],
+      "cellIdColumnPresent": false,
+      "coordinateUnitsDeclared": false,
+      "cellFrameTransformDeclared": false,
+      "areaUnitCommentPresent": true,
+      "boundaryAdmission": "metadata_only_unverified_section_frame"
+    },
+    {
+      "fileName": "single_spine_coordinates.csv",
+      "vertexRowCount": 80,
+      "selectionNames": [
+        "Cervical_2_M_R1_884"
+      ],
+      "columns": [
+        "Selection",
+        "X",
+        "Y"
+      ],
+      "cellIdColumnPresent": false,
+      "coordinateUnitsDeclared": false,
+      "cellFrameTransformDeclared": false,
+      "areaUnitCommentPresent": false,
+      "boundaryAdmission": "metadata_only_unverified_section_frame"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "data/source-candidates/bil-xenium-20260929/Run1_Slide1_Mus_M1_F1/experiment.xenium",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run1_Slide1_Mus_M1_F1/experiment.xenium",
+      "bytes": 2445,
+      "sha256": "91300177b6d1022cab7a27cb9a7b462b2244d2effe7b5d31ae865697495e8334"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-20260929/Run1_Slide1_Mus_M1_F1/metrics_summary.csv",
+      "url": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/Run1_Slide1_Mus_M1_F1/metrics_summary.csv",
+      "bytes": 2048,
+      "sha256": "4fc568ddb94b6f80dc349e2618a5fb35f66bed7090376cefda7cec7231c81a52"
+    },
+    {
+      "path": "data/source-candidates/bil-xenium-20260929/metadata/ace-pie-bin.json",
+      "url": "https://api.brainimagelibrary.org/retrieve?bildid=ace-pie-bin",
+      "bytes": 4978,
+      "sha256": "6478dd87f5ddb11e15ba60f0d82a233c5959b0c799fea723909d739cb7eeebf8"
+    }
+  ],
+  "pilotAdmission": {
+    "admitted": false,
+    "geometry": null,
+    "disposition": "metadata_only",
+    "blockers": [
+      {
+        "id": "file_rights",
+        "status": "unresolved_policy_difference",
+        "evidence": "16 current BIL dataset APIs and workbook rows declare CC-BY-4.0; site policy declares CC-BY-SA-4.0.",
+        "requiredInput": "A consistent applicable rights statement for copied or derived boundary files; keep both declarations and source attribution."
+      },
+      {
+        "id": "section_identity",
+        "status": "blocked",
+        "evidence": "Named Selection outlines are source labels; no cell_id-to-section table or declared outline-to-cell frame transform occurs in the acquired inputs.",
+        "requiredInput": "Source-supported cell_id-to-section mapping, or source-declared outline frame, units, transform and section crosswalk."
+      },
+      {
+        "id": "specimen_identity",
+        "status": "blocked",
+        "evidence": "Directory tokens, cassette labels and API specimen linkage keys differ; some API donor/tissue keys repeat across multiple run/slide records. They are retained separately.",
+        "requiredInput": "Source-supported per-section donor/tissue mapping; do not apply a dataset-level specimen record to all ROI cells."
+      },
+      {
+        "id": "cell_schema",
+        "status": "not_acquired",
+        "evidence": "cells and cell/nucleus boundary payloads were not downloaded because section/frame admission remains unresolved.",
+        "requiredInput": "Checksum-pinned small cells and cell/nucleus boundary inputs after prior gates, then duplicate/orphan/missing/ID and schema audit."
+      },
+      {
+        "id": "curated_labels",
+        "status": "blocked_for_interneuron_lane",
+        "evidence": "No exact curated cell_id label table was acquired; the gene panel and automatic clusters cannot identify interneurons.",
+        "requiredInput": "Exact deposited cell_id-to-curated-class/type labels and provenance; otherwise retain source-only unresolved classification."
+      }
+    ],
+    "methodEvidence": {
+      "id": "segmentation_method",
+      "status": "run_level_verified_parameters_partial",
+      "evidence": "All acquired manifests declare XOA 3.3.0.1 with Multi-Tissue Stain, and metrics distinguish boundary, interior and nuclear-expansion counts.",
+      "requiredInput": "Exact processing parameter evidence for nuclear expansion distance and per-cell method only if claimed; do not infer values from chemistry."
+    }
+  },
+  "claims": {
+    "geometryObjects": 0,
+    "interneuronObjects": 0,
+    "atlasRegistrations": 0,
+    "sameCellMorphologyJoins": 0
+  },
+  "metadataSnapshotCheckedDate": "2026-09-29",
+  "metadataSnapshotPilotAdmission": {
+    "admitted": false,
+    "geometry": null,
+    "disposition": "metadata_only",
+    "blockers": [
+      {
+        "id": "file_rights",
+        "status": "unresolved_policy_difference",
+        "evidence": "16 current BIL dataset APIs and workbook rows declare CC-BY-4.0; site policy declares CC-BY-SA-4.0.",
+        "requiredInput": "A consistent applicable rights statement for copied or derived boundary files; keep both declarations and source attribution."
+      },
+      {
+        "id": "section_identity",
+        "status": "blocked",
+        "evidence": "Named Selection outlines are source labels; no cell_id-to-section table or declared outline-to-cell frame transform occurs in the acquired inputs.",
+        "requiredInput": "Source-supported cell_id-to-section mapping, or source-declared outline frame, units, transform and section crosswalk."
+      },
+      {
+        "id": "specimen_identity",
+        "status": "blocked",
+        "evidence": "Directory tokens, cassette labels and API specimen linkage keys differ; some API donor/tissue keys repeat across multiple run/slide records. They are retained separately.",
+        "requiredInput": "Source-supported per-section donor/tissue mapping; do not apply a dataset-level specimen record to all ROI cells."
+      },
+      {
+        "id": "cell_schema",
+        "status": "not_acquired",
+        "evidence": "cells and cell/nucleus boundary payloads were not downloaded because section/frame admission remains unresolved.",
+        "requiredInput": "Checksum-pinned small cells and cell/nucleus boundary inputs after prior gates, then duplicate/orphan/missing/ID and schema audit."
+      },
+      {
+        "id": "curated_labels",
+        "status": "blocked_for_interneuron_lane",
+        "evidence": "No exact curated cell_id label table was acquired; the gene panel and automatic clusters cannot identify interneurons.",
+        "requiredInput": "Exact deposited cell_id-to-curated-class/type labels and provenance; otherwise retain source-only unresolved classification."
+      }
+    ],
+    "methodEvidence": {
+      "id": "segmentation_method",
+      "status": "run_level_verified_parameters_partial",
+      "evidence": "All acquired manifests declare XOA 3.3.0.1 with Multi-Tissue Stain, and metrics distinguish boundary, interior and nuclear-expansion counts.",
+      "requiredInput": "Exact processing parameter evidence for nuclear expansion distance and per-cell method only if claimed; do not infer values from chemistry."
+    }
+  },
+  "sourceTableSchemaAudit": null,
+  "sourceCoordinateAudit": null,
+  "sourcePolygonAudit": null,
+  "publishedWorkflowInspection": {
+    "selectedSourceObjectKey": "BIL:ace-pie-bin",
+    "relationshipToSelectedRun": "independent_software_inspection_only",
+    "exactRunEvidence": false,
+    "audit": {
+      "schemaVersion": "0.1.0",
+      "auditId": "bil-xenium-published-workflow-audit-0.1",
+      "checkedDate": "2026-10-02",
+      "scope": "pinned_public_software_inventory_not_exact_run_mapping",
+      "collectionDoi": "10.35077/g.1196",
+      "repositories": [
+        {
+          "key": "registration",
+          "repository": "isst001/spatial-image-registration",
+          "commit": "e46d4cbcb807818cb2ac676a7a7ea73739e5667c",
+          "treeSha": "f31a2836bff905cd7109c69fc5c6eaf9720d36aa",
+          "blobs": 11,
+          "acquired": 10,
+          "commitDate": "2026-06-17T17:07:02Z",
+          "treeTruncated": false,
+          "acquiredFiles": [
+            {
+              "path": ".gitignore",
+              "bytes": 671,
+              "gitBlobSha": "e75435c1b1aa229e6b2e849b5da20696779bf734",
+              "sha256": "5748fdfee6509a429dc841563e14713907524ca919767160d51403c0a41b9d83"
+            },
+            {
+              "path": "CITATION.cff",
+              "bytes": 682,
+              "gitBlobSha": "5be278df04e1b81ee361459064347020c4c61419",
+              "sha256": "ee4f6b1da73eea575596076cf270697ab795de77dc4943dffeb898811afc3a14"
+            },
+            {
+              "path": "LICENSE",
+              "bytes": 855,
+              "gitBlobSha": "b1205e2073c5af5105a29ab32b31d19a0d473966",
+              "sha256": "8d9d95bf4c872dcccbd9ce29b9c6aa08239b2d2a43cd87bf279cf069c45fb22c"
+            },
+            {
+              "path": "R/image_registration_public_release.R",
+              "bytes": 16240,
+              "gitBlobSha": "ea43ff245429be360daba03858fd593c14e35ce7",
+              "sha256": "337471bd6aa4b652089cb06940a418f58ce273137cb0b11800d7c2607a9bee6d"
+            },
+            {
+              "path": "README.md",
+              "bytes": 4182,
+              "gitBlobSha": "0c9246c330a55424ca2fa179e961bfd66b43ad22",
+              "sha256": "9b0e97254a5e8b3b2db3113fb605580928bfbe23cc1281fd45277d968393e3af"
+            },
+            {
+              "path": "data/anchors",
+              "bytes": 13,
+              "gitBlobSha": "1366fcc0d8a01b4d542d5ac0f2e8e550b7ad4219",
+              "sha256": "c7b4d65f9ff24343273c6802eb7f53a8b0c7480a99c264554eaea8fbd6c7e7a9"
+            },
+            {
+              "path": "data/input",
+              "bytes": 14,
+              "gitBlobSha": "f0f80ca5e927769266b5d6676992966d4bbb4b42",
+              "sha256": "6dc361de881d5143b319c78cccef4663219b6a1f033abad356372e5aa5d3b43b"
+            },
+            {
+              "path": "data/ouputs",
+              "bytes": 12,
+              "gitBlobSha": "a668682131b6dbf1a95a833c7e7f3db947274bf6",
+              "sha256": "46f843289c7239d19ff46a5d9f3c84a148b57d4ba80e346bf367f97ee57d572a"
+            },
+            {
+              "path": "inst/extdata/contour",
+              "bytes": 1,
+              "gitBlobSha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+              "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+            },
+            {
+              "path": "inst/extdata/contour_anchors_example.csv",
+              "bytes": 451,
+              "gitBlobSha": "d976f0429228c6ecb7ae5cd2cc603b781edaf7c2",
+              "sha256": "d4a52aa40fe11d887df478fe8fbe4bee168c8458a84457150ffe09755f3a77bf"
+            }
+          ],
+          "unacquiredFiles": [
+            {
+              "path": "inst/extdata/contour_img.png",
+              "bytes": 926076,
+              "gitBlobSha": "ab5b02e2cac2558889f473907d692b7844e4c7dc",
+              "status": "inventory_only_not_acquired_or_image_verified"
+            }
+          ],
+          "licence": "MIT_software_notice_present"
+        },
+        {
+          "key": "cano",
+          "repository": "PoolLab/cano-gomez_et_al_2026",
+          "commit": "530f6546fd6cc7b344b26d850fa87ee7baab60fb",
+          "treeSha": "da676a6315fa1b3c604382bd9df3c3567aaa2022",
+          "blobs": 7,
+          "acquired": 7,
+          "commitDate": "2026-07-22T07:24:08Z",
+          "treeTruncated": false,
+          "acquiredFiles": [
+            {
+              "path": "01_Mapping_and_Preprocessing_Multiome_Data",
+              "bytes": 709,
+              "gitBlobSha": "86e51b89ef349480f995ad4c6fc93002923296d5",
+              "sha256": "a3cd9826fa8121f264ffb6eacb7459cbed2c6d18cdaaf7c4f2e10111cc5af871"
+            },
+            {
+              "path": "02_Multiomic_Data_Analysis",
+              "bytes": 5303,
+              "gitBlobSha": "af0f9de6e76a51fb242a0f3d5caf997c25eb64ab",
+              "sha256": "c02ac0799b0ed9195903625108c7e1f37c25c75b9553de82fb6de3e84e7b1fb2"
+            },
+            {
+              "path": "03_Xenium_Spatial_Transcriptomic_Data_Analysis",
+              "bytes": 17948,
+              "gitBlobSha": "7270215f70301f13ae7600657386c35fa898658c",
+              "sha256": "fed80f0b435a945f1a3304d79e5154596cb8b9f54c6b1c38cf4aea8b153896b1"
+            },
+            {
+              "path": "04_Sex_Differences",
+              "bytes": 7926,
+              "gitBlobSha": "259b49e4e9887fa912ab42efaa2f8feed8cbdd3a",
+              "sha256": "455d94a83f97bd9d23dda99a4ee3d40b82fa30d4292d205c7787ea8e77b4df06"
+            },
+            {
+              "path": "05_Spinal_Cord_Ascending_Projection_Neurons",
+              "bytes": 4116,
+              "gitBlobSha": "a6a37b34c7309521d8b3b34b8713378fe87c5781",
+              "sha256": "d692617bca657675d546d29919d65a2344eeedb16049c66be1b45a4f346b6afe"
+            },
+            {
+              "path": "06_Cell_Type_To_Phenotype_Map",
+              "bytes": 25969,
+              "gitBlobSha": "35f3a47977cf5b6d86e07acc1eb0abedc7fbd12c",
+              "sha256": "5406d8ad7be766a9007112c569509aee28103c37b39584576ad5807abfd0f5ee"
+            },
+            {
+              "path": "README.md",
+              "bytes": 216,
+              "gitBlobSha": "fa191ebbee503484cd050375d0d0012b89608baf",
+              "sha256": "eb00830548e1ed0d6af199b44c9e00bac33d2d31bfaf11b18d9b05eb239005fa"
+            }
+          ],
+          "unacquiredFiles": [],
+          "licence": "no_licence_file_in_pinned_tree"
+        }
+      ],
+      "sourceInputs": [
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano-commit.json",
+          "bytes": 6852,
+          "sha256": "ddcfe870f959e520ad233f3d93ddff91ad0ff446dc304b7a62328a4fb8a6000f"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano-tree.json",
+          "bytes": 1955,
+          "sha256": "af083d3073c96e59756f4c4452efb9654013686821903d03a55cf485b9badf3e"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/01_Mapping_and_Preprocessing_Multiome_Data",
+          "bytes": 709,
+          "sha256": "a3cd9826fa8121f264ffb6eacb7459cbed2c6d18cdaaf7c4f2e10111cc5af871"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/02_Multiomic_Data_Analysis",
+          "bytes": 5303,
+          "sha256": "c02ac0799b0ed9195903625108c7e1f37c25c75b9553de82fb6de3e84e7b1fb2"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/03_Xenium_Spatial_Transcriptomic_Data_Analysis",
+          "bytes": 17948,
+          "sha256": "fed80f0b435a945f1a3304d79e5154596cb8b9f54c6b1c38cf4aea8b153896b1"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/04_Sex_Differences",
+          "bytes": 7926,
+          "sha256": "455d94a83f97bd9d23dda99a4ee3d40b82fa30d4292d205c7787ea8e77b4df06"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/05_Spinal_Cord_Ascending_Projection_Neurons",
+          "bytes": 4116,
+          "sha256": "d692617bca657675d546d29919d65a2344eeedb16049c66be1b45a4f346b6afe"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/06_Cell_Type_To_Phenotype_Map",
+          "bytes": 25969,
+          "sha256": "5406d8ad7be766a9007112c569509aee28103c37b39584576ad5807abfd0f5ee"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/cano/README.md",
+          "bytes": 216,
+          "sha256": "eb00830548e1ed0d6af199b44c9e00bac33d2d31bfaf11b18d9b05eb239005fa"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/metadata-fetch-receipt.json",
+          "bytes": 1997,
+          "sha256": "f630101aa201546349b75027ebbfc6a2da83cad2b99b58c8b1d9b30794a702fc"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration-commit.json",
+          "bytes": 6231,
+          "sha256": "929a9962a947e5a7c7a7da891320c7e13a6526f1533ccfa98940727984ee6e0d"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration-tree.json",
+          "bytes": 3749,
+          "sha256": "c87a4f098d6676f5cba3f7f5616a43f90de1ce8607d4626e49dbd066efaed7db"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/.gitignore",
+          "bytes": 671,
+          "sha256": "5748fdfee6509a429dc841563e14713907524ca919767160d51403c0a41b9d83"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/CITATION.cff",
+          "bytes": 682,
+          "sha256": "ee4f6b1da73eea575596076cf270697ab795de77dc4943dffeb898811afc3a14"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/data/anchors",
+          "bytes": 13,
+          "sha256": "c7b4d65f9ff24343273c6802eb7f53a8b0c7480a99c264554eaea8fbd6c7e7a9"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/data/input",
+          "bytes": 14,
+          "sha256": "6dc361de881d5143b319c78cccef4663219b6a1f033abad356372e5aa5d3b43b"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/data/ouputs",
+          "bytes": 12,
+          "sha256": "46f843289c7239d19ff46a5d9f3c84a148b57d4ba80e346bf367f97ee57d572a"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/inst/extdata/contour",
+          "bytes": 1,
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/inst/extdata/contour_anchors_example.csv",
+          "bytes": 451,
+          "sha256": "d4a52aa40fe11d887df478fe8fbe4bee168c8458a84457150ffe09755f3a77bf"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/LICENSE",
+          "bytes": 855,
+          "sha256": "8d9d95bf4c872dcccbd9ce29b9c6aa08239b2d2a43cd87bf279cf069c45fb22c"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+          "bytes": 16240,
+          "sha256": "337471bd6aa4b652089cb06940a418f58ce273137cb0b11800d7c2607a9bee6d"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/README.md",
+          "bytes": 4182,
+          "sha256": "9b0e97254a5e8b3b2db3113fb605580928bfbe23cc1281fd45277d968393e3af"
+        },
+        {
+          "path": "data/source-candidates/published-xenium-registration-20261002/source-fetch-receipt.json",
+          "bytes": 10394,
+          "sha256": "61ed284e9049b468f46de951750abf7e1539178268a78931c913e0dd68364318"
+        }
+      ],
+      "availability": {
+        "completeGitTreeInventories": 2,
+        "listedBlobs": 18,
+        "acquiredTextBlobs": 17,
+        "acquiredSourceBytes": 85308,
+        "sourceRCodeExecuted": false,
+        "specimenDataAcquired": false,
+        "exampleTargetAnchorRows": 24,
+        "exampleAnchorSchema": [
+          "x",
+          "y"
+        ],
+        "missingRegistrationPaths": [
+          "data/input/seurat_object.rds",
+          "data/anchors/anchor_spatial_sample_01.csv",
+          "data/outputs",
+          "R/run_example.R",
+          "inst/extdata/contour_img_example.png"
+        ],
+        "placeholdersAreFilesNotDirectories": [
+          "data/input",
+          "data/anchors",
+          "data/ouputs"
+        ],
+        "namedProcessedInputs": [
+          "Xen_GLUT_COMBINED_v24_named.rds",
+          "Xen_GABA_COMBINED_v9_named.rds",
+          "Xen_CHOL_COMBINED_v6_named.rds"
+        ],
+        "processedInputEvidence": [
+          {
+            "path": "data/source-candidates/published-xenium-registration-20261002/cano/04_Sex_Differences",
+            "line": 21,
+            "sourceUrl": "https://github.com/PoolLab/cano-gomez_et_al_2026/blob/530f6546fd6cc7b344b26d850fa87ee7baab60fb/04_Sex_Differences#L21"
+          },
+          {
+            "path": "data/source-candidates/published-xenium-registration-20261002/cano/04_Sex_Differences",
+            "line": 22,
+            "sourceUrl": "https://github.com/PoolLab/cano-gomez_et_al_2026/blob/530f6546fd6cc7b344b26d850fa87ee7baab60fb/04_Sex_Differences#L22"
+          },
+          {
+            "path": "data/source-candidates/published-xenium-registration-20261002/cano/04_Sex_Differences",
+            "line": 23,
+            "sourceUrl": "https://github.com/PoolLab/cano-gomez_et_al_2026/blob/530f6546fd6cc7b344b26d850fa87ee7baab60fb/04_Sex_Differences#L23"
+          }
+        ],
+        "findingScope": "these_two_complete_pinned_git_trees_only_not_all_public_or_private_data"
+      },
+      "identity": {
+        "originalCellIdMapPresent": false,
+        "biologicalSectionMapPresent": false,
+        "specimenMapPresent": false,
+        "curatedCellTypeMapPresent": false,
+        "exactRunSourceObjectKey": null,
+        "exactRunAnalysisUuid": null,
+        "exactRunRoiUuid": null,
+        "operations": [
+          {
+            "operation": "split_source_ids_on_underscore",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 81,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L81"
+            }
+          },
+          {
+            "operation": "select_eighth_field_by_default",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 58,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L58"
+            }
+          },
+          {
+            "operation": "make_unique_suffixes",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 94,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L94"
+            }
+          },
+          {
+            "operation": "replace_seurat_cell_names",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 98,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L98"
+            }
+          },
+          {
+            "operation": "output_renamed_centroid_ids",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 496,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L496"
+            }
+          }
+        ],
+        "requiredInput": "Exact original-to-renamed ID crosswalk, including source ROI/analysis namespace, collision suffixes and section/specimen identifiers. A matching eighth field or generated suffix alone is insufficient."
+      },
+      "coordinate": {
+        "exactOutlineToCellTransform": null,
+        "sourceRunAnchorPairsPresent": false,
+        "savedSourceRotationPresent": false,
+        "sourcePolygonSelectionPresent": false,
+        "physicalCalibrationOfTargetImage": null,
+        "operations": [
+          {
+            "operation": "manual_polygon_selection",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 163,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L163"
+            }
+          },
+          {
+            "operation": "manual_rotation",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 410,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L410"
+            }
+          },
+          {
+            "operation": "manual_spatial_anchors",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 187,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L187"
+            }
+          },
+          {
+            "operation": "thin_plate_spline_model",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 455,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L455"
+            }
+          },
+          {
+            "operation": "target_image_y_inversion",
+            "locator": {
+              "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+              "line": 465,
+              "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L465"
+            }
+          }
+        ],
+        "defaultTypeColumn": "RNA_snn_res.14",
+        "defaultTypeLocator": {
+          "path": "data/source-candidates/published-xenium-registration-20261002/registration/R/image_registration_public_release.R",
+          "line": 60,
+          "sourceUrl": "https://github.com/isst001/spatial-image-registration/blob/e46d4cbcb807818cb2ac676a7a7ea73739e5667c/R/image_registration_public_release.R#L60"
+        },
+        "requiredInput": "Exact run/section selection polygon, source and target anchor pairs, applied rotation/centre, target-image calibration and source-supported output with parent cell IDs; example target anchors alone do not define this transform."
+      },
+      "rights": {
+        "softwareLicenceAppliesToBILFiles": false,
+        "bilPolicyDifferenceResolved": false,
+        "canoSoftwareReuseAuthorisedByThisAudit": false,
+        "dataRightsVerifiedBySoftwareLicence": false
+      },
+      "admission": {
+        "geometryViewerAdmission": false,
+        "sectionLinkedCellNucleusGeometryCount": 0,
+        "interneuronObjects": 0,
+        "atlasRegistrations": 0,
+        "sameCellMorphologyJoins": 0,
+        "fullGoalComplete": false
+      }
+    }
+  }
+}

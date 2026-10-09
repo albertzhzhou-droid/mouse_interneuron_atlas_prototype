@@ -1,0 +1,276 @@
+{
+  "documentType": "independent-source-object-view",
+  "schemaVersion": "0.1.0",
+  "applicationVersion": "2.90.0-research.1",
+  "object": {
+    "sourceId": "native-contours",
+    "registryId": "neurolucida-native-contour-admission-catalog-0.4",
+    "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.4.0",
+    "objectKind": "native_contour_record",
+    "sourceObjectId": "45718",
+    "key": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/45718",
+    "title": "NMO 45718 · Repository-labelled calbindin-negative glycinergic premotor / non-Renshaw interneuron",
+    "sourceUrl": "https://neuromorpho.org/api/neuron/id/45718",
+    "context": {
+      "scope": "source_native_unregistered",
+      "species": "See exact NeuroMorpho source record",
+      "region": "See exact source record",
+      "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use and original-paper attribution"
+    },
+    "coordinateFrame": {
+      "frame": "Neurolucida_DAT_source_native_unregistered",
+      "unit": "micrometre",
+      "unitStatus": "source_reported",
+      "dimensions": 3
+    },
+    "components": [
+      {
+        "id": "soma-contours",
+        "representation": "source_native_line_loops",
+        "dimensions": 3,
+        "authority": "OBS_SOURCE_NATIVE_CONTOUR_TRACE",
+        "evidenceState": "observed_source_object",
+        "fileId": "native-contours"
+      }
+    ],
+    "relationships": [],
+    "files": [
+      {
+        "id": "source-dat",
+        "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/original/nmo-45718.dat",
+        "sourceUrl": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat",
+        "bytes": 343774,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415"
+        },
+        "role": "source",
+        "requiredForDisplay": false,
+        "verification": "receipt_only"
+      },
+      {
+        "id": "native-contours",
+        "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+        "sourceUrl": null,
+        "bytes": 45606,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8"
+        },
+        "role": "geometry",
+        "requiredForDisplay": true,
+        "verification": "receipt_only"
+      }
+    ],
+    "counts": [
+      {
+        "value": 8,
+        "unit": "contours",
+        "scopeKey": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/45718",
+        "derivedFrom": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718/admission"
+      }
+    ],
+    "structureCoverage": [
+      {
+        "id": "cell_geometry",
+        "label": "Source-local morphology",
+        "status": "unavailable",
+        "detail": "Source soma contours only; these traces do not supply a whole-cell reconstruction.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "radius_surface",
+        "label": "Radius-derived surface",
+        "status": "not_assessed",
+        "detail": "No exact-object assessment or display geometry is admitted; this does not establish biological absence.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "soma_trace",
+        "label": "Soma trace / outline",
+        "status": "observed_source_object",
+        "detail": "Seven source-closed Soma 1 traces plus the separately disclosed NMF legacy Cell Body closure from the immutable 0.1 contract.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "cell_boundary",
+        "label": "Cell boundary / membrane",
+        "status": "not_measured",
+        "detail": "Source line loops do not measure a membrane or surface.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "nucleus",
+        "label": "Nucleus",
+        "status": "unavailable",
+        "detail": "No exact-source nucleus object is admitted.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "organelles",
+        "label": "Organelles",
+        "status": "unavailable",
+        "detail": "No exact-source organelle object is admitted.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "synaptic_structures",
+        "label": "Synaptic structures",
+        "status": "unavailable",
+        "detail": "No exact-source synaptic object is admitted.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "receptor_distribution",
+        "label": "Receptor distribution",
+        "status": "not_assessed",
+        "detail": "No exact-object assessment or display geometry is admitted; this does not establish biological absence.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "source_frame",
+        "label": "Source coordinates / frame",
+        "status": "observed_source_object",
+        "detail": "Source-native coordinates; no atlas registration.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "reconstruction_completeness",
+        "label": "Reconstruction domain / completeness",
+        "status": "not_established",
+        "detail": "Admission covers the exact soma contour subset; whole-cell completeness is not certified.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      },
+      {
+        "id": "relationships",
+        "label": "Object relationships",
+        "status": "not_established",
+        "detail": "No admitted cross-source identity, internal-object parent relation or atlas registration.",
+        "authority": "independent_source_object_contract",
+        "locator": "data/neurolucida-native-contour-admission-catalog-0.4.json#records/neuronId=45718"
+      }
+    ],
+    "viewer": {
+      "kind": "native_contours",
+      "neuronId": 45718
+    }
+  },
+  "verification": {
+    "documentType": "independent_source_object_runtime_receipt",
+    "objectKey": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/45718",
+    "sourceId": "native-contours",
+    "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.4.0",
+    "objectKind": "native_contour_record",
+    "sourceObjectId": "45718",
+    "status": "verified",
+    "coordinateFrame": {
+      "frame": "Neurolucida_DAT_source_native_unregistered",
+      "unit": "micrometre",
+      "unitStatus": "source_reported",
+      "dimensions": 3
+    },
+    "verifiedFiles": [
+      {
+        "fileId": "native-contours",
+        "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/native-contours/nmo-45718-soma-contours.json",
+        "bytes": 45606,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8"
+        },
+        "status": "verified"
+      }
+    ],
+    "sourceOnlyFiles": [
+      {
+        "id": "source-dat",
+        "path": "/data/premotor_comparison_observed_morphology_route_pack_v1/original/nmo-45718.dat",
+        "sourceUrl": "https://neuromorpho.org/dableFiles/bannatyne/Source-Version/101026p1-A-In.dat",
+        "bytes": 343774,
+        "checksum": {
+          "algorithm": "SHA-256",
+          "digest": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415"
+        },
+        "role": "source",
+        "requiredForDisplay": false,
+        "verification": "receipt_only"
+      }
+    ],
+    "displayed": {
+      "pointCount": 0,
+      "edgeCount": 0,
+      "meshCount": 0,
+      "contourCount": 8
+    },
+    "relationships": [],
+    "geometryScope": "Exact selected source object representations only; no fallback shapes, biological measurements or atlas registration."
+  },
+  "view": {
+    "key": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/45718",
+    "verificationRevision": 2,
+    "revision": "native-contours/ohri-neurolucida-native-contour-admission-catalog-0.4.0/native_contour_record/45718:2::0",
+    "status": "rendered",
+    "representation": "native_contours",
+    "layers": [
+      {
+        "id": "source-contour-traces",
+        "requested": true,
+        "actual": true
+      }
+    ],
+    "camera": {
+      "position": [
+        229.99999999999997,
+        189.99999999999997,
+        300
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "projection": "perspective",
+      "fov": 38,
+      "near": 0.1,
+      "far": 4000
+    },
+    "displayTransform": {
+      "centerNative": [
+        365.34930419921875,
+        256.22613525390625,
+        -13
+      ],
+      "scale": 3.5714285714285716,
+      "coordinateFrame": {
+        "frame": "Neurolucida_DAT_source_native_unregistered",
+        "unit": "micrometre",
+        "unitStatus": "source_reported",
+        "dimensions": 3
+      }
+    },
+    "renderer": {
+      "name": "three",
+      "version": "185",
+      "width": 1428,
+      "height": 880
+    },
+    "loadMilliseconds": 42.299999952316284,
+    "renderMilliseconds": 456.10000002384186
+  },
+  "scope": "Source-local object; source-specific units and missingness retained. No cross-source identity or atlas registration is implied."
+}

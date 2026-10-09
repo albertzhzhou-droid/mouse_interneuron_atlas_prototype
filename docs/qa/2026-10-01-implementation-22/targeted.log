@@ -1,0 +1,39 @@
+✔ NMO 50394 gets one deterministic open interpolation shell from 14 contiguous OBS sections (26.305958ms)
+✔ surface eligibility fails closed on identity drift, contour self-intersection and non-contiguous planes (4.2945ms)
+✔ release artifact and receipt remain byte-deterministic and source-bounded (245802.634416ms)
+file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/native-contour-source-view.js:14
+    if (rows.length !== 1 || !/^[a-f0-9]{64}$/.test(rows[0].sha256)) throw new Error(`Native contour build input missing: ${path}`);
+                                                                           ^
+
+Error: Native contour build input missing: app/NativeContourRecordViewer.tsx
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/native-contour-source-view.js:14:76
+    at Array.map (<anonymous>)
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/native-contour-source-view.js:13:31
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:642:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.0.0
+✖ tests/native-contour-source-view.test.mjs (365716.273958ms)
+✔ 0.4 independently audited delta is reproducible and leaves frozen 0.3 unchanged (29428.626625ms)
+✔ delta fails closed on identity, receipts, raw flags, no-diameter and authority mutations (5.678084ms)
+✔ NMO 108978 retains exact flags, source order, repeated z and excludes inferred geometry (17.447917ms)
+✔ NMO 108978 rejects same-size tampering and forged derivative receipt (4.293625ms)
+✔ NMO 249676 retains exact flags, source order, repeated z and excludes inferred geometry (2.369709ms)
+✔ NMO 249676 rejects same-size tampering and forged derivative receipt (13.23325ms)
+✔ derived inventory rejects figures, arbitrary organelles and missing geometry (0.859625ms)
+✔ native viewer exposes source cross-section inspection and resets per selected identity (7.275583ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 365729.716416
+
+✖ failing tests:
+
+test at tests/native-contour-source-view.test.mjs:1:1
+✖ tests/native-contour-source-view.test.mjs (365716.273958ms)
+  'test failed'

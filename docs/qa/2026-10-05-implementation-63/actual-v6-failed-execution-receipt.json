@@ -1,0 +1,59 @@
+{
+  "status": "I63_ACTUAL_V6_READONLY_INTAKE_EXECUTION",
+  "parentIntakeReadyClockUTC": "2026-10-05 16:23:10 UTC",
+  "startedAtUTC": "2026-10-05T16:23:48.962338+00:00",
+  "finishedAtUTC": "2026-10-05T16:34:47.597692+00:00",
+  "childPid": 62247,
+  "argv": [
+    "python3",
+    "/private/tmp/ohri-i63-v6-accepted-i62-cached-intake-preparation-20261005/capture_i63_readonly_intake.py",
+    "--intake-authorized-after-accepted-i62",
+    "--accepted-checkpoint-relative",
+    "docs/qa/2026-10-05-implementation-62/accepted-i62-owned-and-layout-checkpoint.json",
+    "--accepted-archive-relative",
+    "docs/qa/2026-10-05-implementation-62/accepted-i62-owned-and-layout-checkpoint.zip",
+    "--parent-mutable",
+    "tools/build_research_iteration_manifest_2_91.mjs",
+    "--parent-mutable",
+    "docs/UPGRADE_PLAN_2026-09-24.md",
+    "--parent-mutable",
+    "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+    "--output",
+    "/private/tmp/ohri-i63-actual-readonly-intake-v6-after-accepted-i62-20261005"
+  ],
+  "actualExitCode": 1,
+  "helperPin": {
+    "bytes": 13850,
+    "sha256": "6165a0e2624132471fa49bbe38879fd8db73edece113198be5e0d1311c70eb2b"
+  },
+  "guardPin": {
+    "bytes": 3388,
+    "sha256": "c3a8f935933f67622ddb5c0631210d93f127de60dc556d0eba31b681e0fb7e7f"
+  },
+  "boundedPeerPin": {
+    "bytes": 7453,
+    "sha256": "0fdbfb7d10345f3c7d64d891063c1a9b8c2984d4b5d919674fe5b845733e2f16"
+  },
+  "epochFields": [
+    "dev",
+    "ino",
+    "size",
+    "mtime_ns"
+  ],
+  "maximumReadRequestBytes": 1048576,
+  "freshObservationsDoNotRefreshFailedRun": true,
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "logs": [
+    {
+      "path": "actual.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "actual.stderr.log",
+      "bytes": 12165,
+      "sha256": "6f42891f7d0b8761c47077a9a8af21e424261817665e3cd2fea0acae0fa34f60"
+    }
+  ]
+}

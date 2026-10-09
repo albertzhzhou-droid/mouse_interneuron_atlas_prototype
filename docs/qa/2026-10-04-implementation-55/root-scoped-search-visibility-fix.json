@@ -1,0 +1,15 @@
+{
+  "path": "app/SourceRecordSetNavigation.module.css",
+  "reason": "Actual native computed input border0 and transparent background obscured the new search field",
+  "before": {
+    "bytes": 1175,
+    "sha256": "bdac3bd2c9103c9778a1aa4edd0165379aba6eb1bcf4cc0a2796ff26e316b043"
+  },
+  "after": {
+    "bytes": 1337,
+    "sha256": "deebae2c510ac3c962b3e47ef9820940ed99739d0c48012e91298e5b9f693199"
+  },
+  "exactBeforeLine": ".search input { min-height: 44px; width: 100%; min-width: 0; padding: 8px 10px; font-size: 14px; }",
+  "exactAfterLines": ".search input { min-height: 44px; width: 100%; min-width: 0; padding: 8px 10px; font-size: 14px; border: 1px solid #aabdb2; border-radius: 6px; background: #fff; color: #173d30; }\n.search input:focus-visible { outline: 3px solid #8a6426; outline-offset: 2px; }",
+  "scope": "Only new I55 scoped input visual affordance; current site layout/scientific permissions/route unchanged"
+}

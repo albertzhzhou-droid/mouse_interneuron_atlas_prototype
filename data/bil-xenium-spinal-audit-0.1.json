@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "bil-xenium-mouse-spinal-availability-audit-0.1.0",
+  "researchUpgradeId": "UPG-244",
+  "auditDate": "2026-09-23",
+  "dataset": {
+    "title": "Xenium data of mouse rostro-caudal spinal cord",
+    "doi": "10.35077/g.1196",
+    "landingPage": "https://doi.brainimagelibrary.org/doi/10.35077/g.1196",
+    "directoryUrl": "https://download.brainimagelibrary.org/fe/79/fe798993f13debd2/",
+    "directoryListingObserved": true,
+    "listedRunSlideFolderCount": 16,
+    "paperAnimalToFolderCrosswalkVerified": false,
+    "metadataWorkbook": {
+      "fileName": "BILMetadataV2TemplateUpdate_Spatial - POOL _v2.xlsx",
+      "bytes": 871684,
+      "downloaded": false
+    },
+    "sampledFolder": "Run1_Slide1_Mus_M1_F1",
+    "sampledFolderFileListing": [
+      { "fileName": "analysis.zarr.zip", "bytes": 2127692 },
+      { "fileName": "cell_boundaries.csv.gz", "bytes": 54574362 },
+      { "fileName": "cell_boundaries.parquet", "bytes": 19951154 },
+      { "fileName": "cells.parquet", "bytes": 4328122 },
+      { "fileName": "cells.zarr.zip", "bytes": 286672880 },
+      { "fileName": "gene_panel.json", "bytes": 242729 },
+      { "fileName": "morphology.ome.tif", "bytes": 27512909500 },
+      { "fileName": "nucleus_boundaries.csv.gz", "bytes": 51955788 },
+      { "fileName": "nucleus_boundaries.parquet", "bytes": 18508959 },
+      { "fileName": "transcripts.parquet", "bytes": 1025235364 },
+      { "fileName": "transcripts.zarr.zip", "bytes": 1394578976 }
+    ],
+    "fileContentsInspected": false,
+    "checksumsRecorded": false
+  },
+  "study": {
+    "publicationStatus": "bioRxiv_preprint",
+    "publicationDate": "2026-06-16",
+    "preprintDoi": "10.64898/2026.06.11.731752",
+    "pubmedId": "42367914",
+    "sourceUrl": "https://doi.org/10.64898/2026.06.11.731752",
+    "species": "Mus musculus",
+    "strain": "C57BL/6J",
+    "age": "8 weeks",
+    "xeniumChemistry": "Xenium v1",
+    "targetedGeneCount": 480,
+    "sectionCount": 523,
+    "animalCounts": {
+      "total": 14,
+      "male": 7,
+      "female": 7
+    },
+    "reportedRegions": ["cervical", "thoracic", "lumbar", "sacral"],
+    "knownCoverageLimits": [
+      "coccygeal cord not sampled",
+      "rostral cervical C1-C2 not sampled",
+      "rostral thoracic T1-T6 not sampled",
+      "rostral lumbar L1-L2 not sampled"
+    ],
+    "reportedNeuronCellCounts": {
+      "total": 616599,
+      "glutamatergic": 318591,
+      "gabaergic": 273590,
+      "cholinergic": 24418
+    },
+    "reportedNonNeuronalCellCount": 2081760,
+    "reportedNeuronTypeCounts": {
+      "glutamatergic": 339,
+      "gabaergic": 196,
+      "cholinergic": 56
+    },
+    "lowTranscriptSegmentationsRemoved": true,
+    "interneuronRosterResolved": false,
+    "gabaergicTypesAreInterneuronDenominator": false,
+    "sourceIncludesProjectionNeuronContext": true
+  },
+  "rightsAndAcquisition": {
+    "bilGeneralDistributionPolicy": "Creative Commons Attribution-ShareAlike 4.0 International",
+    "bilPolicyUrl": "https://www.brainimagelibrary.org/download.html",
+    "repositoryReviewNoticeObserved": true,
+    "datasetSpecificRightsMetadataVerified": false,
+    "disposition": "link_only_pending_dataset_specific_rights_and_source_file_audit",
+    "projectPayloadDownloadApproved": false,
+    "payloadFilesDownloaded": 0,
+    "payloadBytesDownloaded": 0,
+    "payloadFilesRetained": 0
+  },
+  "schemaAndIdentityAudit": {
+    "cellTableSchemaInspected": false,
+    "nucleusBoundarySchemaInspected": false,
+    "transcriptTableSchemaInspected": false,
+    "stableCellIdVerified": false,
+    "sampleAndSectionKeysReconciled": false,
+    "cellTypeToExactCellIdCrosswalkVerified": false,
+    "coordinateUnitsAndAxisOrientationVerified": false,
+    "sectionToReferenceAtlasRegistrationVerified": false
+  },
+  "modelAdmission": {
+    "sectionLocalCellBoundaryObjects": 0,
+    "sectionLocalNucleusBoundaryObjects": 0,
+    "transcriptPoints": 0,
+    "interneuronTypeRosterRows": 0,
+    "threeDimensionalCellObjects": 0,
+    "surfaceOrMembraneClaims": 0,
+    "morphologyJoins": 0,
+    "sameCellJoins": 0,
+    "atlasRegistrations": 0,
+    "biologicalMeasurements": 0
+  },
+  "interpretationBoundaries": [
+    "This is a promising source-local 2D spatial molecular dataset, not an EM reconstruction or a 3D interneuron model.",
+    "The BIL directory proves that file names and byte sizes are listed; it does not verify table columns, per-cell annotations, exact coordinates, checksums, object reuse rights or a cell-type roster.",
+    "The preprint-level cell and type counts are not a count of interneurons; projection, motor, sensory, non-neuronal and unresolved categories must be adjudicated before any interneuron denominator is declared.",
+    "The 16 listed run/slide folders are not yet reconciled to the 14 paper-reported animals, sections, sex labels or sampled spinal segments.",
+    "No source boundary is extruded to 3D, joined to an SWC, transformed to atlas coordinates or presented as observed membrane or intracellular geometry."
+  ],
+  "sources": [
+    {
+      "id": "bil_collection",
+      "title": "BIL Xenium data of mouse rostro-caudal spinal cord",
+      "url": "https://doi.brainimagelibrary.org/doi/10.35077/g.1196"
+    },
+    {
+      "id": "primary_preprint",
+      "title": "Cano-Gomez et al. 2026 bioRxiv preprint",
+      "url": "https://doi.org/10.64898/2026.06.11.731752"
+    },
+    {
+      "id": "bil_distribution_policy",
+      "title": "BIL download and distribution policy",
+      "url": "https://www.brainimagelibrary.org/download.html"
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "status": "PASS_FINITE_I66_NATIVE_AND_REQUEST_SCOPE",
+  "verifiedAtUTC": "2026-10-08T02:33:44.322249+00:00",
+  "nativeLedger": {
+    "path": "actual-native-events.jsonl",
+    "bytes": 678773,
+    "sha256": "e0de3c8229f5bdb69d7ade5b0302a9bf7fb35e1083a812af0c0f9b0afea156d1",
+    "observations": 24,
+    "baselineObservations": 2,
+    "currentObservations": 22
+  },
+  "httpFiniteSnapshot": {
+    "path": "actual-http-events-finite-snapshot.jsonl",
+    "bytes": 239917,
+    "sha256": "c5919216233cc37e2c864c26c40dcec8cfa8a0508ed257cff3325b75aaad3575",
+    "observationCutoffUTC": "2026-10-08T02:29:48.439Z"
+  },
+  "rows": [
+    {
+      "case": "baseline-i65-cold-sources",
+      "startedAtUTC": "2026-10-08T02:20:12.385Z",
+      "finishedAtUTC": "2026-10-08T02:20:16.252Z",
+      "requestIds": [
+        31,
+        45
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 31,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:20:15.814Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 45,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:20:15.841Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "baseline-i65-cold-additional",
+      "startedAtUTC": "2026-10-08T02:20:16.255Z",
+      "finishedAtUTC": "2026-10-08T02:20:16.434Z",
+      "requestIds": [
+        77,
+        81
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 77,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:20:16.335Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 81,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:20:16.340Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-cold-additional-no-request",
+      "startedAtUTC": "2026-10-08T02:25:48.397Z",
+      "finishedAtUTC": "2026-10-08T02:25:50.847Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-cold-sources-no-request",
+      "startedAtUTC": "2026-10-08T02:25:52.203Z",
+      "finishedAtUTC": "2026-10-08T02:25:52.474Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-cold-sources-ready-no-request",
+      "startedAtUTC": "2026-10-08T02:26:17.344Z",
+      "finishedAtUTC": "2026-10-08T02:26:17.553Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-source-garcia-native-enter-no-index",
+      "startedAtUTC": "2026-10-08T02:26:28.021Z",
+      "finishedAtUTC": "2026-10-08T02:26:28.467Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-sources-exact-focus-demands-index",
+      "startedAtUTC": "2026-10-08T02:26:28.469Z",
+      "finishedAtUTC": "2026-10-08T02:26:28.772Z",
+      "requestIds": [
+        188,
+        202
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 188,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:26:28.567Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 202,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:26:28.596Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-sources-exact-focus-ready",
+      "startedAtUTC": "2026-10-08T02:26:28.779Z",
+      "finishedAtUTC": "2026-10-08T02:26:29.029Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-native-back-source-request-absent",
+      "startedAtUTC": "2026-10-08T02:26:29.030Z",
+      "finishedAtUTC": "2026-10-08T02:26:29.409Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-native-forward-exact-source-request",
+      "startedAtUTC": "2026-10-08T02:26:29.411Z",
+      "finishedAtUTC": "2026-10-08T02:26:29.889Z",
+      "requestIds": [
+        276,
+        290
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 276,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:26:29.529Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 290,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:26:29.560Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-sources-empty-request-demands-index",
+      "startedAtUTC": "2026-10-08T02:27:33.549Z",
+      "finishedAtUTC": "2026-10-08T02:27:34.044Z",
+      "requestIds": [
+        321,
+        335
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 321,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:33.719Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 335,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:33.785Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-additional-empty-request-demands-index",
+      "startedAtUTC": "2026-10-08T02:27:35.187Z",
+      "finishedAtUTC": "2026-10-08T02:27:35.399Z",
+      "requestIds": [
+        367,
+        370
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 367,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:35.246Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 370,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:35.250Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-explorer-exact-de2-loads-index",
+      "startedAtUTC": "2026-10-08T02:27:35.399Z",
+      "finishedAtUTC": "2026-10-08T02:27:35.721Z",
+      "requestIds": [
+        402,
+        419
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 402,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:35.486Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 419,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:35.514Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-comparison-default-loads-index",
+      "startedAtUTC": "2026-10-08T02:27:53.535Z",
+      "finishedAtUTC": "2026-10-08T02:27:53.839Z",
+      "requestIds": [
+        451,
+        457
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 451,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:53.679Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 457,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:27:53.691Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-comparison-verified-default-ready",
+      "startedAtUTC": "2026-10-08T02:28:49.150Z",
+      "finishedAtUTC": "2026-10-08T02:28:50.529Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-comparison-native-add-i1",
+      "startedAtUTC": "2026-10-08T02:28:50.531Z",
+      "finishedAtUTC": "2026-10-08T02:28:59.529Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-comparison-native-add-i2-report",
+      "startedAtUTC": "2026-10-08T02:28:59.534Z",
+      "finishedAtUTC": "2026-10-08T02:28:59.919Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-390px-additional-no-request",
+      "startedAtUTC": "2026-10-08T02:28:59.972Z",
+      "finishedAtUTC": "2026-10-08T02:29:00.594Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-390px-sources-no-request",
+      "startedAtUTC": "2026-10-08T02:29:00.596Z",
+      "finishedAtUTC": "2026-10-08T02:29:01.465Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-390px-sources-ready",
+      "startedAtUTC": "2026-10-08T02:29:01.485Z",
+      "finishedAtUTC": "2026-10-08T02:29:01.770Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-profile-repeated-link-remains-unavailable",
+      "startedAtUTC": "2026-10-08T02:29:45.763Z",
+      "finishedAtUTC": "2026-10-08T02:29:47.007Z",
+      "requestIds": [
+        567,
+        581
+      ],
+      "completedBodies": [
+        {
+          "event": "completed",
+          "id": 567,
+          "url": "/data/research_explorer_index_v1/asset-manifest.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:29:46.116Z",
+          "bytes": 5622,
+          "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+        },
+        {
+          "event": "completed",
+          "id": 581,
+          "url": "/data/research_explorer_index_v1/search-index.json",
+          "status": 200,
+          "finishedAtUTC": "2026-10-08T02:29:46.150Z",
+          "bytes": 628095,
+          "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+        }
+      ]
+    },
+    {
+      "case": "i66-profile-repeated-link-final-ready",
+      "startedAtUTC": "2026-10-08T02:29:47.025Z",
+      "finishedAtUTC": "2026-10-08T02:29:47.732Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-final-sources-default-desktop",
+      "startedAtUTC": "2026-10-08T02:29:47.734Z",
+      "finishedAtUTC": "2026-10-08T02:29:47.985Z",
+      "requestIds": [],
+      "completedBodies": []
+    },
+    {
+      "case": "i66-final-sources-ready-desktop",
+      "startedAtUTC": "2026-10-08T02:29:48.107Z",
+      "finishedAtUTC": "2026-10-08T02:29:48.439Z",
+      "requestIds": [],
+      "completedBodies": []
+    }
+  ],
+  "originalTransport": {
+    "manifest": {
+      "bytes": 5622,
+      "sha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888"
+    },
+    "encodedIndex": {
+      "bytes": 628095,
+      "sha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b"
+    },
+    "decodedIndex": {
+      "bytes": 12327624,
+      "sha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085"
+    }
+  },
+  "defaultSourcesFullVisibleTextRetained": true,
+  "defaultAdditionalFullVisibleTextRetained": true,
+  "sourceNavigationAndNativeBackForward": true,
+  "verifiedExplorerDE2SamplingCount": 80,
+  "verifiedExplorerRecords": 673,
+  "verifiedExplorerNamespaces": 28,
+  "comparisonNativeExactProfiles": [
+    "molecular_profile:alkaslasi-2021:GSE167597:I1",
+    "molecular_profile:alkaslasi-2021:GSE167597:I2"
+  ],
+  "screenshots": [
+    "actual-final-sources-new-layout.png",
+    "actual-sources-390px-new-layout.png"
+  ],
+  "viewportOverrideReset": true,
+  "scope": "Owned local no-store proxy kept response bodies/encoding unchanged. HTTP body hashes match original bundled encoded transport and manifest; decoded source body separately replayed. This is finite request admission and actual UI evidence, not whole-application timing budgets, full network initiator/consumption, private-byte authorization, native exports, 200-percent zoom, assistive technology, F17 completion or scientific admission.",
+  "fullGoalComplete": false
+}

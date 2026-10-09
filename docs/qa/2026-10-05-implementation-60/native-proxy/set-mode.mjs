@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { INDEX_PATH, CANONICAL_PATH, writePrivateConfigAtomic } from './proxy.mjs';
+const [scope, mode, rawDelay] = process.argv.slice(2);
+assert.ok(['api', 'canonical'].includes(scope), 'Choose api measurement or canonical provider explicitly');
+assert.ok(['pass', 'delay', 'decoded_checksum_fault'].includes(mode), 'Use pass, delay or decoded_checksum_fault');
+assert.ok(process.argv.length === (mode === 'delay' && rawDelay !== undefined ? 5 : 4), 'No unrelated options');
+const rule = mode === 'delay' ? { mode, delayMs: rawDelay === undefined ? 12000 : Number(rawDelay) } : { mode };
+const target = scope === 'api' ? INDEX_PATH : CANONICAL_PATH;
+const rules = { [INDEX_PATH]: { mode: 'pass' }, [CANONICAL_PATH]: { mode: 'pass' }, [target]: rule };
+const config = writePrivateConfigAtomic('/private/tmp/ohri-i60-index-native-proxy/config.json', { schemaVersion: 1, rules });
+process.stdout.write(JSON.stringify({ privateConfigUpdated: true, scope, target, rule, otherRouteMode: 'pass', normalizedConfigSha256: createHash('sha256').update(JSON.stringify(config)).digest('hex'), serverStarted: false }) + '\n');

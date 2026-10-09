@@ -69,8 +69,9 @@ test("detects CJK text while allowing scientific English and symbols", () => {
 test("renders an English static curator index from the production build", async () => {
   const html = await renderStaticIndex();
   assert.match(html, /<html lang="en">/);
-  assert.match(html, /Mouse Spinal Interneuron Atlas/);
-  assert.match(html, /For research visualization only/);
+  assert.match(html, /<title>3D research workspace · Interneuron Atlas<\/title>/);
+  assert.match(html, /aria-label="Atlas research workspace"/);
+  assert.match(html, /Research visualization only/);
   assert.doesNotMatch(html, /[\u3400-\u9fff]/u);
 });
 

@@ -1,0 +1,14 @@
+--- locked39/test_guards.py
++++ locked40/test_guards.py
+@@ -191,5 +191,11 @@
+         with self.assertRaisesRegex(ValueError,'cross-read first accepted epoch drift'):pin(p)
+         self.assertEqual(m.call_count,2)
+     exact(pin(p),first)
++ def test_40_declared_external_first_epoch_is_not_replaced_by_first_process_read(self):
++    p=HERE/'synthetic-copy-guard/external-40.json';p.write_text('{}');original=pin(p);changed=copy.deepcopy(original);changed['readEpoch']['ctime_ns']+=1
++    with self.assertRaisesRegex(ValueError,'declaredReadEpoch'):pinned(changed)
++    changed=copy.deepcopy(original);changed['readEpoch']['dev']=False
++    with self.assertRaisesRegex(ValueError,'JSON type mismatch'):pinned(changed)
++    exact(pinned(original),original)
+ 
+ if __name__=='__main__':unittest.main(verbosity=2)

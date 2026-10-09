@@ -1,8 +1,19 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { computeMainSceneSourceCameraFit, sameMainSceneCameraForCapture } from "./main-scene-source-camera-fit.js";
+import { attachSwcNeuriteInspection } from "./morphology-neurite-inspection.js";
+import MorphologyNeuriteInspector, { type NeuriteInspectionController, type NeuriteInspectionSelection } from "./MorphologyNeuriteInspector";
+import nmo45718DatSwcCrosswalkContractJson from "../data/neurolucida-dat-swc-crosswalk-0.1.json";
+import { readVerifiedMainSceneMorphology, mainSceneMorphologyVerification, type MainSceneMorphologyProof, type MainSceneMorphologyContext, type MainSceneMorphologyGeometry } from "./main-scene-morphology-verification.js";
+import { captureMainSceneSourceView, validateMainSceneSourceViewReplay, assertMainSceneSourceViewApplied, mainSceneViewEqual,
+  type MainSceneSourceView, type MainSceneSourceViewDocument, type MainSceneViewRequest, type MainSceneSourceViewTools } from "./main-scene-source-view.js";
+import { appendMainSceneExportPng, type MainSceneExportView } from "./main-scene-export.js";
+import { readVerifiedMainSceneAuxiliary, mainSceneAuxiliaryBytes, mainSceneAuxiliaryJson, mainSceneAuxiliaryProof,
+  type MainSceneAuxiliaryToken } from "./main-scene-auxiliary-verification.js";
 import {
   crossRegionInternalReference,
   evidenceAware3dRepresentationContract,
@@ -12,6 +23,7 @@ import {
   morphologyFidelityRecords,
   observedCellFormLens,
   observedMorphologyRouteByNeuronId,
+  observedMorphologyRepresentationRouteId,
   TRANSMITTER_COLORS,
   type AtlasEntity,
   type MorphologyFidelityRecord,
@@ -22,8 +34,11 @@ import {
   createObservedTopologyLandmarks,
   extractObservedTopologyLandmarks,
   createRadiusDerivedSurface,
-  sha256Hex,
 } from "./source-local-morphology-geometry.js";
+import {
+  NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS,
+  validateNmo45718DatSwcCrosswalk,
+} from "./neurolucida-dat-swc-crosswalk.js";
 import {
   ATLAS_CONTOURS_URL,
   ATLAS_INTERNAL_COMPARTMENTS_URL,
@@ -39,6 +54,10 @@ import {
 
 export type CameraView = "home" | "cell_detail" | "microns_observed_reference" | "internal_reference" | "dorsal" | "right" | "transverse";
 export type MorphologyFidelityMode = "observed_swc" | "radius_surface";
+export type Nmo45718DatSwcCrosswalkRuntime = {
+  status: "idle" | "loading" | "verified" | "unavailable";
+  message: string;
+};
 
 export type MicronsClippingState = {
   enabled: boolean;
@@ -81,6 +100,8 @@ export type MorphologyRuntimeReceipt = {
   visible: boolean;
   algorithmId: string | null;
   reason: string | null;
+  sourceGeometryVerification?: MainSceneMorphologyProof | null;
+  sourceContext?: MainSceneMorphologyContext | null;
 };
 
 export type MicronsObservedReferenceRuntimeReceipt = {
@@ -134,6 +155,8 @@ export type ViewportCapture = (options: {
   selectedLabel: string | null;
   morphologyRuntime: MorphologyRuntimeReceipt;
   micronsRuntime: MicronsObservedReferenceRuntimeReceipt;
+  requestedState: object;
+  currentNeuronId: number | null;
 }) => Promise<Blob>;
 
 type Props = {
@@ -146,21 +169,37 @@ type Props = {
   showGrayMatter: boolean;
   showEntities: boolean;
   showObservedCellForm: boolean;
+  showNmo45718DatSwcCrosswalk: boolean;
   morphologyTargetActive: boolean;
   showMicronsCellSurface: boolean;
   showMicronsNucleus: boolean;
   micronsClipping: MicronsClippingState;
   observedCellFormId: number;
   morphologyFidelityMode: MorphologyFidelityMode;
+  sourceViewRequest: MainSceneViewRequest;
+  inspectionHost: HTMLDivElement | null;
+  onApplySourceViewRequest: (request: MainSceneViewRequest, visibleIds: string[]) => void;
+  onSourceViewTools: (tools: MainSceneSourceViewTools | null) => void;
   onSelect: (id: string) => void;
   onWebGLStatus: (available: boolean) => void;
   onCaptureReady: (capture: ViewportCapture | null) => void;
   onPerformance: (performance: RenderPerformance | null) => void;
   onMorphologyRuntime: (receipt: MorphologyRuntimeReceipt) => void;
+  onNmo45718DatSwcCrosswalkRuntime: (receipt: Nmo45718DatSwcCrosswalkRuntime) => void;
   onMicronsRuntime: (receipt: MicronsObservedReferenceRuntimeReceipt) => void;
 };
 
+let mainSceneInstanceSequence = 0;
 type SceneContext = {
+  scene: THREE.Scene;
+  instanceId: string;
+  sourceGeometry: MainSceneMorphologyGeometry | null;
+  inspection: ReturnType<typeof attachSwcNeuriteInspection> | null;
+  auxiliaryAssets: Map<string, MainSceneAuxiliaryToken>;
+  failed: boolean;
+  defaultSourceCamera: boolean;
+  lastCameraView: CameraView | null;
+  sourceCameraFitFingerprint: string;
   renderer: THREE.WebGLRenderer;
   camera: THREE.PerspectiveCamera;
   controls: OrbitControls;
@@ -171,6 +210,7 @@ type SceneContext = {
   syntheticLaneGuide: THREE.Group;
   entityGroups: Map<string, THREE.Group>;
   observedCellRoot: THREE.Group;
+  nmo45718DatSwcCrosswalkRoot: THREE.Group;
   observedCellLaneGuide: THREE.Group;
   micronsReferenceRoot: THREE.Group;
   micronsCellRoot: THREE.Group;
@@ -201,7 +241,7 @@ type SourceLocalMorphologyGeometry = {
   swc: {
     sha256: string;
     nodeCount: number;
-    dimensionality: "3D";
+    dimensionality: "2D" | "3D";
     sourceDiameterAvailable: boolean;
   };
   displayTransform: {
@@ -573,14 +613,13 @@ function assertMicronsAssetManifest(manifest: MicronsAssetManifest) {
   }
 }
 
-async function fetchVerifiedMicronsBuffer(receipt: MicronsBrowserArrayReceipt, signal: AbortSignal) {
-  const response = await fetch(receipt.path, { signal });
-  if (!response.ok) throw new Error(`MICrONS geometry request failed (${response.status})`);
-  const bytes = await response.arrayBuffer();
-  if (bytes.byteLength !== receipt.bytes) throw new Error("MICrONS geometry byte-count mismatch");
-  const verifiedSha256 = await sha256Hex(bytes);
-  if (verifiedSha256 !== receipt.sha256) throw new Error("MICrONS geometry SHA-256 mismatch");
-  return { bytes, verifiedSha256 };
+async function fetchVerifiedMicronsBuffer(receipt: MicronsBrowserArrayReceipt, signal: AbortSignal, context: SceneContext) {
+  const token = await readVerifiedMainSceneAuxiliary(receipt.path, { signal });
+  const proof = mainSceneAuxiliaryProof(token);
+  if (proof.bytes !== receipt.bytes || proof.sha256 !== receipt.sha256) throw new Error("MICrONS component receipt changed");
+  if (signal.aborted || context.failed || !context.renderer.domElement.isConnected) throw new DOMException("Source read cancelled", "AbortError");
+  context.auxiliaryAssets.set(token.path, token);
+  return { bytes: mainSceneAuxiliaryBytes(token), verifiedSha256: proof.verifiedSha256 };
 }
 
 function createMicronsObservedSegmentationMesh(
@@ -707,15 +746,144 @@ function assertSourceLocalMorphologyGeometry(
   }
 }
 
+function publicAssetPath(path: string) {
+  return `/${path.replace(/^public\//, "").replace(/^\//, "")}`;
+}
+
+async function loadVerifiedNmo45718CrosswalkJson(receiptKey: "nativeContours" | "standardizedGeometry", signal: AbortSignal, context: SceneContext) {
+  const receipt = NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS[receiptKey];
+  const token = await readVerifiedMainSceneAuxiliary(publicAssetPath(receipt.path), { signal });
+  const proof = mainSceneAuxiliaryProof(token);
+  if (proof.bytes !== receipt.bytes || proof.sha256 !== receipt.sha256) throw new Error("NMO 45718 crosswalk receipt changed");
+  if (signal.aborted || context.failed || !context.renderer.domElement.isConnected) throw new DOMException("Source read cancelled", "AbortError");
+  context.auxiliaryAssets.set(token.path, token);
+  return mainSceneAuxiliaryJson(token);
+}
+
+type Nmo45718DatSwcCrosswalk = {
+  neuronId: number;
+  assetId: string;
+  authority: string;
+  sourceFrames: { nativeDat: string; standardizedSwc: string };
+  validation: { model: string };
+  correspondence: { method: string; sourceVertexCount: number };
+  somaContours: Array<{
+    id: string;
+    sourceName: string;
+    vertexCount: number;
+    points: Array<[number, number, number]>;
+  }>;
+  boundaries: {
+    atlasRegistrationCount: number;
+    surfaceCount: number;
+    volumeCount: number;
+    internalStructureObjectCount: number;
+    sameCellInternalStructureClaim: boolean;
+    cellBodyContourJoined: boolean;
+  };
+};
+
+function createNmo45718DatSwcCrosswalkObject(
+  crosswalk: Nmo45718DatSwcCrosswalk,
+  geometry: SourceLocalMorphologyGeometry,
+) {
+  const root = new THREE.Group();
+  root.name = "nmo-45718-dat-soma-1-project-mapped-source-contours";
+  root.userData = {
+    assetId: crosswalk.assetId,
+    neuronId: crosswalk.neuronId,
+    authority: crosswalk.authority,
+    representation: "observed_source_native_dat_contours_project_mapped_for_same_record_display",
+    sourceFrame: crosswalk.sourceFrames.nativeDat,
+    displayFrame: crosswalk.sourceFrames.standardizedSwc,
+    displayTransform: geometry.displayTransform,
+    transformMethod: crosswalk.validation.model,
+    transformBasis: crosswalk.correspondence.method,
+    sourcePlaneCount: crosswalk.somaContours.length,
+    sourceVertexCount: crosswalk.correspondence.sourceVertexCount,
+    sourceDimensionality: "2D_contours_on_seven_source_planes",
+    sourceNativeDatSha256: NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS.nativeDat.sha256,
+    nativeContourSha256: NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS.nativeContours.sha256,
+    standardizedGeometrySha256: NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS.standardizedGeometry.sha256,
+    registrationStatus: "unregistered",
+    registrationCount: 0,
+    displayConsistencyScreenOnly: true,
+    measurementClaim: false,
+    surfaceCount: 0,
+    volumeCount: 0,
+    internalStructureObjectCount: 0,
+    sameCellInternalStructureClaim: false,
+    cellBodyContourJoined: false,
+  };
+
+  const [originX, originY, originZ] = geometry.displayTransform.originMicrometre;
+  const scale = geometry.displayTransform.scaleViewerUnitPerMicrometre;
+  crosswalk.somaContours.forEach((contour, index) => {
+    if (contour.points.length < 3 || contour.points.length !== contour.vertexCount) {
+      throw new Error(`NMO 45718 DAT contour ${contour.id} has an invalid vertex count`);
+    }
+    const positions = new Float32Array(contour.points.length * 3);
+    contour.points.forEach((point, pointIndex) => {
+      const x = (point[0] - originX) * scale;
+      const y = (point[1] - originY) * scale;
+      const z = (point[2] - originZ) * scale;
+      if (![x, y, z].every(Number.isFinite)) {
+        throw new Error(`NMO 45718 DAT contour ${contour.id} contains a non-finite mapped point`);
+      }
+      const offset = pointIndex * 3;
+      positions[offset] = x;
+      positions[offset + 1] = y;
+      positions[offset + 2] = z;
+    });
+    const contourGeometry = new THREE.BufferGeometry();
+    contourGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const line = new THREE.LineLoop(
+      contourGeometry,
+      new THREE.LineBasicMaterial({
+        color: 0x53d8c4,
+        transparent: true,
+        opacity: 0.96,
+        depthTest: false,
+        depthWrite: false,
+      }),
+    );
+    line.name = `nmo-45718-dat-soma-1-contour-${index + 1}`;
+    line.renderOrder = 10;
+    line.userData = {
+      assetId: crosswalk.assetId,
+      authority: "OBS_SOURCE_NATIVE_DAT_CONTOUR",
+      representation: "2d_source_contour_line_loop",
+      sourceContourId: contour.id,
+      sourceContourName: contour.sourceName,
+      sourceVertexCount: contour.vertexCount,
+      sourceFrame: crosswalk.sourceFrames.nativeDat,
+      displayFrame: crosswalk.sourceFrames.standardizedSwc,
+      projectMappedTransform: true,
+      registrationCount: 0,
+      surfaceClaim: false,
+      volumeClaim: false,
+      measurementClaim: false,
+      internalStructureClaim: false,
+    };
+    root.add(line);
+  });
+  return root;
+}
+
+// This group belongs to the imperative THREE scene, outside React state.
+function clearSourceGeometryRoot(root: THREE.Group) {
+  root.children.forEach((child) => disposeObject(child));
+  root.clear();
+  root.userData = {};
+}
+
 function createSourceLocalMorphologyObject(
   geometry: SourceLocalMorphologyGeometry,
   record: MorphologyFidelityRecord,
   mode: MorphologyFidelityMode,
 ) {
   const group = new THREE.Group();
-  const representationRouteId = observedMorphologyRouteByNeuronId.has(record.neuronId)
-    ? observedMorphologyRouteByNeuronId.get(record.neuronId)!.routeId
-    : "main.legacy_observed_cell_forms";
+  const representationRouteId = observedMorphologyRepresentationRouteId(record.neuronId);
   group.name = `neuromorpho-${record.neuronId}-${mode}-source-local`;
   group.userData = {
     assetId: record.assetId,
@@ -962,70 +1130,91 @@ function captureRendererPng(
   scene: THREE.Scene,
   camera: THREE.PerspectiveCamera,
   { releaseId, selectedLabel, morphologyRuntime, micronsRuntime }: Parameters<ViewportCapture>[0],
+  actualLayers: MainSceneSourceView["layers"] | null,
+  actualSourceObject: MainSceneSourceView["sourceObject"] | null,
 ) {
   renderer.render(scene, camera);
   const source = renderer.domElement;
   const output = document.createElement("canvas");
-  const disclosureHeight = Math.max(112, Math.round(source.width * 0.1));
   output.width = source.width;
-  output.height = source.height + disclosureHeight;
   const context = output.getContext("2d");
   if (!context) return Promise.reject(new Error("Canvas 2D export is unavailable"));
-  context.drawImage(source, 0, 0);
-  context.fillStyle = "#182723";
-  context.fillRect(0, source.height, output.width, disclosureHeight);
   const padding = Math.max(18, Math.round(output.width * 0.025));
   const titleSize = Math.max(15, Math.round(output.width * 0.014));
   const detailSize = Math.max(12, Math.round(output.width * 0.011));
-  context.fillStyle = "#ffd99d";
-  context.font = `700 ${titleSize}px Arial, sans-serif`;
   const verifiedVisible = morphologyRuntime.verificationStatus === "verified"
     && morphologyRuntime.sceneObjectStatus === "rendered"
     && morphologyRuntime.visible;
   const micronsVerified = micronsRuntime.requested
     && micronsRuntime.verificationStatus === "verified"
     && micronsRuntime.sceneObjectStatus === "rendered";
+  const referenceLine = actualLayers
+    ? `${actualLayers.scaffold || actualLayers.grayMatter || actualLayers.internalCompartments ? "INF ANATOMY VISIBLE" : "INF ANATOMY HIDDEN"} · ${actualLayers.entities ? "SYN NON-CELL NODES VISIBLE" : "SYN NON-CELL NODES HIDDEN"}`
+    : "REFERENCE LAYER VISIBILITY NOT CAPTURED";
   const morphologyLine = micronsRuntime.requested
     ? micronsVerified
       ? "VERIFIED OBS EM CELL SEGMENTATION + SOURCE-LINKED NUCLEUS"
       : "MICRONS REFERENCE REQUESTED · NO VERIFIED EXACT GEOMETRY RENDERED"
     : verifiedVisible
       ? morphologyRuntime.actualMode === "radius_surface"
-        ? "INF ANATOMY · SYN NON-CELL NODES · VERIFIED OBS INPUT + VISIBLE DERIVED RADIUS SURFACE"
-        : "INF ANATOMY · SYN NON-CELL NODES · VERIFIED VISIBLE OBS SWC CENTERLINES"
+        ? "VERIFIED OBS INPUT + VISIBLE DERIVED RADIUS SURFACE"
+        : "VERIFIED VISIBLE OBS SWC CENTERLINES"
       : morphologyRuntime.verificationStatus === "verified" && morphologyRuntime.sceneObjectStatus === "rendered"
-        ? "INF ANATOMY · SYN NON-CELL NODES · MORPHOLOGY VERIFIED BUT HIDDEN"
-        : "INF ANATOMY · SYN NON-CELL NODES · NO VERIFIED MORPHOLOGY RENDERED";
-  context.fillText(
-    morphologyLine,
-    padding,
-    source.height + titleSize + 18,
-    output.width - padding * 2,
-  );
-  context.fillStyle = "#d7e3df";
-  context.font = `${detailSize}px Arial, sans-serif`;
-  context.fillText(
-    micronsRuntime.requested
+        ? "MORPHOLOGY VERIFIED BUT HIDDEN"
+        : "NO VERIFIED MORPHOLOGY RENDERED";
+  const sourceLine = micronsRuntime.requested
       ? `MICrONS v185.4 · root ${micronsObservedCellNucleusReference.identityChain.cellRootId} · nucleus ${micronsObservedCellNucleusReference.identityChain.somaValenceTable.nucleusId} · ${releaseId}`
-      : `${selectedLabel ? `Selected: ${selectedLabel}` : "No entity selected"} · ${morphologyRuntime.assetId ?? `NMO ${morphologyRuntime.requestedNeuronId}`} · ${releaseId}`,
-    padding,
-    source.height + titleSize + detailSize + 29,
-    output.width - padding * 2,
-  );
-  context.fillText(
-    micronsRuntime.requested
+      : `${selectedLabel ? `Selected: ${selectedLabel}` : "No entity selected"} · ${morphologyRuntime.assetId ?? `NMO ${morphologyRuntime.requestedNeuronId}`} · ${releaseId}`;
+  const detailLine = micronsRuntime.requested
       ? micronsVerified
         ? `Cell ${micronsRuntime.cellSurfaceVisible ? "visible" : "hidden"} · nucleus ${micronsRuntime.nucleusVisible ? "visible" : "hidden"} · shell clip ${micronsRuntime.clipping.enabled ? `${micronsRuntime.clipping.axis.toUpperCase()} ${micronsRuntime.clipping.positionNanometre} nm, keep ${micronsRuntime.clipping.keepSide}` : "off"} · nucleus intact · uncapped shader cut · 0 generated geometry · 0 joins · 0 REG`
         : `Runtime: ${micronsRuntime.verificationStatus} · ${micronsRuntime.reason ?? "verification pending"} · no geometric fallback · 0 REG`
       : verifiedVisible
         ? morphologyRuntime.actualMode === "radius_surface"
           ? "Verified surface is a deterministic open-frustum derivative, not observed membrane/internal structure · unlinked · 0 REG"
-          : "Verified SWC topology is source-local; stroke width is a viewer aid · unlinked · measurement forbidden · 0 REG"
-        : `Runtime: ${morphologyRuntime.verificationStatus} · ${morphologyRuntime.reason ?? "morphology layer is hidden"} · no fallback · 0 REG`,
-    padding,
-    source.height + titleSize + detailSize * 2 + 38,
-    output.width - padding * 2,
-  );
+          : actualSourceObject?.dimensionality === "2D"
+            ? "Source-labelled 2D trace · not a 3D reconstruction · deposited z retained · width is a viewer aid · 0 REG"
+            : actualSourceObject?.sourceDiameterAvailable === false
+              ? "Source reports No Diameter · viewer line width is not caliber · source-local · measurement forbidden · 0 REG"
+              : "Verified SWC topology is source-local; stroke width is a viewer aid · unlinked · measurement forbidden · 0 REG"
+        : `Runtime: ${morphologyRuntime.verificationStatus} · ${morphologyRuntime.reason ?? "morphology layer is hidden"} · no fallback · 0 REG`;
+  const paragraphs = [
+    { text: referenceLine, size: titleSize, bold: true },
+    { text: morphologyLine, size: titleSize, bold: true },
+    { text: sourceLine, size: detailSize, bold: false },
+    { text: detailLine, size: detailSize, bold: false },
+  ];
+  const width = output.width - padding * 2;
+  const lines: { text: string; size: number; bold: boolean; gap: number }[] = [];
+  for (const paragraph of paragraphs) {
+    context.font = `${paragraph.bold ? "700 " : ""}${paragraph.size}px Arial, sans-serif`;
+    const wrapped: string[] = [];
+    let line = "";
+    for (const word of paragraph.text.split(/\s+/)) {
+      const candidate = line ? `${line} ${word}` : word;
+      if (line && context.measureText(candidate).width > width) { wrapped.push(line); line = ""; }
+      if (context.measureText(word).width > width) {
+        for (const glyph of word) {
+          if (line && context.measureText(line + glyph).width > width) { wrapped.push(line); line = ""; }
+          line += glyph;
+        }
+      } else line = line ? `${line} ${word}` : word;
+    }
+    if (line) wrapped.push(line);
+    wrapped.forEach((text, index) => lines.push({ text, size: paragraph.size, bold: paragraph.bold, gap: index === wrapped.length - 1 ? 8 : 5 }));
+  }
+  const disclosureHeight = Math.max(112, Math.round(source.width * 0.1), padding * 2 + lines.reduce((sum, line) => sum + line.size + line.gap, 0));
+  output.height = source.height + disclosureHeight;
+  context.drawImage(source, 0, 0);
+  context.fillStyle = "#182723";
+  context.fillRect(0, source.height, output.width, disclosureHeight);
+  let y = source.height + padding;
+  for (const line of lines) {
+    context.fillStyle = line.bold ? "#ffd99d" : "#d7e3df";
+    context.font = `${line.bold ? "700 " : ""}${line.size}px Arial, sans-serif`;
+    context.fillText(line.text, padding, y + line.size);
+    y += line.size + line.gap;
+  }
   return new Promise<Blob>((resolve, reject) => {
     output.toBlob((blob) => blob ? resolve(blob) : reject(new Error("PNG encoding failed")), "image/png");
   });
@@ -1041,21 +1230,111 @@ export default function SceneCanvas({
   showGrayMatter,
   showEntities,
   showObservedCellForm,
+  showNmo45718DatSwcCrosswalk,
   morphologyTargetActive,
   showMicronsCellSurface,
   showMicronsNucleus,
   micronsClipping,
   observedCellFormId,
   morphologyFidelityMode,
+  sourceViewRequest,
+  inspectionHost,
+  onApplySourceViewRequest,
+  onSourceViewTools,
   onSelect,
   onWebGLStatus,
   onCaptureReady,
   onPerformance,
   onMorphologyRuntime,
+  onNmo45718DatSwcCrosswalkRuntime,
   onMicronsRuntime,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contextRef = useRef<SceneContext | null>(null);
+  const inspectionRef = useRef<NeuriteInspectionController | null>(null);
+  const [inspectionSelection, setInspectionSelection] = useState<NeuriteInspectionSelection | null>(null);
+  const [inspectionScene, setInspectionScene] = useState<{ geometry: MainSceneMorphologyGeometry; mode: MorphologyFidelityMode; epoch: number } | null>(null);
+  const clearInspection = useCallback(() => {
+    contextRef.current?.inspection?.dispose();
+    if (contextRef.current) contextRef.current.inspection = null;
+    inspectionRef.current = null;
+    queueMicrotask(() => { setInspectionSelection(null); setInspectionScene(null); });
+  }, []);
+  const morphologyLoadEpochRef = useRef(0);
+  const [sourceSceneEpoch, setSourceSceneEpoch] = useState(0);
+  const sourceRequestRef = useRef(sourceViewRequest);
+  const sourceSelectionRef = useRef({ neuronId: observedCellFormId, active: morphologyTargetActive });
+  const sourceViewRevisionRef = useRef(1);
+  const sourceViewFingerprintRef = useRef("");
+  const sourceViewCameraRef = useRef<MainSceneSourceView["camera"] | null>(null);
+  const validationGeometryRef = useRef<MainSceneMorphologyGeometry | null>(null);
+  const sourceViewCallbacksRef = useRef({ onApplySourceViewRequest, onSourceViewTools });
+  const pendingRestoreRef = useRef<{ document: MainSceneSourceViewDocument; baseline: number; applied: boolean; resolve: () => void; reject: (error: Error) => void } | null>(null);
+  const restoreSourceViewRef = useRef<(document: unknown) => Promise<void>>(async () => { throw new Error("Main scene is unavailable"); });
+  const refreshSourceViewRef = useRef<() => void>(() => {});
+  const failSourceRestoreRef = useRef<(error: Error) => void>(() => {});
+  useLayoutEffect(() => {
+    sourceRequestRef.current = sourceViewRequest;
+    sourceViewCallbacksRef.current = { onApplySourceViewRequest, onSourceViewTools };
+    sourceSelectionRef.current = { neuronId: observedCellFormId, active: morphologyTargetActive };
+    const pending = pendingRestoreRef.current;
+    if (pending && (!morphologyTargetActive || pending.document.view.runtimeBinding.neuronId !== observedCellFormId
+      || !mainSceneViewEqual(pending.document.view.request, sourceViewRequest))) {
+      pendingRestoreRef.current = null;
+      pending.reject(new Error("Main scene view: source or requested view changed while restoring"));
+    }
+  }, [sourceViewRequest, onApplySourceViewRequest, onSourceViewTools, observedCellFormId, morphologyTargetActive]);
+
+  const fitSourceCamera = useCallback((preserveDirection = false, explicit = false) => {
+    const context = contextRef.current, selection = sourceSelectionRef.current, request = sourceRequestRef.current;
+    const record = morphologyFidelityRecords.find(row => row.neuronId === selection.neuronId);
+    if (!context || context.failed || pendingRestoreRef.current || !selection.active || !record
+      || !context.sourceGeometry || context.sourceGeometry.neuronId !== record.neuronId
+      || request.view !== "cell_detail" || !request.layers.observedForm
+      || (!explicit && !context.defaultSourceCamera)) return false;
+    try {
+      // Fit only a privately verified current object, including hidden source-type
+      // children. Inspection dimming must not reduce the complete source bounds.
+      mainSceneMorphologyVerification(record, context.sourceGeometry);
+      const object = context.observedCellRoot.children.find(child => child.name === `neuromorpho-${record.neuronId}-${request.mode}-source-local`);
+      if (!object) return false;
+      context.scene.updateMatrixWorld(true);
+      const bounds = new THREE.Box3().setFromObject(object);
+      const datRoot = context.nmo45718DatSwcCrosswalkRoot;
+      if (record.neuronId === 45718 && request.layers.datContours && datRoot.visible
+        && datRoot.children.length === 1 && datRoot.children[0].name === "nmo-45718-dat-soma-1-project-mapped-source-contours") {
+        for (const key of ["nativeContours", "standardizedGeometry"] as const) {
+          const token = context.auxiliaryAssets.get(publicAssetPath(NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS[key].path));
+          if (!token) return false;
+          mainSceneAuxiliaryProof(token);
+        }
+        bounds.union(new THREE.Box3().setFromObject(datRoot));
+      }
+      const { camera, controls } = context;
+      const fingerprint = JSON.stringify([record.neuronId, request.mode, bounds.min.toArray(), bounds.max.toArray(), camera.aspect]);
+      if (!explicit && context.sourceCameraFitFingerprint === fingerprint) return true;
+      const keepDirection = preserveDirection && (explicit || Boolean(context.sourceCameraFitFingerprint));
+      const direction = keepDirection ? camera.position.clone().sub(controls.target).toArray() : undefined;
+      const pose = computeMainSceneSourceCameraFit({ bounds: { minimum: bounds.min.toArray(), maximum: bounds.max.toArray() },
+        aspect: camera.aspect, dimensionality: context.sourceGeometry.swc.dimensionality, direction,
+        up: keepDirection ? camera.up.toArray() : undefined });
+      // Consume old OrbitControls damping at the old pose before setting an exact
+      // programmatic pose; otherwise its pending pan/orbit can move the fitted view.
+      const damping = controls.enableDamping;
+      controls.enableDamping = false; controls.update();
+      camera.position.fromArray(pose.position); camera.up.fromArray(pose.up); controls.target.fromArray(pose.target);
+      controls.update(); controls.enableDamping = damping; camera.updateMatrixWorld(true);
+      context.defaultSourceCamera = true;
+      context.sourceCameraFitFingerprint = fingerprint;
+      context.renderer.domElement.dataset.sourceCameraFit = "complete-verified-source-bounds";
+      refreshSourceViewRef.current();
+      return true;
+    } catch {
+      context.renderer.domElement.dataset.sourceCameraFit = "unavailable";
+      return false;
+    }
+  }, []);
+
   const onSelectRef = useRef(onSelect);
   const [referenceStatus, setReferenceStatus] = useState<"loading" | "loaded" | "unavailable">("loading");
   const [observedCellStatus, setObservedCellStatus] = useState<"loading" | "loaded" | "unavailable">("loading");
@@ -1074,8 +1353,10 @@ export default function SceneCanvas({
     reason: "checksum_verification_pending",
   });
   const publishMorphologyRuntime = useCallback((receipt: MorphologyRuntimeReceipt) => {
-    runtimeReceiptRef.current = receipt;
-    onMorphologyRuntime(receipt);
+    const current = receipt.verificationStatus === "verified" && receipt.sceneObjectStatus === "rendered" ? receipt
+      : { ...receipt, sourceGeometryVerification: null, sourceContext: null };
+    runtimeReceiptRef.current = current;
+    onMorphologyRuntime(current);
   }, [onMorphologyRuntime]);
   const micronsRuntimeReceiptRef = useRef<MicronsObservedReferenceRuntimeReceipt>({
     contractId: micronsObservedCellNucleusReference.contractId,
@@ -1098,6 +1379,133 @@ export default function SceneCanvas({
     micronsRuntimeReceiptRef.current = receipt;
     onMicronsRuntime(receipt);
   }, [onMicronsRuntime]);
+
+  const captureSourceView = useCallback(() => {
+    const context = contextRef.current, selection = sourceSelectionRef.current;
+    const record = morphologyFidelityRecords.find(row => row.neuronId === selection.neuronId);
+    if (!context || context.failed || !selection.active || !record || !context.sourceGeometry || !context.inspection
+      || context.sourceGeometry.neuronId !== record.neuronId || runtimeReceiptRef.current.requestedNeuronId !== record.neuronId || runtimeReceiptRef.current.actualMode !== sourceRequestRef.current.mode || runtimeReceiptRef.current.verificationStatus !== "verified") throw new Error("Main scene view: current verified morphology scene is unavailable");
+    const { renderer, camera, controls } = context;
+    const attributes = renderer.getContext().getContextAttributes();
+    if (!attributes || typeof attributes.alpha !== "boolean" || typeof attributes.antialias !== "boolean") throw new Error("Main scene view: live WebGL context attributes are unavailable");
+    if (context.auxiliaryAssets.has(micronsObservedCellNucleusReference.assetBundle.manifest.path)
+      && (context.micronsCellRoot.children.length !== 1 || context.micronsNucleusRoot.children.length !== 1)) throw new Error("Main scene view: verified MICrONS objects are still being constructed");
+    const object = context.observedCellRoot.children.find(child => child.name === `neuromorpho-${record.neuronId}-${sourceRequestRef.current.mode}-source-local`);
+    if (!object) throw new Error("Main scene view: current source object is unavailable");
+    const inspected = context.inspection.getState();
+    context.scene.updateMatrixWorld(true);
+    camera.updateMatrixWorld(true);
+    const bounds = new THREE.Box3().setFromObject(object), size = renderer.getSize(new THREE.Vector2()), buffer = renderer.getDrawingBufferSize(new THREE.Vector2());
+    const planes = (root: THREE.Object3D) => {
+      const result: { normal: number[]; constant: number }[] = [];
+      root.traverse(child => {
+        const material = (child as THREE.Mesh).material;
+        for (const entry of material ? Array.isArray(material) ? material : [material] : []) for (const plane of entry.clippingPlanes ?? []) {
+          const row = { normal: plane.normal.toArray(), constant: plane.constant };
+          if (!result.some(value => mainSceneViewEqual(value, row))) result.push(row);
+        }
+      });
+      return result;
+    };
+    const view: MainSceneSourceView = {
+      runtimeBinding: { neuronId: record.neuronId, geometrySha256: record.geometry.sha256, sceneInstanceId: context.instanceId, revision: sourceViewRevisionRef.current },
+      request: structuredClone(sourceRequestRef.current),
+      camera: { kind: "PerspectiveCamera", position: camera.position.toArray(), target: controls.target.toArray(), up: camera.up.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, zoom: camera.zoom, aspect: camera.aspect, near: camera.near, far: camera.far, filmGauge: camera.filmGauge, filmOffset: camera.filmOffset },
+      viewport: { cssWidth: size.x, cssHeight: size.y, drawingBufferWidth: buffer.x, drawingBufferHeight: buffer.y, pixelRatio: renderer.getPixelRatio() },
+      renderer: { engine: "THREE", revision: THREE.REVISION, outputColorSpace: renderer.outputColorSpace, toneMapping: renderer.toneMapping, requestedAlpha: false, requestedAntialias: true, alpha: attributes.alpha, antialias: attributes.antialias },
+      clipping: { globalPlanes: renderer.clippingPlanes.map(plane => ({ normal: plane.normal.toArray(), constant: plane.constant })), localClippingEnabled: renderer.localClippingEnabled, micronsCellPlanes: planes(context.micronsCellRoot), micronsNucleusPlanes: planes(context.micronsNucleusRoot) },
+      layers: { scaffold: context.scaffold.visible, grayMatter: context.grayMatter.visible, internalCompartments: context.internalCompartments.visible, entities: context.entityRoot.visible,
+        syntheticGuide: context.syntheticLaneGuide.visible, morphology: context.observedCellRoot.visible, datContours: context.nmo45718DatSwcCrosswalkRoot.visible && context.nmo45718DatSwcCrosswalkRoot.children.length > 0,
+        morphologyGuide: context.observedCellLaneGuide.visible, micronsReference: context.micronsReferenceRoot.visible, micronsCell: context.micronsCellRoot.visible,
+        micronsNucleus: context.micronsNucleusRoot.visible, internalReference: context.internalReferenceRoot.visible, slicePlane: context.slicePlane.visible,
+        visibleEntityIds: [...context.entityGroups].filter(([, group]) => group.visible).map(([id]) => id).sort(), activeSelectedId: [...context.entityGroups].find(([, group]) => group.getObjectByName("selection-halo")?.visible)?.[0] ?? null },
+      sourceObject: { mode: sourceRequestRef.current.mode, dimensionality: context.sourceGeometry.swc.dimensionality, sourceDiameterAvailable: context.sourceGeometry.swc.sourceDiameterAvailable,
+        displayTransform: structuredClone(context.sourceGeometry.displayTransform), worldMatrix: object.matrixWorld.toArray(), bounds: { minimum: bounds.min.toArray(), maximum: bounds.max.toArray() },
+        topologyLandmarksVisible: object.getObjectByName(`topology-landmarks-${record.neuronId}-source-local`)?.visible ?? false, sourceTypes: [...new Set(context.sourceGeometry.nodes.map(row => row[1]))].sort((a, b) => a - b) },
+      inspection: { available: true, selectedNodeId: inspected.selection?.nodeId ?? null, contextDimmed: inspected.dimmed,
+        overlayAuthority: "exact_swc_parent_path_and_descendant_edges" },
+    };
+    return captureMainSceneSourceView(record, context.sourceGeometry, view, [...context.auxiliaryAssets.values()], THREE.REVISION);
+  }, []);
+
+  useEffect(() => {
+    const refresh = () => {
+      let available = false, fingerprint = "unavailable", unavailableReason: string | undefined;
+      let actualCamera: MainSceneSourceView["camera"] | null = null;
+      try {
+        const doc = captureSourceView();
+        const value = structuredClone(doc.view); value.runtimeBinding.revision = 0;
+        // OrbitControls can alternate between adjacent floats while idle. Compare
+        // with the last accepted pose, without rounding the actual capture or
+        // relaxing any source, projection, viewport or layer signature field.
+        if (sourceViewCameraRef.current && sameMainSceneCameraForCapture(value.camera, sourceViewCameraRef.current)) value.camera = sourceViewCameraRef.current;
+        actualCamera = value.camera;
+        fingerprint = JSON.stringify({ view: value, sourceSequence: doc.geometryVerification.mainSceneVerificationSequence, auxiliaryAssets: doc.auxiliaryAssets });
+        available = !pendingRestoreRef.current;
+        if (contextRef.current) delete contextRef.current.renderer.domElement.dataset.sourceViewUnavailableReason;
+      } catch (error) {
+        unavailableReason = error instanceof Error ? error.message : "Current source view is unavailable";
+        if (contextRef.current) contextRef.current.renderer.domElement.dataset.sourceViewUnavailableReason = unavailableReason;
+      }
+      const restoring = Boolean(pendingRestoreRef.current);
+      const selection = sourceSelectionRef.current;
+      const geometry = contextRef.current?.sourceGeometry ?? validationGeometryRef.current;
+      const restorable = Boolean(contextRef.current && selection.active && geometry?.neuronId === selection.neuronId);
+      fingerprint += `:${restoring}:${restorable}:${selection.neuronId}:${selection.active}:${unavailableReason ?? ""}`;
+      if (fingerprint === sourceViewFingerprintRef.current) return;
+      sourceViewFingerprintRef.current = fingerprint;
+      sourceViewCameraRef.current = actualCamera;
+      sourceViewRevisionRef.current += 1;
+      sourceViewCallbacksRef.current.onSourceViewTools(selection.active ? { neuronId: selection.neuronId,
+        signature: `${contextRef.current?.instanceId ?? "unavailable"}:${sourceViewRevisionRef.current}`, available, restorable, restoring, unavailableReason,
+        capture: captureSourceView, restore: document => restoreSourceViewRef.current(document),
+        cancelRestoration: reason => {
+          if (!pendingRestoreRef.current) return;
+          failSourceRestoreRef.current(new Error(reason));
+          setSourceSceneEpoch(epoch => epoch + 1);
+        } } : null);
+    };
+    refreshSourceViewRef.current = refresh;
+    failSourceRestoreRef.current = error => {
+      const pending = pendingRestoreRef.current;
+      if (!pending) return;
+      pendingRestoreRef.current = null;
+      setObservedCellStatus("unavailable"); setReferenceStatus("unavailable"); setMicronsReferenceStatus("unavailable");
+      const context = contextRef.current;
+      if (context) {
+        clearInspection();
+        context.failed = true; context.sourceGeometry = null; context.auxiliaryAssets.clear();
+        for (const root of [context.observedCellRoot, context.scaffold, context.grayMatter, context.internalCompartments, context.nmo45718DatSwcCrosswalkRoot, context.micronsCellRoot, context.micronsNucleusRoot]) clearSourceGeometryRoot(root);
+        context.renderer.domElement.dataset.sourceViewStatus = "unavailable-fresh-restoration-failed";
+        context.renderer.domElement.dataset.observedCellFormStatus = "unavailable-no-fallback";
+        context.renderer.domElement.dataset.micronsObservedReferenceStatus = "unavailable-no-fallback";
+      }
+      publishMorphologyRuntime({ ...runtimeReceiptRef.current, actualMode: null, geometrySha256: null, verificationStatus: "failed", sceneObjectStatus: "not_rendered", visible: false, algorithmId: null, reason: error.message });
+      publishMicronsRuntime({ ...micronsRuntimeReceiptRef.current, verificationStatus: "unavailable", sceneObjectStatus: "not_rendered", cellSurfaceVisible: false, nucleusVisible: false, verifiedAssetReceipt: null, reason: error.message });
+      onNmo45718DatSwcCrosswalkRuntime({ status: "unavailable", message: error.message });
+      onCaptureReady(null); pending.reject(error); refresh();
+    };
+    restoreSourceViewRef.current = async value => {
+      const selection = sourceSelectionRef.current, record = morphologyFidelityRecords.find(row => row.neuronId === selection.neuronId);
+      const geometry = contextRef.current?.sourceGeometry ?? validationGeometryRef.current;
+      if (!selection.active || !record || !geometry || geometry.neuronId !== record.neuronId) throw new Error("Main scene view: the exact source must be selected before restoring");
+      const document = structuredClone(value) as MainSceneSourceViewDocument;
+      const saved = validateMainSceneSourceViewReplay(record, geometry, document, THREE.REVISION);
+      sourceViewCallbacksRef.current.onApplySourceViewRequest(saved.request, saved.layers.visibleEntityIds);
+      const previous = pendingRestoreRef.current;
+      if (previous) previous.reject(new Error("Main scene view: restoration replaced by a newer request"));
+      return new Promise<void>((resolve, reject) => {
+        pendingRestoreRef.current = { document, baseline: mainSceneMorphologyVerification(record, geometry).geometryVerification.mainSceneVerificationSequence, applied: false, resolve, reject };
+        refresh(); setSourceSceneEpoch(epoch => epoch + 1);
+      });
+    };
+    refresh();
+    return () => {
+      const pending = pendingRestoreRef.current; pendingRestoreRef.current = null;
+      pending?.reject(new Error("Main scene view: renderer was unmounted before restoration completed"));
+      refreshSourceViewRef.current = () => {}; sourceViewCallbacksRef.current.onSourceViewTools(null);
+    };
+  }, [captureSourceView, clearInspection, onCaptureReady, onNmo45718DatSwcCrosswalkRuntime, publishMicronsRuntime, publishMorphologyRuntime]);
 
   useEffect(() => {
     onSelectRef.current = onSelect;
@@ -1167,6 +1575,11 @@ export default function SceneCanvas({
       return;
     }
     onWebGLStatus(true);
+    // A rebuilt renderer contains no previously constructed MICrONS objects.
+    publishMicronsRuntime({ ...micronsRuntimeReceiptRef.current, requested: sourceRequestRef.current.view === "microns_observed_reference",
+      verificationStatus: "idle", sceneObjectStatus: "not_rendered", cellSurfaceVisible: false, nucleusVisible: false,
+      verifiedAssetReceipt: null, reason: "new_renderer_source_verification_pending" });
+    queueMicrotask(() => { setReferenceStatus("loading"); setMicronsReferenceStatus("idle"); });
     renderer.localClippingEnabled = true;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -1186,8 +1599,13 @@ export default function SceneCanvas({
     controls.minDistance = 4;
     controls.maxDistance = 100;
     controls.target.set(COMBINED_SCENE_TARGET_X, 0, 0);
+    const protectSourceCamera = () => {
+      if (contextRef.current) contextRef.current.defaultSourceCamera = false;
+    };
+    controls.addEventListener("start", protectSourceCamera);
 
     const handleSceneKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (pendingRestoreRef.current) return;
       const orbitStep = Math.PI / 36;
       const offset = camera.position.clone().sub(controls.target);
       const spherical = new THREE.Spherical().setFromVector3(offset);
@@ -1199,11 +1617,15 @@ export default function SceneCanvas({
       else if (event.key === "+" || event.key === "=") spherical.radius = Math.max(controls.minDistance, spherical.radius * 0.9);
       else if (event.key === "-" || event.key === "_") spherical.radius = Math.min(controls.maxDistance, spherical.radius * 1.1);
       else if (event.key === "Home") {
+        if (sourceRequestRef.current.view === "cell_detail") {
+          event.preventDefault(); fitSourceCamera(false, true); return;
+        }
         controls.target.set(COMBINED_SCENE_TARGET_X, 0, 0);
         camera.position.set(11, 8, 26);
       } else handled = false;
       if (!handled) return;
       event.preventDefault();
+      protectSourceCamera();
       if (event.key !== "Home") camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));
       camera.lookAt(controls.target);
       controls.update();
@@ -1247,6 +1669,21 @@ export default function SceneCanvas({
       projectRegistrationCount: 0,
       exactCrossSourceIdentityCount: 0,
     };
+    const nmo45718DatSwcCrosswalkRoot = new THREE.Group();
+    nmo45718DatSwcCrosswalkRoot.name = "nmo-45718-dat-swc-project-derived-display-crosswalk-root";
+    nmo45718DatSwcCrosswalkRoot.position.x = OBSERVED_CELL_FORM_LANE_X;
+    nmo45718DatSwcCrosswalkRoot.visible = false;
+    nmo45718DatSwcCrosswalkRoot.userData = {
+      assetId: "NeuroMorpho:45718",
+      representation: "source_native_dat_contours_project_mapped_to_same_record_standardized_swc_frame",
+      sourceFrame: "Neurolucida_DAT_source_native_unregistered",
+      displayFrame: "NeuroMorpho_CNG_standardized_local_frame",
+      registrationCount: 0,
+      measurementClaim: false,
+      surfaceCount: 0,
+      volumeCount: 0,
+      internalStructureObjectCount: 0,
+    };
     const micronsReferenceRoot = new THREE.Group();
     micronsReferenceRoot.name = "microns-observed-cell-nucleus-reference-root";
     micronsReferenceRoot.visible = false;
@@ -1281,23 +1718,24 @@ export default function SceneCanvas({
       internalCompartments,
       observedCellLaneGuide,
       observedCellRoot,
+      nmo45718DatSwcCrosswalkRoot,
       syntheticLaneGuide,
       entityRoot,
       micronsReferenceRoot,
       internalReferenceRoot,
     );
 
+    const auxiliaryAssets = new Map<string, MainSceneAuxiliaryToken>();
     const atlasController = new AbortController();
     Promise.all(
       [ATLAS_CONTOURS_URL, ATLAS_INTERNAL_COMPARTMENTS_URL].map((url) =>
-        fetch(url, { signal: atlasController.signal }).then((response) => {
-          if (!response.ok) throw new Error(`Atlas reference request failed (${response.status})`);
-          return response.json();
+        readVerifiedMainSceneAuxiliary(url, { signal: atlasController.signal }).then(token => {
+          auxiliaryAssets.set(url, token); return mainSceneAuxiliaryJson(token);
         }),
       ),
     )
       .then(([contourPayload, internalPayload]) => {
-        if (atlasController.signal.aborted) return;
+        if (atlasController.signal.aborted || contextRef.current?.failed) return;
         const reference = buildAtlasReferenceGeometry(contourPayload);
         const internalReference = buildAtlasInternalContourGeometry(
           internalPayload,
@@ -1320,6 +1758,8 @@ export default function SceneCanvas({
       })
       .catch((error: Error) => {
         if (error.name === "AbortError") return;
+        failSourceRestoreRef.current(error);
+        auxiliaryAssets.clear();
         setReferenceStatus("unavailable");
         renderer.domElement.dataset.atlasReferenceStatus = "unavailable-no-fallback";
         renderer.domElement.setAttribute(
@@ -1337,6 +1777,8 @@ export default function SceneCanvas({
     scene.add(slicePlane);
 
     contextRef.current = {
+      scene, instanceId: `main-scene-runtime-${++mainSceneInstanceSequence}`, sourceGeometry: null, inspection: null, auxiliaryAssets, failed: false,
+      defaultSourceCamera: true, lastCameraView: null, sourceCameraFitFingerprint: "",
       renderer,
       camera,
       controls,
@@ -1347,6 +1789,7 @@ export default function SceneCanvas({
       syntheticLaneGuide,
       entityGroups,
       observedCellRoot,
+      nmo45718DatSwcCrosswalkRoot,
       observedCellLaneGuide,
       micronsReferenceRoot,
       micronsCellRoot,
@@ -1354,7 +1797,17 @@ export default function SceneCanvas({
       internalReferenceRoot,
       slicePlane,
     };
-    onCaptureReady((options) => captureRendererPng(renderer, scene, camera, options));
+    onCaptureReady(options => {
+      let receipt: MainSceneExportView;
+      try {
+        if (pendingRestoreRef.current) throw new Error("Main scene restoration is in progress");
+        receipt = captureSourceView();
+        if (receipt.source.neuronId !== options.currentNeuronId) throw new Error("The current main-scene source changed");
+      } catch (error) { receipt = { status: "unavailable", reason: error instanceof Error ? error.message : "No current main-scene source view", currentNeuronId: options.currentNeuronId }; }
+      return captureRendererPng(renderer, scene, camera, options, "documentType" in receipt ? receipt.view.layers : null,
+        "documentType" in receipt ? receipt.view.sourceObject : null).then(blob => appendMainSceneExportPng(blob, receipt,
+        { exportKind: "rendered_main_scene", requestedState: options.requestedState, currentNeuronId: options.currentNeuronId }));
+    });
 
     const raycaster = new THREE.Raycaster();
     raycaster.params.Line.threshold = 0.16;
@@ -1372,6 +1825,11 @@ export default function SceneCanvas({
     renderer.domElement.addEventListener("pointerdown", handlePointer);
     const handleContextLost = (event: Event) => {
       event.preventDefault();
+      failSourceRestoreRef.current(new Error("Main scene view: WebGL context lost"));
+      clearInspection();
+      if (contextRef.current) { contextRef.current.failed = true; contextRef.current.sourceGeometry = null; contextRef.current.auxiliaryAssets.clear(); }
+      publishMorphologyRuntime({ ...runtimeReceiptRef.current, actualMode: null, geometrySha256: null, verificationStatus: "unavailable", sceneObjectStatus: "not_rendered", visible: false, algorithmId: null, reason: "webgl_context_lost" });
+      refreshSourceViewRef.current();
       onCaptureReady(null);
       onPerformance(null);
       onWebGLStatus(false);
@@ -1393,6 +1851,7 @@ export default function SceneCanvas({
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      fitSourceCamera(true);
     };
     resize();
     const observer = new ResizeObserver(resize);
@@ -1408,7 +1867,34 @@ export default function SceneCanvas({
         if (elapsed > 0 && elapsed < 1000) frameTimes.push(elapsed);
         lastFrameAt = timestamp;
         controls.update();
+        const pending = pendingRestoreRef.current;
+        if (pending && contextRef.current?.sourceGeometry) {
+          try {
+            captureSourceView();
+            if (!pending.applied) {
+              const saved = pending.document.view.camera;
+              if (mainSceneMorphologyVerification(morphologyFidelityRecords.find(row => row.neuronId === sourceSelectionRef.current.neuronId)!, contextRef.current.sourceGeometry).geometryVerification.mainSceneVerificationSequence <= pending.baseline) throw new Error("Main scene view: fresh source verification did not advance");
+              contextRef.current.defaultSourceCamera = false;
+              const damping = controls.enableDamping;
+              controls.enableDamping = false; controls.update();
+              camera.position.fromArray(saved.position); camera.up.fromArray(saved.up); controls.target.fromArray(saved.target);
+              const inspection = pending.document.view.inspection;
+              if (inspection.selectedNodeId === null) contextRef.current.inspection!.clear();
+              else contextRef.current.inspection!.restore({ geometryIdentity: contextRef.current.sourceGeometry,
+                nodeId: inspection.selectedNodeId, dimmed: inspection.contextDimmed });
+              controls.update(); controls.enableDamping = damping; camera.updateMatrixWorld(true); pending.applied = true;
+            }
+            const actual = captureSourceView();
+            assertMainSceneSourceViewApplied(pending.document, actual);
+            pendingRestoreRef.current = null; pending.resolve(); renderer.domElement.dataset.sourceViewStatus = "restored-fresh-verified";
+            setInspectionScene({ geometry: contextRef.current.sourceGeometry, mode: sourceRequestRef.current.mode, epoch: sourceSceneEpoch });
+          } catch (error) {
+            // Incomplete auxiliary reads are expected until the asynchronous loaders finish.
+            if (pending.applied) failSourceRestoreRef.current(error instanceof Error ? error : new Error("Main scene view: restored pose verification failed"));
+          }
+        }
         renderer.render(scene, camera);
+        refreshSourceViewRef.current();
         if (timestamp - lastReportAt >= 1000 && frameTimes.length) {
           const sorted = [...frameTimes].sort((a, b) => a - b);
           const p95 = sorted[Math.max(0, Math.ceil(sorted.length * 0.95) - 1)];
@@ -1436,20 +1922,24 @@ export default function SceneCanvas({
       renderer.domElement.removeEventListener("pointerdown", handlePointer);
       renderer.domElement.removeEventListener("keydown", handleSceneKeyDown);
       renderer.domElement.removeEventListener("webglcontextlost", handleContextLost);
+      controls.removeEventListener("start", protectSourceCamera);
+      clearInspection();
       controls.dispose();
       disposeObject(scene);
       renderer.dispose();
       renderer.domElement.remove();
       contextRef.current = null;
+      refreshSourceViewRef.current();
       onCaptureReady(null);
       onPerformance(null);
     };
-  }, [entities, onCaptureReady, onPerformance, onWebGLStatus, publishMicronsRuntime, publishMorphologyRuntime]);
+  }, [entities, onCaptureReady, onPerformance, onWebGLStatus, publishMicronsRuntime, publishMorphologyRuntime, captureSourceView, clearInspection, sourceSceneEpoch, fitSourceCamera]);
 
   useEffect(() => {
     const context = contextRef.current;
     if (!context) return;
-    if (view !== "microns_observed_reference") {
+    if (view !== "microns_observed_reference" && context.micronsCellRoot.children.length === 0
+      && !pendingRestoreRef.current?.document.auxiliaryAssets.some(row => row.path === micronsObservedCellNucleusReference.assetBundle.manifest.path)) {
       if (micronsRuntimeReceiptRef.current.verificationStatus === "loading") {
         setMicronsReferenceStatus("idle");
         publishMicronsRuntime({
@@ -1470,11 +1960,11 @@ export default function SceneCanvas({
       setMicronsReferenceStatus("loaded");
       publishMicronsRuntime({
         ...micronsRuntimeReceiptRef.current,
-        requested: true,
+        requested: view === "microns_observed_reference",
         verificationStatus: "verified",
         sceneObjectStatus: "rendered",
-        cellSurfaceVisible: showMicronsCellSurface,
-        nucleusVisible: showMicronsNucleus,
+        cellSurfaceVisible: view === "microns_observed_reference" && showMicronsCellSurface,
+        nucleusVisible: view === "microns_observed_reference" && showMicronsNucleus,
         clipping,
         reason: null,
       });
@@ -1495,27 +1985,23 @@ export default function SceneCanvas({
     });
     context.renderer.domElement.dataset.micronsObservedReferenceStatus = "loading-verification-pending";
     const manifestReceipt = micronsObservedCellNucleusReference.assetBundle.manifest;
-    fetch(manifestReceipt.path, { signal: controller.signal })
-      .then(async (response) => {
-        if (!response.ok) throw new Error(`MICrONS asset-manifest request failed (${response.status})`);
-        const manifestBytes = await response.arrayBuffer();
-        if (manifestBytes.byteLength !== manifestReceipt.bytes) throw new Error("MICrONS asset-manifest byte-count mismatch");
-        const verifiedManifestSha256 = await sha256Hex(manifestBytes);
-        if (verifiedManifestSha256 !== manifestReceipt.sha256) throw new Error("MICrONS asset-manifest SHA-256 mismatch");
-        const manifest = JSON.parse(new TextDecoder().decode(manifestBytes)) as MicronsAssetManifest;
+    readVerifiedMainSceneAuxiliary(manifestReceipt.path, { signal: controller.signal })
+      .then(token => {
+        const manifest = mainSceneAuxiliaryJson(token) as MicronsAssetManifest;
         assertMicronsAssetManifest(manifest);
-        return { manifest, verifiedManifestSha256 };
+        context.auxiliaryAssets.set(token.path, token);
+        return { manifest, verifiedManifestSha256: mainSceneAuxiliaryProof(token).verifiedSha256 };
       })
       .then(async ({ manifest, verifiedManifestSha256 }) => {
         const cell = manifest.components.find((component) => component.componentName === "cell")!;
         const nucleus = manifest.components.find((component) => component.componentName === "nucleus")!;
         const [cellPositions, cellTriangles, nucleusPositions, nucleusTriangles] = await Promise.all([
-          fetchVerifiedMicronsBuffer(cell.browserGeometry.positions, controller.signal),
-          fetchVerifiedMicronsBuffer(cell.browserGeometry.triangles, controller.signal),
-          fetchVerifiedMicronsBuffer(nucleus.browserGeometry.positions, controller.signal),
-          fetchVerifiedMicronsBuffer(nucleus.browserGeometry.triangles, controller.signal),
+          fetchVerifiedMicronsBuffer(cell.browserGeometry.positions, controller.signal, context),
+          fetchVerifiedMicronsBuffer(cell.browserGeometry.triangles, controller.signal, context),
+          fetchVerifiedMicronsBuffer(nucleus.browserGeometry.positions, controller.signal, context),
+          fetchVerifiedMicronsBuffer(nucleus.browserGeometry.triangles, controller.signal, context),
         ]);
-        if (controller.signal.aborted) return;
+        if (controller.signal.aborted || context.failed || contextRef.current !== context) return;
         const cellMesh = createMicronsObservedSegmentationMesh(
           "cell",
           cell.browserGeometry,
@@ -1535,17 +2021,17 @@ export default function SceneCanvas({
         context.micronsCellRoot.add(cellMesh);
         context.micronsNucleusRoot.add(nucleusMesh);
         const clipping = applyMicronsSourceNativeClipping(context, micronsClipping);
-        context.micronsCellRoot.visible = showMicronsCellSurface;
-        context.micronsNucleusRoot.visible = showMicronsNucleus;
+        context.micronsCellRoot.visible = view === "microns_observed_reference" && showMicronsCellSurface;
+        context.micronsNucleusRoot.visible = view === "microns_observed_reference" && showMicronsNucleus;
         setMicronsReferenceStatus("loaded");
         context.renderer.domElement.dataset.micronsObservedReferenceStatus = "loaded-verified-exact-cell-and-linked-nucleus";
         publishMicronsRuntime({
           ...micronsRuntimeReceiptRef.current,
-          requested: true,
+          requested: view === "microns_observed_reference",
           verificationStatus: "verified",
           sceneObjectStatus: "rendered",
-          cellSurfaceVisible: showMicronsCellSurface,
-          nucleusVisible: showMicronsNucleus,
+          cellSurfaceVisible: view === "microns_observed_reference" && showMicronsCellSurface,
+          nucleusVisible: view === "microns_observed_reference" && showMicronsNucleus,
           clipping,
           verifiedAssetReceipt: {
             manifest: {
@@ -1597,7 +2083,9 @@ export default function SceneCanvas({
         });
       })
       .catch((error: Error) => {
-        if (error.name === "AbortError") return;
+        if (controller.signal.aborted || contextRef.current !== context || error.name === "AbortError") return;
+        failSourceRestoreRef.current(error);
+        for (const path of [...context.auxiliaryAssets.keys()]) if (path.startsWith(manifestReceipt.path.slice(0, -"asset-manifest.json".length))) context.auxiliaryAssets.delete(path);
         context.micronsCellRoot.children.forEach((child) => disposeObject(child));
         context.micronsNucleusRoot.children.forEach((child) => disposeObject(child));
         context.micronsCellRoot.clear();
@@ -1616,14 +2104,27 @@ export default function SceneCanvas({
         });
       });
     return () => controller.abort();
-  }, [micronsClipping, publishMicronsRuntime, showMicronsCellSurface, showMicronsNucleus, view]);
+  }, [micronsClipping, publishMicronsRuntime, showMicronsCellSurface, showMicronsNucleus, view, sourceSceneEpoch]);
+
+  useLayoutEffect(() => {
+    morphologyLoadEpochRef.current += 1;
+    clearInspection();
+    const root = contextRef.current?.observedCellRoot;
+    if (root) clearSourceGeometryRoot(root);
+    if (contextRef.current) {
+      contextRef.current.sourceGeometry = null;
+      contextRef.current.defaultSourceCamera = true;
+      contextRef.current.sourceCameraFitFingerprint = "";
+    }
+    refreshSourceViewRef.current();
+  }, [morphologyFidelityMode, morphologyTargetActive, observedCellFormId, sourceSceneEpoch, clearInspection]);
 
   useEffect(() => {
     const context = contextRef.current;
     if (!context) return;
     const record = morphologyFidelityRecords.find((candidate) => candidate.neuronId === observedCellFormId);
-    context.observedCellRoot.children.forEach((child) => disposeObject(child));
-    context.observedCellRoot.clear();
+    const sourceLoadEpoch = morphologyLoadEpochRef.current;
+    clearSourceGeometryRoot(context.observedCellRoot);
     if (!morphologyTargetActive) {
       queueMicrotask(() => {
         setObservedCellStatus("unavailable");
@@ -1675,7 +2176,7 @@ export default function SceneCanvas({
           sceneObjectStatus: "not_rendered",
           visible: false,
           algorithmId: null,
-          reason: "official_attributes_report_no_diameter",
+          reason: record.geometry.dimensionality === "2D" ? "source_geometry_is_2d_no_3d_surface_authorized" : "official_attributes_report_no_diameter",
         });
       });
       context.renderer.domElement.dataset.observedCellFormStatus = "unavailable-radius-not-source-authorized";
@@ -1699,21 +2200,27 @@ export default function SceneCanvas({
     });
     context.renderer.domElement.dataset.observedCellFormStatus = "loading-checksum-verification";
     const controller = new AbortController();
-    fetch(record.geometry.path, { signal: controller.signal })
-      .then(async (response) => {
-        if (!response.ok) throw new Error(`Source-local geometry request failed (${response.status})`);
-        const sourceBytes = await response.arrayBuffer();
-        if (sourceBytes.byteLength !== record.geometry.bytes) throw new Error("Source-local geometry byte count mismatch");
-        if (await sha256Hex(sourceBytes) !== record.geometry.sha256) throw new Error("Source-local geometry checksum mismatch");
-        const payload = JSON.parse(new TextDecoder().decode(sourceBytes)) as SourceLocalMorphologyGeometry;
-        assertSourceLocalMorphologyGeometry(payload, record);
-        return payload;
-      })
+    readVerifiedMainSceneMorphology(record, { signal: controller.signal, forceReload: Boolean(pendingRestoreRef.current) })
       .then((geometry) => {
-        if (controller.signal.aborted) return;
+        if (controller.signal.aborted || context.failed || contextRef.current !== context || sourceLoadEpoch !== morphologyLoadEpochRef.current) return;
+        const verifiedSource = mainSceneMorphologyVerification(record, geometry);
+        context.sourceGeometry = geometry; validationGeometryRef.current = geometry;
+        assertSourceLocalMorphologyGeometry(geometry, record);
         const object = createSourceLocalMorphologyObject(geometry, record, morphologyFidelityMode);
         const route = observedMorphologyRouteByNeuronId.get(record.neuronId) ?? null;
         context.observedCellRoot.add(object);
+        const inspection = attachSwcNeuriteInspection({ geometry, scene: context.scene, camera: context.camera, controls: context.controls,
+          canvas: context.renderer.domElement, contextRoot: object, sourceTransformRoot: context.observedCellRoot,
+          selectionColors: { pathColor: 0xa46700, descendantsColor: 0x08785e, markerColor: 0x173f33 },
+          sourceRadiusAvailable: geometry.swc.sourceDiameterAvailable, isTwoDimensional: geometry.swc.dimensionality === "2D",
+          onSelection: (selection: NeuriteInspectionSelection | null) => {
+            if (contextRef.current !== context || context.sourceGeometry !== geometry) return;
+            setInspectionSelection(selection); refreshSourceViewRef.current();
+          }, onCameraChange: () => {
+            context.defaultSourceCamera = false; refreshSourceViewRef.current();
+          } });
+        context.inspection = inspection; inspectionRef.current = inspection;
+        if (!pendingRestoreRef.current) setInspectionScene({ geometry, mode: morphologyFidelityMode, epoch: sourceSceneEpoch });
         context.observedCellRoot.userData = {
           ...context.observedCellRoot.userData,
           assetId: record.assetId,
@@ -1736,6 +2243,8 @@ export default function SceneCanvas({
           routeContractId: route?.contractId ?? observedCellFormLens.releaseId,
           routeReleaseId: route?.releaseId ?? observedCellFormLens.releaseId,
           routeWarningCount: route?.warnings.length ?? 0,
+          sourceGeometryVerification: verifiedSource.geometryVerification,
+          sourceContext: verifiedSource.sourceContext,
         };
         setObservedCellStatus("loaded");
         publishMorphologyRuntime({
@@ -1749,21 +2258,32 @@ export default function SceneCanvas({
           visible: context.observedCellRoot.visible,
           algorithmId: morphologyFidelityMode === "radius_surface" ? RADIUS_SURFACE_ALGORITHM_ID : null,
           reason: context.observedCellRoot.visible ? null : "morphology_layer_hidden",
+          sourceGeometryVerification: verifiedSource.geometryVerification,
+          sourceContext: verifiedSource.sourceContext,
         });
         context.renderer.domElement.dataset.observedCellFormStatus = morphologyFidelityMode === "radius_surface"
           ? "loaded-verified-obs-input-derived-radius-surface-unregistered"
-          : "loaded-verified-obs-swc-centerlines-unregistered";
+          : record.geometry.dimensionality === "2D"
+            ? "loaded-verified-obs-2d-source-plane-unregistered"
+            : "loaded-verified-obs-swc-centerlines-unregistered";
         context.renderer.domElement.setAttribute(
           "aria-label",
           morphologyFidelityMode === "radius_surface"
             ? `Interactive 3D scene with NeuroMorpho ${record.neuronId}. Its checksum-verified source-local SWC coordinates, topology and radii are observed inputs. Visible thickness is a deterministic tapered-frustum derivative, not an observed membrane or internal structure. It is unregistered and unrelated to the selected evidence entity.`
-            : `Interactive 3D scene with NeuroMorpho ${record.neuronId} rendered as checksum-verified source-local SWC centerlines. Stroke width is a viewer aid, not anatomical caliber. It is unregistered and unrelated to the selected evidence entity.`,
+            : record.geometry.dimensionality === "2D"
+              ? `Interactive 3D canvas showing NeuroMorpho ${record.neuronId} as a checksum-verified planar 2D source trace. It is not a reconstructed 3D cell. Stroke width is a viewer aid, and the trace is unregistered and unrelated to the selected evidence entity.`
+              : `Interactive 3D scene with NeuroMorpho ${record.neuronId} rendered as checksum-verified source-local SWC centerlines. Stroke width is a viewer aid, not anatomical caliber. It is unregistered and unrelated to the selected evidence entity.`,
         );
+        fitSourceCamera();
       })
       .catch((error: Error) => {
-        if (error.name === "AbortError") return;
+        if (controller.signal.aborted || sourceLoadEpoch !== morphologyLoadEpochRef.current || error.name === "AbortError") return;
+        failSourceRestoreRef.current(error);
+        clearInspection();
+        context.sourceGeometry = null;
         context.observedCellRoot.children.forEach((child) => disposeObject(child));
         context.observedCellRoot.clear();
+        context.observedCellRoot.userData = {};
         setObservedCellStatus("unavailable");
         publishMorphologyRuntime({
           requestedNeuronId: observedCellFormId,
@@ -1780,7 +2300,107 @@ export default function SceneCanvas({
         context.renderer.domElement.dataset.observedCellFormStatus = "unavailable-no-fallback";
       });
     return () => controller.abort();
-  }, [morphologyFidelityMode, morphologyTargetActive, observedCellFormId, publishMorphologyRuntime]);
+  }, [morphologyFidelityMode, morphologyTargetActive, observedCellFormId, publishMorphologyRuntime, sourceSceneEpoch, clearInspection, fitSourceCamera]);
+
+  useEffect(() => {
+    const context = contextRef.current;
+    if (!context) return;
+    const root = context.nmo45718DatSwcCrosswalkRoot;
+    root.children.forEach((child) => disposeObject(child));
+    root.clear();
+    root.visible = false;
+    for (const key of ["nativeContours", "standardizedGeometry"] as const) context.auxiliaryAssets.delete(publicAssetPath(NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS[key].path));
+    const requested = showNmo45718DatSwcCrosswalk
+      && morphologyTargetActive
+      && showObservedCellForm
+      && observedCellFormId === 45718
+      && view === "cell_detail";
+    if (!requested) {
+      context.renderer.domElement.dataset.nmo45718DatSwcCrosswalkStatus = "idle";
+      onNmo45718DatSwcCrosswalkRuntime({ status: "idle", message: "" });
+      return;
+    }
+
+    const record = morphologyFidelityRecords.find((candidate) => candidate.neuronId === 45718);
+    if (!record
+      || record.geometry.bytes !== NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS.standardizedGeometry.bytes
+      || record.geometry.sha256 !== NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS.standardizedGeometry.sha256) {
+      context.renderer.domElement.dataset.nmo45718DatSwcCrosswalkStatus = "unavailable-no-fallback";
+      onNmo45718DatSwcCrosswalkRuntime({
+        status: "unavailable",
+        message: "The selected NMO 45718 SWC does not match the crosswalk's pinned geometry receipt; DAT traces were withheld.",
+      });
+      return;
+    }
+
+    const controller = new AbortController();
+    let active = true;
+    context.renderer.domElement.dataset.nmo45718DatSwcCrosswalkStatus = "loading-receipt-verification";
+    onNmo45718DatSwcCrosswalkRuntime({
+      status: "loading",
+      message: "Verifying the exact NMO 45718 contour and standardized SWC files…",
+    });
+    Promise.all([
+      loadVerifiedNmo45718CrosswalkJson("nativeContours", controller.signal, context),
+      loadVerifiedNmo45718CrosswalkJson("standardizedGeometry", controller.signal, context),
+    ])
+      .then(([contours, geometryPayload]) => {
+        if (!active || controller.signal.aborted || context.failed || contextRef.current !== context) return;
+        const geometry = geometryPayload as SourceLocalMorphologyGeometry;
+        assertSourceLocalMorphologyGeometry(geometry, record);
+        const crosswalk = validateNmo45718DatSwcCrosswalk(
+          nmo45718DatSwcCrosswalkContractJson,
+          contours,
+          geometry,
+        ) as Nmo45718DatSwcCrosswalk;
+        if (crosswalk.boundaries.atlasRegistrationCount !== 0
+          || crosswalk.boundaries.surfaceCount !== 0
+          || crosswalk.boundaries.volumeCount !== 0
+          || crosswalk.boundaries.internalStructureObjectCount !== 0
+          || crosswalk.boundaries.sameCellInternalStructureClaim
+          || crosswalk.boundaries.cellBodyContourJoined) {
+          throw new Error("NMO 45718 crosswalk exceeded its admitted source-local contour boundary");
+        }
+        const object = createNmo45718DatSwcCrosswalkObject(crosswalk, geometry);
+        root.add(object);
+        root.visible = true;
+        fitSourceCamera(true);
+        context.renderer.domElement.dataset.nmo45718DatSwcCrosswalkStatus = "loaded-verified-seven-source-contours-display-screen-only";
+        onNmo45718DatSwcCrosswalkRuntime({
+          status: "verified",
+          message: `Verified · ${crosswalk.somaContours.length} DAT source contours / ${crosswalk.correspondence.sourceVertexCount} vertices in the same-record SWC-local frame. Project-derived display-consistency screen only · 0 REG · no surface, volume, measurement or internal objects.`,
+        });
+      })
+      .catch((error: Error) => {
+        if (!active || controller.signal.aborted || error.name === "AbortError") return;
+        failSourceRestoreRef.current(error);
+        for (const key of ["nativeContours", "standardizedGeometry"] as const) context.auxiliaryAssets.delete(publicAssetPath(NMO_45718_DAT_SWC_CROSSWALK_RECEIPTS[key].path));
+        root.children.forEach((child) => disposeObject(child));
+        root.clear();
+        root.visible = false;
+        context.renderer.domElement.dataset.nmo45718DatSwcCrosswalkStatus = "unavailable-no-fallback";
+        onNmo45718DatSwcCrosswalkRuntime({
+          status: "unavailable",
+          message: `${error.message}. DAT traces were withheld.`,
+        });
+      });
+    return () => {
+      active = false;
+      controller.abort();
+      root.children.forEach((child) => disposeObject(child));
+      root.clear();
+      root.visible = false;
+    };
+  }, [
+    morphologyTargetActive,
+    observedCellFormId,
+    onNmo45718DatSwcCrosswalkRuntime,
+    showNmo45718DatSwcCrosswalk,
+    showObservedCellForm,
+    view,
+    sourceSceneEpoch,
+    fitSourceCamera,
+  ]);
 
   useEffect(() => {
     const context = contextRef.current;
@@ -1795,6 +2415,13 @@ export default function SceneCanvas({
     context.entityRoot.visible = showEntities && !crossRegionReferenceActive && !cellDetailActive;
     context.syntheticLaneGuide.visible = showEntities && !crossRegionReferenceActive && !cellDetailActive;
     context.observedCellRoot.visible = showObservedCellForm && !crossRegionReferenceActive;
+    const nmo45718DatSwcCrosswalkVisible = showNmo45718DatSwcCrosswalk
+      && morphologyTargetActive
+      && showObservedCellForm
+      && observedCellFormId === 45718
+      && cellDetailActive
+      && !crossRegionReferenceActive;
+    context.nmo45718DatSwcCrosswalkRoot.visible = nmo45718DatSwcCrosswalkVisible;
     context.observedCellLaneGuide.visible = showObservedCellForm && !crossRegionReferenceActive;
     context.micronsReferenceRoot.visible = micronsReferenceActive;
     context.micronsCellRoot.visible = micronsReferenceActive && showMicronsCellSurface;
@@ -1855,36 +2482,50 @@ export default function SceneCanvas({
         : micronsReferenceActive
           ? `Cross-region observed MICrONS visual-cortex reference. The exact v185.4 cell segmentation surface for root ${micronsObservedCellNucleusReference.identityChain.cellRootId} and its source-linked nucleus ${micronsObservedCellNucleusReference.identityChain.somaValenceTable.nucleusId} are checksum gated. Source-native cell-shell clipping is ${micronsClipping.enabled ? `enabled on ${micronsClipping.axis.toUpperCase()} at ${micronsClipping.positionNanometre} nanometres, retaining the ${micronsClipping.keepSide} side` : "disabled"}; the nucleus is never clipped and the shader creates no cap or geometry. The outer surface is a segmentation boundary, not a measured membrane. Cell and nucleus are the same source-linked physical cell; all relationships to spinal anatomy, NeuroMorpho and interneuron types are co-display only with zero joins and zero registrations. Mitochondria, synapses and other organelles are absent.`
         : cellDetailActive
-          ? `Focused source-local NeuroMorpho ${observedCellFormId} cell-detail view. The atlas anatomy, synthetic population nodes and schematic paths are hidden to prevent a visual relationship claim. The morphology remains checksum-gated, unregistered and independent from the selected evidence entity. Same-specimen internal structure is unavailable; measurement is forbidden and registration count is zero.`
+          ? `Focused source-local NeuroMorpho ${observedCellFormId} cell-detail view. The atlas anatomy, synthetic population nodes and schematic paths are hidden to prevent a visual relationship claim. The morphology remains checksum-gated, unregistered and independent from the selected evidence entity. ${nmo45718DatSwcCrosswalkVisible ? "Seven source-native 2D DAT Soma 1 contour traces are checksum-gated and project-mapped to this same record's standardized SWC frame for display-consistency inspection only; they are not a surface or volume." : ""} Same-specimen internal structure is unavailable; measurement is forbidden and registration count is zero.`
         : `Interactive 3D mouse spinal-cord research scene. Reference anatomy ${showScaffold || showGrayMatter ? "is shown as inferred geometry" : "is hidden"}; non-cell evidence nodes ${showEntities ? "are shown in a separate synthetic lane" : "are hidden"}; the checksum-gated source-local NeuroMorpho morphology ${showObservedCellForm ? "is requested in its independent lane" : "is hidden"}. No lane has an admitted identity or coordinate relationship to another. Measurement is forbidden and registration count is zero.`,
     );
+    fitSourceCamera(true);
   }, [
     selectedId,
     showEntities,
     showGrayMatter,
     showMicronsCellSurface,
     showMicronsNucleus,
+    showNmo45718DatSwcCrosswalk,
     showObservedCellForm,
     showScaffold,
     sliceZ,
     view,
     visibleIds,
     morphologyFidelityMode,
+    morphologyTargetActive,
     micronsClipping,
     observedCellFormId,
+    onNmo45718DatSwcCrosswalkRuntime,
     publishMicronsRuntime,
     publishMorphologyRuntime,
+    sourceSceneEpoch,
+    fitSourceCamera,
   ]);
 
   useEffect(() => {
     const context = contextRef.current;
     if (!context) return;
     const { camera, controls } = context;
+    const previousView = context.lastCameraView;
+    context.lastCameraView = view;
+    if (pendingRestoreRef.current) return;
+    if (view === "cell_detail") {
+      if (previousView === view) return;
+      context.defaultSourceCamera = true;
+      context.sourceCameraFitFingerprint = "";
+      fitSourceCamera();
+      return;
+    }
     const target = view === "transverse"
       ? new THREE.Vector3(COMBINED_SCENE_TARGET_X, 0, sliceZ)
-      : view === "cell_detail"
-        ? new THREE.Vector3(OBSERVED_CELL_FORM_LANE_X, 0, 0)
-        : new THREE.Vector3(COMBINED_SCENE_TARGET_X, 0, 0);
+      : new THREE.Vector3(COMBINED_SCENE_TARGET_X, 0, 0);
     const positions: Record<CameraView, [number, number, number]> = {
       home: [13, 8, 27],
       cell_detail: [OBSERVED_CELL_FORM_LANE_X, 2.2, 9.6],
@@ -1898,12 +2539,20 @@ export default function SceneCanvas({
     camera.up.set(view === "dorsal" ? 0 : 0, view === "dorsal" ? 0 : 1, view === "dorsal" ? 1 : 0);
     controls.target.copy(target);
     controls.update();
-  }, [sliceZ, view]);
+  }, [sliceZ, view, sourceSceneEpoch, fitSourceCamera]);
 
   const crossRegionReferenceViewActive = view === "internal_reference" || view === "microns_observed_reference";
+  const inspectedGeometry = observedCellStatus === "loaded" && morphologyTargetActive && showObservedCellForm && !crossRegionReferenceViewActive
+    && inspectionScene?.geometry.neuronId === observedCellFormId && inspectionScene.mode === morphologyFidelityMode && inspectionScene.epoch === sourceSceneEpoch
+    ? inspectionScene.geometry : null;
+  const inspectedLandmarks = inspectedGeometry ? extractObservedTopologyLandmarks(inspectedGeometry) : null;
 
   return (
-    <div className="three-canvas" ref={containerRef} data-testid="three-canvas" data-morphology-fidelity-mode={morphologyFidelityMode}>
+    <><div className="three-canvas" ref={containerRef} data-testid="three-canvas" data-morphology-fidelity-mode={morphologyFidelityMode}>
+      {view === "cell_detail" && (
+        <button className="main-source-camera-fit" type="button" disabled={!inspectedGeometry}
+          onClick={() => fitSourceCamera(true, true)}>Fit whole source</button>
+      )}
       {!crossRegionReferenceViewActive && view !== "cell_detail" && (
         <p className={`reference-load-status ${referenceStatus}`} role="status">
           {referenceStatus === "loading" && "Loading pinned Allen reference anatomy…"}
@@ -1916,11 +2565,15 @@ export default function SceneCanvas({
           {observedCellStatus === "loading" && `Verifying exact NeuroMorpho ${observedCellFormId} geometry bytes…`}
           {observedCellStatus === "loaded" && (morphologyFidelityMode === "radius_surface"
             ? `NeuroMorpho ${observedCellFormId} · checksum verified · OBS SWC input + radius-derived open surface · 0 REG`
+            : selectedFidelityRecord?.geometry.dimensionality === "2D"
+              ? `NeuroMorpho ${observedCellFormId} · checksum verified · planar 2D source trace · not a 3D reconstruction · 0 REG`
             : `NeuroMorpho ${observedCellFormId} · checksum verified · OBS SWC centerlines · 0 REG`)}
           {observedCellStatus === "unavailable" && (!morphologyTargetActive
             ? "No admitted main-scene morphology target · prior geometry cleared · no fallback substituted"
             : selectedFidelityRecord && !selectedFidelityRecord.modes.radiusSurface.available && morphologyFidelityMode === "radius_surface"
-            ? "Radius-derived surface unavailable · official source reports No Diameter · no substitute thickness rendered"
+            ? selectedFidelityRecord.geometry.dimensionality === "2D"
+              ? "Radius-derived surface unavailable · source-labelled 2D trace · no inferred thickness rendered"
+              : "Radius-derived surface unavailable · official source reports No Diameter · no substitute thickness rendered"
             : "Source-local cell form unavailable · no morphology fallback substituted")}
         </p>
       )}
@@ -1988,5 +2641,9 @@ export default function SceneCanvas({
         </>
       )}
     </div>
+    {inspectionHost && inspectedGeometry && inspectedLandmarks && createPortal(<div className="main-scene-neurite-inspector" role="region" aria-label={`Main-scene SWC branch inspection for NeuroMorpho ${observedCellFormId}`}>
+      <MorphologyNeuriteInspector key={`${observedCellFormId}:${morphologyFidelityMode}:${sourceSceneEpoch}`} controllerRef={inspectionRef}
+        selection={inspectionSelection} geometry={inspectedGeometry} branchpointCount={inspectedLandmarks.branchpoints.length} terminalCount={inspectedLandmarks.terminals.length} />
+    </div>, inspectionHost)}</>
   );
 }

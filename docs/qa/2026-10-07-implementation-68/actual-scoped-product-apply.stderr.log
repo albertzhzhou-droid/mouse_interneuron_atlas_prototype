@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i68-study-facts-download-20261008/apply-root-product.py", line 10, in <module>
+    full=json.loads(read(q/'actual-candidate-full-research.execution.json'));target=json.loads(read(q/'actual-candidate-targeted.execution.json'));assert full['actualExitCode']==target['actualExitCode']==0
+  File "/private/tmp/ohri-i68-study-facts-download-20261008/apply-root-product.py", line 7, in read
+    assert key(a)==key(b) and len(d)==a.st_size,str(p)
+AssertionError: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-68/actual-candidate-full-research.execution.json

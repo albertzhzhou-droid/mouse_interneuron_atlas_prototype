@@ -1,3 +1,5 @@
+import { canUseRadiusDerivedSurface } from "./morphology-render-mode.js";
+
 export const MORPHOLOGY_MICRODETAIL_AXIS_ORDER = [
   "centerline_topology",
   "neurite_type_annotations",
@@ -199,19 +201,21 @@ export function buildMorphologyMicrodetailCoverage(record) {
       officialRecordUrl,
       "Numeric placeholder radii cannot authorize calibre or a surface.",
     );
-  const radiusSurfaceAxis = diameterObservedConsistent ? {
+  const radiusSurfaceAxis = diameterObservedConsistent && canUseRadiusDerivedSurface(record.normalizedMetadata) ? {
     id: "radius_derived_surface",
     label: AXIS_LABELS.radius_derived_surface,
     status: "DERIVED",
     authority: "DERIVED_FROM_OBSERVED_RADIUS",
-    sourceField: "normalizedMetadata.{attributes,sourceDiameterAvailable}; morphometrics.computed.radiusDerived; radiusGate.algorithmId",
+    sourceField: "normalizedMetadata.{attributes,sourceDiameterAvailable,dimensionality}; morphometrics.computed.radiusDerived; radiusGate.algorithmId",
     sourceLocator: geometryLocator,
     basis: "Open six-sided tapered frusta can be generated from exact endpoint radii on request.",
     limitation: "Display derivative only; not an observed membrane or true soma surface.",
   } : unavailable(
     "radius_derived_surface",
-    diameterUnavailableConsistent ? "source_diameter_required_and_unavailable" : "diameter_authority_conflict_fail_closed",
-    "normalizedMetadata.{attributes,sourceDiameterAvailable}; morphometrics.computed.radiusDerived",
+    diameterObservedConsistent
+      ? record.normalizedMetadata.dimensionality === "2D" ? "source_labelled_2d_no_depth_or_extrusion" : "source_labelled_3d_required"
+      : diameterUnavailableConsistent ? "source_diameter_required_and_unavailable" : "diameter_authority_conflict_fail_closed",
+    "normalizedMetadata.{attributes,sourceDiameterAvailable,dimensionality}; morphometrics.computed.radiusDerived",
     officialRecordUrl,
     "The radius-derived renderer receives zero authorized primitives.",
   );

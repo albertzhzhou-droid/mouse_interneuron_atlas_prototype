@@ -1,7 +1,17 @@
 import { sites } from "@openai/sites-vite-plugin";
 import vinext from "vinext";
 import { defineConfig } from "vite";
-import hostingConfig from "./.openai/hosting.json" with { type: "json" };
+import { fileURLToPath } from "node:url";
+import { existsSync, readFileSync } from "node:fs";
+import { ohriSourceBytesPlugin } from "./tools/ohri-source-bytes-vite-plugin.mjs";
+import { ohriRscPreloadPlugin } from "./tools/ohri-rsc-preload-vite-plugin.mjs";
+const hostingConfigPath = fileURLToPath(
+  new URL("./.openai/hosting.json", import.meta.url),
+);
+const hasLocalHostingConfig = existsSync(hostingConfigPath);
+const hostingConfig: { d1?: string; r2?: string } = hasLocalHostingConfig
+  ? JSON.parse(readFileSync(hostingConfigPath, "utf8"))
+  : {};
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -48,12 +58,14 @@ export default defineConfig(async () => {
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
     plugins: [
+      ohriSourceBytesPlugin(fileURLToPath(new URL(".", import.meta.url))),
       vinext(),
-      sites(),
+      ...(hasLocalHostingConfig ? [sites()] : []),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         config: localBindingConfig,
       }),
+      ohriRscPreloadPlugin(),
     ],
   };
 });

@@ -1,0 +1,14 @@
+import type contract from "../data/dandi-spinalcordnet-trace-preview-0.1.json";
+import type { SourceIdentityHierarchy } from "./source-object-identity.js";
+export const DANDI_TRACE_CONTRACT: typeof contract;
+export interface DandiTracePayload { schemaVersion: string; assetId: string; seriesObjectId: string; dataPath: string; sourceChannelIndex: number; nativeElectrodeId: string; firstSample: number; sampleCount: number; dataType: string; sampleRateHz: number; startingTimeSeconds: number; nativeAmplitudeDeclaration: typeof contract.amplitude.nativeDeclaration; samples: number[]; }
+export function validateDandiTraceContract(value?: typeof contract): typeof contract;
+export function dandiTraceIdentity(value?: typeof contract): SourceIdentityHierarchy;
+export function validateDandiTracePayload(value: DandiTracePayload, context?: typeof contract): DandiTracePayload;
+export function verifyDandiTraceBytes(bytes: Uint8Array, context?: typeof contract): Promise<DandiTracePayload>;
+export function loadDandiTrace(options?: { signal?: AbortSignal; fetchImpl?: typeof fetch }): Promise<DandiTracePayload>;
+export function dandiTraceWindow(payload: DandiTracePayload, firstSample: number, cursorOffset?: number): { firstSample: number; sampleCount: number; firstTimeSeconds: number; lastTimeSeconds: number; cursor: { sourceSampleIndex: number; timeSeconds: number; storedValue: number }; samples: number[] };
+export interface DandiTraceReceipt { documentType: string; schemaVersion: string; release: string; generatedAt: string; contractId: string; sourceIdentity: SourceIdentityHierarchy; sourceContext: typeof contract.sourceContext; sourceCitation: string; sourceUrl: string; datasetDoi: string; sourceAsset: typeof contract.sourceAsset; datasetInventory: typeof contract.datasetInventory; datasetLicense: string[]; licenseScope: string; sourceReceipts: typeof contract.sourceReceipts; rangeReceipts: typeof contract.rangeReceipts; acquisition: typeof contract.acquisition; currentLoaderReceipt: { url: string; bytes: number; sha256: string; status: string; wholeNwbSha256Verified: false }; runtimeGeneration: number; channel: typeof contract.electrodes[number]; previewSelection: { firstSample: number; sampleCount: number; firstTimeSeconds: number; lastTimeSeconds: number; cursor: { sourceSampleIndex: number; timeSeconds: number; storedValue: number }; cursorOffset: number }; amplitude: typeof contract.amplitude; coordinateScope: typeof contract.coordinateScope; claims: typeof contract.claims; display: Record<string, string | number | boolean>; }
+export function buildDandiTraceReceipt(payload: DandiTracePayload, firstSample: number, cursorOffset?: number, generation?: number, generatedAt?: string): DandiTraceReceipt;
+export function restoreDandiTraceReceipt(receipt: unknown, payload: DandiTracePayload): { firstSample: number; cursorOffset: number };
+export function dandiTraceWindowCsv(payload: DandiTracePayload, firstSample: number): string;

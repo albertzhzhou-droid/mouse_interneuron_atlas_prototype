@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "0.1.0",
+  "upgradeId": "UPG-214",
+  "status": "source_native_two_dimensional_observation_only",
+  "source": {
+    "citation": "Maynard SA, Rostaing P, Schaefer N, et al. eLife 10:e74441 (2021).",
+    "doi": "10.7554/eLife.74441",
+    "articleUrl": "https://elifesciences.org/articles/74441",
+    "datasetDoi": "10.6084/m9.figshare.17816747.v1",
+    "figshareFileId": 32526932,
+    "fileName": "181130_EosRmov009_MTT_without_tracking_results.mat",
+    "sourcePath": "data/source-candidates/superclem-palm-localization-20260922/32526932-181130_EosRmov009_MTT_without_tracking_results.mat",
+    "fileBytes": 606421,
+    "fileSha256": "57999c43c3ce6d0406e3db35546ad6f3d8e153cefe04997ecb992b28df356272",
+    "license": "CC BY 4.0"
+  },
+  "acquisition": {
+    "imageId": "181130_EosRmov009",
+    "animalId": "AQ848",
+    "region": "dorsal spinal cord",
+    "ageSourceLabel": ">2 months WT",
+    "sex": "female",
+    "parentNeuronIdentity": "not_reported",
+    "matVariableName": "matrice_results",
+    "matRowsByColumns": [5, 18358],
+    "rowOrder": [
+      "frame number",
+      "X position",
+      "Y position",
+      "alpha (intensity under the curve)",
+      "sigma (radius of Gaussian profile)"
+    ],
+    "coordinateUnit": "not reported for this MAT file",
+    "coordinateOrigin": "not reported",
+    "axisOrientation": "not reported",
+    "driftCorrection": "not established for this MAT file",
+    "physicalScale": null,
+    "zCoordinate": null,
+    "recordMeaning": "localization detections; not unique receptor molecules or reconstructed structures"
+  },
+  "sourceCountTable": {
+    "clusterRows": 2,
+    "clusterDetectionCounts": [3654, 2519],
+    "clusterAreasInReported10nmPixels": [2328, 998],
+    "exhaustivelyPartitionsMatDetections": false,
+    "detectionToClusterCrosswalk": "not established"
+  },
+  "separation": {
+    "bp057EmAcquisition": "different animal/acquisition; no overlay",
+    "selectedAtlasCell": "no identity link",
+    "3dGeometry": "none",
+    "cellOrInterneuronIdentity": "not established"
+  },
+  "pointDataUrl": "/data/superclem_palm_native_points_0_1.json",
+  "pointPayloadSha256": "1fddc85f4cd6813be8b7f674d19d49dfcb9df81a0ff7401c9a76073dae1df9c8",
+  "displayPolicy": {
+    "coordinateValues": "show exact file-native XY values without physical units",
+    "plotYDirection": "increasing values upward is a plotting convention, not a source-reported image origin",
+    "drift": "preserve source points without estimated correction",
+    "colorMeaning": "one color for all detections; no class or molecule identity encoding"
+  }
+}

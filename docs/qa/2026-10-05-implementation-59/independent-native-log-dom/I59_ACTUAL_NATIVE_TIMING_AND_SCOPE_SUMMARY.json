@@ -1,0 +1,1194 @@
+{
+  "status": "PASS_DECLARED_NATIVE_PHASES_WITH_EXPLICIT_SUPPLEMENTAL_LIMITS",
+  "strictActualReplayExecuted": true,
+  "phases": [
+    {
+      "id": "10-outer-rna-close",
+      "kind": "abort_outer",
+      "ownedTransports": [
+        {
+          "requestId": 58,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:32:04.223Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:32:04.383Z",
+          "elapsedMs": 160,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:32:16.225000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 59,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:32:04.226Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:32:04.383Z",
+          "elapsedMs": 157,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:32:16.226000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "held",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:32:04.273Z",
+            "2026-10-05T06:32:04.332Z"
+          ]
+        },
+        {
+          "state": "rna_closed",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:32:04.483Z",
+            "2026-10-05T06:32:04.491Z"
+          ]
+        },
+        {
+          "state": "rna_closed",
+          "afterDeadline": true,
+          "windowUTC": [
+            "2026-10-05T06:33:05.887Z",
+            "2026-10-05T06:33:05.910Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11-profile-switch-old-delayed",
+      "kind": "switch_profile",
+      "ownedTransports": [
+        {
+          "requestId": 60,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:33:05.989Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:33:06.366Z",
+          "elapsedMs": 377,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:33:17.993000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "single_feature"
+        },
+        {
+          "requestId": 61,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:33:06.119Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:33:06.367Z",
+          "elapsedMs": 248,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:33:18.120000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 62,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:33:06.121Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:33:06.366Z",
+          "elapsedMs": 245,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:33:18.121000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [
+        65,
+        66
+      ],
+      "replacementSingleId": 64,
+      "captureStates": [
+        {
+          "state": "held",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:33:06.244Z",
+            "2026-10-05T06:33:06.251Z"
+          ]
+        },
+        {
+          "state": "profile_switched_closed",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:33:06.432Z",
+            "2026-10-05T06:33:06.439Z"
+          ]
+        },
+        {
+          "state": "replacement_pair_ready",
+          "afterDeadline": true,
+          "windowUTC": [
+            "2026-10-05T06:34:18.780Z",
+            "2026-10-05T06:34:18.823Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11-current-spaced-fresh-pass",
+      "kind": "pass_retry",
+      "ownedTransports": [
+        {
+          "requestId": 64,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:33:46.859Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:33:46.872Z",
+          "elapsedMs": 13,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 33805,
+          "handedToResponseBytes": 33805,
+          "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+          "browserConsumptionProvenByProxy": false,
+          "role": "single_feature"
+        },
+        {
+          "requestId": 65,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:33:47.050Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:33:47.052Z",
+          "elapsedMs": 2,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 33805,
+          "handedToResponseBytes": 33805,
+          "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 66,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:33:47.053Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:33:47.054Z",
+          "elapsedMs": 1,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:33:47.158Z",
+            "2026-10-05T06:33:47.213Z"
+          ]
+        },
+        {
+          "state": "single_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:33:47.158Z",
+            "2026-10-05T06:33:47.213Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:34:18.780Z",
+            "2026-10-05T06:34:18.823Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12-404-sibling",
+      "kind": "error_sibling",
+      "ownedTransports": [
+        {
+          "requestId": 67,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:34:47.641Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:34:47.661Z",
+          "elapsedMs": 20,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:34:59.644000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 68,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:34:47.645Z",
+          "rule": {
+            "mode": "404"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:34:47.654Z",
+          "elapsedMs": 9,
+          "statusCode": 404,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 10,
+          "handedToResponseBodySha256": "493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [
+        69,
+        70
+      ],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "pair_error",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:34:47.754Z",
+            "2026-10-05T06:34:47.810Z"
+          ]
+        },
+        {
+          "state": "replacement_pair_ready",
+          "afterDeadline": true,
+          "windowUTC": [
+            "2026-10-05T06:35:11.987Z",
+            "2026-10-05T06:35:12.101Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13-pass-retry-after404",
+      "kind": "pass_retry",
+      "ownedTransports": [
+        {
+          "requestId": 69,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:35:11.756Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:35:11.884Z",
+          "elapsedMs": 128,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 33805,
+          "handedToResponseBytes": 33805,
+          "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 70,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:35:11.769Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:35:11.885Z",
+          "elapsedMs": 116,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:35:11.987Z",
+            "2026-10-05T06:35:12.101Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14-wrong-valid000-under021",
+      "kind": "wrong_chunk",
+      "ownedTransports": [
+        {
+          "requestId": 71,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:35:40.278Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:35:40.295Z",
+          "elapsedMs": 17,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 33805,
+          "handedToResponseBytes": 33805,
+          "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 72,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:35:40.280Z",
+          "rule": {
+            "mode": "wrong_chunk",
+            "replacementPath": "/data/cano_chol_rna_counts_v1/counts-000.json.gzip"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:35:40.316Z",
+          "elapsedMs": 36,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 49394,
+          "handedToResponseBytes": 49394,
+          "handedToResponseBodySha256": "22fd9914548b4b3b1cc1b6b66cad82c4123a12776e9cbe839e84f1fd885339d0",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "pair_error",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:35:40.372Z",
+            "2026-10-05T06:35:40.453Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "15-pass-retry-after-wrong",
+      "kind": "pass_retry",
+      "ownedTransports": [
+        {
+          "requestId": 73,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:36:35.546Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:36:35.566Z",
+          "elapsedMs": 20,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 33805,
+          "handedToResponseBytes": 33805,
+          "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 74,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:36:35.550Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:36:35.566Z",
+          "elapsedMs": 16,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:36:35.669Z",
+            "2026-10-05T06:36:35.725Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16-old-tuple-replaced-on-first-feature",
+      "kind": "feature_replaced",
+      "ownedTransports": [
+        {
+          "requestId": 75,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:37:02.232Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:37:02.401Z",
+          "elapsedMs": 169,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:37:14.233000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 76,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:37:02.235Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:37:02.401Z",
+          "elapsedMs": 166,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:37:14.236000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": 77,
+      "captureStates": [
+        {
+          "state": "held",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:37:02.290Z",
+            "2026-10-05T06:37:02.353Z"
+          ]
+        },
+        {
+          "state": "replacement_tuple_held",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:37:02.402Z",
+            "2026-10-05T06:37:02.409Z"
+          ]
+        },
+        {
+          "state": "replacement_single_ready_pair_closed",
+          "afterDeadline": true,
+          "windowUTC": [
+            "2026-10-05T06:38:24.140Z",
+            "2026-10-05T06:38:24.306Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16-new-pair-close-single-pitx2-retained",
+      "kind": "abort_pair",
+      "ownedTransports": [
+        {
+          "requestId": 77,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:37:02.388Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:37:14.405Z",
+          "elapsedMs": 12017,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:37:14.388000+00:00",
+          "terminalBeforeDeadline": false,
+          "upstreamStarted": true,
+          "responseFinished": true,
+          "role": "single_feature"
+        },
+        {
+          "requestId": 78,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:37:02.392Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:37:02.456Z",
+          "elapsedMs": 64,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:37:14.392000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        },
+        {
+          "requestId": 79,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:37:02.395Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:37:02.456Z",
+          "elapsedMs": 61,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:37:14.395000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "held",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:37:02.402Z",
+            "2026-10-05T06:37:02.409Z"
+          ]
+        },
+        {
+          "state": "pair_closed",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:37:02.459Z",
+            "2026-10-05T06:37:02.467Z"
+          ]
+        },
+        {
+          "state": "pair_closed",
+          "afterDeadline": true,
+          "windowUTC": [
+            "2026-10-05T06:38:24.140Z",
+            "2026-10-05T06:38:24.306Z"
+          ]
+        },
+        {
+          "state": "single_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:38:24.140Z",
+            "2026-10-05T06:38:24.306Z"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "17-final-samechunk-xkr4-gm1992",
+      "kind": "single_chunk",
+      "ownedTransports": [
+        {
+          "requestId": 80,
+          "target": "/data/cano_chol_rna_counts_v1/counts-000.json.gzip",
+          "startUTC": "2026-10-05T06:47:14.082Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:47:14.089Z",
+          "elapsedMs": 7,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 49394,
+          "handedToResponseBytes": 49394,
+          "handedToResponseBodySha256": "22fd9914548b4b3b1cc1b6b66cad82c4123a12776e9cbe839e84f1fd885339d0",
+          "browserConsumptionProvenByProxy": false,
+          "role": "single_feature"
+        },
+        {
+          "requestId": 83,
+          "target": "/data/cano_chol_rna_counts_v1/counts-000.json.gzip",
+          "startUTC": "2026-10-05T06:47:22.783Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:47:22.786Z",
+          "elapsedMs": 3,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 49394,
+          "handedToResponseBytes": 49394,
+          "handedToResponseBodySha256": "22fd9914548b4b3b1cc1b6b66cad82c4123a12776e9cbe839e84f1fd885339d0",
+          "browserConsumptionProvenByProxy": false,
+          "role": "pair"
+        }
+      ],
+      "replacementPairIds": [],
+      "replacementSingleId": null,
+      "captureStates": [
+        {
+          "state": "single_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:14.202Z",
+            "2026-10-05T06:47:14.394Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:22.796Z",
+            "2026-10-05T06:47:22.861Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:38.729Z",
+            "2026-10-05T06:47:38.872Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:38.888Z",
+            "2026-10-05T06:47:39.077Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:39.109Z",
+            "2026-10-05T06:47:39.279Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:39.336Z",
+            "2026-10-05T06:47:39.483Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:50.805Z",
+            "2026-10-05T06:47:51.014Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:51.065Z",
+            "2026-10-05T06:47:51.218Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:47:51.237Z",
+            "2026-10-05T06:47:51.422Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:48:08.551Z",
+            "2026-10-05T06:48:08.663Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:48:59.825Z",
+            "2026-10-05T06:48:59.982Z"
+          ]
+        },
+        {
+          "state": "pair_ready",
+          "afterDeadline": false,
+          "windowUTC": [
+            "2026-10-05T06:49:00.040Z",
+            "2026-10-05T06:49:00.186Z"
+          ]
+        }
+      ]
+    }
+  ],
+  "uniqueMainAllocatedRequests": 23,
+  "uniqueInputPinsRecheckedAfterReplay": 54,
+  "inputPinDrift": false,
+  "ownershipAuthority": "isolated native operation inference from captured actions/DOM plus distinct proxy request IDs; no CDP/network initiator claim",
+  "supplemental": {
+    "initialSingleChat54": {
+      "requestId": 54,
+      "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+      "startUTC": "2026-10-05T06:28:40.079Z",
+      "rule": {
+        "mode": "pass"
+      },
+      "terminalEvent": "response_finished",
+      "terminalUTC": "2026-10-05T06:28:40.081Z",
+      "elapsedMs": 2,
+      "statusCode": 200,
+      "upstreamReceivedBytes": 33805,
+      "handedToResponseBytes": 33805,
+      "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+      "browserConsumptionProvenByProxy": false
+    },
+    "old09": {
+      "requests": [
+        {
+          "requestId": 56,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:29:16.440Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:29:16.612Z",
+          "elapsedMs": 172,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:29:28.440000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false
+        },
+        {
+          "requestId": 57,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:29:16.442Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:29:16.612Z",
+          "elapsedMs": 170,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:29:28.442000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false
+        }
+      ],
+      "nativeSequenceHeldThenCommittedCloseThenLaterClockObserved": true,
+      "exactEmbeddedCaptureAndActionBracketsEstablished": false,
+      "strictNativePrecisionWithheld": true
+    },
+    "intermediate17Tuple": {
+      "requests": [
+        {
+          "requestId": 81,
+          "target": "/data/cano_chol_rna_counts_v1/counts-000.json.gzip",
+          "startUTC": "2026-10-05T06:47:14.486Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:47:14.489Z",
+          "elapsedMs": 3,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 49394,
+          "handedToResponseBytes": 49394,
+          "handedToResponseBodySha256": "22fd9914548b4b3b1cc1b6b66cad82c4123a12776e9cbe839e84f1fd885339d0",
+          "browserConsumptionProvenByProxy": false
+        },
+        {
+          "requestId": 82,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:47:14.489Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:47:14.492Z",
+          "elapsedMs": 3,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false
+        }
+      ],
+      "belongsToFinalXkr4Gm1992Pair": false
+    },
+    "21mixedSwitch": {
+      "requests": [
+        {
+          "requestId": 85,
+          "target": "/data/cano_chol_rna_counts_v1/counts-000.json.gzip",
+          "startUTC": "2026-10-05T06:50:04.428Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "downstream_disconnect",
+          "terminalUTC": "2026-10-05T06:50:04.602Z",
+          "elapsedMs": 174,
+          "statusCode": null,
+          "upstreamReceivedBytes": 0,
+          "handedToResponseBytes": 0,
+          "handedToResponseBodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:50:16.428000+00:00",
+          "terminalBeforeDeadline": true,
+          "upstreamStarted": false,
+          "responseFinished": false
+        },
+        {
+          "requestId": 86,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:50:04.430Z",
+          "rule": {
+            "mode": "pass"
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:50:04.431Z",
+          "elapsedMs": 1,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false
+        }
+      ],
+      "allPairRequestsAborted": false,
+      "rootNativeCapturePins": [
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-after-delay-deadline-russ-no-cano.json",
+          "bytes": 1512,
+          "sha256": "7abe525ed4a5516cc7e7d925905e678226f2a982e1f6d6f676151550f54fd710",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:50:23.551Z",
+            "end": "2026-10-05T06:50:23.576Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-before-non-cano-pair-closed.json",
+          "bytes": 30219,
+          "sha256": "fe98716c6a53542fb90f1d8ff2db1dc81e269447b3dcd6843604444b7f3e47db",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:49:40.922Z",
+            "end": "2026-10-05T06:49:41.098Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-close-ready-pair-native-action-window.json",
+          "bytes": 261,
+          "sha256": "059ed8faa79327ac6a67ac8c7caf507277d942d474ed5db19b21046daf8abf44",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": [
+            "2026-10-05T06:49:40.840Z",
+            "2026-10-05T06:49:40.922Z"
+          ]
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-committed-russ-no-cano.json",
+          "bytes": 1512,
+          "sha256": "36dec8f736a63228a8501717d94eb59fe6d191b15cc4b889bec78d90c2d65e83",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:50:04.638Z",
+            "end": "2026-10-05T06:50:04.649Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-delay-single-chunk-config.json",
+          "bytes": 239,
+          "sha256": "e4df18778ab2e54fe713adab3dcd1d965b2e9c9e2dbb330a218c9c4cca0a1dd3",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-held-before-non-cano-switch.json",
+          "bytes": 30943,
+          "sha256": "4fee63116176423eeb34451c72096861629ac2f22f3b2f73b54432116a956c29",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:50:04.470Z",
+            "end": "2026-10-05T06:50:04.516Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-open-held-pair-native-action-window.json",
+          "bytes": 259,
+          "sha256": "e18f85ed7fc20a0c81c57dc7f9643cc2245de5d38f636639713d3ee3a7634a94",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": [
+            "2026-10-05T06:50:04.356Z",
+            "2026-10-05T06:50:04.431Z"
+          ]
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-21-switch-to-russ-native-action-window.json",
+          "bytes": 259,
+          "sha256": "2b2dc07b574d6869ad594491e582c8ab676b65e03cdb9e090435b8540ba1580c",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": [
+            "2026-10-05T06:50:04.517Z",
+            "2026-10-05T06:50:04.601Z"
+          ]
+        }
+      ]
+    },
+    "22lateRouteUnmount": {
+      "single": {
+        "requestId": 88,
+        "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+        "startUTC": "2026-10-05T06:50:51.455Z",
+        "rule": {
+          "mode": "pass"
+        },
+        "terminalEvent": "response_finished",
+        "terminalUTC": "2026-10-05T06:50:51.457Z",
+        "elapsedMs": 2,
+        "statusCode": 200,
+        "upstreamReceivedBytes": 33805,
+        "handedToResponseBytes": 33805,
+        "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+        "browserConsumptionProvenByProxy": false
+      },
+      "pair": [
+        {
+          "requestId": 89,
+          "target": "/data/cano_chol_rna_counts_v1/counts-093.json.gzip",
+          "startUTC": "2026-10-05T06:51:10.162Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:51:22.172Z",
+          "elapsedMs": 12010,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 33805,
+          "handedToResponseBytes": 33805,
+          "handedToResponseBodySha256": "2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:51:22.162000+00:00",
+          "terminalBeforeDeadline": false,
+          "upstreamStarted": true,
+          "responseFinished": true
+        },
+        {
+          "requestId": 90,
+          "target": "/data/cano_chol_rna_counts_v1/counts-021.json.gzip",
+          "startUTC": "2026-10-05T06:51:10.164Z",
+          "rule": {
+            "mode": "delay",
+            "delayMs": 12000
+          },
+          "terminalEvent": "response_finished",
+          "terminalUTC": "2026-10-05T06:51:22.173Z",
+          "elapsedMs": 12009,
+          "statusCode": 200,
+          "upstreamReceivedBytes": 41923,
+          "handedToResponseBytes": 41923,
+          "handedToResponseBodySha256": "1d9a8be599a0d520b27f8079dbe364745ab61011dd3b1f3bfb4cd95f63f7007e",
+          "browserConsumptionProvenByProxy": false,
+          "delayDeadlineUTC": "2026-10-05T06:51:22.164000+00:00",
+          "terminalBeforeDeadline": false,
+          "upstreamStarted": true,
+          "responseFinished": true
+        }
+      ],
+      "pendingRouteCancellationEstablished": false,
+      "routeUnmountOnly": true,
+      "rootNativeCapturePins": [
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-delay-pair-config.json",
+          "bytes": 360,
+          "sha256": "096d453cd7262151687abb56eb8a75f7c3afaa52c9292a0b96e9218ed3b22e3d",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-fresh-current-single-chat-pair-closed.json",
+          "bytes": 30125,
+          "sha256": "0675440c88850a63fd42750717a2fcb8920630b2d28eccd43c70e377c3411681",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:50:51.559Z",
+            "end": "2026-10-05T06:50:51.715Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-held-before-route-unmount.json",
+          "bytes": 30837,
+          "sha256": "1bf4a97a9f3d398ae05434fed8c054cf5f5413a78027ab5499e5ffa384e75a5a",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:51:10.199Z",
+            "end": "2026-10-05T06:51:10.331Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-navigate-to-positions-recovered-native-action-window.json",
+          "bytes": 276,
+          "sha256": "83a8fd38ec27ab8d91267db75d1c9741d3cb02af1e4f386a9d4a7a26e5607bbe",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": [
+            "2026-10-05T06:51:25.202Z",
+            "2026-10-05T06:51:25.338Z"
+          ]
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-open-pair-before-route-unmount-native-action-window.json",
+          "bytes": 275,
+          "sha256": "2a28a2a499db003b104d85b7d484999f1851693cd17b4dc72406537c9d7e25b8",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": [
+            "2026-10-05T06:51:10.086Z",
+            "2026-10-05T06:51:10.164Z"
+          ]
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-pass-before-current-profile-config.json",
+          "bytes": 114,
+          "sha256": "8c4d599354c40a8835eae0c27c06e64efe7be326d96082590a36c35f3f51e802",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-positions-route-old-pair-unmounted.json",
+          "bytes": 13779,
+          "sha256": "d3b1f3f631e90237d244849b5ea8e47acddce108756c5dae877cddf9851234f2",
+          "toolCaptureWindowUTC": {
+            "start": "2026-10-05T06:51:25.373Z",
+            "end": "2026-10-05T06:51:25.449Z"
+          },
+          "nativeActionWindowUTC": null
+        },
+        {
+          "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-22-switch-back-to-current-cano-native-action-window.json",
+          "bytes": 272,
+          "sha256": "b61fa0467b402c3e74baf41645192b14b46079cf9b57a7972bc575d4b9f3c0e5",
+          "toolCaptureWindowUTC": null,
+          "nativeActionWindowUTC": [
+            "2026-10-05T06:50:51.166Z",
+            "2026-10-05T06:50:51.252Z"
+          ]
+        }
+      ]
+    }
+  },
+  "sourceScientificPartitionsAndDownloadReplay": "separate source_next_i52 evidence; not repeated here",
+  "noBrowserRootStageSourceConfigServerWrites": true
+}

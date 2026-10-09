@@ -1,0 +1,13 @@
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-docs-apply-actual-node-summary.execution.json", "attempt": 1, "timeUtc": "2026-10-07T18:37:11.069178+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-docs-apply-actual-node-summary.execution.json: (16777234, 230387692, 1015, 1791398114422363803) -> (16777234, 230387692, 1015, 1791398114422363758) -> (16777234, 230387692, 1015, 1791398114422363758); read 1015"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-docs-apply-actual-node-summary.stdout.log", "attempt": 1, "timeUtc": "2026-10-07T18:37:12.851152+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-docs-apply-actual-node-summary.stdout.log: (16777234, 230387589, 6598, 1791398114416529720) -> (16777234, 230387589, 6598, 1791398114416529655) -> (16777234, 230387589, 6598, 1791398114416529655); read 6598"}}
+{"strictEpochAttemptRefused": {"path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-docs-apply.json", "attempt": 1, "timeUtc": "2026-10-07T18:37:13.798707+00:00", "failure": "Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-07-implementation-64/actual-final-docs-apply.json: (16777234, 230387690, 6598, 1791398114414762779) -> (16777234, 230387690, 6598, 1791398114414762735) -> (16777234, 230387690, 6598, 1791398114414762735); read 6598"}}
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i64-integration-guarded-tools-20261007/adopt_final_doc_manifest.py", line 25, in <module>
+    if __name__=='__main__':main()
+  File "/private/tmp/ohri-i64-integration-guarded-tools-20261007/adopt_final_doc_manifest.py", line 17, in main
+    rb=read(ROOT/name,p);assert read(STAGE/name,p)==rb
+  File "/private/tmp/ohri-i64-integration-guarded-tools-20261007/common.py", line 48, in read
+    p, b = exact_read(path, SEEN, REFUSALS, True)
+  File "/private/tmp/ohri-i64-readonly-intake-code-preparation-20261005/source_epoch_guard.py", line 58, in exact_read
+    chunk = os.pread(fd, min(1048576, a.st_size - position), position)
+TimeoutError: [Errno 60] Operation timed out

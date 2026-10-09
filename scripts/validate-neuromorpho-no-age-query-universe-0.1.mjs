@@ -142,7 +142,7 @@ function verifyParsedRecord(errors, record, body) {
   check(errors, same(geometry.computed.extentMicrometre, computed.extentMicrometre), `NeuroMorpho:${record.neuronId} extents drifted`);
   check(errors, geometry.computed.zeroLengthEdgeCount === computed.zeroLengthEdgeCount, `NeuroMorpho:${record.neuronId} zero-length count drifted`);
   check(errors, numberClose(geometry.computed.totalCableLengthMicrometre, computed.totalCableLengthMicrometre), `NeuroMorpho:${record.neuronId} cable length drifted`);
-  check(errors, geometry.radiusSurfaceAuthorized === record.normalizedMetadata.sourceDiameterAvailable, `NeuroMorpho:${record.neuronId} radius authority drifted`);
+  check(errors, geometry.radiusSurfaceAuthorized === (record.normalizedMetadata.dimensionality === "3D" && record.normalizedMetadata.sourceDiameterAvailable), `NeuroMorpho:${record.neuronId} radius authority drifted`);
   check(errors, geometry.extrusionApplied === false, `NeuroMorpho:${record.neuronId} gained 2D/3D extrusion`);
   check(errors, geometry.registration.registrationCount === 0, `NeuroMorpho:${record.neuronId} gained registration`);
 }

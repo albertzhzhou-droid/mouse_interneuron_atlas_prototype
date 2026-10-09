@@ -1,0 +1,106 @@
+- link "Skip to research content":
+  - /url: "#research-content"
+- complementary "Atlas navigation":
+  - link "Interneuron Atlas overview":
+    - /url: /
+    - text: Interneuron
+    - text: Atlas
+    - generic: Mouse spinal cord
+  - navigation "Atlas pages":
+    - region "Start":
+      - heading "Start" [level=2]
+      - list:
+        - link "Overview":
+          - /url: /
+          - generic: Overview
+        - link "3D workspace":
+          - /url: /workspace
+          - generic: 3D workspace
+    - region "Explore":
+      - heading "Explore" [level=2]
+      - list:
+        - link "Morphology":
+          - /url: /explore/morphology
+          - generic: Morphology
+        - link "Cell types":
+          - /url: /explore/cell-types
+          - generic: Cell types
+        - link "Anatomy":
+          - /url: /explore/anatomy
+          - generic: Anatomy
+        - link "Positions":
+          - /url: /explore/positions
+          - generic: Positions
+    - region "Research":
+      - heading "Research" [level=2]
+      - list:
+        - link "Research explorer":
+          - /url: /research/explorer
+          - generic: Research explorer
+        - link "Evidence map":
+          - /url: /research/overview
+          - generic: Evidence map
+        - link "SCI conditions":
+          - /url: /research/sci
+          - generic: SCI conditions
+        - link "Evidence coverage":
+          - /url: /research/coverage
+          - generic: Evidence coverage
+    - region "Sources":
+      - heading "Sources" [level=2]
+      - list:
+        - link "Source registry":
+          - /url: /sources
+          - generic: Source registry
+        - link "Source objects":
+          - /url: /objects
+          - generic: Source objects
+        - link "Source audits":
+          - /url: /source-audits
+          - generic: Source audits
+        - link "Svara catalogue":
+          - /url: /catalogues/svara
+          - generic: Svara catalogue
+        - link "Svara connectivity":
+          - /url: /connectivity/svara
+          - generic: Svara connectivity
+  - paragraph:
+    - text: Public-data research
+    - text: Source identities remain distinct.
+- navigation "Breadcrumb":
+  - list:
+    - link "Overview":
+      - /url: /
+    - text: /
+    - generic: Research
+    - text: /
+    - generic: Research explorer
+- main:
+  - paragraph: Research · Record search
+  - heading "Search source records" [level=1]
+  - paragraph: Find a label, marker, publication or accession, then continue to its dedicated research page.
+  - status
+  - region "Interneuron Research Explorer":
+    - paragraph: UPG-049 + UPG-180 + UPG-183 + UPG-185 + UPG-204 · CHECKSUM-VERIFIED · RECORD-DRIVEN · ZERO BIOLOGICAL JOINS
+    - heading "Interneuron Research Explorer" [level=3]
+    - paragraph: Search 641 cross-lane source records by label, marker, DOI, PMID or accession. The molecular lane includes 387 source profiles, including the exact Cano-Gomez P56 CHOL_IN registry, while retaining 149 morphology records (142 frozen census + 7 supplementary exact objects); the separate frozen NeuroMorpho universe contains 1,097 source objects. Selecting a molecular record replaces its source-record evidence model and clears prior cell geometry; a shared term never creates a same-cell or same-type relationship.
+    - generic "Research Explorer source-record denominator":
+      - strong: "641"
+      - generic: source records
+      - generic: 387 source profiles · 149 source-local morphologies · 73 anatomy labels · 17 SCI populations · 7 SCI entities · 8 source lanes · separate frozen morphology universe 1,097
+    - text: Search exact source records
+    - searchbox "Search exact source records"
+    - text: Evidence lane
+    - combobox "Evidence lane":
+      - option "All independent lanes" [selected]
+      - option "SCI evidence entity"
+      - option "Source profile"
+      - option "Morphology record"
+      - option "Anatomy label"
+      - option "SCI time-course population"
+      - option "Coverage source lane"
+    - button "Reset search"
+    - alert:
+      - strong: Research index unavailable · fail-closed
+      - paragraph: Research index checksum does not match the pinned manifest
+      - paragraph: No record was substituted and no cross-source relationship was inferred.

@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "russ-geo-original-object-schema-audit-0.1",
+  "researchUpgradeId": "UPG-132",
+  "evidenceUnit": "two_original_identifier_file_objects_and_their_CSV_rows",
+  "sourceAccession": "GSE158380",
+  "verifiedOriginalObjects": 2,
+  "verifiedCompressedBytesTotal": 225706,
+  "rawCellIdEntries": {
+    "value": 24927,
+    "unit": "opaque_native_identifier_entries",
+    "authority": "exact_original_single_column_cells_CSV",
+    "physicalOrNeuronalCellCount": null
+  },
+  "featureIdentifierEntries": {
+    "value": 31040,
+    "unit": "native_feature_identifier_entries",
+    "canonicalGeneIdentityCount": null
+  },
+  "objects": [
+    {
+      "fileName": "GSE158380_cells.csv.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE158nnn/GSE158380/suppl/GSE158380_cells.csv.gz",
+      "compressedBytes": 111999,
+      "compressedSha256": "2268141a1c5efbecd9dc85fc80bc7296c00f3dea04d2a6555be90c9c831729c6",
+      "sha256Authority": "locally_computed_exact_match_to_prior_inspected_queue_pin_not_a_publisher_checksum_manifest",
+      "decodedBytes": 548402,
+      "decodedSha256": "a004f3e09ce0703fb8f9197dc64ad8579c81bbcf8cdcc45cd1a6de2e8b8a4308",
+      "gzipCrcAndSizeValidated": true,
+      "nativeCsvHeader": [
+        "cells"
+      ],
+      "nativeHeaderLexical": "\"cells\"",
+      "columnCount": 1,
+      "rowsIncludingHeader": 24928,
+      "identifierEntryCount": 24927,
+      "distinctRawIdentifierEntryCount": 24927,
+      "duplicateOccurrenceRows": 0,
+      "emptyIdentifierRows": 0,
+      "identifierOrderSha256": "b9f7bda0168c6d419dfaac9172e88c5a80342312b471e1f1e8169e56707820a2",
+      "publicRawIdentifierListBundled": false,
+      "individualMetadataColumns": [],
+      "matrixRowOrColumnCorrespondenceVerified": false,
+      "opaqueNativePrefixCounts": [
+        {
+          "prefixRaw": "E2",
+          "identifierEntries": 7212
+        },
+        {
+          "prefixRaw": "E5",
+          "identifierEntries": 2509
+        },
+        {
+          "prefixRaw": "E6",
+          "identifierEntries": 7009
+        },
+        {
+          "prefixRaw": "E9",
+          "identifierEntries": 8197
+        }
+      ],
+      "prefixInterpretation": "literal text before underscore only; no animal, sample, study, age, region or cluster mapping established",
+      "physicalOrNeuronalCellCountVerified": false
+    },
+    {
+      "fileName": "GSE158380_features.updated-11-22-2022.csv.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE158nnn/GSE158380/suppl/GSE158380_features.updated-11-22-2022.csv.gz",
+      "compressedBytes": 113707,
+      "compressedSha256": "9ed13abf990d17d5b19a2c9f18db7ccd3e662d4325f184324f639882a8db917d",
+      "sha256Authority": "locally_computed_exact_match_to_prior_inspected_queue_pin_not_a_publisher_checksum_manifest",
+      "decodedBytes": 233840,
+      "decodedSha256": "27eac4944768b8457f7f1929cdb96d0f162db82b6398ff32a6d879a68599eb7f",
+      "gzipCrcAndSizeValidated": true,
+      "nativeCsvHeader": [
+        "features"
+      ],
+      "nativeHeaderLexical": "features",
+      "columnCount": 1,
+      "rowsIncludingHeader": 31041,
+      "identifierEntryCount": 31040,
+      "distinctRawIdentifierEntryCount": 31040,
+      "duplicateOccurrenceRows": 0,
+      "emptyIdentifierRows": 0,
+      "identifierOrderSha256": "21f7f30d4109dc7bdc872c7fd1147910fd96edd747e410bf9d7cb41fc2e5800e",
+      "publicRawIdentifierListBundled": false,
+      "individualMetadataColumns": [],
+      "matrixRowOrColumnCorrespondenceVerified": false,
+      "canonicalGeneIdentitiesOrAliasesResolved": false,
+      "expressionOrValidatedMarkerEvidence": false
+    }
+  ],
+  "harmonizedReference": {
+    "sourceInformationPath": "data/russ-spinal-information-adapter-0.1.json",
+    "namedDenominatorId": "russ_2021_final_harmonized_neuronal_dataset_19353",
+    "capturedSequencedCellsAndNuclei": 19353,
+    "sourcePopulations": 69,
+    "populationStudyCountFacts": 414,
+    "sourceStudies": [
+      {
+        "sourceLabelRaw": "Sathyamurthy",
+        "capturedSequencedCellsAndNuclei": 5473
+      },
+      {
+        "sourceLabelRaw": "Hayashi",
+        "capturedSequencedCellsAndNuclei": 421
+      },
+      {
+        "sourceLabelRaw": "Haring",
+        "capturedSequencedCellsAndNuclei": 1042
+      },
+      {
+        "sourceLabelRaw": "Rosenberg",
+        "capturedSequencedCellsAndNuclei": 11201
+      },
+      {
+        "sourceLabelRaw": "Zeisel",
+        "capturedSequencedCellsAndNuclei": 1130
+      },
+      {
+        "sourceLabelRaw": "Baek",
+        "capturedSequencedCellsAndNuclei": 86
+      }
+    ],
+    "scope": "published final six-study harmonized neuronal reference; not the GEO identifier list"
+  },
+  "independentNewSequencingContext": {
+    "articleReportedNucleiTotal": 28584,
+    "sourceReportedAdultMice": 4,
+    "sourceReportedAgeWeeks": 9,
+    "sourceRegionRaw": "lumbar spinal cords",
+    "sourceModalityRaw": "10x Chromium single nucleus sequencing",
+    "notIncludedInIntegrationOrModelTraining": true,
+    "GEOAccessionForStudyGeneratedData": "GSE158380",
+    "individualCSVIdentifierAgeSexAnimalMappingEstablished": false,
+    "locators": [
+      {
+        "sourcePath": "data/source-candidates/russ-spinal-information-20261004/PMC8481483.fullText.xml",
+        "locator": "PMC8481483.fullText.xml#body//p[@id=\"Par56\"]",
+        "normalizedTextSha256": "c22aff8a3df60bd541f8bab7d5ef17c2667eecb1c3d7bd434f43ee18235b89fb"
+      },
+      {
+        "sourcePath": "data/source-candidates/russ-spinal-information-20261004/PMC8481483.fullText.xml",
+        "locator": "PMC8481483.fullText.xml#body//p[@id=\"Par71\"]",
+        "normalizedTextSha256": "3b836d540f76524281f1ee74ab98402c246ae9b1af1ce581d57dbdd7c4397959"
+      },
+      {
+        "sourcePath": "data/source-candidates/russ-spinal-information-20261004/PMC8481483.fullText.xml",
+        "locator": "PMC8481483.fullText.xml#all-p-element-ordinal=131",
+        "normalizedTextSha256": "3c70549f1eda2b5cf0578269689db45048cf6f08cf950e186f61d113793d96de"
+      }
+    ]
+  },
+  "adultInSituContext": {
+    "supplementPanelCountedCellsSum": 2371,
+    "articleReportedCountedCells": 2894,
+    "unresolvedSourceDiscrepancyRetained": true,
+    "sourceLocation": "data/russ-spinal-information-adapter-0.1.json#adultValidationContext.countDiscrepancy",
+    "scope": "adult lumbar in situ tissue validation; separate from sequencing identifier files"
+  },
+  "correspondence": {
+    "csvIdentifiersToHarmonized69Populations": null,
+    "csvIdentifiersToSixStudies": null,
+    "csvIdentifiersToIndividualAnimals": null,
+    "csvIdentifiersToIndividualAgeOrSex": null,
+    "csvIdentifiersToArticle28584ProcessingStage": null,
+    "inferredRemovedIdentifiers": null,
+    "matrixRowColumnMapping": null,
+    "reason": "Both native CSVs contain only one identifier column; no assignment, QC, stage, cohort, animal or per-row age/sex crosswalk is present. Different reported scopes are retained without subtracting or identifying removed cells."
+  },
+  "rights": {
+    "GEOObjectRedistributionLicenceEstablished": false,
+    "articleLicenceTransferredToGEOObjects": false,
+    "rawObjectsPubliclyBundled": false,
+    "disposition": "private original inspection only; public access does not establish file redistribution terms"
+  },
+  "matrixScope": {
+    "fileName": "GSE158380_raw_count_matrix.mtx.gz",
+    "availabilityPreviouslyReported": true,
+    "depositEvidenceLevel": "prior_project_queue_report_not_externally_rechecked_in_I63",
+    "priorReportedBytes": 112984417,
+    "priorProjectMetadataLocation": "data/source-candidates/russ-geo-original-audit-20261005/UPG132_PRIOR_PROJECT_QUEUE_METADATA.json#reportedMatrix",
+    "externallyRecheckedInThisAudit": false,
+    "acquiredInThisAudit": false,
+    "matrixExistsConcludedFalse": false,
+    "scope": "Matrix availability/size is attributed only to the retained prior UPG-132 project queue row, not rechecked by I63. Excluded from this bounded two-object acquisition; no matrix dimension, expression or row/column proof."
+  },
+  "sourceClassificationExecuted": false,
+  "featurePresenceTreatedAsExpressionOrValidation": false,
+  "admissions": {
+    "newProfiles": 0,
+    "newPublicCellRosterRows": 0,
+    "newPhysicalCells": 0,
+    "newMolecularTypes": 0,
+    "newGeometryObjects": 0,
+    "newInternalObjects": 0,
+    "sameCellCrossSourceJoins": 0,
+    "registrations": 0,
+    "M2": 0,
+    "M4": 0
+  },
+  "derivation": {
+    "sourceInputs": [
+      {
+        "path": "data/source-candidates/russ-geo-original-audit-20261005/GSE158380_cells.csv.gz",
+        "bytes": 111999,
+        "sha256": "2268141a1c5efbecd9dc85fc80bc7296c00f3dea04d2a6555be90c9c831729c6"
+      },
+      {
+        "path": "data/source-candidates/russ-geo-original-audit-20261005/GSE158380_features.updated-11-22-2022.csv.gz",
+        "bytes": 113707,
+        "sha256": "9ed13abf990d17d5b19a2c9f18db7ccd3e662d4325f184324f639882a8db917d"
+      }
+    ],
+    "sourceContextInputs": [
+      {
+        "path": "data/source-candidates/russ-spinal-information-20261004/PMC8481483.fullText.xml",
+        "bytes": 266696,
+        "sha256": "879a57d107c89653e9583334fe809331335df20fffc62432250394d5baba0abf"
+      },
+      {
+        "path": "data/russ-spinal-information-adapter-0.1.json",
+        "bytes": 683337,
+        "sha256": "b951a78b1e3959ac8883a4ec78fd345d2eac98567a41aceba82dea0c6ea88c31"
+      }
+    ],
+    "originalAcquisitionReceipt": {
+      "path": "data/source-candidates/russ-geo-original-audit-20261005/GEO_ORIGINAL_ACQUISITION_RECEIPT.json",
+      "bytes": 2032,
+      "sha256": "9d7366bfa5585326a579c61595158a94fdf0a0e03e4af315baea632431fbe606"
+    },
+    "originalAcquisitionReceiptIsReplayedNetworkResponse": false,
+    "priorProjectMetadataInput": {
+      "path": "data/source-candidates/russ-geo-original-audit-20261005/UPG132_PRIOR_PROJECT_QUEUE_METADATA.json",
+      "bytes": 3262,
+      "sha256": "34d68718d39ab6d983ac358b0bed2625a7944958d4faf84ca0ef16456f4c697b"
+    },
+    "priorProjectMetadataIsOriginalGEOResponse": false,
+    "extractor": "tools/audit_russ_geo_original_objects_0_1.py",
+    "networkRequestsDuringReplay": 0,
+    "rawNativeIdentifiersRetainedOnlyInOriginalPrivateFiles": true,
+    "rawNativeIdentifiersSerializedInAudit": false
+  }
+}

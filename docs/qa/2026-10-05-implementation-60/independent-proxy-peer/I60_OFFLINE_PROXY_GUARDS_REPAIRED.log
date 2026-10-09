@@ -1,0 +1,35 @@
+✔ fixed endpoints and exact bounded config cannot select public hosts or arbitrary files (3.935292ms)
+✔ default forwarding preserves raw gzip payload, response headers and fixed request headers (3.116458ms)
+✔ ordinary POST/path/query forwarding does not change request or response bodies (2.626667ms)
+✔ exact12s delay contacts no upstream early then forwards originals unchanged (0.463417ms)
+✔ downstream close cancels delayed I/O and a late timer cannot revive it (0.332708ms)
+✔ incoming request abort cancels its pending timer independently (0.224375ms)
+✔ downstream cancellation destroys started upstream and later data produces no result (0.3255ms)
+✔ query/nearby URLs and HEAD never trigger exact GET API index rule (0.149917ms)
+✔ private configuration reloads per request and does not retroactively change an old request (0.420959ms)
+✔ invalid configuration and upstream errors withhold bytes through explicit local responses (0.488917ms)
+✔ logging redacts sensitive values without changing forwarded raw headers (0.330958ms)
+✔ private config/logger reject symlinks and keep their files restricted in temp (1.392125ms)
+✔ private helper/config/log paths are never forwarded as web filesystem routes (0.319042ms)
+✔ actual pinned fixture changes exactly one final whitespace byte and preserves all JSON values (251.855667ms)
+✔ decoded fault waits for complete verified original gzip before changing only Content-Length (80.345959ms)
+✔ decoded fault rejects stale, short, oversized or wrong original gzip without serving the fixture (3.019417ms)
+✔ decoded fault rejects non-gzip, partial, duplicate, ambiguous and wrong-length API headers (1.08225ms)
+✔ fault cancellation while buffering destroys upstream and later completion cannot send a fixture (0.439875ms)
+✔ fault fixture itself is rechecked and malformed/substituted fixture cannot masquerade as original decoded checksum failure (35.764458ms)
+✔ API control never affects canonical provider, gzip file, manifest, query, HEAD or old RNA paths (1.295875ms)
+✔ atomic private config uses mode0600 and rejects symlink, outside path and unknown fixture/host options (14.620375ms)
+✔ current production loader rejects decoded fault at SHA gate then independently verifies pass with fresh no-store requests (52.714167ms)
+✔ canonical provider fault keeps exact plain headers/length and has its own source pin and owner (88.152333ms)
+✔ canonical plain fault rejects unexpected gzip/header/length and a same-length altered original (26.50575ms)
+✔ canonical delay and disconnect are isolated from immediate API pass with independent IDs (3.818792ms)
+✔ canonical source loader default path fails decoded SHA and fresh pass restores its verified receipt independently of API (38.461ms)
+✔ fixture preparation writer rejects an escaped real parent and never truncates a symlink target (8.231583ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 707.411333

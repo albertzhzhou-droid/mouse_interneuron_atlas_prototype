@@ -1,0 +1,104 @@
+{
+  "contractId": "microns-source-native-clipping-0.1",
+  "schemaVersion": "0.1.0",
+  "releaseId": "ohri-microns-source-native-clipping-0.1.0",
+  "upgradeId": "UPG-166",
+  "modeId": "microns_source_native_cell_shell_clipping",
+  "authority": "DER_DISPLAY_OPERATION_ON_OBS_EM_SEGMENTATION",
+  "summary": "A source-native plane may discard fragments of the exact MICrONS cell-segmentation surface in the shader so that its source-linked nucleus can remain visible. The operation does not edit geometry, generate a cap, clip the nucleus, add an organelle, or create a spinal-cord relationship.",
+  "sourceReference": {
+    "contractId": "microns-observed-cell-nucleus-reference-0.1",
+    "releaseId": "ohri-microns-observed-cell-nucleus-reference-0.1.0",
+    "cellRootId": "648518346349516051",
+    "linkedNucleusId": "4309",
+    "nativeFrame": "MICrONS_Phase1_aligned_EM_native",
+    "nativeUnits": "nanometre",
+    "region": "visual cortex layer 2/3",
+    "regionRelationshipToProject": "cross_region_not_spinal_cord",
+    "assetManifest": {
+      "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+      "bytes": 94901,
+      "sha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1"
+    },
+    "displayTransformCanonicalJsonSha256": "90033e1c6bb90562d54432e9352ca6f49b7324f9746c5a9b6699066d56df3720"
+  },
+  "clippingOperation": {
+    "method": "threejs_material_local_clipping_plane",
+    "coordinateInput": "source_native_nanometre",
+    "renderTarget": "cell_segmentation_surface_only",
+    "axisOrder": ["x", "y", "z"],
+    "boundsNanometre": {
+      "x": { "minimum": 193453.140625, "maximum": 382259.5 },
+      "y": { "minimum": 142840.671875, "maximum": 241471.5 },
+      "z": { "minimum": 817.6767578125, "maximum": 86263.234375 }
+    },
+    "somaCentreNanometre": [246864, 164668, 80240],
+    "defaultState": {
+      "enabled": false,
+      "axis": "z",
+      "positionNanometre": 80240,
+      "keepSide": "positive"
+    },
+    "sourceToWorldPolicy": {
+      "formula": "viewer_axis_position=(source_axis_position-origin_axis_nanometre)*uniform_scale_viewer_unit_per_nanometre",
+      "planeSpace": "world",
+      "negativeSignedDistanceDiscarded": true,
+      "displayTransformOnly": true,
+      "sourceBufferMutation": false
+    }
+  },
+  "unchangedGeometryReceipts": {
+    "cell": {
+      "objectId": "648518346349516051",
+      "vertexCount": 372382,
+      "triangleCount": 704444,
+      "positions": {
+        "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.positions.f32le.bin",
+        "bytes": 4468584,
+        "sha256": "0eeb79d91607afff797be1a81a8c1378a66689373ef7df499a4c0a2aba243fda"
+      },
+      "triangles": {
+        "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/cell.triangles.u32le.bin",
+        "bytes": 8453328,
+        "sha256": "b72fee4500fdf85b389897a623cde3f30289fff6c52e04b4e135ede2ebad9c62"
+      }
+    },
+    "nucleus": {
+      "objectId": "4309",
+      "vertexCount": 12682,
+      "triangleCount": 23344,
+      "positions": {
+        "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.positions.f32le.bin",
+        "bytes": 152184,
+        "sha256": "9fbe8c12ce08586ca45f91dfee1043d3a904a873adf93ee0e57b4eee627a9efb"
+      },
+      "triangles": {
+        "path": "/data/microns_phase1_v185_4_root_648518346349516051_v1/browser/nucleus.triangles.u32le.bin",
+        "bytes": 280128,
+        "sha256": "e6561a5e266d34da2d7d9b7d21ad4819b74e97cebf81b8ed76e7f805f8baefb5"
+      }
+    }
+  },
+  "claimPolicy": {
+    "cellClippingPlaneCountWhenEnabled": 1,
+    "nucleusClippingPlaneCount": 0,
+    "capPrimitiveCount": 0,
+    "repairCount": 0,
+    "resamplingCount": 0,
+    "generatedGeometryCount": 0,
+    "geometryMutationCount": 0,
+    "joinCount": 0,
+    "registrationCount": 0,
+    "measurementClaim": false,
+    "membraneClaim": false,
+    "spinalInternalStructureClaim": false
+  },
+  "hardBoundaries": [
+    "The plane is a reversible shader display operation on the cell segmentation surface; the source position and triangle buffers remain unchanged.",
+    "The exposed opening is uncapped and is not a biological cross-section, membrane surface, repaired mesh, resampled mesh, or newly observed geometry.",
+    "The linked nucleus remains intact and unclipped; no other organelle, synapse, receptor, bouton, ER, Golgi, or mitochondrion is added.",
+    "The source object is from visual cortex layer 2/3 and remains unrelated to spinal molecular profiles, NeuroMorpho cells, spinal atlas space, and SCI entities.",
+    "The clipping position is a viewer control in the source-native nanometre frame and does not authorize biological measurement or post-hoc correction.",
+    "All cross-source joins and project-derived registrations remain zero."
+  ]
+}

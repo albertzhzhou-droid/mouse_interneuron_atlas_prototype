@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { validatePkd2l1SbfsemPublicAvailabilityAuditFile } from "./validate-pkd2l1-sbfsem-public-availability-audit-0.1.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = path.join(ROOT, "data/pkd2l1-sbfsem-video-reference-0.1.json");
@@ -67,12 +68,14 @@ export function validatePkd2l1SbfsemVideoReference(value) {
 }
 
 export async function validatePkd2l1SbfsemVideoReferenceFile() {
-  return validatePkd2l1SbfsemVideoReference(JSON.parse(await readFile(DATA_PATH, "utf8")));
+  const value = validatePkd2l1SbfsemVideoReference(JSON.parse(await readFile(DATA_PATH, "utf8")));
+  await validatePkd2l1SbfsemPublicAvailabilityAuditFile();
+  return value;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   validatePkd2l1SbfsemVideoReferenceFile()
-    .then((value) => console.log(`PKD2L1 SBF-SEM video reference validation passed: ${value.video.label}; ${value.objectReadiness.admittedGeometryPrimitiveCount} geometry primitives`))
+    .then((value) => console.log(`PKD2L1 SBF-SEM video reference and UPG-242 public-availability audit passed: ${value.video.label}; ${value.objectReadiness.admittedGeometryPrimitiveCount} geometry primitives`))
     .catch((error) => {
       console.error(error instanceof Error ? error.message : error);
       process.exitCode = 1;

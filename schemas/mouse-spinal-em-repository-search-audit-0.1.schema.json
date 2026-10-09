@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/mouse-spinal-em-repository-search-audit-0.1.schema.json",
+  "title": "Bounded Mouse Spinal EM Repository Search Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "researchUpgradeId", "auditDate", "scope", "repositoryQueries", "reviewedCandidateRecords", "admission", "sources"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "auditId": {"const": "mouse-spinal-em-repository-search-audit-0.1"},
+    "researchUpgradeId": {"const": "UPG-243"},
+    "auditDate": {"type": "string", "format": "date"},
+    "scope": {"type": "string", "minLength": 20},
+    "repositoryQueries": {
+      "type": "array", "minItems": 4,
+      "items": {"type": "object", "additionalProperties": false,
+        "required": ["repository", "query", "queryMode", "searchUrl", "resultCount", "searchedEntryCount", "resultScope"],
+        "properties": {
+          "repository": {"enum": ["EMPIAR", "EMDB", "BioImage Archive"]},
+          "query": {"type": "string", "minLength": 1},
+          "queryMode": {"type": "string", "minLength": 1},
+          "searchUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "resultCount": {"type": "integer", "minimum": 0},
+          "searchedEntryCount": {"type": ["integer", "null"], "minimum": 0},
+          "resultScope": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "reviewedCandidateRecords": {
+      "type": "array", "minItems": 2,
+      "items": {"type": "object", "additionalProperties": false,
+        "required": ["accession", "title", "recordUrl", "observedSpecies", "observedStudyLicense", "exclusion"],
+        "properties": {
+          "accession": {"type": "string", "pattern": "^S-"},
+          "title": {"type": "string", "minLength": 1},
+          "recordUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "observedSpecies": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "observedStudyLicense": {"type": "string", "minLength": 1},
+          "observedFileFormats": {"type": "array", "items": {"type": "string"}},
+          "observedSamples": {"type": "array", "items": {"type": "string"}},
+          "observedSegmentationScope": {"type": "string", "minLength": 1},
+          "exclusion": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "admission": {
+      "type": "object", "additionalProperties": false,
+      "required": ["eligibleMouseSpinalInterneuronObjectRoutes", "volumePayloadsDownloaded", "downloadedPayloadBytes", "voxelVolumesAdmitted", "segmentationObjectsAdmitted", "stableInterneuronObjectCrosswalksAdmitted", "sameCellJoins", "atlasRegistrations", "biologicalMeasurements", "interpretation"],
+      "properties": {
+        "eligibleMouseSpinalInterneuronObjectRoutes": {"const": 0},
+        "volumePayloadsDownloaded": {"const": 0}, "downloadedPayloadBytes": {"const": 0},
+        "voxelVolumesAdmitted": {"const": 0}, "segmentationObjectsAdmitted": {"const": 0},
+        "stableInterneuronObjectCrosswalksAdmitted": {"const": 0}, "sameCellJoins": {"const": 0},
+        "atlasRegistrations": {"const": 0}, "biologicalMeasurements": {"const": 0},
+        "interpretation": {"type": "string", "minLength": 30}
+      }
+    },
+    "sources": {"type": "array", "minItems": 5, "items": {"type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": {"label": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}}}}
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "releaseId": "ohri-russ-reconciliation-dossier-0.1.0",
+  "schemaVersion": "0.1.0",
+  "dossierDate": "2026-08-18",
+  "sourceId": "PDS-RUSS-2021",
+  "authority": "PROVENANCE_RECONCILIATION_ONLY",
+  "purpose": "Make the original Russ 2021 article, its two published author corrections, the pinned Supplementary Table 1 receipt, and the adult-lumbar validation context reviewable together before any narrower label-transfer proposal.",
+  "sourceArticle": {
+    "doi": "10.1038/s41467-021-25125-1",
+    "url": "https://www.nature.com/articles/s41467-021-25125-1",
+    "published": "2021-09-29",
+    "currentArticleNotice": "The publisher page identifies author corrections published on 2022-02-18 and 2022-10-19.",
+    "scope": "Postnatal harmonized transcriptomic reference. The adult-lumbar in situ hybridization validation context is a separate condition and not an individual-cell coordinate space."
+  },
+  "pinnedMarkerTable": {
+    "title": "Supplementary Table 1: harmonized cell type markers",
+    "sourceUrl": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-021-25125-1/MediaObjects/41467_2021_25125_MOESM5_ESM.xlsx",
+    "bytes": 1475885,
+    "sha256": "a45578c893998fae42acf781c4700d162249497476b0b81149302f49929fd2e0",
+    "sourceFileBundled": false,
+    "derivedMetadataBundled": true,
+    "tableContentChangeStatedByCorrections": false,
+    "boundary": "No correction record reviewed here states that Supplementary Table 1 marker values or labels were changed. That absence is not proof of a one-to-one biological identity."
+  },
+  "corrections": [
+    {
+      "id": "COR-RUSS-2022-02",
+      "doi": "10.1038/s41467-022-28698-7",
+      "url": "https://www.nature.com/articles/s41467-022-28698-7",
+      "published": "2022-02-18",
+      "scope": "HTML supplementary-table links and incorrect cross-references to Supplementary Tables 2, 5, 7, and 8.",
+      "directEffectOnPinnedMarkerTable": "No Table 1 content or label change is stated by this correction.",
+      "crosswalkDecision": "Keep the marker-table receipt; record that the correction exists and do not treat a corrected table reference as a new molecular mapping."
+    },
+    {
+      "id": "COR-RUSS-2022-10",
+      "doi": "10.1038/s41467-022-33998-z",
+      "url": "https://www.nature.com/articles/s41467-022-33998-z",
+      "published": "2022-10-19",
+      "scope": "Figure 3A label correction: duplicated Excit-21 replaced by Excit-31 and omitted Excit-32 restored on the right side of the panel.",
+      "directEffectOnPinnedMarkerTable": "No Table 1 content or label change is stated by this correction.",
+      "crosswalkDecision": "Treat Figure 3A as a corrected visual annotation; do not infer an exact prototype identity from its labels."
+    }
+  ],
+  "reconciliationItems": [
+    {
+      "id": "REC-RUSS-001",
+      "topic": "Marker-table provenance",
+      "status": "receipt_pinned_content_not_rebundled",
+      "evidence": "A source URL, byte count, and SHA-256 lock the reviewed Supplementary Table 1 object; the two published corrections state no Table 1 content or label change.",
+      "curatorQuestion": "Does the package retain the exact receipt and clearly distinguish a correction to table references from a change to Table 1 contents?",
+      "notEstablished": "The receipt does not establish a complete marker rule, exact biological identity, age-specific presence, or coordinate."
+    },
+    {
+      "id": "REC-RUSS-002",
+      "topic": "Adult-lumbar validation context",
+      "status": "context_separated",
+      "evidence": "The article describes a postnatal harmonized reference and adult-lumbar in situ validation; the article cautions that some adult-lumbar expression patterns differ from the harmonized sequencing data.",
+      "curatorQuestion": "Are postnatal transcriptomic labels and adult-lumbar validation kept as separate evidence contexts in every display and export?",
+      "notEstablished": "Neither context supplies an individual-cell atlas coordinate, a same-cell multiomic link, or a transfer to a project entity."
+    },
+    {
+      "id": "REC-RUSS-003",
+      "topic": "Ventral-label figure correction",
+      "status": "corrected_visual_annotation",
+      "evidence": "The 2022-10 author correction identifies the Figure 3A Excit-21/Excit-31/Excit-32 label issue and says the PDF and HTML were corrected.",
+      "curatorQuestion": "Does the explorer retain this correction without claiming that the figure establishes a project-specific V3, V2a, or SC^Vsx2::Hoxa10 identity?",
+      "notEstablished": "A corrected figure label is not a cell coordinate, adult segment assignment, circuit edge, or registration."
+    }
+  ],
+  "releaseDecision": {
+    "currentStatus": "reconciled_provenance_no_narrow_transfer",
+    "permitted": "Display the source receipts, correction records, and explicit type-level uncertainty alongside the non-exact crosswalk.",
+    "forbidden": "Do not change a prototype mapping to exact, add an atlas coordinate, infer a connection, merge adult and postnatal contexts, or create REG.",
+    "nextCuratorGate": "A curator must record a source-version, evidence-context, target-vocabulary, and explicit rejection condition before any future narrower molecular transfer is proposed."
+  }
+}

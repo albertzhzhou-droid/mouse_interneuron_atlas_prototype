@@ -1,0 +1,531 @@
+{
+  "contractId": "pv-independent-morphology-routes-0.1",
+  "releaseId": "ohri-pv-independent-morphology-routes-0.1.0",
+  "schemaVersion": "0.1.0",
+  "implementationDate": "2026-10-04",
+  "repositoryRelease": "8.6.124",
+  "repositorySnapshotDate": "2026-09-01",
+  "universeReceipt": {
+    "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/universe-index.json",
+    "bytes": 8025022,
+    "sha256": "1ba52eb81aa141349f9e9a6916f8acf5a089ba079e9de34507e50f32bd6cfd68"
+  },
+  "rights": {
+    "license": "CC BY 4.0 subject to NeuroMorpho.Org Terms of Use",
+    "requiredCitations": [
+      "Each original paper associated with a displayed reconstruction",
+      "NeuroMorpho.Org, RRID:SCR_002145",
+      "Tecuatl, Ljungquist & Ascoli 2024, doi:10.1096/fba.2024-00048"
+    ]
+  },
+  "assetManifest": {
+    "path": "/data/pv_independent_morphology_routes_v1/asset-manifest.json",
+    "bytes": 589,
+    "sha256": "2f9ebdb9e23ccf8709700ef6b0c38ccae11e83d79bf2845a22adf4048ccad223"
+  },
+  "runtimeMergePolicy": {
+    "supplementaryNeuronIds": [
+      170034,
+      118824
+    ],
+    "overlappingFrozenNeuronIds": [],
+    "frozenCensusRecordCount": 142,
+    "censusExpansionCount": 0,
+    "originalSwcCopyCount": 0,
+    "geometryDerivativeCount": 2,
+    "selectableMainSceneCount": 181
+  },
+  "routes": [
+    {
+      "routeId": "mouse.sc.pv.independent.nmo_170034",
+      "title": "PV-positive excitatory · Pax2-negative · centerlines only",
+      "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_INDEPENDENT_PV_SUPPLEMENT",
+      "censusMembership": false,
+      "frozenLensMembership": false,
+      "sourceRecord": {
+        "neuronId": 170034,
+        "assetId": "NeuroMorpho:170034",
+        "name": "23-04-18C-10-cell-5",
+        "neuronName": "23-04-18C-10-cell-5",
+        "repository": "NeuroMorpho.Org",
+        "repositoryRelease": "8.6.124",
+        "archive": "Hughes",
+        "species": "mouse",
+        "lifeStage": "young adult",
+        "sex": "Male/Female",
+        "strain": "Pvcre",
+        "regionLabels": [
+          "spinal cord",
+          "lumbar",
+          "dorsal horn",
+          "lamina II-III"
+        ],
+        "cellTypeLabels": [
+          "interneuron",
+          "Parvalbumin (PV)-positive",
+          "Excitatory",
+          "Pax2-negative"
+        ],
+        "domain": "Dendrites, Soma, No Axon",
+        "physicalIntegrity": "Dendrites Moderate",
+        "sourceAttributes": "No Diameter, 3D, Angles",
+        "condition": [
+          "Control"
+        ],
+        "protocol": "in vitro",
+        "stain": "immunostaining",
+        "reconstructionSoftware": "Neurolucida",
+        "slicingDirection": "Sagittal",
+        "slicingThicknessMicrometre": 60,
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "numericAge": {
+          "value": null,
+          "missingReason": "numeric_age_not_reported_by_source"
+        },
+        "parentAnimalId": null,
+        "parentSpecimenId": null,
+        "repositoryReferenceFieldsRaw": {
+          "reference_doi": [
+            "10.1097/j.pain.0000000000002422"
+          ],
+          "reference_pmid": [
+            "34326298"
+          ]
+        },
+        "sourcePaperMappingStatus": "repository_record_citation_only_no_individual_paper_experiment_crosswalk",
+        "sourceNote": "To visualise the somatodendritic arbors of individual PVexpressing spinal interneurons, we performed co-injections of 2 adeno-associated viruses (AAVs) carrying Cre-dependent Brainbow expression cassettes in PVCre mice."
+      },
+      "sourceObjects": {
+        "api": {
+          "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+          "bytes": 769605,
+          "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+          "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+          "pointer": "/_embedded/neuronResources/115",
+          "objectSha256": "54f4abe9fca38399610bf7243c4a5e2525a576c523c535f837d00318ed3021b2",
+          "objectEncoding": "JSON.stringify of exact API object"
+        },
+        "swc": {
+          "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/swc/nmo-170034.swc",
+          "bytes": 56859,
+          "sha256": "0fee884130c82d3c140b471d62c09274e83cb9a4ce05254c3639e174e9aaf186",
+          "url": "https://neuromorpho.org/dableFiles/hughes/CNG%20version/23-04-18C-10-cell-5.CNG.swc"
+        },
+        "geometry": {
+          "path": "/data/pv_independent_morphology_routes_v1/nmo-170034.json",
+          "bytes": 400187,
+          "sha256": "27bb9f87ceb9a55ad7a538ba871fc2a1a81d089db5bde7476e45eccc61937adc",
+          "rawSwcSha256": "0fee884130c82d3c140b471d62c09274e83cb9a4ce05254c3639e174e9aaf186",
+          "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "dimensionality": "3D",
+          "sourceDiameterAvailable": false,
+          "nodeCount": 1681,
+          "segmentCount": 1680
+        },
+        "originalMorphologyFile": {
+          "value": null,
+          "missingReason": "temporarily_unavailable_from_repository"
+        },
+        "standardizationLog": {
+          "value": null,
+          "missingReason": "temporarily_unavailable_from_repository"
+        }
+      },
+      "observedCellFormRecord": {
+        "neuronId": 170034,
+        "assetId": "NeuroMorpho:170034",
+        "phenotype": "Parvalbumin (PV)-positive · Excitatory · Pax2-negative",
+        "transmitter": "excitatory",
+        "domain": "Dendrites, Soma, No Axon",
+        "physicalIntegrity": "Dendrites Moderate",
+        "sourcePaperDoi": "10.1097/j.pain.0000000000002422",
+        "segmentCount": 1680,
+        "geometryStatus": "OBS",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "registrationStatus": "unregistered"
+      },
+      "fidelityRecord": {
+        "neuronId": 170034,
+        "assetId": "NeuroMorpho:170034",
+        "geometry": {
+          "path": "/data/pv_independent_morphology_routes_v1/nmo-170034.json",
+          "bytes": 400187,
+          "sha256": "27bb9f87ceb9a55ad7a538ba871fc2a1a81d089db5bde7476e45eccc61937adc",
+          "rawSwcSha256": "0fee884130c82d3c140b471d62c09274e83cb9a4ce05254c3639e174e9aaf186",
+          "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "dimensionality": "3D",
+          "sourceDiameterAvailable": false,
+          "nodeCount": 1681,
+          "segmentCount": 1680
+        },
+        "axon": {
+          "sourceType2NodeCount": 0,
+          "sourceDomain": "Dendrites, Soma, No Axon",
+          "completeAxon": false
+        },
+        "radiusEvidence": {
+          "status": "UNAVAILABLE",
+          "minimumMicrometre": null,
+          "maximumMicrometre": null,
+          "meanMicrometre": null,
+          "missingReason": "official_attributes_report_no_diameter"
+        },
+        "modes": {
+          "observedSwc": {
+            "available": true,
+            "authority": "OBS_STANDARDIZED_SOURCE_LOCAL"
+          },
+          "radiusSurface": {
+            "available": false,
+            "authority": "UNAVAILABLE",
+            "missingReason": "official_attributes_report_no_diameter"
+          },
+          "internalStructure": {
+            "available": false,
+            "authority": "UNAVAILABLE",
+            "missingEvidence": [
+              "membrane_segmentation",
+              "nucleus",
+              "organelles",
+              "synaptic_boutons",
+              "receptor_distribution",
+              "ultrastructure"
+            ]
+          }
+        }
+      },
+      "topology": {
+        "nodeCount": 1681,
+        "segmentCount": 1680,
+        "nodeTypeCounts": {
+          "1": 12,
+          "3": 1669
+        },
+        "boundsMicrometre": {
+          "min": [
+            -20.48,
+            -65.38,
+            -6
+          ],
+          "max": [
+            23.69,
+            62.61,
+            15
+          ]
+        },
+        "sourceCoordinatesPreserved": true,
+        "inferredAxonCount": 0
+      },
+      "renderingContract": {
+        "coordinateUse": "unregistered_source_local_visualization_only",
+        "radiusSurfaceAllowed": false,
+        "observedMembrane": false,
+        "internalPrimitiveCount": 0,
+        "registrationCount": 0,
+        "sameCellPhysiologyJoinCount": 0,
+        "groupStatisticsJoinCount": 0,
+        "circuitEdgeCount": 0
+      },
+      "identityBoundary": {
+        "crossSourceIdentity": "not_established",
+        "studyCellMapping": "repository paper citation only; exact experimental cell crosswalk not established",
+        "sameAnimalPairEstablished": false,
+        "independentAnimalCount": null,
+        "independentSpecimenCount": null,
+        "biologicalTypeInference": "source-reported labels only"
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/170034",
+        "standardizedSwc": "https://neuromorpho.org/dableFiles/hughes/CNG%20version/23-04-18C-10-cell-5.CNG.swc",
+        "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000002422",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "One independent repository reconstruction in a source-local standardized frame; no atlas registration, anatomical-axis assignment or cross-study pairing.",
+        "The exact PV, transmitter and Pax2/tonic-firing labels are repository reports. The tonic-firing label supplies no trace, electrophysiology values or same-cell paper experiment.",
+        "Both source records contain soma and dendrites with no reconstructed axon. Moderate and incomplete dendrite integrity remain separate; no axonal wiring or whole-cell completeness is inferred.",
+        "No Diameter means centerlines only despite positive SWC radius syntax. Diameter permits a deterministic derived display after byte verification; it is not an observed membrane or biological volume.",
+        "These objects come from different studies and strains. No paired experiment, prevalence, allodynia effect, circuit edge, same-cell internal structure or group statistic transfers from either paper.",
+        "Young adult is retained without inventing numeric age. Male/Female does not resolve an individual sex, and no animal, specimen, section or physical-cell parent ID is available."
+      ]
+    },
+    {
+      "routeId": "mouse.sc.pv.independent.nmo_118824",
+      "title": "PV-positive inhibitory · tonic-firing label · independent source record",
+      "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "sourceAuthority": "NEUROMORPHO_RELEASE_8_6_124_INDEPENDENT_PV_SUPPLEMENT",
+      "censusMembership": false,
+      "frozenLensMembership": false,
+      "sourceRecord": {
+        "neuronId": 118824,
+        "assetId": "NeuroMorpho:118824",
+        "name": "1857-10-cell-1-analysis",
+        "neuronName": "1857-10-cell-1-analysis",
+        "repository": "NeuroMorpho.Org",
+        "repositoryRelease": "8.6.124",
+        "archive": "Hughes",
+        "species": "mouse",
+        "lifeStage": "young adult",
+        "sex": "Male/Female",
+        "strain": "TrkB-CreER",
+        "regionLabels": [
+          "spinal cord",
+          "lumbar",
+          "dorsal horn",
+          "lamina II-III"
+        ],
+        "cellTypeLabels": [
+          "interneuron",
+          "Parvalbumin (PV)-positive",
+          "Inhibitory",
+          "tonic firing"
+        ],
+        "domain": "Dendrites, Soma, No Axon",
+        "physicalIntegrity": "Dendrites Incomplete",
+        "sourceAttributes": "Diameter, 3D, Angles",
+        "condition": [
+          "Control"
+        ],
+        "protocol": "in vitro",
+        "stain": "immunostaining",
+        "reconstructionSoftware": "Neurolucida",
+        "slicingDirection": "Sagittal",
+        "slicingThicknessMicrometre": 60,
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "numericAge": {
+          "value": null,
+          "missingReason": "numeric_age_not_reported_by_source"
+        },
+        "parentAnimalId": null,
+        "parentSpecimenId": null,
+        "repositoryReferenceFieldsRaw": {
+          "reference_doi": [
+            "10.1016/j.celrep.2019.06.040"
+          ],
+          "reference_pmid": [
+            "31291586"
+          ]
+        },
+        "sourcePaperMappingStatus": "repository_record_citation_only_no_individual_paper_experiment_crosswalk",
+        "sourceNote": ""
+      },
+      "sourceObjects": {
+        "api": {
+          "path": "public/data/neuromorpho_release_8_6_124_no_age_universe_v1/api/page-0.json",
+          "bytes": 769605,
+          "sha256": "eff7d79bb42041df9af55d9bdc745d969df50a387bbe0a9196da00909da14f91",
+          "queryUrl": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&size=500&sort=neuron_id,asc&page=0",
+          "pointer": "/_embedded/neuronResources/92",
+          "objectSha256": "a69bab99c6026fd21cece393f901adaafca76645d656255fd552f697489965ad",
+          "objectEncoding": "JSON.stringify of exact API object"
+        },
+        "swc": {
+          "path": "/data/neuromorpho_release_8_6_124_no_age_universe_v1/swc/nmo-118824.swc",
+          "bytes": 19206,
+          "sha256": "efb19783b7f472b7b2aded955eecd00731294c500c8b2d995be6a1b7fd89dc6d",
+          "url": "https://neuromorpho.org/dableFiles/hughes/CNG%20version/1857-10-cell-1-analysis.CNG.swc"
+        },
+        "geometry": {
+          "path": "/data/pv_independent_morphology_routes_v1/nmo-118824.json",
+          "bytes": 132502,
+          "sha256": "a498553500c7b03dd979f8e7eaeb3be6408a8f9459d8e56a905fd04f7fa3cb36",
+          "rawSwcSha256": "efb19783b7f472b7b2aded955eecd00731294c500c8b2d995be6a1b7fd89dc6d",
+          "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "dimensionality": "3D",
+          "sourceDiameterAvailable": true,
+          "nodeCount": 540,
+          "segmentCount": 539
+        },
+        "originalMorphologyFile": {
+          "value": null,
+          "missingReason": "temporarily_unavailable_from_repository"
+        },
+        "standardizationLog": {
+          "value": null,
+          "missingReason": "temporarily_unavailable_from_repository"
+        }
+      },
+      "observedCellFormRecord": {
+        "neuronId": 118824,
+        "assetId": "NeuroMorpho:118824",
+        "phenotype": "Parvalbumin (PV)-positive · Inhibitory · tonic firing",
+        "transmitter": "inhibitory",
+        "domain": "Dendrites, Soma, No Axon",
+        "physicalIntegrity": "Dendrites Incomplete",
+        "sourcePaperDoi": "10.1016/j.celrep.2019.06.040",
+        "segmentCount": 539,
+        "geometryStatus": "OBS",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "registrationStatus": "unregistered"
+      },
+      "fidelityRecord": {
+        "neuronId": 118824,
+        "assetId": "NeuroMorpho:118824",
+        "geometry": {
+          "path": "/data/pv_independent_morphology_routes_v1/nmo-118824.json",
+          "bytes": 132502,
+          "sha256": "a498553500c7b03dd979f8e7eaeb3be6408a8f9459d8e56a905fd04f7fa3cb36",
+          "rawSwcSha256": "efb19783b7f472b7b2aded955eecd00731294c500c8b2d995be6a1b7fd89dc6d",
+          "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+          "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+          "dimensionality": "3D",
+          "sourceDiameterAvailable": true,
+          "nodeCount": 540,
+          "segmentCount": 539
+        },
+        "axon": {
+          "sourceType2NodeCount": 0,
+          "sourceDomain": "Dendrites, Soma, No Axon",
+          "completeAxon": false
+        },
+        "radiusEvidence": {
+          "status": "OBSERVED_SOURCE_RADIUS",
+          "minimumMicrometre": 0.13,
+          "maximumMicrometre": 6.043,
+          "meanMicrometre": 0.4207462962962966,
+          "missingReason": null
+        },
+        "modes": {
+          "observedSwc": {
+            "available": true,
+            "authority": "OBS_STANDARDIZED_SOURCE_LOCAL"
+          },
+          "radiusSurface": {
+            "available": true,
+            "authority": "DERIVED_FROM_OBSERVED_RADIUS",
+            "missingReason": null
+          },
+          "internalStructure": {
+            "available": false,
+            "authority": "UNAVAILABLE",
+            "missingEvidence": [
+              "membrane_segmentation",
+              "nucleus",
+              "organelles",
+              "synaptic_boutons",
+              "receptor_distribution",
+              "ultrastructure"
+            ]
+          }
+        }
+      },
+      "topology": {
+        "nodeCount": 540,
+        "segmentCount": 539,
+        "nodeTypeCounts": {
+          "1": 7,
+          "3": 533
+        },
+        "boundsMicrometre": {
+          "min": [
+            -7.19,
+            -32.62,
+            -10.14
+          ],
+          "max": [
+            39.05,
+            116.6,
+            2.99
+          ]
+        },
+        "sourceCoordinatesPreserved": true,
+        "inferredAxonCount": 0
+      },
+      "renderingContract": {
+        "coordinateUse": "unregistered_source_local_visualization_only",
+        "radiusSurfaceAllowed": true,
+        "observedMembrane": false,
+        "internalPrimitiveCount": 0,
+        "registrationCount": 0,
+        "sameCellPhysiologyJoinCount": 0,
+        "groupStatisticsJoinCount": 0,
+        "circuitEdgeCount": 0
+      },
+      "identityBoundary": {
+        "crossSourceIdentity": "not_established",
+        "studyCellMapping": "repository paper citation only; exact experimental cell crosswalk not established",
+        "sameAnimalPairEstablished": false,
+        "independentAnimalCount": null,
+        "independentSpecimenCount": null,
+        "biologicalTypeInference": "source-reported labels only"
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/118824",
+        "standardizedSwc": "https://neuromorpho.org/dableFiles/hughes/CNG%20version/1857-10-cell-1-analysis.CNG.swc",
+        "primaryPaper": "https://doi.org/10.1016/j.celrep.2019.06.040",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "One independent repository reconstruction in a source-local standardized frame; no atlas registration, anatomical-axis assignment or cross-study pairing.",
+        "The exact PV, transmitter and Pax2/tonic-firing labels are repository reports. The tonic-firing label supplies no trace, electrophysiology values or same-cell paper experiment.",
+        "Both source records contain soma and dendrites with no reconstructed axon. Moderate and incomplete dendrite integrity remain separate; no axonal wiring or whole-cell completeness is inferred.",
+        "No Diameter means centerlines only despite positive SWC radius syntax. Diameter permits a deterministic derived display after byte verification; it is not an observed membrane or biological volume.",
+        "These objects come from different studies and strains. No paired experiment, prevalence, allodynia effect, circuit edge, same-cell internal structure or group statistic transfers from either paper.",
+        "Young adult is retained without inventing numeric age. Male/Female does not resolve an individual sex, and no animal, specimen, section or physical-cell parent ID is available."
+      ]
+    }
+  ],
+  "representationRoutes": [
+    {
+      "routeId": "mouse.sc.pv.independent.nmo_170034",
+      "label": "PV-positive excitatory · Pax2-negative · centerlines only",
+      "sourceReceipt": {
+        "path": "/data/pv_independent_morphology_routes_v1/nmo-170034.json",
+        "bytes": 400187,
+        "sha256": "27bb9f87ceb9a55ad7a538ba871fc2a1a81d089db5bde7476e45eccc61937adc",
+        "rawSwcSha256": "0fee884130c82d3c140b471d62c09274e83cb9a4ce05254c3639e174e9aaf186",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": false,
+        "nodeCount": 1681,
+        "segmentCount": 1680
+      },
+      "sourceVersion": "ohri-pv-independent-morphology-routes-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:170034",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_verified_standardized_source_centerlines_and_only_authorized_radius_derivative",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    },
+    {
+      "routeId": "mouse.sc.pv.independent.nmo_118824",
+      "label": "PV-positive inhibitory · tonic-firing label · independent source record",
+      "sourceReceipt": {
+        "path": "/data/pv_independent_morphology_routes_v1/nmo-118824.json",
+        "bytes": 132502,
+        "sha256": "a498553500c7b03dd979f8e7eaeb3be6408a8f9459d8e56a905fd04f7fa3cb36",
+        "rawSwcSha256": "efb19783b7f472b7b2aded955eecd00731294c500c8b2d995be6a1b7fd89dc6d",
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "dimensionality": "3D",
+        "sourceDiameterAvailable": true,
+        "nodeCount": 540,
+        "segmentCount": 539
+      },
+      "sourceVersion": "ohri-pv-independent-morphology-routes-0.1.0",
+      "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+      "stableIdAuthority": "NeuroMorpho:118824",
+      "representationStateIds": [
+        "OBS_SKELETON",
+        "DER_RADIUS_SURFACE",
+        "UNAVAILABLE"
+      ],
+      "renderedPrimitivePolicy": "exact_verified_standardized_source_centerlines_and_only_authorized_radius_derivative",
+      "cellMorphologyClaim": true,
+      "missingLayerPolicy": "zero_primitives",
+      "crossSourceIdentityCount": 0,
+      "projectRegistrationCount": 0
+    }
+  ]
+}

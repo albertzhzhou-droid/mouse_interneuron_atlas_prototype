@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "koh-public-input-route-audit-0.1.0",
+  "auditDate": "2026-09-24",
+  "researchUpgradeId": "UPG-260",
+  "scope": "Bounded source-linked public-route screen for exact external inputs named by Koh et al. v1.0 code; metadata/page review only for the upstream Svara supplementary ZIP candidates",
+  "article": {
+    "pmcid": "PMC12958134",
+    "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12958134/",
+    "linkedZenodoVersionDoi": "10.5281/zenodo.17475613",
+    "linkedGithubRepository": "https://github.com/ZacharyMKoh/Spinal-Sensorimotor-Circuit",
+    "expectedWorkbookPathLeaf": "excel_file.xlsx",
+    "expectedCircuitWorksheetNames": [
+      "1A IN to IN",
+      "1B IN to IN",
+      "2A IN to IN",
+      "2B IN to IN",
+      "3A IN to IN",
+      "4C IN to IN",
+      "6A IN to IN",
+      "6B IN to IN"
+    ],
+    "expectedKnossosArchivePathLeaf": "Completed_labeling.k.zip",
+    "expectedKnossosArchiveMember": "annotation.xml"
+  },
+  "directKohRoutes": {
+    "githubMain": {
+      "url": "https://github.com/ZacharyMKoh/Spinal-Sensorimotor-Circuit",
+      "observedBranchCount": 1,
+      "observedTagCount": 1,
+      "visibleSourceFiles": [
+        "Quantification of cell measurements.py",
+        "Quantification of synaptic and glia organization.py"
+      ],
+      "visibleReadme": false,
+      "expectedWorkbookVisible": false,
+      "expectedKnossosArchiveVisible": false
+    },
+    "githubV1Tag": {
+      "url": "https://github.com/ZacharyMKoh/Spinal-Sensorimotor-Circuit/tree/v1.0",
+      "visibleSourceFiles": [
+        "Quantification of cell measurements.py",
+        "Quantification of synaptic and glia organization.py"
+      ],
+      "expectedWorkbookVisible": false,
+      "expectedKnossosArchiveVisible": false
+    },
+    "zenodoV1": {
+      "recordUrl": "https://zenodo.org/records/17475613",
+      "evidenceAuditPath": "data/koh-zenodo-supporting-code-audit-0.1.json",
+      "expectedWorkbookPresent": false,
+      "expectedKnossosArchivePresent": false
+    },
+    "kohPmcSupplements": {
+      "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12958134/",
+      "evidenceAuditPath": "data/koh-spinal-supplemental-file-audit-0.1.json",
+      "auditedSupplementCount": 2,
+      "expectedCircuitWorksheetSetPresent": false,
+      "expectedKnossosArchivePresent": false,
+      "rowLevelObjectSynapseTripartiteListsPresent": false
+    }
+  },
+  "upstreamDatasetCandidate": {
+    "paperTitle": "Volume EM Reconstruction of Spinal Cord Reveals Wiring Specificity in Speed-Related Motor Circuits",
+    "paperDoi": "10.1016/j.celrep.2018.05.023",
+    "kohArticleLinksToUpstreamStudy": true,
+    "kohArticleDescribedSpecimen": "6 dpf larval zebrafish spinal cord",
+    "kohArticleReportedVolumeMicrometres": [
+      74,
+      74,
+      207
+    ],
+    "kohArticleReportedVoxelPitchNanometres": [
+      9,
+      9,
+      21
+    ],
+    "officialPublicationListingUrl": "https://www.bi.mpg.de/publication-search/2328567?person=%2Fpersons%2Fresource%2Fpersons118241",
+    "candidatePublicSupplementFiles": [
+      {
+        "name": "1-s2.0-S2211124718307563-mmc6.zip",
+        "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055230/1-s2.0-S2211124718307563-mmc6.zip"
+      },
+      {
+        "name": "1-s2.0-S2211124718307563-mmc7.zip",
+        "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055231/1-s2.0-S2211124718307563-mmc7.zip"
+      },
+      {
+        "name": "1-s2.0-S2211124718307563-mmc8.zip",
+        "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055232/1-s2.0-S2211124718307563-mmc8.zip"
+      }
+    ],
+    "candidateFileContentsRetrieved": false,
+    "candidatePackageMembersInventoried": false,
+    "exactKohKnossosAnnotationMatchEstablished": false,
+    "candidateFileSpecificReuseRightsVerified": false,
+    "followUpResearchUpgradeId": "UPG-250",
+    "disposition": "public_link_candidate_only_pending_exact_package_audit"
+  },
+  "findings": {
+    "expectedWorkbookFoundInDirectKohRoutes": false,
+    "expectedKnossosArchiveFoundInDirectKohRoutes": false,
+    "exactRequiredInputsPubliclyVerified": false,
+    "publicUpstreamDatasetRouteExists": true,
+    "publicUpstreamRouteProvesExactKohAnnotationVersion": false,
+    "scopeIsNotUniversalAbsenceClaim": true,
+    "interpretation": "The directly linked Koh repository/deposit and the two audited article supplements do not expose the exact external inputs named by the v1.0 scripts. Koh et al. point to Svara et al. 2018 for the underlying EM volume, whose official publication listing exposes three ZIP supplements; these are unresolved package candidates, not evidence that the Koh workbook or Completed_labeling.k.zip is publicly available or identical. Continue their exact file/member and reuse audit under UPG-250."
+  },
+  "rightsAndAdmission": {
+    "authorsContacted": false,
+    "gatedMaterialRequested": false,
+    "credentialsInspected": false,
+    "candidateArchivePayloadsDownloaded": false,
+    "codeExecuted": false,
+    "sourceObjectsAdmitted": 0,
+    "coordinatesRendered": 0,
+    "geometryAdmitted": 0,
+    "sameCellJoins": 0,
+    "crossSpeciesIdentityJoins": 0,
+    "mouseIdentityJoins": 0,
+    "registrationCount": 0,
+    "measurementsAdded": 0,
+    "mouseDenominatorDelta": 0
+  }
+}

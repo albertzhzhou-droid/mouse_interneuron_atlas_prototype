@@ -74,7 +74,12 @@ test("parses exactly 17 neuronal columns × 20 ranks through the workbook relati
 });
 
 test("produces a deterministic derived panel digest", () => {
-  assert.deepEqual(parseSynthetic(), parseSynthetic());
+  const bytes = syntheticWorkbook();
+  const options = { expectedSha256: sha256Bytes(bytes) };
+  assert.deepEqual(
+    parseMatsonRankedMarkerWorkbook(bytes, options),
+    parseMatsonRankedMarkerWorkbook(bytes, options),
+  );
 });
 
 test("rejects a workbook unless its expected source checksum matches", () => {

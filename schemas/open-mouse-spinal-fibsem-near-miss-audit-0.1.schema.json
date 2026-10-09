@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/open-mouse-spinal-fibsem-near-miss-audit-0.1.schema.json",
+  "title": "Open Mouse Spinal FIB-SEM Near-Miss Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "researchUpgradeId", "auditDate", "scope", "candidateVolumes", "article", "admission", "sources"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "auditId": {"const": "open-mouse-spinal-fibsem-near-miss-audit-0.1"},
+    "researchUpgradeId": {"const": "UPG-249"},
+    "auditDate": {"const": "2026-09-23"},
+    "scope": {"type": "string", "minLength": 30},
+    "candidateVolumes": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["datasetId", "sample", "genotype", "sex", "ageMonths", "anatomicalRegion", "modality", "voxelSizeNanometres", "dimensionsMicrometres", "license", "figshareUrl", "openOrganelleUrl", "rawVolumeUrl", "publishedStructures", "interneuronObjectCrosswalk", "admissionNote"],
+        "properties": {
+          "datasetId": {"enum": ["jrc_mus-sc-zp104a", "jrc_mus-sc-zp105a"]},
+          "sample": {"type": "string", "minLength": 1},
+          "genotype": {"type": "string", "minLength": 1},
+          "sex": {"const": "female"},
+          "ageMonths": {"const": 6},
+          "anatomicalRegion": {"const": "dorsal corticospinal tract"},
+          "modality": {"const": "FIB-SEM"},
+          "voxelSizeNanometres": {"const": [6, 6, 6]},
+          "dimensionsMicrometres": {"const": [40, 30, 75]},
+          "license": {"const": "CC-BY-4.0"},
+          "figshareUrl": {"type": "string", "format": "uri", "pattern": "^https://figshare\\.com/"},
+          "openOrganelleUrl": {"type": "string", "format": "uri", "pattern": "^https://openorganelle\\.janelia\\.org/datasets/"},
+          "rawVolumeUrl": {"type": "string", "pattern": "^s3://janelia-cosem-datasets/jrc_mus-sc-zp10[45]a/"},
+          "publishedStructures": {"const": ["corticospinal axons", "endoplasmic reticulum", "mitochondria"]},
+          "interneuronObjectCrosswalk": {"const": false},
+          "admissionNote": {"type": "string", "minLength": 40}
+        }
+      }
+    },
+    "article": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "doi", "url", "reportedManualReconstruction"],
+      "properties": {
+        "title": {"const": "Transverse endoplasmic reticulum expansion in hereditary spastic paraplegia corticospinal axons"},
+        "doi": {"const": "10.1093/hmg/ddac072"},
+        "url": {"const": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9402237/"},
+        "reportedManualReconstruction": {"type": "string", "minLength": 80}
+      }
+    },
+    "admission": {
+      "type": "object", "additionalProperties": false,
+      "required": ["publicAdultMouseSpinalEmVolumes", "eligibleMouseSpinalInterneuronObjectRoutes", "rawVolumesDownloaded", "segmentationPayloadsDownloaded", "interneuronObjectsAdmitted", "organelleObjectsAdmitted", "sameCellJoins", "atlasRegistrations", "measurements", "interpretation"],
+      "properties": {
+        "publicAdultMouseSpinalEmVolumes": {"const": 2},
+        "eligibleMouseSpinalInterneuronObjectRoutes": {"const": 0},
+        "rawVolumesDownloaded": {"const": 0},
+        "segmentationPayloadsDownloaded": {"const": 0},
+        "interneuronObjectsAdmitted": {"const": 0},
+        "organelleObjectsAdmitted": {"const": 0},
+        "sameCellJoins": {"const": 0},
+        "atlasRegistrations": {"const": 0},
+        "measurements": {"const": 0},
+        "interpretation": {"type": "string", "minLength": 100}
+      }
+    },
+    "sources": {
+      "type": "array", "minItems": 5,
+      "items": {"type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": {"label": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}}}
+    }
+  }
+}

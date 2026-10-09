@@ -1,0 +1,37 @@
+✔ all 4,964 native matrix positions reconcile with 734 distinct source rows, not count-valued matrices (19728.028792ms)
+✖ source zeros remain zeros; labels and native precision survive without fake contacts or physical parents (6.974834ms)
+✔ current table authority is private and immutable, isolated by group and caller buffers (2.277458ms)
+✔ loader requires no-store current bytes and rejects HTTP failures and latest-request cancellation (29.659833ms)
+✔ pair receipt restores against fresh table bytes and refuses tampered row values, units, identity and extra claims (3.01475ms)
+✔ CSV preserves every selected contact row and native numeric token, with independent matrix metadata for zero pairs (1.511792ms)
+✔ all 4,964 exact native pairs round trip in source-qualified URLs, without authority or cross-workspace takeover (38.995542ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19921.306084
+
+✖ failing tests:
+
+test at tests/svara-synaptic-contacts.test.mjs:28:1
+✖ source zeros remain zeros; labels and native precision survive without fake contacts or physical parents (6.974834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '0.17030770554800001'
+  - '0.170307705548'
+                   ^
+  
+      at TestContext.<anonymous> (file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/svara-synaptic-contacts.test.mjs:32:55)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '0.17030770554800001',
+    expected: '0.170307705548',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

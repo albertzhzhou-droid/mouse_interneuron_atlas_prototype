@@ -1,0 +1,74 @@
+--- historical-original-helper
++++ corrected-UI-helper
+@@ -7,13 +7,14 @@
+ from pathlib import Path
+ import zipfile
+ from source_epoch_guard import pin, only_pin, strict_json, epoch, exact_read
++from owned_ui_correction_guard import assert_ui_delta, UI_PATH, BEFORE
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT = Path('/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype')
+ MANIFEST = 'data/research-iteration-manifest-2.91.json'
+ RUNTIME = 'data/research-renderer-runtime-inputs-2.91.json'
+ BUILDER = 'tools/build_research_iteration_manifest_2_91.mjs'
+-CONFIG_PIN = {'bytes': 34583, 'sha256': '72dbd41657cbed719bf17c82c3e5a0ff895e010bf9cfa1543fe7dd2c5ccc9828'}
++CONFIG_PIN = {'bytes': 36495, 'sha256': 'e1340db298b9e55014d2290b55964f23a29439bf7b9d13438df6d599ebcf86d6'}
+ 
+ def safe(value):
+     p = Path(value)
+@@ -44,6 +45,8 @@
+     config = strict_json(cb)
+     guard_pin, _ = exact_read(HERE/'source_epoch_guard.py', observed, failures)
+     assert guard_pin == config['sourceEpochGuardPin']
++    ui_guard_pin, _ = exact_read(HERE/'owned_ui_correction_guard.py', observed, failures)
++    assert ui_guard_pin == config['ownedUiCorrectionGuardPin']
+     copied = {}
+     for row in config['boundCopies']:
+         copy_path, original_path = Path(row['copyPath']), Path(row['originalPath'])
+@@ -63,10 +66,33 @@
+     after = indexed(applied['candidateTargets'], 4)
+     # Actual apply rows are deliberately flat {path,bytes,sha256}; do not rewrite them.
+     assert set(after) == set(targets)
++    original_after = [dict(row) for row in after.values()]
+     for name, row in after.items():
+         assert only_pin(row) == targets[name]['after']
+-        actual, _ = exact_read(safe(name), observed, failures)
+-        assert actual == only_pin(row), f'I62 afterimage drift: {name}'
++        if name != UI_PATH:
++            actual, _ = exact_read(safe(name), observed, failures)
++            assert actual == only_pin(row), f'I62 afterimage drift: {name}'
++    # Original candidate/apply receipts remain immutable. Only this separately pinned
++    # exact owned UI style correction changes the final expected UI afterimage.
++    correction = strict_json(copied['exact-root-i62-owned-ui-correction.json'])
++    assert correction['status'] == 'PASS_EXACT_SINGLE_OWNED_INFORMATION_LINK_STYLE_CORRECTION'
++    assert correction['path'] == UI_PATH and correction['before'] == BEFORE == only_pin(after[UI_PATH])
++    assert type(correction['occurrences']) is int and correction['occurrences'] == 1
++    assert correction['literalBefore'] == '<Link href={information.link.href} prefetch={false}>{information.link.label}</Link>'
++    assert correction['literalAfter'] == '<Link href={information.link.href} prefetch={false} style={{ minHeight: 44, fontSize: 12 }}>{information.link.label}</Link>'
++    assert correction['originalCandidatePatchAndApplyReceiptPreserved'] is True and correction['layoutCssChanged'] is False
++    assert correction['originalNativeFinding'] == 'actual-08c-narrow-focused-link-style.json'
++    ui_preimage_zip = copied['exact-root-i62-owned-ui-correction-preimage.zip']
++    assert pin(ui_preimage_zip) == only_pin(correction['preimageZip'])
++    with zipfile.ZipFile(io.BytesIO(ui_preimage_zip)) as ui_zip:
++        assert ui_zip.namelist() == [UI_PATH]
++        ui_before_body = ui_zip.read(UI_PATH)
++    ui_after_pin, ui_after_body = exact_read(safe(UI_PATH), observed, failures, True)
++    assert ui_after_pin == correction['after']
++    ui_delta = assert_ui_delta(ui_before_body, ui_after_body)
++    assert ui_delta == config['ownedUiCorrection']
++    assert ui_after_body == ui_before_body.replace(correction['literalBefore'].encode(), correction['literalAfter'].encode(), 1)
++    after[UI_PATH] = {'path': UI_PATH, **ui_after_pin}
+     baseline = indexed(intake['baselineInputs'], 2601)
+     core = config['requiredCore4']
+     assert core == applied['exactCoreAdditions'] == intake['newCanonicalPaths']
+@@ -116,7 +142,9 @@
+                    'protectedPriorInputs': 2596, 'ownedExactAfterimages': 4, 'newCanonicalPaths': 4,
+                    'acceptedI61Members': 83, 'acceptedI61ProtectedMembers': len(accepted_protected),
+                    'runtimeInputs': 198, 'privateScopes': 8, 'positionsBuildInputs': 40, 'positionsSourceInputs': 23},
+-        'protectedPriorInputs': protected, 'candidateExpectedAfter': list(after.values()),
++        'protectedPriorInputs': protected, 'candidateOriginalExpectedAfter': original_after,
++        'candidateExpectedAfter': list(after.values()), 'ownedUiCorrection': ui_delta,
++        'ownedUiCorrectionReceiptPin': config['ownedUiCorrectionReceiptPin'],
+         'requiredCore4': core, 'allowedMutablePaths': sorted(mutable),
+         'scientificRegistrySummaryExpected': old_manifest['registrySummary'],
+         'acceptedI61MutableIntersection': sorted(r['path'] for r in checkpoint['members'] if r['path'] in mutable),

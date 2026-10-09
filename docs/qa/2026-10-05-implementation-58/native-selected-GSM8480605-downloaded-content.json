@@ -1,0 +1,99 @@
+{
+  "format": "ohri-exact-source-audit-export",
+  "version": "0.1.0",
+  "kind": "sample_characteristics",
+  "auditId": "trevisan-v1-exact-input-crosswalk-audit-0.1",
+  "sourceAuditDate": "2026-09-29",
+  "generatedAt": "2026-10-05T06:05:26.401Z",
+  "filter": {
+    "query": "",
+    "cohort": "all",
+    "selectedSourceKey": "trevisan-v1:GSE275595:GSM8480605:source-sample"
+  },
+  "rowCount": 1,
+  "interpretation": "GEO sample characteristics and final-figure workbook selection counts. Barcode/matrix conflicts prevent runtime nucleus-roster admission; samples and workbook rows are not independent-animal or prevalence counts.",
+  "sourcePayloadsIncluded": false,
+  "runtimeRosterAdmission": false,
+  "sameCellJoins": 0,
+  "geometryObjects": 0,
+  "atlasRegistrations": 0,
+  "records": [
+    {
+      "sourceKey": "trevisan-v1:GSE275595:GSM8480605:source-sample",
+      "geoSampleAccession": "GSM8480605",
+      "sampleTitle": "E135HetR1",
+      "characteristics": {
+        "tissue": {
+          "value": "Spinal cord",
+          "locator": "GSM8480605/!Sample_characteristics_ch1:tissue",
+          "sampleBlockLine": 12
+        },
+        "genotype": {
+          "value": "En1::Cre heterozygous; RC.lsl.Sun1-sfGFP",
+          "locator": "GSM8480605/!Sample_characteristics_ch1:genotype",
+          "sampleBlockLine": 13
+        },
+        "age": {
+          "value": "E13.5",
+          "locator": "GSM8480605/!Sample_characteristics_ch1:age",
+          "sampleBlockLine": 14
+        },
+        "replicate": {
+          "value": "1",
+          "locator": "GSM8480605/!Sample_characteristics_ch1:replicate",
+          "sampleBlockLine": 15
+        },
+        "region": {
+          "value": "Whole cord",
+          "locator": "GSM8480605/!Sample_characteristics_ch1:region",
+          "sampleBlockLine": 16
+        }
+      },
+      "age": {
+        "sourceText": "E13.5",
+        "developmentalEpoch": "embryonic",
+        "value": 13.5,
+        "unit": "source_developmental_day",
+        "convertedToPostnatalAge": false
+      },
+      "supplementaryFileUrls": [
+        "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8480nnn/GSM8480605/suppl/GSM8480605_E135HetR1_barcodes.tsv.gz",
+        "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8480nnn/GSM8480605/suppl/GSM8480605_E135HetR1_features.tsv.gz",
+        "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8480nnn/GSM8480605/suppl/GSM8480605_E135HetR1_matrix.mtx.gz"
+      ],
+      "nativeBarcodeFile": "data/source-candidates/trevisan-v1-exact-inputs-20260929/GSM8480605_E135HetR1_barcodes.tsv.gz",
+      "nativeBarcodeSha256": "0dcc52d7b8b1997a3d7964d88e91d7e955abd53364604e5b37ea7e5f69d6aeca",
+      "nativeBarcodeCount": 7446,
+      "workbookRowCount": 6676,
+      "barcodeMatchedRowCount": 6676,
+      "barcodeMissingRowCount": 0,
+      "workbookMissingExamples": [],
+      "matchingExamples": [
+        {
+          "sheet": "Cell_Barcodes_E13.5",
+          "row": 2,
+          "rawValue": "AAACCCACATTGCTGA",
+          "nativeValue": "AAACCCACATTGCTGA-1",
+          "nativeMatrixColumnOneBased": 1
+        },
+        {
+          "sheet": "Cell_Barcodes_E13.5",
+          "row": 3,
+          "rawValue": "AAACCCAGTCAAGCCC",
+          "nativeValue": "AAACCCAGTCAAGCCC-1",
+          "nativeMatrixColumnOneBased": 2
+        },
+        {
+          "sheet": "Cell_Barcodes_E13.5",
+          "row": 4,
+          "rawValue": "AAACCCAGTCCAAATC",
+          "nativeValue": "AAACCCAGTCCAAATC-1",
+          "nativeMatrixColumnOneBased": 3
+        }
+      ],
+      "finalNucleusRosterAdmission": "held_cluster_and_reuse_gate",
+      "individualAnimalIdentity": null,
+      "clusterAssignment": null
+    }
+  ]
+}

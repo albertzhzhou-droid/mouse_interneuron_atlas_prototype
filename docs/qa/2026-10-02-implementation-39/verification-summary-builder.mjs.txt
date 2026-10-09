@@ -1,0 +1,88 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+
+const root='/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype';
+const qa=path.join(root,'docs/qa/2026-10-02-implementation-39');
+const json=name=>JSON.parse(fs.readFileSync(path.join(qa,name),'utf8'));
+const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const input=json('final-input-replay.json'),compiled=json('compiled-final-replay.json');
+const flows=json('native-checks.json'),finalNative=json('native-final-build-recheck.json');
+const source=JSON.parse(fs.readFileSync(path.join(root,'data/svara-publication-navigation-0.1.json'),'utf8'));
+const manifestBytes=fs.readFileSync(path.join(root,'data/research-iteration-manifest-2.91.json'));
+const manifest=JSON.parse(manifestBytes);
+const fullLog=fs.readFileSync('/private/tmp/ohri-i39-full-written-final.log','utf8');
+const statistics=Object.fromEntries(['tests','pass','fail','cancelled','skipped','todo'].map(key=>[key,Number(fullLog.match(new RegExp(`ℹ ${key} (\\d+)`))?.[1])]));
+assert.deepEqual(statistics,{tests:1372,pass:1357,fail:0,cancelled:0,skipped:15,todo:0});
+for(const [key,value]of Object.entries({authoritativeInputs:2290,workspaceAndTempInputMismatches:0,priorUnownedInputsPreserved:2274,priorUnownedDrift:0,ownedPreimagesVerified:7,retainedOriginalWorkbookCopiesVerified:8,statTimestampVariationByteMismatches:0}))assert.equal(input[key],value,key);
+assert.equal(input.addedManifestPaths.length,10);
+assert.equal(input.removedManifestPaths.length,0);
+assert.equal(input.allPreimagesCapturedBeforeEdit,true);
+assert.equal(input.manifestSha256,sha(manifestBytes));
+assert.equal(manifest.registrySummary.completedResearchUpgradeCount,79);
+assert.equal(manifest.registrySummary.researchUpgradeCount,243);
+assert.equal(manifest.implementationScope.fullGoalComplete,false);
+assert.equal(flows.length,17);assert.ok(flows.every(row=>row.passed===true));
+assert.equal(finalNative.length,2);assert.ok(finalNative.every(row=>row.passed===true));
+assert.equal(compiled.compiledPngsChecked,212);
+assert.equal(compiled.compiledContactJsonsChecked,2);
+assert.equal(compiled.compiledAssetMismatches,0);
+assert.ok(compiled.sourcePinnedPublicationNavigationInCompiledBundles.client.length);
+assert.ok(compiled.sourcePinnedPublicationNavigationInCompiledBundles.server.length);
+assert.equal(source.summary.matchedPublicationEntries,141);
+assert.equal(source.summary.unrepresentedMnEntries,71);
+assert.equal(source.endpoints.length,209);
+for(const pin of source.sourceInputPins){const bytes=fs.readFileSync(path.join(root,pin.path));assert.equal(bytes.length,pin.bytes);assert.equal(sha(bytes),pin.sha256);}
+const acquisitionRoot=path.join(root,'data/source-candidates/svara-thesis-20261002');
+const publication=JSON.parse(fs.readFileSync(path.join(acquisitionRoot,'publication.json'),'utf8'));
+const publicationReceipt=JSON.parse(fs.readFileSync(path.join(acquisitionRoot,'publication.receipt.json'),'utf8'));
+const responseReceipt=JSON.parse(fs.readFileSync(path.join(acquisitionRoot,'heidok-unverified-response.receipt.json'),'utf8'));
+assert.equal(publication.docs[0].id,271638);assert.equal(publication.docs[0].files.length,0);
+assert.equal(publication.docs[0].files_stat.count,0);
+assert.equal(sha(fs.readFileSync(path.join(acquisitionRoot,'publication.json'))),publicationReceipt.sha256);
+const response=fs.readFileSync(path.join(acquisitionRoot,'heidok-unverified-response.html.txt'));
+assert.equal(response.length,4491);assert.equal(sha(response),responseReceipt.sha256);
+assert.equal(responseReceipt.originalPdfAcquired,false);assert.equal(responseReceipt.pdfValidated,false);
+
+const summary={
+  schemaVersion:'0.1.0',implementation:'I39',generatedAt:new Date().toISOString(),
+  status:'sealed_progress_full_goal_incomplete',goalStatus:'active',fullGoalComplete:false,
+  canonicalTaskStatus:{completed:79,total:243,unchanged:true},applicationVersion:'2.91.0-research.1',
+  routes:['/catalogues/svara','/connectivity/svara'],
+  change:'Each represented catalogue entry opens a named starting pair retaining that native endpoint. Each current contact pair opens both exact native publication pages. A starting pair explicitly names the other endpoint; browser Back preserves the full original pair. Unrepresented catalogue MN entries remain viewable and receive no substituted pair.',
+  navigation:{...source.summary,bytes:fs.statSync(path.join(root,'data/svara-publication-navigation-0.1.json')).size,sourceInputPins:source.sourceInputPins,relation:source.relation,interpretation:source.interpretation,firstPairNotSelectedByNonzeroContactCount:true,allOriginalPageAndContactDataPreserved:true},
+  scientificBoundary:'Publication label concordance is not physical raw-cell mapping, editable geometry, XYZ coordinates, registration or functional transmission. Source-specific denominators remain separate.',
+  focusedChecks:{actualExitCode:0,newTests:5,existingRelatedTests:13,tests:18,pass:18,fail:0,scope:'All 212 catalogue entries, all 4964 matrix positions to both pages, 71 unavailable MN columns, explicit native subtype suffixes, source/version/ambiguous/unknown/fuzzy label refusal, immutable non-authoritative navigation and deterministic byte replay.'},
+  fullConfiguredResearch:{actualExitCode:0,terminalExecSessionId:96425,statistics,log:'full-final.log',scope:'Final current application, data, source candidate receipts, documents and written 2290-input manifest. Complete configured research entry including production build, strict type checking, full project lint, validators and tests.'},
+  native:{flowObservations:17,allFlowObservationsPassed:true,evidence:'native-checks.json',finalBuildRechecks:2,finalBuildEvidence:'native-final-build-recheck.json',finalRecheckScope:'After the final production build and preview restart, exact native CiD039/MN001 matrix token and source rows, canonical metadata and both page links; then complete exact source page selection and its named contact starting pair.',visuals:json('native-image-properties.json'),visuallyInspected:true,downloadLanding:json('native-download-status.json'),zoom200PercentVerified:false,screenReaderVerified:false,wholeApplicationAccessibilityVerified:false},
+  compiledReplay:{...compiled,evidence:'compiled-final-replay.json'},
+  inputPreservation:{authoritativeInputs:input.authoritativeInputs,workspaceAndTempInputMismatches:input.workspaceAndTempInputMismatches,priorUnownedInputsPreserved:input.priorUnownedInputsPreserved,priorUnownedDrift:input.priorUnownedDrift,ownedPreimagesVerified:input.ownedPreimagesVerified,allPreimagesCapturedBeforeEdit:true,retainedOriginalWorkbookCopiesVerified:input.retainedOriginalWorkbookCopiesVerified,addedManifestPaths:input.addedManifestPaths,removedManifestPaths:input.removedManifestPaths,manifestSha256:input.manifestSha256,statTimestampVariationObservations:input.statTimestampVariationObservations.length,statTimestampVariationByteMismatches:0,timestampPreservationClaimed:false,unchangedCapturedOwnedPath:'.gitignore',evidence:'final-input-replay.json'},
+  registrySummary:manifest.registrySummary,
+  newSourceCheck:{parent:'I38 FreiDok145135 actual reverse relation',freidokPublicationId:271638,doi:'10.11588/heidok.00022556',publicationYear:2017,publicationReceipt,publicFilesDeclared:0,metadataLicenseDoesNotAdmitRawAssets:true,explicitPdfUrlResponse:responseReceipt,newPdfVolumeMeshAnnotationAdmitted:false,newKohVersionEstablished:false,scope:'Specific inspected official entry and file response only; no assertion that reconstruction data is universally absent.'},
+  preview:{host:'127.0.0.1',port:3003,finalLiveExecSessionId:81662,priorSocketInspection:{actualAddress:'127.0.0.1:3003',processId:10544,beforeFinalRestart:true},argv:'npm run start -- --hostname 127.0.0.1 --port 3003',originalUserServersUntouched:true},
+  retainedFailures:[
+    {scope:'Targeted lint',result:'exit1: Next forbids a test variable named module; renamed to navigationCode, repaired targeted lint exit0 and final full project lint passed.',evidence:'targeted-lint-initial-failure.log'},
+    {scope:'Initial local preview',result:'exit7: sandbox EPERM before listen. Corrected supported --hostname flag and ran loopback preview in approved host environment. No initial failed launch classified as success.',evidence:'preview-initial-listen-failure.log'},
+    {scope:'First full research entry',result:'exit1: correctly rejected stale 2280 manifest after a Built-only CLI invocation. Added --write after input review; final 2290 manifest and complete actual exit-zero run independently recorded.',evidence:'full-stale-manifest-failure.log'},
+    {scope:'Initial audit launch',result:'exit1 MODULE_NOT_FOUND because the failed manifest count assertion prevented script creation. Final actual audit succeeded after reviewed manifest write.',evidence:'input-audit-missing-script-failure.log'},
+    {scope:'Native final helper',result:'Direct comparison of a browser RPC object rejected realm prototype differences. Strict metadata/source comparison succeeded after local JSON serialization of the read-only observation. Source and app values were unchanged.',evidence:'native-final-helper-initial-failure.json'},
+    {scope:'New thesis request',result:'Python trusted TLS chain failure, followed by normally verified system curl HTTP200 HTML challenge. No original PDF acquired or challenge bypassed.',evidence:'../../../data/source-candidates/svara-thesis-20261002/heidok-unverified-response.receipt.json'},
+  ],
+  limitations:['Full F01–F20 / 243-task goal remains incomplete.','M2 accurate section/donor/frame/curated labels/rights and masks remain unresolved.','M4 exact mouse spinal interneuron volume, segmentation, stable parent, frame and raw slice remain unestablished.','A catalogue starting pair retains its one selected publication endpoint and explicitly names the other endpoint; it is not restoration of an earlier two-endpoint pair. Browser Back restores that pair.','Native download save paths, actual 200% zoom and screen readers remain unverified.','New thesis PDF and raw reconstruction were not obtained; no comparison source or publisher policy substitutes for these scientific dependencies.'],
+  rollback:'Restore actual edits only among the seven captured preimages; .gitignore was captured but unchanged. Review ten new manifest paths individually. Preserve all unrelated dirty-tree work and original source inputs.',
+};
+for(const[from,to]of[
+  ['/private/tmp/ohri-i39-full-written-final.log','full-final.log'],
+  ['/private/tmp/ohri-i39-focused.log','focused.log'],
+  ['/private/tmp/ohri-i39-targeted-lint-repaired.log','targeted-lint-repaired.log'],
+  ['/private/tmp/ohri-i39-preview-build.log','preview-build.log'],
+  ['/private/tmp/ohri-i39-manifest-written.log','manifest-written.log'],
+  ['/private/tmp/ohri-i39-input-written-audit.log','final-input-audit.log'],
+  ['/private/tmp/ohri-i39-input-audit.mjs','final-input-audit.mjs.txt'],
+  ['/private/tmp/ohri-i39-compiled-audit.mjs','compiled-final-audit.mjs.txt'],
+  ['/private/tmp/ohri-i39-compiled-audit.log','compiled-final-audit.log'],
+  ['/private/tmp/ohri-i39-seal.mjs','verification-summary-builder.mjs.txt'],
+])fs.copyFileSync(from,path.join(qa,to));
+fs.writeFileSync(path.join(qa,'verification-summary.json'),JSON.stringify(summary,null,2)+'\n');
+console.log(JSON.stringify({status:summary.status,statistics,inputs:input.authoritativeInputs,preserved:input.priorUnownedInputsPreserved,flowObservations:flows.length,finalBuildRechecks:finalNative.length,manifestSha256:input.manifestSha256}));

@@ -1,0 +1,160 @@
+{
+  "receiptType": "temporary_upg132_source_information_integration_candidate",
+  "schemaVersion": "0.1.0",
+  "sharedProjectEditsByThisSubagent": 0,
+  "ownedProposedFileCount": 13,
+  "proposedFiles": [
+    {
+      "path": "app/atlas-types.ts",
+      "isNew": false,
+      "bytes": 39868,
+      "sha256": "56981ab44b00442839a59f80b98be2d916154a35a99d2fd6af84136543dba858"
+    },
+    {
+      "path": "app/InterneuronTypeAtlas.tsx",
+      "isNew": false,
+      "bytes": 152615,
+      "sha256": "ae5cda439847cd71291e6207fc1dafba6b51a5dc35a7ee531b687244d8157f34"
+    },
+    {
+      "path": "app/research-record-presentation.js",
+      "isNew": false,
+      "bytes": 17681,
+      "sha256": "22d7ec19c1a4da3180cbad55181f76974e83f4b3df90aacdd2537b8e1138df04"
+    },
+    {
+      "path": "tools/build_research_explorer_index.mjs",
+      "isNew": false,
+      "bytes": 136137,
+      "sha256": "f59193b8b053b7f4576fd7928ff454dddb5c8584128bf6e14f8084b7a335003a"
+    },
+    {
+      "path": "tests/research-explorer-index.test.mjs",
+      "isNew": false,
+      "bytes": 47956,
+      "sha256": "1a0232ae583c239aebb9392c85f2ad45f6639bd8f798aca481d89c58e61aa880"
+    },
+    {
+      "path": "app/research-explorer-index.js",
+      "isNew": false,
+      "bytes": 28364,
+      "sha256": "2693d9d6d631dde9550db0ae60826862b8577a052c00a0156829c9d628ac33ec"
+    },
+    {
+      "path": "tests/research-record-presentation.test.mjs",
+      "isNew": false,
+      "bytes": 11256,
+      "sha256": "9afd944e2c12a6935846f537977ca7a2dad391170c0ffb1dc0b75db1c70456d4"
+    },
+    {
+      "path": "app/ResearchExplorer.tsx",
+      "isNew": false,
+      "bytes": 34557,
+      "sha256": "6833a4ada782c61d3222b43c1943126ed991ad98bb54fd41a6a7b9794d79aa82"
+    },
+    {
+      "path": "tests/research-selection-delta.test.mjs",
+      "isNew": false,
+      "bytes": 16522,
+      "sha256": "c9b13a0500df4790406a4a02a10d800487c3ebc63a85d9fdebff97d12930257b"
+    },
+    {
+      "path": "app/RussSpinalInformationPanel.tsx",
+      "isNew": true,
+      "bytes": 8161,
+      "sha256": "ab2698d92109d8c0f69430d1f55430ccd9aeb3a4863123fe7edcc35636f86db4"
+    },
+    {
+      "path": "app/russ-spinal-information-adapter.js",
+      "isNew": true,
+      "bytes": 10416,
+      "sha256": "0d1e245aace40550f66b292567b418f06c96f10324d4e48340f8b47978ceaa05"
+    },
+    {
+      "path": "scripts/validate-russ-spinal-information-adapter-0.1.mjs",
+      "isNew": true,
+      "bytes": 4505,
+      "sha256": "5c7ff800ca58c8d55196f87501d22507ba9b7a36ea0f08e6acbd08972169626c"
+    },
+    {
+      "path": "tests/russ-spinal-information-adapter.test.mjs",
+      "isNew": true,
+      "bytes": 8640,
+      "sha256": "e8a49e59ffdf061899b18c01141fca9c112e1720915e214236812bae6bb38f87"
+    }
+  ],
+  "patch": {
+    "path": "UPG132_I53_SOURCE_INFORMATION_INTEGRATION.patch",
+    "bytes": 62926,
+    "sha256": "99710e20b21d507090acf535855b3e4514f3b9157ab2992380f657c8007d00fb"
+  },
+  "verification": {
+    "exactOfflineSourceReplay": "passed",
+    "affectedNodeTestsPassed": 53,
+    "affectedNodeTestsFailed": 0,
+    "typescriptNoEmitIncrementalFalse": "passed",
+    "eslint": "not_verified_two_silent_runs_stopped",
+    "browser": "not_run_in_temp_preparation",
+    "releaseBuild": "not_run_in_temp_preparation",
+    "shadowRebuild": {
+      "indexBytes": 12327624,
+      "indexSha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "manifestSha256": "ee7543f6fa5e7018288e7ef8c083e97422998ca4836f0b5e5ff8ec6609536888",
+      "assetSetId": "ohri:research-explorer-index:1.14.0",
+      "sourceInputCount": 22,
+      "totalRecordCount": 641,
+      "molecularProfileCount": 387,
+      "russProfileCount": 69
+    },
+    "affectedNodeTestCommand": [
+      "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "--test",
+      "tests/russ-spinal-information-adapter.test.mjs",
+      "tests/research-record-presentation.test.mjs",
+      "tests/research-selection-delta.test.mjs",
+      "tests/research-explorer-index.test.mjs",
+      "tests/research-supplemental-morphology-records.test.mjs"
+    ],
+    "affectedNodeTestLog": "I53_NODE_TESTS.log",
+    "sourceValidatorCommand": [
+      "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "scripts/validate-russ-spinal-information-adapter-0.1.mjs"
+    ],
+    "sourceValidatorLog": "I53_SOURCE_VALIDATOR.log",
+    "rootRecordParity": {
+      "currentRootBaseIndexRecordCount": 641,
+      "candidateBaseIndexRecordCount": 641,
+      "sameCanonicalBaseKeySet": true,
+      "nonRussRecordsByteSemanticUnchanged": 572,
+      "molecularProfileCount": 387,
+      "candidateRussProfiles": 69,
+      "runtimeSupplementalSourceRecordsExpected": 32,
+      "runtimeMergedRecordsExpected": 673,
+      "mergerImplementation": "app/research-supplemental-morphology-records.js",
+      "newSupplementalAdmission": 0
+    },
+    "patchDryRun": "git apply --check passed against captured baseline"
+  },
+  "scientificAdmission": {
+    "countMatrixBundled": false,
+    "GEOCellRosterAdmitted": false,
+    "geometryObjects": 0,
+    "internalObjects": 0,
+    "sameCellJoins": 0,
+    "registrations": 0,
+    "exactLineageAssignments": 0,
+    "broaderUPG132CompletionClaimed": false,
+    "M4CompletionClaimed": false
+  },
+  "parentOwnedIntegration": [
+    "package.json",
+    "current test runner",
+    "source registry",
+    "upgrade registry",
+    "docs",
+    "release/runtime manifests",
+    "compressed transport and pinned transport tests",
+    "historical manifest validation role",
+    "actual browser and current-root release build"
+  ]
+}

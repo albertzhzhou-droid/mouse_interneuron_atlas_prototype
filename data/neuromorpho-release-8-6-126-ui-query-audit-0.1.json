@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "neuromorpho-release-8-6-126-ui-query-audit-0.1",
+  "researchUpgradeId": "UPG-245",
+  "auditDate": "2026-09-23",
+  "observedRelease": {
+    "version": "8.6.126",
+    "releaseDate": "2026-09-23",
+    "reportedRepositoryCellCount": 298745,
+    "sourceUrl": "https://neuromorpho.org/",
+    "announcement": "The official homepage announced 30 novel reconstructions in the Todd archive."
+  },
+  "query": {
+    "interfaceUrl": "https://neuromorpho.org/MetaData.jsp",
+    "filters": [
+      { "field": "species", "value": "mouse", "selected": true },
+      { "field": "brain_region", "value": "spinal cord", "selected": true },
+      { "field": "cell_type", "value": "interneuron", "selected": true },
+      { "field": "archive", "value": "Todd", "selected": true }
+    ],
+    "ageFilterApplied": false,
+    "observedMetadataUiHitCount": 339,
+    "countSemantics": "Current metadata-search UI hits for the selected filters; not a record-ID census, a release delta, or a biological type/animal denominator.",
+    "stableNeuronIdsRetrieved": false,
+    "machineReadableResponseRetrieved": false,
+    "apiResponseRetrievalStatus": "not_obtained_in_this_review"
+  },
+  "comparison": {
+    "baselineRelease": "8.6.124",
+    "baselineQueryRecordCount": 1097,
+    "baselineQueryScope": "No-age mouse + spinal cord + interneuron query bundled in this project.",
+    "candidateRecordIdsCompared": 0,
+    "addedRecordCount": null,
+    "removedRecordCount": null,
+    "changedRecordCount": null,
+    "deltaStatus": "unresolved_without_stable_ids"
+  },
+  "admission": {
+    "newRecordsAdmitted": 0,
+    "newGeometryObjectsAdmitted": 0,
+    "newIdentityJoins": 0,
+    "registrations": 0,
+    "measurements": 0,
+    "payloadBytesDownloaded": 0,
+    "interpretation": "The UI count is a discovery lead only. Do not infer that 339 Todd records are new, adult, morphologically eligible, or interneurons under an independently reviewed taxonomy. Reconcile exact stable IDs, direct files, file hashes, source labels, dimensionality, completeness, and object-level reuse terms before changing the 8.6.124 geometry universe."
+  },
+  "sources": [
+    { "label": "Official NeuroMorpho release metadata", "url": "https://neuromorpho.org/" },
+    { "label": "NeuroMorpho metadata search", "url": "https://neuromorpho.org/MetaData.jsp" },
+    { "label": "NeuroMorpho API how-to", "url": "https://neuromorpho.org/api.jsp" },
+    { "label": "NeuroMorpho API reference", "url": "https://neuromorpho.org/apiReference.html" },
+    { "label": "NeuroMorpho reuse terms", "url": "https://neuromorpho.org/useterm.jsp" }
+  ],
+  "interpretationBoundary": "This records a current release banner and one observed metadata-UI hit count. It does not identify any returned neuron, establish which objects are new in 8.6.126, supersede the bundled 1,097-record 8.6.124 query, or authorize record admission, geometry, identity, registration, or biological measurement."
+}

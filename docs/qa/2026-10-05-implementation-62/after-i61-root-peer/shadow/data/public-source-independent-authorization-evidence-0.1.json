@@ -1,0 +1,29 @@
+{
+  "releaseId": "ohri-public-source-independent-authorization-evidence-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "admissionServiceReleaseId": "ohri-public-source-release-admission-service-0.1.0",
+  "assertionProvenanceReleaseId": "ohri-public-source-assertion-provenance-0.1.0",
+  "authorizationPlanReleaseId": "ohri-public-source-authorization-plan-0.1.0",
+  "queueItemId": "UPG-020",
+  "title": "Independent authorization-evidence packet composer",
+  "supportedManifestFormats": [
+    {"formatVersion": "0.7.0", "sourceId": "PDS-SPINALJ-PROCESSED", "requiredReviewStageIds": ["authority_identity_confirmation", "object_specific_terms_scope_review", "authorized_retrieval_conditions", "local_integrity_comparison", "content_scope_retention_review"]},
+    {"formatVersion": "0.8.0", "sourceId": "PDS-CANOGOMEZ-2026", "requiredReviewStageIds": ["authority_identity_confirmation", "object_specific_terms_scope_review", "authorized_retrieval_conditions", "local_integrity_comparison", "content_scope_retention_review"]}
+  ],
+  "independentReviewerRoles": ["institutional_rights_reviewer", "source_rights_holder", "data_steward_or_repository_contact", "unresolved"],
+  "evidenceRecordStates": ["review_request_prepared", "external_evidence_declared_not_authenticated", "execution_declined", "unresolved"],
+  "requestedExecutionScopes": ["private_curator_review_only", "local_analysis_after_separate_authorization", "no_execution_requested"],
+  "evidenceLocatorKinds": ["institutional_decision_reference", "rights_statement_url", "publisher_object_url", "dataset_landing_page", "curator_note"],
+  "nonPromotion": {
+    "packetStatus": "independent_authorization_evidence_packet_draft_only",
+    "authorityStatus": "not_authenticated_by_this_packet",
+    "executionStatus": "not_executed_pending_independent_authorization",
+    "verificationStatus": "not_locally_verified",
+    "blockedActions": ["source_object_acquisition", "credential_storage", "source_object_bundling", "local_checksum_calculation", "content_inspection", "data_retention", "reuse_authorization", "redistribution_authorization", "coordinate_transform", "registration", "automatic_public_release"],
+    "forbiddenActualStates": ["independently_authorized", "acquired", "credentialed", "locally_verified", "content_inspected", "retained", "registered"]
+  },
+  "localRuntime": {"networkRequests": false, "sourceFileDownload": false, "sourceFileUpload": false, "persistentStorage": "none", "output": "browser_download_of_independent_authorization_evidence_packet_json"},
+  "scientificBoundary": "This composer prepares a curator-facing evidence packet for a declared unacquired source object. It does not authenticate an independent decision, authorize access, acquire, inspect, hash, retain, bundle, publish, transform, align, combine, analyze or persist a source object; it does not determine biological truth, establish a cross-study relationship or create REG.",
+  "nextQueueItems": ["UPG-021"]
+}

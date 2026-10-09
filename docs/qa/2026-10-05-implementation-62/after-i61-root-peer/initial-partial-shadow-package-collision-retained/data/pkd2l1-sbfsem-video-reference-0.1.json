@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "ohri-pkd2l1-sbfsem-video-reference-0.1.0",
+  "releaseDate": "2026-09-02",
+  "authority": "OBS_PUBLICATION_VIDEO_REFERENCE",
+  "source": {
+    "title": "Cerebrospinal fluid-contacting neuron tracing reveals structural and functional connectivity for locomotion in the mouse spinal cord",
+    "citation": "Nakamura Y, Kurabe M, Matsumoto M, et al. eLife. 2023;12:e83108.",
+    "doi": "10.7554/eLife.83108",
+    "articleUrl": "https://elifesciences.org/articles/83108",
+    "apiUrl": "https://api.elifesciences.org/articles/83108",
+    "articleVersion": 2,
+    "versionDate": "2023-04-18T13:45:52Z",
+    "license": "CC-BY-4.0",
+    "apiReceipt": {
+      "bytes": 247909,
+      "sha256": "854963b39bbb091f4cf3a03c470e3a644a69444741b59aa6287b31ed10f97944",
+      "bundled": false,
+      "verificationDate": "2026-09-02"
+    }
+  },
+  "biologicalScope": {
+    "species": "Mus musculus",
+    "population": "Pkd2l1-Cre-targeted cerebrospinal fluid-contacting neurons",
+    "transmitterContext": "GABAergic interneuron population context",
+    "spinalContext": "Cervical spinal cord around the central canal and subependymal axon bundle",
+    "preparation": "Pkd2l1-Cre mice injected at 6 weeks with AAV-Syn-DIO-SYP-HRP or AAV-Syn-DIO-COX4-dAPEX2; tissue collected four weeks later",
+    "relationshipToAtlasRecords": "independent_publication_reference_only",
+    "sameSpecimenJoinCount": 0,
+    "sameCellJoinCount": 0,
+    "registrationCount": 0
+  },
+  "acquisition": {
+    "modality": "serial block-face scanning electron microscopy",
+    "pixelSizeNanometre": 5,
+    "sectionStepNanometre": 50,
+    "reportedImageWidthMicrometreRange": [20, 60],
+    "reportedImageHeightMicrometreRange": [40, 60],
+    "reportedDepth": ">25 µm",
+    "sourceLocator": "Materials and methods · Electron microscopy"
+  },
+  "video": {
+    "id": "video5",
+    "label": "Video 5",
+    "title": "Serial section serial block-face scanning electron microscopy images of cerebrospinal fluid-contacting neurons and the subependymal axon bundle around the central canal.",
+    "width": 872,
+    "height": 1080,
+    "posterUrl": "https://cdn.elifesciences.org/articles/83108/elife-83108-video5.jpg",
+    "sources": [
+      {
+        "format": "mp4",
+        "mediaType": "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\"",
+        "url": "https://static-movie-usa.glencoesoftware.com/mp4/10.7554/131/a0f650a10086f532696ca52834234f9071903eb3/elife-83108-video5.mp4",
+        "bytes": 46541650,
+        "etag": "492326b245e768ffe6fdf7923880b8f6"
+      },
+      {
+        "format": "webm",
+        "mediaType": "video/webm; codecs=\"vp8.0, vorbis\"",
+        "url": "https://static-movie-usa.glencoesoftware.com/webm/10.7554/131/a0f650a10086f532696ca52834234f9071903eb3/elife-83108-video5.webm",
+        "bytes": null,
+        "etag": null
+      },
+      {
+        "format": "ogv",
+        "mediaType": "video/ogg; codecs=\"theora, vorbis\"",
+        "url": "https://static-movie-usa.glencoesoftware.com/ogv/10.7554/131/a0f650a10086f532696ca52834234f9071903eb3/elife-83108-video5.ogv",
+        "bytes": null,
+        "etag": null
+      }
+    ],
+    "delivery": "remote_stream_only_not_bundled",
+    "sourceLocator": "eLife article API object video5"
+  },
+  "observedClaims": [
+    "The publication video exposes serial SBF-SEM image frames of labelled mouse spinal CSF-contacting neurons and the subependymal axon bundle.",
+    "The accompanying article reports a reconstruction delineating apical dendritic bulbs, short dendritic structures, basal axons and presynaptic contacts in this experiment.",
+    "COX4-dAPEX2 and SYP-HRP label mitochondria and synaptic vesicles respectively at experiment level. A rendered video frame does not provide object masks or coordinates for those compartments."
+  ],
+  "objectReadiness": {
+    "observedImageFrames": true,
+    "publicationRenderedReconstruction": true,
+    "rawVoxelStackExposedByArticleApi": false,
+    "segmentationLabelsExposedByArticleApi": false,
+    "reconstructionMeshExposedByArticleApi": false,
+    "skeletonExposedByArticleApi": false,
+    "stableObjectIdsExposedByArticleApi": false,
+    "coordinateBearingObjectAdmitted": false,
+    "eligibleForThreeDimensionalReconstruction": false,
+    "admittedGeometryPrimitiveCount": 0,
+    "admittedInternalObjectCount": 0,
+    "measurementUse": "forbidden"
+  },
+  "availabilityAudit": {
+    "finding": "Neither the official article availability statement nor the article API exposes a coordinate-bearing raw SBF-SEM stack, segmentation-label object, reconstruction mesh or skeleton.",
+    "scope": "official_article_and_article_api_only",
+    "notAUniversalAbsenceClaim": true,
+    "articleApiAssetsReviewed": [
+      "Video 5 MP4/WebM/OGV renditions",
+      "Video 5 poster image",
+      "article PDF/XML/figures PDF",
+      "Figure 2, Figure 3 and Figure 7 source-data files exposed by the article API",
+      "MDAR checklist"
+    ]
+  },
+  "hardBoundaries": [
+    "Video pixels may be viewed as publication imagery but may not be converted into cell, membrane, nucleus, organelle, synapse or neurite geometry by this release.",
+    "The video is not linked to the Crozat PKD2L1 record, a NeuroMorpho record, MICrONS or any selected molecular profile at same-cell or same-specimen level.",
+    "Pseudo-colour and a published rendered reconstruction are presentation layers, not downloadable segmentation masks or coordinate-bearing objects.",
+    "No frame interpolation, photogrammetry, depth estimation, segmentation inference, tracing, measurement or atlas registration is admitted.",
+    "Failure to load the remote stream leaves the reference unavailable and creates zero fallback primitives."
+  ]
+}

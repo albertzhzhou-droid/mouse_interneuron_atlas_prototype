@@ -1,0 +1,20 @@
+{
+  "status": "EXACT_NEW_AND_OLD_SOURCE_KEY_DELTA_GUARD_REPAIR",
+  "firstStopRetained": "I61_REAL_INTAKE_PREPARATION.log",
+  "diagnostic": "I61_PREPARATION_INITIAL_DIAGNOSTIC.log",
+  "beforePath": "/private/tmp/ohri-i61-real-intake-preparation-20261005/prepare_i61_real_root_intake.before-all-new-field-delta.py",
+  "before": {
+    "bytes": 17045,
+    "sha256": "3082d407b502b6e0a0f75010d3833a07a77bce8ce9402b5fbbc17e7b0ff7f1aa"
+  },
+  "after": {
+    "bytes": 17076,
+    "sha256": "63394fe3c43c95d031df8551ccac04d7a15900ba38ffc70ed5f911ba72ab6c26"
+  },
+  "old": "{key for key in a['SRC-CROZAT-2025']if a['SRC-CROZAT-2025'].get(key)!=b['SRC-CROZAT-2025'].get(key)}",
+  "new": "{key for key in set(a['SRC-CROZAT-2025'])|set(b['SRC-CROZAT-2025'])if a['SRC-CROZAT-2025'].get(key)!=b['SRC-CROZAT-2025'].get(key)}",
+  "reason": "The new localWorkbookReadiness field is absent in prior registry; compare union of old/new keys and still require exactly three authorized fields.",
+  "guardsWeakened": false,
+  "rootWrites": 0,
+  "stageWrites": 0
+}

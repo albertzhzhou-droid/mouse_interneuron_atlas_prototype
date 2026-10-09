@@ -1,0 +1,77 @@
+{
+  "receiptType": "russ_spinal_information_derivation",
+  "schemaVersion": "0.1.0",
+  "inputManifest": {
+    "fileName": "russ-information-inputs-manifest-0.1.json",
+    "sha256": "bdf2e61a4845e9e87d730c73fdf4d7303d154a7b4912ffb1562b24d19bfc7207"
+  },
+  "inputs": {
+    "published_cluster_counts": {
+      "fileName": "41467_2021_25125_MOESM6_ESM.xlsx",
+      "bytes": 21903,
+      "sha256": "5f4a2339578e08cef9c46948a2bbc50a2d6b0e797b0d950ca98e3b0aa4e49ed8",
+      "sourceUrl": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-021-25125-1/MediaObjects/41467_2021_25125_MOESM6_ESM.xlsx",
+      "retrievedAt": "2026-10-05T00:25:55.383256+00:00",
+      "redistributionScope": "Attributed article-derived factual metadata; source XLSX not part of public asset output."
+    },
+    "adult_in_situ_panels": {
+      "fileName": "41467_2021_25125_MOESM7_ESM.xlsx",
+      "bytes": 12101,
+      "sha256": "e949049b8ca0acc6ae5703d0fb3240245b1973e966f0e3e430f416e2304f7a21",
+      "sourceUrl": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-021-25125-1/MediaObjects/41467_2021_25125_MOESM7_ESM.xlsx",
+      "retrievedAt": "2026-10-05T00:25:57.389981+00:00",
+      "redistributionScope": "Attributed article-derived factual metadata; source XLSX not part of public asset output."
+    },
+    "article_xml": {
+      "fileName": "PMC8481483.fullText.xml",
+      "bytes": 266696,
+      "sha256": "879a57d107c89653e9583334fe809331335df20fffc62432250394d5baba0abf",
+      "sourceUrl": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8481483/fullTextXML",
+      "retrievedAt": "2026-10-05T00:28:35.992155+00:00",
+      "redistributionScope": "CC BY 4.0 article XML; derived factual rows retain attribution and annotation limits."
+    },
+    "existing_taxonomy": {
+      "fileName": "russ-harmonized-taxonomy-crosswalk-0.1.input.json",
+      "bytes": 34465,
+      "sha256": "dfa02071a2dbc73cfadeb86c751742775b79767c7bf7426ce9f60340bb13475b",
+      "projectPath": "data/russ-harmonized-taxonomy-crosswalk-0.1.json",
+      "redistributionScope": "Existing project type-level taxonomy context; original untouched."
+    }
+  },
+  "extractor": {
+    "fileName": "extract_russ_spinal_information_adapter_0_1.py",
+    "bytes": 28799,
+    "sha256": "4dd10666b48f881d20c37322f5b0ef7f20537ca56407b2166c57d329c3df1cb2"
+  },
+  "outputs": [
+    {
+      "fileName": "russ-spinal-information-adapter-0.1.json",
+      "bytes": 683337,
+      "sha256": "b951a78b1e3959ac8883a4ec78fd345d2eac98567a41aceba82dea0c6ea88c31"
+    }
+  ],
+  "verification": {
+    "all69TableRowsRetained": true,
+    "all69LabelsExactlyMatched": true,
+    "all414StudyCountsRetained": true,
+    "allRowTotalsReplayed": true,
+    "allColumnTotalsReplayed": true,
+    "sourceCompositionPercentsReplayed": true,
+    "all10RawPanelsRetained": true,
+    "zeroDenominatorSubstitutions": true,
+    "adultCountDiscrepancyRetained": true
+  },
+  "scientificAdmissionBoundary": {
+    "retainedSourceProfileCountUnchanged": 69,
+    "canonicalSourceProfileDenominatorUnchanged": 387,
+    "newProfileCount": 0,
+    "nucleusRosterRowsAdmitted": 0,
+    "samePhysicalCellJoins": 0,
+    "geometryObjectCount": 0,
+    "internalStructureObjectCount": 0,
+    "atlasRegistrationCount": 0,
+    "exactLineageAssignments": 0,
+    "geoMatricesDownloadedByExtractor": 0,
+    "aggregateSameSourceLabelJoinOnly": true
+  }
+}

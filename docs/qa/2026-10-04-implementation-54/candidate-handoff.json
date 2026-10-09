@@ -1,0 +1,198 @@
+{
+  "status": "READY_FOR_ROOT_I54_INTAKE_BROWSER_VALIDATION_PENDING",
+  "generatedAt": "2026-10-05T02:49:45.060915+00:00",
+  "candidateRoot": "/private/tmp/ohri-i54-ronzano-candidate",
+  "rootChecked": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype",
+  "patch": {
+    "path": "/private/tmp/ohri-i54-ronzano-candidate/candidate.patch",
+    "bytes": 109944,
+    "sha256": "2a147f7735fe1c17d5b3d46ea7a4e8e5166642fafe3c0e529e78355e6b69ab8f"
+  },
+  "proposedIntegrationFiles": [
+    {
+      "path": "app/RonzanoPremotorPositionViewer.tsx",
+      "operation": "modify",
+      "candidate": {
+        "bytes": 38229,
+        "sha256": "7d991ea250384f3bfca2b1b186d984c85b308153e99dca5bda16e53c32a72c6c"
+      },
+      "rootBefore": {
+        "bytes": 24421,
+        "sha256": "9502e7ea0c5f5649ea139c1194c2805f278aa5a3da9ee28483f849bf8baf734b"
+      }
+    },
+    {
+      "path": "app/ResearchCollectionPage.tsx",
+      "operation": "modify",
+      "candidate": {
+        "bytes": 14585,
+        "sha256": "6aa0f8af48321bf5408263dcb618356467198fb3f8482fcf17e672ffb55e184c"
+      },
+      "rootBefore": {
+        "bytes": 14555,
+        "sha256": "5dfc1371472d9bed4d337521cd3bce5dcd56c20cb0750c61d87616b6abff4851"
+      }
+    },
+    {
+      "path": "app/ronzano-premotor-position-source-view.js",
+      "operation": "add",
+      "candidate": {
+        "bytes": 32695,
+        "sha256": "1669186c3ff17ef8e44940f15cd8d9afe75a93653a3ff9aadc03ce7924458827"
+      },
+      "rootBefore": null
+    },
+    {
+      "path": "app/ronzano-premotor-position-source-view.d.ts",
+      "operation": "add",
+      "candidate": {
+        "bytes": 6678,
+        "sha256": "e77770ca0e915776c4cea1262ef284d41bc184f00178cf574957d8f8070edd7b"
+      },
+      "rootBefore": null
+    },
+    {
+      "path": "tests/ronzano-premotor-position-source-view.test.mjs",
+      "operation": "add",
+      "candidate": {
+        "bytes": 20115,
+        "sha256": "4270ef002216b9ce4d5d4a79229e99fd2aaa90928ab4fc912042b0957124e4c1"
+      },
+      "rootBefore": null
+    }
+  ],
+  "dryRunAgainstCurrentRoot": {
+    "command": [
+      "git",
+      "apply",
+      "--check",
+      "/private/tmp/ohri-i54-ronzano-candidate/candidate.patch"
+    ],
+    "exitCode": 0,
+    "stderr": "",
+    "rootModifiedByThisCheck": false
+  },
+  "isolatedReplay": {
+    "allFiveCandidateBytesExactlyReconstructed": true,
+    "temporaryPreimageCopyOnly": true,
+    "temporaryReplayRemoved": true
+  },
+  "rootOwnedPathHashesUnchangedDuringCheck": true,
+  "review": {
+    "path": "/private/tmp/ohri-i54-source-cross-review-20261004/I54_SCIENTIFIC_PRIVATE_AUTHORITY_CROSS_REVIEW.json",
+    "bytes": 6032,
+    "sha256": "266b081b1d483a8330aa62d7b822120aa70774ad642571e0b488fb1ae77f49ec",
+    "status": "PASS_WITH_BROWSER_RUNTIME_VALIDATION_REQUIRED",
+    "finalSealReviewed": true
+  },
+  "tempOnlyAdditionalQA": [
+    {
+      "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/I54_ACTUAL_BROWSER_QA_PLAN.md",
+      "bytes": 20553,
+      "sha256": "ada6981edde72b334472c403fc72300f8aa22a2b89c9f52c4feeedc1a652856d"
+    },
+    {
+      "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/actual-positions-replay.mjs",
+      "bytes": 23083,
+      "sha256": "cc5d97bb7d05ef44e18e42ffed7e15b35bc619283a1a6c7506a9eddde4983e10"
+    },
+    {
+      "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/seal-handoff.py",
+      "bytes": 5989,
+      "sha256": "07b5c1b6d665766ff8f430171d0cc8ac56db2f6f80ab3336f803c811f658d6d6"
+    },
+    {
+      "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/selftest-offline-replay.mjs",
+      "bytes": 8273,
+      "sha256": "3a52228001450f48c3bde4d215ac949fca52904974984f7e0cde8595b8f029fb"
+    },
+    {
+      "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/SYNTHETIC-offline-replay-selftest-receipt.json",
+      "bytes": 37556,
+      "sha256": "efdd143b0ff765e4e3a8f91b2cf76485aab87a181e665a2fca60023c02f80171"
+    }
+  ],
+  "ownership": {
+    "exactFivePatchPathsOwnedByThisCandidate": true,
+    "rootOwnsIntakeRecipeManifestsDocsFullChecksAndBrowser": true,
+    "sharedRootWritesByThisAgent": 0,
+    "ResearchCollectionPageMerge": "Pass initialParams only; preserve current dedicated layout and I53 modifications. Recheck patch after I53 intake.",
+    "DoNotCopy": [
+      "candidate runtime mirror",
+      "public asset copies",
+      "node_modules link",
+      "qa scaffolding and preimages"
+    ]
+  },
+  "validationAlreadySealed": {
+    "targetedTests": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "sourceBufferFits": 800,
+      "nonemptyFilterCombinations": 40,
+      "aspects": 5,
+      "presets": 4,
+      "actualBrowserPerformed": false,
+      "pixelsAttested": false,
+      "rendererBuildPins": 40,
+      "separateOriginalSourcePins": 23,
+      "mandatoryRuntimeAuthorityInputs": 63
+    },
+    "typecheckExitCode": 0,
+    "eslintExitCode": 0,
+    "logs": [
+      {
+        "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/targeted-tests-expanded.log",
+        "bytes": 1340,
+        "sha256": "2a97d1314cb93944d7cf490c7a5d04ea824b17f44eb25d22bc1d5bfced2914ca"
+      },
+      {
+        "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/typecheck-expanded.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/eslint-expanded.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/offline-replay-expanded-selftest.log",
+        "bytes": 353,
+        "sha256": "76d89a05eb5632ed8f2a706666da94e43a471e1527b101c912d65bb1b90ec39c"
+      }
+    ],
+    "offlineVerifierSelfTest": {
+      "syntheticOnly": true,
+      "positiveDocuments": 6,
+      "explicitPairs": 4,
+      "croppedDefaultNegativeRejected": true,
+      "actualBrowserExecuted": false
+    }
+  },
+  "inputAuthority": {
+    "rendererWrapperBuildPins": 40,
+    "separateOriginalRonzanoSourcePins": 23,
+    "mandatoryRuntimeAuthorityInputs": 63,
+    "temporaryMirrorInputCount": 198,
+    "temporaryMirrorMustNotBeCopiedToRoot": true,
+    "coreExceptBuildPathsExactlyUnchanged": true,
+    "viewerAndCollectionOneLinePropUnchanged": true
+  },
+  "hashTransitionReceipt": {
+    "path": "/private/tmp/ohri-i54-ronzano-candidate/qa/I54_INPUT_EXPANSION_HASH_TRANSITION.json",
+    "bytes": 4151,
+    "sha256": "9fefce0d4baedd8627da251f859ab03762952254cb27bd3532f07a0ce9782001"
+  },
+  "offlineVerifierSelfTest": {
+    "scope": "synthetic_descriptor_fixtures_only_not_browser_receipts",
+    "positiveDocuments": 6,
+    "explicitPairs": 4,
+    "croppedDefaultNegativeRejected": true,
+    "renderProofMinted": false,
+    "actualBrowserObserved": false
+  },
+  "actualBrowserExecutedForThisCandidate": false,
+  "pixelsAttested": false
+}

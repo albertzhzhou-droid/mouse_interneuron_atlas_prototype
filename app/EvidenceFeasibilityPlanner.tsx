@@ -8,6 +8,8 @@ import {
   feasibilityReceiptFilename,
 } from "./evidence-feasibility-planner.js";
 
+type FeasibilityRoute = (typeof evidenceFeasibilityPlanner.routes)[number];
+
 function prettify(value: string) {
   return value.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
@@ -84,9 +86,9 @@ export default function EvidenceFeasibilityPlanner({
     {assessment.selectedAxes.length > 0 && <div className="feasibility-results">
       {assessment.routeAssessments.map(({ axis, routes }) => <section key={axis.id} className="feasibility-result-row">
         <strong>{axis.label}</strong>
-        {routes.length === 0 ? <p><b>No qualified package route.</b> {evidenceFeasibilityPlanner.unqualifiedAxisDecision}</p> : <ul>{routes.map((route) => <li key={route.id}><b>{route.label}</b> · {prettify(route.readiness)} · {route.sourceIds.map((sourceId) => sourceNames.get(sourceId) ?? sourceId).join(" + ")}<br /><span>{route.boundary}</span></li>)}</ul>}
+          {routes.length === 0 ? <p><b>No qualified package route.</b> {evidenceFeasibilityPlanner.unqualifiedAxisDecision}</p> : <ul>{routes.map((route: FeasibilityRoute) => <li key={route.id}><b>{route.label}</b> · {prettify(route.readiness)} · {route.sourceIds.map((sourceId) => sourceNames.get(sourceId) ?? sourceId).join(" + ")}<br /><span>{route.boundary}</span></li>)}</ul>}
       </section>)}
-      {assessment.directRoutes.length > 0 && <p className="feasibility-direct-route"><b>Single-route coverage:</b> {assessment.directRoutes.map((route) => route.label).join(" · ")}</p>}
+      {assessment.directRoutes.length > 0 && <p className="feasibility-direct-route"><b>Single-route coverage:</b> {assessment.directRoutes.map((route: FeasibilityRoute) => route.label).join(" · ")}</p>}
     </div>}
     <div className="catalog-actions">
       <button type="button" onClick={exportReceipt}>Export feasibility receipt</button>

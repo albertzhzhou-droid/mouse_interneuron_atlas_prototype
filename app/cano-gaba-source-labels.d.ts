@@ -1,0 +1,9 @@
+export type GabaLabel = { id: string; rawLabel: string; nucleusCount: number; groupCounts: Array<{value: string | null; count: number}>; contextCounts: Record<string, Array<{value: string | null; count: number}>>; orderedCompoundNucleusKeysSha256: string };
+export type GabaDocument = { schemaVersion: string; adapterId: string; source: Record<string, unknown>; identity: Record<string, unknown>; denominators: Record<string, number>; sourceFields: Record<string, unknown>; labels: GabaLabel[]; groupCounts: Array<{value: string | null; count: number}>; contextCounts: Record<string, Array<{value: string | null; count: number}>>; artifact: { publicUrl: string; compressedBytes: number; compressedSha256: string; uncompressedBytes: number; uncompressedSha256: string }; boundaries: Record<string, unknown> };
+export type GabaRow = { sourceRow: number; key: string; labelId: string; raw: Record<string, string | null> };
+export type GabaRoster = { rows: readonly GabaRow[]; verification: Record<string, unknown>; claims: Record<string, number> };
+export function validateCanoGabaLabels(document: unknown): GabaDocument;
+export function parseCanoGabaAssignmentText(text: string, document: GabaDocument): readonly GabaRow[];
+export function loadCanoGabaAssignments(document: GabaDocument, options?: { fetchImpl?: typeof fetch; signal?: AbortSignal; decompressImpl?: (bytes: Uint8Array) => Promise<Uint8Array> }): Promise<GabaRoster>;
+export function listCanoGabaNuclei(roster: GabaRoster, labelId: string, options?: {query?: string; page?: number; pageSize?: number}): {rows: readonly GabaRow[]; currentPage: number; pageCount: number; matchedCount: number; sourceCount: number};
+export function canoGabaNucleusReceipt(document: GabaDocument, roster: GabaRoster, labelId: string, row: GabaRow): Record<string, unknown>;

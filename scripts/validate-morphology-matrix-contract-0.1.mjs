@@ -84,12 +84,17 @@ export async function validateMorphologyMatrixContract(contractOverride = null) 
   const radiusDerivedCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "radius_derived_surface")?.status === "DERIVED").length;
   const observedTopologyCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "centerline_topology")?.status === "OBS").length;
   const observedDiameterInputCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "diameter_input")?.status === "OBS").length;
-  const noDiameterSurfaceUnavailableCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "radius_derived_surface")?.status === "UNAVAILABLE").length;
+  const surfaceUnavailableCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "radius_derived_surface")?.status === "UNAVAILABLE").length;
+  // The historical contract's diameter count describes deposited input data.
+  // Current display authorization separately requires source-labelled 3D.
+  const source3DRadiusEligibleCount = records.filter(record => record.normalizedMetadata.dimensionality === "3D" && record.normalizedMetadata.sourceDiameterAvailable === true).length;
+  const dimensionalityBlockedRadiusCount = computed.sourceDiameterAvailableCount - source3DRadiusEligibleCount;
   const observedAxonFieldCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "axon_field")?.status === "OBS").length;
   const unavailableSomaContourCount = microdetailCoverage.filter((item) => item.axes.find((axis) => axis.id === "soma_contour")?.status === "UNAVAILABLE").length;
   failIf(observedTopologyCount !== records.length, "micro-detail topology receipt count drifted", errors);
   failIf(observedDiameterInputCount !== computed.sourceDiameterAvailableCount, "micro-detail diameter-input count drifted", errors);
-  failIf(radiusDerivedCount !== computed.sourceDiameterAvailableCount || noDiameterSurfaceUnavailableCount !== computed.sourceDiameterUnavailableCount, "micro-detail radius authority counts drifted", errors);
+  failIf(radiusDerivedCount !== source3DRadiusEligibleCount || surfaceUnavailableCount !== records.length - source3DRadiusEligibleCount, "micro-detail radius authority counts drifted", errors);
+  failIf(records.some((record, index) => record.normalizedMetadata.dimensionality === "2D" && microdetailCoverage[index].axes.find(axis => axis.id === "radius_derived_surface")?.status !== "UNAVAILABLE"), "planar source gained a three-dimensional surface", errors);
   failIf(observedAxonFieldCount !== computed.axonFieldPresentCount, "micro-detail axon-field count drifted", errors);
   failIf(unavailableSomaContourCount !== records.length, "standardized soma samples were promoted into contours", errors);
   failIf(contract.microdetailCoverage.conflictPolicy !== "fail_closed_to_unavailable" || !contract.microdetailCoverage.unavailableInterpretation.includes("not_biological_absence"), "micro-detail conflict or unavailable interpretation drifted", errors);
@@ -99,7 +104,9 @@ export async function validateMorphologyMatrixContract(contractOverride = null) 
   return {
     releaseId: contract.releaseId,
     recordCount: records.length,
-    radiusAuthorizedCount: computed.sourceDiameterAvailableCount,
+    radiusAuthorizedCount: source3DRadiusEligibleCount,
+    sourceDiameterInputCount: observedDiameterInputCount,
+    dimensionalityBlockedRadiusCount,
     noDiameterCount: computed.sourceDiameterUnavailableCount,
     comparisonMaximum: contract.comparator.maximumSelections,
     registrationCount: computed.registrationCount,
@@ -114,7 +121,7 @@ export async function validateMorphologyMatrixContract(contractOverride = null) 
 if (process.argv[1] && fileURLToPath(import.meta.url) === fileURLToPath(new URL(`file://${process.argv[1]}`))) {
   try {
     const result = await validateMorphologyMatrixContract();
-    console.log(`Morphology matrix validation passed: ${result.recordCount} records; ${result.radiusAuthorizedCount} radius-authorized; ${result.noDiameterCount} No Diameter; ${result.microdetailAxisCount} micro-detail axes × ${result.microdetailRecordCount} records; up to ${result.comparisonMaximum} independent viewports; ${result.registrationCount} registrations; ${result.internalStructureCount} internal models.`);
+    console.log(`Morphology matrix validation passed: ${result.recordCount} records; ${result.sourceDiameterInputCount} deposited diameter inputs; ${result.radiusAuthorizedCount} 3D radius-authorized; ${result.dimensionalityBlockedRadiusCount} diameter-bearing planar records blocked; ${result.noDiameterCount} No Diameter; ${result.microdetailAxisCount} micro-detail axes × ${result.microdetailRecordCount} records; up to ${result.comparisonMaximum} independent viewports; ${result.registrationCount} registrations; ${result.internalStructureCount} internal models.`);
   } catch (error) {
     console.error(error instanceof Error ? error.message : error);
     process.exitCode = 1;

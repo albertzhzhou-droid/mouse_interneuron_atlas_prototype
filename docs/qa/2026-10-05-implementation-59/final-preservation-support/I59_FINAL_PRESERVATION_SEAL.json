@@ -1,0 +1,122 @@
+{
+  "increment": "I59",
+  "status": "PASS_INDEPENDENT_FINAL_PRESERVATION",
+  "generatedAtUTC": "2026-10-05T07:08:08.596911+00:00",
+  "successfulExecutionActualExitCode": 0,
+  "checks": {
+    "passed": 24,
+    "total": 24,
+    "failed": []
+  },
+  "boundFiles": [
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_FINAL_PRESERVATION.json",
+      "bytes": 4795689,
+      "sha256": "7632e5489543bc1452fc09be64b8fec49c74fcc5399b147a348e2f62cae6a563",
+      "preadCalls": 1172
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_FINAL_PRESERVATION.log",
+      "bytes": 1153,
+      "sha256": "136d7f95004ad789bf62b24af39ce2a4a6b48d1dc03deddf211bdd8e99b2b28e",
+      "preadCalls": 2
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/verify_i59_final_preservation.py",
+      "bytes": 27991,
+      "sha256": "46059b13e244d98fd4da6c262b689140c799571960988ded1487af71beda53cc",
+      "preadCalls": 8
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_ACTUAL_SCHEMA_ADAPTER_REPAIR.json",
+      "bytes": 2464,
+      "sha256": "b006b687ace770ee25ec2f24d297abf4577ee8b57b78d0dc4dad0d60b4d88f47",
+      "preadCalls": 2
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_ORIGINAL_DESCRIPTOR_SCHEMA_ADAPTER_REPAIR.json",
+      "bytes": 3050,
+      "sha256": "7317565eec7699605d7add89e4e285e7614e4d0959654477b99aad160d71607b",
+      "preadCalls": 2
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_FINAL_PRESERVATION_FIRST_SCHEMA_STOP.log",
+      "bytes": 235,
+      "sha256": "fcbf340074b9ff5764c93d6a2c947d5b2e85900483e6620622d18f23a41735b0",
+      "preadCalls": 2
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_FINAL_PRESERVATION_SECOND_DESCRIPTOR_SCHEMA_STOP.log",
+      "bytes": 350,
+      "sha256": "d4c159473aa242b85fb48f2d202aed50808c84195ebd66ec54605a84c50c93b7",
+      "preadCalls": 2
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_FINAL_EPOCH_EXPECTATIONS.json",
+      "bytes": 3382,
+      "sha256": "7e15e9a6f9f1764d58951e3e50158d5cb843d2948cae19ce1587f1f7d71771d3",
+      "preadCalls": 2
+    },
+    {
+      "path": "/private/tmp/ohri-i59-final-preservation-20261005/I59_PRESERVATION_EXPECTED_PROTECTED_INPUTS.json",
+      "bytes": 34638,
+      "sha256": "a6ed501ff1569327c61fb219b312c6ab63843e40f10281019d3d21e2fbb4efb3",
+      "preadCalls": 10
+    }
+  ],
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "summary": {
+    "beforeCanonical": 2577,
+    "currentCanonical": 2581,
+    "comparisonCounts": {
+      "unchanged": 2569,
+      "changed": 8,
+      "added": 4
+    },
+    "scientificInputsUnchanged": 2012,
+    "preimages": 9,
+    "physicalAbsences": 4,
+    "candidateTargets": 7,
+    "runtime": 198,
+    "positionsBuild": 40,
+    "sourceCounts": {
+      "sources": 32,
+      "sets": 42,
+      "profiles": 387,
+      "rosters": 13,
+      "objects": 4,
+      "completed": 83,
+      "roadmap": 243,
+      "REG": 0,
+      "identities": 0,
+      "fullGoalComplete": false
+    },
+    "actualFullCounts": {
+      "tests": 1526,
+      "pass": 1511,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 15
+    }
+  },
+  "manifestEpoch": {
+    "bytes": 529199,
+    "sha256": "debd9f62a2b2034600077f41e2da3ba84a7f93abc8751631028d84c91f6d8f84"
+  },
+  "scopeNotes": [
+    "2581 canonical actual root and stage files all checked; 2584 operational stage inventory reported by parent without promoting its extra entries to authority.",
+    "130 physical RNA descriptor checks include 129 canonical descriptor paths and one original RDS outside both canonical manifests, bound through unchanged prior source JSON plus exact hardcoded original descriptor; no invented before row or physical absence.",
+    "Two stopped schema attempts are preserved; all 24 preservation checks retained, actual summary counts mapped explicitly and nested exact I59 QA paths bound without broadening native execution claims.",
+    "No actual GUI/network/export/download performed by this audit; five already completed source/native/Positions receipts are byte-bound.",
+    "2012 scientific inputs unchanged; no new identity/REG/roster/geometry/scientific completion promotion."
+  ],
+  "fullGoalComplete": false,
+  "finalReadContract": {
+    "strategy": "full_file_os_pread_4096_byte_chunks",
+    "chunkBytes": 4096,
+    "preadCalls": 311225,
+    "bytesRead": 1241936905,
+    "filesRead": 5210
+  }
+}

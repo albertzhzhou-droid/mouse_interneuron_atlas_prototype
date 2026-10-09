@@ -1,0 +1,68 @@
+{
+  "releaseId": "ohri-tabulae-paralytica-spatial-local-session-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "reviewDate": "2026-08-18",
+  "scientificInputPolicy": "public_sources_only",
+  "networkAtReviewRuntime": false,
+  "purpose": "A browser-local inspection route for one researcher-selected Tabulae Visium low-resolution tissue image, spot-position CSV and scale-factor JSON extracted from the public GEO archive. It does not fetch, bundle, upload or persist a source file.",
+  "authority": "SOURCE_LOCAL_2D_SESSION_ONLY",
+  "archive": {
+    "accession": "GSE234774",
+    "stableName": "GSE234774_RAW.tar",
+    "sourceUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE234nnn/GSE234774/suppl/GSE234774_RAW.tar",
+    "publicFileListUrl": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE234nnn/GSE234774/suppl/filelist.txt",
+    "bytes": 135208960,
+    "lastModified": "2024-01-31T00:24:37Z",
+    "sourceChecksum": null,
+    "assetRightsDecision": "unresolved_not_bundled",
+    "archiveStatus": "publicly_listed_not_downloaded_not_bundled"
+  },
+  "localImport": {
+    "mode": "researcher_selected_local_files_only",
+    "automaticRemoteAcquisition": false,
+    "upload": false,
+    "persistence": "none",
+    "maximumInputBytesPerMember": 7340032,
+    "requiredMemberKinds": ["low_resolution_tissue_image", "spot_positions", "scale_factors"],
+    "acceptedCompression": "gzip",
+    "acceptedImageMediaType": "image/png"
+  },
+  "samples": [
+    {"id": "TSP-GSM7474504", "geoSampleAccession": "GSM7474504", "sectionLabel": "075_A"},
+    {"id": "TSP-GSM7474505", "geoSampleAccession": "GSM7474505", "sectionLabel": "075_B"},
+    {"id": "TSP-GSM7474506", "geoSampleAccession": "GSM7474506", "sectionLabel": "075_C"},
+    {"id": "TSP-GSM7474507", "geoSampleAccession": "GSM7474507", "sectionLabel": "075_D"},
+    {"id": "TSP-GSM7474508", "geoSampleAccession": "GSM7474508", "sectionLabel": "077_A"},
+    {"id": "TSP-GSM7474509", "geoSampleAccession": "GSM7474509", "sectionLabel": "077_B"},
+    {"id": "TSP-GSM7474510", "geoSampleAccession": "GSM7474510", "sectionLabel": "077_C"},
+    {"id": "TSP-GSM7474511", "geoSampleAccession": "GSM7474511", "sectionLabel": "077_D"},
+    {"id": "TSP-GSM7474512", "geoSampleAccession": "GSM7474512", "sectionLabel": "078_A"},
+    {"id": "TSP-GSM7474513", "geoSampleAccession": "GSM7474513", "sectionLabel": "078_B"},
+    {"id": "TSP-GSM7474514", "geoSampleAccession": "GSM7474514", "sectionLabel": "078_C"},
+    {"id": "TSP-GSM7474515", "geoSampleAccession": "GSM7474515", "sectionLabel": "078_D"},
+    {"id": "TSP-GSM7474516", "geoSampleAccession": "GSM7474516", "sectionLabel": "103_A"},
+    {"id": "TSP-GSM7474517", "geoSampleAccession": "GSM7474517", "sectionLabel": "103_B"},
+    {"id": "TSP-GSM7474518", "geoSampleAccession": "GSM7474518", "sectionLabel": "103_C"},
+    {"id": "TSP-GSM7474519", "geoSampleAccession": "GSM7474519", "sectionLabel": "103_D"},
+    {"id": "TSP-GSM7474520", "geoSampleAccession": "GSM7474520", "sectionLabel": "105_A"},
+    {"id": "TSP-GSM7474521", "geoSampleAccession": "GSM7474521", "sectionLabel": "105_B"},
+    {"id": "TSP-GSM7474522", "geoSampleAccession": "GSM7474522", "sectionLabel": "105_C"},
+    {"id": "TSP-GSM7474523", "geoSampleAccession": "GSM7474523", "sectionLabel": "105_D"},
+    {"id": "TSP-GSM7474524", "geoSampleAccession": "GSM7474524", "sectionLabel": "106_A"},
+    {"id": "TSP-GSM7474525", "geoSampleAccession": "GSM7474525", "sectionLabel": "106_B"},
+    {"id": "TSP-GSM7474526", "geoSampleAccession": "GSM7474526", "sectionLabel": "106_C"},
+    {"id": "TSP-GSM7474527", "geoSampleAccession": "GSM7474527", "sectionLabel": "106_D"}
+  ],
+  "memberNameRule": {
+    "prefix": "{geoSampleAccession}_{sectionLabel}",
+    "low_resolution_tissue_image": "{prefix}_tissue_lowres_image.png.gz",
+    "spot_positions": "{prefix}_tissue_positions_list.csv.gz",
+    "scale_factors": "{prefix}_scalefactors_json.json.gz"
+  },
+  "releaseDecision": {
+    "permitted": "A researcher may select one declared local file triplet, inspect the image and source-local spot positions in a browser-only 2D session, and export a receipt containing only file names, local SHA-256 values and parser summaries.",
+    "forbidden": "Do not fetch from GEO, bundle a source file, upload a selected file, persist source content, infer cell type or gene expression, call a spot an individual interneuron, join this session to another modality, create a 3D reconstruction, create a project transform, or create REG.",
+    "nextGate": "A future numerical adapter requires an exact object checksum or institutional checksum endpoint, asset-level reuse decision, source data dictionary, compatible-condition analysis plan, and curator review."
+  }
+}

@@ -1,0 +1,17 @@
+
+/private/tmp/ohri-i22-local-verification/app/DandiFullRecordingBrowser.tsx
+  40:43  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/private/tmp/ohri-i22-local-verification/app/DandiFullRecordingBrowser.tsx:40:43
+  38 |   const downloadRef = useRef<string | null>(null);
+  39 |   const pendingRestore = useRef<unknown>(null);
+> 40 |   const selectionRef = useRef(selection); selectionRef.current = selection;
+     |                                           ^^^^^^^^^^^^^^^^^^^^ Cannot update ref during render
+  41 |   const channelIndex = selection.channelIndex;
+  42 |   const blockIndex = Math.floor(selection.firstSample / 300000);
+  43 |   const requestKey = `${channelIndex}:${blockIndex}`;  react-hooks/refs
+
+✖ 1 problem (1 error, 0 warnings)
+

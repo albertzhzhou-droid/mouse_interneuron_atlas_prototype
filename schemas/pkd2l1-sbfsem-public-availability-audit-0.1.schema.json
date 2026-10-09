@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/pkd2l1-sbfsem-public-availability-audit-0.1.schema.json",
+  "title": "PKD2L1 spinal SBF-SEM public availability audit 0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "auditId", "auditDate", "researchUpgradeId", "scope", "source", "articleDataAvailability", "figure4", "video5", "acquisitionMetadata", "objectAndRightsReadiness", "interpretationBoundary"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "auditId": { "const": "ohri-pkd2l1-sbfsem-public-availability-audit-0.1.0" },
+    "auditDate": { "type": "string", "format": "date" },
+    "researchUpgradeId": { "const": "UPG-242" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["boundary", "articleApiReceipt", "sourcesReviewed", "notAUniversalAbsenceClaim"],
+      "properties": {
+        "boundary": { "const": "official_article_article_api_figures_page_and_elife_site_terms" },
+        "articleApiReceipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "bytes", "sha256", "articleVersion"],
+          "properties": {
+            "url": { "const": "https://api.elifesciences.org/articles/83108" },
+            "bytes": { "const": 247909 },
+            "sha256": { "const": "854963b39bbb091f4cf3a03c470e3a644a69444741b59aa6287b31ed10f97944" },
+            "articleVersion": { "const": 2 }
+          }
+        },
+        "sourcesReviewed": { "type": "array", "minItems": 4, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "notAUniversalAbsenceClaim": { "const": true }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["doi", "title", "species", "articleUrl", "figuresUrl", "pmcUrl", "termsUrl", "articleLicense", "siteTermsDisposition", "attributionRequired"],
+      "properties": {
+        "doi": { "const": "10.7554/eLife.83108" },
+        "title": { "type": "string", "minLength": 1 },
+        "species": { "const": "Mus musculus" },
+        "articleUrl": { "type": "string", "format": "uri" },
+        "figuresUrl": { "type": "string", "format": "uri" },
+        "pmcUrl": { "type": "string", "format": "uri" },
+        "termsUrl": { "const": "https://elifesciences.org/terms" },
+        "articleLicense": { "const": "CC-BY-4.0" },
+        "siteTermsDisposition": { "type": "string", "minLength": 1 },
+        "attributionRequired": { "const": true }
+      }
+    },
+    "articleDataAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["singleCellLightMicroscopyTracingPopulationCount", "countIsSbfsemCellCensus", "formalStatementNumericalSourceDataFigures", "articleApiSourceDataFigureNumbers", "apiFigure3SourceDataIsSbfsemVolumeOrSegmentation", "officialFiguresPageCounts"],
+      "properties": {
+        "singleCellLightMicroscopyTracingPopulationCount": { "const": 71 },
+        "countIsSbfsemCellCensus": { "const": false },
+        "formalStatementNumericalSourceDataFigures": { "const": [2, 7] },
+        "articleApiSourceDataFigureNumbers": { "const": [2, 3, 7] },
+        "apiFigure3SourceDataIsSbfsemVolumeOrSegmentation": { "const": false },
+        "officialFiguresPageCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["figures", "videos", "additionalFiles", "additionalFileDescription"],
+          "properties": {
+            "figures": { "const": 7 },
+            "videos": { "const": 7 },
+            "additionalFiles": { "const": 1 },
+            "additionalFileDescription": { "const": "MDAR checklist" }
+          }
+        }
+      }
+    },
+    "figure4": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["figureNumber", "supplementCount", "mainPanelRange", "representativeSbfsemSerialImagePanels", "publicationReconstructionPanel", "reconstructionProvenance", "rawVoxelStackProvidedInReviewedScope", "segmentationFilesProvidedInReviewedScope", "stableEmCellObjectIdsProvidedInReviewedScope"],
+      "properties": {
+        "figureNumber": { "const": 4 },
+        "supplementCount": { "const": 1 },
+        "mainPanelRange": { "const": "A-J" },
+        "representativeSbfsemSerialImagePanels": { "const": ["C", "D", "E", "F", "G", "H", "I"] },
+        "publicationReconstructionPanel": { "const": "J" },
+        "reconstructionProvenance": { "type": "string", "minLength": 1 },
+        "rawVoxelStackProvidedInReviewedScope": { "const": false },
+        "segmentationFilesProvidedInReviewedScope": { "const": false },
+        "stableEmCellObjectIdsProvidedInReviewedScope": { "const": false }
+      }
+    },
+    "video5": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["articleApiObjectId", "title", "widthPixels", "heightPixels", "posterUrl", "renditions", "delivery"],
+      "properties": {
+        "articleApiObjectId": { "const": "video5" },
+        "title": { "type": "string", "minLength": 1 },
+        "widthPixels": { "const": 872 },
+        "heightPixels": { "const": 1080 },
+        "posterUrl": { "type": "string", "format": "uri" },
+        "renditions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["format", "mediaType", "url", "bytes", "etag"],
+            "properties": {
+              "format": { "enum": ["mp4", "webm", "ogv"] },
+              "mediaType": { "type": "string", "minLength": 1 },
+              "url": { "type": "string", "format": "uri" },
+              "bytes": { "type": ["integer", "null"], "minimum": 1 },
+              "etag": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "delivery": { "const": "remote_media_renditions_not_a_source_voxel_stack" }
+      }
+    },
+    "acquisitionMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reportedPixelSizeNanometre", "reportedSectionStepNanometre", "reportedImageWidthMicrometreRange", "reportedImageHeightMicrometreRange", "reportedDepth", "completeStackArrayDimensions", "volumeAxisOrder", "interpretation"],
+      "properties": {
+        "reportedPixelSizeNanometre": { "const": 5 },
+        "reportedSectionStepNanometre": { "const": 50 },
+        "reportedImageWidthMicrometreRange": { "const": [20, 60] },
+        "reportedImageHeightMicrometreRange": { "const": [40, 60] },
+        "reportedDepth": { "const": ">25 µm" },
+        "completeStackArrayDimensions": { "type": "null" },
+        "volumeAxisOrder": { "type": "null" },
+        "interpretation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "objectAndRightsReadiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawVoxelStackAvailableInReviewedScope", "cellSegmentationLabelsAvailableInReviewedScope", "organelleSegmentationLabelsAvailableInReviewedScope", "reconstructionMeshAvailableInReviewedScope", "skeletonAvailableInReviewedScope", "stableEmObjectCrosswalkAvailableInReviewedScope", "exactVideoToCellObjectIdentityAvailable", "volumeVoxelAxesAndFullDimensionsAvailable", "articleRelatedMediaReuseTerms", "videoDownloadedByThisAudit", "rawVolumePayloadBytesDownloaded", "videoBundledByProject", "admittedEmVolumes", "admittedCellOrOrganelleGeometry", "admittedInternalObjects", "sameCellJoins", "registrations", "measurementUse"],
+      "properties": {
+        "rawVoxelStackAvailableInReviewedScope": { "const": false },
+        "cellSegmentationLabelsAvailableInReviewedScope": { "const": false },
+        "organelleSegmentationLabelsAvailableInReviewedScope": { "const": false },
+        "reconstructionMeshAvailableInReviewedScope": { "const": false },
+        "skeletonAvailableInReviewedScope": { "const": false },
+        "stableEmObjectCrosswalkAvailableInReviewedScope": { "const": false },
+        "exactVideoToCellObjectIdentityAvailable": { "const": false },
+        "volumeVoxelAxesAndFullDimensionsAvailable": { "const": false },
+        "articleRelatedMediaReuseTerms": { "type": "string", "minLength": 1 },
+        "videoDownloadedByThisAudit": { "const": false },
+        "rawVolumePayloadBytesDownloaded": { "const": 0 },
+        "videoBundledByProject": { "const": false },
+        "admittedEmVolumes": { "const": 0 },
+        "admittedCellOrOrganelleGeometry": { "const": 0 },
+        "admittedInternalObjects": { "const": 0 },
+        "sameCellJoins": { "const": 0 },
+        "registrations": { "const": 0 },
+        "measurementUse": { "const": "forbidden" }
+      }
+    },
+    "interpretationBoundary": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 1 } }
+  }
+}

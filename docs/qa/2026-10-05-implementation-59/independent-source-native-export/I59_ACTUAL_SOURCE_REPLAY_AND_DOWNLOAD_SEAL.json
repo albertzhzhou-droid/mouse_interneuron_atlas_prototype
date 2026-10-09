@@ -1,0 +1,170 @@
+{
+  "reviewId": "I59-independent-native-actual-DOM-and-download-source-review",
+  "status": "PASS_SEVEN_NATIVE_CAPTURES_TWO_EXACT_LANDED_EXPORTS_LITERAL_SOURCE_RECONCILED",
+  "checkedAtUtc": "2026-10-05T06:32:03.435010+00:00",
+  "ownedTempEvidence": [
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/replay_actual_i59.py",
+      "bytes": 20041,
+      "sha256": "4691e3d0f48fffd64b9a720553b32c485cbfd2a0f93a0e8037d28dcaff6bbb19"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/test_replay_actual_i59.py",
+      "bytes": 3952,
+      "sha256": "5326d906df052fb5ca6b8ca50775372690055a250a2168463d7b9add9172df2b"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/I59_ACTUAL_DOM_SOURCE_AND_NATIVE_LANDING_REVIEW.json",
+      "bytes": 64371,
+      "sha256": "906db296e4edf61184c75403a74030ff29408169808035d6864073d54ba4f846"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/I59_INDEPENDENT_REPLAY_NEGATIVE_CONTROLS.log",
+      "bytes": 996,
+      "sha256": "85c4567ff7813c9ce5237845d67ae71fb457b420055808bb98f4e03e4a73495c"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/I59_ACTUAL_DOM_REPLAY_FINAL.log",
+      "bytes": 428,
+      "sha256": "d1738ffcda839edbfaae08e883dd62ba55efad9894d3be341232c31fdcca458a"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/I59_REVIEW_HELPER_CORRECTIONS.json",
+      "bytes": 636,
+      "sha256": "3b03102cef36898174d22488e8dc7c9b9d8a2b024d1be80c5e6d50c785b0a33d"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/exact-landed-cano-chol-rna-pair-Chat-Pitx2.json",
+      "bytes": 11358,
+      "sha256": "c4419ba7c8434d82e40499b8386c04b90b5d2f04264a0e23162ac5f53f947ae0"
+    },
+    {
+      "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/exact-landed-cano-chol-rna-pair-Chat-Pitx2-profile.csv",
+      "bytes": 20468,
+      "sha256": "dd64e6987998d24427a4117d69d7cea26736b23ab00830f0b242803e1a98e347"
+    }
+  ],
+  "negativeControlTestsPassed": 9,
+  "captures": 7,
+  "sourceChunkNumbers": [
+    93,
+    21,
+    0
+  ],
+  "sourceColumns": 923,
+  "sourceProfiles": 11,
+  "nativeExportCurrentProfile": {
+    "rawLabel": "CHOL_IN_Pitx2_Skor2",
+    "sourceNuclei": 53,
+    "bothPositive": 37,
+    "firstOnly": 14,
+    "secondOnly": 1,
+    "neitherPositive": 1,
+    "ChatTotal": 267,
+    "Pitx2Total": 99
+  },
+  "selectedNativeNucleus": {
+    "key": "GSE318731|GSE318731_P56_cholinergic_multiome.rds|TCTGGCTTCACGAATC-1_1",
+    "nativeId": "TCTGGCTTCACGAATC-1_1",
+    "profileId": "cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617",
+    "metadataRow": 32,
+    "countsColumn": 32,
+    "totalRnaCount": 23426,
+    "detectedFeatureCount": 5442,
+    "firstCount": 14,
+    "secondCount": 2,
+    "category": "both_positive"
+  },
+  "landingSummary": [
+    {
+      "kind": "json",
+      "download": {
+        "path": "/Users/zhouzhenghang/Downloads/cano-chol-rna-pair-Chat-Pitx2.json",
+        "bytes": 11358,
+        "sha256": "c4419ba7c8434d82e40499b8386c04b90b5d2f04264a0e23162ac5f53f947ae0",
+        "mtimeNs": 1791181651609368933,
+        "mtimeUtc": "2026-10-05T06:27:31.609369+00:00",
+        "birthtimeUtc": "2026-10-05T06:27:31.608603+00:00"
+      },
+      "exactCopy": {
+        "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/exact-landed-cano-chol-rna-pair-Chat-Pitx2.json",
+        "bytes": 11358,
+        "sha256": "c4419ba7c8434d82e40499b8386c04b90b5d2f04264a0e23162ac5f53f947ae0",
+        "mtimeNs": 1791181893430652942,
+        "mtimeUtc": "2026-10-05T06:31:33.430653+00:00"
+      },
+      "before": {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-06-before-native-pair-json-export.json",
+        "bytes": 38216,
+        "sha256": "47788cfe4a85d792f7df0b712e3c0d902ffbb0f9ac2ba15a6a756eaa6d3df944",
+        "mtimeNs": 1791181651564377406,
+        "mtimeUtc": "2026-10-05T06:27:31.564377+00:00"
+      },
+      "after": {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-06-after-native-pair-json-export.json",
+        "bytes": 38182,
+        "sha256": "022758a47653dd7f760afede35288f1023d64bc92f1804533a7dc55b21dfd951",
+        "mtimeNs": 1791181656602847472,
+        "mtimeUtc": "2026-10-05T06:27:36.602848+00:00"
+      },
+      "cuaEventApi": {
+        "eventObserved": false,
+        "error": "Error: Timed out after 5000ms waiting for download."
+      },
+      "fileCreatedAndModifiedWithinExactWindow": true,
+      "exactCurrentSelectedPayloadOrAll53Rows": true
+    },
+    {
+      "kind": "csv",
+      "download": {
+        "path": "/Users/zhouzhenghang/Downloads/cano-chol-rna-pair-Chat-Pitx2-profile.csv",
+        "bytes": 20468,
+        "sha256": "dd64e6987998d24427a4117d69d7cea26736b23ab00830f0b242803e1a98e347",
+        "mtimeNs": 1791181656688001714,
+        "mtimeUtc": "2026-10-05T06:27:36.688002+00:00",
+        "birthtimeUtc": "2026-10-05T06:27:36.687781+00:00"
+      },
+      "exactCopy": {
+        "path": "/private/tmp/ohri-i59-actual-dom-source-replay-20261005/exact-landed-cano-chol-rna-pair-Chat-Pitx2-profile.csv",
+        "bytes": 20468,
+        "sha256": "dd64e6987998d24427a4117d69d7cea26736b23ab00830f0b242803e1a98e347",
+        "mtimeNs": 1791181893433271351,
+        "mtimeUtc": "2026-10-05T06:31:33.433271+00:00"
+      },
+      "before": {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-07-before-native-pair-csv-export.json",
+        "bytes": 38182,
+        "sha256": "022758a47653dd7f760afede35288f1023d64bc92f1804533a7dc55b21dfd951",
+        "mtimeNs": 1791181656664975174,
+        "mtimeUtc": "2026-10-05T06:27:36.664975+00:00"
+      },
+      "after": {
+        "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/docs/qa/2026-10-05-implementation-59/actual-07-after-native-pair-csv-export.json",
+        "bytes": 38196,
+        "sha256": "adb171f2f989e7c96d4bd899bd6b46f069fc1b0ab3878405d95dc6e5f267bf19",
+        "mtimeNs": 1791181661772629947,
+        "mtimeUtc": "2026-10-05T06:27:41.772630+00:00"
+      },
+      "cuaEventApi": {
+        "eventObserved": false,
+        "error": "Error: Timed out after 5000ms waiting for download."
+      },
+      "fileCreatedAndModifiedWithinExactWindow": true,
+      "exactCurrentSelectedPayloadOrAll53Rows": true
+    }
+  ],
+  "noEarlierActual03DefaultSelectedNullUsedForNativeExports": true,
+  "preservation": {
+    "rootWrites": 0,
+    "stageWrites": 0,
+    "browserActions": 0,
+    "nativeDownloadSourcesContentAndMtimeUnchanged": true,
+    "privatePersonalFilesInspected": 2,
+    "personalDirectoryEnumeration": false,
+    "fallbackSearch": false,
+    "productHelperImports": 0,
+    "originalRdsReadRehashOrParser": false,
+    "newSourceProfileRosterTypeGeometryIdentityRightsOrREGAdmissions": 0
+  },
+  "separateEvidenceLayers": "Root native execution and private runtime producer remain their own evidence. This independent audit replays admitted gzip numeric values and source metadata, captured actualDOM facts and exact file landing; it does not mint private proof, attest pixels, replay RDS semantics or grant distribution rights."
+}

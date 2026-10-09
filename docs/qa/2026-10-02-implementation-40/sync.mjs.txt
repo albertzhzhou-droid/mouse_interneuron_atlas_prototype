@@ -1,0 +1,13 @@
+import {open,writeFile,mkdir} from 'node:fs/promises';import{createHash}from'node:crypto';import path from'node:path';import assert from'node:assert/strict';
+import {openSync,fstatSync,readSync,closeSync} from 'node:fs';
+const root='/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype',temp='/private/tmp/ohri-i22-local-verification';
+async function read(p){const h=openSync(p,'r');try{const s=fstatSync(h),b=Buffer.alloc(s.size);let at=0;while(at<b.length){const n=readSync(h,b,at,Math.min(4096,b.length-at),at);assert.ok(n,p);at+=n;}assert.equal(fstatSync(h).size,b.length);return b;}finally{closeSync(h);}}
+const prepare=process.argv.includes('--prepare');
+const sha=b=>createHash('sha256').update(b).digest('hex'),m=await read(root+'/data/research-iteration-manifest-2.91.json'),doc=JSON.parse(m);let copied=0;
+const owned=JSON.parse(await read(root+'/docs/qa/2026-10-02-implementation-40/before-owned-inputs.json')),allow=new Set(owned.map(x=>x.path));
+let inputs=doc.authoritativeInputs;
+if(prepare){const builder=(await read(root+'/tools/build_research_iteration_manifest_2_91.mjs')).toString();const core=builder.split('export const CORE_INPUTS_291 = Object.freeze([')[1].split('\n]);')[0];const original=new Set(JSON.parse(await read(root+'/docs/qa/2026-10-02-implementation-40/before-authoritative-inputs.json')).map(x=>x.path)),pins=new Map(inputs.filter(x=>allow.has(x.path)).map(x=>[x.path,x]));for(const match of core.matchAll(/"([^"]+)"/g))if(!original.has(match[1]))pins.set(match[1],{path:match[1]});inputs=[...pins.values()];}
+for(const x of inputs){const b=await read(root+'/'+x.path);if(x.sha256&&!(prepare&&allow.has(x.path))){assert.equal(b.length,x.bytes,x.path);assert.equal(sha(b),x.sha256,x.path);}let old=null;try{old=await read(temp+'/'+x.path);}catch(e){if(e.code!=='ENOENT')throw e;}if(!old||!b.equals(old)){await mkdir(path.dirname(temp+'/'+x.path),{recursive:true});await writeFile(temp+'/'+x.path,b);copied++;}}
+await writeFile(temp+'/data/research-iteration-manifest-2.91.json',m);
+for(const g of JSON.parse(await read(root+'/data/svara-synaptic-contacts-0.1.json')).groups)for(const x of[g.matrixSource,g.contactsSource]){const p='data/source-candidates/svara-contacts-20261002/'+x.name;await mkdir(path.dirname(temp+'/'+p),{recursive:true});const b=await read(root+'/'+p);assert.equal(sha(b),x.sha256);await writeFile(temp+'/'+p,b);}
+console.log(JSON.stringify({mode:prepare?'prepare':'sync',inputs:inputs.length,copied,originals:4}));

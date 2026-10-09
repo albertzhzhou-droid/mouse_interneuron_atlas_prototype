@@ -1,0 +1,27 @@
+(node:84103) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[33m[PLUGIN_TIMINGS] [0mYour build spent 100% of 4.2s inside plugin hooks (4.2s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - vite:css transform (92%, 3.9s, 3 calls)
+Those rows are 92% of the build; the rest of the 100% is below.
+Not measurable — 6 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - rsc:virtual-client-package resolveId (801 calls)
+  - vinext:og-inline-fetch-assets resolveId (819 calls)
+  - rsc:use-client transform (260 calls)
+  … and 3 more
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[PLUGIN_TIMINGS] [0mYour build spent 92% of 4.4s inside plugin hooks (4.1s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - vite:prepare-out-dir renderStart (76%, 3.4s, 1 call)
+Those rows are 76% of the build; the rest of the 92% is below.
+Not measurable — 2 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - vinext:og-inline-fetch-assets resolveId (1254 calls)
+  - alias resolveId (1498 calls)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+

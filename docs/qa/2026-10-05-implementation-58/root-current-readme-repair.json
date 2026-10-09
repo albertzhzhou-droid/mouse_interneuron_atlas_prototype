@@ -1,0 +1,35 @@
+{
+  "status": "PASS_NARROW_CURRENT_COUNTER_RECONCILIATION",
+  "path": "README.md",
+  "before": {
+    "bytes": 86489,
+    "sha256": "1a32742ec018b390cb1fc1cb6b7a3e3b8523d6b7ac1603263c173dc902c9d1b8"
+  },
+  "after": {
+    "bytes": 86489,
+    "sha256": "1f67ae83029ae6bb0e0fa9427ca72b2a21db90c472218cc1bd7877a6c3ee49f1"
+  },
+  "paragraphReplacements": [
+    {
+      "line": 3,
+      "before": "The current working tree is the unpackaged `2.91.0-research.1` implementation of the September upgrade plan, with immutable 2.90 retained as its parent. The canonical registry remains 31 sources, 41 record sets, 13 exact cell/profile rosters, 4 exact source-object sets and 387 source profiles; these are distinct source-local units. The 243-row upgrade registry now has 79 exactly `completed` increments, which is not a scientific completion rate. New entries include the [exact structural-object workspace](/objects), source-input audits, anchored molecular comparisons, two independent comparative SWCs, bounded native Janelia raw/nucleus planes and one fixed DANDI extracellular channel preview. M2 section-linked BIL cell/nucleus geometry and M4 exact mouse-spinal-interneuron 3D internals remain source-gated. Current verification and rollback scope are recorded per increment in the implementation timelines, including `docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_09_DANDI_TRACE.md`, and in `data/research-iteration-manifest-2.91.json`.\n",
+      "after": "The current working tree is the unpackaged `2.91.0-research.1` implementation of the September upgrade plan, with immutable 2.90 retained as its parent. The canonical registry remains 32 sources, 42 record sets, 13 exact cell/profile rosters, 4 exact source-object sets and 387 source profiles; these are distinct source-local units. The 243-row upgrade registry now has 83 exactly `completed` increments, which is not a scientific completion rate. New entries include the [exact structural-object workspace](/objects), source-input audits, anchored molecular comparisons, two independent comparative SWCs, bounded native Janelia raw/nucleus planes and one fixed DANDI extracellular channel preview. M2 section-linked BIL cell/nucleus geometry and M4 exact mouse-spinal-interneuron 3D internals remain source-gated. Current verification and rollback scope are recorded per increment in the implementation timelines, including `docs/RESEARCH_TIMELINE_2026-09-30_IMPLEMENTATION_09_DANDI_TRACE.md`, and in `data/research-iteration-manifest-2.91.json`.\n"
+    },
+    {
+      "line": 128,
+      "before": "`npm test` runs the current `test:research` pipeline: production build, strict typecheck, lint, source/scientific validators, current `research-iteration-manifest-2.91` verification and the working-tree regression suite. `npm run typecheck` is also available separately; the 2.91 typecheck is clean. The canonical registry records 31 sources, 41 record sets, 13 exact cell/profile rosters, four exact source-object sets and 387 profiles. The upgrade registry has 243 rows and 79 exactly `completed` increments; this count is not a scientific completion rate. Sealed earlier manifests, including the immutable 2.90 parent, retain snapshot checks; the historical unsealed 2.41 envelope is not relabelled as a passed snapshot. `npm run test:frozen-2.8` separately checks the owner-local archived package. Exact run totals, skips and production-browser checks belong to the separately dated implementation timelines; an automated pass does not by itself establish production asset serving, scientific completion or public-release approval.\n",
+      "after": "`npm test` runs the current `test:research` pipeline: production build, strict typecheck, lint, source/scientific validators, current `research-iteration-manifest-2.91` verification and the working-tree regression suite. `npm run typecheck` is also available separately; the 2.91 typecheck is clean. The canonical registry records 32 sources, 42 record sets, 13 exact cell/profile rosters, four exact source-object sets and 387 profiles. The upgrade registry has 243 rows and 83 exactly `completed` increments; this count is not a scientific completion rate. Sealed earlier manifests, including the immutable 2.90 parent, retain snapshot checks; the historical unsealed 2.41 envelope is not relabelled as a passed snapshot. `npm run test:frozen-2.8` separately checks the owner-local archived package. Exact run totals, skips and production-browser checks belong to the separately dated implementation timelines; an automated pass does not by itself establish production asset serving, scientific completion or public-release approval.\n"
+    }
+  ],
+  "scope": "Only current opening and verification paragraphs; historical snapshot paragraphs preserved",
+  "sourceCounters": {
+    "sources": 32,
+    "recordSets": 42,
+    "completed": 83,
+    "upgradeRows": 243
+  },
+  "preimageArchive": {
+    "bytes": 28797,
+    "sha256": "d1bb4574ba68adf2e17789f45847917fbc0806557b16f71bedc91de531720144"
+  }
+}

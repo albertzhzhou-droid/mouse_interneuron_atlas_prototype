@@ -1,0 +1,295 @@
+- link "Skip to research content":
+  - /url: "#research-content"
+- complementary "Atlas navigation":
+  - link "Interneuron Atlas overview":
+    - /url: /
+    - text: Interneuron
+    - text: Atlas
+    - generic: Mouse spinal cord
+  - navigation "Atlas pages":
+    - region "Start":
+      - heading "Start" [level=2]
+      - list:
+        - link "Overview":
+          - /url: /
+          - generic: Overview
+        - link "3D workspace":
+          - /url: /workspace
+          - generic: 3D workspace
+    - region "Explore":
+      - heading "Explore" [level=2]
+      - list:
+        - link "Morphology":
+          - /url: /explore/morphology
+          - generic: Morphology
+        - link "Cell types":
+          - /url: /explore/cell-types
+          - generic: Cell types
+        - link "Anatomy":
+          - /url: /explore/anatomy
+          - generic: Anatomy
+        - link "Positions":
+          - /url: /explore/positions
+          - generic: Positions
+    - region "Research":
+      - heading "Research" [level=2]
+      - list:
+        - link "Research explorer":
+          - /url: /research/explorer
+          - generic: Research explorer
+        - link "Evidence map":
+          - /url: /research/overview
+          - generic: Evidence map
+        - link "SCI conditions":
+          - /url: /research/sci
+          - generic: SCI conditions
+        - link "Evidence coverage":
+          - /url: /research/coverage
+          - generic: Evidence coverage
+    - region "Sources":
+      - heading "Sources" [level=2]
+      - list:
+        - link "Source registry":
+          - /url: /sources
+          - generic: Source registry
+        - link "Source objects":
+          - /url: /objects
+          - generic: Source objects
+        - link "Source audits":
+          - /url: /source-audits
+          - generic: Source audits
+        - link "Svara catalogue":
+          - /url: /catalogues/svara
+          - generic: Svara catalogue
+        - link "Svara connectivity":
+          - /url: /connectivity/svara
+          - generic: Svara connectivity
+  - paragraph:
+    - text: Public-data research
+    - text: Source identities remain distinct.
+- navigation "Breadcrumb":
+  - list:
+    - link "Overview":
+      - /url: /
+    - text: /
+    - generic: Research
+    - text: /
+    - generic: Research explorer
+- main:
+  - paragraph: Research · Record search
+  - heading "Search source records" [level=1]
+  - paragraph: Find a label, marker, publication or accession, then continue to its dedicated research page.
+  - status
+  - region "Interneuron Research Explorer":
+    - paragraph: UPG-049 + UPG-180 + UPG-183 + UPG-185 + UPG-204 · CHECKSUM-VERIFIED · RECORD-DRIVEN · ZERO BIOLOGICAL JOINS
+    - heading "Interneuron Research Explorer" [level=3]
+    - paragraph: Search 673 cross-lane source records by label, marker, DOI, PMID or accession. The molecular lane includes 387 source profiles, including the exact Cano-Gomez P56 CHOL_IN registry, while retaining 181 morphology records (142 frozen census + 39 supplementary exact objects); the separate frozen NeuroMorpho universe contains 1,097 source objects. Selecting a molecular record replaces its source-record evidence model and clears prior cell geometry; a shared term never creates a same-cell or same-type relationship.
+    - generic "Research Explorer source-record denominator":
+      - strong: "673"
+      - generic: source records
+      - generic: 387 source profiles · 181 source-local morphologies · 73 anatomy labels · 17 SCI populations · 7 SCI entities · 8 source lanes · separate frozen morphology universe 1,097
+    - text: Search exact source records
+    - searchbox "Search exact source records": russ-2021:Excit-1
+    - text: Evidence lane
+    - combobox "Evidence lane":
+      - option "All independent lanes" [selected]
+      - option "SCI evidence entity"
+      - option "Source profile"
+      - option "Morphology record"
+      - option "Anatomy label"
+      - option "SCI time-course population"
+      - option "Coverage source lane"
+    - button "Reset search"
+    - region "Grouped source results":
+      - heading "Grouped source results" [level=4]
+      - status: 11 records across 1 source namespaces
+      - generic: Grouping is bibliographic, not biological
+      - region "russ-2021 results":
+        - generic: Molecular population
+        - heading "russ-2021" [level=5]
+        - strong: "11"
+        - 'button "Excit-1 266 captured sequenced cells/nuclei · Markers: Cpne4 · Bnc2 · Dach2 russ-2021:Excit-1" [pressed]':
+          - generic: Excit-1
+          - generic: "266 captured sequenced cells/nuclei · Markers: Cpne4 · Bnc2 · Dach2"
+          - code: russ-2021:Excit-1
+        - 'button "Excit-10 624 captured sequenced cells/nuclei · Markers: Pde11a · Cpne8 · Prex2 russ-2021:Excit-10"':
+          - generic: Excit-10
+          - generic: "624 captured sequenced cells/nuclei · Markers: Pde11a · Cpne8 · Prex2"
+          - code: russ-2021:Excit-10
+        - 'button "Excit-11 166 captured sequenced cells/nuclei · Markers: Pde11a · Tex15 · Reln russ-2021:Excit-11"':
+          - generic: Excit-11
+          - generic: "166 captured sequenced cells/nuclei · Markers: Pde11a · Tex15 · Reln"
+          - code: russ-2021:Excit-11
+        - 'button "Excit-12 179 captured sequenced cells/nuclei · Markers: Col11a1 · Ntng1 · Skor2 russ-2021:Excit-12"':
+          - generic: Excit-12
+          - generic: "179 captured sequenced cells/nuclei · Markers: Col11a1 · Ntng1 · Skor2"
+          - code: russ-2021:Excit-12
+        - button "Show all 11"
+    - region "Excit-1":
+      - paragraph: SOURCE PROFILE · SOURCE-LOCKED
+      - heading "Excit-1" [level=3]
+      - paragraph: Dorsal excitatory · Russ 2021
+      - button "Open source-specific workspace"
+      - region "Current record source scope":
+        - paragraph:
+          - strong: Record scope
+          - generic: source profile aggregate · Mus musculus
+        - paragraph: Species and age below describe the source context. They do not establish the identity or measurements of an individual cell.
+        - generic "Source context, experimental units and conditions"
+        - generic "40 field locators and exact record export"
+        - generic "Loading evidence for the source index"
+      - tablist "Focused research dossier views":
+        - tab "Summary"
+        - tab "Evidence40"
+        - tab "Gaps9" [selected]
+        - tab "Provenance"
+      - tabpanel "Gaps9":
+        - strong: 0 record-specific
+        - generic: 9 shared dataset/project limits
+        - paragraph: No record-specific missingness is declared for this source record.
+        - generic "9 shared dataset/project limits · collapsed" [active]
+        - paragraph: These limits apply at source-dataset or project-policy scope and are shown once for this dossier.
+        - article:
+          - strong: Sequenced-cell identity roster
+          - generic: Not Ingested
+          - paragraph: Population counts do not retain individual sequenced cells/nuclei or animal-resolved replicates.
+          - term: Reason code
+          - definition: not_ingested
+          - term: Scope
+          - definition: shared_dataset_limit
+          - term: Authority
+          - definition: project_curation_policy
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_retained
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Adult prevalence numerical denominator
+          - generic: Unavailable
+          - paragraph: Table1 footnote retains confidently assigned adult-neuron scope without a numerical per-row denominator; neither 19,353 sequencing observations nor 2,894 all counted adult cells substitute.
+          - term: Reason code
+          - definition: source_schema_no_field
+          - term: Scope
+          - definition: shared_dataset_limit
+          - term: Authority
+          - definition: source_record
+          - term: Locator
+          - definition: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table-wrap-foot
+          - term: Raw value
+          - definition: source_schema_no_field
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Single-cell morphology
+          - generic: Not Measured
+          - paragraph: No reconstructable single-neuron arbor is linked to this source population.
+          - term: Reason code
+          - definition: not_measured_by_study
+          - term: Scope
+          - definition: shared_dataset_limit
+          - term: Authority
+          - definition: source_record
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_measured
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Cell coordinates
+          - generic: Not Ingested
+          - paragraph: Published population-level spatial context is not a project xyz coordinate.
+          - term: Reason code
+          - definition: not_ingested
+          - term: Scope
+          - definition: shared_dataset_limit
+          - term: Authority
+          - definition: project_curation_policy
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_available_in_this_record
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: SCI context
+          - generic: Not Measured
+          - paragraph: The taxonomy reference is not an SCI condition series.
+          - term: Reason code
+          - definition: not_measured_by_study
+          - term: Scope
+          - definition: shared_dataset_limit
+          - term: Authority
+          - definition: source_record
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_established
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Projection target
+          - generic: Not Established
+          - paragraph: A molecular cluster label does not determine local-interneuron versus projection-neuron status.
+          - term: Reason code
+          - definition: relationship_not_established
+          - term: Scope
+          - definition: shared_project_limit
+          - term: Authority
+          - definition: project_relationship_policy
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_established
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Synaptic connectivity
+          - generic: Not Established
+          - paragraph: No same-record connectome is available.
+          - term: Reason code
+          - definition: relationship_not_established
+          - term: Scope
+          - definition: shared_project_limit
+          - term: Authority
+          - definition: project_relationship_policy
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_linked_in_this_record
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Cross-source same-cell identity
+          - generic: Not Established
+          - paragraph: No Russ population is declared identical to a Sathyamurthy, morphology, anatomy or SCI record.
+          - term: Reason code
+          - definition: relationship_not_established
+          - term: Scope
+          - definition: shared_project_limit
+          - term: Authority
+          - definition: project_relationship_policy
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: not_established
+          - term: Inference
+          - definition: Forbidden
+        - article:
+          - strong: Internal structure
+          - generic: Unavailable
+          - paragraph: This source-profile contract exposes no linked membrane, nucleus, organelle, synapse, receptor-distribution or intracellular-compartment object; no internal detail may be inferred.
+          - term: Reason code
+          - definition: source_schema_no_field
+          - term: Scope
+          - definition: shared_dataset_limit
+          - term: Authority
+          - definition: source_record
+          - term: Locator
+          - definition: Results; Fig. 2
+          - term: Raw value
+          - definition: source_schema_no_field
+          - term: Inference
+          - definition: Forbidden

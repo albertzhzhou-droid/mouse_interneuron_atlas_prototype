@@ -455,7 +455,7 @@ export async function renderStaticIndex() {
   workerUrl.searchParams.set("curatorPackage", String(Date.now()));
   const { default: worker } = await import(workerUrl.href);
   const response = await worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request("http://localhost/workspace", { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -463,7 +463,7 @@ export async function renderStaticIndex() {
   const html = await response.text();
   if (!/<html lang="en">/.test(html)) fail("Static render is not declared as English");
   if (containsCjk(html)) fail("Static render contains non-English CJK text");
-  if (!/Mouse Spinal Interneuron Atlas/.test(html)) fail("Static render does not contain the public-data workbench");
+  if (!/aria-label="Atlas research workspace"/.test(html) || !/id="sci-evidence-workspace"/.test(html)) fail("Static render does not contain the public-data workbench");
   return html;
 }
 

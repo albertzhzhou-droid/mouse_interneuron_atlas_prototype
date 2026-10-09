@@ -1,0 +1,26 @@
+--- locked40/replay.py
++++ actual41/replay.py
+@@ -134,6 +134,8 @@
+         else:
+             for entries in row['entriesLists']:
+                 check(entries['label']=='Navigation entries for '+row['recordSetId'] and isinstance(entries['links'],list),'other-source rendered navigation list owner mismatch')
++            for detail in row['details']:
++                check(type(detail.get('open')) is bool and isinstance(detail.get('summary'),str) and isinstance(detail.get('text'),str),'other-source original disclosure shape invalid')
+     return {'recordSets':len(rows),'actualEntriesLists':sum(len(r['entriesLists']) for r in rows),'actualRecordSetDetails':sum(len(r['details']) for r in rows),'clockAuthority':'separate original producer brackets','unsupportedBaseCountUsed':False,'unavailableGateChecked':unavailable}
+ def check_registry_dom(raw,fixture,sidecar):
+     bracket(raw);registry=fixture['registry'];source,record_set,source_error,set_error=source_selection(registry,raw['url'])
+@@ -148,9 +150,12 @@
+     check(dossier['present'] is True and dossier['sourceId']==source['id'],'dossier owner mismatch')
+     check(norm(dossier['title'])==norm(source['title']),'dossier title mismatch')
+     if source['id'] not in (GAR,CRO):
+-        exact(actions,[]);check(len(buttons)==1 and buttons[0]['text']=='Export source dossier' and buttons[0]['disabled'] is False,'other explicit source export unavailable')
+         comp=check_companion(raw,sidecar,[r['recordSetId'] for r in source['recordSets']],False)
+-        return {'kind':'registry','sourceId':source['id'],'informationLinks':0,'actualNavigationCompanion':comp,'scope':'other explicit source ownership/no stale Garcia action and companion clocks/record-set membership only; exact-child roster biology/count behavior remains its existing authority'}
++        exact(actions,[]);dossier_buttons=[b for b in buttons if b['text']=='Export source dossier'];navigation_buttons=[b for b in buttons if b['text']=='Export navigation receipt']
++        check(len(dossier_buttons)==1 and dossier_buttons[0]['disabled'] is False,'other explicit source dossier export unavailable')
++        opened=sum(d['open'] is True for row in sidecar['rows'] for d in row['details'])
++        check(len(buttons)==len(dossier_buttons)+len(navigation_buttons) and len(navigation_buttons)==opened and all(b['disabled'] is False for b in navigation_buttons),'other-source navigation export must match existing source-owned open disclosures')
++        return {'kind':'registry','sourceId':source['id'],'informationLinks':0,'sourceDossierExports':1,'existingNavigationReceiptExports':len(navigation_buttons),'actualNavigationCompanion':comp,'scope':'other explicit source ownership/no stale Garcia action and companion clocks/record-set membership only; existing open disclosure navigation export is separately counted, not a new source dossier or biological admission'}
+     exact(field_map(dossier['scopeFields']),{k:norm(v) for k,v in scope_fields(source).items()})
+     units=dossier['units'];check(len(units)==len(source['experimentalUnits']),'unit count changed')
+     for actual,expected in zip(units,source['experimentalUnits']):

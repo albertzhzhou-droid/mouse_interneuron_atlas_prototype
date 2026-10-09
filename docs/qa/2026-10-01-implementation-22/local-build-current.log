@@ -1,0 +1,64 @@
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 build
+> WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build
+
+
+  vinext build  (Vite 8.2.1)
+
+(node:86105) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/5] analyze client references...
+[2Ktransforming...✓ 250 modules transformed.
+rendering chunks...
+✓ built in 9.48s
+[33m[PLUGIN_TIMINGS] [0mYour build spent 99% of 9.4s inside plugin hooks (9.3s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - vite:css transform (60%, 5.7s, 1 call)
+Those rows are 60% of the build; the rest of the 99% is below.
+Not measurable — 8 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - rsc:virtual-client-package resolveId (779 calls)
+  - vinext:og-inline-fetch-assets resolveId (792 calls)
+  - alias resolveId (872 calls)
+  … and 5 more
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[2/5] analyze server references...
+[2Ktransforming...✓ 427 modules transformed.
+rendering chunks...
+✓ built in 8.57s
+[3/5] build rsc environment...
+[2Ktransforming...✓ 244 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 5.51s
+[4/5] build client environment...
+[2Ktransforming...✓ 432 modules transformed.
+rendering chunks...
+computing gzip size...
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 19.64s
+[5/5] build ssr environment...
+[2Ktransforming...✓ 429 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 6.69s
+[0m
+  Route (app)
+  ┌ ? /                                    
+  ├ λ /api/source-records/search-index.json
+  ├ λ /api/source-rosters/cano-chol-in     
+  ├ ? /objects                             
+  └ ? /source-audits                       
+
+  λ API  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+

@@ -1,0 +1,22 @@
+Original polygon comparison · 9,032,645 exact vertex rows
+
+Both original polygon sets were replayed from 163 ZIP entries. Every native X/Y vertex and full-string parent cell ID agrees exactly with the corresponding Parquet row: 182,698 cell polygons and 180,502 nucleus polygons. No rounding, tolerance, coordinate transform or polygon reordering was used.
+
+Boundary coordinates
+µm · original archive declaration and exact equality
+Cell / nucleus vertex rows
+4,564,211 / 4,468,434
+Different X/Y / parent rows
+0 / 0
+Nucleus polygons / cells with nucleus polygons
+180,502 / 180,436
+
+All 182,698 source nucleus counts and cell segmentation methods agree. The 2,262 cells with no nucleus polygon and the 62 with multiple nuclei remain distinct. Nuclear polygons retain their DAPI method; they do not inherit their parent cell’s boundary, interior or 5.0 µm expansion method. The 47,355 padded vertex slots are excluded from the comparison.
+
+Use polygon cell_index → the original cell_id array → exact cell_id. Each boundary file’s numeric label_id matches its own polygon row plus one; 180,502 shared labels point to different parent cells across the two files. Numeric labels must not join cell and nucleus boundaries.
+
+Only the selected polygon intervals (51.20 MB) and earlier coordinate entries were replayed, with retained SHA-256 and ZIP CRC checks. No complete archive checksum, unread segmentation mask or rendered geometry verification is claimed.
+
+These polygons simplify segmentation masks for visualization. They do not establish an observed membrane or 3D anatomy. 10x polygon format description
+
+Section identity, donor, curated type, outline-to-cell frame and rights declarations remain unresolved. This original polygon audit adds 0 viewer geometry, 0 interneuron labels, 0 same-cell morphology and 0 atlas registration.

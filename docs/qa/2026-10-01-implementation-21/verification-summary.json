@@ -1,0 +1,159 @@
+{
+  "iteration": "I21",
+  "date": "2026-10-01",
+  "version": "2.91.0-research.1",
+  "source": {
+    "objectKey": "BIL:ace-pie-cot",
+    "directoryFolder": "Run8_Slide2_Mus_M7_F7",
+    "analysisId": "97bd35fe-159d-472d-872f-a7949a4d6209",
+    "roiId": "075490e7-4e87-42ee-a488-bdc975443129"
+  },
+  "fullResearch": {
+    "sessionId": 72363,
+    "exitCode": 0,
+    "tests": 1250,
+    "passed": 1235,
+    "failed": 0,
+    "cancelled": 0,
+    "conditionalSkips": 15,
+    "durationMs": 178870.466584,
+    "buildPassed": true,
+    "strictTypecheckPassed": true,
+    "fullLintPassed": true,
+    "allValidatorsPassed": true,
+    "log": "full-research-validation-291.log",
+    "scope": "Final application code before subsequent docs/queue/registry/manifest synchronization; no application code changed afterward"
+  },
+  "relatedChecks": {
+    "exitCode": 0,
+    "tests": 20,
+    "passed": 20,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "log": "targeted.log"
+  },
+  "finalClosure": {
+    "documentTests": 16,
+    "documentTestsPassed": 16,
+    "documentTestExitCode": 0,
+    "registryValidatorExitCode": 0,
+    "manifestValidatorExitCode": 0,
+    "manifestInputCount": 806,
+    "buildSessionId": 80160,
+    "buildExitCode": 0,
+    "buildLog": "final-closure-build.log",
+    "productionSessionId": 27435,
+    "productionHost": "127.0.0.1",
+    "productionPort": 3003,
+    "nativeVerification": "final-native-verification.json",
+    "nativeScreenshot": "final-native-desktop.jpg",
+    "narrowScreenshot": "native-narrow.jpg",
+    "productionLog": "final-closure-production.log",
+    "documentClosureLog": "final-document-checks-closure.log",
+    "documentClosureTests": 16,
+    "documentClosureTestsPassed": 16,
+    "afterFinalTimelineClarification": true,
+    "nativeCurrentBuildReloaded": true,
+    "nativeCurrentBuildDesktop": {
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280
+    },
+    "nativeCurrentBuildNarrow": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390
+    },
+    "finalNarrowScreenshot": "final-native-narrow.jpg",
+    "temporaryViewportReset": true
+  },
+  "originalSourceReplay": {
+    "exitCode": 0,
+    "sourceFileByteHashes": 119,
+    "newOriginalInputFiles": 111,
+    "retainedI04Inputs": 8,
+    "exactCellIds": 182698,
+    "parquetIdsMissingFromZarr": 0,
+    "zarrIdsMissingFromParquet": 0,
+    "duplicateIds": 0,
+    "columns": [
+      "x_centroid",
+      "y_centroid",
+      "cell_area",
+      "nucleus_area",
+      "nucleus_count"
+    ],
+    "rowsPerColumn": 182698,
+    "differentValues": 0,
+    "numericToleranceIntroduced": false,
+    "sourceNaNNucleusAreas": 2262,
+    "spatialUnits": "microns",
+    "unitEvidenceLocator": "cells.zarr.zip::.zattrs#/spatial_units",
+    "unitProofScope": "Exact-run cell centroids; original Parquet has no unit metadata; polygon arrays not compared",
+    "originalSourceFloat32Scale": 4.7058820724487305,
+    "transformScope": "Physical-to-stitched-image; not outline/section/atlas transform",
+    "analysisClusterings": 10,
+    "assignedPerClustering": 182490,
+    "unassignedPerClustering": 208,
+    "curatedInterneuronAssignments": 0,
+    "sourceFovsPerFile": 609,
+    "fovIsBiologicalSection": false,
+    "rawRangeAndZipCrcReplayed": true
+  },
+  "partialArchive": {
+    "declaredArchiveBytes": 252307597,
+    "coordinateReadBytes": 5271362,
+    "priorMetadataReadBytes": 495859,
+    "rangeReadTotalsOverlap": true,
+    "wholeArchiveDownloaded": false,
+    "wholeArchiveSha256": null,
+    "masksVerified": false,
+    "polygonsVerified": false
+  },
+  "preservation": {
+    "fixedScientificInputs": 398,
+    "fixedScientificInputsUnchanged": true,
+    "fixedScientificReceipt": "fixed-scientific-input-reconciliation.json",
+    "frozenManifestVersions": [
+      "2.34",
+      "2.90"
+    ],
+    "frozenManifestUnchanged": true,
+    "frozenManifestReceipt": "final-frozen-manifest-reconciliation.json",
+    "originalOwnedBackup": "rollback-before.zip"
+  },
+  "remainingScientificGates": [
+    "source-defined cell-to-section mapping",
+    "verified section/donor assignment",
+    "curated source cell types",
+    "outline-to-cell frame",
+    "dataset and site rights-policy difference"
+  ],
+  "remainingValidation": {
+    "nativeAutomaticDownloadLandingObserved": false,
+    "allProjectAccessibilityOrFullGoalBrowsed": false
+  },
+  "admissions": {
+    "viewerGeometry": 0,
+    "bilSectionLinkedCellNucleusGeometry": 0,
+    "interneuron": 0,
+    "threeDCell": 0,
+    "atlasRegistration": 0,
+    "crossSourceIdentityJoin": 0,
+    "sameCellMorphologyJoin": 0
+  },
+  "canonicalCounts": {
+    "sources": 31,
+    "recordSets": 41,
+    "sourceProfiles": 387,
+    "researchUpgrades": 243,
+    "exactCompletedUpgrades": 79
+  },
+  "goalStatus": "active",
+  "fullGoalComplete": false,
+  "checkoutHead": "8281912dc96df28e42f24de391c8872e20e17532",
+  "committed": false,
+  "pushed": false,
+  "published": false
+}

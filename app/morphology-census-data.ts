@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sha256Hex } from "./source-local-morphology-geometry.js";
+import { readVerifiedMorphologyGeometry, morphologyGeometryVerificationReceipt } from "./morphology-geometry-verification.js";
 import {
   assertGeometryMatchesSourceFrameDisclosure,
   morphologySourceFrameDisclosureFor,
@@ -134,7 +134,9 @@ export const MORPHOLOGY_TYPE_LABELS: Record<number, string> = {
   7: "Source type 7",
 };
 
-const geometryPromiseCache = new Map<string, Promise<MorphologyGeometryPayload>>();
+// Only completed immutable payloads are shared. In-flight requests belong to
+// their own consumer, so closing one viewport cannot abort another viewport.
+const geometryCache = new Map<string, MorphologyGeometryPayload>();
 
 function assertGeometryMatchesCurrentRecord(
   record: MorphologyCensusRecord,
@@ -148,6 +150,7 @@ function assertGeometryMatchesCurrentRecord(
     geometry.segments.length !== Number(record.morphometrics.computed.segmentCount)
   ) throw new Error("geometry identity or authority receipt mismatch");
   assertGeometryMatchesSourceFrameDisclosure(disclosure, geometry);
+  morphologyGeometryVerificationReceipt(record, disclosure, geometry);
   return geometry;
 }
 
@@ -189,29 +192,25 @@ export function asFrozenCensusComparisonRecord(record: MorphologyCensusRecord): 
   };
 }
 
-export async function loadVerifiedMorphologyGeometry(record: MorphologyCensusRecord) {
+export async function loadVerifiedMorphologyGeometry(record: MorphologyCensusRecord, { forceReload = false, signal }: { forceReload?: boolean; signal?: AbortSignal } = {}) {
   if (!record.geometry.available || !record.geometry.path || !record.geometry.sha256 || !record.geometry.bytes) {
     throw new Error(record.geometry.missingReason ?? "geometry was not admitted");
   }
   const disclosure = morphologySourceFrameDisclosureFor(record);
   const cacheKey = `${record.neuronId}:${record.geometry.sha256}`;
-  const cached = geometryPromiseCache.get(cacheKey);
-  if (cached) {
-    return cached.then((geometry) => assertGeometryMatchesCurrentRecord(record, disclosure, geometry));
+  const cached = geometryCache.get(cacheKey);
+  if (forceReload) geometryCache.delete(cacheKey);
+  if (cached && !forceReload) {
+    if (signal?.aborted) throw new DOMException("Morphology verification was cancelled", "AbortError");
+    return assertGeometryMatchesCurrentRecord(record, disclosure, cached);
   }
   const request = (async () => {
-    const geometryUrl = morphologyGeometryUrl(record);
-    if (!geometryUrl) throw new Error("geometry path was not admitted");
-    const response = await fetch(geometryUrl);
-    if (!response.ok) throw new Error(`geometry request failed (${response.status})`);
-    const bytes = await response.arrayBuffer();
-    if (bytes.byteLength !== record.geometry.bytes) throw new Error("geometry byte count changed");
-    if (await sha256Hex(bytes) !== record.geometry.sha256) throw new Error("geometry checksum verification failed");
-    const geometry = JSON.parse(new TextDecoder().decode(bytes)) as MorphologyGeometryPayload;
-    return assertGeometryMatchesCurrentRecord(record, disclosure, geometry);
+    const geometry = await readVerifiedMorphologyGeometry(record, disclosure, { fetchImpl: fetch, signal, forceReload });
+    if (signal?.aborted) throw new DOMException("Morphology verification was cancelled", "AbortError");
+    const verified = assertGeometryMatchesCurrentRecord(record, disclosure, geometry);
+    geometryCache.set(cacheKey, verified);
+    return verified;
   })();
-  geometryPromiseCache.set(cacheKey, request);
-  request.catch(() => geometryPromiseCache.delete(cacheKey));
   return request;
 }
 
@@ -219,29 +218,37 @@ export function useVerifiedMorphologyGeometry(record: MorphologyCensusRecord | n
   const [state, setState] = useState<VerifiedGeometryState>({ status: "idle", geometry: null, message: "No reconstruction selected" });
   useEffect(() => {
     let cancelled = false;
+    const controller = new AbortController();
     if (!record) {
       queueMicrotask(() => {
         if (!cancelled) setState({ status: "idle", geometry: null, message: "No reconstruction selected" });
       });
-      return () => { cancelled = true; };
+      return () => { cancelled = true; controller.abort(); };
     }
     if (!record.geometry.available) {
       queueMicrotask(() => {
         if (!cancelled) setState({ status: "unavailable", geometry: null, message: record.geometry.missingReason ?? "geometry was not admitted" });
       });
-      return () => { cancelled = true; };
+      return () => { cancelled = true; controller.abort(); };
     }
     queueMicrotask(() => {
       if (!cancelled) setState({ status: "loading", geometry: null, message: `Verifying NeuroMorpho ${record.neuronId} geometry…` });
     });
-    loadVerifiedMorphologyGeometry(record)
+    loadVerifiedMorphologyGeometry(record, { signal: controller.signal })
       .then((geometry) => {
         if (!cancelled) setState({ status: "verified", geometry, message: `Verified ${geometry.segments.length.toLocaleString()} exact SWC segments` });
       })
       .catch((error: Error) => {
         if (!cancelled) setState({ status: "unavailable", geometry: null, message: error.message });
       });
-    return () => { cancelled = true; };
+    return () => { cancelled = true; controller.abort(); };
   }, [record]);
+  // Effects clear the previous load asynchronously; never expose that payload
+  // under a newly selected record while the new source verification is pending.
+  if (!record) return { status: "idle", geometry: null, message: "No reconstruction selected" };
+  if (state.status === "verified") {
+    try { morphologyGeometryVerificationReceipt(record, morphologySourceFrameDisclosureFor(record), state.geometry); }
+    catch { return { status: "loading", geometry: null, message: `Verifying NeuroMorpho ${record.neuronId} geometry…` }; }
+  }
   return state;
 }

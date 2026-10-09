@@ -18,6 +18,7 @@ function canonicalJson(value) {
   return JSON.stringify(value);
 }
 
+/** @param {typeof import("../data/microns-source-native-clipping-0.1.json") | null} admittedClippingContract */
 export function validateMicronsImportProvenance(payload, state, admittedContract, admittedClippingContract = null) {
   const requestedView = state.cameraPreset === "microns_observed_reference";
   const reference = payload.micronsObservedReference;

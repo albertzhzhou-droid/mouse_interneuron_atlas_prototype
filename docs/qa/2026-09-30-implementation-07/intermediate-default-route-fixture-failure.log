@@ -1,0 +1,2133 @@
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 pretest:research
+> npm run validate:crozat-pkd2l1 && npm run validate:dmrt3-di6 && npm run validate:roome-dil && npm run validate:delile-taxonomy && npm run validate:pkd2l1-sbfsem-video && npm run validate:pkd2l1-independent-context && npm run validate:native-soma-contours && npm run validate:native-contour-catalog && npm run validate:todd-native-contour-topology && npm run validate:cano-gomez-p56 && npm run validate:availability-audit && npm run validate:research-manifest-2.40 && npm run validate:research-manifest-2.39 && npm run validate:research-manifest-2.38 && npm run validate:research-manifest-2.37 && npm run validate:research-manifest-2.36 && npm run validate:research-manifest-2.35 && npm run validate:research-manifest-2.34 && npm run validate:research-manifest-2.42 && npm run validate:research-manifest-2.43 && npm run validate:research-manifest-2.44 && npm run validate:research-manifest-2.45 && npm run validate:research-manifest-2.47-snapshot && npm run validate:research-manifest-2.48 && npm run validate:banc-v888-candidate-audit && npm run validate:banc-v888-mitochondria-route && npm run validate:super-clem-serial-stack && npm run validate:davis-icr-reference && npm run validate:banc-v888-reference && npm run validate:microns-subcellular-audit && npm run validate:research-manifest-2.50-snapshot && npm run validate:research-manifest-2.55 && npm run validate:research-manifest-2.56-snapshot && npm run validate:research-manifest-2.57-snapshot && npm run validate:research-manifest-2.59-snapshot && npm run validate:research-manifest-2.63-snapshot && npm run validate:neuromorpho-release-delta && npm run validate:kelly-zebrafish-taxonomy && npm run validate:research-manifest
+
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:crozat-pkd2l1
+> node scripts/validate-crozat-pkd2l1-functional-profile-0.1.mjs
+
+Crozat PKD2L1 profile valid: crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn; 7 pinned files; zero geometry and cross-experiment joins
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:dmrt3-di6
+> node scripts/validate-dmrt3-di6-source-taxonomy-0.1.mjs
+
+Dmrt3/dI6 taxonomy valid: 6 profiles; 384 → 354 → 274 cells; 22490 bytes; SHA-256 e5d7b26df781033a971282b697684cf6f71daa2fe711883475723186c2d92468; zero geometry/internal objects/cross-source identities
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:roome-dil
+> node scripts/validate-roome-dil-source-taxonomy-0.1.mjs
+
+Roome dIL source taxonomy 0.1 validation passed: 157 profiles; 15900 rows; 26 quarantines; 0 geometry/internal structures
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:delile-taxonomy
+> node scripts/validate-delile-developmental-interneuron-taxonomy-0.1.mjs
+
+Delile developmental interneuron taxonomy validation passed: 51 profiles / 15217 cells (7a77c8c10f15224188bb542fddf63bc97de57b06dd9289e324bc7b8612219597)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:pkd2l1-sbfsem-video
+> node scripts/validate-pkd2l1-sbfsem-video-reference-0.1.mjs
+
+PKD2L1 SBF-SEM video reference and UPG-242 public-availability audit passed: Video 5; 0 geometry primitives
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:pkd2l1-independent-context
+> node scripts/validate-pkd2l1-independent-population-context-0.1.mjs
+
+{"contextId":"leblond-2025-pkd2l1-independent-population-context","mouseCount":18,"sectionCount":811,"ageSexSectionDenominatorsReconciled":true,"tableFiveStrata":8,"publicRawDataDepositVerified":false,"perCellMorphologyAvailable":false,"geometryPrimitivesAdmitted":0,"sameCellJoinToCrozat":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:native-soma-contours
+> node scripts/validate-neurolucida-source-native-soma-contour-trace-0.1.mjs
+
+{
+  "releaseId": "ohri-neurolucida-source-native-soma-contour-trace-0.1.0",
+  "geometryBytes": 45606,
+  "geometrySha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8",
+  "contourCount": 8,
+  "vertexCount": 275,
+  "semanticClosedSegmentCount": 275,
+  "admittedSurfaceCount": 0,
+  "admittedInternalStructureObjectCount": 0,
+  "registrationCount": 0
+}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:native-contour-catalog
+> node scripts/validate-neurolucida-native-contour-admission-catalog-0.3.mjs
+
+{
+  "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.3.0",
+  "catalogBytes": 23571,
+  "catalogSha256": "d5cc13f99c2e6ec0e41d6352512e592f5d6dc1d118f7d7c0b69ec2239deda8fe",
+  "admittedRecordCount": 5,
+  "admittedContourObjectCount": 48,
+  "admittedVertexCount": 2379,
+  "toddAdmittedContourObjectCount": 33,
+  "toddAdmittedVertexCount": 1904,
+  "excludedToddUserLineObjectCount": 12,
+  "admittedSurfaceCount": 0,
+  "admittedInternalStructureObjectCount": 0,
+  "registrationCount": 0,
+  "geometries": [
+    {
+      "neuronId": 50424,
+      "contours": 8,
+      "vertices": 427,
+      "bytes": 71212,
+      "sha256": "8bd390d698a77dc80a95c7d560e823d5f0ff1d5daadb2194be6475ba250851d6"
+    },
+    {
+      "neuronId": 50394,
+      "contours": 14,
+      "vertices": 768,
+      "bytes": 123254,
+      "sha256": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+    },
+    {
+      "neuronId": 50408,
+      "contours": 11,
+      "vertices": 709,
+      "bytes": 110635,
+      "sha256": "30d9c7870329aa0d2c6c2e83aeb020587973bf44e72c214a46f809532ba9ae78"
+    }
+  ]
+}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:todd-native-contour-topology
+> node scripts/validate-todd-native-contour-topology-audit-0.1.mjs
+
+{"releaseId":"ohri-todd-native-contour-topology-audit-0.1.0","auditedRecordCount":2,"contourCount":19,"vertexCount":1136,"selfIntersectionCount":2,"zeroLengthEdgeCount":1,"adjacentTransitionCount":17,"transitionsWithinExploratoryScreen":9,"transitionsHeld":8,"contourDerivedSurfaceAdmittedCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:cano-gomez-p56
+> node scripts/validate-cano-gomez-p56-multiome-interneuron-registry-0.1.mjs
+
+{
+  "releaseId": "ohri-cano-gomez-p56-multiome-interneuron-registry-0.1.0",
+  "sourceNucleusCount": 169345,
+  "confirmedInterneuronNucleusCount": 923,
+  "confirmedInterneuronProfileCount": 11,
+  "perNucleusNonNeuronalExcludedCount": null,
+  "generatedGeometryCount": 0,
+  "artifactsVerified": 2
+}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:availability-audit
+> node scripts/validate-open-source-modeling-availability-audit-0.1.mjs
+
+Open-source modeling availability audit validation passed: 3 queue-only candidates; 1 bounded pair receipt; 0 selected-cell joins; 0 registrations; 0 UI surfaces
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.40
+> node scripts/validate-research-iteration-manifest-2.40-snapshot.mjs
+
+Research iteration 2.40 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.40.0","fileBytes":206354,"fileSha256":"5552cc8c46c35a26fbefed4090f4a2d0337eda2397639ea5eca807fdf4cf6d30","contentSha256":"991885f465d6226ec9d23fe133238e62c32e253276b120ed54fd74a4a632b48f","inputCount":187,"researchUpgradeCount":186,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":33,"bundledExactRosterCount":9,"bundledExactObjectSetCount":1,"sourceProfileCount":376,"sourceNamespaceCount":9,"completenessSlotCount":8,"auditedDatFileCount":5,"admittedRecordCount":2,"heldRecordCount":3,"admittedContourObjectCount":15,"admittedVertexCount":475,"admittedSurfaceCount":0,"admittedInternalStructureCount":0,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.39
+> node scripts/validate-research-iteration-manifest-2.39-snapshot.mjs
+
+Research iteration 2.39 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.39.0","fileBytes":187451,"fileSha256":"865782ddbc2b827d4fe1359bbd1c250ce24afadcb052990c8c5978bb06ef81b4","contentSha256":"4fa9014be79e2d920f6859944da35a676bed2d7e17b3b83c4dcdb9fe419904cc","inputCount":172,"researchUpgradeCount":178,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":33,"bundledExactRosterCount":9,"bundledExactObjectSetCount":1,"sourceProfileCount":376,"sourceNamespaceCount":9,"researchExplorerRecordCount":630,"admittedSourceNativeContourObjectCount":8,"vertexCount":275,"admittedSurfaceCount":0,"admittedInternalStructureCount":0,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.38
+> node scripts/validate-research-iteration-manifest-2.38-snapshot.mjs
+
+Research iteration 2.38 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.38.0","fileBytes":173397,"fileSha256":"97ef72ab7e7c2da802af7c4cca6d5a280162e61a08b4a2258bb58f1ee0107595","contentSha256":"8af86d1167213865712c5da915193c13b629d31a1e0452f08d2d4f4f9d9f3b19","inputCount":159,"researchUpgradeCount":171,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":32,"bundledExactRosterCount":9,"sourceProfileCount":376,"sourceNamespaceCount":9,"researchExplorerRecordCount":630,"admittedGeometryCount":0,"admittedInternalStructureCount":0,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.37
+> node scripts/validate-research-iteration-manifest-2.37-snapshot.mjs
+
+Research iteration 2.37 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.37.0","fileBytes":161281,"fileSha256":"2ddc5b4cce26cbe5db492234446a52f3c0f182c0ff0ed896104ec6a9c4fb3b08","contentSha256":"04b6f7a09968489afa420edb527a159e04f4dc07bab4ce402e394808256ca765","inputCount":146,"researchUpgradeCount":164,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":31,"bundledExactRosterCount":8,"sourceProfileCount":325,"sourceNamespaceCount":8,"researchExplorerRecordCount":579,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.36
+> node scripts/validate-research-iteration-manifest-2.36-snapshot.mjs
+
+Research iteration 2.36 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.36.0","fileBytes":148126,"fileSha256":"93d8a624a5a132a91f3f423cb7b3bc966ef4082f71e18e0e82c0384267588e15","contentSha256":"3021dd9d9ce1d515634f0d1ea575d624767972411edc923e9b75621979b0e344","inputCount":127,"researchUpgradeCount":162,"canonicalSourcePackageCount":26,"canonicalRecordSetCount":30,"sourceProfileCount":168,"researchExplorerRecordCount":421,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.35
+> node scripts/validate-research-iteration-manifest-2.35-snapshot.mjs
+
+Research iteration 2.35 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.35.0","fileBytes":134630,"fileSha256":"71f90cfc2c6ad2c6f74146d1992493fc77229c131764faff83657dcada797dc1","contentSha256":"0691b27bd2cd46e0d96d9a8862ff8478819572f7cfde225d20b9d9c93aeff828","inputCount":113,"researchUpgradeCount":158,"canonicalSourcePackageCount":25,"canonicalRecordSetCount":29,"sourceProfileCount":162,"researchExplorerRecordCount":414,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.34
+> node scripts/validate-research-iteration-manifest-2.34-snapshot.mjs
+
+Research iteration 2.34 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.34.0","fileBytes":125197,"fileSha256":"76ead4e29455c8e9250f294afa4e78b6a72bb76709115d15954564545bb43d1e","contentSha256":"266ee889a591368d30b655ee059659485e746df424f448a85a6819d28e3e920c","inputCount":102,"researchUpgradeCount":155,"canonicalSourcePackageCount":24,"canonicalRecordSetCount":28,"admittedSourceObjectCount":1097,"existingGeometryReferenceCount":149,"deltaRawSwcCount":948,"generatedGeometryCopyCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.42
+> node scripts/validate-research-iteration-manifest-2.42-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.42.0","inputCount":264}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.43
+> node scripts/validate-research-iteration-manifest-2.43-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.43.0","inputCount":271}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.44
+> node scripts/validate-research-iteration-manifest-2.44-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.44.0","inputCount":280}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.45
+> node scripts/validate-research-iteration-manifest-2.45-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.45.0","inputCount":314}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.47-snapshot
+> node scripts/validate-research-iteration-manifest-2.47-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.47.0","inputCount":342}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.48
+> node scripts/validate-research-iteration-manifest-2.48-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.48.0","inputCount":351}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:banc-v888-candidate-audit
+> node scripts/validate-banc-v888-candidate-audit-0.1.mjs
+
+{"auditId":"banc-v888-candidate-audit-0.1.0","archiveVersion":3,"metadataRows":188508,"documentedMetadataRows":188162,"strictCandidateScreenRows":12571,"candidateRootId":"720575941350424112","candidateType":"IN14A018","verifiedNucleusRootJoin":true,"verifiedSkeletonNodes":7451,"sameCellObjectChainComplete":false,"renderedGeometryCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:banc-v888-mitochondria-route
+> node scripts/validate-banc-v888-mitochondria-route-audit-0.1.mjs
+
+{"auditId":"banc-v888-mitochondria-route-audit-0.1.0","candidateRootId":"720575941350424112","mitochondriaCountMetric":31,"perMitochondrionRowsRetrieved":false,"mitochondriaMarkersAdmitted":0,"caveQueryExecuted":false,"mouseJoinCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:super-clem-serial-stack
+> node scripts/validate-super-clem-serial-stack-0.1.mjs
+
+{"releaseId":"ohri-super-clem-dorsal-synapse1-serial-stack-0.1.0","sourceObjectId":"FigshareSynapse:D2-GB-E9:synapse-1","sourceSectionCount":11,"sourceBytes":26463987,"browserDerivativeCount":11,"crossSectionRegistrationCount":0,"admittedVolumeCount":0,"parentCellResolved":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:davis-icr-reference
+> node scripts/validate-davis-icr-same-cell-reference-0.1.mjs
+
+{"contractId":"davis-icr-same-cell-reference-0.1","sourceImageBytes":1195290,"sourceImageSha256":"3beafa543799863db6752e97e31b718e9d6e93645866d4065178c8ce3413cb74","sourceFigureCount":1,"captionAssertedSameCellLinkCount":1,"admittedProjectGeometryCount":0,"activeRecordJoinCount":0,"atlasRegistrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:banc-v888-reference
+> node scripts/validate-banc-v888-comparative-internal-reference-0.1.mjs
+
+{"contractId":"banc-v888-comparative-internal-reference-0.1.0","materializationId":"v888","metadataRowCount":188162,"sourceDocumentationConflict":"source_documentation_conflict","admittedProjectGeometryCount":0,"sameCellJoinCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:microns-subcellular-audit
+> node scripts/validate-microns-subcellular-source-audit-0.1.mjs
+
+{"auditId":"microns-phase1-subcellular-source-audit-0.1.0","targetRootId":"648518346349516051","synapseTableRowsDescribed":3200000,"fullTableDownloaded":false,"retainedSourcePayloadBytes":0,"synapsePointCount":0,"mitochondriaObjectCount":0,"exactCellVersionJoinVerified":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.50-snapshot
+> node scripts/validate-research-iteration-manifest-2.50-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.50.0","inputCount":369,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.49.0"}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.55
+> node scripts/validate-research-iteration-manifest-2.55-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.55.0","inputCount":432,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.54.0","researchUpgradeLastId":"UPG-228"}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.56-snapshot
+> node scripts/validate-research-iteration-manifest-2.56-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.56.0","inputCount":447,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.55.0","researchUpgradeCount":212}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.57-snapshot
+> node scripts/validate-research-iteration-manifest-2.57-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.57.0","inputCount":458,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.56.0","researchUpgradeCount":213}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.59-snapshot
+> node scripts/validate-research-iteration-manifest-2.59-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.59.0","inputCount":482,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.58.0","researchUpgradeCount":215}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.63-snapshot
+> node scripts/validate-research-iteration-manifest-2.63-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.63.0","inputCount":519,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.62.0","researchUpgradeCount":222}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:neuromorpho-release-delta
+> node scripts/validate-neuromorpho-release-8-6-125-query-delta-audit-0.1.mjs
+
+{"auditId":"neuromorpho-release-8-6-125-query-delta-audit-0.1","baselineRelease":"8.6.124","candidateRelease":"8.6.125","comparedRecords":142,"changedSemanticMetadataRecords":0,"activeGeometryRelease":"8.6.124","geometryAndRightsRechecked":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:kelly-zebrafish-taxonomy
+> node scripts/validate-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.mjs
+
+{"releaseId":"ohri-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.0","populationCount":10,"labelCount":10,"geometryCount":0,"internalStructureCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest
+> node scripts/validate-research-iteration-manifest-2.91.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.91.0","version":"2.91.0-research.1","inputCount":550,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.90.0","canonicalSourceCount":31,"canonicalRecordSetCount":41,"bundledExactCellProfileRosterCount":13,"bundledExactSourceObjectSetCount":4,"sourceProfileCount":387,"researchUpgradeCount":243,"completedResearchUpgradeCount":79,"displayedResearchUpgradeCount":50,"staleCanonicalDenominatorLiteralCount":0,"independentObjectCounts":{"native-contours":7,"microns-phase1":2,"banc-v888":2,"super-clem-palm":18358,"microstructformer":540},"objectCountUnit":"source-specific indexed entries; never a pooled cell census","sourceProfileComparisonCount":387,"exactCrossSourceIdentityCount":0,"atlasRegistrationCount":0,"mouseSpinalInterneuronSameCellInternalObjectCount":0,"bilSectionLinkedCellNucleusGeometryCount":0,"microStructFormerGeometryCount":0,"fullProjectCopyCount":0,"fullGoalComplete":false,"historicalParent":"Frozen 2.90 receipt retains its original hashes; current 2.91 replays every current authoritative input byte. Scientific gates remain independent from engineering validation."}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 test:research
+> npm run build && npm run typecheck && npm run lint && npm run validate:data && npm run validate:research && npm run validate:schema && npm run validate:public-data && npm run validate:source-registry && npm run validate:source-registry-denominators && npm run validate:cano-gomez-p56 && npm run validate:research-upgrades && npm run validate:trevisan-v1-source-audit && npm run validate:trevisan-v1-geo-sample-audit && npm run validate:research-manifest-2.80 && npm run validate:mouse-spinal-em-search-audit && npm run validate:svara-sbem-reference && npm run validate:adult-merfish-version-audit && npm run validate:super-clem-serial-stack && npm run validate:davis-icr-reference && npm run validate:banc-v888-reference && npm run validate:banc-v888-candidate-audit && npm run validate:banc-v888-mitochondria-route && npm run validate:microns-subcellular-audit && npm run validate:research-manifest-2.68 && npm run validate:research-manifest && npm run validate:research-manifest-2.63-snapshot && npm run validate:research-manifest-2.58 && npm run validate:research-manifest-2.57-snapshot && npm run validate:research-manifest-2.56 && npm run validate:research-manifest-2.55 && npm run validate:neuromorpho-release-delta && npm run validate:kelly-zebrafish-taxonomy && npm run validate:research-manifest-2.50-snapshot && npm run validate:research-manifest-2.49 && npm run validate:research-manifest-2.48 && npm run validate:research-manifest-2.47-snapshot && npm run validate:research-manifest-2.46 && npm run validate:research-manifest-2.45 && npm run validate:research-manifest-2.44 && npm run validate:research-manifest-2.43 && npm run validate:research-manifest-2.40 && npm run validate:research-manifest-2.39 && npm run validate:research-manifest-2.38 && npm run validate:research-manifest-2.37 && npm run validate:research-manifest-2.36 && npm run validate:research-manifest-2.33 && npm run validate:research-manifest-2.32 && npm run validate:research-manifest-2.31 && npm run validate:research-manifest-2.30 && npm run validate:research-manifest-2.29 && npm run validate:research-manifest-2.28 && npm run validate:research-manifest-2.27 && npm run validate:research-manifest-2.26 && npm run validate:research-manifest-2.25 && npm run validate:research-manifest-2.24 && npm run validate:russ-taxonomy && npm run validate:sathyamurthy-taxonomy && npm run validate:hayashi-v2a && npm run validate:haring-taxonomy && npm run validate:alkaslasi-taxonomy && npm run validate:dmrt3-di6 && npm run validate:roome-dil && npm run validate:delile-taxonomy && npm run validate:pkd2l1-sbfsem-video && npm run validate:native-soma-contours && npm run validate:native-contour-catalog && npm run validate:availability-audit && npm run validate:cell-form-lens && npm run validate:morphology-fidelity && npm run validate:grp-morphology && npm run validate:dorsal-horn-routes && npm run validate:functional-class-routes && npm run validate:prp-dorsal-horn-routes && npm run validate:premotor-comparison-routes && npm run validate:3d-representations && npm run validate:3d-representations-0.4 && npm run validate:3d-representations-0.3 && npm run validate:3d-representations-0.2 && npm run validate:3d-representations-0.1 && npm run validate:morphology-matrix && npm run validate:morphology-topology-detail && npm run validate:super-clem && npm run validate:internal-reference && npm run validate:microns-observed-reference && npm run validate:spinal-volume-em-reference && npm run validate:ronzano-positions && npm run validate:russ-reconciliation && npm run validate:tabulae-conditions && npm run validate:tabulae-local-session && npm run validate:tabulae-local-comparison && npm run validate:public-intake && npm run validate:public-intake-registry && npm run validate:file-preflight && npm run validate:file-preflight-0.7 && npm run validate:file-preflight-0.8 && npm run validate:file-composer && npm run validate:provenance-crate && npm run validate:feasibility-planner && npm run validate:provenance-trace && npm run validate:relationship-admission && npm run validate:source-admission && npm run validate:assertion-provenance && npm run validate:authorization-plan && npm run validate:independent-authorization-evidence && npm run validate:knowledge-coverage && npm run validate:curator-feedback && npm run validate:atlas-internal-compartments && npm run validate:atlas-fine-anatomy && npm run validate:atlas-native-volumes && npm run validate:neuromorpho-census && npm run validate:neuromorpho-analysis && npm run validate:neuromorpho-universe && npm run validate:supplementary-morphology-comparison && npm run validate:morphology-source-frame && npm run validate:matson-sci && npm run validate:research-explorer && npm run validate:spatial && npm run validate:implementation-inputs && node tools/run_current_research_tests.mjs
+
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 build
+> WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build
+
+
+  vinext build  (Vite 8.2.1)
+
+(node:71957) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/5] analyze client references...
+[2Ktransforming...✓ 250 modules transformed.
+rendering chunks...
+✓ built in 1.58s
+[2/5] analyze server references...
+[2Ktransforming...✓ 399 modules transformed.
+rendering chunks...
+✓ built in 1.53s
+[3/5] build rsc environment...
+[2Ktransforming...✓ 244 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.17s
+[4/5] build client environment...
+[2Ktransforming...✓ 404 modules transformed.
+rendering chunks...
+computing gzip size...
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.33s
+[5/5] build ssr environment...
+[2Ktransforming...✓ 401 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.32s
+[0m
+  Route (app)
+  ┌ ? /                                    
+  ├ λ /api/source-records/search-index.json
+  ├ λ /api/source-rosters/cano-chol-in     
+  ├ ? /objects                             
+  └ ? /source-audits                       
+
+  λ API  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 typecheck
+> tsc --noEmit --incremental false
+
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 lint
+> eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern release
+
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:data
+> node scripts/validate-release.mjs
+
+Release validation passed: ohri-mouse-interneuron-feasibility-0.1.0
+7 source-linked records; all geometry SYN; all paths SCH.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research
+> node scripts/validate-research-mvp.mjs
+
+Research MVP data validation passed: ohri-mouse-interneuron-research-mvp-candidate-0.2.0
+7 entities = 5 populations + 2 overlays
+8 claims, 13 separated conditions, 31 stable evidence statements
+Spatial gate: all entity geometry SYN, all paths SCH, zero registrations; local atlas INF and SWC OBS assets are separately bundled
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:schema
+> node scripts/validate-json-schema.mjs
+
+Research MVP JSON Schema validation passed: ohri-mouse-interneuron-research-mvp-candidate-0.2.0 (schema 0.2.0)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:public-data
+> node scripts/validate-public-data-catalog.mjs
+
+Public-data catalog validation passed: ohri-mouse-interneuron-public-data-workbench-0.4.0
+7 public sources and 21 versioned upgrade records
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:source-registry
+> node scripts/validate-research-source-registry-0.1.mjs
+
+Research source registry valid: 31 canonical sources, 41 record sets, 387 source profiles, 13 bundled exact cell/profile rosters, 4 bundled exact source-object set, 0 open scope contradictions, 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:source-registry-denominators
+> node scripts/validate-research-source-registry-denominators.mjs
+
+Research source-registry UI denominators valid: 31 sources · 41 record sets · 13 exact cell/profile rosters + 4 exact source-object sets; 8 displays; 0 stale literals.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:cano-gomez-p56
+> node scripts/validate-cano-gomez-p56-multiome-interneuron-registry-0.1.mjs
+
+{
+  "releaseId": "ohri-cano-gomez-p56-multiome-interneuron-registry-0.1.0",
+  "sourceNucleusCount": 169345,
+  "confirmedInterneuronNucleusCount": 923,
+  "confirmedInterneuronProfileCount": 11,
+  "perNucleusNonNeuronalExcludedCount": null,
+  "generatedGeometryCount": 0,
+  "artifactsVerified": 2
+}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-upgrades
+> node scripts/validate-research-model-upgrade-registry-0.1.mjs
+
+Research/model upgrade registry validation passed: ohri-research-model-upgrade-registry-0.1.0
+243 queue rows (UPG-022–UPG-261); 50 research-facing UI ids resolved; governance/admission queue excluded
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:trevisan-v1-source-audit
+> node scripts/validate-trevisan-v1-source-data-availability-audit-0.1.mjs
+
+{"auditId":"trevisan-v1-source-data-availability-audit-0.1","geoAccession":"GSE275595","selectedStudyWideNucleusCount":89494,"observedInteractiveAnnotationFields":3,"publishedScriptCellMetadataFields":4,"defaultMatrixInputPathSuffix":"/outs/filtered_feature_bc_matrix","sampleIdentifierParsingValidatedAgainstAllGeoRecords":false,"barcodeToCountMatrixRowCrosswalkValidated":false,"geoFileSpecificReuseTermsVerified":false,"canonicalSourceProfileContribution":0,"morphologyGeometryObjectCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:trevisan-v1-geo-sample-audit
+> node scripts/validate-trevisan-v1-geo-series-sample-audit-0.1.mjs
+
+{"auditId":"trevisan-v1-geo-series-sample-audit-0.1","geoAccession":"GSE275595","sampleRecordCount":29,"expectedPostnatalTitlePatternMatchCount":24,"parserExceptionCount":5,"exceptionAccessions":["GSM8480601","GSM8480602","GSM8480603","GSM8480604","GSM8480605"],"representativeSampleMetadataCount":3,"matrixPayloadDownloadedOrChecksummed":false,"geoFileSpecificReuseTermsVerified":false,"morphologyGeometryObjectCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.80
+> node scripts/validate-research-iteration-manifest-2.80-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.80.0","version":"2.80.0-research.1","inputCount":31,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.79.0","sourceCount":31,"sourceProfileCount":387,"researchUpgradeCount":236,"selectedStudyWideNucleusCount":89494,"barcodeToCountMatrixRowCrosswalkValidated":false,"geoFileSpecificReuseTermsVerified":false,"newGeometryCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:mouse-spinal-em-search-audit
+> node scripts/validate-mouse-spinal-em-repository-search-audit-0.1.mjs
+
+{"auditId":"mouse-spinal-em-repository-search-audit-0.1","repositoryQueries":4,"reviewedCandidates":2,"eligibleMouseSpinalInterneuronObjectRoutes":0,"downloadedPayloadBytes":0,"admittedSegmentationObjects":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:svara-sbem-reference
+> node scripts/validate-svara-larval-zebrafish-spinal-sbem-reference-0.1.mjs
+
+{"contractId":"svara-larval-zebrafish-spinal-sbem-reference-0.1","species":"Danio rerio","specimenCount":1,"reportedCiDCount":39,"reportedCoBLCount":34,"listedSupplementPackageCount":3,"packageLinks":["https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055230/1-s2.0-S2211124718307563-mmc6.zip","https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055231/1-s2.0-S2211124718307563-mmc7.zip","https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055232/1-s2.0-S2211124718307563-mmc8.zip"],"inspectedSupplementPackageCount":0,"admittedNeuronObjectCount":0,"admittedGeometryCount":0,"downloadedPayloadBytes":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:adult-merfish-version-audit
+> node scripts/validate-adult-mouse-spinal-merfish-version-audit-0.1.mjs
+
+{"auditId":"adult-mouse-spinal-merfish-zenodo-version-audit-0.1.0","records":["18039571","20533289"],"laterDisplayedVersion":"v2","versionLineageConfirmed":false,"dataDeltaCompared":false,"bundledPayloadCount":0,"geometryCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:super-clem-serial-stack
+> node scripts/validate-super-clem-serial-stack-0.1.mjs
+
+{"releaseId":"ohri-super-clem-dorsal-synapse1-serial-stack-0.1.0","sourceObjectId":"FigshareSynapse:D2-GB-E9:synapse-1","sourceSectionCount":11,"sourceBytes":26463987,"browserDerivativeCount":11,"crossSectionRegistrationCount":0,"admittedVolumeCount":0,"parentCellResolved":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:davis-icr-reference
+> node scripts/validate-davis-icr-same-cell-reference-0.1.mjs
+
+{"contractId":"davis-icr-same-cell-reference-0.1","sourceImageBytes":1195290,"sourceImageSha256":"3beafa543799863db6752e97e31b718e9d6e93645866d4065178c8ce3413cb74","sourceFigureCount":1,"captionAssertedSameCellLinkCount":1,"admittedProjectGeometryCount":0,"activeRecordJoinCount":0,"atlasRegistrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:banc-v888-reference
+> node scripts/validate-banc-v888-comparative-internal-reference-0.1.mjs
+
+{"contractId":"banc-v888-comparative-internal-reference-0.1.0","materializationId":"v888","metadataRowCount":188162,"sourceDocumentationConflict":"source_documentation_conflict","admittedProjectGeometryCount":0,"sameCellJoinCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:banc-v888-candidate-audit
+> node scripts/validate-banc-v888-candidate-audit-0.1.mjs
+
+{"auditId":"banc-v888-candidate-audit-0.1.0","archiveVersion":3,"metadataRows":188508,"documentedMetadataRows":188162,"strictCandidateScreenRows":12571,"candidateRootId":"720575941350424112","candidateType":"IN14A018","verifiedNucleusRootJoin":true,"verifiedSkeletonNodes":7451,"sameCellObjectChainComplete":false,"renderedGeometryCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:banc-v888-mitochondria-route
+> node scripts/validate-banc-v888-mitochondria-route-audit-0.1.mjs
+
+{"auditId":"banc-v888-mitochondria-route-audit-0.1.0","candidateRootId":"720575941350424112","mitochondriaCountMetric":31,"perMitochondrionRowsRetrieved":false,"mitochondriaMarkersAdmitted":0,"caveQueryExecuted":false,"mouseJoinCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:microns-subcellular-audit
+> node scripts/validate-microns-subcellular-source-audit-0.1.mjs
+
+{"auditId":"microns-phase1-subcellular-source-audit-0.1.0","targetRootId":"648518346349516051","synapseTableRowsDescribed":3200000,"fullTableDownloaded":false,"retainedSourcePayloadBytes":0,"synapsePointCount":0,"mitochondriaObjectCount":0,"exactCellVersionJoinVerified":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.68
+> node scripts/validate-research-iteration-manifest-2.68-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.68.0","version":"2.68.0-research.1","inputCount":564,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.67.0","fileSha256":"2f633f70a2d51f2735341929671e63b19425f5baa3d4bf43c974c59800e099d6","contentSha256":"5a111c661ba953adbc0e69ba447dc328d844ea96639ab3a53874fb9d7daaf66b","xeniumAudit":"UPG-244","admitted3DCellObjects":0,"fullProjectCopyCount":0,"path":"data/research-iteration-manifest-2.68.json"}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest
+> node scripts/validate-research-iteration-manifest-2.91.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.91.0","version":"2.91.0-research.1","inputCount":550,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.90.0","canonicalSourceCount":31,"canonicalRecordSetCount":41,"bundledExactCellProfileRosterCount":13,"bundledExactSourceObjectSetCount":4,"sourceProfileCount":387,"researchUpgradeCount":243,"completedResearchUpgradeCount":79,"displayedResearchUpgradeCount":50,"staleCanonicalDenominatorLiteralCount":0,"independentObjectCounts":{"native-contours":7,"microns-phase1":2,"banc-v888":2,"super-clem-palm":18358,"microstructformer":540},"objectCountUnit":"source-specific indexed entries; never a pooled cell census","sourceProfileComparisonCount":387,"exactCrossSourceIdentityCount":0,"atlasRegistrationCount":0,"mouseSpinalInterneuronSameCellInternalObjectCount":0,"bilSectionLinkedCellNucleusGeometryCount":0,"microStructFormerGeometryCount":0,"fullProjectCopyCount":0,"fullGoalComplete":false,"historicalParent":"Frozen 2.90 receipt retains its original hashes; current 2.91 replays every current authoritative input byte. Scientific gates remain independent from engineering validation."}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.63-snapshot
+> node scripts/validate-research-iteration-manifest-2.63-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.63.0","inputCount":519,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.62.0","researchUpgradeCount":222}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.58
+> node scripts/validate-research-iteration-manifest-2.58-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.58.0","inputCount":469,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.57.0","researchUpgradeCount":214}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.57-snapshot
+> node scripts/validate-research-iteration-manifest-2.57-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.57.0","inputCount":458,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.56.0","researchUpgradeCount":213}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.56
+> node scripts/validate-research-iteration-manifest-2.56-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.56.0","inputCount":447,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.55.0","researchUpgradeCount":212}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.55
+> node scripts/validate-research-iteration-manifest-2.55-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.55.0","inputCount":432,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.54.0","researchUpgradeLastId":"UPG-228"}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:neuromorpho-release-delta
+> node scripts/validate-neuromorpho-release-8-6-125-query-delta-audit-0.1.mjs
+
+{"auditId":"neuromorpho-release-8-6-125-query-delta-audit-0.1","baselineRelease":"8.6.124","candidateRelease":"8.6.125","comparedRecords":142,"changedSemanticMetadataRecords":0,"activeGeometryRelease":"8.6.124","geometryAndRightsRechecked":false}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:kelly-zebrafish-taxonomy
+> node scripts/validate-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.mjs
+
+{"releaseId":"ohri-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.0","populationCount":10,"labelCount":10,"geometryCount":0,"internalStructureCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.50-snapshot
+> node scripts/validate-research-iteration-manifest-2.50-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.50.0","inputCount":369,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.49.0"}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.49
+> node scripts/validate-research-iteration-manifest-2.49-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.49.0","inputCount":360,"parentReleaseId":"ohri-mouse-interneuron-research-iteration-2.48.0","candidateRootId":"720575941350424112","swcNodeCount":7451,"renderedGeometryCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.48
+> node scripts/validate-research-iteration-manifest-2.48-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.48.0","inputCount":351}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.47-snapshot
+> node scripts/validate-research-iteration-manifest-2.47-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.47.0","inputCount":342}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.46
+> node scripts/validate-research-iteration-manifest-2.46-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.46.0","inputCount":327}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.45
+> node scripts/validate-research-iteration-manifest-2.45-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.45.0","inputCount":314}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.44
+> node scripts/validate-research-iteration-manifest-2.44-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.44.0","inputCount":280}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.43
+> node scripts/validate-research-iteration-manifest-2.43-snapshot.mjs
+
+{"releaseId":"ohri-mouse-interneuron-research-iteration-2.43.0","inputCount":271}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.40
+> node scripts/validate-research-iteration-manifest-2.40-snapshot.mjs
+
+Research iteration 2.40 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.40.0","fileBytes":206354,"fileSha256":"5552cc8c46c35a26fbefed4090f4a2d0337eda2397639ea5eca807fdf4cf6d30","contentSha256":"991885f465d6226ec9d23fe133238e62c32e253276b120ed54fd74a4a632b48f","inputCount":187,"researchUpgradeCount":186,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":33,"bundledExactRosterCount":9,"bundledExactObjectSetCount":1,"sourceProfileCount":376,"sourceNamespaceCount":9,"completenessSlotCount":8,"auditedDatFileCount":5,"admittedRecordCount":2,"heldRecordCount":3,"admittedContourObjectCount":15,"admittedVertexCount":475,"admittedSurfaceCount":0,"admittedInternalStructureCount":0,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.39
+> node scripts/validate-research-iteration-manifest-2.39-snapshot.mjs
+
+Research iteration 2.39 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.39.0","fileBytes":187451,"fileSha256":"865782ddbc2b827d4fe1359bbd1c250ce24afadcb052990c8c5978bb06ef81b4","contentSha256":"4fa9014be79e2d920f6859944da35a676bed2d7e17b3b83c4dcdb9fe419904cc","inputCount":172,"researchUpgradeCount":178,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":33,"bundledExactRosterCount":9,"bundledExactObjectSetCount":1,"sourceProfileCount":376,"sourceNamespaceCount":9,"researchExplorerRecordCount":630,"admittedSourceNativeContourObjectCount":8,"vertexCount":275,"admittedSurfaceCount":0,"admittedInternalStructureCount":0,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.38
+> node scripts/validate-research-iteration-manifest-2.38-snapshot.mjs
+
+Research iteration 2.38 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.38.0","fileBytes":173397,"fileSha256":"97ef72ab7e7c2da802af7c4cca6d5a280162e61a08b4a2258bb58f1ee0107595","contentSha256":"8af86d1167213865712c5da915193c13b629d31a1e0452f08d2d4f4f9d9f3b19","inputCount":159,"researchUpgradeCount":171,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":32,"bundledExactRosterCount":9,"sourceProfileCount":376,"sourceNamespaceCount":9,"researchExplorerRecordCount":630,"admittedGeometryCount":0,"admittedInternalStructureCount":0,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.37
+> node scripts/validate-research-iteration-manifest-2.37-snapshot.mjs
+
+Research iteration 2.37 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.37.0","fileBytes":161281,"fileSha256":"2ddc5b4cce26cbe5db492234446a52f3c0f182c0ff0ed896104ec6a9c4fb3b08","contentSha256":"04b6f7a09968489afa420edb527a159e04f4dc07bab4ce402e394808256ca765","inputCount":146,"researchUpgradeCount":164,"canonicalSourcePackageCount":27,"canonicalRecordSetCount":31,"bundledExactRosterCount":8,"sourceProfileCount":325,"sourceNamespaceCount":8,"researchExplorerRecordCount":579,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.36
+> node scripts/validate-research-iteration-manifest-2.36-snapshot.mjs
+
+Research iteration 2.36 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.36.0","fileBytes":148126,"fileSha256":"93d8a624a5a132a91f3f423cb7b3bc966ef4082f71e18e0e82c0384267588e15","contentSha256":"3021dd9d9ce1d515634f0d1ea575d624767972411edc923e9b75621979b0e344","inputCount":127,"researchUpgradeCount":162,"canonicalSourcePackageCount":26,"canonicalRecordSetCount":30,"sourceProfileCount":168,"researchExplorerRecordCount":421,"renderedInternalPrimitiveCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.33
+> node scripts/validate-research-iteration-manifest-2.33-snapshot.mjs
+
+Research iteration 2.33 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.33.0","fileBytes":109358,"fileSha256":"6b2c1571c8dccf5aeced3518435dfe4bf0bff4c605f9a9255524299d72dda081","contentSha256":"1b4632ea19ea00b27422408bf96d4dabe39e7e23330d6511fe4b6ccdafa6752f","inputCount":75,"researchUpgradeCount":151,"clippingCellRootId":"648518346349516051","clippingLinkedNucleusId":"4309","sourceRecordDeltaUiWhitelistedRowCount":24,"sourceRecordDeltaDemonstrationChangedRowCount":3,"crossSourceSameCellIdentityCount":0,"generatedGeometryCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.32
+> node scripts/validate-research-iteration-manifest-2.32-snapshot.mjs
+
+Research iteration 2.32 immutable snapshot valid: {"releaseId":"ohri-mouse-interneuron-research-iteration-2.32.0","fileBytes":98357,"fileSha256":"eaacd5bb0acae3c704e24ac2c1ffa4ef508bc5491155898bec6f28a825ea5e77","contentSha256":"4b0ed4508655553736b656f7a72a6d2e869218e0a4eff886811c7f0f15e113a2","inputCount":63,"researchUpgradeCount":148,"indexedMolecularProfileCount":161,"frozenCensusRecordCount":142,"supplementaryRecordCount":7,"morphologyTopologyRecordCount":149,"totalNodeCount":566511,"totalTerminalLandmarkCount":6957,"totalBifurcationLandmarkCount":6223,"nonSciActiveEntityCount":0,"admittedMolecularGeometryPrimitiveCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.31
+> node scripts/validate-research-iteration-manifest-2.31-snapshot.mjs
+
+Immutable 2.31 snapshot valid: 87120 bytes, 46 historical inputs, 413 indexed records, 142 census + 7 supplementary = 149 viewable morphologies, 144 upgrades.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.30
+> node scripts/validate-research-iteration-manifest-2.30-snapshot.mjs
+
+Immutable 2.30 snapshot valid: 81964 bytes, 42 historical inputs, 142 census + 7 supplementary = 149 viewable objects (147 3D + 2 2D), 140 upgrades and 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.29
+> node scripts/validate-research-iteration-manifest-2.29-snapshot.mjs
+
+Immutable 2.29 snapshot valid: 77136 bytes, 38 historical inputs, 142 census + 7 supplementary = 149 viewable objects, 136 upgrades and 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.28
+> node scripts/validate-research-iteration-manifest-2.28-snapshot.mjs
+
+Immutable 2.28 snapshot valid: 69092 bytes, 34 historical inputs, 142 census records, 10 routes and 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.27
+> node scripts/validate-research-iteration-manifest-2.27.mjs
+
+Research iteration 2.27 manifest valid: 30 exact inputs, 24 source packages, 27 record sets, 6 bundled exact rosters, 130 upgrades, 2 PrP routes, 12 active unique morphologies, 9 named routes, 15 representation routes, 0 DAT semantic admissions, 0 internal primitives and 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.26
+> node scripts/validate-research-iteration-manifest-2.26.mjs
+
+Research iteration 2.26 manifest valid: 26 exact inputs, 24 source packages, 26 record sets, 124 upgrades, 2 functional-class routes, 10 active unique morphologies, 13 representation routes, 0 DAT semantic admissions, 0 internal primitives and 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.25
+> node scripts/validate-research-iteration-manifest-2.25.mjs
+
+Research iteration 2.25 manifest valid: 22 exact inputs, 24 source packages, 25 record sets, 118 upgrades, 4 route-pack memberships, 8 active unique morphologies, 11 representation routes, 0 internal primitives and 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-manifest-2.24
+> node scripts/validate-research-iteration-manifest-2.24.mjs
+
+Research iteration 2.24 manifest valid: 20 exact inputs, 24 source packages, 111 upgrades, 6 active main-scene morphology routes over 142 census records, 9 representation states, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:russ-taxonomy
+> node scripts/validate-russ-harmonized-taxonomy-crosswalk-0.1.mjs
+
+Russ taxonomy crosswalk 0.1 validation passed: ohri-russ-harmonized-taxonomy-crosswalk-0.1.0 (69 populations; 7 prototype mappings)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:sathyamurthy-taxonomy
+> node scripts/validate-sathyamurthy-source-taxonomy-0.1.mjs
+
+Sathyamurthy source taxonomy 0.1 validation passed: ohri-sathyamurthy-source-taxonomy-0.1.0 (43 profiles; 4280 assigned nuclei; 6 non-established lineage hints; 0 registrations)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:hayashi-v2a
+> node scripts/validate-hayashi-v2a-source-taxonomy-0.1.mjs
+
+Hayashi V2a source taxonomy 0.1 validation passed: ohri-hayashi-v2a-source-taxonomy-0.1.0 (11 profiles; 949 cells; 12986 genes x 949 barcodes; 0 confirmed local-interneuron profiles; 0 registrations; 0 exact cross-source identities)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:haring-taxonomy
+> node scripts/validate-haring-dorsal-horn-source-taxonomy-0.1.mjs
+
+Häring dorsal-horn source taxonomy validation passed: 30 profiles / 1545 cells
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:alkaslasi-taxonomy
+> node scripts/validate-alkaslasi-cholinergic-source-taxonomy-0.1.mjs
+
+Alkaslasi cholinergic source taxonomy validation passed: 8 profiles; 5,375 assigned nuclei; 0 registrations; 0 generated geometry
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:dmrt3-di6
+> node scripts/validate-dmrt3-di6-source-taxonomy-0.1.mjs
+
+Dmrt3/dI6 taxonomy valid: 6 profiles; 384 → 354 → 274 cells; 22490 bytes; SHA-256 e5d7b26df781033a971282b697684cf6f71daa2fe711883475723186c2d92468; zero geometry/internal objects/cross-source identities
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:roome-dil
+> node scripts/validate-roome-dil-source-taxonomy-0.1.mjs
+
+Roome dIL source taxonomy 0.1 validation passed: 157 profiles; 15900 rows; 26 quarantines; 0 geometry/internal structures
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:delile-taxonomy
+> node scripts/validate-delile-developmental-interneuron-taxonomy-0.1.mjs
+
+Delile developmental interneuron taxonomy validation passed: 51 profiles / 15217 cells (7a77c8c10f15224188bb542fddf63bc97de57b06dd9289e324bc7b8612219597)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:pkd2l1-sbfsem-video
+> node scripts/validate-pkd2l1-sbfsem-video-reference-0.1.mjs
+
+PKD2L1 SBF-SEM video reference and UPG-242 public-availability audit passed: Video 5; 0 geometry primitives
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:native-soma-contours
+> node scripts/validate-neurolucida-source-native-soma-contour-trace-0.1.mjs
+
+{
+  "releaseId": "ohri-neurolucida-source-native-soma-contour-trace-0.1.0",
+  "geometryBytes": 45606,
+  "geometrySha256": "a0aa80ce0f12b08cfe61b2862f1b3a29f67a1105a722b0dceda2fd3b25e898e8",
+  "contourCount": 8,
+  "vertexCount": 275,
+  "semanticClosedSegmentCount": 275,
+  "admittedSurfaceCount": 0,
+  "admittedInternalStructureObjectCount": 0,
+  "registrationCount": 0
+}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:native-contour-catalog
+> node scripts/validate-neurolucida-native-contour-admission-catalog-0.3.mjs
+
+{
+  "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.3.0",
+  "catalogBytes": 23571,
+  "catalogSha256": "d5cc13f99c2e6ec0e41d6352512e592f5d6dc1d118f7d7c0b69ec2239deda8fe",
+  "admittedRecordCount": 5,
+  "admittedContourObjectCount": 48,
+  "admittedVertexCount": 2379,
+  "toddAdmittedContourObjectCount": 33,
+  "toddAdmittedVertexCount": 1904,
+  "excludedToddUserLineObjectCount": 12,
+  "admittedSurfaceCount": 0,
+  "admittedInternalStructureObjectCount": 0,
+  "registrationCount": 0,
+  "geometries": [
+    {
+      "neuronId": 50424,
+      "contours": 8,
+      "vertices": 427,
+      "bytes": 71212,
+      "sha256": "8bd390d698a77dc80a95c7d560e823d5f0ff1d5daadb2194be6475ba250851d6"
+    },
+    {
+      "neuronId": 50394,
+      "contours": 14,
+      "vertices": 768,
+      "bytes": 123254,
+      "sha256": "61fddbab3764e761600c2519e478eec4cee7918a581b2fde29ac2d8880c90a92"
+    },
+    {
+      "neuronId": 50408,
+      "contours": 11,
+      "vertices": 709,
+      "bytes": 110635,
+      "sha256": "30d9c7870329aa0d2c6c2e83aeb020587973bf44e72c214a46f809532ba9ae78"
+    }
+  ]
+}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:availability-audit
+> node scripts/validate-open-source-modeling-availability-audit-0.1.mjs
+
+Open-source modeling availability audit validation passed: 3 queue-only candidates; 1 bounded pair receipt; 0 selected-cell joins; 0 registrations; 0 UI surfaces
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:cell-form-lens
+> node scripts/validate-observed-cell-form-lens-0.1.mjs
+
+Observed cell-form lens validation passed: 5 OBS source-local exemplars; 0 REG; 0 exact cross-source identities.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:morphology-fidelity
+> node scripts/validate-morphology-fidelity-contract-0.1.mjs
+
+Morphology fidelity validation passed: 5 source-local records; 3 radius-derived surfaces; 0 internal-structure models.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:grp-morphology
+> node scripts/validate-grp-dorsal-horn-observed-morphology-0.1.mjs
+
+GRP dorsal-horn morphology valid: NMO 109021, 2790 nodes, 2789 edges, 0 internal primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:dorsal-horn-routes
+> node scripts/validate-dorsal-horn-observed-morphology-route-pack-0.1.mjs
+
+Dorsal-horn route pack valid: 4 routes, 8 unique main-scene records, 2 supplementary records, 0 census expansion, 0 internal primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:functional-class-routes
+> node scripts/validate-functional-class-observed-morphology-route-pack-0.1.mjs
+
+Functional-class route pack valid: 2 routes, 10 unique main-scene records, 0 admitted DAT semantics, 0 exact physiology joins, 0 internal primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:prp-dorsal-horn-routes
+> node scripts/validate-prp-dorsal-horn-observed-morphology-route-pack-0.1.mjs
+
+PrP dorsal-horn route pack valid: 2 routes, 12 unique main-scene records, 0 admitted DAT semantics, 0 exact physiology joins, 0 internal primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:premotor-comparison-routes
+> node scripts/validate-premotor-comparison-observed-morphology-route-pack-0.1.mjs
+
+Premotor comparison route pack valid: 1 route, 13 unique main-scene forms, 0 DAT semantics, 0 exact physiology joins, 0 internal primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:3d-representations
+> node scripts/validate-evidence-aware-3d-representation-contract-0.7.mjs
+
+Evidence-aware 3D contract 0.7 valid: 47 routes (30 supplementary; 10 radius-derived, 20 centerline-only); 0 internal primitives, 0 cross-source identities, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:3d-representations-0.4
+> node scripts/validate-evidence-aware-3d-representation-contract-0.4.mjs
+
+Evidence-aware 3D contract 0.4 valid: 9 states, 15 routes (2 PrP), 0 admitted DAT semantics, 0 exact physiology joins, 0 internal primitives, 0 cross-source identities, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:3d-representations-0.3
+> node scripts/validate-evidence-aware-3d-representation-contract-0.3.mjs
+
+Evidence-aware 3D contract 0.3 valid: 9 states, 13 routes (2 functional-class), 0 admitted DAT semantics, 0 exact physiology joins, 0 unavailable-route primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:3d-representations-0.2
+> node scripts/validate-evidence-aware-3d-representation-contract-0.2.mjs
+
+Evidence-aware 3D contract 0.2 valid: 9 states, 11 routes (4 dorsal-horn), 2 no-diameter fail-closed routes, 0 unavailable-route primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:3d-representations-0.1
+> node scripts/validate-evidence-aware-3d-representation-contract-0.1.mjs
+
+Evidence-aware 3D contract valid: 9 states, 7 routes, 0 unavailable-route primitives, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:morphology-matrix
+> node scripts/validate-morphology-matrix-contract-0.1.mjs
+
+Morphology matrix validation passed: 142 records; 94 radius-authorized; 48 No Diameter; 13 micro-detail axes × 142 records; up to 4 independent viewports; 0 registrations; 0 internal models.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:morphology-topology-detail
+> node scripts/validate-morphology-topology-detail-0.1.mjs
+
+morphology topology detail valid: 142 + 7 records, 566511 nodes, 6957 terminal and 6223 bifurcation landmarks
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:super-clem
+> node scripts/validate-super-clem-synapse-reference-0.1.mjs
+
+Super-CLEM synapse reference validation passed: FigshareFile:32606555; 1 exact 2D source slice; 0 cross-lane joins; 0 3D reconstructions.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:internal-reference
+> node scripts/validate-cross-region-internal-reference.mjs
+
+Cross-region internal reference valid: 3 sources, 5 vocabulary classes, 0 rendered primitives, 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:microns-observed-reference
+> node scripts/validate-microns-observed-cell-nucleus-reference-0.1.mjs
+
+MICrONS observed cell+nucleus validation passed: root 648518346349516051, nucleus 4309, 97 source fragments, 385064 vertices, 727788 triangles, 0 cross-region joins, 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:spinal-volume-em-reference
+> node scripts/validate-spinal-inhibitory-interneuron-volume-em-reference-0.1.mjs
+
+{"contractId":"spinal-inhibitory-interneuron-volume-em-reference-0.1.0","doi":"10.1038/s41593-019-0358-7","reportedVolumeMicrometre":[35,24,2],"reconstructedStructureCount":6,"admittedProjectGeometryCount":0,"registrationCount":0}
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:ronzano-positions
+> node scripts/validate-ronzano-premotor-position-reference-0.1.mjs
+
+Ronzano premotor position reference valid: 22 source workbooks, 14484 raw rows, 17394 normalized rows, 5 unpaired frame pairs, 0 generated cell geometries, 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:russ-reconciliation
+> node scripts/validate-russ-reconciliation-dossier-0.1.mjs
+
+Russ reconciliation dossier 0.1 validation passed: ohri-russ-reconciliation-dossier-0.1.0 (2 corrections; 3 review items)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:tabulae-conditions
+> node scripts/validate-tabulae-condition-catalog-0.1.mjs
+
+Tabulae condition catalog 0.1 validation passed: ohri-tabulae-paralytica-condition-catalog-0.1.0 (8 condition groups; 93 source labels)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:tabulae-local-session
+> node scripts/validate-tabulae-spatial-local-session-0.1.mjs
+
+Tabulae spatial local-session validation passed: ohri-tabulae-paralytica-spatial-local-session-0.1.0
+24 declared source-local samples; archive bytes 135208960
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:tabulae-local-comparison
+> node scripts/validate-tabulae-spatial-local-comparison-0.1.mjs
+
+Tabulae spatial local-comparison validation passed: ohri-tabulae-paralytica-spatial-local-comparison-0.1.0
+Maximum active source-local sessions: 4
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:public-intake
+> node scripts/validate-public-source-intake.mjs
+
+Public-source intake validation passed: PSI-SPINALJ-PROCESSED-2026-08-18
+3 evidence records, 6 reported facts, 0 downloaded files, 0 registrations
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:public-intake-registry
+> node scripts/validate-public-source-intake-registry-0.7.mjs
+
+Public-source intake registry 0.7 validation passed: 3 metadata-only public intakes; 1 object header inventory; 0 downloaded files; 0 registrations
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:file-preflight
+> node scripts/validate-public-file-admission-preflight.mjs
+
+File-admission preflight validation passed: PFP-SPINALJ-PROCESSED-2026-08-18 (0 accepted files)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:file-preflight-0.7
+> node scripts/validate-public-file-admission-preflight-0.7.mjs
+
+File-admission preflight 0.7 validation passed: PFP-SPINALJ-PROCESSED-2026-08-18 (0 accepted files)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:file-preflight-0.8
+> node scripts/validate-public-file-admission-preflight-0.8.mjs
+
+File-admission preflight 0.8 validation passed: PFP-CANOGOMEZ-2026-08-18 (0 accepted files)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:file-composer
+> node scripts/validate-public-file-admission-composer-0.1.mjs
+
+Public file-admission composer validation passed: ohri-public-file-admission-composer-0.1.0 (2 locked manifest formats)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:provenance-crate
+> node scripts/validate-public-provenance-crate-0.1.mjs
+
+Public provenance crate validation passed: ohri-public-provenance-crate-0.1.0 (7 public sources)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:feasibility-planner
+> node scripts/validate-evidence-feasibility-planner-0.1.mjs
+
+Evidence feasibility planner validation passed: ohri-evidence-feasibility-planner-0.1.0 (11 axes; 7 source-specific routes)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:provenance-trace
+> node scripts/validate-evidence-provenance-trace-0.1.mjs
+
+Evidence provenance trace validation passed: ohri-evidence-provenance-trace-0.1.0 (5 research node kinds; 3 public-source node kinds)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:relationship-admission
+> node scripts/validate-cross-lane-relationship-admission-0.1.mjs
+
+Cross-lane relationship admission validation passed (5 kinds; 7 public sources; proposal_only_not_admitted)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:source-admission
+> node scripts/validate-public-source-release-admission-service-0.1.mjs
+
+Public-source release-admission service validation passed (2 formats; not_admitted_pending_curator_object_and_rights_review)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:assertion-provenance
+> node scripts/validate-public-source-assertion-provenance-0.1.mjs
+
+Public-source assertion-provenance validation passed (8 scopes; 3 allowed states)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:authorization-plan
+> node scripts/validate-public-source-authorization-plan-0.1.mjs
+
+Public-source authorization-plan validation passed (2 formats; 5 planned stages)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:independent-authorization-evidence
+> node scripts/validate-public-source-independent-authorization-evidence-0.1.mjs
+
+Independent authorization-evidence validation passed (2 formats; 5 planned stages)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:knowledge-coverage
+> node scripts/validate-interneuron-knowledge-coverage-0.1.mjs
+
+Interneuron knowledge coverage 0.1 validation passed: ohri-interneuron-knowledge-coverage-0.1.0 (8 lanes; 7 axes; 0 project registrations)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:curator-feedback
+> node scripts/validate-curator-review-contracts-2.8.mjs
+
+Curator review contracts 2.8 validation passed: 2.8.0-curator.1 (17 required feedback responses)
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:atlas-internal-compartments
+> node scripts/validate-atlas-internal-compartments.mjs
+
+Atlas internal-compartment validation passed: 90, 100, 110, 16, 74, 75, 70; 38 ordered planes per structure; 973 unbridged components; 975 valid source-mask polygons; 3 explicit missing planes; INF; measurement forbidden; 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:atlas-fine-anatomy
+> node scripts/validate-atlas-fine-anatomy.mjs
+
+Atlas fine-anatomy validation passed: 37 exact source IDs (14 laminae, 17 nuclei/columns, 6 tracts), plus 3 structural-context and 33 off-by-default motor-context IDs; 38 ordered planes; 32/32 exact source states; 76 native RGBA fills; 2431 unbridged components; 2511 exact rings; 670 explicit missing plane records; all targets sampled; INF; measurement forbidden; 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:atlas-native-volumes
+> node scripts/validate-atlas-native-volumes.mjs
+
+Atlas native-volume validation passed: 73 exact source-ID masks in three semantic lanes; 38845542 source voxels; 52062 row runs; 214841 lossless voxel-face rectangles; 429682 browser triangles; 0 missing/extra unit faces by independent set oracle; INF; measurement forbidden; 0 REG.
+Manifest SHA-256: d77b526acc6a80326f75ba3131e885f9d7841b5d01b184daa3651a48f1e85c20
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:neuromorpho-census
+> node scripts/validate-neuromorpho-census.mjs
+
+NeuroMorpho census validation passed: 142 indexed; 142 admitted (140 3D + 2 2D); 0 quarantined; 0 registrations
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:neuromorpho-analysis
+> node scripts/validate-neuromorpho-analysis.mjs
+
+NeuroMorpho morphology analysis valid: 142 records; 7 exact cohorts; 2 type-6 records; 0 registrations.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:neuromorpho-universe
+> node scripts/validate-neuromorpho-no-age-query-universe-0.1.mjs
+
+NeuroMorpho no-age universe valid: 1097 exact records, 1097 admitted SWCs, 149 reused + 948 delta, 0 geometry copies, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:supplementary-morphology-comparison
+> node scripts/validate-supplementary-morphology-comparison-adapter-0.1.mjs
+
+Supplementary morphology comparison adapter valid: 142 census + 7 supplementary = 149 viewable source objects; 0 geometry copies, 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:morphology-source-frame
+> node scripts/validate-morphology-source-frame-disclosure-0.1.mjs
+
+Morphology source-frame disclosure valid: 142 census + 7 supplementary = 149 source-local objects; 2 2D + 147 3D; 0 shared-scale admissions; 0 REG.
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:matson-sci
+> node scripts/validate-matson-neuronal-sci-timecourse-0.1.mjs
+
+Matson neuronal SCI time-course validation passed: 17 populations; 340 ranked genes; 15 samples; 5 timepoints; 23651 neuronal nuclei; 0 project registrations
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:research-explorer
+> node scripts/validate-research-explorer-index.mjs
+
+Research Explorer index validation passed: 641 records; 0 registrations; SHA-256 c3f879e0c34fc558683a50b598202ddb50036718ee56d63dc952cb0a46d648ac
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:spatial
+> node scripts/validate-spatial-assets.mjs
+
+Spatial asset validation passed.
+Atlas allen_cord_20um 3.0: 119 declared files, 38 non-blank 644x506 reference PNG planes and 76 exact 322x253 RGBA fill overlays, geometry INF.
+Atlas asset-manifest SHA-256: 75aa6dc5cbeb05b52eff2266751a700cced23c9b1ea2f880bede19bd03e225c8
+Internal compartments: 7 source structures, 38 ordered planes each, 973 unbridged components, 3 explicit missing plane records, INF / measurement forbidden / 0 REG.
+Fine anatomy: 37 browser IDs + 3 structural-context IDs + 33 off-by-default motor-context IDs, 2511 plane-local rings, 670 explicit missing plane records, all targets sampled, 0 REG.
+NeuroMorpho 8.6.124: 5 checksum-verified OBS local exemplars; all unregistered with null atlas transforms.
+NeuroMorpho asset-manifest SHA-256: 4ee24a35b282376ee507c0218806671b9c9f6f18c820d2ffaa298a53162a8647
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 validate:implementation-inputs
+> node tools/build_research_explorer_transport.mjs && node scripts/validate-bil-xenium-source-metadata-0.1.mjs && node scripts/validate-bil-xenium-geometry-schema-audit-0.1.mjs && node scripts/validate-janelia-wt-bounded-reference-0.1.mjs && node scripts/validate-mouse-spinal-m4-source-gate-20260930.mjs
+
+{"sourceBytes":10682233,"encodedBytes":269594,"decodedSha256":"c3f879e0c34fc558683a50b598202ddb50036718ee56d63dc952cb0a46d648ac","byteReductionPercent":97.47623928442677,"scientificRecordsChanged":false}
+{"runSlideBundleCount":16,"rawSegmentedCellCount":3387300,"namedOutlineLabelCount":329,"geometryObjects":0,"inputFiles":82,"inputBytes":2320586,"coreInputFiles":34,"coreInputBytes":1187125}
+{"sourceObjectKey":"BIL:ace-pie-cot","rawCellRows":182698,"sourceBytes":37282469,"cellBoundaryVertexRows":4564211,"nucleusBoundaryVertexRows":4468434,"geometryObjects":0,"sourceFiles":3,"dependencyFiles":5,"geometryViewerAdmission":false}
+{"status":"passed","sourceFiles":8,"rawBytes":2097152,"nucleusBytes":262144,"selectedCellJoins":0,"sourceBytes":1410836,"scope":"native_source_local_2d_reference_only"}
+{"status":"passed","reviewedNearMisses":5,"sourceFiles":14,"qualifyingM4Chains":0,"repositoryWideClaim":false}
+Running 252 current tests with concurrency 4; immutable release snapshots are checked by snapshot validators rather than rebuilt from newer live inputs.
+✔ records distinct public H5AD file manifests without asserting an unverified version join (2.574375ms)
+✔ does not let version labels, matching names or publication context authorize data joins or geometry (3.65775ms)
+✔ locks the Alkaslasi I1-I8 source-local taxonomy and every denominator level (86.695ms)
+✔ preserves deposited Lumbar and sex NA while retaining exact I1-I8 cross-tabs (0.543333ms)
+✔ rejects denominator drift, swapped profiles, and semantic rewrites of deposited fields (271.595875ms)
+✔ locks article-level marker evidence, I6 negative context, and the two-stage I8 caution (135.402958ms)
+✔ rejects morphology, internal detail, coordinates, registration, identity, prevalence, or finer-subclass promotion (234.899125ms)
+✔ locks source locators, negative gates, selection bias, and source-object rights (167.885833ms)
+✔ locks exact headers, partitions, suffix anomaly, and tuple receipts (0.248625ms)
+﹣ deterministically rebuilds the exact committed JSON from the pinned gzip (0.04475ms) # SKIP
+﹣ audits the exact deposited gzip filename, byte receipts, headers, counts, and hashes (0.054625ms) # SKIP
+﹣ rejects a renamed, byte-truncated, or same-size checksum-altered source object (0.120875ms) # SKIP
+✔ builds non-wrapping previous and next present-plane navigation (2.130375ms)
+✔ keeps filter visibility separate from the retained anatomy selection (0.355208ms)
+✔ rejects malformed plane-state input (0.421625ms)
+✔ locks the 37-browser + 3-structural + 33-motor exact-label partition (58.297041ms)
+✔ distinguishes sampled-plane missingness from full-volume source presence (44.447ms)
+✔ passes the standalone fine-anatomy validator (984.374083ms)
+✔ validates the seven source-derived internal structures across 38 planes without bridging (175.61175ms)
+✔ rejects changed source IDs, plane order, registration, and missingness (836.972875ms)
+✔ rejects invalid polygon closure and source-mask area (408.047542ms)
+✔ validates the 73-label three-lane lazy native-volume asset and exact mask-to-surface fidelity (7746.508625ms)
+✔ keeps exact-label native volumes in three non-count semantic lanes (1.137666ms)
+✔ validates the native manifest against the viewer-normalized fine-anatomy contract (47.108625ms)
+✔ rejects cross-lane count inflation, visibility drift and duplicate source IDs (1.724ms)
+✔ pins representative structural and motor context surface metrics (0.135875ms)
+✔ validates context payloads against their declared lane and rejects reassignment (52.085416ms)
+✔ uses distinct voxel-centre and voxel-edge conventions without a half-voxel shift (60.212167ms)
+✔ keeps all six native face directions outward after the handedness-changing display transform (0.195458ms)
+✔ rejects non-canonical adjacent row-RLE runs (0.419792ms)
+✔ rejects invented voxels, altered faces and smoothing (161.983417ms)
+✔ independently detects a missing, duplicated or oppositely oriented unit face (0.234375ms)
+✔ uses the pinned AtlasReferenceViewer voxel-to-display transform (2.141125ms)
+✔ resamples and aligns closed contours without duplicating their seam (0.4625ms)
+✔ builds complete INF-only outer and gray-matter side lofts from all 38 planes (22.111541ms)
+✔ rejects registration-like segment labels and relaxed measurement boundaries (2.780875ms)
+✔ builds seven exact source-mask structures as plane-local contours only (59.708792ms)
+✔ builds 37 browser structures and keeps exact structural and motor context in separate lanes (49.860875ms)
+✔ rejects invented fine anatomy, descendant expansion, and geometry in missing planes (197.99325ms)
+✔ rejects any internal registration, interpolation, segment label, or filled missing plane (129.806208ms)
+✔ rejects broken internal contour closure and cross-plane component policies (58.656916ms)
+✔ freezes scope to seven adult-mouse evidence entities (0.970167ms)
+✔ requires a complete evidence contract for every record (0.287875ms)
+✔ passes the SCI scientific red-team assertions (1.044292ms)
+✔ does not collapse overlays into mutually exclusive cell families (0.130917ms)
+✔ run-weighted representation differs from actual sampled voxel budget (2.478917ms)
+✔ native partitions and indices reject gaps, overlap, duplicate, outside and unsafe values (0.584625ms)
+✔ exact XY RLE rejects fabricated/overlapping masks and respects native row bounds (0.23825ms)
+✔ denser strategy preserves exact existing indices and inserts declared integer midpoints (0.200792ms)
+✔ fixed source distinguishes archived planes, generator-only historical grid and new counting strategy (0.215708ms)
+✔ scope excludes biological error, geometric precision, registration and parent-only direct counts (0.316542ms)
+✔ offline builder rechecks every byte receipt, 32 reconstructed plane hashes and full semantic digest (441.433958ms)
+✔ BANC audit pins one v888 candidate, a same-root nucleus row, and one exact SWC member without admitting geometry (5.303333ms)
+✔ BANC v888 source availability remains distinct from the one exact comparator route (6.029833ms)
+✔ admits only the checksum-verified BANC v888 IN14A018 centerline and same-root nucleus point (27.319166ms)
+✔ rejects malformed, disconnected, duplicated, or multi-root SWC payloads (0.757959ms)
+✔ exact bundled SWC remains identical to the source receipt (2.081292ms)
+✔ UPG-249 source-route audit satisfies its strict schema (48.754708ms)
+✔ separates documented public routes from verified and admitted candidate objects (2.725375ms)
+✔ BANC route audit satisfies its strict JSON Schema (44.188083ms)
+✔ retains the exact v888 candidate's source-reported mitochondria count without inventing positions (1.470791ms)
+✔ keeps the public archive separate from the credentialed root-filter query route (0.813917ms)
+✔ the comparative card reports a count metric while preserving zero source geometry (0.679584ms)
+✔ the three actual bounded BIL source files and all dependencies match current byte receipts (37.745875ms)
+✔ zero and multiple source nuclei remain distinct from absent/orphan IDs and duplicate cells (1.146125ms)
+✔ equal numeric label IDs cannot become a cross-file cell/nucleus join (0.332375ms)
+✔ source-reported 5 µm is limited to the exact run's native expansion method rows (0.895417ms)
+✔ run switches and missing keys cannot retain the acquired run's table or identity (0.938084ms)
+✔ an audited source cell row retains exact source scope while section and donor stay unknown (1.030292ms)
+✔ source NaN keeps a field locator and cannot silently become numerical zero (0.420542ms)
+✔ schema success cannot grant section/specimen identities, physical frames, rights or geometry (1.40575ms)
+✔ changed source hashes are rejected against the acquired original files (20.096541ms)
+✔ current BIL small metadata receipt verifies actual bytes and retains zero admitted geometry (38.206083ms)
+✔ exact run receipt exposes observed mixed segmentation rather than chemistry-inferred nuclear expansion (0.411875ms)
+✔ selection remains source-keyed even when deposited specimen donor keys repeat (0.307125ms)
+✔ all current pilot dependencies stay explicit; metadata and outlines cannot promote geometry (4.121875ms)
+✔ normalized identity, checksum and specimen changes are rejected against current source bytes (64.278375ms)
+✔ BIL Xenium source audit records useful 2D data availability without admitting geometry (5.489291ms)
+✔ research overview exposes source-linked 2D availability, preprint status, rights and geometry limits (0.859625ms)
+✔ rights, denominator, sample identity and geometry tampering fail closed (1.626833ms)
+✔ real 16,348-byte roster verifies both hashes and all eleven profile identity chains (23.60675ms)
+✔ corrupt, truncated or falsely decompressed files cannot return source rows (4.240458ms)
+✔ HTTP gzip decoding verifies exact decoded content without claiming runtime access to compressed bytes (15.661584ms)
+✔ wrong registry scope, profile mapping or ordered identities fail closed (25.337083ms)
+✔ native IDs and source NA are preserved; quoted NA does not become missing (11.454292ms)
+✔ profile, source anatomy, raw Sex and query filters retain exact denominators and clamp pages (5.465666ms)
+✔ profile/page/filter changes cannot retain hidden active nucleus detail or cross-profile exports (0.617584ms)
+✔ JSON and CSV export exact current matched rows, locators, unknowns and zero scientific additions (0.733834ms)
+✔ cancelled old roster requests cannot complete even when an underlying response ignores abort (0.437084ms)
+✔ base-R stream worker and transport compile structurally (73.971417ms)
+✔ transport pins canonical sources and never persists an RDS (1.840208ms)
+✔ GABA and GLUT require an exact current CHOL probe before transport (584.129334ms)
+✔ CHOL gate rejects canonical, denominator, memory, and extractor drift (729.32125ms)
+✔ base-R worker is slot-narrow and states the full-object memory boundary (0.863166ms)
+✔ lossless parser distinguishes source NA, empty, whitespace, and literal NA (119.891583ms)
+✔ fixture packaging is deterministic and keeps all claim boundaries false (136.632583ms)
+﹣ portable R reads unknown Seurat S4 metadata without SeuratObject (0.105083ms) # SKIP
+﹣ portable R receipts source-absent optional context as source NA and rejects silent defaults (0.073667ms) # SKIP
+✔ real GLUT adapter reconciles every raw slot label, group, context, name and source-absent field (680.892334ms)
+✔ source checksum, named-order proof, missingness and interneuron-admission promotion fail closed (119.5485ms)
+✔ reordered nucleus mappings fail even after both artifact hashes are recalculated (990.252959ms)
+✔ active.ident cannot silently fill absent metadata neuron_types (1038.05425ms)
+✔ context edits and aggregate drift fail independently of transport checksums (1668.160833ms)
+✔ raw label normalization is detected against the ordered exact-label receipt (1241.725708ms)
+﹣ GLUT source-absent metadata types stay NA even when active.ident has labels; the exception requires the exact source pin (0.863417ms) # SKIP
+✔ real production registry retains GLUT metadata missingness and rejects changing the pin or filling labels (131.130917ms)
+✔ browser import mirror matches the exact production JSON bytes (3.780625ms)
+✔ package verification rejects import-mirror drift even when JSON semantics are unchanged (1125.589667ms)
+✔ Cano-Gomez extractor source has balanced R delimiters (7.440959ms)
+✔ Cano-Gomez extractor pins the three exact source objects and denominators (0.701333ms)
+✔ Cano-Gomez extractor verifies every identity/order boundary (0.934667ms)
+✔ Cano-Gomez extractor preserves raw fields and emits auditable profiles (1.094125ms)
+✔ Cano-Gomez extractor makes stable keys and byte-deterministic artifacts (0.942583ms)
+✔ reported 516 types is reconciled but never a hard failure (1.331334ms)
+✔ runtime prerequisites and fail-closed output behavior are explicit (0.411291ms)
+✔ strictly classifies only source-explicit CHOL_IN and never infers interneuron status from GABA (2.35075ms)
+✔ stable profile IDs retain raw-label identity without trimming or label-token marker claims (0.528416ms)
+✔ builds a deterministic full-denominator audit and a CHOL_IN-only exact roster (12118.37175ms)
+✔ fails closed on missing receipts, missing checksums, missing required columns, or denominator drift (1881.431792ms)
+✔ accepts the checksum-pinned Python/rdata row-only receipt without claiming cross-assay identity (6163.972875ms)
+✔ accepts the checksum-pinned base-R stream row-only receipt with explicit full-object and no-same-cell boundaries (6452.337333ms)
+✔ schema/semantic validation rejects GABA promotion, fabricated non-neuronal zero, markers, or geometry (6505.277917ms)
+✔ Python clean-room extractor compiles without importing rdata (56.380875ms)
+✔ extractor pins canonical sources, exact runtime, and checksum-gated input (2.920459ms)
+✔ identity authority is restricted to meta.data row names and same-row fields (0.662417ms)
+✔ rdata 0.11.2 patch artifact and runtime receipt carry exact checksums (1.25375ms)
+✔ pure fixture path proves deterministic bytes and preserves exact raw labels (99.891583ms)
+✔ admits NMO 108978 as a source-local census child without expanding 142 records (63.009459ms)
+✔ rejects conflating the census child with the frozen lens or a new denominator row (73.737417ms)
+✔ rejects DAT-to-SWC overlay, unsupported class promotion, and internal geometry (91.5725ms)
+✔ rejects altered source-native loop evidence and fabricated molecular joins (48.100667ms)
+✔ builder reproduces exact two-species objects and six unchanged source assets (200.69875ms)
+✔ real zebrafish SWC stays exact axon-only with no soma, dendrites or physical diameter (18.170875ms)
+✔ real rat SWC preserves 23-to-12 source assertion and name/receipt conflicts without same-cell claims (58.366875ms)
+✔ exact source key/frame/rights/relationship/caution and file identity gates reject before fetch (2.408459ms)
+✔ any damaged file or embedded metadata/QC drift withholds all geometry (16.11325ms)
+✔ CSV exports every raw node and native parent with source-radius limits; foreign receipt cannot export (12.568583ms)
+✔ both exact SWC sources capture and replay actual camera/layers against their current loader receipts (4.96725ms)
+✔ source reconstruction identity retains unknown physical cell/specimen/section and co-display semantics (0.549125ms)
+✔ the current object, renderer generation and verified asset set are mandatory at capture (4.721333ms)
+✔ all-hidden centerline views replay, but invented/missing layers or requested/actual disagreement fail (2.356292ms)
+✔ altered source file evidence, species/frame/scope and historical rat conflict cannot be imported (2.185458ms)
+✔ a finite but false display center/scale cannot override exact source-derived bounds (1.649125ms)
+✔ zero or parallel camera bases, nonfinite timing and wrong current renderer cannot replay (5.33825ms)
+✔ same-version replay rejects lost hierarchy, changed parents, another source payload and text-only status (2.014542ms)
+✔ actual clipping receipts retain camera near/far and refuse absent or invented custom planes (2.454667ms)
+✔ the bounded adapter uses exact admitted contexts and defines all five distinct categories (2.188916ms)
+✔ negative controls, adult/neonatal experiments and P09 interventions retain their own original results (0.2485ms)
+✔ human association and population tracing never inherit mouse cell identities or a directness grade (0.165125ms)
+✔ filtering by category, species, method and age clears stale detail selection (0.610459ms)
+✔ exact JSON/CSV exports preserve original source objects and reject duplicate or invented records (0.919375ms)
+✔ the bounded adapter rejects new conditions, broken source locators, species drift and tracing promotion (3.798667ms)
+✔ validates the non-promoting relationship-admission contract (36.25925ms)
+✔ exposes fixed relationship kinds with coordinate and identity-specific proof requirements (1.078416ms)
+✔ exports a proposal that remains not admitted even with a curator question (0.255708ms)
+✔ refuses unknown frozen records and relationship kinds (0.268625ms)
+✔ renders the explicit not-admitted boundary without fetch or upload (0.235ms)
+✔ cross-region internal reference remains vocabulary-only, unrendered, unregistered and unjoined (2.078875ms)
+✔ cross-region internal reference rejects promoted or measured primitives (0.585291ms)
+✔ scene and information surface wire the reference as an isolated mode (0.597041ms)
+✔ all declared inputs match the versioned source manifest and observation locators (11.140042ms)
+✔ actual passive and pH sample discrepancies remain visible without animal/row imputation (0.5995ms)
+✔ same-table conditions pair exactly, while source-row labels and reused cross-family integers cannot pair (0.244375ms)
+✔ filtering clears details and exports preserve the exact observed rows and measurement units (3.010625ms)
+✔ the actual parser rejects malformed region/condition/identity and isolates incomplete pairs (76.553333ms)
+✔ validates one source-local PKD2L1 functional profile with exact segment denominators (5.816667ms)
+✔ rejects promoted geometry, cross-experiment joins and additional firing-pattern types (1.732458ms)
+✔ rejects checksum and denominator drift (1.87625ms)
+✔ requires independently identified curators to report one verified ZIP digest (1.422208ms)
+✔ exports a locally resolved consensus packet without promoting the release (1.826167ms)
+✔ preserves disagreement and blocks a false next-review recommendation (0.234875ms)
+✔ validates the versioned local-only curator feedback and adjudication contracts (46.580583ms)
+✔ rejects duplicate feedback keys and a missing ZIP identity key (47.793625ms)
+✔ keeps feedback import bounded, exact-versioned and local-only in the browser (1.341541ms)
+✔ locks the candidate 2.8 private distribution identity (1.622584ms)
+✔ rejects package path traversal and ambiguous paths (0.600542ms)
+✔ detects CJK text while allowing scientific English and symbols (0.238875ms)
+✔ renders an English static curator index from the production build (426.934958ms)
+✔ verifies a checksum-locked package and rejects content tampering (11.694834ms)
+✔ rejects undeclared files and symbolic links in a package (7.394083ms)
+✔ freezes private curator distribution while tracking post-2.8 research docs separately (15.649542ms)
+✔ Davis Figure 1 remains an unchanged source-local same-cell 2D reference (8.037958ms)
+✔ re-hashing cannot promote a different panel relation or add geometry (6.251083ms)
+✔ locks the exact 51-profile Delile roster and every denominator exclusion (64.627917ms)
+✔ locks the pinned source, immutable object receipt, link-only rights boundary and canonical derivative (35.428416ms)
+✔ parses R-style tab rows without turning quoted NA into a missing value (0.6135ms)
+✔ rejects profile, cardinal-only and denominator drift (83.167916ms)
+✔ locks each profile's timepoint distribution, not only totals (21.349792ms)
+✔ rejects geometry, internal objects, registration and cross-modal joins (67.998833ms)
+✔ rejects rights escalation and source-body bundling (52.705542ms)
+✔ rejects a non-pinned source object before parsing biological labels (4.485708ms)
+﹣ audits the exact local source and deterministically rebuilds the committed derivative (0.117125ms) # SKIP
+✔ locks the pooled Dmrt3/dI6 source lineage and all six study-local groups (69.568125ms)
+✔ preserves exact M1–M6 counts, markers and article temporal context (0.343375ms)
+✔ rejects denominator drift, false animal replication and altered group partitions (106.479416ms)
+✔ rejects per-well reconstruction, geometry, internal objects and adult-type promotion (94.686458ms)
+✔ quarantines rather than harmonizes the Methods-versus-notebook QC and HVG conflict (18.550125ms)
+✔ locks source bytes, hashes, Git blobs and link-only bundling boundaries (35.807959ms)
+✔ deterministically rebuilds the exact committed compact derivative (73.480417ms)
+✔ rejects a non-pinned source gzip before attempting biological interpretation (1.24075ms)
+﹣ optionally audits the exact GEO gzip and decompressed loom (0.075625ms) # SKIP
+﹣ optionally audits the exact uncompressed loom Git object (0.095167ms) # SKIP
+﹣ optionally audits the exact executed notebook Git object (0.047375ms) # SKIP
+✔ pins four independent dorsal-horn routes without expanding the frozen census (72.0765ms)
+✔ rejects duplicate identities and false census promotion (65.784333ms)
+✔ rejects unsupported diameter, molecular identity, internals, joins and registration (118.82275ms)
+✔ deterministically extends immutable 0.1 with exactly four route-pack routes (4.982791ms)
+✔ validates nine states and eleven zero-join representation routes (117.137625ms)
+✔ gates each appended route by exact diameter and identity evidence (0.316875ms)
+✔ mutation gate rejects invented radius surfaces, false filename identity, joins and input drift (188.312542ms)
+✔ deterministically extends immutable 0.2 with exactly two functional-class routes (5.071834ms)
+✔ validates nine states and thirteen zero-join representation routes (180.680917ms)
+✔ gates both appended routes to observed skeleton, radius derivative and unavailable internals (0.15475ms)
+✔ mutation gate rejects DAT promotion, physiology joins, route drift and input drift (392.666292ms)
+✔ deterministically extends the exact immutable 0.3 artifact with two PrP routes (4.985166ms)
+✔ validates nine states and fifteen zero-semantic representation routes (232.135875ms)
+✔ gates both exact PrP routes to observed skeleton, radius derivative and unavailable internals (0.173375ms)
+✔ preserves positive-only marker, preparation-stage and object-join boundaries (0.180792ms)
+✔ mutation gate rejects DAT promotion, internal invention, joins, route drift and input drift (687.393125ms)
+✔ deterministically extends immutable representation 0.4 with one exact premotor comparison route (285.088708ms)
+✔ gates NMO 45718 to observed skeleton, radius derivative and unavailable internals (0.162ms)
+✔ rejects internal, identity, registration and source-receipt promotion (711.779541ms)
+✔ locks repository-label, soma-standardization, preparation and zero-internal invariants (0.2685ms)
+✔ deterministically appends NMO 108978 and its source-native state without mutating 0.5 (370.5ms)
+✔ records two source-local frames without a DAT-to-SWC overlay (0.224917ms)
+✔ rejects frame overlay, census inflation, internal primitives and false cell-type promotion (775.229875ms)
+✔ deterministically appends 30 source-specific routes without changing the 0.6 parent (696.379875ms)
+✔ routes each supplementary NMO stable ID to its exact geometry and source SWC receipt (0.459458ms)
+✔ fails closed if an unreported radius surface, cross-source identity, or overlay is introduced (1466.107708ms)
+✔ locks nine evidence-aware representation states across seven routes (46.216833ms)
+✔ keeps raw texture distinct from segmented surface and synthetic data glyphs (0.236667ms)
+✔ rejects procedural internals, joins, registrations and source-receipt drift (43.658667ms)
+✔ validates the public-source feasibility planner contract (40.528042ms)
+✔ recognizes a single source-specific molecular route without claiming registration (1.584583ms)
+✔ keeps separately supported axes separate instead of inventing a same-cell join (0.270666ms)
+✔ reports unsupported connectivity as a package-coverage gap, not biological absence (0.137625ms)
+✔ bounds selection and exports a zero-registration local planning receipt (0.221709ms)
+✔ renders a local checkbox planner and receipt export without source fetching (0.093917ms)
+✔ validates the two-lane provenance-trace contract (36.557333ms)
+✔ derives a research trace from only the selected frozen evidence entity (0.62025ms)
+✔ fails closed when the requested research entity is missing or unknown (1.164667ms)
+✔ keeps public-source planner routes separate from research evidence (0.374875ms)
+✔ exports a receipt that records a no-acquisition, zero-registration boundary (0.319583ms)
+✔ does not substitute the first research entity into an unknown-entity receipt (0.113416ms)
+✔ renders an explicit no-cross-lane-edge policy without source fetching (0.086458ms)
+✔ a pending or mismatched selection never displays the prior record's detail receipt (3.575833ms)
+✔ the exact active record changes the matrix between a molecular profile and a morphology object (3.636334ms)
+✔ an exact SWC is not promoted to a soma volume or membrane, and a radius surface stays DER (0.556167ms)
+✔ a record without source diameter remains unavailable for radius-derived surface (0.430417ms)
+✔ source metadata about a nucleus does not become an admitted geometry object (0.2925ms)
+✔ source-reported absence and rights-held states stay distinct from generic unavailability (0.215541ms)
+✔ shared internal-structure missingness is shown once, not repeated as four slot-specific claims (0.64675ms)
+✔ Explorer and supplemental morphology denominators remain separate and registry-derived (0.327667ms)
+✔ sample filters preserve source exceptions and the empty final Atlas prefix (2.129542ms)
+✔ filtering out a real selected sample clears identity without choosing or restoring another sample (0.162958ms)
+✔ real barcode mismatch and complete E13.5 barcode matching both fail the remaining scientific gates (0.17875ms)
+✔ bounded discovery never converts the resolved candidate citation into record metadata (1.856417ms)
+✔ exports carry the actual filtered source units and fail on identity collision (0.730666ms)
+✔ historical runtime replays exact archived bytes after a live type annotation (7.74925ms)
+✔ archive drift rejects and unrelated receipts never use the archive (7.331208ms)
+✔ pins exact Renshaw and NPY routes without expanding the census or inventing internals (92.2845ms)
+✔ rejects DAT semantic promotion, invented internals, physiology joins and registration (117.944417ms)
+✔ rejects erasure of preparation, PCA-morphometry, strain and weight conflicts (128.865833ms)
+✔ pins the paper-linked 650-record repository roster and raw source-strain facets (48.946583ms)
+✔ keeps paper-reported 305 and 351 sample statements separate and unresolved (0.132125ms)
+✔ mutated source identity, geometry, or scientific interpretation is rejected (68.78975ms)
+✔ pins the independent NMO 109021 GRP morphology route and its zero-join boundary (66.995458ms)
+✔ rejects invented internal detail, selected-entity identity and registration (64.687125ms)
+✔ retains truncation and soma-node interpretation boundaries (0.479583ms)
+✔ locks the 30-profile Häring source-local dorsal-horn taxonomy (80.905625ms)
+✔ retains curation-stage denominators and four unresolved source discrepancies (85.561083ms)
+✔ rejects animal/cell denominator drift and any alteration of the exact Table 4 count vector (109.704708ms)
+✔ locks active-matrix dimensions, metadata rows, assignments, and cell-column denominator boundaries (107.299625ms)
+✔ locks every per-profile age, deposited sex-code, strain, and raw-cluster aggregate (132.905208ms)
+✔ retains signed Table 5 rules and fine B/C/D cell locators (280.012709ms)
+✔ retains Table 8 marker qualifiers, blank slots, and exact C/D/E/F cell locators (121.016667ms)
+✔ rejects geometry, local-interneuron promotion, cross-source identity, SCI, and registration invention (170.7675ms)
+✔ keeps public access separate from reuse and every source object unbundled (87.244333ms)
+✔ deterministically rebuilds the exact committed JSON (84.981459ms)
+✔ rejects an unpinned source object before using it (1.331625ms)
+﹣ optionally audits every exact matrix/supplement source object (0.059708ms) # SKIP
+✔ locks the source-local Hayashi V2a taxonomy and every denominator (57.252833ms)
+✔ rejects denominator drift and any change to the exact 11-count vector (179.228125ms)
+✔ requires exact source locators and preserves source-local spatial context (120.2375ms)
+✔ keeps every cluster mixed and Type II outside confirmed local-interneuron counts (255.218ms)
+✔ rejects barcode maps, geometry, adult or SCI promotion, and cross-source identity (160.578667ms)
+✔ preserves matrix/article marker disagreement without harmonization (41.965625ms)
+✔ keeps public access distinct from reuse and source objects non-bundled (96.004334ms)
+✔ deterministically rebuilds the exact committed JSON (63.552916ms)
+✔ rejects a non-pinned gzip before parsing its contents (1.279125ms)
+﹣ optionally parses and audits the exact source gzip (0.149708ms) # SKIP
+✔ the live workspace contains no complete copied project tree (38.220708ms)
+✔ the layout guard detects a complete nested project without rejecting a partial work folder (10.017125ms)
+✔ profile label discovery drives a shared literal query across both morphology indexes (1.280709ms)
+✔ a discovery request clears stale/default geometry and requires explicit exact-record selection (0.614708ms)
+✔ deep-link restore preserves explicit morphology-browser intent without creating identity (0.200084ms)
+✔ independent structural references keep five source-local registries and non-pooled denominators (17.858542ms)
+✔ source frame, identity, rights and completeness boundaries remain distinct by lane (0.478875ms)
+✔ source-reported metrics and image detections do not become admitted internal geometry (0.323083ms)
+✔ all five source indices preserve seven native records and separate scientific denominators (2.249209ms)
+✔ all seven native contexts come from exact small source APIs with raw age/condition and field locators (113.389791ms)
+✔ full source/release/kind/native-ID keys retain large strings, escaping and reject alternate spellings (0.338792ms)
+✔ source ranges resolve final detections and all train/validation rows, never out-of-range or fabricated IDs (5.948667ms)
+✔ record-specific shell/crosswalk and parent evidence never leak to other records; MD5 remains MD5 (2.933542ms)
+✔ actual assets verify every native contour record and retain exact contour IDs/order/coordinates (37.455583ms)
+✔ actual MICrONS bytes verify parent row, two source meshes, bounds and exact selected nucleus (54.398792ms)
+✔ actual BANC SWC and PALM first/final columns display their own representations without inferred mesh (54.00375ms)
+✔ bad bytes, digest, native frame, units and identity fail closed with no fallback geometry (6.724084ms)
+✔ valid byte/hash receipt cannot bypass MICrONS semantic frame or component-ID checks (3.40525ms)
+✔ independent nucleus-parent relation requires versioned exact evidence and never equates nucleus with parent object (1.989833ms)
+✔ export rejects a foreign receipt and retains source identity, status and unit boundaries (0.21825ms)
+✔ A → B → A ignores obsolete same-key success/failure and synchronously clears geometry and receipt (0.530458ms)
+✔ asynchronous controller cancels prior requests; late A1/B2 cannot override A3 even when loader ignores abort (0.533167ms)
+✔ source URL roundtrip retains full large IDs, existing atlas query and hash (3.10075ms)
+✔ restored pages clamp to actual filtered rows before any offset multiplication (1.021458ms)
+✔ URL rejects a wrong release, unknown source and conflicting object namespace without a fallback (0.185375ms)
+✔ changing or clearing the selection hides the old loaded payload synchronously (0.113417ms)
+✔ view export binds current verified object, actual layers and source frame (0.383917ms)
+✔ replay rejects changed files, versions, camera and coordinate frames before applying a view (1.118334ms)
+✔ replay layer sets are source/viewer/component scoped and permit a present but hidden native DER (1.757ms)
+✔ rendered replay requires a camera, source transform and valid THREE dimensions/actual layers (0.803208ms)
+✔ text-only and link-only replay retain availability and cannot claim a rendered camera or layer (1.610958ms)
+✔ locks eight primary-source lanes, seven precision axes and zero project registrations (62.412667ms)
+✔ rejects cross-study identity, registration and asset-reuse promotion (69.749708ms)
+✔ rejects a missing axis, causal-status drift and fabricated morphology coverage (60.703708ms)
+✔ keeps all gaps distinct from biological absence (0.337875ms)
+✔ requires a publication locator for every project-curated coverage judgment (14.219125ms)
+✔ locks the Iglesias González E14.5 Dmrt3/dI6 group-summary lane and its missing axes (26.631833ms)
+✔ locks the Roome 157-type lane while withholding morphology, internal objects and same-cell joins (12.140208ms)
+✔ retains Hayashi P0 coverage and rejects an adult category for Häring (0.386125ms)
+✔ retains the corrected Tabulae citation and source-specific direct causal experiment (0.352917ms)
+✔ locks the primary-article locator corrections used by the coverage matrix (0.262792ms)
+✔ exact native source payloads pass hashes; corruption or truncation cannot display (14.447ms)
+✔ unverified identity, frame, rights or biological promotion fail closed (1.337625ms)
+✔ 128 raw Z planes map to eight native label planes at group mean sample coordinates (2.038834ms)
+✔ native source labels identify a partial instance and uniformly cover only the bounded raw patch (10.05675ms)
+✔ plane receipt retains native calibration and zero cell/atlas/measurement claims (0.167208ms)
+✔ executes the Draft 2020-12 schema against release 0.2 (54.366041ms)
+✔ schema rejects a raw null and an undeclared field (31.870167ms)
+✔ standalone schema validator passes (181.884917ms)
+✔ retains a separate 4 dpf zebrafish source-local panel and ten article-reported interneuron labels (34.067542ms)
+✔ rejects attempted barcode, animal-denominator, or mouse-equivalence promotion (38.505208ms)
+✔ Koh direct public routes remain code/supplement-only and the Svara archives remain candidates (1.36775ms)
+✔ Koh public-route audit rejects promoting a linked Svara ZIP to the exact Knossos input (0.409084ms)
+✔ Koh public-route audit rejects an absence-wide claim or unauthorized geometry (0.17225ms)
+✔ Koh supplement audit pins both official files without admitting object geometry (1.063042ms)
+✔ Koh supplement audit fails closed if any worksheet range or rights boundary drifts (0.649833ms)
+✔ Koh Zenodo deposit is versioned code-only and its external list inputs remain unavailable (1.3335ms)
+✔ Koh Zenodo audit rejects a public-workbook substitution or geometry promotion (0.499375ms)
+✔ retains named exact routes while exposing every frozen census geometry in the main scene (3.236917ms)
+✔ reuses both frozen overlaps byte-for-byte and keeps all seven supplementary routes outside the census (0.3625ms)
+✔ covers every named observed route with an exact fail-closed representation route (0.23725ms)
+✔ resolves all thirty 8.6.126 supplementary selections to their own exact representation receipt (0.185292ms)
+✔ exposes 142 census plus seven supplementary explorer objects without expanding the frozen census (1.132291ms)
+✔ parses exactly 17 neuronal columns × 20 ranks through the workbook relationship (24.236709ms)
+✔ produces a deterministic derived panel digest (12.752042ms)
+✔ rejects a workbook unless its expected source checksum matches (5.437666ms)
+✔ rejects header, rank depth, uniqueness, lower-row and formula drift (20.566041ms)
+✔ locks five Matson timepoints, 15 cords, 17 populations and zero registrations (80.586625ms)
+✔ retains every population by all five timepoints and all 15 source samples (0.221584ms)
+✔ retains all 340 source-ranked genes with exact cells and no invented statistics (104.5535ms)
+✔ rejects incomplete, reordered, duplicated, altered or mislocated ranked-marker panels (120.309459ms)
+✔ rejects denominator, timepoint and per-sample observation drift (98.286125ms)
+✔ rejects source identity, rights and raw-file bundling promotion (405.472542ms)
+✔ keeps 16 non-motor labels unresolved and motoneurons outside interneuron counts (384.279833ms)
+✔ keeps RAG, tracing and spinocerebellar evidence separate from population identity (232.385292ms)
+✔ rejects unsupported coordinate, morphology or synaptic relationship fields (857.290917ms)
+✔ normalizes the five discrete SCI timepoints without interpolation (0.957167ms)
+✔ finds only an exact source-local Matson population focus (0.105708ms)
+✔ filters and groups populations without merging source identities (1.899333ms)
+✔ returns exact timepoint and replicate observations for the focused population (0.479458ms)
+✔ accepts an exact MICrONS view receipt but never trusts its imported runtime state (12.685125ms)
+✔ requires immutable exact-reference provenance whenever the MICrONS camera is requested (0.399083ms)
+✔ rejects changed nucleus, manifest, transform, or same-object boundary receipts (2.008ms)
+✔ rejects disagreement between duplicated view/component request fields (0.476792ms)
+✔ validates exact source-native clipping state but never trusts imported runtime claims (1.141916ms)
+✔ rejects active clipping without the immutable clipping contract or exact duplicated state (0.683291ms)
+✔ MICrONS manual mitochondria subvolume is spatially ineligible for this target under the listed nominal mapping (5.877916ms)
+✔ spatial non-overlap is disclosed as an eligibility failure, not biological absence (1.496459ms)
+✔ changed mesh bounds or a fabricated cross-layer transform fails closed (3.808ms)
+✔ admits one exact MICrONS cell surface and linked nucleus with zero cross-region joins (187.908ms)
+✔ browser arrays expose exact native-coordinate counts and checksum receipts (0.306917ms)
+✔ the sealed 2.64 research release records both MICrONS contract and asset-manifest receipts (843.946167ms)
+✔ a raw legacy fragment parses to its pinned fragment-local counts (0.987708ms)
+✔ semantic gate rejects membrane, organelle, spinal-identity and transform promotion (1.255125ms)
+✔ validator fails closed when a browser geometry byte no longer matches the receipt (958.700417ms)
+✔ observed admission does not promote the unavailable internal-evidence route (0.584083ms)
+✔ viewer wires a checksum-gated, component-toggleable MICrONS scene without a spinal join (2.739333ms)
+✔ pins exact source geometry and a cell-only, zero-generation clipping policy (129.172708ms)
+✔ maps every source-native axis and retained side into the exact world plane (2.018042ms)
+✔ rejects malformed and out-of-bounds clipping state while URL parsing fails closed (7.040625ms)
+✔ runtime receipt exposes the reversible display operation and all zero boundaries (0.920458ms)
+✔ viewer, controls, URL, import and export integration remain explicit (3.128ms)
+✔ pins MICrONS subcellular source availability while admitting no cell-specific objects (50.209167ms)
+✔ the internal-reference panel discloses source routes and access/version gaps without making fake detail (2.680542ms)
+✔ a checksum or version mismatch cannot be converted into an exact-cell admission (5.064125ms)
+✔ MicroStructFormer contract pins paired 2D image-mask scope without cell geometry (15.245542ms)
+✔ MicroStructFormer contract rejects misjoined, extruded, or bundled geometry (5.63925ms)
+node:internal/fs/promises:1281
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/public/api/source-records/search-index.json'
+    at async open (node:internal/fs/promises:1281:25)
+    at async readFile (node:internal/fs/promises:1929:14)
+    at async fsFetch (file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/molecular-concordance.test.mjs:8:17)
+    at async fetchVerifiedResearchExplorerIndex (file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/research-explorer-index.js:144:25)
+    at async file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/tests/molecular-concordance.test.mjs:11:15 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/public/api/source-records/search-index.json'
+}
+
+Node.js v26.0.0
+✖ tests/molecular-concordance.test.mjs (395.373708ms)
+✔ builds a replayable co-display-only receipt for two to four real records (30.798875ms)
+✔ fails official No Diameter records closed to observed centerlines (0.646584ms)
+✔ rejects duplicate, undersized, oversized, or analysis-orphan comparisons (4.622292ms)
+✔ fails source-frame, geometry, scale, and restoration authority mutations closed (3.769042ms)
+✔ requires a truthful straight-on source-plane lock for 2D records (1.116542ms)
+✔ exports exact metrics with authority and relationship columns (0.717875ms)
+✔ normalizes shrinkage interpretation without altering raw source capitalization (0.132417ms)
+✔ exports a real mixed census-plus-supplementary receipt without merging denominators (0.499125ms)
+✔ shows raw shrinkage fields and invalidates runtime viewport authority on mode or selection changes (0.736917ms)
+✔ validates five evidence-gated morphology fidelity receipts (204.37425ms)
+✔ schema rejects radius surfaces for official no-diameter records (50.486625ms)
+✔ schema rejects invented same-specimen internal structure (65.169958ms)
+✔ renderer makes exact endpoint-radius open frusta and separate observed centerlines (4.237333ms)
+✔ renderer preallocates exact typed buffers per visible source type (41.320125ms)
+✔ validates all 142 selectable morphologies and strict evidence gates (142.597ms)
+✔ rejects expanded comparison, internal structures, registrations, and no-diameter surfaces (442.837625ms)
+✔ restores only four known unique comparison records (5.844542ms)
+✔ restores mixed census and supplementary ids without changing collection membership (0.208125ms)
+✔ uses four source-diverse defaults and maintains a minimum pair (0.255417ms)
+✔ adds, replaces, and removes without duplicates or out-of-range IDs (0.768834ms)
+✔ accepts all five research views and fails unknown views to the exact universe (0.233583ms)
+✔ builds 13 explicit structural axes for every admitted reconstruction (59.071166ms)
+✔ separates observed axon fields, authorized radius derivatives, and official No Diameter records (0.62875ms)
+✔ never promotes standardized soma samples into a contour or membrane (0.703667ms)
+✔ fails topology and QC receipt conflicts closed without crashing the coverage UI (1.493375ms)
+✔ cross-checks diameter attributes, flags and derived summaries before authorizing a surface (1.874708ms)
+✔ does not turn soma scalars, axon nodes, or marker labels into unsupported micro-detail (0.546958ms)
+✔ fails a non-null atlas transform or placement closed (0.357584ms)
+✔ exact parent-chain and downstream lengths use source coordinates, independent of row order and viewer scale (13.226042ms)
+✔ No Diameter records never expose placeholder radius measurements or profiles; type-1 stays excluded (0.516459ms)
+✔ terminal and root selection preserve exact denominator and empty downstream behavior (0.436167ms)
+✔ selection overlay contains only transformed exact edges and a data cross, with no invented surfaces (2.486458ms)
+✔ rejects invalid topology, missing selections, disconnected cycles and duplicate IDs (0.61475ms)
+✔ controller focuses the selected arbor, dims/restores context, steps landmarks, and disposes listeners (3.609625ms)
+✔ pointer picking selects the exact edge child, ignores drag and respects hidden source types (2.256083ms)
+✔ every bundled census reconstruction supports real exact-tree inspection with full root coverage (1515.400334ms)
+✔ retains selection only for the identical geometry payload when rebuilding display modes (1.772833ms)
+✔ projects exact source coordinates without mutating geometry (3.120084ms)
+✔ retains flat z evidence in XZ and YZ projections (0.2845ms)
+✔ fits each projection independently and declares apparent scale incomparable (0.2435ms)
+✔ fails closed on unsupported planes or invalid coordinates (0.499042ms)
+✔ keeps record disclosures tied to the exact 142 + 7 source-object roster (1.535042ms)
+✔ source-backed preparation fields vary across records instead of collapsing to generic card copy (1.211583ms)
+✔ shared card renders raw, normalized, truncation, membership and full receipt fields (0.306375ms)
+✔ individual card uses the disclosure and exposes every computed metric behind a counted disclosure (0.336833ms)
+✔ comparator keeps workspace limits global and removes repeated integrity, axon and hash copy from cards (0.38275ms)
+✔ 3D records with source diameter default to a radius-derived view (2.486ms)
+✔ an explicit centerline choice overrides the readable default (0.145792ms)
+✔ 2D records stay planar even when the source provides diameter values (0.081875ms)
+✔ records without a 3D source-radius basis remain centerline-only (0.074208ms)
+✔ both morphology viewers use the shared authority resolver and disclose planar boundaries (21.174333ms)
+✔ validates the deterministic 142 + 7 source-local disclosure contract (1655.218292ms)
+✔ locks source-local scale, source-coordinate, and zero-registration policy (0.295584ms)
+✔ locks representative preparation, shrinkage, truncation, and unresolved-context disclosures (0.218875ms)
+✔ locks exactly two planar geometries and positive z extent for all 147 three-dimensional geometries (0.136125ms)
+✔ rejects canonical content drift before accepting a modified contract (27.19025ms)
+✔ rejects a shared scale, apparent-size comparison, or common frame (25.83225ms)
+✔ rejects restored in-vivo dimensions, inferred coordinates, or repaired neurites (74.782833ms)
+✔ rejects atlas registration and unit or source-frame promotion (46.982ms)
+✔ rejects node-bound, display-transform, and 2D z-axis drift (86.408666ms)
+✔ rejects removal of a preparation conflict or rewriting of source integrity (56.464625ms)
+✔ rejects geometry receipt drift and census/supplementary membership drift (55.186625ms)
+✔ runtime guard accepts the exact checksum-pinned topology payload (14.094375ms)
+✔ runtime guard rejects unknown or arithmetically inconsistent membership (28.764625ms)
+✔ runtime guard rejects missing, malformed, or type-1-free source domains (74.787333ms)
+✔ runtime guard rejects missing, malformed, or zero-padded canonical availability (48.025916ms)
+✔ panel uses the runtime guard and adjacent legends preserve the evidence wording (17.648708ms)
+✔ half-open analytic Sholl intersections preserve shared endpoints, tangents and zero-length policy (8.057416ms)
+✔ toy source topology yields exact domain metrics and landmark node IDs (5.083ms)
+✔ released contract is a small browser-fetch receipt for exactly 142 plus 7 records (10.191584ms)
+✔ validator accepts the checksum-verified release and deterministic rebuild (6252.495958ms)
+✔ semantic validation fails closed on padded absence, soma contour, landmark, membership and internal claims (42.227791ms)
+✔ derives exact root, source-type samples, stems, branchpoints and terminals from SWC parent links (2.188916ms)
+✔ renders topology landmarks as line-cross data overlays with zero biological-surface claims (1.332375ms)
+✔ fails closed for empty, duplicate-root and missing-parent node tables (0.464958ms)
+✔ computes a source-local 1-2-5 scale at the camera target plane (1.4845ms)
+✔ updates physical scale on orbit zoom and viewport resize (0.14075ms)
+✔ does not use drawing-buffer density or a shared comparison scale (0.07875ms)
+✔ fails closed on invalid scale inputs (0.4145ms)
+✔ fits a bounding sphere against the limiting viewport field of view (0.110958ms)
+✔ formats micrometre labels without implying restored biological dimensions (0.102459ms)
+✔ keeps source axes at the transformed origin and labels them for sighted users (0.144292ms)
+✔ keeps the complete geometry inside the far clipping plane across zoom (0.394666ms)
+✔ invalidates scale before layout revision and binds mode plus viewport identity (0.249584ms)
+✔ UPG-243 seals the bounded repository screen without admitting a mouse spinal cell object (4.348541ms)
+✔ UPG-243 rejects universal no-hit, false spinal identity, and geometry admission (1.439958ms)
+✔ UPG-243 search receipts conform to the bounded audit schema (45.579ms)
+✔ NMO 50394 gets one deterministic open interpolation shell from 14 contiguous OBS sections (11.604292ms)
+✔ surface eligibility fails closed on identity drift, contour self-intersection and non-contiguous planes (5.152834ms)
+✔ release artifact and receipt remain byte-deterministic and source-bounded (37.661709ms)
+✔ NMO 45718 DAT↔SWC crosswalk reproduces with disjoint held-out checks and no invented surface (14.961167ms)
+✔ same-record fit maps only the seven source-closed Soma 1 traces into the CNG local frame (7.186667ms)
+✔ transform is object-specific and fails closed when correspondence evidence changes (18.321875ms)
+✔ the crosswalk component is gated to the exact selected record and remains a separate viewer (1.082708ms)
+✔ validates the reproducible 0.3 catalog and exact Todd LineLoop receipts (92.768875ms)
+✔ admits only exact Todd Cell Body objects while preserving raw false flags (1.036291ms)
+✔ rejects any weakening of the Todd evidence gate or zero-authority boundary (2.67275ms)
+✔ rejects catalog-level promotion beyond 48 LineLoops and the scoped MBF rule (0.718167ms)
+✔ 0.4 independently audited delta is reproducible and leaves frozen 0.3 unchanged (29.513541ms)
+✔ delta fails closed on identity, receipts, raw flags, no-diameter and authority mutations (1.665167ms)
+✔ NMO 108978 retains exact flags, source order, repeated z and excludes inferred geometry (12.611625ms)
+✔ NMO 108978 rejects same-size tampering and forged derivative receipt (4.632292ms)
+✔ NMO 249676 retains exact flags, source order, repeated z and excludes inferred geometry (3.037583ms)
+✔ NMO 249676 rejects same-size tampering and forged derivative receipt (13.448542ms)
+✔ derived inventory rejects figures, arbitrary organelles and missing geometry (1.145833ms)
+✔ native viewer exposes source cross-section inspection and resets per selected identity (1.803709ms)
+✔ validates the five-file native DAT audit and strict two-record admission (27.69075ms)
+✔ admits only seven explicitly source-closed NMO 45674 CellBody loops (0.79075ms)
+✔ keeps every Todd Cell Body series held despite exact point-array agreement (0.134083ms)
+✔ uses a reversible display transform without changing duplicate source planes (0.506375ms)
+✔ rejects invented closure, surfaces, promoted held records and identity drift (1.135208ms)
+✔ validates the independently audited NMO 45718 source-native contour trace (13.68375ms)
+✔ keeps seven source-closed Soma 1 planes separate from the legacy Cell Body trace (0.284917ms)
+✔ uses only a reversible viewer transform while retaining exact source coordinates (0.449917ms)
+✔ rejects invented surfaces, changed identity, merged legacy semantics and malformed points (1.253291ms)
+✔ replaces the exact 45718 target on morphology switch and clears it on molecular switch (0.383583ms)
+✔ validates all 142 morphology phenotypes against checksum-pinned geometry (3541.931542ms)
+✔ locks source hashes and calls both browser-facing validators (5.341083ms)
+✔ computes a source-local bifurcating tree and excludes type-1 soma edges (0.272042ms)
+✔ traverses a 20,000-node source-local chain without recursive stack overflow (51.811667ms)
+✔ counts both crossings when a neurite segment has both endpoints outside a Sholl sphere (0.236292ms)
+✔ uses the half-open Sholl endpoint interval so a shared endpoint counts once (0.090375ms)
+✔ preserves source type 6 as uninterpreted and never reports source type 1 as neurite (0.141416ms)
+✔ rejects invalid roots, source types, and cyclic or disconnected topology (0.444417ms)
+✔ implements explicit Hyndman-Fan type-7 cohort summaries (0.079083ms)
+✔ rejects invented denominators and dimensionality-partition drift (9.6965ms)
+✔ rejects analysis and pinned-source hash mutations (1.531625ms)
+✔ passes the standalone morphology-analysis validator (3638.262708ms)
+✔ all frozen query morphologies have an exact distinct source-local main-scene record (49.555875ms)
+✔ source class labels remain verbatim, and 2D inputs cannot be relabelled as reconstructed 3D (0.34175ms)
+✔ changed census identities fail the source-rebuild gate (25.981292ms)
+✔ validates the pinned 142-record census and locks its generated roots (2812.325083ms)
+✔ preserves the complete official API page and every raw record (3.244542ms)
+✔ reports source concentration and morphology eligibility with fixed denominators (0.254834ms)
+✔ admits 142 independently lazy, source-local, unregistered geometry assets (0.314458ms)
+✔ keeps both Chen_Dai 2D type-6 reconstructions uninterpreted (5.184625ms)
+✔ does not emit radius-derived claims for the 48 no-diameter records (69.318125ms)
+✔ retains explicit missingness, rights, and query-complete-not-biologically-complete scope (0.405834ms)
+✔ schema rejects registration and lazy-path drift (67.12775ms)
+✔ census SWC parser accepts type 6 but rejects malformed topology (0.6ms)
+✔ passes the standalone NeuroMorpho census validator (2869.926083ms)
+✔ validates all 1,097 exact NeuroMorpho source objects and the reuse/delta boundary (4774.539292ms)
+✔ keeps independent denominators and never turns records into animals, types, or complete axons (3.555625ms)
+✔ preserves the source z columns of all 39 source-labelled 2D SWCs without pretending z is unavailable (48.634625ms)
+✔ the UI presents one shared boundary and record-specific cards while clearing prior geometry (3.119625ms)
+✔ bounded discovery uses receipt-verified official publication metadata (7.645625ms)
+✔ the resolved candidate article cannot overwrite anomalous Todd references (0.380583ms)
+✔ unknown supplemental and object mappings never become biological relationships (0.740583ms)
+✔ records the observed 8.6.125 exact-query metadata-only delta without changing the active 8.6.124 model (42.330875ms)
+✔ rejects any attempt to turn metadata equality into a geometry, rights, or active-release promotion (47.524292ms)
+✔ UPG-245 routes the exact 30 public 8.6.126 reconstructions without changing the frozen universe (169.413084ms)
+✔ UPG-245 route pack rejects invented paper identity, census expansion, or unsupported radii (243.616459ms)
+✔ UPG-245 0.2 summary is hash-linked to the exact roster and route package (133.40225ms)
+✔ UPG-245 audit rejects a confirmed paper crosswalk (221.398916ms)
+✔ 8.6.126 Todd audit reconciles 30 new stable IDs without claiming a complete release census (72.046791ms)
+✔ 8.6.126 Todd audit rejects duplicated IDs, false count proof, and geometry or rights admission (100.359625ms)
+✔ 8.6.126 Todd stable-ID audit validates against its strict JSON schema (17.368875ms)
+✔ 8.6.126 UI audit preserves the 339-hit lead without inventing record identities (42.990833ms)
+✔ 8.6.126 UI audit rejects false ID deltas, denominators, or geometry admission (70.709542ms)
+✔ 8.6.126 UI audit validates against its strict JSON schema (18.087667ms)
+✔ parses strict seven-column UTF-8 SWC into GeometryPayload-compatible exact nodes and segments (2.681917ms)
+✔ retains no-diameter radii and 2D z coordinates while authorizing no surface and no extrusion (0.207042ms)
+✔ rejects malformed identity, numeric, root, parent, and topology states (0.48175ms)
+✔ loads only a byte- and checksum-verified record with matching identity and path (0.9125ms)
+✔ loader fails closed on checksum mutation, byte drift, request failure, and record/path mismatch (0.456083ms)
+✔ verified loader propagates no-diameter and 2D semantics without modifying source values (0.38025ms)
+✔ compares all 10 source taxonomy papers with the frozen 1,097-record DOI metadata universe (103.830708ms)
+✔ audit schema is strict; deterministic validation reconciles match counts to source-local IDs (21.095791ms)
+✔ coverage card keys by selected source namespace and preserves the publication-only boundary (0.516459ms)
+✔ tampered identity, DOI counts, or geometry admissions fail the deterministic audit (325.344833ms)
+✔ paper-by-label cross-tab preserves exact DOI and raw labels with explicit missingness (2.837333ms)
+✔ pinned 8.6.124 DOI-by-label cross-tab is a reproducible record-provenance map (42.509584ms)
+✔ cross-tab UI filters only by the exact DOI-label pair and does not select geometry (2.166292ms)
+✔ source cell-type facets preserve exact official values and deduplicate within a record (15.183375ms)
+✔ missing source labels are distinct from literal labels and counts may overlap (0.268875ms)
+✔ pinned 8.6.124 cell-type facets are reproducible from the checksum-verified exact query (43.207166ms)
+✔ source-label filtering does not silently replace the selected morphology or join a molecular profile (1.288333ms)
+✔ source strain facets preserve raw labels and count each exact record once (13.94825ms)
+✔ missing source labels stay separate from literal source values (0.211583ms)
+✔ molecular profiles open the exact morphology browser without inventing a cross-source identity (6.555875ms)
+✔ strain labels displayed in the morphology browser come from the exact official field (1.05225ms)
+✔ locks the five source-observed cell forms and zero-relationship rendering contract (95.722ms)
+✔ rejects promotion of a source-local cell form to atlas registration or selected-entity morphology (76.061417ms)
+✔ rejects synthetic population nodes that masquerade as observed cell morphology (20.693625ms)
+✔ rejects phenotype or source-segment drift (46.648709ms)
+✔ cached morphology geometry revalidates the current source record and disclosure (74.946667ms)
+✔ legacy morphology routes use a non-null fallback whose binding is defined (1.23525ms)
+✔ the application imports the current research iteration 2.58 manifest (0.249625ms)
+✔ exports gate both frozen morphology contracts by explicit record membership (0.673875ms)
+✔ stale morphology runtime receipts reset on state transitions and fail closed in every export (2.111875ms)
+✔ radius mode preserves distinct OBS centerline and DER surface representation metadata (0.347834ms)
+✔ the interactive canvas has keyboard semantics or an explicitly linked equivalent control (0.891083ms)
+✔ the actual source-byte loader emits exact web-runtime bytes without runtime filesystem or Buffer dependencies (8.97575ms)
+✔ unallowlisted paths, query variants, corrupt and truncated source bytes fail before emission (1.359208ms)
+✔ the actual GET route returns the exact raw gzip once, without HTTP Content-Encoding (45.679583ms)
+✔ UPG-249 finds two openly licensed adult-mouse spinal EM volumes but no interneuron object route (4.652041ms)
+✔ UPG-249 near-miss audit rejects interneuron reassignment and unverified geometry admission (1.210875ms)
+✔ UPG-249 near-miss audit conforms to its strict schema (48.500459ms)
+✔ validates three queue-only availability candidates with no modeling or UI admission (3.487584ms)
+✔ pins the exact Janelia remote raw/nucleus pair without implying cell identity (0.149334ms)
+✔ locks the unresolved Janelia coordinate discrepancy and unavailable Ariadne path (0.180125ms)
+✔ retains Fish1 identity, calibration, proofreading and redistribution blockers (0.23625ms)
+✔ retains the PKD2L1 raw-object and separate-experiment blockers (0.101167ms)
+✔ rejects identity, measurement, proofreading, admission and receipt promotion (2.437334ms)
+✔ retains the eight published PKD2L1 Table 5 population summaries and exact study frame (56.968166ms)
+✔ rejects inferred region denominators, open-data claims and cell-specific geometry (123.587125ms)
+✔ UPG-242 distinguishes released publication media from a source EM volume (2.895833ms)
+✔ UPG-242 public-availability audit satisfies its strict JSON Schema (59.60225ms)
+✔ UPG-242 rejects a fabricated stack, object join, measurement permission, or absence claim (0.47225ms)
+✔ the UI exposes the bounded evidence and terms audit without admitting geometry (0.307792ms)
+✔ validates the exact publication-video receipt and zero-object readiness gate (1.614708ms)
+✔ rejects reconstruction promotion, object admission, and receipt drift (1.102708ms)
+✔ the internal-reference UI streams the official video without constructing geometry (0.7765ms)
+✔ pins one exact repository-labelled premotor comparison route without changing the census (104.154375ms)
+✔ rejects geometry, topology, complete-axon and internal-detail promotion (144.708542ms)
+✔ rejects DAT semantics, exact physiology, identity joins and registration (77.668625ms)
+✔ rejects conversion of repository labels into definitive biological exclusions (63.085209ms)
+✔ locks the explicit contour-to-point, preparation and shrinkage receipts (64.587542ms)
+✔ pins exact nNOS/PrP and galanin/PrP routes without census or semantic expansion (105.497167ms)
+✔ rejects route/order drift and geometry/topology drift (125.258125ms)
+✔ rejects DAT semantics, complete axons, invented internals, physiology, identity and registration (140.368958ms)
+✔ preserves raw Swiss-Webster spacing, invalid weight bounds and non-exclusive marker evidence (150.264208ms)
+✔ keeps PrP as promoter context, separates preparation stages and excludes paper assets (112.791375ms)
+✔ admits only the two independently pinned native 0.3 derivatives beside the frozen PrP inventory (3.118125ms)
+✔ executes the public-data catalog schema and semantic validator (73.139625ms)
+✔ does not allow a source to silently claim project registration or internal data (12.231625ms)
+✔ keeps all queue dependencies in the public catalog (0.2375ms)
+✔ standalone public-data catalog validator passes (163.170291ms)
+✔ accepts a declared source SHA-1 without pretending it is a local SHA-256 (45.916666ms)
+✔ rejects relabeling a source checksum as a locally computed SHA-256 (15.246041ms)
+✔ locks the zero-file source-checksum-aware preflight (10.783791ms)
+✔ accepts only a specimen-aware, preprint-bounded metadata manifest (50.278708ms)
+✔ rejects undeclared specimens and a local hash before acquisition (27.774459ms)
+✔ locks the zero-file, specimen-aware Cano-Gomez preflight (15.74275ms)
+✔ locks the two schema-shaped public metadata manifest formats (33.894125ms)
+✔ rejects a composer contract that quietly permits acquisition or registration (12.468708ms)
+✔ exposes only local metadata entry and browser JSON export in the UI (0.467125ms)
+✔ accepts only a file-level metadata manifest that remains unacquired and unregistered (40.212542ms)
+✔ rejects absent checksum, file rights or coordinate missingness (21.6025ms)
+✔ locks the zero-file, no-download public file-admission preflight (31.043167ms)
+✔ rejects any preflight that quietly accepts an unverified file (11.695917ms)
+✔ validates the pinned detached RO-Crate 1.3 exporter contract (37.956625ms)
+✔ builds one external-only source-scoped RO-Crate graph (2.342791ms)
+✔ rejects a local payload path or registration claim (0.200583ms)
+✔ validates the non-promoting assertion-provenance composer contract (45.299084ms)
+✔ emits an evidence-located assertion receipt without acquiring or admitting a source object (1.3045ms)
+✔ keeps an unresolved assertion explicit and unadmitted (0.169042ms)
+✔ rejects a non-declared subject or a forbidden promotion state (0.202167ms)
+✔ exposes local assertion provenance UI without source transfer (0.229667ms)
+✔ validates the non-authorizing authorization-plan composer contract (44.722583ms)
+✔ emits an object-specific plan without authorizing, acquiring or verifying a source object (1.532791ms)
+✔ rejects a non-manifest object, unplanned rights grant, or locally hashed source (0.47675ms)
+✔ exposes local authorization-plan UI without source transfer (0.372583ms)
+✔ validates the independent authorization-evidence draft contract (59.805208ms)
+✔ emits a review request without authenticating authority, execution, verification or registration (1.117208ms)
+✔ rejects an unlisted object, an invented approval state, and a local hash (0.867208ms)
+✔ exposes local independent evidence-packet UI without source transfer (0.266667ms)
+✔ validates the 0.7 public metadata intake registry (116.259458ms)
+✔ keeps Cano-Gomez method evidence source-local, preprint-bounded, and non-registering (0.35525ms)
+✔ rejects a claimed Cano-Gomez project registration or file acquisition (27.258333ms)
+✔ standalone 0.7 intake registry validator passes (167.443333ms)
+✔ validates the multi-source public metadata intake registry (112.355666ms)
+✔ does not allow an intake to acquire data, authorize hosting, or grant registration (16.145708ms)
+✔ retains Cano-Gomez preprint and author-space limitations (0.116709ms)
+✔ pins one Tabulae public object header without admitting its file (1.262ms)
+✔ standalone public-source intake registry validator passes (169.954375ms)
+✔ validates the SpinalJ metadata-only public-source intake (59.251334ms)
+✔ cannot turn a metadata audit into a downloaded, bundled or registered source (13.950917ms)
+✔ links each reported fact to a public evidence record (0.166875ms)
+✔ standalone public-source intake validator passes (175.409916ms)
+✔ validates the deterministic local source-admission service contract (43.043459ms)
+✔ reviews complete metadata without promoting the SpinalJ source object (0.545333ms)
+✔ retains Cano-Gomez specimen and preprint limits in an unadmitted receipt (0.221417ms)
+✔ rejects unsupported sources and does not expose source fetching (0.428417ms)
+﹣ checks the reproducible public-data workbench 2.8 release lock (1.344084ms) # SKIP
+✔ locks all fifty-seven required project and external authoritative inputs (0.643625ms)
+✔ pins atlas and morphology metadata without inventing registrations (1.332958ms)
+✔ manifestContentSha256 is canonical and excludes only itself (1.83125ms)
+✔ rejects lexical and symbolic-link path escapes (7.399292ms)
+✔ rejects tampered fixture contents and a tampered declared hash (7.224209ms)
+﹣ standalone default and --check modes both validate the release manifest (0.112292ms) # SKIP
+✔ server-renders the mouse spinal Research MVP atlas (467.203917ms)
+✔ keeps UI source, metadata and representative SSR states English-only (484.745417ms)
+✔ makes the research overview the first/default information experience (25.719792ms)
+✔ server-renders the canonical source registry with lane-scoped filters and record granularity (43.349542ms)
+✔ server-renders the exact early-postnatal Ronzano point lane without cell or registration promotion (22.742167ms)
+✔ server-renders the exact MICrONS cell+nucleus reference with hard cross-region boundaries (27.706208ms)
+✔ server rendering keeps NMO 109021 geometry closed until the shared active record verifies (65.923458ms)
+✔ server-renders named spinal routes and the broader selectable census while geometry remains verification gated (286.567125ms)
+✔ server-renders one canonical research focus into the matching controlled lane (37.694791ms)
+✔ a morphology focus overrides a stale requested type lab and receives a record-aware evidence rail (30.118417ms)
+✔ server-renders the source-local Matson SCI time course with exact replicate denominators (25.636166ms)
+✔ server-renders a URL-addressed type dossier and non-pooled comparison (30.664917ms)
+✔ server-renders an evidence-bounded Hayashi P0 V2a dossier (28.716958ms)
+✔ switching Dmrt3 M1 and M4 changes the evidence fingerprint while same-record internal geometry stays empty (62.289334ms)
+✔ server-renders an evidence-bounded Alkaslasi I8 dossier without prevalence or 3D promotion (29.080292ms)
+✔ server-renders the PKD2L1 functional profile with observed electrophysiology, quarantined conflicts and zero geometry (31.292125ms)
+✔ server-renders visibly distinct I1 and I2 evidence fingerprints with zero surrogate geometry (77.748167ms)
+✔ Research Explorer reuses authoritative molecular life-stage facts and preserves record-specific gap counts (49.797125ms)
+✔ server-renders a fine-grained Häring P17–P28 dorsal-horn dossier without inventing geometry (31.406417ms)
+✔ retains the deposited Häring Gaba1 raw-label anomaly without reinterpretation (30.762458ms)
+✔ server-renders the anatomy lane with a fail-closed native-volume control (24.599625ms)
+✔ server rendering retains a versioned SCI identity but withholds its card until verification (25.042125ms)
+✔ retains the selected SCI focus when filters hide every result (21.932416ms)
+✔ restores versioned layer, observed cell form and panel state from the URL (26.919333ms)
+✔ server rendering withholds radius-derived morphology until the active record verifies (22.922375ms)
+✔ server rendering also withholds a no-diameter morphology before verification (23.49075ms)
+✔ server-renders the 142-object matrix and bounded 3D comparison research views (72.322042ms)
+✔ restores a public-data catalog view from the versioned URL (37.42375ms)
+✔ renders a URL-restored feasibility plan without creating a cross-source join (35.037125ms)
+✔ renders the pinned SpinalJ metadata intake without suggesting acquisition (43.299792ms)
+✔ renders Cano-Gomez as a preprint author-space intake rather than a registration (36.278875ms)
+✔ renders the Russ 69-population taxonomy explorer without creating an entity or spatial mapping (41.94475ms)
+✔ renders STARmap PLUS only as a source-local metadata-audit lead (43.755375ms)
+✔ renders the Tabulae object header as metadata only, not an admitted source asset (34.272583ms)
+✔ keeps object-level file-manifest imports local, metadata-only and schema-gated (1.101125ms)
+✔ hydrates static curator URLs before enabling canonical URL synchronization (1.027958ms)
+✔ includes Research MVP export, keyboard, fallback and performance contracts (1.937ms)
+✔ implements a version-locked JSON import and persistent-state round trip (3.100209ms)
+✔ removes all disposable starter preview code and metadata (1.871209ms)
+✔ one tree-scoped loader publishes the active record to all presentation roles (1.3625ms)
+✔ source-route supplements enter the shared search record list only after route-pack verification (0.245542ms)
+✔ the provider owns abort and monotonic request-generation settlement (0.090417ms)
+✔ main-scene morphology and SCI evidence wait for the exact ready record (0.11225ms)
+✔ search dossier, evidence detail and model authority receive the same record object (0.111625ms)
+✔ builds only canonical supported focus keys (1.316083ms)
+✔ publishes the exact record object from one verified index (0.547375ms)
+✔ focus changes clear a ready prior record synchronously before an effect starts (0.441958ms)
+✔ a slower prior request cannot overwrite the current generation (0.286083ms)
+✔ a ready record is deeply immutable while retaining the verified object identity (0.402917ms)
+✔ absent or failed current identity stays unavailable with no old fallback (0.106708ms)
+✔ ready settlement rejects a record from another canonical identity (0.09625ms)
+✔ validates the pinned Research Explorer asset set and source inventory (148.303584ms)
+✔ memoizes the verified browser index so record switching does not refetch or rehash it (91.275167ms)
+✔ browser-facing validators preserve denominators and scientific lanes (26.113667ms)
+✔ all dossier gaps use standardized structured missingness and unknown reason codes fail closed (52.892417ms)
+✔ all 387 source-profile records across ten source namespaces resolve record granularity and a canonical parent source (2.55075ms)
+✔ Roome refined-dIL records preserve exact per-type metrics, distinct top-six receipts, and zero model geometry (16.547875ms)
+✔ Delile records switch exact subtype counts and developmental distributions without inventing geometry or transmitter identity (3.461666ms)
+✔ Dmrt3/dI6 M1–M6 records change count and markers while retaining group-summary-only and zero-geometry boundaries (3.573625ms)
+✔ PKD2L1 profile exposes segment-specific source evidence without inventing cell types, joins or geometry (2.549625ms)
+✔ morphology dossiers expose source-gated surface authority and unsupported internal detail (1.358167ms)
+✔ record-aware evidence previews prioritize distinct receipts without promoting geometry (0.99925ms)
+✔ right-rail molecular receipts remain record-specific across all ten namespaces (17.121125ms)
+✔ validation accepts a normalized source title in the search corpus (7.129541ms)
+✔ search discovers matching source records without creating a relationship (2.0455ms)
+✔ a direct-selected source group remains visible beyond the initial eight groups without duplication (0.984542ms)
+✔ search discovers Hayashi P0 V2a clusters while preserving the no-join boundary (19.978125ms)
+✔ search discovers eight Alkaslasi adult cholinergic profiles without turning sample metadata into prevalence or 3D placement (6.341ms)
+✔ Cano-Gomez exposes only the 11 exact CHOL_IN profiles with roster receipts and zero inferred model detail (6.21075ms)
+✔ search discovers 30 Häring GSE103840 profiles plus the existing coverage record without joining them (3.292917ms)
+✔ Häring dossiers surface exact labels, rules, marker locators, denominators, spatial context, and unsupported axes (2.555541ms)
+✔ search discovers the Matson source-local SCI population and sample accessions without joining lanes (8.243208ms)
+✔ canonical focus parsing fails closed for incomplete, unknown, or mismatched pairs (1.432083ms)
+✔ legacy selections resolve only to existing canonical focus identities (0.342667ms)
+✔ focus serialization preserves unrelated state and writes an atomic focus pair (0.158917ms)
+✔ validators reject relationship promotion, registration, stale navigation, and asset drift (182.704125ms)
+✔ gzip transport is a deterministic lossless representation of the unchanged 641-record canonical index (254.772083ms)
+✔ the actual allowlisted server route emits gzip once with the correct HTTP encoding and decoded identity (99.670791ms)
+✔ decoded browser bytes still pass the original manifest hash, schema and values; timing receipts are separate metadata (155.189458ms)
+✔ bounded original/compressed fresh measurements bypass shared caching without changing the active collection (37.650542ms)
+✔ corrupt decoded and compressed payloads and unsuccessful routes remain fail-closed (9.619541ms)
+✔ every research focus resolves atomically to its canonical lab and evidence panel (2.325916ms)
+✔ invalid or absent focus fails closed without retaining a stale record (0.157292ms)
+✔ an optional current-index gate rejects a syntactically valid but unknown focus (0.106833ms)
+✔ preserves the historical 2.22 manifest as an immutable 14-input snapshot (1.77975ms)
+✔ pins the Ronzano contract and payload as separate authoritative inputs (1.044667ms)
+✔ manifest forbids coordinate rows from becoming cells, joins, or registrations (0.1965ms)
+✔ preserves the historical 2.23 manifest as an immutable 15-input snapshot (1.608792ms)
+✔ pins the Alkaslasi contract while keeping the remote roster and all 3D claims closed (0.216208ms)
+✔ validates the immutable 2.24 snapshot without rebuilding mutable inputs (4.90025ms)
+✔ pins the independent NMO 109021 route without changing census or legacy denominators (0.152958ms)
+✔ pins zero-proxy evidence-aware rendering (0.09ms)
+✔ validates the exact immutable 2.25 snapshot without rebuilding mutable inputs (5.802209ms)
+✔ pins all 22 historical authoritative inputs and registry receipts (0.282208ms)
+✔ locks route-pack membership arithmetic without changing frozen denominators (0.155583ms)
+✔ locks nine states, eleven routes and zero internal, identity and REG claims (0.177875ms)
+✔ immutable snapshot gate rejects mutations even when their content hash is recomputed (4.726084ms)
+✔ validates the exact immutable 2.26 snapshot without rebuilding mutable inputs (6.169708ms)
+✔ pins all 26 historical authoritative inputs and key delta receipts (0.276958ms)
+✔ locks the two functional-class routes and frozen denominators (0.145125ms)
+✔ locks thirteen evidence routes and zero semantic promotions (0.091084ms)
+✔ immutable snapshot gate rejects mutations even with a recomputed content hash (2.974291ms)
+✔ validates the exact immutable 2.27 snapshot without rebuilding mutable inputs (75.688541ms)
+✔ pins the immutable 2.26 parent and all 30 authoritative inputs (0.287167ms)
+✔ locks both exact PrP routes, raw metadata conflicts and source receipts (0.2885ms)
+✔ distinguishes the four-route legacy subgroup from eight named dorsal routes (0.127875ms)
+✔ locks the immutable 2.27 file bytes independently of current registries (0.122084ms)
+✔ rejects recomputed mutations that invent internals or marker exclusivity (72.283792ms)
+✔ validates immutable 2.28 without rebuilding it from live 2.29 inputs (67.648541ms)
+✔ rejects mutation of the frozen census and zero-registration boundaries (49.768792ms)
+✔ validates immutable 2.29 without rebuilding it from live 2.30 inputs (60.187375ms)
+✔ does not compare the historical snapshot with drifted live registry or package-lock files (42.681ms)
+✔ rejects release, input-denominator and parent-receipt mutations (70.304292ms)
+✔ rejects denominator, combined-census and zero-claim mutations (61.265834ms)
+✔ rejects an embedded research-upgrade denominator mutation (18.683375ms)
+✔ validates immutable 2.30 without rebuilding it from live 2.31 inputs (71.4825ms)
+✔ does not compare the historical snapshot with a drifted live upgrade registry (38.082458ms)
+✔ rejects release, input-denominator and parent-receipt mutations (74.135792ms)
+✔ rejects source-object, dimensional-split and combined-census mutations (55.04825ms)
+✔ rejects common-scale, inferred-coordinate, repair and restoration mutations (74.377708ms)
+✔ rejects internal, cross-source, registration and upgrade-denominator mutations (65.657417ms)
+✔ validates immutable 2.31 without rebuilding it from live 2.32 inputs (64.635208ms)
+✔ keeps the historical resolver receipt while 2.32 pins the superseding live file (0.359791ms)
+✔ rejects release, input-denominator and parent-receipt mutations (86.422583ms)
+✔ rejects Explorer, morphology and visual-disposition mutations (83.322541ms)
+✔ rejects missingness and unsupported-geometry zero-claim mutations (104.019875ms)
+✔ rejects registry and registration-denominator mutations (42.4615ms)
+✔ validates immutable 2.32 without rebuilding it from live 2.33 inputs (96.599709ms)
+✔ keeps clipping out of the historical 2.32 authoritative roster (0.244125ms)
+✔ rejects release, input-denominator and parent-receipt mutations (121.345459ms)
+✔ rejects focus, molecular fingerprint and topology mutations (115.226541ms)
+✔ rejects internal, identity, registration and upgrade mutations (149.939833ms)
+✔ validates immutable 2.33 without rebuilding it from live 2.34 inputs (107.848333ms)
+✔ keeps the no-age query universe out of the historical 2.33 roster (0.223417ms)
+✔ rejects release, parent, roster and upgrade mutations (176.382667ms)
+✔ rejects clipping, delta identity, geometry and registration mutations (279.85675ms)
+✔ validates immutable 2.34 without rebuilding it from live 2.35 inputs (116.071417ms)
+✔ keeps the Crozat PKD2L1 source profile out of the historical 2.34 roster (0.25425ms)
+✔ rejects release, parent, roster and upgrade mutations (288.940833ms)
+✔ rejects universe identity, geometry and registration mutations (252.242ms)
+✔ validates immutable 2.35 without rebuilding it from live 2.36 inputs (104.9275ms)
+✔ keeps Dmrt3/dI6 out of the historical 2.35 roster (0.21725ms)
+✔ rejects release, Dmrt3 backfill, denominator and geometry mutations (191.201458ms)
+✔ validates immutable 2.36 without rebuilding it from live 2.37 inputs (57.665208ms)
+✔ keeps Roome and the canonical focus-workspace runtime out of the historical 2.36 roster (0.424458ms)
+✔ rejects release, Roome backfill, denominator and geometry mutations (168.777541ms)
+✔ validates immutable 2.37 without rebuilding it from live 2.38 inputs (64.174916ms)
+✔ keeps Roome and the canonical focus-workspace runtime in the historical 2.37 roster (0.267125ms)
+✔ rejects release, Roome removal, denominator and geometry mutations (319.427958ms)
+✔ validates immutable 2.38 without rebuilding it from live 2.39 inputs (70.318917ms)
+✔ keeps Delile, record-presentation and PKD2L1 inputs in the historical 2.38 roster (0.294625ms)
+✔ rejects release, roster, denominator, geometry and registration mutations (328.80925ms)
+✔ validates immutable 2.39 without rebuilding it from live 2.40 inputs (148.962584ms)
+✔ keeps native contours, their viewer, availability audit and timeline in the historical 2.39 roster (0.259542ms)
+✔ rejects release, roster, denominator, contour, surface and registration mutations (199.080459ms)
+✔ validates immutable 2.40 without rebuilding it from future live inputs (75.945417ms)
+✔ keeps the catalog, NMO 45674 geometry, record-specific UI and timeline in the historical 2.40 roster (1.009125ms)
+✔ rejects release, roster, DAT, completeness, surface and registration mutations (228.298042ms)
+✔ sealed 2.42 remains byte-identical while newer live implementation evolves (14.443709ms)
+✔ recomputed hashes cannot authorize mutations of the sealed 2.42 snapshot (10.979833ms)
+✔ sealed 2.43 remains byte-identical while the current iteration advances (10.943625ms)
+✔ recomputed hashes cannot authorize mutations of the sealed 2.43 snapshot (7.999417ms)
+✔ sealed 2.44 remains byte-identical as the project advances (10.532833ms)
+✔ recomputed hashes cannot authorize mutations of the sealed 2.44 snapshot (9.33275ms)
+✔ sealed 2.45 remains byte-identical as the project advances (11.543833ms)
+✔ recomputed hashes cannot authorize mutations of the sealed 2.45 snapshot (9.426959ms)
+✔ sealed 2.46 remains byte-identical while 2.47 advances (10.687041ms)
+✔ recomputed hashes cannot authorize mutations of the sealed 2.46 snapshot (8.992125ms)
+✔ sealed 2.47 remains byte-identical while the current release advances (10.926083ms)
+✔ recomputed hashes cannot authorize mutation of the sealed 2.47 snapshot (9.451125ms)
+✔ sealed 2.48 remains byte-identical above its 2.47 parent (11.17775ms)
+✔ recomputed hashes cannot authorize mutation of the sealed 2.48 snapshot (9.499458ms)
+✔ 2.49 is sealed byte-for-byte above immutable 2.48 with no BANC geometry admission (20.306917ms)
+✔ recomputed content hashes cannot mutate sealed 2.49 evidence (31.867084ms)
+✔ 2.50 remains sealed byte-for-byte above 2.49 as a MERFISH metadata-only increment (41.173667ms)
+✔ recomputed content hashes cannot mutate the sealed 2.50 source-denominator boundary (22.88875ms)
+✔ 2.51 remains sealed byte-for-byte as the parent of the new source-only PALM increment (31.844459ms)
+✔ recomputed hashes cannot mutate the sealed 2.51 zero-admission boundary (26.099042ms)
+✔ 2.52 is sealed byte-for-byte as the source-native PALM parent of 2.53 (32.474209ms)
+✔ recomputed hashes cannot mutate the sealed 2.52 zero-geometry boundary (36.730917ms)
+✔ 2.53 remains sealed byte-for-byte as the MICrONS spatial-eligibility parent (41.098458ms)
+✔ recomputed hashes cannot mutate the sealed 2.53 zero-mitochondria boundary (42.880416ms)
+✔ 2.54 remains sealed byte-for-byte as the NMO 108978 census-child route parent (47.116542ms)
+✔ recomputed hashes cannot mutate the sealed 2.54 route or registration boundary (43.783583ms)
+✔ 2.55 remains sealed as the 149-object main-scene parent release (51.21775ms)
+✔ recomputed content hashes cannot mutate the sealed 2.55 denominator or release boundary (52.284125ms)
+✔ seals iteration 2.56 as an immutable historical parent with its 212-upgrade denominators (62.4075ms)
+✔ rejects changed historical comparative taxonomy, morphology-release, or project-copy claims (72.325042ms)
+✔ 2.56 remains sealed as the immutable comparative zebrafish and metadata-only NeuroMorpho parent (62.616458ms)
+✔ seals iteration 2.57 as an immutable historical parent with 213 upgrades (68.897417ms)
+✔ rehashed mutations cannot change historical 2.57 denominators or topology boundaries (103.597042ms)
+✔ 2.58 is sealed as the immutable BANC count-only rollback parent (82.08725ms)
+✔ a mutation cannot turn the 2.58 count metric into geometry (80.910917ms)
+✔ 2.59 is sealed as the immutable in-place morphology-facet rollback parent (104.668ms)
+✔ 2.59 historical receipt cannot be promoted into an inferred cell join or geometry (78.827834ms)
+✔ 2.60 is sealed as the immutable source-context rollback parent (94.303792ms)
+✔ 2.60 snapshot cannot be mutated into cell geometry, raw-image access or a same-cell join (170.593959ms)
+✔ 2.61 is sealed as the immutable source-cell-type-facet rollback parent (100.066958ms)
+✔ 2.61 snapshot rejects content rewritten to claim new geometry or exclusivity (185.745667ms)
+✔ 2.62 is sealed as the immutable DOI-by-source-label rollback parent (158.880375ms)
+✔ 2.62 snapshot rejects research or workspace receipt changes (148.125208ms)
+✔ 2.63 is sealed as the immutable public image-mask-reference rollback parent (159.341208ms)
+✔ 2.63 snapshot rejects research or workspace receipt changes (188.086958ms)
+✔ 2.64 remains an immutable rollback parent after current registries advance (188.78575ms)
+✔ 2.64 snapshot rejects drift in frozen registry, geometry, and layout boundaries (39.238334ms)
+✔ 2.65 remains an immutable snapshot with the original UPG-242 watch boundary (202.468542ms)
+✔ 2.65 snapshot rejects later registry, identity, geometry, or layout changes (47.632166ms)
+✔ 2.66 remains an immutable public-availability snapshot with zero admitted EM detail (192.125958ms)
+✔ 2.66 snapshot rejects changed evidence, registry denominators, or layout (50.005542ms)
+✔ 2.67 stays byte-pinned as the immutable parent of 2.68 (29.566458ms)
+✔ 2.67 immutable snapshot rejects altered source admissions or layout (39.213042ms)
+✔ 2.68 remains byte-pinned as the immutable parent of 2.69 (37.573792ms)
+✔ 2.68 snapshot rejects edited evidence (12.837834ms)
+✔ 2.69 is sealed as the immutable parent of 2.70 (51.889917ms)
+✔ 2.69 snapshot rejects a mutated release identity (11.444166ms)
+✔ 2.70 is sealed as the immutable parent of the current iteration (57.360333ms)
+✔ 2.70 snapshot rejects a mutated release identity (12.225208ms)
+✔ 2.71 is sealed as the immutable DOI-coverage parent of 2.72 (78.759ms)
+✔ 2.71 snapshot rejects a mutated scientific boundary or release identity (35.558417ms)
+✔ 2.72 is sealed as the immutable stable-ID audit parent of 2.73 (82.772875ms)
+✔ 2.72 snapshot rejects altered evidence boundaries and identity (55.086542ms)
+✔ 2.73 is sealed as the immutable current Todd-route iteration (99.376042ms)
+✔ 2.73 snapshot rejects changes to its source, representation, or rollback boundary (59.694083ms)
+✔ 2.74 seals the single source-local BANC v888 centerline route and its immutable 2.73 parent (132.651542ms)
+✔ 2.74 rejects any altered geometry, count, copy, or rollback receipt (5.663709ms)
+✔ 2.75 seals UPG-249's public source routes without adding internal geometry (134.721792ms)
+✔ 2.75 snapshot rejects altered evidence, parent, or geometry receipts (6.367417ms)
+✔ 2.76 seals two open mouse spinal EM near-matches without admitting interneuron objects (142.934958ms)
+✔ 2.76 snapshot rejects identity promotion, geometry admission, or parent drift (7.386125ms)
+✔ 2.77 registers exact Svara archive routes without admitting their payloads or geometry (148.186625ms)
+✔ 2.77 archived manifest stays sealed against boundary drift after its source files evolve (5.368333ms)
+✔ 2.78 seals the record-specific UI receipt without adding unverified geometry (143.682125ms)
+✔ 2.79 seals the article-derived V1 reference without admitting unsupported 3D detail (135.402875ms)
+✔ 2.80 seals the V1 source availability audit without admitting unvalidated joins or new 3D detail (137.0475ms)
+✔ 2.81 records the V1 public-code reconstruction rules without claiming sample or cell validation (144.607208ms)
+✔ 2.82 seals sample-level GEO parser evidence without importing payloads or new geometry (156.8355ms)
+✔ 2.83 seals the exact-record-first reference layout and keeps Xenium data gated (246.1615ms)
+✔ 2.84 seals its five-source index to the immutable 2.83 parent without admitting new objects (226.123709ms)
+✔ 2.85 records the uninspected zebrafish supplement without admitting source objects or geometry (224.716375ms)
+✔ 2.86 seals active-record detail de-duplication without admitting geometry or identity joins (214.84275ms)
+✔ 2.87 seals the Koh two-file source audit without admitting geometry or cross-source identity (183.051917ms)
+✔ 2.88 seals the exact Koh code deposit audit without admitting its missing inputs (197.472959ms)
+✔ 2.89 seals the bounded Koh public-route search and leaves upstream archives gated (215.024042ms)
+✔ 2.90 seals the single-record NMO 45718 DAT↔SWC crosswalk without widening biological claims (216.100625ms)
+✔ 2.91 replays all current bytes while preserving 2.90 and independent scientific gates (480.265584ms)
+✔ a recomputed content digest cannot excuse changed current inputs or broadened geometry claims (6.741833ms)
+✔ an index transport increment cannot promote UPG-230 to whole-App performance completion (36.954583ms)
+✔ generated registry is byte-deterministic from every UPG-022-or-later queue row (24.173333ms)
+✔ UPG-180 through UPG-182 preserve the 2.37 molecular, workspace, and planned morphology boundaries (0.199167ms)
+✔ UPG-183 through UPG-189 preserve the 2.38 record-presentation, Delile, publication-video, and future-object gates (0.195084ms)
+✔ UPG-190 through UPG-196 separate exact source acquisition, identity, coordinate, surface, and internal-detail gates (0.420625ms)
+✔ UPG-197 through UPG-204 preserve the 2.40 inputs and completed 2.41 active-record, denominator, Todd and Cano receipts (1.27425ms)
+✔ validation rejects drift in every completed UPG-200 through UPG-204 receipt (16.647333ms)
+✔ registry satisfies the JSON Schema contract (51.8695ms)
+✔ every upgrade resolves status, lane, blocker, evidence, verification, and acceptance boundary (2.668833ms)
+✔ UPG-113 is a provenance milestone and does not absorb the governance/admission queue (0.498084ms)
+✔ UPG-143 and UPG-149 close exact morphology increments while UPG-144 remains deferred (0.267375ms)
+✔ every UPG id present in app source at UPG-022 or later resolves (93.53475ms)
+✔ validation rejects governance ids, unresolved UI ids, and missing acceptance boundaries (5.437833ms)
+✔ validation rejects queue drift and invented independent evidence verification (20.888834ms)
+✔ freezes the seven stable entities and the 5+2 identity model (2.2505ms)
+✔ keeps entity-to-claim-to-condition-to-source relationships referentially complete (0.533291ms)
+✔ separates the high-risk injury, age, and species conditions (0.265333ms)
+✔ enforces the causal and endpoint red-team traps (0.1145ms)
+✔ retains stable negative, null, counterfinding, limitation, and boundary IDs (0.312625ms)
+✔ uses explicit missing reasons and separates local atlas/SWC assets from registration (0.625708ms)
+✔ publishes a status-union and missingness JSON Schema consistent with release 0.2 (0.108791ms)
+✔ passes the standalone Research MVP validator (97.77075ms)
+✔ every indexed record partitions evidence and missingness exactly once (11.355542ms)
+✔ switching Sathyamurthy profiles replaces record facts while collapsing exact source context (0.591709ms)
+✔ distant Roome selections expose distinct quantitative and marker evidence without inventing shapes (0.49275ms)
+✔ only an exact morphology record receives the exact-source geometry route (0.398583ms)
+✔ Todd presentation selectors expose exact record-scoped locators and separate native contour quantities (1.411208ms)
+✔ presentation validation rejects promoted molecular geometry and incomplete partitions (14.546708ms)
+✔ all ten molecular namespaces expose the same eight fixed completeness slots without silent omissions (20.862667ms)
+✔ Russ, Delile and Crozat completeness preserves source-specific availability and missingness (0.357125ms)
+✔ all 641 fixed records and 30 independent Todd records retain their exact parent scope and every field locator (155.954875ms)
+✔ molecular aggregate display unit is separate from nuclei and independent pooled samples (0.669125ms)
+✔ source age range does not overwrite an exact young morphology record or create an animal identity (0.751666ms)
+✔ mouse and human SCI conditions stay distinct with exact values and native source IDs (0.46375ms)
+✔ neonatal and adult conditions and null sample sizes are never collapsed into zero (0.371708ms)
+✔ exact project row positions do not turn hashes or paper/object references into upstream field proof (0.319083ms)
+✔ Todd materialized fields point to their separate source route rather than a nonexistent fixed-index row (0.259833ms)
+✔ changed, duplicate, stale and absent current records reject rather than retaining another scope (31.562125ms)
+✔ missing exact parent and changed SCI source binding fail closed despite a matching DOI (1.573667ms)
+✔ unknown source aliases retain null and a reason; DOI and similar labels are not fallback identities (0.394291ms)
+✔ current-generation dossier preserves all original fields and locators without claiming a rendered view (1.319833ms)
+✔ CSV preserves null reasons, quotes/newlines and guards formulas while JSON keeps raw values (0.845875ms)
+✔ same-namespace adjacent records compare all eight slots and retain exact locators (3.789208ms)
+✔ cross-namespace receipt preserves available-to-missing status changes and source locators (0.411375ms)
+✔ molecular-to-morphology receipt reports only visualization authority outside the molecular slot contract (0.190875ms)
+✔ Todd morphology switches retain exact record locators and native LineLoop/vertex deltas (0.687917ms)
+✔ A-ready to B-verifying to B-ready produces one adjacent verified receipt with shared objects (0.371625ms)
+✔ unavailable is a comparison barrier so A cannot bridge across failed B to C (0.120708ms)
+✔ unverified attempts and same-key revalidation never create a new receipt (0.094708ms)
+✔ a superseded verifying attempt does not break adjacency between verified-ready selections (0.161625ms)
+✔ receipt visibility is fail-closed for loading, unavailable, stale key and stale generation (0.53775ms)
+✔ receipt construction rejects noncanonical ready identities and invalid modeling counts (1.113ms)
+✔ the evidence rail is the single receipt UI location and consumes the provider stream (4.402209ms)
+✔ source cards resolve exact new source-slot rows and disjoint native-object delta (11.210625ms)
+✔ source cards reject label promotion, wrong row routing, and altered delta hashes (12.692959ms)
+✔ relates the exact P56 Cano source card to three RDS receipts and three private derived artifacts (3.453209ms)
+✔ rejects widened life stage, receipt drift, denominator drift and repaired raw profile labels (1.001ms)
+✔ rejects package-byte drift, public redistribution, cross-assay promotion and model authority (1.279291ms)
+✔ relates the checked-in production Cano package to the canonical source card (11.5645ms)
+✔ derives all four canonical units from the registry structure (1.992917ms)
+✔ source, record-set, roster and source-object-set mutations propagate independently (0.156417ms)
+✔ rejects a declared source denominator that disagrees with the registry array (0.254167ms)
+✔ enumerates every retained UI display and finds stale literals (35.782708ms)
+✔ validates 31 canonical research sources without creating a registration or cross-source identity (8.552125ms)
+✔ resolves every research milestone link while retaining governance IDs in a separate namespace (7.135584ms)
+✔ resolves every legacy source dialect to one canonical source id (0.178042ms)
+✔ reconciles the current catalog, evidence, taxonomy, morphology, and internal-reference source universes (0.3735ms)
+✔ registers five dorsal-horn route memberships without duplicating frozen overlaps or expanding the 142-record census (4.444042ms)
+✔ registers two exact functional-class routes as a separate supplementary record set with fail-closed DAT, physiology, and metadata-conflict boundaries (1.654125ms)
+✔ registers two exact PrP-reporter dorsal-horn routes without promoting DAT, physiology, marker exclusivity, internals, identities, or registration (2.012042ms)
+✔ registers NMO 45718 as one repository-labelled premotor comparison route with explicit source conflicts (1.615917ms)
+✔ registers the five-file native contour audit with five exact record-gated line viewers (3.236583ms)
+✔ admits Ronzano coordinate rows without promoting them to unique cells or atlas-registered geometry (0.220083ms)
+✔ preserves explicit source-profile granularity and the non-harmonized 387-record denominator (0.235958ms)
+✔ registers the six Dmrt3/dI6 group summaries without inventing per-well identities or geometry (0.270459ms)
+✔ registers 51 exact Delile developmental subtypes while preserving denominators, source spelling, and zero model claims (1.879042ms)
+✔ registers 157 exact Roome dIL profiles while keeping source objects link-only and every geometry or same-cell join at zero (5.412042ms)
+✔ keeps source-specific species and life stages instead of inheriting the adult mouse model scope (0.152375ms)
+✔ records resolution of the Häring age contradiction while preserving the exact historical and authoritative values (0.068458ms)
+✔ rejects ambiguous aliases, orphan record sets, and source-count drift (2.304666ms)
+✔ rejects invented roster drill-down, broadened age, and unverified bundled assets (5.352667ms)
+✔ rejects missing-count ambiguity and cross-source identity promotion (2.012084ms)
+✔ Todd 8.6.126 source-route records enter the verified active-record collection without census expansion (5.709125ms)
+✔ the shared active-record resolver returns the exact source-specific record and fails closed for other IDs (0.251084ms)
+✔ the runtime source-record collection derives updated search denominators without rewriting its base index (47.577833ms)
+✔ 109005 to a DE-1 focus clears the old geometry and exits cell detail (1.127833ms)
+✔ switching from an exact morphology to the PKD2L1 functional profile clears geometry instead of reusing a generic cell (0.915083ms)
+✔ switching a molecular profile while a cross-region reference is open returns to the neutral atlas view (0.088084ms)
+✔ a supplied admitted 109006 focus replaces 109005 atomically with exact 109006 (0.152458ms)
+✔ production NMO 109006 resolves through its newly admitted checksum-pinned census record (0.149959ms)
+✔ a syntactically valid but unadmitted NeuroMorpho ID fails closed (0.0935ms)
+✔ invalid focus fails closed without a prior neuron identity (0.107375ms)
+✔ a no-diameter exact morphology forces observed skeleton mode (0.079ms)
+✔ every checksum-pinned census ID is a main-scene target, while a 2D diameter record stays planar (0.266875ms)
+✔ explicit selection binds research focus only through the supplied current index (0.353292ms)
+✔ AtlasPrototype clears the renderer target, old lane label and selected-morphology export fields (0.965792ms)
+✔ AtlasPrototype applies one focus workspace transition to lab, evidence panel and visual target (0.628625ms)
+✔ record-aware evidence rail keeps molecular geometry empty and morphology receipts source-bound (0.170833ms)
+✔ AtlasPrototype retains a dormant SCI selection but exposes it only for an SCI-entity focus (0.417167ms)
+✔ SCI selection state separates active highlight, dormant persistence and keyboard entry (0.172166ms)
+✔ AtlasPrototype canonicalizes imported and restored SCI focus without inventing a null selection (0.300917ms)
+✔ SceneCanvas target deactivation aborts the previous fetch effect and disposes old geometry (0.436ms)
+✔ validates the runtime point payload without creating identities or registrations (6.721125ms)
+✔ filters exact groups without pooling or duplicating source rows (0.193417ms)
+✔ uses only the declared display transforms and preserves the exact source coordinate in receipts (0.422542ms)
+✔ fails closed on a fabricated atlas registration or source-row count (18.498208ms)
+✔ rebuilds all 22 Ronzano workbooks into exact source-local point rows (170.765ms)
+✔ pins the derived payload and preserves neonatal, point-only, unregistered scope (0.9445ms)
+✔ rejects identity, geometry, adult-transfer, measurement, and registration promotion (0.571167ms)
+✔ retains source-file plus one-based Excel row as the only admitted point identity (0.203292ms)
+✔ admits the exact 157-type Roome source-local roster without geometry or internal objects (117.370542ms)
+✔ gives each refined type record-specific metrics and a deterministic evidence fingerprint (0.477708ms)
+✔ retains all Table S7 rows and quarantines the exact 26 Excel-coerced gene cells (0.588667ms)
+✔ rejects a duplicated card fingerprint or unsupported geometry admission (116.8615ms)
+✔ rejects changing a quarantined apparent date into an asserted gene (77.079167ms)
+﹣ optionally re-derives the contracts from the exact Table S6 and S7 workbooks (0.110791ms) # SKIP
+✔ locks the 69-population, type-level Russ taxonomy crosswalk (50.8185ms)
+✔ keeps marker context and broad relationships from becoming exact prototype identity (42.965083ms)
+✔ retains the source-table checksum and group coverage (0.232083ms)
+✔ locks the two official Russ correction records without rewriting the marker table (46.766542ms)
+✔ rejects a correction record that silently turns into a marker-table rewrite or registration (33.931625ms)
+✔ no source object leaves every required field explicitly unavailable, with no proxy admission (2.975292ms)
+✔ a complete synthetic source/loader/QC chain can pass eligibility without creating an admitted object (3.229625ms)
+✔ complete client declarations do not substitute for independent source evidence or current verified bytes (1.367959ms)
+✔ edited geometry version, rights or exact target invalidate an earlier independently verified proof (2.664166ms)
+✔ 2D, missing physical calibration, degenerate boxes and absent raw QC cannot become an internal 3D object (2.947459ms)
+✔ a source population or unproven component parent remains unavailable even with all synthetic QC flags (1.419209ms)
+✔ legacy selected-record coverage rejects the former positive-count-plus-hash shortcut (2.14ms)
+✔ an eligible synthetic nucleus still needs its own geometry hash and cannot occupy the organelle slot (3.209417ms)
+✔ all 641 actual verified Explorer records remain free of fabricated same-cell internal admissions (62.85ms)
+✔ locks the 43-profile Sathyamurthy source-local taxonomy (61.487917ms)
+✔ rejects an exact lineage identity or a fabricated atlas registration (81.936541ms)
+✔ rejects altered sampling arithmetic and incomplete Figure 4 markers (91.364125ms)
+✔ rejects semantic relabeling and duplicate activity contexts (106.748875ms)
+✔ locks the unresolved non-motor scope, sample frame, and fine evidence gaps (58.921333ms)
+✔ requires canonical unique lineage mapping IDs (19.9115ms)
+✔ preserves the raw DE12 anomaly, motor context, and source-object rights boundary (0.234334ms)
+✔ identity keys separate namespace, parent section and release, without numeric coercion (2.025959ms)
+✔ actual MICrONS/BANC parent context remains distinct from physical-object identity and missing specimen/section (2.200625ms)
+✔ native contours, PALM detections and image/mask rows do not gain invented cell or section parents (4.25925ms)
+✔ relation enums require their own immutable source-registry entry, exact endpoint bindings and QC (1.717584ms)
+✔ missing identity and unproven parent chains fail closed even with complete synthetic QC flags (0.5655ms)
+✔ all eleven actual Cano source populations bind their verified nucleus rows without animal/cell geometry claims (15.151ms)
+✔ a changed key, authority or coordinate-like proximity cannot promote an exported hierarchy (0.570042ms)
+✔ a cell and its exact source component cannot become the same physical object through synthetic QC flags (1.100417ms)
+✔ even registry-approved population evidence cannot merge distinct actual Cano profiles (1.179666ms)
+✔ actual MICrONS view replay binds canonical identity, parent IDs and missingness while retaining older exports (2.86275ms)
+✔ groups exact I1/I2 shared rows once and retains changed old/current values (17.443917ms)
+✔ inspects only the explicit whitelist and carries zero identity or geometry implications (0.25875ms)
+✔ uses exact display-string equality without silent normalization (0.127667ms)
+✔ fails closed for invalid descriptors, duplicate rows, and non-display values (0.417667ms)
+✔ evaluates each whitelisted row exactly once per source record and preserves row order (0.157042ms)
+✔ component presents old/current changes, one shared block, and the scientific zero boundary (0.230042ms)
+✔ validates every declared spatial asset and locks the manifest checksums (1385.187292ms)
+✔ freezes the adult-mouse atlas coordinate and INF derivation contract (1.807458ms)
+✔ keeps exactly five NeuroMorpho exemplars as OBS local and unregistered (1132.867833ms)
+✔ SWC parser rejects malformed columns, duplicate ids, cycles, non-finite values, and invalid radii (0.977083ms)
+✔ documents versions, sources, rights, regeneration, and scientific limitations (0.282458ms)
+✔ passes the standalone spatial-asset validator (1481.43675ms)
+✔ published spinal volume reconstruction remains an independent reference, not selected-cell geometry (5.725333ms)
+✔ admits eleven checksum-verified, source-ordered EM images without a registered volume (129.43475ms)
+✔ each deposited TIFF, Figshare receipt, PNG and decoded-pixel hash stay aligned (0.797792ms)
+✔ rejects identity joins, invented z registration, segmentation and stack reconstruction (7.489083ms)
+✔ validates one exact Super-CLEM 2D slice with zero joins and zero 3D reconstructions (72.120208ms)
+✔ reads the pinned TIFF and PNG as exact 1794 by 1332 indexed-palette images (1.72625ms)
+✔ schema rejects a morphology join or an invented segmentation claim (24.299834ms)
+✔ semantic gate rejects a duplicated lane even when no positive join is declared (0.270208ms)
+✔ unacquired receipt placeholders are schema-valid records but fail closed at admission (38.571583ms)
+✔ a syntactically valid but incorrect local hash fails closed against the binary (45.488709ms)
+✔ MAT decode preserves every PALM detection and source-native XY without physical calibration (21.366ms)
+✔ deterministic point payload and source boundaries validate (46.852666ms)
+✔ rendering input cannot claim physical units or a different acquisition (40.258666ms)
+✔ validates the exact 142 census + 7 supplementary comparison layer (2318.749375ms)
+✔ exposes the requested census-compatible records and exact membership fields (0.2015ms)
+✔ rejects duplicate IDs, duplicate geometry paths, and unsupported padding (235.869375ms)
+✔ rejects receipt drift and analysis/source mismatch (222.303084ms)
+✔ rejects registration, identity, common-frame, complete-axon, and internal-detail promotion (159.538875ms)
+✔ builder check is byte-deterministic and public delta contains no geometry or SWC copies (4320.246583ms)
+✔ wires the exact supplementary adapter into only the source-object comparator (1.284875ms)
+✔ keeps direct route geometry paths and verifies bytes before rendering (1.041291ms)
+✔ fails the supplementary analysis delta closed without weakening the census analysis (0.201542ms)
+✔ Svara source contract exposes one larval zebrafish EM sample and exact published denominators (2.997541ms)
+✔ Svara source contract conforms to the strict metadata-only schema (43.604334ms)
+✔ Svara contract fails closed for inferred geometry, species transfer, or unknown package metadata (1.332917ms)
+✔ pins a metadata-only Tabulae condition index without source-file admission (43.768125ms)
+✔ rejects a duplicate source label, a changed modality, or an acquisition-promoting decision (47.551917ms)
+✔ validates the bounded four-section Tabulae local comparison contract (33.5045ms)
+✔ rejects a comparison that implies an ordered or registered 3D stack (20.951667ms)
+✔ implements a session-bounded comparison board with no remote fetch (1.1865ms)
+✔ validates the 24-sample Tabulae local spatial-session contract (41.131083ms)
+✔ rejects an invented source checksum or non-local acquisition (29.881083ms)
+✔ implements local gzip parsing and receipt export without a remote fetch (3.758208ms)
+✔ recomputes Todd native contour topology and keeps all 19 exact source loops line-only (49.70125ms)
+✔ rejects source-topology and false shell-admission mutations (87.822042ms)
+✔ the existing per-record inspector exposes the source-local screen and its interpretation boundary (0.292959ms)
+✔ records the article-level V1 age atlas separately from the canonical 387-profile denominator (45.1885ms)
+✔ strict schema and evidence checks reject identity, count, and geometry drift (79.318125ms)
+✔ cluster selection remains a source-only dossier and never drives the main 3D selection (0.543333ms)
+✔ all exact inputs reproduce their receipt and source conflicts stay quarantined (63.106083ms)
+✔ embryonic age and whole-cord parser exceptions use actual characteristics (0.394375ms)
+✔ matrix format success cannot promote a failed biological mapping or create a cluster (0.165ms)
+✔ source parser rejects unrecognized identities instead of repairing them (78.797417ms)
+✔ validates the full 29-record GEO series roster and five parser exceptions (55.586084ms)
+✔ strict schema and semantic checks reject changed rosters, parser outputs, rights, or geometry claims (152.666666ms)
+✔ the English V1 panel shows sample-roster limits and links to exception records (0.337333ms)
+✔ keeps public V1 source availability separate from unvalidated per-nucleus joins and geometry (42.383708ms)
+✔ strict schema and evidence checks reject rights, mapping, or geometry overclaims (85.212041ms)
+✔ the V1 panel communicates what is published versus what remains unverified (0.415333ms)
+ℹ tests 1134
+ℹ suites 0
+ℹ pass 1118
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 15
+ℹ todo 0
+ℹ duration_ms 48835.05775
+
+✖ failing tests:
+
+test at tests/molecular-concordance.test.mjs:1:1
+✖ tests/molecular-concordance.test.mjs (395.373708ms)
+  'test failed'

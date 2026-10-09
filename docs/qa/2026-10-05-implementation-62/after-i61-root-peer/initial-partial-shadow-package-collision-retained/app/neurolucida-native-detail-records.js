@@ -1,0 +1,47 @@
+// Exact file-specific admission expectations; these are not transferable type models.
+export const NATIVE_DETAIL_04_RECORDS = Object.freeze([
+  {
+    neuronId: 108978, sourceName: "cell-4_16", contourName: "Cell Body",
+    title: "Substance-P-expressing excitatory dorsal-horn interneuron",
+    sourcePath: "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.original.dat",
+    sourceBytes: 172603, sourceSha256: "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+    apiPath: "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.api.json",
+    apiBytes: 1498, apiSha256: "1b72bd7f16d0cc08cda0b74f47f9825688320eb34e9c4c73d1dd722af70bd5b6",
+    originalDatUrl: "https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat",
+    doi: "10.1097/j.pain.0000000000001406",
+    outputPath: "public/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+    vertexCount: 2614,
+    vertexVector: [153, 278, 221, 241, 235, 262, 242, 197, 224, 230, 190, 141],
+    zVector: [-34, -35, -38.5, -38, -37.5, -37, -36.5, -37, -37.5, -38, -38.5, -39],
+    pointSha256: "f4ff7da0d65b798e09d7bd88c612bb956f1fe5057c13aeacaa6ef04eb14c07f9",
+    swcDiameterAvailable: true,
+    sourceDomain: "Dendrites, Soma, No Axon",
+    interpretationBoundary: "Numeric age is not reported. The source has no reconstructed axon; Dendrites Complete is a repository domain-specific label, not whole-cell completeness.",
+  },
+  {
+    neuronId: 249676, sourceName: "061118B-S6-02_cell_2-RQ", contourName: "CellBody",
+    title: "GRPR-expressing excitatory dorsal-horn interneuron",
+    sourcePath: "data/source-candidates/neuromorpho-native-detail-20260922/nmo-249676.original.dat",
+    sourceBytes: 89750, sourceSha256: "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+    apiPath: "public/data/dorsal_horn_observed_morphology_route_pack_v1/api/nmo-249676.json",
+    apiBytes: 1457, apiSha256: "1c3b72a58ae13e60732dcd3abd42ba0b138b0754ae4d3bc701b68779eafac6f1",
+    originalDatUrl: "https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat",
+    doi: "10.1097/j.pain.0000000000002677",
+    outputPath: "public/data/neurolucida_native_detail_v1/nmo-249676-soma-line-loops.json",
+    vertexCount: 156,
+    vertexVector: [22, 20, 16, 14, 10, 9, 15, 13, 12, 10, 8, 7],
+    zVector: [-36, -35, -34, -33, -32, -31, -37.5, -38.5, -39.5, -40.5, -41.5, -42.5],
+    pointSha256: "11c645c26e2e48ebfc4e3807d59ccbfb7bd182f61add8cfb58a46c92922f9dff",
+    swcDiameterAvailable: false,
+    sourceDomain: "Dendrites, Soma, Axon",
+    interpretationBoundary: "Source age is 35–98 days. Native drawing-width numbers do not override the standardized SWC No Diameter declaration; axon and dendrite integrity remain incomplete/moderate.",
+  },
+]);
+export const NATIVE_DETAIL_04_PARENT = Object.freeze({ path: "data/neurolucida-native-contour-admission-catalog-0.3.json", bytes: 23571, sha256: "d5cc13f99c2e6ec0e41d6352512e592f5d6dc1d118f7d7c0b69ec2239deda8fe", releaseId: "ohri-neurolucida-native-contour-admission-catalog-0.3.0" });
+export const NATIVE_DETAIL_04_PARSER = Object.freeze({
+  repository: "https://github.com/NeuroMorpho/xyz2swc", commit: "e07fd2d53c03945f011c335c7b643765f2d85a09",
+  parserPath: "modules/hbp/node_modules/morphology_io/app/morphology_parser.js", parserSha256: "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2",
+  typeLibraryPath: "modules/hbp/node_modules/morphology_io/app/swcPlus_typeLibrary.js", typeLibrarySha256: "8006588950ef0ee55da9a4bea46f93b9120a5dc6c29d6b5263050c7a6d168d89",
+  classificationBasis: "matchPart recognizes the exact source contour name as soma; the parser maps border.soma to somaContour while retaining closed=false. The zero-value CellBody property is verified as a separate evidence gate.",
+  parserCodeBundled: false,
+});

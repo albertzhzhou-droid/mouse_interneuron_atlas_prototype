@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.schema.json",
+  "title": "NeuroMorpho 8.6.126 Todd neurotensin-labelled supplementary morphology routes",
+  "type": "object",
+  "required": ["schemaVersion", "contractId", "releaseId", "releasedAt", "purpose", "licenseAndAttribution", "runtimeMergePolicy", "sourceQuery", "baselineComparison", "candidateStudyContext", "summary", "assetManifest", "routes"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "contractId": { "const": "neuromorpho-release-8-6-126-todd-nts-route-pack-0.1" },
+    "releaseId": { "const": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0" },
+    "releasedAt": { "const": "2026-09-23" },
+    "purpose": { "type": "string", "minLength": 30 },
+    "licenseAndAttribution": { "type": "object", "required": ["license", "termsUrl", "repositoryName", "repositoryRrid", "repositoryPaperDoi", "originalPaperCitationStatus", "publicationUseBoundary"] },
+    "runtimeMergePolicy": { "type": "object", "required": ["frozenNoAgeQueryRecordCount", "supplementaryRouteCount", "censusContribution", "censusExpansionCount", "crossSourceIdentityCount", "projectRegistrationCount"] },
+    "sourceQuery": { "type": "object", "required": ["url", "retrievalDate", "requestUserAgent", "completeResponse", "responseRecordCount", "responseReceipt"] },
+    "baselineComparison": { "type": "object", "required": ["baselineRelease", "baselineQueryRecordCount", "baselineToddQueryRecordCount", "currentToddInterneuronQueryRecordCount", "commonStableIdCount", "newStableIdCount", "removedStableIdCount", "commonMetadataChangeCount", "commonMetadataChanges", "auditId"] },
+    "candidateStudyContext": { "type": "object", "required": ["title", "doi", "url", "relationStatus", "basis", "articleDataAvailability"] },
+    "summary": { "type": "object", "required": ["routeCount", "currentCompleteToddQueryRecordCount", "sourceLabelled3DCount", "sourceDiameterReportedCount", "sourceDiameterNotReportedCount", "observedSwcNodeCount", "observedSwcSegmentCount", "syntacticallyParsedSwcCount", "repositoryReportedDendritesCompleteCount", "biologicalCompletenessIndependentlyEstablishedCount", "originalNeurolucidaFileCount", "standardizationLogCount", "paperRecordCrosswalkCount", "sameSpecimenInternalStructureCount", "renderedInternalPrimitiveCount", "censusExpansionCount", "crossSourceIdentityCount", "projectRegistrationCount"] },
+    "assetManifest": { "type": "object", "required": ["path", "bytes", "sha256", "role"] },
+    "routes": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "required": ["routeId", "title", "authority", "sourceAuthority", "censusMembership", "sourceRecord", "sourceObjects", "observedCellFormRecord", "fidelityRecord", "renderingContract", "identityBoundary", "sourceLinks", "studyContext", "hardBoundaries"],
+        "properties": {
+          "routeId": { "type": "string", "pattern": "^mouse\\.sc\\.todd_nts\\.observed\\.nmo_[0-9]+$" },
+          "authority": { "const": "OBS_STANDARDIZED_SOURCE_LOCAL" },
+          "sourceAuthority": { "const": "NEUROMORPHO_RELEASE_8_6_126_TODD_NTS_SUPPLEMENT" },
+          "censusMembership": { "const": false },
+          "sourceRecord": { "type": "object", "required": ["repository", "repositoryRelease", "repositoryRrid", "neuronId", "assetId", "neuronName", "archive", "species", "regionLabels", "cellTypeLabels", "domain", "physicalIntegrity", "sourceAttributes", "sourcePaperDoi", "sourcePaperMappingStatus"] },
+          "sourceObjects": { "type": "object", "required": ["officialApiRoster", "swc", "geometry", "originalMorphologyFile", "standardizationLog"] },
+          "observedCellFormRecord": { "type": "object", "required": ["neuronId", "assetId", "phenotype", "transmitter", "domain", "physicalIntegrity", "segmentCount", "geometryStatus", "sourceFrame", "registrationStatus"] },
+          "fidelityRecord": { "type": "object", "required": ["neuronId", "assetId", "geometry", "axon", "radiusEvidence", "modes"] },
+          "sourceLinks": { "type": "object", "required": ["officialRecord", "standardizedSwc", "primaryPaper", "contextualStudy", "rights"] },
+          "hardBoundaries": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 20 } }
+        }
+      }
+    }
+  }
+}

@@ -139,7 +139,7 @@ export default function TabulaeSpatialLocalViewer({ onNotice }: { onNotice: (not
       ]);
       const spots = parseVisiumPositions(positionsText);
       const scaleFactors = parseScaleFactors(scaleText);
-      const imageUrl = URL.createObjectURL(new Blob([imageBytes], { type: catalog.localImport.acceptedImageMediaType }));
+      const imageUrl = URL.createObjectURL(new Blob([new Uint8Array(imageBytes)], { type: catalog.localImport.acceptedImageMediaType }));
       if (session) URL.revokeObjectURL(session.imageUrl);
       setSession({
         sampleId: selectedSample.id,

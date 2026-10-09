@@ -1,0 +1,420 @@
+{
+  "accno" : "S-BIAD2822",
+  "attributes" : [ {
+    "name" : "Template",
+    "value" : "BioImages.v5"
+  }, {
+    "name" : "REMBI_PageTab Conversion Script Version",
+    "value" : "1.0.0"
+  }, {
+    "name" : "Title",
+    "value" : "2D and 3D instance segmentation of nuclei from volume electron microscopy data"
+  }, {
+    "name" : "ReleaseDate",
+    "value" : "2026-02-03"
+  }, {
+    "name" : "AttachTo",
+    "value" : "BioImages"
+  } ],
+  "section" : {
+    "type" : "Study",
+    "attributes" : [ {
+      "name" : "Title",
+      "value" : "2D and 3D instance segmentation of nuclei from volume electron microscopy data"
+    }, {
+      "name" : "ReleaseDate",
+      "value" : "2026-02-03"
+    }, {
+      "name" : "Description",
+      "value" : "2D and 3D instance segmentation of nuclei from array tomography (AT) and FIB-SEM datasets, respectively. In this deposition, 10 AT and 2 FIB-SEM datasets and paired annotations are included. Note: in several datasets, partial annotations of nuclei at image edges have been deleted. These are indicated in the annotation metadata."
+    }, {
+      "name" : "Keywords",
+      "value" : "Nucleus, instance segmentation, array tomography, FIB-SEM, volume electron microscopy, vEM"
+    }, {
+      "name" : "Keyword",
+      "value" : "Nucleus, instance segmentation, array tomography, FIB-SEM, volume electron microscopy, vEM"
+    }, {
+      "name" : "License",
+      "value" : "CC-BY-4.0"
+    } ],
+    "subsections" : [ {
+      "type" : "author",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Kedar Narayan"
+      }, {
+        "name" : "E-mail",
+        "value" : "narayank@mail.nih.gov"
+      }, {
+        "name" : "affiliation",
+        "value" : "o1",
+        "reference" : true
+      } ]
+    }, {
+      "accno" : "o1",
+      "type" : "organization",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Frederick National Laboratory. National Cancer Institute. NIH"
+      }, {
+        "name" : "Address"
+      } ]
+    }, {
+      "accno" : "Biosample-1",
+      "type" : "Biosample",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Human breast cancer cells"
+      }, {
+        "name" : "Organism",
+        "value" : "Homo sapiens (human)"
+      }, {
+        "name" : "Biological entity",
+        "value" : "SUM149 breast cancer cells (Asterand Bioscience)"
+      } ],
+      "subsections" : [ {
+        "accno" : "Organism-1",
+        "type" : "Organism",
+        "attributes" : [ {
+          "name" : "Scientific name",
+          "value" : "Homo sapiens"
+        }, {
+          "name" : "Common name",
+          "value" : "human"
+        }, {
+          "name" : "NCBI taxon ID",
+          "value" : "NCBI:txid9606"
+        } ]
+      } ]
+    }, {
+      "accno" : "Biosample-2",
+      "type" : "Biosample",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Mouse lung tumor"
+      }, {
+        "name" : "Organism",
+        "value" : "Mus musculus (mouse)"
+      }, {
+        "name" : "Biological entity",
+        "value" : "Lung tumor"
+      } ],
+      "subsections" : [ {
+        "accno" : "Organism-2",
+        "type" : "Organism",
+        "attributes" : [ {
+          "name" : "Scientific name",
+          "value" : "Mus musculus"
+        }, {
+          "name" : "Common name",
+          "value" : "mouse"
+        }, {
+          "name" : "NCBI taxon ID",
+          "value" : "NCBI:txid10090"
+        } ]
+      } ]
+    }, {
+      "accno" : "Biosample-3",
+      "type" : "Biosample",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Mouse 4T1 cells"
+      }, {
+        "name" : "Organism",
+        "value" : "Mus musculus (mouse)"
+      }, {
+        "name" : "Biological entity",
+        "value" : "Mammary gland"
+      } ],
+      "subsections" : [ {
+        "accno" : "Organism-3",
+        "type" : "Organism",
+        "attributes" : [ {
+          "name" : "Scientific name",
+          "value" : "Mus musculus"
+        }, {
+          "name" : "Common name",
+          "value" : "mouse"
+        }, {
+          "name" : "NCBI taxon ID",
+          "value" : "NCBI:txid10090"
+        } ]
+      } ]
+    }, {
+      "accno" : "Biosample-4",
+      "type" : "Biosample",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Human MB-231 cells"
+      }, {
+        "name" : "Organism",
+        "value" : "Homo sapiens (human)"
+      }, {
+        "name" : "Biological entity",
+        "value" : "MB-231 cells"
+      }, {
+        "name" : "Extrinsic variable",
+        "value" : "Drug treatment ONC-201"
+      }, {
+        "name" : "Experimental variable",
+        "value" : "Drug treatment duration"
+      } ],
+      "subsections" : [ {
+        "accno" : "Organism-4",
+        "type" : "Organism",
+        "attributes" : [ {
+          "name" : "Scientific name",
+          "value" : "Homo sapiens"
+        }, {
+          "name" : "Common name",
+          "value" : "human"
+        }, {
+          "name" : "NCBI taxon ID",
+          "value" : "NCBI:txid9606"
+        } ]
+      } ]
+    }, {
+      "accno" : "Specimen-1",
+      "type" : "Specimen",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "First specimen"
+      }, {
+        "name" : "Sample Preparation Protocol",
+        "value" : "See Methods: https://pubmed.ncbi.nlm.nih.gov/40909564/"
+      } ]
+    }, {
+      "accno" : "Specimen-2",
+      "type" : "Specimen",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Second specimen"
+      }, {
+        "name" : "Sample Preparation Protocol",
+        "value" : "conventional chemical fixation, heavy metal staining and resin embedding, see https://pubmed.ncbi.nlm.nih.gov/33918371/"
+      } ]
+    }, {
+      "accno" : "Specimen-3",
+      "type" : "Specimen",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Third specimen"
+      }, {
+        "name" : "Sample Preparation Protocol",
+        "value" : "See Methods in https://pubmed.ncbi.nlm.nih.gov/29719618/"
+      } ]
+    }, {
+      "accno" : "Image Acquisition-1",
+      "type" : "Image Acquisition",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "Array tomography (AT) SEM"
+      }, {
+        "name" : "Imaging Instrument",
+        "value" : "Zeiss SEM450"
+      }, {
+        "name" : "Image Acquisition Parameters",
+        "value" : "2-2.5 kV net accelerating voltage, 800 pA- 2 nA beam current. 3.2-6 us total dwell"
+      }, {
+        "name" : "Imaging method",
+        "value" : "Array Tomography, single beam SEM (sbAT)"
+      } ],
+      "subsections" : [ {
+        "accno" : "Imaging Method-1",
+        "type" : "Imaging Method",
+        "attributes" : [ {
+          "name" : "Ontology Value",
+          "value" : "scanning electron microscopy (SEM)"
+        }, {
+          "name" : "Ontology Name",
+          "value" : "Biological Imaging Methods Ontology (FBbi)"
+        }, {
+          "name" : "Ontology Term ID",
+          "value" : "FBbi:00000257"
+        } ]
+      } ]
+    }, {
+      "accno" : "Image Acquisition-2",
+      "type" : "Image Acquisition",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "FIB-SEM"
+      }, {
+        "name" : "Imaging Instrument",
+        "value" : "Zeiss Xbeam550"
+      }, {
+        "name" : "Image Acquisition Parameters",
+        "value" : "SEM 1.5kV accelerating voltage, 1.1 nA beam current. FIB: 30 kV, 1.5 nA 2.1 us total dwell"
+      }, {
+        "name" : "Imaging method",
+        "value" : "focussed ion beam scanning electron microscopy (FIB-SEM)"
+      } ],
+      "subsections" : [ {
+        "accno" : "Imaging Method-2",
+        "type" : "Imaging Method",
+        "attributes" : [ {
+          "name" : "Ontology Value",
+          "value" : "focussed ion beam scanning electron microscopy (FIB-SEM)"
+        }, {
+          "name" : "Ontology Name",
+          "value" : "Biological Imaging Methods Ontology (FBbi)"
+        }, {
+          "name" : "Ontology Term ID",
+          "value" : "FBbi:00050000"
+        } ]
+      } ]
+    }, {
+      "accno" : "Annotations-1",
+      "type" : "Annotations",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "2D segmentation mask"
+      }, {
+        "name" : "Annotation Overview",
+        "value" : "2D instance segmentation of nuclei"
+      }, {
+        "name" : "Annotation Type",
+        "value" : "segmentation_mask"
+      }, {
+        "name" : "Annotation Method",
+        "value" : "Supervised DL model NucleoNet predictions + expert manual proofreading (all done in empanada-napari)"
+      }, {
+        "name" : "Annotation Confidence Level",
+        "value" : "5"
+      }, {
+        "name" : "Annotation Criteria",
+        "value" : "Nuclei at edges excluded or included (see file list)"
+      }, {
+        "name" : "File List",
+        "value" : "file_list_annotations_1.json"
+      } ]
+    }, {
+      "accno" : "Annotations-2",
+      "type" : "Annotations",
+      "attributes" : [ {
+        "name" : "Title",
+        "value" : "3D segmentation mask"
+      }, {
+        "name" : "Annotation Overview",
+        "value" : "3D segmentation of a single nucleus from breast cancer cell"
+      }, {
+        "name" : "Annotation Type",
+        "value" : "segmentation_mask"
+      }, {
+        "name" : "Annotation Method",
+        "value" : "Supervised DL model. 3D inference is actually 2D inference run in orthongonal planes + voting algorithm to get final mask. Annotator manual proofreading (all done in empanada-napari)"
+      }, {
+        "name" : "Annotation Confidence Level",
+        "value" : "5"
+      }, {
+        "name" : "File List",
+        "value" : "file_list_annotations_2.json"
+      } ]
+    }, {
+      "accno" : "Study Component-1",
+      "type" : "Study Component",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Human breast 2D images"
+      }, {
+        "name" : "Description",
+        "value" : "Raw images used for annotation"
+      }, {
+        "name" : "File List",
+        "value" : "file_list_images_1.json"
+      } ],
+      "subsections" : [ {
+        "type" : "Associations",
+        "attributes" : [ {
+          "name" : "Biosample",
+          "value" : "Human breast cancer cells"
+        }, {
+          "name" : "Specimen",
+          "value" : "First specimen"
+        }, {
+          "name" : "Image acquisition",
+          "value" : "Array tomography (AT) SEM"
+        } ]
+      } ]
+    }, {
+      "accno" : "Study Component-2",
+      "type" : "Study Component",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Mouse lung 2D imaging data"
+      }, {
+        "name" : "Description",
+        "value" : "Raw images used for annotation"
+      }, {
+        "name" : "File List",
+        "value" : "file_list_images_2_v2.json"
+      } ],
+      "subsections" : [ {
+        "type" : "Associations",
+        "attributes" : [ {
+          "name" : "Biosample",
+          "value" : "Mouse lung tumor"
+        }, {
+          "name" : "Specimen",
+          "value" : "Second specimen"
+        }, {
+          "name" : "Image acquisition",
+          "value" : "Array tomography (AT) SEM"
+        } ]
+      } ]
+    }, {
+      "accno" : "Study Component-3",
+      "type" : "Study Component",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Mouse mammary gland 2D imaging data"
+      }, {
+        "name" : "Description",
+        "value" : "Raw images used for annotation"
+      }, {
+        "name" : "File List",
+        "value" : "file_list_images_4.json"
+      } ],
+      "subsections" : [ {
+        "type" : "Associations",
+        "attributes" : [ {
+          "name" : "Biosample",
+          "value" : "Mouse 4T1 cells"
+        }, {
+          "name" : "Specimen",
+          "value" : "Second specimen"
+        }, {
+          "name" : "Image acquisition",
+          "value" : "Array tomography (AT) SEM"
+        } ]
+      } ]
+    }, {
+      "accno" : "Study Component-4",
+      "type" : "Study Component",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Human breast 3D images"
+      }, {
+        "name" : "Description",
+        "value" : "Raw images used for annotation"
+      }, {
+        "name" : "File List",
+        "value" : "file_list_images_3.json"
+      } ],
+      "subsections" : [ {
+        "type" : "Associations",
+        "attributes" : [ {
+          "name" : "Biosample",
+          "value" : "Human MB-231 cells"
+        }, {
+          "name" : "Specimen",
+          "value" : "Third specimen"
+        }, {
+          "name" : "Image acquisition",
+          "value" : "FIB-SEM"
+        } ]
+      } ]
+    } ]
+  },
+  "type" : "submission"
+}

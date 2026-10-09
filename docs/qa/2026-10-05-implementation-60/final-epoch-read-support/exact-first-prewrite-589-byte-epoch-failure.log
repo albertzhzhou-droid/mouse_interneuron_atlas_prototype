@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i60-prewrite-final-doc-stage.py", line 21, in <module>
+    b=read(r/n);s=os.stat(r/n);stats[n]=(s.st_size,s.st_mtime_ns,s.st_ino);p=t/n;p.parent.mkdir(parents=True,exist_ok=True)
+  File "/private/tmp/ohri-i60-prewrite-final-doc-stage.py", line 13, in read
+    assert len(b)==s.st_size and(s.st_ino,s.st_size,s.st_mtime_ns)==(e.st_ino,e.st_size,e.st_mtime_ns),f'Source epoch changed: {p}: {s.st_ino,s.st_size,s.st_mtime_ns} -> {e.st_ino,e.st_size,e.st_mtime_ns}; read {len(b)}'
+AssertionError: Source epoch changed: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/public/data/pv_independent_morphology_routes_v1/asset-manifest.json: (227647745, 589, 1791155549207181190) -> (227647745, 589, 1791155549207181215); read 589

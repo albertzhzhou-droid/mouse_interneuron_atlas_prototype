@@ -1,0 +1,74 @@
+[
+  {
+    "case": "wrong-audit",
+    "selected": 0,
+    "alerts": [
+      "This sample link does not match the current V1 source audit and date. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=foreign-audit&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample#source-exact-inputs"
+  },
+  {
+    "case": "old-date",
+    "selected": 0,
+    "alerts": [
+      "This sample link does not match the current V1 source audit and date. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-28&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample#source-exact-inputs"
+  },
+  {
+    "case": "foreign-key",
+    "selected": 0,
+    "alerts": [
+      "This sample link does not identify an exact current GEO sample. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=russ-2021%3ACSF-cN#source-exact-inputs"
+  },
+  {
+    "case": "naked-gsm",
+    "selected": 0,
+    "alerts": [
+      "This sample link does not identify an exact current GEO sample. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=GSM8480605#source-exact-inputs"
+  },
+  {
+    "case": "unknown-cohort",
+    "selected": 0,
+    "alerts": [
+      "This sample link has an invalid search or sample set. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample&sampleCohort=foreign#source-exact-inputs"
+  },
+  {
+    "case": "long-query",
+    "selected": 0,
+    "alerts": [
+      "This sample link has an invalid search or sample set. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample&sampleQuery=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#source-exact-inputs"
+  },
+  {
+    "case": "excluded",
+    "selected": 0,
+    "alerts": [
+      "The linked sample is outside its saved search or sample set. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample&sampleCohort=atlas#source-exact-inputs"
+  },
+  {
+    "case": "missing-date",
+    "selected": 0,
+    "alerts": [
+      "This sample link does not match the current V1 source audit and date. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample#source-exact-inputs"
+  },
+  {
+    "case": "duplicate-key",
+    "selected": 0,
+    "alerts": [
+      "This sample link repeats a source or selection parameter. No sample was selected. Choose a visible sample or reset these filters."
+    ],
+    "url": "http://127.0.0.1:3004/source-audits?sampleAudit=trevisan-v1-exact-input-crosswalk-audit-0.1&sampleAuditDate=2026-09-29&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample&sampleKey=trevisan-v1%3AGSE275595%3AGSM8480605%3Asource-sample#source-exact-inputs"
+  }
+]

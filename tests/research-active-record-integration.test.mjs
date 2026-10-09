@@ -21,8 +21,25 @@ test("one tree-scoped loader publishes the active record to all presentation rol
     assert.doesNotMatch(sources[name], /loadVerifiedResearchExplorerIndex/, `${name} must not own another index request`);
     assert.doesNotMatch(sources[name], /findResearchRecord/, `${name} must not independently resolve another record`);
   }
+  assert.match(sources.atlas, /activeResearchModelingReceipt\.admittedCellGeometryObjectCount/);
+  assert.match(sources.atlas, /activeResearchModelingReceipt\.admittedInternalObjectCount/);
+  assert.match(sources.atlas, /activeResearchModelingReceipt\.generatedFallbackPrimitiveCount/);
+  assert.match(sources.atlas, /activeResearchModelingReceipt\.sameCellJoinCount/);
+  assert.match(sources.atlas, /activeResearchModelingReceipt\.registrationCount/);
+  assert.match(sources.atlas, /previous geometry receipt hidden/);
   assert.match(sources.provider, /loadVerifiedResearchExplorerIndex/);
   assert.equal((sources.provider.match(/loadVerifiedResearchExplorerIndex\(/g) ?? []).length, 1);
+  assert.match(sources.provider, /loadVerifiedSupplementalMorphologyResearchRecords/);
+  assert.match(sources.provider, /resolveSupplementalMorphologyResearchRecord\(requestedFocus\)/);
+  assert.match(sources.provider, /records = \[\.\.\.verifiedIndex\.records, \.\.\.supplementalMorphologyRecords\]/);
+});
+
+test("source-route supplements enter the shared search record list only after route-pack verification", () => {
+  assert.match(sources.provider, /await loadVerifiedSupplementalMorphologyResearchRecords\(\)/);
+  assert.match(sources.provider, /const records = \[\.\.\.verifiedIndex\.records, \.\.\.supplementalMorphologyRecords\]/);
+  assert.match(sources.provider, /resolveResearchActiveRecord\(verifiedIndex, requestedFocus\)[\s\S]*?resolveSupplementalMorphologyResearchRecord\(requestedFocus\)/);
+  assert.match(sources.explorer, /loadState\.records\.reduce\(\(counts, record\)/);
+  assert.match(sources.explorer, /loadState\.records\.length/);
 });
 
 test("the provider owns abort and monotonic request-generation settlement", () => {

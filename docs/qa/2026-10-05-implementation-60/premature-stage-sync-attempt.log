@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/private/tmp/ohri-i60-sync.py", line 8, in <module>
+    b=read(r/n);s=os.stat(r/n);stats[n]=(s.st_size,s.st_mtime_ns,s.st_ino);p=t/n;p.parent.mkdir(parents=True,exist_ok=True)
+  File "/private/tmp/ohri-i60-sync.py", line 5, in read
+    f=os.open(p,os.O_RDONLY);s=os.fstat(f);b=b''.join(os.pread(f,min(4096,s.st_size-i),i) for i in range(0,s.st_size,4096));e=os.fstat(f);os.close(f);assert len(b)==s.st_size and(s.st_size,s.st_mtime_ns)==(e.st_size,e.st_mtime_ns);return b
+AssertionError

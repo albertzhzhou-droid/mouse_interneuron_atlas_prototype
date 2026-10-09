@@ -1,0 +1,99 @@
+{
+  "status": "PREPARED_I62_REAL_INTAKE_RECIPE_ACCEPTED_I61_PENDING_NOT_EXECUTED",
+  "generatedAtUtc": "2026-10-05T09:35:05.710805+00:00",
+  "baselineInputs": null,
+  "expectedBaselineCanonicalInputs": 2601,
+  "expectedCanonicalAfterI62": 2605,
+  "acceptedI61Members": null,
+  "acceptedCheckpointBound": false,
+  "acceptedI61MemberCountPolicy": "Only actual checkpoint members determine the count; no estimate.",
+  "candidateTargets": [
+    {
+      "path": "app/ResearchSourceRegistry.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 22834,
+        "sha256": "eb84daf3886b96a9c5b7a38bdd91a571fcbaa06d2327a3fab44bd054eb3e68b7"
+      },
+      "after": {
+        "bytes": 23841,
+        "sha256": "c423792176942a66d70c480a19d083ade86a4e51970be9bec018474e88068cd0"
+      },
+      "originalCandidateBytesUnchanged": true,
+      "proposalPath": "/private/tmp/ohri-i62-source-information-navigation-candidate/proposed/app/ResearchSourceRegistry.tsx"
+    },
+    {
+      "path": "app/research-source-information-navigation.js",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 8770,
+        "sha256": "77294b724ade7b12a125cc3041727b20c7232995a96b69f86d0e4268bb7f6452"
+      },
+      "originalCandidateBytesUnchanged": true,
+      "proposalPath": "/private/tmp/ohri-i62-source-information-navigation-candidate/proposed/app/research-source-information-navigation.js"
+    },
+    {
+      "path": "app/research-source-information-navigation.d.ts",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 927,
+        "sha256": "45c8b6a54280b87059ea4857568e6560b4a3fe5d7cd18579b10b5bfa46c95630"
+      },
+      "originalCandidateBytesUnchanged": true,
+      "proposalPath": "/private/tmp/ohri-i62-source-information-navigation-candidate/proposed/app/research-source-information-navigation.d.ts"
+    },
+    {
+      "path": "tests/research-source-information-navigation.test.mjs",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 16007,
+        "sha256": "47e7ea9bb90febd8fcaf57a2d15ba96f16a2c9115ef0ed37696e3470076e3a8f"
+      },
+      "originalCandidateBytesUnchanged": true,
+      "proposalPath": "/private/tmp/ohri-i62-source-information-navigation-candidate/proposed/tests/research-source-information-navigation.test.mjs"
+    }
+  ],
+  "canonicalAdditions": [
+    "app/research-source-information-navigation.js",
+    "app/research-source-information-navigation.d.ts",
+    "tests/research-source-information-navigation.test.mjs",
+    "docs/RESEARCH_TIMELINE_2026-10-05_IMPLEMENTATION_62_SOURCE_INFORMATION_NAVIGATION.md"
+  ],
+  "rootMutableExtras": [
+    "tools/build_research_iteration_manifest_2_91.mjs",
+    "docs/UPGRADE_PLAN_2026-09-24.md",
+    "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+    "data/research-iteration-manifest-2.91.json",
+    "data/research-renderer-runtime-inputs-2.91.json",
+    "docs/RESEARCH_TIMELINE_2026-10-05_IMPLEMENTATION_62_SOURCE_INFORMATION_NAVIGATION.md"
+  ],
+  "packageOwned": false,
+  "runtimePolicy": "Whole byte and ordered198 membership unchanged; I62 changes no package or private producer.",
+  "positionsPolicy": "40 build inputs and23 separate source inputs unchanged.",
+  "privateScopes": 8,
+  "preparedScientificExpected": {
+    "canonicalSourceCount": 32,
+    "canonicalRecordSetCount": 42,
+    "bundledExactCellProfileRosterCount": 13,
+    "bundledExactSourceObjectSetCount": 4,
+    "sourceProfileCount": 387,
+    "researchUpgradeCount": 243,
+    "completedResearchUpgradeCount": 83,
+    "displayedResearchUpgradeCount": 51,
+    "staleCanonicalDenominatorLiteralCount": 0
+  },
+  "finalBaselinePolicy": "Plan/Goal/timeline/current manifest/runtime and all2601 pins bind only in future --intake after actual acceptedI61; current prep does not bind their final epoch.",
+  "intakeInterface": "python3 capture_i62_real_intake.py --intake --accepted-checkpoint <rootQA61 accepted JSON> --accepted-archive <rootQA61 exact ZIP> --output-dir <new physical /private/tmp directory>",
+  "intakeThenParentApply": "Helper captures preimages and actual source baseline only. Parent applies unchanged four-path patch, adds exactly four bare CORE lines including timeline, updates its own docs/manifest, and performs native8 separately.",
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "browser": 0,
+  "network": 0,
+  "sourceParsers": 0,
+  "fullCurrentSourceReplay": false,
+  "intakeExecuted": false,
+  "applyImplemented": false
+}

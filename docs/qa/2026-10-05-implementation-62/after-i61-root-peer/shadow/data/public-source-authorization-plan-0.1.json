@@ -1,0 +1,26 @@
+{
+  "releaseId": "ohri-public-source-authorization-plan-0.1.0",
+  "schemaVersion": "0.1.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "admissionServiceReleaseId": "ohri-public-source-release-admission-service-0.1.0",
+  "assertionProvenanceReleaseId": "ohri-public-source-assertion-provenance-0.1.0",
+  "queueItemId": "UPG-019",
+  "title": "Authorization and local-verification plan composer",
+  "supportedManifestFormats": [
+    {"formatVersion": "0.7.0", "sourceId": "PDS-SPINALJ-PROCESSED", "requiredPlanStepIds": ["object_identity_confirmation", "object_specific_rights_review", "authorized_acquisition_record", "local_checksum_verification", "content_scope_validation"]},
+    {"formatVersion": "0.8.0", "sourceId": "PDS-CANOGOMEZ-2026", "requiredPlanStepIds": ["object_identity_confirmation", "object_specific_rights_review", "authorized_acquisition_record", "local_checksum_verification", "content_scope_validation"]}
+  ],
+  "evidenceLocatorKinds": ["publisher_object_url", "dataset_landing_page", "rights_statement_url", "source_metadata_field", "curator_note"],
+  "intendedUseScopes": ["private_curator_review_only", "future_analysis_pending_separate_authorization", "no_acquisition_requested"],
+  "requestedRightsDispositions": ["unresolved", "request_independent_rights_review", "decline_acquisition"],
+  "nonPromotion": {
+    "planStatus": "authorization_and_verification_plan_only",
+    "authorizationStatus": "not_authorized_by_this_plan",
+    "verificationStatus": "not_locally_verified",
+    "blockedActions": ["source_object_acquisition", "source_object_bundling", "local_checksum_calculation", "content_inspection", "reuse_authorization", "redistribution_authorization", "coordinate_transform", "registration", "automatic_public_release"],
+    "forbiddenActualStates": ["authorized", "acquired", "locally_verified", "content_inspected", "registered"]
+  },
+  "localRuntime": {"networkRequests": false, "sourceFileDownload": false, "sourceFileUpload": false, "persistentStorage": "none", "output": "browser_download_of_authorization_and_verification_plan_json"},
+  "scientificBoundary": "This composer records a curator-proposed sequence for a declared unacquired source object. It does not authenticate an assertion, authorize reuse or redistribution, acquire, inspect, hash, bundle, publish, transform, align, combine, analyze or persist a source object; it does not determine biological truth, establish a cross-study relationship or create REG.",
+  "nextQueueItems": ["UPG-020"]
+}

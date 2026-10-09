@@ -1,0 +1,331 @@
+{
+  "documentType": "neurolucida_native_contour_admission_delta",
+  "schemaVersion": "0.4.0",
+  "contractId": "neurolucida-native-contour-admission-catalog-0.4",
+  "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.4.0",
+  "createdDateUtc": "2026-09-22",
+  "baseCatalog": {
+    "path": "data/neurolucida-native-contour-admission-catalog-0.3.json",
+    "bytes": 23571,
+    "sha256": "d5cc13f99c2e6ec0e41d6352512e592f5d6dc1d118f7d7c0b69ec2239deda8fe",
+    "releaseId": "ohri-neurolucida-native-contour-admission-catalog-0.3.0"
+  },
+  "independentAudit": {
+    "path": "data/neurolucida-native-detail-independent-audit-0.4.json",
+    "bytes": 6636,
+    "sha256": "1c438aef6507d4f1dc38e7960373c53d446c21d82c9fac796a4d1b8e8efbd22e"
+  },
+  "parserAudit": {
+    "repository": "https://github.com/NeuroMorpho/xyz2swc",
+    "commit": "e07fd2d53c03945f011c335c7b643765f2d85a09",
+    "parserPath": "modules/hbp/node_modules/morphology_io/app/morphology_parser.js",
+    "parserSha256": "2714ab12fc330a7880262b0d5f0aa5321ddf5813ab86215f2121b78c08efaec2",
+    "typeLibraryPath": "modules/hbp/node_modules/morphology_io/app/swcPlus_typeLibrary.js",
+    "typeLibrarySha256": "8006588950ef0ee55da9a4bea46f93b9120a5dc6c29d6b5263050c7a6d168d89",
+    "classificationBasis": "matchPart recognizes the exact source contour name as soma; the parser maps border.soma to somaContour while retaining closed=false. The zero-value CellBody property is verified as a separate evidence gate.",
+    "parserCodeBundled": false
+  },
+  "mbfCellBodySemantics": {
+    "documentationUrl": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+    "sourceStatement": "Cell bodies are always closed shapes.",
+    "rawFalseFlagsPreserved": true,
+    "admissionScope": "Only the two checksum-pinned DAT files and their exact named, CellBody-tagged somaContour objects; no generic name, property-only or false-flag admission rule."
+  },
+  "addedSummary": {
+    "admittedRecordCount": 2,
+    "admittedContourObjectCount": 24,
+    "admittedVertexCount": 2770,
+    "admittedRenderedPrimitiveCount": 24
+  },
+  "summary": {
+    "auditedDatFileCount": 7,
+    "admittedRecordCount": 7,
+    "heldRecordCount": 0,
+    "admittedContourObjectCount": 72,
+    "admittedVertexCount": 5149,
+    "admittedRenderedPrimitiveCount": 72,
+    "toddAdmittedRecordCount": 5,
+    "toddAdmittedContourObjectCount": 57,
+    "toddAdmittedVertexCount": 4674,
+    "excludedToddUserLineObjectCount": 12,
+    "admittedFilledPolygonCount": 0,
+    "admittedTriangleCount": 0,
+    "admittedLoftCount": 0,
+    "admittedSurfaceCount": 0,
+    "admittedMembraneCount": 0,
+    "admittedVolumeCount": 0,
+    "admittedInternalStructureObjectCount": 0,
+    "biologicalMeasurementCount": 0,
+    "standardizedSwcOverlayCount": 0,
+    "sameCellCrossModalJoinCount": 0,
+    "registrationCount": 0
+  },
+  "relationshipBoundary": {
+    "sourceNativeFrameOnly": true,
+    "coordinateTransformToStandardizedSwcStatus": "not_established",
+    "overlayWithStandardizedSwcAllowed": false,
+    "sameCellMolecularProfileJoinCount": 0,
+    "sameSpecimenInternalStructureCount": 0,
+    "atlasRegistrationCount": 0
+  },
+  "addedRecords": [
+    {
+      "neuronId": 108978,
+      "assetId": "NeuroMorpho:108978",
+      "title": "Substance-P-expressing excitatory dorsal-horn interneuron",
+      "admissionStatus": "admitted_mbf_cell_body_semantic_rule",
+      "source": {
+        "projectPath": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.original.dat",
+        "storage": "project_source_only",
+        "bytes": 172603,
+        "sha256": "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/108978",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat",
+        "sourcePaperDoi": "10.1097/j.pain.0000000000001406",
+        "rights": "CC BY 4.0; cite original paper, NeuroMorpho.Org RRID:SCR_002145 and Tecuatl et al. 2024 (10.1096/fba.2024-00048)",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "apiReceipt": {
+        "projectPath": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-108978.api.json",
+        "bytes": 1498,
+        "sha256": "1b72bd7f16d0cc08cda0b74f47f9825688320eb34e9c4c73d1dd722af70bd5b6"
+      },
+      "sourceEvidence": {
+        "sourceName": "cell-4_16",
+        "archive": "Todd",
+        "species": "mouse",
+        "cellType": [
+          "interneuron",
+          "Excitatory",
+          "Substance P-(SP) expressing"
+        ],
+        "strain": "Tac1-IRES2-Cre-D",
+        "lifeStage": "adult",
+        "ageScale": "Not Reported",
+        "minAge": "Not Reported",
+        "maxAge": "Not Reported",
+        "domain": "Dendrites, Soma, No Axon",
+        "physicalIntegrity": "Dendrites Complete",
+        "attributes": "Diameter, 3D, Angles",
+        "standardizedSwcDiameterAvailable": true,
+        "nativeDrawingWidthAuthorizesSwcDiameter": false
+      },
+      "derivedObject": {
+        "path": "/data/neurolucida_native_detail_v1/nmo-108978-soma-line-loops.json",
+        "bytes": 356028,
+        "sha256": "565abd17700932c57c0fa210b4bb279bd2617b1f191df0b5bfabb0e514429e5d",
+        "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry",
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 12,
+        "somaNamedContourObjectCount": 12,
+        "somaNamedVertexCount": 2614,
+        "somaNamedVertexCountsInSourceOrder": [
+          153,
+          278,
+          221,
+          241,
+          235,
+          262,
+          242,
+          197,
+          224,
+          230,
+          190,
+          141
+        ],
+        "somaNamedZInSourceOrderMicrometre": [
+          -34,
+          -35,
+          -38.5,
+          -38,
+          -37.5,
+          -37,
+          -36.5,
+          -37,
+          -37.5,
+          -38,
+          -38.5,
+          -39
+        ],
+        "somaNamedPointPayloadSha256": "f4ff7da0d65b798e09d7bd88c612bb956f1fe5057c13aeacaa6ef04eb14c07f9",
+        "sourceClosedSomaNamedContourCount": 0,
+        "sourceOpenSomaNamedContourCount": 12,
+        "emptyValueCellBodyPresencePropertyCount": 12,
+        "independentParserSomaContourCount": 12,
+        "independentParserClassification": "somaContour",
+        "auxiliaryTraceObjectCount": 0,
+        "auxiliaryTraceVertexCount": 0,
+        "fullObjectInventory": {
+          "propertyListFromDAT": 229,
+          "thumbnailFromDAT": 1,
+          "readContourFromDAT": 12,
+          "readMarkerFromDAT": 0,
+          "readTreeFromDAT": 9,
+          "readBranchFromDAT": 103,
+          "readSpineFromDAT": 206,
+          "readTextFromDAT": 0
+        },
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 12,
+        "admittedVertexCount": 2614,
+        "renderedPrimitiveCount": 12,
+        "reason": "Twelve exact Cell Body objects pass DAT checksum, raw flag, empty-value CellBody presence, independent somaContour and MBF closure gates. Non-soma objects remain excluded."
+      },
+      "viewer": {
+        "primaryLabel": "12 MBF cell-body line loops",
+        "secondaryLabel": null,
+        "primarySourceNames": [
+          "Cell Body"
+        ],
+        "secondarySourceNames": []
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/108978",
+        "originalDat": "https://neuromorpho.org/dableFiles/todd/Source-Version/cell-4_16.dat",
+        "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000001406",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "mbfCellBodySemantics": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "Raw sourceClosedFlag=false is preserved. Only the exact named, presence-tagged, independently classified source objects receive the MBF cell-body closure interpretation.",
+        "Ordered line loops only; no filled polygon, loft, surface, membrane, volume, organelle, biological measurement, standardized SWC overlay, same-cell molecular join or atlas registration is admitted.",
+        "Other DAT tree, branch, spine-labelled and marker objects are excluded; handler counts do not establish biological spines or synapses.",
+        "Numeric age is not reported. The source has no reconstructed axon; Dendrites Complete is a repository domain-specific label, not whole-cell completeness."
+      ]
+    },
+    {
+      "neuronId": 249676,
+      "assetId": "NeuroMorpho:249676",
+      "title": "GRPR-expressing excitatory dorsal-horn interneuron",
+      "admissionStatus": "admitted_mbf_cell_body_semantic_rule",
+      "source": {
+        "projectPath": "data/source-candidates/neuromorpho-native-detail-20260922/nmo-249676.original.dat",
+        "storage": "project_source_only",
+        "bytes": 89750,
+        "sha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+        "officialRecordUrl": "https://neuromorpho.org/api/neuron/id/249676",
+        "originalDatUrl": "https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat",
+        "sourcePaperDoi": "10.1097/j.pain.0000000000002677",
+        "rights": "CC BY 4.0; cite original paper, NeuroMorpho.Org RRID:SCR_002145 and Tecuatl et al. 2024 (10.1096/fba.2024-00048)",
+        "rightsUrl": "https://neuromorpho.org/useterm.jsp"
+      },
+      "apiReceipt": {
+        "projectPath": "public/data/dorsal_horn_observed_morphology_route_pack_v1/api/nmo-249676.json",
+        "bytes": 1457,
+        "sha256": "1c3b72a58ae13e60732dcd3abd42ba0b138b0754ae4d3bc701b68779eafac6f1"
+      },
+      "sourceEvidence": {
+        "sourceName": "061118B-S6-02_cell_2-RQ",
+        "archive": "Todd",
+        "species": "mouse",
+        "cellType": [
+          "interneuron",
+          "Excitatory",
+          "Gastrin-releasing peptide receptor expressing"
+        ],
+        "strain": "GRPRCreERT2",
+        "lifeStage": "young",
+        "ageScale": "Day",
+        "minAge": "35.0",
+        "maxAge": "98.0",
+        "domain": "Dendrites, Soma, Axon",
+        "physicalIntegrity": "Dendrites Moderate, Axon Incomplete",
+        "attributes": "No Diameter, 3D, Angles",
+        "standardizedSwcDiameterAvailable": false,
+        "nativeDrawingWidthAuthorizesSwcDiameter": false
+      },
+      "derivedObject": {
+        "path": "/data/neurolucida_native_detail_v1/nmo-249676-soma-line-loops.json",
+        "bytes": 42054,
+        "sha256": "ef5641ecc5e816a77eae20c2013747de6d35fddfb530c1e9925b7b82673be0b0",
+        "documentType": "neurolucida_source_native_mbf_cell_body_line_loop_geometry",
+        "authority": "OBS_SOURCE_NATIVE_MBF_CELL_BODY_LINE_LOOP"
+      },
+      "audit": {
+        "exactSourceContourObjectCount": 12,
+        "somaNamedContourObjectCount": 12,
+        "somaNamedVertexCount": 156,
+        "somaNamedVertexCountsInSourceOrder": [
+          22,
+          20,
+          16,
+          14,
+          10,
+          9,
+          15,
+          13,
+          12,
+          10,
+          8,
+          7
+        ],
+        "somaNamedZInSourceOrderMicrometre": [
+          -36,
+          -35,
+          -34,
+          -33,
+          -32,
+          -31,
+          -37.5,
+          -38.5,
+          -39.5,
+          -40.5,
+          -41.5,
+          -42.5
+        ],
+        "somaNamedPointPayloadSha256": "11c645c26e2e48ebfc4e3807d59ccbfb7bd182f61add8cfb58a46c92922f9dff",
+        "sourceClosedSomaNamedContourCount": 0,
+        "sourceOpenSomaNamedContourCount": 12,
+        "emptyValueCellBodyPresencePropertyCount": 12,
+        "independentParserSomaContourCount": 12,
+        "independentParserClassification": "somaContour",
+        "auxiliaryTraceObjectCount": 0,
+        "auxiliaryTraceVertexCount": 0,
+        "fullObjectInventory": {
+          "propertyListFromDAT": 259,
+          "thumbnailFromDAT": 1,
+          "readContourFromDAT": 12,
+          "readMarkerFromDAT": 1,
+          "readTreeFromDAT": 7,
+          "readBranchFromDAT": 58,
+          "readSpineFromDAT": 236,
+          "readTextFromDAT": 0
+        },
+        "independentPointArraysAgree": true
+      },
+      "admission": {
+        "admittedContourObjectCount": 12,
+        "admittedVertexCount": 156,
+        "renderedPrimitiveCount": 12,
+        "reason": "Twelve exact CellBody objects pass DAT checksum, raw flag, empty-value CellBody presence, independent somaContour and MBF closure gates. Non-soma objects remain excluded."
+      },
+      "viewer": {
+        "primaryLabel": "12 MBF cell-body line loops",
+        "secondaryLabel": null,
+        "primarySourceNames": [
+          "CellBody"
+        ],
+        "secondarySourceNames": []
+      },
+      "sourceLinks": {
+        "officialRecord": "https://neuromorpho.org/api/neuron/id/249676",
+        "originalDat": "https://neuromorpho.org/dableFiles/todd/Source-Version/061118B-S6-02_cell_2-RQ.dat",
+        "primaryPaper": "https://doi.org/10.1097/j.pain.0000000000002677",
+        "converterRepository": "https://github.com/NeuroMorpho/xyz2swc",
+        "mbfCellBodySemantics": "https://www.mbfbioscience.com/help/neurolucida/Content/Ribbons/Trace/traceCellBody.htm",
+        "rights": "https://neuromorpho.org/useterm.jsp"
+      },
+      "hardBoundaries": [
+        "Raw sourceClosedFlag=false is preserved. Only the exact named, presence-tagged, independently classified source objects receive the MBF cell-body closure interpretation.",
+        "Ordered line loops only; no filled polygon, loft, surface, membrane, volume, organelle, biological measurement, standardized SWC overlay, same-cell molecular join or atlas registration is admitted.",
+        "Other DAT tree, branch, spine-labelled and marker objects are excluded; handler counts do not establish biological spines or synapses.",
+        "Source age is 35–98 days. Native drawing-width numbers do not override the standardized SWC No Diameter declaration; axon and dendrite integrity remain incomplete/moderate."
+      ]
+    }
+  ]
+}

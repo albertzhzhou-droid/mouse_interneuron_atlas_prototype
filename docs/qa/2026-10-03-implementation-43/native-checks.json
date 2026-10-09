@@ -1,0 +1,266 @@
+[
+  {
+    "label": "Final production default route remains rendered",
+    "passed": true,
+    "data": {
+      "heading": true
+    }
+  },
+  {
+    "label": "Exact NMO 45718 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "5935cf07b420f187f329f5b897813d0635a1a26904b6ea1b86c6df3a9029eab7",
+      "originalSha256": "ae5f3122dfcebfa06f3e69351670ab6428ed61d4a2bc24f099edc98e62f69415",
+      "topLevelObjects": 72,
+      "rendererPins": 33,
+      "visibleContours": 8
+    }
+  },
+  {
+    "label": "Exact NMO 45674 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "5ad34ebf55536c6a2fd016f1e4f5ca3336ba71dc9e3cfdb9322052c57b2170ac",
+      "originalSha256": "9d5a8670fdb97656c18eb8819b3c4723f438fb8929e66ea8dc6103c6bb547d87",
+      "topLevelObjects": 47,
+      "rendererPins": 33,
+      "visibleContours": 7
+    }
+  },
+  {
+    "label": "Exact NMO 50424 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "ddcf951dcc14125734dc66907dd3abc6d5b2e484aba06ac3efe0b1f15c79c181",
+      "originalSha256": "90662374ccfacc0404b1b8817161015fa52c6c384911700f428a4c5421cb79d9",
+      "topLevelObjects": 18,
+      "rendererPins": 33,
+      "visibleContours": 8
+    }
+  },
+  {
+    "label": "Exact NMO 50394 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "5324a3982d72fc43911b7074d56029995348b72c250e9b1e41c8cfa5bb7cb605",
+      "originalSha256": "eceb6bc0cd2247e2ef2c51c6063b97db64d194d8483ef6d7427c715d9054a109",
+      "topLevelObjects": 26,
+      "rendererPins": 33,
+      "visibleContours": 14
+    }
+  },
+  {
+    "label": "Exact NMO 50408 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "12ccfd9f1a70487ae8b7706393c761d3190b46bd42b7183db08510b0f4f4fe93",
+      "originalSha256": "78cfeae785b8ab4cf0792e7223cf310cd4aef1e3caa3447aa14ca61421ed9cb2",
+      "topLevelObjects": 22,
+      "rendererPins": 33,
+      "visibleContours": 11
+    }
+  },
+  {
+    "label": "Exact NMO 108978 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "02b1dfa96b9b1078b283dc2bcaf819c55ece65e6a5c33c2fa6730ad5dceccd98",
+      "originalSha256": "4b046ab1c4bd5c35b7e3c8d0a60695b4234c90d5f13b0ba290e525abdc863a65",
+      "topLevelObjects": 24,
+      "rendererPins": 33,
+      "visibleContours": 12
+    }
+  },
+  {
+    "label": "Exact NMO 249676 actual rendered capture and complete audit link",
+    "passed": true,
+    "data": {
+      "manifestSha256": "e66b61c8085091f8dfba51d093835e4d0bcc6fdcd8bec4b25e8ccd3e971a26a4",
+      "originalSha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+      "topLevelObjects": 25,
+      "rendererPins": 33,
+      "visibleContours": 12
+    }
+  },
+  {
+    "label": "Tampered selected-manifest receipt rejected before source restore",
+    "passed": true,
+    "data": {
+      "error": "Native contour view: saved selected DAT manifest changed"
+    }
+  },
+  {
+    "label": "Attempted to read current receipt after restore before recapturing",
+    "passed": false,
+    "reason": "The UI requires Capture again after successful restore; no current receipt exists until capture. This timeout is not a restore-failure result."
+  },
+  {
+    "label": "Fresh same-source restore followed by recapture verifies manifest, DAT and exact geometry",
+    "passed": true,
+    "data": {
+      "files": [
+        {
+          "kind": "fileManifest",
+          "path": "/data/native_dat_file_manifests_v1/nmo-249676.json",
+          "bytes": 20071,
+          "sha256": "e66b61c8085091f8dfba51d093835e4d0bcc6fdcd8bec4b25e8ccd3e971a26a4",
+          "verifiedAt": "2026-10-03T03:07:51.322Z",
+          "verificationSequence": 51,
+          "requestCacheMode": "no-store",
+          "status": "verified",
+          "neuronId": 249676,
+          "assetId": "NeuroMorpho:249676",
+          "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+          "scope": "complete_selected_dat_manifest_bytes_and_index_metadata_verified"
+        },
+        {
+          "kind": "originalDat",
+          "path": "/data/neurolucida_dat_originals_v1/nmo-249676.dat",
+          "bytes": 89750,
+          "sha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+          "verifiedAt": "2026-10-03T03:07:51.332Z",
+          "verificationSequence": 52,
+          "requestCacheMode": "no-store",
+          "status": "verified",
+          "neuronId": 249676,
+          "assetId": "NeuroMorpho:249676",
+          "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+          "parserVersion": "ohri-v3-dat-inventory-0.1.0",
+          "fullAuditSha256": "4893a7b0b780b76256fb3bf993db68090826face491ae621204f1c5ceb60c89f",
+          "topLevelObjectCount": 25,
+          "scope": "original_dat_bytes_complete_inventory_and_exact_admitted_coordinates"
+        },
+        {
+          "kind": "sourceGeometry",
+          "path": "/data/neurolucida_native_detail_v1/nmo-249676-soma-line-loops.json",
+          "bytes": 42054,
+          "sha256": "ef5641ecc5e816a77eae20c2013747de6d35fddfb530c1e9925b7b82673be0b0",
+          "verifiedAt": "2026-10-03T03:07:51.341Z",
+          "verificationSequence": 53,
+          "requestCacheMode": "no-store",
+          "status": "verified",
+          "neuronId": 249676,
+          "assetId": "NeuroMorpho:249676",
+          "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+          "scope": "native_contour_geometry_bytes_and_original_dat_ordered_coordinates_verified"
+        }
+      ],
+      "layersPreserved": true
+    }
+  },
+  {
+    "label": "Fault-test proxy starts with an actual valid source view",
+    "passed": true,
+    "data": {
+      "manifestSha256": "e66b61c8085091f8dfba51d093835e4d0bcc6fdcd8bec4b25e8ccd3e971a26a4"
+    }
+  },
+  {
+    "label": "Actual same-size bad served selected manifest clears existing canvas, receipt and export authority",
+    "passed": true,
+    "data": {
+      "alert": "Native traces unavailable: Native contour source: source SHA-256 mismatch. No fallback geometry is shown.",
+      "canvasCount": 0,
+      "currentReceiptCount": 0,
+      "captureDisabled": "",
+      "successTextCount": 0
+    }
+  },
+  {
+    "label": "After bad selected-manifest response, explicit retry restores exact fresh authority",
+    "passed": true,
+    "data": {
+      "manifest": {
+        "path": "/data/native_dat_file_manifests_v1/nmo-249676.json",
+        "bytes": 20071,
+        "sha256": "e66b61c8085091f8dfba51d093835e4d0bcc6fdcd8bec4b25e8ccd3e971a26a4",
+        "verifiedAt": "2026-10-03T03:10:28.064Z",
+        "verificationSequence": 7,
+        "requestCacheMode": "no-store",
+        "status": "verified",
+        "neuronId": 249676,
+        "assetId": "NeuroMorpho:249676",
+        "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+        "scope": "complete_selected_dat_manifest_bytes_and_index_metadata_verified"
+      },
+      "raw": {
+        "path": "/data/neurolucida_dat_originals_v1/nmo-249676.dat",
+        "bytes": 89750,
+        "sha256": "ccdd75666d8b429b439fc38c4d5693cec050084e96f5a490c110dcf766682769",
+        "verifiedAt": "2026-10-03T03:10:28.069Z",
+        "verificationSequence": 8,
+        "requestCacheMode": "no-store",
+        "status": "verified",
+        "neuronId": 249676,
+        "assetId": "NeuroMorpho:249676",
+        "sourceFrame": "Neurolucida_DAT_source_native_unregistered",
+        "parserVersion": "ohri-v3-dat-inventory-0.1.0",
+        "fullAuditSha256": "4893a7b0b780b76256fb3bf993db68090826face491ae621204f1c5ceb60c89f",
+        "topLevelObjectCount": 25,
+        "scope": "original_dat_bytes_complete_inventory_and_exact_admitted_coordinates"
+      }
+    }
+  },
+  {
+    "label": "Switch while selected manifest is genuinely pending aborts transport and renders only the new source",
+    "passed": true,
+    "data": {
+      "pendingRequestId": 20041,
+      "closedUnfinished": true,
+      "newSource": 108978,
+      "oldMainRegionCount": 0
+    }
+  },
+  {
+    "label": "Cancelled manifest response remains suppressed after its 30-second deadline",
+    "passed": true,
+    "data": {
+      "requestId": 20041,
+      "suppressed": {
+        "at": "2026-10-03T03:10:58.621Z",
+        "id": 20041,
+        "mode": "delay",
+        "delayedResponseSuppressed": true
+      },
+      "newSourceStillVerified": true
+    }
+  },
+  {
+    "label": "Actual current native PNG export is encoded and its disclosure preview is present",
+    "passed": true,
+    "data": {
+      "neuronId": 108978,
+      "actualPreviewVisible": true,
+      "byteLength": 208692,
+      "downloadLandingVerified": false
+    }
+  },
+  {
+    "label": "390px native selection, isolation and keyboard Enter capture remain available without native horizontal overflow",
+    "passed": true,
+    "data": {
+      "width": 334,
+      "scrollWidth": 334,
+      "visibleContours": 1,
+      "isolated": true,
+      "manifestSha256": "02b1dfa96b9b1078b283dc2bcaf819c55ece65e6a5c33c2fa6730ad5dceccd98",
+      "allControls44pxVerified": false
+    }
+  },
+  {
+    "label": "Existing NMO 50394 separate DER shell restores with all four freshly verified files",
+    "passed": true,
+    "data": {
+      "fileKinds": [
+        "fileManifest",
+        "originalDat",
+        "sourceGeometry",
+        "derivedShell"
+      ],
+      "derivedShellVisible": true,
+      "layersPreserved": true,
+      "observedMembraneCount": 0
+    }
+  }
+]

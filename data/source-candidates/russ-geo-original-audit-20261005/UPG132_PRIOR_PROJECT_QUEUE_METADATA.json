@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "0.1.0",
+  "evidenceLevel": "retained_prior_project_metadata_not_a_current_external_source_check",
+  "researchUpgradeId": "UPG-132",
+  "origin": {
+    "path": "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+    "line": 127,
+    "rowRaw": "| UPG-132 | P0 | in progress — published source-information adapter implemented; GEO object pins and redistribution rights pending | Add a harmonized mouse-spinal molecular/spatial information adapter from `GSE158380`, without joining it to morphology objects. I53 implements attributed factual source information for the existing 69 source-local populations: exact Table1 raw labels, lamina/family/NT/individual-marker/putative-lineage context, 414 published counts across six studies and the named 19,353 captured sequenced cells/nuclei denominator, plus 10 raw adult in situ panels. Adult panel counts sum to 2,371 while the article reports 2,894; the 523 difference remains unresolved. Adult prevalence retains its confidently assigned adult-neuron denominator and is never transferred to sequencing observations; marker colors/strings do not promote unassessable validation to verified, and putative lineage is not an exact lineage assignment. The source-information adapter adds no new population or cell/nucleus roster, physical coordinate, morphology, internal object, same-cell identity or registration. Remaining acceptance requires rechecking `GSE158380_cells.csv.gz` at 111,999 bytes and SHA-256 `2268141a1c5efbecd9dc85fc80bc7296c00f3dea04d2a6555be90c9c831729c6`, `GSE158380_features.updated-11-22-2022.csv.gz` at 113,707 bytes and SHA-256 `9ed13abf990d17d5b19a2c9f18db7ccd3e662d4325f184324f639882a8db917d`, and `GSE158380_raw_count_matrix.mtx.gz` at 112,984,417 bytes; those GEO objects were not acquired or revalidated by I53. Every displayed fact retains accession/paper, field locator, denominator and sample/cohort scope. The article is CC BY4.0 with third-party exceptions, but the GEO series exposes no per-object redistribution licence; source matrices remain unbundled until rights approval. A transcriptomic cluster is not a physical neuron, coordinate, morphology, organelle, causal mechanism or exact identity, and no cluster-to-NeuroMorpho join is authorized | [GEO GSE158380](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158380); [official supplementary directory](https://ftp.ncbi.nlm.nih.gov/geo/series/GSE158nnn/GSE158380/suppl/); [Russ et al. 2021](https://doi.org/10.1038/s41467-021-25125-1); [PMC8481483](https://pmc.ncbi.nlm.nih.gov/articles/PMC8481483/); local I53 metadata/derivation receipts: `data/russ-spinal-information-adapter-0.1.json`, `data/russ-spinal-information-derivation-receipt-0.1.json`; validator: `scripts/validate-russ-spinal-information-adapter-0.1.mjs` |",
+    "rowUtf8Sha256": "064c5002fa7adca7cb3d368e0426f87abc7740282ed4b5f744e15027e17193f8"
+  },
+  "reportedMatrix": {
+    "fileName": "GSE158380_raw_count_matrix.mtx.gz",
+    "reportedBytes": 112984417,
+    "availabilityPreviouslyReported": true,
+    "externallyRecheckedInI63": false,
+    "downloadedInI63": false
+  },
+  "snapshotScope": "one existing UPG-132 project queue row retained before I63; provenance for prior reports only, not an original GEO response or matrix verification"
+}

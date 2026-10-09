@@ -1,0 +1,18 @@
+✔ an absent request keeps the original DE-1 default and all 387 independent source profiles (142.731792ms)
+✔ unknown, empty, foreign and stale explicit profile requests have no substituted dossier or export (522.310417ms)
+✔ an explicit empty legacy URL type remains an empty request (89.244792ms)
+✔ source-local IDs are not case-folded, trimmed or prefix-matched (288.588334ms)
+✔ an invalid controlled focus immediately clears the prior valid dossier and export (93.855875ms)
+✔ filtering an invalid request never selects a visible row; explicit activation recovers exact DE-2 (75.245916ms)
+✔ a valid selected profile and its complete export remain exact outside query and source filters (54.054417ms)
+✔ outer canonical empty, incomplete, foreign-kind and repeated requests cannot substitute a valid profile (637.41025ms)
+✔ outer canonical invalid request recovers only through an actual valid profile activation (97.353ms)
+✔ an unavailable canonical request using a valid literal ID cannot fabricate a previous-profile baseline (86.934083ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2463.412875

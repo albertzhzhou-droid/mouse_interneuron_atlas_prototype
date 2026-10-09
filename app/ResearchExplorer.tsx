@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import alkaslasiSourceTaxonomyJson from "../data/alkaslasi-cholinergic-source-taxonomy-0.1.json";
 import sathyamurthySourceTaxonomyJson from "../data/sathyamurthy-source-taxonomy-0.1.json";
 import {
@@ -14,6 +14,9 @@ import {
 } from "./research-explorer-index.js";
 import { useResearchActiveRecord } from "./ResearchActiveRecordProvider";
 import { rowsForPresentationIndices } from "./research-record-presentation.js";
+import ResearchRecordSourceScope from "./ResearchRecordSourceScope";
+import ResearchExplorerResultGroup from "./ResearchExplorerResultGroup";
+import { researchEvidenceDisplayLabel } from "./research-morphology-rendering-policy.js";
 import ResearchRecordEvidenceFingerprint, {
   humanizeEvidenceToken,
   type EvidenceFingerprintAxis,
@@ -170,6 +173,7 @@ function resultRecordSnippet(record: ResearchRecord) {
   const count = evidenceValue(record, [
     "Exact sampled-nucleus count",
     "Exact sampled-cell count",
+    "Exact captured-cell/nucleus count",
     "Exact captured-cell count",
     "Sampled nuclei",
     "Figure-reported cell count",
@@ -212,6 +216,7 @@ function MolecularRecordFingerprint({ record }: { record: ResearchRecord }) {
   const countText = evidenceValue(record, [
     "Exact sampled-nucleus count",
     "Exact sampled-cell count",
+    "Exact captured-cell/nucleus count",
     "Exact captured-cell count",
     "Sampled nuclei",
     "Figure-reported cell count",
@@ -265,8 +270,8 @@ function MolecularRecordFingerprint({ record }: { record: ResearchRecord }) {
       namespace={`${record.laneLabel} · ${record.provenance.accessions[0] ?? "Source accession not retained"}`}
       observationUnit={record.recordSemantics?.unitOfObservation ?? "Source record"}
       samplingCount={countMatch ? Number.parseInt(countMatch[1].replaceAll(",", ""), 10) : null}
-      samplingUnit={record.recordSemantics?.unitOfObservation ?? null}
-      samplingSummary={record.namespace === "crozat-2025:figshare-29430869-v2" ? "Multiple experiment-specific N/n" : null}
+      samplingUnit={record.namespace === "russ-2021" ? "captured sequenced cells/nuclei" : record.recordSemantics?.unitOfObservation ?? null}
+      samplingSummary={record.namespace === "russ-2021" ? countText : record.namespace === "crozat-2025:figshare-29430869-v2" ? "Multiple experiment-specific N/n" : null}
       markers={hasEstablishedMarkerText ? markerText!.split(" · ") : []}
       regionContext={regionContext}
       lifeStage={lifeStage}
@@ -327,6 +332,7 @@ const PRIMARY_MOLECULAR_EVIDENCE_LABELS = new Set([
   "Article marker context",
   "Exact sampled-nucleus count",
   "Exact sampled-cell count",
+  "Exact captured-cell/nucleus count",
   "Exact captured-cell count",
   "Percent of captured dIL denominator",
   "Sampled nuclei",
@@ -358,7 +364,7 @@ function DossierEvidence({ record }: { record: ResearchRecord }) {
     : recordRows;
   const evidenceRows = (rows: ResearchEvidenceRow[]) => rows.map((row, index) => (
     <div key={`${row.label}-${row.locator}-${index}`}>
-      <dt>{row.label}</dt>
+      <dt>{researchEvidenceDisplayLabel(record, row)}</dt>
       <dd>
         {row.label.startsWith("Complete ranked marker panel")
           ? (
@@ -522,6 +528,7 @@ function ResearchDossier({
           Open source-specific workspace
         </button>
       </header>
+      <ResearchRecordSourceScope key={record.key} record={record} />
       {record.focusKind !== "molecular_profile" && <>
         <p className="research-dossier-summary">{record.summary}</p>
         <details className="research-dossier-limitations">
@@ -612,6 +619,7 @@ export default function ResearchExplorer({
     : indexState.status === "unavailable"
       ? { status: "error", records: [], index: null, error: indexState.error }
       : { status: "loading", records: [], index: null, error: "" };
+  const resultKeyboardHelpId = useId();
   const [kindFilter, setKindFilter] = useState<"all" | ResearchFocusKind>("all");
   const [showAllGroups, setShowAllGroups] = useState(false);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(() => new Set());
@@ -626,8 +634,14 @@ export default function ResearchExplorer({
     results: Array<{ record: ResearchRecord; score: number }>;
   }>, [results]);
   const selectedRecord = activeRecord.status === "ready" ? activeRecord.record : null;
-  const displayedCounts = loadState.status === "ready" ? loadState.index.counts.byFocusKind : RESEARCH_EXPLORER_EXPECTED_COUNTS;
-  const displayedTotal = loadState.status === "ready" ? loadState.index.counts.total : RESEARCH_EXPLORER_EXPECTED_TOTAL;
+  const displayedCounts = loadState.status === "ready"
+    ? loadState.records.reduce((counts, record) => {
+      counts[record.focusKind] += 1;
+      return counts;
+    }, Object.fromEntries(RESEARCH_FOCUS_KINDS.map((focusKind) => [focusKind, 0])) as Record<ResearchFocusKind, number>)
+    : RESEARCH_EXPLORER_EXPECTED_COUNTS;
+  const displayedTotal = loadState.status === "ready" ? loadState.records.length : RESEARCH_EXPLORER_EXPECTED_TOTAL;
+  const supplementaryMorphologyCount = Math.max(0, displayedCounts.morphology_record - 142);
   const visibleGroups: typeof groups = showAllGroups
     ? groups
     : includeSelectedResearchGroup(groups, selectedRecord, INITIAL_GROUP_LIMIT) as typeof groups;
@@ -643,12 +657,12 @@ export default function ResearchExplorer({
         <div>
           <p className="panel-kicker">UPG-049 + UPG-180 + UPG-183 + UPG-185 + UPG-204 · CHECKSUM-VERIFIED · RECORD-DRIVEN · ZERO BIOLOGICAL JOINS</p>
           <h3 id="research-explorer-heading">Interneuron Research Explorer</h3>
-          <p>Search {displayedTotal.toLocaleString("en-US")} cross-lane source records by label, marker, DOI, PMID or accession. The molecular lane includes {displayedCounts.molecular_profile.toLocaleString("en-US")} source profiles, including the exact Cano-Gomez P56 CHOL_IN registry, while retaining {displayedCounts.morphology_record.toLocaleString("en-US")} morphology records (142 census + 7 supplementary); the separate exact morphology universe contains 1,097 source objects. Selecting a molecular record replaces its source-record evidence model and clears prior cell geometry; a shared term never creates a same-cell or same-type relationship.</p>
+          <p>Search {displayedTotal.toLocaleString("en-US")} cross-lane source records by label, marker, DOI, PMID or accession. The molecular lane includes {displayedCounts.molecular_profile.toLocaleString("en-US")} source profiles, including the exact Cano-Gomez P56 CHOL_IN registry, while retaining {displayedCounts.morphology_record.toLocaleString("en-US")} morphology records (142 frozen census + {supplementaryMorphologyCount} supplementary exact objects); the separate frozen NeuroMorpho universe contains 1,097 source objects. Selecting a molecular record replaces its source-record evidence model and clears prior cell geometry; a shared term never creates a same-cell or same-type relationship.</p>
         </div>
         <div className="research-explorer-denominator" aria-label="Research Explorer source-record denominator">
           <strong>{displayedTotal.toLocaleString("en-US")}</strong>
           <span>source records</span>
-          <small>{displayedCounts.molecular_profile.toLocaleString("en-US")} source profiles · {displayedCounts.morphology_record.toLocaleString("en-US")} frozen cross-lane morphologies · {displayedCounts.anatomy_label.toLocaleString("en-US")} anatomy labels · {displayedCounts.sci_population.toLocaleString("en-US")} SCI populations · {displayedCounts.sci_entity.toLocaleString("en-US")} SCI entities · {displayedCounts.source_lane.toLocaleString("en-US")} source lanes · separate exact morphology universe 1,097</small>
+          <small>{displayedCounts.molecular_profile.toLocaleString("en-US")} source profiles · {displayedCounts.morphology_record.toLocaleString("en-US")} source-local morphologies · {displayedCounts.anatomy_label.toLocaleString("en-US")} anatomy labels · {displayedCounts.sci_population.toLocaleString("en-US")} SCI populations · {displayedCounts.sci_entity.toLocaleString("en-US")} SCI entities · {displayedCounts.source_lane.toLocaleString("en-US")} source lanes · separate frozen morphology universe 1,097</small>
         </div>
       </div>
 
@@ -698,42 +712,31 @@ export default function ResearchExplorer({
             {!results.length && (
               <p className="research-explorer-empty">No exact source record matches this literal search. This is not evidence of biological absence.</p>
             )}
+            {results.length > 0 && <p id={resultKeyboardHelpId} className="source-list-keyboard-help">Within each source group, use Up/Down or Home/End to move through visible records. Enter or Space selects a record; Tab leaves the list.</p>}
             <div className="research-result-groups">
               {visibleGroups.map((group) => {
                 const groupKey = `${group.laneLabel}|||${group.namespace}`;
                 const expanded = expandedGroups.has(groupKey);
                 const visibleResults = expanded ? group.results : group.results.slice(0, INITIAL_RESULTS_PER_GROUP);
                 return (
-                  <section key={groupKey} className="research-result-group" aria-label={`${group.namespace} results`}>
-                    <header><div><span>{group.laneLabel}</span><h5>{group.namespace}</h5></div><strong>{group.results.length}</strong></header>
-                    <div className="research-result-list">
-                      {visibleResults.map(({ record }) => {
-                        const isSelected = selectedRecord?.key === record.key;
-                        return (
-                          <button
-                            type="button"
-                            className={isSelected ? "selected" : ""}
-                            aria-pressed={isSelected}
-                            key={record.key}
-                            onClick={() => selectRecord(record)}
-                          >
-                            <span>{record.title}</span>
-                            <small>{resultRecordSnippet(record)}</small>
-                            <code>{record.focusId}</code>
-                          </button>
-                        );
-                      })}
-                    </div>
-                    {group.results.length > INITIAL_RESULTS_PER_GROUP && (
-                      <button type="button" className="research-group-toggle" onClick={() => setExpandedGroups((current) => {
-                        const next = new Set(current);
-                        if (next.has(groupKey)) next.delete(groupKey); else next.add(groupKey);
-                        return next;
-                      })}>
-                        {expanded ? "Show fewer" : `Show all ${group.results.length}`}
-                      </button>
-                    )}
-                  </section>
+                  <ResearchExplorerResultGroup
+                    key={groupKey}
+                    laneLabel={group.laneLabel}
+                    namespace={group.namespace}
+                    resultCount={group.results.length}
+                    visibleRecords={visibleResults.map(({ record }) => record)}
+                    selectedKey={selectedRecord?.key ?? null}
+                    keyboardHelpId={resultKeyboardHelpId}
+                    snippet={resultRecordSnippet}
+                    onSelect={selectRecord}
+                    expanded={expanded}
+                    canExpand={group.results.length > INITIAL_RESULTS_PER_GROUP}
+                    onToggleExpanded={() => setExpandedGroups((current) => {
+                      const next = new Set(current);
+                      if (next.has(groupKey)) next.delete(groupKey); else next.add(groupKey);
+                      return next;
+                    })}
+                  />
                 );
               })}
             </div>

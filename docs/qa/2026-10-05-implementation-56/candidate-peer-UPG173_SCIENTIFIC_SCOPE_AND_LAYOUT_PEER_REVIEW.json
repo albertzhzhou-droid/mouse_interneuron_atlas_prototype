@@ -1,0 +1,302 @@
+{
+  "status": "PASS_WITH_INTEGRATION_AND_ACTUAL_BROWSER_QA_REQUIRED",
+  "generatedAt": "2026-10-05T03:09:45.215192+00:00",
+  "candidateRoot": "/private/tmp/ohri-upg173-preparation-20261004/proposed",
+  "reviewer": "camera_contract_i52",
+  "actionableFindings": [],
+  "independentSourceParser": "xml.dom.minidom; no candidate extractor or adapter imported",
+  "sourceCheckCounts": {
+    "rawHeaders": 28,
+    "rawPropertyLabels": 48,
+    "rawMeanSdCells": 192,
+    "rawStatisticalCells": 96,
+    "exactCellLocators": 336,
+    "unprintedUnitRows": 8,
+    "sourceMethodStatements": 7
+  },
+  "sourceInputFiles": 3,
+  "exactSourceBytes": 951043,
+  "alternativePartitionCounts": [
+    [
+      143,
+      28
+    ],
+    [
+      88,
+      49,
+      24,
+      10
+    ],
+    [
+      23,
+      11,
+      68,
+      69
+    ],
+    [
+      15,
+      20,
+      32,
+      25,
+      27,
+      52
+    ]
+  ],
+  "sharedObservationDenominator": 171,
+  "partitionsPooled": false,
+  "sourceAnimalCohortCounts": [
+    51,
+    6
+  ],
+  "prior60RecordingsFrom28MiceRemainSubset": true,
+  "missingUnitsRemainNull": true,
+  "unknownSexCellAgeAnimalMappingNotInvented": true,
+  "capacitanceSourceFormulaHeldWithoutCalculation": true,
+  "sixPositiveVersusFourListedKGroupObservationsUnresolved": true,
+  "sourceOriginalDocxPagesVisuallyInspected": [
+    1,
+    2
+  ],
+  "sourceRenderEvidence": [
+    {
+      "path": "/private/tmp/ohri-upg173-preparation-20261004/rendered/data-sheet-1-file36551718.pdf",
+      "bytes": 213834,
+      "sha256": "d4da75ca05ef3b0f985027867c504f30d15a17711360507957030af0f765d4ee"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-preparation-20261004/rendered/page-1.png",
+      "bytes": 352633,
+      "sha256": "11b4754d8fcd1d3ff489ee7adecf887f646f5c0be924a17dd62cb2ad7c7a555b"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-preparation-20261004/rendered/page-2.png",
+      "bytes": 394073,
+      "sha256": "2a076d55f07cf0f68a49372a5ab7d418e90b054e10fa709d59f6ca45426f76c0"
+    }
+  ],
+  "independentNegativeCases": 11,
+  "focusedTests": {
+    "node": {
+      "tests": 9,
+      "pass": 9,
+      "fail": 0
+    },
+    "python": {
+      "tests": 6,
+      "pass": 6,
+      "fail": 0
+    }
+  },
+  "testRuns": [
+    {
+      "check": "independent-source-dom",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+        "/private/tmp/ohri-upg173-peer-review-20261004/check_source_aggregate_identity.py",
+        "--receipt",
+        "/private/tmp/ohri-upg173-peer-review-20261004/source-aggregate-identity-review-receipt.json"
+      ],
+      "cwd": "/private/tmp/ohri-upg173-preparation-20261004/proposed",
+      "exitCode": 0,
+      "log": {
+        "path": "/private/tmp/ohri-upg173-peer-review-20261004/independent-source-dom.log",
+        "bytes": 191,
+        "sha256": "243e357788ad3139aa54dcfe45e31c55ccfbf0a329c6a07523e926b960f66c01"
+      }
+    },
+    {
+      "check": "independent-negative-cases",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+        "/private/tmp/ohri-upg173-peer-review-20261004/check_negative_source_mutations.py"
+      ],
+      "cwd": "/private/tmp/ohri-upg173-preparation-20261004/proposed",
+      "exitCode": 0,
+      "log": {
+        "path": "/private/tmp/ohri-upg173-peer-review-20261004/independent-negative-cases.log",
+        "bytes": 51,
+        "sha256": "1aa3a5c9669f32c0d180049045b150bcc3c1b6d9dad03d6686818e153e68a94a"
+      }
+    },
+    {
+      "check": "focused-node",
+      "command": [
+        "/opt/homebrew/bin/node",
+        "--test",
+        "tests/garcia-ramirez-physiology.test.mjs"
+      ],
+      "cwd": "/private/tmp/ohri-upg173-preparation-20261004/proposed",
+      "exitCode": 0,
+      "log": {
+        "path": "/private/tmp/ohri-upg173-peer-review-20261004/focused-node.log",
+        "bytes": 1022,
+        "sha256": "ee3bc22e46bf58bdab6be00b308d1565749603383f71a430cbd4e1f424361ae4"
+      }
+    },
+    {
+      "check": "original-source-python",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_garcia_ramirez_physiology_0_1.py",
+        "-v"
+      ],
+      "cwd": "/private/tmp/ohri-upg173-preparation-20261004/proposed",
+      "exitCode": 0,
+      "log": {
+        "path": "/private/tmp/ohri-upg173-peer-review-20261004/original-source-python.log",
+        "bytes": 970,
+        "sha256": "36afe8fda9dd35003e652172a9468ee02bdf916f5f23e058d2f2883883c94654"
+      }
+    }
+  ],
+  "currentLayoutReview": {
+    "route": "/explore/cell-types/additional#garcia-ramirez-physiology-panel",
+    "onlyExistingIntegrationTarget": "app/AdditionalResearchEvidence.tsx",
+    "existingDetailsFragmentsAndLazyMountsPreserved": 4,
+    "ResearchCollectionPageWrapperNavigationAndCurrentLayoutUnchangedByCandidate": true,
+    "namespacedTableQueryPreservesUnrelatedQueryAndFragment": true,
+    "unknownEmptyDuplicateTableQueryFailsClosed": true,
+    "scopedResponsiveCssAndKeyboardControlsReviewedStatically": true
+  },
+  "exportReview": {
+    "scope": "attributed_published_aggregate_statistics_with_selection_context",
+    "allFourSourceTablesRetainedWhenSearchFiltersUi": true,
+    "sourceInputsFetchedDuringExport": false,
+    "actualViewCaptured": false,
+    "newMolecularProfiles": 0,
+    "newPhysicalCellRosterRows": 0,
+    "newGeometryObjects": 0,
+    "sameCellCrossSourceJoins": 0,
+    "registrations": 0,
+    "internalAnatomyAdmission": false,
+    "M2Admission": 0,
+    "M4Admission": 0
+  },
+  "candidatePathPins": [
+    {
+      "path": "app/AdditionalResearchEvidence.tsx",
+      "bytes": 4281,
+      "sha256": "9c5b33dfc25fbc442637212ff9fd4988d8e4715500915027262133cecdfdfed2"
+    },
+    {
+      "path": "app/GarciaRamirezPhysiologyPanel.tsx",
+      "bytes": 8133,
+      "sha256": "bd2595e7deba177d69927047110f8997bbb48f3a1c88b759e03a913819dfe423"
+    },
+    {
+      "path": "app/garcia-ramirez-physiology.js",
+      "bytes": 9273,
+      "sha256": "4b824fcadb10e7a0c7d35fa13b05d3f8607327de55bdf0106e80eda8558ec2d0"
+    },
+    {
+      "path": "app/garcia-ramirez-physiology.d.ts",
+      "bytes": 1838,
+      "sha256": "9fd9fc1f092cd250ad0f9fe60bfebfa30f2e087e6593678158c69da728a64926"
+    },
+    {
+      "path": "app/garcia-ramirez-physiology.css",
+      "bytes": 3253,
+      "sha256": "d0fee48b84789503217f383867bbc1d8d46bda778ec2543e11d3b8077e036548"
+    },
+    {
+      "path": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+      "bytes": 203887,
+      "sha256": "48e1788f3ee0e4472e7431f349418aea078a4b89b3766c35bcddfb946f4f1bf9"
+    },
+    {
+      "path": "data/garcia-ramirez-adult-spinal-physiology-derivation-receipt-0.1.json",
+      "bytes": 2239,
+      "sha256": "74d3c63c65ff04970143519d8f956e500f90eb6508bb6138afede4c9b1610e54"
+    },
+    {
+      "path": "data/source-candidates/garcia-ramirez-physiology-20261004/data-sheet-1-file36551718.docx",
+      "bytes": 687234,
+      "sha256": "7ef955d8378020d95eeff07be83ad0c602699337fdb89b79f6796c3e96b845e2"
+    },
+    {
+      "path": "data/source-candidates/garcia-ramirez-physiology-20261004/PMC9385948.fullText.xml",
+      "bytes": 228780,
+      "sha256": "b997e9c1565ba55dd361dcf47ac315883a9d1108c55d74c48db87f70f8bb7517"
+    },
+    {
+      "path": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-article-20428674.json",
+      "bytes": 35029,
+      "sha256": "ea6183d6e34233889e2900b14d980ad61edaf28f616052291bfaefac2406d865"
+    },
+    {
+      "path": "data/source-candidates/garcia-ramirez-physiology-20261004/exact-source-acquisition-receipt.json",
+      "bytes": 2040,
+      "sha256": "3357f1668a54d5669f7be15517d5940541a2560782888dee7d6d803abed5c766"
+    },
+    {
+      "path": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-metadata-acquisition-receipt.json",
+      "bytes": 688,
+      "sha256": "181344c8f4122af4f3e76a9759266a7a6892ede4c359fcd526dc747455f23074"
+    },
+    {
+      "path": "tools/extract_garcia_ramirez_physiology.py",
+      "bytes": 14820,
+      "sha256": "8ef0843732f48857093396c64110ffa4a8c46e8d4cb6e5dd06a273b82be068d5"
+    },
+    {
+      "path": "schemas/garcia-ramirez-adult-spinal-physiology-0.1.schema.json",
+      "bytes": 50298,
+      "sha256": "7327a725f355187f22a57f62871f166fb196d87f0bc578ea5516080c7c772bd6"
+    },
+    {
+      "path": "scripts/validate-garcia-ramirez-physiology-0.1.mjs",
+      "bytes": 3480,
+      "sha256": "dabd2c496e904487ebecc580e59c640aae4b1093bf4d725e4e2649fb19b591d7"
+    },
+    {
+      "path": "tests/garcia-ramirez-physiology.test.mjs",
+      "bytes": 7654,
+      "sha256": "c6ddcc2e6a8d7528fd18fbeb8a64001e98f3b478f1b118652f333a7b519a6ac1"
+    },
+    {
+      "path": "tests/test_garcia_ramirez_physiology_0_1.py",
+      "bytes": 6966,
+      "sha256": "29fd7608618b5f27a1043ec1a9487ab1499aadfd3f921d1d0f8b13bfee28036e"
+    }
+  ],
+  "reviewArtifacts": [
+    {
+      "path": "/private/tmp/ohri-upg173-peer-review-20261004/check_source_aggregate_identity.py",
+      "bytes": 14049,
+      "sha256": "07c97f66d6565db8e2263882c119e90dcae9cff6835b99832f698c35d68ca370"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-peer-review-20261004/check_negative_source_mutations.py",
+      "bytes": 2759,
+      "sha256": "1f9623abc6f20925b5f003d05df0ec35d3364d7e615c84c0655a52815852ae12"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-peer-review-20261004/source-aggregate-identity-review-receipt.json",
+      "bytes": 4224,
+      "sha256": "6abe71caf24c190afe7387c38d408469ebd78694efb579b979c0385dac387542"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-peer-review-20261004/independent-negative-cases-receipt.json",
+      "bytes": 1062,
+      "sha256": "0aa1ebd193b5041f07f492b459a3e838eee48f69cf20d1aabb5a624e693d349d"
+    },
+    {
+      "path": "/private/tmp/ohri-upg173-peer-review-20261004/UPG173_BROWSER_QA_PLAN.md",
+      "bytes": 4185,
+      "sha256": "0ac056644e438c7ccbcafe2cb036302f5577261c4e84e8a00c762f3b7157f474"
+    }
+  ],
+  "sharedRepositoryWritesByThisAgent": 0,
+  "actualAppBrowserObservedByThisPeerReview": false,
+  "remainingRootOwnedChecks": [
+    "final sealed patch intake and declared-input manifest binding",
+    "required full integration checks against final current build",
+    "actual current-layout browser selection/query/keyboard/responsive/export QA"
+  ]
+}

@@ -43,9 +43,10 @@ test("validates the pinned Research Explorer asset set and source inventory", as
   });
   assert.equal(report.registrationCount, 0);
   assert.equal(report.indexSha256, manifest.index.sha256);
-  assert.equal(manifest.schemaVersion, "1.13.0");
-  assert.equal(manifest.assetSetId, "ohri:research-explorer-index:1.13.0");
-  assert.equal(manifest.sourceFiles.length, 21);
+  assert.equal(manifest.schemaVersion, "1.14.0");
+  assert.equal(manifest.assetSetId, "ohri:research-explorer-index:1.14.0");
+  assert.equal(manifest.sourceFiles.length, 22);
+  assert.ok(manifest.sourceFiles.some((source) => source.name === "russInformation" && source.path === "data/russ-spinal-information-adapter-0.1.json"));
   assert.ok(manifest.sourceFiles.some((source) => source.name === "haringDorsalHorn" && source.path === "data/haring-dorsal-horn-source-taxonomy-0.1.json"));
   assert.ok(manifest.sourceFiles.some((source) => source.name === "alkaslasi" && source.path === "data/alkaslasi-cholinergic-source-taxonomy-0.1.json"));
   assert.ok(manifest.sourceFiles.some((source) => source.name === "crozatPkd2l1" && source.path === "data/crozat-pkd2l1-functional-profile-0.1.json"));
@@ -363,7 +364,7 @@ test("right-rail molecular receipts remain record-specific across all ten namesp
     ["hayashi-2018:GSE108788", ["Source-local label", "Figure-reported cell count", "Narrative marker panel", "Spatial-domain context"]],
     ["iglesias-gonzalez-2021:gse185731:mmusculus", ["Source-local label", "Exact sampled-cell count", "Source markers", "Temporal context"]],
     ["roome-2026:GSE291462", ["Source-local label", "Exact captured-cell count", "Percent of captured dIL denominator", "Positive differential features meeting display thresholds"]],
-    ["russ-2021", ["Source-local label", "Primary markers", "Region class", "Transmitter class"]],
+    ["russ-2021", ["Source-local label", "Exact captured-cell/nucleus count", "Primary markers", "Region class"]],
     ["sathyamurthy-2018", ["Source-local label", "Sampled nuclei", "Figure/source markers", "Putative cell type"]],
   ]);
   const profiles = index.records.filter((record) => record.focusKind === "molecular_profile");

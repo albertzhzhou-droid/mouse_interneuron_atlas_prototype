@@ -1,9 +1,9 @@
 {
   "schemaVersion": "0.1.0",
   "releaseId": "ohri-research-source-registry-0.1.0",
-  "releaseDate": "2026-09-02",
+  "releaseDate": "2026-09-23",
   "title": "Canonical research source registry",
-  "sourceCount": 27,
+  "sourceCount": 32,
   "scientificPolicy": {
     "canonicalIdNamespace": "SRC-",
     "legacyIdsAreAliasesOnly": true,
@@ -177,14 +177,14 @@
         {
           "scientificName": "Mus musculus",
           "taxonId": "NCBITaxon:10090",
-          "context": "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison route packs",
+          "context": "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison routes",
           "authority": "official_repository_metadata"
         }
       ],
       "lifeStageScopes": [
         {
           "value": "adult",
-          "context": "142 admitted census records, including route-pack overlaps NMO 104003 and 108974",
+          "context": "142 admitted census records; active route children include NMO 104003, 108974 and 108978, with only 104003 and 108974 overlapping the frozen five-record lens",
           "authority": "official_repository_metadata",
           "missingReason": null
         },
@@ -204,7 +204,7 @@
       "regionScopes": [
         {
           "value": "spinal cord; source-local subregions retained per record",
-          "context": "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison route packs",
+          "context": "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison routes",
           "authority": "official_repository_metadata"
         }
       ],
@@ -216,7 +216,8 @@
         "repository metadata",
         "repository morphometry",
         "source-native DAT provenance receipt",
-        "source-native DAT contour trace"
+        "source-native DAT contour trace",
+        "repository version metadata delta audit"
       ],
       "experimentalUnits": [
         {
@@ -259,20 +260,20 @@
           "unitOfObservation": "reconstructed_neuron",
           "assignmentAuthority": "checksum_pinned_route_pack_contract",
           "includedRecordCount": {
-            "value": 4,
+            "value": 5,
             "unit": "route_memberships",
-            "scope": "Four independent dorsal-horn routes: exactly two frozen-census overlaps (NMO 104003 and 108974) plus two supplementary records (NMO 170035 and 249676); this record set is not additive to the 142-record census",
+            "scope": "Five independent dorsal-horn routes: three adult census members (NMO 104003, 108974 and 108978), of which two overlap the frozen cell-form lens, plus two supplementary records (NMO 170035 and 249676); this route set is not additive to the 142-record census",
             "authority": "checksum_pinned_route_pack_contract",
             "missingReason": null
           },
           "cellRosterAvailability": "bundled_exact",
           "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
-          "dataPath": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
-          "idField": "routes[].sourceRecord.assetId",
+          "dataPath": "data/census-child-observed-morphology-route-0.1.json",
+          "idField": "dorsalHornRouteSet.members[].assetId",
           "childRosterRef": {
             "status": "bundled_exact",
-            "path": "data/dorsal-horn-observed-morphology-route-pack-0.1.json",
-            "idField": "routes[].sourceRecord.assetId",
+            "path": "data/census-child-observed-morphology-route-0.1.json",
+            "idField": "dorsalHornRouteSet.members[].assetId",
             "missingReason": null
           }
         },
@@ -565,6 +566,19 @@
             "sha256": "5c1ebc5510f81f81db336b1aeb5be14d4937c4934b75bf3d26503e32bcfb21c3",
             "missingReason": null
           }
+        },
+        {
+          "id": "ASSET-NEUROMORPHO-RELEASE-8-6-125-METADATA-DELTA",
+          "kind": "checksum_pinned_project_derivative",
+          "accession": "ohri-neuromorpho-release-8-6-125-query-delta-audit-0.1.0",
+          "url": null,
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 2755,
+            "sha256": "8271369ce602d1e0847352e2d81bd20a3ddbe19632ce5a4537202015cab67be3",
+            "missingReason": null
+          }
         }
       ],
       "rights": {
@@ -573,7 +587,7 @@
       },
       "admission": {
         "status": "bundled_local",
-        "note": "The frozen 142-record adult-query census remains unchanged. A separate four-route contract reuses NMO 104003 and 108974 and admits supplementary NMO 170035 and 249676. A separate two-route functional-class contract admits supplementary NMO 45674 and 50424. A separate two-route PrP-reporter dorsal-horn contract admits supplementary NMO 50394 and 50408. A separate one-route premotor comparison contract admits repository-labelled NMO 45718 without upgrading its labels into definitive subtype, physiology, connectivity, or Renshaw-exclusion claims. The five-file native-DAT catalog admits 48 source-native ordered line loops / 2,379 vertices across the exact five records. The frozen NMO 45718 and NMO 45674 rules remain unchanged. NMO 50424, 50394 and 50408 add exactly 8 / 427, 14 / 768 and 11 / 709 MBF Cell Body LineLoops: every admitted Todd object is named Cell Body, carries an empty-value CellBody presence property, is classified somaContour by the pinned parser, retains raw sourceClosedFlag=false, and uses the documented MBF cell-body closure interpretation. User Line 1\u20134 remain excluded. The record-gated viewer creates zero fill, triangles, lofts, surfaces, membranes, volumes, internal structures, biological measurements, DAT-to-SWC overlays, joins or registrations, and no route creates exact physiology, marker-exclusivity, cross-source identity, or type-representative morphology claims. A disjoint 0.4 delta adds NMO 108978 and 249676: 24 ordered loops / 2770 vertices. Together with the five-record 0.3 base, the native view now has 7 audited records / 72 loops / 5149 vertices; zero surfaces or internal structures."
+        "note": "The frozen 142-record adult-query census remains unchanged. A separate four-route contract reuses NMO 104003 and 108974 and admits supplementary NMO 170035 and 249676. A separate two-route functional-class contract admits supplementary NMO 45674 and 50424. A separate two-route PrP-reporter dorsal-horn contract admits supplementary NMO 50394 and 50408. A separate one-route premotor comparison contract admits repository-labelled NMO 45718 without upgrading its labels into definitive subtype, physiology, connectivity, or Renshaw-exclusion claims. The five-file native-DAT catalog admits 48 source-native ordered line loops / 2,379 vertices across the exact five records. The frozen NMO 45718 and NMO 45674 rules remain unchanged. NMO 50424, 50394 and 50408 add exactly 8 / 427, 14 / 768 and 11 / 709 MBF Cell Body LineLoops: every admitted Todd object is named Cell Body, carries an empty-value CellBody presence property, is classified somaContour by the pinned parser, retains raw sourceClosedFlag=false, and uses the documented MBF cell-body closure interpretation. User Line 1–4 remain excluded. The record-gated viewer creates zero fill, triangles, lofts, surfaces, membranes, volumes, internal structures, biological measurements, DAT-to-SWC overlays, joins or registrations, and no route creates exact physiology, marker-exclusivity, cross-source identity, or type-representative morphology claims. A disjoint 0.4 delta adds NMO 108978 and 249676: 24 ordered loops / 2770 vertices. Together with the five-record 0.3 base, the native view now has 7 audited records / 72 loops / 5149 vertices; zero surfaces or internal structures."
       },
       "researchLanes": [
         "morphology",
@@ -601,7 +615,11 @@
         "UPG-198",
         "UPG-203",
         "UPG-207",
-        "UPG-208"
+        "UPG-208",
+        "UPG-226",
+        "UPG-228",
+        "UPG-236",
+        "UPG-237"
       ],
       "missingness": [
         {
@@ -617,7 +635,7 @@
         {
           "field": "source_native_DAT_semantics",
           "status": "PARTIALLY_AVAILABLE",
-          "reason": "Base 0.3 catalog: Exactly 48 ordered soma contour line loops and 2,379 vertices are admitted across five exact records. The Todd subset is exactly NMO 50424 = 8 loops / 427 vertices, NMO 50394 = 14 / 768 and NMO 50408 = 11 / 709 (33 / 1,904 combined). Each Todd loop retains raw sourceClosedFlag=false and requires the exact Cell Body name, empty-value CellBody presence property, pinned-parser somaContour classification and documented MBF cell-body closure semantics; User Line 1\u20134 remain excluded. No line trace authorizes fill, triangulation, loft, surface, membrane, volume, internal object, biological measurement, DAT-to-SWC overlay, join, registration or type-representative semantics. The independent 0.4 delta adds 24 loops / 2770 vertices in two further records, for a merged total of 72 loops / 5149 vertices across 7 records. All raw false flags remain visible."
+          "reason": "Base 0.3 catalog: Exactly 48 ordered soma contour line loops and 2,379 vertices are admitted across five exact records. The Todd subset is exactly NMO 50424 = 8 loops / 427 vertices, NMO 50394 = 14 / 768 and NMO 50408 = 11 / 709 (33 / 1,904 combined). Each Todd loop retains raw sourceClosedFlag=false and requires the exact Cell Body name, empty-value CellBody presence property, pinned-parser somaContour classification and documented MBF cell-body closure semantics; User Line 1–4 remain excluded. No line trace authorizes fill, triangulation, loft, surface, membrane, volume, internal object, biological measurement, DAT-to-SWC overlay, join, registration or type-representative semantics. The independent 0.4 delta adds 24 loops / 2770 vertices in two further records, for a merged total of 72 loops / 5149 vertices across 7 records. All raw false flags remain visible."
         },
         {
           "field": "same_cell_electrophysiology",
@@ -1141,6 +1159,62 @@
           "scope": "displayed source populations",
           "authority": "checksum_pinned_derived_metadata",
           "missingReason": null
+        },
+        {
+          "unit": "captured_sequenced_cell_or_nucleus",
+          "count": 19353,
+          "scope": "Published Supplementary Table2 final harmonization across six source studies; captured sequencing observations, not adult prevalence, independent animals or individual nucleus identities.",
+          "authority": "checksum_pinned_published_source_table",
+          "missingReason": null,
+          "denominatorId": "russ_2021_final_harmonized_neuronal_dataset_19353",
+          "denominatorLocator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!H72",
+          "sourceInformationPath": "data/russ-spinal-information-adapter-0.1.json",
+          "studies": [
+            {
+              "studyId": "russ-2021:study:Sathyamurthy",
+              "sourceLabelRaw": "Sathyamurthy",
+              "count": 5473,
+              "unit": "captured_sequenced_cells_and_nuclei",
+              "locator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!B72"
+            },
+            {
+              "studyId": "russ-2021:study:Hayashi",
+              "sourceLabelRaw": "Hayashi",
+              "count": 421,
+              "unit": "captured_sequenced_cells_and_nuclei",
+              "locator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!C72"
+            },
+            {
+              "studyId": "russ-2021:study:Haring",
+              "sourceLabelRaw": "Haring",
+              "count": 1042,
+              "unit": "captured_sequenced_cells_and_nuclei",
+              "locator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!D72"
+            },
+            {
+              "studyId": "russ-2021:study:Rosenberg",
+              "sourceLabelRaw": "Rosenberg",
+              "count": 11201,
+              "unit": "captured_sequenced_cells_and_nuclei",
+              "locator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!E72"
+            },
+            {
+              "studyId": "russ-2021:study:Zeisel",
+              "sourceLabelRaw": "Zeisel",
+              "count": 1130,
+              "unit": "captured_sequenced_cells_and_nuclei",
+              "locator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!F72"
+            },
+            {
+              "studyId": "russ-2021:study:Baek",
+              "sourceLabelRaw": "Baek",
+              "count": 86,
+              "unit": "captured_sequenced_cells_and_nuclei",
+              "locator": "41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!G72"
+            }
+          ],
+          "individualAgeAssignmentAvailable": false,
+          "animalResolvedReplicationAvailable": false
         }
       ],
       "recordSets": [
@@ -1182,15 +1256,30 @@
             "sha256": "a45578c893998fae42acf781c4700d162249497476b0b81149302f49929fd2e0",
             "missingReason": null
           }
+        },
+        {
+          "id": "ASSET-RUSS-PUBLISHED-SOURCE-INFORMATION",
+          "kind": "derived_published_population_information",
+          "accession": "10.1038/s41467-021-25125-1",
+          "url": "https://www.nature.com/articles/s41467-021-25125-1",
+          "path": "data/russ-spinal-information-adapter-0.1.json",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 683337,
+            "sha256": "b951a78b1e3959ac8883a4ec78fd345d2eac98567a41aceba82dea0c6ea88c31",
+            "missingReason": null
+          },
+          "scope": "69 exact Table1 populations,414 published six-study counts and10 raw adult in situ panels; attributed factual metadata only, no public source XLSX or GEO count matrix."
         }
       ],
       "rights": {
         "status": "recorded",
-        "note": "CC BY 4.0 article; derived marker metadata retains attribution."
+        "note": "CC BY4.0 article with third-party exceptions; attributed derived marker and published factual population metadata retain source attribution. No per-object GEO redistribution licence is established; GEO cells/features roster objects and count matrix remain unbundled."
       },
       "admission": {
         "status": "derived_factual_metadata_bundled",
-        "note": "69 source-local type-level records are admitted; no source cell is registered."
+        "note": "69 source-local population records are admitted with published captured sequencing counts, raw Table1 context and separate adult panel facts. No exact GEO cell/nucleus roster, morphology object, lineage assignment or registration is admitted."
       },
       "researchLanes": [
         "types",
@@ -1201,13 +1290,14 @@
         "UPG-027A",
         "UPG-106",
         "UPG-108",
-        "UPG-109"
+        "UPG-109",
+        "UPG-132"
       ],
       "missingness": [
         {
           "field": "population_cell_roster",
           "status": "NOT_RETAINED",
-          "reason": "The current derived type records do not retain profile-specific cell identities or counts."
+          "reason": "No profile-specific deposited cell identities or GEO cell roster is retained. Published population sampling counts are retained only as source-level aggregates in the attributed information adapter."
         },
         {
           "field": "cross_source_identity",
@@ -1479,10 +1569,10 @@
         "coverage:haring-2018"
       ],
       "sourceKind": "taxonomy_study",
-      "title": "H\u00e4ring et al. dorsal-horn neuronal taxonomy",
-      "shortLabel": "H\u00e4ring 2018",
+      "title": "Häring et al. dorsal-horn neuronal taxonomy",
+      "shortLabel": "Häring 2018",
       "citation": {
-        "text": "H\u00e4ring M, Zeisel A, Hochgerner H, et al. Neuronal atlas of the dorsal horn defines its architecture and links sensory input to transcriptional cell types. Nature Neuroscience 21, 869-880 (2018).",
+        "text": "Häring M, Zeisel A, Hochgerner H, et al. Neuronal atlas of the dorsal horn defines its architecture and links sensory input to transcriptional cell types. Nature Neuroscience 21, 869-880 (2018).",
         "doi": "10.1038/s41593-018-0141-1",
         "articleUrl": "https://www.nature.com/articles/s41593-018-0141-1"
       },
@@ -3902,10 +3992,10 @@
         "dmrt3-di6-2021"
       ],
       "sourceKind": "taxonomy_study",
-      "title": "Iglesias Gonz\u00e1lez et al. embryonic Dmrt3/dI6 M1\u2013M6 transcriptomic groups",
+      "title": "Iglesias González et al. embryonic Dmrt3/dI6 M1–M6 transcriptomic groups",
       "shortLabel": "Dmrt3/dI6 2021",
       "citation": {
-        "text": "Iglesias Gonz\u00e1lez et al. 2021, Frontiers in Cellular Neuroscience",
+        "text": "Iglesias González et al. 2021, Frontiers in Cellular Neuroscience",
         "doi": "10.3389/fncel.2021.781197",
         "articleUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8733252/"
       },
@@ -3976,7 +4066,7 @@
         {
           "unit": "retained_di6_lineage_cell",
           "count": 274,
-          "scope": "M1\u2013M6 partition in the executed pinned notebook",
+          "scope": "M1–M6 partition in the executed pinned notebook",
           "authority": "pinned_executed_notebook",
           "missingReason": null
         }
@@ -3991,7 +4081,7 @@
           "includedRecordCount": {
             "value": 6,
             "unit": "group_summaries",
-            "scope": "M1\u2013M6 study-local groups; not adult canonical types and not a per-well roster",
+            "scope": "M1–M6 study-local groups; not adult canonical types and not a per-well roster",
             "authority": "checksum_pinned_project_derivative",
             "missingReason": null
           },
@@ -4003,7 +4093,7 @@
             "status": "not_exported_by_source",
             "path": null,
             "idField": null,
-            "missingReason": "The loom exports well identifiers but no M1\u2013M6 assignment column; the compact derivative does not reconstruct a per-well roster."
+            "missingReason": "The loom exports well identifiers but no M1–M6 assignment column; the compact derivative does not reconstruct a per-well roster."
           }
         }
       ],
@@ -4054,7 +4144,7 @@
       },
       "admission": {
         "status": "derived_group_summaries_bundled",
-        "note": "Six exact source-local M1\u2013M6 count/marker summaries and their execution receipts are admitted. No per-well roster, scalar pseudotime, morphology, coordinate, physiology, projection, synapse, internal object, registration, or adult-type identity is created."
+        "note": "Six exact source-local M1–M6 count/marker summaries and their execution receipts are admitted. No per-well roster, scalar pseudotime, morphology, coordinate, physiology, projection, synapse, internal object, registration, or adult-type identity is created."
       },
       "researchLanes": [
         "types",
@@ -4069,7 +4159,7 @@
         {
           "field": "per_well_M1_to_M6_roster",
           "status": "NOT_EXPORTED",
-          "reason": "M1\u2013M6 assignments are notebook-derived but no per-well roster is exported by the loom or compact derivative."
+          "reason": "M1–M6 assignments are notebook-derived but no per-well roster is exported by the loom or compact derivative."
         },
         {
           "field": "animal_resolved_replication",
@@ -4084,7 +4174,7 @@
         {
           "field": "adult_and_cross_source_identity",
           "status": "NOT_ESTABLISHED",
-          "reason": "M1\u2013M6 are embryonic study-local groups and no stable key joins them to an adult type or any other source record."
+          "reason": "M1–M6 are embryonic study-local groups and no stable key joins them to an adult type or any other source record."
         }
       ]
     },
@@ -4473,6 +4563,62 @@
             "sha256": "ca022532c23f5d9967fce7efcbd5bde57b1d4f59516cb10764dd1b422dd8ed64",
             "missingReason": null
           }
+        },
+        {
+          "id": "ASSET-CROZAT-EXPERIMENT-FAMILY-OBSERVATIONS",
+          "kind": "checksum_pinned_project_derivative",
+          "accession": "crozat-experiment-family-observations-0.1",
+          "path": "data/crozat-experiment-family-observations-0.1.json",
+          "url": null,
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 1878506,
+            "sha256": "94b3dfda943df4979ae6dec09ebf2ff9d74e12cf81b04cbae6ac9c9c54ae0e42",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-CROZAT-NAV-INHIBITION-INFORMATION",
+          "kind": "checksum_pinned_project_derivative",
+          "accession": "crozat-nav-inhibition-information-0.1",
+          "path": "data/crozat-nav-inhibition-information-0.1.json",
+          "url": null,
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 104945,
+            "sha256": "43be824627a3d8b4f8c647b7d162735ab4e57a5243f84ec695d3265d67be6339",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-CROZAT-NAV-INHNA-ORIGINAL",
+          "kind": "checksum_pinned_original_source",
+          "accession": "Figshare-file:56062562",
+          "path": "data/source-candidates/crozat-nav-inhibition-20261004/56062562-InhNa.xlsx",
+          "url": "https://ndownloader.figshare.com/files/56062562",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 11543,
+            "sha256": "53216ac2508ca26a3ac03cb40d796ca9973db25bbc120dce9fcf802e33dfbf81",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-CROZAT-NAV-INHNAPERC-ORIGINAL",
+          "kind": "checksum_pinned_original_source",
+          "accession": "Figshare-file:56062565",
+          "path": "data/source-candidates/crozat-nav-inhibition-20261004/56062565-InhNaPerc.xlsx",
+          "url": "https://ndownloader.figshare.com/files/56062565",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 11016,
+            "sha256": "b5e7f7f67d4efc94b0582da92046c292b477f54d03f4016dcbbd6a0c197d5226",
+            "missingReason": null
+          }
         }
       ],
       "rights": {
@@ -4481,7 +4627,7 @@
       },
       "admission": {
         "status": "derived_functional_profile_bundled",
-        "note": "One source-local population profile and seven key-file receipts are admitted. Source tables remain remote. Four source conflicts stay quarantined; no geometry, registration, global per-cell join or link to the separate PKD2L1 SBF-SEM study is created."
+        "note": "One source-local population profile remains admitted. Selected local source information uses 25 original workbooks: 23 existing experiment-family workbooks with 2,115 source observations and 220 within-table condition groups, plus two separate NaV inhibition workbooks with 84 worksheet measurement rows. The full retained original XLSX inventory is 26, including INa.xlsx not selected by the existing family adapter. These file and row counts are not a unique physical-cell or animal denominator and add no type or exact-cell roster. Four source conflicts stay quarantined; the separate NaV label/protocol discrepancies remain visible. No geometry, registration, global per-cell or cross-workbook NaV pairing, cross-experiment-family join, or link to the separate PKD2L1 SBF-SEM study is created."
       },
       "researchLanes": [
         "types",
@@ -4516,6 +4662,1126 @@
           "field": "cross_source_identity",
           "status": "NOT_ESTABLISHED",
           "reason": "Shared PKD2L1 identity does not join this functional profile to the separate SBF-SEM paper, morphology records or transcriptomic records."
+        }
+      ],
+      "localWorkbookReadiness": {
+        "status": "checksum_verified_selected_source_information_workbooks",
+        "unit": "original_xlsx_files",
+        "selectedInformationWorkbookFiles": 25,
+        "allRetainedOriginalWorkbookFiles": 26,
+        "existingExperimentFamilyWorkbookFiles": 23,
+        "additionalNaVInhibitionWorkbookFiles": 2,
+        "retainedButUnselectedWorkbookFiles": 1,
+        "retainedButUnselectedWorkbookPins": [
+          {
+            "fileId": 56062547,
+            "fileName": "INa.xlsx",
+            "path": "data/source-candidates/crozat-experiment-families-20260930/56062547-INa.xlsx",
+            "bytes": 10956,
+            "sha256": "1fe223cbfcae802817843dae7a09bcc7306efa3fd0815c12301ac7aec8754f64",
+            "publisherMd5": "2dd19378e236c6d0ab72a5632814cde3"
+          }
+        ],
+        "existingExperimentFamilySourceObservationRows": 2115,
+        "additionalNaVInhibitionWorksheetMeasurementRows": 84,
+        "additionalNaVDensityRows": 56,
+        "additionalNaVPercentageRows": 28,
+        "existingInformationPath": "data/crozat-experiment-family-observations-0.1.json",
+        "additionalInformationPath": "data/crozat-nav-inhibition-information-0.1.json",
+        "additionalInputManifestPath": "data/source-candidates/crozat-nav-inhibition-20261004/crozat-nav-inhibition-inputs-manifest-0.1.json",
+        "individualPhysicalCellDenominator": null,
+        "individualAnimalMappingEstablished": false,
+        "crossExperimentFamilyJoins": 0,
+        "crossWorkbookNaVRowPairing": 0,
+        "newSourceProfiles": 0,
+        "newExactCellRosterRows": 0,
+        "newGeometryObjects": 0,
+        "newInternalObjects": 0,
+        "registrations": 0,
+        "scope": "Selected source-information scope: retain the existing 23-workbook/2115-observation/220-within-table-group adapter and separate two-workbook/84-worksheet-row NaV slice. The complete local original XLSX inventory is 26, including INa.xlsx retained but not selected by the existing family adapter; no reason for that selection difference is inferred. No independent-cell or animal denominator, cross-table pairing, type or geometry follows from these file/row counts."
+      }
+    },
+    {
+      "id": "SRC-KELLY-ZEBRAFISH-2023",
+      "aliases": [
+        "kelly-zebrafish-2023",
+        "kelly-2023:GSE232801",
+        "GSE232801"
+      ],
+      "sourceKind": "taxonomy_study",
+      "title": "Kelly et al. larval-zebrafish spinal-circuit scRNA-seq taxonomy",
+      "shortLabel": "Kelly zebrafish 2023",
+      "citation": {
+        "text": "Kelly JJ, Wen H, Brehm P. Single-cell RNAseq analysis of spinal locomotor circuitry in larval zebrafish. eLife 12:RP89338 (2023).",
+        "doi": "10.7554/eLife.89338",
+        "articleUrl": "https://elifesciences.org/articles/89338"
+      },
+      "accessions": [
+        "GSE232801",
+        "GSM7383490",
+        "GSM7383491"
+      ],
+      "speciesScopes": [
+        {
+          "scientificName": "Danio rerio",
+          "taxonId": "NCBITaxon:7955",
+          "context": "4 dpf larval spinal-cord scRNA-seq",
+          "authority": "primary_article_plus_GEO_series"
+        }
+      ],
+      "lifeStageScopes": [
+        {
+          "value": "4 dpf larva",
+          "context": "two integrated spinal-neuron sequencing replicates",
+          "authority": "primary_article",
+          "missingReason": null
+        }
+      ],
+      "regionScopes": [
+        {
+          "value": "spinal cord",
+          "context": "larval zebrafish source taxonomy; no project-atlas coordinate transform",
+          "authority": "primary_article_plus_GEO_series"
+        }
+      ],
+      "conditionScopes": [
+        "uninjured larval development"
+      ],
+      "modalities": [
+        "single-cell RNA sequencing",
+        "source-local marker-combination taxonomy",
+        "in situ hybridization validation context"
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "sequencing_replicate",
+          "count": 2,
+          "scope": "GSM7383490 and GSM7383491 spinal-neuron replicates",
+          "authority": "GEO_series",
+          "missingReason": null
+        },
+        {
+          "unit": "integrated_post_qc_spinal_cell",
+          "count": 11762,
+          "scope": "combined source article spinal-cord cell dataset",
+          "authority": "primary_article",
+          "missingReason": null
+        },
+        {
+          "unit": "source_animal_or_cord",
+          "count": null,
+          "scope": "animal/cord collection across two sequencing experiments",
+          "authority": "conflicting_primary_article_and_GEO_reports",
+          "missingReason": "GEO reports 150 zebrafish overall while the article describes about 150 spinal cords for each of two duplicate experiments; the denominator is unresolved."
+        }
+      ],
+      "recordSets": [
+        {
+          "recordSetId": "RS-KELLY-GSE232801-ARTICLE-REPORTED-INTERNEURON-LABELS",
+          "parentSourceId": "SRC-KELLY-ZEBRAFISH-2023",
+          "recordKind": "article_reported_cluster",
+          "unitOfObservation": "source_reported_interneuron_label",
+          "assignmentAuthority": "article_table_1_and_figures_3_to_4",
+          "includedRecordCount": {
+            "value": 10,
+            "unit": "article_reported_interneuron_labels",
+            "scope": "ten source-named larval spinal interneuron labels; not a cluster, barcode, captured-cell, animal or prevalence denominator",
+            "authority": "article_transcribed_factual_derivative",
+            "missingReason": null
+          },
+          "cellRosterAvailability": "article_labels_only_exact_barcode_map_unverified",
+          "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+          "dataPath": "data/kelly-zebrafish-spinal-interneuron-taxonomy-0.1.json",
+          "idField": "populations[].id",
+          "childRosterRef": {
+            "status": "not_linkable",
+            "path": null,
+            "idField": null,
+            "missingReason": "The bundled list contains article-reported population labels only; the GEO RDS has not been parsed for an exact barcode-to-label roster."
+          }
+        }
+      ],
+      "assets": [
+        {
+          "id": "ASSET-KELLY-GSE232801-NEURONS-RDS",
+          "kind": "remote_geo_rds_source_object",
+          "accession": "GSE232801_Neurons.RDS.gz",
+          "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE232nnn/GSE232801/suppl/GSE232801_Neurons.RDS.gz",
+          "bundled": false,
+          "integrity": {
+            "status": "not_inventoried",
+            "bytes": null,
+            "sha256": null,
+            "missingReason": "GEO displays a 928.5 MB object size; exact bytes and a content hash have not been acquired, and object-level redistribution terms are unassessed."
+          }
+        },
+        {
+          "id": "ASSET-KELLY-COMPACT-TAXONOMY",
+          "kind": "project_authored_factual_derivative",
+          "accession": "ohri-kelly-zebrafish-spinal-interneuron-taxonomy-0.1.0",
+          "url": null,
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 8086,
+            "sha256": "9755829ebe220a76d8b3811aa0258c4653d5ca7b34d4b48566f49ec64db3a14f",
+            "missingReason": null
+          }
+        }
+      ],
+      "rights": {
+        "status": "article_attribution_geo_asset_NOASSERTION",
+        "note": "The article record states CC BY-ND 4.0; this project stores only a concise attributed table of factual source labels and marker combinations, not article prose or figures. GEO RDS access is public but file-level redistribution terms have not been assessed, so the RDS remains link-only and unbundled."
+      },
+      "admission": {
+        "status": "article_reported_labels_only",
+        "note": "Ten source-reported labels and combination-code markers are shown as a separate larval-zebrafish comparison. Sensory KA/RB, motoneurons, ambiguous mixed neuron/glia clusters, and mentioned-but-unidentified v3/v0d context stay outside the ten-label set. Animal denominator, barcode-to-label roster, same-cell morphology, internal objects, mouse equivalences and atlas registration remain unresolved or zero."
+      },
+      "researchLanes": [
+        "types",
+        "sources"
+      ],
+      "linkedUpgradeIds": [
+        "UPG-229"
+      ],
+      "missingness": [
+        {
+          "field": "animal_or_cord_denominator",
+          "status": "CONFLICT_UNRESOLVED",
+          "reason": "GEO and article methods report incompatible 150-fish/cord scopes; no animal denominator is selected."
+        },
+        {
+          "field": "barcode_to_interneuron_label_roster",
+          "status": "NOT_VERIFIED",
+          "reason": "The article-label derivative is not a per-cell roster, and the GEO neuronal RDS has not been parsed."
+        },
+        {
+          "field": "cell_geometry_and_internal_structure",
+          "status": "UNAVAILABLE",
+          "reason": "The admitted taxonomy provides zero type-linked morphology, membrane, nucleus, organelle, synapse or other internal object."
+        },
+        {
+          "field": "mouse_type_equivalence",
+          "status": "NOT_ESTABLISHED",
+          "reason": "Cross-species marker similarity and co-display create no zebrafish-to-mouse cell-type equivalence."
+        },
+        {
+          "field": "atlas_registration",
+          "status": "NOT_ESTABLISHED",
+          "reason": "No exact source coordinates or transform into the project reference anatomy are admitted."
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
+      "aliases": [
+        "NeuroMorpho.Org release 8.6.126 Todd NTS additions",
+        "neuromorpho:8.6.126:Todd-NTS"
+      ],
+      "sourceKind": "repository_release",
+      "title": "NeuroMorpho.Org release 8.6.126 Todd neurotensin-labelled morphology additions",
+      "shortLabel": "NeuroMorpho 8.6.126 Todd NTS",
+      "citation": {
+        "text": "NeuroMorpho.Org (RRID:SCR_002145); Tecuatl, Ljungquist and Ascoli 2024; release 8.6.126",
+        "doi": "10.1096/fba.2024-00048",
+        "articleUrl": "https://neuromorpho.org/apiReference.html"
+      },
+      "accessions": [
+        "RRID:SCR_002145",
+        "NeuroMorpho.Org release 8.6.126",
+        "Todd archive novel reconstruction set, 2026-09-23"
+      ],
+      "speciesScopes": [
+        {
+          "scientificName": "Mus musculus",
+          "taxonId": "NCBITaxon:10090",
+          "context": "30 novel Todd archive NeuroMorpho release additions whose current API metadata match mouse, spinal cord and interneuron filters",
+          "authority": "official_repository_metadata"
+        }
+      ],
+      "lifeStageScopes": [
+        {
+          "value": "adult",
+          "context": "30 supplementary reconstructions; official repository metadata reports adult and source age bounds of 49-91 days",
+          "authority": "official_repository_metadata",
+          "missingReason": null
+        }
+      ],
+      "regionScopes": [
+        {
+          "value": "spinal cord; L2/L3 and dorsal-horn labels retained with source asterisks",
+          "context": "30 supplementary source-local reconstructions; no atlas registration or laminar placement is inferred",
+          "authority": "official_repository_metadata"
+        }
+      ],
+      "conditionScopes": [
+        "Control, source-reported"
+      ],
+      "modalities": [
+        "standardized CNG SWC reconstruction",
+        "official NeuroMorpho API metadata",
+        "source-local morphology topology QC",
+        "radius-labelled reconstruction where official metadata reports Diameter"
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "supplementary_reconstructed_neuron",
+          "count": 30,
+          "scope": "exact novel Todd release-set IDs 322379-322408; separate from and not additive to the frozen 8.6.124 no-age universe",
+          "authority": "checksum_pinned_official_API_and_SWCs",
+          "missingReason": null
+        },
+        {
+          "unit": "current_filtered_repository_query_record",
+          "count": 339,
+          "scope": "complete mouse + spinal cord + interneuron + Todd API query without an age filter; used only for exact release-delta reconciliation",
+          "authority": "official_repository_API_snapshot",
+          "missingReason": null
+        }
+      ],
+      "recordSets": [
+        {
+          "recordSetId": "RS-NEUROMORPHO-8-6-126-TODD-NTS-ROUTES",
+          "parentSourceId": "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
+          "recordKind": "source_local_morphology_route",
+          "unitOfObservation": "reconstructed_neuron",
+          "assignmentAuthority": "official_repository_stable_id_plus_checksum_pinned_standardized_swc_and_topology_qc",
+          "includedRecordCount": {
+            "value": 30,
+            "unit": "supplementary_reconstructions",
+            "scope": "Exactly NeuroMorpho IDs 322379-322408 in the 8.6.126 novel Todd release subset. The routes do not add records to or change the 1,097-record 8.6.124 query universe.",
+            "authority": "checksum_pinned_official_API_and_route_pack",
+            "missingReason": null
+          },
+          "cellRosterAvailability": "bundled_exact",
+          "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+          "dataPath": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+          "idField": "routes[].sourceRecord.assetId",
+          "childRosterRef": {
+            "status": "bundled_exact",
+            "path": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+            "idField": "routes[].sourceRecord.assetId",
+            "missingReason": null
+          },
+          "sourceObjectSetRef": {
+            "status": "bundled_exact",
+            "path": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+            "idField": "routes[].sourceRecord.assetId",
+            "missingReason": null
+          }
+        }
+      ],
+      "assets": [
+        {
+          "id": "ASSET-NEUROMORPHO-8-6-126-TODD-NTS-CURRENT-QUERY",
+          "kind": "official_repository_api_query_snapshot",
+          "accession": "8.6.126 mouse spinal interneuron Todd query, complete",
+          "url": "https://neuromorpho.org/api/neuron/select?q=species:mouse&fq=brain_region:spinal%20cord&fq=cell_type:interneuron&fq=archive:Todd&page=0&size=500&sort=neuron_id,asc",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 510772,
+            "sha256": "3165dcc2fe894d321bbfb7971cfc326235261f1cb8b1930e6dfda523b7f55b8d",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-NEUROMORPHO-8-6-126-TODD-NTS-ROUTE-PACK",
+          "kind": "checksum_pinned_project_source_derivative",
+          "accession": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+          "url": null,
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 302205,
+            "sha256": "2071aa60e8dd41f715844a4302b80c5fe2fbad61d413cc417f7f1d87f1b3038d",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-NEUROMORPHO-8-6-126-TODD-NTS-ASSET-MANIFEST",
+          "kind": "checksum_pinned_source_asset_manifest",
+          "accession": "neuromorpho_release_8_6_126_todd_nts_v1",
+          "url": null,
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 17028,
+            "sha256": "5e52e05227f9ebeb0e05b5dae9de6f564e99bbc62ddb9624fec74ad2f4337ccb",
+            "missingReason": null
+          }
+        }
+      ],
+      "rights": {
+        "status": "repository_CC_BY_4.0_verified_original_paper_crosswalk_unresolved",
+        "note": "NeuroMorpho terms state CC BY 4.0 for material found on or downloaded from the repository and require original-paper, NeuroMorpho.Org RRID:SCR_002145 and Tecuatl et al. 2024 citations in publications. The public API DOI fields are blank and the PMID field is non-resolving for these records; resolve the original-paper mapping before publication use. The candidate 2026 neurotensin article remains unverified cohort context only."
+      },
+      "admission": {
+        "status": "supplementary_source_local_standardized_morphology_only",
+        "note": "Exactly 30 source-local standardized 3D CNG SWC routes are admitted as supplementary main-scene morphologies. Ten records are source-labelled Diameter and may expose a radius-derived display; 20 are No Diameter and remain centerline-only. They add zero to the frozen 1,097-record 8.6.124 denominator and create no paper-cell mapping, cross-source identity, atlas registration, measurement, axon, source-native DAT contour, or same-specimen internal primitive."
+      },
+      "researchLanes": [
+        "morphology",
+        "sources"
+      ],
+      "linkedUpgradeIds": [
+        "UPG-245",
+        "UPG-247"
+      ],
+      "missingness": [
+        {
+          "field": "source_paper_citation_and_cell_crosswalk",
+          "status": "NOT_ESTABLISHED",
+          "reason": "All 30 current API records have blank DOI and non-resolving PMID metadata. A matching article cohort size and broad neurotensin label are not a stable object-level crosswalk; the verified per-record paper citation count remains zero."
+        },
+        {
+          "field": "original_Neurolucida_file_and_standardization_log",
+          "status": "UNAVAILABLE",
+          "reason": "The current repository direct route provides standardized CNG SWCs; source-native Neurolucida files and standardization logs are not available."
+        },
+        {
+          "field": "biological_morphology_completeness",
+          "status": "NOT_ESTABLISHED",
+          "reason": "The repository reports Dendrites Complete and each standardized SWC parses as a connected tree, but neither source metadata nor file-level topology independently establishes biological completeness."
+        },
+        {
+          "field": "same_specimen_internal_structure",
+          "status": "UNAVAILABLE",
+          "reason": "The standardized reconstructions contain no same-specimen nucleus, membrane segmentation, organelle, synapse, bouton, receptor distribution or ultrastructure; rendered internal primitive count remains zero."
+        },
+        {
+          "field": "atlas_registration",
+          "status": "NOT_ESTABLISHED",
+          "reason": "All 30 geometries remain in standardized NeuroMorpho source-local frames; no atlas transform or anatomical registration is available."
+        },
+        {
+          "field": "cross_source_identity",
+          "status": "NOT_ESTABLISHED",
+          "reason": "The routes are source-local reconstruction records and create no identity with a taxonomy, study cell, or another morphology source."
+        }
+      ]
+    },
+    {
+      "id": "SRC-SVARA-2018-SBEM",
+      "aliases": [
+        "svara-2018",
+        "Svara et al. 2018 larval zebrafish spinal SBEM",
+        "10.1016/j.celrep.2018.05.023"
+      ],
+      "sourceKind": "dataset",
+      "title": "Svara et al. 2018 larval zebrafish spinal SBEM and selected interneuron reconstructions",
+      "shortLabel": "Svara 2018 spinal SBEM",
+      "citation": {
+        "text": "Svara, Kornfeld, Denk and Bollmann 2018",
+        "doi": "10.1016/j.celrep.2018.05.023",
+        "articleUrl": "https://www.sciencedirect.com/science/article/pii/S2211124718307563"
+      },
+      "accessions": [
+        "PMID:29874581",
+        "Cell Reports PII:S2211124718307563",
+        "MPG.PuRe:item_3055210_7"
+      ],
+      "speciesScopes": [
+        {
+          "scientificName": "Danio rerio",
+          "taxonId": "NCBITaxon:7955",
+          "context": "one source larva at 6 dpf; cross-species spinal circuit reference only",
+          "authority": "primary_article"
+        }
+      ],
+      "lifeStageScopes": [
+        {
+          "value": "6 dpf larva",
+          "context": "one serial block-face EM specimen",
+          "authority": "primary_article",
+          "missingReason": null
+        }
+      ],
+      "regionScopes": [
+        {
+          "value": "larval spinal cord",
+          "context": "one hemisegment-focused volume with adjacent segment coverage",
+          "authority": "primary_article"
+        }
+      ],
+      "conditionScopes": [
+        "source-reported locomotor-circuit reconstruction"
+      ],
+      "modalities": [
+        "serial block-face electron microscopy",
+        "article-reported selected cell reconstructions",
+        "article-reported synaptic connectivity"
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "larva",
+          "count": 1,
+          "scope": "source EM volume",
+          "authority": "primary_article",
+          "missingReason": null
+        }
+      ],
+      "recordSets": [
+        {
+          "recordSetId": "RS-SVARA-CID-2018-RECONSTRUCTIONS",
+          "parentSourceId": "SRC-SVARA-2018-SBEM",
+          "recordKind": "article_reported_cell_reconstruction",
+          "unitOfObservation": "selected morphology-consistent CiD reconstruction",
+          "assignmentAuthority": "primary_article_morphology_consistent_with_CiD; not genetic V2a assignment",
+          "includedRecordCount": {
+            "value": 39,
+            "unit": "source-reported morphology-consistent CiD reconstructions",
+            "scope": "39 among 170 completely traced cells in one larval specimen; not prevalence and not an exact deposited roster",
+            "authority": "primary_article_reported_count",
+            "missingReason": null
+          },
+          "cellRosterAvailability": "not_linkable",
+          "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+          "dataPath": "data/svara-larval-zebrafish-spinal-sbem-reference-0.1.json",
+          "idField": "stable_neuron_id_not_verified",
+          "childRosterRef": {
+            "status": "not_linkable",
+            "path": null,
+            "idField": null,
+            "missingReason": "The official record lists supplement ZIP routes, but archive members and stable cell IDs have not been inspected."
+          }
+        },
+        {
+          "recordSetId": "RS-SVARA-COBL-2018-RECONSTRUCTIONS",
+          "parentSourceId": "SRC-SVARA-2018-SBEM",
+          "recordKind": "article_reported_cell_reconstruction",
+          "unitOfObservation": "selected source-reported CoBL reconstruction",
+          "assignmentAuthority": "primary_article_source_reported_CoBL_morphology_and_connectivity",
+          "includedRecordCount": {
+            "value": 34,
+            "unit": "source-reported CoBL reconstructions",
+            "scope": "selected from one larval specimen for circuit analysis; not prevalence and not an exact deposited roster",
+            "authority": "primary_article_reported_count",
+            "missingReason": null
+          },
+          "cellRosterAvailability": "not_linkable",
+          "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+          "dataPath": "data/svara-larval-zebrafish-spinal-sbem-reference-0.1.json",
+          "idField": "stable_neuron_id_not_verified",
+          "childRosterRef": {
+            "status": "not_linkable",
+            "path": null,
+            "idField": null,
+            "missingReason": "The official record lists supplement ZIP routes, but archive members and stable cell IDs have not been inspected."
+          }
+        }
+      ],
+      "assets": [
+        {
+          "id": "ASSET-SVARA-2018-MMC6",
+          "kind": "publisher_supplement_archive",
+          "accession": "MPG.PuRe:file_3055230; 1-s2.0-S2211124718307563-mmc6.zip",
+          "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055230/1-s2.0-S2211124718307563-mmc6.zip",
+          "bundled": false,
+          "integrity": {
+            "status": "not_inventoried",
+            "bytes": null,
+            "sha256": null,
+            "missingReason": "Archive bytes, checksum, members, stable object identifiers and per-package reuse terms have not been verified."
+          }
+        },
+        {
+          "id": "ASSET-SVARA-2018-MMC7",
+          "kind": "publisher_supplement_archive",
+          "accession": "MPG.PuRe:file_3055231; 1-s2.0-S2211124718307563-mmc7.zip",
+          "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055231/1-s2.0-S2211124718307563-mmc7.zip",
+          "bundled": false,
+          "integrity": {
+            "status": "not_inventoried",
+            "bytes": null,
+            "sha256": null,
+            "missingReason": "Archive bytes, checksum, members, stable object identifiers and per-package reuse terms have not been verified."
+          }
+        },
+        {
+          "id": "ASSET-SVARA-2018-MMC8",
+          "kind": "publisher_supplement_archive",
+          "accession": "MPG.PuRe:file_3055232; 1-s2.0-S2211124718307563-mmc8.zip",
+          "url": "https://pure.mpg.de/pubman/item/item_3055210_7/component/file_3055232/1-s2.0-S2211124718307563-mmc8.zip",
+          "bundled": false,
+          "integrity": {
+            "status": "not_inventoried",
+            "bytes": null,
+            "sha256": null,
+            "missingReason": "Archive bytes, checksum, members, stable object identifiers and per-package reuse terms have not been verified."
+          }
+        }
+      ],
+      "rights": {
+        "status": "article_cc_by_4.0_supplement_terms_unverified",
+        "note": "The article states CC BY 4.0. The supplement archives are linked from the official institutional publication record, but file-specific licence and redistribution terms have not been verified; public access is not treated as reuse permission."
+      },
+      "admission": {
+        "status": "article_metadata_and_official_links_only",
+        "note": "The source-reported CiD and CoBL context is registered for discovery. No archive member, cell skeleton, mesh, synapse edge, coordinate, same-cell internal object, or cross-species mouse relationship is admitted."
+      },
+      "researchLanes": [
+        "types",
+        "morphology",
+        "connectivity",
+        "internal_microdetail",
+        "sources"
+      ],
+      "linkedUpgradeIds": [
+        "UPG-240",
+        "UPG-250"
+      ],
+      "missingness": [
+        {
+          "field": "supplement_archive_members_and_integrity",
+          "status": "NOT_INVENTORIED",
+          "reason": "Three official ZIP routes are exposed, but exact bytes, checksums and member files have not been inspected."
+        },
+        {
+          "field": "stable_cell_ids_and_trace_completeness",
+          "status": "NOT_ESTABLISHED",
+          "reason": "Article-reported class counts do not provide verified package-level cell IDs or per-cell trace completeness."
+        },
+        {
+          "field": "supplemental_reuse_terms",
+          "status": "NOT_VERIFIED",
+          "reason": "The article-level CC BY 4.0 notice has not been independently confirmed for each archive."
+        },
+        {
+          "field": "same_cell_internal_structures",
+          "status": "UNAVAILABLE",
+          "reason": "No exact archived cell payload has been inspected or admitted; nucleus, organelle and synapse geometry remain zero."
+        },
+        {
+          "field": "cross_species_mouse_identity",
+          "status": "NOT_ESTABLISHED",
+          "reason": "Larval zebrafish IDs and coordinates are never transferred to mouse interneuron records."
+        }
+      ]
+    },
+    {
+      "id": "SRC-BANC-V888-IN14A018",
+      "aliases": [
+        "banc-v888-in14a018",
+        "BANC v888 root 720575941350424112"
+      ],
+      "sourceKind": "cross_region_reference",
+      "title": "BANC v888 adult-female Drosophila VNC interneuron IN14A018 source morphology",
+      "shortLabel": "BANC v888 IN14A018",
+      "citation": {
+        "text": "BANC / Lee Lab v888 source dataset; BANC primary article",
+        "doi": "10.1038/s41586-026-10735-w",
+        "articleUrl": "https://doi.org/10.1038/s41586-026-10735-w"
+      },
+      "accessions": [
+        "Dataverse: doi:10.7910/DVN/7WTH1N version 3",
+        "BANC CAVE materialization v888",
+        "BANC root 720575941350424112",
+        "BANC nucleus 73044750394982464"
+      ],
+      "speciesScopes": [
+        {
+          "scientificName": "Drosophila melanogaster",
+          "taxonId": "NCBITaxon:7227",
+          "context": "one adult female whole-VNC connectome specimen; comparative geometry lane only",
+          "authority": "BANC_source_metadata_and_primary_article"
+        }
+      ],
+      "lifeStageScopes": [
+        {
+          "value": "adult",
+          "context": "adult female BANC VNC specimen",
+          "authority": "BANC_source_metadata",
+          "missingReason": null
+        }
+      ],
+      "regionScopes": [
+        {
+          "value": "ventral nerve cord",
+          "context": "source-local v888 intrinsic VNC neuron; not spinal cord",
+          "authority": "BANC_source_metadata"
+        }
+      ],
+      "conditionScopes": [
+        "source-reported proofread connectome reconstruction"
+      ],
+      "modalities": [
+        "source SWC centerline morphology",
+        "source nucleus annotation point",
+        "BANC v888 source metadata"
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "exact_source_local_reconstructed_neuron",
+          "count": 1,
+          "scope": "one explicitly selected v888 root ID; a route-member count, not an interneuron census or type denominator",
+          "authority": "checksum_verified_source_member_and_exact_root_metadata",
+          "missingReason": null
+        },
+        {
+          "unit": "BANC_dataset_segment_metadata_row",
+          "count": 188162,
+          "scope": "dataset metadata segments; not cells, neurons, or interneuron types",
+          "authority": "pinned_BANC_source_release",
+          "missingReason": null
+        }
+      ],
+      "recordSets": [
+        {
+          "recordSetId": "RS-BANC-V888-IN14A018-MORPHOLOGY",
+          "parentSourceId": "SRC-BANC-V888-IN14A018",
+          "recordKind": "source_local_morphology_route",
+          "unitOfObservation": "one_source_reconstructed_neuron",
+          "assignmentAuthority": "stable_root_id_plus_checksum_verified_SWC_and_exact_nucleus_annotation_row",
+          "includedRecordCount": {
+            "value": 1,
+            "unit": "source_local_morphology_routes",
+            "scope": "Exactly BANC v888 root 720575941350424112 / source type IN14A018; this one-object route is not a species-wide or interneuron denominator and is excluded from all mouse counts.",
+            "authority": "project_verified_source_route_contract",
+            "missingReason": null
+          },
+          "cellRosterAvailability": "bundled_exact",
+          "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+          "dataPath": "data/banc-v888-in14a018-morphology-route-0.1.json",
+          "idField": "identity.rootId",
+          "childRosterRef": {
+            "status": "bundled_exact",
+            "path": "data/banc-v888-in14a018-morphology-route-0.1.json",
+            "idField": "identity.rootId",
+            "missingReason": null
+          },
+          "sourceObjectSetRef": {
+            "status": "bundled_exact",
+            "path": "data/banc-v888-in14a018-morphology-route-0.1.json",
+            "idField": "skeleton.memberName",
+            "missingReason": null
+          }
+        }
+      ],
+      "assets": [
+        {
+          "id": "ASSET-BANC-V888-IN14A018-SWC",
+          "kind": "source_standardized_swc_member",
+          "accession": "720575941350424112_skeleton.swc; Dataverse file 13952186; BANC v888",
+          "url": "https://doi.org/10.7910/DVN/7WTH1N",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 489716,
+            "sha256": "aff95c90a2ba5449f93573769f61aad6b02eb3db75108287d8cb6ee78f0d395e",
+            "missingReason": null
+          }
+        }
+      ],
+      "rights": {
+        "status": "CC-BY-4.0",
+        "note": "Dataverse DOI 10.7910/DVN/7WTH1N v3 reports CC BY 4.0. Attribute BANC / Lee Lab and cite the primary article DOI 10.1038/s41586-026-10735-w. This exact SWC member and the minimal source-derived nucleus point are distributed with attribution; object identity remains source-local."
+      },
+      "admission": {
+        "status": "source_local_fly_comparison_centerline_and_nucleus_point_only",
+        "note": "One checksum-verified v888 adult-female Drosophila VNC neuron is displayed in a separate comparative panel as SWC parent-child centerline segments plus one same-root nucleus annotation point. SWC radii are ignored; node type 2 is not assigned axon/dendrite semantics. No cell/nucleus surface, mitochondria or synapse geometry, mouse join, interneuron denominator, atlas registration, or measurement is admitted."
+      },
+      "researchLanes": [
+        "morphology",
+        "internal_microdetail",
+        "sources"
+      ],
+      "linkedUpgradeIds": [
+        "UPG-221",
+        "UPG-248",
+        "UPG-249"
+      ],
+      "missingness": [
+        {
+          "field": "cell_and_nucleus_surfaces",
+          "status": "NOT_ADMITTED",
+          "reason": "Only the SWC centerline tree and a same-root point annotation are admitted; no membrane or nucleus boundary is included."
+        },
+        {
+          "field": "mitochondria_and_synapse_geometry",
+          "status": "NOT_ADMITTED",
+          "reason": "The source-reported count of 31 mitochondria has no verified candidate-specific positions in this route; no organelle or synapse geometry is rendered."
+        },
+        {
+          "field": "axon_dendrite_assignment",
+          "status": "NOT_ESTABLISHED",
+          "reason": "Every SWC node uses source type code 2, whose axon/dendrite semantics are not established; the viewer preserves the undivided centerline."
+        },
+        {
+          "field": "mouse_interneuron_identity_or_homology",
+          "status": "NOT_ESTABLISHED",
+          "reason": "This is a Drosophila VNC comparison object and is not linked or mapped to mouse spinal records or types."
+        },
+        {
+          "field": "atlas_registration_and_measurement",
+          "status": "NOT_AUTHORIZED",
+          "reason": "Coordinates stay in BANC native nanometres with display-only recentering and unit conversion; no atlas transform or biological measurement is authorized."
+        }
+      ]
+    },
+    {
+      "id": "SRC-GARCIA-RAMIREZ-2022",
+      "aliases": [
+        "garcia-ramirez-2022:aggregate-physiology",
+        "Figshare:20428674",
+        "PMCID:PMC9385948"
+      ],
+      "sourceKind": "dataset",
+      "title": "Identification of adult spinal Shox2 neuronal subpopulations based on unbiased computational clustering of electrophysiological properties",
+      "shortLabel": "Garcia-Ramirez adult physiology 2022",
+      "citation": {
+        "text": "Garcia-Ramirez DL, Singh S, McGrath JR, Ha NT and Dougherty KJ (2022). Identification of adult spinal Shox2 neuronal subpopulations based on unbiased computational clustering of electrophysiological properties. Frontiers in Neural Circuits 16:957084. CC BY 4.0.",
+        "doi": "10.3389/fncir.2022.957084",
+        "articleUrl": "https://doi.org/10.3389/fncir.2022.957084"
+      },
+      "accessions": [
+        "PMID:35991345",
+        "PMCID:PMC9385948",
+        "Figshare:20428674",
+        "Figshare-file:36551718",
+        "DOI:10.3389/fncir.2022.957084.s001"
+      ],
+      "speciesScopes": [
+        {
+          "scientificName": "Mus musculus",
+          "taxonId": "NCBITaxon:10090",
+          "context": "adult Shox2/Chx10 reporter whole-cell recording study",
+          "authority": "source_reported"
+        }
+      ],
+      "lifeStageScopes": [
+        {
+          "value": "adult, 8–25 weeks",
+          "context": "study-level recording preparation; individual recorded-cell ages remain unavailable",
+          "authority": "checksum_pinned_primary_article_methods",
+          "missingReason": null
+        }
+      ],
+      "regionScopes": [
+        {
+          "value": "lumbar spinal cord, L2–L5 transverse slices",
+          "context": "source study preparation, not atlas coordinates or an individual observation-to-segment assignment",
+          "authority": "checksum_pinned_primary_article_methods"
+        }
+      ],
+      "conditionScopes": [
+        "adult lumbar transverse slices",
+        "whole-cell patch clamp at room temperature",
+        "source-local alternative reporter, firing, k-means and hierarchical partitions"
+      ],
+      "modalities": [
+        "published aggregate electrophysiology summaries",
+        "primary article methodological context"
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "source_recorded_neuronal_observations",
+          "count": 171,
+          "scope": "One recorded study analysis pool: 143 Shox2 and 28 Chx10 observations. Four alternative partitions are not pooled; this is not an animal count or an individually identified physical-cell roster.",
+          "authority": "checksum_pinned_published_source_context",
+          "missingReason": null,
+          "denominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+          "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "sourceLocator": {
+            "fileName": "PMC9385948.fullText.xml",
+            "sectionId": null,
+            "sectionTitleRaw": "Measurement and calculation of passive and active membrane properties",
+            "paragraphOrdinalWithinSection": 1,
+            "elementSha256": "20b23253da3ab386d83360aef2cb111d12886713000e27496920e3f92b81f367"
+          },
+          "reporterComposition": {
+            "Shox2": 143,
+            "Chx10": 28
+          },
+          "independentAnimalCount": null,
+          "cellToAnimalMapping": null
+        },
+        {
+          "unit": "source_reported_shox2_reporter_mice",
+          "count": 51,
+          "scope": "Source-reported Shox2 reporter animal cohort; no individual cell-to-animal mapping is provided in the retained adapter scope.",
+          "authority": "checksum_pinned_published_source_context",
+          "missingReason": null,
+          "denominatorId": "garcia-ramirez-2022:aggregate-physiology:shox2-reporter-mice-51",
+          "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "sourceLocator": {
+            "fileName": "PMC9385948.fullText.xml",
+            "sectionId": "s2",
+            "sectionTitleRaw": "Materials and methods",
+            "paragraphOrdinalWithinSection": 1,
+            "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+          }
+        },
+        {
+          "unit": "source_reported_chx10_reporter_mice",
+          "count": 6,
+          "scope": "Separate source-reported Chx10 reporter animal cohort; no individual cell-to-animal mapping is provided in the retained adapter scope.",
+          "authority": "checksum_pinned_published_source_context",
+          "missingReason": null,
+          "denominatorId": "garcia-ramirez-2022:aggregate-physiology:chx10-reporter-mice-6",
+          "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "sourceLocator": {
+            "fileName": "PMC9385948.fullText.xml",
+            "sectionId": "s2",
+            "sectionTitleRaw": "Materials and methods",
+            "paragraphOrdinalWithinSection": 1,
+            "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+          }
+        },
+        {
+          "unit": "prior_study_reused_shox2_recorded_observation_subset",
+          "count": 60,
+          "scope": "These Shox2 recordings were reused from a prior study within the present 171-observation pool; they are not added again to the current cohort.",
+          "authority": "checksum_pinned_published_source_context",
+          "missingReason": null,
+          "parentDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+          "isSubsetOfCurrentShox2Cohort": true,
+          "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "sourceLocator": {
+            "fileName": "PMC9385948.fullText.xml",
+            "sectionId": "s2",
+            "sectionTitleRaw": "Materials and methods",
+            "paragraphOrdinalWithinSection": 1,
+            "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+          }
+        },
+        {
+          "unit": "prior_study_reused_shox2_reporter_mice_subset",
+          "count": 28,
+          "scope": "These are 28 of the 51 source-reported Shox2 mice; they are a prior-study reuse subset and are not additional animals.",
+          "authority": "checksum_pinned_published_source_context",
+          "missingReason": null,
+          "parentDenominatorId": "garcia-ramirez-2022:aggregate-physiology:shox2-reporter-mice-51",
+          "isSubsetOfCurrentShox2Cohort": true,
+          "sourceInformationPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "sourceLocator": {
+            "fileName": "PMC9385948.fullText.xml",
+            "sectionId": "s2",
+            "sectionTitleRaw": "Materials and methods",
+            "paragraphOrdinalWithinSection": 1,
+            "elementSha256": "03eeaa60d1f4523ec4c8714598b0c21fbd566b736229eadc95be3dbd903c86fc"
+          }
+        }
+      ],
+      "recordSets": [
+        {
+          "recordSetId": "RS-GARCIA-RAMIREZ-ADULT-SPINAL-AGGREGATE-PHYSIOLOGY",
+          "parentSourceId": "SRC-GARCIA-RAMIREZ-2022",
+          "recordKind": "published_study_aggregate_electrophysiology_information",
+          "unitOfObservation": "source_study_aggregate_information_adapter",
+          "assignmentAuthority": "literal_published_supplement_tables_and_attributed_primary_article_context",
+          "includedRecordCount": {
+            "value": 1,
+            "unit": "study_aggregate_information_adapters",
+            "scope": "One information adapter retains four alternative partitions of the same 171 recorded neuronal observations; 48 property rows, 192 source-reported mean/SD summaries and 48 source statistical comparisons are nested evidence, not extra cells or types.",
+            "authority": "checksum_pinned_project_derivative",
+            "missingReason": null
+          },
+          "cellRosterAvailability": "not_applicable_aggregate_summary",
+          "canonicalIdentityStatus": "source_local_not_cross_source_canonical",
+          "dataPath": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "idField": "adapterId",
+          "childRosterRef": {
+            "status": "not_applicable_aggregate_summary",
+            "path": null,
+            "idField": null,
+            "missingReason": "This is a study aggregate information adapter. Retained source tables do not establish an individual physical-cell, molecular-profile or cell-to-animal roster; group/table identifiers cannot be promoted to cell identities."
+          },
+          "sourceInformationRef": {
+            "status": "bundled_aggregate_information",
+            "path": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+            "idField": "adapterId",
+            "href": "/explore/cell-types/additional#garcia-ramirez-physiology-panel"
+          },
+          "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+          "alternativePartitions": [
+            {
+              "tableId": "garcia-ramirez-2022:aggregate-physiology:ST1",
+              "partitionKind": "reporter_population",
+              "groupCounts": [
+                143,
+                28
+              ],
+              "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+              "groupCountSum": 171
+            },
+            {
+              "tableId": "garcia-ramirez-2022:aggregate-physiology:ST2",
+              "partitionKind": "firing_pattern",
+              "groupCounts": [
+                88,
+                49,
+                24,
+                10
+              ],
+              "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+              "groupCountSum": 171
+            },
+            {
+              "tableId": "garcia-ramirez-2022:aggregate-physiology:ST3",
+              "partitionKind": "k_means",
+              "groupCounts": [
+                23,
+                11,
+                68,
+                69
+              ],
+              "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+              "groupCountSum": 171
+            },
+            {
+              "tableId": "garcia-ramirez-2022:aggregate-physiology:ST4",
+              "partitionKind": "hierarchical",
+              "groupCounts": [
+                15,
+                20,
+                32,
+                25,
+                27,
+                52
+              ],
+              "sourceRecordedPoolDenominatorId": "garcia-ramirez-2022:aggregate-physiology:recorded-pool-171",
+              "groupCountSum": 171
+            }
+          ],
+          "sourceSummaryCounts": {
+            "supplementTables": 4,
+            "propertyRows": 48,
+            "meanSdSummaries": 192,
+            "sourceReportedComparisons": 48
+          },
+          "admissionBoundary": {
+            "newMolecularProfiles": 0,
+            "newPhysicalCellRosterRows": 0,
+            "newObservedGeometryObjects": 0,
+            "sameCellCrossSourceJoins": 0,
+            "registrations": 0,
+            "sourceTracesAvailableInAdapterScope": false,
+            "rawAbfFilesAvailableInAdapterScope": false,
+            "physiologyGroupsAreMolecularCellTypes": false,
+            "clusterLabelsAreGeneticLineage": false,
+            "adultAtlasCoordinatesEstablished": false,
+            "M2Admission": 0,
+            "M4Admission": 0,
+            "text": "These are published aggregate electrophysiology summaries and study-local classification methods. No cell-level roster, raw trace, morphology, atlas placement, molecular equivalence, synapse or internal structure is admitted."
+          }
+        }
+      ],
+      "assets": [
+        {
+          "id": "ASSET-GARCIA-RAMIREZ-2022-AGGREGATE-FACTS",
+          "kind": "checksum_pinned_project_derivative",
+          "accession": "ohri-garcia-ramirez-adult-spinal-aggregate-physiology-0.1.0",
+          "url": null,
+          "path": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 203887,
+            "sha256": "48e1788f3ee0e4472e7431f349418aea078a4b89b3766c35bcddfb946f4f1bf9",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-GARCIA-RAMIREZ-2022-DATA-SHEET-1",
+          "kind": "checksum_pinned_original_source",
+          "accession": "Figshare-file:36551718",
+          "url": "https://ndownloader.figshare.com/files/36551718",
+          "path": "data/source-candidates/garcia-ramirez-physiology-20261004/data-sheet-1-file36551718.docx",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 687234,
+            "sha256": "7ef955d8378020d95eeff07be83ad0c602699337fdb89b79f6796c3e96b845e2",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-GARCIA-RAMIREZ-2022-PRIMARY-ARTICLE-XML",
+          "kind": "checksum_pinned_original_source",
+          "accession": "PMCID:PMC9385948",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9385948/fullTextXML",
+          "path": "data/source-candidates/garcia-ramirez-physiology-20261004/PMC9385948.fullText.xml",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 228780,
+            "sha256": "b997e9c1565ba55dd361dcf47ac315883a9d1108c55d74c48db87f70f8bb7517",
+            "missingReason": null
+          }
+        },
+        {
+          "id": "ASSET-GARCIA-RAMIREZ-2022-FIGSHARE-METADATA",
+          "kind": "checksum_pinned_original_asset_metadata",
+          "accession": "Figshare:20428674",
+          "url": "https://api.figshare.com/v2/articles/20428674",
+          "path": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-article-20428674.json",
+          "bundled": true,
+          "integrity": {
+            "status": "verified",
+            "bytes": 35029,
+            "sha256": "ea6183d6e34233889e2900b14d980ad61edaf28f616052291bfaefac2406d865",
+            "missingReason": null
+          }
+        }
+      ],
+      "rights": {
+        "status": "CC-BY-4.0",
+        "note": "Exact Figshare asset metadata and primary article state CC BY4.0. Source attribution, original bytes, literal tables and extraction receipts are retained; no source code or inferential analysis was executed.",
+        "metadataPath": "data/source-candidates/garcia-ramirez-physiology-20261004/figshare-article-20428674.json",
+        "metadataLocator": "license"
+      },
+      "admission": {
+        "status": "published_aggregate_information_bundled",
+        "note": "One study information adapter and four alternative published aggregate tables are admitted. Zero new molecular profiles, physical-cell roster rows, geometry objects, same-cell joins, atlas registrations, M2 or M4 admissions are created."
+      },
+      "researchLanes": [
+        "electrophysiology",
+        "sources"
+      ],
+      "linkedUpgradeIds": [
+        "UPG-173"
+      ],
+      "missingness": [
+        {
+          "field": "physical_cell_and_cell_to_animal_roster",
+          "status": "NOT_ESTABLISHED",
+          "reason": "The retained aggregate tables have no individually identified cell roster or cell-to-animal mapping; n=171 denotes recorded neuronal observations, not 171 animals."
+        },
+        {
+          "field": "individual_age_and_sex",
+          "status": "NOT_ESTABLISHED",
+          "reason": "8–25 weeks is the study preparation range. Individual observation ages and sex are not provided in the retained article methods/tables."
+        },
+        {
+          "field": "raw_electrophysiology_traces_in_adapter_scope",
+          "status": "NOT_BUNDLED",
+          "reason": "No raw ABF or source trace is retained in this aggregate adapter scope; no synthetic or reconstructed trace is substituted."
+        },
+        {
+          "field": "physiology_group_molecular_equivalence",
+          "status": "NOT_ESTABLISHED",
+          "reason": "Reporter/firing/k/H groups are source analytical partitions, not new canonical molecular types or genetic lineage assignments."
+        },
+        {
+          "field": "geometry_internal_structure_and_registration",
+          "status": "NOT_ADMITTED",
+          "reason": "No observed morphology, soma boundary, internal object, source anatomical coordinates or atlas transform is established by these aggregate tables."
+        },
+        {
+          "field": "cross_source_identity",
+          "status": "NOT_ESTABLISHED",
+          "reason": "Study aggregate and group identifiers do not establish physical-cell identity or a link to another source."
+        },
+        {
+          "field": "printed_fahp_and_fi_units",
+          "status": "SOURCE_UNIT_NOT_PRINTED",
+          "reason": "Normalized fAHP amplitude and F/I slope have no printed table units; missing units remain null."
+        },
+        {
+          "field": "attributed_source_statements",
+          "status": "SOURCE_STATEMENTS_HELD",
+          "reason": "The printed Cm = Rin/τ expression is not used to recompute values. The six-positive versus four-listed k-group count remains unresolved; no assignments are filled."
         }
       ]
     }

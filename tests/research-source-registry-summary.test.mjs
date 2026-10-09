@@ -32,13 +32,13 @@ function sampleRegistry() {
 test("derives all four canonical units from the registry structure", () => {
   const summary = deriveResearchSourceRegistrySummary(registry);
   assert.deepEqual(summary, {
-    sourceCount: 27,
-    recordSetCount: 36,
-    bundledExactCellProfileRosterCount: 11,
-    bundledExactSourceObjectSetCount: 2,
+    sourceCount: 32,
+    recordSetCount: 42,
+    bundledExactCellProfileRosterCount: 13,
+    bundledExactSourceObjectSetCount: 4,
   });
-  assert.equal(formatResearchSourceRegistrySummary(summary), "27 sources · 36 record sets · 11 exact cell/profile rosters + 2 exact source-object sets");
-  assert.equal(formatResearchSourceRegistryTab(summary), "Sources · 27 canonical packages");
+  assert.equal(formatResearchSourceRegistrySummary(summary), "32 sources · 42 record sets · 13 exact cell/profile rosters + 4 exact source-object sets");
+  assert.equal(formatResearchSourceRegistryTab(summary), "Sources · 32 canonical packages");
   assert.equal(Object.isFrozen(summary), true);
 });
 

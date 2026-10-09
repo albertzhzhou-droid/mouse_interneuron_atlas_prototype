@@ -1,0 +1,90 @@
+
+> ohri-mouse-interneuron-atlas-prototype@2.91.0-research.1 build
+> WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build
+
+
+  vinext build  (Vite 8.2.1)
+
+(node:59368) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[1/5] analyze client references...
+[2Ktransforming...✓ 247 modules transformed.
+rendering chunks...
+✓ built in 2.87s
+[2/5] analyze server references...
+[2Ktransforming...✓ 446 modules transformed.
+rendering chunks...
+✓ built in 3.94s
+[33m[PLUGIN_TIMINGS] [0mYour build spent 96% of 3.9s inside plugin hooks (3.8s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - rsc:react-server-dom-webpack-alias resolveId (28%, 1.1s, 1 call)
+  - vinext:typeof-window-scan transform (26%, 1.0s, 38 calls)
+Those rows are 55% of the build; the rest of the 96% is below.
+Not measurable — 2 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - vinext:og-inline-fetch-assets resolveId (1061 calls)
+  - alias resolveId (1266 calls)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[3/5] build rsc environment...
+[2Ktransforming...✓ 241 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 3.08s
+[33m[PLUGIN_TIMINGS] [0mYour build spent 94% of 3.1s inside plugin hooks (2.9s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - vite:css transform (63%, 1.9s, 1 call)
+Those rows are 63% of the build; the rest of the 94% is below.
+Not measurable — 6 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - rsc:virtual-client-package resolveId (732 calls)
+  - vinext:og-inline-fetch-assets resolveId (746 calls)
+  - rsc:use-client transform (241 calls)
+  … and 3 more
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[4/5] build client environment...
+[2Ktransforming...✓ 451 modules transformed.
+rendering chunks...
+computing gzip size...
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.55s
+[33m[PLUGIN_TIMINGS] [0mYour build spent 83% of 5.5s inside plugin hooks (4.6s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - vite:prepare-out-dir renderStart (55%, 3.1s, 1 call)
+Those rows are 55% of the build; the rest of the 83% is below.
+Not measurable — 3 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - vinext:og-inline-fetch-assets resolveId (1099 calls)
+  - alias resolveId (1309 calls)
+  - rsc:use-server transform (451 calls)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[5/5] build ssr environment...
+[2Ktransforming...✓ 448 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 3.30s
+[33m[PLUGIN_TIMINGS] [0mYour build spent 77% of 3.3s inside plugin hooks (2.5s).
+Not measurable — 2 hooks whose calls overlap, so elapsed time covers work other calls were doing. Profile with `node --cpu-prof`:
+  - vinext:og-inline-fetch-assets resolveId (1036 calls)
+  - rsc:use-server transform (448 calls)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[0m
+  Route (app)
+  ┌ ? /                                    
+  ├ λ /api/source-records/search-index.json
+  ├ λ /api/source-rosters/cano-chol-in     
+  ├ ? /objects                             
+  └ ? /source-audits                       
+
+  λ API  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+

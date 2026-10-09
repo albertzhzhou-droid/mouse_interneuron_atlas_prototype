@@ -1,0 +1,2244 @@
+{
+  "applicationVersion": "2.91.0-research.1",
+  "origin": "http://127.0.0.1:3003",
+  "receiptSource": "Actual rendered readonly dossier textareas collected through browser UI",
+  "mouseHuman": {
+    "documentType": "research_record_scientific_dossier",
+    "schemaVersion": "0.1.0",
+    "applicationVersion": "2.91.0-research.1",
+    "selection": {
+      "key": "sci_entity:mouse.sc.vsx2_hoxa10",
+      "generation": 1,
+      "namespace": "ohri-research-mvp-0.2",
+      "status": "current_verified_record"
+    },
+    "sourceScope": {
+      "documentType": "research_record_source_scope",
+      "schemaVersion": "0.1.0",
+      "recordKey": "sci_entity:mouse.sc.vsx2_hoxa10",
+      "namespace": "ohri-research-mvp-0.2",
+      "focusKind": "sci_entity",
+      "focusId": "mouse.sc.vsx2_hoxa10",
+      "recordLocation": {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "pointer": "/records/612",
+        "releaseId": "ohri:research-explorer-index:1.13.0",
+        "status": "indexed_project_derivative_field"
+      },
+      "displayUnit": "source_bounded_evidence_entity",
+      "underlyingObservationUnit": null,
+      "registryReleaseId": "ohri-research-source-registry-0.1.0",
+      "sourceId": "SRC-KATHE-2022",
+      "sourceResolution": "exact_curated_paper_identifier",
+      "sourceLocator": "data/research-source-registry-0.1.json#/sources/17",
+      "sourceMissingReason": null,
+      "species": [
+        {
+          "value": "Mus musculus",
+          "status": "source_context_only",
+          "context": "cell-type causal experiments",
+          "authority": "project_evidence_extraction",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/17/speciesScopes/0/scientificName"
+        },
+        {
+          "value": "Homo sapiens",
+          "status": "source_context_only",
+          "context": "first-in-human EES rehabilitation cohort",
+          "authority": "project_evidence_extraction",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/17/speciesScopes/1/scientificName"
+        }
+      ],
+      "lifeStages": [
+        {
+          "value": "adult",
+          "status": "source_context_only",
+          "context": "mouse experiments",
+          "authority": "project_evidence_extraction",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/17/lifeStageScopes/0/value"
+        },
+        {
+          "value": "adult",
+          "status": "source_context_only",
+          "context": "human participants",
+          "authority": "project_evidence_extraction",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/17/lifeStageScopes/1/value"
+        }
+      ],
+      "regions": [
+        {
+          "value": "lumbar recovery circuits below SCI",
+          "status": "source_context_only",
+          "context": "mouse experiments",
+          "authority": "project_evidence_extraction",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/17/regionScopes/0/value"
+        },
+        {
+          "value": "heterogeneous chronic SCI",
+          "status": "source_context_only",
+          "context": "human cohort",
+          "authority": "project_evidence_extraction",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/17/regionScopes/1/value"
+        }
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "animal_or_participant",
+          "count": null,
+          "scope": "five distinct mouse and human conditions",
+          "authority": "condition_specific",
+          "missingReason": "Mouse and human denominators must remain condition-specific and cannot be pooled.",
+          "status": "not_retained",
+          "locator": "data/research-source-registry-0.1.json#/sources/17/experimentalUnits/0",
+          "pooledWithOtherUnits": false
+        }
+      ],
+      "conditions": [
+        {
+          "id": "CND-P09-MOUSE-ACUTE-SILENCING",
+          "sourceId": "SRC-P09",
+          "species": "Mus musculus",
+          "lifeStage": "adult",
+          "strain": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "sex": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "injuryLevel": "lumbar recovery circuit below SCI",
+          "injuryType": "EES_enabled_SCI_model",
+          "completeness": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "phase": "acute test after recovery",
+          "intervention": "optogenetic or chemogenetic silencing of SC^Vsx2::Hoxa10 neurons",
+          "comparator": "light-off or control condition",
+          "experimentalUnit": "animal",
+          "sampleSize": "n=4 per reported acute silencing experiment",
+          "causalTest": "reversible loss of function",
+          "endpoint": "locomotion",
+          "measurement": "EES-enabled walking",
+          "resultSummary": "Acute silencing suppressed EES-enabled walking and reversed when silencing ended.",
+          "statementIds": [
+            "P09-N01",
+            "P09-B01"
+          ],
+          "locator": "data/research-mvp-release-0.2.json#/conditions/6",
+          "authority": "project_evidence_extraction",
+          "canonicalParentSourceId": "SRC-KATHE-2022",
+          "denominatorPoolingAllowed": false,
+          "fieldLocators": {
+            "id": "data/research-mvp-release-0.2.json#/conditions/6/id",
+            "sourceId": "data/research-mvp-release-0.2.json#/conditions/6/sourceId",
+            "species": "data/research-mvp-release-0.2.json#/conditions/6/species",
+            "lifeStage": "data/research-mvp-release-0.2.json#/conditions/6/lifeStage",
+            "strain": "data/research-mvp-release-0.2.json#/conditions/6/strain",
+            "sex": "data/research-mvp-release-0.2.json#/conditions/6/sex",
+            "injuryLevel": "data/research-mvp-release-0.2.json#/conditions/6/injuryLevel",
+            "injuryType": "data/research-mvp-release-0.2.json#/conditions/6/injuryType",
+            "completeness": "data/research-mvp-release-0.2.json#/conditions/6/completeness",
+            "phase": "data/research-mvp-release-0.2.json#/conditions/6/phase",
+            "intervention": "data/research-mvp-release-0.2.json#/conditions/6/intervention",
+            "comparator": "data/research-mvp-release-0.2.json#/conditions/6/comparator",
+            "experimentalUnit": "data/research-mvp-release-0.2.json#/conditions/6/experimentalUnit",
+            "sampleSize": "data/research-mvp-release-0.2.json#/conditions/6/sampleSize",
+            "causalTest": "data/research-mvp-release-0.2.json#/conditions/6/causalTest",
+            "endpoint": "data/research-mvp-release-0.2.json#/conditions/6/endpoint",
+            "measurement": "data/research-mvp-release-0.2.json#/conditions/6/measurement",
+            "resultSummary": "data/research-mvp-release-0.2.json#/conditions/6/resultSummary",
+            "statementIds": "data/research-mvp-release-0.2.json#/conditions/6/statementIds"
+          }
+        },
+        {
+          "id": "CND-P09-MOUSE-CHRONIC-SILENCING",
+          "sourceId": "SRC-P09",
+          "species": "Mus musculus",
+          "lifeStage": "adult",
+          "strain": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "sex": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "injuryLevel": "lumbar recovery circuit below SCI",
+          "injuryType": "EES_rehabilitation_SCI_model",
+          "completeness": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "phase": "rehabilitation",
+          "intervention": "chronic silencing during EES rehabilitation",
+          "comparator": "rehabilitation controls",
+          "experimentalUnit": "animal",
+          "sampleSize": "n=5",
+          "causalTest": "chronic loss of function",
+          "endpoint": "locomotion",
+          "measurement": "walking recovery",
+          "resultSummary": "Chronic silencing reduced recovery during EES rehabilitation.",
+          "statementIds": [
+            "P09-N01",
+            "P09-B01"
+          ],
+          "locator": "data/research-mvp-release-0.2.json#/conditions/7",
+          "authority": "project_evidence_extraction",
+          "canonicalParentSourceId": "SRC-KATHE-2022",
+          "denominatorPoolingAllowed": false,
+          "fieldLocators": {
+            "id": "data/research-mvp-release-0.2.json#/conditions/7/id",
+            "sourceId": "data/research-mvp-release-0.2.json#/conditions/7/sourceId",
+            "species": "data/research-mvp-release-0.2.json#/conditions/7/species",
+            "lifeStage": "data/research-mvp-release-0.2.json#/conditions/7/lifeStage",
+            "strain": "data/research-mvp-release-0.2.json#/conditions/7/strain",
+            "sex": "data/research-mvp-release-0.2.json#/conditions/7/sex",
+            "injuryLevel": "data/research-mvp-release-0.2.json#/conditions/7/injuryLevel",
+            "injuryType": "data/research-mvp-release-0.2.json#/conditions/7/injuryType",
+            "completeness": "data/research-mvp-release-0.2.json#/conditions/7/completeness",
+            "phase": "data/research-mvp-release-0.2.json#/conditions/7/phase",
+            "intervention": "data/research-mvp-release-0.2.json#/conditions/7/intervention",
+            "comparator": "data/research-mvp-release-0.2.json#/conditions/7/comparator",
+            "experimentalUnit": "data/research-mvp-release-0.2.json#/conditions/7/experimentalUnit",
+            "sampleSize": "data/research-mvp-release-0.2.json#/conditions/7/sampleSize",
+            "causalTest": "data/research-mvp-release-0.2.json#/conditions/7/causalTest",
+            "endpoint": "data/research-mvp-release-0.2.json#/conditions/7/endpoint",
+            "measurement": "data/research-mvp-release-0.2.json#/conditions/7/measurement",
+            "resultSummary": "data/research-mvp-release-0.2.json#/conditions/7/resultSummary",
+            "statementIds": "data/research-mvp-release-0.2.json#/conditions/7/statementIds"
+          }
+        },
+        {
+          "id": "CND-P09-MOUSE-ACTIVATION",
+          "sourceId": "SRC-P09",
+          "species": "Mus musculus",
+          "lifeStage": "adult",
+          "strain": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "sex": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "injuryLevel": "lumbar recovery circuit below SCI",
+          "injuryType": "chronic_paralysis_model",
+          "completeness": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "phase": "chronic",
+          "intervention": "activation of SC^Vsx2::Hoxa10 neurons",
+          "comparator": "inactive/control condition",
+          "experimentalUnit": "animal",
+          "sampleSize": "n=4",
+          "causalTest": "gain of function",
+          "endpoint": "locomotion",
+          "measurement": "key recovered walking features",
+          "resultSummary": "Activation reproduced key recovered walking features under the defined conditions.",
+          "statementIds": [
+            "P09-N01",
+            "P09-B01"
+          ],
+          "locator": "data/research-mvp-release-0.2.json#/conditions/8",
+          "authority": "project_evidence_extraction",
+          "canonicalParentSourceId": "SRC-KATHE-2022",
+          "denominatorPoolingAllowed": false,
+          "fieldLocators": {
+            "id": "data/research-mvp-release-0.2.json#/conditions/8/id",
+            "sourceId": "data/research-mvp-release-0.2.json#/conditions/8/sourceId",
+            "species": "data/research-mvp-release-0.2.json#/conditions/8/species",
+            "lifeStage": "data/research-mvp-release-0.2.json#/conditions/8/lifeStage",
+            "strain": "data/research-mvp-release-0.2.json#/conditions/8/strain",
+            "sex": "data/research-mvp-release-0.2.json#/conditions/8/sex",
+            "injuryLevel": "data/research-mvp-release-0.2.json#/conditions/8/injuryLevel",
+            "injuryType": "data/research-mvp-release-0.2.json#/conditions/8/injuryType",
+            "completeness": "data/research-mvp-release-0.2.json#/conditions/8/completeness",
+            "phase": "data/research-mvp-release-0.2.json#/conditions/8/phase",
+            "intervention": "data/research-mvp-release-0.2.json#/conditions/8/intervention",
+            "comparator": "data/research-mvp-release-0.2.json#/conditions/8/comparator",
+            "experimentalUnit": "data/research-mvp-release-0.2.json#/conditions/8/experimentalUnit",
+            "sampleSize": "data/research-mvp-release-0.2.json#/conditions/8/sampleSize",
+            "causalTest": "data/research-mvp-release-0.2.json#/conditions/8/causalTest",
+            "endpoint": "data/research-mvp-release-0.2.json#/conditions/8/endpoint",
+            "measurement": "data/research-mvp-release-0.2.json#/conditions/8/measurement",
+            "resultSummary": "data/research-mvp-release-0.2.json#/conditions/8/resultSummary",
+            "statementIds": "data/research-mvp-release-0.2.json#/conditions/8/statementIds"
+          }
+        },
+        {
+          "id": "CND-P09-MOUSE-ABLATION",
+          "sourceId": "SRC-P09",
+          "species": "Mus musculus",
+          "lifeStage": "adult",
+          "strain": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "sex": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "injuryLevel": "lateral spinal lesion",
+          "injuryType": "lateral_hemisection",
+          "completeness": "incomplete lateral hemisection",
+          "phase": "spontaneous recovery",
+          "intervention": "pre-injury ablation of SC^Vsx2::Hoxa10 neurons",
+          "comparator": "control ablation condition and healthy mice",
+          "experimentalUnit": "animal",
+          "sampleSize": "n=5 per group",
+          "causalTest": "ablation",
+          "endpoint": "locomotion",
+          "measurement": "spontaneous walking recovery and healthy basic walking",
+          "resultSummary": "Ablation impaired spontaneous recovery but produced no detected basic-walking deficit in healthy mice.",
+          "statementIds": [
+            "P09-N01",
+            "P09-B01"
+          ],
+          "locator": "data/research-mvp-release-0.2.json#/conditions/9",
+          "authority": "project_evidence_extraction",
+          "canonicalParentSourceId": "SRC-KATHE-2022",
+          "denominatorPoolingAllowed": false,
+          "fieldLocators": {
+            "id": "data/research-mvp-release-0.2.json#/conditions/9/id",
+            "sourceId": "data/research-mvp-release-0.2.json#/conditions/9/sourceId",
+            "species": "data/research-mvp-release-0.2.json#/conditions/9/species",
+            "lifeStage": "data/research-mvp-release-0.2.json#/conditions/9/lifeStage",
+            "strain": "data/research-mvp-release-0.2.json#/conditions/9/strain",
+            "sex": "data/research-mvp-release-0.2.json#/conditions/9/sex",
+            "injuryLevel": "data/research-mvp-release-0.2.json#/conditions/9/injuryLevel",
+            "injuryType": "data/research-mvp-release-0.2.json#/conditions/9/injuryType",
+            "completeness": "data/research-mvp-release-0.2.json#/conditions/9/completeness",
+            "phase": "data/research-mvp-release-0.2.json#/conditions/9/phase",
+            "intervention": "data/research-mvp-release-0.2.json#/conditions/9/intervention",
+            "comparator": "data/research-mvp-release-0.2.json#/conditions/9/comparator",
+            "experimentalUnit": "data/research-mvp-release-0.2.json#/conditions/9/experimentalUnit",
+            "sampleSize": "data/research-mvp-release-0.2.json#/conditions/9/sampleSize",
+            "causalTest": "data/research-mvp-release-0.2.json#/conditions/9/causalTest",
+            "endpoint": "data/research-mvp-release-0.2.json#/conditions/9/endpoint",
+            "measurement": "data/research-mvp-release-0.2.json#/conditions/9/measurement",
+            "resultSummary": "data/research-mvp-release-0.2.json#/conditions/9/resultSummary",
+            "statementIds": "data/research-mvp-release-0.2.json#/conditions/9/statementIds"
+          }
+        },
+        {
+          "id": "CND-P09-HUMAN-EES",
+          "sourceId": "SRC-P09",
+          "species": "Homo sapiens",
+          "lifeStage": "adult",
+          "strain": {
+            "value": null,
+            "missingReason": "not_applicable"
+          },
+          "sex": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "injuryLevel": "chronic SCI cohort",
+          "injuryType": "heterogeneous_human_SCI",
+          "completeness": {
+            "value": null,
+            "missingReason": "not_reported"
+          },
+          "phase": "five months of rehabilitation",
+          "intervention": "epidural electrical stimulation plus rehabilitation four to five times weekly",
+          "comparator": "within-participant pre-treatment baseline; no randomized control group",
+          "experimentalUnit": "participant",
+          "sampleSize": "n=9",
+          "causalTest": {
+            "value": null,
+            "missingReason": "not_applicable"
+          },
+          "endpoint": "locomotion",
+          "measurement": "supported walking, motor score, six-minute walking distance and FDG uptake",
+          "resultSummary": "Walking-related outcomes improved in this first-in-human uncontrolled cohort.",
+          "humanCausalEvidence": false,
+          "statementIds": [
+            "P09-L01",
+            "P09-B01",
+            "P09-B02"
+          ],
+          "locator": "data/research-mvp-release-0.2.json#/conditions/10",
+          "authority": "project_evidence_extraction",
+          "canonicalParentSourceId": "SRC-KATHE-2022",
+          "denominatorPoolingAllowed": false,
+          "fieldLocators": {
+            "id": "data/research-mvp-release-0.2.json#/conditions/10/id",
+            "sourceId": "data/research-mvp-release-0.2.json#/conditions/10/sourceId",
+            "species": "data/research-mvp-release-0.2.json#/conditions/10/species",
+            "lifeStage": "data/research-mvp-release-0.2.json#/conditions/10/lifeStage",
+            "strain": "data/research-mvp-release-0.2.json#/conditions/10/strain",
+            "sex": "data/research-mvp-release-0.2.json#/conditions/10/sex",
+            "injuryLevel": "data/research-mvp-release-0.2.json#/conditions/10/injuryLevel",
+            "injuryType": "data/research-mvp-release-0.2.json#/conditions/10/injuryType",
+            "completeness": "data/research-mvp-release-0.2.json#/conditions/10/completeness",
+            "phase": "data/research-mvp-release-0.2.json#/conditions/10/phase",
+            "intervention": "data/research-mvp-release-0.2.json#/conditions/10/intervention",
+            "comparator": "data/research-mvp-release-0.2.json#/conditions/10/comparator",
+            "experimentalUnit": "data/research-mvp-release-0.2.json#/conditions/10/experimentalUnit",
+            "sampleSize": "data/research-mvp-release-0.2.json#/conditions/10/sampleSize",
+            "causalTest": "data/research-mvp-release-0.2.json#/conditions/10/causalTest",
+            "endpoint": "data/research-mvp-release-0.2.json#/conditions/10/endpoint",
+            "measurement": "data/research-mvp-release-0.2.json#/conditions/10/measurement",
+            "resultSummary": "data/research-mvp-release-0.2.json#/conditions/10/resultSummary",
+            "humanCausalEvidence": "data/research-mvp-release-0.2.json#/conditions/10/humanCausalEvidence",
+            "statementIds": "data/research-mvp-release-0.2.json#/conditions/10/statementIds"
+          }
+        }
+      ],
+      "fieldLocators": [
+        {
+          "index": 0,
+          "label": "Entity kind",
+          "value": "molecular spatial population",
+          "authority": "project_curated",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/0",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 1,
+          "label": "Classification axes",
+          "value": "molecular identity · spatial identity",
+          "authority": "project_curated",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/1",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 2,
+          "label": "Markers",
+          "value": "Vsx2 · Hoxa10",
+          "authority": "source_reported",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/2",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 3,
+          "label": "Transmitter context",
+          "value": "excitatory",
+          "authority": "project_curated",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/3",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 4,
+          "label": "Segment context",
+          "value": "lumbar · Lumbar enlargement",
+          "authority": "source_reported",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/4",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 5,
+          "label": "Injury model",
+          "value": "lateral hemisection",
+          "authority": "source_reported",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/5",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 6,
+          "label": "Endpoint",
+          "value": "locomotion",
+          "authority": "source_reported",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/6",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 7,
+          "label": "Causal grade",
+          "value": "NEC · SUF",
+          "authority": "project_curated",
+          "locator": "P09",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/7",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 8,
+          "label": "Experimental condition",
+          "value": "lumbar recovery circuit below SCI; optogenetic or chemogenetic silencing of SC^Vsx2::Hoxa10 neurons · lumbar recovery circuit below SCI; chronic silencing during EES rehabilitation · lumbar recovery circuit below SCI; activation of SC^Vsx2::Hoxa10 neurons · lateral spinal lesion; pre-injury ablation of SC^Vsx2::Hoxa10 neurons · chronic SCI cohort; epidural electrical stimulation plus rehabilitation four to five times weekly",
+          "authority": "source_reported",
+          "locator": "CND-P09-MOUSE-ACUTE-SILENCING · CND-P09-MOUSE-CHRONIC-SILENCING · CND-P09-MOUSE-ACTIVATION · CND-P09-MOUSE-ABLATION · CND-P09-HUMAN-EES",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/8",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 9,
+          "label": "Sample-size reporting",
+          "value": "n=4 per reported acute silencing experiment · n=5 · n=4 · n=5 per group · n=9",
+          "authority": "source_reported",
+          "locator": "CND-P09-MOUSE-ACUTE-SILENCING · CND-P09-MOUSE-CHRONIC-SILENCING · CND-P09-MOUSE-ACTIVATION · CND-P09-MOUSE-ABLATION · CND-P09-HUMAN-EES",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/612/evidence/9",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+          "biologicalTruthVerifiedByHash": false
+        }
+      ],
+      "gaps": [
+        {
+          "axisId": "atlas_placement",
+          "label": "Atlas placement",
+          "status": "not_established",
+          "reasonCode": "no_admitted_transform",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "P09",
+          "rawValue": "not_established",
+          "detail": "The SCI evidence entity is displayed in a separate synthetic lane; no transform links it to atlas anatomy.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "same_cell_molecular_or_morphology_link",
+          "label": "Same-cell molecular or morphology link",
+          "status": "not_established",
+          "reasonCode": "relationship_not_established",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "P09",
+          "rawValue": "not_established",
+          "detail": "That the same population is the causal substrate of recovery in human EES participants.",
+          "inferenceAllowed": false
+        }
+      ],
+      "physicalSpecimenIdentity": {
+        "status": "not_established",
+        "id": null,
+        "reason": "Study, profile and reconstruction identifiers do not supply a physical specimen identity."
+      },
+      "relationship": {
+        "type": "co_display_only",
+        "samePhysicalObject": false,
+        "sourcePopulationJoinGranted": false,
+        "grantsGeometryTransfer": false
+      },
+      "scientificBoundary": "Source context is not an individual-cell measurement. Denominators and conditions remain separate. Missing evidence is not biological absence. Exact upstream field resolution is distinguished from the indexed project field; a hash verifies bytes only."
+    },
+    "record": {
+      "key": "sci_entity:mouse.sc.vsx2_hoxa10",
+      "focusKind": "sci_entity",
+      "focusId": "mouse.sc.vsx2_hoxa10",
+      "title": "SC^Vsx2::Hoxa10",
+      "subtitle": "SC Vsx2/Hoxa10 · molecular spatial population",
+      "namespace": "ohri-research-mvp-0.2",
+      "laneLabel": "SCI evidence",
+      "summary": "Mouse experiments identified SC^Vsx2::Hoxa10 neurons as necessary and sufficient under defined recovery conditions.",
+      "searchTerms": [
+        "SC^Vsx2::Hoxa10",
+        "SC Vsx2/Hoxa10 · molecular spatial population",
+        "ohri-research-mvp-0.2",
+        "SCI evidence",
+        "SC Vsx2/Hoxa10",
+        "Vsx2",
+        "Hoxa10",
+        "molecular_identity",
+        "spatial_identity",
+        "Lumbar enlargement",
+        "lamina VII / intermediate zone",
+        "lateral_hemisection",
+        "locomotion",
+        "Kathe et al., 2022",
+        "10.1038/s41586-022-05385-7",
+        "P09",
+        "SRC-P09",
+        "P09-N01",
+        "P09-B01",
+        "P09-L01",
+        "P09-B02"
+      ],
+      "evidence": [
+        {
+          "label": "Entity kind",
+          "value": "molecular spatial population",
+          "authority": "project_curated",
+          "locator": "P09"
+        },
+        {
+          "label": "Classification axes",
+          "value": "molecular identity · spatial identity",
+          "authority": "project_curated",
+          "locator": "P09"
+        },
+        {
+          "label": "Markers",
+          "value": "Vsx2 · Hoxa10",
+          "authority": "source_reported",
+          "locator": "P09"
+        },
+        {
+          "label": "Transmitter context",
+          "value": "excitatory",
+          "authority": "project_curated",
+          "locator": "P09"
+        },
+        {
+          "label": "Segment context",
+          "value": "lumbar · Lumbar enlargement",
+          "authority": "source_reported",
+          "locator": "P09"
+        },
+        {
+          "label": "Injury model",
+          "value": "lateral hemisection",
+          "authority": "source_reported",
+          "locator": "P09"
+        },
+        {
+          "label": "Endpoint",
+          "value": "locomotion",
+          "authority": "source_reported",
+          "locator": "P09"
+        },
+        {
+          "label": "Causal grade",
+          "value": "NEC · SUF",
+          "authority": "project_curated",
+          "locator": "P09"
+        },
+        {
+          "label": "Experimental condition",
+          "value": "lumbar recovery circuit below SCI; optogenetic or chemogenetic silencing of SC^Vsx2::Hoxa10 neurons · lumbar recovery circuit below SCI; chronic silencing during EES rehabilitation · lumbar recovery circuit below SCI; activation of SC^Vsx2::Hoxa10 neurons · lateral spinal lesion; pre-injury ablation of SC^Vsx2::Hoxa10 neurons · chronic SCI cohort; epidural electrical stimulation plus rehabilitation four to five times weekly",
+          "authority": "source_reported",
+          "locator": "CND-P09-MOUSE-ACUTE-SILENCING · CND-P09-MOUSE-CHRONIC-SILENCING · CND-P09-MOUSE-ACTIVATION · CND-P09-MOUSE-ABLATION · CND-P09-HUMAN-EES"
+        },
+        {
+          "label": "Sample-size reporting",
+          "value": "n=4 per reported acute silencing experiment · n=5 · n=4 · n=5 per group · n=9",
+          "authority": "source_reported",
+          "locator": "CND-P09-MOUSE-ACUTE-SILENCING · CND-P09-MOUSE-CHRONIC-SILENCING · CND-P09-MOUSE-ACTIVATION · CND-P09-MOUSE-ABLATION · CND-P09-HUMAN-EES"
+        }
+      ],
+      "gaps": [
+        {
+          "axisId": "atlas_placement",
+          "label": "Atlas placement",
+          "status": "not_established",
+          "reasonCode": "no_admitted_transform",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "P09",
+          "rawValue": "not_established",
+          "detail": "The SCI evidence entity is displayed in a separate synthetic lane; no transform links it to atlas anatomy.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "same_cell_molecular_or_morphology_link",
+          "label": "Same-cell molecular or morphology link",
+          "status": "not_established",
+          "reasonCode": "relationship_not_established",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "P09",
+          "rawValue": "not_established",
+          "detail": "That the same population is the causal substrate of recovery in human EES participants.",
+          "inferenceAllowed": false
+        }
+      ],
+      "provenance": {
+        "label": "Kathe et al., 2022",
+        "citation": "Kathe et al., 2022",
+        "doi": "10.1038/s41586-022-05385-7",
+        "urls": [
+          {
+            "label": "Primary article",
+            "url": "https://www.nature.com/articles/s41586-022-05385-7"
+          }
+        ],
+        "accessions": [],
+        "locators": [
+          "P09",
+          "CLM-P09-MOUSE-CAUSAL",
+          "CLM-P09-HUMAN-CONTEXT",
+          "CND-P09-MOUSE-ACUTE-SILENCING",
+          "CND-P09-MOUSE-CHRONIC-SILENCING",
+          "CND-P09-MOUSE-ACTIVATION",
+          "CND-P09-MOUSE-ABLATION",
+          "CND-P09-HUMAN-EES"
+        ],
+        "objectHashes": []
+      },
+      "coordinate": {
+        "geometryStatus": "SYN",
+        "frame": "separate_unregistered_synthetic_evidence_lane",
+        "registrationStatus": "unregistered",
+        "registrationCount": 0,
+        "measurementUse": "forbidden"
+      },
+      "relationshipStatus": "not_established_outside_this_source_record",
+      "boundary": "This record supports only the stated source- and condition-bounded claim. That the same population is the causal substrate of recovery in human EES participants.",
+      "navigation": {
+        "lab": "overview",
+        "params": {
+          "cell": "mouse.sc.vsx2_hoxa10",
+          "panel": "evidence"
+        },
+        "anchor": "sci-evidence-workspace"
+      },
+      "presentation": {
+        "contractId": "research-record-presentation-0.1",
+        "sourceSiblingCount": 7,
+        "evidencePartition": {
+          "identityEvidenceIndices": [
+            2
+          ],
+          "recordSpecificEvidenceIndices": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "sharedEvidenceIndices": []
+        },
+        "missingnessPartition": {
+          "recordSpecificGapIndices": [],
+          "sharedGapIndices": [
+            0,
+            1
+          ]
+        },
+        "modeling": {
+          "route": "synthetic_evidence_glyph_not_cell",
+          "admittedCellGeometryObjectCount": 0,
+          "admittedInternalObjectCount": 0,
+          "generatedFallbackPrimitiveCount": 0,
+          "registrationCount": 0,
+          "sameCellJoinCount": 0,
+          "switchEffect": "clear_prior_cell_geometry_and_replace_source_record_evidence_model",
+          "noFallbackPrimitive": true,
+          "axes": [
+            {
+              "axisId": "source_record",
+              "status": "available",
+              "authority": "checksum_verified_research_index",
+              "detail": "The selected source-record identity and its attributed evidence are available."
+            },
+            {
+              "axisId": "cell_geometry",
+              "status": "unavailable",
+              "authority": "record_missingness_contract",
+              "detail": "No same-record cell geometry object is admitted; switching this record must clear prior cell geometry."
+            },
+            {
+              "axisId": "internal_structure",
+              "status": "unavailable",
+              "authority": "record_missingness_contract",
+              "detail": "No same-record nucleus, organelle, membrane, receptor, bouton or synapse geometry is admitted."
+            },
+            {
+              "axisId": "atlas_registration",
+              "status": "not_established",
+              "authority": "project_relationship_policy",
+              "detail": "The selected source record has zero admitted registrations to project anatomy."
+            },
+            {
+              "axisId": "cross_source_same_cell",
+              "status": "not_established",
+              "authority": "project_relationship_policy",
+              "detail": "No co-displayed record is asserted to be the same biological cell."
+            }
+          ]
+        }
+      }
+    },
+    "view": {
+      "status": "not_included",
+      "camera": null,
+      "clipping": null,
+      "renderedRevision": null,
+      "reason": "This export contains source-record evidence and context. The current rendered scene requires its independent actual-view receipt."
+    }
+  },
+  "pooledSampleAndNucleus": {
+    "documentType": "research_record_scientific_dossier",
+    "schemaVersion": "0.1.0",
+    "applicationVersion": "2.91.0-research.1",
+    "selection": {
+      "key": "molecular_profile:sathyamurthy-2018:DE-1",
+      "generation": 2,
+      "namespace": "sathyamurthy-2018",
+      "status": "current_verified_record"
+    },
+    "sourceScope": {
+      "documentType": "research_record_source_scope",
+      "schemaVersion": "0.1.0",
+      "recordKey": "molecular_profile:sathyamurthy-2018:DE-1",
+      "namespace": "sathyamurthy-2018",
+      "focusKind": "molecular_profile",
+      "focusId": "sathyamurthy-2018:DE-1",
+      "recordLocation": {
+        "path": "public/data/research_explorer_index_v1/search-index.json",
+        "pointer": "/records/417",
+        "releaseId": "ohri:research-explorer-index:1.13.0",
+        "status": "indexed_project_derivative_field"
+      },
+      "displayUnit": "source_profile_aggregate",
+      "underlyingObservationUnit": "nucleus",
+      "registryReleaseId": "ohri-research-source-registry-0.1.0",
+      "sourceId": "SRC-SATHYAMURTHY-2018",
+      "sourceResolution": "explicit_record_parent",
+      "sourceLocator": "data/research-source-registry-0.1.json#/sources/8",
+      "sourceMissingReason": null,
+      "species": [
+        {
+          "value": "Mus musculus",
+          "status": "source_context_only",
+          "context": "adult lumbar nuclei",
+          "authority": "source_reported",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/8/speciesScopes/0/scientificName"
+        }
+      ],
+      "lifeStages": [
+        {
+          "value": "adult",
+          "status": "source_context_only",
+          "context": "lumbar nuclei",
+          "authority": "source_reported",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/8/lifeStageScopes/0/value"
+        }
+      ],
+      "regions": [
+        {
+          "value": "lumbar spinal cord",
+          "status": "source_context_only",
+          "context": "sequencing cohort",
+          "authority": "source_reported",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/8/regionScopes/0/value"
+        }
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "independent_pooled_sample",
+          "count": 19,
+          "scope": "Drop-Seq sample frame",
+          "authority": "source_reported",
+          "missingReason": null,
+          "status": "source_context_only",
+          "locator": "data/research-source-registry-0.1.json#/sources/8/experimentalUnits/0",
+          "pooledWithOtherUnits": false
+        },
+        {
+          "unit": "assigned_neuronal_nucleus",
+          "count": 4280,
+          "scope": "43 displayed profiles",
+          "authority": "checksum_pinned_cluster_metadata",
+          "missingReason": null,
+          "status": "source_context_only",
+          "locator": "data/research-source-registry-0.1.json#/sources/8/experimentalUnits/1",
+          "pooledWithOtherUnits": false
+        }
+      ],
+      "conditions": [],
+      "fieldLocators": [
+        {
+          "index": 0,
+          "label": "Canonical parent source",
+          "value": "SRC-SATHYAMURTHY-2018",
+          "authority": "project_source_registry",
+          "locator": "UPG-108",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/0",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 1,
+          "label": "Record granularity",
+          "value": "reported cluster · observation unit: nucleus",
+          "authority": "project_curated",
+          "locator": "UPG-109",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/1",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 2,
+          "label": "Assignment / roster",
+          "value": "checksum-pinned cluster metadata · exact remote roster not bundled",
+          "authority": "source_and_project_boundary",
+          "locator": "UPG-109",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/2",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "source_or_project_level_reference",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 3,
+          "label": "Source-local label",
+          "value": "DE-1",
+          "authority": "source_reported",
+          "locator": "paper-figure-4 · geo-cluster-metadata",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/3",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 4,
+          "label": "Canonical transmitter",
+          "value": "Excitatory",
+          "authority": "source_reported",
+          "locator": "paper-results-p11 · paper-results-p12",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/4",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 5,
+          "label": "Raw label",
+          "value": "DE-1",
+          "authority": "source_reported",
+          "locator": "geo-cluster-metadata",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/5",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 6,
+          "label": "Putative cell type",
+          "value": "Grp",
+          "authority": "source_reported",
+          "locator": "paper-figure-4",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/6",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 7,
+          "label": "Assignment status",
+          "value": "source putative not exact identity",
+          "authority": "project_curated",
+          "locator": "paper-figure-4-project-scope",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/7",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 8,
+          "label": "Figure/source markers",
+          "value": "Grp · Tacr3 · Reln",
+          "authority": "source_reported",
+          "locator": "paper-figure-4 · paper-results-p15-p23",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/8",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 9,
+          "label": "Region class",
+          "value": "dorsal",
+          "authority": "source_reported",
+          "locator": "paper-results-p12",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/9",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 10,
+          "label": "Transmitter class",
+          "value": "excitatory",
+          "authority": "source_reported",
+          "locator": "paper-results-p11 · paper-results-p12",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/10",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 11,
+          "label": "Sampled nuclei",
+          "value": "68 nuclei",
+          "authority": "source_derived_count",
+          "locator": "geo-cluster-metadata",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/11",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 12,
+          "label": "Source sample frame",
+          "value": "19 pooled Drop-Seq samples; 2 mice per sample",
+          "authority": "source_reported",
+          "locator": "geo-series-record · paper-methods-p34-p36 · geo-sample-form1",
+          "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/417/evidence/12",
+          "materializationStatus": "indexed_project_derivative_field",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        }
+      ],
+      "gaps": [
+        {
+          "axisId": "morphology",
+          "label": "morphology",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "cell_coordinates",
+          "label": "cellCoordinates",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "repository_deposit",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_available",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "sci_context",
+          "label": "sciContext",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "atlas_registration",
+          "label": "atlasRegistration",
+          "status": "not_established",
+          "reasonCode": "no_admitted_transform",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_established",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "electrophysiology",
+          "label": "electrophysiology",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "projection_target",
+          "label": "projectionTarget",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "synaptic_connectivity",
+          "label": "synapticConnectivity",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "cross_source_same_cell_identity_link",
+          "label": "crossSourceSameCellIdentityLink",
+          "status": "not_established",
+          "reasonCode": "relationship_not_established",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_established",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "internal_structure",
+          "label": "Internal structure",
+          "status": "unavailable",
+          "reasonCode": "source_schema_no_field",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "source_schema_no_field",
+          "detail": "This source-profile contract exposes no linked membrane, nucleus, organelle, synapse, receptor-distribution or intracellular-compartment object; no internal detail may be inferred.",
+          "inferenceAllowed": false
+        }
+      ],
+      "physicalSpecimenIdentity": {
+        "status": "not_established",
+        "id": null,
+        "reason": "Study, profile and reconstruction identifiers do not supply a physical specimen identity."
+      },
+      "relationship": {
+        "type": "co_display_only",
+        "samePhysicalObject": false,
+        "sourcePopulationJoinGranted": false,
+        "grantsGeometryTransfer": false
+      },
+      "scientificBoundary": "Source context is not an individual-cell measurement. Denominators and conditions remain separate. Missing evidence is not biological absence. Exact upstream field resolution is distinguished from the indexed project field; a hash verifies bytes only."
+    },
+    "record": {
+      "key": "molecular_profile:sathyamurthy-2018:DE-1",
+      "focusKind": "molecular_profile",
+      "focusId": "sathyamurthy-2018:DE-1",
+      "title": "DE-1",
+      "subtitle": "Grp · Sathyamurthy 2018",
+      "namespace": "sathyamurthy-2018",
+      "laneLabel": "Molecular population",
+      "summary": "Adult lumbar non-motor spinal-neuron profile; local interneuron versus projection-neuron status is unresolved.",
+      "recordSemantics": {
+        "parentSourceId": "SRC-SATHYAMURTHY-2018",
+        "recordKind": "reported_cluster",
+        "unitOfObservation": "nucleus",
+        "assignmentAuthority": "checksum_pinned_cluster_metadata",
+        "cellRosterAvailability": "exact_remote_roster_not_bundled",
+        "canonicalIdentityStatus": "not_established"
+      },
+      "searchTerms": [
+        "DE-1",
+        "Grp · Sathyamurthy 2018",
+        "sathyamurthy-2018",
+        "Molecular population",
+        "Grp",
+        "Tacr3",
+        "Reln",
+        "dorsal",
+        "excitatory",
+        "Sathyamurthy A, Johnson KR, Matson KJE, et al. Massively Parallel Single Nucleus Transcriptional Profiling Defines Spinal Cord Neurons and Their Activity during Behavior. Cell Reports 22, 2216–2225 (2018).",
+        "10.1016/j.celrep.2018.02.003",
+        "GSE103892"
+      ],
+      "evidence": [
+        {
+          "label": "Canonical parent source",
+          "value": "SRC-SATHYAMURTHY-2018",
+          "authority": "project_source_registry",
+          "locator": "UPG-108"
+        },
+        {
+          "label": "Record granularity",
+          "value": "reported cluster · observation unit: nucleus",
+          "authority": "project_curated",
+          "locator": "UPG-109"
+        },
+        {
+          "label": "Assignment / roster",
+          "value": "checksum-pinned cluster metadata · exact remote roster not bundled",
+          "authority": "source_and_project_boundary",
+          "locator": "UPG-109"
+        },
+        {
+          "label": "Source-local label",
+          "value": "DE-1",
+          "authority": "source_reported",
+          "locator": "paper-figure-4 · geo-cluster-metadata"
+        },
+        {
+          "label": "Canonical transmitter",
+          "value": "Excitatory",
+          "authority": "source_reported",
+          "locator": "paper-results-p11 · paper-results-p12"
+        },
+        {
+          "label": "Raw label",
+          "value": "DE-1",
+          "authority": "source_reported",
+          "locator": "geo-cluster-metadata"
+        },
+        {
+          "label": "Putative cell type",
+          "value": "Grp",
+          "authority": "source_reported",
+          "locator": "paper-figure-4"
+        },
+        {
+          "label": "Assignment status",
+          "value": "source putative not exact identity",
+          "authority": "project_curated",
+          "locator": "paper-figure-4-project-scope"
+        },
+        {
+          "label": "Figure/source markers",
+          "value": "Grp · Tacr3 · Reln",
+          "authority": "source_reported",
+          "locator": "paper-figure-4 · paper-results-p15-p23"
+        },
+        {
+          "label": "Region class",
+          "value": "dorsal",
+          "authority": "source_reported",
+          "locator": "paper-results-p12"
+        },
+        {
+          "label": "Transmitter class",
+          "value": "excitatory",
+          "authority": "source_reported",
+          "locator": "paper-results-p11 · paper-results-p12"
+        },
+        {
+          "label": "Sampled nuclei",
+          "value": "68 nuclei",
+          "authority": "source_derived_count",
+          "locator": "geo-cluster-metadata"
+        },
+        {
+          "label": "Source sample frame",
+          "value": "19 pooled Drop-Seq samples; 2 mice per sample",
+          "authority": "source_reported",
+          "locator": "geo-series-record · paper-methods-p34-p36 · geo-sample-form1"
+        }
+      ],
+      "gaps": [
+        {
+          "axisId": "morphology",
+          "label": "morphology",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "cell_coordinates",
+          "label": "cellCoordinates",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "repository_deposit",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_available",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "sci_context",
+          "label": "sciContext",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "atlas_registration",
+          "label": "atlasRegistration",
+          "status": "not_established",
+          "reasonCode": "no_admitted_transform",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_established",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "electrophysiology",
+          "label": "electrophysiology",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "projection_target",
+          "label": "projectionTarget",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "synaptic_connectivity",
+          "label": "synapticConnectivity",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_measured",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "cross_source_same_cell_identity_link",
+          "label": "crossSourceSameCellIdentityLink",
+          "status": "not_established",
+          "reasonCode": "relationship_not_established",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "not_established",
+          "detail": "This axis is unavailable for this source-local profile and must not be inferred from markers.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "internal_structure",
+          "label": "Internal structure",
+          "status": "unavailable",
+          "reasonCode": "source_schema_no_field",
+          "scope": "shared_dataset_limit",
+          "authority": "source_record",
+          "sourceLocator": "paper-summary-p2",
+          "rawValue": "source_schema_no_field",
+          "detail": "This source-profile contract exposes no linked membrane, nucleus, organelle, synapse, receptor-distribution or intracellular-compartment object; no internal detail may be inferred.",
+          "inferenceAllowed": false
+        }
+      ],
+      "provenance": {
+        "label": "Sathyamurthy adult lumbar snRNA-seq",
+        "citation": "Sathyamurthy A, Johnson KR, Matson KJE, et al. Massively Parallel Single Nucleus Transcriptional Profiling Defines Spinal Cord Neurons and Their Activity during Behavior. Cell Reports 22, 2216–2225 (2018).",
+        "doi": "10.1016/j.celrep.2018.02.003",
+        "urls": [
+          {
+            "label": "Primary article",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5849084/"
+          },
+          {
+            "label": "GEO record",
+            "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103892"
+          }
+        ],
+        "accessions": [
+          "GSE103892"
+        ],
+        "locators": [
+          "paper-summary-p2",
+          "paper-study-design-p8-p10",
+          "paper-figure-4",
+          "geo-cluster-metadata",
+          "paper-results-p12",
+          "paper-results-p11",
+          "paper-figure-4-project-scope",
+          "paper-results-p15-p23",
+          "paper-study-design-missing-axes",
+          "geo-series-missing-axes"
+        ],
+        "objectHashes": [
+          {
+            "label": "GSE103892_Sample_Cell_Cluster_Information.txt.gz",
+            "sha256": "2a22f9b19db27c43dc6632e15395d63a4eb8b0087d1ac5b491411c01d1e41d30"
+          }
+        ]
+      },
+      "coordinate": {
+        "geometryStatus": "TYPE_LEVEL",
+        "frame": "sathyamurthy_source_namespace",
+        "registrationStatus": "unregistered",
+        "registrationCount": 0,
+        "measurementUse": "forbidden"
+      },
+      "relationshipStatus": "not_established_outside_this_source_record",
+      "boundary": "GEO accessions, sequencing reactions, pooled Drop-Seq samples, mice, and nuclei are different denominator levels. Neither 24 accessions nor 4,280 assigned nuclei may be presented as independent animals, and no profile-specific animal denominator can be recovered from the processed cluster-count object.",
+      "navigation": {
+        "lab": "types",
+        "params": {
+          "type": "sathyamurthy-2018:DE-1"
+        },
+        "anchor": "types-panel"
+      },
+      "presentation": {
+        "contractId": "research-record-presentation-0.1",
+        "sourceSiblingCount": 43,
+        "evidencePartition": {
+          "identityEvidenceIndices": [
+            3,
+            4,
+            5,
+            6,
+            8
+          ],
+          "recordSpecificEvidenceIndices": [
+            9,
+            10,
+            11
+          ],
+          "sharedEvidenceIndices": [
+            0,
+            1,
+            2,
+            7,
+            12
+          ]
+        },
+        "missingnessPartition": {
+          "recordSpecificGapIndices": [
+            1
+          ],
+          "sharedGapIndices": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "modeling": {
+          "route": "source_record_evidence_only",
+          "admittedCellGeometryObjectCount": 0,
+          "admittedInternalObjectCount": 0,
+          "generatedFallbackPrimitiveCount": 0,
+          "registrationCount": 0,
+          "sameCellJoinCount": 0,
+          "switchEffect": "clear_prior_cell_geometry_and_replace_source_record_evidence_model",
+          "noFallbackPrimitive": true,
+          "axes": [
+            {
+              "axisId": "source_record",
+              "status": "available",
+              "authority": "checksum_verified_research_index",
+              "detail": "The selected source-record identity and its attributed evidence are available."
+            },
+            {
+              "axisId": "cell_geometry",
+              "status": "unavailable",
+              "authority": "record_missingness_contract",
+              "detail": "No same-record cell geometry object is admitted; switching this record must clear prior cell geometry."
+            },
+            {
+              "axisId": "internal_structure",
+              "status": "unavailable",
+              "authority": "record_missingness_contract",
+              "detail": "No same-record nucleus, organelle, membrane, receptor, bouton or synapse geometry is admitted."
+            },
+            {
+              "axisId": "atlas_registration",
+              "status": "not_established",
+              "authority": "project_relationship_policy",
+              "detail": "The selected source record has zero admitted registrations to project anatomy."
+            },
+            {
+              "axisId": "cross_source_same_cell",
+              "status": "not_established",
+              "authority": "project_relationship_policy",
+              "detail": "No co-displayed record is asserted to be the same biological cell."
+            }
+          ]
+        }
+      }
+    },
+    "view": {
+      "status": "not_included",
+      "camera": null,
+      "clipping": null,
+      "renderedRevision": null,
+      "reason": "This export contains source-record evidence and context. The current rendered scene requires its independent actual-view receipt."
+    }
+  },
+  "toddRelease": {
+    "documentType": "research_record_scientific_dossier",
+    "schemaVersion": "0.1.0",
+    "applicationVersion": "2.91.0-research.1",
+    "selection": {
+      "key": "morphology_record:NeuroMorpho:322379",
+      "generation": 1,
+      "namespace": "neuromorpho:8.6.126:Todd",
+      "status": "current_verified_record"
+    },
+    "sourceScope": {
+      "documentType": "research_record_source_scope",
+      "schemaVersion": "0.1.0",
+      "recordKey": "morphology_record:NeuroMorpho:322379",
+      "namespace": "neuromorpho:8.6.126:Todd",
+      "focusKind": "morphology_record",
+      "focusId": "NeuroMorpho:322379",
+      "recordLocation": {
+        "path": "app/research-supplemental-morphology-records.js",
+        "pointer": "buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379",
+        "releaseId": "ohri-neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.0",
+        "contractSha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+        "status": "runtime_materialized_source_route_record",
+        "sourceContract": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json"
+      },
+      "displayUnit": "source_reconstruction_record",
+      "underlyingObservationUnit": null,
+      "registryReleaseId": "ohri-research-source-registry-0.1.0",
+      "sourceId": "SRC-NEUROMORPHO-8-6-126-TODD-NTS",
+      "sourceResolution": "exact_source_route_contract",
+      "sourceLocator": "data/research-source-registry-0.1.json#/sources/28",
+      "sourceMissingReason": null,
+      "species": [
+        {
+          "value": "Mus musculus",
+          "status": "source_context_only",
+          "context": "30 novel Todd archive NeuroMorpho release additions whose current API metadata match mouse, spinal cord and interneuron filters",
+          "authority": "official_repository_metadata",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/28/speciesScopes/0/scientificName"
+        }
+      ],
+      "lifeStages": [
+        {
+          "value": "adult",
+          "status": "source_context_only",
+          "context": "30 supplementary reconstructions; official repository metadata reports adult and source age bounds of 49-91 days",
+          "authority": "official_repository_metadata",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/28/lifeStageScopes/0/value"
+        }
+      ],
+      "regions": [
+        {
+          "value": "spinal cord; L2/L3 and dorsal-horn labels retained with source asterisks",
+          "status": "source_context_only",
+          "context": "30 supplementary source-local reconstructions; no atlas registration or laminar placement is inferred",
+          "authority": "official_repository_metadata",
+          "missingReason": null,
+          "locator": "data/research-source-registry-0.1.json#/sources/28/regionScopes/0/value"
+        }
+      ],
+      "experimentalUnits": [
+        {
+          "unit": "supplementary_reconstructed_neuron",
+          "count": 30,
+          "scope": "exact novel Todd release-set IDs 322379-322408; separate from and not additive to the frozen 8.6.124 no-age universe",
+          "authority": "checksum_pinned_official_API_and_SWCs",
+          "missingReason": null,
+          "status": "source_context_only",
+          "locator": "data/research-source-registry-0.1.json#/sources/28/experimentalUnits/0",
+          "pooledWithOtherUnits": false
+        },
+        {
+          "unit": "current_filtered_repository_query_record",
+          "count": 339,
+          "scope": "complete mouse + spinal cord + interneuron + Todd API query without an age filter; used only for exact release-delta reconciliation",
+          "authority": "official_repository_API_snapshot",
+          "missingReason": null,
+          "status": "source_context_only",
+          "locator": "data/research-source-registry-0.1.json#/sources/28/experimentalUnits/1",
+          "pooledWithOtherUnits": false
+        }
+      ],
+      "conditions": [],
+      "fieldLocators": [
+        {
+          "index": 0,
+          "label": "Source identifier",
+          "value": "NeuroMorpho:322379",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/0",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 1,
+          "label": "Repository release",
+          "value": "NeuroMorpho.Org · 8.6.126 · Todd",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/1",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 2,
+          "label": "Source-local label",
+          "value": "interneuron · Excitatory · Neurotensin-expressing*",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/2",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 3,
+          "label": "Repository region labels",
+          "value": "spinal cord · L3* · dorsal horn*",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/3",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 4,
+          "label": "Species · life stage · sex · strain",
+          "value": "mouse · adult · Female · B6;129-Ntstm1(cre)Mgmj/J",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/4",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 5,
+          "label": "Age range",
+          "value": "49–91 Day",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/5",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 6,
+          "label": "Condition · protocol",
+          "value": "Control · in vivo",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/6",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 7,
+          "label": "Reconstruction · stain",
+          "value": "Neurolucida · Brainbow",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/7",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 8,
+          "label": "Source geometry",
+          "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json · 419346 bytes · SHA-256 adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+          "authority": "checksum_verified_source_route_pack",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/8",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 9,
+          "label": "Raw SWC",
+          "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc · 57837 bytes · SHA-256 9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7",
+          "authority": "checksum_verified_source_route_pack",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/9",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 10,
+          "label": "Diameter authority",
+          "value": "Source reports No Diameter; centerlines only and radius-derived surface unavailable.",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/10",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 11,
+          "label": "Original paper fields",
+          "value": "DOI blank; PMID 2017 (record-level article mapping unresolved)",
+          "authority": "source_reported_unresolved",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/11",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 12,
+          "label": "Route and non-census receipt",
+          "value": "mouse.sc.todd_nts.observed.nmo_322379 · neuromorpho-release-8-6-126-todd-nts-route-pack-0.1 · 01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+          "authority": "checksum_verified_source_route_pack",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/12",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        },
+        {
+          "index": 13,
+          "label": "Internal structures",
+          "value": "Unavailable: no same-specimen membrane, nucleus, organelle, bouton, receptor or ultrastructure source.",
+          "authority": "UNAVAILABLE",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "projectFieldLocator": "app/research-supplemental-morphology-records.js#buildRoutePackRecords()/key=morphology_record%3ANeuroMorpho%3A322379/evidence/13",
+          "materializationStatus": "runtime_materialized_source_route_record",
+          "upstreamLocatorStatus": "retained_field_or_section_locator",
+          "biologicalTruthVerifiedByHash": false
+        }
+      ],
+      "gaps": [
+        {
+          "axisId": "original_morphology_file",
+          "label": "Original morphology file",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "The repository exposes no original Neurolucida file for this route pack.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "standardization_log",
+          "label": "Standardization log",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "The source standardization log is unavailable; no reverse transform is inferred.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "record_to_article_mapping",
+          "label": "Record-to-article mapping",
+          "status": "unresolved",
+          "reasonCode": "unresolved_source_conflict",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "The exact per-record DOI is blank and the PMID field does not resolve to a verified article crosswalk.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "independent_specimen_identity",
+          "label": "Independent specimen identity",
+          "status": "unavailable",
+          "reasonCode": "source_schema_no_field",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "No stable animal or specimen identifier is exposed for this record.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "biological_completeness",
+          "label": "Biological completeness",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "Repository completeness wording is retained but has not been independently validated against raw imagery.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "atlas_placement",
+          "label": "Atlas placement",
+          "status": "not_established",
+          "reasonCode": "no_admitted_transform",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "This source-local frame has no admitted atlas transform.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "cross_source_same_cell_identity",
+          "label": "Cross-source same-cell identity",
+          "status": "not_established",
+          "reasonCode": "relationship_not_established",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "No identity or transcriptomic crosswalk is established for this reconstruction.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "same_specimen_internal_structure",
+          "label": "Same-specimen internal structure",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "No same-specimen internal-structure source is linked; do not add substitute primitives.",
+          "inferenceAllowed": false
+        }
+      ],
+      "physicalSpecimenIdentity": {
+        "status": "not_established",
+        "id": null,
+        "reason": "Study, profile and reconstruction identifiers do not supply a physical specimen identity."
+      },
+      "relationship": {
+        "type": "co_display_only",
+        "samePhysicalObject": false,
+        "sourcePopulationJoinGranted": false,
+        "grantsGeometryTransfer": false
+      },
+      "scientificBoundary": "Source context is not an individual-cell measurement. Denominators and conditions remain separate. Missing evidence is not biological absence. Exact upstream field resolution is distinguished from the indexed project field; a hash verifies bytes only."
+    },
+    "record": {
+      "key": "morphology_record:NeuroMorpho:322379",
+      "focusKind": "morphology_record",
+      "focusId": "NeuroMorpho:322379",
+      "title": "Neurotensin-expressing excitatory interneuron — NMO 322379",
+      "subtitle": "NMO 322379 · 8.6.126 · Todd · supplementary source-local record",
+      "namespace": "neuromorpho:8.6.126:Todd",
+      "laneLabel": "Source-local morphology",
+      "summary": "Dendrites, Soma, No Axon; Dendrites Complete. One repository reconstruction object only; the 8.6.124 frozen query census and 142-record morphology subset are unchanged.",
+      "morphologyMembership": {
+        "collection": "supplementary",
+        "censusContribution": 0,
+        "supplementaryContribution": 1,
+        "sourceFrameLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+        "analysisLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379#source_metadata_and_geometry_receipt",
+        "geometryPath": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json",
+        "geometrySha256": "adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+        "routeId": "mouse.sc.todd_nts.observed.nmo_322379",
+        "routeContractPath": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+        "routeContractSha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+        "routeAssetManifestPath": "public/data/neuromorpho_release_8_6_126_todd_nts_v1/asset-manifest.json",
+        "routeAssetManifestSha256": "5e52e05227f9ebeb0e05b5dae9de6f564e99bbc62ddb9624fec74ad2f4337ccb"
+      },
+      "searchTerms": [
+        "NeuroMorpho:322379",
+        322379,
+        "AT_11-05-21A_s6_NTS_cell_1",
+        "Todd",
+        "mouse",
+        "adult",
+        "Female",
+        "B6;129-Ntstm1(cre)Mgmj/J",
+        [
+          "interneuron",
+          "Excitatory",
+          "Neurotensin-expressing*"
+        ],
+        [
+          "spinal cord",
+          "L3*",
+          "dorsal horn*"
+        ],
+        [
+          "Control"
+        ],
+        "Dendrites, Soma, No Axon",
+        "mouse.sc.todd_nts.observed.nmo_322379"
+      ],
+      "evidence": [
+        {
+          "label": "Source identifier",
+          "value": "NeuroMorpho:322379",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Repository release",
+          "value": "NeuroMorpho.Org · 8.6.126 · Todd",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Source-local label",
+          "value": "interneuron · Excitatory · Neurotensin-expressing*",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Repository region labels",
+          "value": "spinal cord · L3* · dorsal horn*",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Species · life stage · sex · strain",
+          "value": "mouse · adult · Female · B6;129-Ntstm1(cre)Mgmj/J",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Age range",
+          "value": "49–91 Day",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Condition · protocol",
+          "value": "Control · in vivo",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Reconstruction · stain",
+          "value": "Neurolucida · Brainbow",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Source geometry",
+          "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json · 419346 bytes · SHA-256 adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a",
+          "authority": "checksum_verified_source_route_pack",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Raw SWC",
+          "value": "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc · 57837 bytes · SHA-256 9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7",
+          "authority": "checksum_verified_source_route_pack",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Diameter authority",
+          "value": "Source reports No Diameter; centerlines only and radius-derived surface unavailable.",
+          "authority": "source_reported",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Original paper fields",
+          "value": "DOI blank; PMID 2017 (record-level article mapping unresolved)",
+          "authority": "source_reported_unresolved",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Route and non-census receipt",
+          "value": "mouse.sc.todd_nts.observed.nmo_322379 · neuromorpho-release-8-6-126-todd-nts-route-pack-0.1 · 01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537",
+          "authority": "checksum_verified_source_route_pack",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        },
+        {
+          "label": "Internal structures",
+          "value": "Unavailable: no same-specimen membrane, nucleus, organelle, bouton, receptor or ultrastructure source.",
+          "authority": "UNAVAILABLE",
+          "locator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        }
+      ],
+      "gaps": [
+        {
+          "axisId": "original_morphology_file",
+          "label": "Original morphology file",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "The repository exposes no original Neurolucida file for this route pack.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "standardization_log",
+          "label": "Standardization log",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "The source standardization log is unavailable; no reverse transform is inferred.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "record_to_article_mapping",
+          "label": "Record-to-article mapping",
+          "status": "unresolved",
+          "reasonCode": "unresolved_source_conflict",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "The exact per-record DOI is blank and the PMID field does not resolve to a verified article crosswalk.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "independent_specimen_identity",
+          "label": "Independent specimen identity",
+          "status": "unavailable",
+          "reasonCode": "source_schema_no_field",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "No stable animal or specimen identifier is exposed for this record.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "biological_completeness",
+          "label": "Biological completeness",
+          "status": "not_measured",
+          "reasonCode": "not_measured_by_study",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "Repository completeness wording is retained but has not been independently validated against raw imagery.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "atlas_placement",
+          "label": "Atlas placement",
+          "status": "not_established",
+          "reasonCode": "no_admitted_transform",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "This source-local frame has no admitted atlas transform.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "cross_source_same_cell_identity",
+          "label": "Cross-source same-cell identity",
+          "status": "not_established",
+          "reasonCode": "relationship_not_established",
+          "scope": "shared_project_limit",
+          "authority": "project_relationship_policy",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "No identity or transcriptomic crosswalk is established for this reconstruction.",
+          "inferenceAllowed": false
+        },
+        {
+          "axisId": "same_specimen_internal_structure",
+          "label": "Same-specimen internal structure",
+          "status": "unavailable",
+          "reasonCode": "repository_object_unavailable",
+          "scope": "record_specific",
+          "authority": "source_record",
+          "sourceLocator": "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379",
+          "rawValue": null,
+          "detail": "No same-specimen internal-structure source is linked; do not add substitute primitives.",
+          "inferenceAllowed": false
+        }
+      ],
+      "provenance": {
+        "label": "NeuroMorpho.Org · Todd archive · release 8.6.126",
+        "citation": "NeuroMorpho.Org, Todd archive; record-to-original-paper mapping unresolved.",
+        "doi": null,
+        "urls": [
+          {
+            "label": "Official record",
+            "url": "https://neuromorpho.org/api/neuron/id/322379"
+          },
+          {
+            "label": "Reuse terms",
+            "url": "https://neuromorpho.org/useterm.jsp"
+          },
+          {
+            "label": "Candidate study context (unverified mapping)",
+            "url": "https://journals.sagepub.com/doi/10.1177/17448069261468203"
+          }
+        ],
+        "accessions": [
+          "NeuroMorpho:322379"
+        ],
+        "locators": [
+          "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json",
+          "public/data/neuromorpho_release_8_6_126_todd_nts_v1/asset-manifest.json",
+          "/data/neuromorpho_release_8_6_126_todd_nts_v1/geometry/nmo-322379.json",
+          "/data/neuromorpho_release_8_6_126_todd_nts_v1/swc/nmo-322379.swc",
+          "data/neuromorpho-release-8-6-126-todd-nts-route-pack-0.1.json#NeuroMorpho:322379"
+        ],
+        "objectHashes": [
+          {
+            "label": "Canonical route pack",
+            "sha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537"
+          },
+          {
+            "label": "Public asset manifest",
+            "sha256": "5e52e05227f9ebeb0e05b5dae9de6f564e99bbc62ddb9624fec74ad2f4337ccb"
+          },
+          {
+            "label": "Standardized SWC",
+            "sha256": "9dde2cd1160bf3919f35ad5398a52fb0dc4ceeaebbac61eb1f26f7f85bab89c7"
+          },
+          {
+            "label": "Canonical geometry",
+            "sha256": "adeb079a708bad78c43b1078cf8f7451bfef8082f8c1c7d470b6c9de877dc81a"
+          }
+        ]
+      },
+      "coordinate": {
+        "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "frame": "NeuroMorpho_CNG_standardized_local_frame",
+        "registrationStatus": "unregistered",
+        "registrationCount": 0,
+        "measurementUse": "source_local_descriptive_only"
+      },
+      "relationshipStatus": "not_established_outside_this_source_record",
+      "boundary": "not_established; unresolved; cohort-level matching does not establish a record-level link. The route remains outside the frozen census, source-local and unregistered; repository labels are not promoted to a paper-level subtype.",
+      "navigation": {
+        "lab": "morphology",
+        "params": {
+          "morphologyView": "individual",
+          "morphologyNeuron": "322379"
+        },
+        "anchor": "morphology-panel"
+      },
+      "sourceRouteVerification": {
+        "authority": "checksum_verified_source_route_pack",
+        "contractId": "neuromorpho-release-8-6-126-todd-nts-route-pack-0.1",
+        "canonicalSha256": "01db2a4df6f66e2fc486041a901b2f5dc9c9ad5238cb637e01ff49d8e8e07537"
+      },
+      "presentation": {
+        "contractId": "research-record-presentation-0.1",
+        "sourceSiblingCount": 30,
+        "evidencePartition": {
+          "identityEvidenceIndices": [
+            0,
+            2,
+            10
+          ],
+          "recordSpecificEvidenceIndices": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13
+          ],
+          "sharedEvidenceIndices": []
+        },
+        "missingnessPartition": {
+          "recordSpecificGapIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "sharedGapIndices": [
+            5,
+            6
+          ]
+        },
+        "modeling": {
+          "route": "exact_source_morphology",
+          "admittedCellGeometryObjectCount": 1,
+          "admittedInternalObjectCount": 0,
+          "generatedFallbackPrimitiveCount": 0,
+          "registrationCount": 0,
+          "sameCellJoinCount": 0,
+          "switchEffect": "replace_with_exact_selected_source_geometry",
+          "noFallbackPrimitive": true,
+          "axes": [
+            {
+              "axisId": "source_record",
+              "status": "available",
+              "authority": "checksum_verified_source_route_pack",
+              "detail": "The exact route identity and source-declared metadata are resolved from the byte-locked Todd 8.6.126 route pack."
+            },
+            {
+              "axisId": "cell_geometry",
+              "status": "available_exact_source_local",
+              "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+              "detail": "One checksum-gated source-local morphology object is admitted for this exact morphology record."
+            },
+            {
+              "axisId": "internal_structure",
+              "status": "unavailable",
+              "authority": "record_missingness_contract",
+              "detail": "No same-record nucleus, organelle, membrane, receptor, bouton or synapse geometry is admitted."
+            },
+            {
+              "axisId": "atlas_registration",
+              "status": "not_established",
+              "authority": "project_relationship_policy",
+              "detail": "The selected source record has zero admitted registrations to project anatomy."
+            },
+            {
+              "axisId": "cross_source_same_cell",
+              "status": "not_established",
+              "authority": "project_relationship_policy",
+              "detail": "No co-displayed record is asserted to be the same biological cell."
+            }
+          ]
+        }
+      }
+    },
+    "view": {
+      "status": "not_included",
+      "camera": null,
+      "clipping": null,
+      "renderedRevision": null,
+      "reason": "This export contains source-record evidence and context. The current rendered scene requires its independent actual-view receipt."
+    }
+  }
+}

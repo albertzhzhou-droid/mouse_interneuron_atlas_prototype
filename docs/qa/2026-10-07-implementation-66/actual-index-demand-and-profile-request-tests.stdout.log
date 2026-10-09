@@ -1,0 +1,32 @@
+✔ metadata opt-out performs no index or supplement request (41.505667ms)
+✔ legacy default loader and explicit index consumer preserve the verified collection flow (24.400125ms)
+✔ an exact late focus forces verification even when the metadata route opts out (8.770375ms)
+✔ a metadata route transition hides an old ready index synchronously (5.768959ms)
+✔ cancelled index success cannot request supplements or revive a metadata dossier (5.386625ms)
+✔ a late supplement response cannot publish after cancellation (5.188917ms)
+✔ A to B to A ignores previous responses and publishes only the current exact record (5.685458ms)
+✔ unknown exact focus and byte-loader failure publish no selected record (14.008417ms)
+✔ duplicate supplemental keys still refuse the combined collection (8.710375ms)
+✔ unmount aborts the active request and a later rejection cannot expose a record (4.762083ms)
+✔ only the two audited metadata pages opt out; every other collection keeps its original loader (134.915291ms)
+✔ canonical and all legacy request fields demand verification, including malformed or empty requests (191.709875ms)
+✔ Back and Forward demand follows the live address, including an unresolved anatomy alias (6.3985ms)
+✔ an absent request keeps the original DE-1 default and all 387 independent source profiles (126.52875ms)
+✔ unknown, empty, foreign and stale explicit profile requests have no substituted dossier or export (299.638333ms)
+✔ an explicit empty legacy URL type remains an empty request (57.042166ms)
+✔ source-local IDs are not case-folded, trimmed or prefix-matched (154.659959ms)
+✔ an invalid controlled focus immediately clears the prior valid dossier and export (70.498542ms)
+✔ filtering an invalid request never selects a visible row; explicit activation recovers exact DE-2 (54.3335ms)
+✔ a valid selected profile and its complete export remain exact outside query and source filters (42.760709ms)
+✔ outer canonical empty, incomplete, foreign-kind and repeated requests cannot substitute a valid profile (454.634958ms)
+✔ outer canonical invalid request recovers only through an actual valid profile activation (65.701125ms)
+✔ an unavailable canonical request using a valid literal ID cannot fabricate a previous-profile baseline (53.458292ms)
+✔ verified legacy migration rejects repeated IDs and only canonicalizes a single exact source request (40.8755ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1763.273

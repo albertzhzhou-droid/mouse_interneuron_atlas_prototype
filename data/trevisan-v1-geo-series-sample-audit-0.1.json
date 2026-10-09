@@ -1,0 +1,101 @@
+{
+  "auditId": "trevisan-v1-geo-series-sample-audit-0.1",
+  "auditDate": "2026-09-24",
+  "auditScope": "Read-only audit of all sample titles displayed for GEO series GSE275595 plus selected sample-level GEO metadata records; no barcode, feature, or matrix payload was downloaded.",
+  "source": {
+    "seriesAccession": "GSE275595",
+    "seriesUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595",
+    "sampleRecordBaseUrl": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=",
+    "seriesSampleRecordCount": 29,
+    "seriesSupplementaryTarBytes": 1450055680,
+    "seriesSupplementaryTarDescription": "TAR of MTX, TSV",
+    "seriesReportsRawDataInSra": true,
+    "representativeSampleMatrixRecord": {
+      "geoSampleAccession": "GSM8480577",
+      "sampleTitle": "P0CR1",
+      "samplePageReportsCellRangerFilteredFeatureBarcodeMatrix": true,
+      "components": [
+        { "kind": "barcodes", "fileName": "GSM8480577_P0CR1_barcodes.tsv.gz", "bytes": 41212 },
+        { "kind": "features", "fileName": "GSM8480577_P0CR1_features.tsv.gz", "bytes": 290896 },
+        { "kind": "matrix", "fileName": "GSM8480577_P0CR1_matrix.mtx.gz", "bytes": 49356598 }
+      ]
+    }
+  },
+  "geoSampleTitlesObserved": [
+    { "geoSampleAccession": "GSM8480577", "sampleTitle": "P0CR1" },
+    { "geoSampleAccession": "GSM8480578", "sampleTitle": "P0CR2" },
+    { "geoSampleAccession": "GSM8480579", "sampleTitle": "P0LR1" },
+    { "geoSampleAccession": "GSM8480580", "sampleTitle": "P0LR2" },
+    { "geoSampleAccession": "GSM8480581", "sampleTitle": "P0TR1" },
+    { "geoSampleAccession": "GSM8480582", "sampleTitle": "P0TR2" },
+    { "geoSampleAccession": "GSM8480583", "sampleTitle": "P14CR1" },
+    { "geoSampleAccession": "GSM8480584", "sampleTitle": "P14CR2" },
+    { "geoSampleAccession": "GSM8480585", "sampleTitle": "P14LR1" },
+    { "geoSampleAccession": "GSM8480586", "sampleTitle": "P14LR2" },
+    { "geoSampleAccession": "GSM8480587", "sampleTitle": "P14TR1" },
+    { "geoSampleAccession": "GSM8480588", "sampleTitle": "P14TR2" },
+    { "geoSampleAccession": "GSM8480589", "sampleTitle": "P28CR1" },
+    { "geoSampleAccession": "GSM8480590", "sampleTitle": "P28CR2" },
+    { "geoSampleAccession": "GSM8480591", "sampleTitle": "P28LR1" },
+    { "geoSampleAccession": "GSM8480592", "sampleTitle": "P28LR2" },
+    { "geoSampleAccession": "GSM8480593", "sampleTitle": "P28TR1" },
+    { "geoSampleAccession": "GSM8480594", "sampleTitle": "P28TR2" },
+    { "geoSampleAccession": "GSM8480595", "sampleTitle": "P56CR1" },
+    { "geoSampleAccession": "GSM8480596", "sampleTitle": "P56CR2" },
+    { "geoSampleAccession": "GSM8480597", "sampleTitle": "P56LR1" },
+    { "geoSampleAccession": "GSM8480598", "sampleTitle": "P56LR2" },
+    { "geoSampleAccession": "GSM8480599", "sampleTitle": "P56TR1" },
+    { "geoSampleAccession": "GSM8480600", "sampleTitle": "P56TR2" },
+    { "geoSampleAccession": "GSM8480601", "sampleTitle": "P0HetR1" },
+    { "geoSampleAccession": "GSM8480602", "sampleTitle": "P0KoR1" },
+    { "geoSampleAccession": "GSM8480603", "sampleTitle": "P0HetR2" },
+    { "geoSampleAccession": "GSM8480604", "sampleTitle": "P0KoR2" },
+    { "geoSampleAccession": "GSM8480605", "sampleTitle": "E135HetR1" }
+  ],
+  "analysisCodeParser": {
+    "sourceFunctionUrl": "https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/3_Add_metadata.R",
+    "expectedPostnatalSampleTitlePattern": "^P(?:0|14|28|56)[CLT]R[12]$",
+    "sampleTitlePatternMatchCount": 24,
+    "sampleTitlePatternExceptionCount": 5,
+    "ageRule": "first numeric substring in orig.ident",
+    "regionRule": "third character from end of orig.ident",
+    "replicateRule": "last character of orig.ident"
+  },
+  "representativeSampleMetadataVerified": [
+    { "geoSampleAccession": "GSM8480577", "sampleTitle": "P0CR1", "age": "P0", "region": "Cervical", "replicate": "1" },
+    { "geoSampleAccession": "GSM8480588", "sampleTitle": "P14TR2", "age": "P14", "region": "Thoracic", "replicate": "2" },
+    { "geoSampleAccession": "GSM8480598", "sampleTitle": "P56LR2", "age": "P56", "region": "Lumbar", "replicate": "2" }
+  ],
+  "sampleTitlePatternExceptionRecords": [
+    { "geoSampleAccession": "GSM8480601", "sampleTitle": "P0HetR1", "geoAge": "P0", "geoRegion": "Whole cord", "geoReplicate": "1", "geoGenotype": "En1::Cre heterozygous; RC.lsl.Sun1-sfGFP", "parserAge": "0", "parserRegion": "t", "parserReplicate": "1" },
+    { "geoSampleAccession": "GSM8480602", "sampleTitle": "P0KoR1", "geoAge": "P0", "geoRegion": "Whole cord", "geoReplicate": "1", "geoGenotype": "En1::Cre homozygous; RC.lsl.Sun1-sfGFP", "parserAge": "0", "parserRegion": "o", "parserReplicate": "1" },
+    { "geoSampleAccession": "GSM8480603", "sampleTitle": "P0HetR2", "geoAge": "P0", "geoRegion": "Whole cord", "geoReplicate": "2", "geoGenotype": "En1::Cre heterozygous; RC.lsl.Sun1-sfGFP", "parserAge": "0", "parserRegion": "t", "parserReplicate": "2" },
+    { "geoSampleAccession": "GSM8480604", "sampleTitle": "P0KoR2", "geoAge": "P0", "geoRegion": "Whole cord", "geoReplicate": "2", "geoGenotype": "En1::Cre homozygous; RC.lsl.Sun1-sfGFP", "parserAge": "0", "parserRegion": "o", "parserReplicate": "2" },
+    { "geoSampleAccession": "GSM8480605", "sampleTitle": "E135HetR1", "geoAge": "E13.5", "geoRegion": "Whole cord", "geoReplicate": "1", "geoGenotype": "En1::Cre heterozygous; RC.lsl.Sun1-sfGFP", "parserAge": "135", "parserRegion": "t", "parserReplicate": "1" }
+  ],
+  "notYetVerifiedOrImported": {
+    "anyGsmMatrixPayloadDownloadedOrChecksummed": false,
+    "all29SampleCharacteristicsInspected": false,
+    "perCellBarcodeToMatrixCrosswalkValidated": false,
+    "perCellAgeClusterRegionRowsReproduced": false,
+    "geoFileSpecificReuseTermsVerified": false,
+    "supplementaryData3DownloadedOrInspected": false
+  },
+  "interpretationBoundary": {
+    "seriesSampleTitlesAreNotACellRoster": true,
+    "sampleNameParserMustNotBeAppliedToTheFiveExceptionRecords": true,
+    "sampleLevelMetadataDoesNotEstablishPerCellClusterAssignments": true,
+    "articleAndCodeLicensesDoNotEstablishGeoFileReuseTerms": true,
+    "geneExpressionLabelsDoNotEstablishMorphologyOrSameCellIdentity": true
+  },
+  "admissionBoundary": {
+    "canonicalSourceProfileContribution": 0,
+    "includedInExisting387ProfileDenominator": false,
+    "includedInMain3dScene": false,
+    "morphologyGeometryObjectCount": 0,
+    "internalStructureObjectCount": 0,
+    "sameCellJoinCount": 0,
+    "atlasRegistrationCount": 0,
+    "measurementCount": 0
+  }
+}

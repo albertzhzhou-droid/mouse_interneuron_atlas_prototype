@@ -1,10 +1,21 @@
 "use client";
 
+import Link from "next/link";
+
+import MorphologySourceProof from "./MorphologySourceProof";
+import MorphologySourceViewControls from "./MorphologySourceViewControls";
+import "./workspace-loading-status.css";
+import { mainSceneViewEqual, type MainSceneViewRequest, type MainSceneSourceViewTools } from "./main-scene-source-view.js";
+import { buildMainSceneRoundTripContract, createMainSceneCsvMetadataRow, MAIN_SCENE_CSV_FORMAT_VERSION, appendMainSceneExportPng, type MainSceneExportView } from "./main-scene-export.js";
+import { prepareMainSceneStateViewImport, createMainSceneStateImportCoordinator, type MainSceneImportContext } from "./main-scene-state-import.js";
+
 import neuromorphoUniverseRosterJson from "../data/neuromorpho-no-age-query-universe-roster-0.1.json";
+import { RESEARCH_ITERATION } from "./research-iteration.js";
 
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -18,6 +29,7 @@ import SceneCanvas, {
   type MicronsObservedReferenceRuntimeReceipt,
   type MorphologyFidelityMode,
   type MorphologyRuntimeReceipt,
+  type Nmo45718DatSwcCrosswalkRuntime,
   type RenderPerformance,
   type ViewportCapture,
 } from "./SceneCanvas";
@@ -34,15 +46,11 @@ import {
   ResearchActiveRecordProvider,
   useResearchActiveRecordLoader,
 } from "./ResearchActiveRecordProvider";
-import ResearchDataLab, {
-  normalizedResearchLabTab,
-  type LabTab,
-} from "./ResearchDataLab";
+import type { LabTab } from "./ResearchDataLab";
 import type { MatsonSciTimepoint } from "./MatsonSciTimecourseExplorer";
 import type {
   ResearchFocus,
   ResearchFocusView,
-  ResearchRecord,
 } from "./ResearchExplorer";
 import {
   DEFAULT_RESEARCH_FOCUS,
@@ -83,9 +91,13 @@ import {
   micronsSourceNativeClipping,
   morphologyFidelityContract,
   morphologyFidelityRecords,
+  neuromorphoCensusMainSceneIndex,
+  neuromorphoCensusMainSceneRecordByNeuronId,
   observedCellFormLens,
   observedCellFormRecords,
+  observedMorphologyRuntimeSummary,
   observedMorphologyRouteByNeuronId,
+  observedMorphologyRepresentationRouteId,
   grpDorsalHornObservedMorphology,
   publicSourceAssertionProvenance,
   publicSourceAuthorizationPlan,
@@ -98,7 +110,6 @@ import {
   researchMvpManifest,
   researchMvpRelease,
   researchSourceRegistrySummary,
-  neurolucidaNativeContourAdmissionCatalog,
   type AtlasEntity,
   type PublicDataAdmissionStatus,
   type Transmitter,
@@ -173,20 +184,17 @@ const NEUROMORPHO_UNIVERSE_VIEWER_IDS = (neuromorphoUniverseRosterJson as {
 const SOURCE_DIAMETER_NEURON_IDS = morphologyFidelityRecords
   .filter((record) => record.modes.radiusSurface.available)
   .map((record) => record.neuronId);
-const INDEXED_MAIN_SCENE_MORPHOLOGY_FOCUS_IDS = OBSERVED_CELL_FORM_IDS
+const RESOLVABLE_MAIN_SCENE_MORPHOLOGY_FOCUS_IDS = OBSERVED_CELL_FORM_IDS
   .map((neuronId) => `NeuroMorpho:${neuronId}`);
 const DEFAULT_OBSERVED_CELL_FORM_ID = observedCellFormLens.defaultNeuronId;
 const DEFAULT_MORPHOLOGY_FIDELITY_MODE = morphologyFidelityContract.defaultMode as MorphologyFidelityMode;
 const MORPHOLOGY_FIDELITY_MODES: MorphologyFidelityMode[] = ["observed_swc", "radius_surface"];
 const DEFAULT_CATALOG_SOURCE = "PDS-SPINALJ-PROCESSED";
 const RESEARCH_FOCUS_VIEWS: ResearchFocusView[] = ["summary", "evidence", "gaps", "provenance"];
-const DEFAULT_FOCUS_BY_LAB: Partial<Record<LabTab, ResearchFocus>> = {
-  types: { focusKind: "molecular_profile", focusId: "sathyamurthy-2018:DE-1" },
-  sci: { focusKind: "sci_population", focusId: "matson-2022:GSE172167:Cpne4_Neurons" },
-  atlas: { focusKind: "anatomy_label", focusId: "allen_cord_20um:3.0:interneuron-focused_reference:1" },
-  morphology: { focusKind: "morphology_record", focusId: "NeuroMorpho:109005" },
-  coverage: { focusKind: "source_lane", focusId: "russ-2021" },
-};
+function normalizedResearchLabTab(value: string | string[] | undefined): LabTab {
+  const candidate = Array.isArray(value) ? value[0] : value;
+  return (["overview", "sources", "types", "sci", "positions", "atlas", "morphology", "coverage"] as string[]).includes(candidate ?? "") ? candidate as LabTab : "overview";
+}
 export type InitialAtlasParams = Record<string, string | string[] | undefined>;
 function morphologyFidelityRecord(neuronId: number) {
   const record = morphologyFidelityRecords.find((candidate) => candidate.neuronId === neuronId);
@@ -266,13 +274,17 @@ function parseInitialResearchState(params: InitialAtlasParams, selectedId: strin
       ? { ...DEFAULT_RESEARCH_FOCUS } as ResearchFocus
       : null);
   const requestedLab = normalized.get("lab");
-  // A focus parsed from the URL is an explicit record-selection intent and owns
-  // its canonical workspace. The default SCI selection remains dormant when a
-  // neutral lab-only URL (Sources, Positions, and similar) is restored.
+  const morphologyQuery = normalized.get("morphologyQuery") ?? "";
+  const explicitMorphologyBrowserIntent = requestedLab === "morphology" && morphologyQuery.trim().length > 0;
+  // A focus parsed from the URL owns its canonical workspace unless the URL
+  // explicitly requests a literal morphology-browser search. Neutral lab-only
+  // URLs keep their requested workspace and leave the default SCI focus dormant.
   const focusWorkspace = parsed
     ? resolveResearchFocusWorkspaceState(parsed)
     : null;
-  const lab = focusWorkspace?.status === "ready"
+  const lab = explicitMorphologyBrowserIntent
+    ? "morphology" as LabTab
+    : focusWorkspace?.status === "ready"
     ? focusWorkspace.lab as LabTab
     : requestedLab !== null
       ? normalizedResearchLabTab(requestedLab)
@@ -284,6 +296,7 @@ function parseInitialResearchState(params: InitialAtlasParams, selectedId: strin
     query: normalized.get("researchQuery") ?? "",
     view: requestedView && RESEARCH_FOCUS_VIEWS.includes(requestedView) ? requestedView : "summary" as ResearchFocusView,
     sciTimepoint: normalizeMatsonSciTimepoint(normalized.get("sciTime")) as MatsonSciTimepoint,
+    morphologyQuery,
   };
 }
 
@@ -305,6 +318,16 @@ function filterEntities(search: string, filters: Filters) {
 
 function isPlainRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype;
+}
+
+function validateSourceViewEvidenceFilter(request: MainSceneViewRequest, savedVisibleIds: string[]) {
+  const filter = request.evidenceFilter, values = filter.filters;
+  if (!["all", "excitatory", "inhibitory", "mixed_or_unspecified", "state_dependent"].includes(values.transmitter)
+    || !["all", "cervical", "thoracic", "lumbar", "sacral"].includes(values.segment)
+    || !["all", "locomotion", "breathing", "spasm"].includes(values.endpoint)
+    || !["all", ...new Set(atlasRelease.entities.map(entity => entity.injuryType))].includes(values.injury)
+    || (filter.retainedSelectedId !== null && !ATLAS_ENTITY_IDS.includes(filter.retainedSelectedId))
+    || JSON.stringify(filterEntities(filter.search, values as Filters).map(entity => entity.id).sort()) !== JSON.stringify(savedVisibleIds)) throw new Error("Main scene view: saved evidence filter or selection differs from the current registry");
 }
 
 function requireOnlyKeys(record: Record<string, unknown>, allowed: string[], label: string) {
@@ -605,7 +628,16 @@ function downloadBlob(blob: Blob, filename: string) {
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+  return url;
+}
+
+function exportImageDataUrl(blob: Blob) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => typeof reader.result === "string" ? resolve(reader.result) : reject(new Error("PNG preview is unavailable"));
+    reader.onerror = () => reject(new Error("PNG preview is unavailable"));
+    reader.readAsDataURL(blob);
+  });
 }
 
 function wrapCanvasText(
@@ -637,6 +669,7 @@ async function createFallbackPng(
   visibleCount: number,
   morphologyRuntime: MorphologyRuntimeReceipt,
   micronsRuntime: MicronsObservedReferenceRuntimeReceipt,
+  snapshotReason: "webgl_unavailable" | "text_requested" = "webgl_unavailable",
 ) {
   const canvas = document.createElement("canvas");
   canvas.width = 1280;
@@ -649,7 +682,7 @@ async function createFallbackPng(
   context.font = "700 42px Arial, sans-serif";
   context.fillText("Mouse Spinal Interneuron Atlas", 64, 92);
   context.font = "24px Arial, sans-serif";
-  context.fillText("Accessible fallback snapshot · 3D rendering unavailable", 64, 140);
+  context.fillText(snapshotReason === "text_requested" ? "Accessible text snapshot · no 3D pixels captured" : "Accessible fallback snapshot · 3D rendering unavailable", 64, 140);
   context.fillStyle = "#0e7c66";
   context.font = "700 31px Arial, sans-serif";
   context.fillText(selected ? `Selected: ${selected.shortLabel}` : "No evidence entity selected", 64, 235);
@@ -743,7 +776,7 @@ function parseInitialState(params: InitialAtlasParams) {
       && OBSERVED_CELL_FORM_IDS.includes(requestedObservedCellFormId)
       ? resolveExplicitMorphologySelection({
         neuronId: requestedObservedCellFormId,
-        indexedMorphologyFocusIds: INDEXED_MAIN_SCENE_MORPHOLOGY_FOCUS_IDS,
+        resolvableMorphologyFocusIds: RESOLVABLE_MAIN_SCENE_MORPHOLOGY_FOCUS_IDS,
         admittedMainSceneNeuronIds: OBSERVED_CELL_FORM_IDS,
         admittedSourceViewerNeuronIds: NEUROMORPHO_UNIVERSE_VIEWER_IDS,
         sourceDiameterNeuronIds: SOURCE_DIAMETER_NEURON_IDS,
@@ -893,6 +926,8 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
   const [showGrayMatter, setShowGrayMatter] = useState(initial.layers.gray);
   const [showEntities, setShowEntities] = useState(initial.layers.entities);
   const [showObservedCellForm, setShowObservedCellForm] = useState(initial.layers.observedForm);
+  const [showNmo45718DatSwcCrosswalk, setShowNmo45718DatSwcCrosswalk] = useState(false);
+  const [nmo45718DatSwcCrosswalkRuntime, setNmo45718DatSwcCrosswalkRuntime] = useState<Nmo45718DatSwcCrosswalkRuntime>({ status: "idle", message: "" });
   const [showMicronsCellSurface, setShowMicronsCellSurface] = useState(initial.layers.micronsCellSurface);
   const [showMicronsNucleus, setShowMicronsNucleus] = useState(initial.layers.micronsNucleus);
   const [micronsClipping, setMicronsClipping] = useState<MicronsClippingState>(initial.micronsClipping);
@@ -919,6 +954,11 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     verifiedAssetReceipt: null,
     reason: "runtime_not_initialized",
   });
+  const [mainSceneViewTools, setMainSceneViewTools] = useState<MainSceneSourceViewTools | null>(null);
+  const [stateImportCoordinator] = useState(() => createMainSceneStateImportCoordinator());
+  const [pendingStateImportId, setPendingStateImportId] = useState<number | null>(null);
+  const stateImportContextRef = useRef<MainSceneImportContext | null>(null);
+  const [mainSceneInspectionHost, setMainSceneInspectionHost] = useState<HTMLDivElement | null>(null);
   const [webGLAvailable, setWebGLAvailable] = useState(true);
   const [sidePanel, setSidePanel] = useState<SidePanel>(initial.panel);
   const [comparisonIds, setComparisonIds] = useState<string[]>(initial.comparisonIds);
@@ -927,11 +967,14 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
   const researchActiveRecord = useResearchActiveRecordLoader(researchFocus);
   const [researchLab, setResearchLab] = useState<LabTab>(initial.research.lab);
   const [researchQuery, setResearchQuery] = useState(initial.research.query);
+  const [morphologySearchQuery, setMorphologySearchQuery] = useState(initial.research.morphologyQuery);
   const [researchFocusView, setResearchFocusView] = useState<ResearchFocusView>(initial.research.view);
   const [sciTimepoint, setSciTimepoint] = useState<MatsonSciTimepoint>(initial.research.sciTimepoint);
   const [notice, setNotice] = useState("Ready · source-local SWC fidelity is checksum-gated; unsupported diameter and internal detail fail closed");
   const [locationHydrated, setLocationHydrated] = useState(false);
   const [captureViewport, setCaptureViewport] = useState<ViewportCapture | null>(null);
+  const [lastExport, setLastExport] = useState<{ url: string; filename: string; preview: { kind: "text"; content: string } | { kind: "image"; source: string } } | null>(null);
+  useEffect(() => () => { if (lastExport) URL.revokeObjectURL(lastExport.url); }, [lastExport]);
   const [renderPerformance, setRenderPerformance] = useState<RenderPerformance | null>(null);
   const populationRefs = useRef(new Map<string, HTMLButtonElement>());
   const panelRefs = useRef(new Map<SidePanel, HTMLButtonElement>());
@@ -972,6 +1015,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
   const verifiedActiveResearchRecord = researchActiveRecord.activeRecord.status === "ready"
     ? researchActiveRecord.activeRecord.record
     : null;
+  const activeResearchModelingReceipt = verifiedActiveResearchRecord?.presentation?.modeling ?? null;
   const morphologyTargetActive = morphologyVisualTarget.status === "exact_main_scene_morphology"
     && viewportMorphologyNeuronId !== null
     && verifiedActiveResearchRecord?.focusKind === "morphology_record"
@@ -982,12 +1026,48 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     && verifiedActiveResearchRecord.focusId === activeSelectedId;
   const populationEvidenceVisible = showEntities && populationEvidenceTargetActive;
   const morphologyVisibleRequested = morphologyTargetActive && showObservedCellForm;
+  const nmo45718DatSwcCrosswalkControlVisible = morphologyTargetActive
+    && viewportMorphologyNeuronId === 45718
+    && view === "cell_detail";
   const observedCellForm = observedCellFormRecords.find((record) => record.neuronId === observedCellFormId)
     ?? observedCellFormRecords.find((record) => record.neuronId === DEFAULT_OBSERVED_CELL_FORM_ID)!;
+  const censusIndexRecord = neuromorphoCensusMainSceneRecordByNeuronId.get(observedCellFormId) ?? null;
   const activeObservedCellForm = morphologyTargetActive ? observedCellForm : null;
   const observedMorphologyRoute = morphologyTargetActive
     ? observedMorphologyRouteByNeuronId.get(observedCellFormId) ?? null
     : null;
+  const sourceRouteCellTypeLabels = observedMorphologyRoute && "cellTypeLabels" in observedMorphologyRoute.sourceRecord
+    ? observedMorphologyRoute.sourceRecord.cellTypeLabels
+    : null;
+  const sourceRouteRegionLabels = observedMorphologyRoute && "regionLabels" in observedMorphologyRoute.sourceRecord
+    ? observedMorphologyRoute.sourceRecord.regionLabels
+    : null;
+  const morphologyRuntimeMatchesCurrentSelection = viewportMorphologyNeuronId !== null
+    && morphologyRuntime.requestedNeuronId === viewportMorphologyNeuronId
+    && morphologyRuntime.requestedMode === morphologyFidelityMode
+      && (morphologyRuntime.actualMode === null || morphologyRuntime.actualMode === morphologyFidelityMode);
+  const guardedMorphologyRuntime = viewportMorphologyNeuronId === null
+    ? clearedMorphologyRuntime(morphologyVisualTarget.reason)
+    : morphologyRuntimeMatchesCurrentSelection
+      ? morphologyRuntime
+      : {
+        ...pendingMorphologyRuntime(viewportMorphologyNeuronId, morphologyFidelityMode),
+        verificationStatus: "failed" as const,
+        reason: "runtime_receipt_selection_mismatch",
+      };
+  const morphologyGeometryVerified = morphologyTargetActive
+    && guardedMorphologyRuntime.verificationStatus === "verified"
+    && guardedMorphologyRuntime.sceneObjectStatus === "rendered"
+    && guardedMorphologyRuntime.sourceGeometryVerification?.sha256 === guardedMorphologyRuntime.geometrySha256
+    && guardedMorphologyRuntime.sourceContext !== null
+    && guardedMorphologyRuntime.sourceContext !== undefined;
+  const morphologyActuallyVisible = morphologyVisibleRequested && webGLAvailable
+    && morphologyGeometryVerified && guardedMorphologyRuntime.visible;
+  const morphologyViewportLabel = morphologyGeometryVerified
+    ? `NeuroMorpho ${guardedMorphologyRuntime.sourceContext!.repositoryRelease} ${morphologyActuallyVisible
+      ? guardedMorphologyRuntime.actualMode === "radius_surface" ? "OBS input + DER surface" : "OBS SWC centerlines"
+      : "verified source geometry hidden"}`
+    : "no verified morphology rendered";
   const activeRepresentationRouteIds = view === "microns_observed_reference"
     ? ["microns_observed_reference"]
     : view === "internal_reference"
@@ -995,7 +1075,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       : [
           ...(view !== "cell_detail" && (showScaffold || showGrayMatter) ? ["main.reference_anatomy"] : []),
           ...(view !== "cell_detail" && populationEvidenceVisible ? ["main.population_evidence"] : []),
-          ...(morphologyVisibleRequested ? [observedMorphologyRoute?.routeId ?? "main.legacy_observed_cell_forms"] : []),
+          ...(morphologyActuallyVisible ? [observedMorphologyRepresentationRouteId(observedCellFormId)] : []),
         ];
   const activeRepresentationRoutes = activeRepresentationRouteIds.map((routeId) => {
     const route = evidenceAware3dRepresentationContract.routes.find((candidate) => candidate.routeId === routeId);
@@ -1012,19 +1092,10 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
   const frozenMorphologyFidelityRecord = morphologyTargetActive
     ? morphologyFidelityContract.records.find((record) => record.neuronId === observedCellFormId) ?? null
     : null;
-  const morphologyRuntimeMatchesCurrentSelection = viewportMorphologyNeuronId !== null
-    && morphologyRuntime.requestedNeuronId === viewportMorphologyNeuronId
-    && morphologyRuntime.requestedMode === morphologyFidelityMode
-    && (morphologyRuntime.actualMode === null || morphologyRuntime.actualMode === morphologyFidelityMode);
-  const guardedMorphologyRuntime = viewportMorphologyNeuronId === null
-    ? clearedMorphologyRuntime(morphologyVisualTarget.reason)
-    : morphologyRuntimeMatchesCurrentSelection
-      ? morphologyRuntime
-      : {
-        ...pendingMorphologyRuntime(viewportMorphologyNeuronId, morphologyFidelityMode),
-        verificationStatus: "failed" as const,
-        reason: "runtime_receipt_selection_mismatch",
-      };
+  const clearNmo45718DatSwcCrosswalk = useCallback(() => {
+    setShowNmo45718DatSwcCrosswalk(false);
+    setNmo45718DatSwcCrosswalkRuntime({ status: "idle", message: "" });
+  }, []);
   const persistentState: PersistentAtlasState = {
     selectedId: retainedSelectedId,
     search,
@@ -1057,6 +1128,54 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     },
   };
 
+  const handleSourceViewTools = useCallback((tools: MainSceneSourceViewTools | null) => { setMainSceneViewTools(tools); }, []);
+  const applySourceViewRequest = useCallback((request: MainSceneViewRequest, savedVisibleIds: string[]) => {
+    const filter = request.evidenceFilter, values = filter.filters;
+    validateSourceViewEvidenceFilter(request, savedVisibleIds);
+    setSearch(filter.search); setFilters(values as Filters); setSelectedId(filter.retainedSelectedId);
+    setView(request.view); setSliceZ(request.sliceZ); setMorphologyFidelityMode(request.mode);
+    setMorphologyVisualTarget(current => ({ ...current, fidelityMode: request.mode, modeReason: null }));
+    setShowScaffold(request.layers.scaffold); setShowGrayMatter(request.layers.gray); setShowEntities(request.layers.entities);
+    setShowObservedCellForm(request.layers.observedForm); setShowNmo45718DatSwcCrosswalk(request.layers.datContours);
+    setShowMicronsCellSurface(request.layers.micronsCellSurface); setShowMicronsNucleus(request.layers.micronsNucleus); setMicronsClipping(request.micronsClipping);
+  }, []);
+  const sourceViewRequest = useMemo<MainSceneViewRequest>(() => ({ view, sliceZ, mode: morphologyFidelityMode,
+    layers: { scaffold: showScaffold, gray: showGrayMatter, entities: showEntities, observedForm: showObservedCellForm, datContours: showNmo45718DatSwcCrosswalk, micronsCellSurface: showMicronsCellSurface, micronsNucleus: showMicronsNucleus },
+    micronsClipping, evidenceFilter: { search, filters, retainedSelectedId: canonicalSciSelectedId(selectedId, researchFocus) } }), [view, sliceZ, morphologyFidelityMode, showScaffold, showGrayMatter, showEntities, showObservedCellForm, showNmo45718DatSwcCrosswalk, showMicronsCellSurface, showMicronsNucleus, micronsClipping, search, filters, selectedId, researchFocus]);
+
+  const stateImportContext = useMemo<MainSceneImportContext>(() => ({ neuronId: viewportMorphologyNeuronId, focus: researchFocus, request: sourceViewRequest }), [viewportMorphologyNeuronId, researchFocus, sourceViewRequest]);
+  useLayoutEffect(() => { stateImportContextRef.current = stateImportContext; }, [stateImportContext]);
+  const cancelStateImport = useCallback((reason: string) => {
+    const wasRestoring = stateImportCoordinator.cancel(reason);
+    if (wasRestoring || mainSceneViewTools?.restoring) mainSceneViewTools?.cancelRestoration(reason);
+  }, [mainSceneViewTools, stateImportCoordinator]);
+  useEffect(() => {
+    const pending = stateImportCoordinator.snapshot();
+    if (!pending || pending.ticket.id !== pendingStateImportId) return;
+    const expected = pending.phase === "preparing" ? pending.baseline : pending.expected;
+    if (expected && !mainSceneViewEqual(expected, stateImportContext)) {
+      cancelStateImport("State import cancelled because the source or view changed");
+      queueMicrotask(() => { if (!stateImportCoordinator.isLatest(pending.ticket)) return; setPendingStateImportId(null); setNotice("Import cancelled · the current source or view changed"); });
+      return;
+    }
+    if (pending.phase !== "waiting") return;
+    if (!webGLAvailable || (!mainSceneViewTools?.restorable && guardedMorphologyRuntime.verificationStatus === "failed")) {
+      cancelStateImport("The selected main-scene source is unavailable");
+      queueMicrotask(() => { if (!stateImportCoordinator.isLatest(pending.ticket)) return; setPendingStateImportId(null); setNotice("Import view failed · the selected source is unavailable; no saved camera or branch state was restored"); });
+      return;
+    }
+    void stateImportCoordinator.restoreWhenReady(pending.ticket, mainSceneViewTools).then(result => {
+      if (result.status !== "restored" || !stateImportCoordinator.finish(pending.ticket)) return;
+      setPendingStateImportId(null);
+      setNotice(`State imported · exact source view rechecked and restored · ${pending.comparisonCount ?? 0} comparison conditions restored`);
+    }).catch(error => {
+      if (!stateImportCoordinator.finish(pending.ticket)) return;
+      setPendingStateImportId(null);
+      setNotice(`Import view failed · ${error instanceof Error ? error.message : "the actual view could not be verified"}`);
+    });
+  }, [cancelStateImport, guardedMorphologyRuntime.verificationStatus, mainSceneViewTools, pendingStateImportId, stateImportContext, stateImportCoordinator, webGLAvailable]);
+  useEffect(() => () => { stateImportCoordinator.cancel("The research workspace was closed"); }, [stateImportCoordinator]);
+
   const handleCaptureReady = useCallback((capture: ViewportCapture | null) => {
     setCaptureViewport(() => capture);
   }, []);
@@ -1078,6 +1197,10 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     setMicronsRuntime(receipt);
   }, []);
 
+  const handleNmo45718DatSwcCrosswalkRuntime = useCallback((receipt: Nmo45718DatSwcCrosswalkRuntime) => {
+    setNmo45718DatSwcCrosswalkRuntime(receipt);
+  }, []);
+
   const requestMicronsRuntimeForView = useCallback((nextView: CameraView) => {
     const requested = nextView === "microns_observed_reference";
     setMicronsRuntime((current) => current.requested === requested
@@ -1096,6 +1219,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     const restoreLocation = () => {
       const locationState = parseLocationState(window.location.search);
       if (cancelled) return;
+      clearNmo45718DatSwcCrosswalk();
       setSelectedId(canonicalSciSelectedId(
         locationState.selectedId,
         locationState.research.selectedResearchObject,
@@ -1124,6 +1248,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       setResearchFocus(locationState.research.selectedResearchObject);
       setResearchLab(locationState.research.lab);
       setResearchQuery(locationState.research.query);
+      setMorphologySearchQuery(locationState.research.morphologyQuery);
       setResearchFocusView(locationState.research.view);
       setSciTimepoint(locationState.research.sciTimepoint);
       setLocationHydrated(true);
@@ -1134,7 +1259,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       cancelled = true;
       window.removeEventListener("popstate", restoreLocation);
     };
-  }, [requestMicronsRuntimeForView]);
+  }, [clearNmo45718DatSwcCrosswalk, requestMicronsRuntimeForView]);
 
   useEffect(() => {
     if (!locationHydrated) return;
@@ -1191,13 +1316,15 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       params.set("focusId", researchFocus.focusId);
     }
     if (researchQuery) params.set("researchQuery", researchQuery);
+    if (researchLab === "morphology" && morphologySearchQuery.trim()) params.set("morphologyQuery", morphologySearchQuery);
     if (researchFocusView !== "summary") params.set("focusView", researchFocusView);
     if (sciTimepoint !== "all") params.set("sciTime", sciTimepoint);
     for (const [key, value] of researchLabParams) params.set(key, value!);
     window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
-  }, [activeCatalogSourceId, catalogState.admissionStatus, catalogState.plannerAxisIds, catalogState.query, comparisonIds, filters, locationHydrated, micronsClipping, morphologyFidelityMode, morphologyVisibleRequested, researchFocus, researchFocusView, researchLab, researchQuery, retainedSelectedId, sciTimepoint, search, showEntities, showGrayMatter, showMicronsCellSurface, showMicronsNucleus, showScaffold, sidePanel, sliceZ, view, viewportMorphologyNeuronId]);
+  }, [activeCatalogSourceId, catalogState.admissionStatus, catalogState.plannerAxisIds, catalogState.query, comparisonIds, filters, locationHydrated, micronsClipping, morphologyFidelityMode, morphologySearchQuery, morphologyVisibleRequested, researchFocus, researchFocusView, researchLab, researchQuery, retainedSelectedId, sciTimepoint, search, showEntities, showGrayMatter, showMicronsCellSurface, showMicronsNucleus, showScaffold, sidePanel, sliceZ, view, viewportMorphologyNeuronId]);
 
   const applyResolvedVisualTarget = useCallback((target: ReturnType<typeof resolveResearchVisualTarget>) => {
+    clearNmo45718DatSwcCrosswalk();
     setMorphologyVisualTarget(target as ResearchVisualTarget);
     setView(target.nextView as CameraView);
     requestMicronsRuntimeForView(target.nextView as CameraView);
@@ -1212,7 +1339,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     setMorphologyFidelityMode(mode);
     setMorphologyRuntime(pendingMorphologyRuntime(target.neuronId, mode));
     setShowObservedCellForm(true);
-  }, [requestMicronsRuntimeForView]);
+  }, [clearNmo45718DatSwcCrosswalk, requestMicronsRuntimeForView]);
 
   const applyResearchFocusWorkspace = useCallback((
     focus: ResearchFocus | null,
@@ -1251,47 +1378,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     setSelectedId(id);
     transitionResearchFocus({ focusKind: "sci_entity", focusId: id });
     setNotice(`${atlasRelease.entities.find((entity) => entity.id === id)?.shortLabel ?? "Entity"} selected · evidence card updated · no morphology relationship admitted`);
-  }, [transitionResearchFocus]);
-
-  const selectResearchFocus = useCallback((focus: ResearchFocus) => {
-    const target = transitionResearchFocus(focus);
-    if (focus.focusKind === "sci_entity" && atlasRelease.entities.some((entity) => entity.id === focus.focusId)) {
-      setSelectedId(focus.focusId);
-    }
-    if (focus.focusKind === "molecular_profile" && target.neuronId === null) {
-      setNotice(`${focus.focusId} selected · source-record fingerprint and evidence delta updated · main-scene geometry cleared because no same-cell morphology is admitted`);
-    } else if (target.reason === SOURCE_SPECIFIC_MORPHOLOGY_VIEWER_ONLY) {
-      setNotice(`Exact ${focus.focusId} remains in the source-specific Morphology Viewer · main-scene geometry cleared · no fallback`);
-    }
-  }, [transitionResearchFocus]);
-
-  const selectResearchLab = useCallback((lab: LabTab) => {
-    setResearchLab(lab);
-    const expectedKind = lab === "types"
-      ? "molecular_profile"
-      : lab === "sci"
-        ? "sci_population"
-        : lab === "atlas"
-          ? "anatomy_label"
-          : lab === "morphology"
-            ? "morphology_record"
-            : lab === "coverage"
-              ? "source_lane"
-              : null;
-    if (expectedKind && researchFocus?.focusKind !== expectedKind) {
-      transitionResearchFocus(DEFAULT_FOCUS_BY_LAB[lab] ?? null);
-    }
-    setNotice(`${prettify(lab)} research view active`);
-  }, [researchFocus, transitionResearchFocus]);
-
-  const openResearchRecord = useCallback((record: ResearchRecord) => {
-    selectResearchFocus({ focusKind: record.focusKind, focusId: record.focusId });
-    if (record.focusKind === "sci_population") {
-      setSciTimepoint(normalizeMatsonSciTimepoint(record.navigation.params.sciTime) as MatsonSciTimepoint);
-    }
-    setNotice(`${record.title} opened in the ${record.navigation.lab} workspace · source namespace preserved`);
-    requestAnimationFrame(() => document.getElementById(record.navigation.anchor)?.scrollIntoView({ block: "start", behavior: "smooth" }));
-  }, [selectResearchFocus]);
+  }, [setNotice, transitionResearchFocus]);
 
   const setFilter = <K extends keyof Filters>(key: K, value: Filters[K]) => {
     const next = { ...filters, [key]: value };
@@ -1306,6 +1393,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     if (layer === "micronsCellSurface") setShowMicronsCellSurface(visible);
     if (layer === "micronsNucleus") setShowMicronsNucleus(visible);
     if (layer === "observedForm") {
+      if (!visible) clearNmo45718DatSwcCrosswalk();
       if (!morphologyTargetActive) {
         setShowObservedCellForm(false);
         setNotice(`Morphology layer remains empty · ${prettify(morphologyVisualTarget.reason)}`);
@@ -1322,6 +1410,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
   const setMicronsClipEnabled = (enabled: boolean) => {
     setMicronsClipping((current) => ({ ...current, enabled }));
     if (enabled && view !== "microns_observed_reference") {
+      clearNmo45718DatSwcCrosswalk();
       setView("microns_observed_reference");
       requestMicronsRuntimeForView("microns_observed_reference");
     }
@@ -1358,7 +1447,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     if (!record) return;
     const target = resolveExplicitMorphologySelection({
       neuronId,
-      indexedMorphologyFocusIds: INDEXED_MAIN_SCENE_MORPHOLOGY_FOCUS_IDS,
+      resolvableMorphologyFocusIds: RESOLVABLE_MAIN_SCENE_MORPHOLOGY_FOCUS_IDS,
       admittedMainSceneNeuronIds: OBSERVED_CELL_FORM_IDS,
       admittedSourceViewerNeuronIds: NEUROMORPHO_UNIVERSE_VIEWER_IDS,
       sourceDiameterNeuronIds: SOURCE_DIAMETER_NEURON_IDS,
@@ -1375,26 +1464,13 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       : `NeuroMorpho ${neuronId} shown as OBS source-local SWC centerlines · unsupported thickness remains absent`);
   };
 
-  const openObservedMorphologyRoute = (neuronId: number) => {
-    const route = observedMorphologyRouteByNeuronId.get(neuronId);
-    if (!route) {
-      setNotice(`Route open rejected · NeuroMorpho ${neuronId} has no admitted independent-route contract`);
-      return;
-    }
-    updateObservedCellForm(neuronId);
-    setView("cell_detail");
-    setShowObservedCellForm(true);
-    setNotice(`Opened ${route.title} · exact source-local geometry · ${route.censusMembership ? "142-census child" : "supplementary object outside the frozen census"} · 0 joins · 0 REG · 0 internal primitives`);
-    window.requestAnimationFrame(() => document.querySelector("#sci-evidence-workspace .viewport-panel")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-  };
-
   const updateMorphologyFidelityMode = (mode: MorphologyFidelityMode) => {
     if (viewportMorphologyNeuronId === null) {
       setNotice(`No main-scene morphology target · ${prettify(morphologyVisualTarget.reason)}`);
       return;
     }
     if (!sourceAuthorizesFidelityMode(viewportMorphologyNeuronId, mode)) {
-      setNotice(`Radius-derived surface unavailable for NeuroMorpho ${viewportMorphologyNeuronId} · official source reports No Diameter`);
+      setNotice(`Radius-derived surface unavailable for NeuroMorpho ${viewportMorphologyNeuronId} · ${observedCellFidelity.geometry.dimensionality === "2D" ? "source-labelled 2D trace; no inferred thickness" : "official source reports No Diameter"}`);
       return;
     }
     setMorphologyFidelityMode(mode);
@@ -1418,6 +1494,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       setNotice(`Cell-detail view unavailable · ${prettify(morphologyVisualTarget.reason)}`);
       return;
     }
+    if (nextView !== "cell_detail") clearNmo45718DatSwcCrosswalk();
     setView(nextView);
     requestMicronsRuntimeForView(nextView);
     setNotice(`${prettify(nextView)} camera preset active`);
@@ -1525,6 +1602,11 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
     const input = event.currentTarget;
     const file = input.files?.[0];
     if (!file) return;
+    input.value = "";
+    cancelStateImport("A newer state import replaced the current request");
+    const ticket = stateImportCoordinator.begin(stateImportContext);
+    setPendingStateImportId(ticket.id);
+    setNotice("Reading saved state…");
 
     try {
       if (!file.name.toLowerCase().endsWith(".json")) throw new Error("choose a .json state export");
@@ -1545,6 +1627,14 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
           ? imported.cameraPreset
           : resolvedImportedTarget.nextView,
       };
+      const prepared = await prepareMainSceneStateViewImport(isPlainRecord(payload) ? payload.mainSceneView : undefined,
+        imported, importedTarget.neuronId as number | null, morphologyFidelityRecords, { signal: ticket.signal });
+      if (!stateImportCoordinator.isCurrent(ticket)) return;
+      if (!mainSceneViewEqual(stateImportContextRef.current, stateImportContext)) throw new Error("the current source or view changed while reading this file");
+      if (prepared.status === "actual_view") {
+        validateSourceViewEvidenceFilter(prepared.document.view.request, prepared.document.view.layers.visibleEntityIds);
+        stateImportCoordinator.waitForRenderer(ticket, prepared, { neuronId: prepared.neuronId, focus: imported.research.selectedResearchObject, request: prepared.document.view.request }, imported.comparisonIds.length);
+      }
       setSelectedId(canonicalSciSelectedId(
         imported.selectedId,
         imported.research.selectedResearchObject,
@@ -1568,25 +1658,43 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       setResearchQuery(imported.research.query);
       setResearchFocusView(imported.research.view);
       setSciTimepoint(imported.research.sciTimepoint);
-      setNotice(`State imported · ${imported.comparisonIds.length} comparison condition${imported.comparisonIds.length === 1 ? "" : "s"} restored`);
+      if (prepared.status === "actual_view") {
+        applySourceViewRequest(prepared.document.view.request, prepared.document.view.layers.visibleEntityIds);
+        setNotice("Rechecking exact source files and restoring the saved view…");
+      } else {
+        setShowObservedCellForm(imported.layers.observedForm && importedTarget.neuronId !== null);
+        stateImportCoordinator.finish(ticket); setPendingStateImportId(null);
+        setNotice(`State settings imported · ${imported.comparisonIds.length} comparison conditions restored · ${prepared.reason === "legacy_export_without_actual_view" ? "this legacy file has no actual-view receipt" : "the saved actual view was unavailable"}; camera and branch state were not replayed`);
+      }
     } catch (error) {
+      if (!stateImportCoordinator.finish(ticket)) return;
+      setPendingStateImportId(null);
       const reason = error instanceof SyntaxError
         ? "the selected file is not valid JSON"
         : error instanceof Error
           ? error.message
           : "the selected file could not be validated";
       setNotice(`Import rejected · ${reason}`);
-    } finally {
-      input.value = "";
     }
   };
 
-  const exportBaseName = `${researchMvpRelease.releaseId}-${filenameSlug(selected?.shortLabel ?? "filtered-view")}`;
+  const exportBaseName = `${researchMvpRelease.releaseId}-${morphologyTargetActive ? `neuromorpho-${viewportMorphologyNeuronId}` : filenameSlug(selected?.shortLabel ?? "filtered-view")}`;
+  const downloadExport = (blob: Blob, filename: string, preview: { kind: "text"; content: string } | { kind: "image"; source: string }) => {
+    setLastExport({ url: downloadBlob(blob, filename), filename, preview });
+  };
 
+  const currentMainSceneViewReceipt = (): MainSceneExportView => {
+    try {
+      if (!mainSceneViewTools?.available || mainSceneViewTools.restoring || mainSceneViewTools.neuronId !== viewportMorphologyNeuronId) throw new Error("No current verified main-scene view");
+      return mainSceneViewTools.capture();
+    } catch (error) { return { status: "unavailable", reason: error instanceof Error ? error.message : "No current verified main-scene view", currentNeuronId: viewportMorphologyNeuronId }; }
+  };
   const exportState = () => {
+    const mainSceneView = currentMainSceneViewReceipt();
     const payload = {
       schemaVersion: researchMvpRelease.schemaVersion,
       exportedAt: new Date().toISOString(),
+      mainSceneView,
       releaseId: researchMvpRelease.releaseId,
       releaseManifest: researchMvpManifest,
       publicDataCatalog: {
@@ -1610,16 +1718,29 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       observedCellFormLens: {
         contractRecordMembership: morphologyTargetActive && frozenObservedCellFormRecord !== null,
         repositoryCensusMembership: morphologyTargetActive ? observedMorphologyRoute?.censusMembership ?? true : null,
-        releaseId: morphologyTargetActive && frozenObservedCellFormRecord ? observedCellFormLens.releaseId : null,
-        sourceObject: morphologyTargetActive && frozenObservedCellFormRecord ? observedCellFormLens.sourceObject : null,
+        releaseId: morphologyTargetActive
+          ? frozenObservedCellFormRecord ? observedCellFormLens.releaseId : censusIndexRecord ? neuromorphoCensusMainSceneIndex.releaseId : null
+          : null,
+        sourceObject: morphologyTargetActive
+          ? frozenObservedCellFormRecord ? observedCellFormLens.sourceObject : censusIndexRecord ? neuromorphoCensusMainSceneIndex.source.censusIndex : null
+          : null,
         selectedRecord: morphologyTargetActive ? frozenObservedCellFormRecord : null,
         recordAuthority: !morphologyTargetActive
           ? "NO_ACTIVE_MORPHOLOGY_TARGET"
           : frozenObservedCellFormRecord
             ? "FROZEN_OBSERVED_CELL_FORM_LENS"
-            : "NOT_A_MEMBER_OF_FROZEN_OBSERVED_CELL_FORM_LENS",
+            : censusIndexRecord
+              ? "CHECKSUM_PINNED_NEUROMORPHO_CENSUS_MAIN_SCENE_INDEX"
+              : "NOT_A_MEMBER_OF_FROZEN_OBSERVED_CELL_FORM_LENS",
+        selectedCensusIndexRecord: morphologyTargetActive ? censusIndexRecord : null,
         renderingContract: morphologyTargetActive && frozenObservedCellFormRecord ? observedCellFormLens.renderingContract : null,
-        hardBoundaries: morphologyTargetActive && frozenObservedCellFormRecord ? observedCellFormLens.hardBoundaries : [],
+        hardBoundaries: !morphologyTargetActive
+          ? []
+          : frozenObservedCellFormRecord
+            ? observedCellFormLens.hardBoundaries
+            : censusIndexRecord
+              ? [neuromorphoCensusMainSceneIndex.scientificBoundary.membership, neuromorphoCensusMainSceneIndex.scientificBoundary.labels, neuromorphoCensusMainSceneIndex.scientificBoundary.geometry]
+              : [],
       },
       observedMorphologyRoute: morphologyTargetActive && observedMorphologyRoute ? {
         routeId: observedMorphologyRoute.routeId,
@@ -1640,23 +1761,29 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       morphologyFidelity: {
         contractRecordMembership: morphologyTargetActive && frozenMorphologyFidelityRecord !== null,
         repositoryCensusMembership: morphologyTargetActive ? observedMorphologyRoute?.censusMembership ?? true : null,
-        releaseId: morphologyTargetActive && frozenMorphologyFidelityRecord ? morphologyFidelityContract.releaseId : null,
-        sourceObjects: morphologyTargetActive && frozenMorphologyFidelityRecord ? morphologyFidelityContract.sourceObjects : null,
+        releaseId: morphologyTargetActive
+          ? frozenMorphologyFidelityRecord ? morphologyFidelityContract.releaseId : censusIndexRecord ? neuromorphoCensusMainSceneIndex.releaseId : null
+          : null,
+        sourceObjects: morphologyTargetActive
+          ? frozenMorphologyFidelityRecord ? morphologyFidelityContract.sourceObjects : censusIndexRecord ? neuromorphoCensusMainSceneIndex.source : null
+          : null,
         routeSourceObjects: morphologyTargetActive ? observedMorphologyRoute?.sourceObjects ?? null : null,
         selectedContractRecord: morphologyTargetActive ? frozenMorphologyFidelityRecord : null,
+        selectedCensusIndexRecord: morphologyTargetActive ? censusIndexRecord : null,
         activeRecord: activeObservedCellFidelity,
         recordAuthority: !morphologyTargetActive
           ? "NO_ACTIVE_MORPHOLOGY_TARGET"
           : frozenMorphologyFidelityRecord
             ? "FROZEN_MORPHOLOGY_FIDELITY_CONTRACT"
-            : observedMorphologyRoute?.sourceAuthority ?? "INDEPENDENT_ROUTE_RECORD",
-        activeMode: morphologyTargetActive ? morphologyFidelityMode : null,
-        activeRepresentationAuthority: !morphologyTargetActive
+            : observedMorphologyRoute?.sourceAuthority ?? (censusIndexRecord ? "CHECKSUM_PINNED_NEUROMORPHO_CENSUS_MAIN_SCENE_INDEX" : "INDEPENDENT_ROUTE_RECORD"),
+        requestedMode: morphologyTargetActive ? morphologyFidelityMode : null,
+        activeMode: morphologyGeometryVerified ? guardedMorphologyRuntime.actualMode : null,
+        activeRepresentationAuthority: !morphologyGeometryVerified
           ? "NONE"
-          : morphologyFidelityMode === "radius_surface"
+          : guardedMorphologyRuntime.actualMode === "radius_surface"
             ? morphologyFidelityContract.derivedSurfaceAlgorithm.authority
             : observedCellFidelity.geometry.geometryStatus,
-        derivedSurfaceAlgorithm: morphologyTargetActive && morphologyFidelityMode === "radius_surface"
+        derivedSurfaceAlgorithm: morphologyGeometryVerified && guardedMorphologyRuntime.actualMode === "radius_surface"
           ? morphologyFidelityContract.derivedSurfaceAlgorithm
           : null,
         runtimeReceipt: guardedMorphologyRuntime,
@@ -1664,7 +1791,9 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
           ? []
           : frozenMorphologyFidelityRecord
             ? morphologyFidelityContract.hardBoundaries
-            : observedMorphologyRoute?.warnings ?? [],
+            : observedMorphologyRoute?.warnings ?? (censusIndexRecord
+              ? [neuromorphoCensusMainSceneIndex.scientificBoundary.membership, neuromorphoCensusMainSceneIndex.scientificBoundary.labels, neuromorphoCensusMainSceneIndex.scientificBoundary.geometry]
+              : []),
       },
       micronsObservedReference: {
         contract: micronsObservedCellNucleusReference,
@@ -1686,15 +1815,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
         ...persistentState,
         url: window.location.href,
       },
-      roundTripContract: {
-        equalityUnit: "persistent state",
-        excludedTopLevelFields: ["exportedAt"],
-        regeneratedNonAuthoritativePaths: [
-          "state.url",
-          "morphologyFidelity.runtimeReceipt",
-          "micronsObservedReference.runtimeReceipt",
-        ],
-      },
+      roundTripContract: buildMainSceneRoundTripContract(mainSceneView),
       scientificDisclosure: {
         coordinateSpace: researchMvpRelease.spatialContract.coordinateSpace,
         entityGeometryStatus: "SYN",
@@ -1744,23 +1865,28 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       },
       disclaimer: atlasRelease.fixedDisclaimer,
     };
-    downloadBlob(new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" }), `${exportBaseName}.json`);
+    const json = JSON.stringify(payload, null, 2);
+    downloadExport(new Blob([json], { type: "application/json" }), `${exportBaseName}.json`, { kind: "text", content: json });
     setNotice("Evidence-linked JSON state exported");
   };
 
   const exportCsv = () => {
+    const sourceView = currentMainSceneViewReceipt();
+    const mainSceneView = JSON.stringify(sourceView), roundTripContract = JSON.stringify(buildMainSceneRoundTripContract(sourceView));
     const headers = [
+      "record_kind", "export_format_version",
       "release_id", "entity_id", "name", "entity_kind", "classification_axes", "transmitter", "markers",
       "segment_group", "segment_label", "lamina", "laterality", "endpoint", "injury_type", "injury_context",
       "geometry_status", "representation_kind", "cell_morphology_claim", "path_status", "claim_grades", "endpoint_levels", "allowed_claim", "not_established",
       "negative_findings", "ledger_id", "citation", "doi", "source_url", "coordinate_space",
-      "selected_morphology_asset_id", "morphology_input_status", "morphology_fidelity_mode", "morphology_representation_authority",
+      "selected_morphology_asset_id", "morphology_input_status", "morphology_fidelity_mode", "morphology_requested_fidelity_mode", "morphology_representation_authority",
       "morphology_route_id", "morphology_route_contract_id", "morphology_source_authority", "morphology_census_membership",
       "morphology_geometry_sha256", "morphology_runtime_verification", "morphology_scene_object_status", "morphology_visible", "morphology_runtime_reason",
       "source_diameter_available", "same_specimen_internal_structure_status", "morphology_relationship_to_entity",
-      "scientific_disclaimer",
+      "scientific_disclaimer", "main_scene_view_receipt_json", "main_scene_round_trip_contract_json",
     ];
     const rows = filteredEntities.map((entity) => [
+      "evidence_entity", MAIN_SCENE_CSV_FORMAT_VERSION,
       researchMvpRelease.releaseId, entity.id, entity.name, entity.entityKind, entity.classificationAxes, entity.transmitter,
       entity.markers, entity.segmentGroup, entity.segmentLabel, entity.lamina, entity.laterality, entity.endpoint,
       entity.injuryType, entity.injuryContext, entity.geometry.status, "non-cell population evidence node", false, entity.geometry.pathStatus, entity.claimGrades,
@@ -1768,19 +1894,21 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
       entity.citation, entity.doi, entity.sourceUrl, researchMvpRelease.spatialContract.coordinateSpace,
       activeObservedCellFidelity?.assetId ?? null,
       activeObservedCellFidelity?.geometry.geometryStatus ?? "NONE_REQUESTED",
+      morphologyGeometryVerified ? guardedMorphologyRuntime.actualMode : null,
       morphologyTargetActive ? morphologyFidelityMode : null,
-      !morphologyTargetActive ? "NONE" : morphologyFidelityMode === "radius_surface" ? "DERIVED_FROM_OBSERVED_RADIUS" : "OBS_STANDARDIZED_SOURCE_LOCAL",
+      !morphologyGeometryVerified ? "NONE" : guardedMorphologyRuntime.actualMode === "radius_surface" ? "DERIVED_FROM_OBSERVED_RADIUS" : "OBS_STANDARDIZED_SOURCE_LOCAL",
       morphologyTargetActive ? observedMorphologyRoute?.routeId ?? null : null,
       morphologyTargetActive ? observedMorphologyRoute?.contractId ?? null : null,
       morphologyTargetActive ? observedMorphologyRoute?.sourceAuthority ?? null : null,
       morphologyTargetActive ? observedMorphologyRoute?.censusMembership ?? true : null,
       activeObservedCellFidelity?.geometry.sha256 ?? null, guardedMorphologyRuntime.verificationStatus, guardedMorphologyRuntime.sceneObjectStatus, guardedMorphologyRuntime.visible, guardedMorphologyRuntime.reason,
       activeObservedCellFidelity?.geometry.sourceDiameterAvailable ?? null, morphologyTargetActive ? "UNAVAILABLE" : "NONE", "not_established",
-      atlasRelease.fixedDisclaimer,
+      atlasRelease.fixedDisclaimer, mainSceneView, roundTripContract,
     ]);
-    const csv = [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n") + "\r\n";
-    downloadBlob(new Blob([csv], { type: "text/csv;charset=utf-8" }), `${exportBaseName}.csv`);
-    setNotice(`${filteredEntities.length} evidence entities exported as RFC 4180 CSV`);
+    const metadataRow = createMainSceneCsvMetadataRow(headers, { releaseId: researchMvpRelease.releaseId, disclaimer: atlasRelease.fixedDisclaimer, sourceView });
+    const csv = [headers, metadataRow, ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n") + "\r\n";
+    downloadExport(new Blob([csv], { type: "text/csv;charset=utf-8" }), `${exportBaseName}.csv`, { kind: "text", content: csv });
+    setNotice(`${filteredEntities.length} evidence entities and 1 separate viewport metadata row exported as RFC 4180 CSV`);
   };
 
   const exportPng = async () => {
@@ -1791,36 +1919,54 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
           selectedLabel: selected?.shortLabel ?? null,
           morphologyRuntime: guardedMorphologyRuntime,
           micronsRuntime,
+          requestedState: persistentState,
+          currentNeuronId: viewportMorphologyNeuronId,
         })
-        : await createFallbackPng(selected, filteredEntities.length, guardedMorphologyRuntime, micronsRuntime);
-      downloadBlob(png, `${exportBaseName}.png`);
-      setNotice("Viewport PNG exported with observed-input, derived-surface and unavailable-internal-detail disclosure");
+        : await appendMainSceneExportPng(await createFallbackPng(selected, filteredEntities.length, guardedMorphologyRuntime, micronsRuntime),
+          { status: "unavailable", reason: "WebGL viewport is unavailable; PNG contains an accessible text snapshot only", currentNeuronId: viewportMorphologyNeuronId },
+          { exportKind: "accessible_fallback", requestedState: persistentState, currentNeuronId: viewportMorphologyNeuronId });
+      downloadExport(png, `${exportBaseName}.png`, { kind: "image", source: await exportImageDataUrl(png) });
+      setNotice(captureViewport ? "Viewport PNG exported with source-view metadata and scientific disclosure" : "Accessible PNG snapshot exported · no 3D view was captured; requested settings and unavailable status are embedded");
     } catch {
       setNotice("PNG export unavailable · JSON and CSV remain available");
     }
+  };
+
+  const exportAccessiblePng = async () => {
+    try {
+      const png = await appendMainSceneExportPng(await createFallbackPng(selected, filteredEntities.length, guardedMorphologyRuntime, micronsRuntime, "text_requested"),
+        { status: "unavailable", reason: "Accessible text snapshot requested; no 3D pixels were captured", currentNeuronId: viewportMorphologyNeuronId },
+        { exportKind: "accessible_fallback", requestedState: persistentState, currentNeuronId: viewportMorphologyNeuronId });
+      downloadExport(png, `${exportBaseName}-accessible.png`, { kind: "image", source: await exportImageDataUrl(png) });
+      setNotice("Accessible PNG snapshot exported · no 3D pixels captured; requested settings and unavailable status are embedded");
+    } catch { setNotice("Accessible PNG export unavailable · JSON and CSV remain available"); }
   };
 
   const injuryOptions = Array.from(new Set(atlasRelease.entities.map((entity) => entity.injuryType)));
 
   return (
     <ResearchActiveRecordProvider value={researchActiveRecord}>
-    <main className="atlas-shell">
-      <div className="research-only-banner" role="note">
-        <strong>LOCALHOST PUBLIC-DATA RESEARCH ITERATION 2.50</strong>
-        <span>Atlas INF · 1,097 exact NeuroMorpho query objects · frozen adult subset 142 · 149 exact assets reused + 948 delta raw SWCs · selected object checksum-gated and source-local · selected-spinal interior unavailable · 0 cross-lane REG</span>
-        <span>For research visualization only; this is not a complete cell census, connectome, or treatment recommendation.</span>
-      </div>
-
+    {!locationHydrated && <p className="workspace-loading-status" role="status" aria-live="polite" aria-atomic="true">
+      Preparing the research view…
+    </p>}
+    <main className="atlas-shell workspace-page" id="research-content" tabIndex={-1} inert={!locationHydrated} aria-busy={!locationHydrated}>
       <header className="atlas-header">
-        <div>
-          <p className="eyebrow">OHRI · PUBLIC-DATA RESEARCH ITERATION 2.50 · LOCALHOST</p>
-          <h1>Mouse Spinal Interneuron Atlas</h1>
-          <p className="header-subtitle">Evidence-linked 3D research with source-local spinal morphology, exact neonatal premotor coordinate points, an exact cross-region cell+nucleus segmentation reference, and explicit same-specimen missingness</p>
+        <div className="atlas-header-intro">
+          <p className="eyebrow">INSPECT · SOURCE-LOCAL GEOMETRY</p>
+          <h1>3D workspace</h1>
+          <p className="header-subtitle">Select an exact morphology or explore the reference anatomy. Source coordinates and evidence limits stay attached to each view.</p>
+          <details className="atlas-scope-details">
+            <summary>Scope &amp; interpretation</summary>
+            <p>Evidence-linked 3D research with source-local spinal morphology, exact neonatal premotor coordinate points, an exact cross-region cell+nucleus segmentation reference, and explicit same-specimen missingness.</p>
+            <p>Atlas INF · 1,097 exact NeuroMorpho query objects · frozen adult subset 142 · separate ten-label zebrafish taxonomy · selected object checksum-gated and source-local · selected-spinal interior unavailable · 0 cross-lane REG</p>
+            <p>For research visualization only; this is not a complete cell census, connectome, or treatment recommendation.</p>
+            <div className="scope-row" aria-label="Declared prototype scope">
+              <span>Model core: Mus musculus</span><span>SCI evidence: mouse + human context</span><span>Life stage: per source record</span><span>SCI entity scope C1–S3 · atlas segment labels pending</span>
+            </div>
+          </details>
         </div>
         <div className="header-actions">
-          <div className="scope-row" aria-label="Declared prototype scope">
-            <span>Model core: Mus musculus</span><span>SCI evidence: mouse + human context</span><span>Life stage: per source record</span><span>SCI entity scope C1–S3 · atlas segment labels pending</span>
-          </div>
+          <p className="workspace-tools-label">YOUR RESEARCH VIEW</p>
           <div className="action-row">
             <input
               ref={importInputRef}
@@ -1829,36 +1975,32 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
               hidden
               onChange={importState}
             />
-            <button type="button" onClick={reset}>Reset</button>
             <button type="button" onClick={share}>Share state</button>
-            <button type="button" onClick={() => importInputRef.current?.click()}>Import state</button>
             <button type="button" className="primary" onClick={exportState}>Export JSON</button>
-            <button type="button" onClick={exportCsv}>Export CSV</button>
-            <button type="button" onClick={exportPng}>Export PNG</button>
           </div>
+          <details className="workspace-tools">
+            <summary>More view tools</summary>
+            <div className="action-row">
+              <button type="button" onClick={() => importInputRef.current?.click()}>Import state</button>
+              <button type="button" onClick={exportCsv}>Export CSV</button>
+              <button type="button" onClick={exportPng}>Export PNG</button>
+              <button type="button" onClick={exportAccessiblePng}>Export text PNG</button>
+              <button type="button" onClick={reset}>Reset</button>
+            </div>
+          </details>
+          {lastExport && <p><a href={lastExport.url} download={lastExport.filename}>Download latest {lastExport.filename.split(".").at(-1)?.toUpperCase()} export</a></p>}
+          {lastExport && <details>
+            <summary>Preview latest export</summary>
+            {lastExport.preview.kind === "text" ? <textarea aria-label={`Latest ${lastExport.filename.split(".").at(-1)?.toUpperCase()} export contents`}
+              readOnly value={lastExport.preview.content} rows={8} style={{ width: "100%" }} /> : <>
+              {/* eslint-disable-next-line @next/next/no-img-element -- Preview the actual local PNG Blob, including its disclosure footer. */}
+              <img src={lastExport.preview.source} alt="Latest exported PNG" style={{ maxWidth: "100%", height: "auto" }} />
+            </>}
+          </details>}
         </div>
       </header>
 
-      <ResearchDataLab
-        activeTab={researchLab}
-        focus={researchFocus}
-        query={researchQuery}
-        focusView={researchFocusView}
-        sciTimepoint={sciTimepoint}
-        initialTypeCompare={initialParams.typeCompare}
-        initialMorphologyView={initialParams.morphologyView}
-        onTabChange={selectResearchLab}
-        onFocusChange={selectResearchFocus}
-        onQueryChange={setResearchQuery}
-        onFocusViewChange={setResearchFocusView}
-        onSciTimepointChange={setSciTimepoint}
-        onOpenRecord={openResearchRecord}
-        activeObservedNeuronId={observedCellFormId}
-        onOpenObservedMorphologyRoute={openObservedMorphologyRoute}
-        onNotice={setNotice}
-      />
-
-      <section className="research-workspace" id="sci-evidence-workspace" aria-label="Atlas research workspace">
+      <section className="research-workspace" id="sci-evidence-workspace" tabIndex={-1} aria-label="Atlas research workspace">
         <aside className="control-rail">
           <div className="panel-heading">
             <p className="panel-kicker">EXPLORE · {filteredEntities.length}/{atlasRelease.entities.length}</p>
@@ -1945,8 +2087,33 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
               SCI evidence anchors—not cells—plus paths · SYN/SCH{populationEvidenceTargetActive ? "" : " · hidden for current record"}
             </label>
             <label><input type="checkbox" checked={morphologyVisibleRequested} disabled={!morphologyTargetActive} onChange={(event) => setLayer("observedForm", event.target.checked)} />Source-local cell form · OBS</label>
+            {nmo45718DatSwcCrosswalkControlVisible && (
+              <div className="nmo-dat-crosswalk-scene-control">
+                <div className="nmo-dat-crosswalk-scene-control-row">
+                  <input
+                    id="nmo-45718-dat-crosswalk-toggle"
+                    type="checkbox"
+                    checked={showNmo45718DatSwcCrosswalk}
+                    disabled={!morphologyVisibleRequested}
+                    onChange={(event) => setShowNmo45718DatSwcCrosswalk(event.target.checked)}
+                  />
+                  <span>
+                    <label htmlFor="nmo-45718-dat-crosswalk-toggle"><strong><i aria-hidden="true" />DAT Soma 1 contours · OBS</strong></label>
+                    <small>7 source 2D planes · NMO 45718 only</small>
+                  </span>
+                </div>
+                <small className="nmo-dat-crosswalk-scene-note">
+                  Project-derived same-record display mapping; 0 registrations, no surface or measurements.
+                </small>
+                {showNmo45718DatSwcCrosswalk && nmo45718DatSwcCrosswalkRuntime.status !== "idle" && (
+                  <small className={`nmo-dat-crosswalk-scene-status ${nmo45718DatSwcCrosswalkRuntime.status}`} role="status">
+                    {nmo45718DatSwcCrosswalkRuntime.message}
+                  </small>
+                )}
+              </div>
+            )}
             <label className="observed-form-picker">
-              <span>Main scene · 13 unique exact source-local morphologies · 10 named spinal routes (8 dorsal-horn + 2 ventral-horn) · frozen 142-record census unchanged · 0 REG</span>
+              <span>Main scene · {observedMorphologyRuntimeSummary.activeMorphologyCount} selectable exact source-local morphologies · {observedMorphologyRuntimeSummary.selectableCensusMorphologyCount} census records ({observedMorphologyRuntimeSummary.sourceLabelledThreeDimensionalCensusCount} source-labelled 3D + {observedMorphologyRuntimeSummary.sourceLabelledPlanarCensusCount} source-labelled 2D) · {observedMorphologyRuntimeSummary.namedRouteCount} named spinal routes · 0 REG</span>
               <select value={viewportMorphologyNeuronId ?? ""} onChange={(event) => updateObservedCellForm(Number(event.target.value))}>
                 <option value="" disabled>No main-scene morphology targeted</option>
                 {observedCellFormRecords.map((record) => (
@@ -1964,15 +2131,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
                 setNotice("Independent GRP dorsal-horn route opened · exact NMO 109021 geometry · source-local · unregistered · no same-specimen internal model");
               }}
             >Open exact GRP dorsal-horn route · NMO 109021</button>
-            <button
-              type="button"
-              className="browse-all-morphologies"
-              onClick={() => {
-                selectResearchLab("morphology");
-                setNotice("Exact morphology universe opened · 1,097 checksum-gated source objects · frozen adult subset remains 142 · no representative geometry");
-                window.requestAnimationFrame(() => document.querySelector(".research-data-lab")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-              }}
-            >Browse exact morphology universe · 1,097 source objects</button>
+            <Link className="browse-all-morphologies" href="/explore/morphology/viewer">Browse all 1,097 source objects →</Link>
             <div className="morphology-fidelity-controls" aria-label="Source-gated morphology fidelity mode">
               <p>Cell-form evidence mode</p>
               <button
@@ -2027,6 +2186,8 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
                 ? `No morphology rendered · ${prettify(morphologyVisualTarget.reason)}.`
                 : observedCellFidelity.modes.radiusSurface.available
                 ? "Surface uses exact endpoint radii with open 6-sided frusta; it is not an observed membrane."
+                : observedCellFidelity.geometry.dimensionality === "2D"
+                ? "Source-labelled 2D trace. Diameter metadata is retained; no inferred surface thickness or depth is rendered."
                 : "Official metadata: No Diameter. Surface mode fails closed; SWC topology remains available."}</small>
             </div>
             <small className="layer-boundary-note">Co-display does not assign this specimen to the selected SCI entity or to any molecular cluster.</small>
@@ -2039,7 +2200,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
               <span className={`live-dot ${webGLAvailable ? "" : "offline"}`} />
               <strong>{webGLAvailable ? "WEBGL 3D" : "ACCESSIBLE FALLBACK"}</strong>
               <small>{morphologyTargetActive
-                ? `allen_cord_20um INF anatomy · SCI non-cell SYN lane ${populationEvidenceVisible ? "visible" : "hidden"} · NeuroMorpho 8.6.124 ${morphologyFidelityMode === "radius_surface" ? "OBS input + DER surface" : "OBS SWC centerlines"} · 0 REG`
+                ? `allen_cord_20um INF anatomy · SCI non-cell SYN lane ${populationEvidenceVisible ? "visible" : "hidden"} · ${morphologyViewportLabel} · 0 REG`
                 : `allen_cord_20um INF anatomy · SCI non-cell SYN lane ${populationEvidenceVisible ? "visible" : "hidden"} · no admitted morphology target · ${morphologyVisualTarget.reason}`}</small>
               {renderPerformance && (
                 <span className="performance-readout" aria-label={`Renderer ${renderPerformance.fps} frames per second, ${renderPerformance.frameP95Ms} millisecond p95 frame, ${renderPerformance.drawCalls} draw calls, ${renderPerformance.triangles} triangles`}>
@@ -2057,6 +2218,10 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
           <div className="model-stage">
             {webGLAvailable ? (
               <SceneCanvas
+                inspectionHost={mainSceneInspectionHost}
+                sourceViewRequest={sourceViewRequest}
+                onApplySourceViewRequest={applySourceViewRequest}
+                onSourceViewTools={handleSourceViewTools}
                 entities={atlasRelease.entities}
                 visibleIds={filteredEntities.map((entity) => entity.id)}
                 selectedId={activeSelectedId}
@@ -2066,6 +2231,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
                 showGrayMatter={showGrayMatter}
                 showEntities={populationEvidenceVisible}
                 showObservedCellForm={morphologyVisibleRequested}
+                showNmo45718DatSwcCrosswalk={showNmo45718DatSwcCrosswalk}
                 morphologyTargetActive={morphologyTargetActive}
                 showMicronsCellSurface={showMicronsCellSurface}
                 showMicronsNucleus={showMicronsNucleus}
@@ -2077,6 +2243,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
                 onCaptureReady={handleCaptureReady}
                 onPerformance={handlePerformance}
                 onMorphologyRuntime={handleMorphologyRuntime}
+                onNmo45718DatSwcCrosswalkRuntime={handleNmo45718DatSwcCrosswalkRuntime}
                 onMicronsRuntime={handleMicronsRuntime}
               />
             ) : (
@@ -2087,7 +2254,7 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
             )}
             {view !== "internal_reference" && view !== "microns_observed_reference" && view !== "cell_detail" && <div className="orientation-label rostral">REFERENCE ROSTRAL · native AP</div>}
             {view !== "internal_reference" && view !== "microns_observed_reference" && view !== "cell_detail" && <div className="orientation-label caudal">REFERENCE CAUDAL · native AP</div>}
-            {morphologyVisibleRequested && view !== "internal_reference" && view !== "microns_observed_reference" && <div className="observed-cell-lane-label">{morphologyFidelityMode === "radius_surface" ? "OBS SWC INPUT + DER RADIUS SURFACE" : "OBS SWC CENTERLINES"} · SOURCE-LOCAL · UNLINKED · 0 REG</div>}
+            {morphologyActuallyVisible && view !== "internal_reference" && view !== "microns_observed_reference" && <div className="observed-cell-lane-label">{guardedMorphologyRuntime.actualMode === "radius_surface" ? "OBS SWC INPUT + DER RADIUS SURFACE" : "OBS SWC CENTERLINES"} · SOURCE-LOCAL · UNLINKED · 0 REG</div>}
             {populationEvidenceVisible && view !== "internal_reference" && view !== "microns_observed_reference" && view !== "cell_detail" && <div className="synthetic-lane-label">SCI SYN DATA ANCHORS · NOT CELLS · OUTSIDE ANATOMY · 0 REG</div>}
             {populationEvidenceVisible && view !== "internal_reference" && view !== "microns_observed_reference" && view !== "cell_detail" && (
               <div className="segment-scale" aria-label="Synthetic evidence-entity segment guide; not mapped to the reference loft">
@@ -2103,10 +2270,15 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
               </div>
             ) : view === "internal_reference" ? (
               <div className="stage-readout internal-reference" data-focus-kind={researchFocus?.focusKind ?? "none"} data-focus-id={researchFocus?.focusId ?? "none"}>
-                <span>Current knowledge record · {researchFocus ? prettify(researchFocus.focusKind) : "none"}</span>
+                <span>Current knowledge record: {researchFocus ? prettify(researchFocus.focusKind) : "none"}</span>
                 <strong>{researchFocus?.focusId ?? "No selected source record"}</strong>
-                <span>0 same-record internal primitives · 5 vocabulary classes remain UNAVAILABLE</span>
-                <span>Evidence audit only · 0 source meshes · 0 joins · 0 REG</span>
+                {activeResearchModelingReceipt ? <>
+                  <span>{activeResearchModelingReceipt.admittedCellGeometryObjectCount} exact-record morphology objects · {activeResearchModelingReceipt.admittedInternalObjectCount} internal objects</span>
+                  <span>{activeResearchModelingReceipt.generatedFallbackPrimitiveCount} fallback primitives · {activeResearchModelingReceipt.sameCellJoinCount} cross-source joins · {activeResearchModelingReceipt.registrationCount} registrations</span>
+                </> : <>
+                  <span>Exact record is being verified · previous geometry receipt hidden</span>
+                  <span>No fallback geometry is shown while the selected record is unverified</span>
+                </>}
               </div>
             ) : !morphologyTargetActive && researchFocus?.focusKind === "molecular_profile" ? (
               <ResearchRecordModelReadout focus={researchFocus} />
@@ -2128,7 +2300,11 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
             ) : view === "cell_detail" ? (
               <div className="stage-readout cell-detail">
                 <span>Mode</span><strong>Source-local cell detail · NMO {observedCellForm.neuronId}</strong>
-                <span>{morphologyFidelityMode === "radius_surface" ? "OBS input + DER surface" : "OBS SWC centerlines"}</span>
+                <span>{showNmo45718DatSwcCrosswalk && nmo45718DatSwcCrosswalkRuntime.status === "verified"
+                  ? "OBS SWC + seven DAT contour traces · same-record display mapping"
+                  : guardedMorphologyRuntime.verificationStatus !== "verified" || guardedMorphologyRuntime.sceneObjectStatus !== "rendered"
+                    ? "No verified morphology rendered"
+                    : guardedMorphologyRuntime.actualMode === "radius_surface" ? "OBS input + DER surface" : "OBS SWC centerlines"}</span>
                 <span>independent from selected evidence entity · 0 REG</span>
               </div>
             ) : selected ? (
@@ -2142,25 +2318,42 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
             )}
           </div>
 
+          <div ref={setMainSceneInspectionHost} />
+          {morphologyTargetActive && mainSceneViewTools?.neuronId === viewportMorphologyNeuronId && <MorphologySourceViewControls
+            key={`main-scene-${viewportMorphologyNeuronId}`} {...mainSceneViewTools}
+            description="Save the actual main-scene camera, layers, display slice, MICrONS shell clipping and SWC branch selection. Restoration rechecks the exact morphology and loaded reference files, then verifies the applied view. Each source retains its own coordinates and identity." />}
+
           {morphologyTargetActive ? <section className="observed-cell-disclosure" aria-label="Selected source-local morphology fidelity, provenance and missingness">
+            <MorphologySourceProof label={`Main scene NeuroMorpho ${viewportMorphologyNeuronId ?? "unselected"}`}
+              receipt={guardedMorphologyRuntime.sourceGeometryVerification ?? null}
+              identity={guardedMorphologyRuntime.sourceContext?.sourceIdentity}
+              sourceContext={guardedMorphologyRuntime.sourceContext} />
             <div className="observed-cell-heading">
               <p className="panel-kicker">SOURCE-LOCAL MORPHOLOGY · EVIDENCE-GATED FIDELITY</p>
               <h2>NeuroMorpho {observedCellForm.neuronId}</h2>
               <p>{observedMorphologyRoute?.title ?? observedCellForm.phenotype}</p>
               {observedMorphologyRoute && <p><strong>{observedMorphologyRoute.routeId}</strong> · independent route · {observedMorphologyRoute.censusMembership ? "census child" : "supplementary exact object"} · {observedMorphologyRoute.contractId}</p>}
-              <span className={`fidelity-active-badge ${morphologyFidelityMode === "radius_surface" ? "derived" : "observed"}`}>
-                {morphologyFidelityMode === "radius_surface" ? "OBS SWC INPUT + DERIVED SURFACE" : "OBSERVED SWC CENTERLINES"}
+              <span className={`fidelity-active-badge ${morphologyActuallyVisible ? guardedMorphologyRuntime.actualMode === "radius_surface" ? "derived" : "observed" : "unavailable"}`}>
+                {morphologyActuallyVisible
+                  ? guardedMorphologyRuntime.actualMode === "radius_surface" ? "OBS SWC INPUT + DERIVED SURFACE" : "OBSERVED SWC CENTERLINES"
+                  : morphologyGeometryVerified ? "VERIFIED SOURCE GEOMETRY · HIDDEN" : "NO VERIFIED MORPHOLOGY RENDERED"}
               </span>
             </div>
             <dl className="observed-cell-metrics">
               <div><dt>Observed domain</dt><dd>{observedCellForm.domain}</dd></div>
               <div><dt>Physical integrity</dt><dd>{observedCellForm.physicalIntegrity}</dd></div>
               <div><dt>Nodes / edges</dt><dd>{observedCellFidelity.geometry.nodeCount.toLocaleString()} / {observedCellFidelity.geometry.segmentCount.toLocaleString()}</dd></div>
-              <div><dt>Dimensionality</dt><dd>{observedCellFidelity.geometry.dimensionality} · source-local · 0 REG</dd></div>
+              <div><dt>Dimensionality</dt><dd>{observedCellFidelity.geometry.dimensionality}{censusIndexRecord?.geometry.dimensionality === "2D" ? " · planar source input, not a 3D reconstruction" : ""} · source-local · 0 REG</dd></div>
+              {censusIndexRecord ? <div><dt>Deposited cell labels</dt><dd>{censusIndexRecord.sourceMetadata.cellTypeLabels.join(" · ")}</dd></div>
+                : sourceRouteCellTypeLabels ? <div><dt>Repository cell labels</dt><dd>{sourceRouteCellTypeLabels.join(" · ")}</dd></div> : null}
+              {censusIndexRecord ? <div><dt>Reported region</dt><dd>{censusIndexRecord.sourceMetadata.regionLabels.join(" · ")}</dd></div>
+                : sourceRouteRegionLabels ? <div><dt>Repository region labels</dt><dd>{sourceRouteRegionLabels.join(" · ")}</dd></div> : null}
               <div><dt>Diameter authority</dt><dd>{observedCellFidelity.geometry.sourceDiameterAvailable ? "Source reports Diameter" : "Source reports No Diameter"}</dd></div>
               <div><dt>Axon evidence</dt><dd>{observedCellFidelity.axon.sourceType2NodeCount > 0 ? `${observedCellFidelity.axon.sourceType2NodeCount.toLocaleString()} type-2 nodes · incomplete` : "No axon source type"}</dd></div>
             </dl>
 
+            <details className="morphology-reading-details">
+              <summary>Display modes and evidence availability</summary>
             <div className="fidelity-mode-matrix" aria-label="Morphology evidence-mode availability">
               <article className={morphologyFidelityMode === "observed_swc" ? "active available" : "available"}>
                 <span>MODE 1 · AVAILABLE</span><strong>Observed SWC</strong><p>Coordinates, topology and source types, with exact root, type-1 sample, branchpoint and terminal landmarks derived from parent links. Type 1 is not a soma contour; terminals are not boutons or internal structures. Stroke width is not caliber.</p>
@@ -2169,7 +2362,9 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
                 <span>MODE 2 · {observedCellFidelity.modes.radiusSurface.available ? "AVAILABLE" : "UNAVAILABLE"}</span><strong>Radius-derived surface</strong>
                 <p>{observedCellFidelity.modes.radiusSurface.available
                   ? `${observedCellFidelity.radiusEvidence.minimumMicrometre?.toFixed(3)}–${observedCellFidelity.radiusEvidence.maximumMicrometre?.toFixed(3)} µm source radius · exact endpoints · no caps or smoothing.`
-                  : "Official No Diameter record. Placeholder SWC radii are ignored; zero surface primitives."}</p>
+                  : observedCellFidelity.geometry.dimensionality === "2D"
+                    ? "Source-labelled 2D trace. No thickness or 3D surface is authorized; zero surface primitives."
+                    : "Official No Diameter record. Placeholder SWC radii are ignored; zero surface primitives."}</p>
               </article>
               <article className="unavailable">
                 <span>MODE 3 · UNAVAILABLE</span><strong>Same-specimen internal structure</strong><p>No membrane segmentation, nucleus, organelles, boutons, receptor map or ultrastructure for this cell.</p>
@@ -2181,6 +2376,8 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
                 <span>MODE 5 · OBJECT GEOMETRY UNAVAILABLE</span><strong>Compartment evidence audit</strong><p>Five source-grounded vocabulary classes, but no admitted object geometry. Zero cell, nucleus, organelle, neurite or synapse primitives.</p>
               </article>
             </div>
+
+            </details>
 
             <NativeContourRecordViewer key={observedCellForm.neuronId} neuronId={observedCellForm.neuronId} />
 
@@ -2211,14 +2408,20 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
               <span>Not the morphology of {selected?.shortLabel ?? "the selected SCI entity"}; not assigned to a Russ, Sathyamurthy, Hayashi, Häring, or Matson type. Co-display never fills missing biology.</span>
             </div>
             {observedMorphologyRoute && (
-              <div className="observed-cell-boundary">
-                <strong>INDEPENDENT ROUTE WARNINGS · NMO {observedCellForm.neuronId}</strong>
+              <details className="morphology-reading-details observed-route-warnings">
+                <summary>Independent route warnings · NMO {observedCellForm.neuronId}</summary>
                 <ul>{observedMorphologyRoute.warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
-              </div>
+              </details>
             )}
             <div className="observed-cell-links">
               <a href={observedMorphologyRoute?.sourceLinks.officialRecord ?? `https://neuromorpho.org/api/neuron/id/${observedCellForm.neuronId}`} target="_blank" rel="noreferrer">NeuroMorpho record ↗</a>
-              <a href={observedMorphologyRoute?.sourceLinks.primaryPaper ?? `https://doi.org/${observedCellForm.sourcePaperDoi}`} target="_blank" rel="noreferrer">Primary paper ↗</a>
+              {observedMorphologyRoute?.sourceLinks.primaryPaper
+                ? <a href={observedMorphologyRoute.sourceLinks.primaryPaper} target="_blank" rel="noreferrer">Primary paper ↗</a>
+                : observedMorphologyRoute && "contextualStudy" in observedMorphologyRoute.sourceLinks && observedMorphologyRoute.sourceLinks.contextualStudy
+                  ? <a href={observedMorphologyRoute.sourceLinks.contextualStudy} target="_blank" rel="noreferrer">Candidate related study ↗ · record mapping unverified</a>
+                  : observedCellForm.sourcePaperDoi
+                    ? <a href={`https://doi.org/${observedCellForm.sourcePaperDoi}`} target="_blank" rel="noreferrer">Primary paper ↗</a>
+                    : <span>Primary paper citation unresolved</span>}
               <a href={observedMorphologyRoute?.sourceLinks.rights ?? observedCellFormLens.sourceObject.rightsUrl} target="_blank" rel="noreferrer">Rights and attribution ↗</a>
             </div>
           </section> : (
@@ -2302,7 +2505,8 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
               >{SIDE_PANEL_LABELS[panel]}</button>
             ))}
           </div>
-          <div id={`${sidePanel}-panel`} role="tabpanel" aria-labelledby={`${sidePanel}-tab`}>
+          {SIDE_PANELS.map((panel) => <div key={panel} id={`${panel}-panel`} role="tabpanel" aria-labelledby={`${panel}-tab`} hidden={sidePanel !== panel}>
+            {sidePanel === panel && <>
             {sidePanel === "evidence" && (
               <ResearchFocusEvidencePanel
                 focus={researchFocus}
@@ -2341,14 +2545,17 @@ export default function AtlasPrototype({ initialParams = {} }: { initialParams?:
             )}
             {sidePanel === "review" && <CuratorFeedbackInbox onNotice={setNotice} />}
             {sidePanel === "benchmarks" && <BenchmarkPanel />}
-          </div>
+            </>}
+          </div>)}
         </aside>
       </section>
 
       <footer className="atlas-footer">
-        <p aria-live="polite" aria-atomic="true"><span className="status-pulse" />{notice}</p>
-        <p><strong>Unpackaged research iteration 2.50</strong> · canonical registry {formatResearchSourceRegistrySummary(researchSourceRegistrySummary)} · source catalog {publicDataCatalog.schemaVersion} · {publicDataCatalog.sources.length} public sources · {publicDataCatalog.upgradeQueue.length} source-admission records · selected-record native contour routing admits {neurolucidaNativeContourAdmissionCatalog.summary.admittedContourObjectCount} exact OBS LineLoops / {neurolucidaNativeContourAdmissionCatalog.summary.admittedVertexCount.toLocaleString("en-US")} vertices across {neurolucidaNativeContourAdmissionCatalog.summary.auditedDatFileCount} audited records; NMO 50394 alone has one separately receipted DER open interpolation shell; raw false flags and excluded User Line objects remain visible; every record switch clears inapplicable detail; 0 observed surfaces, volumes, internal objects and registrations</p>
+        <p aria-live="polite" aria-atomic="true"><span className="status-pulse" />{locationHydrated ? notice : "Preparing the research view…"}</p>
+        <details className="workspace-footer-scope"><summary>Dataset scope and version</summary>
+        <p><strong>Unpackaged research iteration {RESEARCH_ITERATION}</strong> · {formatResearchSourceRegistrySummary(researchSourceRegistrySummary)} · source catalog {publicDataCatalog.schemaVersion} · {publicDataCatalog.sources.length} public sources · {publicDataCatalog.upgradeQueue.length} source-admission records · 1,097 exact NeuroMorpho query objects with selected-record geometry · source-labelled 3D records with reported diameter default to a clearly marked radius-derived surface; source-labelled 2D stays planar and records without diameter remain centerline-only · comparative zebrafish references remain outside mouse type identities · same-specimen internal structures remain unavailable · 30 supplementary Todd 8.6.126 source-local routes add no census records; per-record paper mapping remains unresolved and internal primitives remain unavailable</p>
         <p>BrainGlobe <code>allen_cord_20um:3.0</code> INF · 1,097 exact NeuroMorpho no-age-query objects = 149 reused exact assets + 948 delta raw SWCs · frozen adult subset remains 142 · 39 source-labelled 2D · 0 complete-axon claims · 0 REG</p>
+        </details>
       </footer>
       <p className="fixed-disclaimer">{atlasRelease.fixedDisclaimer}</p>
     </main>

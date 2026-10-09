@@ -1,0 +1,34 @@
+{
+  "status": "SCHEMA_ADAPTER_ONLY",
+  "generatedAtUTC": "2026-10-05T07:07:04.441634+00:00",
+  "helperBefore": {
+    "bytes": 25892,
+    "sha256": "6e4664cda4c034d02fb8cae94ca61c7318ff891df59a0acdd45645db045577e8"
+  },
+  "helperAfter": {
+    "bytes": 26826,
+    "sha256": "e6fa144eeb6e5e1da6769ff9a028674ce7cf0b066e6762515365089bc3ae41f7"
+  },
+  "actualSummaryMapping": {
+    "tests": "fullResearch.tests",
+    "pass": "fullResearch.passed",
+    "fail": "fullResearch.failed",
+    "cancelled": "fullResearch.cancelled",
+    "skipped": "fullResearch.conditionalSkipped"
+  },
+  "nativeReceiptContainment": "exact relative I59 QA subtree, no absolute path or parent traversal, exact byte pin unchanged",
+  "exactReplacements": [
+    {
+      "before": "for assertion in engineering['summaryAssertions']:\n    assert pointer(summary, assertion['pointer']) == assertion['value'], ('Engineering summary gate', assertion['pointer'])\n",
+      "after": "# Actual final summary uses fullResearch.passed/failed/conditionalSkipped.\n# Map those exact existing keys to the Node final log count names without dropping any gate.\nassert set(engineering['counts']) == {'tests', 'pass', 'fail', 'cancelled', 'skipped'}\nsummary_count_fields = {'tests': 'tests', 'pass': 'passed', 'fail': 'failed', 'cancelled': 'cancelled', 'skipped': 'conditionalSkipped'}\nassert summary['fullResearch']['actualExitCode'] == engineering['actualExitCode'] == 0\nassert pin(summary['fullResearch']['log']) == pin(engineering['log'])\nassert summary['fullResearch']['log']['path'] == engineering['log']['path']\nengineering_summary_counts = {key: summary['fullResearch'][field] for key, field in summary_count_fields.items()}\nassert engineering_summary_counts == engineering['counts'], 'Actual summary engineering counts differ from final expectations'\n"
+    },
+    {
+      "before": "    assert Path(item['path']).parent.as_posix() == QA_REL\n    native_rows.append",
+      "after": "    native_path = Path(item['path'])\n    assert not native_path.is_absolute() and '..' not in native_path.parts\n    native_relative = native_path.relative_to(Path(QA_REL))\n    assert native_relative.parts and native_relative.as_posix() != '.', 'Native receipt must be within the exact I59 QA subtree'\n    native_rows.append"
+    }
+  ],
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "scientificLayoutCandidateStageChecksChanged": false,
+  "firstStoppedAttemptLog": "I59_FINAL_PRESERVATION_FIRST_SCHEMA_STOP.log"
+}

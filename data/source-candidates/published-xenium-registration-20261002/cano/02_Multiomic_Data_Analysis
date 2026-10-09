@@ -1,0 +1,124 @@
+###########################################################################
+#### Evaluate Spinal Cord Regional Enrichment by Transcriptomic Groups ####
+###########################################################################
+
+library(Seurat)
+library(dplyr)
+library(ggplot2)
+
+#### Equal Sampling of the Spinal Cord Regions (Cervical, Thoracic, Lumbar, Sacral)
+
+table(scdbase$anatomy) # region ID stored in metadata slot "anatomy", scdbase is the seurat object containing either glutamatergic, GABAergic or cholinergic snRNA-seq data
+region_levels <- unique(scdbase$anatomy)
+
+sample_size <- min(table(scdbase$anatomy)) # downsampling to cell count of least deeply profiled region
+
+balanced_cells <- unlist(lapply(region_levels, function(region) {
+  region_cells <- colnames(scdbase[["RNA"]]$count)[scdbase$anatomy == region]
+  sample(region_cells, sample_size, replace = FALSE)
+}))
+
+scdbase_balanced <- subset(scdbase, cells = balanced_cells)
+table(scdbase_balanced$anatomy)
+
+##### Graph Anatomy Differences
+
+percent_df <- as.data.frame(prop.table(table(scdbase_balanced$groups, scdbase_balanced$anatomy), 1))
+
+colnames(percent_df) <- c("groups", "anatomy", "percent")
+
+percent_df$percent <- percent_df$percent * 100
+
+# Make sure clusters are character 
+percent_df$groups <- as.character(percent_df$groups)
+
+# Set new levels for plotting
+percent_df$groups <- factor(percent_df$groups, levels = <desired_order>)
+
+# Plot
+ggplot(percent_df, aes(x = groups, y = percent, fill = anatomy)) + geom_bar(stat = "identity") + scale_fill_manual(values=c("Cervical"="#FD799C", "Thoracic"="#77DD77", "Lumbar"="#00B8FC", "Sacral"="#BE9DFF")) + labs(title = "SC Regional Proportions per Group", x = "Transcriptomic Group", y = "Percent", fill = "Anatomy") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.5))
+
+
+#### DESeq2 model for testing region specific enrichment of groups
+library(DESeq2)
+
+# design = ~ sex + region
+# reduced = ~ sex
+# Ran the analysis for all pairs of regions and recorded log2fold changes.
+# Pair-wise difference was recorded if p-adjusted was < 0.05 and log2fold change was > 3x.
+# DESeq2 automatically corrects for multiple testing using the Benjamini-Hochberg (BH) method to control the False Discovery Rate (FDR).
+
+
+#### Beta regression model for testing region specific enrichment of groups
+library(betareg)
+
+# Converted counts to proportions where each column (sample) sums to 1. That is, for each biological sample, cell type proportions sum to 1.
+# Model: y = intercept + x*AC + y*AT + z*As + w * sexM.
+# Used lumbar as reference and the minimum pairwise adjusted p-value used to determine statistical significance. That means, did not take into account sex or intercept in the model.
+# Benjamini & Hochberg (“BH”) used for p-value adjustment.
+# Cell type was considered statistically significant if at least once of the adjusted p-values of the spinal cord regions was < 0.05.
+
+
+#######################################
+#### ASSIGN SEX to Multiomic cells ####
+#######################################
+
+# Add metadata column for female score
+scdbase$Female_Score = scdbase[["RNA"]]$counts["Xist",]
+
+# Add metadata column for male score
+scdbase$Male_Score = scdbase[["RNA"]]$counts["Ddx3y",] + scdbase[["RNA"]]$counts["Eif2s3y",] +   scdbase[["RNA"]]$counts["Gm29650",] + scdbase[["RNA"]]$counts["Kdm5d",] + scdbase[["RNA"]]$counts["Uty",]
+
+# Add Sex metadata column
+scdbase$Sex <- ifelse(scdbase$Female_Score < scdbase$Male_Score, "Male",
+                   ifelse(scdbase$Female_Score > scdbase$Male_Score, "Female", "Unassigned"))
+
+table(scdbase$Sex)
+
+
+######################################################################
+#### Evaluate Spinal Cord Sex Enrichment by Transcriptomic Groups ####
+######################################################################
+
+## Remove sex ambiguous cells
+
+scdbase = subset(scdbase, subset = Sex == "Unassigned", invert = T)
+table(scdbase$Sex)
+
+## Equal sampling of sex specific neuron types
+
+table(scdbase$Sex)
+sex_levels <- unique(scdbase$Sex)
+sample_size <- min(table(scdbase$Sex))
+
+sex_balanced_cells <- unlist(lapply(sex_levels, function(sex) {
+  sex_cells <- colnames(scdbase[["RNA"]]$count)[scdbase$Sex == sex]
+  sample(sex_cells, sample_size, replace = FALSE)
+}))
+
+scdbase_sex_balanced <- subset(scdbase, cells = sex_balanced_cells)
+table(scdbase_sex_balanced$Sex)
+
+## Graph Anatomy Differences
+
+percent_df <- as.data.frame(prop.table(table(scdbase_sex_balanced$groups, scdbase_sex_balanced$Sex), 1))
+
+colnames(percent_df) <- c("groups", "sex", "percent")
+
+percent_df$percent <- percent_df$percent * 100
+
+# Make sure clusters are character 
+percent_df$groups <- as.character(percent_df$groups)
+
+# Set new levels for plotting
+percent_df$groups <- factor(percent_df$groups, levels = c(<specify desired group order>))
+
+# Plot
+ggplot(percent_df, aes(x = groups, y = percent, fill = sex)) + geom_bar(stat = "identity") + scale_fill_manual(values=c("Male"="#0095FF", "Female"="#FF6B9D")) + labs(title = "Sex proportions", x = "Group%", y = "Percent", fill = "Sex") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.5))
+
+
+#### DESeq2 model for testing sex specific enrichment of groups
+
+
+#### Beta regression model for testing sex specific enrichment of groups
+

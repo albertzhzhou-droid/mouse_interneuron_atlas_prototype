@@ -1,0 +1,119 @@
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx
+  1137:9   warning  The 'stateImportContext' object makes the dependencies of useLayoutEffect Hook (at line 1138) change on every render. To fix this, wrap the initialization of 'stateImportContext' in its own useMemo() Hook                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+  1137:9   warning  The 'stateImportContext' object makes the dependencies of useEffect Hook (at line 1167) change on every render. To fix this, wrap the initialization of 'stateImportContext' in its own useMemo() Hook                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/exhaustive-deps
+  1369:36  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `setNotice`, but the source dependencies were [transitionResearchFocus]. Inferred different dependency than source.
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx:1369:36
+  1367 |   }, [applyResearchFocusWorkspace, morphologyFidelityMode, view]);
+  1368 |
+> 1369 |   const selectEntity = useCallback((id: string) => {
+       |                                    ^^^^^^^^^^^^^^^^^
+> 1370 |     setSelectedId(id);
+       | ^^^^^^^^^^^^^^^^^^^^^^
+> 1371 |     transitionResearchFocus({ focusKind: "sci_entity", focusId: id });
+       | ^^^^^^^^^^^^^^^^^^^^^^
+> 1372 |     setNotice(`${atlasRelease.entities.find((entity) => entity.id === id)?.shortLabel ?? "Entity"} selected · evidence card updated · no morphology relationship admitted`);
+       | ^^^^^^^^^^^^^^^^^^^^^^
+> 1373 |   }, [transitionResearchFocus]);
+       | ^^^^ Could not preserve existing manual memoization
+  1374 |
+  1375 |   const selectResearchFocus = useCallback((focus: ResearchFocus) => {
+  1376 |     const target = transitionResearchFocus(focus);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/preserve-manual-memoization
+  1375:43  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `setNotice`, but the source dependencies were [transitionResearchFocus]. Inferred different dependency than source.
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx:1375:43
+  1373 |   }, [transitionResearchFocus]);
+  1374 |
+> 1375 |   const selectResearchFocus = useCallback((focus: ResearchFocus) => {
+       |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1376 |     const target = transitionResearchFocus(focus);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1377 |     if (focus.focusKind === "sci_entity" && atlasRelease.entities.some((entity) => entity.id === focus.focusId)) {
+       …
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1384 |     }
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1385 |   }, [transitionResearchFocus]);
+       | ^^^^ Could not preserve existing manual memoization
+  1386 |
+  1387 |   const selectResearchLab = useCallback((lab: LabTab) => {
+  1388 |     setResearchLab(lab);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          react-hooks/preserve-manual-memoization
+  1387:41  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `setNotice`, but the source dependencies were [researchFocus, transitionResearchFocus]. Inferred different dependency than source.
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx:1387:41
+  1385 |   }, [transitionResearchFocus]);
+  1386 |
+> 1387 |   const selectResearchLab = useCallback((lab: LabTab) => {
+       |                                         ^^^^^^^^^^^^^^^^^^
+> 1388 |     setResearchLab(lab);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 1389 |     const expectedKind = lab === "types"
+       …
+       | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 1403 |     setNotice(`${prettify(lab)} research view active`);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 1404 |   }, [researchFocus, transitionResearchFocus]);
+       | ^^^^ Could not preserve existing manual memoization
+  1405 |
+  1406 |   const browseIndependentMorphology = useCallback((sourceLabel: string) => {
+  1407 |     const literalQuery = sourceLabel.trim().slice(0, 180);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/preserve-manual-memoization
+  1406:51  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `setNotice`, but the source dependencies were []. Inferred dependency not present in source.
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx:1406:51
+  1404 |   }, [researchFocus, transitionResearchFocus]);
+  1405 |
+> 1406 |   const browseIndependentMorphology = useCallback((sourceLabel: string) => {
+       |                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1407 |     const literalQuery = sourceLabel.trim().slice(0, 180);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1408 |     setMorphologySearchQuery(literalQuery);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1409 |     setMorphologyDiscoveryRequestId((current) => current + 1);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1410 |     setResearchLab("morphology");
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1411 |     setNotice(`Independent morphology browser opened with a literal source-label search for “${literalQuery}” · no subtype mapping, same-cell identity, or cross-source join asserted`);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1412 |   }, []);
+       | ^^^^ Could not preserve existing manual memoization
+  1413 |
+  1414 |   const openResearchRecord = useCallback((record: ResearchRecord) => {
+  1415 |     selectResearchFocus({ focusKind: record.focusKind, focusId: record.focusId });                                                                                                                                                                                                                                                                                                       react-hooks/preserve-manual-memoization
+  1414:42  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `setNotice`, but the source dependencies were [selectResearchFocus]. Inferred different dependency than source.
+
+/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/AtlasPrototype.tsx:1414:42
+  1412 |   }, []);
+  1413 |
+> 1414 |   const openResearchRecord = useCallback((record: ResearchRecord) => {
+       |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1415 |     selectResearchFocus({ focusKind: record.focusKind, focusId: record.focusId });
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1416 |     if (record.focusKind === "sci_population") {
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1417 |       setSciTimepoint(normalizeMatsonSciTimepoint(record.navigation.params.sciTime) as MatsonSciTimepoint);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1418 |     }
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1419 |     setNotice(`${record.title} opened in the ${record.navigation.lab} workspace · source namespace preserved`);
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1420 |     requestAnimationFrame(() => document.getElementById(record.navigation.anchor)?.scrollIntoView({ block: "start", behavior: "smooth" }));
+       | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 1421 |   }, [selectResearchFocus]);
+       | ^^^^ Could not preserve existing manual memoization
+  1422 |
+  1423 |   const setFilter = <K extends keyof Filters>(key: K, value: Filters[K]) => {
+  1424 |     const next = { ...filters, [key]: value };  react-hooks/preserve-manual-memoization
+
+✖ 7 problems (5 errors, 2 warnings)
+

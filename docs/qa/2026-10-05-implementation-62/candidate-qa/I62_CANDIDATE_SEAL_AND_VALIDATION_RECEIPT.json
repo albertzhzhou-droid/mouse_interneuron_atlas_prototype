@@ -1,0 +1,203 @@
+{
+  "iteration": "I62",
+  "status": "SEALED_TEMP_CANDIDATE_PEER_AND_NATIVE_BROWSER_PENDING",
+  "sealedAtUtc": "2026-10-05T04:25:05.130477+00:00",
+  "sourcePage": "/sources",
+  "destination": "/explore/cell-types/additional#garcia-ramirez-physiology-panel",
+  "files": [
+    {
+      "path": "app/ResearchSourceRegistry.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 22834,
+        "sha256": "eb84daf3886b96a9c5b7a38bdd91a571fcbaa06d2327a3fab44bd054eb3e68b7"
+      },
+      "after": {
+        "bytes": 23841,
+        "sha256": "c423792176942a66d70c480a19d083ade86a4e51970be9bec018474e88068cd0"
+      }
+    },
+    {
+      "path": "app/research-source-information-navigation.js",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 8770,
+        "sha256": "77294b724ade7b12a125cc3041727b20c7232995a96b69f86d0e4268bb7f6452"
+      }
+    },
+    {
+      "path": "app/research-source-information-navigation.d.ts",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 927,
+        "sha256": "45c8b6a54280b87059ea4857568e6560b4a3fe5d7cd18579b10b5bfa46c95630"
+      }
+    },
+    {
+      "path": "tests/research-source-information-navigation.test.mjs",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 16007,
+        "sha256": "47e7ea9bb90febd8fcaf57a2d15ba96f16a2c9115ef0ed37696e3470076e3a8f"
+      }
+    }
+  ],
+  "patch": {
+    "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/I62_SOURCE_INFORMATION_NAVIGATION_CANDIDATE.patch",
+    "bytes": 29450,
+    "sha256": "528a25352e0394a3126223ab2898c5c6e24075b7a9a5fd133b9568ac24dfeccc"
+  },
+  "ownership": {
+    "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/ownership.json",
+    "bytes": 8304,
+    "sha256": "5e620bbf354f9b55efc799e5bb4afcce7bd29c25472f9c8fef73184e2b31c603"
+  },
+  "validation": {
+    "focusedAndExistingSourceNavigationRegression": {
+      "exitCode": 0,
+      "command": "node --preserve-symlinks --test tests/research-source-information-navigation.test.mjs tests/research-source-drilldown.test.mjs tests/research-source-drilldown-component.test.mjs tests/garcia-ramirez-parent-integration.test.mjs",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/focused-tests.stdout.log",
+          "bytes": 4490,
+          "sha256": "38f939a66f6c6606617b5dae109f231a5c05bcf401736f4e08bbf7e80abe1853"
+        },
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/focused-tests.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "newInformationTests": 9,
+      "unchangedSourceNavigationAndI56Tests": 29,
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "invocationUsesPreserveSymlinks": true
+    },
+    "fullCurrentShadowTypeScript": {
+      "exitCode": 0,
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/typecheck.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/typecheck.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "scopedRootConfigESLint": {
+      "exitCode": 0,
+      "command": "node node_modules/eslint/bin/eslint.js app/ResearchSourceRegistry.tsx app/research-source-information-navigation.js app/research-source-information-navigation.d.ts tests/research-source-information-navigation.test.mjs",
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/eslint.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/eslint.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "gitApplyCheck": {
+      "exitCode": 0,
+      "applied": false,
+      "logs": [
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/git-apply-check.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/git-apply-check.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  },
+  "initialUnpassedShadowChecks": {
+    "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/initial-shadow-check/ATTEMPT_NOTES.json",
+    "bytes": 434,
+    "sha256": "691e20b225f2c6185cdfba28e9b6f00f20cd2b120bcbc0790595aac6d1774a1a"
+  },
+  "originalInputAndGapRead": {
+    "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/READ_ONLY_BEFORE_SCOPE_PINS.json",
+    "bytes": 3372,
+    "sha256": "7c2906922d95c23cd115d497350cc5f3b9e97c08a9e5fae4caf92b8eec6a1f6d"
+  },
+  "nativeBrowserPlan": {
+    "path": "/private/tmp/ohri-i62-source-information-navigation-candidate/qa/ACTUAL_BROWSER_QA_PLAN.md",
+    "bytes": 4067,
+    "sha256": "cb5478b1e3192d17c1b86682c9dd9afbdd54ccae17fe3b9d8314c93c622cebb6",
+    "scenarioCount": 8,
+    "executed": false
+  },
+  "runtime": {
+    "node": "/Users/zhouzhenghang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "version": "v24.19.0",
+    "nodeModules": "/private/tmp/ohri-i51-lock-dependencies/node_modules",
+    "dependencyChanges": 0,
+    "qaOnlyEslintConfigByteIdentical": true,
+    "qaOnlyTypeScriptIncremental": false
+  },
+  "informationNavigationAuthority": {
+    "type": "declared_source_information_navigation_only",
+    "exactSourceId": "SRC-GARCIA-RAMIREZ-2022",
+    "exactRecordSetId": "RS-GARCIA-RAMIREZ-ADULT-SPINAL-AGGREGATE-PHYSIOLOGY",
+    "adapterId": "ohri-garcia-ramirez-adult-spinal-aggregate-physiology-0.1.0",
+    "reference": {
+      "status": "bundled_aggregate_information",
+      "path": "data/garcia-ramirez-adult-spinal-physiology-0.1.json",
+      "idField": "adapterId",
+      "href": "/explore/cell-types/additional#garcia-ramirez-physiology-panel"
+    },
+    "sourceOwnershipAndCurrentDeclarationRequired": true,
+    "safeDestination": "exact reviewed relative path/fragment only; no dynamic href admission",
+    "byteProofCreatedByAction": false,
+    "renderProofCreatedByAction": false,
+    "destinationRetainsOwnSourceValidation": true,
+    "newPublicQaHooks": 0
+  },
+  "scientificScope": {
+    "retainedSources": 32,
+    "retainedRecordSets": 42,
+    "informationActions": 1,
+    "informationAdapterDenominator": 1,
+    "recordedObservationPool": 171,
+    "alternativePartitionsSharePool": 4,
+    "poolCountsNotAdded": true,
+    "unknownCellToAnimalMappingRetained": true,
+    "exactNavigationSetsRetained": 15,
+    "exactNavigationEntriesRetained": 274,
+    "bundledExactRostersRetained": 13,
+    "bundledExactObjectSetsRetained": 4,
+    "confirmedProfilesRetained": 387,
+    "sameCellJoins": 0,
+    "sameTypeJoins": 0,
+    "newGeometry": 0,
+    "newRawPublication": 0,
+    "exactCompletedEntriesRetained": 83,
+    "controllingPlanEntries": 243,
+    "M2M4Admission": false
+  },
+  "evidenceLimits": [
+    "Actual React SSR does not prove native hydration/history/focus/layout/download",
+    "Isolated VM metadata counterfactuals do not establish source-byte or renderer proof",
+    "Node tests verify unchanged adapter/original asset physical bytes, not fresh browser fetching",
+    "No full-App narrow/zoom/AT/performance or M2/M4 closure is claimed"
+  ],
+  "sharedProductRootWrites": 0,
+  "scientificSourceEdits": 0
+}

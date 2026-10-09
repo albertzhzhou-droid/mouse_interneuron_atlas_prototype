@@ -1,0 +1,101 @@
+{
+  "finalEpochReady": true,
+  "notice": "Parent FINAL EPOCH READY required; do not execute final replay during intake/build/native work. Update only from actual announced final pins/schema.",
+  "expectedBeforeCanonical": 2577,
+  "expectedCurrentCanonical": 2581,
+  "operationalStageEntryCount": 2584,
+  "canonicalStagePhysicalInputsToVerify": 2581,
+  "expectedRuntime": 198,
+  "expectedPositionsBuild": 40,
+  "expectedSourceCount": 32,
+  "expectedRecordSets": 42,
+  "expectedProfiles": 387,
+  "expectedRosters": 13,
+  "expectedObjects": 4,
+  "expectedCompleted": 83,
+  "expectedUpgradeRows": 243,
+  "manifest": {
+    "path": "data/research-iteration-manifest-2.91.json",
+    "bytes": 529199,
+    "sha256": "debd9f62a2b2034600077f41e2da3ba84a7f93abc8751631028d84c91f6d8f84"
+  },
+  "verificationSummary": {
+    "path": "docs/qa/2026-10-05-implementation-59/verification-summary.json",
+    "bytes": 2765,
+    "sha256": "21401dbfb79446e5c2bc358cba6cfde88783a9747853c14f8d2ef67cd5be7335"
+  },
+  "engineering": {
+    "actualExitCode": 0,
+    "log": {
+      "path": "docs/qa/2026-10-05-implementation-59/full-research-final.log",
+      "bytes": 243235,
+      "sha256": "12d239d7f1c73c08a68df89c921f42a6df9c8075fcba43736f0ac71ab6b827ae"
+    },
+    "counts": {
+      "tests": 1526,
+      "pass": 1511,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 15
+    }
+  },
+  "nativeEvidenceFiles": [
+    {
+      "path": "docs/qa/2026-10-05-implementation-59/independent-native-log-dom/I59_ACTUAL_NATIVE_REPLAY_SEAL.json",
+      "bytes": 2718,
+      "sha256": "9c574e2ff78a3936611b20f47e9a8145a4ab8d707099bd363f3850cf7fceaa47"
+    },
+    {
+      "path": "docs/qa/2026-10-05-implementation-59/independent-native-log-dom/I59_ACTUAL_NATIVE_LOG_DOM_REPLAY_RECEIPT.json",
+      "bytes": 44834,
+      "sha256": "be1cc1ea4ed8a646214317192ffd8754a3756ef7a804522e9d46e51830f47294"
+    },
+    {
+      "path": "docs/qa/2026-10-05-implementation-59/independent-source-native-export/I59_ACTUAL_SOURCE_REPLAY_AND_DOWNLOAD_SEAL.json",
+      "bytes": 7389,
+      "sha256": "7cd6f6b372f933d12c974cd44c52f77982a0e1b13b064d26eaa51d0309500429"
+    },
+    {
+      "path": "docs/qa/2026-10-05-implementation-59/independent-source-followon/I59_FOLLOWON_ACTUAL_SOURCE_SEAL.json",
+      "bytes": 7428,
+      "sha256": "90b6a97787c75157b8f4fd3b07cf13c645192a71156b7b74c286a59e71b25cb0"
+    },
+    {
+      "path": "docs/qa/2026-10-05-implementation-59/independent-positions/I59_ACTUAL_POSITIONS_SOURCE_REPLAY.json",
+      "bytes": 76279,
+      "sha256": "0da03a3d8df9cbf0d9d7097cdf4680d28cbc393ec03f9df5d5927a6d89df741e"
+    }
+  ],
+  "nativeSummaryAssertions": [
+    {
+      "pointer": "/actualBrowserValidated",
+      "value": true
+    },
+    {
+      "pointer": "/nativeDownloadLandingVerified",
+      "value": true
+    },
+    {
+      "pointer": "/nativeTemporalReplayPending",
+      "value": false
+    },
+    {
+      "pointer": "/positionsReplayPending",
+      "value": false
+    },
+    {
+      "pointer": "/expectedCanonicalInputs",
+      "value": 2581
+    },
+    {
+      "pointer": "/runtimeInputs",
+      "value": 198
+    },
+    {
+      "pointer": "/fullGoalComplete",
+      "value": false
+    }
+  ],
+  "currentIntakeSchema": "baselineInputs/preimages/preimagesArchive/candidateTargets[*].proposalRoot/newPathAbsence/rootOwnedExtras/timeline/patches[2]/acceptedI58Checkpoint",
+  "allowedCandidateExceptions": []
+}

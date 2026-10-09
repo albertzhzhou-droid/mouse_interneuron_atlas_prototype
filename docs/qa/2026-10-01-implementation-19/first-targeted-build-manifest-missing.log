@@ -1,0 +1,68 @@
+✔ all 179 exact current source files produce private proofs with independent 142 + 7 + 30 memberships (1071.168042ms)
+✔ copies, public verified status and cross-source payloads cannot supply current loader proof (7.899083ms)
+✔ file, counts, domain, dimensionality and internal authorization drift fail before any request (1.424542ms)
+✔ truncated, altered, missing and cancelled Todd bytes never issue a geometry proof (2.048375ms)
+✔ fresh same-source requests use no-store and create a new attestation without changing native geometry (48.841041ms)
+file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/main-scene-source-view.js:22
+    if (rows.length !== 1) throw new Error(`Main scene view: build input is unavailable: ${path}`);
+                                 ^
+
+Error: Main scene view: build input is unavailable: app/main-scene-state-import.js
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/main-scene-source-view.js:22:34
+    at Array.map (<anonymous>)
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/main-scene-source-view.js:20:36
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:642:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.0.0
+✖ tests/main-scene-source-view.test.mjs (173.854791ms)
+file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/main-scene-source-view.js:22
+    if (rows.length !== 1) throw new Error(`Main scene view: build input is unavailable: ${path}`);
+                                 ^
+
+Error: Main scene view: build input is unavailable: app/main-scene-state-import.js
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/main-scene-source-view.js:22:34
+    at Array.map (<anonymous>)
+    at file:///Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/main-scene-source-view.js:20:36
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:642:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.0.0
+✖ tests/main-scene-state-import.test.mjs (172.146875ms)
+✔ 109005 to a DE-1 focus clears the old geometry and exits cell detail (1.572542ms)
+✔ switching from an exact morphology to the PKD2L1 functional profile clears geometry instead of reusing a generic cell (0.968125ms)
+✔ switching a molecular profile while a cross-region reference is open returns to the neutral atlas view (0.101416ms)
+✔ a supplied admitted 109006 focus replaces 109005 atomically with exact 109006 (0.174959ms)
+✔ production NMO 109006 resolves through its newly admitted checksum-pinned census record (0.159458ms)
+✔ a syntactically valid but unadmitted NeuroMorpho ID fails closed (0.099375ms)
+✔ invalid focus fails closed without a prior neuron identity (0.126958ms)
+✔ a no-diameter exact morphology forces observed skeleton mode (0.094625ms)
+✔ every checksum-pinned census ID is a main-scene target, while a 2D diameter record stays planar (0.249375ms)
+✔ explicit selection binds research focus only through the supplied current index (0.263292ms)
+✔ AtlasPrototype clears the renderer target, old lane label and selected-morphology export fields (1.160417ms)
+✔ AtlasPrototype applies one focus workspace transition to lab, evidence panel and visual target (0.667625ms)
+✔ record-aware evidence rail keeps molecular geometry empty and morphology receipts source-bound (0.173209ms)
+✔ AtlasPrototype retains a dormant SCI selection but exposes it only for an SCI-entity focus (0.27025ms)
+✔ SCI selection state separates active highlight, dormant persistence and keyboard entry (0.173666ms)
+✔ AtlasPrototype canonicalizes imported and restored SCI focus without inventing a null selection (0.415875ms)
+✔ SceneCanvas target deactivation aborts the previous fetch effect and disposes old geometry (1.461333ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 22
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1300.554833
+
+✖ failing tests:
+
+test at tests/main-scene-source-view.test.mjs:1:1
+✖ tests/main-scene-source-view.test.mjs (173.854791ms)
+  'test failed'
+
+test at tests/main-scene-state-import.test.mjs:1:1
+✖ tests/main-scene-state-import.test.mjs (172.146875ms)
+  'test failed'

@@ -1,0 +1,48 @@
+{
+  "status": "EXACT_SOURCE_CANDIDATE_PAGE_ORDER_GUARD_ADDED",
+  "targets": [
+    {
+      "path": "/private/tmp/ohri-i60-comparison-source-replay/replay_i60_comparison_source.py",
+      "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/replay_i60_comparison_source.py.CANDIDATE_MEMBERSHIP_GUARD_BEFORE",
+      "before": {
+        "bytes": 31117,
+        "sha256": "91c66276a3917cae4503c9d374904742839c29495cb966a8f6b7557445436b1a"
+      },
+      "after": {
+        "bytes": 31653,
+        "sha256": "fc789e042a4d44df0a05cf6038fe21583e23ae47beed7434af8e164e77d3b8bd"
+      },
+      "exactReplacements": [
+        {
+          "old": "count = len(candidate_records(authority, view)); assert isinstance(capture['pages'], str)",
+          "new": "candidates = candidate_records(authority, view); count = len(candidates); assert isinstance(capture['candidates'], list) and all(isinstance(value, str) for value in capture['candidates']), 'Original visible candidate text array required'\n    expected_candidates = [record['title'] + record['namespace'] + ('Selected' if record['key'] in selected else 'Add to comparison') for record in candidates[view['page'] * 12:(view['page'] + 1) * 12]]\n    assert capture['candidates'] == expected_candidates, 'Actual visible candidate page differs from exact indexed source membership/order'\n    assert isinstance(capture['pages'], str)"
+        }
+      ]
+    },
+    {
+      "path": "/private/tmp/ohri-i60-comparison-source-replay/test_replay_i60_comparison_source.py",
+      "beforePath": "/private/tmp/ohri-i60-comparison-source-replay/test_replay_i60_comparison_source.py.CANDIDATE_MEMBERSHIP_GUARD_BEFORE",
+      "before": {
+        "bytes": 11757,
+        "sha256": "527cc428eeaa0877354cfecd595f768db6edd00de163351766723564b86a9fbf"
+      },
+      "after": {
+        "bytes": 12315,
+        "sha256": "01a50b185e4df6b1ca8b2adb556ab6a60569444464bdff0245de569728f369ee"
+      },
+      "exactReplacements": [
+        {
+          "old": "'controls': controls, 'comparisons': comparisons, 'pages': '387 matches · page 1 / 33',",
+          "new": "'controls': controls, 'comparisons': comparisons, 'pages': '387 matches · page 1 / 33',\n            'candidates': [record['title'] + record['namespace'] + ('Selected' if record['key'] in keys else 'Add to comparison') for record in authority.records[:12]],"
+        },
+        {
+          "old": "    def test_unavailable_or_unbracketed_capture_rejects_old_report_export(self):",
+          "new": "    def test_wrong_visible_candidate_membership_or_order_is_rejected(self):\n        for change in (lambda x: x['candidates'].reverse(), lambda x: x['candidates'].__setitem__(0, 'foreign-source-candidate')):\n            capture = synthetic_capture(self.authority); change(capture)\n            with self.assertRaises(AssertionError): replay.replay_capture(capture, self.authority, 'ready')\n\n    def test_unavailable_or_unbracketed_capture_rejects_old_report_export(self):"
+        }
+      ]
+    }
+  ],
+  "rawCaptureWrites": 0,
+  "sourceGuardsWeakened": false,
+  "reason": "Compare each captured candidate li text against literal title+namespace+selection role from the independent current387 source records, ordered filtered pages of12."
+}

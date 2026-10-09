@@ -1,0 +1,27 @@
+{
+  "beforeInputs": [
+    "app/SceneCanvas.tsx",
+    "app/AtlasPrototype.tsx",
+    "app/MorphologySourceViewControls.tsx",
+    "app/morphology-neurite-inspection.js",
+    "app/globals.css",
+    "tools/build_research_iteration_manifest_2_91.mjs",
+    "docs/UPGRADE_PLAN_2026-09-24.md",
+    "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md",
+    "docs/RESEARCH_MODEL_UPGRADE_QUEUE.md",
+    "data/research-model-upgrade-registry-0.1.json",
+    "data/research-iteration-manifest-2.91.json",
+    "tests/research-visual-target.test.mjs",
+    "tests/microns-observed-cell-nucleus-reference.test.mjs",
+    "tests/rendered-html.test.mjs"
+  ],
+  "newRuntimeFiles": [
+    "app/main-scene-auxiliary-verification.js",
+    "app/main-scene-auxiliary-verification.d.ts",
+    "app/main-scene-source-view.js",
+    "app/main-scene-source-view.d.ts",
+    "tests/main-scene-source-view.test.mjs"
+  ],
+  "newDocumentation": "docs/RESEARCH_TIMELINE_2026-10-01_IMPLEMENTATION_17_MAIN_VIEW.md",
+  "scope": "Only I17 owned before inputs and new files; preserve all unrelated prior dirty work. Rebuild the current registry and manifest after a chosen rollback."
+}

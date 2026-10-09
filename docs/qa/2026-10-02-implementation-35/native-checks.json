@@ -1,0 +1,79 @@
+{
+  "checks": [
+    {
+      "name": "Source fragment loads all 32 native channel options and exact channel 0 first window",
+      "pass": true,
+      "passed": true
+    },
+    {
+      "name": "Last native channel has exactly 2424 final samples and cursor ends at source sample 5543423",
+      "pass": true,
+      "passed": true
+    },
+    {
+      "name": "Channel 7 actual middle recording time requests block 7 and retains exact sample 2109000",
+      "pass": true,
+      "passed": true
+    },
+    {
+      "name": "Cross-channel/block exact restore",
+      "passed": true
+    },
+    {
+      "name": "Enter export filename and next-window clears download",
+      "passed": true
+    },
+    {
+      "name": "Cross-block imported sample tamper rejected and old outputs cleared",
+      "alert": "DANDI full recording: imported values or time differ from current exact source bytes",
+      "currentSamples": 0,
+      "exports": 0,
+      "passed": true
+    },
+    {
+      "name": "Rejected-import retry returns actual final source sample",
+      "passed": true
+    },
+    {
+      "name": "Actual same-length served block corruption clears old waveform and exports",
+      "alert": "DANDI full recording: compressed block checksum mismatch",
+      "currentSamples": 0,
+      "exports": 0,
+      "downloadLinks": 0,
+      "passed": true
+    },
+    {
+      "name": "Accurate served bytes recover by keyboard retry",
+      "passed": true
+    },
+    {
+      "name": "390px no horizontal overflow and primary controls >=44px",
+      "passed": true
+    },
+    {
+      "name": "Close unmount and final-build reload restore channel/native time",
+      "passed": true
+    },
+    {
+      "name": "Legacy dandiTraceStart deep link opens original first-second reference",
+      "passed": true
+    },
+    {
+      "name": "Sealed final build draws every actual middle-window sample",
+      "passed": true
+    },
+    {
+      "name": "Final reference wording distinguishes historical bounded proof from complete source",
+      "passed": true
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "notVerified": [
+    "Automatic Blob download landing",
+    "Real browser 200% zoom",
+    "Screen reader",
+    "Native pending-request cancel"
+  ],
+  "downloadAttempt": "downloadMedia on current CSV Blob link timed out after 10 seconds; not counted as success"
+}

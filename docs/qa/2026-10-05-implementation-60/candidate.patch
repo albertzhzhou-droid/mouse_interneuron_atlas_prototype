@@ -1,0 +1,500 @@
+diff --git a/app/MolecularConcordanceWorkbench.tsx b/app/MolecularConcordanceWorkbench.tsx
+--- a/app/MolecularConcordanceWorkbench.tsx
++++ b/app/MolecularConcordanceWorkbench.tsx
+@@ -1,7 +1,17 @@
+ "use client";
+ 
+-import { useMemo, useState } from "react";
++import { useEffect, useMemo, useState } from "react";
+ import { useResearchActiveRecord } from "./ResearchActiveRecordProvider";
++import { researchExplorerLoadingReceipt } from "./research-explorer-index.js";
++import {
++  emptyMolecularConcordanceView,
++  filterMolecularConcordanceCandidates,
++  makeMolecularConcordanceBookmarkParams,
++  MOLECULAR_CONCORDANCE_PAGE_SIZE,
++  MOLECULAR_CONCORDANCE_QUERY_LIMIT,
++  readMolecularConcordanceBookmark,
++  type MolecularConcordanceViewState,
++} from "./molecular-concordance-bookmark.js";
+ import { buildMolecularConcordance, molecularConcordanceCsv, type MolecularSourceScope } from "./molecular-concordance.js";
+ import sathyamurthy from "../data/sathyamurthy-source-taxonomy-0.1.json";
+ import alkaslasi from "../data/alkaslasi-cholinergic-source-taxonomy-0.1.json";
+@@ -32,44 +42,77 @@
+ 
+ export default function MolecularConcordanceWorkbench() {
+   const { indexState } = useResearchActiveRecord();
+-  const records = useMemo(() => indexState.status === "ready" ? indexState.records.filter((record) => record.focusKind === "molecular_profile") : [], [indexState]);
+-  const [query, setQuery] = useState("");
+-  const [namespace, setNamespace] = useState("");
+-  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+-  const [anchorKey, setAnchorKey] = useState("");
+-  const [page, setPage] = useState(0);
++  const records = useMemo(() => indexState.status === "ready" ? indexState.index.records.filter((record) => record.focusKind === "molecular_profile") : [], [indexState]);
++  const verifiedDecodedSha256 = indexState.status === "ready"
++    ? researchExplorerLoadingReceipt(indexState.index)?.verifiedDecodedSha256 ?? "" : "";
++  const authority = useMemo(() => ({ records, verifiedDecodedSha256 }), [records, verifiedDecodedSha256]);
++  const [bookmark, setBookmark] = useState(() => ({
++    verifiedDecodedSha256: "", view: emptyMolecularConcordanceView(), error: "", href: "",
++  }));
++  const [notice, setNotice] = useState("");
++  const bookmarkReady = Boolean(verifiedDecodedSha256) && bookmark.verifiedDecodedSha256 === verifiedDecodedSha256;
++  const view = bookmarkReady ? bookmark.view : emptyMolecularConcordanceView();
++  const { query, namespace, selectedKeys, anchorKey, page } = view;
+   const namespaces = useMemo(() => [...new Set(records.map((record) => record.namespace))].sort(), [records]);
+-  const candidates = useMemo(() => {
+-    const needle = query.toLocaleLowerCase("en-US");
+-    return records.filter((record) => (!namespace || record.namespace === namespace)
+-      && `${record.title} ${record.focusId} ${record.searchTerms.join(" ")}`.toLocaleLowerCase("en-US").includes(needle));
+-  }, [namespace, query, records]);
++  const candidates = useMemo(() => filterMolecularConcordanceCandidates(records, { query, namespace }), [namespace, query, records]);
++
++  useEffect(() => {
++    if (indexState.status !== "ready" || !verifiedDecodedSha256) return;
++    const restore = () => {
++      const result = readMolecularConcordanceBookmark(window.location.search, authority);
++      setBookmark({
++        verifiedDecodedSha256, view: result.view, error: result.error,
++        href: result.status === "invalid" ? "" : `${window.location.pathname}${window.location.search}${window.location.hash}`,
++      });
++      setNotice(result.status === "ready" ? "Comparison restored from its address using the current verified source index." : "");
++    };
++    restore();
++    window.addEventListener("popstate", restore);
++    return () => window.removeEventListener("popstate", restore);
++  }, [authority, indexState.status, verifiedDecodedSha256]);
++
++  function updateView(next: MolecularConcordanceViewState, historyMode: "push" | "replace" = "push", clear = false) {
++    if (!bookmarkReady) return;
++    const url = new URL(window.location.href);
++    const params = makeMolecularConcordanceBookmarkParams(url.searchParams, authority, next, { clear });
++    url.search = params.toString();
++    const href = `${url.pathname}${url.search}${url.hash}`;
++    if (href !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
++      // Retain the router's state and every unrelated query/hash field.
++      window.history[historyMode === "replace" ? "replaceState" : "pushState"](window.history.state, "", href);
++    }
++    setBookmark({ verifiedDecodedSha256, view: next, error: "", href });
++    setNotice("");
++  }
+   const selected = useMemo(() => selectedKeys.map((key) => records.find((record) => record.key === key)).filter((record) => record !== undefined), [records, selectedKeys]);
+   const report = useMemo(() => selected.length >= 2 && selected.length === selectedKeys.length && selectedKeys.includes(anchorKey)
+     ? buildMolecularConcordance(records, { anchorKey, selectedKeys, sourceScopes }) : null, [anchorKey, records, selected.length, selectedKeys]);
+   const add = (key: string) => {
+-    if (selectedKeys.includes(key) || selectedKeys.length >= 4) return;
+-    setSelectedKeys([...selectedKeys, key]);
+-    if (!anchorKey) setAnchorKey(key);
++    if (!bookmarkReady || selectedKeys.includes(key) || selectedKeys.length >= 4) return;
++    updateView({ ...view, selectedKeys: [...selectedKeys, key], anchorKey: anchorKey || key });
+   };
+   const remove = (key: string) => {
+     const retained = selectedKeys.filter((item) => item !== key);
+-    setSelectedKeys(retained);
+-    if (anchorKey === key) setAnchorKey(retained[0] ?? "");
++    updateView({ ...view, selectedKeys: retained, anchorKey: anchorKey === key ? retained[0] ?? "" : anchorKey });
+   };
+   return <section className="molecular-concordance" aria-labelledby="molecular-concordance-title">
+     <header><p>UPG-106 · SOURCE ASSERTIONS</p><h4 id="molecular-concordance-title">Compare exact marker strings around an anchor record</h4><p>Select 2–4 source profiles, then choose an anchor. Shared strings and context differences support inspection; identity remains not established.</p></header>
+     {indexState.status !== "ready" && <p role={indexState.status === "unavailable" ? "alert" : "status"}>{indexState.status === "unavailable" ? indexState.error : "Waiting for the checksum-verified source index…"}</p>}
++    {indexState.status === "ready" && !verifiedDecodedSha256 && <p role="alert">The verified source-index receipt is unavailable. Comparison selection and export are unavailable.</p>}
++    {indexState.status === "ready" && !bookmarkReady && verifiedDecodedSha256 && <p role="status">Preparing the saved comparison…</p>}
++    {bookmarkReady && bookmark.error && <p role="alert">{bookmark.error} No saved profiles were substituted. Select current source profiles or reset the comparison.</p>}
++    {bookmarkReady && notice && <p role="status">{notice}</p>}
+     {indexState.status === "ready" && <>
+       <p>{records.length} source profiles across {namespaces.length} namespaces · zero deduplication</p>
+-      <div className="molecular-concordance-controls"><label>Source namespace<select value={namespace} onChange={(event) => { setNamespace(event.target.value); setPage(0); }}><option value="">All source namespaces</option>{namespaces.map((value) => <option key={value} value={value}>{value}</option>)}</select></label><label>Search label, ID or source marker<input type="search" value={query} onChange={(event) => { setQuery(event.target.value); setPage(0); }} /></label></div>
+-      <ul className="molecular-concordance-candidates" aria-label="Concordance source profiles">{candidates.slice(page * 12, page * 12 + 12).map((record) => <li key={record.key}><button type="button" disabled={selectedKeys.includes(record.key) || selectedKeys.length >= 4} onClick={() => add(record.key)}><strong>{record.title}</strong><span>{record.namespace}</span><small>{selectedKeys.includes(record.key) ? "Selected" : "Add to comparison"}</small></button></li>)}</ul>
++      <div className="molecular-concordance-controls"><label>Source namespace<select value={namespace} disabled={!bookmarkReady} onChange={(event) => updateView({ ...view, namespace: event.target.value, page: 0 }, "replace")}><option value="">All source namespaces</option>{namespaces.map((value) => <option key={value} value={value}>{value}</option>)}</select></label><label>Search label, ID or source marker<input type="search" value={query} maxLength={MOLECULAR_CONCORDANCE_QUERY_LIMIT} disabled={!bookmarkReady} onChange={(event) => updateView({ ...view, query: event.target.value, page: 0 }, "replace")} /></label><button type="button" disabled={!bookmarkReady} onClick={() => updateView(emptyMolecularConcordanceView(), "push", true)}>Reset comparison</button></div>
++      <p>Candidate filters leave your selected source profiles in the comparison. Reopening this address restores its profiles, anchor, filters and page against the current verified index.</p>
++      <ul className="molecular-concordance-candidates" aria-label="Concordance source profiles">{candidates.slice(page * MOLECULAR_CONCORDANCE_PAGE_SIZE, (page + 1) * MOLECULAR_CONCORDANCE_PAGE_SIZE).map((record) => <li key={record.key}><button type="button" disabled={!bookmarkReady || selectedKeys.includes(record.key) || selectedKeys.length >= 4} onClick={() => add(record.key)}><strong>{record.title}</strong><span>{record.namespace}</span><small>{selectedKeys.includes(record.key) ? "Selected" : "Add to comparison"}</small></button></li>)}</ul>
+       {!candidates.length && <p>No matching exact source profile.</p>}
+-      <nav aria-label="Concordance source pages"><button type="button" disabled={page === 0} onClick={() => setPage(page - 1)}>Previous</button><span>{candidates.length} matches · page {page + 1} / {Math.max(1, Math.ceil(candidates.length / 12))}</span><button type="button" disabled={(page + 1) * 12 >= candidates.length} onClick={() => setPage(page + 1)}>Next</button></nav>
+-      {selected.length > 0 && <div className="molecular-concordance-selections"><label>Anchor record<select value={anchorKey} onChange={(event) => setAnchorKey(event.target.value)}>{selected.map((record) => <option key={record.key} value={record.key}>{record.title} · {record.namespace}</option>)}</select></label>{selected.map((record) => <button type="button" key={record.key} onClick={() => remove(record.key)}>Remove {record.title} · {record.namespace}</button>)}</div>}
++      <nav aria-label="Concordance source pages"><button type="button" disabled={!bookmarkReady || page === 0} onClick={() => updateView({ ...view, page: page - 1 })}>Previous</button><span>{candidates.length} matches · page {page + 1} / {Math.max(1, Math.ceil(candidates.length / MOLECULAR_CONCORDANCE_PAGE_SIZE))}</span><button type="button" disabled={!bookmarkReady || (page + 1) * MOLECULAR_CONCORDANCE_PAGE_SIZE >= candidates.length} onClick={() => updateView({ ...view, page: page + 1 })}>Next</button></nav>
++      {selected.length > 0 && <div className="molecular-concordance-selections"><label>Anchor record<select value={anchorKey} onChange={(event) => updateView({ ...view, anchorKey: event.target.value })}>{selected.map((record) => <option key={record.key} value={record.key}>{record.title} · {record.namespace}</option>)}</select></label>{selected.map((record) => <button type="button" key={record.key} onClick={() => remove(record.key)}>Remove {record.title} · {record.namespace}</button>)}</div>}
+       {!report && <p role="status">{selectedKeys.length < 2 ? "Select at least two exact source profiles." : "A selected source record is unavailable; no replacement comparison is generated."}</p>}
+       {report && <>
+-        <div className="molecular-concordance-exports"><button type="button" onClick={() => download(JSON.stringify(report, null, 2) + "\n", "molecular-concordance.json", "application/json")}>Export evidence JSON</button><button type="button" onClick={() => download(molecularConcordanceCsv(report), "molecular-concordance.csv", "text/csv;charset=utf-8")}>Export comparison CSV</button></div>
++        <div className="molecular-concordance-exports"><a href={bookmark.href}>Link to this comparison</a><button type="button" onClick={() => download(JSON.stringify(report, null, 2) + "\n", "molecular-concordance.json", "application/json")}>Export evidence JSON</button><button type="button" onClick={() => download(molecularConcordanceCsv(report), "molecular-concordance.csv", "text/csv;charset=utf-8")}>Export comparison CSV</button></div>
+         {report.comparisons.map((pair) => {
+           const anchor = report.profiles.find((profile) => profile.key === pair.anchorKey)!;
+           const comparison = report.profiles.find((profile) => profile.key === pair.comparisonKey)!;
+diff --git a/app/molecular-concordance-bookmark.js b/app/molecular-concordance-bookmark.js
+new file mode 100644
+--- /dev/null
++++ b/app/molecular-concordance-bookmark.js
+@@ -0,0 +1,96 @@
++export const MOLECULAR_CONCORDANCE_BOOKMARK_KEYS = Object.freeze([
++  'compareVersion', 'compareIndex', 'compareKeys', 'compareAnchor',
++  'compareQuery', 'compareNamespace', 'comparePage',
++]);
++export const MOLECULAR_CONCORDANCE_PAGE_SIZE = 12;
++export const MOLECULAR_CONCORDANCE_QUERY_LIMIT = 180;
++
++export function emptyMolecularConcordanceView() {
++  return { query: '', namespace: '', page: 0, selectedKeys: [], anchorKey: '' };
++}
++
++/** Candidate filters do not remove the independently selected comparison basket. */
++export function filterMolecularConcordanceCandidates(records, { query = '', namespace = '' } = {}) {
++  const needle = query.toLocaleLowerCase('en-US');
++  return records.filter((record) => (!namespace || record.namespace === namespace)
++    && `${record.title} ${record.focusId} ${record.searchTerms.join(' ')}`.toLocaleLowerCase('en-US').includes(needle));
++}
++
++function checkedAuthority({ records, verifiedDecodedSha256 } = {}) {
++  if (typeof verifiedDecodedSha256 !== 'string' || !/^[a-f0-9]{64}$/.test(verifiedDecodedSha256) || !Array.isArray(records) || !records.length) {
++    throw new Error('The checksum-verified molecular source index is unavailable.');
++  }
++  const byKey = new Map();
++  for (const record of records) {
++    if (record?.focusKind !== 'molecular_profile' || typeof record.focusId !== 'string' || !record.focusId
++      || record.key !== `molecular_profile:${record.focusId}` || typeof record.namespace !== 'string' || !record.namespace
++      || typeof record.title !== 'string' || !Array.isArray(record.searchTerms)
++      || record.searchTerms.some((term) => typeof term !== 'string') || byKey.has(record.key)) {
++      throw new Error('The molecular source index does not contain unique complete profile keys.');
++    }
++    byKey.set(record.key, record);
++  }
++  return { records, verifiedDecodedSha256, byKey, namespaces: new Set(records.map((record) => record.namespace)) };
++}
++
++function checkedView(authority, view) {
++  if (!view || typeof view.query !== 'string' || view.query.length > MOLECULAR_CONCORDANCE_QUERY_LIMIT
++    || typeof view.namespace !== 'string' || (view.namespace && !authority.namespaces.has(view.namespace))
++    || !Number.isSafeInteger(view.page) || view.page < 0 || !Array.isArray(view.selectedKeys)
++    || view.selectedKeys.length > 4 || new Set(view.selectedKeys).size !== view.selectedKeys.length
++    || view.selectedKeys.some((key) => typeof key !== 'string' || !authority.byKey.has(key))) {
++    throw new Error('The comparison bookmark contains an unavailable profile, filter or page.');
++  }
++  if (typeof view.anchorKey !== 'string' || (view.selectedKeys.length ? !view.selectedKeys.includes(view.anchorKey) : view.anchorKey !== '')) {
++    throw new Error('The comparison anchor must be one of its exact selected source profiles.');
++  }
++  const count = filterMolecularConcordanceCandidates(authority.records, view).length;
++  if (view.page >= Math.max(1, Math.ceil(count / MOLECULAR_CONCORDANCE_PAGE_SIZE))) {
++    throw new Error('The saved page is outside the current filtered source candidates.');
++  }
++  return { query: view.query, namespace: view.namespace, page: view.page, selectedKeys: [...view.selectedKeys], anchorKey: view.anchorKey };
++}
++
++/** This restores local UI state only; it never attests source bytes or creates a relationship. */
++export function readMolecularConcordanceBookmark(input, sourceAuthority) {
++  try {
++    const authority = checkedAuthority(sourceAuthority);
++    const params = new URLSearchParams(input);
++    const present = MOLECULAR_CONCORDANCE_BOOKMARK_KEYS.filter((key) => params.has(key));
++    if (!present.length) return { status: 'default', error: '', view: emptyMolecularConcordanceView() };
++    if (present.some((key) => params.getAll(key).length !== 1)) {
++      throw new Error('The comparison bookmark contains duplicate state parameters.');
++    }
++    if (params.get('compareVersion') !== '1' || params.get('compareIndex') !== authority.verifiedDecodedSha256 || !params.has('compareKeys')) {
++      throw new Error('This comparison bookmark does not match the current checksum-verified source index.');
++    }
++    const rawPage = params.get('comparePage') ?? '0';
++    if (!/^(?:0|[1-9][0-9]*)$/.test(rawPage)) throw new Error('The saved comparison page is invalid.');
++    let selectedKeys;
++    try { selectedKeys = JSON.parse(params.get('compareKeys')); }
++    catch { throw new Error('The saved source-profile keys are invalid.'); }
++    const view = checkedView(authority, {
++      query: params.get('compareQuery') ?? '', namespace: params.get('compareNamespace') ?? '',
++      page: Number(rawPage), selectedKeys, anchorKey: params.get('compareAnchor') ?? '',
++    });
++    return { status: 'ready', error: '', view };
++  } catch (error) {
++    return { status: 'invalid', error: error instanceof Error ? error.message : 'The comparison bookmark is invalid.', view: emptyMolecularConcordanceView() };
++  }
++}
++
++export function makeMolecularConcordanceBookmarkParams(input, sourceAuthority, view, { clear = false } = {}) {
++  const authority = checkedAuthority(sourceAuthority);
++  const params = new URLSearchParams(input);
++  for (const key of MOLECULAR_CONCORDANCE_BOOKMARK_KEYS) params.delete(key);
++  if (clear) return params;
++  const checked = checkedView(authority, view);
++  params.set('compareVersion', '1');
++  params.set('compareIndex', authority.verifiedDecodedSha256);
++  params.set('compareKeys', JSON.stringify(checked.selectedKeys));
++  if (checked.anchorKey) params.set('compareAnchor', checked.anchorKey);
++  if (checked.query) params.set('compareQuery', checked.query);
++  if (checked.namespace) params.set('compareNamespace', checked.namespace);
++  if (checked.page) params.set('comparePage', String(checked.page));
++  return params;
++}
+diff --git a/app/molecular-concordance-bookmark.d.ts b/app/molecular-concordance-bookmark.d.ts
+new file mode 100644
+--- /dev/null
++++ b/app/molecular-concordance-bookmark.d.ts
+@@ -0,0 +1,25 @@
++import type { ResearchRecord } from "./ResearchExplorer";
++
++export type MolecularConcordanceViewState = {
++  query: string;
++  namespace: string;
++  page: number;
++  selectedKeys: string[];
++  anchorKey: string;
++};
++export type MolecularConcordanceBookmarkAuthority = {
++  records: ResearchRecord[];
++  verifiedDecodedSha256: string;
++};
++export type MolecularConcordanceBookmarkResult = {
++  status: "default" | "ready" | "invalid";
++  error: string;
++  view: MolecularConcordanceViewState;
++};
++export const MOLECULAR_CONCORDANCE_BOOKMARK_KEYS: readonly string[];
++export const MOLECULAR_CONCORDANCE_PAGE_SIZE: 12;
++export const MOLECULAR_CONCORDANCE_QUERY_LIMIT: 180;
++export function emptyMolecularConcordanceView(): MolecularConcordanceViewState;
++export function filterMolecularConcordanceCandidates<R extends ResearchRecord>(records: R[], filter?: { query?: string; namespace?: string }): R[];
++export function readMolecularConcordanceBookmark(input: string | URLSearchParams, authority: MolecularConcordanceBookmarkAuthority): MolecularConcordanceBookmarkResult;
++export function makeMolecularConcordanceBookmarkParams(input: string | URLSearchParams, authority: MolecularConcordanceBookmarkAuthority, view: MolecularConcordanceViewState, options?: { clear?: boolean }): URLSearchParams;
+diff --git a/tests/molecular-concordance-bookmark.test.mjs b/tests/molecular-concordance-bookmark.test.mjs
+new file mode 100644
+--- /dev/null
++++ b/tests/molecular-concordance-bookmark.test.mjs
+@@ -0,0 +1,243 @@
++import assert from "node:assert/strict";
++import { readFile } from "node:fs/promises";
++import { createHash } from "node:crypto";
++import { createRequire } from "node:module";
++import { fileURLToPath } from "node:url";
++import test from "node:test";
++import vm from "node:vm";
++import React from "react";
++import { renderToStaticMarkup } from "react-dom/server";
++import ts from "typescript";
++import * as indexApi from "../app/research-explorer-index.js";
++import * as comparisonApi from "../app/molecular-concordance.js";
++import * as bookmarkApi from "../app/molecular-concordance-bookmark.js";
++
++const require = createRequire(import.meta.url);
++const readJson = async (path) => JSON.parse(await readFile(new URL(`../${path}`, import.meta.url), "utf8"));
++const sourceIndexBytes = await readFile(new URL("../public/data/research_explorer_index_v1/search-index.json", import.meta.url));
++const sourceManifest = await readJson("public/data/research_explorer_index_v1/asset-manifest.json");
++const fsFetch = async (path) => {
++  const bytes = await readFile(new URL(`../public${path}`, import.meta.url));
++  return { ok: true, status: 200, json: async () => JSON.parse(bytes), arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) };
++};
++const index = await indexApi.loadVerifiedResearchExplorerIndex({ fetchImpl: fsFetch });
++const records = index.records.filter((record) => record.focusKind === "molecular_profile");
++const sourceHash = createHash("sha256").update(sourceIndexBytes).digest("hex");
++const authority = { records, verifiedDecodedSha256: indexApi.researchExplorerLoadingReceipt(index).verifiedDecodedSha256 };
++const readyContext = { indexState: { status: "ready", index, records: index.records, error: "" } };
++const byId = (id) => records.find((record) => record.focusId === id);
++const ids = ["alkaslasi-2021:GSE167597:I1", "alkaslasi-2021:GSE167597:I2", "hayashi-2018:GSE108788:cluster-1", "sathyamurthy-2018:DE-1"];
++const sourceScopes = [];
++for (const [namespace, name] of [["sathyamurthy-2018", "sathyamurthy-source-taxonomy-0.1"], ["alkaslasi-2021:GSE167597", "alkaslasi-cholinergic-source-taxonomy-0.1"], ["haring-2018:GSE103840", "haring-dorsal-horn-source-taxonomy-0.1"], ["hayashi-2018:GSE108788", "hayashi-v2a-source-taxonomy-0.1"], ["roome-2026:GSE291462", "roome-dil-source-taxonomy-0.1"]]) {
++  const data = await readJson(`data/${name}.json`);
++  sourceScopes.push({ namespace, path: `data/${name}.json`, releaseId: data.releaseId, lifeStage: data.scope.lifeStage ?? data.scope.lifeStages.join(" · "), profileIds: data.profiles.map((row) => row.id) });
++}
++const viewFor = (keys = ids.slice(0, 2).map((id) => byId(id).key)) => ({ ...bookmarkApi.emptyMolecularConcordanceView(), selectedKeys: keys, anchorKey: keys[0] ?? "" });
++const paramsFor = (view = viewFor(), input = "unrelated=a&unrelated=b&focusKind=anatomy_label&focusId=original") => bookmarkApi.makeMolecularConcordanceBookmarkParams(input, authority, view);
++
++test("the real verified canonical index binds all 387 full molecular keys without admitting or substituting a profile", () => {
++  assert.equal(records.length, 387);
++  assert.equal(new Set(records.map((row) => row.namespace)).size, 10);
++  assert.equal(authority.verifiedDecodedSha256, sourceHash);
++  assert.equal(sourceHash, sourceManifest.index.sha256);
++  const before = JSON.stringify(records);
++  for (const record of records) {
++    const view = viewFor([record.key]);
++    const restored = bookmarkApi.readMolecularConcordanceBookmark(paramsFor(view), authority);
++    assert.equal(restored.status, "ready");
++    assert.deepEqual(restored.view, view);
++    assert.equal(records.find((row) => row.key === restored.view.selectedKeys[0]), record);
++  }
++  assert.equal(JSON.stringify(records), before);
++  assert.equal(bookmarkApi.readMolecularConcordanceBookmark("unrelated=x", authority).status, "default");
++});
++
++test("ordered 2–4 profile baskets and exact anchors survive independent candidate filters, empty results and filtered pagination", () => {
++  for (const count of [2, 3, 4]) {
++    const keys = ids.slice(0, count).map((id) => byId(id).key).reverse();
++    const view = { ...viewFor(keys), anchorKey: keys.at(-1), namespace: "roome-2026:GSE291462", page: 12 };
++    assert.deepEqual(bookmarkApi.readMolecularConcordanceBookmark(paramsFor(view), authority).view, view);
++    assert.equal(bookmarkApi.filterMolecularConcordanceCandidates(records, view).length, 157);
++    const emptyCandidates = { ...view, query: "no-source-label-matches-this-string", page: 0 };
++    assert.equal(bookmarkApi.filterMolecularConcordanceCandidates(records, emptyCandidates).length, 0);
++    assert.deepEqual(bookmarkApi.readMolecularConcordanceBookmark(paramsFor(emptyCandidates), authority).view, emptyCandidates);
++  }
++  assert.throws(() => paramsFor({ ...viewFor(), namespace: "roome-2026:GSE291462", page: 14 }), /outside/);
++});
++
++test("foreign, stale, malformed, duplicate, nonmolecular and out-of-page bookmarks clear the whole saved basket", () => {
++  const negatives = [];
++  const changed = (key, value) => { const p = paramsFor(); p.set(key, value); return p; };
++  negatives.push(changed("compareVersion", "2"), changed("compareIndex", "f".repeat(64)), changed("compareIndex", "not-a-hash"));
++  for (const key of ["compareVersion", "compareIndex", "compareKeys"]) { const p = paramsFor(); p.delete(key); negatives.push(p); }
++  for (const key of bookmarkApi.MOLECULAR_CONCORDANCE_BOOKMARK_KEYS) { const p = paramsFor(); p.append(key, p.get(key) ?? ""); p.append(key, "duplicate"); negatives.push(p); }
++  for (const keys of ["broken JSON", "{}", "null", '["I1"]', JSON.stringify([records[0].key, records[0].key]), JSON.stringify(records.slice(0, 5).map((row) => row.key)), JSON.stringify([index.records.find((row) => row.focusKind === "morphology_record").key]), JSON.stringify(["molecular_profile:foreign-release:I1"])]) negatives.push(changed("compareKeys", keys));
++  negatives.push(changed("compareAnchor", records.at(-1).key), changed("compareKeys", "[]"), changed("compareNamespace", "foreign-source"), changed("compareQuery", "x".repeat(181)));
++  for (const page of ["-1", "01", "0.5", "Infinity", "9007199254740992", "33"]) negatives.push(changed("comparePage", page));
++  negatives.push(changed("compareQuery", "no matching marker here"));
++  negatives.at(-1).set("comparePage", "1");
++  for (const params of negatives) {
++    const result = bookmarkApi.readMolecularConcordanceBookmark(params, authority);
++    assert.equal(result.status, "invalid", params.toString());
++    assert.ok(result.error);
++    assert.deepEqual(result.view, bookmarkApi.emptyMolecularConcordanceView());
++  }
++  assert.equal(bookmarkApi.readMolecularConcordanceBookmark(paramsFor(), { ...authority, records: [...records, records[0]] }).status, "invalid");
++  assert.equal(bookmarkApi.readMolecularConcordanceBookmark(paramsFor(), { ...authority, verifiedDecodedSha256: "" }).status, "invalid");
++});
++
++test("reset and canonical encoding retain unrelated duplicate parameters and source focus exactly", () => {
++  const params = paramsFor({ ...viewFor(), query: "Pax2 ", namespace: "alkaslasi-2021:GSE167597" });
++  assert.deepEqual(params.getAll("unrelated"), ["a", "b"]);
++  assert.equal(params.get("focusId"), "original");
++  const reset = bookmarkApi.makeMolecularConcordanceBookmarkParams(params, authority, bookmarkApi.emptyMolecularConcordanceView(), { clear: true });
++  assert.deepEqual([...reset], [["unrelated", "a"], ["unrelated", "b"], ["focusKind", "anatomy_label"], ["focusId", "original"]]);
++  assert.deepEqual(bookmarkApi.readMolecularConcordanceBookmark(reset, authority).view, bookmarkApi.emptyMolecularConcordanceView());
++});
++
++test("restored profiles produce byte-equivalent original scientific JSON and CSV with unknowns and zero joins retained", () => {
++  const keys = [byId("alkaslasi-2021:GSE167597:I1").key, byId("hayashi-2018:GSE108788:cluster-1").key, records.find((row) => row.namespace === "cano-gomez-2026:GSE318731").key, byId("haring-2018:GSE103840:Gaba1").key];
++  const view = { ...viewFor(keys), anchorKey: keys[1] };
++  const restored = bookmarkApi.readMolecularConcordanceBookmark(paramsFor(view), authority).view;
++  const original = comparisonApi.buildMolecularConcordance(records, { ...view, sourceScopes });
++  const replay = comparisonApi.buildMolecularConcordance(records, { ...restored, sourceScopes });
++  assert.equal(JSON.stringify(replay), JSON.stringify(original));
++  assert.equal(comparisonApi.molecularConcordanceCsv(replay), comparisonApi.molecularConcordanceCsv(original));
++  assert.equal(replay.sourceDenominator.value, 387);
++  assert.equal(replay.identity, "not_established");
++  assert.equal(replay.sameCellJoinCount + replay.sameTypeJoinCount + replay.generatedGeometryCount + replay.sourceDenominator.deduplicationCount, 0);
++  assert.equal(replay.profiles.find((row) => row.namespace === "cano-gomez-2026:GSE318731").markers.status, "missing");
++  assert.match(replay.profiles.find((row) => row.namespace === "hayashi-2018:GSE108788").fields.life_stage.rawValue, /P0 neonatal/);
++});
++
++const componentSource = await readFile(new URL("../app/MolecularConcordanceWorkbench.tsx", import.meta.url), "utf8");
++const compiled = ts.transpileModule(componentSource, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true, target: ts.ScriptTarget.ES2022 } }).outputText;
++function loadComponent(react, context, globals = {}) {
++  const compiledModule = { exports: {} };
++  const localRequire = (name) => {
++    if (name === "react") return react;
++    if (name === "./ResearchActiveRecordProvider") return { useResearchActiveRecord: () => context.value };
++    if (name === "./research-explorer-index.js") return indexApi;
++    if (name === "./molecular-concordance.js") return comparisonApi;
++    if (name === "./molecular-concordance-bookmark.js") return bookmarkApi;
++    if (name.endsWith(".css")) return {};
++    if (name.startsWith("../data/")) return require(fileURLToPath(new URL(name, new URL("../app/", import.meta.url))));
++    return require(name);
++  };
++  vm.runInNewContext(compiled, { module: compiledModule, exports: compiledModule.exports, require: localRequire, URL, Blob, console, ...globals }, { filename: "MolecularConcordanceWorkbench.candidate.cjs" });
++  return compiledModule.exports.default;
++}
++
++test("actual React SSR exposes current layout but no comparison or export before client bookmark restoration", () => {
++  for (const context of [readyContext, { indexState: { status: "verifying", index: null, records: [], error: "" } }, { indexState: { status: "unavailable", index: null, records: [], error: "Source bytes rejected" } }, { indexState: { ...readyContext.indexState, index: structuredClone(index) } }]) {
++    const Component = loadComponent(React, { value: context });
++    const html = renderToStaticMarkup(React.createElement(Component));
++    assert.match(html, /class="molecular-concordance"/);
++    assert.doesNotMatch(html, /Export evidence JSON|Export comparison CSV|Link to this comparison/);
++    if (context === readyContext) assert.match(html, /387 source profiles across 10 namespaces/);
++    if (context.indexState.index && context !== readyContext) assert.match(html, /verified source-index receipt is unavailable/);
++  }
++});
++
++function nodes(tree, match) {
++  const found = [];
++  function walk(node) {
++    if (Array.isArray(node)) return node.forEach(walk);
++    if (!node || typeof node !== "object" || !node.props) return;
++    if (match(node)) found.push(node);
++    walk(node.props.children);
++  }
++  walk(tree); return found;
++}
++function textOf(tree) {
++  if (Array.isArray(tree)) return tree.map(textOf).join("");
++  if (tree == null || typeof tree === "boolean") return "";
++  return typeof tree === "object" ? textOf(tree.props?.children) : String(tree);
++}
++function descriptorHarness(initialUrl, initialContext = readyContext) {
++  const context = { value: initialContext }, slots = [], listeners = new Set(), writes = [], downloaded = [];
++  const routerState = { __NA: true, tree: ["exact-existing-router-state"] };
++  let url = new URL(initialUrl), cursor = 0, dirty = false, pending = [], tree;
++  const equal = (a, b) => a && b && a.length === b.length && a.every((item, i) => Object.is(item, b[i]));
++  const fakeReact = {
++    useState(initial) { const i = cursor++; if (!slots[i]) slots[i] = { value: typeof initial === "function" ? initial() : initial }; return [slots[i].value, (next) => { const value = typeof next === "function" ? next(slots[i].value) : next; if (!Object.is(value, slots[i].value)) { slots[i].value = value; dirty = true; } }]; },
++    useMemo(callback, deps) { const i = cursor++; if (!slots[i] || !equal(slots[i].deps, deps)) slots[i] = { value: callback(), deps }; return slots[i].value; },
++    useEffect(callback, deps) { const i = cursor++; if (!slots[i] || !equal(slots[i].deps, deps)) { const old = slots[i]; slots[i] = { deps, cleanup: old?.cleanup }; pending.push(() => { slots[i].cleanup?.(); slots[i].cleanup = callback(); }); } },
++  };
++  const location = {}; for (const key of ["href", "pathname", "search", "hash"]) Object.defineProperty(location, key, { get: () => url[key] });
++  const window = { location, history: { state: routerState, pushState(state, _, href) { assert.equal(state, routerState); writes.push({ mode: "push", href }); url = new URL(href, url); }, replaceState(state, _, href) { assert.equal(state, routerState); writes.push({ mode: "replace", href }); url = new URL(href, url); } }, addEventListener(name, callback) { assert.equal(name, "popstate"); listeners.add(callback); }, removeEventListener(name, callback) { assert.equal(name, "popstate"); listeners.delete(callback); }, setTimeout(callback) { callback(); } };
++  let blob;
++  class DescriptorURL extends URL { static createObjectURL(value) { blob = value; return "blob:descriptor-only"; } static revokeObjectURL() {} }
++  const document = { createElement() { return { click() { downloaded.push({ blob, name: this.download }); }, remove() {} }; }, body: { appendChild() {} } };
++  const Component = loadComponent(fakeReact, context, { window, document, URL: DescriptorURL });
++  function render({ commit = true } = {}) { cursor = 0; dirty = false; tree = Component(); if (commit) { let count = 0; do { const callbacks = pending; pending = []; callbacks.forEach((callback) => callback()); if (dirty) { dirty = false; cursor = 0; tree = Component(); } if (++count > 10) throw new Error("Descriptor effect loop"); } while (pending.length || dirty); } return tree; }
++  function unmount() { slots.forEach((slot) => slot?.cleanup?.()); listeners.clear(); }
++  return { render, context, writes, downloaded, listeners, get url() { return url; }, get tree() { return tree; }, pop(href) { url = new URL(href, url); [...listeners].forEach((callback) => callback()); return render(); }, unmount };
++}
++
++test("descriptor-only compiled component replay preserves basket/history/focus, fresh remount and exact original export", async () => {
++  const initial = new URL("https://atlas.example/explore/cell-types/compare?unrelated=a&unrelated=b&focusKind=anatomy_label&focusId=original#reading-position");
++  initial.search = paramsFor().toString();
++  const h = descriptorHarness(initial.href);
++  h.render(); assert.equal(h.listeners.size, 1); assert.equal(h.writes.length, 0);
++  assert.ok(nodes(h.tree, (node) => node.type === "a" && textOf(node) === "Link to this comparison").length === 1);
++  const anchor = nodes(h.tree, (node) => node.type === "select" && node.props.value === viewFor().anchorKey)[0];
++  anchor.props.onChange({ target: { value: viewFor().selectedKeys[1] } }); h.render();
++  assert.equal(h.writes.at(-1).mode, "push");
++  const anchoredUrl = h.url.href;
++  const input = nodes(h.tree, (node) => node.type === "input")[0];
++  input.props.onChange({ target: { value: "no matching source label" } }); h.render();
++  assert.equal(h.writes.at(-1).mode, "replace");
++  assert.match(textOf(h.tree), /No matching exact source profile/);
++  assert.equal(nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 1);
++  assert.deepEqual(h.url.searchParams.getAll("unrelated"), ["a", "b"]); assert.equal(h.url.searchParams.get("focusId"), "original"); assert.equal(h.url.hash, "#reading-position");
++  const exportButton = nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON")[0];
++  exportButton.props.onClick();
++  const exported = JSON.parse(await h.downloaded[0].blob.text());
++  assert.equal(h.downloaded[0].name, "molecular-concordance.json");
++  assert.equal(exported.anchorKey, viewFor().selectedKeys[1]); assert.equal(exported.identity, "not_established"); assert.equal(exported.sameCellJoinCount, 0);
++  const historyCount = h.writes.length;
++  h.pop(initial.href); assert.equal(h.writes.length, historyCount);
++  assert.equal(nodes(h.tree, (node) => node.type === "select" && node.props.value === viewFor().anchorKey).length, 1);
++  h.pop(anchoredUrl); assert.equal(h.writes.length, historyCount);
++  const currentUrl = h.url.href; h.unmount(); assert.equal(h.listeners.size, 0);
++  const reopened = descriptorHarness(currentUrl); reopened.render(); assert.equal(reopened.writes.length, 0);
++  assert.equal(nodes(reopened.tree, (node) => node.type === "select" && node.props.value === viewFor().selectedKeys[1]).length, 1);
++  const reset = nodes(reopened.tree, (node) => node.type === "button" && textOf(node) === "Reset comparison")[0];
++  reset.props.onClick(); reopened.render();
++  assert.ok(bookmarkApi.MOLECULAR_CONCORDANCE_BOOKMARK_KEYS.every((key) => !reopened.url.searchParams.has(key)));
++  assert.deepEqual(reopened.url.searchParams.getAll("unrelated"), ["a", "b"]);
++  assert.equal(nodes(reopened.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 0);
++  reopened.unmount();
++});
++
++test("descriptor-only source failure, changed verified byte hash, invalid URL and absent private receipt never expose an old comparison", async () => {
++  const initial = `https://atlas.example/explore/cell-types/compare?${paramsFor()}`;
++  const foreignAggregation = { ...readyContext, indexState: { ...readyContext.indexState, records: [...index.records, { ...records[0], key: "molecular_profile:foreign:I1", focusId: "foreign:I1", namespace: "foreign" }] } };
++  const h = descriptorHarness(initial, foreignAggregation); h.render();
++  assert.match(textOf(h.tree), /387 source profiles across 10 namespaces/);
++  assert.doesNotMatch(textOf(h.tree), /foreign/);
++  h.context.value = { indexState: { status: "unavailable", index: null, records: [], error: "Byte checksum rejected" } };
++  h.render({ commit: false });
++  assert.match(textOf(h.tree), /Byte checksum rejected/);
++  assert.equal(nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 0);
++  h.render();
++  h.context.value = { indexState: { ...readyContext.indexState, index: structuredClone(index) } };
++  h.render(); assert.match(textOf(h.tree), /verified source-index receipt is unavailable/);
++  assert.equal(nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 0);
++  // Negative fixture changes only trailing bytes; no source profile or root input is modified.
++  const freshBytes = Buffer.concat([sourceIndexBytes, Buffer.from(" ")]);
++  const freshManifest = structuredClone(sourceManifest); freshManifest.index.bytes = freshBytes.length; freshManifest.index.sha256 = createHash("sha256").update(freshBytes).digest("hex");
++  const freshIndex = await indexApi.loadVerifiedResearchExplorerIndex({ fetchImpl: async (path) => ({ ok: true, status: 200, json: async () => freshManifest, arrayBuffer: async () => { assert.equal(path, indexApi.RESEARCH_EXPLORER_INDEX_URL); return freshBytes.buffer.slice(freshBytes.byteOffset, freshBytes.byteOffset + freshBytes.byteLength); } }) });
++  h.context.value = { indexState: { status: "ready", index: freshIndex, records: freshIndex.records, error: "" } };
++  h.render({ commit: false });
++  assert.equal(nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 0);
++  h.render(); assert.match(textOf(h.tree), /does not match the current checksum-verified source index/);
++  assert.match(textOf(h.tree), /No saved profiles were substituted/);
++  h.context.value = readyContext; h.render();
++  assert.equal(nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 1);
++  const invalid = new URL(initial); invalid.searchParams.append("compareAnchor", "duplicate");
++  h.pop(invalid.href); assert.match(textOf(h.tree), /duplicate state parameters/);
++  assert.equal(nodes(h.tree, (node) => node.type === "button" && textOf(node) === "Export evidence JSON").length, 0);
++  assert.equal(h.writes.length, 0); h.unmount(); assert.equal(h.listeners.size, 0);
++});

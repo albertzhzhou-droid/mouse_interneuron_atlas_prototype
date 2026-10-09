@@ -1,0 +1,12 @@
+import type { CatalogRecord, NativeContourPayload, DerivedSurfacePayload } from "./NativeContourRecordViewer";
+import type { SourceIdentityHierarchy } from "./source-object-identity.js";
+export type NativeContourByteProof = { path: string; bytes: number; sha256: string; verifiedAt: string; verificationSequence: number; requestCacheMode: "default" | "no-store"; status: "verified"; neuronId: number; assetId: string; sourceFrame: string; scope: string };
+export type NativeContourOriginalDatProof = NativeContourByteProof & { parserVersion: string; fullAuditSha256: string; topLevelObjectCount: number };
+export type NativeContourVerification = { fileManifest: NativeContourByteProof; originalDat: NativeContourOriginalDatProof; sourceGeometry: NativeContourByteProof; derivedShell: NativeContourByteProof | null };
+type Options = { fetchImpl?: typeof fetch; signal?: AbortSignal; forceReload?: boolean };
+export const NATIVE_CONTOUR_SOURCE_IDS: readonly number[];
+export function canonicalNativeContourSource(neuronId: number): { record: CatalogRecord; datFile: unknown; catalogReleaseId: string; catalogContractId: string; sourceContext: unknown; shell: unknown | null };
+export function nativeContourSourceHierarchy(neuronId: number): SourceIdentityHierarchy;
+export function readVerifiedNativeContours(neuronId: number, options?: Options): Promise<NativeContourPayload>;
+export function readVerifiedNativeContourShell(neuronId: number, contours: NativeContourPayload, options?: Options): Promise<DerivedSurfacePayload>;
+export function nativeContourVerification(neuronId: number, contours: NativeContourPayload, shell?: DerivedSurfacePayload | null): NativeContourVerification;

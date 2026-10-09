@@ -1,0 +1,671 @@
+- link "Skip to research content":
+  - /url: "#research-content"
+- complementary "Atlas navigation":
+  - link "Interneuron Atlas overview":
+    - /url: /
+    - text: Interneuron
+    - text: Atlas
+    - generic: Mouse spinal cord
+  - navigation "Atlas pages":
+    - region "Start":
+      - heading "Start" [level=2]
+      - list:
+        - link "Overview":
+          - /url: /
+          - generic: Overview
+        - link "3D workspace":
+          - /url: /workspace
+          - generic: 3D workspace
+    - region "Explore":
+      - heading "Explore" [level=2]
+      - list:
+        - link "Morphology":
+          - /url: /explore/morphology
+          - generic: Morphology
+        - link "Cell types":
+          - /url: /explore/cell-types
+          - generic: Cell types
+        - link "Anatomy":
+          - /url: /explore/anatomy
+          - generic: Anatomy
+        - link "Positions":
+          - /url: /explore/positions
+          - generic: Positions
+    - region "Research":
+      - heading "Research" [level=2]
+      - list:
+        - link "Research explorer":
+          - /url: /research/explorer
+          - generic: Research explorer
+        - link "Evidence map":
+          - /url: /research/overview
+          - generic: Evidence map
+        - link "SCI conditions":
+          - /url: /research/sci
+          - generic: SCI conditions
+        - link "Evidence coverage":
+          - /url: /research/coverage
+          - generic: Evidence coverage
+    - region "Sources":
+      - heading "Sources" [level=2]
+      - list:
+        - link "Source registry":
+          - /url: /sources
+          - generic: Source registry
+        - link "Source objects":
+          - /url: /objects
+          - generic: Source objects
+        - link "Source audits":
+          - /url: /source-audits
+          - generic: Source audits
+        - link "Svara catalogue":
+          - /url: /catalogues/svara
+          - generic: Svara catalogue
+        - link "Svara connectivity":
+          - /url: /connectivity/svara
+          - generic: Svara connectivity
+  - paragraph:
+    - text: Public-data research
+    - text: Source identities remain distinct.
+- navigation "Breadcrumb":
+  - list:
+    - link "Overview":
+      - /url: /
+    - text: /
+    - generic: Sources
+    - text: /
+    - generic: Source registry
+- main:
+  - paragraph: Sources · Registry
+  - heading "Source registry" [level=1]
+  - paragraph: Trace citations, exact records, source files, reuse terms and the boundaries of each admitted dataset.
+  - status
+  - region "Research source registry":
+    - paragraph: UPG-108 / UPG-110 / UPG-113 · CANONICAL PROVENANCE · LANE-SCOPED CONTEXT
+    - heading "Research source registry" [level=3]
+    - paragraph: One canonical record for every source package used across anatomy, molecular types, morphology, SCI evidence, coverage and internal-reference views. Aliases resolve old page-specific IDs; they never merge biological records.
+    - generic: 0 CROSS-SOURCE IDENTITIES · 0 REG
+    - generic "Canonical source registry summary":
+      - article:
+        - strong: "31"
+        - generic: canonical source packages
+      - article:
+        - strong: "76"
+        - generic: legacy aliases resolved
+      - article:
+        - strong: "41"
+        - generic: declared record sets
+      - article:
+        - strong: "13"
+        - generic: bundled exact cell/profile rosters
+      - article:
+        - strong: "4"
+        - generic: bundled exact source-object sets
+    - note:
+      - strong: "Drill-down gate:"
+      - text: child roster drill-down is allowed only when childRosterRef.status is bundled_exact. Public access does not imply redistribution permission, and registry metadata cannot authorize geometry, atlas registration or a cross-source identity.
+    - text: Search source, DOI, accession or scope
+    - searchbox "Search source, DOI, accession or scope"
+    - text: Research lane
+    - combobox "Research lane":
+      - option "All lanes" [selected]
+      - option "Atlas"
+      - option "Connectivity"
+      - option "Coverage"
+      - option "Internal Microdetail"
+      - option "Morphology"
+      - option "Overview"
+      - option "Positions"
+      - option "Sci"
+      - option "Sources"
+      - option "Structure"
+      - option "Types"
+    - text: Species
+    - combobox "Species":
+      - option "All source-declared species" [selected]
+      - option "Danio rerio"
+      - option "Drosophila melanogaster"
+      - option "Homo sapiens"
+      - option "Mus musculus"
+    - text: Life stage
+    - combobox "Life stage":
+      - option "All source-declared stages" [selected]
+      - option "12-30 weeks"
+      - option "3-6 weeks"
+      - option "4 dpf larva"
+      - option "6 dpf larva"
+      - option "8 weeks old"
+      - option "adult"
+      - option "adult injury models with age as an explicit source condition"
+      - option "E9.5-E13.5"
+      - option "early postnatal; P1-P2 injection with analysis 8-9 days later"
+      - option "embryonic day 14.5"
+      - option "embryonic day 14.5 and embryonic day 16.5"
+      - option "neonatal"
+      - option "P0 neonatal"
+      - option "P36 male"
+      - option "P56"
+      - option "P7"
+      - option "postnatal harmonized transcriptomic reference"
+      - option "postnatal P17-P28"
+      - option "The current exact-slice contract does not retain an exact source age; only a source-bounded postnatal context is stated elsewhere."
+      - option "young"
+      - option "young adult"
+    - text: Admission
+    - combobox "Admission":
+      - option "All admission states" [selected]
+      - option "Article Metadata And Official Links Only"
+      - option "Article Reported Labels Only"
+      - option "Bundled Local"
+      - option "Confirmed Only Source Local Profiles Admitted"
+      - option "Derived Factual Metadata Bundled"
+      - option "Derived Functional Profile Bundled"
+      - option "Derived Group Summaries Bundled"
+      - option "Derived Type Profiles Bundled"
+      - option "Evidence Metadata Bundled"
+      - option "Exact Source Local Coordinate Rows Bundled"
+      - option "Metadata Audited"
+      - option "Metadata Audited Not Admitted"
+      - option "Observed Cell Nucleus Component Limited"
+      - option "One Exact 2d Slice Admitted"
+      - option "Ready For Metadata Audit"
+      - option "Source Local Fly Comparison Centerline And Nucleus Point Only"
+      - option "Supplementary Source Local Standardized Morphology Only"
+      - option "Vocabulary Only"
+    - status: 31 of 31 canonical sources match · filtered absence is not biological absence
+    - paragraph: Use Up / Down, Home / End to move between sources; Enter selects the focused source.
+    - listbox "Canonical research sources":
+      - option "Allen cord 3.0 · Reference Atlas Allen mouse spinal cord 20 um atlas, BrainGlobe release 3.0 adult · whole spinal cord reference space Bundled Local · 1 record set":
+        - generic: Allen cord 3.0 · Reference Atlas
+        - strong: Allen mouse spinal cord 20 um atlas, BrainGlobe release 3.0
+        - emphasis: adult · whole spinal cord reference space
+        - generic: Bundled Local · 1 record set
+      - option "NeuroMorpho 8.6.124 · Repository Release NeuroMorpho.Org release 8.6.124 mouse spinal-interneuron morphology source package adult · young · young adult · spinal cord; source-local subregions retained per record Bundled Local · 7 record sets":
+        - generic: NeuroMorpho 8.6.124 · Repository Release
+        - strong: NeuroMorpho.Org release 8.6.124 mouse spinal-interneuron morphology source package
+        - emphasis: adult · young · young adult · spinal cord; source-local subregions retained per record
+        - generic: Bundled Local · 7 record sets
+      - option "SpinalJ example · Dataset SpinalJ processed example data, Mendeley Data version 1 adult · source-specific spinal section series Metadata Audited Not Admitted · 1 record set":
+        - generic: SpinalJ example · Dataset
+        - strong: SpinalJ processed example data, Mendeley Data version 1
+        - emphasis: adult · source-specific spinal section series
+        - generic: Metadata Audited Not Admitted · 1 record set
+      - option "Cano-Gomez 2026 · Multimodal Resource Cano-Gomez et al. mouse spinal-cord spatial and multiomic resource P56 · mouse spinal cord; cervical, thoracic, lumbar and sacral source metadata Confirmed Only Source Local Profiles Admitted · 3 record sets" [selected]:
+        - generic: Cano-Gomez 2026 · Multimodal Resource
+        - strong: Cano-Gomez et al. mouse spinal-cord spatial and multiomic resource
+        - emphasis: P56 · mouse spinal cord; cervical, thoracic, lumbar and sacral source metadata
+        - generic: Confirmed Only Source Local Profiles Admitted · 3 record sets
+      - option "Russ 2021 · Taxonomy Study Russ et al. harmonized mouse spinal-cord cell-type atlas postnatal harmonized transcriptomic reference · adult · spinal cord; dorsal-to-ventral population context Derived Factual Metadata Bundled · 1 record set":
+        - generic: Russ 2021 · Taxonomy Study
+        - strong: Russ et al. harmonized mouse spinal-cord cell-type atlas
+        - emphasis: postnatal harmonized transcriptomic reference · adult · spinal cord; dorsal-to-ventral population context
+        - generic: Derived Factual Metadata Bundled · 1 record set
+      - option "STARmap PLUS 2023 · Multimodal Resource STARmap PLUS adult mouse CNS atlas, lumbar spinal-cord slice adult · one coronal lumbar spinal-cord slice among 20 CNS slices Ready For Metadata Audit · 1 record set":
+        - generic: STARmap PLUS 2023 · Multimodal Resource
+        - strong: STARmap PLUS adult mouse CNS atlas, lumbar spinal-cord slice
+        - emphasis: adult · one coronal lumbar spinal-cord slice among 20 CNS slices
+        - generic: Ready For Metadata Audit · 1 record set
+      - option "Tabulae Paralytica 2024 · Multimodal Resource Tabulae Paralytica spinal-cord injury atlas adult injury models with age as an explicit source condition · mid-thoracic spinal cord Metadata Audited · 1 record set":
+        - generic: Tabulae Paralytica 2024 · Multimodal Resource
+        - strong: Tabulae Paralytica spinal-cord injury atlas
+        - emphasis: adult injury models with age as an explicit source condition · mid-thoracic spinal cord
+        - generic: Metadata Audited · 1 record set
+      - option "Häring 2018 · Taxonomy Study Häring et al. dorsal-horn neuronal taxonomy postnatal P17-P28 · dorsal horn · cervical spinal cord Derived Factual Metadata Bundled · 1 record set":
+        - generic: Häring 2018 · Taxonomy Study
+        - strong: Häring et al. dorsal-horn neuronal taxonomy
+        - emphasis: postnatal P17-P28 · dorsal horn · cervical spinal cord
+        - generic: Derived Factual Metadata Bundled · 1 record set
+      - option "Sathyamurthy 2018 · Taxonomy Study Sathyamurthy et al. adult lumbar spinal-neuron nuclear taxonomy adult · lumbar spinal cord Derived Factual Metadata Bundled · 1 record set":
+        - generic: Sathyamurthy 2018 · Taxonomy Study
+        - strong: Sathyamurthy et al. adult lumbar spinal-neuron nuclear taxonomy
+        - emphasis: adult · lumbar spinal cord
+        - generic: Derived Factual Metadata Bundled · 1 record set
+      - option "Hayashi 2018 · Taxonomy Study Hayashi et al. neonatal V2a transcriptomic clusters P0 neonatal · cervical and lumbar spinal cord Derived Factual Metadata Bundled · 1 record set":
+        - generic: Hayashi 2018 · Taxonomy Study
+        - strong: Hayashi et al. neonatal V2a transcriptomic clusters
+        - emphasis: P0 neonatal · cervical and lumbar spinal cord
+        - generic: Derived Factual Metadata Bundled · 1 record set
+      - 'option "Alkaslasi 2021 · Taxonomy Study Alkaslasi et al. adult cholinergic spinal-neuron taxonomy 8 weeks old · cervical, thoracic, and lumbar/sacral collection regions; deposited annotation value `Lumbar` Derived Factual Metadata Bundled · 1 record set"':
+        - generic: Alkaslasi 2021 · Taxonomy Study
+        - strong: Alkaslasi et al. adult cholinergic spinal-neuron taxonomy
+        - emphasis: "8 weeks old · cervical, thoracic, and lumbar/sacral collection regions; deposited annotation value `Lumbar`"
+        - generic: Derived Factual Metadata Bundled · 1 record set
+      - option "Delile 2019 · Taxonomy Study Delile et al. developing mouse spinal-cord transcriptomic atlas E9.5-E13.5 · cervical and thoracic developing neural tube Derived Factual Metadata Bundled · 2 record sets":
+        - generic: Delile 2019 · Taxonomy Study
+        - strong: Delile et al. developing mouse spinal-cord transcriptomic atlas
+        - emphasis: E9.5-E13.5 · cervical and thoracic developing neural tube
+        - generic: Derived Factual Metadata Bundled · 2 record sets
+      - option "Matson 2022 · Sci Study Matson et al. neuronal SCI time course 12-30 weeks · L2-S1 lumbar spinal cord distal to T9 injury Derived Factual Metadata Bundled · 1 record set":
+        - generic: Matson 2022 · Sci Study
+        - strong: Matson et al. neuronal SCI time course
+        - emphasis: 12-30 weeks · L2-S1 lumbar spinal cord distal to T9 injury
+        - generic: Derived Factual Metadata Bundled · 1 record set
+      - option "Courtine 2008 · Sci Study Courtine et al. propriospinal relay study adult · thoracic staggered hemisection relay context Evidence Metadata Bundled · 1 record set":
+        - generic: Courtine 2008 · Sci Study
+        - strong: Courtine et al. propriospinal relay study
+        - emphasis: adult · thoracic staggered hemisection relay context
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "Bui 2016 · Sci Study Bui et al. dI3 locomotor recovery study adult · lumbar sensorimotor circuits below lower-thoracic transection Evidence Metadata Bundled · 1 record set":
+        - generic: Bui 2016 · Sci Study
+        - strong: Bui et al. dI3 locomotor recovery study
+        - emphasis: adult · lumbar sensorimotor circuits below lower-thoracic transection
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "Chen 2018 · Sci Study Chen et al. KCC2 manipulation study adult · thoracic relay and complete-transection controls Evidence Metadata Bundled · 1 record set":
+        - generic: Chen 2018 · Sci Study
+        - strong: Chen et al. KCC2 manipulation study
+        - emphasis: adult · thoracic relay and complete-transection controls
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "Bertels 2022 · Sci Study Bertels et al. age-dependent inhibitory-switch study neonatal · adult · thoracic complete-transection context Evidence Metadata Bundled · 1 record set":
+        - generic: Bertels 2022 · Sci Study
+        - strong: Bertels et al. age-dependent inhibitory-switch study
+        - emphasis: neonatal · adult · thoracic complete-transection context
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "Kathe 2022 · Sci Study Kathe et al. SC Vsx2-Hoxa10 recovery-circuit study adult · adult · lumbar recovery circuits below SCI · heterogeneous chronic SCI Evidence Metadata Bundled · 1 record set":
+        - generic: Kathe 2022 · Sci Study
+        - strong: Kathe et al. SC Vsx2-Hoxa10 recovery-circuit study
+        - emphasis: adult · adult · lumbar recovery circuits below SCI · heterogeneous chronic SCI
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "Lin 2019 · Sci Study Lin et al. V3 spasm-network study adult · sacral S2 network Evidence Metadata Bundled · 1 record set":
+        - generic: Lin 2019 · Sci Study
+        - strong: Lin et al. V3 spasm-network study
+        - emphasis: adult · sacral S2 network
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "Jensen 2024 · Sci Study Jensen et al. cervical V2a respiratory-circuit study adult · C2-C5 cervical circuit Evidence Metadata Bundled · 1 record set":
+        - generic: Jensen 2024 · Sci Study
+        - strong: Jensen et al. cervical V2a respiratory-circuit study
+        - emphasis: adult · C2-C5 cervical circuit
+        - generic: Evidence Metadata Bundled · 1 record set
+      - option "MICrONS Phase 1 · Cross Region Reference MICrONS Phase 1 layer 2/3 release v185.4 P36 male · visual cortex layer 2/3 Observed Cell Nucleus Component Limited · 1 record set":
+        - generic: MICrONS Phase 1 · Cross Region Reference
+        - strong: MICrONS Phase 1 layer 2/3 release v185.4
+        - emphasis: P36 male · visual cortex layer 2/3
+        - generic: Observed Cell Nucleus Component Limited · 1 record set
+      - option "Super-CLEM GlyR · Synapse Dataset Super-CLEM GlyR mouse spinal dorsal-horn synapse dataset v1 The current exact-slice contract does not retain an exact source age; only a source-bounded postnatal context is stated elsewhere. · spinal cord dorsal horn; source label Dorsal 2 One Exact 2d Slice Admitted · 1 record set":
+        - generic: Super-CLEM GlyR · Synapse Dataset
+        - strong: Super-CLEM GlyR mouse spinal dorsal-horn synapse dataset v1
+        - emphasis: The current exact-slice contract does not retain an exact source age; only a source-bounded postnatal context is stated elsewhere. · spinal cord dorsal horn; source label Dorsal 2
+        - generic: One Exact 2d Slice Admitted · 1 record set
+      - option "OpenOrganelle hippocampus · Cross Region Reference OpenOrganelle jrc_mus-hippocampus-1 P7 · hippocampus Vocabulary Only · 1 record set":
+        - generic: OpenOrganelle hippocampus · Cross Region Reference
+        - strong: OpenOrganelle jrc_mus-hippocampus-1
+        - emphasis: P7 · hippocampus
+        - generic: Vocabulary Only · 1 record set
+      - option "Ronzano 2022 positions · Dataset Ronzano et al. lumbar premotor interneuron coordinate source data early postnatal; P1-P2 injection with analysis 8-9 days later · lumbar spinal cord segments L1-L6; LG segment files begin at L2 Exact Source Local Coordinate Rows Bundled · 1 record set":
+        - generic: Ronzano 2022 positions · Dataset
+        - strong: Ronzano et al. lumbar premotor interneuron coordinate source data
+        - emphasis: early postnatal; P1-P2 injection with analysis 8-9 days later · lumbar spinal cord segments L1-L6; LG segment files begin at L2
+        - generic: Exact Source Local Coordinate Rows Bundled · 1 record set
+      - option "Dmrt3/dI6 2021 · Taxonomy Study Iglesias González et al. embryonic Dmrt3/dI6 M1–M6 transcriptomic groups embryonic day 14.5 · spinal cord; no per-cell rostrocaudal coordinate retained Derived Group Summaries Bundled · 1 record set":
+        - generic: Dmrt3/dI6 2021 · Taxonomy Study
+        - strong: Iglesias González et al. embryonic Dmrt3/dI6 M1–M6 transcriptomic groups
+        - emphasis: embryonic day 14.5 · spinal cord; no per-cell rostrocaudal coordinate retained
+        - generic: Derived Group Summaries Bundled · 1 record set
+      - option "Roome dIL 2026 · Taxonomy Study Roome et al. embryonic mouse dorsal-horn dIL refined-type taxonomy embryonic day 14.5 and embryonic day 16.5 · cervical, thoracic and lumbosacral spinal cord Derived Type Profiles Bundled · 1 record set":
+        - generic: Roome dIL 2026 · Taxonomy Study
+        - strong: Roome et al. embryonic mouse dorsal-horn dIL refined-type taxonomy
+        - emphasis: embryonic day 14.5 and embryonic day 16.5 · cervical, thoracic and lumbosacral spinal cord
+        - generic: Derived Type Profiles Bundled · 1 record set
+      - option "Crozat PKD2L1 2025 · Dataset Crozat et al. PKD2L1 CSF-contacting-neuron anatomy and electrophysiology source data 3-6 weeks · cervical, thoracic and lumbar spinal cord; central-canal-contacting population Derived Functional Profile Bundled · 1 record set":
+        - generic: Crozat PKD2L1 2025 · Dataset
+        - strong: Crozat et al. PKD2L1 CSF-contacting-neuron anatomy and electrophysiology source data
+        - emphasis: 3-6 weeks · cervical, thoracic and lumbar spinal cord; central-canal-contacting population
+        - generic: Derived Functional Profile Bundled · 1 record set
+      - option "Kelly zebrafish 2023 · Taxonomy Study Kelly et al. larval-zebrafish spinal-circuit scRNA-seq taxonomy 4 dpf larva · spinal cord Article Reported Labels Only · 1 record set":
+        - generic: Kelly zebrafish 2023 · Taxonomy Study
+        - strong: Kelly et al. larval-zebrafish spinal-circuit scRNA-seq taxonomy
+        - emphasis: 4 dpf larva · spinal cord
+        - generic: Article Reported Labels Only · 1 record set
+      - option "NeuroMorpho 8.6.126 Todd NTS · Repository Release NeuroMorpho.Org release 8.6.126 Todd neurotensin-labelled morphology additions adult · spinal cord; L2/L3 and dorsal-horn labels retained with source asterisks Supplementary Source Local Standardized Morphology Only · 1 record set":
+        - generic: NeuroMorpho 8.6.126 Todd NTS · Repository Release
+        - strong: NeuroMorpho.Org release 8.6.126 Todd neurotensin-labelled morphology additions
+        - emphasis: adult · spinal cord; L2/L3 and dorsal-horn labels retained with source asterisks
+        - generic: Supplementary Source Local Standardized Morphology Only · 1 record set
+      - option "Svara 2018 spinal SBEM · Dataset Svara et al. 2018 larval zebrafish spinal SBEM and selected interneuron reconstructions 6 dpf larva · larval spinal cord Article Metadata And Official Links Only · 2 record sets":
+        - generic: Svara 2018 spinal SBEM · Dataset
+        - strong: Svara et al. 2018 larval zebrafish spinal SBEM and selected interneuron reconstructions
+        - emphasis: 6 dpf larva · larval spinal cord
+        - generic: Article Metadata And Official Links Only · 2 record sets
+      - option "BANC v888 IN14A018 · Cross Region Reference BANC v888 adult-female Drosophila VNC interneuron IN14A018 source morphology adult · ventral nerve cord Source Local Fly Comparison Centerline And Nucleus Point Only · 1 record set":
+        - generic: BANC v888 IN14A018 · Cross Region Reference
+        - strong: BANC v888 adult-female Drosophila VNC interneuron IN14A018 source morphology
+        - emphasis: adult · ventral nerve cord
+        - generic: Source Local Fly Comparison Centerline And Nucleus Point Only · 1 record set
+    - article "Cano-Gomez et al. mouse spinal-cord spatial and multiomic resource":
+      - text: SRC-CANOGOMEZ-2026
+      - heading "Cano-Gomez et al. mouse spinal-cord spatial and multiomic resource" [level=4]
+      - paragraph: Cano-Gomez et al. 2026 preprint
+      - button "Export source dossier"
+      - term: Species
+      - definition: Mus musculus
+      - term: Life stage
+      - definition: P56
+      - term: Region
+      - definition: mouse spinal cord; cervical, thoracic, lumbar and sacral source metadata
+      - term: Conditions
+      - definition: source-local multimodal reference
+      - term: Modalities
+      - definition: snMultiome · Xenium spatial transcriptomics · projection-class annotations
+      - term: Admission
+      - definition: Confirmed Only Source Local Profiles Admitted
+      - term: Rights
+      - definition: Article CC-BY-NC-4.0 GEO RDS NOASSERTION
+      - term: Research lanes
+      - definition: Types · Coverage · Sources
+      - region "Source citation and identifiers":
+        - strong: Canonical and legacy identity
+        - paragraph: PDS-CANOGOMEZ-2026
+        - strong: Accessions
+        - paragraph: GSE318731 · BIL:10.35077/g.1196
+        - link "Primary source ↗":
+          - /url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13308138/
+        - link "DOI 10.64898/2026.06.11.731752 ↗":
+          - /url: https://doi.org/10.64898/2026.06.11.731752
+      - region "Experimental units · no denominator pooling":
+        - heading "Experimental units · no denominator pooling" [level=5]
+        - article:
+          - text: P56 Multiome Nucleus
+          - strong: 169,345
+          - paragraph: exact three-object source row denominator · Checksum Pinned Source Metadata
+        - article:
+          - text: Source Scoped Group
+          - strong: "57"
+          - paragraph: groups counted within each source object · Checksum Pinned Source Metadata
+        - article:
+          - text: Confirmed CHOL IN Nucleus
+          - strong: "923"
+          - paragraph: exact groups equals CHOL_IN only · Checksum Pinned Source Metadata
+      - region "Source → record set → exact child gate":
+        - heading "Source → record set → exact child gate" [level=5]
+        - article:
+          - generic: RS-CANOGOMEZ-METADATA
+          - strong: 1 Metadata Records
+          - term: Record kind
+          - definition: Source Metadata Record
+          - term: Observation unit
+          - definition: Dataset Record
+          - term: Assignment authority
+          - definition: Public Metadata Audit
+          - term: Cell/profile roster
+          - definition: Not Ingested
+          - term: Canonical identity
+          - definition: Source Local Not Cross Source Canonical
+          - term: Child-roster drill-down
+          - definition: Not Ingested
+          - paragraph: This catalog metadata record is not a nucleus roster; admitted P56 CHOL_IN profiles are exposed through the separate confirmed-profile record set.
+          - paragraph: This catalog metadata record is not a nucleus roster; admitted P56 CHOL_IN profiles are exposed through the separate confirmed-profile record set.
+        - article:
+          - generic: RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+          - strong: 11 Source Local CHOL IN Profiles
+          - term: Record kind
+          - definition: Source Explicit Confirmed Interneuron Profile
+          - term: Observation unit
+          - definition: Source Local Neuron Type Assignment
+          - term: Assignment authority
+          - definition: Checksum Pinned GSE318731 Groups Equals CHOL IN
+          - term: Cell/profile roster
+          - definition: Bundled Exact
+          - term: Canonical identity
+          - definition: Source Local Not Cross Source Canonical
+          - term: Child-roster drill-down
+          - definition: Bundled Exact
+          - paragraph: Exact bundled roster is available for constrained drill-down.
+          - generic "Open this exact record set · 11 navigation entries"
+          - paragraph: Navigation uses declared source metadata only. The destination verifies its own source files and rendering permissions. No new profile, physical-cell identity, geometry, internal object or registration is admitted.
+          - paragraph:
+            - strong: "Declared observation unit:"
+            - text: source local neuron type assignment ·
+            - strong: "Roster locator:"
+            - code: public/data/cano_gomez_p56_multiome_interneuron_v1/cano-gomez-p56-multiome-interneuron-registry-0.1.json
+            - text: ·
+            - code: profiles[].profileId
+          - text: Find a native ID or source label
+          - searchbox "Find a native ID or source label"
+          - status: 11 of 11 navigation entries match. Entry count does not replace the source record-set denominator.
+          - paragraph: Use Up / Down, Home / End to move between source entries; Enter opens the focused destination.
+          - list "Navigation entries for RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES":
+            - link "CHOL_IN_Best3_Htr1b · 146 source-assigned nuclei cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c&type=cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Best3_Htr1b · 146 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c
+            - link "CHOL_IN_Best3_Slc9a3 · 119 source-assigned nuclei cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37&type=cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Best3_Slc9a3 · 119 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37
+            - link "CHOL_IN_Galr1_Ccdc3 · 150 source-assigned nuclei cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29&type=cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Galr1_Ccdc3 · 150 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29
+            - link "CHOL_IN_Galr1_P2rx5 · 66 source-assigned nuclei cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596&type=cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Galr1_P2rx5 · 66 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596
+            - link "CHOL_IN_Galr1_Rasgrp1 · 20 source-assigned nuclei cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068&type=cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Galr1_Rasgrp1 · 20 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068
+            - link "CHOL_IN_Nr5a2_Cdh23 · 78 source-assigned nuclei cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721&type=cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Nr5a2_Cdh23 · 78 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721
+            - link "CHOL_IN_Nr5a2_Rxfp2 · 82 source-assigned nuclei cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30&type=cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Nr5a2_Rxfp2 · 82 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30
+            - link "CHOL_IN_Pde5a_Piezo2 · 100 source-assigned nuclei cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e&type=cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Pde5a_Piezo2 · 100 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e
+            - link "CHOL_IN_Pitx2_ Srpx2 · 74 source-assigned nuclei cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239&type=cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Pitx2_ Srpx2 · 74 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239
+            - link "CHOL_IN_Pitx2_Eya1 · 35 source-assigned nuclei cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516&type=cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Pitx2_Eya1 · 35 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516
+            - link "CHOL_IN_Pitx2_Skor2 · 53 source-assigned nuclei cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617":
+              - /url: /explore/cell-types?focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617&type=cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617&fromSource=SRC-CANOGOMEZ-2026&fromRecordSet=RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES
+              - strong: CHOL_IN_Pitx2_Skor2 · 53 source-assigned nuclei
+              - code: cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617
+          - navigation "Record-set navigation pages":
+            - button "Previous" [disabled]
+            - generic: Page 1 of 1
+            - button "Next" [disabled]
+            - button "Export navigation receipt"
+        - article:
+          - generic: RS-CANOGOMEZ-GLUT-ACTIVE-IDENT-LABELS
+          - strong: 277 Raw Active Ident Labels
+          - term: Record kind
+          - definition: Source Slot Assignment Label Unresolved Neuron Class
+          - term: Observation unit
+          - definition: Source Active Ident Label
+          - term: Assignment authority
+          - definition: Checksum Pinned Active Ident Names Exact Metadata Row Order
+          - term: Cell/profile roster
+          - definition: Bundled Exact
+          - term: Canonical identity
+          - definition: Source Local Not Cross Source Canonical
+          - term: Child-roster drill-down
+          - definition: Bundled Exact
+          - paragraph: Exact bundled roster is available for constrained drill-down.
+          - generic "Open this exact record set · 2 navigation entries"
+      - region "Assets and integrity":
+        - heading "Assets and integrity" [level=5]
+        - article:
+          - generic: ASSET-CANOGOMEZ-BIL
+          - strong: Remote Dataset
+          - paragraph: 10.35077/g.1196 · not bundled
+          - text: Not Inventoried · BIL spatial/image objects remain link-only and unbundled; the GEO metadata derivatives are inventoried separately.
+          - link "Source object ↗":
+            - /url: https://doi.brainimagelibrary.org/doi/10.35077/g.1196
+        - article:
+          - generic: ASSET-CANOGOMEZ-CHOLINERGIC-RDS
+          - strong: Remote Geo Rds Source Object
+          - paragraph: GSE318731_P56_cholinergic_multiome.rds · not bundled
+          - text: Remote Checksum Verified · SHA-256 d4ad07a1e434…d674aed2
+          - link "Source object ↗":
+            - /url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_cholinergic_multiome.rds
+        - article:
+          - generic: ASSET-CANOGOMEZ-GABAERGIC-RDS
+          - strong: Remote Geo Rds Source Object
+          - paragraph: GSE318731_P56_gabaergic_multiome.rds · not bundled
+          - text: Remote Checksum Verified · SHA-256 700361c80480…9a4f5f31
+          - link "Source object ↗":
+            - /url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_gabaergic_multiome.rds
+        - article:
+          - generic: ASSET-CANOGOMEZ-GLUTAMATERGIC-RDS
+          - strong: Remote Geo Rds Source Object
+          - paragraph: GSE318731_P56_glutamatergic_multiome_UPDATE.rds · not bundled
+          - text: Remote Checksum Verified · SHA-256 ff3784791ccb…cef29c92
+          - link "Source object ↗":
+            - /url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_glutamatergic_multiome_UPDATE.rds
+        - article:
+          - generic: ASSET-CANOGOMEZ-REGISTRY
+          - strong: Checksum Pinned Project Derivative
+          - paragraph: ohri-cano-gomez-p56-multiome-interneuron-registry-0.1.0 · bundled
+          - text: Verified · SHA-256 533d3baa573a…53db60ac
+        - article:
+          - generic: ASSET-CANOGOMEZ-all_nucleus_assignment_audit
+          - strong: Checksum Pinned Project Derivative
+          - paragraph: GSE318731_all_nucleus_assignment_audit.csv.gz · bundled
+          - text: Verified · SHA-256 f2d28d26820f…c747820b
+        - article:
+          - generic: ASSET-CANOGOMEZ-confirmed_interneuron_nucleus_roster
+          - strong: Checksum Pinned Project Derivative
+          - paragraph: GSE318731_confirmed_interneuron_nucleus_roster.csv.gz · bundled
+          - text: Verified · SHA-256 1db93e5f6e52…1323db9a
+        - article:
+          - generic: ASSET-CANOGOMEZ-GLUT-ACTIVE-IDENT-SUMMARY
+          - strong: Checksum Pinned Project Derivative
+          - paragraph: cano-gomez-p56-glut-active-ident-0.1.0 · bundled
+          - text: Verified · SHA-256 c1b5c2c672c2…540aab65
+        - article:
+          - generic: ASSET-CANOGOMEZ-GLUT-ACTIVE-IDENT-ROWS
+          - strong: Checksum Pinned Project Derivative
+          - paragraph: cano-gomez-p56-glut-active-ident-0.1.0-rows · bundled
+          - text: Verified · SHA-256 0b6807921d2a…6be8681f
+      - region "Explicit missingness and acceptance boundary":
+        - heading "Explicit missingness and acceptance boundary" [level=5]
+        - paragraph:
+          - strong: "Rights:"
+          - text: Article CC-BY-NC-4.0 is separate from GEO RDS reuse, which remains NOASSERTION; source RDS files are exact link-only and not bundled. All five project-derived artifacts are bundled only in the private research repository pending separate public-release review.
+        - paragraph:
+          - strong: "Admission:"
+          - text: Exactly 11 source-explicit CHOL_IN profiles and 923 exact source-local nuclei are admitted; motor, sensory-scope, glutamatergic projection/local-unresolved and remaining GABA ambiguous/projection-exception assignments stay excluded. The 92,782 GLUT rows lack meta.data neuron_types and preserve source NA; separate active.ident labels are not substituted. Separate active.ident source-label detail preserves 277 raw labels / 92782 exact assignment rows as unresolved neuron-class context, outside the confirmed-interneuron profile denominator. The absent metadata column remains absent.
+        - list:
+          - strong: "Cell Geometry And Internal Structure · UNAVAILABLE:"
+          - text: All geometry and internal-structure counts remain zero.
+          - strong: "Atlas Registration · NOT ESTABLISHED:"
+          - text: Atlas registration count remains zero.
+          - strong: "Cross Source Identity · NOT ESTABLISHED:"
+          - text: No cross-source identity is asserted.
+          - strong: "Cross Assay Identity · NOT ESTABLISHED:"
+          - text: The metadata-row-only route creates no cross-assay claim.
+          - strong: "Glutamatergic Metadata Neuron Types · SOURCE COLUMN ABSENT:"
+          - text: The exact SHA-256-pinned GLUT UPDATE object lacks meta.data neuron_types for all 92,782 nuclei; the separate active.ident slot is outside this metadata-only contract.
+        - strong: Linked research milestones · machine-resolved
+        - article:
+          - generic: UPG-100 · P0 · Spatial Context
+          - emphasis: Partially Completed — Source Metadata And One-Run Schema Audit; Viewer Identity/Rights Gated
+          - paragraph: "Add BIL 10.35077/g.1196 as link/metadata first, then selectively stream `cells.parquet`, cell/nucleus boundaries and the 480-gene panel only after dataset-level reuse terms are explicit. UI must call `morphology.ome.tif` a tissue morphology image, never a traced-neuron morphology. Cell outlines, transcript counts and section coordinates cannot be joined to a NeuroMorpho cell without a same-object key. I04 inspects only BIL:ace-pie-cot three original Parquet tables (37,282,469 B), preserves the current dataset/site rights distinction, and adds exact source-row/NaN/identity receipts; no public polygon asset or viewer geometry is admitted."
+          - term: Current blocker
+          - definition: "Rights Or Permission · Add BIL 10.35077/g.1196 as link/metadata first, then selectively stream `cells.parquet`, cell/nucleus boundaries and the 480-gene panel only after dataset-level reuse terms are explicit."
+          - term: Evidence basis
+          - definition: BIL 10.35077/g.1196; current collection inventory
+          - term: Last verification
+          - definition: 2026-09-24 · Queue Row And Registry Derivation
+          - term: Acceptance boundary
+          - definition: "Add BIL 10.35077/g.1196 as link/metadata first, then selectively stream `cells.parquet`, cell/nucleus boundaries and the 480-gene panel only after dataset-level reuse terms are explicit.; UI must call `morphology.ome.tif` a tissue morphology image, never a traced-neuron morphology.; Cell outlines, transcript counts and section coordinates cannot be joined to a NeuroMorpho cell without a same-object key.; I04 inspects only BIL:ace-pie-cot three original Parquet tables (37,282,469 B), preserves the current dataset/site rights distinction, and adds exact source-row/NaN/identity receipts; no public polygon asset or viewer geometry is admitted."
+          - navigation "UPG-100 evidence links":
+            - link "BIL 10.35077/g.1196 ↗":
+              - /url: https://doi.brainimagelibrary.org/doi/10.35077/g.1196
+        - article:
+          - generic: UPG-108 · P0 · Provenance And Identity
+          - emphasis: Completed
+          - paragraph: A validated canonical registry now reconciles 24 source packages and 24 record sets across anatomy, molecular types, morphology, SCI evidence, coverage, exact positions and internal references. The first-class Sources surface exposes citation, aliases, species, exact/source-declared life stage, region, experimental unit, modality, denominators, assets, rights/admission state, missingness and linked upgrades without merging biological records
+          - term: Current blocker
+          - definition: None For Declared Increment · No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies.
+          - term: Evidence basis
+          - definition: "`research-source-registry-0.1`; Russ, Sathyamurthy, Hayashi, Häring, Alkaslasi, Matson, NeuroMorpho, Allen/BrainGlobe, Ronzano, Super-CLEM and other admitted public-source contracts"
+          - term: Last verification
+          - definition: 2026-09-24 · Queue Row And Registry Derivation
+          - term: Acceptance boundary
+          - definition: The first-class Sources surface exposes citation, aliases, species, exact/source-declared life stage, region, experimental unit, modality, denominators, assets, rights/admission state, missingness and linked upgrades without merging biological records
+        - article:
+          - generic: UPG-190 · P0 · Molecular Taxonomy
+          - emphasis: Planned — Exact Cano Source-Object And Table-Reconciliation Preflight
+          - paragraph: "Resolve the source-object prerequisites for UPG-187 without yet admitting a type. Pin the four GSE318731 supplementary objects by exact filename, bytes, retrieval date and locally computed SHA-256: the 127,862,795-byte cholinergic, 1,646,402,816-byte GABAergic and 1,832,005,077-byte updated glutamatergic RDS files plus the 970-byte 72-sample NHASH map. Inspect each Seurat object's class, assays, metadata, identities and stable cell keys before defining an adapter. Separately preserve PMC Table S1 `media-1.csv` at 47,238 bytes, publisher MD5 `0b1974c2787b29b28ce55828517f2f11` and SHA-256 `c705a06a8c196b947f098595ef7a7822cb64c6561cc22373b8f73314b21f0157`; quarantine its 531 type-like rows, 518 exact unique strings, 13 duplicate extras, two malformed `GLUT-_Abcc9_*` labels and other section/prefix conflicts rather than forcing them to the paper's reported 516 types. The preflight must record the article's CC BY-NC 4.0 terms separately from the GEO molecular-data reuse disclaimer and an object-level redistribution decision. It creates zero admitted type records, interneuron classifications, coordinates, morphology, same-cell joins or registrations"
+          - term: Current blocker
+          - definition: Source Object · The preflight must record the article's CC BY-NC 4.0 terms separately from the GEO molecular-data reuse disclaimer and an object-level redistribution decision.
+          - term: Evidence basis
+          - definition: GEO GSE318731; PMC Table S1; primary preprint; NCBI data-use policy
+          - term: Last verification
+          - definition: 2026-09-24 · Queue Row And Registry Derivation
+          - term: Acceptance boundary
+          - definition: Resolve the source-object prerequisites for UPG-187 without yet admitting a type.
+          - navigation "UPG-190 evidence links":
+            - link "GEO GSE318731 ↗":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731
+            - link "PMC Table S1 ↗":
+              - /url: https://pmc.ncbi.nlm.nih.gov/articles/instance/13308138/bin/media-1.csv
+            - link "primary preprint ↗":
+              - /url: https://doi.org/10.64898/2026.06.11.731752
+            - link "NCBI data-use policy ↗":
+              - /url: https://www.ncbi.nlm.nih.gov/home/about/policies/
+        - article:
+          - generic: UPG-191 · P0 · Provenance And Identity
+          - emphasis: Planned — Exact BIL Cell-Identity Bridge Gated
+          - paragraph: "Add a Cano-Gomez source-local Xenium lane only after an author-released, checksum-pinned bridge maps each admitted BIL raw `cell_id` to the final curated `groups_manual` and `neuron_types` fields while retaining run, slide, animal, sex, spinal level, section and source-file keys. Preserve BIL `x_centroid` and `y_centroid` as source-local two-dimensional micrometre coordinates and keep the reported 339 glutamatergic, 196 GABAergic and 56 cholinergic spatial types distinct from the 516 snMultiome taxonomy. Standard Xenium outputs and the authors' scripts do not themselves supply the missing final cell-to-label object, and marker similarity or CCA transfer cannot manufacture its keys. BIL data remain CC BY-SA 4.0; ten-micrometre sections, segmentation boundaries and morphology images cannot become a serial 3D cell, whole-neuron morphology, membrane, same-cell RDS join or project registration. Missing identity or specimen keys must yield zero type-specific spatial primitives"
+          - term: Current blocker
+          - definition: "Implementation · Add a Cano-Gomez source-local Xenium lane only after an author-released, checksum-pinned bridge maps each admitted BIL raw `cell_id` to the final curated `groups_manual` and `neuron_types` fields while retaining run, slide, animal, sex, spinal level, section and source-file keys."
+          - term: Evidence basis
+          - definition: BIL dataset 10.35077/g.1196; BIL download and licence; authors' analysis repository; primary preprint
+          - term: Last verification
+          - definition: 2026-09-24 · Queue Row And Registry Derivation
+          - term: Acceptance boundary
+          - definition: "Add a Cano-Gomez source-local Xenium lane only after an author-released, checksum-pinned bridge maps each admitted BIL raw `cell_id` to the final curated `groups_manual` and `neuron_types` fields while retaining run, slide, animal, sex, spinal level, section and source-file keys.; Preserve BIL `x_centroid` and `y_centroid` as source-local two-dimensional micrometre coordinates and keep the reported 339 glutamatergic, 196 GABAergic and 56 cholinergic spatial types distinct from the 516 snMultiome taxonomy.; Standard Xenium outputs and the authors' scripts do not themselves supply the missing final cell-to-label object, and marker similarity or CCA transfer cannot manufacture its keys.; BIL data remain CC BY-SA 4.0; ten-micrometre sections, segmentation boundaries and morphology images cannot become a serial 3D cell, whole-neuron morphology, membrane, same-cell RDS join or project registration."
+          - navigation "UPG-191 evidence links":
+            - link "BIL dataset 10.35077/g.1196 ↗":
+              - /url: https://doi.brainimagelibrary.org/doi/10.35077/g.1196
+            - link "BIL download and licence ↗":
+              - /url: https://www.brainimagelibrary.org/download.html
+            - link "authors' analysis repository ↗":
+              - /url: https://github.com/PoolLab/cano-gomez_et_al_2026
+            - link "primary preprint ↗":
+              - /url: https://doi.org/10.64898/2026.06.11.731752
+        - article:
+          - generic: UPG-204 · P0 · Molecular Taxonomy
+          - emphasis: Completed
+          - paragraph: "Build a checksum-pinned, source-local P56 assignment registry from all three transmitter-stratified GSE318731 RDS objects using the exact source filename plus unmodified `meta.data` row name as the stable nucleus key. The full audit reconciles exactly 169,345 source-scoped neuronal nuclei and 57 source-scoped groups while admitting only the 11 exact `CHOL_IN` profiles and their 923 confirmed `CHOL_IN` nuclei. The inclusion rule is the exact raw `groups == CHOL_IN` assignment; the explicit exclusion boundary retains cholinergic motor rows, `GABA_CSF-cN_Pkd2l1` sensory scope, all glutamatergic projection/local-unresolved rows, remaining GABA ambiguous/projection-exception rows and non-neuronal context that is available only as a source-level preprocessing statement. The `groups` column remains required. `neuron_types` remains required except in the exact SHA-pinned GLUT UPDATE object verified on 2026-09-22, whose absent metadata column is retained explicitly as source missingness; its separate `active.ident` labels are not substituted. Missing optional context columns likewise retain field-availability receipts. The paper-reported 516 neuronal types and the quarantined Table S1 inventory remain reconciliation evidence and are not an interneuron denominator. This creates zero geometry, zero internal objects, zero cross-source or same-cell joins and zero registrations"
+          - term: Current blocker
+          - definition: None For Declared Increment · No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies.
+          - term: Evidence basis
+          - definition: "GEO GSE318731; PMC Table S1; authors' analysis repository; primary preprint; `tools/extract_cano_gomez_rds_metadata_stream.py`; `tools/extract_cano_gomez_rds_metadata_stream.R`; `tools/build_cano_gomez_p56_multiome_interneuron_registry.mjs`; `scripts/validate-cano-gomez-p56-multiome-interneuron-registry-0.1.mjs`; `public/data/cano_gomez_p56_multiome_interneuron_v1/`"
+          - term: Last verification
+          - definition: 2026-09-24 · Queue Row And Registry Derivation
+          - term: Acceptance boundary
+          - definition: "The full audit reconciles exactly 169,345 source-scoped neuronal nuclei and 57 source-scoped groups while admitting only the 11 exact `CHOL_IN` profiles and their 923 confirmed `CHOL_IN` nuclei.; the explicit exclusion boundary retains cholinergic motor rows, `GABA_CSF-cN_Pkd2l1` sensory scope, all glutamatergic projection/local-unresolved rows, remaining GABA ambiguous/projection-exception rows and non-neuronal context that is available only as a source-level preprocessing statement.; The `groups` column remains required.; `neuron_types` remains required except in the exact SHA-pinned GLUT UPDATE object verified on 2026-09-22, whose absent metadata column is retained explicitly as source missingness; its separate `active.ident` labels are not substituted.; The paper-reported 516 neuronal types and the quarantined Table S1 inventory remain reconciliation evidence and are not an interneuron denominator."
+          - navigation "UPG-204 evidence links":
+            - link "GEO GSE318731 ↗":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731
+            - link "PMC Table S1 ↗":
+              - /url: https://pmc.ncbi.nlm.nih.gov/articles/instance/13308138/bin/media-1.csv
+            - link "authors' analysis repository ↗":
+              - /url: https://github.com/PoolLab/cano-gomez_et_al_2026
+            - link "primary preprint ↗":
+              - /url: https://doi.org/10.64898/2026.06.11.731752
+        - article:
+          - generic: UPG-211 · P0 · Molecular Taxonomy
+          - emphasis: Completed
+          - paragraph: "Recover 277 source-scoped GLUT identity labels from the separate `active.ident` slot of the checksum-pinned 92,782-row GSE318731 glutamatergic UPDATE RDS. All 92,782 unique slot names exactly equal metadata row names in order; the adapter preserves per-value slot provenance and revalidates the mapping. `meta.data$neuron_types` remains absent. The 277 labels are not confirmed interneuron identities and add no cross-source, spatial, morphology or same-cell join."
+          - term: Current blocker
+          - definition: None For Declared Increment · No blocker is recorded for the queue row's currently declared completed increment; its acceptance boundary still applies.
+          - term: Evidence basis
+          - definition: "GSE318731; `data/cano-gomez-glut-active-ident-0.1.json`; `app/CanoGomezGlutLabelBrowser.tsx`"
+          - term: Last verification
+          - definition: 2026-09-24 · Queue Row And Registry Derivation
+          - term: Acceptance boundary
+          - definition: "Recover 277 source-scoped GLUT identity labels from the separate `active.ident` slot of the checksum-pinned 92,782-row GSE318731 glutamatergic UPDATE RDS.; `meta.data$neuron_types` remains absent.; The 277 labels are not confirmed interneuron identities and add no cross-source, spatial, morphology or same-cell join."
+          - navigation "UPG-211 evidence links":
+            - link "GSE318731 ↗":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318731

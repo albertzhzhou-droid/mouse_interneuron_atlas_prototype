@@ -1,0 +1,34 @@
+{
+  "status": "PASS_COMPLETE_CORRECTED_RESEARCH_PIPELINE",
+  "actualExitCode": 0,
+  "tests": {
+    "tests": 1559,
+    "pass": 1544,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 15
+  },
+  "acceptedLog": {
+    "path": "full-research-after-owned-ui-correction-original-per-read.log",
+    "bytes": 248815,
+    "sha256": "e99b460050b1e657d25d6530178389200b7cd0f278b52dfd70dc9994ad013227"
+  },
+  "originalIntrusiveTestReaderRun": {
+    "actualExitCode": 1,
+    "path": "full-research-after-owned-ui-correction.log",
+    "bytes": 259418,
+    "sha256": "8fa5c44114bf33e6a8041e12fcb09ec42981fc9edb7ddac683d1936ce4170165",
+    "failedTests": 4,
+    "reason": "First accepted epoch reader rejected deliberate rewrites of OS-temp test fixtures before the unchanged product validator assertions."
+  },
+  "acceptedTestReader": "/private/tmp/ohri-i51-exact-read.mjs",
+  "readonlyManifestReader": "/private/tmp/ohri-i62-strict-first-epoch-read.mjs",
+  "sourceValidatorsAndTestsChanged": false,
+  "thirdManifestActualExitCode": 0,
+  "canonicalInputCount": 2605,
+  "correctedStageReplayEntries": 2608,
+  "correctedStageUniquePaths": 2607,
+  "correctedStageSyncActualExitCode": 0,
+  "previewHostname": "127.0.0.1",
+  "temporaryHostFlagServerStoppedBeforeNativeAcceptance": true
+}

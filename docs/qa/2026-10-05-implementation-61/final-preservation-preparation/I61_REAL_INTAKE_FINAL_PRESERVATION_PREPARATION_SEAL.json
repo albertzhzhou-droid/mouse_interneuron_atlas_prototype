@@ -1,0 +1,124 @@
+{
+  "iteration": "I61",
+  "status": "SEALED_REAL_INTAKE_BOUND_FINAL_SOURCE_PRESERVATION_PREPARATION_NOT_FINAL_PASS",
+  "generatedAtUtc": "2026-10-05T09:08:02.496902+00:00",
+  "files": [
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/I61_PREPARED_REAL_INTAKE_BOUND_INPUTS.json",
+      "bytes": 4573,
+      "sha256": "be4e7234fbe9ae3e372f2d31b042d98230d8f2c3a8d45efa7a0a7db9d37dd5b1"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/exact-root-intake-preservation.json",
+      "bytes": 576973,
+      "sha256": "fd29f15a31316bd144c47eb15987f6da8477358c7958bae1fe4eba6e75eb3322"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/exact-root-actual-apply-receipt.json",
+      "bytes": 10599,
+      "sha256": "68c6585aac4ca025d4cb350052199dc2397e553544cca524e0a50d919f7cab14"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/exact-root-preimages.zip",
+      "bytes": 338226,
+      "sha256": "ab4dca99e645cc4bce7dbe47acf19a7d868d53ff03720a2dd72e475aaec8f8d4"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/exact-accepted-i60-checkpoint.json",
+      "bytes": 11702,
+      "sha256": "9d8de4d1aeec66d49d8834d2089c44a12ec9de787f32c015b6887f83f82c5ef7"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/exact-accepted-i60-checkpoint.zip",
+      "bytes": 551662,
+      "sha256": "bc98b7a330cc5d735359b4bfbfe62d777eeea367ff17cfa16b9000f024088010"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/exact-i60-private-membership-closure.json",
+      "bytes": 137461,
+      "sha256": "aacd5b3aa41fdd0ab5d82da8f61b6c9845dc8bc42e22ccb77c9a6c229a9bafe6"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/check_i61_final_preservation.py",
+      "bytes": 17753,
+      "sha256": "94cba6b40a7c3ec0993b8f671f1762cff3bfd60f4c13a54f3008a2f9f3fdfcd6"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/I61_PREPARED_FINAL_SOURCE_PROTECTION_TABLE.json",
+      "bytes": 541857,
+      "sha256": "dfb34f1f70b3c99c343a25ee1e497d680c76964066629f9e9154d5b72cc75566"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/I61_PREPARE.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/README.md",
+      "bytes": 2287,
+      "sha256": "f3c2ecbbe2bb04a7d45ddedec7a4b32f3a79c40646f0bcfc6a89cfbdbda265a3"
+    }
+  ],
+  "prepareExecution": {
+    "argv": [
+      "python3",
+      "/private/tmp/ohri-i61-final-preservation-preparation-20261005/check_i61_final_preservation.py",
+      "--prepare"
+    ],
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "finalExecuted": false,
+    "fullSourceHashRun": false
+  },
+  "counts": {
+    "baselineInputs": 2585,
+    "expectedCanonicalInputs": 2601,
+    "protectedPriorInputs": 2577,
+    "ownedExactTargets": 19,
+    "newCanonicalPaths": 16,
+    "acceptedI60CheckpointMembers": 64,
+    "acceptedI60ProtectedMembers": 58,
+    "runtimeInputs": 198,
+    "positionsBuildInputs": 40,
+    "positionsSourceInputs": 23,
+    "positionsOriginalWorkbooks": 22
+  },
+  "sourceUnitBoundary": {
+    "legacySelectedWorkbooks": 23,
+    "legacyRetainedOriginalWorkbooks": 24,
+    "withNaVSelectedWorkbooks": 25,
+    "withNaVRetainedOriginalWorkbooks": 26,
+    "soleRetainedUnselected": [
+      56062547,
+      "INa.xlsx"
+    ],
+    "legacyObservationRows": 2115,
+    "legacyWithinTableGroups": 220,
+    "additionalWorksheetRows": 84,
+    "densityRows": 56,
+    "percentageRows": 28,
+    "independentPhysicalCells": null,
+    "sourceProfile": 1,
+    "firingPatternCells": 65,
+    "passivePropertyObservations": 654,
+    "sourceRegistrySources": 32,
+    "sourceRegistryRecordSets": 42,
+    "newSourcesSetsProfilesRostersObjectsGeometryInternalREGCompletions": 0
+  },
+  "finalPrecondition": "Parent explicit I61 FINAL_READY; do not run before that message.",
+  "scope": {
+    "rootWrites": 0,
+    "stageWrites": 0,
+    "browserActions": 0,
+    "networkCalls": 0,
+    "privateProofCalls": 0
+  },
+  "crossReadFix": {
+    "firstAcceptedEpochNeverOverwritten": true,
+    "laterReadMustMatchFirstAcceptedEpoch": true,
+    "crossReadDriftIsFatalAndNeverRetried": true,
+    "repeatedBodyDigestAlsoRequiredMatchCurrentCanonicalOrExactManifestPin": true,
+    "priorOriginalHelperSealAndTableRetained": "/private/tmp/ohri-i61-final-preservation-preparation-20261005/seal-before-cross-read-epoch-fix",
+    "parentFinalReadyNotYetReceived": true
+  }
+}

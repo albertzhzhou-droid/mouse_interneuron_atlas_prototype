@@ -1,0 +1,312 @@
+{
+  "status": "SEALED_TEMP_I62_AFTER_EXACT_QUEUED_I61_ROOT_FIRST_PEER_PENDING",
+  "sealedUTC": "2026-10-05T08:50:32.538266+00:00",
+  "scope": "Original four-path Garcia source-owned aggregate information navigation only; exact queued I61 core14+AFTER-I59addon5 projected afterimages retained; current upgraded layout/routes preserved.",
+  "originalI62CandidateBytesUnchanged": true,
+  "codeRebaseRequired": false,
+  "registryPreimageDrift": {
+    "before": {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/research-source-registry-0.1.json",
+      "bytes": 222227,
+      "sha256": "6628241eda53f4c06b3d689f7b74d1f07c941e74933c87767ef5d1c61da72204"
+    },
+    "after": {
+      "path": "/private/tmp/ohri-i61-parent-addon-after-i59-20261005/proposed/data/research-source-registry-0.1.json",
+      "bytes": 227257,
+      "sha256": "800baf2fca79cbf5752949e4f0332ba7d93feb6e79ca0582f20e9a3bcfdd4a15"
+    },
+    "changedSources": [
+      "SRC-CROZAT-2025"
+    ],
+    "changedTopLevelFields": [],
+    "garciaExactMetadataUnchanged": true
+  },
+  "targets": [
+    {
+      "path": "app/ResearchSourceRegistry.tsx",
+      "operation": "modify",
+      "before": {
+        "bytes": 22834,
+        "sha256": "eb84daf3886b96a9c5b7a38bdd91a571fcbaa06d2327a3fab44bd054eb3e68b7"
+      },
+      "after": {
+        "bytes": 23841,
+        "sha256": "c423792176942a66d70c480a19d083ade86a4e51970be9bec018474e88068cd0"
+      },
+      "originalCandidateBytesUnchanged": true
+    },
+    {
+      "path": "app/research-source-information-navigation.js",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 8770,
+        "sha256": "77294b724ade7b12a125cc3041727b20c7232995a96b69f86d0e4268bb7f6452"
+      },
+      "originalCandidateBytesUnchanged": true
+    },
+    {
+      "path": "app/research-source-information-navigation.d.ts",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 927,
+        "sha256": "45c8b6a54280b87059ea4857568e6560b4a3fe5d7cd18579b10b5bfa46c95630"
+      },
+      "originalCandidateBytesUnchanged": true
+    },
+    {
+      "path": "tests/research-source-information-navigation.test.mjs",
+      "operation": "add",
+      "before": null,
+      "after": {
+        "bytes": 16007,
+        "sha256": "47e7ea9bb90febd8fcaf57a2d15ba96f16a2c9115ef0ed37696e3470076e3a8f"
+      },
+      "originalCandidateBytesUnchanged": true
+    }
+  ],
+  "queuedI61AfterimageCount": 19,
+  "queuedI61AfterimagesAllPhysicalExact": true,
+  "patch": {
+    "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_AFTER_I61_SOURCE_INFORMATION_NAVIGATION_CANDIDATE.patch",
+    "bytes": 29450,
+    "sha256": "528a25352e0394a3126223ab2898c5c6e24075b7a9a5fd133b9568ac24dfeccc"
+  },
+  "canonicalNewPaths": [
+    "app/research-source-information-navigation.js",
+    "app/research-source-information-navigation.d.ts",
+    "tests/research-source-information-navigation.test.mjs"
+  ],
+  "validation": {
+    "reusedCandidateAndRegressionTests": 38,
+    "reusedPass": 38,
+    "temporaryContextTests": 3,
+    "contextPass": 3,
+    "uniqueTests": 41,
+    "initialMissingTestFixturesStopRetained": true,
+    "scopedTypecheck": true,
+    "fullRootTypecheck": false,
+    "initialMissingTypeEnvironmentStopRetained": true,
+    "gitApplyCheck": {
+      "exit": 0,
+      "context": "independent exact I62 UI preimage + three physical absences; I61 targets disjoint",
+      "applied": false
+    }
+  },
+  "mountedClosure": {
+    "sourcesBefore": 109,
+    "sourcesAfter": 110,
+    "addedRuntimePaths": [
+      "app/research-source-information-navigation.js"
+    ],
+    "compact198MembershipUnchanged": true,
+    "positions40Plus23MembershipUnchanged": true,
+    "eightPrivateScopeMembershipsUnchanged": true
+  },
+  "layoutPins": [
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/layout.tsx",
+      "bytes": 1120,
+      "sha256": "9fc00113c433c050f51d51f33ac6416febf1950322df01c08a42d52f67a2c01a"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/SiteNavigation.tsx",
+      "bytes": 3534,
+      "sha256": "46521f3a2a14c7cc5615596c4a73a914f57a9e5edea02010d7d3d1adc82653bd"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/site-navigation.css",
+      "bytes": 5436,
+      "sha256": "e76e52308dc6c4d072095430881dcca53eb49e5c5b26bf72e54793a71967c31b"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/ResearchRoutePage.tsx",
+      "bytes": 4905,
+      "sha256": "711583dbf0968dc507280f33f00b1ae0b6634833a832415ebd6d9d734269f1c2"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/ResearchCollectionPage.tsx",
+      "bytes": 14684,
+      "sha256": "2b11f954b4fd06824978b15109c4cc6430575045c22a989c042bacee71642e76"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/research-information-layout.css",
+      "bytes": 15146,
+      "sha256": "e40034fdf3cd2add08c53cb385815166f1f82f26e7d276cb8665fa4b13aebafe"
+    },
+    {
+      "path": "/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/app/research-pages.css",
+      "bytes": 15287,
+      "sha256": "568e33287d920c68604b0d5d84396636d69a8086bbe2253ce7ba1ebd2bae0113"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_AFTER_I61_MOUNTED_CLOSURE_ADVICE.json",
+      "bytes": 139230,
+      "sha256": "17832445c571e59d319522b228301ee8ada2a041fdd7622c131022a02b615d93"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_AFTER_I61_NATIVE_EIGHT_CASE_PLAN.md",
+      "bytes": 6005,
+      "sha256": "2ceccf1cb54f354be80d43a1ff36b2e8b4c0c556dbd88980de52df3f0980f887"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_AFTER_I61_REBASE_PREPARATION.json",
+      "bytes": 99016,
+      "sha256": "1dea969dc3417a79051a7b4b4b8b9f3397761d2d10eff1489e67e1c7cfdb93f4"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_AFTER_I61_SOURCE_INFORMATION_NAVIGATION_CANDIDATE.patch",
+      "bytes": 29450,
+      "sha256": "528a25352e0394a3126223ab2898c5c6e24075b7a9a5fd133b9568ac24dfeccc"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_CONTEXT_AND_SCOPED_TYPE_VALIDATION.json",
+      "bytes": 3596,
+      "sha256": "e6593a55baaf94633615c2dd70dd146e4a3d3f2117e7f50dbcf72fa802755e0c"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/I62_REUSED_TEST_INPUT_COMPLETION_AND_VALIDATION.json",
+      "bytes": 3972,
+      "sha256": "375cd36413f407e0c216625fde7514a68e1796bb098986e1c2a2a0ae4537e75b"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/after-i61-context-tests.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/after-i61-context-tests.stdout.log",
+      "bytes": 1616,
+      "sha256": "70016dec8e9589adf1e2335e7f306eba5cf8434fe9b62ead827030a01c269162"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/audit-mounted-closure.mjs",
+      "bytes": 9921,
+      "sha256": "f84439087ecd8d6bd2debac6f978bdc69ee897349cbbc13d6423e039984477c7"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/complete-test-inputs-and-run.mjs",
+      "bytes": 2885,
+      "sha256": "363eb72655683e35bd7c2140fbd2678cae9d15bb85d72250bcb9c9a922b91fca"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/focused-after-i61.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/focused-after-i61.stdout.log",
+      "bytes": 4486,
+      "sha256": "cf73cee5c5489c481b1348811c97417c7cb1bb615cfef62c34a451c7057b7de8"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/git-apply-check.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/git-apply-check.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-scoped-types-environment-missing-retained.stderr.log",
+      "bytes": 5714,
+      "sha256": "c0aff3c012c57f324e607ece84e4b2ae0b6836fb25947c179d3fc7513b763ab3"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-scoped-types-environment-missing-retained.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-seal-layout-filename-stop.stderr.log",
+      "bytes": 1422,
+      "sha256": "90351bbab179f0b1abe6fff9cdab666f2518200f0f4b7545eeb86408fec320e9"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-seal-layout-filename-stop.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-test-inputs-missing-retained.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/initial-test-inputs-missing-retained.stdout.log",
+      "bytes": 7840,
+      "sha256": "6761b3d452ab2312ce8b2bdec49829be6b27c2af251c7fa91c58f80789ea0cb7"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/prepare-rebase.mjs",
+      "bytes": 10884,
+      "sha256": "96e19e8f19f61a6be689ab65646bf997d5d31187afc9d2c3908dc48f36e3374b"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/qa-scoped-typecheck.mjs",
+      "bytes": 1384,
+      "sha256": "c262444fb6ce5a082a9d2310aa5a6e89df34d3cdc8aa87eee4447cc021b8da31"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/scoped-types-after-environment-completion.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/scoped-types-after-environment-completion.stdout.log",
+      "bytes": 110,
+      "sha256": "90e4e9381f2c3763297fdefebf06059da79119fa9d0f4f3d6e475e15c934ca9f"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/seal-rebase.py",
+      "bytes": 5822,
+      "sha256": "ea20253cb34e236b4986bc3e47b41fe36494ebab5baca1040f1e74bd51884306"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/validate-context-and-types.mjs",
+      "bytes": 2700,
+      "sha256": "9b5cdd14f3a06b582e51dfdd4ecaf8ff68855c79ac5f25a7b1aeff9fe92a8dd5"
+    },
+    {
+      "path": "/private/tmp/ohri-i62-after-i61-rebase-20261005/projected-after/tests/i62-after-i61-context.qa.mjs",
+      "bytes": 3997,
+      "sha256": "8a513d2ec7fcfe345f689e507f7e25b1c23e39c2cdad8f88e31e8a5c9b792cd8"
+    }
+  ],
+  "excludedQA": [
+    "all copied before/projected/source context files",
+    "all preparation/context/closure/typecheck/seal helpers",
+    "native8 plan and all validation logs",
+    "dependency-only node_modules symlink"
+  ],
+  "sourceAuthority": {
+    "informationActions": 1,
+    "sourceId": "SRC-GARCIA-RAMIREZ-2022",
+    "sourceByteOrRenderedProofFromNavigation": false,
+    "crozatNewInformationNavigationActions": 0,
+    "exactChildNavigationSets": 15,
+    "exactChildEntries": 274,
+    "typeRecords": 387,
+    "sourceCount": 32,
+    "recordSetCount": 42,
+    "completedUpgradeCount": 83,
+    "M2Admission": 0,
+    "M4Admission": 0,
+    "internalObjects": 0,
+    "registrations": 0
+  },
+  "rootWrites": 0,
+  "stageWrites": 0,
+  "browserOperations": 0,
+  "serverOperations": 0,
+  "networkOperations": 0,
+  "originalWorkbookParses": 0,
+  "actualI61OrI62IntakeClaimed": false,
+  "actualNativeAcceptanceExecuted": false,
+  "parentNext": "Read-only peer exact projected base/patch; intake I61 first; recheck current four I62 preimages/absences and unchanged nineteen I61 afterimages; admit only original four targets; refresh parent recipe/build then execute existing native8."
+}

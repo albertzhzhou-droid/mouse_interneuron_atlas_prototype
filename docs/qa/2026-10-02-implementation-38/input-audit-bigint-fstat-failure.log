@@ -1,0 +1,29 @@
+Current input pairs checked: 100
+Current input pairs checked: 200
+Current input pairs checked: 300
+Current input pairs checked: 400
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: /Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype/data/source-candidates/bil-xenium-polygons-20261002/polygon_sets__0__vertices__7.1
++ actual - expected
+
++ 1790920409155916690n
+- 1790920409155916749n
+                  ^
+
+    at read (file:///private/tmp/ohri-i38-input-audit.mjs:4:409)
+    at file:///private/tmp/ohri-i38-input-audit.mjs:9:39
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:642:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1790920409155916690n,
+  expected: 1790920409155916749n,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.0.0

@@ -9,7 +9,9 @@ test("validates all 142 selectable morphologies and strict evidence gates", asyn
   assert.deepEqual(await validateMorphologyMatrixContract(), {
     releaseId: "ohri-morphology-matrix-contract-0.1.0",
     recordCount: 142,
-    radiusAuthorizedCount: 94,
+    radiusAuthorizedCount: 92,
+    sourceDiameterInputCount: 94,
+    dimensionalityBlockedRadiusCount: 2,
     noDiameterCount: 48,
     comparisonMaximum: 4,
     registrationCount: 0,

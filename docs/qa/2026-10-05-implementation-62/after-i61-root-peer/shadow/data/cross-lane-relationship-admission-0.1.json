@@ -1,0 +1,60 @@
+{
+  "releaseId": "ohri-cross-lane-relationship-admission-0.1.0",
+  "schemaVersion": "0.1.0",
+  "researchReleaseId": "ohri-mouse-interneuron-research-mvp-candidate-0.2.0",
+  "catalogReleaseId": "ohri-mouse-interneuron-public-data-workbench-0.4.0",
+  "provenanceTraceReleaseId": "ohri-evidence-provenance-trace-0.1.0",
+  "queueItemId": "UPG-017",
+  "title": "Cross-lane relationship admission proposal gate",
+  "admissionStatus": "proposal_only_not_admitted",
+  "commonRequiredEvidence": [
+    "immutable_research_record_id",
+    "immutable_public_source_record_id",
+    "stable_source_object_id",
+    "asset_level_rights_decision",
+    "independent_relation_evidence",
+    "predeclared_validation_plan"
+  ],
+  "relationshipKinds": [
+    {
+      "id": "molecular_label_correspondence",
+      "label": "Candidate molecular-label correspondence",
+      "boundary": "A shared or mapped label is not a same-cell identity, source-object link, spatial coordinate or biological truth claim.",
+      "requiredEvidence": ["source_label_definition", "mapping_method_and_version", "independent_relation_evidence", "predeclared_validation_plan"]
+    },
+    {
+      "id": "source_object_derivation",
+      "label": "Candidate source-object derivation",
+      "boundary": "A catalog source record is not proof that an unacquired source object was used to derive a project record.",
+      "requiredEvidence": ["stable_source_object_id", "asset_level_rights_decision", "source_object_checksum", "independent_relation_evidence"]
+    },
+    {
+      "id": "same_specimen_relation",
+      "label": "Candidate same-specimen relation",
+      "boundary": "Matching species, segment, condition, label or study does not establish a shared specimen.",
+      "requiredEvidence": ["stable_source_object_id", "source_specimen_id", "specimen_key_provenance", "independent_relation_evidence"]
+    },
+    {
+      "id": "coordinate_transform",
+      "label": "Candidate coordinate transform",
+      "boundary": "A visual overlay, common anatomy or author-space coordinates do not establish a source-to-project transform or registration.",
+      "requiredEvidence": ["stable_source_object_id", "source_frame_units_axes_origin", "target_frame_authority", "disjoint_held_out_landmarks", "held_out_physical_space_error", "predeclared_validation_plan"]
+    },
+    {
+      "id": "same_cell_identity",
+      "label": "Candidate same-cell identity",
+      "boundary": "A cell class, marker overlap, classifier output or one study observation does not establish that two records are the same cell.",
+      "requiredEvidence": ["stable_source_object_id", "persistent_cell_identifier_or_paired_measurement", "source_specimen_id", "independent_relation_evidence", "predeclared_validation_plan"]
+    }
+  ],
+  "localRuntime": {
+    "networkRequests": false,
+    "sourceObjectAcquisition": false,
+    "sourceFileUpload": false,
+    "persistentStorage": "none",
+    "output": "browser_download_of_not_admitted_relationship_proposal_json"
+  },
+  "nonPromotionPolicy": "A proposal is a local, incomplete review record only. It cannot add a cross-lane edge, alter a trace, change a source admission status or entity identity, acquire a source object, grant reuse rights, establish biological truth, or create REG.",
+  "scientificBoundary": "This composer records declared package-level identifiers and missing admission evidence. It does not inspect, hash, transform, align, combine, analyze, persist or bundle a source object; it does not establish identity, coordinates, a source-to-project relationship, or registration.",
+  "nextQueueItems": ["UPG-001", "UPG-002", "UPG-006", "UPG-007", "UPG-009", "UPG-012"]
+}

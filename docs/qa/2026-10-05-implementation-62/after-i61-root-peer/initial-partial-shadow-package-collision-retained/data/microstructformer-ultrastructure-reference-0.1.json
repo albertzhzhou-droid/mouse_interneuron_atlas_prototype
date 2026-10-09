@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "microstructformer-open-ultrastructure-reference-0.1",
+  "auditDate": "2026-09-23",
+  "source": {
+    "studyTitle": "Deep learning-based decoding of axonal ultrastructure in gene-edited mice using electron microscopy imaging",
+    "doi": "10.64898/2026.05.26.727755",
+    "authors": ["Nianqi Deng", "Guillaume Miao", "Hooman Bagheri", "Alan C. Peterson", "Anmar Khadra"],
+    "biologicalContext": "Mouse spinal-cord fibers in variably hypomyelinated gene-edited mouse models; source paper focuses on axon-myelin-ultrastructure analysis.",
+    "sourceModality": "two-dimensional electron-microscopy images with semantic segmentation masks",
+    "citationLicense": "The bioRxiv preprint is separately labeled CC BY-NC-ND 4.0; this audit does not copy manuscript images or text."
+  },
+  "datasetRelease": {
+    "repository": "Dnq2025/Mask2former_Finetune",
+    "revisionSha": "92a2ca0f9d1387fcf7eaca0c67f5467cb3a5ad1f",
+    "task": "image segmentation",
+    "format": "parquet",
+    "columns": ["image", "label"],
+    "rowCount": 540,
+    "splitCounts": {"train": 528, "validation": 12},
+    "reportedRepositorySize": "5.69 GB",
+    "sampleRowPreview": {
+      "split": "train",
+      "rowIndex": 0,
+      "imageDimensionsPixel": [3964, 3964],
+      "labelDimensionsPixel": [3964, 3964],
+      "pixelScale": "not provided in the dataset viewer",
+      "rowIdentifierScope": "split-and-row-index only; no neuron, animal, section, or cell-object identifier is exposed"
+    },
+    "viewerLimitations": [
+      "The public row viewer has image and label fields but no biological-object or serial-section identifier.",
+      "The 3964 by 3964 dimensions describe one preview row and are pixel dimensions, not physical units.",
+      "No longitudinal z-stack, voxel calibration, reconstructed neuron, or per-cell identity link is exposed in the dataset card or row viewer."
+    ]
+  },
+  "semanticLabels": [
+    {"labelId": 0, "name": "background", "role": "model output class"},
+    {"labelId": 1, "name": "abnormality", "role": "model output class"},
+    {"labelId": 2, "name": "mitochondria-like organelles", "role": "model output class"},
+    {"labelId": 3, "name": "mitochondria", "role": "model output class"},
+    {"labelId": 4, "name": "mitochondria outside axon", "role": "model output class"},
+    {"labelId": 5, "name": "periaxonal space", "role": "model output class"}
+  ],
+  "modelAndLicense": {
+    "modelRepository": "Dnq2025/MicroStructFormer",
+    "modelScope": "semantic labels for abnormalities, mitochondria and periaxonal space; axon and myelin masks are supplied by an external segmentation tool in the documented pipeline",
+    "datasetLicense": "CC BY-NC-SA 4.0",
+    "redistributionConditions": "Non-commercial use, attribution, and same-or-compatible share-alike conditions for redistributed or modified dataset derivatives.",
+    "softwareLicense": "GPLv3; separate from the dataset/model license.",
+    "distributionDecision": "Link-only in this atlas. No image, mask, model weight, or derived segmentation is bundled."
+  },
+  "identityAndGeometryBoundary": {
+    "identifiedInterneuronCount": 0,
+    "serialVolumeCount": 0,
+    "sameCellJoinCount": 0,
+    "admittedCellGeometryCount": 0,
+    "admittedInternalGeometryCount": 0,
+    "registrationCount": 0,
+    "predictionAdmittedAsObservation": false,
+    "crossSectionStackingAllowed": false,
+    "sameCellPlacementAllowed": false,
+    "interpretation": "A useful source reference for labeled two-dimensional axonal ultrastructure, not a 3D interneuron or a basis for assigning organelles to the selected cell."
+  },
+  "sources": [
+    {"label": "Hugging Face dataset card and viewer", "url": "https://huggingface.co/datasets/Dnq2025/Mask2former_Finetune"},
+    {"label": "Hugging Face MicroStructFormer model card and label map", "url": "https://huggingface.co/Dnq2025/MicroStructFormer"},
+    {"label": "Official MicroStructFormer dataset documentation", "url": "https://dnq2023.github.io/MSF_WEBSITE/dataset/"},
+    {"label": "Official MicroStructFormer licensing page", "url": "https://dnq2023.github.io/MSF_WEBSITE/license/"},
+    {"label": "Primary preprint", "url": "https://doi.org/10.64898/2026.05.26.727755"}
+  ]
+}

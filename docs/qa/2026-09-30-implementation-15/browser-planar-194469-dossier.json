@@ -1,0 +1,988 @@
+{
+  "documentType": "research_record_scientific_dossier",
+  "schemaVersion": "0.2.0",
+  "applicationVersion": "2.91.0-research.1",
+  "selection": {
+    "key": "morphology_record:NeuroMorpho:194469",
+    "generation": 1,
+    "namespace": "neuromorpho:Chen_Dai",
+    "status": "current_verified_record"
+  },
+  "sourceScope": {
+    "documentType": "research_record_source_scope",
+    "schemaVersion": "0.2.0",
+    "recordKey": "morphology_record:NeuroMorpho:194469",
+    "namespace": "neuromorpho:Chen_Dai",
+    "focusKind": "morphology_record",
+    "focusId": "NeuroMorpho:194469",
+    "recordLocation": {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "pointer": "/records/462",
+      "releaseId": "ohri:research-explorer-index:1.13.0",
+      "status": "indexed_project_derivative_field"
+    },
+    "displayUnit": "source_reconstruction_record",
+    "underlyingObservationUnit": null,
+    "registryReleaseId": "ohri-research-source-registry-0.1.0",
+    "sourceId": "SRC-NEUROMORPHO-8-6-124",
+    "sourceResolution": "frozen_index_morphology_membership",
+    "sourceLocator": "data/research-source-registry-0.1.json#/sources/1",
+    "sourceMissingReason": null,
+    "species": [
+      {
+        "value": "Mus musculus",
+        "status": "source_context_only",
+        "context": "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison routes",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/1/speciesScopes/0/scientificName"
+      }
+    ],
+    "lifeStages": [
+      {
+        "value": "adult",
+        "status": "source_context_only",
+        "context": "142 admitted census records; active route children include NMO 104003, 108974 and 108978, with only 104003 and 108974 overlapping the frozen five-record lens",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/1/lifeStageScopes/0/value"
+      },
+      {
+        "value": "young",
+        "status": "source_context_only",
+        "context": "supplementary dorsal-horn record NMO 249676, functional-class Renshaw record NMO 45674, and repository-labelled premotor comparison record NMO 45718; all outside the 142-record adult-query census",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/1/lifeStageScopes/1/value"
+      },
+      {
+        "value": "young adult",
+        "status": "source_context_only",
+        "context": "supplementary dorsal-horn record NMO 170035, functional-class NPY record NMO 50424, and PrP-reporter records NMO 50394 and 50408; all outside the 142-record adult-query census",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/1/lifeStageScopes/2/value"
+      }
+    ],
+    "regions": [
+      {
+        "value": "spinal cord; source-local subregions retained per record",
+        "status": "source_context_only",
+        "context": "admitted census query plus independent dorsal-horn, functional-class, PrP-reporter dorsal-horn, and ventral-horn premotor comparison routes",
+        "authority": "official_repository_metadata",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/1/regionScopes/0/value"
+      }
+    ],
+    "experimentalUnits": [
+      {
+        "unit": "reconstructed_neuron",
+        "count": 142,
+        "scope": "QC-admitted census",
+        "authority": "checksum_pinned_project_inventory",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/1/experimentalUnits/0",
+        "pooledWithOtherUnits": false
+      }
+    ],
+    "conditions": [],
+    "fieldLocators": [
+      {
+        "index": 0,
+        "label": "Repository record",
+        "value": "NeuroMorpho 194469",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/0",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 1,
+        "label": "Explorer collection membership",
+        "value": "Frozen census record (1); supplementary record (0)",
+        "authority": "checksum_pinned_project_membership",
+        "locator": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/1",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 2,
+        "label": "Geometry receipt",
+        "value": "geometry/nmo-194469.json · 111972 bytes · SHA-256 20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "authority": "checksum_pinned_source_object",
+        "locator": "geometry/nmo-194469.json",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/2",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 3,
+        "label": "Census provenance receipt",
+        "value": "Frozen 142-record census membership; supplementary contribution 0",
+        "authority": "checksum_pinned_route_or_census_membership",
+        "locator": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/3",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 4,
+        "label": "Source-coordinate extent",
+        "value": "1,167.2 µm × 2,003.75 µm × 0 µm · 2D",
+        "authority": "morphology_source_frame_disclosure",
+        "locator": "data/morphology-source-frame-disclosure-0.1.json#NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/4",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 5,
+        "label": "Preparation disclosure",
+        "value": "250 micrometre · transverse; shrinkage not reported; integrity Neurites Moderate",
+        "authority": "source_reported_with_project_boundary",
+        "locator": "data/morphology-source-frame-disclosure-0.1.json#NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/5",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 6,
+        "label": "Cell-type labels",
+        "value": "interneuron",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/6",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 7,
+        "label": "Region",
+        "value": "spinal cord · lumbar · medial · lamina X",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/7",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 8,
+        "label": "Life stage",
+        "value": "adult",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/8",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 9,
+        "label": "Dimensionality",
+        "value": "2D",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/9",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 10,
+        "label": "Reconstruction domain",
+        "value": "Neurites, Soma",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/10",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 11,
+        "label": "Physical integrity",
+        "value": "Neurites Moderate",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/11",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 12,
+        "label": "Observed SWC mode",
+        "value": "Available: checksum-pinned source-local coordinates, topology and source types",
+        "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/12",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 13,
+        "label": "Diameter authority",
+        "value": "Official attributes report Diameter; source radius range 0.5 µm–36.11 µm",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/13",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 14,
+        "label": "Radius-derived surface",
+        "value": "Available after checksum verification; deterministic open six-sided tapered frusta, not observed membrane",
+        "authority": "DERIVED_FROM_OBSERVED_RADIUS",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/14",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 15,
+        "label": "Same-specimen internal structure",
+        "value": "Unavailable: no membrane segmentation, nucleus, organelles, boutons, receptor distribution or ultrastructure",
+        "authority": "UNAVAILABLE",
+        "locator": "NeuroMorpho:194469",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/15",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_object_reference_without_field",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 16,
+        "label": "Neurite cable length",
+        "value": "5,684.88 µm",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/16",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 17,
+        "label": "Terminal nodes",
+        "value": "5",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/17",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 18,
+        "label": "Bifurcation nodes",
+        "value": "3",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/18",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 19,
+        "label": "Maximum centrifugal order",
+        "value": "2",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/19",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 20,
+        "label": "Maximum root path",
+        "value": "2,267.55 µm",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/462/evidence/20",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      }
+    ],
+    "gaps": [
+      {
+        "axisId": "donor_id",
+        "label": "donorId",
+        "status": "unavailable",
+        "reasonCode": "source_schema_no_field",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_provided_by_official_api_schema",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "specimen_id",
+        "label": "specimenId",
+        "status": "unavailable",
+        "reasonCode": "source_schema_no_field",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_provided_by_official_api_schema",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_transform",
+        "label": "atlasTransform",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_available",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_placement",
+        "label": "atlasPlacement",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_established",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "original_morphology_file",
+        "label": "originalMorphologyFile",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "temporarily_unavailable_from_repository",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "standardization_log",
+        "label": "standardizationLog",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "temporarily_unavailable_from_repository",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "independent_animal_count",
+        "label": "Independent animal count",
+        "status": "unavailable",
+        "reasonCode": "source_not_reported",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_established",
+        "detail": "not established by the source census",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "complete_axon",
+        "label": "Complete axon",
+        "status": "unavailable",
+        "reasonCode": "source_not_reported",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_reconstructed",
+        "detail": "No admitted record reports a complete axon.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "molecular_profile_identity",
+        "label": "Molecular-profile identity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_established",
+        "detail": "No same-cell link connects this reconstruction to a transcriptomic profile.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "observed_membrane",
+        "label": "Observed membrane",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_measured",
+        "detail": "A deterministic tube surface is a display derivative and does not recover the biological membrane.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "same_specimen_internal_structure",
+        "label": "Same-specimen internal structure",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "unavailable",
+        "detail": "No same-specimen nucleus, organelle, bouton, receptor-distribution or ultrastructural source is linked to this reconstruction; no generic substitute is allowed.",
+        "inferenceAllowed": false
+      }
+    ],
+    "renderingPolicy": {
+      "documentType": "research_morphology_rendering_policy",
+      "schemaVersion": "0.1.0",
+      "recordKey": "morphology_record:NeuroMorpho:194469",
+      "namespace": "neuromorpho:Chen_Dai",
+      "repositoryRelease": "8.6.124",
+      "membership": "census",
+      "censusContribution": 1,
+      "declaredSource": {
+        "neuronId": 194469,
+        "dimensionality": "2D",
+        "sourceDiameterAvailable": true,
+        "sourceFrame": "NeuroMorpho_CNG_standardized_local_frame",
+        "geometryPath": "/data/neuromorpho_release_8_6_124_census_v1/geometry/nmo-194469.json",
+        "geometryBytes": 111972,
+        "geometrySha256": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "rawSwcSha256Declared": "a8915179bbce858642e6e5c2c58dc470b1999a42a25c43a5bbf25183ab333c43",
+        "contractLocator": "data/neuromorpho-census-main-scene-index-0.1.json#/records/93"
+      },
+      "radiusSurface": {
+        "allowedAfterCurrentByteVerification": false,
+        "reason": "source_labelled_2d_no_3d_surface",
+        "authority": "UNAVAILABLE",
+        "requirement": "source_labelled_3d_and_source_diameter_and_current_private_geometry_byte_proof",
+        "observedMembrane": false,
+        "thicknessInferenceAllowed": false,
+        "depthInferenceAllowed": false,
+        "planarCoordinatesChanged": false
+      },
+      "actualGeometryVerification": {
+        "status": "not_included",
+        "verifiedBytes": null,
+        "reason": "This dossier policy reads canonical declarations; current source bytes require the independent private loader proof."
+      },
+      "actualRenderedView": {
+        "status": "not_included",
+        "camera": null,
+        "layers": null,
+        "clipping": null
+      },
+      "sameCellInternalGeometryAllowed": false,
+      "registrationCount": 0,
+      "archivedSurfaceDeclarations": [
+        {
+          "evidenceIndex": 14,
+          "originalLabel": "Radius-derived surface",
+          "originalValue": "Available after checksum verification; deterministic open six-sided tapered frusta, not observed membrane",
+          "originalAuthority": "DERIVED_FROM_OBSERVED_RADIUS",
+          "originalLocator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+          "interpretation": "archived_project_rendering_declaration_not_current_permission",
+          "currentSurfaceAllowedAfterByteVerification": false
+        }
+      ],
+      "scope": "declared_source_metadata_and_project_rendering_policy_not_actual_view_or_source_byte_verification"
+    },
+    "physicalSpecimenIdentity": {
+      "status": "not_established",
+      "id": null,
+      "reason": "Study, profile and reconstruction identifiers do not supply a physical specimen identity."
+    },
+    "relationship": {
+      "type": "co_display_only",
+      "samePhysicalObject": false,
+      "sourcePopulationJoinGranted": false,
+      "grantsGeometryTransfer": false
+    },
+    "scientificBoundary": "Source context is not an individual-cell measurement. Denominators and conditions remain separate. Missing evidence is not biological absence. Exact upstream field resolution is distinguished from the indexed project field; a hash verifies bytes only."
+  },
+  "record": {
+    "key": "morphology_record:NeuroMorpho:194469",
+    "focusKind": "morphology_record",
+    "focusId": "NeuroMorpho:194469",
+    "title": "20x",
+    "subtitle": "NMO 194469 · 2D · Chen_Dai · census",
+    "namespace": "neuromorpho:Chen_Dai",
+    "laneLabel": "Source-local morphology",
+    "summary": "Neurites, Soma; Neurites Moderate. This is one repository reconstruction record, not an independent animal or a complete cell census.",
+    "morphologyMembership": {
+      "collection": "census",
+      "censusContribution": 1,
+      "supplementaryContribution": 0,
+      "sourceFrameLocator": "data/morphology-source-frame-disclosure-0.1.json#NeuroMorpho:194469",
+      "analysisLocator": "public/data/neuromorpho_release_8_6_124_analysis_v1/analysis-index.json#NeuroMorpho:194469",
+      "geometryPath": "geometry/nmo-194469.json",
+      "geometrySha256": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+      "routeId": null,
+      "routeContractPath": null,
+      "routeContractSha256": null,
+      "routeAssetManifestPath": null,
+      "routeAssetManifestSha256": null
+    },
+    "searchTerms": [
+      "20x",
+      "NMO 194469 · 2D · Chen_Dai · census",
+      "neuromorpho:Chen_Dai",
+      "Source-local morphology",
+      "NeuroMorpho:194469",
+      "194469",
+      "Chen_Dai",
+      "spinal cord",
+      "lumbar",
+      "medial",
+      "lamina X",
+      "interneuron",
+      "C57BL/6",
+      "Male/Female",
+      "Control",
+      "Neurites, Soma",
+      "Neurites Moderate",
+      "Diameter, 2D, Angles",
+      "census",
+      "diameter radius derived surface available",
+      "internal structure unavailable membrane nucleus organelles boutons receptors ultrastructure",
+      "10.1113/JP283037",
+      "35848453"
+    ],
+    "evidence": [
+      {
+        "label": "Repository record",
+        "value": "NeuroMorpho 194469",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Explorer collection membership",
+        "value": "Frozen census record (1); supplementary record (0)",
+        "authority": "checksum_pinned_project_membership",
+        "locator": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json"
+      },
+      {
+        "label": "Geometry receipt",
+        "value": "geometry/nmo-194469.json · 111972 bytes · SHA-256 20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d",
+        "authority": "checksum_pinned_source_object",
+        "locator": "geometry/nmo-194469.json"
+      },
+      {
+        "label": "Census provenance receipt",
+        "value": "Frozen 142-record census membership; supplementary contribution 0",
+        "authority": "checksum_pinned_route_or_census_membership",
+        "locator": "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json"
+      },
+      {
+        "label": "Source-coordinate extent",
+        "value": "1,167.2 µm × 2,003.75 µm × 0 µm · 2D",
+        "authority": "morphology_source_frame_disclosure",
+        "locator": "data/morphology-source-frame-disclosure-0.1.json#NeuroMorpho:194469"
+      },
+      {
+        "label": "Preparation disclosure",
+        "value": "250 micrometre · transverse; shrinkage not reported; integrity Neurites Moderate",
+        "authority": "source_reported_with_project_boundary",
+        "locator": "data/morphology-source-frame-disclosure-0.1.json#NeuroMorpho:194469"
+      },
+      {
+        "label": "Cell-type labels",
+        "value": "interneuron",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Region",
+        "value": "spinal cord · lumbar · medial · lamina X",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Life stage",
+        "value": "adult",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Dimensionality",
+        "value": "2D",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Reconstruction domain",
+        "value": "Neurites, Soma",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Physical integrity",
+        "value": "Neurites Moderate",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Observed SWC mode",
+        "value": "Available: checksum-pinned source-local coordinates, topology and source types",
+        "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      {
+        "label": "Diameter authority",
+        "value": "Official attributes report Diameter; source radius range 0.5 µm–36.11 µm",
+        "authority": "source_reported",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Radius-derived surface",
+        "value": "Available after checksum verification; deterministic open six-sided tapered frusta, not observed membrane",
+        "authority": "DERIVED_FROM_OBSERVED_RADIUS",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      {
+        "label": "Same-specimen internal structure",
+        "value": "Unavailable: no membrane segmentation, nucleus, organelles, boutons, receptor distribution or ultrastructure",
+        "authority": "UNAVAILABLE",
+        "locator": "NeuroMorpho:194469"
+      },
+      {
+        "label": "Neurite cable length",
+        "value": "5,684.88 µm",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      {
+        "label": "Terminal nodes",
+        "value": "5",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      {
+        "label": "Bifurcation nodes",
+        "value": "3",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      {
+        "label": "Maximum centrifugal order",
+        "value": "2",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      },
+      {
+        "label": "Maximum root path",
+        "value": "2,267.55 µm",
+        "authority": "computed_from_checksum_pinned_swc",
+        "locator": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+      }
+    ],
+    "gaps": [
+      {
+        "axisId": "donor_id",
+        "label": "donorId",
+        "status": "unavailable",
+        "reasonCode": "source_schema_no_field",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_provided_by_official_api_schema",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "specimen_id",
+        "label": "specimenId",
+        "status": "unavailable",
+        "reasonCode": "source_schema_no_field",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_provided_by_official_api_schema",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_transform",
+        "label": "atlasTransform",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_available",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_placement",
+        "label": "atlasPlacement",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_established",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "original_morphology_file",
+        "label": "originalMorphologyFile",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "temporarily_unavailable_from_repository",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "standardization_log",
+        "label": "standardizationLog",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "temporarily_unavailable_from_repository",
+        "detail": "The source/API record contains no value; absence is not a biological zero.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "independent_animal_count",
+        "label": "Independent animal count",
+        "status": "unavailable",
+        "reasonCode": "source_not_reported",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_established",
+        "detail": "not established by the source census",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "complete_axon",
+        "label": "Complete axon",
+        "status": "unavailable",
+        "reasonCode": "source_not_reported",
+        "scope": "record_specific",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_reconstructed",
+        "detail": "No admitted record reports a complete axon.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "molecular_profile_identity",
+        "label": "Molecular-profile identity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_established",
+        "detail": "No same-cell link connects this reconstruction to a transcriptomic profile.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "observed_membrane",
+        "label": "Observed membrane",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "not_measured",
+        "detail": "A deterministic tube surface is a display derivative and does not recover the biological membrane.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "same_specimen_internal_structure",
+        "label": "Same-specimen internal structure",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "NeuroMorpho:194469",
+        "rawValue": "unavailable",
+        "detail": "No same-specimen nucleus, organelle, bouton, receptor-distribution or ultrastructural source is linked to this reconstruction; no generic substitute is allowed.",
+        "inferenceAllowed": false
+      }
+    ],
+    "provenance": {
+      "label": "NeuroMorpho 194469",
+      "citation": "10.1113/JP283037 · 35848453",
+      "doi": "10.1113/JP283037",
+      "urls": [
+        {
+          "label": "Official API record",
+          "url": "https://neuromorpho.org/api/neuron/id/194469"
+        },
+        {
+          "label": "DOI 10.1113/JP283037",
+          "url": "https://doi.org/10.1113/JP283037"
+        }
+      ],
+      "accessions": [
+        "10.1113/JP283037",
+        "35848453"
+      ],
+      "locators": [
+        "NeuroMorpho:194469",
+        "geometry/nmo-194469.json",
+        "data/morphology-source-frame-disclosure-0.1.json#NeuroMorpho:194469",
+        "public/data/neuromorpho_release_8_6_124_census_v1/census-index.json",
+        "public/data/neuromorpho_release_8_6_124_analysis_v1/analysis-index.json"
+      ],
+      "objectHashes": [
+        {
+          "label": "Canonical geometry",
+          "sha256": "20aa79c2273bea9a61ada67abfc3e11f8d8b10a2598be89cda9374f4867d924d"
+        },
+        {
+          "label": "Raw SWC",
+          "sha256": "a8915179bbce858642e6e5c2c58dc470b1999a42a25c43a5bbf25183ab333c43"
+        }
+      ]
+    },
+    "coordinate": {
+      "geometryStatus": "OBS_STANDARDIZED_SOURCE_LOCAL",
+      "frame": "NeuroMorpho_CNG_standardized_local_frame",
+      "registrationStatus": "unregistered",
+      "registrationCount": 0,
+      "measurementUse": "source_local_descriptive_only"
+    },
+    "relationshipStatus": "not_established_outside_this_source_record",
+    "boundary": "one_NeuroMorpho_record_not_an_independent_animal_donor_specimen_or_prevalence_observation",
+    "navigation": {
+      "lab": "morphology",
+      "params": {
+        "morphologyView": "individual",
+        "morphologyNeuron": "194469"
+      },
+      "anchor": "morphology-panel"
+    },
+    "presentation": {
+      "contractId": "research-record-presentation-0.1",
+      "sourceSiblingCount": 2,
+      "evidencePartition": {
+        "identityEvidenceIndices": [
+          2,
+          12,
+          13
+        ],
+        "recordSpecificEvidenceIndices": [
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "sharedEvidenceIndices": [
+          1,
+          3
+        ]
+      },
+      "missingnessPartition": {
+        "recordSpecificGapIndices": [
+          4,
+          5,
+          6,
+          7,
+          10
+        ],
+        "sharedGapIndices": [
+          0,
+          1,
+          2,
+          3,
+          8,
+          9
+        ]
+      },
+      "modeling": {
+        "route": "exact_source_morphology",
+        "admittedCellGeometryObjectCount": 1,
+        "admittedInternalObjectCount": 0,
+        "generatedFallbackPrimitiveCount": 0,
+        "registrationCount": 0,
+        "sameCellJoinCount": 0,
+        "switchEffect": "replace_with_exact_selected_source_geometry",
+        "noFallbackPrimitive": true,
+        "axes": [
+          {
+            "axisId": "source_record",
+            "status": "available",
+            "authority": "checksum_verified_research_index",
+            "detail": "The selected source-record identity and its attributed evidence are available."
+          },
+          {
+            "axisId": "cell_geometry",
+            "status": "available_exact_source_local",
+            "authority": "OBS_STANDARDIZED_SOURCE_LOCAL",
+            "detail": "One checksum-gated source-local morphology object is admitted for this exact morphology record."
+          },
+          {
+            "axisId": "internal_structure",
+            "status": "unavailable",
+            "authority": "record_missingness_contract",
+            "detail": "No same-record nucleus, organelle, membrane, receptor, bouton or synapse geometry is admitted."
+          },
+          {
+            "axisId": "atlas_registration",
+            "status": "not_established",
+            "authority": "project_relationship_policy",
+            "detail": "The selected source record has zero admitted registrations to project anatomy."
+          },
+          {
+            "axisId": "cross_source_same_cell",
+            "status": "not_established",
+            "authority": "project_relationship_policy",
+            "detail": "No co-displayed record is asserted to be the same biological cell."
+          }
+        ]
+      }
+    }
+  },
+  "view": {
+    "status": "not_included",
+    "camera": null,
+    "clipping": null,
+    "renderedRevision": null,
+    "reason": "This export contains source-record evidence and context. The current rendered scene requires its independent actual-view receipt."
+  }
+}

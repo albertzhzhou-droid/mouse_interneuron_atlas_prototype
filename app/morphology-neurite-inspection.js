@@ -100,13 +100,13 @@ function linesForNodes(index, geometry, ids, color) {
   return lines;
 }
 
-export function createSwcSelectionOverlay(index, geometry, selection) {
+export function createSwcSelectionOverlay(index, geometry, selection, { pathColor = 0xffd166, descendantsColor = 0x6affda, markerColor = 0xffffff } = {}) {
   const group = new THREE.Group();
   group.name = `exact-swc-inspection-${selection.nodeId}`;
   group.userData = { representation: "exact_parent_path_and_descendant_edges", nodeId: selection.nodeId, registrationCount: 0, biologicalSurfaceClaim: false };
-  const ancestors = linesForNodes(index, geometry, selection.ancestorIds.slice(1), 0xffd166);
+  const ancestors = linesForNodes(index, geometry, selection.ancestorIds.slice(1), pathColor);
   ancestors.name = "selected-root-path";
-  const descendants = linesForNodes(index, geometry, selection.descendantIds, 0x6affda);
+  const descendants = linesForNodes(index, geometry, selection.descendantIds, descendantsColor);
   descendants.name = "selected-descendant-arbor";
   group.add(ancestors, descendants);
   const point = viewerPoint(geometry, selection.positionMicrometre);
@@ -115,7 +115,7 @@ export function createSwcSelectionOverlay(index, geometry, selection) {
     point.x, point.y - size, point.z, point.x, point.y + size, point.z,
     point.x, point.y, point.z - size, point.x, point.y, point.z + size];
   const marker = new THREE.LineSegments(new THREE.BufferGeometry().setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3)),
-    new THREE.LineBasicMaterial({ color: 0xffffff, depthTest: false }));
+    new THREE.LineBasicMaterial({ color: markerColor, depthTest: false }));
   marker.name = "selected-node-cross-viewer-aid";
   marker.renderOrder = 26;
   group.add(marker);
@@ -129,12 +129,22 @@ function disposeOverlay(group) {
 
 /** Installs source-node picking on an existing viewport; it owns no render loop. */
 export function attachSwcNeuriteInspection({ geometry, scene, camera, controls, canvas, contextRoot,
+  sourceTransformRoot = /** @type {import("three").Object3D | null} */ (null),
+  selectionColors = /** @type {{ pathColor?: number, descendantsColor?: number, markerColor?: number }} */ ({}),
   sourceRadiusAvailable = false, isTwoDimensional = false, onSelection = (selection) => { void selection; }, onCameraChange = () => {},
   isSourceTypeVisible = (sourceType) => Number.isInteger(sourceType) }) {
   const index = indexSwcNeurites(geometry);
   const edgeIds = [...index.nodes.values()].filter((node) => node.parentId !== -1).map((node) => node.id);
   const pickLines = linesForNodes(index, geometry, edgeIds, 0xffffff);
-  pickLines.updateMatrixWorld(true);
+  const updatePickingTransform = () => {
+    if (sourceTransformRoot) {
+      sourceTransformRoot.updateWorldMatrix(true, false);
+      pickLines.matrixAutoUpdate = false;
+      pickLines.matrix.copy(sourceTransformRoot.matrixWorld);
+    }
+    pickLines.updateMatrixWorld(true);
+  };
+  updatePickingTransform();
   let overlay = null;
   let selection = null;
   let pointerStart = null;
@@ -149,8 +159,8 @@ export function attachSwcNeuriteInspection({ geometry, scene, camera, controls, 
   const select = (nodeId) => {
     selection = inspectSwcNode(index, nodeId, { sourceRadiusAvailable });
     disposeOverlay(overlay);
-    overlay = createSwcSelectionOverlay(index, geometry, selection);
-    scene.add(overlay);
+    overlay = createSwcSelectionOverlay(index, geometry, selection, selectionColors);
+    (sourceTransformRoot ?? scene).add(overlay);
     applyDim();
     publish();
     return selection;
@@ -169,7 +179,9 @@ export function attachSwcNeuriteInspection({ geometry, scene, camera, controls, 
     if (!start || event.button !== 0 || Math.hypot(event.clientX - start[0], event.clientY - start[1]) > 5) return;
     const rect = canvas.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
+    if (sourceTransformRoot && !sourceTransformRoot.visible) return;
     camera.updateMatrixWorld(true);
+    updatePickingTransform();
     const raycaster = new THREE.Raycaster();
     raycaster.params.Line.threshold = 7 * 2 * camera.position.distanceTo(controls.target) * Math.tan(THREE.MathUtils.degToRad(camera.getEffectiveFOV()) / 2) / rect.height;
     raycaster.setFromCamera(new THREE.Vector2((event.clientX - rect.left) / rect.width * 2 - 1, -(event.clientY - rect.top) / rect.height * 2 + 1), camera);
@@ -184,6 +196,10 @@ export function attachSwcNeuriteInspection({ geometry, scene, camera, controls, 
   canvas.addEventListener("pointerup", onPointerUp);
   canvas.addEventListener("pointercancel", cancelPointer);
   return {
+    getState() {
+      if (selection && overlay?.parent !== (sourceTransformRoot ?? scene)) throw new Error("SWC inspection overlay is no longer attached to its source");
+      return { selection, dimmed: Boolean(selection && dimmed) };
+    },
     select,
     clear,
     restore(retained) {
@@ -202,7 +218,11 @@ export function attachSwcNeuriteInspection({ geometry, scene, camera, controls, 
       if (!selection) return;
       const ids = [selection.nodeId, ...selection.descendantIds];
       if (selection.parentId !== -1) ids.push(selection.parentId);
-      const box = new THREE.Box3().setFromPoints(ids.map((id) => viewerPoint(geometry, index.nodes.get(id).position)));
+      sourceTransformRoot?.updateWorldMatrix(true, false);
+      const box = new THREE.Box3().setFromPoints(ids.map((id) => {
+        const point = viewerPoint(geometry, index.nodes.get(id).position);
+        return sourceTransformRoot ? point.applyMatrix4(sourceTransformRoot.matrixWorld) : point;
+      }));
       const sphere = box.getBoundingSphere(new THREE.Sphere());
       const distance = Math.max(controls.minDistance, computePerspectiveSphereFitDistance({
         radiusViewerUnit: Math.max(sphere.radius, 0.045), verticalFovDegrees: camera.getEffectiveFOV(), aspect: camera.aspect,

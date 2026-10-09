@@ -1,0 +1,67 @@
+{
+  "scope": "Academic interface only; concurrent I51 scientific work is separately owned",
+  "productionBuild": "passed; see build-final.log",
+  "typecheck": {
+    "status": "incomplete",
+    "command": "npx tsc --noEmit",
+    "reason": "Owned process waited about 14 minutes on undici dependency-file reads without diagnostics; terminated"
+  },
+  "automatedTestSuite": "not run",
+  "browser": {
+    "viewportWidths": [
+      1440,
+      1280,
+      768,
+      390
+    ],
+    "horizontalPageOverflow": "none observed at inspected widths",
+    "keyboardTabs": "End selected Coverage, Home selected Overview",
+    "sectionNavigation": "preserves current selection and moves focus",
+    "secondaryTools": "all five retained actions visible on expansion",
+    "morphology": "NeuroMorpho 104003 observed SWC verified and visible before and after resizing / disclosure expansion",
+    "animation": "0.2s active-panel fade observed; reduced-motion override inspected in source, no runtime emulation",
+    "consoleErrorsAfterFinalReload": 0
+  },
+  "baselineAccounting": {
+    "inputs": 2388,
+    "unchanged": 2362,
+    "ownedChanged": [
+      "app/AtlasPrototype.tsx",
+      "app/ResearchDataLab.tsx",
+      "app/comparative-swc-view-replay.js",
+      "app/independent-source-object-view.js",
+      "app/janelia-wt-source-view.js",
+      "app/layout.tsx",
+      "app/main-scene-source-view.js",
+      "app/morphology-source-view.js",
+      "app/native-contour-diagnostics.js",
+      "app/native-contour-source-view.js",
+      "data/research-renderer-runtime-inputs-2.91.json",
+      "docs/UPGRADE_PLAN_2026-09-24.md",
+      "tests/janelia-wt-bounded-source-view.test.mjs",
+      "tests/morphology-source-view.test.mjs",
+      "tests/native-contour-source-view.test.mjs",
+      "tools/build_research_iteration_manifest_2_91.mjs",
+      "tools/build_research_renderer_runtime_inputs.mjs"
+    ],
+    "concurrentChanged": [
+      "app/ObservedMorphologyRouteLibrary.tsx",
+      "app/atlas-types.ts",
+      "app/main-scene-morphology-verification.js",
+      "app/research-morphology-rendering-policy.js",
+      "app/research-record-source-scope.js",
+      "tests/main-scene-morphology-verification.test.mjs",
+      "tests/rendered-html.test.mjs",
+      "tests/research-morphology-rendering-policy.test.mjs",
+      "tests/research-record-source-scope.test.mjs"
+    ],
+    "missing": [],
+    "concurrentProvenance": "I51 matching preimages examined; shared-file rollback must preserve I51 hunks"
+  },
+  "gitPush": "not performed",
+  "finalReceiptAccounting": {
+    "manifestInputs": 2401,
+    "runtimeInputs": 146,
+    "staleCurrentReceipts": []
+  }
+}

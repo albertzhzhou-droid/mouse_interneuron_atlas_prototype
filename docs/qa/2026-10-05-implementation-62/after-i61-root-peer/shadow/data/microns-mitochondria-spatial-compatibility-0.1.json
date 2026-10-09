@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "0.1.0",
+  "auditId": "microns-mitochondria-spatial-compatibility-0.1.0",
+  "scope": "One MICrONS Phase 1 visual-cortex target cell; no spinal or molecular identity join",
+  "targetCell": {
+    "rootId": "648518346349516051",
+    "segmentationRelease": "v185.4",
+    "assetManifestPath": "public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json",
+    "assetManifestSha256": "063e66321ecfcb8633dd39be0e08d467318ea276eeae0e6fef8344b313c5f2f1",
+    "componentName": "cell",
+    "coordinateFrame": "MICrONS_Phase1_aligned_EM_native",
+    "coordinateUnits": "nanometre",
+    "meshBoundsNanometre": {
+      "min": [
+        193453.140625,
+        142840.671875,
+        817.6767578125
+      ],
+      "max": [
+        382259.5,
+        241471.5,
+        86263.234375
+      ]
+    }
+  },
+  "mitochondriaLayer": {
+    "status": "official_precomputed_layer_metadata_audited",
+    "sourceRelease": "v185",
+    "precomputedLayer": "precomputed://gs://neuroglancer/pinky10/ground_truth_registration/dst/mit_new",
+    "metadataUrl": "https://storage.googleapis.com/neuroglancer/pinky10/ground_truth_registration/dst/mit_new/info",
+    "metadataByteLength": 482,
+    "metadataSha256": "e458ae905bab05a30957454eead792279a4611eb307c6c2c79e396f3a5549364",
+    "sourceMetadataRetained": false,
+    "dataType": "uint32",
+    "encoding": "raw",
+    "mesh": "mesh_mip_3_err_40",
+    "resolutionNanometre": [
+      4,
+      4,
+      40
+    ],
+    "voxelOffset": [
+      19746,
+      11753,
+      65
+    ],
+    "sizeVoxel": [
+      2560,
+      2560,
+      100
+    ],
+    "intervalConvention": "half-open voxel interval [offset, offset + size)"
+  },
+  "nominalBoundsIfDirectlyMappedToTargetFrameNanometre": {
+    "min": [
+      78984,
+      47012,
+      2600
+    ],
+    "maxExclusive": [
+      89224,
+      57252,
+      6600
+    ]
+  },
+  "coordinateCompatibility": {
+    "metadataDeclaresTargetRootMembership": false,
+    "metadataDeclaresCrossLayerTransform": false,
+    "sharedOriginAndAxisMappingVerified": false,
+    "identityMappingXOverlap": false,
+    "identityMappingYOverlap": false,
+    "identityMappingZOverlap": true,
+    "spatialOverlapUnderIdentityMapping": false,
+    "interpretation": "The published info metadata lists a bounded voxel grid but no target-root membership or cross-layer transform. Under direct use of the listed nominal resolution and offsets, its X and Y bounds do not intersect the exact target-cell mesh bounds. This blocks overlay on the documented mapping; it is not evidence that the biological cell lacks mitochondria."
+  },
+  "admission": {
+    "targetRootMembershipVerified": false,
+    "mitochondriaObjectCount": 0,
+    "importedGeometryCount": 0,
+    "registrationCount": 0,
+    "mouseSpinalIdentityJoinCount": 0,
+    "biologicalAbsenceClaim": false
+  },
+  "sources": [
+    {
+      "label": "MICrONS v185 release notes",
+      "url": "https://www.microns-explorer.org/v185-release-notes"
+    },
+    {
+      "label": "MICrONS Phase 1 dataset",
+      "url": "https://www.microns-explorer.org/phase1"
+    },
+    {
+      "label": "Exact target-cell asset manifest",
+      "url": "../public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json"
+    }
+  ]
+}

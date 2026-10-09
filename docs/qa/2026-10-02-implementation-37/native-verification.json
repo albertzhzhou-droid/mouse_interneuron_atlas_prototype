@@ -1,0 +1,174 @@
+{
+  "nativeFlowObservations": 31,
+  "passed": 31,
+  "failed": 0,
+  "results": [
+    {
+      "label": "default CiD 001",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "Next updates source/version/entry URL",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "refresh keeps exact CiD 002 with new receipt",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "exact CoBL 034 selection",
+      "result": "pass",
+      "entry": "mmc8:CoBL 034"
+    },
+    {
+      "label": "Back restores CoBL 001",
+      "result": "pass",
+      "entry": "mmc8:CoBL 001"
+    },
+    {
+      "label": "Back restores prior CiD 002",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "Forward restores CoBL 001",
+      "result": "pass",
+      "entry": "mmc8:CoBL 001"
+    },
+    {
+      "label": "JSON restore updates URL to exact CiD 001",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "changed JSON release clears image receipt downloads and share link",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "explicit default action recovers fresh verified page",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "wrong URL release refuses with no fallback entry",
+      "result": "pass",
+      "entry": ""
+    },
+    {
+      "label": "unknown URL entry refuses with no fallback",
+      "result": "pass",
+      "entry": ""
+    },
+    {
+      "label": "duplicate URL entry refuses",
+      "result": "pass",
+      "entry": ""
+    },
+    {
+      "label": "partial URL source tuple refuses",
+      "result": "pass",
+      "entry": ""
+    },
+    {
+      "label": "delayed CiD 002 pending clears previous image and exports",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "pending switch selects verified CiD 003",
+      "result": "pass",
+      "entry": "mmc7:CiD 003"
+    },
+    {
+      "label": "after old delayed response deadline CiD 003 remains current",
+      "result": "pass",
+      "entry": "mmc7:CiD 003"
+    },
+    {
+      "label": "Back to delayed CiD 002 clears current authority",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "second Back cancels pending and restores default CiD 001",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "after Back cancellation deadline default CiD 001 remains current",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "exact URL fresh reload refuses actual damaged PNG with no fallback or export",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "Enter retry preserves exact URL and restores original verified CiD 002",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "390px Enter Next retains URL and exact CiD 003",
+      "result": "pass",
+      "entry": "mmc7:CiD 003"
+    },
+    {
+      "label": "actual exact page link opens verified CiD 003",
+      "result": "pass",
+      "entry": "mmc7:CiD 003"
+    },
+    {
+      "label": "390px direct link refresh retains CiD 003",
+      "result": "pass",
+      "entry": "mmc7:CiD 003"
+    },
+    {
+      "label": "embedded source card switches to CiD 002 without changing atlas URL",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "embedded exact link opens CiD 002 in dedicated workspace",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "embedded before page selection",
+      "result": "pass",
+      "entry": "mmc7:CiD 001"
+    },
+    {
+      "label": "embedded after page selection preserves complete atlas URL",
+      "result": "pass",
+      "entry": "mmc7:CiD 002"
+    },
+    {
+      "label": "Motoneuron 139 exact entry and source-qualified link",
+      "result": "pass",
+      "entry": "mmc6:Motoneuron 139"
+    },
+    {
+      "label": "Enter Previous changes exact Motoneuron link to 138",
+      "result": "pass",
+      "entry": "mmc6:Motoneuron 138"
+    }
+  ],
+  "receiptChecks": "actual DOM receipts compared with all canonical source values, identity, rights and current PNG declarations; no imported metadata counted as byte authority",
+  "nativeDelayedTransportCases": 2,
+  "bothPendingClientsClosedBeforeDelayedDeadline": true,
+  "nativeMobilePrimaryControls44px": true,
+  "nativeMobileNoOverflow": true,
+  "rawArchivesAndMembersChecked": 6,
+  "unverified": [
+    "native file download landing",
+    "200 percent browser zoom",
+    "screen reader",
+    "3D geometry and physical cell/section mapping"
+  ]
+}

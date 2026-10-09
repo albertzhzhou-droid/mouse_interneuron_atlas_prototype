@@ -1,0 +1,63 @@
+{
+  "alerts": [],
+  "breadcrumb": "OverviewExploreCell types",
+  "firstFeature": "Chat",
+  "focus": "Compare two source RNA features",
+  "heading": "Cell-type profiles",
+  "height": 720,
+  "nav": "StartOverview3D workspaceExploreMorphologyCell typesZebrafish referencesAdditional evidenceCompare sourcesAnatomyPositionsResearchResearch explorerEvidence mapSCI conditionsEvidence coverageSourcesSource registrySource objectsSource auditsSvara catalogueSvara connectivity",
+  "pairChild": 1,
+  "pairDisclosure": true,
+  "pairExports": [],
+  "pairResult": "Chat and Pitx2 · raw count partitionsLoading and verifying both source feature counts…",
+  "pairTable": [],
+  "rnaDisclosure": true,
+  "rnaInputs": [
+    {
+      "id": "",
+      "placeholder": "e.g. Vsx2, Gaba1, dl1.1, Piezo2, GSE318731",
+      "value": ""
+    },
+    {
+      "id": "_r_b_-query",
+      "placeholder": "e.g. GATCGAGC, AC03",
+      "value": ""
+    },
+    {
+      "id": "_r_c_-find",
+      "placeholder": "e.g. Chat, Pitx2, Skor2",
+      "value": "Chat"
+    },
+    {
+      "id": "_r_k_-search",
+      "placeholder": "",
+      "value": "Pitx2"
+    }
+  ],
+  "rnaJSON": "{\n  \"schemaVersion\": \"0.1.0\",\n  \"documentType\": \"source_chol_in_rna_counts\",\n  \"source\": {\n    \"accession\": \"GSE318731\",\n    \"fileName\": \"GSE318731_P56_cholinergic_multiome.rds\",\n    \"url\": \"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE318nnn/GSE318731/suppl/GSE318731_P56_cholinergic_multiome.rds\",\n    \"bytes\": 127862795,\n    \"sha256\": \"d4ad07a1e434f2ed4553738f3e1df1b395ce81b154f974c41f3ba6a9d674aed2\",\n    \"matrixLocator\": \"assays$RNA@layers$counts\",\n    \"matrixClass\": \"dgCMatrix\",\n    \"assayClass\": \"Assay5\",\n    \"layer\": \"counts\",\n    \"dimensionNames\": \"source Assay5 cells/features LogMaps; matrix Dimnames are NULL\"\n  },\n  \"sourceAudit\": {\n    \"dimensions\": [\n      32285,\n      3199\n    ],\n    \"storedEntries\": 18787611,\n    \"storedZeros\": 0,\n    \"cellLogMap\": {\n      \"dimensions\": [\n        3199,\n        5\n      ],\n      \"layerColumn\": 3,\n      \"allNamesSha256\": \"31a25e734b3fe1010d8b38456575c533c4911874101cd5a110e7821dc1ff5ae3\",\n      \"selectedNamesSha256\": \"31a25e734b3fe1010d8b38456575c533c4911874101cd5a110e7821dc1ff5ae3\"\n    },\n    \"featureLogMap\": {\n      \"dimensions\": [\n        32285,\n        5\n      ],\n      \"layerColumn\": 3,\n      \"allNamesSha256\": \"2aeae4cd284933956242bbc9c5ab4f565c1d2acc7cc3fd3037977e4bce8be4bf\",\n      \"selectedNamesSha256\": \"2aeae4cd284933956242bbc9c5ab4f565c1d2acc7cc3fd3037977e4bce8be4bf\"\n    },\n    \"rnaCellNamesExactlyEqualMetadataRowNamesInOrder\": true,\n    \"all3199ColumnSumsMatchMetadataNCountRna\": true,\n    \"all3199DetectionCountsMatchMetadataNFeatureRna\": true,\n    \"sourceFileStableDuringExtraction\": true\n  },\n  \"scope\": {\n    \"group\": \"CHOL_IN\",\n    \"profileCount\": 11,\n    \"nucleusCount\": 923,\n    \"featureCount\": 32285,\n    \"excludedOtherCholNuclei\": 2276,\n    \"selectedCountSum\": 22637377,\n    \"selectedDetectedEntries\": 4610528,\n    \"unit\": \"source RNA counts\",\n    \"zeroMeaning\": \"Undetected in this deposited counts layer, not biological absence\",\n    \"normalization\": \"none; raw counts are sensitive to library depth\",\n    \"rnaCountsToMetadataNamedMappingVerified\": true,\n    \"rnaAtacPairingVerified\": false,\n    \"samePhysicalCellAcrossSources\": false,\n    \"markerOrDifferentialExpressionClaim\": false,\n    \"geometryClaim\": false,\n    \"lifeStage\": \"P56 source dataset context only\"\n  },\n  \"verification\": {\n    \"compressedSha256\": \"2bc6fd586ad879a8d7013f8cc44fbb6fdbea88a83b77ae07bc023c6ba9000110\",\n    \"decodedSha256\": \"f60bbd8395c10aca3a6f39ac264f38a1607286fadfe6654d4a2fa65fb147a88c\",\n    \"receivedBytes\": 33805,\n    \"decodedBytes\": 482425,\n    \"status\": \"runtime_both_sha256_verified\",\n    \"requestedUrl\": \"/data/cano_chol_rna_counts_v1/counts-093.json.gzip\",\n    \"responseUrl\": \"http://127.0.0.1:3005/data/cano_chol_rna_counts_v1/counts-093.json.gzip\",\n    \"originalRdsVerification\": \"offline_exact_source_replay_not_runtime_rds_download\"\n  },\n  \"feature\": \"Chat\",\n  \"sourceFeatureRow\": 23903,\n  \"profiles\": [\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.8b6fd1f2bb31c607fb436b0c\",\n      \"rawLabel\": \"CHOL_IN_Best3_Htr1b\",\n      \"nucleusCount\": 146,\n      \"detectedNuclei\": 105,\n      \"totalCount\": 256,\n      \"meanCount\": 1.7534246575342465,\n      \"medianCount\": 1,\n      \"maximumCount\": 11\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.524edaac18406b16aedf5e37\",\n      \"rawLabel\": \"CHOL_IN_Best3_Slc9a3\",\n      \"nucleusCount\": 119,\n      \"detectedNuclei\": 83,\n      \"totalCount\": 244,\n      \"meanCount\": 2.0504201680672267,\n      \"medianCount\": 2,\n      \"maximumCount\": 10\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.4e4b1fd7aeb305a5dd753a29\",\n      \"rawLabel\": \"CHOL_IN_Galr1_Ccdc3\",\n      \"nucleusCount\": 150,\n      \"detectedNuclei\": 126,\n      \"totalCount\": 414,\n      \"meanCount\": 2.76,\n      \"medianCount\": 2,\n      \"maximumCount\": 22\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.44c7ce79447ee67beff7b596\",\n      \"rawLabel\": \"CHOL_IN_Galr1_P2rx5\",\n      \"nucleusCount\": 66,\n      \"detectedNuclei\": 22,\n      \"totalCount\": 41,\n      \"meanCount\": 0.6212121212121212,\n      \"medianCount\": 0,\n      \"maximumCount\": 3\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.405f038f77dae0fb263c5068\",\n      \"rawLabel\": \"CHOL_IN_Galr1_Rasgrp1\",\n      \"nucleusCount\": 20,\n      \"detectedNuclei\": 17,\n      \"totalCount\": 46,\n      \"meanCount\": 2.3,\n      \"medianCount\": 2,\n      \"maximumCount\": 9\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.41e254fa9d91b750d29f8721\",\n      \"rawLabel\": \"CHOL_IN_Nr5a2_Cdh23\",\n      \"nucleusCount\": 78,\n      \"detectedNuclei\": 53,\n      \"totalCount\": 225,\n      \"meanCount\": 2.8846153846153846,\n      \"medianCount\": 2,\n      \"maximumCount\": 12\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.d24432368fea81882c069f30\",\n      \"rawLabel\": \"CHOL_IN_Nr5a2_Rxfp2\",\n      \"nucleusCount\": 82,\n      \"detectedNuclei\": 66,\n      \"totalCount\": 279,\n      \"meanCount\": 3.402439024390244,\n      \"medianCount\": 3,\n      \"maximumCount\": 12\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.87b2367a033d8fa1d419486e\",\n      \"rawLabel\": \"CHOL_IN_Pde5a_Piezo2\",\n      \"nucleusCount\": 100,\n      \"detectedNuclei\": 56,\n      \"totalCount\": 119,\n      \"meanCount\": 1.19,\n      \"medianCount\": 1,\n      \"maximumCount\": 6\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239\",\n      \"rawLabel\": \"CHOL_IN_Pitx2_ Srpx2\",\n      \"nucleusCount\": 74,\n      \"detectedNuclei\": 71,\n      \"totalCount\": 624,\n      \"meanCount\": 8.432432432432432,\n      \"medianCount\": 6.5,\n      \"maximumCount\": 24\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.5513a4214b34da63fef9c516\",\n      \"rawLabel\": \"CHOL_IN_Pitx2_Eya1\",\n      \"nucleusCount\": 35,\n      \"detectedNuclei\": 34,\n      \"totalCount\": 379,\n      \"meanCount\": 10.82857142857143,\n      \"medianCount\": 9,\n      \"maximumCount\": 46\n    },\n    {\n      \"profileId\": \"cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617\",\n      \"rawLabel\": \"CHOL_IN_Pitx2_Skor2\",\n      \"nucleusCount\": 53,\n      \"detectedNuclei\": 51,\n      \"totalCount\": 267,\n      \"meanCount\": 5.037735849056604,\n      \"medianCount\": 4,\n      \"maximumCount\": 15\n    }\n  ],\n  \"currentProfile\": {\n    \"profileId\": \"cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239\",\n    \"rawLabel\": \"CHOL_IN_Pitx2_ Srpx2\",\n    \"nucleusCount\": 74,\n    \"detectedNuclei\": 71,\n    \"totalCount\": 624,\n    \"meanCount\": 8.432432432432432,\n    \"medianCount\": 6.5,\n    \"maximumCount\": 24\n  },\n  \"selectedNucleus\": null,\n  \"summaryDenominator\": \"All deposited nuclei in each exact CHOL_IN profile, independently of roster search filters\",\n  \"bounds\": \"Raw counts without normalization, differential-expression inference, RNA/ATAC pairing, donor inference, morphology, geometry, or cross-source same-cell identity\"\n}",
+  "scrollWidth": 1280,
+  "secondFeature": "Pitx2",
+  "statuses": [
+    "cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239 selected. Its source identity is retained.",
+    "387 of 387 source records match · filtered absence is not biological absence",
+    "0 admitted cell-geometry primitivesSource-profile evidence changes this fingerprint only. It does not create a sphere, representative cell, neurite arbor, internal structure, or fallback morphology in 3D.",
+    "74 matching source-local nucleus rows / 74 in the current profile. Counts describe this source roster, not prevalence or independent animals.",
+    "1 matching source features; showing up to 15. Current feature: Chat.",
+    "1 matching source features; showing up to 15. Second feature: Pitx2.",
+    "Loading and verifying both source feature counts…"
+  ],
+  "tables": [
+    {
+      "label": "Source RNA profile count comparison",
+      "scrollLeft": 0,
+      "scrollWidth": 605,
+      "width": 543
+    }
+  ],
+  "url": "http://127.0.0.1:3005/explore/cell-types?qa=i59-proxy&focusKind=molecular_profile&focusId=cano.gomez.p56.chol_in.sha256.4e43c98832af867c05618239&typeBaseline=cano.gomez.p56.chol_in.sha256.e34a2e59ec5151d120eff617",
+  "width": 1280,
+  "toolCaptureWindowUTC": {
+    "start": "2026-10-05T06:37:02.290Z",
+    "end": "2026-10-05T06:37:02.353Z"
+  }
+}

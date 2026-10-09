@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import {readFile} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const relative='tiny-real-source.bin',absolute=resolve(relative),expected=Buffer.alloc(5001,120);
+const b=await readFile(relative);assert.deepEqual(b,expected);
+assert.equal(await readFile(pathToFileURL(absolute),'utf8'),expected.toString());
+assert.deepEqual(await fs.promises.readFile(absolute),expected);
+const first=fs.statSync(absolute,{bigint:true});
+fs.renameSync(absolute,absolute+'.preserved-first-inode');
+fs.writeFileSync(absolute,expected);
+const second=fs.statSync(absolute,{bigint:true});assert.notEqual(first.ino,second.ino);
+await assert.rejects(()=>readFile(pathToFileURL(absolute)),/Previously accepted source epoch changed/);
+console.log(JSON.stringify({status:'PASS_ACTUAL_NODE26_COPIED_PRELOADER_ON_OWN_TINY5001_BYTES_ONLY',execPath:process.execPath,node:process.version,sha256:createHash('sha256').update(b).digest('hex'),namedFsPromisesBindingWorked:true,relativeAbsoluteAndURLSharedAnchor:true,sameBytesNewInodeRefused:true,rootStageSourceOrNetworkReads:0,actualCanonicalBuilderOrValidatorExecuted:false}));

@@ -6,7 +6,6 @@ import { resolveMolecularRecordLifeStage } from "../app/research-explorer-index.
 import {
   deriveResearchSourceRegistrySummary,
   formatResearchSourceRegistrySummary,
-  formatResearchSourceRegistryTab,
 } from "../app/research-source-registry-summary.js";
 
 const researchSourceRegistry = JSON.parse(await readFile(new URL("../data/research-source-registry-0.1.json", import.meta.url), "utf8"));
@@ -27,7 +26,7 @@ async function collectUiSourceFiles(directory) {
   return files.flat();
 }
 
-async function render(path = "/") {
+async function requestPage(path) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -38,14 +37,50 @@ async function render(path = "/") {
   );
 }
 
+async function render(path = "/") {
+  let response = await requestPage(path);
+  if ([307, 308].includes(response.status)) {
+    const requested = new URL(`http://localhost${path}`);
+    assert.equal(requested.pathname, "/", "Only legacy root URLs redirect in these SSR cases");
+    const location = response.headers.get("location");
+    assert.ok(location, "Legacy navigation must disclose its destination");
+    const destination = new URL(location, requested);
+    assert.equal(destination.origin, requested.origin);
+    assert.ok(["/workspace", "/sources", "/explore/cell-types", "/explore/morphology/viewer", "/explore/anatomy", "/explore/positions", "/research/explorer", "/research/overview", "/research/sci", "/research/coverage"].includes(destination.pathname));
+    assert.deepEqual([...destination.searchParams], [...requested.searchParams], "Legacy navigation must retain every query key/value and duplicate entry");
+    response = await requestPage(destination.pathname + destination.search);
+  }
+  return response;
+}
+
+test("legacy URLs redirect to dedicated pages without changing the source selection or view", async () => {
+  const cases = [
+    ["/?lab=overview", "/research/overview"],
+    ["/?researchQuery=Vsx2", "/research/explorer"],
+    ["/?lab=types&type=russ-2021%3AExcit-36&typeCompare=russ-2021%3AExcit-36%2Csathyamurthy-2018%3ADE-12", "/explore/cell-types"],
+    ["/?lab=morphology&morphologyView=compare&morphologyCompare=109005%2C260150", "/explore/morphology/viewer"],
+    ["/?lab=types&focusKind=morphology_record&focusId=NeuroMorpho%3A109021&cellForm=109021&observedForm=1&panel=structure", "/workspace"],
+    ["/?lab=sources&source=SRC-RUSS-2021", "/sources"],
+    ["/?lab=types&type=russ-2021%3AExcit-36&note=one&note=two&empty=", "/explore/cell-types"],
+    ["/?positionFrame=normalized&positionMuscle=TA&positionSegment=L4", "/explore/positions"],
+    ["/?v=1&view=transverse&cell=mouse.v3.sim1&slice=-17&scaffold=0&gray=0&entities=0&observedForm=0&cellForm=260150&panel=benchmarks", "/workspace"],
+  ];
+  for (const [path, expectedPath] of cases) {
+    const response = await requestPage(path);
+    assert.ok([307, 308].includes(response.status), path);
+    const destination = new URL(response.headers.get("location"), "http://localhost");
+    assert.equal(destination.pathname, expectedPath, path);
+    assert.deepEqual([...destination.searchParams], [...new URL(path, "http://localhost").searchParams], path);
+  }
+});
+
 test("server-renders the mouse spinal Research MVP atlas", async () => {
-  const response = await render();
+  const response = await render("/workspace");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   const normalized = html.replaceAll("<!-- -->", "");
-  assert.match(html, /Mouse Spinal Interneuron Atlas/);
-  assert.ok(html.includes(`LOCALHOST PUBLIC-DATA RESEARCH ITERATION ${currentIteration}`));
+  assert.match(html, /<title>3D research workspace · Interneuron Atlas<\/title>/);
   assert.ok(normalized.includes(`Unpackaged research iteration ${currentIteration}`));
   assert.match(normalized, /source catalog 0\.4\.0/);
   assert.match(normalized, /7 public sources · 21 source-admission records/);
@@ -74,27 +109,86 @@ test("keeps UI source, metadata and representative SSR states English-only", asy
     assert.doesNotMatch(source, CJK_CHARACTER, `CJK UI text found in ${file.pathname}`);
   }
 
-  for (const path of ["/", "/?lab=morphology&cellForm=249676&observedForm=1&morphologyView=compare", "/?panel=gaps", "/?panel=sources", "/?panel=review", "/?panel=benchmarks"]) {
+  for (const path of ["/", "/?lab=types", "/?lab=morphology&cellForm=249676&observedForm=1&morphologyView=compare", "/?panel=structure", "/?panel=gaps", "/?panel=sources", "/?panel=review", "/?panel=benchmarks"]) {
     const response = await render(path);
     assert.equal(response.status, 200);
     const html = await response.text();
     const normalized = html.replaceAll("<!-- -->", "");
     assert.match(html, /<html lang="en">/);
-    assert.ok(html.includes(`Mouse Spinal Interneuron Atlas · Public-Data Research Iteration ${currentIteration}`));
-    assert.match(html, /A localhost evidence-linked public-data workbench for mouse spinal interneuron and SCI research across source-declared life stages\./);
+    assert.match(html, /<title>[^<]+ · Interneuron Atlas<\/title>/);
+    assert.match(html, /<meta name="description" content="[^"]+"/);
+    if (path === "/" || path.includes("panel=")) {
+      assert.match(html, /A localhost evidence-linked public-data workbench for mouse spinal interneuron and SCI research across source-declared life stages\./);
+    } else if (path === "/?lab=types") {
+      assert.match(html, /Browse source-defined profiles, marker evidence and sampling context within each study\./);
+    }
     assert.doesNotMatch(html, CJK_CHARACTER, `CJK text found in SSR output for ${path}`);
     if (path === "/?panel=gaps") {
       assert.match(html, /Highest-impact cross-lane gaps/);
       assert.match(html, /No validated Russ ↔ Sathyamurthy ↔ canonical-family mapping/);
       assert.match(html, /Zero complete axons are reported; morphology cannot establish a connectome/);
     }
+    if (path === "/?lab=types") {
+      assert.match(normalized, /<section class="trevisan-v1-source-audit"/);
+      assert.match(normalized, /What the current source inputs establish/);
+      assert.match(normalized, /Data_raw_Merged\.rds \+ Cells_pos\.csv/);
+      assert.match(normalized, /age.*replicate.*region.*seurat_clusters/s);
+      assert.match(normalized, /All 29 GEO sample characteristics have been checked from the original source fields/);
+      assert.match(normalized, /Four workbook sheets, 29 original barcode files and one representative matrix were checked as inputs/);
+      assert.match(normalized, /no cluster-label column is supplied; the per-nucleus mapping remains held/);
+      assert.match(normalized, /Earlier source-availability audit/);
+      assert.match(normalized, /outs\/filtered_feature_bc_matrix/);
+      assert.match(normalized, /No cell form or internal detail admitted/);
+      assert.match(normalized, /GEO SAMPLE ROSTER · SAMPLE-LEVEL ONLY/);
+      assert.match(normalized, /29<\/strong> GEO sample records listed/);
+      assert.match(normalized, /24<\/strong> titles fit the expected postnatal pattern/);
+      assert.match(normalized, /GSM8480605 · E135HetR1/);
+      assert.match(normalized, /Whole cord/);
+      assert.match(normalized, /All 13,241,486 sparse entries passed structural checks across 32,285 features and 8,000 native columns/);
+      assert.match(normalized, /This proves input structure; its final-figure biological mapping remains conflicted/);
+      assert.match(normalized, /no runtime nucleus roster, exact cluster assignment or per-animal identity/);
+      assert.doesNotMatch(normalized, /No matrix payload was downloaded or checksummed/);
+    }
+    if (path === "/?panel=structure") {
+      const activeDetailStart = normalized.indexOf('<section class="exact-record-detail-coverage"');
+      const independentLibraryStart = normalized.indexOf('<details class="independent-reference-library">');
+      assert.ok(activeDetailStart >= 0 && independentLibraryStart > activeDetailStart, "exact active-record detail must precede independent source references");
+      assert.match(normalized.slice(independentLibraryStart), /<strong>Independent reference library<\/strong>[\s\S]*?NOT LINKED TO THE ACTIVE RECORD/);
+      assert.doesNotMatch(normalized.slice(independentLibraryStart, independentLibraryStart + 180), /<details class="independent-reference-library" open/);
+      assert.match(normalized.slice(independentLibraryStart), /UPG-239 · OPEN 2D ULTRASTRUCTURE REFERENCE/);
+      assert.match(normalized.slice(independentLibraryStart), /UPG-248 · SOURCE-LOCAL COMPARATIVE GEOMETRY/);
+      assert.match(normalized, /UPG-239 · OPEN 2D ULTRASTRUCTURE REFERENCE/);
+      assert.match(normalized, /Axonal organelles and periaxonal labels · not a selected-cell model/);
+      assert.match(normalized, /540 IMAGE \/ MASK ROWS/);
+      assert.match(normalized, /No cell, animal, serial-section, or interneuron identity is exposed/);
+      assert.match(normalized, /Axon and myelin masks in the documented pipeline come from a separate segmentation tool/);
+      assert.match(normalized, /<details[^>]*class="microstructformer-reference-card"/);
+      assert.match(normalized, /UPG-240 · COMPARATIVE SPINAL SBEM · LARVAL ZEBRAFISH/);
+      assert.match(normalized, /Source-reported CiD \/ CoBL circuit · not mouse-cell geometry/);
+      assert.match(normalized, /74 × 74 × 207 μm/);
+      assert.match(normalized, /39 cells with morphology consistent with CiD among 170 completely traced cells/);
+      assert.match(normalized, /1-s2\.0-S2211124718307563-mmc6\.zip/);
+      assert.match(normalized, /Published archive sizes and MD5 checksums match/);
+      assert.match(normalized, /All 212 pages were inspected for native labels and source-reported values/);
+      assert.match(normalized, /explicit publisher supplementary-data policy support these three catalogue references/);
+      assert.match(normalized, /does not establish reuse rights for separate repositories or the Koh annotation version/);
+      assert.match(normalized, /href="https:\/\/pure\.mpg\.de\/rest\/items\/item_3055210_7\/component\/file_3055230\/content"/);
+      assert.match(normalized, /UPG-214 · SOURCE-ONLY PALM OBSERVATION/);
+      assert.match(normalized, /independent of selected cell/);
+      assert.match(normalized, /physical calibration is unavailable here/);
+      assert.match(normalized, /18,358 XY RECORDS/);
+    }
     if (path === "/?lab=morphology&cellForm=249676&observedForm=1&morphologyView=compare") {
-      assert.match(normalized, /UPG-213 · SOURCE-LOCAL MOUSE SPINAL MICRODETAIL/);
-      assert.match(normalized, /One recorded inhibitory interneuron, shown from morphology to ultrastructure/);
-      assert.match(normalized, /Source caption links panel d to panels e–g only/);
-      assert.match(normalized, /Figure 1 reproduced unchanged under CC BY 4\.0/);
-      assert.match(normalized, /0 segmentations · 0 meshes · 0 source z-coordinates · 0 active-record joins · 0 atlas registrations/);
-      assert.match(normalized, /Figure 1: panels a to d show black dendritic trees and red axonal arbors/);
+      const compareResponse = await render("/explore/morphology/viewer?morphologyView=compare&morphologyCompare=109005%2C260150");
+      assert.equal(compareResponse.status, 200);
+      const microdetail = (await compareResponse.text()).replaceAll("<!-- -->", "");
+      assert.doesNotMatch(microdetail, CJK_CHARACTER);
+      assert.match(microdetail, /UPG-213 · SOURCE-LOCAL MOUSE SPINAL MICRODETAIL/);
+      assert.match(microdetail, /One recorded inhibitory interneuron, shown from morphology to ultrastructure/);
+      assert.match(microdetail, /Source caption links panel d to panels e–g only/);
+      assert.match(microdetail, /Figure 1 reproduced unchanged under CC BY 4\.0/);
+      assert.match(microdetail, /0 segmentations · 0 meshes · 0 source z-coordinates · 0 active-record joins · 0 atlas registrations/);
+      assert.match(microdetail, /Figure 1: panels a to d show black dendritic trees and red axonal arbors/);
     }
     if (path === "/?panel=sources") {
       assert.match(html, /Public-data-only policy/);
@@ -137,35 +231,51 @@ test("keeps UI source, metadata and representative SSR states English-only", asy
   }
 });
 
-test("makes the research overview the first/default information experience", async () => {
-  const response = await render();
+test("the default overview opens dedicated research pages and preserves source identity boundaries", async () => {
+  const response = await render("/");
   assert.equal(response.status, 200);
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
-  assert.match(normalized, /Research atlas/);
+  assert.match(normalized, /<title>Overview · Interneuron Atlas<\/title>/);
+  assert.match(normalized, /A source-grounded view<\/br>|A source-grounded view<br\/>of spinal interneurons\./);
+  for (const path of ["/research/explorer", "/research/overview", "/explore/morphology", "/explore/morphology/viewer", "/explore/cell-types", "/explore/cell-types/compare", "/research/sci", "/explore/anatomy", "/explore/positions", "/workspace", "/objects", "/sources"]) {
+    assert.ok(normalized.includes(`href="${path}"`), `The overview must reach ${path}`);
+  }
+  assert.match(normalized, /Each source retains its own identities and coordinate system/);
+  assert.match(normalized, /Shared labels do not establish the same cell or a spatial registration/);
+  assert.doesNotMatch(normalized, /id="sci-evidence-workspace"/);
+});
+
+test("retains the complete research evidence map on its dedicated route", async () => {
+  const response = await render("/research/overview");
+  assert.equal(response.status, 200);
+  const normalized = (await response.text()).replaceAll("<!-- -->", "");
   assert.match(normalized, /Interneuron Research Explorer/);
   assert.match(normalized, /Search 641 cross-lane source records by label, marker, DOI, PMID or accession/);
-  assert.match(normalized, /387 source profiles · 149 frozen cross-lane morphologies · 73 anatomy labels · 17 SCI populations · 7 SCI entities · 8 source lanes · separate exact morphology universe 1,097/);
+  assert.match(normalized, /387 source profiles · 149 source-local morphologies · 73 anatomy labels · 17 SCI populations · 7 SCI entities · 8 source lanes · separate frozen morphology universe 1,097/);
   assert.match(normalized, /157 Roome embryonic refined dIL aggregates, 51 Delile E9\.5–E13\.5 fine-subtype aggregates/);
-  assert.match(normalized, /membership-aware comparison over 142 census plus seven supplementary exact routes/);
+  assert.match(normalized, /All 142 census records now have distinct main-scene selections \(140 source-labelled 3D and 2 planar inputs\), alongside 39 supplementary exact routes/);
   assert.match(normalized, /aria-label="Start exploring"/);
   assert.match(normalized, /Explore a reconstructed neuron/);
   assert.match(normalized, /Find a molecular profile/);
   assert.match(normalized, /Explore SCI study conditions/);
   assert.match(normalized, /What the current model can answer/);
   assert.ok(normalized.includes(formatResearchSourceRegistrySummary(researchSourceRegistrySummary)));
-  assert.match(normalized, /387 source profiles · 10 studies/);
+  assert.match(normalized, /387 source profiles · 10 studies · separate fish comparison/);
   assert.match(normalized, /17 populations · 5 conditions · 15 cords/);
   assert.match(normalized, /<strong>1,097 exact SWCs · frozen adult subset 142<\/strong>/);
   assert.match(normalized, /checksum-gated browser over all 1,097 no-age-query source objects/);
-  assert.match(normalized, /Seven exact records now expose 72 checksum-gated source-native soma-contour LineLoops \/ 5,149 vertices/);
-  assert.match(normalized, /NMO_108978 \(12 loops \/ 2,614 vertices\) and NMO_249676 \(12 \/ 156\) in their independent source-native frames/);
+  assert.match(normalized, /\d+ exact records expose \d+ checksum-gated source-native soma-contour LineLoops \/ [\d,]+ vertices/);
+  assert.match(normalized, /NMO_108978 \(12 loops \/ 2,614 vertices\) and NMO_249676 \(12 \/ 156\) have their own source-native frames/);
   assert.match(normalized, /NMO_50424 = 8 \/ 427, NMO_50394 = 14 \/ 768 and NMO_50408 = 11 \/ 709/);
   assert.match(normalized, /raw sourceClosedFlag=false is preserved/);
   assert.match(normalized, /User Line 1–4 remain excluded/);
   assert.match(normalized, /<strong>Internal-detail evidence gate · UPG-118–136:<\/strong>/);
   assert.match(normalized, /no admitted open source currently provides same-cell EM or organelle segmentation for <code>mouse\.sc\.vsx2_hoxa10<\/code>/);
   assert.match(normalized, /No molecular population, SCI time-course population, morphology or causal SCI evidence entity is registered/);
-  assert.ok(normalized.indexOf("Research atlas") < normalized.indexOf("id=\"sci-evidence-workspace\""), "research overview should precede the 3D evidence workspace");
+  assert.doesNotMatch(normalized, /id="sci-evidence-workspace"/, "The complete evidence map has its own route");
+  assert.match(normalized, /30 stable IDs reviewed; full query delta remains open/);
+  assert.match(normalized, /309 \+ 30 = 339 arithmetic match does not prove a complete current roster/);
+  assert.match(normalized, /NMO_322379 · AT_11-05-21A_s6_NTS_cell_1/);
 });
 
 test("server-renders the canonical source registry with lane-scoped filters and record granularity", async () => {
@@ -173,7 +283,8 @@ test("server-renders the canonical source registry with lane-scoped filters and 
   assert.equal(response.status, 200);
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
   assert.match(normalized, /Research source registry/);
-  assert.ok(normalized.includes(formatResearchSourceRegistryTab(researchSourceRegistrySummary)));
+  assert.match(normalized, /data-collection-page="sources"/);
+  assert.match(normalized, /<h1[^>]*>Source registry<\/h1>/);
   assert.match(normalized, /canonical source packages/);
   assert.match(normalized, /legacy aliases resolved/);
   assert.match(normalized, /All source-declared species/);
@@ -194,7 +305,7 @@ test("server-renders the exact early-postnatal Ronzano point lane without cell o
   const response = await render("/?lab=positions&positionFrame=normalized&positionMuscle=TA&positionSegment=L4");
   assert.equal(response.status, 200);
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
-  assert.match(normalized, /Positions · 22 exact XYZ workbooks/);
+  assert.match(normalized, /<h1[^>]*>Premotor positions<\/h1>/);
   assert.match(normalized, /UPG-114 · PHASE A · EXACT SOURCE COORDINATE ROWS/);
   assert.match(normalized, /Lumbar premotor position atlas/);
   assert.match(normalized, /Every visible mark is one exact numeric XYZ row from a checksum-pinned Ronzano et al\. eLife source workbook/);
@@ -219,7 +330,13 @@ test("server-renders the exact MICrONS cell+nucleus reference with hard cross-re
   assert.match(normalized, /372,382 vertices · 704,444 triangles/);
   assert.match(normalized, /12,682 vertices · 23,344 triangles/);
   assert.match(normalized, /Segmentation surface ≠ membrane measurement/);
-  assert.match(normalized, /No mitochondria, synapses, ER, Golgi, receptors, other organelles, spinal identity or molecular subtype are admitted/);
+  assert.match(normalized, /Subcellular data routes/);
+  assert.match(normalized, /NO PROOFREAD CONTACT OVERLAY/);
+  assert.match(normalized, /Version gap: 185\.3 table vs\. v185\.4 mesh/);
+  assert.match(normalized, /SPATIAL NO-GO FOR THIS ROOT/);
+  assert.match(normalized, /X: no · Y: no · Z: yes/);
+  assert.match(normalized, /nominal-grid mismatch blocks this layer.*not evidence of biological absence.*Zero mitochondria, registration or additional 3D objects are admitted/);
+  assert.match(normalized, /ground_truth_registration\/dst\/mit_new/);
   assert.match(normalized, /False · co-display only · 0 joins/);
 });
 
@@ -230,22 +347,27 @@ test("server rendering keeps NMO 109021 geometry closed until the shared active 
   assert.match(morphology, /0 admitted main-scene geometry/);
   assert.doesNotMatch(morphology, /Source-local cell detail · NMO 109021/);
   assert.match(morphology, /Independent adult-mouse GRP dorsal-horn observed morphology/);
-  assert.match(morphology, /2,790 \/ 2,789/);
+  const libraryResponse = await render("/explore/morphology?focusKind=morphology_record&focusId=NeuroMorpho:109021");
+  assert.equal(libraryResponse.status, 200);
+  const library = (await libraryResponse.text()).replaceAll("<!-- -->", "");
+  assert.match(library, /Independent adult-mouse GRP dorsal-horn observed morphology/);
+  assert.match(library, /2,790 \/ 2,789/);
 
   const internalResponse = await render("/?focusKind=morphology_record&focusId=NeuroMorpho:109021&cellForm=109021&observedForm=1&cellFidelity=surface&view=internal_reference&panel=structure");
   assert.equal(internalResponse.status, 200);
   const internal = (await internalResponse.text()).replaceAll("<!-- -->", "");
   assert.match(internal, /Object-level compartment evidence audit/);
-  assert.match(internal, /0 same-record internal primitives · 5 vocabulary classes remain UNAVAILABLE/);
+  assert.match(internal, /Exact record is being verified · previous geometry receipt hidden/);
+  assert.match(internal, /exact-record-detail-coverage/);
   assert.match(internal, /0 rendered primitives · 0 source meshes · 0 joins · 0 REG/);
   assert.match(internal, /Compartment evidence audit/);
   assert.match(internal, /Cross-region internal object-geometry audit/);
   assert.match(internal, /zero primitives/);
 });
 
-test("server-renders ten exact spinal route records while active geometry remains client-verification gated", async () => {
-  const [libraryResponse, grprResponse, pvResponse, pdynResponse, renshawResponse, npyResponse, nnosPrpResponse, galaninPrpResponse, premotorResponse] = await Promise.all([
-    render("/?lab=morphology&cellForm=249676&observedForm=1&view=cell_detail"),
+test("server-renders named spinal routes and the broader selectable census while geometry remains verification gated", async () => {
+  const [libraryResponse, grprResponse, pvResponse, pdynResponse, renshawResponse, npyResponse, nnosPrpResponse, galaninPrpResponse, premotorResponse, nmo108978Response, planarCensusResponse, toddNoDiameterResponse, toddDiameterResponse] = await Promise.all([
+    render("/explore/morphology/viewer?focusKind=morphology_record&focusId=NeuroMorpho:249676"),
     render("/?cellForm=249676&observedForm=1&cellFidelity=surface&view=cell_detail"),
     render("/?cellForm=170035&observedForm=1&cellFidelity=surface&view=cell_detail"),
     render("/?cellForm=104003&observedForm=1&view=cell_detail"),
@@ -254,18 +376,30 @@ test("server-renders ten exact spinal route records while active geometry remain
     render("/?cellForm=50394&observedForm=1&cellFidelity=surface&view=cell_detail"),
     render("/?cellForm=50408&observedForm=1&cellFidelity=surface&view=cell_detail"),
     render("/?cellForm=45718&observedForm=1&cellFidelity=surface&view=cell_detail"),
+    render("/?lab=morphology&cellForm=108978&observedForm=1&cellFidelity=surface&view=cell_detail"),
+    render("/?lab=morphology&cellForm=194468&observedForm=1&cellFidelity=surface&view=cell_detail"),
+    render("/?lab=morphology&cellForm=322379&observedForm=1&view=cell_detail"),
+    render("/?lab=morphology&cellForm=322382&observedForm=1&cellFidelity=surface&view=cell_detail"),
   ]);
-  for (const response of [libraryResponse, grprResponse, pvResponse, pdynResponse, renshawResponse, npyResponse, nnosPrpResponse, galaninPrpResponse, premotorResponse]) assert.equal(response.status, 200);
+  for (const response of [libraryResponse, grprResponse, pvResponse, pdynResponse, renshawResponse, npyResponse, nnosPrpResponse, galaninPrpResponse, premotorResponse, nmo108978Response, planarCensusResponse, toddNoDiameterResponse, toddDiameterResponse]) assert.equal(response.status, 200);
 
-  const library = (await libraryResponse.text()).replaceAll("<!-- -->", "");
-  assert.match(library, /Morphology · 1,097 exact source objects/);
-  assert.match(library, /Exact universe · 1,097 source objects/);
-  assert.match(library, /Frozen adult subset · 142 exact SWCs/);
+  const viewer = (await libraryResponse.text()).replaceAll("<!-- -->", "");
+  assert.match(viewer, /data-collection-page="morphology-viewer"/);
+  const libraryResponses = await Promise.all([109021, 249676, 170035, 104003, 45674, 50424, 50394, 50408, 45718, 194468, 194469, 108978].map(neuronId => render(`/explore/morphology?focusKind=morphology_record&focusId=NeuroMorpho:${neuronId}`)));
+  for (const response of libraryResponses) assert.equal(response.status, 200);
+  const library = (await Promise.all(libraryResponses.map(response => response.text()))).join("\n").replaceAll("<!-- -->", "");
+  assert.match(library, /data-collection-page="morphology"/);
+  assert.match(viewer, /Exact universe · 1,097 source objects/);
+  assert.match(viewer, /Frozen adult subset · 142 records \(140 3D · 2 planar\)/);
   assert.doesNotMatch(library, /Morphology · 142 census · 9 separate exact routes/);
   assert.match(library, /Observed morphology route library/);
-  assert.match(library, /10<\/strong> named routes/);
-  assert.match(library, /13<\/strong> unique main-scene forms/);
-  assert.match(library, /7<\/strong> supplementary comparator objects/);
+  assert.match(library, /45<\/strong> named routes/);
+  assert.match(library, /Lamina X · treadmill-training · exact 2D source plane/);
+  assert.match(library, /Lamina X · control · exact 2D source plane/);
+  assert.match(library, /Reported · no 3D surface/);
+  assert.match(library, /age 42–45 days/);
+  assert.match(library, /181<\/strong> selectable main-scene forms/);
+  assert.match(library, /39<\/strong> supplementary comparator objects/);
   assert.match(library, /The four-record dorsal-horn subtype pack reuses 2 frozen records and adds 2 supplementary exact objects/);
   assert.match(library, /The Renshaw\/NPY functional-class pack adds 2, the nNOS\/galanin PrP-reporter pack adds 2, and the independent premotor comparison pack adds 1; none expands the census/);
   assert.match(library, /GRPRCreERT2-captured excitatory lamina I-II interneuron/);
@@ -287,6 +421,40 @@ test("server-renders ten exact spinal route records while active geometry remain
   assert.match(library, /0 exact physiology joins/);
   assert.match(library, /0 internal primitives/);
 
+  const planarCensus = (await planarCensusResponse.text()).replaceAll("<!-- -->", "");
+  assert.match(planarCensus, /Verifying exact NeuroMorpho 194468 geometry bytes/);
+  assert.match(planarCensus, /data-morphology-fidelity-mode="observed_swc"/);
+  assert.match(planarCensus, /142 census records \(140 source-labelled 3D \+ 2 source-labelled 2D\)/);
+
+  const nmo108978 = (await nmo108978Response.text()).replaceAll("<!-- -->", "");
+  assert.match(library, /NMO 108978 · CENSUS CHILD/);
+  assert.match(nmo108978, /Verifying exact NeuroMorpho 108978 geometry bytes/);
+  assert.match(library, /no one-to-one vertex correspondence or coordinate transform/i);
+  assert.match(library, /Source-native Neurolucida DAT contours remain in the original file frame/);
+  assert.match(library, /standardized SWC frame is separately rendered with no overlay or registration/i);
+  assert.match(library, /render zero internal primitives/i);
+
+  const toddNoDiameterWorkspace = (await toddNoDiameterResponse.text()).replaceAll("<!-- -->", "");
+  const toddDiameterWorkspace = (await toddDiameterResponse.text()).replaceAll("<!-- -->", "");
+  for (const [html, id] of [[toddNoDiameterWorkspace, 322379], [toddDiameterWorkspace, 322382]]) {
+    assert.match(html, new RegExp(`Verifying exact NeuroMorpho ${id} geometry bytes`));
+    assert.doesNotMatch(html, /Source-local cell detail · NMO/);
+  }
+  const [toddNoDiameterLibrary, toddDiameterLibrary] = await Promise.all([322379, 322382].map(id => render(`/explore/morphology?focusKind=morphology_record&focusId=NeuroMorpho:${id}`)));
+  assert.equal(toddNoDiameterLibrary.status, 200);
+  assert.equal(toddDiameterLibrary.status, 200);
+  const toddNoDiameter = (await toddNoDiameterLibrary.text()).replaceAll("<!-- -->", "");
+  const toddDiameter = (await toddDiameterLibrary.text()).replaceAll("<!-- -->", "");
+  assert.match(toddNoDiameter, /NeuroMorpho 322379/);
+  assert.match(toddNoDiameter, /Repository cell labels/);
+  assert.match(toddNoDiameter, /Neurotensin-expressing\*/);
+  assert.match(toddNoDiameter, /No Diameter, 3D, Angles/);
+  assert.match(toddNoDiameter, /Primary paper citation unresolved/);
+  assert.match(toddDiameter, /NeuroMorpho 322382/);
+  assert.match(toddDiameter, /Diameter, 3D, Angles/);
+  assert.match(toddDiameter, /Candidate related study ↗/);
+  assert.match(toddDiameter, /record mapping unverified/);
+
   for (const response of [grprResponse, pvResponse, pdynResponse, renshawResponse, npyResponse, nnosPrpResponse, galaninPrpResponse, premotorResponse]) {
     const record = (await response.text()).replaceAll("<!-- -->", "");
     assert.match(record, /0 admitted main-scene geometry/);
@@ -300,27 +468,29 @@ test("server-renders one canonical research focus into the matching controlled l
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
   assert.match(normalized, /data-focus-kind="molecular_profile"/);
   assert.match(normalized, /data-focus-id="russ-2021:Excit-36"/);
-  assert.match(normalized, /data-active-lab="types"/);
-  assert.match(normalized, /data-canonical-focus-lab="types"/);
-  assert.match(normalized, /data-focus-lab-state="aligned"/);
-  assert.match(normalized, /data-record-status="verifying"/);
-  assert.match(normalized, /molecular_profile:russ-2021:Excit-36/);
+  assert.match(normalized, /data-collection-page="cell-types"/);
+  assert.match(normalized, /data-record-id="russ-2021:Excit-36"/);
+  assert.match(normalized, /0 admitted cell-geometry primitives/);
+  const workspaceResponse = await render("/workspace?focusKind=molecular_profile&focusId=russ-2021%3AExcit-36");
+  assert.equal(workspaceResponse.status, 200);
+  const workspace = (await workspaceResponse.text()).replaceAll("<!-- -->", "");
+  assert.match(workspace, /data-record-status="verifying"/);
+  assert.match(workspace, /molecular_profile:russ-2021:Excit-36/);
+  assert.match(workspace, /Prior record content and cell geometry are not retained during the switch/);
   assert.doesNotMatch(normalized, /No evidence entity selected/);
   assert.match(normalized, /Vsx2 · Sox14 · Shox2/);
   assert.match(normalized, /Source-local interneuron or projection-neuron candidate/);
 });
 
-test("a morphology focus overrides a stale requested type lab and receives a record-aware evidence rail", async () => {
+test("a morphology workspace URL retains its canonical focus and record-aware evidence rail despite a stale type lab", async () => {
   const response = await render("/?lab=types&panel=evidence&focusKind=morphology_record&focusId=NeuroMorpho%3A109021&cellForm=109021&observedForm=1&cellFidelity=surface");
   assert.equal(response.status, 200);
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
   assert.match(normalized, /data-focus-kind="morphology_record"/);
   assert.match(normalized, /data-focus-id="NeuroMorpho:109021"/);
-  assert.match(normalized, /data-active-lab="morphology"/);
-  assert.match(normalized, /data-canonical-focus-lab="morphology"/);
-  assert.match(normalized, /data-focus-lab-state="aligned"/);
   assert.match(normalized, /data-record-status="verifying"/);
   assert.match(normalized, /morphology_record:NeuroMorpho:109021/);
+  assert.match(normalized, /0 admitted main-scene geometry/);
   assert.doesNotMatch(normalized, /No evidence entity selected/);
 });
 
@@ -328,7 +498,7 @@ test("server-renders the source-local Matson SCI time course with exact replicat
   const response = await render("/?lab=sci&focusKind=sci_population&focusId=matson-2022%3AGSE172167%3APdyn_Neurons&sciTime=3wpi");
   assert.equal(response.status, 200);
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
-  assert.match(normalized, /SCI states · 17 populations \/ 5 conditions/);
+  assert.match(normalized, /<h1[^>]*>SCI study conditions<\/h1>/);
   assert.match(normalized, /Lumbar neuronal states after T9 contusion/);
   assert.match(normalized, /15 independent cords/);
   assert.match(normalized, /23,651/);
@@ -362,6 +532,10 @@ test("server-renders a URL-addressed type dossier and non-pooled comparison", as
   assert.match(normalized, /24 GEO accessions are not replicates/);
   assert.match(normalized, /4,280/);
   assert.match(normalized, /DE-12/);
+  assert.match(normalized, /Publication-level morphology coverage · DE-12/);
+  assert.match(normalized, /10\.1016\/j\.celrep\.2018\.02\.003/);
+  assert.match(normalized, /this publication DOI matches 0 morphology records/);
+  assert.match(normalized, /not subtype, specimen, or same-cell evidence/);
   assert.match(normalized, /Grpr · Col5a2 · Atp2b4/);
   assert.match(normalized, /DE12/);
   assert.match(normalized, /74 nuclei/);
@@ -396,8 +570,8 @@ test("server-renders an evidence-bounded Hayashi P0 V2a dossier", async () => {
 
 test("switching Dmrt3 M1 and M4 changes the evidence fingerprint while same-record internal geometry stays empty", async () => {
   const [m1Response, m4Response] = await Promise.all([
-    render("/?lab=types&view=internal_reference&panel=structure&focusKind=molecular_profile&focusId=iglesias-gonzalez-2021%3Agse185731%3Ammusculus%3Am1"),
-    render("/?lab=types&view=internal_reference&panel=structure&focusKind=molecular_profile&focusId=iglesias-gonzalez-2021%3Agse185731%3Ammusculus%3Am4"),
+    render("/explore/cell-types?focusKind=molecular_profile&focusId=iglesias-gonzalez-2021%3Agse185731%3Ammusculus%3Am1"),
+    render("/explore/cell-types?focusKind=molecular_profile&focusId=iglesias-gonzalez-2021%3Agse185731%3Ammusculus%3Am4"),
   ]);
   assert.equal(m1Response.status, 200);
   assert.equal(m4Response.status, 200);
@@ -416,10 +590,13 @@ test("switching Dmrt3 M1 and M4 changes the evidence fingerprint while same-reco
   assert.doesNotMatch(m4Fingerprint, /Zfhx3 · Meis2 · Zfhx4/);
   assert.notEqual(m1Fingerprint, m4Fingerprint);
 
-  for (const [html, id] of [[m1Html, "m1"], [m4Html, "m4"]]) {
+  for (const id of ["m1", "m4"]) {
+    const response = await render(`/workspace?view=internal_reference&panel=structure&focusKind=molecular_profile&focusId=iglesias-gonzalez-2021%3Agse185731%3Ammusculus%3A${id}`);
+    assert.equal(response.status, 200);
+    const html = (await response.text()).replaceAll("<!-- -->", "");
     assert.match(html, new RegExp(`data-focus-kind="molecular_profile" data-focus-id="iglesias-gonzalez-2021:gse185731:mmusculus:${id}"`));
-    assert.match(html, /0 same-record internal primitives · 5 vocabulary classes remain UNAVAILABLE/);
-    assert.match(html, /Switching records updates the evidence fingerprint, while this same-record internal scene correctly stays empty/);
+    assert.match(html, /Exact record is being verified · previous geometry receipt hidden/);
+    assert.match(html, /data-status="verifying"/);
     assert.doesNotMatch(html, /SCI SYN DATA ANCHORS/);
   }
   for (const fingerprint of [m1Fingerprint, m4Fingerprint]) {
@@ -475,8 +652,19 @@ test("server-renders the PKD2L1 functional profile with observed electrophysiolo
   assert.match(normalized, /Firing-Inference-P-Value/);
   assert.match(normalized, /1,848,613 bytes · CC BY 4\.0/);
   assert.match(normalized, /0 admitted cell-geometry primitives/);
-  assert.match(normalized, /class="research-record-model-readout loading" role="status" data-focus-kind="molecular_profile" data-focus-id="crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn"/);
-  assert.match(normalized, /Prior record content and cell geometry are not retained during the switch/);
+  assert.match(normalized, /INDEPENDENT STUDY · POPULATION SUMMARY · NOT A CELL RECONSTRUCTION/);
+  assert.match(normalized, /18 mice/);
+  assert.match(normalized, /811 sections · ages 3 and 8 weeks/);
+  assert.match(normalized, /Table 5 · mean ± standard deviation \[minimum; maximum\]/);
+  assert.match(normalized, /94\.51 ± 53\.17 µm/);
+  assert.match(normalized, /The 811 sections are nested within 18 mice, not 811 independent animals/);
+  assert.match(normalized, /no per-cell coordinates, cell shape, internal structure or 3D geometry/);
+  assert.match(normalized, /This is not a public repository deposit/);
+  const workspaceResponse = await render("/workspace?focusKind=molecular_profile&focusId=crozat-2025%3Afigshare-29430869-v2%3Apkd2l1-csf-cn");
+  assert.equal(workspaceResponse.status, 200);
+  const workspace = (await workspaceResponse.text()).replaceAll("<!-- -->", "");
+  assert.match(workspace, /class="research-record-model-readout loading" role="status" data-focus-kind="molecular_profile" data-focus-id="crozat-2025:figshare-29430869-v2:pkd2l1-csf-cn"/);
+  assert.match(workspace, /Prior record content and cell geometry are not retained during the switch/);
   assert.match(normalized, /This is one source-local marker-defined population/);
   assert.doesNotMatch(normalized, /representative PKD2L1 cell/);
 });
@@ -512,7 +700,10 @@ test("server-renders visibly distinct I1 and I2 evidence fingerprints with zero 
     assert.doesNotMatch(fingerprint, /\b(?:not_established|cellCoordinates|atlasRegistration|source_local|TYPE_LEVEL)\b/);
   }
 
-  const populationButtons = i1Html.match(/<button[^>]*class="population-card[^"]*"[^>]*>/g) ?? [];
+  const workspaceResponse = await render("/workspace?focusKind=molecular_profile&focusId=alkaslasi-2021%3AGSE167597%3AI1");
+  assert.equal(workspaceResponse.status, 200);
+  const workspace = (await workspaceResponse.text()).replaceAll("<!-- -->", "");
+  const populationButtons = workspace.match(/<button[^>]*class="population-card[^"]*"[^>]*>/g) ?? [];
   assert.equal(populationButtons.length, 7);
   assert.equal(populationButtons.filter((button) => /aria-pressed="true"/.test(button)).length, 0);
   assert.equal(populationButtons.filter((button) => /tabindex="0"/.test(button)).length, 1);
@@ -594,7 +785,7 @@ test("server-renders the anatomy lane with a fail-closed native-volume control",
   const response = await render("/?lab=atlas");
   assert.equal(response.status, 200);
   const normalized = (await response.text()).replaceAll("<!-- -->", "");
-  assert.match(normalized, /Atlas · 38 planes \/ 73 direct labels/);
+  assert.match(normalized, /<h1[^>]*>Reference anatomy<\/h1>/);
   assert.match(normalized, /Full-volume surface target · one exact source label at a time/);
   assert.match(normalized, /Study regions · 37/);
   assert.match(normalized, /Structural landmarks · 3/);
@@ -694,7 +885,7 @@ test("server-renders the 142-object matrix and bounded 3D comparison research vi
   assert.match(superClem, /aria-label="Select serial electron-microscopy section"/);
   assert.match(superClem, /setSectionIndex/);
   assert.match(superClemContract, /3583cf15007c2c5e62196f2a2fcb8e7393433b6d094688cbc17112ae870e2c1c/);
-  assert.match(viewer, /Morphology matrix · 142 exact SWCs/);
+  assert.match(viewer, /Morphology matrix · 142 records \(140 3D · 2 planar\)/);
   assert.match(viewer, /3D comparator · \{comparisonIds\.length\} selected \/ \{comparisonRecords\.length\} indexed/);
   assert.match(matrix, /PAGE_SIZE = 12/);
   assert.match(matrix, /OBSERVED CENTERLINES ONLY/);
@@ -907,7 +1098,8 @@ test("includes Research MVP export, keyboard, fallback and performance contracts
   assert.match(prototype, /runtimeReceipt: guardedMorphologyRuntime/);
   assert.match(prototype, /morphologyRuntimeVerificationStatus/);
   assert.match(scene, /morphologyFidelityContract\.sourceObjects\.censusIndex\.sha256/);
-  assert.match(scene, /sha256Hex/);
+  assert.match(scene, /readVerifiedMainSceneAuxiliary/);
+  assert.match(scene, /mainSceneAuxiliaryProof/);
   assert.match(scene, /non-cell-population-evidence-node/);
   assert.match(scene, /createSourceLocalMorphologyObject/);
   assert.doesNotMatch(scene, /SphereGeometry|createDendrites|mulberry32/);
@@ -915,7 +1107,10 @@ test("includes Research MVP export, keyboard, fallback and performance contracts
 });
 
 test("implements a version-locked JSON import and persistent-state round trip", async () => {
-  const prototype = await readFile(new URL("../app/AtlasPrototype.tsx", import.meta.url), "utf8");
+  const [prototype, exportCore] = await Promise.all([
+    readFile(new URL("../app/AtlasPrototype.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/main-scene-export.js", import.meta.url), "utf8"),
+  ]);
   assert.match(prototype, /function validateImportedState\(payload: unknown\): PersistentAtlasState/);
   assert.match(prototype, /payload\.releaseId !== researchMvpRelease\.releaseId/);
   assert.match(prototype, /payload\.schemaVersion !== researchMvpRelease\.schemaVersion/);
@@ -936,7 +1131,8 @@ test("implements a version-locked JSON import and persistent-state round trip", 
   assert.match(prototype, /state: \{\s*\.\.\.persistentState,\s*url: window\.location\.href,\s*\}/s);
   assert.match(prototype, /releaseManifest: researchMvpManifest/);
   assert.match(prototype, /micronsObservedReference:\s*\{[\s\S]*?contract: micronsObservedCellNucleusReference,[\s\S]*?runtimeReceipt: micronsRuntime,/);
-  assert.match(prototype, /regeneratedNonAuthoritativePaths:[\s\S]*?state\.url[\s\S]*?micronsObservedReference\.runtimeReceipt/);
+  assert.match(prototype, /roundTripContract: buildMainSceneRoundTripContract\(mainSceneView\)/);
+  assert.match(exportCore, /regeneratedNonAuthoritativePaths:[\s\S]*?state\.url[\s\S]*?micronsObservedReference\.runtimeReceipt/);
   assert.match(prototype, /setSelectedId\(canonicalSciSelectedId\([\s\S]*?imported\.selectedId,[\s\S]*?imported\.research\.selectedResearchObject/);
   assert.match(prototype, /setSearch\(imported\.search\)/);
   assert.match(prototype, /setFilters\(imported\.filters\)/);
@@ -959,13 +1155,16 @@ test("implements a version-locked JSON import and persistent-state round trip", 
 
 test("removes all disposable starter preview code and metadata", async () => {
   const previewFiles = await readdir(new URL("../app/_sites-preview/", import.meta.url)).catch(() => []);
-  const [page, layout, packageJson] = await Promise.all([
+  const [page, workspace, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/workspace/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
   assert.deepEqual(previewFiles, []);
-  assert.match(page, /AtlasPrototype/);
+  assert.match(page, /legacyDestination/);
+  assert.match(page, /className="atlas-home"/);
+  assert.match(workspace, /AtlasPrototype/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
   assert.match(layout, /Mouse Spinal Interneuron Atlas/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview/);

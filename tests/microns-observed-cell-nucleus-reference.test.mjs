@@ -1,14 +1,13 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import { computeManifestContentSha256 } from "../scripts/build-release-manifest.mjs";
 import {
   collectMicronsSemanticErrors,
   parseLegacyMeshFragment,
   validateMicronsObservedCellNucleusReference,
 } from "../scripts/validate-microns-observed-cell-nucleus-reference-0.1.mjs";
+import { validateResearchIterationManifest264Snapshot } from "../scripts/validate-research-iteration-manifest-2.64-snapshot.mjs";
 
 const CONTRACT_URL = new URL("../data/microns-observed-cell-nucleus-reference-0.1.json", import.meta.url);
 const ASSET_MANIFEST_URL = new URL("../public/data/microns_phase1_v185_4_root_648518346349516051_v1/asset-manifest.json", import.meta.url);
@@ -16,7 +15,6 @@ const SCHEMATIC_CONTRACT_URL = new URL("../data/cross-region-internal-reference-
 const SCENE_URL = new URL("../app/SceneCanvas.tsx", import.meta.url);
 const PROTOTYPE_URL = new URL("../app/AtlasPrototype.tsx", import.meta.url);
 const PANEL_URL = new URL("../app/InternalStructureReferencePanel.tsx", import.meta.url);
-const RELEASE_MANIFEST_URL = new URL("../data/research-iteration-manifest-2.50.json", import.meta.url);
 const [contract, assetManifest, schematicContract, scene, prototype, panel] = await Promise.all([
   readFile(CONTRACT_URL, "utf8").then(JSON.parse),
   readFile(ASSET_MANIFEST_URL, "utf8").then(JSON.parse),
@@ -85,21 +83,13 @@ test("browser arrays expose exact native-coordinate counts and checksum receipts
   }
 });
 
-test("the active Research MVP snapshot pins both MICrONS contract and asset manifest", async () => {
-  const releaseManifest = JSON.parse(await readFile(RELEASE_MANIFEST_URL, "utf8"));
+test("the sealed 2.64 research release records both MICrONS contract and asset-manifest receipts", async () => {
+  const { manifest: releaseManifest } = await validateResearchIterationManifest264Snapshot();
+  assert.equal(releaseManifest.application.version, "2.64.0-research.1");
   const pins = new Map(releaseManifest.authoritativeInputs.map((input) => [input.id, input]));
   assert.ok(pins.has("micronsObservedReferenceContract"));
   assert.ok(pins.has("micronsObservedReferenceAssetManifest"));
-  for (const pin of releaseManifest.authoritativeInputs) {
-    const root = pin.scope === "scientificAuthority"
-      ? new URL("../../interneuron_sci_review/", import.meta.url)
-      : new URL("../", import.meta.url);
-    const bytes = await readFile(new URL(pin.path, root));
-    assert.equal(pin.bytes, bytes.byteLength);
-    assert.equal(pin.sha256, createHash("sha256").update(bytes).digest("hex"));
-  }
   assert.equal(releaseManifest.integrity.inputCount, releaseManifest.authoritativeInputs.length);
-  assert.equal(releaseManifest.manifestContentSha256, computeManifestContentSha256(releaseManifest));
   assert.equal(releaseManifest.exactReferences.micronsObservedCellNucleus.cellRootId, "648518346349516051");
   assert.equal(releaseManifest.exactReferences.micronsObservedCellNucleus.nucleusId, "4309");
   assert.equal(releaseManifest.exactReferences.micronsObservedCellNucleus.projectRegistrationCount, 0);
@@ -163,7 +153,9 @@ test("observed admission does not promote the unavailable internal-evidence rout
 test("viewer wires a checksum-gated, component-toggleable MICrONS scene without a spinal join", () => {
   assert.match(scene, /view !== "microns_observed_reference"/);
   assert.match(scene, /fetchVerifiedMicronsBuffer/);
-  assert.match(scene, /MICrONS asset-manifest SHA-256 mismatch/);
+  assert.match(scene, /readVerifiedMainSceneAuxiliary\(manifestReceipt\.path, \{ signal: controller\.signal \}\)/);
+  assert.match(scene, /mainSceneAuxiliaryJson\(token\)/);
+  assert.match(scene, /verifiedManifestSha256: mainSceneAuxiliaryProof\(token\)\.verifiedSha256/);
   assert.match(scene, /micronsReferenceRoot\.scale\.setScalar/);
   assert.match(scene, /coordinateTransformAppliedToBuffer: false/);
   assert.match(scene, /normalGeneration: false/);

@@ -1,0 +1,84 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+
+const root = '/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype';
+const qa = path.join(root, 'docs/qa/2026-10-02-implementation-38');
+const json = name => JSON.parse(fs.readFileSync(path.join(qa, name), 'utf8'));
+const input = json('final-input-replay.json');
+const compiled = json('compiled-final-replay.json');
+const flows = json('native-checks.json');
+const receipts = json('native-final-unit-receipts.json');
+const metadata = JSON.parse(fs.readFileSync(path.join(root, 'data/svara-synaptic-contacts-0.1.json'), 'utf8'));
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/research-iteration-manifest-2.91.json'), 'utf8'));
+const fullLog = fs.readFileSync(path.join(qa, 'full-final.log'), 'utf8');
+const statistics = Object.fromEntries(['tests','pass','fail','cancelled','skipped','todo'].map(key => [key, Number(fullLog.match(new RegExp(`ℹ ${key} (\\d+)`))?.[1])]));
+assert.deepEqual(statistics, {tests:1367,pass:1352,fail:0,cancelled:0,skipped:15,todo:0});
+assert.equal(input.authoritativeInputs, 2280);
+assert.equal(input.workspaceAndTempInputMismatches, 0);
+assert.equal(input.priorUnownedInputsPreserved, 2248);
+assert.equal(input.priorUnownedDrift, 0);
+assert.equal(input.ownedPreimagesVerified, 8);
+assert.equal(input.allPreimagesCapturedBeforeEdit, true);
+assert.equal(input.retainedOriginalWorkbookCopiesVerified, 8);
+assert.equal(input.addedManifestPaths.length, 25);
+assert.equal(input.removedManifestPaths.length, 0);
+assert.equal(input.statTimestampVariationByteMismatches, 0);
+assert.equal(input.manifestSha256, crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'data/research-iteration-manifest-2.91.json'))).digest('hex'));
+assert.equal(compiled.compiledPngsChecked, 212);
+assert.equal(compiled.compiledContactJsonsChecked, 2);
+assert.equal(compiled.compiledAssetMismatches, 0);
+assert.equal(flows.length, 33);
+assert.ok(flows.every(flow => flow.passed === true));
+assert.equal(receipts.length, 3);
+for (const receipt of receipts) {
+  for (const field of ['sourceId','releaseId','biologicalContext','representation','interpretation','rights']) assert.deepEqual(receipt[field], metadata[field]);
+  const group = metadata.groups.find(group => group.id === receipt.selection.group);
+  assert.equal(receipt.currentLoaderReceipt.sha256, group.asset.sha256);
+  assert.equal(receipt.currentLoaderReceipt.bytes, group.asset.bytes);
+  assert.equal(receipt.currentLoaderReceipt.bytesVerified, true);
+}
+const events = fs.readFileSync(path.join(qa, 'native-delay-events.jsonl'),'utf8').trim().split('\n').map(line => JSON.parse(line));
+const deadlines = events.filter(event => event.event === 'delay-deadline');
+assert.equal(deadlines.length, 2);
+for (const deadline of deadlines) {
+  assert.equal(deadline.closed, true);
+  assert.equal(deadline.bytes, 60756);
+  assert.ok(events.some(event => event.id === deadline.id && event.event === 'client-response-closed' && event.writableFinished === false));
+}
+const wireFault = json('wire-fault-observed.json');
+const wireRestored = json('wire-restored.json');
+assert.equal(wireFault.httpStatus,200);
+assert.equal(wireFault.sha256,'91d4e7c34c66e66573fae1df31191d698e469035ea60c6e0e0ab6733750ebfb5');
+assert.equal(wireRestored.sha256,metadata.groups[0].asset.sha256);
+const sums = key => metadata.groups.reduce((sum, group) => sum+group.summary[key], 0);
+assert.equal(sums('matrixCells'),4964);
+assert.equal(sums('contactRows'),734);
+assert.equal(sums('distinctListedPairs'),516);
+assert.equal(sums('literalZeros'),4448);
+assert.equal(sums('missingMatrixCells'),0);
+const summary = {
+  schemaVersion:'0.1.0', implementation:'I38', generatedAt:new Date().toISOString(),
+  status:'sealed_progress_full_goal_incomplete', goalStatus:'active', fullGoalComplete:false,
+  canonicalTaskStatus:{completed:79,total:243,unchanged:true},
+  applicationVersion:'2.91.0-research.1', route:'/connectivity/svara',
+  acquisition:{aggregate:{bytes:input.aggregateBytes,sha256:input.aggregateSha256,actualMembers:{zip:3,pdf:2,xlsx:4},wrapperPublicRedistributionAdmitted:false},directOfficialWorkbooks:metadata.groups.flatMap(group=>[group.matrixSource,group.contactsSource]),allWorkbookBytes:85486,rights:metadata.rights,sourceWorkbooksUnmodified:true},
+  sourceData:{groups:metadata.groups.map(group=>({id:group.id,summary:group.summary,asset:group.asset})),matrixPositions:sums('matrixCells'),listedContactRows:sums('contactRows'),distinctListedPairs:sums('distinctListedPairs'),literalZeros:sums('literalZeros'),missingMatrixPositions:sums('missingMatrixCells'),interpretation:metadata.interpretation,representation:metadata.representation},
+  fullConfiguredResearch:{actualExitCode:0,terminalExecSessionId:82685,statistics,log:'full-final.log',scope:'Final current source metadata, document and manifest version; build, strict typing, full lint, all configured validators and complete research test entry.',focusedSourceTests:7},
+  native:{flowObservations:33,allFlowObservationsPassed:true,flowEvidence:'native-checks.json',finalMetadataReceiptRechecks:3,finalMetadataEvidence:'native-final-unit-receipts.json',note:'Earlier flow receipts are retained as phase evidence before final exact C1 unit locators; three final DOM receipts bind the final canonical metadata and current asset bytes.',realWireFault:wireFault,realWireRestored:wireRestored,wireCacheScope:'Production preview caches static bytes at startup. Earlier unchanged-wire attempts are retained but not counted as successful fault tests. Only isolated generated bytes were left damaged for the counted server restart, then both isolated source and generated copies were restored; authoritative public source and original XLSX were untouched.',realDelayedRequestsCancelled:deadlines.map(event=>({requestId:event.id,delayMs:12000,bytes:event.bytes,sha256:event.sha256,clientClosedBeforeWrite:true,deadlineClosed:true})),downloadLanding:json('native-download-status.json'),visual:{desktop:'native-deliverable.jpg',desktopPixels:[1280,1343],mobile:'native-mobile.jpg',mobilePixels:[390,2484],visuallyInspected:true},zoom200PercentVerified:false,screenReaderVerified:false},
+  compiledReplay:{...compiled,evidence:'compiled-final-replay.json'},
+  inputPreservation:{authoritativeInputs:input.authoritativeInputs,workspaceAndTempInputMismatches:input.workspaceAndTempInputMismatches,priorUnownedInputsPreserved:input.priorUnownedInputsPreserved,priorUnownedDrift:input.priorUnownedDrift,ownedPreimagesVerified:input.ownedPreimagesVerified,allPreimagesCapturedBeforeEdit:true,retainedOriginalWorkbookCopiesVerified:input.retainedOriginalWorkbookCopiesVerified,addedManifestPaths:input.addedManifestPaths,removedManifestPaths:input.removedManifestPaths,manifestSha256:input.manifestSha256,statTimestampVariationObservations:input.statTimestampVariationObservations.length,statTimestampVariationByteMismatches:input.statTimestampVariationByteMismatches,timestampPreservationClaimed:false,evidence:'final-input-replay.json',reader:input.reader},
+  registrySummary:manifest.registrySummary,
+  retainedFailures:['Initial source token test used shortened openpyxl float expectation; corrected expectation to exact OOXML token, source data unchanged.','Initial full lint failure with eight findings; corrected before final actual exit-zero run.','Root existing dependency read stall and early reader attempts interrupted, not classified as passes.','Earlier mtimeMs and BigInt mtimeNs equality audits failed; final audit verifies pinned exact bytes, sizes, device and inode, with independent byte reread for each timestamp variation. Timestamp preservation is not claimed.'],
+  limitations:['Full F01–F20 / 243 task goal remains incomplete.','M2 source mask section/donor/frame/curated labels/rights remain unadmitted.','M4 exact mouse spinal interneuron raw volume, segmentation, stable parent, frame and raw slice remain unavailable in the inspected admitted sources.','Svara numeric contact labels do not establish source XYZ endpoints, editable geometry or physical parent IDs; no genetic CiD-to-V2a, mouse registration or functional transmission claim.','Exact Koh workbook / annotation version is not established by these 2018 IN-to-MN tables.','Native file download save path, 200% zoom and screen reader remain unverified.','Whole-wrapper and mmc9 PDF public redistribution not admitted; mmc9 full-page visual inspection not completed.'],
+  rollback:'Restore only eight explicit captured owned preimages from owned-before.zip; review the 25 added manifest paths individually. Preserve unrelated dirty-tree files and unknown work.',
+};
+for(const [from,to] of [
+ ['/private/tmp/ohri-i38-input-audit.mjs','final-input-audit.mjs.txt'],
+ ['/private/tmp/ohri-i38-input-audit-content.log','final-input-audit.log'],
+ ['/private/tmp/ohri-i38-manifest-final.log','manifest-final.log'],
+ ['/private/tmp/ohri-i38-seal.mjs','verification-summary-builder.mjs.txt'],
+]) fs.copyFileSync(from,path.join(qa,to));
+fs.writeFileSync(path.join(qa,'verification-summary.json'),JSON.stringify(summary,null,2)+'\n');
+console.log(JSON.stringify({status:summary.status,statistics,authoritativeInputs:input.authoritativeInputs,preserved:input.priorUnownedInputsPreserved,flowObservations:flows.length,finalMetadataReceiptRechecks:receipts.length,manifestSha256:input.manifestSha256}));

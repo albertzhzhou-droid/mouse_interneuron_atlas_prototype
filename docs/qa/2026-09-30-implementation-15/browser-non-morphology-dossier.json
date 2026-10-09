@@ -1,0 +1,842 @@
+{
+  "documentType": "research_record_scientific_dossier",
+  "schemaVersion": "0.2.0",
+  "applicationVersion": "2.91.0-research.1",
+  "selection": {
+    "key": "molecular_profile:alkaslasi-2021:GSE167597:I1",
+    "generation": 2,
+    "namespace": "alkaslasi-2021:GSE167597",
+    "status": "current_verified_record"
+  },
+  "sourceScope": {
+    "documentType": "research_record_source_scope",
+    "schemaVersion": "0.2.0",
+    "recordKey": "molecular_profile:alkaslasi-2021:GSE167597:I1",
+    "namespace": "alkaslasi-2021:GSE167597",
+    "focusKind": "molecular_profile",
+    "focusId": "alkaslasi-2021:GSE167597:I1",
+    "recordLocation": {
+      "path": "public/data/research_explorer_index_v1/search-index.json",
+      "pointer": "/records/73",
+      "releaseId": "ohri:research-explorer-index:1.13.0",
+      "status": "indexed_project_derivative_field"
+    },
+    "displayUnit": "source_profile_aggregate",
+    "underlyingObservationUnit": "nucleus",
+    "registryReleaseId": "ohri-research-source-registry-0.1.0",
+    "sourceId": "SRC-ALKASLASI-2021",
+    "sourceResolution": "explicit_record_parent",
+    "sourceLocator": "data/research-source-registry-0.1.json#/sources/10",
+    "sourceMissingReason": null,
+    "species": [
+      {
+        "value": "Mus musculus",
+        "status": "source_context_only",
+        "context": "targeted adult spinal-nucleus sequencing cohort",
+        "authority": "source_reported",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/10/speciesScopes/0/scientificName"
+      }
+    ],
+    "lifeStages": [
+      {
+        "value": "8 weeks old",
+        "status": "source_context_only",
+        "context": "12-mouse sequencing cohort",
+        "authority": "source_reported",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/10/lifeStageScopes/0/value"
+      }
+    ],
+    "regions": [
+      {
+        "value": "cervical, thoracic, and lumbar/sacral collection regions; deposited annotation value `Lumbar`",
+        "status": "source_context_only",
+        "context": "separately processed source samples",
+        "authority": "source_article_and_checksum_pinned_annotation",
+        "missingReason": null,
+        "locator": "data/research-source-registry-0.1.json#/sources/10/regionScopes/0/value"
+      }
+    ],
+    "experimentalUnits": [
+      {
+        "unit": "source_animal",
+        "count": 12,
+        "scope": "six female and six male mice; eight weeks old",
+        "authority": "source_reported",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/10/experimentalUnits/0",
+        "pooledWithOtherUnits": false
+      },
+      {
+        "unit": "processing_replicate",
+        "count": 3,
+        "scope": "one male, one female, and one mixed-sex processing replicate",
+        "authority": "source_reported",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/10/experimentalUnits/1",
+        "pooledWithOtherUnits": false
+      },
+      {
+        "unit": "geo_region_by_replicate_sample",
+        "count": 9,
+        "scope": "three regions across three processing replicates; not nine independent animals",
+        "authority": "source_record",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/10/experimentalUnits/2",
+        "pooledWithOtherUnits": false
+      },
+      {
+        "unit": "qc_retained_nucleus",
+        "count": 34231,
+        "scope": "checksum-pinned annotation object",
+        "authority": "checksum_pinned_annotation_object",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/10/experimentalUnits/3",
+        "pooledWithOtherUnits": false
+      },
+      {
+        "unit": "source_annotated_interneuron_nucleus",
+        "count": 5375,
+        "scope": "I1-I8 aggregate; sampling count, not prevalence",
+        "authority": "checksum_pinned_annotation_object",
+        "missingReason": null,
+        "status": "source_context_only",
+        "locator": "data/research-source-registry-0.1.json#/sources/10/experimentalUnits/4",
+        "pooledWithOtherUnits": false
+      }
+    ],
+    "conditions": [],
+    "fieldLocators": [
+      {
+        "index": 0,
+        "label": "Canonical parent source",
+        "value": "SRC-ALKASLASI-2021",
+        "authority": "project_source_registry",
+        "locator": "UPG-108",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/0",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_or_project_level_reference",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 1,
+        "label": "Record granularity",
+        "value": "reported cluster · observation unit: nucleus",
+        "authority": "project_curated",
+        "locator": "UPG-109",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/1",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_or_project_level_reference",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 2,
+        "label": "Assignment / roster",
+        "value": "checksum-pinned annotation object · exact remote roster not bundled",
+        "authority": "source_and_project_boundary",
+        "locator": "UPG-117",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/2",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "source_or_project_level_reference",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 3,
+        "label": "Source-local label",
+        "value": "I1",
+        "authority": "checksum_pinned_annotation_field",
+        "locator": "geo-annotation-object",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/3",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 4,
+        "label": "Canonical transmitter",
+        "value": "Cholinergic",
+        "authority": "source_reported",
+        "locator": "paper-main-classification · paper-interneuron-section",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/4",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 5,
+        "label": "Exact sampled-nucleus count",
+        "value": "1520 nuclei",
+        "authority": "checksum_pinned_annotation_count",
+        "locator": "geo-annotation-object",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/5",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 6,
+        "label": "Article marker context",
+        "value": "Pax2 · Mpped2 · Slc6a1 · Piezo2",
+        "authority": "article_group_or_ish_context_not_per_nucleus",
+        "locator": "paper-main-classification · paper-interneuron-section",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/6",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 7,
+        "label": "Figure 5a prominent labels",
+        "value": "Igsl3 · Prlr · Cdh23",
+        "authority": "article_figure_display_context_not_unique_markers",
+        "locator": "paper-interneuron-section",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/7",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 8,
+        "label": "Deposited sample-region membership",
+        "value": "Cervical 361; Thoracic 404; Lumbar 755; sample membership, not xyz coordinates",
+        "authority": "checksum_pinned_annotation_field",
+        "locator": "geo-annotation-object",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/8",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 9,
+        "label": "Deposited sex-field membership",
+        "value": "M 409; F 444; NA 667; NA is preserved, not imputed as mixed-sex",
+        "authority": "checksum_pinned_annotation_field",
+        "locator": "geo-annotation-object",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/9",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 10,
+        "label": "Article spatial context",
+        "value": "Cholinergic-interneuron class context in the intermediate zone; no profile-specific location retained; context only, no per-nucleus coordinate",
+        "authority": "article_class_level_context",
+        "locator": "paper-interneuron-section",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/10",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 11,
+        "label": "Sampling design boundary",
+        "value": "Chat-Cre/Sun1 reporter history plus GFP-positive FACS enrichment; exact sampling counts, not biological prevalence or an unbiased census",
+        "authority": "source_and_project_boundary",
+        "locator": "paper-results-source-denominators",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/11",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 12,
+        "label": "Experimental-unit flow",
+        "value": "12 mice; matching regions first pooled from 2 mice; 4 mice per processing replicate; 3 processing replicates -> 9 GEO samples -> 34231 QC-retained nuclei",
+        "authority": "source_reported_distinct_denominators",
+        "locator": "paper-methods-sample-frame · geo-series-record",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/12",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_field_or_section_locator",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 13,
+        "label": "Publication identity discrepancy",
+        "value": "Authoritative PMID 33931636; GEO currently displays unrelated PMID 37559423. The current GEO series page displays PMID 37559423, which is not the Alkaslasi et al. 2021 article. DOI 10.1038/s41467-021-22691-2 and PMID 33931636 remain the authoritative publication identifiers for this contract.",
+        "authority": "source_discrepancy_preserved",
+        "locator": "geo-series-record",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/13",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 14,
+        "label": "Cholinergic analysis flow",
+        "value": "16042 cholinergic nuclei -> 5375 I1-I8 nuclei",
+        "authority": "checksum_pinned_source_partition",
+        "locator": "geo-annotation-object",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/14",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "retained_locator_requires_source_resolution",
+        "biologicalTruthVerifiedByHash": false
+      },
+      {
+        "index": 15,
+        "label": "Remote source-object receipt",
+        "value": "GSE167597 all AlkaslasiPiccus annotations.csv.gz; 333655 bytes; SHA-256 6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091; bundled false",
+        "authority": "checksum_verified_remote_object",
+        "locator": "6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091",
+        "projectFieldLocator": "public/data/research_explorer_index_v1/search-index.json#/records/73/evidence/15",
+        "materializationStatus": "indexed_project_derivative_field",
+        "upstreamLocatorStatus": "integrity_reference_only",
+        "biologicalTruthVerifiedByHash": false
+      }
+    ],
+    "gaps": [
+      {
+        "axisId": "cell_coordinates",
+        "label": "Cell coordinates",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_available",
+        "detail": "Sample-region membership is not xyz, segment, lamina, centroid, or atlas position.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "morphology",
+        "label": "Morphology",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_measured",
+        "detail": "No soma or neurite geometry is linked to the sequenced nucleus.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "electrophysiology",
+        "label": "Electrophysiology",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_linked_to_sequenced_nuclei",
+        "detail": "No same-nucleus electrophysiology is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "projection_target",
+        "label": "Projection target",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_linked_to_sequenced_nuclei",
+        "detail": "No same-nucleus projection tracing is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "synaptic_connectivity",
+        "label": "Synaptic connectivity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_linked_to_sequenced_nuclei",
+        "detail": "No synaptic edge or partner roster is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "sci_context",
+        "label": "SCI context",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_measured",
+        "detail": "The source is an uninjured adult molecular taxonomy.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_registration",
+        "label": "Atlas registration",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_established",
+        "detail": "No transform registers source samples or nuclei to the reference atlas.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "internal_structure",
+        "label": "Internal structure",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_measured",
+        "detail": "No membrane, nucleus geometry, organelle, receptor, bouton, or intracellular-compartment object is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "biological_prevalence",
+        "label": "Biological prevalence",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_estimable_from_enriched_sample",
+        "detail": "Reporter history and FACS enrichment prevent an unbiased abundance estimate.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "cross_source_same_cell_or_same_type_identity",
+        "label": "Cross-source same-cell or same-type identity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_established",
+        "detail": "Shared labels or markers do not create an identity or deduplicate source records.",
+        "inferenceAllowed": false
+      }
+    ],
+    "renderingPolicy": null,
+    "physicalSpecimenIdentity": {
+      "status": "not_established",
+      "id": null,
+      "reason": "Study, profile and reconstruction identifiers do not supply a physical specimen identity."
+    },
+    "relationship": {
+      "type": "co_display_only",
+      "samePhysicalObject": false,
+      "sourcePopulationJoinGranted": false,
+      "grantsGeometryTransfer": false
+    },
+    "scientificBoundary": "Source context is not an individual-cell measurement. Denominators and conditions remain separate. Missing evidence is not biological absence. Exact upstream field resolution is distinguished from the indexed project field; a hash verifies bytes only."
+  },
+  "record": {
+    "key": "molecular_profile:alkaslasi-2021:GSE167597:I1",
+    "focusKind": "molecular_profile",
+    "focusId": "alkaslasi-2021:GSE167597:I1",
+    "title": "I1",
+    "subtitle": "cholinergic interneuron cluster I1 · Alkaslasi 2021",
+    "namespace": "alkaslasi-2021:GSE167597",
+    "laneLabel": "Molecular population",
+    "summary": "Checksum-pinned source-local adult cholinergic I1-I8 cluster. The enriched technical cohort supports exact sample counts, not biological prevalence or 3D placement.",
+    "recordSemantics": {
+      "parentSourceId": "SRC-ALKASLASI-2021",
+      "recordKind": "reported_cluster",
+      "unitOfObservation": "nucleus",
+      "assignmentAuthority": "checksum_pinned_annotation_object",
+      "cellRosterAvailability": "exact_remote_roster_not_bundled",
+      "canonicalIdentityStatus": "not_established"
+    },
+    "searchTerms": [
+      "I1",
+      "cholinergic interneuron cluster I1 · Alkaslasi 2021",
+      "alkaslasi-2021:GSE167597",
+      "Molecular population",
+      "alkaslasi-2021:GSE167597:I1",
+      "Pax2",
+      "Mpped2",
+      "Slc6a1",
+      "Piezo2",
+      "Igsl3",
+      "Prlr",
+      "Cdh23",
+      "I1 is within the Pax2-high I1-I7 group and the Mpped2-sharing I1-I8 group.",
+      "I1 is within the I1-I4 group described as selectively labelled by Slc6a1 and Mpped2.",
+      "The article reports Piezo2 expression in I1, I7, and I8; this is not a per-nucleus quantitative expression record.",
+      "Cholinergic-interneuron class context in the intermediate zone; no profile-specific location retained",
+      "source_reported_cholinergic_interneuron_cluster",
+      "adult cholinergic interneuron Chat-Cre Sun1 FACS",
+      "Cervical Thoracic Lumbar lumbar/sacral",
+      "Alkaslasi MR, Piccus ZE, Hareendran S, et al. Single nucleus RNA-sequencing defines unexpected diversity of cholinergic neuron types in the adult mouse spinal cord. Nature Communications 12, 2471 (2021).",
+      "10.1038/s41467-021-22691-2",
+      "33931636",
+      "37559423",
+      "GSE167597",
+      "SRP308350",
+      "PRJNA705097"
+    ],
+    "evidence": [
+      {
+        "label": "Canonical parent source",
+        "value": "SRC-ALKASLASI-2021",
+        "authority": "project_source_registry",
+        "locator": "UPG-108"
+      },
+      {
+        "label": "Record granularity",
+        "value": "reported cluster · observation unit: nucleus",
+        "authority": "project_curated",
+        "locator": "UPG-109"
+      },
+      {
+        "label": "Assignment / roster",
+        "value": "checksum-pinned annotation object · exact remote roster not bundled",
+        "authority": "source_and_project_boundary",
+        "locator": "UPG-117"
+      },
+      {
+        "label": "Source-local label",
+        "value": "I1",
+        "authority": "checksum_pinned_annotation_field",
+        "locator": "geo-annotation-object"
+      },
+      {
+        "label": "Canonical transmitter",
+        "value": "Cholinergic",
+        "authority": "source_reported",
+        "locator": "paper-main-classification · paper-interneuron-section"
+      },
+      {
+        "label": "Exact sampled-nucleus count",
+        "value": "1520 nuclei",
+        "authority": "checksum_pinned_annotation_count",
+        "locator": "geo-annotation-object"
+      },
+      {
+        "label": "Article marker context",
+        "value": "Pax2 · Mpped2 · Slc6a1 · Piezo2",
+        "authority": "article_group_or_ish_context_not_per_nucleus",
+        "locator": "paper-main-classification · paper-interneuron-section"
+      },
+      {
+        "label": "Figure 5a prominent labels",
+        "value": "Igsl3 · Prlr · Cdh23",
+        "authority": "article_figure_display_context_not_unique_markers",
+        "locator": "paper-interneuron-section"
+      },
+      {
+        "label": "Deposited sample-region membership",
+        "value": "Cervical 361; Thoracic 404; Lumbar 755; sample membership, not xyz coordinates",
+        "authority": "checksum_pinned_annotation_field",
+        "locator": "geo-annotation-object"
+      },
+      {
+        "label": "Deposited sex-field membership",
+        "value": "M 409; F 444; NA 667; NA is preserved, not imputed as mixed-sex",
+        "authority": "checksum_pinned_annotation_field",
+        "locator": "geo-annotation-object"
+      },
+      {
+        "label": "Article spatial context",
+        "value": "Cholinergic-interneuron class context in the intermediate zone; no profile-specific location retained; context only, no per-nucleus coordinate",
+        "authority": "article_class_level_context",
+        "locator": "paper-interneuron-section"
+      },
+      {
+        "label": "Sampling design boundary",
+        "value": "Chat-Cre/Sun1 reporter history plus GFP-positive FACS enrichment; exact sampling counts, not biological prevalence or an unbiased census",
+        "authority": "source_and_project_boundary",
+        "locator": "paper-results-source-denominators"
+      },
+      {
+        "label": "Experimental-unit flow",
+        "value": "12 mice; matching regions first pooled from 2 mice; 4 mice per processing replicate; 3 processing replicates -> 9 GEO samples -> 34231 QC-retained nuclei",
+        "authority": "source_reported_distinct_denominators",
+        "locator": "paper-methods-sample-frame · geo-series-record"
+      },
+      {
+        "label": "Publication identity discrepancy",
+        "value": "Authoritative PMID 33931636; GEO currently displays unrelated PMID 37559423. The current GEO series page displays PMID 37559423, which is not the Alkaslasi et al. 2021 article. DOI 10.1038/s41467-021-22691-2 and PMID 33931636 remain the authoritative publication identifiers for this contract.",
+        "authority": "source_discrepancy_preserved",
+        "locator": "geo-series-record"
+      },
+      {
+        "label": "Cholinergic analysis flow",
+        "value": "16042 cholinergic nuclei -> 5375 I1-I8 nuclei",
+        "authority": "checksum_pinned_source_partition",
+        "locator": "geo-annotation-object"
+      },
+      {
+        "label": "Remote source-object receipt",
+        "value": "GSE167597 all AlkaslasiPiccus annotations.csv.gz; 333655 bytes; SHA-256 6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091; bundled false",
+        "authority": "checksum_verified_remote_object",
+        "locator": "6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091"
+      }
+    ],
+    "gaps": [
+      {
+        "axisId": "cell_coordinates",
+        "label": "Cell coordinates",
+        "status": "unavailable",
+        "reasonCode": "repository_object_unavailable",
+        "scope": "record_specific",
+        "authority": "repository_deposit",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_available",
+        "detail": "Sample-region membership is not xyz, segment, lamina, centroid, or atlas position.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "morphology",
+        "label": "Morphology",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_measured",
+        "detail": "No soma or neurite geometry is linked to the sequenced nucleus.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "electrophysiology",
+        "label": "Electrophysiology",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_linked_to_sequenced_nuclei",
+        "detail": "No same-nucleus electrophysiology is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "projection_target",
+        "label": "Projection target",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_linked_to_sequenced_nuclei",
+        "detail": "No same-nucleus projection tracing is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "synaptic_connectivity",
+        "label": "Synaptic connectivity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_linked_to_sequenced_nuclei",
+        "detail": "No synaptic edge or partner roster is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "sci_context",
+        "label": "SCI context",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_measured",
+        "detail": "The source is an uninjured adult molecular taxonomy.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "atlas_registration",
+        "label": "Atlas registration",
+        "status": "not_established",
+        "reasonCode": "no_admitted_transform",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_established",
+        "detail": "No transform registers source samples or nuclei to the reference atlas.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "internal_structure",
+        "label": "Internal structure",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_measured",
+        "detail": "No membrane, nucleus geometry, organelle, receptor, bouton, or intracellular-compartment object is linked.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "biological_prevalence",
+        "label": "Biological prevalence",
+        "status": "not_measured",
+        "reasonCode": "not_measured_by_study",
+        "scope": "shared_dataset_limit",
+        "authority": "source_record",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_estimable_from_enriched_sample",
+        "detail": "Reporter history and FACS enrichment prevent an unbiased abundance estimate.",
+        "inferenceAllowed": false
+      },
+      {
+        "axisId": "cross_source_same_cell_or_same_type_identity",
+        "label": "Cross-source same-cell or same-type identity",
+        "status": "not_established",
+        "reasonCode": "relationship_not_established",
+        "scope": "shared_project_limit",
+        "authority": "project_relationship_policy",
+        "sourceLocator": "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "rawValue": "not_established",
+        "detail": "Shared labels or markers do not create an identity or deduplicate source records.",
+        "inferenceAllowed": false
+      }
+    ],
+    "provenance": {
+      "label": "Alkaslasi adult cholinergic source-local taxonomy",
+      "citation": "Alkaslasi MR, Piccus ZE, Hareendran S, et al. Single nucleus RNA-sequencing defines unexpected diversity of cholinergic neuron types in the adult mouse spinal cord. Nature Communications 12, 2471 (2021).",
+      "doi": "10.1038/s41467-021-22691-2",
+      "urls": [
+        {
+          "label": "Primary article",
+          "url": "https://www.nature.com/articles/s41467-021-22691-2"
+        },
+        {
+          "label": "GEO record",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE167597"
+        },
+        {
+          "label": "Remote annotation object",
+          "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE167nnn/GSE167597/suppl/GSE167597_all_AlkaslasiPiccus_annotations.csv.gz"
+        }
+      ],
+      "accessions": [
+        "GSE167597",
+        "SRP308350",
+        "PRJNA705097",
+        "PMID:33931636"
+      ],
+      "locators": [
+        "geo-annotation-object: Checksum-pinned GSE167597_all_AlkaslasiPiccus_annotations.csv.gz: exact row index, barcode, deposited sex field, expt sample-region membership, broad type, newnames, cholinergictypes, and skeletaltypes columns.",
+        "paper-main-classification: Nature Communications Results and Figure 2: Pax2 was highly expressed in I1-I7; I8 lacked Pax2 but shared Mpped2 with the other interneuron clusters and was initially described as a suspected rare cholinergic interneuron.",
+        "paper-methods-sample-frame: Nature Communications Methods, Single nucleus isolation and sequencing: 12 eight-week-old mice (6 female, 6 male), matching regions pooled from two mice, and three processing replicates comprising male, female, and mixed-sex tissue.",
+        "paper-interneuron-section: Nature Communications Cholinergic interneurons section and Figure 5: eight source clusters were used for the main analysis; 14 finer subclasses lacked robustly distinct markers and showed no rostrocaudal differences; I1-I4 carried Slc6a1/Mpped2 context and Piezo2 was also detected in I1 and I7.",
+        "study-missing-axes: Neither the deposited annotation object nor the retained I1-I8 evidence supplies per-nucleus xyz coordinates, neurite or soma geometry, intracellular structures, electrophysiology, projection targets, synaptic edges, SCI states, atlas transforms, or cross-source identities."
+      ],
+      "objectHashes": [
+        {
+          "label": "GSE167597_all_AlkaslasiPiccus_annotations.csv.gz",
+          "sha256": "6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091",
+          "bytes": 333655
+        }
+      ]
+    },
+    "coordinate": {
+      "geometryStatus": "TYPE_LEVEL",
+      "frame": "alkaslasi_adult_cholinergic_source_namespace",
+      "registrationStatus": "unregistered",
+      "registrationCount": 0,
+      "measurementUse": "forbidden"
+    },
+    "relationshipStatus": "not_established_outside_this_source_record",
+    "boundary": "Counts are source-row sample membership, not xyz coordinates, segment identities, laminae, centroids, independent animals, or prevalence. Twelve source mice, four mice per processing replicate, two mice per first-stage matching-region pool, three processing replicates, nine GEO samples, and nucleus rows are distinct denominator levels. No profile-specific independent-animal denominator is recoverable from this annotation object. No morphology, internal structure, synapse, SCI state, cross-source identity, or atlas registration is admitted.",
+    "navigation": {
+      "lab": "types",
+      "params": {
+        "type": "alkaslasi-2021:GSE167597:I1"
+      },
+      "anchor": "types-panel"
+    },
+    "presentation": {
+      "contractId": "research-record-presentation-0.1",
+      "sourceSiblingCount": 8,
+      "evidencePartition": {
+        "identityEvidenceIndices": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "recordSpecificEvidenceIndices": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "sharedEvidenceIndices": [
+          0,
+          1,
+          2,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      "missingnessPartition": {
+        "recordSpecificGapIndices": [
+          0
+        ],
+        "sharedGapIndices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "modeling": {
+        "route": "source_record_evidence_only",
+        "admittedCellGeometryObjectCount": 0,
+        "admittedInternalObjectCount": 0,
+        "generatedFallbackPrimitiveCount": 0,
+        "registrationCount": 0,
+        "sameCellJoinCount": 0,
+        "switchEffect": "clear_prior_cell_geometry_and_replace_source_record_evidence_model",
+        "noFallbackPrimitive": true,
+        "axes": [
+          {
+            "axisId": "source_record",
+            "status": "available",
+            "authority": "checksum_verified_research_index",
+            "detail": "The selected source-record identity and its attributed evidence are available."
+          },
+          {
+            "axisId": "cell_geometry",
+            "status": "unavailable",
+            "authority": "record_missingness_contract",
+            "detail": "No same-record cell geometry object is admitted; switching this record must clear prior cell geometry."
+          },
+          {
+            "axisId": "internal_structure",
+            "status": "unavailable",
+            "authority": "record_missingness_contract",
+            "detail": "No same-record nucleus, organelle, membrane, receptor, bouton or synapse geometry is admitted."
+          },
+          {
+            "axisId": "atlas_registration",
+            "status": "not_established",
+            "authority": "project_relationship_policy",
+            "detail": "The selected source record has zero admitted registrations to project anatomy."
+          },
+          {
+            "axisId": "cross_source_same_cell",
+            "status": "not_established",
+            "authority": "project_relationship_policy",
+            "detail": "No co-displayed record is asserted to be the same biological cell."
+          }
+        ]
+      }
+    }
+  },
+  "view": {
+    "status": "not_included",
+    "camera": null,
+    "clipping": null,
+    "renderedRevision": null,
+    "reason": "This export contains source-record evidence and context. The current rendered scene requires its independent actual-view receipt."
+  }
+}

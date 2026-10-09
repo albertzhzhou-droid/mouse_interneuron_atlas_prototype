@@ -1,0 +1,48 @@
+{
+  "case": "Actual same-size decoded wrong-byte index in all canonical static representations, temporary preview only",
+  "rootScientificInputsModified": false,
+  "originalDecodedSha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+  "faultDecodedSha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d",
+  "decodedBytes": 12327624,
+  "gzipWireSizeIsNotAssertedEqual": true,
+  "files": [
+    {
+      "path": "/private/tmp/ohri-i51-verification/public/data/research_explorer_index_v1/search-index.json",
+      "backup": "/private/tmp/ohri-i53-cache-fault/public-search-index.json",
+      "bytes": 12327624,
+      "originalSha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "faultBytes": 12327624,
+      "faultSha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d"
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/public/data/research_explorer_index_v1/search-index.json.gz",
+      "backup": "/private/tmp/ohri-i53-cache-fault/public-search-index.json.gz",
+      "bytes": 628095,
+      "originalSha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b",
+      "faultBytes": 628099,
+      "faultSha256": "9069edc4cf00d842eea7df8341b3c94b5b40d8e38edf3042c34de4447b573aaa"
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/dist/client/data/research_explorer_index_v1/search-index.json",
+      "backup": "/private/tmp/ohri-i53-cache-fault/dist_client-search-index.json",
+      "bytes": 12327624,
+      "originalSha256": "c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085",
+      "faultBytes": 12327624,
+      "faultSha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d"
+    },
+    {
+      "path": "/private/tmp/ohri-i51-verification/dist/client/data/research_explorer_index_v1/search-index.json.gz",
+      "backup": "/private/tmp/ohri-i53-cache-fault/dist_client-search-index.json.gz",
+      "bytes": 628095,
+      "originalSha256": "715236a44109be7bcd209c589d88342a7df9fbb4a2bbfc18f5d3f6ddbaac436b",
+      "faultBytes": 628099,
+      "faultSha256": "9069edc4cf00d842eea7df8341b3c94b5b40d8e38edf3042c34de4447b573aaa"
+    }
+  ],
+  "restored": true,
+  "browserFaultStatus": "passed: checksum rejected, zero dossier tab lists and zero source-specific handoff buttons",
+  "actualNegotiatedDecodedBytes": 12327624,
+  "actualNegotiatedDecodedSha256": "3c1c4796cb7ed3b7d346f9c02c053d30d0471aba8ecf98dd95e1ac29c7bc839d",
+  "staticPreviewRestartRequired": true,
+  "rootCurrentIndexUnchanged": true
+}

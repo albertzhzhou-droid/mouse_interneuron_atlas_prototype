@@ -1,0 +1,2112 @@
+---
+title: "Synaptic receptors expressed in mice CSF-cNs  along the rostrol-caudal axis "
+author: "Nicolas Wanaverbecq - Elysa Crozat - Edith Blasco"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 5
+  html_notebook:
+    toc: yes
+    code_folding: hide
+    toc_depth: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# OPEN REQUIRED PACKAGES
+
+```{r}
+if(!require(psych)){install.packages("psych")}
+if(!require(FSA)){install.packages("FSA")}
+if(!require(car)){install.packages("car")}
+if(!require(multcompView)){install.packages("multcompView")}
+if(!require(PMCMRplus)){install.packages("PMCMRplus")}
+if(!require(emmeans)){install.packages("emmeans")}
+if(!require(lsmeans)){install.packages("lsmeans")}
+if(!require(nlme)){install.packages("nlme")}
+if(!require(Rmisc)){install.packages("Rmisc")}
+if(!require(rcompanion)){install.packages("rcompanion")}
+if(!require(pastecs)){install.packages("pastecs")}
+
+if(!require(dplyr)){install.packages("dplyr")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(lattice)){install.packages("lattice")}
+if(!require(BSDA)){install.packages("BSDA")}
+if(!require(devtools)) install.packages("devtools")
+if(!require(tidyverse)) install.packages("tidyverse")
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(ggpubr)) install.packages("ggpubr")
+if(!require(rstatix)) install.packages("rstatix")
+if(!require(pak)) install.packages("pak")
+
+```
+
+# SYNAPTIC Receptors expressed in CSF-cNs
+
+## **1- GABA-A RECEPTORS**
+
+```{r}
+
+library(readxl)
+
+GABA<- read_xlsx("GABA.xlsx")
+#View(GABA)
+names(GABA)
+```
+
+```{r}
+
+GABA$Region ->Region
+
+GABA$IGaba->IGaba
+GABA$dGaba->dGaba
+```
+
+### a1) SUMMARIZE data for GABA-A Rs
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(IGaba~Region,
+          GABA,
+          digits=0)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(dGaba~Region,
+          GABA,
+          digits=0)
+
+```
+
+### b1) PLOT Current DATA for GABA
+
+#### Current
+
+```{r}
+
+Bx_Igaba <- ggplot(GABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=IGaba, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Igaba + coord_cartesian( ylim = c(-10000, 5000))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_Igaba.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Igaba<-ggplot(GABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=IGaba, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+Pt_Igaba + coord_cartesian( ylim = c(-10000, 5000))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_Igaba.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Current Density
+
+```{r}
+
+Bx_dgaba <- ggplot(GABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=dGaba, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_dgaba + coord_cartesian( ylim = c(-1500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_dgaba.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_dgaba<-ggplot(GABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=dGaba, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_dgaba + coord_cartesian( ylim = c(-1500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_dgaba.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for GABA CURRENTS
+
+### =\> KRUSKAL WALLIS test - GABA Current/Current Density
+
+```{r}
+
+kruskal.test(IGaba~Region, data = GABA)
+
+library(rcompanion)
+
+pairwise.wilcox.test(IGaba, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(IGaba ~ Region,
+                    data   = GABA,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### =\> KRUSKAL WALLIS test - GABA Current Density
+
+```{r}
+
+
+kruskal.test(dGaba~Region, data = GABA)
+
+library(rcompanion)
+
+pairwise.wilcox.test(dGaba, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(dGaba ~ Region,
+                    data   = GABA,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### a2) INHIBITION by Gabazine (Current density)
+
+```{r}
+
+library(readxl)
+InhGABA<- read_excel("InhGABA.xlsx")
+#View(InhGABA)
+names(InhGABA)
+```
+
+```{r}
+
+InhGABA$Region ->Region
+InhGABA$Cond ->Cond
+InhGABA$Amp ->Amp
+
+```
+
+### SUMMARIZE data for GABA-A Current density in Control and in Gabazine
+
+```{r}
+library(FSA)
+
+Summarize(Amp~Cond,
+          InhGABA,
+          digits=0)
+
+Summarize(Amp~Region*Cond,
+          InhGABA,
+          digits=0)
+```
+
+### b2) PLOT Current DATA for GABA-current in Control and GABAzine
+
+```{r}
+
+Region <- as.factor(Region)
+Cond <- as.factor(Cond)
+
+
+p0 <- ggplot(InhGABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-1500, 250))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_GABA.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(InhGABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))  + theme_minimal()
+p1 + coord_cartesian( ylim = c(-1500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_GABA.eps", units="cm", width=10, height=6, dpi=300)
+```
+
+### c2) STATISTICAL analysis for GABA CURRENTS in Control and Gabazine
+
+#### =\> Linear Model -\> region \* Condition
+
+#### \## Conduct analysis of variance, Type II sum of squares
+
+```{r}
+
+modelGABA = lm(Amp ~ Region*Cond,
+           data = InhGABA)
+
+# Summary overall p-value and r-square 
+summary(modelGABA)
+
+
+
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelGABA,type = "II")
+
+```
+
+#### \### Post-hoc analysis: mean separation tests
+
+```{r}
+
+modelGABA = lm(Amp ~ Region*Cond,
+           data = InhGABA)
+# Summary overall p-value and r-square 
+
+summary(modelGABA)
+
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelGABA,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelGABA, ~  Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+
+```
+
+### a3) SUMMARIZE data for GABA current inhibition
+
+```{r}
+
+library(readxl)
+IGABA<- read_excel("IGABA.xlsx")
+#View(IGABA)
+names(IGABA)
+
+IGABA$Region ->Region
+IGABA$Inh->Inh
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh,
+          digits=0)
+
+Summarize(Inh~Region,
+          IGABA,
+          digits=0)
+```
+
+### b3) PLOT Current DATA for GABA Inhibition
+
+```{r}
+
+p0 <- ggplot(IGABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_IGbz.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(IGABA, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_IGbz.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c3) STATISTICAL analysis for GABA-A-Rs INHIBITION
+
+#### =\> KRUSKAL WALLIS test - GABA-A-Rs Inhibition
+
+```{r}
+
+kruskal.test(Inh~Region, data = IGABA)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Inh ~ Region,
+                    data   = IGABA,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## 2- GLYCINERGIC RECEPTORS
+
+```{r}
+library(readxl)
+GLY<- read_excel("GLY.xlsx")
+#View(GLY)
+names(GLY)
+```
+
+```{r}
+
+
+GLY$Region ->Region
+
+GLY$Igly->Igly
+GLY$dgly->dgly
+```
+
+### a1) SUMMARIZE data for Gly-Rs
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(Igly,
+          digits=0)
+
+Summarize(Igly~Region,
+          GLY,
+          digits=0)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(dgly,
+          digits=0)
+
+Summarize(dgly~Region,
+          GLY,
+          digits=0)
+
+```
+
+### b1) PLOT Current DATA for Glycine
+
+#### Current
+
+```{r}
+
+Bx_Igly <- ggplot(GLY, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Igly, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Igly + coord_cartesian( ylim = c(-7500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_Igly.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Igly<-ggplot(GLY, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Igly, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_Igly + coord_cartesian( ylim = c(-7500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_Igly.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Current Density
+
+```{r}
+
+Bx_dgly <- ggplot(GLY, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=dgly, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_dgly + coord_cartesian( ylim = c(-1500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_dgly.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_dgly<-ggplot(GLY, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=dgly, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_dgly + coord_cartesian( ylim = c(-1500, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_dgly.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for GLYCINE CURRENTS
+
+#### =\> KRUSKAL WALLIS test - Glycine Current
+
+```{r}
+
+kruskal.test(Igly~Region, data = GLY)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Igly, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Igly ~ Region,
+                    data   = GLY,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+#### =\> KRUSKAL WALLIS test - Glycine Current Density
+
+```{r}
+
+kruskal.test(dgly~Region, data = GLY)
+
+library(rcompanion)
+
+pairwise.wilcox.test(dgly, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(dgly ~ Region,
+                    data   = GLY,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### a2) INHIBITION by strychnine (Current density)
+
+```{r}
+
+library(readxl)
+InhGly<- read_excel("InhGly.xlsx")
+#View(InhGly)
+names(InhGly)
+
+InhGly$Region ->Region
+InhGly$Cond ->Cond
+InhGly$Amp ->Amp
+
+```
+
+#### SUMMARIZE data for GLYCINE Current Density in Control and in Strychnine
+
+```{r}
+library(FSA)
+
+Summarize(Amp~Cond,
+          digits=0)
+
+Summarize(Amp~Region*Cond,
+          InhGly,
+          digits=0)
+```
+
+### b2) PLOT Current DATA for Glycine Current in Control and Strychnine
+
+```{r}
+
+p0 <- ggplot(InhGly, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-2000, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_Gly.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(InhGly, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-2000, 500))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_Gly.eps", units="cm", width=10, height=6, dpi=300)
+```
+
+### a3) Current inhibition Gly in strychnine
+
+```{r}
+
+library(readxl)
+IGly<- read_excel("IGly.xlsx")
+#View(IGly)
+names(IGly)
+```
+
+```{r}
+
+IGly$Region ->Region
+IGly$Inh->Inh
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh~Region,
+          IGly,
+          digits=1)
+```
+
+### b3) PLOT Current DATA for Gly-Rs Inhibition
+
+```{r}
+
+p0 <- ggplot(IGly, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_IGly.eps", units="cm", width=10, height=6, dpi=300)
+
+
+p1<-ggplot(IGly, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_IGly.eps", units="cm", width=10, height=6, dpi=300)
+
+
+```
+
+### c3) STATISTICAL analysis for Glycine CURRENTS INHIBITION
+
+#### =\> KRUSKAL WALLIS test - I Gly Current density Inhibition
+
+```{r}
+
+kruskal.test(Inh~Region, data = IGly)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Inh ~ Region,
+                    data   = IGly,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## 3.1-CHOLINERGIC RECEPTORS (Voltage-clamp)
+
+```{r}
+library(readxl)
+ACH<- read_excel("ACH.xlsx")
+#View(ACH)
+names(ACH)
+
+ACH$Region ->Region
+
+ACH$Amp->Amp
+ACH$Dens->Dens
+```
+
+### a1) Nicotionic ACh Receptors - current/density
+
+### SUMMARIZE data for nACh-Rs
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(Amp,
+          digits=1)
+
+Summarize(Amp~Region,
+          ACH,
+          digits=1)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=1)
+
+Summarize(Dens~Region,
+          ACH,
+          digits=1)
+
+```
+
+### b1) PLOT Current DATA for Acethylcholine
+
+#### Current
+
+```{r}
+
+Bx_Iach <- ggplot(ACH, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Iach + coord_cartesian( ylim = c(-100, 20))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_Iach.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Iach<-ggplot(ACH, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Amp, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_Iach + coord_cartesian( ylim = c(-100, 20))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_Iach.eps", units="cm", width=10, height=6, dpi=300)
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+#V_Iach <-ggplot(ACH, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Iach, color=Region)) +
+ # geom_violin(trim=FALSE)+ theme_minimal() +
+  #geom_boxplot(width=0.1) + theme_minimal()
+#V_Iach + coord_cartesian( ylim = c(-100, 20))
+
+ggsave(path = "Fig_Synaptic", filename = "V_Iach.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Current Density
+
+```{r}
+
+Bx_dach <- ggplot(ACH, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_dach + coord_cartesian( ylim = c(-10, 2))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_dach.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_dach<-ggplot(ACH, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_dach + coord_cartesian( ylim = c(-10, 2))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_dach.eps", units="cm", width=10, height=6, dpi=300)
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+#V_dach <-ggplot(ACH, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=dach, color=Region)) +
+ # geom_violin(trim=FALSE)+ theme_minimal() +
+  #geom_boxplot(width=0.1) + theme_minimal()
+#V_dach + coord_cartesian( ylim = c(-20, 10))
+
+#ggsave(path = "Fig_Synaptic", filename = "V_dach.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for nACh CURRENTS
+
+### =\> KRUSKAL WALLIS test - nACh Currents
+
+```{r}
+
+kruskal.test(Amp~Region, data = ACH)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Region,
+                    data   = ACH,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### =\> KRUSKAL WALLIS test - nACh Current density
+
+```{r}
+
+kruskal.test(Dens~Region, data = ACH)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Region,
+                    data   = ACH,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### a2) Inhibition Nicotinic current in CTR vs D-Tubo (Current density)
+
+```{r}
+
+library(readxl)
+InhAch<- read_excel("InhAch.xlsx")
+#View(InhAch)
+names(InhAch)
+
+InhAch$Region ->Region
+InhAch$Cond ->Cond
+InhAch$Dens ->Dens
+
+```
+
+### SUMMARIZE data for ACh Current Density in Control and in tdTubocurarine
+
+```{r}
+library(FSA)
+
+Summarize(Dens~Cond,
+          digits=1)
+
+Summarize(Dens~Region*Cond,
+          InhAch,
+          digits=1)
+
+```
+
+### b2) PLOT Current DATA for ACh-current in Control and D-Tubocurarine
+
+#### Plot ACh ctr and D-Tubo CURRENT density
+
+```{r}
+
+p0 <- ggplot(InhAch, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 2))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_InhAch.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(InhAch, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 2))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_InhAch.eps", units="cm", width=10, height=6, dpi=300)
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+#p2 <-ggplot(InhAch, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+ # geom_violin(trim=FALSE)+ theme_minimal() +
+  #geom_boxplot(width=0.1) + theme_minimal()
+#p2 +coord_cartesian( ylim = c(-25, 5))
+```
+
+### c2) STATISTICAL analysis for ACh CURRENTS - CTR vs. D-Tubo
+
+#### =\> Linear model 2 Factors - Current Densities
+
+#### #Define Linear Model -\> Region \* Cond
+
+```{r}
+
+# Analyse Données poolées
+modelDT = lm(Dens ~ Region*Cond,
+           data = InhAch)
+
+# Summary overall p-value and r-square 
+summary(modelDT)
+
+```
+
+#### \# Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelDT,type = "II")
+
+```
+
+#### \## Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelDT,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelDT, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+```
+
+### a3) INHIBITION by D-Tubocurarine (Current density)
+
+#### SUMMARIZE data for ACh Current inhibition
+
+```{r}
+
+library(readxl)
+IAch<- read_excel("IAch.xlsx")
+#View(IAch)
+names(IAch)
+
+IAch$Region ->Region
+IAch$Inh->Inh
+```
+
+```{r}
+library(FSA)
+
+Summarize(Inh,
+          digits=1)
+
+Summarize(Inh~Region,
+          IAch,
+          digits=1)
+```
+
+#### b3) PLOT Current DATA for ACh Inhibition
+
+```{r}
+
+p0 <- ggplot(IAch, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+p1<-ggplot(IAch, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+#p2 <-ggplot(IAch, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+ # geom_violin(trim=FALSE)+ theme_minimal() +
+  #geom_boxplot(width=0.1) + theme_minimal()
+#p2 +coord_cartesian( ylim = c(-10, 120))
+```
+
+#### c3) STATISTICAL analysis for ACh INHIBITION
+
+#### =\> KRUSKAL WALLIS test - I ACh Current density Inhibition
+
+```{r}
+
+kruskal.test(Inh~Region, data = IAch)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Inh ~ Region,
+                    data   = IAch,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## 3.2-CHOLINERGIC RECEPTORS (Current-clamp)
+
+### a) SUMMARIZE data for nACh-Rs Depolarisation and triggered APs
+
+```{r}
+library(readxl)
+ACHdep<- read_excel("ACHdep.xlsx")
+#View(ACHdep)
+
+names(ACHdep)
+
+ACHdep$Region ->Region
+
+ACHdep$AmpCTR->AmpCTR
+ACHdep$AmpATR->AmpATR
+
+ACHdep$PerDep->PerDep
+ACHdep$NrPA->NrPA
+```
+
+#### Depolaristion amplitude
+
+```{r}
+library(FSA)
+
+Summarize(AmpCTR,
+          digits=1)
+
+Summarize(AmpATR,
+          digits=1)
+
+Summarize(AmpCTR~Region,
+          ACHdep,
+          digits=1)
+
+Summarize(AmpATR~Region,
+          ACHdep,
+          digits=1)
+
+```
+
+#### Percentage of induced depolarisation
+
+Percentage of depolarisation out of 3 sweeps
+
+```{r}
+library(FSA)
+
+Summarize(PerDep
+          ~Region,
+          ACHdep,
+          digits=1)
+
+```
+
+#### Number of trigered action potential
+
+```{r}
+library(FSA)
+
+Summarize(NrPA~Region,
+          ACHdep,
+          digits=2)
+
+```
+
+### b) PLOT Current DATA for Acethylcholine mediated excitability
+
+#### Depolarisation amplitude with ACh
+
+```{r}
+
+Bx_Aach <- ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=AmpCTR, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Aach + coord_cartesian( ylim = c(-25,75))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_VAch.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Aach<-ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=AmpCTR, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_Aach + coord_cartesian( ylim = c(-25, 75))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_VAch.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Success rate for depolarisation
+
+```{r}
+Bx_Depach <- ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=PerDep, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_Depach + coord_cartesian( ylim = c(40, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_Depach.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Depach<-ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=PerDep, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_Depach + coord_cartesian( ylim = c(40, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_Depach.eps", units="cm", width=10, height=6, dpi=300)
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+#V_Depach <-ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=PerDep, color=Region)) +
+ # geom_violin(trim=FALSE)+ theme_minimal() +
+  #geom_boxplot(width=0.1) + theme_minimal()#
+#V_Depach + coord_cartesian( ylim = c(-50,300))
+
+#ggsave(path = "Fig_Synaptic", filename = "V_Depach.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Number of induced APs
+
+```{r}
+Bx_APs <- ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=NrPA, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_APs + coord_cartesian( ylim = c(-1,6))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_APs.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Depach<-ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=NrPA, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_Depach + coord_cartesian( ylim = c(-1,6))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_APs.eps", units="cm", width=10, height=6, dpi=300)
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+#V_APs <-ggplot(ACHdep, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=NrPA, color=Region)) +
+ # geom_violin(trim=FALSE)+ theme_minimal() +
+  #geom_boxplot(width=0.1) + theme_minimal()
+#V_APs + coord_cartesian( ylim = c(-5,10))
+
+#ggsave(path = "Fig_Synaptic", filename = "V_APs.eps", units="cm", width=10, height=6, dpi=300)
+```
+
+### =\> KRUSKAL WALLIS test - nACh Currents/ Current density
+
+```{r}
+
+# Depolarisation Amplitude
+
+kruskal.test(AmpCTR~Region, data = ACHdep)
+
+library(rcompanion)
+
+pairwise.wilcox.test(AmpCTR, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(AmpCTR ~ Region,
+                    data   = ACHdep,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+# Number of induced APs
+
+kruskal.test(NrPA~Region, data = ACHdep)
+
+
+pairwise.wilcox.test(NrPA, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(NrPA ~ Region,
+                    data   = ACHdep,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+
+```
+
+## 4.1- GLUTAMATERGIC RECEPTORS
+
+```{r}
+library(readxl)
+GLUT<- read_excel("GLUT.xlsx")
+#View(GLUT)
+
+```
+
+## A- Glutamate-mediated currents
+
+```{r}
+
+names(GLUT)
+
+GLUT$Region ->Region
+GLUT$Amp->Amp
+GLUT$Dens-> Dens
+```
+
+### a1) SUMMARIZE data for Glu-Rs
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(Amp,
+          digits=0)
+
+Summarize(Amp~Region,
+          GLUT,
+          digits=0)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=0)
+
+Summarize(Dens~Region,
+          GLUT,
+          digits=0)
+
+```
+
+### b1) PLOT Current DATA for Glutamate
+
+#### Current
+
+```{r}
+
+p0 <- ggplot(GLUT, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-50, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_GluA.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(GLUT, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Region))+
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-50, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_GluA.eps", units="cm", width=10, height=6, dpi=300)
+```
+
+#### Current Density
+
+```{r}
+
+
+p0 <- ggplot(GLUT, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-30, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_GluD.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(GLUT, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region))+
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-30, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_GluD.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for Glutamate-mediated CURRENTS
+
+### =\> KRUSKAL WALLIS test - Glu-mediated Current
+
+```{r}
+
+kruskal.test(Amp~Region, data = GLUT)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Region,
+                    data   = GLUT,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### =\> KRUSKAL WALLIS test - Glu-mediated Current density
+
+```{r}
+
+kruskal.test(Dens~Region, data = GLUT)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Region,
+                    data   = GLUT,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### a2) INHIBITION by DNQX (Current density)
+
+```{r}
+
+library(readxl)
+InhGlu<- read_excel("InhGlu.xlsx")
+#View(InhGlu)
+names(InhGlu)
+
+InhGlu$Region ->Region
+InhGlu$Cond ->Cond
+InhGlu$Amp ->Amp
+
+```
+
+### SUMMARIZE data for Glu Current Density in Control and in DNQX
+
+```{r}
+library(FSA)
+
+Summarize(Amp~Cond,
+          digits=1)
+
+Summarize(Amp~Region*Cond,
+          InhGlu,
+          digits=1)
+```
+
+### b2) PLOT Current DATA for Glu Current Density in Control and in DNQX
+
+```{r}
+
+p0 <- ggplot(InhGlu, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-20, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_GluDI.eps", units="cm", width=10, height=6, dpi=300)
+
+p1<-ggplot(InhGlu, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Cond)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-20, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_GluDI.eps", units="cm", width=10, height=6, dpi=300)
+
+
+```
+
+### c2) STATISTICAL analysis for Glu CURRENTS CTR vs DNQX
+
+#### =\> Linear model 2 Factors
+
+#### #Define Linear Model -\> Region \* Cond
+
+```{r}
+
+# Analyse Données poolées
+modelG = lm(Amp ~ Region*Cond,
+           data = InhGlu)
+
+# Summary overall p-value and r-square 
+summary(modelG)
+
+```
+
+#### \# Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelG,type = "II")
+
+```
+
+#### \## Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelG,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelG, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+```
+
+### a3) INHIBITION by DNQX (Percentage)
+
+```{r}
+
+library(readxl)
+IGlu<- read_excel("IGlu.xlsx")
+#View(IGlu)
+names(IGlu)
+
+IGlu$Region ->Region
+IGlu$Inh->Inh
+```
+
+#### SUMMARIZE data for Glu Current inhibition
+
+```{r}
+library(FSA)
+
+Summarize(Inh,
+          digits=1)
+
+Summarize(Inh~Region,
+          IGlu,
+          digits=1)
+```
+
+#### b3) PLOT Current DATA for Glu Inhibition
+
+```{r}
+
+p0 <- ggplot(IGlu, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-10, 120))
+
+p1<-ggplot(IGlu, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Inh, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-10, 120))
+
+```
+
+### c3) STATISTICAL analysis for Glu INHIBITION
+
+#### =\> KRUSKAL WALLIS test - I Glu Current density Inhibition
+
+```{r}
+
+kruskal.test(Inh~Region, data = IGlu)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Inh, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Inh ~ Region,
+                    data   = IGlu,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## B- AMPA-mediated currents
+
+```{r}
+
+library(readxl)
+
+AMPA<- read_excel("AMPA.xlsx")
+#View(AMPA)
+names(AMPA)
+
+AMPA$Region ->Region
+AMPA$Amp->Amp
+AMPA$Dens->Dens
+```
+
+### a) SUMMARIZE data for Glu-Rs -AMPA
+
+#### Current
+
+```{r}
+
+library(FSA)
+
+Summarize(Amp,
+          digits=0)
+
+Summarize(Amp~Region,
+          AMPA,
+          digits=0)
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=1)
+
+Summarize(Dens~Region,
+          AMPA,
+          digits=1)
+
+```
+
+### b) PLOT Current DATA for AMPA
+
+#### Current
+
+```{r}
+
+p0 <- ggplot(AMPA, aes(x=Region<- factor(Region,levels = c("Cer","Tho","Lomb")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-50, 5))
+
+p1<-ggplot(AMPA, aes(x=Region<- factor(Region,levels = c("Cer","Tho","Lomb")), y=Amp, color=Region))+
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-50, 5))
+
+x
+```
+
+#### Current Density
+
+```{r}
+
+
+p0 <- ggplot(AMPA, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-30, 5))
+
+p1<-ggplot(AMPA, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region))+
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-30, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_AMPA.eps", units="cm", width=10, height=6, dpi=300)
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_AMPA.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c1) STATISTICAL analysis for AMPA-mediated CURRENTS
+
+### =\> KRUSKAL WALLIS test - AMPA-mediated Current
+
+```{r}
+
+kruskal.test(Amp~Region, data = AMPA)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Region,
+                    data   = AMPA,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### =\> KRUSKAL WALLIS test - AMPA-mediated Current density
+
+```{r}
+
+kruskal.test(Dens~Region, data = AMPA)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Region,
+                    data   = AMPA,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## C- KAINATE-mediated currents
+
+```{r}
+
+library(readxl)
+
+KAI<- read_excel("KAI.xlsx")
+#View(KAI)
+names(KAI)
+
+KAI$Region ->Region
+
+KAI$Amp->Amp
+KAI$Dens->Dens
+```
+
+### a) SUMMARIZE data for Glu-Rs -KAINATE
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(Amp,
+          digits=0)
+
+Summarize(Amp~Region,
+          KAI,
+          digits=0)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=0)
+
+
+Summarize(Dens~Region,
+          KAI,
+          digits=0)
+
+```
+
+### b) PLOT Current DATA for KAINATE
+
+#### Current
+
+```{r}
+
+p0 <- ggplot(KAI, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-100, 5))
+
+p1<-ggplot(KAI, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Region))+
+   geom_jitter(shape=16, position=position_jitter(0.1))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-100, 5))
+
+# Violin plot with dispersed ponts (jitter)
+# 0.1 : dispersion degree on x
+
+p2 <-ggplot(KAI, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=Amp, color=Region)) +
+  geom_violin(trim=FALSE)+ theme_minimal() +
+  geom_boxplot(width=0.1) + theme_minimal()
+p2 +coord_cartesian( ylim = c(-200, 5))
+```
+
+#### Current Density
+
+```{r}
+
+p0 <- ggplot(KAI, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+p0 + coord_cartesian( ylim = c(-30, 5))
+
+p1<-ggplot(KAI, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Region)) +
+   geom_jitter(shape=16, position=position_jitter(0.5))+ theme_minimal()
+p1 + coord_cartesian( ylim = c(-30, 5))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_KAI.eps", units="cm", width=10, height=6, dpi=300)
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_KAI.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c) STATISTICAL analysis for KAINATE-mediated CURRENTS
+
+### =\> KRUSKAL WALLIS test - Kainate-mediated Current
+
+```{r}
+
+kruskal.test(Amp~Region, data = KAI)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Amp, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Amp ~ Region,
+                    data   = KAI,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+### =\> KRUSKAL WALLIS test - Kainate-mediated Current density
+
+```{r}
+
+kruskal.test(Dens~Region, data = KAI)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Region,
+                    data   = KAI,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## D- GLU Currents Agonist comparison - GLU, AMPA, KAINATE
+
+```{r}
+library(readxl)
+
+AGLU<- read_excel("PAgoGLU.xlsx")
+#View(AGLU)
+names(AGLU)
+```
+
+```{r}
+
+AGLU$Region ->Region
+
+AGLU$Cond ->Cond
+AGLU$Dens ->Dens
+
+```
+
+### a) SUMMARIZE data for agonist comparison
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Dens,
+          digits=0)
+
+Summarize(Dens~Region*Cond,
+          AGLU,
+          digits=0)
+
+```
+
+### b) PLOT Current density for gluRs agonists comparison
+
+```{r}
+
+Bx_dGlu <- ggplot(AGLU, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Cond)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_dGlu + coord_cartesian( ylim = c(-30, 10))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_dGluA.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_dGlu<-ggplot(AGLU, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=Dens, color=Cond)) +
+  
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_dGlu + coord_cartesian( ylim = c(-30, 10))
+
+
+```
+
+### c) STATISTICAL analysis for Glu CURRENTS CTR vs DNQX
+
+#### =\> Linear model 2 Factors
+
+#### #Define Linear Model -\> Region \* Cond
+
+```{r}
+
+# Analyse Données poolées
+modelA = lm(Dens ~ Region*Cond,
+           data = AGLU)
+
+# Summary overall p-value and r-square 
+summary(modelA)
+
+```
+
+#### \# Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelA,type = "II")
+
+```
+
+#### \## Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelA,
+                      ~ Cond*Region,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelA, ~ Cond*Region)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Region")     # compare doses for each treat
+```
+
+### E- NMDA-mediated currents
+
+```{r}
+library(readxl)
+NMDA<- read_excel("NMDA.xlsx")
+#View(NMDA)
+names(NMDA)
+```
+
+```{r}
+
+NMDA$Region ->Region
+
+NMDA$INmda->INmda
+NMDA$dNmda->dNmdfa
+```
+
+### c) SUMMARIZE data for Glu-Rs -NMDA
+
+#### Current
+
+```{r}
+library(FSA)
+
+Summarize(INmda~Region,
+          NMDA,
+          digits=2)
+
+```
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(dNmda~Region,
+          NMDA,
+          digits=2)
+```
+
+### a2) SUMMARIZE data for agonist comparison
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+Summarize(Densp~Condp,
+          PGLU,
+          digits=0)
+
+```
+
+### b2) PLOT Current density for gluRs agonists comparison
+
+```{r}
+
+Bx_pGlu <- ggplot(PGLU, aes(x=Condp<- factor(Condp,levels = c("Glu","Ampa","Kai")), y=Densp, color=Condp)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_pGlu + coord_cartesian( ylim = c(-30, 10))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_PGluA.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_pGlu<-ggplot(PGLU, aes(x=Condp<- factor(Condp,levels = c("Glu","Ampa","Kai")), y=Densp, color=Condp)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_pGlu + coord_cartesian( ylim = c(-30, 10))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_pGluA.eps", units="cm", width=10, height=6, dpi=300)
+
+
+```
+
+### c2) STATISTICAL analysis for pooled CURRRENT DENSITY
+
+#### Shapiro normality test and
+
+```{r}
+shapiro.test(Densp)
+
+## From the output, the p-value > 0.05 implies that the distribution of the data are not significantly different from normal distribution. In other words, we can assume the normality.
+
+# Mean plots
+# ++++++++++++++++++++
+# Plot weight by group
+# Add error bars: mean_se
+# (other values include: mean_sd, mean_ci, median_iqr, ....)
+
+library("ggpubr")
+ggline(PGLU, x = "Cond", y = "Dens", 
+       add = c("mean_se", "jitter"), 
+       order = c("Glu", "Ampa", "Kai"),
+       ylab = "Dens", xlab = "Cond")
+
+```
+
+#### =\> KRUSKAL WALLIS test - KAINATE-mediated Current Density
+
+```{r}
+
+names(PGLU)
+PGLU$Cond ->Condp
+PGLU$Dens ->Densp
+
+kruskal.test(Densp~Condp, data = PGLU)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Densp, Condp,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Densp ~ Condp,
+                    data   = PGLU,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+## 4.2-Glutamatergic RECEPTORS (Current-clamp)
+
+### a) SUMMARIZE data for Glu-Rs Depolarisation and triggered APs
+
+```{r}
+library(readxl)
+GluD<- read_excel("Gludep.xlsx")
+#View(ACHdep)
+
+names(GluD)
+
+GluD$Region ->Region
+
+GluD$AmpCTR->AmpCTR
+GluD$AmpDNQX->AmpDNQX
+GluD$PerDep->PerDep
+GluD$NrPA->NrPA
+```
+
+#### Depolaristion amplitude
+
+```{r}
+library(FSA)
+
+Summarize(AmpCTR~Region,
+          GluD,
+          digits=1)
+
+Summarize(AmpDNQX~Region,
+          GluD,
+          digits=1)
+
+```
+
+#### Percentage of induced depolarisation
+
+Percentage of depolarisation out of 3 sweeps
+
+```{r}
+library(FSA)
+
+Summarize(PerDep
+          ~Region,
+          GluD,
+          digits=1)
+
+```
+
+#### Number of triggered action potential
+
+```{r}
+library(FSA)
+
+Summarize(NrPA~Region,
+          GluD,
+          digits=2)
+
+```
+
+### b) PLOT Current DATA for Glutamate mediated excitability
+
+#### Depolarisation amplitude with Glu
+
+```{r}
+
+Bx_GluD <- ggplot(GluD, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=AmpCTR, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_GluD + coord_cartesian( ylim = c(-25,100))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_VGlu.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_GluD<-ggplot(GluD, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=AmpCTR, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_GluD + coord_cartesian( ylim = c(-25, 100))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_VGlu.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Success rate for depolarisation Glu
+
+```{r}
+Bx_DepGlu <- ggplot(GluD, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=PerDep, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_DepGlu + coord_cartesian( ylim = c(40, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_PerGlu.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_DepGlu<-ggplot(GluD, aes(x=Region<- factor(Region,levels = c("Lomb","Tho","Cerv")), y=PerDep, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_DepGlu + coord_cartesian( ylim = c(40, 120))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_PerGlu.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+#### Number of induced APs in Glu
+
+```{r}
+Bx_APGs <- ggplot(GluD, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lomb")), y=NrPA, color=Region)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_APGs + coord_cartesian( ylim = c(-1,6))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_APGs.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_Depach<-ggplot(GluD, aes(x=Region<- factor(Region,levels = c("Cerv","Tho","Lombc)")), y=NrPA, color=Region)) +
+   geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_Depach + coord_cartesian( ylim = c(-1,6))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_APGs.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c) Statistical summary Glu Current-clamp
+
+### =\> KRUSKAL WALLIS test - Glu Depol + PA
+
+```{r}
+
+# Depolarisation Amplitude
+
+kruskal.test(AmpCTR~Region, data = GluD)
+
+library(rcompanion)
+
+pairwise.wilcox.test(AmpCTR, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(AmpCTR ~ Region,
+                    data   = GluD,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+# Number of induced APs
+
+kruskal.test(NrPA~Region, data = GluD)
+
+
+pairwise.wilcox.test(NrPA, Region,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(NrPA ~ Region,
+                    data   = GluD,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+
+```
+
+## 5- ATP-g-S -mediated currents
+
+```{r}
+library(readxl)
+ATP<- read_excel("ATP.xlsx")
+#View(ATP)
+names(ATP)
+```
+
+```{r}
+
+ATP$Level ->Level
+ATP$Cond->Cond
+ATP$Dens->Dens
+ATP$Cell-> Cell
+
+# Ensure the order of Cond and Level in the summarized data
+# Convert columns to factors to ensure proper ordering and grouping
+ATP$Cond <- factor(ATP$Cond, levels = c("CTR","ATP"))
+ATP$Level <- factor(ATP$Level, levels = c("Cerv", "Tho", "Lumb"))
+
+```
+
+### a) SUMMARIZE data for ATP-g-S-mediated currents
+
+#### Current Density
+
+```{r}
+library(FSA)
+
+#Current Density per Condiition
+Summarize(Dens~Cond,
+          ATP,
+          digits=0)
+
+#Current Density per Condition and Level
+Summarize(Dens~Cond*Level,
+          ATP,
+          digits=0)
+
+```
+
+### b) PLOT Current DATA for ATP
+
+#### Current Density
+
+```{r}
+
+
+Bx_ATP <- ggplot(ATP, aes(x=Cond, y=Dens, color=Level)) +
+  geom_boxplot(width=0.5) + theme_minimal()
+Bx_ATP + coord_cartesian( ylim = c(-75, 10))
+
+ggsave(path = "Fig_Synaptic", filename = "Bx_ATP.eps", units="cm", width=10, height=6, dpi=300)
+
+Pt_ATP <-ggplot(ATP, aes(x=Cond, y=Dens, color=Level))+
+  geom_jitter(shape=1, position=position_jitter(0.1))+ theme_minimal()
+Pt_ATP + coord_cartesian( ylim = c(-75, 10))
+
+ggsave(path = "Fig_Synaptic", filename = "Pt_ATP.eps", units="cm", width=10, height=6, dpi=300)
+
+```
+
+### c) STATISTICAL analysis for KAINATE-mediated CURRENTS
+
+### =\> KRUSKAL WALLIS test - ATP-mediated Current
+
+```{r}
+
+kruskal.test(Dens~Cond, data = ATP)
+
+library(rcompanion)
+
+pairwise.wilcox.test(Dens, Level,
+                 p.adjust.method = "BH")
+
+Sum = groupwiseMean(Dens ~ Level,
+                    data   = ATP,
+                    conf   = 0.95,
+                    digits = 3,
+                    traditional = FALSE,
+                    percentile  = TRUE)
+
+```
+
+#### =\> Linear model 2 Factors
+
+#### #Define Linear Model -\> Region \* Cond
+
+```{r}
+
+# Analyse Données poolées
+modelAt = lm(Dens ~ Level*Cond,
+           data = ATP)
+
+# Summary overall p-value and r-square 
+summary(modelAt)
+
+```
+
+#### \# Conduct analysis of variance, Type II sum of squares
+
+```{r}
+# Conduct analysis of variance, Type II sum of squares
+
+library(car)
+Anova(modelAt,type = "II")
+
+```
+
+#### \## Post-hoc analysis: mean separation tests
+
+```{r}
+
+library(multcompView)
+library(emmeans)
+leastsquare = emmeans(modelAt,
+                      ~ Cond*Level,
+                      adjust = "sidak")
+leastsquare
+
+EMM <- emmeans(modelAt, ~ Cond*Level)
+EMM    # display the cell means
+
+### Simple pairwise comparisons...
+pairs(EMM, simple = "Cond")    # compare treats for each dose -- "simple effects"
+pairs(EMM, simple = "Level")     # compare doses for each treat
+```
+
+### 

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ohri.example/schemas/microstructformer-ultrastructure-reference-0.1.schema.json",
+  "title": "MicroStructFormer Open Ultrastructure Reference Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contractId", "auditDate", "source", "datasetRelease", "semanticLabels", "modelAndLicense", "identityAndGeometryBoundary", "sources"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "contractId": {"const": "microstructformer-open-ultrastructure-reference-0.1"},
+    "auditDate": {"type": "string", "format": "date"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["studyTitle", "doi", "authors", "biologicalContext", "sourceModality", "citationLicense"],
+      "properties": {
+        "studyTitle": {"type": "string", "minLength": 1},
+        "doi": {"const": "10.64898/2026.05.26.727755"},
+        "authors": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 1}},
+        "biologicalContext": {"type": "string", "minLength": 1},
+        "sourceModality": {"type": "string", "minLength": 1},
+        "citationLicense": {"type": "string", "minLength": 1}
+      }
+    },
+    "datasetRelease": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "revisionSha", "task", "format", "columns", "rowCount", "splitCounts", "reportedRepositorySize", "sampleRowPreview", "viewerLimitations"],
+      "properties": {
+        "repository": {"const": "Dnq2025/Mask2former_Finetune"},
+        "revisionSha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "task": {"const": "image segmentation"},
+        "format": {"const": "parquet"},
+        "columns": {"const": ["image", "label"]},
+        "rowCount": {"const": 540},
+        "splitCounts": {
+          "type": "object", "additionalProperties": false, "required": ["train", "validation"],
+          "properties": {"train": {"const": 528}, "validation": {"const": 12}}
+        },
+        "reportedRepositorySize": {"const": "5.69 GB"},
+        "sampleRowPreview": {
+          "type": "object", "additionalProperties": false,
+          "required": ["split", "rowIndex", "imageDimensionsPixel", "labelDimensionsPixel", "pixelScale", "rowIdentifierScope"],
+          "properties": {
+            "split": {"const": "train"}, "rowIndex": {"const": 0},
+            "imageDimensionsPixel": {"const": [3964, 3964]},
+            "labelDimensionsPixel": {"const": [3964, 3964]},
+            "pixelScale": {"type": "string", "minLength": 1},
+            "rowIdentifierScope": {"type": "string", "minLength": 1}
+          }
+        },
+        "viewerLimitations": {"type": "array", "minItems": 3, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "semanticLabels": {
+      "type": "array", "minItems": 6, "maxItems": 6,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["labelId", "name", "role"],
+        "properties": {"labelId": {"type": "integer", "minimum": 0}, "name": {"type": "string", "minLength": 1}, "role": {"const": "model output class"}}
+      }
+    },
+    "modelAndLicense": {
+      "type": "object", "additionalProperties": false,
+      "required": ["modelRepository", "modelScope", "datasetLicense", "redistributionConditions", "softwareLicense", "distributionDecision"],
+      "properties": {
+        "modelRepository": {"const": "Dnq2025/MicroStructFormer"},
+        "modelScope": {"type": "string", "minLength": 1},
+        "datasetLicense": {"const": "CC BY-NC-SA 4.0"},
+        "redistributionConditions": {"type": "string", "minLength": 1},
+        "softwareLicense": {"const": "GPLv3; separate from the dataset/model license."},
+        "distributionDecision": {"const": "Link-only in this atlas. No image, mask, model weight, or derived segmentation is bundled."}
+      }
+    },
+    "identityAndGeometryBoundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["identifiedInterneuronCount", "serialVolumeCount", "sameCellJoinCount", "admittedCellGeometryCount", "admittedInternalGeometryCount", "registrationCount", "predictionAdmittedAsObservation", "crossSectionStackingAllowed", "sameCellPlacementAllowed", "interpretation"],
+      "properties": {
+        "identifiedInterneuronCount": {"const": 0}, "serialVolumeCount": {"const": 0},
+        "sameCellJoinCount": {"const": 0}, "admittedCellGeometryCount": {"const": 0},
+        "admittedInternalGeometryCount": {"const": 0}, "registrationCount": {"const": 0},
+        "predictionAdmittedAsObservation": {"const": false}, "crossSectionStackingAllowed": {"const": false},
+        "sameCellPlacementAllowed": {"const": false}, "interpretation": {"type": "string", "minLength": 1}
+      }
+    },
+    "sources": {
+      "type": "array", "minItems": 5,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["label", "url"],
+        "properties": {"label": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}}
+      }
+    }
+  }
+}

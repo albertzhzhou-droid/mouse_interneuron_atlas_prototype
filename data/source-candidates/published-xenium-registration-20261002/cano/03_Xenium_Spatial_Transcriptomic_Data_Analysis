@@ -1,0 +1,265 @@
+################### Anatomy + Sex differences ###################
+#################################################################
+
+library(dplyr)
+
+#### Scale the data down to proportions
+
+table(glut_neurons@meta.data$anatomy)
+region_levels <- unique(glut_neurons$anatomy)
+
+sample_size <- min(table(glut_neurons@meta.data$anatomy))
+
+balanced_cells <- unlist(lapply(region_levels, function(region) {
+  region_cells <- rownames(glut_neurons@meta.data)[glut_neurons$anatomy == region]
+  sample(region_cells, sample_size, replace = FALSE)
+}))
+
+glut_balanced <- subset(glut_neurons, cells = balanced_cells)
+table(glut_balanced@meta.data$anatomy)
+
+
+##### Graph Anatomy Differences
+x <- as.data.frame(prop.table(table(glut_balanced$groups_manual, glut_balanced$anatomy), 1))
+
+colnames(x) <- c("groups", "anatomy", "percent")
+
+x$percent <- x$percent * 100
+
+percent_df <- x
+
+# Make sure clusters are character 
+percent_df$groups <- as.character(percent_df$groups)
+
+# Extract Cervical percentages into named vector to prep reordering
+cervical_percents <- percent_df %>%
+  filter(anatomy == "Cervical") %>%
+  select(groups, percent) %>%
+  { setNames(.$percent, .$groups) }
+
+# Makes sure to include clusters that have 0% whatever your grouping by
+all_clusters <- unique(percent_df$groups)
+cervical_percents_complete <- cervical_percents[all_clusters]
+cervical_percents_complete[is.na(cervical_percents_complete)] <- 0 #Makes values that are N/A 0 so it can be processed
+
+# Order clusters
+# order_vector <- order(cervical_percents_complete, decreasing = FALSE)
+# cervical_order <- all_clusters[order_vector]
+
+# Set new levels for plotting
+percent_df$groups <- factor(percent_df$groups, levels = c("GLUT_Abcc9", "GLUT_C1qtnf7", "GLUT_Col14a1", "GLUT_Col27a1",  "GLUT_Crhr2", "GLUT_Eya4", "GLUT_Folh1", "GLUT_Grik3", "GLUT_Grpr", "GLUT_Mafa", "GLUT_Mix1_Pde1a", "GLUT_Mix2_Pde1a", "GLUT_Mix3", "GLUT_Mylk", "GLUT_Nmur2", "GLUT_Npff", "GLUT_Nts", "GLUT_Nr2f1", "GLUT_Nr4a2", "GLUT_Pde5a", "GLUT_Pdyn",  "GLUT_Piezo2", "GLUT_Qrfpr", "GLUT_Skor2", "GLUT_Smoc2", "GLUT_Spp1", "GLUT_Tac1", "GLUT_Zic2"))
+
+# Plot
+ggplot(percent_df, aes(x = groups, y = percent, fill = anatomy)) + geom_bar(stat = "identity") + scale_fill_manual(values=c("Cervical"="#FD799C", "Thoracic"="#77DD77", "Lumbar"="#00B8FC", "Sacral"="#BE9DFF")) + labs(title = "Anatomy Proportions per Group", x = "Group", y = "Percent", fill = "Anatomy") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.5))
+
+# See distribution for 1 Cluster or multiple
+
+print(subset(percent_df, seurat_clusters == 23))
+
+
+#### Graph sex differences
+##########################
+
+## Equal sampling of sex specific neuron types
+
+table(glut_neurons$sex)
+sex_levels <- unique(glut_neurons$sex)
+sample_size <- min(table(glut_neurons$sex))
+
+sex_balanced_cells <- unlist(lapply(sex_levels, function(sex) {
+  sex_cells <- colnames(glut_neurons[["RNA"]]$count)[glut_neurons$sex == sex]
+  sample(sex_cells, sample_size, replace = FALSE)
+}))
+
+glut_sex_balanced <- subset(glut_neurons, cells = sex_balanced_cells)
+table(glut_sex_balanced$sex)
+
+## Graph Sex Differences
+
+percent_df <- as.data.frame(prop.table(table(glut_sex_balanced$groups_manual, glut_sex_balanced$sex), 1))
+
+colnames(percent_df) <- c("groups", "sex", "percent")
+
+percent_df$percent <- percent_df$percent * 100
+
+# Make sure clusters are character 
+percent_df$groups <- as.character(percent_df$groups)
+
+# Set new levels for plotting
+percent_df$groups <- factor(percent_df$groups, levels = c("GLUT_Abcc9", "GLUT_C1qtnf7", "GLUT_Col14a1", "GLUT_Col27a1",  "GLUT_Crhr2", "GLUT_Eya4", "GLUT_Folh1", "GLUT_Grik3", "GLUT_Grpr", "GLUT_Mafa", "GLUT_Mix1_Pde1a", "GLUT_Mix2_Pde1a", "GLUT_Mix3", "GLUT_Mylk", "GLUT_Nmur2", "GLUT_Npff", "GLUT_Nts", "GLUT_Nr2f1", "GLUT_Nr4a2", "GLUT_Pde5a", "GLUT_Pdyn",  "GLUT_Piezo2", "GLUT_Qrfpr", "GLUT_Skor2", "GLUT_Smoc2", "GLUT_Spp1", "GLUT_Tac1", "GLUT_Zic2"))
+
+# Plot
+ggplot(percent_df, aes(x = groups, y = percent, fill = sex)) + geom_bar(stat = "identity") + scale_fill_manual(values=c("M"="#0095FF", "F"="#FF6B9D")) + labs(title = "Sex proportions", x = "Group%", y = "Percent", fill = "sex") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.5))
+
+
+# See distribution for 1 Cluster or multiple
+
+print(subset(percent_df, seurat_clusters == 23))
+
+
+############### Rostocaudal Anatomy Plots #################
+###########################################################
+
+meta <- glut_balanced@meta.data
+meta$cluster <- Idents(joint_dbase1)
+
+region_order <- c("Cervical", "Thoracic", "Lumbar", "Sacral")
+
+percent_df <- meta %>%
+  count(cluster, anatomy) %>%
+  group_by(cluster) %>%
+  mutate(percent = n / sum(n) * 100) %>%
+  ungroup()
+
+percent_df <- percent_df %>%
+  complete(cluster, anatomy = region_order, fill = list(n = 0, percent = 0)) %>%
+  mutate(anatomy = factor(anatomy, levels = region_order))
+
+percent_df <- percent_df %>%
+  mutate(x = as.numeric(anatomy), y = 1)
+
+ggplot(percent_df, aes(xmin = x - 0.5, xmax = x + 0.5, ymin = 0, ymax = 1, fill = percent)) + geom_rect(color = NA) + facet_wrap(~ cluster, ncol = 1, strip.position = "left") + scale_fill_gradient(low = "white", high = "black", limits = c(0, 100), name = "% in Region") + scale_x_continuous(breaks = 1:4, labels = region_order, expand = expansion(mult = c(0.05, 0.05))) + coord_fixed(ratio = 0.25) + theme_void() + theme(strip.text = element_text(size = 10, hjust = 1), axis.text.x = element_text(size = 10), legend.position = "bottom") + labs(title = "Anatomical Distribution of Cell Types")
+
+print(percent_df)
+
+
+################### Projection neuron global analysis ###################
+#########################################################################
+
+# Idents(glut_neurons) = glut_neurons$groups_manual
+
+glut_neurons$groups_manual = factor(glut_neurons$groups_manual, levels = c("GLUT_Abcc9", "GLUT_Col27a1", "GLUT_Nmur2", "GLUT_Mix2_Pde1a", "GLUT_Tac1", "GLUT_Grpr", "GLUT_Spp1",  "GLUT_Smoc2", "GLUT_Zic2", "GLUT_Qrfpr", "GLUT_Nts", 
+                                                      "GLUT_Pde5a",  "GLUT_Pdyn",    "GLUT_Nr2f1",  "GLUT_Piezo2", "GLUT_Mylk", "GLUT_Col14a1", "GLUT_C1qtnf7",  "GLUT_Npff", "GLUT_Grik3",  "GLUT_Crhr2", 
+                                                      "GLUT_Skor2",  "GLUT_Nr4a2", "GLUT_Mafa", "GLUT_Eya4",  "GLUT_Mix1_Pde1a", "GLUT_Folh1", "GLUT_Mix3"))
+
+glut_neurons$groups_manual = factor(glut_neurons$groups_manual, levels = c("GLUT_Abcc9", "GLUT_C1qtnf7", "GLUT_Col14a1", "GLUT_Col27a1",  "GLUT_Crhr2", "GLUT_Eya4", "GLUT_Folh1", "GLUT_Grik3", "GLUT_Grpr", "GLUT_Mafa", "GLUT_Mix1_Pde1a", "GLUT_Mix2_Pde1a", "GLUT_Mix3", "GLUT_Mylk", "GLUT_Nmur2", "GLUT_Npff", "GLUT_Nts", "GLUT_Nr2f1", "GLUT_Nr4a2", "GLUT_Pde5a", "GLUT_Pdyn",  "GLUT_Piezo2", "GLUT_Qrfpr", "GLUT_Skor2", "GLUT_Smoc2", "GLUT_Spp1", "GLUT_Tac1", "GLUT_Zic2"))
+
+
+
+glut_neurons$GEX_Max = factor(glut_neurons$GEX_Max, levels = c("GLUT_Abcc9", "GLUT_Col27a1", "GLUT_Nmur2", "GLUT_Mix2_Pde1a", "GLUT_Tac1", "GLUT_Grpr", "GLUT_Spp1",  "GLUT_Smoc2", "GLUT_Zic2", "GLUT_Qrfpr", "GLUT_Nts", 
+                                                                           "GLUT_Pde5a",  "GLUT_Pdyn",    "GLUT_Nr2f1",  "GLUT_Piezo2", "GLUT_Mylk", "GLUT_Col14a1", "GLUT_C1qtnf7",  "GLUT_Npff", "GLUT_Grik3",  "GLUT_Crhr2", 
+                                                                           "GLUT_Skor2",  "GLUT_Nr4a2", "GLUT_Mafa", "GLUT_Eya4",  "GLUT_Mix1_Pde1a", "GLUT_Folh1", "GLUT_Mix3", "Unclear"))
+
+
+## Calculate total tracer measure as meta data metric
+
+glut_neurons$tracer_meta_count = glut_neurons$tdTomato_meta_count + glut_neurons$GFP_meta_count + glut_neurons$mNeonGreen_meta_count
+
+## Define cells from specific tracing experiments
+
+No_trace_cells=WhichCells(glut_neurons, expression = source=="R1S1" | source=="R1S2")
+PBN_NTS_MD_cells = WhichCells(glut_neurons, expression = source=="R2S1" | source=="R2S2"| source=="R3S1"| source=="R3S2" | source=="R4S1" | source=="R4S2")
+PAG_CVLM_VPL_cells = WhichCells(glut_neurons, expression = source=="R5S1" | source=="R5S2" | source=="R6S1" | source=="R6S2")
+POT_CEB_SCOL_cells = WhichCells(glut_neurons, expression = source== "R7S1" | source=="R7S2" | source=="R8S1" | source=="R8S2")
+all_trace_cells = WhichCells(glut_neurons, expression = source=="R2S1" | source=="R2S2"| source=="R3S1"| source=="R3S2" | source=="R4S1" | source=="R4S2" | source=="R5S1" | source=="R5S2" | source=="R6S1" | source=="R6S2" | source=="R7S1" | source=="R7S2" | source=="R8S1" | source=="R8S2")
+
+## FeaturePlot tracers
+
+DefaultAssay(glut_neurons) = "RNA"
+DefaultAssay(glut_neurons) = "Xenium"
+DefaultAssay(glut_neurons) = "SCT"
+
+# Negative control
+FeaturePlot(glut_neurons, "tracer_meta_count", cols = c("grey","red2"),reduction = "tsne", max.cutoff=5, cells=No_trace_cells) + ggtitle("Tracer count") + theme(axis.title = element_blank(), axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())# All tracer
+
+p = FeaturePlot(glut_neurons, "tracer_meta_count", pt.size=0.5,  raster=F,cols = c("grey","red2"), reduction = "tsne", max.cutoff=5, cells=No_trace_cells) + ggtitle("Tracer count") + theme(axis.title = element_blank(), axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())# All tracer
+p
+ggsave(paste("No_tracer.pdf"), plot = p, device = "pdf", width = 10, height = 10, units = "in", dpi = 300)
+
+
+# Positive control (all tracers from trace experiments)
+FeaturePlot(glut_neurons, "tracer_meta_count", cols = c("grey","red2"),reduction = "tsne", max.cutoff=5, cells=all_trace_cells) + ggtitle("Tracer count") + theme(axis.title = element_blank(), axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())# All tracer# All tracer
+
+p = FeaturePlot(glut_neurons, "tracer_meta_count", pt.size=0.5,  raster=F,cols = c("grey","red2"), reduction = "tsne", max.cutoff=5, cells=all_trace_cells) + ggtitle("Tracer count") + theme(axis.title = element_blank(), axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())# All tracer
+p
+ggsave(paste("All_tracer.pdf"), plot = p, device = "pdf", width = 10, height = 10, units = "in", dpi = 300)
+
+
+FeaturePlot(glut_neurons, "Slc17a7", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=all_trace_cells) + ggtitle("Tracer count") # All tracer
+
+# All tracer in individual tracing experiments brains
+FeaturePlot(glut_neurons, "tracer_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PBN_NTS_MD_cells) # All tracer in PBN_NTS_MD
+FeaturePlot(glut_neurons, "tracer_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PAG_CVLM_VPL_cells) # All tracer in PAG_CVLM_VPL
+FeaturePlot(glut_neurons, "tracer_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=POT_CEB_SCOL_cells) # All tracer in POT_CEB_SCOL
+
+
+# Specific tracing experiments
+FeaturePlot(glut_neurons, "tdTomato_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PBN_NTS_MD_cells) # PBN SPNs
+FeaturePlot(glut_neurons, "GFP_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PBN_NTS_MD_cells) # DCN SPNs
+FeaturePlot(glut_neurons, "mNeonGreen_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PBN_NTS_MD_cells) # MD Thal SPNs
+
+FeaturePlot(glut_neurons, "tdTomato_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PAG_CVLM_VPL_cells) # PAG SPNs
+FeaturePlot(glut_neurons, "GFP_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PAG_CVLM_VPL_cells) # CVLM SPNs
+FeaturePlot(glut_neurons, "mNeonGreen_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=PAG_CVLM_VPL_cells) # VPL SPNs
+
+
+FeaturePlot(glut_neurons, "tdTomato_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=POT_CEB_SCOL_cells, pt.size=0.8) # POSTERIOR THALAMUS SPNs
+FeaturePlot(glut_neurons, "GFP_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=POT_CEB_SCOL_cells) # CEREBELLUM SPNs
+FeaturePlot(glut_neurons, "mNeonGreen_meta_count", cols = c("grey","red3"),reduction = "tsne", max.cutoff=5, cells=POT_CEB_SCOL_cells) # SUP COLL SPNs
+
+
+## Create smaller datasets for Violin Plotting of Tracers
+
+glut_notrace = subset(glut_neurons, cells = No_trace_cells)
+glut_PBN_DCN_MD = subset(glut_neurons, cells = PBN_NTS_MD_cells)
+glut_PAG_CVLM_VPL = subset(glut_neurons, cells = PAG_CVLM_VPL_cells)
+glut_POT_CEB_SCOL = subset(glut_neurons, cells = POT_CEB_SCOL_cells)
+glut_all_trace = subset(glut_neurons, cells = all_trace_cells)
+
+VlnPlot(glut_neurons, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2) + NoLegend() + theme(axis.text.x = element_text(angle = 90)) + ylim(0, 500) # All tracers
+VlnPlot(glut_neurons, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group") # All tracers
+VlnPlot(glut_neurons, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "GEX_Max") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group") # All tracers
+
+# Negative control (no trace virus)
+
+p = VlnPlot(glut_notrace, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group")# All tracers
+p
+ggsave(paste("No_trace_violin.eps"), plot = p, device = "eps", width = 12, height = 4, units = "in", dpi = 300)
+
+
+# Positive control 0 (all trace virus)
+p = VlnPlot(glut_all_trace, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group")# All tracers
+p
+ggsave(paste("All_trace_violin.eps"), plot = p, device = "eps", width = 12, height = 4, units = "in", dpi = 300)
+
+
+
+# Positive control 1 (PBN_NTS_MD all trace virus)
+VlnPlot(glut_PBN_DCN_MD, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group")# All tracers
+
+# Positive control 2 (PAG_CVLM_VPL all trace virus)
+VlnPlot(glut_PAG_CVLM_VPL, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group")# All tracers
+
+# Positive control 3 (POT_CEB_SCOL all trace virus)
+VlnPlot(glut_POT_CEB_SCOL, features = c("tracer_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("Total tracer count by group")# All tracers
+
+
+
+## PBN trace
+VlnPlot(glut_PBN_DCN_MD, features = c("tdTomato_meta_count"), log = FALSE, pt.size = 0.1, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("PBN tracer count by group")
+
+## DCN trace
+VlnPlot(glut_PBN_DCN_MD, features = c("GFP_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 300) + ylab("Tracer count") + ggtitle("DCN tracer count by group")# All tracers
+
+## MD trace
+VlnPlot(glut_PBN_DCN_MD, features = c("mNeonGreen_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 100) + ylab("Tracer count") + ggtitle("MD tracer count by group")# All tracers
+
+## PAG trace
+VlnPlot(glut_PAG_CVLM_VPL, features = c("tdTomato_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 500) + ylab("Tracer count") + ggtitle("PAG tracer count by group")# All tracers
+
+## CVLM trace
+VlnPlot(glut_PAG_CVLM_VPL, features = c("GFP_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 300) + ylab("Tracer count") + ggtitle("CVLM tracer count by group")# All tracers
+
+## VPL trace
+VlnPlot(glut_PAG_CVLM_VPL, features = c("mNeonGreen_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 100) + ylab("Tracer count") + ggtitle("VPL tracer count by group")# All tracers
+
+## Posterior Thalamic Complex trace
+VlnPlot(glut_POT_CEB_SCOL, features = c("tdTomato_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 400) + ylab("Tracer count") + ggtitle("PoT tracer count by group")# All tracers
+
+## Cerebellum trace
+VlnPlot(glut_POT_CEB_SCOL, features = c("GFP_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 300) + ylab("Tracer count") + ggtitle("Cerebellum tracer count by group")# All tracers
+
+## Superior Colliculus trace
+VlnPlot(glut_POT_CEB_SCOL, features = c("mNeonGreen_meta_count"), log = FALSE, pt.size = 0.2, group.by = "groups_manual") + NoLegend() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + ylim(0, 100) + ylab("Tracer count") + ggtitle("Sup. Col. tracer count by group")# All tracers
+
+

@@ -1,0 +1,381 @@
+#!/usr/bin/env python3
+"""Independent I60 source assertions; stdlib only, no product module imports.
+
+Preparation validates source inputs and can run synthetic guard tests.
+Actual captures/downloads remain unread until parent explicitly marks ACTUAL_READY.
+"""
+from pathlib import Path
+from urllib.parse import urlsplit, parse_qsl
+import argparse, collections, csv, datetime, hashlib, io, json, os, re, sys
+
+ROOT = Path('/Users/zhouzhenghang/Desktop/OHRI/mouse_interneuron_atlas_prototype')
+QA = ROOT / 'docs/qa/2026-10-05-implementation-60'
+OUT = Path(__file__).resolve().parent
+INDEX = 'public/data/research_explorer_index_v1/search-index.json'
+INDEX_SHA = 'c1fb786da4a1624b28fbe4c9c7063eb0f108b6a12e91d082008f1c7102e17085'
+BEFORE_PINS = Path('/private/tmp/ohri-i60-molecular-comparison-bookmark-candidate/qa/READ_ONLY_BEFORE_SCOPE_PINS.json')
+SCOPE_FILES = [
+    ('sathyamurthy-2018', 'data/sathyamurthy-source-taxonomy-0.1.json'),
+    ('alkaslasi-2021:GSE167597', 'data/alkaslasi-cholinergic-source-taxonomy-0.1.json'),
+    ('haring-2018:GSE103840', 'data/haring-dorsal-horn-source-taxonomy-0.1.json'),
+    ('hayashi-2018:GSE108788', 'data/hayashi-v2a-source-taxonomy-0.1.json'),
+    ('roome-2026:GSE291462', 'data/roome-dil-source-taxonomy-0.1.json'),
+]
+DIMENSIONS = ('transmitter', 'region', 'life_stage')
+SLOT_LABELS = {
+    'markers': ['Source markers', 'Primary markers', 'Figure/source markers', 'Narrative marker panel', 'Table 8 marker summary', 'Article marker context', 'Positive differential features meeting display thresholds'],
+    'region': ['Deposited sample-region membership', 'Spinal and anatomy context', 'Spatial source context', 'Spatial-domain context', 'Region class', 'DV field coverage', 'Article spatial context'],
+    'life_stage': ['Life-stage and preparation', 'Life-stage scope', 'Sequencing-cohort age boundary'],
+    'transmitter': ['Canonical transmitter'],
+}
+SLOT_NAMES = {'markers': 'Markers', 'region': 'Region', 'life_stage': 'Life stage', 'transmitter': 'Transmitter'}
+BOOKMARK_KEYS = ('compareVersion', 'compareIndex', 'compareKeys', 'compareAnchor', 'compareQuery', 'compareNamespace', 'comparePage')
+CSV_HEADERS = ['anchor_key', 'comparison_key', 'dimension', 'comparison_status', 'anchor_raw_json', 'comparison_raw_json', 'shared_exact_strings_json', 'anchor_evidence_json', 'comparison_evidence_json', 'identity']
+MARKER_POLICY = 'Exact strings separated only by the retained evidence display delimiter; Table 8 uses explicit main/co-marker fields. No case folding, synonym mapping, label-token inference or gene correction.'
+MARKER_BOUNDARY = 'Shared displayed strings are source assertions; zero overlap is not absence and overlap does not establish same type, same cell or a diagnostic panel.'
+FIELD_BOUNDARY = 'Raw source strings are compared without ontology normalization; differing assertions can reflect cohort or vocabulary scope and are not automatically biological contradictions.'
+REPORT_BOUNDARY = 'One anchor to one or more source-record comparisons; no scalar similarity score, cross-study identity, deduplicated type count, representative morphology or inferred marker evidence.'
+
+def unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result: raise ValueError('Duplicate JSON key: ' + key)
+        result[key] = value
+    return result
+
+def strict_json(value):
+    return json.loads(value, object_pairs_hook=unique_object, parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Nonfinite JSON ' + value)))
+
+def read_file(path):
+    path = Path(path); fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    h, parts, offset, calls = hashlib.sha256(), [], 0, 0
+    try:
+        start = os.fstat(fd)
+        while True:
+            block = os.pread(fd, 4096, offset); calls += 1
+            if not block: break
+            parts.append(block); h.update(block); offset += len(block)
+        end = os.fstat(fd)
+        assert (start.st_ino, start.st_size, start.st_mtime_ns) == (end.st_ino, end.st_size, end.st_mtime_ns)
+        assert offset == end.st_size
+    finally: os.close(fd)
+    return {'bytes': offset, 'sha256': h.hexdigest()}, b''.join(parts), calls
+
+def pin(value): return {key: value[key] for key in ('bytes', 'sha256')}
+
+class Authority:
+    def __init__(self):
+        before_pin, before_body, _ = read_file(BEFORE_PINS)
+        before = strict_json(before_body); descriptors = {row['path']: row for row in before['pins']}
+        self.pins = [{'path': str(BEFORE_PINS), 'actual': before_pin}]
+        paths = [INDEX, 'public/data/research_explorer_index_v1/asset-manifest.json', 'app/molecular-concordance.js', 'app/molecular-concordance.d.ts'] + [path for _, path in SCOPE_FILES]
+        values = {}
+        for path in paths:
+            actual, body, calls = read_file(ROOT / path)
+            assert actual == pin(descriptors[path]), ('Source/comparator schema changed', path)
+            self.pins.append({'path': path, 'actual': actual, 'preadCalls': calls, 'exactOriginalI60Pin': True})
+            if path.endswith('.json'): values[path] = strict_json(body)
+        assert self.pins[1]['actual'] == {'bytes': 12327624, 'sha256': INDEX_SHA}
+        manifest = values['public/data/research_explorer_index_v1/asset-manifest.json']
+        assert manifest['index']['bytes'] == 12327624 and manifest['index']['sha256'] == INDEX_SHA
+        self.index = values[INDEX]
+        self.records = [record for record in self.index['records'] if record['focusKind'] == 'molecular_profile']
+        self.by_key = {record['key']: record for record in self.records}
+        assert len(self.records) == len(self.by_key) == 387
+        assert all(key == 'molecular_profile:' + record['focusId'] for key, record in self.by_key.items())
+        self.namespace_counts = dict(sorted(collections.Counter(record['namespace'] for record in self.records).items()))
+        assert len(self.namespace_counts) == 10 and self.namespace_counts['cano-gomez-2026:GSE318731'] == 11
+        self.scopes = []
+        for namespace, path in SCOPE_FILES:
+            source = values[path]
+            life = ' · '.join(source['scope']['lifeStages']) if namespace == 'roome-2026:GSE291462' else source['scope']['lifeStage']
+            self.scopes.append({'namespace': namespace, 'path': path, 'releaseId': source['releaseId'], 'lifeStage': life,
+                                'lifeStageLocator': path + '#scope/' + ('lifeStages' if namespace == 'roome-2026:GSE291462' else 'lifeStage'),
+                                'profileIds': {profile['id'] for profile in source['profiles']}})
+
+    def stable(self):
+        for row in self.pins:
+            path = Path(row['path']) if row['path'].startswith('/') else ROOT / row['path']
+            assert read_file(path)[0] == row['actual'], ('Authority moved during replay', str(path))
+
+def exact_slot(record, slot):
+    found = None
+    for label in SLOT_LABELS[slot]:
+        found = next((row for row in record['evidence'] if row['label'] == label), None)
+        if found is not None: break
+    if found is not None:
+        missing = re.match(r'^\s*(?:not established|not retained|unavailable|unknown|no exact)\b', found['value'], re.I) is not None
+        return {'status': 'missing' if missing else 'available', 'rawValue': found['value'], 'sourceRowLabel': found['label'],
+                'authority': found['authority'], 'locator': found['locator'],
+                'reasonCode': 'evidence_row_explicitly_not_established' if missing else None,
+                'detail': found['value'] if missing else None}
+    locator = next((item for item in record['provenance'].get('locators', []) if isinstance(item, str) and item), None)
+    if not locator:
+        parent = next((row for row in record['evidence'] if row['label'] == 'Canonical parent source'), None)
+        locator = parent['locator'] if parent and parent.get('locator') else 'research-record:' + record['focusId']
+    return {'status': 'missing', 'rawValue': None, 'sourceRowLabel': None, 'authority': 'research_record_index', 'locator': locator,
+            'reasonCode': 'exact_record_field_not_retained',
+            'detail': 'No exact ' + SLOT_NAMES[slot].lower() + ' evidence row is retained for this source record; missing is not a biological zero.'}
+
+def exact_marker_strings(receipt):
+    if receipt['status'] != 'available' or not isinstance(receipt['rawValue'], str): return []
+    if receipt['sourceRowLabel'] == 'Table 8 marker summary':
+        values = []
+        for item in receipt['rawValue'].split('; '):
+            match = re.match(r'^(?:main|co-marker [12]) (.+)$', item)
+            if match and not re.match(r'^(?:not populated|not established|not retained)\b', match[1], re.I): values.append(match[1])
+    else: values = receipt['rawValue'].split(' · ')
+    return list(dict.fromkeys(value for value in values if value))
+
+def source_profile(record, scopes):
+    assert record['focusKind'] == 'molecular_profile' and record['key'] == 'molecular_profile:' + record['focusId']
+    fields = {slot: exact_slot(record, slot) for slot in ('region', 'life_stage', 'transmitter')}
+    scope = next((item for item in scopes if item['namespace'] == record['namespace'] and record['focusId'] in item['profileIds']), None)
+    if fields['life_stage']['status'] == 'missing' and scope and scope['lifeStage']:
+        fields['life_stage'] = {'status': 'available', 'rawValue': scope['lifeStage'], 'sourceRowLabel': 'Exact source-taxonomy cohort life stage',
+                                'authority': 'source_taxonomy_cohort_scope', 'locator': scope['lifeStageLocator'], 'reasonCode': None,
+                                'detail': 'Source-cohort age context; not a new per-cell age measurement.', 'sourceReleaseId': scope['releaseId']}
+    markers = exact_slot(record, 'markers'); markers['exactStrings'] = exact_marker_strings(markers); markers['parsingPolicy'] = MARKER_POLICY
+    conflicts = [{'label': row['label'], 'rawValue': row['value'], 'authority': row['authority'], 'locator': row['locator']}
+                 for row in record['evidence'] if re.search('conflict|discrepancy', row['label'], re.I) or re.search('quarantined|source_discrepancy', row['authority'])]
+    conflicts += [{'label': gap['label'], 'rawValue': gap['rawValue'], 'authority': gap['authority'], 'locator': gap['sourceLocator'],
+                   'reasonCode': gap['reasonCode'], 'detail': gap['detail']}
+                  for gap in record['gaps'] if gap['reasonCode'] in ('unresolved_source_conflict', 'qc_quarantined')]
+    return {'key': record['key'], 'focusId': record['focusId'], 'title': record['title'], 'namespace': record['namespace'],
+            'recordKind': record.get('recordSemantics', {}).get('recordKind') or 'not_retained',
+            'unitOfObservation': record.get('recordSemantics', {}).get('unitOfObservation') or 'not_retained',
+            'identity': 'not_established', 'markers': markers, 'fields': fields, 'sourceConflicts': conflicts, 'provenance': record['provenance']}
+
+def expected_report(authority, selected_keys, anchor_key):
+    assert 2 <= len(selected_keys) <= 4 and len(set(selected_keys)) == len(selected_keys)
+    assert anchor_key in selected_keys and all(key in authority.by_key for key in selected_keys), 'No unknown source-key replacement'
+    profiles = [source_profile(authority.by_key[key], authority.scopes) for key in selected_keys]
+    anchor = next(profile for profile in profiles if profile['key'] == anchor_key); pairs = []
+    for comparison in profiles:
+        if comparison['key'] == anchor_key: continue
+        left, right = anchor['markers'], comparison['markers']
+        known = left['status'] == right['status'] == 'available' and bool(left['exactStrings']) and bool(right['exactStrings'])
+        marker = {'status': 'exact_string_comparison' if known else 'unknown',
+                  'sharedExactStrings': [value for value in left['exactStrings'] if value in right['exactStrings']] if known else [],
+                  'anchorOnlyStrings': [value for value in left['exactStrings'] if value not in right['exactStrings']] if known else [],
+                  'comparisonOnlyStrings': [value for value in right['exactStrings'] if value not in left['exactStrings']] if known else [],
+                  'anchorEvidence': left, 'comparisonEvidence': right, 'boundary': MARKER_BOUNDARY}
+        fields = {}
+        for slot in DIMENSIONS:
+            a, b = anchor['fields'][slot], comparison['fields'][slot]
+            status = 'unknown' if a['status'] != 'available' or b['status'] != 'available' else 'exact_agreement' if a['rawValue'] == b['rawValue'] else 'different_source_assertions'
+            fields[slot] = {'status': status, 'anchorEvidence': a, 'comparisonEvidence': b, 'boundary': FIELD_BOUNDARY}
+        pairs.append({'anchorKey': anchor_key, 'comparisonKey': comparison['key'], 'relation': 'inspection_candidate', 'identity': 'not_established',
+                      'markers': marker, 'fields': fields, 'sourceConflicts': {'anchor': anchor['sourceConflicts'], 'comparison': comparison['sourceConflicts']}})
+    return {'documentType': 'molecular_source_concordance', 'schemaVersion': '1.0.0', 'anchorKey': anchor_key, 'selectedKeys': selected_keys,
+            'sourceDenominator': {'value': 387, 'unit': 'source_profiles', 'namespaceCounts': authority.namespace_counts, 'deduplicationCount': 0},
+            'profiles': profiles, 'comparisons': pairs, 'identity': 'not_established', 'sameCellJoinCount': 0, 'sameTypeJoinCount': 0,
+            'generatedGeometryCount': 0, 'boundary': REPORT_BOUNDARY}
+
+def address_view(url, authority):
+    parts = urlsplit(url); assert parts.path == '/explore/cell-types/compare'
+    params = collections.defaultdict(list)
+    for key, value in parse_qsl(parts.query, keep_blank_values=True): params[key].append(value)
+    empty = {'selectedKeys': [], 'anchorKey': '', 'query': '', 'namespace': '', 'page': 0}
+    if not any(key in params for key in BOOKMARK_KEYS): return 'default', empty
+    try:
+        assert all(len(params[key]) == 1 for key in BOOKMARK_KEYS if key in params)
+        assert params['compareVersion'] == ['1'] and params['compareIndex'] == [INDEX_SHA] and 'compareKeys' in params
+        keys = strict_json(params['compareKeys'][0]); assert isinstance(keys, list) and len(keys) <= 4 and all(isinstance(key, str) and key in authority.by_key for key in keys)
+        assert len(set(keys)) == len(keys)
+        anchor = params.get('compareAnchor', [''])[0]; assert anchor in keys if keys else anchor == ''
+        query = params.get('compareQuery', [''])[0]; namespace = params.get('compareNamespace', [''])[0]
+        assert len(query.encode('utf-16-le')) // 2 <= 180 and (not namespace or namespace in authority.namespace_counts)
+        page_raw = params.get('comparePage', ['0'])[0]; assert re.fullmatch(r'0|[1-9][0-9]*', page_raw)
+        page = int(page_raw); assert page <= 9007199254740991
+        view = {'selectedKeys': keys, 'anchorKey': anchor, 'query': query, 'namespace': namespace, 'page': page}
+        count = len(candidate_records(authority, view)); assert page < max(1, (count + 11) // 12)
+        return 'ready', view
+    except (AssertionError, ValueError, TypeError, KeyError): return 'invalid', empty
+
+def candidate_records(authority, view):
+    query = view['query'].lower()
+    return [record for record in authority.records if (not view['namespace'] or record['namespace'] == view['namespace'])
+            and query in (record['title'] + ' ' + record['focusId'] + ' ' + ' '.join(record['searchTerms'])).lower()]
+
+def comparison_label(status):
+    return {'exact_agreement': 'Exact source-string agreement', 'different_source_assertions': 'Different source assertions',
+            'exact_string_comparison': 'Exact displayed strings compared'}.get(status, 'Unknown / missing source field')
+
+def compact_render(value): return re.sub(r'\s+', '', value)
+
+def assert_table(table, report, pair):
+    assert isinstance(table, list) and len(table) == 5 and all(isinstance(row, list) and len(row) == 4 for row in table)
+    assert table[0] == ['Dimension', 'Anchor assertion', 'Comparison assertion', 'Assessment']
+    profiles = {profile['key']: profile for profile in report['profiles']}
+    a, b = profiles[pair['anchorKey']], profiles[pair['comparisonKey']]
+    expected = [['Retained marker / feature strings', (' · '.join(a['markers']['exactStrings']) or 'Unknown') + (a['markers']['sourceRowLabel'] or '') + ' · ' + a['markers']['locator'],
+                 (' · '.join(b['markers']['exactStrings']) or 'Unknown') + (b['markers']['sourceRowLabel'] or '') + ' · ' + b['markers']['locator'], comparison_label(pair['markers']['status'])]]
+    # React's null source-row label renders as empty text; retain every original string.
+    for slot in DIMENSIONS:
+        field = pair['fields'][slot]
+        expected.append([slot.replace('_', ' '), (field['anchorEvidence']['rawValue'] if field['anchorEvidence']['rawValue'] is not None else 'Unknown') + field['anchorEvidence']['locator'],
+                         (field['comparisonEvidence']['rawValue'] if field['comparisonEvidence']['rawValue'] is not None else 'Unknown') + field['comparisonEvidence']['locator'], comparison_label(field['status'])])
+    assert [[compact_render(cell) for cell in row] for row in table[1:]] == [[compact_render(cell) for cell in row] for row in expected], 'Exact source comparison table differs'
+
+def assert_tool_bracket(capture):
+    bracket = capture['toolCaptureWindowUTC']; assert set(bracket) == {'startUTC', 'endUTC'}
+    def dt(value):
+        assert isinstance(value, str) and value.endswith('Z')
+        return datetime.datetime.fromisoformat(value[:-1] + '+00:00')
+    assert dt(bracket['startUTC']) <= dt(bracket['endUTC'])
+    return bracket
+
+def replay_capture(capture, authority, role, require_expanded=False):
+    bracket = assert_tool_bracket(capture)
+    assert role in ('ready', 'invalid', 'source_unavailable', 'source_waiting', 'not_mounted')
+    if role == 'not_mounted':
+        assert urlsplit(capture['url']).path in ('/explore/cell-types/compare', '/research/explorer')
+        assert capture['sectionText'] == '' and capture['controls'] == [] and capture['comparisons'] == [] and capture['selections'] == ''
+        return {'role': role, 'url': capture['url'], 'bracket': bracket, 'reportPairs': 0, 'exports': 0, 'mountedSourceGateEstablished': False, 'sourceProofMinted': False}
+    status, view = address_view(capture['url'], authority)
+    controls, comparisons = capture['controls'], capture['comparisons']
+    anchors = [item for item in controls if item.get('label', '').startswith('Anchor record')]
+    assert len(anchors) <= 1
+    selected = [item['value'] for item in anchors[0]['options']] if anchors else []
+    anchor = anchors[0]['value'] if anchors else ''
+    exports = [item for item in controls if item.get('text') in ('Export evidence JSON', 'Export comparison CSV')]
+    if role != 'ready':
+        if role == 'invalid': assert status == 'invalid' and capture['alerts']
+        assert not selected and anchor == '' and not comparisons and not exports, 'Unavailable state retained comparison or export'
+        return {'role': role, 'url': capture['url'], 'bracket': bracket, 'selectedKeys': [], 'reportPairs': 0, 'exports': 0, 'sourceProofMinted': False}
+    assert status in ('ready', 'default') and selected == view['selectedKeys'] and anchor == view['anchorKey']
+    assert re.search(r'387 source profiles across 10 namespaces\s*·\s*zero deduplication', capture['sectionText'])
+    namespace_controls = [item for item in controls if item.get('label', '').startswith('Source namespace')]
+    query_controls = [item for item in controls if item.get('label', '').startswith('Search label, ID or source marker')]
+    assert len(namespace_controls) == len(query_controls) == 1
+    assert namespace_controls[0]['value'] == view['namespace'] and query_controls[0]['value'] == view['query']
+    count = len(candidate_records(authority, view)); assert isinstance(capture['pages'], str), 'Original DOM pages text must be retained as a string'; page_text = capture['pages']
+    assert re.search(rf'{count} matches\s*·\s*page {view["page"] + 1}\s*/\s*{max(1, (count + 11) // 12)}(?=Next|\s|$)', page_text)
+    if len(selected) < 2:
+        assert not comparisons and not exports
+        return {'role': role, 'url': capture['url'], 'bracket': bracket, 'view': view, 'sourceProfiles': 387, 'reportPairs': 0, 'exports': 0, 'sourceProofMinted': False}
+    report = expected_report(authority, selected, anchor)
+    assert len(comparisons) == len(report['comparisons'])
+    assert {item['text'] for item in exports} == {'Export evidence JSON', 'Export comparison CSV'} and len(exports) == 2
+    assert all(item['disabled'] is False for item in exports)
+    links = [item for item in controls if item.get('text') == 'Link to this comparison']
+    assert len(links) == 1 and address_view(links[0]['href'], authority) == (status, view)
+    source_receipts, opened = [], []
+    by_key = {profile['key']: profile for profile in report['profiles']}
+    for actual, pair in zip(comparisons, report['comparisons']):
+        a, b = by_key[pair['anchorKey']], by_key[pair['comparisonKey']]
+        assert actual['heading'] == a['title'] + ' → ' + b['title']
+        assert compact_render(a['namespace'] + ' → ' + b['namespace']) in compact_render(actual['text'])
+        assert_table(actual['table'], report, pair)
+        shared = 'not assessable' if pair['markers']['status'] == 'unknown' else ' · '.join(pair['markers']['sharedExactStrings']) or 'none in the retained display panels'
+        assert compact_render('Shared exact strings: ' + shared) in compact_render(actual['text'])
+        assert len(actual['receipts']) == 1
+        receipt = actual['receipts'][0]
+        assert strict_json(receipt['json']) == {'sourceConflicts': pair['sourceConflicts'], 'anchor': a, 'comparison': b}, 'Expanded/retained source JSON differs'
+        expected_count = len(a['sourceConflicts']) + len(b['sourceConflicts'])
+        assert receipt['summary'] == f'Source conflicts and complete evidence receipts ({expected_count} retained conflicts / discrepancies)'
+        assert isinstance(receipt['open'], bool)
+        if require_expanded: assert receipt['open'] is True, 'Hidden pre text is not actual expanded evidence'
+        opened.append(receipt['open']); source_receipts.append({'anchorKey': a['key'], 'comparisonKey': b['key'], 'exact': True, 'open': receipt['open']})
+    return {'role': role, 'url': capture['url'], 'bracket': bracket, 'view': view, 'report': report,
+            'reportPairs': len(comparisons), 'sourceReceipts': source_receipts, 'actualExpandedReceiptCount': sum(opened),
+            'allFourDimensionsPerPairExact': True, 'exports': 2, 'sourceProofMinted': False}
+
+def assert_native_json(body, expected):
+    actual = strict_json(body)
+    assert actual == expected, 'Native JSON differs from independent indexed source receipts/report schema'
+    return {'exact': True, 'profiles': len(actual['profiles']), 'pairs': len(actual['comparisons']), 'denominator': actual['sourceDenominator']}
+
+def expected_csv_rows(report):
+    rows = []
+    for pair in report['comparisons']:
+        marker = pair['markers']
+        rows.append([pair['anchorKey'], pair['comparisonKey'], 'marker_strings', marker['status'], marker['anchorEvidence']['exactStrings'], marker['comparisonEvidence']['exactStrings'], marker['sharedExactStrings'], marker['anchorEvidence'], marker['comparisonEvidence'], 'not_established'])
+        for slot in DIMENSIONS:
+            field = pair['fields'][slot]
+            rows.append([pair['anchorKey'], pair['comparisonKey'], slot, field['status'], field['anchorEvidence']['rawValue'], field['comparisonEvidence']['rawValue'], [], field['anchorEvidence'], field['comparisonEvidence'], 'not_established'])
+        rows.append([pair['anchorKey'], pair['comparisonKey'], 'source_conflicts', 'source_conflicts_preserved', pair['sourceConflicts']['anchor'], pair['sourceConflicts']['comparison'], [], {}, {}, 'not_established'])
+    return rows
+
+def assert_native_csv(body, report):
+    assert body.endswith(b'\r\n'), 'Native CSV terminator changed'
+    rows = list(csv.reader(io.StringIO(body.decode('utf-8'), newline=''), strict=True))
+    assert rows[0] == CSV_HEADERS and len(rows) == 1 + 5 * len(report['comparisons']) and all(len(row) == 10 for row in rows)
+    decoded = [row[:4] + [strict_json(value) for value in row[4:9]] + [row[9]] for row in rows[1:]]
+    assert decoded == expected_csv_rows(report), 'Native CSV exact raw values/marker roles/locators/conflicts differ'
+    return {'exact': True, 'rows': len(rows), 'columns': 10, 'dataRows': len(rows) - 1, 'rawValuesDecodedFromJSONCells': True}
+
+def actual_input(item, require_qa=True):
+    path = Path(item['path'])
+    if require_qa:
+        if not path.is_absolute(): path = ROOT / path
+        assert path.resolve().is_relative_to(QA.resolve()) and not path.is_symlink(), 'Capture/receipt must be in exact I60 QA subtree'
+    actual, body, calls = read_file(path)
+    assert actual == pin(item), ('Actual evidence pin changed', str(path))
+    return path, actual, body, calls
+
+def run_actual(config, authority):
+    assert config.get('increment') == 'I60' and config.get('actualReady') is True
+    assert config.get('parentActualReadyNotice') == 'ACTUAL_READY', 'Wait for parent explicit actual readiness; elapsed time is not authorization'
+    assert config['captures'], 'Actual source captures must be explicitly declared'
+    capture_rows, reports = [], {}
+    for item in config['captures']:
+        path, actual, body, calls = actual_input(item)
+        replay = replay_capture(strict_json(body), authority, item['role'], item.get('requireExpanded', False))
+        if 'report' in replay: reports[str(path)] = replay['report']
+        capture_rows.append({'path': str(path), 'actual': actual, 'replay': replay, 'preadCalls': calls})
+    export_rows = []
+    if config.get('exports'):
+        assert len(config['exports']) == 2 and {item['kind'] for item in config['exports']} == {'JSON', 'CSV'}
+        attribution = config['nativeExportAttribution']; _, attribution_pin, attribution_body, _ = actual_input(attribution)
+        attribution_json = strict_json(attribution_body); assert str(attribution_json['status']).startswith('PASS')
+        assert config['nativeExportAttributionAssertions'], 'Bind actual source-agent landing schema instead of inferring landing'
+        for assertion in config['nativeExportAttributionAssertions']:
+            value = attribution_json
+            for part in assertion['pointer'].strip('/').split('/'): value = value[int(part)] if isinstance(value, list) else value[part]
+            assert value == assertion['value']
+        for item in config['exports']:
+            expected_name = 'molecular-concordance.' + ('json' if item['kind'] == 'JSON' else 'csv')
+            assert item['path'] == '/Users/zhouzhenghang/Downloads/' + expected_name, 'Only exact two pre-baselined Downloads paths; no variant enumeration'
+            path, actual, body, calls = actual_input(item, False)
+            capture_path = str((ROOT / item['sourceCapturePath']).resolve()) if not item['sourceCapturePath'].startswith('/') else str(Path(item['sourceCapturePath']).resolve())
+            assert capture_path in reports
+            check = assert_native_json(body, reports[capture_path]) if item['kind'] == 'JSON' else assert_native_csv(body, reports[capture_path])
+            export_rows.append({'path': str(path), 'actual': actual, 'sourceCapturePath': capture_path, 'sourceReplay': check, 'landingAttributionActual': attribution_pin, 'preadCalls': calls})
+    authority.stable()
+    return {'status': 'PASS_INDEPENDENT_I60_ACTUAL_SOURCE_COMPARISON_REPLAY', 'increment': 'I60',
+            'generatedAtUTC': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'authorityPins': authority.pins,
+            'captures': capture_rows, 'exports': export_rows, 'productComparatorOrPresentationImports': 0,
+            'DownloadsDirectoryEnumerations': 0, 'rootWrites': 0, 'stageWrites': 0, 'browserRequests': 0,
+            'privateSourceOrRenderProofMinted': False, 'fullGoalComplete': False,
+            'limitations': ['Captured tool brackets and source content are replayed; camera helper separately owns request-ID/transport temporal attribution.',
+                           'Actual native file landing attribution is delegated to and bound from the source-agent receipt; this helper neither triggers exports nor enumerates Downloads.',
+                           'DOM text whitespace is render-normalized only; every retained/expanded JSON receipt and native export compares complete original raw strings/qualifiers/locators exactly.',
+                           '387 source profiles and exact display strings remain independent source assertions, not pooled cells/type identity/geometry.']}
+
+def prepare(authority):
+    profiles = [source_profile(record, authority.scopes) for record in authority.records]
+    authority.stable()
+    return {'status': 'PREPARATION_ONLY_INDEPENDENT_SOURCE_AUTHORITY_VALIDATED_NATIVE_PENDING', 'authorityPins': authority.pins,
+            'sourceProfiles': 387, 'namespaceCounts': authority.namespace_counts, 'sourceScopeFiles': [path for _, path in SCOPE_FILES],
+            'markerEvidenceRoleCounts': dict(collections.Counter(profile['markers']['sourceRowLabel'] for profile in profiles)),
+            'missingMarkerProfiles': sum(profile['markers']['status'] == 'missing' for profile in profiles),
+            'exactTaxonomyCohortFallbackProfiles': sum(profile['fields']['life_stage']['authority'] == 'source_taxonomy_cohort_scope' for profile in profiles),
+            'actualCapturesRead': 0, 'DownloadsFilesRead': 0, 'productComparatorImports': 0, 'actualReplayExecuted': False,
+            'rootWrites': 0, 'stageWrites': 0, 'nativeBrowserOrNetworkExecuted': False, 'fullGoalComplete': False}
+
+def main():
+    parser = argparse.ArgumentParser(); group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--prepare-only', action='store_true'); group.add_argument('--actual-config')
+    args = parser.parse_args()
+    config = strict_json(read_file(args.actual_config)[1]) if args.actual_config else None
+    if config is not None:
+        assert config.get('increment') == 'I60' and config.get('actualReady') is True and config.get('parentActualReadyNotice') == 'ACTUAL_READY', 'Actual replay must wait parent ACTUAL_READY'
+    authority = Authority(); result = run_actual(config, authority) if config is not None else prepare(authority)
+    target = OUT / ('I60_ACTUAL_COMPARISON_SOURCE_REPLAY.json' if config is not None else 'I60_COMPARISON_SOURCE_PREPARATION.json')
+    assert target.parent.resolve() == OUT
+    target.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps({'path': str(target), 'status': result['status'], 'actualReplayExecuted': config is not None}, indent=2))
+
+if __name__ == '__main__': main()

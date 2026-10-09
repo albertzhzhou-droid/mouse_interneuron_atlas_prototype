@@ -1,8 +1,10 @@
 import { validateResearchRecordPresentation } from "./research-record-presentation.js";
+import transportReceipt from "../data/research-explorer-transport-0.1.json" with { type: "json" };
 
 export const RESEARCH_EXPLORER_BASE = "/data/research_explorer_index_v1/";
 export const RESEARCH_EXPLORER_MANIFEST_URL = `${RESEARCH_EXPLORER_BASE}asset-manifest.json`;
 export const RESEARCH_EXPLORER_INDEX_URL = `${RESEARCH_EXPLORER_BASE}search-index.json`;
+export const RESEARCH_EXPLORER_TRANSPORT_URL = transportReceipt.transport.route;
 
 export const RESEARCH_FOCUS_KINDS = Object.freeze([
   "sci_entity",
@@ -72,7 +74,7 @@ export const RESEARCH_EXPLORER_EXPECTED_COUNTS = Object.freeze({
 });
 export const RESEARCH_EXPLORER_EXPECTED_TOTAL = Object.values(RESEARCH_EXPLORER_EXPECTED_COUNTS)
   .reduce((total, count) => total + count, 0);
-export const RESEARCH_EXPLORER_EXPECTED_SOURCE_FILE_COUNT = 21;
+export const RESEARCH_EXPLORER_EXPECTED_SOURCE_FILE_COUNT = 22;
 
 export const RESEARCH_MISSINGNESS_REASON_CODES = Object.freeze([
   "source_not_reported",
@@ -106,6 +108,9 @@ export async function sha256Hex(bytes) {
 
 let cachedResearchExplorerIndex = null;
 let cachedResearchExplorerIndexPromise = null;
+const verifiedLoadReceipts = new WeakMap();
+export function researchExplorerLoadingReceipt(index) { return verifiedLoadReceipts.get(index) ?? null; }
+const now = () => performance.now();
 
 function abortError() {
   return new DOMException("The Research Explorer request was aborted", "AbortError");
@@ -130,25 +135,51 @@ function awaitWithAbort(promise, signal) {
   });
 }
 
-async function fetchVerifiedResearchExplorerIndex(fetchImpl, signal) {
-  const manifestResponse = await fetchImpl(RESEARCH_EXPLORER_MANIFEST_URL, { signal });
+async function fetchVerifiedResearchExplorerIndex(fetchImpl, signal, transport = "canonical", forceFresh = false) {
+  const started = now(), request = { signal, cache: forceFresh ? "no-store" : "no-cache" };
+  const manifestResponse = await fetchImpl(RESEARCH_EXPLORER_MANIFEST_URL, request);
   if (!manifestResponse.ok) throw new Error(`Research index manifest request failed (${manifestResponse.status})`);
   const manifest = validateResearchExplorerManifest(await manifestResponse.json());
-  const indexResponse = await fetchImpl(RESEARCH_EXPLORER_INDEX_URL, { signal });
+  const manifestReady = now(), url = transport === "compressed" ? RESEARCH_EXPLORER_TRANSPORT_URL : RESEARCH_EXPLORER_INDEX_URL;
+  const indexResponse = await fetchImpl(url, request);
   if (!indexResponse.ok) throw new Error(`Research index request failed (${indexResponse.status})`);
   const bytes = await indexResponse.arrayBuffer();
+  const bodyReady = now();
+  if (bytes.byteLength !== manifest.index.bytes) throw new Error("Research index byte count/checksum does not match the pinned manifest");
   const actualSha256 = await sha256Hex(bytes);
   if (actualSha256 !== manifest.index.sha256) throw new Error("Research index checksum does not match the pinned manifest");
-  return validateResearchExplorerIndex(JSON.parse(new TextDecoder().decode(bytes)), manifest);
+  const hashReady = now(), parsed = JSON.parse(new TextDecoder().decode(bytes)), parsedReady = now();
+  const index = validateResearchExplorerIndex(parsed, manifest), validatedReady = now();
+  const responseUrl = indexResponse.url;
+  const entry = typeof responseUrl === "string" && typeof performance.getEntriesByName === "function"
+    ? performance.getEntriesByName(responseUrl).filter((item) => item.entryType === "resource").at(-1) : null;
+  const size = (name) => entry && Number.isFinite(entry[name]) ? entry[name] : null;
+  const declaredLength = indexResponse.headers?.get?.("content-length");
+  verifiedLoadReceipts.set(index, Object.freeze({ documentType: "research_explorer_load_receipt", assetSetId: index.assetSetId,
+    recordCount: index.records.length, canonicalUrl: RESEARCH_EXPLORER_INDEX_URL, requestedUrl: url,
+    transport, forceFresh, contentEncoding: indexResponse.headers?.get?.("content-encoding") ?? null,
+    declaredContentLength: declaredLength && /^\d+$/.test(declaredLength) ? Number(declaredLength) : null,
+    actualTransferBytes: size("transferSize"), actualEncodedBodyBytes: size("encodedBodySize"), actualDecodedBodyBytes: size("decodedBodySize"),
+    verifiedDecodedBytes: bytes.byteLength, verifiedDecodedSha256: actualSha256,
+    manifestMilliseconds: manifestReady - started, fetchAndBodyMilliseconds: bodyReady - manifestReady,
+    checksumMilliseconds: hashReady - bodyReady, jsonDecodeParseMilliseconds: parsedReady - hashReady,
+    schemaValidationMilliseconds: validatedReady - parsedReady, totalDataReadyMilliseconds: validatedReady - started,
+    timingScope: "This data request only; excludes application JS parse/execute, cell geometry, scene readiness and device-independent performance claims.",
+    browserCacheScope: forceFresh ? "Fetch requested no-store; Resource Timing reports the observed transfer, where available." : "HTTP cache revalidation requested for the manifest and index; Resource Timing reports the observed transfer, where available.",
+  }));
+  return index;
 }
 
 export async function loadVerifiedResearchExplorerIndex({
   fetchImpl = globalThis.fetch,
   signal,
+  transport = "canonical",
+  forceFresh = false,
 } = {}) {
   if (typeof fetchImpl !== "function") throw new Error("Research Explorer fetch is unavailable");
-  const useSharedBrowserCache = fetchImpl === globalThis.fetch;
-  if (!useSharedBrowserCache) return fetchVerifiedResearchExplorerIndex(fetchImpl, signal);
+  if (!["compressed", "canonical"].includes(transport)) throw new Error("Research Explorer transport is unavailable");
+  const useSharedBrowserCache = fetchImpl === globalThis.fetch && !forceFresh && transport === "canonical";
+  if (!useSharedBrowserCache) return fetchVerifiedResearchExplorerIndex(fetchImpl, signal, transport, forceFresh);
   if (cachedResearchExplorerIndex) return awaitWithAbort(Promise.resolve(cachedResearchExplorerIndex), signal);
   if (!cachedResearchExplorerIndexPromise) {
     cachedResearchExplorerIndexPromise = fetchVerifiedResearchExplorerIndex(fetchImpl, undefined)
@@ -165,7 +196,7 @@ export async function loadVerifiedResearchExplorerIndex({
 }
 
 export function validateResearchExplorerManifest(manifest) {
-  if (!isRecord(manifest) || manifest.schemaVersion !== "1.13.0" || manifest.assetSetId !== "ohri:research-explorer-index:1.13.0") {
+  if (!isRecord(manifest) || manifest.schemaVersion !== "1.14.0" || manifest.assetSetId !== "ohri:research-explorer-index:1.14.0") {
     throw new Error("Research Explorer manifest identity is invalid");
   }
   if (!isRecord(manifest.index) || manifest.index.path !== "search-index.json" || !/^[a-f0-9]{64}$/.test(manifest.index.sha256)) {
@@ -189,7 +220,7 @@ export function validateResearchExplorerManifest(manifest) {
 }
 
 export function validateResearchExplorerIndex(payload, manifest = null) {
-  if (!isRecord(payload) || payload.schemaVersion !== "1.13.0" || payload.assetSetId !== "ohri:research-explorer-index:1.13.0") {
+  if (!isRecord(payload) || payload.schemaVersion !== "1.14.0" || payload.assetSetId !== "ohri:research-explorer-index:1.14.0") {
     throw new Error("Research Explorer index identity is invalid");
   }
   if (manifest && (manifest.assetSetId !== payload.assetSetId || manifest.index.recordCount !== payload.records?.length)) {
@@ -375,6 +406,7 @@ const MOLECULAR_EVIDENCE_PREVIEW_LABELS_BY_NAMESPACE = Object.freeze({
   ]),
   "russ-2021": Object.freeze([
     "Source-local label",
+    "Exact captured-cell/nucleus count",
     "Primary markers",
     "Region class",
     "Transmitter class",
@@ -393,6 +425,7 @@ const RESEARCH_EVIDENCE_PREVIEW_LABELS = Object.freeze({
     "Standardized source label",
     "Exact sampled-nucleus count",
     "Exact sampled-cell count",
+    "Exact captured-cell/nucleus count",
     "Exact captured-cell count",
     "Sampled nuclei",
     "Figure-reported cell count",

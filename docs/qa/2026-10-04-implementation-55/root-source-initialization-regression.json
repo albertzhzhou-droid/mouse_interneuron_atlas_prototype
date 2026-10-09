@@ -1,0 +1,14 @@
+{
+  "path": "tests/research-source-drilldown-component.test.mjs",
+  "before": {
+    "bytes": 6837,
+    "sha256": "ca9c9687e9eb9dbf2561a3baf60c3ee1ca3a07ded4ecd392cf52a1126cfb389d"
+  },
+  "after": {
+    "bytes": 7478,
+    "sha256": "a9ce3a16bb1ce7427f74a9f25a2abdfb9d4b6fd6ed89e66aa2e239a51231ad25"
+  },
+  "exactAppend": "\n\ntest('server source controls stay inert until URL source and owned-set restoration is committed', () => {\n  for (const initialParams of [\n    { source: 'SRC-CANOGOMEZ-2026', recordSet: 'RS-CANOGOMEZ-P56-CONFIRMED-INTERNEURON-PROFILES' },\n    { source: 'missing-source' },\n    { source: 'SRC-ROOME-2026', recordSet: 'RS-DELILE-FINE-SUBTYPES' },\n  ]) {\n    const html = renderRegistry(initialParams);\n    assert.match(html, /<p class=\"source-registry-boundary\" role=\"status\" aria-live=\"polite\">Preparing source selection\u2026<\\/p><section class=\"source-registry\" aria-labelledby=\"source-registry-heading\" inert=\"\" aria-busy=\"true\">/);\n  }\n});\n",
+  "scope": "Actual ReactSSR inert initial control contract; native post-restoration behavior verified separately",
+  "beforeArchive": "root-source-initialization-preimage.zip"
+}

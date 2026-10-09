@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "0.1.0",
+  "implementation": "I39",
+  "generatedAt": "2026-10-03T00:50:04.093Z",
+  "status": "sealed_progress_full_goal_incomplete",
+  "goalStatus": "active",
+  "fullGoalComplete": false,
+  "canonicalTaskStatus": {
+    "completed": 79,
+    "total": 243,
+    "unchanged": true
+  },
+  "applicationVersion": "2.91.0-research.1",
+  "routes": [
+    "/catalogues/svara",
+    "/connectivity/svara"
+  ],
+  "change": "Each represented catalogue entry opens a named starting pair retaining that native endpoint. Each current contact pair opens both exact native publication pages. A starting pair explicitly names the other endpoint; browser Back preserves the full original pair. Unrepresented catalogue MN entries remain viewable and receive no substituted pair.",
+  "navigation": {
+    "catalogueEntries": 212,
+    "matchedPublicationEntries": 141,
+    "unrepresentedMnEntries": 71,
+    "endpointRows": 209,
+    "exactNativeLabelEndpointRows": 201,
+    "explicitHeaderSuffixEndpointRows": 8,
+    "bytes": 59540,
+    "sourceInputPins": [
+      {
+        "path": "data/svara-supplement-catalogues-0.1.json",
+        "bytes": 403985,
+        "sha256": "7f9a9429ac1b50d45f063f3053bbd024aae46201af38fe52ccfc4f539fbb277c"
+      },
+      {
+        "path": "data/svara-synaptic-contacts-0.1.json",
+        "bytes": 10807,
+        "sha256": "aba1a4454d34569354824c3f9f9fd84db5792fef3ddf28d4a930cf471c8784fb"
+      }
+    ],
+    "relation": {
+      "kind": "same_publication_label_navigation",
+      "sourceGeometryVerified": false,
+      "physicalCellMappingEstablished": false,
+      "functionalTransmissionEstablished": false,
+      "coordinateTransformEstablished": false,
+      "byteAuthorityProvided": false
+    },
+    "interpretation": "Navigation across native labels of one exact publication release. Four MN subtype suffixes are confirmed in native PDF headers. No general name normalization, raw physical cell identity, geometry, transform, functional connection or source-byte authority is established.",
+    "firstPairNotSelectedByNonzeroContactCount": true,
+    "allOriginalPageAndContactDataPreserved": true
+  },
+  "scientificBoundary": "Publication label concordance is not physical raw-cell mapping, editable geometry, XYZ coordinates, registration or functional transmission. Source-specific denominators remain separate.",
+  "focusedChecks": {
+    "actualExitCode": 0,
+    "newTests": 5,
+    "existingRelatedTests": 13,
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "scope": "All 212 catalogue entries, all 4964 matrix positions to both pages, 71 unavailable MN columns, explicit native subtype suffixes, source/version/ambiguous/unknown/fuzzy label refusal, immutable non-authoritative navigation and deterministic byte replay."
+  },
+  "fullConfiguredResearch": {
+    "actualExitCode": 0,
+    "terminalExecSessionId": 96425,
+    "statistics": {
+      "tests": 1372,
+      "pass": 1357,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 15,
+      "todo": 0
+    },
+    "log": "full-final.log",
+    "scope": "Final current application, data, source candidate receipts, documents and written 2290-input manifest. Complete configured research entry including production build, strict type checking, full project lint, validators and tests."
+  },
+  "native": {
+    "flowObservations": 17,
+    "allFlowObservationsPassed": true,
+    "evidence": "native-checks.json",
+    "finalBuildRechecks": 2,
+    "finalBuildEvidence": "native-final-build-recheck.json",
+    "finalRecheckScope": "After the final production build and preview restart, exact native CiD039/MN001 matrix token and source rows, canonical metadata and both page links; then complete exact source page selection and its named contact starting pair.",
+    "visuals": [
+      {
+        "file": "native-deliverable.jpg",
+        "format": "JPEG",
+        "width": 1280,
+        "height": 1289
+      },
+      {
+        "file": "native-deliverable-page.jpg",
+        "format": "JPEG",
+        "width": 1280,
+        "height": 1841
+      },
+      {
+        "file": "native-mobile-page.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 2259
+      },
+      {
+        "file": "native-mobile-pair.jpg",
+        "format": "JPEG",
+        "width": 390,
+        "height": 2507
+      }
+    ],
+    "visuallyInspected": true,
+    "downloadLanding": {
+      "unverified": true,
+      "message": "Error: Error: Timed out after 4986ms waiting for download.\nlocator.downloadMedia failed for selector internal:role=link[name=\"Download pair CSV\"s]\nLocator diagnostics: {\"kind\":\"action_failed\",\"action\":\"downloadMedia\",\"locator\":\"internal:role=link[name=\\\"Download pair CSV\\\"s]\",\"matchCount\":1,\"matches\":[{\"ariaLabel\":null,\"disabled\":false,\"role\":null,\"tag\":\"a\",\"text\":\"Download pair CSV\",\"type\":null,\"visible\":true}],\"visibleCount\":1,\"truncated\":false}",
+      "method": "documented locator downloadMedia"
+    },
+    "zoom200PercentVerified": false,
+    "screenReaderVerified": false,
+    "wholeApplicationAccessibilityVerified": false
+  },
+  "compiledReplay": {
+    "compiledPngsChecked": 212,
+    "compiledContactJsonsChecked": 2,
+    "compiledAssetMismatches": 0,
+    "finalDocumentFingerprintsInCompiledBundles": {
+      "docs/UPGRADE_PLAN_2026-09-24.md": {
+        "client": [
+          "dist/client/_next/static/chunks/source-view-png-raster-DvEISo-8.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/source-view-png-raster-Bj5FX9F_.js"
+        ]
+      },
+      "docs/GOAL_REQUIREMENT_AUDIT_2026-09-30.md": {
+        "client": [
+          "dist/client/_next/static/chunks/source-view-png-raster-DvEISo-8.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/source-view-png-raster-Bj5FX9F_.js"
+        ]
+      },
+      "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_39_PUBLICATION_NAVIGATION.md": {
+        "client": [
+          "dist/client/_next/static/chunks/source-view-png-raster-DvEISo-8.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/source-view-png-raster-Bj5FX9F_.js"
+        ]
+      }
+    },
+    "exactUnitLocatorsInCompiledBundles": {
+      "CiD": {
+        "client": [
+          "dist/client/_next/static/chunks/svara-publication-navigation-DSOgpH_5.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/svara-publication-navigation-DSOgpH_5.js"
+        ]
+      },
+      "CoBL": {
+        "client": [
+          "dist/client/_next/static/chunks/svara-publication-navigation-DSOgpH_5.js"
+        ],
+        "server": [
+          "dist/server/ssr/_next/static/svara-publication-navigation-DSOgpH_5.js"
+        ]
+      }
+    },
+    "sourcePinnedPublicationNavigationInCompiledBundles": {
+      "client": [
+        "dist/client/_next/static/chunks/svara-publication-navigation-DSOgpH_5.js"
+      ],
+      "server": [
+        "dist/server/ssr/_next/static/svara-publication-navigation-DSOgpH_5.js"
+      ]
+    },
+    "evidence": "compiled-final-replay.json"
+  },
+  "inputPreservation": {
+    "authoritativeInputs": 2290,
+    "workspaceAndTempInputMismatches": 0,
+    "priorUnownedInputsPreserved": 2274,
+    "priorUnownedDrift": 0,
+    "ownedPreimagesVerified": 7,
+    "allPreimagesCapturedBeforeEdit": true,
+    "retainedOriginalWorkbookCopiesVerified": 8,
+    "addedManifestPaths": [
+      "app/svara-publication-navigation.d.ts",
+      "app/svara-publication-navigation.js",
+      "data/source-candidates/svara-thesis-20261002/heidok-unverified-response.html.txt",
+      "data/source-candidates/svara-thesis-20261002/heidok-unverified-response.receipt.json",
+      "data/source-candidates/svara-thesis-20261002/publication.json",
+      "data/source-candidates/svara-thesis-20261002/publication.receipt.json",
+      "data/svara-publication-navigation-0.1.json",
+      "docs/RESEARCH_TIMELINE_2026-10-02_IMPLEMENTATION_39_PUBLICATION_NAVIGATION.md",
+      "tests/svara-publication-navigation.test.mjs",
+      "tools/build_svara_publication_navigation.mjs"
+    ],
+    "removedManifestPaths": [],
+    "manifestSha256": "d49e9b38f7b828c3a166c96d280068ac61c04389929758829a464fb5362f66c6",
+    "statTimestampVariationObservations": 0,
+    "statTimestampVariationByteMismatches": 0,
+    "timestampPreservationClaimed": false,
+    "unchangedCapturedOwnedPath": ".gitignore",
+    "evidence": "final-input-replay.json"
+  },
+  "registrySummary": {
+    "canonicalSourceCount": 31,
+    "canonicalRecordSetCount": 41,
+    "bundledExactCellProfileRosterCount": 13,
+    "bundledExactSourceObjectSetCount": 4,
+    "sourceProfileCount": 387,
+    "researchUpgradeCount": 243,
+    "completedResearchUpgradeCount": 79,
+    "displayedResearchUpgradeCount": 51,
+    "staleCanonicalDenominatorLiteralCount": 0
+  },
+  "newSourceCheck": {
+    "parent": "I38 FreiDok145135 actual reverse relation",
+    "freidokPublicationId": 271638,
+    "doi": "10.11588/heidok.00022556",
+    "publicationYear": 2017,
+    "publicationReceipt": {
+      "url": "https://freidok.uni-freiburg.de/jsonApi/v1/publications?publicationId=271638&maxPers=25&lessPersAffiliations=true&available=issued&fieldset=lp&maxRows=1&lang=en",
+      "status": 200,
+      "bytes": 10045,
+      "sha256": "be5a0aa87717bbaa0316c02d9f6d1c0bd358b07e71a5e54839287a01b861427c",
+      "contentType": "application/json"
+    },
+    "publicFilesDeclared": 0,
+    "metadataLicenseDoesNotAdmitRawAssets": true,
+    "explicitPdfUrlResponse": {
+      "requestedUrl": "https://archiv.ub.uni-heidelberg.de/volltextserver/22556/1/Dissertation%20Fabian%20Svara%20%28PDFA%29.pdf",
+      "serverResponseDate": "Sat, 03 Oct 2026 00:20:39 GMT",
+      "actualHttpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 4491,
+      "sha256": "67087ebef131edf093503ddf740a2ef9a17cadf6c1b987045c8188a4d5a50585",
+      "responseKind": "Anubis challenge HTML",
+      "nativePdfHeader": false,
+      "pdfValidated": false,
+      "originalPdfAcquired": false,
+      "publicRedistributionAdmitted": false,
+      "initialPythonFailure": {
+        "httpResponseObserved": false,
+        "reason": "SSL certificate verification failed: unable to get local issuer certificate"
+      },
+      "followup": "System curl used normal trusted TLS verification; no insecure mode, challenge solving, browser impersonation or credentials. Successful HTTP200 returned HTML, not a PDF.",
+      "restartCondition": "A usable public source response or a new explicit official asset route is available."
+    },
+    "newPdfVolumeMeshAnnotationAdmitted": false,
+    "newKohVersionEstablished": false,
+    "scope": "Specific inspected official entry and file response only; no assertion that reconstruction data is universally absent."
+  },
+  "preview": {
+    "host": "127.0.0.1",
+    "port": 3003,
+    "finalLiveExecSessionId": 81662,
+    "priorSocketInspection": {
+      "actualAddress": "127.0.0.1:3003",
+      "processId": 10544,
+      "beforeFinalRestart": true
+    },
+    "argv": "npm run start -- --hostname 127.0.0.1 --port 3003",
+    "originalUserServersUntouched": true
+  },
+  "retainedFailures": [
+    {
+      "scope": "Targeted lint",
+      "result": "exit1: Next forbids a test variable named module; renamed to navigationCode, repaired targeted lint exit0 and final full project lint passed.",
+      "evidence": "targeted-lint-initial-failure.log"
+    },
+    {
+      "scope": "Initial local preview",
+      "result": "exit7: sandbox EPERM before listen. Corrected supported --hostname flag and ran loopback preview in approved host environment. No initial failed launch classified as success.",
+      "evidence": "preview-initial-listen-failure.log"
+    },
+    {
+      "scope": "First full research entry",
+      "result": "exit1: correctly rejected stale 2280 manifest after a Built-only CLI invocation. Added --write after input review; final 2290 manifest and complete actual exit-zero run independently recorded.",
+      "evidence": "full-stale-manifest-failure.log"
+    },
+    {
+      "scope": "Initial audit launch",
+      "result": "exit1 MODULE_NOT_FOUND because the failed manifest count assertion prevented script creation. Final actual audit succeeded after reviewed manifest write.",
+      "evidence": "input-audit-missing-script-failure.log"
+    },
+    {
+      "scope": "Native final helper",
+      "result": "Direct comparison of a browser RPC object rejected realm prototype differences. Strict metadata/source comparison succeeded after local JSON serialization of the read-only observation. Source and app values were unchanged.",
+      "evidence": "native-final-helper-initial-failure.json"
+    },
+    {
+      "scope": "New thesis request",
+      "result": "Python trusted TLS chain failure, followed by normally verified system curl HTTP200 HTML challenge. No original PDF acquired or challenge bypassed.",
+      "evidence": "../../../data/source-candidates/svara-thesis-20261002/heidok-unverified-response.receipt.json"
+    }
+  ],
+  "limitations": [
+    "Full F01–F20 / 243-task goal remains incomplete.",
+    "M2 accurate section/donor/frame/curated labels/rights and masks remain unresolved.",
+    "M4 exact mouse spinal interneuron volume, segmentation, stable parent, frame and raw slice remain unestablished.",
+    "A catalogue starting pair retains its one selected publication endpoint and explicitly names the other endpoint; it is not restoration of an earlier two-endpoint pair. Browser Back restores that pair.",
+    "Native download save paths, actual 200% zoom and screen readers remain unverified.",
+    "New thesis PDF and raw reconstruction were not obtained; no comparison source or publisher policy substitutes for these scientific dependencies."
+  ],
+  "rollback": "Restore actual edits only among the seven captured preimages; .gitignore was captured but unchanged. Review ten new manifest paths individually. Preserve all unrelated dirty-tree work and original source inputs."
+}

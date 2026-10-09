@@ -1,0 +1,2455 @@
+- link "Skip to research content":
+  - /url: "#research-content"
+- complementary "Atlas navigation":
+  - link "Interneuron Atlas overview":
+    - /url: /
+    - text: Interneuron
+    - text: Atlas
+    - generic: Mouse spinal cord
+  - navigation "Atlas pages":
+    - region "Start":
+      - heading "Start" [level=2]
+      - list:
+        - link "Overview":
+          - /url: /
+          - generic: Overview
+        - link "3D workspace":
+          - /url: /workspace
+          - generic: 3D workspace
+    - region "Explore":
+      - heading "Explore" [level=2]
+      - list:
+        - link "Morphology":
+          - /url: /explore/morphology
+          - generic: Morphology
+        - link "Cell types":
+          - /url: /explore/cell-types
+          - generic: Cell types
+        - list:
+          - link "Zebrafish references":
+            - /url: /explore/cell-types/zebrafish
+            - generic: Zebrafish references
+          - link "Additional evidence":
+            - /url: /explore/cell-types/additional
+            - generic: Additional evidence
+          - link "Compare sources":
+            - /url: /explore/cell-types/compare
+            - generic: Compare sources
+        - link "Anatomy":
+          - /url: /explore/anatomy
+          - generic: Anatomy
+        - link "Positions":
+          - /url: /explore/positions
+          - generic: Positions
+    - region "Research":
+      - heading "Research" [level=2]
+      - list:
+        - link "Research explorer":
+          - /url: /research/explorer
+          - generic: Research explorer
+        - link "Evidence map":
+          - /url: /research/overview
+          - generic: Evidence map
+        - link "SCI conditions":
+          - /url: /research/sci
+          - generic: SCI conditions
+        - link "Evidence coverage":
+          - /url: /research/coverage
+          - generic: Evidence coverage
+    - region "Sources":
+      - heading "Sources" [level=2]
+      - list:
+        - link "Source registry":
+          - /url: /sources
+          - generic: Source registry
+        - link "Source objects":
+          - /url: /objects
+          - generic: Source objects
+        - link "Source audits":
+          - /url: /source-audits
+          - generic: Source audits
+        - link "Svara catalogue":
+          - /url: /catalogues/svara
+          - generic: Svara catalogue
+        - link "Svara connectivity":
+          - /url: /connectivity/svara
+          - generic: Svara connectivity
+  - paragraph:
+    - text: Public-data research
+    - text: Source identities remain distinct.
+- navigation "Breadcrumb":
+  - list:
+    - link "Overview":
+      - /url: /
+    - text: /
+    - generic: Explore
+    - text: /
+    - generic: Cell types
+- main:
+  - paragraph: Explore · Cell types
+  - heading "Cell-type profiles" [level=1]
+  - paragraph: Browse source-defined profiles, marker evidence and sampling context within each study.
+  - navigation "Explore · Cell types pages":
+    - link "Profiles":
+      - /url: /explore/cell-types
+    - link "Compare profiles":
+      - /url: /explore/cell-types/compare
+    - link "Additional studies":
+      - /url: /explore/cell-types/additional
+    - link "Zebrafish comparison":
+      - /url: /explore/cell-types/zebrafish
+  - status: russ-2021:MN-alpha selected. Its source identity is retained.
+  - region "Spinal neuron type evidence atlas":
+    - generic: UPG-082 / UPG-109 / UPG-117 / UPG-172 / UPG-174 / UPG-180 / UPG-185 / UPG-204 · 10 SOURCE NAMESPACES · RECORD GRANULARITY EXPLICIT
+    - heading "Spinal neuron type evidence atlas" [level=3]
+    - paragraph: 387 source profiles across 10 independent study namespaces. Browse each record's sampling context, marker evidence and observed properties. These are source-local labels, not a deduplicated count of biological types.
+    - note:
+      - strong: "0"
+      - generic: exact cross-study identities · linked morphologies · registrations
+    - region "Postnatal spinal V1 interneuron clusters":
+      - text: UPG-040 · INDEPENDENT ARTICLE-LEVEL REFERENCE
+      - heading "Postnatal spinal V1 interneuron clusters" [level=4]
+      - paragraph: A source-bounded molecular reference for one lineage. It supplements—but is not added to—the existing 387-profile total.
+      - navigation "Trevisan V1 source links":
+        - link "Article":
+          - /url: https://www.nature.com/articles/s41467-026-76522-3
+        - 'link "GEO: GSE275595"':
+          - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595
+        - link "Interactive source":
+          - /url: https://v1interneurons.stjude.org/shinyApp/
+        - link "Analysis code (MIT)":
+          - /url: https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas
+      - generic "Study-level counts":
+        - strong: 89,494
+        - text: selected V1 nuclei, study-wide
+        - strong: "14"
+        - text: reported clusters
+        - strong: P0 · P14 · P28 · P56
+        - text: sampled ages
+        - strong: "2"
+        - text: independent transcriptomic replicates
+      - note: Supplementary Data 3 is cited for the final-figure cell barcodes, but its roster is not imported here. Exact cluster counts and per-nucleus age/cluster/region rows remain unverified. The article reports the largest-to-smallest cluster range as 22.9% (#0) to 2.2% (#13); this is not a per-cell roster.
+      - region "What can be reconstructed—and what is still unverified":
+        - text: UPSTREAM AVAILABILITY ≠ IMPORTED RECORDS
+        - heading "What can be reconstructed—and what is still unverified" [level=5]
+        - link "Code license":
+          - /url: https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/LICENSE
+        - article:
+          - heading "Published inputs" [level=6]
+          - paragraph: The paper reports raw sequencing, count tables and associated metadata in GEO, and points to Supplementary Data 3 for unique final-figure cell barcodes.
+        - article:
+          - heading "Reconstruction mechanics in public code" [level=6]
+          - paragraph:
+            - text: The public integration script references
+            - code: Data_raw_Merged.rds + Cells_pos.csv
+            - text: and groups cells by
+            - code: age
+            - code: replicate
+            - code: region
+            - code: seurat_clusters
+            - text: . The inspected repository directory contains the script, not a prebuilt integrated object.
+          - paragraph:
+            - text: Its loader expects
+            - code: "*_cellranger"
+            - text: directories and defaults to
+            - code: Read10X
+            - text: at
+            - code: /outs/filtered_feature_bc_matrix
+            - text: ; the default Seurat filters are 10 cells per feature and 1000 features per cell. A second helper derives age, region and replicate from the sample-name string.
+            - link "Loader function":
+              - /url: https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/2_Load_and_merge.R
+            - text: ·
+            - link "Metadata function":
+              - /url: https://github.com/Bikoff-Lab/V1_interneuron_snRNAseq_Age_Atlas/blob/main/Functions/3_Add_metadata.R
+        - article:
+          - heading "Import gate" [level=6]
+          - paragraph: Comparison of parsed sample names with all GEO sample-level metadata is incomplete; barcode-to-matrix matching and per-nucleus age/cluster/region rows have not been validated. GEO file-specific reuse terms remain unverified. The title-pattern comparison below is not a substitute for checking all sample-level metadata. The article and code licenses do not by themselves establish GEO-file reuse terms.
+      - region "Observed sample titles and parser exceptions":
+        - text: GEO SAMPLE ROSTER · SAMPLE-LEVEL ONLY
+        - heading "Observed sample titles and parser exceptions" [level=5]
+        - link "Official GEO series":
+          - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE275595
+        - strong: "29"
+        - text: GEO sample records listed
+        - strong: "24"
+        - text: titles fit the expected postnatal pattern
+        - strong: "5"
+        - text: title exceptions
+        - strong: 1.45 GB
+        - text: supplementary TAR listed by GEO
+        - note: The title-pattern count is not a cell roster or proof that all 29 sample metadata records were checked. Three representative regular records and all five exceptions were inspected. Every exception is labeled “Whole cord” on its GEO record; the public string parser instead returns the values below. Do not apply this parser to these five records or read the differences as biological changes.
+        - article:
+          - heading "Exception records" [level=6]
+          - list:
+            - link "GSM8480601 · P0HetR1":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8480601
+            - generic: "GEO: P0 · Whole cord · replicate 1"
+            - generic: "String parser: age 0 · region “t” · replicate 1"
+            - link "GSM8480602 · P0KoR1":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8480602
+            - generic: "GEO: P0 · Whole cord · replicate 1"
+            - generic: "String parser: age 0 · region “o” · replicate 1"
+            - link "GSM8480603 · P0HetR2":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8480603
+            - generic: "GEO: P0 · Whole cord · replicate 2"
+            - generic: "String parser: age 0 · region “t” · replicate 2"
+            - link "GSM8480604 · P0KoR2":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8480604
+            - generic: "GEO: P0 · Whole cord · replicate 2"
+            - generic: "String parser: age 0 · region “o” · replicate 2"
+            - link "GSM8480605 · E135HetR1":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8480605
+            - generic: "GEO: E13.5 · Whole cord · replicate 1"
+            - generic: "String parser: age 135 · region “t” · replicate 1"
+        - article:
+          - heading "One representative matrix listing" [level=6]
+          - paragraph:
+            - link "GSM8480577 · P0CR1":
+              - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8480577
+            - text: "lists Cell Ranger filtered-feature/barcode matrix components:"
+            - code: barcodes 41,212 B
+            - code: features 290,896 B
+            - code: matrix 49,356,598 B
+            - text: .
+          - paragraph: GEO also lists the raw data in SRA. No matrix payload was downloaded or checksummed for this audit.
+        - article:
+          - heading "Still blocked from import" [level=6]
+          - paragraph: Per-cell barcode-to-matrix joins, age/cluster/region rows, all-sample metadata review and GEO file-specific reuse terms remain unverified. Article and repository-code licenses do not establish reuse terms for the GEO files.
+          - paragraph:
+            - strong: No new source profiles, morphology, internal structures, same-cell joins or 3D registrations are admitted.
+      - group "Select one of the 14 article-reported V1 clusters":
+        - 'button "Cluster #0 Foxp2 clade" [pressed]':
+          - strong: "Cluster #0"
+          - generic: Foxp2 clade
+        - 'button "Cluster #1 Rnf220-enriched V1 subset"':
+          - strong: "Cluster #1"
+          - generic: Rnf220-enriched V1 subset
+        - 'button "Cluster #2 Foxp2 clade"':
+          - strong: "Cluster #2"
+          - generic: Foxp2 clade
+        - 'button "Cluster #3 Pou6f2 clade"':
+          - strong: "Cluster #3"
+          - generic: Pou6f2 clade
+        - 'button "Cluster #4 Foxp2 clade"':
+          - strong: "Cluster #4"
+          - generic: Foxp2 clade
+        - 'button "Cluster #5 Sp8 clade; Pou6f2 co-expression noted"':
+          - strong: "Cluster #5"
+          - generic: Sp8 clade; Pou6f2 co-expression noted
+        - 'button "Cluster #6 Rnf220-enriched V1 subset"':
+          - strong: "Cluster #6"
+          - generic: Rnf220-enriched V1 subset
+        - 'button "Cluster #7 Sp8 clade"':
+          - strong: "Cluster #7"
+          - generic: Sp8 clade
+        - 'button "Cluster #8 Calb1 proxy for the MafA clade"':
+          - strong: "Cluster #8"
+          - generic: Calb1 proxy for the MafA clade
+        - 'button "Cluster #9 Nr5a2-characterized V1 subset"':
+          - strong: "Cluster #9"
+          - generic: Nr5a2-characterized V1 subset
+        - 'button "Cluster #10 Sp8 clade; Oc2-associated subset"':
+          - strong: "Cluster #10"
+          - generic: Sp8 clade; Oc2-associated subset
+        - 'button "Cluster #11 Foxp2 clade"':
+          - strong: "Cluster #11"
+          - generic: Foxp2 clade
+        - 'button "Cluster #12 Pou6f2 clade"':
+          - strong: "Cluster #12"
+          - generic: Pou6f2 clade
+        - 'button "Cluster #13 Pou6f2 clade"':
+          - strong: "Cluster #13"
+          - generic: Pou6f2 clade
+      - article "Evidence for V1 cluster 0":
+        - text: ARTICLE-REPORTED CLUSTER
+        - 'heading "Cluster #0" [level=5]'
+        - strong: Foxp2 clade
+        - term: Marker evidence
+        - definition:
+          - code: Foxp2
+        - term: Source qualification
+        - definition: Assigned from cluster-level expression; this label is not a per-nucleus marker call.
+        - term: Evidence locator
+        - definition: Results, Generation and validation of a V1 transcriptomic atlas; Fig. 2d-f
+        - term: Age representation
+        - definition: The article reports nuclei from P0, P14, P28 and P56 in each of the 14 clusters, in roughly equal proportions. These are cross-sectional samples, not longitudinal tracking of the same cells.
+        - paragraph:
+          - strong: No cell form or internal detail admitted.
+          - text: A transcriptomic cluster is not an individual reconstruction; this selection is not represented in the main 3D scene.
+      - paragraph: No cluster-by-region assignment is represented in this panel. Do not infer segment localization from a cluster label.
+      - paragraph:
+        - text: "Attribution: Trevisan et al., Nature Communications 17, 9614 (2026), https://doi.org/10.1038/s41467-026-76522-3. Article licensed CC BY 4.0. Atlas summary curated from article text and figures; no article images are redistributed."
+        - link "Article license":
+          - /url: https://creativecommons.org/licenses/by/4.0/
+        - text: . GEO/raw files remain link-only; no new profile, morphology, internal structure, same-cell join or 3D registration is admitted by this audit.
+    - generic "Study coverage and sampling denominators · 10 sources"
+    - generic "Selected source profile":
+      - generic: RUSS
+      - strong: MN-alpha
+      - generic: 237 captured sequenced cells/nuclei · Postnatal harmonized transcriptomic reference; the paper separately validates selected marker panels in adult lumbar tissue.
+      - button "Browse this source"
+      - button "Go to selected evidence"
+    - generic "Cano-Gomez GLUT source assignments · 277 labels · separate from confirmed CHOL_IN profiles"
+    - generic "Cano-Gomez GABA source assignments · 204 labels · 73,364 source nuclei"
+    - generic "Source-level classification limits · collapsed"
+    - text: Search label, marker, family or accession
+    - searchbox "Search label, marker, family or accession"
+    - text: Source namespace
+    - combobox "Source namespace":
+      - option "All 10 sources · no merge" [selected]
+      - option "Russ 2021 · 69"
+      - option "Sathyamurthy 2018 · 43"
+      - option "Hayashi 2018 · 11 P0 V2a clusters"
+      - option "Häring 2018 · 30 P17–P28 dorsal-horn clusters"
+      - option "Alkaslasi 2021 · 8 adult cholinergic clusters"
+      - option "Iglesias González 2021 · 6 embryonic Dmrt3/dI6 groups"
+      - option "Roome 2026 · 157 embryonic refined dIL types"
+      - option "Delile 2019 · 51 E9.5–E13.5 fine subtypes"
+      - option "Crozat 2025 · 1 PKD2L1 functional population"
+      - option "Cano-Gomez 2026 · 11 P56 CHOL_IN profiles"
+    - text: Region class
+    - combobox "Region class":
+      - option "All source regions" [selected]
+      - option "Dorsal"
+      - option "Deep dorsal / mid"
+      - option "Ventral"
+      - option "Central"
+      - option "Not established"
+    - text: Transmitter class
+    - combobox "Transmitter class":
+      - option "All source classes" [selected]
+      - option "Excitatory"
+      - option "Inhibitory"
+      - option "Mixed cluster"
+      - option "Cholinergic"
+      - option "Not established"
+    - button "Export dossier"
+    - status: 387 of 387 source records match · filtered absence is not biological absence
+    - listbox "Source-local type profiles":
+      - option "RUSS · Ventral MN-alpha Slit3 · Chat · Pappa Cholinergic · 237 sampled captured sequenced cells/nuclei" [active] [selected]:
+        - generic: RUSS · Ventral
+        - strong: MN-alpha
+        - emphasis: Slit3 · Chat · Pappa
+        - generic: Cholinergic · 237 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral MN-gamma Esrrb · Chat · Slc5a7 Cholinergic · 88 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: MN-gamma
+        - emphasis: Esrrb · Chat · Slc5a7
+        - generic: Cholinergic · 88 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral PGC Chat · Slc5a7 · Slit3 Cholinergic · 86 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: PGC
+        - emphasis: Chat · Slc5a7 · Slit3
+        - generic: Cholinergic · 86 sampled captured sequenced cells/nuclei
+      - option "RUSS · Central CSF-cN Pkd1l2 · Myo3b · Pkd2l1 Inhibitory · 126 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Central
+        - strong: CSF-cN
+        - emphasis: Pkd1l2 · Myo3b · Pkd2l1
+        - generic: Inhibitory · 126 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-1 Cpne4 · Bnc2 · Dach2 Excitatory · 266 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-1
+        - emphasis: Cpne4 · Bnc2 · Dach2
+        - generic: Excitatory · 266 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-2 Cdh3 · Cpne4 · Otof Excitatory · 117 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-2
+        - emphasis: Cdh3 · Cpne4 · Otof
+        - generic: Excitatory · 117 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-3 Pde11a · Ebf2 · Cck Excitatory · 323 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-3
+        - emphasis: Pde11a · Ebf2 · Cck
+        - generic: Excitatory · 323 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-4 Nts · Ebf2 · Cacna2d1 Excitatory · 394 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-4
+        - emphasis: Nts · Ebf2 · Cacna2d1
+        - generic: Excitatory · 394 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-5 Adarb2 · Gm28928 · Arpp21 Excitatory · 585 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-5
+        - emphasis: Adarb2 · Gm28928 · Arpp21
+        - generic: Excitatory · 585 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-6 Maf · Adarb2 · Gm28928 Excitatory · 390 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-6
+        - emphasis: Maf · Adarb2 · Gm28928
+        - generic: Excitatory · 390 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-7 Gm2694 · Casz1 · Ebf2 Excitatory · 235 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-7
+        - emphasis: Gm2694 · Casz1 · Ebf2
+        - generic: Excitatory · 235 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-8 Bnc2 · Reln · Pde11a Excitatory · 296 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-8
+        - emphasis: Bnc2 · Reln · Pde11a
+        - generic: Excitatory · 296 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-9 Pde11a · Ebf2 · Bnc2 Excitatory · 279 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-9
+        - emphasis: Pde11a · Ebf2 · Bnc2
+        - generic: Excitatory · 279 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-10 Pde11a · Cpne8 · Prex2 Excitatory · 624 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-10
+        - emphasis: Pde11a · Cpne8 · Prex2
+        - generic: Excitatory · 624 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-11 Pde11a · Tex15 · Reln Excitatory · 166 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-11
+        - emphasis: Pde11a · Tex15 · Reln
+        - generic: Excitatory · 166 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-12 Col11a1 · Ntng1 · Skor2 Excitatory · 179 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-12
+        - emphasis: Col11a1 · Ntng1 · Skor2
+        - generic: Excitatory · 179 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-13 Crh · Nmur2 · Prrxl1 Excitatory · 174 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-13
+        - emphasis: Crh · Nmur2 · Prrxl1
+        - generic: Excitatory · 174 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-14 Skor2 · Grpr · Arhgap6 Excitatory · 421 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-14
+        - emphasis: Skor2 · Grpr · Arhgap6
+        - generic: Excitatory · 421 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-15 Myo5b · Qrfpr · Sphkap Excitatory · 274 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-15
+        - emphasis: Myo5b · Qrfpr · Sphkap
+        - generic: Excitatory · 274 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-16 Lmo3 · Otof · Sox5 Excitatory · 721 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-16
+        - emphasis: Lmo3 · Otof · Sox5
+        - generic: Excitatory · 721 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-17 Sox5 · Otof · Tll2 Excitatory · 318 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-17
+        - emphasis: Sox5 · Otof · Tll2
+        - generic: Excitatory · 318 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-18 Nmu · Tac2 · Ebf2 Excitatory · 442 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-18
+        - emphasis: Nmu · Tac2 · Ebf2
+        - generic: Excitatory · 442 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-19 Tac2 · Tshz3 · Mylk Excitatory · 455 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-19
+        - emphasis: Tac2 · Tshz3 · Mylk
+        - generic: Excitatory · 455 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Excit-20 Hs3st2 · Meis2 · Fam19a1 Excitatory · 491 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Excit-20
+        - emphasis: Hs3st2 · Meis2 · Fam19a1
+        - generic: Excitatory · 491 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-1 Sorcs3 · Rorb · Arpp21 Inhibitory · 908 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-1
+        - emphasis: Sorcs3 · Rorb · Arpp21
+        - generic: Inhibitory · 908 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-2 Nxph1 · Mpped2 · Cadps2 Inhibitory · 727 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-2
+        - emphasis: Nxph1 · Mpped2 · Cadps2
+        - generic: Inhibitory · 727 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-3 Nwd2 · Syt10 · Stac Inhibitory · 215 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-3
+        - emphasis: Nwd2 · Syt10 · Stac
+        - generic: Inhibitory · 215 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-4 Rxfp2 · Syt10 · Gad1 Inhibitory · 182 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-4
+        - emphasis: Rxfp2 · Syt10 · Gad1
+        - generic: Inhibitory · 182 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-5 Krt17 · Stac · Gbx1 Inhibitory · 150 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-5
+        - emphasis: Krt17 · Stac · Gbx1
+        - generic: Inhibitory · 150 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-6 Cdh3 · Maf · Pax2 Inhibitory · 283 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-6
+        - emphasis: Cdh3 · Maf · Pax2
+        - generic: Inhibitory · 283 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-7 Pax2 · Sema3e · Kcnip2 Inhibitory · 353 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-7
+        - emphasis: Pax2 · Sema3e · Kcnip2
+        - generic: Inhibitory · 353 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-8 Gad2 · Cacna2d3 · Ccbe1 Inhibitory · 153 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-8
+        - emphasis: Gad2 · Cacna2d3 · Ccbe1
+        - generic: Inhibitory · 153 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-9 Gsap · Pax2 · Zmat4 Inhibitory · 283 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-9
+        - emphasis: Gsap · Pax2 · Zmat4
+        - generic: Inhibitory · 283 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-10 Gal · Pdyn · Mlxipl Inhibitory · 221 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-10
+        - emphasis: Gal · Pdyn · Mlxipl
+        - generic: Inhibitory · 221 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-11 Gal · Kcnt2 · Cdh8 Inhibitory · 584 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-11
+        - emphasis: Gal · Kcnt2 · Cdh8
+        - generic: Inhibitory · 584 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-12 Pax8 · Ecel1 · Pax2 Inhibitory · 342 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-12
+        - emphasis: Pax8 · Ecel1 · Pax2
+        - generic: Inhibitory · 342 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-13 Npy · Plch1 · Qrfpr Inhibitory · 240 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-13
+        - emphasis: Npy · Plch1 · Qrfpr
+        - generic: Inhibitory · 240 sampled captured sequenced cells/nuclei
+      - option "RUSS · Dorsal Inhib-14 Nos1 · Nxph2 · Pax2 Inhibitory · 135 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Dorsal
+        - strong: Inhib-14
+        - emphasis: Nos1 · Nxph2 · Pax2
+        - generic: Inhibitory · 135 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-21 Nms · Lncenc1 · Lmx1b Excitatory · 150 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-21
+        - emphasis: Nms · Lncenc1 · Lmx1b
+        - generic: Excitatory · 150 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-22 Zfhx3 · Lmx1b · Tcerg1l Excitatory · 117 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-22
+        - emphasis: Zfhx3 · Lmx1b · Tcerg1l
+        - generic: Excitatory · 117 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-23 Cdh23 · Gm28905 · Cep112 Excitatory · 235 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-23
+        - emphasis: Cdh23 · Gm28905 · Cep112
+        - generic: Excitatory · 235 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-24 Cdh4 · Sorcs3 · Ebf3 Excitatory · 216 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-24
+        - emphasis: Cdh4 · Sorcs3 · Ebf3
+        - generic: Excitatory · 216 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-25 Cdh23 · Pou4f1 · Lmx1b Excitatory · 202 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-25
+        - emphasis: Cdh23 · Pou4f1 · Lmx1b
+        - generic: Excitatory · 202 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-26 Cntn5 · Lrrtm4 · Nrg3 Excitatory · 157 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-26
+        - emphasis: Cntn5 · Lrrtm4 · Nrg3
+        - generic: Excitatory · 157 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-27 Gm28905 · Rmst · Cdh9 Excitatory · 89 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-27
+        - emphasis: Gm28905 · Rmst · Cdh9
+        - generic: Excitatory · 89 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-28 Pitx2 · Chat · Slc5a7 Excitatory · 27 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-28
+        - emphasis: Pitx2 · Chat · Slc5a7
+        - generic: Excitatory · 27 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-29 Pmfbp1 · Onecut3 · Ndst4 Excitatory · 154 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-29
+        - emphasis: Pmfbp1 · Onecut3 · Ndst4
+        - generic: Excitatory · 154 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Excit-30 Chodl · Neurod2 · Sp8 Excitatory · 95 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Excit-30
+        - emphasis: Chodl · Neurod2 · Sp8
+        - generic: Excitatory · 95 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-15 Nrxn3 · Prox1 · Gabra1 Inhibitory · 332 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-15
+        - emphasis: Nrxn3 · Prox1 · Gabra1
+        - generic: Inhibitory · 332 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-16 Tfap2b · Grik2 · Gm30382 Inhibitory · 311 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-16
+        - emphasis: Tfap2b · Grik2 · Gm30382
+        - generic: Inhibitory · 311 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-17 Slc6a5 · Cdh7 · Nrxn3 Inhibitory · 317 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-17
+        - emphasis: Slc6a5 · Cdh7 · Nrxn3
+        - generic: Inhibitory · 317 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-18 Cacna2d3 · Pax2 · Nxph1 Inhibitory · 164 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-18
+        - emphasis: Cacna2d3 · Pax2 · Nxph1
+        - generic: Inhibitory · 164 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-19 Tfap2b · Klhl14 · Ccbe1 Inhibitory · 139 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-19
+        - emphasis: Tfap2b · Klhl14 · Ccbe1
+        - generic: Inhibitory · 139 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-20 Tfap2b · Slc6a5 · Col19a1 Inhibitory · 118 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-20
+        - emphasis: Tfap2b · Slc6a5 · Col19a1
+        - generic: Inhibitory · 118 sampled captured sequenced cells/nuclei
+      - option "RUSS · Mid Inhib-21 Nrxn3 · Shisa9 · Alk Inhibitory · 65 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Mid
+        - strong: Inhib-21
+        - emphasis: Nrxn3 · Shisa9 · Alk
+        - generic: Inhibitory · 65 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-31 Cdh18 · Miat · Dab1 Excitatory · 719 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-31
+        - emphasis: Cdh18 · Miat · Dab1
+        - generic: Excitatory · 719 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-32 Dab1 · Pfkp · Elavl2 Excitatory · 602 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-32
+        - emphasis: Dab1 · Pfkp · Elavl2
+        - generic: Excitatory · 602 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-33 Cntn5 · Dab1 · Unc5d Excitatory · 181 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-33
+        - emphasis: Cntn5 · Dab1 · Unc5d
+        - generic: Excitatory · 181 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-34 Pou6f2 · Zfhx3 · Fam19a1 Excitatory · 161 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-34
+        - emphasis: Pou6f2 · Zfhx3 · Fam19a1
+        - generic: Excitatory · 161 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-35 Gm9844 · Tmsb10 · Tubb2b Excitatory · 371 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-35
+        - emphasis: Gm9844 · Tmsb10 · Tubb2b
+        - generic: Excitatory · 371 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-36 Vsx2 · Sox14 · Shox2 Excitatory · 192 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-36
+        - emphasis: Vsx2 · Sox14 · Shox2
+        - generic: Excitatory · 192 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-37 Bhlhe22 · Sox14 · Hoxc11 Excitatory · 24 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-37
+        - emphasis: Bhlhe22 · Sox14 · Hoxc11
+        - generic: Excitatory · 24 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Excit-38 Sim1 · Ctcflos · A230006K03Rik Excitatory · 92 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Excit-38
+        - emphasis: Sim1 · Ctcflos · A230006K03Rik
+        - generic: Excitatory · 92 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Inhib-22 Slc6a5 · Syt2 · Elavl4 Inhibitory · 250 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Inhib-22
+        - emphasis: Slc6a5 · Syt2 · Elavl4
+        - generic: Inhibitory · 250 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Inhib-23 Syt2 · Esrrg · Epb41 Inhibitory · 512 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Inhib-23
+        - emphasis: Syt2 · Esrrg · Epb41
+        - generic: Inhibitory · 512 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Inhib-24 Nr5a2 · Meis2 · Pou6f2 Inhibitory · 139 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Inhib-24
+        - emphasis: Nr5a2 · Meis2 · Pou6f2
+        - generic: Inhibitory · 139 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Inhib-25 Foxp2 · Cdh23 · Epha6 Inhibitory · 106 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Inhib-25
+        - emphasis: Foxp2 · Cdh23 · Epha6
+        - generic: Inhibitory · 106 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Inhib-26 Chrna2 · Gm12082 · Pmfbp1 Inhibitory · 34 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Inhib-26
+        - emphasis: Chrna2 · Gm12082 · Pmfbp1
+        - generic: Inhibitory · 34 sampled captured sequenced cells/nuclei
+      - option "RUSS · Ventral Inhib-27 Elavl2 · Slc6a5 · Nrxn3 Inhibitory · 619 sampled captured sequenced cells/nuclei":
+        - generic: RUSS · Ventral
+        - strong: Inhib-27
+        - emphasis: Elavl2 · Slc6a5 · Nrxn3
+        - generic: Inhibitory · 619 sampled captured sequenced cells/nuclei
+      - option "SATHY · Dorsal DE-1 Grp · Tacr3 · Reln Excitatory · 68 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-1
+        - emphasis: Grp · Tacr3 · Reln
+        - generic: Excitatory · 68 sampled nuclei
+      - option "SATHY · Dorsal DE-2 Npy1r · Nmur2 · Car12 Excitatory · 80 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-2
+        - emphasis: Npy1r · Nmur2 · Car12
+        - generic: Excitatory · 80 sampled nuclei
+      - option "SATHY · Dorsal DE-3 Ntrk2 · Pde11a · Mybph Excitatory · 37 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-3
+        - emphasis: Ntrk2 · Pde11a · Mybph
+        - generic: Excitatory · 37 sampled nuclei
+      - option "SATHY · Dorsal DI-1 Sstr2 · Calb2 · Bcl11b Inhibitory · 69 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-1
+        - emphasis: Sstr2 · Calb2 · Bcl11b
+        - generic: Inhibitory · 69 sampled nuclei
+      - option "SATHY · Dorsal DI-2 Gal · Prkca · Ankfn1 Inhibitory · 55 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-2
+        - emphasis: Gal · Prkca · Ankfn1
+        - generic: Inhibitory · 55 sampled nuclei
+      - option "SATHY · Dorsal DI-3 Nos1 · Pnoc · Cdh8 Inhibitory · 106 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-3
+        - emphasis: Nos1 · Pnoc · Cdh8
+        - generic: Inhibitory · 106 sampled nuclei
+      - option "SATHY · Dorsal DE-4 Prkcg · Calb1 · Ebf2 Excitatory · 64 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-4
+        - emphasis: Prkcg · Calb1 · Ebf2
+        - generic: Excitatory · 64 sampled nuclei
+      - option "SATHY · Dorsal DE-5 Tac2 · Necab1 · Snca Excitatory · 125 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-5
+        - emphasis: Tac2 · Necab1 · Snca
+        - generic: Excitatory · 125 sampled nuclei
+      - option "SATHY · Dorsal DE-6 Nts · Trpm3 · Gsg1l Excitatory · 71 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-6
+        - emphasis: Nts · Trpm3 · Gsg1l
+        - generic: Excitatory · 71 sampled nuclei
+      - option "SATHY · Dorsal DE-7 Cck · Erbb4 · Ebf1 Excitatory · 76 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-7
+        - emphasis: Cck · Erbb4 · Ebf1
+        - generic: Excitatory · 76 sampled nuclei
+      - option "SATHY · Dorsal DE-8 Cbln2 · Mgat5b · Tshz2 Excitatory · 75 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-8
+        - emphasis: Cbln2 · Mgat5b · Tshz2
+        - generic: Excitatory · 75 sampled nuclei
+      - option "SATHY · Dorsal DE-9 Adarb2 · Rasa4 · Dhrs3 Excitatory · 114 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-9
+        - emphasis: Adarb2 · Rasa4 · Dhrs3
+        - generic: Excitatory · 114 sampled nuclei
+      - option "SATHY · Dorsal DE-10 Maf · Slc17a8 · Parp8 Excitatory · 103 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-10
+        - emphasis: Maf · Slc17a8 · Parp8
+        - generic: Excitatory · 103 sampled nuclei
+      - option "SATHY · Ventral VI-1 Cit · Epha10 · Kif5a Inhibitory · 178 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VI-1
+        - emphasis: Cit · Epha10 · Kif5a
+        - generic: Inhibitory · 178 sampled nuclei
+      - option "SATHY · Ventral VI-2 Atrx · Phtf1 · Kif21a Inhibitory · 219 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VI-2
+        - emphasis: Atrx · Phtf1 · Kif21a
+        - generic: Inhibitory · 219 sampled nuclei
+      - option "SATHY · Ventral VI-3 Rsrp1 · Stk39 · Rab40c Inhibitory · 37 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VI-3
+        - emphasis: Rsrp1 · Stk39 · Rab40c
+        - generic: Inhibitory · 37 sampled nuclei
+      - option "SATHY · Mid MI-1 Gad2 · Neto2 · Htr2c Inhibitory · 49 sampled nuclei":
+        - generic: SATHY · Mid
+        - strong: MI-1
+        - emphasis: Gad2 · Neto2 · Htr2c
+        - generic: Inhibitory · 49 sampled nuclei
+      - option "SATHY · Ventral VM-1 Meis2 · Sim1 · Plaa Mixed · 46 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VM-1
+        - emphasis: Meis2 · Sim1 · Plaa
+        - generic: Mixed · 46 sampled nuclei
+      - option "SATHY · Ventral VE-1 Zfhx3 · Ndst4 · Grm8 Excitatory · 110 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VE-1
+        - emphasis: Zfhx3 · Ndst4 · Grm8
+        - generic: Excitatory · 110 sampled nuclei
+      - option "SATHY · Ventral VE-2 Zfhx4 · Onecut2 · Vsx2 Excitatory · 48 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VE-2
+        - emphasis: Zfhx4 · Onecut2 · Vsx2
+        - generic: Excitatory · 48 sampled nuclei
+      - option "SATHY · Ventral VE-3 Etv4 · Fryl · Abhd3 Excitatory · 43 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VE-3
+        - emphasis: Etv4 · Fryl · Abhd3
+        - generic: Excitatory · 43 sampled nuclei
+      - option "SATHY · Ventral VI-4 Esrrg · Esrrb · Htr1f Inhibitory · 55 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VI-4
+        - emphasis: Esrrg · Esrrb · Htr1f
+        - generic: Inhibitory · 55 sampled nuclei
+      - option "SATHY · Mid MI-2 Tfap2b · Rab27b · Rarb Inhibitory · 47 sampled nuclei":
+        - generic: SATHY · Mid
+        - strong: MI-2
+        - emphasis: Tfap2b · Rab27b · Rarb
+        - generic: Inhibitory · 47 sampled nuclei
+      - option "SATHY · Ventral VM-2 Ssb · Wdr47 · Gls2 Mixed · 63 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VM-2
+        - emphasis: Ssb · Wdr47 · Gls2
+        - generic: Mixed · 63 sampled nuclei
+      - option "SATHY · Ventral VE-4 Hapln1 · Fhod3 · Dgkg Excitatory · 215 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VE-4
+        - emphasis: Hapln1 · Fhod3 · Dgkg
+        - generic: Excitatory · 215 sampled nuclei
+      - option "SATHY · Ventral VI-5 Lgr5 · Foxp2 · Slit2 Inhibitory · 123 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VI-5
+        - emphasis: Lgr5 · Foxp2 · Slit2
+        - generic: Inhibitory · 123 sampled nuclei
+      - option "SATHY · Dorsal DE-11 Tac1 · Sox5 · Otof Excitatory · 157 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-11
+        - emphasis: Tac1 · Sox5 · Otof
+        - generic: Excitatory · 157 sampled nuclei
+      - option "SATHY · Dorsal DE-12 Grpr · Col5a2 · Atp2b4 Excitatory · 74 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-12
+        - emphasis: Grpr · Col5a2 · Atp2b4
+        - generic: Excitatory · 74 sampled nuclei
+      - option "SATHY · Dorsal DI-4 Npy · Ecel1 · Qrfpr Inhibitory · 95 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-4
+        - emphasis: Npy · Ecel1 · Qrfpr
+        - generic: Inhibitory · 95 sampled nuclei
+      - option "SATHY · Dorsal DE-13 Man1a · Iqgap2 · Rreb1 Excitatory · 93 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-13
+        - emphasis: Man1a · Iqgap2 · Rreb1
+        - generic: Excitatory · 93 sampled nuclei
+      - option "SATHY · Dorsal DE-14 Mdga1 · Megf11 · Plxdc2 Excitatory · 143 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-14
+        - emphasis: Mdga1 · Megf11 · Plxdc2
+        - generic: Excitatory · 143 sampled nuclei
+      - option "SATHY · Mid MI-3 Gabra1 · Gabrb2 · Cdh7 Inhibitory · 226 sampled nuclei":
+        - generic: SATHY · Mid
+        - strong: MI-3
+        - emphasis: Gabra1 · Gabrb2 · Cdh7
+        - generic: Inhibitory · 226 sampled nuclei
+      - option "SATHY · Mid ME-1 Nfib · Satb1 · Rmst_1 Excitatory · 104 sampled nuclei":
+        - generic: SATHY · Mid
+        - strong: ME-1
+        - emphasis: Nfib · Satb1 · Rmst_1
+        - generic: Excitatory · 104 sampled nuclei
+      - option "SATHY · Dorsal DE-15 Lmx1b · Pdyn · Tcf4 Excitatory · 86 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-15
+        - emphasis: Lmx1b · Pdyn · Tcf4
+        - generic: Excitatory · 86 sampled nuclei
+      - option "SATHY · Dorsal DE-16 Col5a2 · Qrfpr · Penk Excitatory · 66 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DE-16
+        - emphasis: Col5a2 · Qrfpr · Penk
+        - generic: Excitatory · 66 sampled nuclei
+      - option "SATHY · Ventral VC-1 Pitx2 · Lyzl4 · Chat Cholinergic · 181 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VC-1
+        - emphasis: Pitx2 · Lyzl4 · Chat
+        - generic: Cholinergic · 181 sampled nuclei
+      - option "SATHY · Ventral VC-2 Prph · Isl1 · Slit3 Cholinergic · 126 sampled nuclei":
+        - generic: SATHY · Ventral
+        - strong: VC-2
+        - emphasis: Prph · Isl1 · Slit3
+        - generic: Cholinergic · 126 sampled nuclei
+      - option "SATHY · Dorsal DI-5 Gbx1 · Esr1 · Mef2c Inhibitory · 54 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-5
+        - emphasis: Gbx1 · Esr1 · Mef2c
+        - generic: Inhibitory · 54 sampled nuclei
+      - option "SATHY · Mid MI-4 Ptprz1 · Zeb2 · Zmat4 Inhibitory · 65 sampled nuclei":
+        - generic: SATHY · Mid
+        - strong: MI-4
+        - emphasis: Ptprz1 · Zeb2 · Zmat4
+        - generic: Inhibitory · 65 sampled nuclei
+      - option "SATHY · Dorsal DI-6 Cdh3 · Kcnip2 · Sema3e Inhibitory · 139 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-6
+        - emphasis: Cdh3 · Kcnip2 · Sema3e
+        - generic: Inhibitory · 139 sampled nuclei
+      - option "SATHY · Dorsal DI-7 Lhx1 · Nxph1 · Chrm3 Inhibitory · 105 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-7
+        - emphasis: Lhx1 · Nxph1 · Chrm3
+        - generic: Inhibitory · 105 sampled nuclei
+      - option "SATHY · Dorsal DI-8 Nrgn · Syt6 · Fgf13 Inhibitory · 174 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-8
+        - emphasis: Nrgn · Syt6 · Fgf13
+        - generic: Inhibitory · 174 sampled nuclei
+      - option "SATHY · Dorsal DI-9 Rorb · Sorcs3 · Col18a1 Inhibitory · 116 sampled nuclei":
+        - generic: SATHY · Dorsal
+        - strong: DI-9
+        - emphasis: Rorb · Sorcs3 · Col18a1
+        - generic: Inhibitory · 116 sampled nuclei
+      - option "HAYASHI P0 · Ventral Cluster 1 Zfhx3 · Zfhx4 · Nefl · Shox2 Excitatory · 144 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 1
+        - emphasis: Zfhx3 · Zfhx4 · Nefl · Shox2
+        - generic: Excitatory · 144 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 2 Zfhx3 · Zfhx4 · Nefl · Shox2 Excitatory · 130 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 2
+        - emphasis: Zfhx3 · Zfhx4 · Nefl · Shox2
+        - generic: Excitatory · 130 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 3 Nfib · Tcf4 · NeuroD2 · Sp8 Excitatory · 121 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 3
+        - emphasis: Nfib · Tcf4 · NeuroD2 · Sp8
+        - generic: Excitatory · 121 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 4 Nfib · Tcf4 · NeuroD2 · Sp8 Excitatory · 117 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 4
+        - emphasis: Nfib · Tcf4 · NeuroD2 · Sp8
+        - generic: Excitatory · 117 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 5 Nfib · Tcf4 · NeuroD2 · Sp8 Excitatory · 112 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 5
+        - emphasis: Nfib · Tcf4 · NeuroD2 · Sp8
+        - generic: Excitatory · 112 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 6 Zfhx3 · Zfhx4 · Nefl · Shox2 Excitatory · 86 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 6
+        - emphasis: Zfhx3 · Zfhx4 · Nefl · Shox2
+        - generic: Excitatory · 86 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 7 Zfhx3 · Zfhx4 · Nefl · Shox2 Excitatory · 59 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 7
+        - emphasis: Zfhx3 · Zfhx4 · Nefl · Shox2
+        - generic: Excitatory · 59 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 8 Zfhx3 · Zfhx4 · Nefl · Shox2 Excitatory · 52 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 8
+        - emphasis: Zfhx3 · Zfhx4 · Nefl · Shox2
+        - generic: Excitatory · 52 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 9 Not retained in this record Excitatory · 51 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 9
+        - emphasis: Not retained in this record
+        - generic: Excitatory · 51 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 10 Zfhx3 · Zfhx4 · Nefl · Shox2 Excitatory · 48 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 10
+        - emphasis: Zfhx3 · Zfhx4 · Nefl · Shox2
+        - generic: Excitatory · 48 sampled cells
+      - option "HAYASHI P0 · Ventral Cluster 11 Not retained in this record Excitatory · 29 sampled cells":
+        - generic: HAYASHI P0 · Ventral
+        - strong: Cluster 11
+        - emphasis: Not retained in this record
+        - generic: Excitatory · 29 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut1 Maf · Cck Excitatory · 32 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut1
+        - emphasis: Maf · Cck
+        - generic: Excitatory · 32 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut2 Cpne4 Excitatory · 34 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut2
+        - emphasis: Cpne4
+        - generic: Excitatory · 34 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut3 Trh Excitatory · 34 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut3
+        - emphasis: Trh
+        - generic: Excitatory · 34 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut4 Nts Excitatory · 34 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut4
+        - emphasis: Nts
+        - generic: Excitatory · 34 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut5 Tac2 (high) · Slc17a6 Excitatory · 24 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut5
+        - emphasis: Tac2 (high) · Slc17a6
+        - generic: Excitatory · 24 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut6 Tac2 (high) · Nmu Excitatory · 75 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut6
+        - emphasis: Tac2 (high) · Nmu
+        - generic: Excitatory · 75 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut7 Tac2 (low) · Nmu Excitatory · 104 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut7
+        - emphasis: Tac2 (low) · Nmu
+        - generic: Excitatory · 104 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut8 Nmur2 · Reln Excitatory · 77 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut8
+        - emphasis: Nmur2 · Reln
+        - generic: Excitatory · 77 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut9 Npff Excitatory · 34 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut9
+        - emphasis: Npff
+        - generic: Excitatory · 34 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut10 Tac1 · Slc17a6 Excitatory · 129 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut10
+        - emphasis: Tac1 · Slc17a6
+        - generic: Excitatory · 129 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut11 Tac1 · Lamp5 · Slc17a6 Excitatory · 61 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut11
+        - emphasis: Tac1 · Lamp5 · Slc17a6
+        - generic: Excitatory · 61 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut12 Qrfpr · Ecel1 · Slc17a6 Excitatory · 35 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut12
+        - emphasis: Qrfpr · Ecel1 · Slc17a6
+        - generic: Excitatory · 35 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut13 Elavl4 · Slc17a6 Excitatory · 38 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut13
+        - emphasis: Elavl4 · Slc17a6
+        - generic: Excitatory · 38 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut14 Meis2 · Elavl4 · Slc17a6 Excitatory · 34 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut14
+        - emphasis: Meis2 · Elavl4 · Slc17a6
+        - generic: Excitatory · 34 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Glut15 Lypd1 · Elavl4 · Slc17a6 Excitatory · 22 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Glut15
+        - emphasis: Lypd1 · Elavl4 · Slc17a6
+        - generic: Excitatory · 22 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba1 Gal · Slc17a6 Inhibitory · 18 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba1
+        - emphasis: Gal · Slc17a6
+        - generic: Inhibitory · 18 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba2 Gal Inhibitory · 87 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba2
+        - emphasis: Gal
+        - generic: Inhibitory · 87 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba3 Gal · Rspo3 Inhibitory · 145 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba3
+        - emphasis: Gal · Rspo3
+        - generic: Inhibitory · 145 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba4 Tac2 · Slc32a1 Inhibitory · 11 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba4
+        - emphasis: Tac2 · Slc32a1
+        - generic: Inhibitory · 11 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba5 Npy · Ecel1 Inhibitory · 19 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba5
+        - emphasis: Npy · Ecel1
+        - generic: Inhibitory · 19 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba6 Npy · Qrfpr · Ecel1 Inhibitory · 51 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba6
+        - emphasis: Npy · Qrfpr · Ecel1
+        - generic: Inhibitory · 51 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba7 Npy · Crabp1 · Ecel1 Inhibitory · 39 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba7
+        - emphasis: Npy · Crabp1 · Ecel1
+        - generic: Inhibitory · 39 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba8 Krt17 · Calb2 · Slc32a1 Inhibitory · 67 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba8
+        - emphasis: Krt17 · Calb2 · Slc32a1
+        - generic: Inhibitory · 67 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba9 Tac1 · Calb2 · Slc32a1 Inhibitory · 85 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba9
+        - emphasis: Tac1 · Calb2 · Slc32a1
+        - generic: Inhibitory · 85 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba10 Adamts5 · Cplx1 Inhibitory · 66 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba10
+        - emphasis: Adamts5 · Cplx1
+        - generic: Inhibitory · 66 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba11 Calb2 · Cplx1 Inhibitory · 48 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba11
+        - emphasis: Calb2 · Cplx1
+        - generic: Inhibitory · 48 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba12 Sorcs3 · Cplx1 Inhibitory · 56 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba12
+        - emphasis: Sorcs3 · Cplx1
+        - generic: Inhibitory · 56 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba13 Sst · Cplx1 · Slc32a1 Inhibitory · 34 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba13
+        - emphasis: Sst · Cplx1 · Slc32a1
+        - generic: Inhibitory · 34 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba14 Crabp1 · Cplx1 Inhibitory · 41 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba14
+        - emphasis: Crabp1 · Cplx1
+        - generic: Inhibitory · 41 sampled cells
+      - option "HÄRING P17–P28 · Dorsal Gaba15 Crabp1 · Spp1 · Cplx1 Inhibitory · 11 sampled cells":
+        - generic: HÄRING P17–P28 · Dorsal
+        - strong: Gaba15
+        - emphasis: Crabp1 · Spp1 · Cplx1
+        - generic: Inhibitory · 11 sampled cells
+      - option "ALKASLASI ADULT · Not Established I1 Pax2 · Mpped2 · Slc6a1 · Piezo2 · Igsl3 · Prlr · Cdh23 Cholinergic · 1520 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I1
+        - emphasis: Pax2 · Mpped2 · Slc6a1 · Piezo2 · Igsl3 · Prlr · Cdh23
+        - generic: Cholinergic · 1520 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I2 Pax2 · Mpped2 · Slc6a1 · Chst9 · Lama2 · Pde5a Cholinergic · 780 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I2
+        - emphasis: Pax2 · Mpped2 · Slc6a1 · Chst9 · Lama2 · Pde5a
+        - generic: Cholinergic · 780 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I3 Pax2 · Mpped2 · Slc6a1 · Sox6 · Col18a1 · 9530026P05Rik Cholinergic · 756 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I3
+        - emphasis: Pax2 · Mpped2 · Slc6a1 · Sox6 · Col18a1 · 9530026P05Rik
+        - generic: Cholinergic · 756 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I4 Pax2 · Mpped2 · Slc6a1 · Zfp536 · Col18a1 · Pde11a Cholinergic · 702 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I4
+        - emphasis: Pax2 · Mpped2 · Slc6a1 · Zfp536 · Col18a1 · Pde11a
+        - generic: Cholinergic · 702 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I5 Pax2 · Mpped2 · Pitx2 · Tox · Gm13912 · Ror2 · Gm12649 Cholinergic · 584 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I5
+        - emphasis: Pax2 · Mpped2 · Pitx2 · Tox · Gm13912 · Ror2 · Gm12649
+        - generic: Cholinergic · 584 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I6 Pax2 · Mpped2 · Pitx2 · Aldh1a1 · Gm21847 · Fer1l6 Cholinergic · 544 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I6
+        - emphasis: Pax2 · Mpped2 · Pitx2 · Aldh1a1 · Gm21847 · Fer1l6
+        - generic: Cholinergic · 544 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I7 Pax2 · Mpped2 · Piezo2 · Pde5a · Adamtsl1 · Cpne4 Cholinergic · 160 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I7
+        - emphasis: Pax2 · Mpped2 · Piezo2 · Pde5a · Adamtsl1 · Cpne4
+        - generic: Cholinergic · 160 sampled nuclei
+      - option "ALKASLASI ADULT · Not Established I8 Mpped2 · Piezo2 · Reln · Chat · Pde11a · Nr5a2 · CT010465.1 · Slc30a8 Cholinergic · 329 sampled nuclei":
+        - generic: ALKASLASI ADULT · Not Established
+        - strong: I8
+        - emphasis: Mpped2 · Piezo2 · Reln · Chat · Pde11a · Nr5a2 · CT010465.1 · Slc30a8
+        - generic: Cholinergic · 329 sampled nuclei
+      - option "DMRT3/dI6 E14.5 · Not Established M1 Zfhx3 · Meis2 · Zfhx4 Inhibitory · dual GABAergic/glycinergic population context · 84 sampled retained cells":
+        - generic: DMRT3/dI6 E14.5 · Not Established
+        - strong: M1
+        - emphasis: Zfhx3 · Meis2 · Zfhx4
+        - generic: Inhibitory · dual GABAergic/glycinergic population context · 84 sampled retained cells
+      - option "DMRT3/dI6 E14.5 · Not Established M2 Irx4 · Tshz3 · Ldb2 Inhibitory · dual GABAergic/glycinergic population context · 34 sampled retained cells":
+        - generic: DMRT3/dI6 E14.5 · Not Established
+        - strong: M2
+        - emphasis: Irx4 · Tshz3 · Ldb2
+        - generic: Inhibitory · dual GABAergic/glycinergic population context · 34 sampled retained cells
+      - option "DMRT3/dI6 E14.5 · Not Established M3 Pid1 · Sst · Slit2 Inhibitory · dual GABAergic/glycinergic population context · 33 sampled retained cells":
+        - generic: DMRT3/dI6 E14.5 · Not Established
+        - strong: M3
+        - emphasis: Pid1 · Sst · Slit2
+        - generic: Inhibitory · dual GABAergic/glycinergic population context · 33 sampled retained cells
+      - option "DMRT3/dI6 E14.5 · Not Established M4 Hoxb8 · Hoxb7 · Hoxb9 Inhibitory · dual GABAergic/glycinergic population context · 45 sampled retained cells":
+        - generic: DMRT3/dI6 E14.5 · Not Established
+        - strong: M4
+        - emphasis: Hoxb8 · Hoxb7 · Hoxb9
+        - generic: Inhibitory · dual GABAergic/glycinergic population context · 45 sampled retained cells
+      - option "DMRT3/dI6 E14.5 · Not Established M5 Sall3 · Npy · Nxph1 Inhibitory · dual GABAergic/glycinergic population context · 54 sampled retained cells":
+        - generic: DMRT3/dI6 E14.5 · Not Established
+        - strong: M5
+        - emphasis: Sall3 · Npy · Nxph1
+        - generic: Inhibitory · dual GABAergic/glycinergic population context · 54 sampled retained cells
+      - option "DMRT3/dI6 E14.5 · Not Established M6 Neurod6 · Neurod2 · Zeb2 Inhibitory · dual GABAergic/glycinergic population context · 24 sampled retained cells":
+        - generic: DMRT3/dI6 E14.5 · Not Established
+        - strong: M6
+        - emphasis: Neurod6 · Neurod2 · Zeb2
+        - generic: Inhibitory · dual GABAergic/glycinergic population context · 24 sampled retained cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A1 Tfap2b · Islr2 · Lhx1 · Lhx1os · Npy · 2700069I18Rik Inhibitory · 179 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A1
+        - emphasis: Tfap2b · Islr2 · Lhx1 · Lhx1os · Npy · 2700069I18Rik
+        - generic: Inhibitory · 179 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A1-L Cyp26b1 · Tfap2b · Lhx1 · Lhx1os · Uncx · Hoxc12 Inhibitory · 53 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A1-L
+        - emphasis: Cyp26b1 · Tfap2b · Lhx1 · Lhx1os · Uncx · Hoxc12
+        - generic: Inhibitory · 53 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A2 Tfap2b · Islr2 · Zfhx3 · Sox6 · 2700069I18Rik · Dab1 Inhibitory · 230 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A2
+        - emphasis: Tfap2b · Islr2 · Zfhx3 · Sox6 · 2700069I18Rik · Dab1
+        - generic: Inhibitory · 230 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A3 Tfap2b · Islr2 · Skor2 · Lhx1 · Lhx1os · Zfhx3 Inhibitory · 120 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A3
+        - emphasis: Tfap2b · Islr2 · Skor2 · Lhx1 · Lhx1os · Zfhx3
+        - generic: Inhibitory · 120 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A4 Islr2 · Epcam · Fat1 · Skor2 · Tpbg · Lhx1os Inhibitory · 95 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A4
+        - emphasis: Islr2 · Epcam · Fat1 · Skor2 · Tpbg · Lhx1os
+        - generic: Inhibitory · 95 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A5 Islr2 · Epcam · Lhx1os · Lhx1 · Fat1 · Gm42303 Inhibitory · 181 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A5
+        - emphasis: Islr2 · Epcam · Lhx1os · Lhx1 · Fat1 · Gm42303
+        - generic: Inhibitory · 181 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A6 Islr2 · B130024G19Rik · Lhx1os · Skor1 · Lhx1 · Nr2f2 Inhibitory · 268 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A6
+        - emphasis: Islr2 · B130024G19Rik · Lhx1os · Skor1 · Lhx1 · Nr2f2
+        - generic: Inhibitory · 268 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-A7 Mafa · Tfap2b · Peg10 · Pdzrn3 · Lhx1os · Fign Inhibitory · 69 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-A7
+        - emphasis: Mafa · Tfap2b · Peg10 · Pdzrn3 · Lhx1os · Fign
+        - generic: Inhibitory · 69 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-B1 Tfap2b · Islr2 · Lhx1 · Lhx1os · Zfhx3 · Ecel1 Inhibitory · 92 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-B1
+        - emphasis: Tfap2b · Islr2 · Lhx1 · Lhx1os · Zfhx3 · Ecel1
+        - generic: Inhibitory · 92 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-B2 Slit3 · Ntn1 · Lhx1 · Lhx1os · Skor1 · Pcdh11x Inhibitory · 147 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-B2
+        - emphasis: Slit3 · Ntn1 · Lhx1 · Lhx1os · Skor1 · Pcdh11x
+        - generic: Inhibitory · 147 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-B3 Htr2c · Mafa · Lhx1os · Fign · Lhx1 · Gm49678 Inhibitory · 160 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-B3
+        - emphasis: Htr2c · Mafa · Lhx1os · Fign · Lhx1 · Gm49678
+        - generic: Inhibitory · 160 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-C1 Ecel1 · Pax8 · Dmrtb1 · Lhx1os · Lhx1 · Stc1 Inhibitory · 245 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-C1
+        - emphasis: Ecel1 · Pax8 · Dmrtb1 · Lhx1os · Lhx1 · Stc1
+        - generic: Inhibitory · 245 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-C2 Islr2 · Pax5 · Pax8 · Ntn1 · Plch1 · Lhx1 Inhibitory · 320 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-C2
+        - emphasis: Islr2 · Pax5 · Pax8 · Ntn1 · Plch1 · Lhx1
+        - generic: Inhibitory · 320 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-C3 Islr2 · Plch1 · Ndnf · Lhx1 · Npy · Pax8 Inhibitory · 397 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-C3
+        - emphasis: Islr2 · Plch1 · Ndnf · Lhx1 · Npy · Pax8
+        - generic: Inhibitory · 397 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-C4 Islr2 · Ndnf · Plch1 · Ecel1 · Nppc · Lhx1 Inhibitory · 563 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-C4
+        - emphasis: Islr2 · Ndnf · Plch1 · Ecel1 · Nppc · Lhx1
+        - generic: Inhibitory · 563 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-D1 Ramp3 · Gm28822 · Ntn1 · Dmrtb1 · Sstr1 · Pax8 Inhibitory · 91 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-D1
+        - emphasis: Ramp3 · Gm28822 · Ntn1 · Dmrtb1 · Sstr1 · Pax8
+        - generic: Inhibitory · 91 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-D2 Zic4 · Lhx1 · Lhx1os · Zic2 · B230216N24Rik · Zfhx3 Inhibitory · 288 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-D2
+        - emphasis: Zic4 · Lhx1 · Lhx1os · Zic2 · B230216N24Rik · Zfhx3
+        - generic: Inhibitory · 288 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-E1 Zic2 · Zic4 · Zic5 · Nptx1 · Chst2 · Zfhx3 Inhibitory · 117 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-E1
+        - emphasis: Zic2 · Zic4 · Zic5 · Nptx1 · Chst2 · Zfhx3
+        - generic: Inhibitory · 117 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA1-E2 Zic5 · Ramp3 · Ntn1 · Lhx1 · Zic2 · Lhx1os Inhibitory · 53 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA1-E2
+        - emphasis: Zic5 · Ramp3 · Ntn1 · Lhx1 · Zic2 · Lhx1os
+        - generic: Inhibitory · 53 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-A Mafb · Mafa · Tfap2b · Stxbp6 · Lhx1os · Lhx1 Inhibitory · 201 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-A
+        - emphasis: Mafb · Mafa · Tfap2b · Stxbp6 · Lhx1os · Lhx1
+        - generic: Inhibitory · 201 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-B Mafb · Tfap2b · Mafa · Lhx1os · Nr2f2 · Lhx1 Inhibitory · 164 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-B
+        - emphasis: Mafb · Tfap2b · Mafa · Lhx1os · Nr2f2 · Lhx1
+        - generic: Inhibitory · 164 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-C Mafb · Igf1 · Mafa · Maf · Tgfb2 · B130024G19Rik Inhibitory · 103 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-C
+        - emphasis: Mafb · Igf1 · Mafa · Maf · Tgfb2 · B130024G19Rik
+        - generic: Inhibitory · 103 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-D Igf1 · B130024G19Rik · Nr2f2 · Sall3 · Foxp2 · Pax2 Inhibitory · 188 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-D
+        - emphasis: Igf1 · B130024G19Rik · Nr2f2 · Sall3 · Foxp2 · Pax2
+        - generic: Inhibitory · 188 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-E Mafb · Sall3 · Prkcq · B130024G19Rik · Gbx1 · Nr2f2 Inhibitory · 1318 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-E
+        - emphasis: Mafb · Sall3 · Prkcq · B130024G19Rik · Gbx1 · Nr2f2
+        - generic: Inhibitory · 1318 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-F Cadps2 · Lix1 · Prkcq · Sall3 · Lhx1 · Lhx1os Inhibitory · 1336 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-F
+        - emphasis: Cadps2 · Lix1 · Prkcq · Sall3 · Lhx1 · Lhx1os
+        - generic: Inhibitory · 1336 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-G Serpinb1b · Plekhd1 · Prkcq · Pcp4l1 · Sall3 · Gbx1 Inhibitory · 813 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-G
+        - emphasis: Serpinb1b · Plekhd1 · Prkcq · Pcp4l1 · Sall3 · Gbx1
+        - generic: Inhibitory · 813 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-H Frzb · Serpinb1b · Prkcq · Plekhd1 · Uts2b · Pcp4l1 Inhibitory · 1146 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-H
+        - emphasis: Frzb · Serpinb1b · Prkcq · Plekhd1 · Uts2b · Pcp4l1
+        - generic: Inhibitory · 1146 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-I Serpinb1b · Shisa8 · Rorb · Sall3 · Hopx · Nr2f2 Inhibitory · 1217 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-I
+        - emphasis: Serpinb1b · Shisa8 · Rorb · Sall3 · Hopx · Nr2f2
+        - generic: Inhibitory · 1217 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-J Osr1 · Shisa8 · Serpinb1b · Rorb · Sall3 · Nr2f2 Inhibitory · 586 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-J
+        - emphasis: Osr1 · Shisa8 · Serpinb1b · Rorb · Sall3 · Nr2f2
+        - generic: Inhibitory · 586 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-K Rorb · Sall3 · Plekhd1 · Gpc5 · Npy · Serpinb1b Inhibitory · 519 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-K
+        - emphasis: Rorb · Sall3 · Plekhd1 · Gpc5 · Npy · Serpinb1b
+        - generic: Inhibitory · 519 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-L Pax5 · Ecel1 · Lhx1 · Sst · Lhx1os · Npy Inhibitory · 481 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-L
+        - emphasis: Pax5 · Ecel1 · Lhx1 · Sst · Lhx1os · Npy
+        - generic: Inhibitory · 481 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-M Nr4a2 · Zic5 · Zic2 · Nts · Pax5 · Tmem114 Inhibitory · 240 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-M
+        - emphasis: Nr4a2 · Zic5 · Zic2 · Nts · Pax5 · Tmem114
+        - generic: Inhibitory · 240 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA2-X Satb2 · Lhx1os · Lhx1 · 9130024F11Rik · Pcdh11x · Thsd7b Inhibitory · 204 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA2-X
+        - emphasis: Satb2 · Lhx1os · Lhx1 · 9130024F11Rik · Pcdh11x · Thsd7b
+        - generic: Inhibitory · 204 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1A Mafb · Mafa · Stxbp6 · Parm1 · Lhx1os · Lhx1 Inhibitory · 227 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1A
+        - emphasis: Mafb · Mafa · Stxbp6 · Parm1 · Lhx1os · Lhx1
+        - generic: Inhibitory · 227 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1B Lhx1os · Lhx1 · Gpr88 · Nxph2 · Cdh10 · Lypd1 Inhibitory · 366 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1B
+        - emphasis: Lhx1os · Lhx1 · Gpr88 · Nxph2 · Cdh10 · Lypd1
+        - generic: Inhibitory · 366 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1C Nxph2 · Adamts5 · Sall3 · Lhx1 · Tfap2b · Lhx1os Inhibitory · 311 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1C
+        - emphasis: Nxph2 · Adamts5 · Sall3 · Lhx1 · Tfap2b · Lhx1os
+        - generic: Inhibitory · 311 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1D1 Tfap2b · Nxph2 · Neurod2 · Adamts5 · Lhx1 · Gm49678 Inhibitory · 190 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1D1
+        - emphasis: Tfap2b · Nxph2 · Neurod2 · Adamts5 · Lhx1 · Gm49678
+        - generic: Inhibitory · 190 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1D2 Tfap2b · Lhx1os · Lhx1 · Rorb · Neurod2 · Anxa3 Inhibitory · 239 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1D2
+        - emphasis: Tfap2b · Lhx1os · Lhx1 · Rorb · Neurod2 · Anxa3
+        - generic: Inhibitory · 239 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1E Stk32a · Sall3 · Ndst3 · Prkcq · Cdh7 · Serpinb1b Inhibitory · 132 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1E
+        - emphasis: Stk32a · Sall3 · Ndst3 · Prkcq · Cdh7 · Serpinb1b
+        - generic: Inhibitory · 132 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1F Tfap2b · Rorb · Sall3 · Hhip · Serpinb1b · Stxbp6 Inhibitory · 270 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1F
+        - emphasis: Tfap2b · Rorb · Sall3 · Hhip · Serpinb1b · Stxbp6
+        - generic: Inhibitory · 270 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1G Tfap2b · Zic4 · Sh3rf3 · Nos1 · Rara · Pax2 Inhibitory · 187 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1G
+        - emphasis: Tfap2b · Zic4 · Sh3rf3 · Nos1 · Rara · Pax2
+        - generic: Inhibitory · 187 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1H Nos1 · Nppc · Tfap2b · Ecel1 · Zic2 · Hhip Inhibitory · 261 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1H
+        - emphasis: Nos1 · Nppc · Tfap2b · Ecel1 · Zic2 · Hhip
+        - generic: Inhibitory · 261 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1X-L Hoxd11 · Zbtb16 · Mn1 · Fibin · Pcdh11x · Hoxd10 Inhibitory · 214 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1X-L
+        - emphasis: Hoxd11 · Zbtb16 · Mn1 · Fibin · Pcdh11x · Hoxd10
+        - generic: Inhibitory · 214 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1X1 Satb2 · 9130024F11Rik · Fibin · Skor2 · Lhx1os · Lhx1 Inhibitory · 622 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1X1
+        - emphasis: Satb2 · 9130024F11Rik · Fibin · Skor2 · Lhx1os · Lhx1
+        - generic: Inhibitory · 622 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-1X2 Fibin · Satb2 · Skor2 · 9130024F11Rik · Neurod6 · Amn Inhibitory · 531 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-1X2
+        - emphasis: Fibin · Satb2 · Skor2 · 9130024F11Rik · Neurod6 · Amn
+        - generic: Inhibitory · 531 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-2A Mn1 · Neurod2 · Zeb2 · Tfap2b · Gm49678 · Gm42303 Inhibitory · 517 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-2A
+        - emphasis: Mn1 · Neurod2 · Zeb2 · Tfap2b · Gm49678 · Gm42303
+        - generic: Inhibitory · 517 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-2B1 Tacr3 · Plpp4 · Kctd4 · Nppc · Tnfaip8 · Crym Inhibitory · 313 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-2B1
+        - emphasis: Tacr3 · Plpp4 · Kctd4 · Nppc · Tnfaip8 · Crym
+        - generic: Inhibitory · 313 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-2B2 Tfap2b · Ccbe1 · Zic4 · Klhl14 · Trhde · Zeb2 Inhibitory · 307 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-2B2
+        - emphasis: Tfap2b · Ccbe1 · Zic4 · Klhl14 · Trhde · Zeb2
+        - generic: Inhibitory · 307 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-2C1 Tfap2b · Zic5 · Zic2 · Zic4 · Tfap2a · Pou6f2 Inhibitory · 326 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-2C1
+        - emphasis: Tfap2b · Zic5 · Zic2 · Zic4 · Tfap2a · Pou6f2
+        - generic: Inhibitory · 326 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-2C2 Zic5 · Zic2 · Cbln4 · Klhl14 · Igfbp5 · Calb2 Inhibitory · 139 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-2C2
+        - emphasis: Zic5 · Zic2 · Cbln4 · Klhl14 · Igfbp5 · Calb2
+        - generic: Inhibitory · 139 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-2X Mn1 · Pcdh11x · Pcdh19 · Pnoc · Tfap2b · Neurod2 Inhibitory · 793 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-2X
+        - emphasis: Mn1 · Pcdh11x · Pcdh19 · Pnoc · Tfap2b · Neurod2
+        - generic: Inhibitory · 793 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3A1 Tfap2b · Klhl14 · Cdh7 · Neurod2 · Epha4 · Asic4 Inhibitory · 403 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3A1
+        - emphasis: Tfap2b · Klhl14 · Cdh7 · Neurod2 · Epha4 · Asic4
+        - generic: Inhibitory · 403 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3A2 Asic4 · Sall3 · Neurod2 · Mcub · Pde1a · Lypd1 Inhibitory · 238 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3A2
+        - emphasis: Asic4 · Sall3 · Neurod2 · Mcub · Pde1a · Lypd1
+        - generic: Inhibitory · 238 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3B Tfap2b · Klhl14 · Sall3 · Asic4 · Neurod2 · Crabp1 Inhibitory · 342 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3B
+        - emphasis: Tfap2b · Klhl14 · Sall3 · Asic4 · Neurod2 · Crabp1
+        - generic: Inhibitory · 342 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3C Asic4 · Sall3 · Syt6 · Zic4 · Cdh20 · Ccbe1 Inhibitory · 233 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3C
+        - emphasis: Asic4 · Sall3 · Syt6 · Zic4 · Cdh20 · Ccbe1
+        - generic: Inhibitory · 233 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3D Zic3 · Zic4 · Sall3 · Klhl14 · Crabp1 · Tcim Inhibitory · 459 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3D
+        - emphasis: Zic3 · Zic4 · Sall3 · Klhl14 · Crabp1 · Tcim
+        - generic: Inhibitory · 459 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3E1 Zic2 · Zic4 · Tcim · Klhl14 · Sall3 · Zic3 Inhibitory · 175 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3E1
+        - emphasis: Zic2 · Zic4 · Tcim · Klhl14 · Sall3 · Zic3
+        - generic: Inhibitory · 175 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3E2 Calb2 · Zic5 · Zic2 · Tfap2b · Igfbp5 · Zic4 Inhibitory · 182 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3E2
+        - emphasis: Calb2 · Zic5 · Zic2 · Tfap2b · Igfbp5 · Zic4
+        - generic: Inhibitory · 182 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3X1 Tfap2b · Neurod2 · Cdh12 · Dgkg · Cdh7 · Amn Inhibitory · 518 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3X1
+        - emphasis: Tfap2b · Neurod2 · Cdh12 · Dgkg · Cdh7 · Amn
+        - generic: Inhibitory · 518 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA3-3X2 Mafb · Maf · Neurod2 · Asic4 · Ndst3 · Nr2f2 Inhibitory · 200 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA3-3X2
+        - emphasis: Mafb · Maf · Neurod2 · Asic4 · Ndst3 · Nr2f2
+        - generic: Inhibitory · 200 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-A Mafa · Cryba2 · Rflnb · Maf · Il1rapl2 · Ndnf Inhibitory · 331 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-A
+        - emphasis: Mafa · Cryba2 · Rflnb · Maf · Il1rapl2 · Ndnf
+        - generic: Inhibitory · 331 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-B Mafa · Prkcq · Maf · Cdh3 · Spon1 · Sall3 Inhibitory · 335 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-B
+        - emphasis: Mafa · Prkcq · Maf · Cdh3 · Spon1 · Sall3
+        - generic: Inhibitory · 335 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-C Prkcq · Mmp14 · Pcp4l1 · Cdh3 · Pde1a · Sall3 Inhibitory · 232 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-C
+        - emphasis: Prkcq · Mmp14 · Pcp4l1 · Cdh3 · Pde1a · Sall3
+        - generic: Inhibitory · 232 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-D Prkcq · Pcp4l1 · Sall3 · Pde1a · Gbx1 · Kank1 Inhibitory · 810 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-D
+        - emphasis: Prkcq · Pcp4l1 · Sall3 · Pde1a · Gbx1 · Kank1
+        - generic: Inhibitory · 810 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-E Prkcq · Pcp4l1 · Shisa8 · Sall3 · Gbx1 · Gpc4 Inhibitory · 377 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-E
+        - emphasis: Prkcq · Pcp4l1 · Shisa8 · Sall3 · Gbx1 · Gpc4
+        - generic: Inhibitory · 377 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-F Kcnip2 · Prkcq · Pcp4l1 · Shisa8 · Sall3 · Eepd1 Inhibitory · 300 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-F
+        - emphasis: Kcnip2 · Prkcq · Pcp4l1 · Shisa8 · Sall3 · Eepd1
+        - generic: Inhibitory · 300 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-G Kcnip2 · Eepd1 · Prkcq · Shisa8 · Pcp4l1 · Gsn Inhibitory · 427 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-G
+        - emphasis: Kcnip2 · Eepd1 · Prkcq · Shisa8 · Pcp4l1 · Gsn
+        - generic: Inhibitory · 427 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-H Kcnip2 · Prkcq · Shisa8 · Ret · Pcp4l1 · Eepd1 Inhibitory · 379 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-H
+        - emphasis: Kcnip2 · Prkcq · Shisa8 · Ret · Pcp4l1 · Eepd1
+        - generic: Inhibitory · 379 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-I Kcnip2 · Shisa8 · Prkcq · Asic4 · Pcp4l1 · Sall3 Inhibitory · 412 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-I
+        - emphasis: Kcnip2 · Shisa8 · Prkcq · Asic4 · Pcp4l1 · Sall3
+        - generic: Inhibitory · 412 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-Imm Kcnip2 · Sall3 · Asic4 · Prkcq · Shisa8 · Gbx1 Inhibitory · 140 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-Imm
+        - emphasis: Kcnip2 · Sall3 · Asic4 · Prkcq · Shisa8 · Gbx1
+        - generic: Inhibitory · 140 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-J Kcnip2 · Cdh3 · Prkcq · Asic4 · Sall3 · Shisa8 Inhibitory · 522 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-J
+        - emphasis: Kcnip2 · Cdh3 · Prkcq · Asic4 · Sall3 · Shisa8
+        - generic: Inhibitory · 522 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-K Sall3 · Kcnip2 · Zic4 · Syt6 · Ccbe1 · Crabp1 Inhibitory · 155 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-K
+        - emphasis: Sall3 · Kcnip2 · Zic4 · Syt6 · Ccbe1 · Crabp1
+        - generic: Inhibitory · 155 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-L Sall3 · Zic4 · Rph3a · Cacna2d3 · Pax2 · Nppc Inhibitory · 233 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-L
+        - emphasis: Sall3 · Zic4 · Rph3a · Cacna2d3 · Pax2 · Nppc
+        - generic: Inhibitory · 233 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-M Zic5 · Zic2 · Zic4 · Sall3 · Igfbp5 · Hmga2 Inhibitory · 236 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-M
+        - emphasis: Zic5 · Zic2 · Zic4 · Sall3 · Igfbp5 · Hmga2
+        - generic: Inhibitory · 236 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA4-X Mafa · C2cd4a · C2cd4b · Maf · Pde1a · Sall3 Inhibitory · 109 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA4-X
+        - emphasis: Mafa · C2cd4a · C2cd4b · Maf · Pde1a · Sall3
+        - generic: Inhibitory · 109 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-A1 Pde1a · Tmem255a · Sall3 · Neurod1 · Nr2f2 · Pnoc Inhibitory · 190 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-A1
+        - emphasis: Pde1a · Tmem255a · Sall3 · Neurod1 · Nr2f2 · Pnoc
+        - generic: Inhibitory · 190 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-A2 Pdyn · Gpc3 · Sema3e · Gm26644 · Rorb · Npy Inhibitory · 198 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-A2
+        - emphasis: Pdyn · Gpc3 · Sema3e · Gm26644 · Rorb · Npy
+        - generic: Inhibitory · 198 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-A3 Pdyn · Gm26644 · Npy · Slc35d3 · Pnoc · Pax2 Inhibitory · 787 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-A3
+        - emphasis: Pdyn · Gm26644 · Npy · Slc35d3 · Pnoc · Pax2
+        - generic: Inhibitory · 787 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-A4 Pdyn · Gm26644 · Slc35d3 · Shisa8 · Gm13889 · Rgs4 Inhibitory · 687 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-A4
+        - emphasis: Pdyn · Gm26644 · Slc35d3 · Shisa8 · Gm13889 · Rgs4
+        - generic: Inhibitory · 687 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-A5 Pdyn · Slc35d3 · Gm26644 · Shisa8 · Bhlhe22 · Skor1 Inhibitory · 637 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-A5
+        - emphasis: Pdyn · Slc35d3 · Gm26644 · Shisa8 · Bhlhe22 · Skor1
+        - generic: Inhibitory · 637 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-A6 Skor1 · Prox1 · Bhlhe22 · Nfix · Pnoc · Neurod6 Inhibitory · 1053 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-A6
+        - emphasis: Skor1 · Prox1 · Bhlhe22 · Nfix · Pnoc · Neurod6
+        - generic: Inhibitory · 1053 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-B1 Pde1a · Neurod1 · Sall3 · Prkcq · Hmga2 · Cacna2d3 Inhibitory · 284 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-B1
+        - emphasis: Pde1a · Neurod1 · Sall3 · Prkcq · Hmga2 · Cacna2d3
+        - generic: Inhibitory · 284 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-B2 Pde1a · Zic4 · Neurod1 · Npy · Gm26644 · Pax2 Inhibitory · 302 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-B2
+        - emphasis: Pde1a · Zic4 · Neurod1 · Npy · Gm26644 · Pax2
+        - generic: Inhibitory · 302 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-B3 Gm26644 · Zic4 · Npy · Pax2 · Prdm8 · Pnoc Inhibitory · 211 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-B3
+        - emphasis: Gm26644 · Zic4 · Npy · Pax2 · Prdm8 · Pnoc
+        - generic: Inhibitory · 211 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-B4 Penk · Gm26644 · Gpc3 · Zic4 · Npy · Cadps2 Inhibitory · 215 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-B4
+        - emphasis: Penk · Gm26644 · Gpc3 · Zic4 · Npy · Cadps2
+        - generic: Inhibitory · 215 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-B5 Zic2 · Zic4 · Zic5 · Pnoc · Hmga2 · Pax2 Inhibitory · 377 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-B5
+        - emphasis: Zic2 · Zic4 · Zic5 · Pnoc · Hmga2 · Pax2
+        - generic: Inhibitory · 377 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA5-X Hhip · Pde1a · Nr2f2 · Sall3 · B130024G19Rik · Mafa Inhibitory · 111 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA5-X
+        - emphasis: Hhip · Pde1a · Nr2f2 · Sall3 · B130024G19Rik · Mafa
+        - generic: Inhibitory · 111 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-A1 Prox1 · Bhlhe22 · Rarb · Nfix · Kctd12 · Npnt Inhibitory · 151 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-A1
+        - emphasis: Prox1 · Bhlhe22 · Rarb · Nfix · Kctd12 · Npnt
+        - generic: Inhibitory · 151 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-A2 Tfap2a · Prox1 · Prdm8 · Chd7 · Nfix · Nfia Inhibitory · 443 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-A2
+        - emphasis: Tfap2a · Prox1 · Prdm8 · Chd7 · Nfix · Nfia
+        - generic: Inhibitory · 443 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-B1 Prox1 · Bhlhe22 · Kctd12 · Nfix · Inhba · Zeb2 Inhibitory · 847 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-B1
+        - emphasis: Prox1 · Bhlhe22 · Kctd12 · Nfix · Inhba · Zeb2
+        - generic: Inhibitory · 847 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-B2 Prox1 · Tfap2a · Nfix · Bhlhe22 · Nfia · Kctd12 Inhibitory · 1119 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-B2
+        - emphasis: Prox1 · Tfap2a · Nfix · Bhlhe22 · Nfia · Kctd12
+        - generic: Inhibitory · 1119 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-C1 Bhlhe22 · Zic2 · Neurod1 · Zic4 · Prox1 · Nfix Inhibitory · 783 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-C1
+        - emphasis: Bhlhe22 · Zic2 · Neurod1 · Zic4 · Prox1 · Nfix
+        - generic: Inhibitory · 783 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-C1a Zic2 · Zic5 · Zic4 · Bhlhe22 · Hmga2 · Zic1 Inhibitory · 298 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-C1a
+        - emphasis: Zic2 · Zic5 · Zic4 · Bhlhe22 · Hmga2 · Zic1
+        - generic: Inhibitory · 298 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-C1b Zic2 · Zbtb18 · Zic5 · Calb2 · Zic4 · Bhlhe22 Inhibitory · 225 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-C1b
+        - emphasis: Zic2 · Zbtb18 · Zic5 · Calb2 · Zic4 · Bhlhe22
+        - generic: Inhibitory · 225 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILA6-C2 Zic2 · Zic5 · Zic4 · Galr1 · Zbtb18 · Prox1 Inhibitory · 766 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILA6-C2
+        - emphasis: Zic2 · Zic5 · Zic4 · Galr1 · Zbtb18 · Prox1
+        - generic: Inhibitory · 766 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-A1 4930469K13Rik · Tac1 · Islr2 · Cpne4 · Phox2a · C130021I20Rik Excitatory · 33 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-A1
+        - emphasis: 4930469K13Rik · Tac1 · Islr2 · Cpne4 · Phox2a · C130021I20Rik
+        - generic: Excitatory · 33 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-A2 D130079A08Rik · Islr2 · Tox2 · Lpl · Tac1 · 4930469K13Rik Excitatory · 88 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-A2
+        - emphasis: D130079A08Rik · Islr2 · Tox2 · Lpl · Tac1 · 4930469K13Rik
+        - generic: Excitatory · 88 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-A3 Islr2 · Pou4f3 · 4930469K13Rik · C1ql3 · Tac1 · D130079A08Rik Excitatory · 117 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-A3
+        - emphasis: Islr2 · Pou4f3 · 4930469K13Rik · C1ql3 · Tac1 · D130079A08Rik
+        - generic: Excitatory · 117 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-A4 4930469K13Rik · Pou4f1 · Tac1 · Islr2 · Htr2c · Cnih3 Excitatory · 334 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-A4
+        - emphasis: 4930469K13Rik · Pou4f1 · Tac1 · Islr2 · Htr2c · Cnih3
+        - generic: Excitatory · 334 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-A5 4930469K13Rik · Megf11 · Tac1 · Dpy19l1 · Cbln2 · Pou4f1 Excitatory · 230 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-A5
+        - emphasis: 4930469K13Rik · Megf11 · Tac1 · Dpy19l1 · Cbln2 · Pou4f1
+        - generic: Excitatory · 230 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-B1 Tac1 · Pou4f1 · D130009I18Rik · Dpy19l1 · Skor1 · Meis2 Excitatory · 602 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-B1
+        - emphasis: Tac1 · Pou4f1 · D130009I18Rik · Dpy19l1 · Skor1 · Meis2
+        - generic: Excitatory · 602 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-B2 D130009I18Rik · Tac1 · Pou4f1 · Cck · Col14a1 · Gal Excitatory · 480 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-B2
+        - emphasis: D130009I18Rik · Tac1 · Pou4f1 · Cck · Col14a1 · Gal
+        - generic: Excitatory · 480 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-B3 D130009I18Rik · Pou4f1 · Tac1 · Cck · Skor1 · Fign Excitatory · 215 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-B3
+        - emphasis: D130009I18Rik · Pou4f1 · Tac1 · Cck · Skor1 · Fign
+        - generic: Excitatory · 215 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-X1 Tox2 · Pou3f1 · Tac1 · Cbln4 · Gm30373 · A230006K03Rik Excitatory · 32 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-X1
+        - emphasis: Tox2 · Pou3f1 · Tac1 · Cbln4 · Gm30373 · A230006K03Rik
+        - generic: Excitatory · 32 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-X2 Tac1 · Mdga1 · G630016G05Rik · Pou4f1 · Aldoc · Htr2c Excitatory · 73 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-X2
+        - emphasis: Tac1 · Mdga1 · G630016G05Rik · Pou4f1 · Aldoc · Htr2c
+        - generic: Excitatory · 73 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-X3 Mafb · D130009I18Rik · Tac1 · Pou4f1 · G630016G05Rik · Htr2c Excitatory · 62 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-X3
+        - emphasis: Mafb · D130009I18Rik · Tac1 · Pou4f1 · G630016G05Rik · Htr2c
+        - generic: Excitatory · 62 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-X4 D130009I18Rik · Tac1 · Pou4f1 · Pde7b · Nmu · Fign Excitatory · 63 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-X4
+        - emphasis: D130009I18Rik · Tac1 · Pou4f1 · Pde7b · Nmu · Fign
+        - generic: Excitatory · 63 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-X5 D130009I18Rik · Cpne4 · Pou4f1 · Clu · Tlx3 · Mdga1 Excitatory · 41 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-X5
+        - emphasis: D130009I18Rik · Cpne4 · Pou4f1 · Clu · Tlx3 · Mdga1
+        - generic: Excitatory · 41 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-Z1 Pou4f1 · 4930469K13Rik · Cnih3 · Epha3 · D130009I18Rik · Zic2 Excitatory · 87 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-Z1
+        - emphasis: Pou4f1 · 4930469K13Rik · Cnih3 · Epha3 · D130009I18Rik · Zic2
+        - generic: Excitatory · 87 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-Z2 D130009I18Rik · Pou4f1 · Zic4 · Tac1 · Megf11 · Fign Excitatory · 140 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-Z2
+        - emphasis: D130009I18Rik · Pou4f1 · Zic4 · Tac1 · Megf11 · Fign
+        - generic: Excitatory · 140 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB1-Z3 Zic2 · Zic4 · Fign · Pou4f1 · Tac1 · Hmga2 Excitatory · 70 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB1-Z3
+        - emphasis: Zic2 · Zic4 · Fign · Pou4f1 · Tac1 · Hmga2
+        - generic: Excitatory · 70 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-A1 D130009I18Rik · Pou4f1 · Gm8773 · Pthlh · Cpne4 · Fign Excitatory · 130 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-A1
+        - emphasis: D130009I18Rik · Pou4f1 · Gm8773 · Pthlh · Cpne4 · Fign
+        - generic: Excitatory · 130 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-A2 4930469K13Rik · Pou4f1 · Mafa · Col14a1 · Cck · Tlx3 Excitatory · 151 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-A2
+        - emphasis: 4930469K13Rik · Pou4f1 · Mafa · Col14a1 · Cck · Tlx3
+        - generic: Excitatory · 151 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-A3 Mafa · 4930469K13Rik · D130009I18Rik · Cck · Cnih3 · Plch2 Excitatory · 319 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-A3
+        - emphasis: Mafa · 4930469K13Rik · D130009I18Rik · Cck · Cnih3 · Plch2
+        - generic: Excitatory · 319 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-A4 Mafa · Cck · Maf · Prrxl1 · Gm2694 · Plch2 Excitatory · 317 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-A4
+        - emphasis: Mafa · Cck · Maf · Prrxl1 · Gm2694 · Plch2
+        - generic: Excitatory · 317 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-B1 Mafa · Cck · Casz1 · Cbln1 · Gm2694 · Maf Excitatory · 462 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-B1
+        - emphasis: Mafa · Cck · Casz1 · Cbln1 · Gm2694 · Maf
+        - generic: Excitatory · 462 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-B2 Mafa · Cck · Casz1 · Cbln1 · Gm2694 · Prrxl1 Excitatory · 1997 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-B2
+        - emphasis: Mafa · Cck · Casz1 · Cbln1 · Gm2694 · Prrxl1
+        - generic: Excitatory · 1997 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-B3 Mafa · Cck · Casz1 · Cbln1 · Mctp2 · Gm2694 Excitatory · 1129 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-B3
+        - emphasis: Mafa · Cck · Casz1 · Cbln1 · Mctp2 · Gm2694
+        - generic: Excitatory · 1129 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-C1 Mafa · Cbln1 · Cck · Casz1 · Gm2694 · Prrxl1 Excitatory · 580 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-C1
+        - emphasis: Mafa · Cbln1 · Cck · Casz1 · Gm2694 · Prrxl1
+        - generic: Excitatory · 580 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-C2 Pcp2 · Mafa · Bnc2 · Cbln1 · Cck · Otof Excitatory · 211 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-C2
+        - emphasis: Pcp2 · Mafa · Bnc2 · Cbln1 · Cck · Otof
+        - generic: Excitatory · 211 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-C3 Bnc2 · Mafa · Npff · Cbln1 · Gm2694 · Cpne8 Excitatory · 506 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-C3
+        - emphasis: Bnc2 · Mafa · Npff · Cbln1 · Gm2694 · Cpne8
+        - generic: Excitatory · 506 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-Z1 Zic2 · 4930469K13Rik · Zic5 · Maf · Zic4 · Gm2694 Excitatory · 54 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-Z1
+        - emphasis: Zic2 · 4930469K13Rik · Zic5 · Maf · Zic4 · Gm2694
+        - generic: Excitatory · 54 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-Z2 Mafa · Zic2 · Cnih3 · Maf · Cbln1 · Zic4 Excitatory · 257 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-Z2
+        - emphasis: Mafa · Zic2 · Cnih3 · Maf · Cbln1 · Zic4
+        - generic: Excitatory · 257 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-Z3A Zic2 · Zic5 · Zic4 · Cbln1 · Car8 · Cbln2 Excitatory · 121 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-Z3A
+        - emphasis: Zic2 · Zic5 · Zic4 · Cbln1 · Car8 · Cbln2
+        - generic: Excitatory · 121 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB2-Z3B Grp · Casz1 · Fign · Lmx1b · Prrxl1 · Gm2694 Excitatory · 70 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB2-Z3B
+        - emphasis: Grp · Casz1 · Fign · Lmx1b · Prrxl1 · Gm2694
+        - generic: Excitatory · 70 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB3-A Bnc2 · Grp · Pde11a · Npff · Casz1 · Cpne8 Excitatory · 769 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB3-A
+        - emphasis: Bnc2 · Grp · Pde11a · Npff · Casz1 · Cpne8
+        - generic: Excitatory · 769 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB3-B Bnc2 · Grp · Pde11a · Npy1r · Hmga2 · Casz1 Excitatory · 746 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB3-B
+        - emphasis: Bnc2 · Grp · Pde11a · Npy1r · Hmga2 · Casz1
+        - generic: Excitatory · 746 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB3-C Grp · Pde11a · Syt10 · Hmga2 · Tlx3 · Prex2 Excitatory · 1624 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB3-C
+        - emphasis: Grp · Pde11a · Syt10 · Hmga2 · Tlx3 · Prex2
+        - generic: Excitatory · 1624 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB3-D Syt10 · Tex15 · Pde11a · Grp · Npff · Tlx3 Excitatory · 905 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB3-D
+        - emphasis: Syt10 · Tex15 · Pde11a · Grp · Npff · Tlx3
+        - generic: Excitatory · 905 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB4-A Tlx3 · Tex15 · Dpyd · Npff · Megf11 · Pde11a Excitatory · 281 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB4-A
+        - emphasis: Tlx3 · Tex15 · Dpyd · Npff · Megf11 · Pde11a
+        - generic: Excitatory · 281 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB4-B1 Tlx3 · Frzb · Dpyd · Npff · Prss12 · Nptx1 Excitatory · 363 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB4-B1
+        - emphasis: Tlx3 · Frzb · Dpyd · Npff · Prss12 · Nptx1
+        - generic: Excitatory · 363 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB4-B2 Calca · Gpr149 · Rerg · Calb1 · Gdf10 · Tlx3 Excitatory · 167 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB4-B2
+        - emphasis: Calca · Gpr149 · Rerg · Calb1 · Gdf10 · Tlx3
+        - generic: Excitatory · 167 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB4-C Gdf10 · Grpr · Rxrg · Prrxl1 · Rerg · Ebf2 Excitatory · 342 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB4-C
+        - emphasis: Gdf10 · Grpr · Rxrg · Prrxl1 · Rerg · Ebf2
+        - generic: Excitatory · 342 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB4-Imm Tlx3 · Rprm · Prss12 · Necab1 · Lmx1b · Bcl11b Excitatory · 294 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB4-Imm
+        - emphasis: Tlx3 · Rprm · Prss12 · Necab1 · Lmx1b · Bcl11b
+        - generic: Excitatory · 294 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB4-X Npff · Gm12371 · Sema3e · Tlx3 · Etl4 · Klhl1 Excitatory · 286 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB4-X
+        - emphasis: Npff · Gm12371 · Sema3e · Tlx3 · Etl4 · Klhl1
+        - generic: Excitatory · 286 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-A1 Grpr · Rprm · Prrxl1 · Prss12 · Gdf10 · Ndst3 Excitatory · 361 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-A1
+        - emphasis: Grpr · Rprm · Prrxl1 · Prss12 · Gdf10 · Ndst3
+        - generic: Excitatory · 361 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-A2 Prrxl1 · Rprm · Cartpt · Phlda1 · Frzb · Tlx3 Excitatory · 683 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-A2
+        - emphasis: Prrxl1 · Rprm · Cartpt · Phlda1 · Frzb · Tlx3
+        - generic: Excitatory · 683 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-A3 Cartpt · Prrxl1 · Gm2115 · Frzb · Rprm · Gjc1 Excitatory · 1066 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-A3
+        - emphasis: Cartpt · Prrxl1 · Gm2115 · Frzb · Rprm · Gjc1
+        - generic: Excitatory · 1066 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-A4 Cartpt · Gm2115 · Prrxl1 · Rprm · Pth2r · Ebf2 Excitatory · 1149 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-A4
+        - emphasis: Cartpt · Gm2115 · Prrxl1 · Rprm · Pth2r · Ebf2
+        - generic: Excitatory · 1149 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-B1 Cartpt · Gm2115 · Cemip · Prrxl1 · Col12a1 · Rprm Excitatory · 690 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-B1
+        - emphasis: Cartpt · Gm2115 · Cemip · Prrxl1 · Col12a1 · Rprm
+        - generic: Excitatory · 690 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-B2 Gm2115 · Cemip · Prrxl1 · Il1rap · Tlx3 · Lmx1b Excitatory · 415 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-B2
+        - emphasis: Gm2115 · Cemip · Prrxl1 · Il1rap · Tlx3 · Lmx1b
+        - generic: Excitatory · 415 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB5-Imm Prrxl1 · Tlx3 · Lmx1b · Ebf2 · C130021I20Rik · Rprm Excitatory · 487 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB5-Imm
+        - emphasis: Prrxl1 · Tlx3 · Lmx1b · Ebf2 · C130021I20Rik · Rprm
+        - generic: Excitatory · 487 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-A1 Tlx3 · Nfix · Prrxl1 · Pou4f1 · Lmx1b · Gm12116 Excitatory · 210 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-A1
+        - emphasis: Tlx3 · Nfix · Prrxl1 · Pou4f1 · Lmx1b · Gm12116
+        - generic: Excitatory · 210 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-AX D130009I18Rik · Pou4f1 · Gm12116 · Tlx3 · Lmx1b · Nfix Excitatory · 71 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-AX
+        - emphasis: D130009I18Rik · Pou4f1 · Gm12116 · Tlx3 · Lmx1b · Nfix
+        - generic: Excitatory · 71 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-AZ1 Zic4 · Zic2 · Tlx3 · Tfap2a · Stc1 · Zic1 Excitatory · 323 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-AZ1
+        - emphasis: Zic4 · Zic2 · Tlx3 · Tfap2a · Stc1 · Zic1
+        - generic: Excitatory · 323 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-AZ2 Tfap2a · Zic2 · Zic4 · Zic5 · Maf · Synpr Excitatory · 170 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-AZ2
+        - emphasis: Tfap2a · Zic2 · Zic4 · Zic5 · Maf · Synpr
+        - generic: Excitatory · 170 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-B1 Nfix · Pou4f1 · Lmx1b · C130021I20Rik · Tlx3 · Skap1 Excitatory · 527 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-B1
+        - emphasis: Nfix · Pou4f1 · Lmx1b · C130021I20Rik · Tlx3 · Skap1
+        - generic: Excitatory · 527 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-BX D130009I18Rik · Ccl7 · Pou4f1 · Tac1 · D130079A08Rik · Eepd1 Excitatory · 71 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-BX
+        - emphasis: D130009I18Rik · Ccl7 · Pou4f1 · Tac1 · D130079A08Rik · Eepd1
+        - generic: Excitatory · 71 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-BZ1 Zic4 · Synpr · Wnt7b · Zic2 · Zic1 · Epha4 Excitatory · 407 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-BZ1
+        - emphasis: Zic4 · Synpr · Wnt7b · Zic2 · Zic1 · Epha4
+        - generic: Excitatory · 407 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-BZ2 Zic2 · Zic4 · Zic5 · Nfix · Tfap2a · Zic3 Excitatory · 594 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-BZ2
+        - emphasis: Zic2 · Zic4 · Zic5 · Nfix · Tfap2a · Zic3
+        - generic: Excitatory · 594 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-C1 Pou4f1 · D130009I18Rik · Nfix · D130079A08Rik · Nfia · Slc17a6 Excitatory · 625 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-C1
+        - emphasis: Pou4f1 · D130009I18Rik · Nfix · D130079A08Rik · Nfia · Slc17a6
+        - generic: Excitatory · 625 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-CZ1 Zic4 · Lmo3 · Synpr · Nfix · Gabrg1 · Vcan Excitatory · 234 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-CZ1
+        - emphasis: Zic4 · Lmo3 · Synpr · Nfix · Gabrg1 · Vcan
+        - generic: Excitatory · 234 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-CZ2 Cdh23 · Zic2 · Prox1 · Zic4 · Nfix · Prox1os Excitatory · 1245 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-CZ2
+        - emphasis: Cdh23 · Zic2 · Prox1 · Zic4 · Nfix · Prox1os
+        - generic: Excitatory · 1245 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-D1 Pou4f1 · Nhlh1 · Prox1 · D130079A08Rik · Nfix · Nfia Excitatory · 679 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-D1
+        - emphasis: Pou4f1 · Nhlh1 · Prox1 · D130079A08Rik · Nfix · Nfia
+        - generic: Excitatory · 679 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-DZ1 Pou4f1 · Zic2 · Zic4 · Pmaip1 · Prox1 · Nfix Excitatory · 197 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-DZ1
+        - emphasis: Pou4f1 · Zic2 · Zic4 · Pmaip1 · Prox1 · Nfix
+        - generic: Excitatory · 197 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-DZ1-L Hoxd11 · Pou4f1 · D130079A08Rik · Hoxc11 · Zic4 · Prox1 Excitatory · 175 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-DZ1-L
+        - emphasis: Hoxd11 · Pou4f1 · D130079A08Rik · Hoxc11 · Zic4 · Prox1
+        - generic: Excitatory · 175 sampled captured refined dIL cells
+      - option "ROOME E14.5/E16.5 · Dorsal dILB6-E1 Pou4f1 · Prox1 · Nfix · Uncx · Nfia · Lmx1b Excitatory · 756 sampled captured refined dIL cells":
+        - generic: ROOME E14.5/E16.5 · Dorsal
+        - strong: dILB6-E1
+        - emphasis: Pou4f1 · Prox1 · Nfix · Uncx · Nfia · Lmx1b
+        - generic: Excitatory · 756 sampled captured refined dIL cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.1 Not retained in this record Not established by the source contract · 30 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 30 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.2 Not retained in this record Not established by the source contract · 67 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 67 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.3 Not retained in this record Not established by the source contract · 255 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 255 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.4 Not retained in this record Not established by the source contract · 128 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 128 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.5 Not retained in this record Not established by the source contract · 41 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.5
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 41 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.6 Not retained in this record Not established by the source contract · 238 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.6
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 238 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl1.7 Not retained in this record Not established by the source contract · 116 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl1.7
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 116 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl2.1 Not retained in this record Not established by the source contract · 446 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl2.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 446 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl2.2 Not retained in this record Not established by the source contract · 243 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl2.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 243 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl2.3 Not retained in this record Not established by the source contract · 35 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl2.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 35 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl2.4 Not retained in this record Not established by the source contract · 157 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl2.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 157 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl2.5 Not retained in this record Not established by the source contract · 118 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl2.5
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 118 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl3.1 Not retained in this record Not established by the source contract · 90 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl3.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 90 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl3.2 Not retained in this record Not established by the source contract · 367 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl3.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 367 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl3.3 Not retained in this record Not established by the source contract · 404 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl3.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 404 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl3.4 Not retained in this record Not established by the source contract · 418 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl3.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 418 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl3.5 Not retained in this record Not established by the source contract · 138 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl3.5
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 138 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl3.6 Not retained in this record Not established by the source contract · 179 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl3.6
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 179 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl4.1 Not retained in this record Not established by the source contract · 1089 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl4.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 1089 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl4.2 Not retained in this record Not established by the source contract · 626 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl4.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 626 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl4.3 Not retained in this record Not established by the source contract · 1010 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl4.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 1010 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl4.4 Not retained in this record Not established by the source contract · 611 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl4.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 611 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl4.5 Not retained in this record Not established by the source contract · 333 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl4.5
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 333 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl4.6 Not retained in this record Not established by the source contract · 1700 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl4.6
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 1700 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl5.1 Not retained in this record Not established by the source contract · 949 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl5.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 949 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl5.2 Not retained in this record Not established by the source contract · 857 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl5.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 857 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl5.3 Not retained in this record Not established by the source contract · 689 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl5.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 689 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl5.4 Not retained in this record Not established by the source contract · 1149 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl5.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 1149 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established dl5.5 Not retained in this record Not established by the source contract · 419 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: dl5.5
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 419 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V0.1 Not retained in this record Not established by the source contract · 92 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V0.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 92 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V0.2 Not retained in this record Not established by the source contract · 50 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V0.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 50 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V0.3 Not retained in this record Not established by the source contract · 46 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V0.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 46 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.1 Not retained in this record Not established by the source contract · 151 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 151 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.2 Not retained in this record Not established by the source contract · 140 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 140 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.3 Not retained in this record Not established by the source contract · 231 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 231 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.4 Not retained in this record Not established by the source contract · 82 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 82 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.5 Not retained in this record Not established by the source contract · 144 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.5
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 144 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.6 Not retained in this record Not established by the source contract · 67 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.6
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 67 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V1.7 Not retained in this record Not established by the source contract · 54 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V1.7
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 54 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2a.1 Not retained in this record Not established by the source contract · 32 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2a.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 32 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2a.2 Not retained in this record Not established by the source contract · 190 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2a.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 190 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2a.3 Not retained in this record Not established by the source contract · 86 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2a.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 86 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2a.4 Not retained in this record Not established by the source contract · 103 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2a.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 103 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2b.1 Not retained in this record Not established by the source contract · 94 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2b.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 94 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2b.2 Not retained in this record Not established by the source contract · 55 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2b.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 55 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2b.3 Not retained in this record Not established by the source contract · 26 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2b.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 26 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V2b.4 Not retained in this record Not established by the source contract · 287 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V2b.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 287 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V3.1 Not retained in this record Not established by the source contract · 110 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V3.1
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 110 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V3.2 Not retained in this record Not established by the source contract · 119 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V3.2
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 119 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V3.3 Not retained in this record Not established by the source contract · 78 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V3.3
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 78 sampled captured fine-subtype cells
+      - option "DELILE E9.5–E13.5 · Not Established V3.4 Not retained in this record Not established by the source contract · 78 sampled captured fine-subtype cells":
+        - generic: DELILE E9.5–E13.5 · Not Established
+        - strong: V3.4
+        - emphasis: Not retained in this record
+        - generic: Not established by the source contract · 78 sampled captured fine-subtype cells
+      - option "CROZAT PKD2L1 · Central PKD2L1+ CSF-contacting neurons PKD2L1 · GABA Inhibitory / GABAergic · multiple experiment-specific N/n":
+        - generic: CROZAT PKD2L1 · Central
+        - strong: PKD2L1+ CSF-contacting neurons
+        - emphasis: PKD2L1 · GABA
+        - generic: Inhibitory / GABAergic · multiple experiment-specific N/n
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Best3_Htr1b Not established · source-label tokens are not interpreted as markers Cholinergic · 146 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Best3_Htr1b
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 146 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Best3_Slc9a3 Not established · source-label tokens are not interpreted as markers Cholinergic · 119 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Best3_Slc9a3
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 119 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Galr1_Ccdc3 Not established · source-label tokens are not interpreted as markers Cholinergic · 150 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Galr1_Ccdc3
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 150 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Galr1_P2rx5 Not established · source-label tokens are not interpreted as markers Cholinergic · 66 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Galr1_P2rx5
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 66 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Galr1_Rasgrp1 Not established · source-label tokens are not interpreted as markers Cholinergic · 20 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Galr1_Rasgrp1
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 20 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Nr5a2_Cdh23 Not established · source-label tokens are not interpreted as markers Cholinergic · 78 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Nr5a2_Cdh23
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 78 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Nr5a2_Rxfp2 Not established · source-label tokens are not interpreted as markers Cholinergic · 82 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Nr5a2_Rxfp2
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 82 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Pde5a_Piezo2 Not established · source-label tokens are not interpreted as markers Cholinergic · 100 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Pde5a_Piezo2
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 100 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Pitx2_ Srpx2 Not established · source-label tokens are not interpreted as markers Cholinergic · 74 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Pitx2_ Srpx2
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 74 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Pitx2_Eya1 Not established · source-label tokens are not interpreted as markers Cholinergic · 35 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Pitx2_Eya1
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 35 sampled source-assigned nuclei
+      - option "CANO-GOMEZ P56 · Not Established CHOL_IN_Pitx2_Skor2 Not established · source-label tokens are not interpreted as markers Cholinergic · 53 sampled source-assigned nuclei":
+        - generic: CANO-GOMEZ P56 · Not Established
+        - strong: CHOL_IN_Pitx2_Skor2
+        - emphasis: Not established · source-label tokens are not interpreted as markers
+        - generic: Cholinergic · 53 sampled source-assigned nuclei
+    - article "Source-record dossier for MN-alpha":
+      - generic: RUSS · SELECTED SOURCE RECORD
+      - paragraph: Source-local evidence; comparison does not merge identities.
+      - button "Add to compare"
+      - complementary "Morphology coverage for MN-alpha":
+        - strong: Publication-level morphology coverage · MN-alpha
+        - paragraph:
+          - text: Russ harmonized postnatal taxonomy ·
+          - link "source publication DOI":
+            - /url: https://doi.org/10.1038/s41467-021-25125-1
+        - paragraph: In the pinned NeuroMorpho.Org 8.6.124 query (1,097 deposited records), this publication DOI matches 0 morphology records.
+        - paragraph: DOI overlap is publication-level metadata only—not subtype, specimen, or same-cell evidence. Zero matches are limited to this pinned query and do not establish that morphology is absent elsewhere. The button runs a separate literal source-label search.
+        - button "Search morphology by source label"
+      - region "MN-alpha":
+        - text: SELECTED SOURCE-RECORD FINGERPRINT
+        - heading "MN-alpha" [level=5]
+        - paragraph: RUSS · GSE158380
+        - strong: 237 captured sequenced cells/nuclei · denominator 19,353 across six studies
+        - term: Observation unit
+        - definition: Source population
+        - term: Source markers
+        - definition: Slit3 · Chat · Pappa
+        - term: Source-local region evidence
+        - definition: Ventral · not retained in this profile
+        - term: Life stage / transmitter
+        - definition: Postnatal harmonized transcriptomic reference; the paper separately validates selected marker panels in adult lumbar tissue. · Cholinergic
+        - generic "Evidence-axis status for MN-alpha":
+          - strong: Source profile
+          - generic: Direct source-local label and markers
+          - strong: Anatomy context
+          - generic: Ventral · not retained in this profile
+        - generic "9 unavailable or unlinked evidence axes · consolidated"
+        - status:
+          - strong: 0 admitted cell-geometry primitives
+          - text: Source-profile evidence changes this fingerprint only. It does not create a sphere, representative cell, neurite arbor, internal structure, or fallback morphology in 3D.
+        - generic "Identity and geometry limits · collapsed"
+      - region "What changed between these source records?":
+        - generic: SOURCE-RECORD DELTA · DISPLAY ONLY
+        - heading "What changed between these source records?" [level=4]
+        - paragraph: Only the explicitly whitelisted rows below were inspected. Values remain source-local and are not pooled or harmonized.
+        - strong: 8 changed · 17 exact shared
+        - generic "Compared source records":
+          - article:
+            - generic: OLD SOURCE RECORD
+            - strong: Excit-1
+            - generic: russ-2021 · russ-2021:Excit-1
+          - article:
+            - generic: CURRENT SOURCE RECORD
+            - strong: MN-alpha
+            - generic: russ-2021 · russ-2021:MN-alpha
+        - region "Changed source-record display rows":
+          - table "Changed whitelisted display rows; old and current values retain their source-record scope.":
+            - caption: Changed whitelisted display rows; old and current values retain their source-record scope.
+            - rowgroup:
+              - row "Dimension Old · Excit-1 Current · MN-alpha":
+                - columnheader "Dimension"
+                - columnheader "Old · Excit-1"
+                - columnheader "Current · MN-alpha"
+            - rowgroup:
+              - row "Source-local label Excit-1 MN-alpha":
+                - rowheader "Source-local label"
+                - cell "Excit-1"
+                - cell "MN-alpha"
+              - row "Source-region evidence Dorsal · Not Retained In This Profile Ventral · Not Retained In This Profile":
+                - rowheader "Source-region evidence"
+                - cell "Dorsal · Not Retained In This Profile"
+                - cell "Ventral · Not Retained In This Profile"
+              - row "Transmitter class Excitatory Cholinergic":
+                - rowheader "Transmitter class"
+                - cell "Excitatory"
+                - cell "Cholinergic"
+              - row "Figure/source markers Cpne4 · Bnc2 · Dach2 Slit3 · Chat · Pappa":
+                - rowheader "Figure/source markers"
+                - cell "Cpne4 · Bnc2 · Dach2"
+                - cell "Slit3 · Chat · Pappa"
+              - row "Spinal scope Twenty dorsal excitatory populations in the harmonized postnatal reference. The source names these motor or preganglionic populations; this explorer does not count them as interneuron candidates.":
+                - rowheader "Spinal scope"
+                - cell "Twenty dorsal excitatory populations in the harmonized postnatal reference."
+                - cell "The source names these motor or preganglionic populations; this explorer does not count them as interneuron candidates."
+              - 'row "Source class context Table1 Source Family: Cpne4 Table1 Source Family: MN"':
+                - rowheader "Source class context"
+                - 'cell "Table1 Source Family: Cpne4"'
+                - 'cell "Table1 Source Family: MN"'
+              - row "Dataset sampling count 266 captured sequenced cells/nuclei 237 captured sequenced cells/nuclei":
+                - rowheader "Dataset sampling count"
+                - cell "266 captured sequenced cells/nuclei"
+                - cell "237 captured sequenced cells/nuclei"
+              - row "Putative assignment Dorsal excitatory · Source Group Context Not Exact Identity Motoneuron and preganglionic · Source Group Context Not Exact Identity":
+                - rowheader "Putative assignment"
+                - cell "Dorsal excitatory · Source Group Context Not Exact Identity"
+                - cell "Motoneuron and preganglionic · Source Group Context Not Exact Identity"
+        - generic "17 exact shared display rows · shown once"
+        - note:
+          - strong: 0 same-cell identities · 0 same-type identities · 0 geometry primitives · 0 joins · 0 registrations
+          - paragraph: Textual equality or difference does not establish biological identity, morphology, geometry, abundance, causality, connectivity, spatial correspondence, or atlas registration.
+          - generic: Authority DISPLAY_ONLY · relationship not established · measurement forbidden
+      - generic "Source metadata and assignment details"
+      - region "Russ source information for MN-alpha":
+        - heading "Russ source population information" [level=4]
+        - complementary "Russ sequencing and adult validation scopes":
+          - generic: CAPTURED SEQUENCING OBSERVATIONS
+          - strong: 237 cells/nuclei
+          - paragraph: Population count within 19,353 captured sequenced cells/nuclei across six studies. Independent animals and individual ages are not retained in this aggregate.
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!H3
+          - generic: ADULT IN SITU PREVALENCE
+          - strong: 1.1% of confidently assigned adult neurons; numerical denominator not supplied
+          - paragraph: Table1 uses confidently assigned adult neurons; its numerical per-row denominator is not supplied. Sequencing counts remain separate.
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[3]
+          - generic: ADULT VALIDATION SOURCE DIFFERENCE
+          - strong: 2,371 panel sum · 2,894 article total
+          - paragraph: Source values differ by 523. Their scope or cause remains unresolved; counts are not harmonized.
+          - code: 41467_2021_25125_MOESM7_ESM.xlsx#Sheet1!B22:K22 · PMC8481483.fullText.xml#body//p[@id='Par22']
+        - generic "Six-study captured sequencing composition"
+        - term: Sathyamurthy
+        - definition: 28 captured cells/nuclei · 11.814345991561181% of this 237-observation population
+        - definition:
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!B3 · 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!L3
+        - term: Hayashi
+        - definition: 0 captured cells/nuclei · 0% of this 237-observation population
+        - definition:
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!C3 · 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!M3
+        - term: Haring
+        - definition: 0 captured cells/nuclei · 0% of this 237-observation population
+        - definition:
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!D3 · 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!N3
+        - term: Rosenberg
+        - definition: 209 captured cells/nuclei · 88.185654008438817% of this 237-observation population
+        - definition:
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!E3 · 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!O3
+        - term: Zeisel
+        - definition: 0 captured cells/nuclei · 0% of this 237-observation population
+        - definition:
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!F3 · 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!P3
+        - term: Baek
+        - definition: 0 captured cells/nuclei · 0% of this 237-observation population
+        - definition:
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!G3 · 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!Q3
+        - paragraph: Captured source-population composition, not adult prevalence, a nucleus roster, independent animals, species-wide census or canonical type frequency.
+        - paragraph:
+          - text: "Named denominator:"
+          - code: russ_2021_final_harmonized_neuronal_dataset_19353
+          - text: ·
+          - code: 41467_2021_25125_MOESM6_ESM.xlsx#Sheet1!H72
+        - generic "Raw Table1 spatial and molecular context"
+        - term: Source family
+        - definition: MN
+        - definition:
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[5]
+        - term: Source lamina
+        - definition: 9 · population context
+        - definition:
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[2]
+        - term: NT marker
+        - definition: Chat
+        - definition:
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[4]
+        - term: Table1 individual marker strings
+        - definition: Spp1 · Poln · Tns1
+        - definition:
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[6] · PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[7] · PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[8]
+        - term: Original top-three Wilcoxon markers
+        - definition: Slit3 · Chat · Pappa
+        - definition:
+          - code: "Supplementary Table 1: harmonized cell type markers · 41467_2021_25125_MOESM5_ESM.xlsx"
+        - term: Putative source lineage
+        - definition: MN · exact lineage assignment not established
+        - definition:
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table/tbody/tr[1]/td[9]
+        - term: Exact raw-label panel membership
+        - definition: native alias not normalized
+        - paragraph: Table1 footnote distinguishes unvalidated gray genes. Text XML preserves strings but loses gray styling, so no per-marker successful-validation claim is derived. Raw strings, parentheses and special characters are retained. Panel targets do not establish expression in every named cluster.
+        - paragraph:
+          - text: Percent of the total number of confidently assigned neurons in the adult in situ analysis.
+          - code: PMC8481483.fullText.xml#table-wrap[@id='Tab1']/table-wrap-foot
+        - paragraph: "Table1 source annotation conventions: The lamina, prevalence, neurotransmitter marker gene, family, individual marker genes, and putative embryonic lineage for each neuronal cluster are shown. The clusters are color-coded to correspond approximately to their color in Fig. 2a. The prevalence of each cluster was determined by counting the confidently assigned cells of each type based on RNA in situ hybridization on sections from three animals and are presented as the percent of the total number of confidently assigned neurons. Genes in parenthesis are expressed at lower levels. Genes in gray were not validated (due to probe failure, being present only in postnatal animals, or were not included in the analysis). + denotes relatively higher expression. # denotes a possible identity of Clarke’s column (CC). * denotes a marker that was validated using RNAScope V2 but did not work in the RNAScope Hiplex assay."
+        - generic "Ten adult in situ panels · shared study context"
+        - generic "Primary sources and integrity receipts"
+      - heading "Cross-lineage hints · not established" [level=5]
+      - paragraph: No candidate relationship is admitted for this record.
+      - heading "Activity and electrophysiology evidence" [level=5]
+      - paragraph: No activity or electrophysiology evidence is retained in this profile.
+      - generic "Field locators and technical provenance"
+      - link "Primary article ↗":
+        - /url: https://www.nature.com/articles/s41467-021-25125-1
+      - link "Public source record · GSE158380 ↗":
+        - /url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158380
+    - region "Compare 2–4 source records":
+      - text: STRUCTURED COMPARISON · NO POOLING
+      - heading "Compare 2–4 source records" [level=4]
+      - paragraph: Shared rows support inspection only. Counts, labels and markers remain source-local.
+      - paragraph: Select at least two profiles from their dossiers. Up to four records can be compared.
+    - generic "Global scientific boundaries"
